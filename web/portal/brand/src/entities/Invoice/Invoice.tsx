@@ -14,14 +14,17 @@ const properties: InvoiceProperties = {
   number: {
     label: _('Number'),
     maxLength: 30,
+    required: true,
   },
   inDate: {
     label: _('In date'),
     format: 'date',
+    required: true,
   },
   outDate: {
     label: _('Out date'),
     format: 'date',
+    required: true,
   },
   total: {
     label: _('Total'),
@@ -30,6 +33,7 @@ const properties: InvoiceProperties = {
   taxRate: {
     label: _('Tax rate'),
     subfix: '%',
+    required: true,
   },
   totalWithTax: {
     label: _('Total with tax'),
