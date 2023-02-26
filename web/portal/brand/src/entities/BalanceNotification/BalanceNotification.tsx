@@ -13,6 +13,7 @@ const properties: BalanceNotificationProperties = {
     label: _('To address'),
     maxLength: 255,
     helpText: _('Mail address where this notification will be sent'),
+    required: true,
   },
   threshold: {
     label: _('Notification Threshold'),
@@ -22,6 +23,7 @@ const properties: BalanceNotificationProperties = {
       'Notification will be sent when the current balance is less that this value.'
     ),
     type: 'integer',
+    required: true,
   },
   lastSent: {
     label: _('Last notification sent on'),
