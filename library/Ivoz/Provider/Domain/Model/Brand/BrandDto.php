@@ -19,6 +19,7 @@ class BrandDto extends BrandDtoAbstract
 
     public const CONTEXTS_WITH_PROXY_TRUNKS = [
         self::CONTEXT_WITH_PROXY_TRUNKS,
+        self::CONTEXT_DETAILED,
         self::CONTEXT_COLLECTION
     ];
 
