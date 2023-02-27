@@ -1,6 +1,8 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
+import { DestinationRatePropertiesList } from './DestinationRateProperties';
 
 const DestinationRateSelectOptions: SelectOptionsType = ({
   callback,
@@ -12,10 +14,13 @@ const DestinationRateSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     DestinationRate.path,
     ['id'],
-    (data: any) => {
-      const options: any = {};
+    (data: DestinationRatePropertiesList) => {
+      const options: DropdownChoices = [];
       for (const item of data) {
-        options[item.id] = item.id;
+        options.push({
+          id: item.id as number,
+          label: `${item.id}`,
+        });
       }
 
       callback(options);
