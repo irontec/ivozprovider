@@ -48,6 +48,8 @@ pipeline {
         stage('Backend') {
             when {
                 anyOf {
+                    expression { hasLabel("ci-force-tests-back") }
+                    expression { hasLabel("ci-force-tests") }
                     expression { hasCommitTag("core:") }
                     expression { hasCommitTag("schema:") }
                     expression { hasCommitTag("microservice:") }
@@ -260,6 +262,8 @@ pipeline {
                         stage('schema') {
                             when {
                                 anyOf {
+                                    expression { hasLabel("ci-force-tests") }
+                                    expression { hasLabel("ci-force-tests-back") }
                                     expression { hasCommitTag("schema:") }
                                     branch "bleeding"
                                     branch "halliday"
@@ -296,6 +300,8 @@ pipeline {
         stage('Frontend') {
             when {
                 anyOf {
+                    expression { hasLabel("ci-force-tests-front") }
+                    expression { hasLabel("ci-force-tests") }
                     expression { hasCommitTag("portal") }
                     branch "bleeding"
                     branch "halliday"
@@ -319,6 +325,8 @@ pipeline {
                         stage('web-platform') {
                             when {
                                 anyOf {
+                                    expression { hasLabel("ci-force-tests-front") }
+                                    expression { hasLabel("ci-force-tests") }
                                     expression { hasCommitTag("portal/platform:") }
                                     branch "bleeding"
                                     branch "halliday"
@@ -343,6 +351,8 @@ pipeline {
                         stage('web-brand') {
                             when {
                                 anyOf {
+                                    expression { hasLabel("ci-force-tests-front") }
+                                    expression { hasLabel("ci-force-tests") }
                                     expression { hasCommitTag("portal/brand:") }
                                     branch "bleeding"
                                     branch "halliday"
@@ -368,6 +378,8 @@ pipeline {
                         stage('web-client') {
                             when {
                                 anyOf {
+                                    expression { hasLabel("ci-force-tests-front") }
+                                    expression { hasLabel("ci-force-tests") }
                                     expression { hasCommitTag("portal/client:") }
                                     branch "bleeding"
                                     branch "halliday"
@@ -392,6 +404,8 @@ pipeline {
                         stage('web-user') {
                             when {
                                 anyOf {
+                                    expression { hasLabel("ci-force-tests-front") }
+                                    expression { hasLabel("ci-force-tests") }
                                     expression { hasCommitTag("portal/user:") }
                                     branch "bleeding"
                                     branch "halliday"
@@ -432,6 +446,10 @@ pipeline {
 // -----------------------------------------------------------------------------
 // Helper Functions
 // -----------------------------------------------------------------------------
+boolean hasLabel(String label) {
+    return env.CHANGE_ID && pullRequest.labels.contains(label)
+}
+
 boolean hasCommitTag(String module) {
   return !env.CHANGE_TARGET || sh(
     returnStatus: true,
