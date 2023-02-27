@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 
 /**
@@ -51,5 +52,13 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
         }
 
         return $patterns;
+    }
+
+    public function setName(string $name): static
+    {
+        $name = trim($name);
+        Assertion::notEq($name, '');
+
+        return parent::setName($name);
     }
 }
