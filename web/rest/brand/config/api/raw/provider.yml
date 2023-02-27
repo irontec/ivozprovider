@@ -118,7 +118,6 @@ Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement:
     get: ~
   collectionOperations:
     get: ~
-    post: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
