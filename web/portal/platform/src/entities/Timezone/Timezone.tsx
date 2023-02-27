@@ -15,7 +15,7 @@ const timezone: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Timezones',
   },
-  toStr: (row: EntityValues) => row.name as string,
+  toStr: (row: EntityValues) => row.tz as string,
   selectOptions,
 };
 

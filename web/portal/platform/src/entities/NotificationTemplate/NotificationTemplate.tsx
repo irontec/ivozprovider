@@ -39,9 +39,13 @@ const properties: NotificationTemplateProperties = {
 
 const NotificationTemplate: EntityInterface = {
   ...defaultEntityBehavior,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    detail: false,
+  },
   icon: MailOutlineIcon,
   iden: 'NotificationTemplate',
-  title: _('Notification template', { count: 2 }),
+  title: _('Default Notification template', { count: 2 }),
   path: '/notification_templates',
   columns: ['name', 'type'],
   toStr: (row: NotificationTemplatePropertyList<EntityValue>) =>

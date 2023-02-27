@@ -2,25 +2,22 @@ import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
-import { CountryPropertiesList } from './CountryProperties';
+import { RtpenginePropertiesList } from './RtpengineProperties';
 
-const CountryNameSelectOptions: SelectOptionsType = ({
+const RtpengineSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const Country = entities.Country;
+  const Rtpengine = entities.Rtpengine;
 
   return defaultEntityBehavior.fetchFks(
-    Country.path,
-    ['id', 'name'],
-    (data: CountryPropertiesList) => {
+    Rtpengine.path,
+    ['id', 'url'],
+    (data: RtpenginePropertiesList) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({
-          id: item.id as number,
-          label: Country.toStr(item),
-        });
+        options.push({ id: item.id as number, label: item.url as string });
       }
 
       callback(options);
@@ -29,4 +26,4 @@ const CountryNameSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default CountryNameSelectOptions;
+export default RtpengineSelectOptions;

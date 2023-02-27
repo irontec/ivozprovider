@@ -5,27 +5,26 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type BillableCallPropertyList<T> = {
-  brand?: T;
-  callee?: T;
-  caller?: T;
-  company?: T;
-  cost?: T;
-  direction?: T;
-  duration?: T;
-  invoice?: T;
-  price?: T;
-  startTime?: T;
   callid?: T;
+  startTime?: T;
+  duration?: T;
+  caller?: T;
+  callee?: T;
+  cost?: T;
+  price?: T;
+  priceDetails?: T;
   carrierName?: T;
   destinationName?: T;
   ratingPlanName?: T;
   endpointType?: T;
   endpointId?: T;
   endpointName?: T;
+  direction?: T;
   id?: T;
+  brand?: T;
+  company?: T;
   carrier?: T;
-  destination?: T;
-  ratingPlanGroup?: T;
+  invoice?: T;
   ddi?: T;
   ddiProvider?: T;
 };

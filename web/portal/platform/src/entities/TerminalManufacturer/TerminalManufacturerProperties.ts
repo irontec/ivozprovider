@@ -8,6 +8,7 @@ export type TerminalManufacturerPropertyList<T> = {
   description?: T;
   iden?: T;
   name?: T;
+  id?: T;
 };
 
 export type TerminalManufacturerProperties = TerminalManufacturerPropertyList<

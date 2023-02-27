@@ -4,8 +4,10 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { CurrencyProperties, CurrencyPropertyList } from './CurrencyProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
+import { EntityValues } from '@irontec/ivoz-ui';
+import { getI18n } from 'react-i18next';
 import selectOptions from './SelectOptions';
+
 const properties: CurrencyProperties = {
   iden: {
     label: _('Iden'),
@@ -28,8 +30,12 @@ const Currency: EntityInterface = {
   iden: 'Currency',
   title: _('Currency', { count: 2 }),
   path: '/currencies',
-  columns: ['iden', 'symbol', 'name'],
-  toStr: (row: CurrencyPropertyList<EntityValue>) => row.name as string,
+  columns: ['iden', 'name', 'symbol'],
+  toStr: (row: CurrencyPropertyList<EntityValues>) => {
+    const language = getI18n().language.substring(0, 2);
+    const name = row.name as Record<string, string>;
+    return `${name[language]} (${row.symbol})`;
+  },
   properties,
   selectOptions,
   Form,

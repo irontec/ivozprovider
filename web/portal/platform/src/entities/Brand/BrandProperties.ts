@@ -5,29 +5,24 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type BrandPropertyList<T> = {
-  name?: T;
-  domainUsers?: T;
-  maxCalls?: T;
   id?: T;
-  logo?: T;
+  name?: T;
   invoice?: T;
-  language?: T;
-  defaultTimezone?: T;
-  currency?: T;
-  voicemailNotificationTemplate?: T;
-  faxNotificationTemplate?: T;
-  invoiceNotificationTemplate?: T;
-  callCsvNotificationTemplate?: T;
-  maxDailyUsageNotificationTemplate?: T;
+  'invoice.nif'?: T;
+  'invoice.postalAddress'?: T;
+  'invoice.postalCode'?: T;
+  'invoice.town'?: T;
+  'invoice.province'?: T;
+  'invoice.registryData'?: T;
+  'invoice.country'?: T;
+  logo?: T;
+  domainUsers?: T;
   features?: T;
   proxyTrunks?: T;
-  nif?: T;
-  postalAddress?: T;
-  postalCode?: T;
-  city?: T;
-  province?: T;
-  country?: T;
-  registerInfo?: T;
+  language?: T;
+  defaultTimezone?: T;
+  maxCalls?: T;
+  currency?: T;
 };
 
 export type BrandProperties = BrandPropertyList<Partial<PropertySpec>>;

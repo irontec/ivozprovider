@@ -23,6 +23,10 @@ const BannedAddress: EntityInterface = {
   iden: 'BannedAddress',
   title: _('Antiflood banned IP', { count: 2 }),
   path: '/banned_addresses',
+  acl: {
+    ...defaultEntityBehavior.acl,
+    detail: false,
+  },
   toStr: (row: BannedAddressPropertyList<EntityValue>) => row.ip as string,
   properties,
   columns: ['ip', 'lastTimeBanned'],

@@ -42,7 +42,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
     isEntityItem(routeMapItem) &&
     routeMapItem.entity.iden === InvoiceTemplate.iden
   ) {
-    if (row.global) {
+    if (row.brand) {
       return null;
     }
   }
@@ -54,7 +54,7 @@ const InvoiceTemplate: EntityInterface = {
   ...defaultEntityBehavior,
   icon: RequestQuoteIcon,
   iden: 'InvoiceTemplate',
-  title: _('Invoice Template', { count: 2 }),
+  title: _('Default Invoice template', { count: 2 }),
   path: '/invoice_templates',
   toStr: (row: InvoiceTemplatePropertyList<EntityValue>) => row.name as string,
   properties,

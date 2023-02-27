@@ -27,6 +27,19 @@ const getEntityMap = (): ExtendedRouteMap => {
           ],
         },
         {
+          entity: entities.Administrator,
+          filterBy: 'company',
+          children: [
+            {
+              entity: entities.AdministratorRelPublicEntity,
+              filterBy: 'administrator',
+            },
+          ],
+        },
+        {
+          entity: entities.BannedAddress,
+        },
+        {
           entity: entities.TerminalManufacturer,
           children: [
             {
@@ -40,59 +53,31 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.Currency,
         },
-      ],
-    },
-    {
-      label: _('Invoicing'),
-      children: [
+        {
+          entity: entities.NotificationTemplate,
+          children: [
+            {
+              entity: entities.NotificationTemplateContent,
+            },
+          ],
+        },
         {
           entity: entities.InvoiceTemplate,
-        },
-      ],
-    },
-    {
-      label: _('Calls'),
-      children: [
-        {
-          entity: entities.ActiveCalls,
-        },
-        {
-          entity: entities.BillableCall,
-        },
-      ],
-    },
-    {
-      label: _('Settings'),
-      children: [
-        {
-          entity: entities.WebPortal,
         },
         {
           entity: entities.SpecialNumber,
         },
         {
-          entity: entities.NotificationTemplate,
-        },
-      ],
-    },
-    {
-      label: _('Views'),
-      children: [
-        {
-          entity: entities.Administrator,
-          filterBy: 'company',
-          children: [
-            {
-              entity: entities.AdministratorRelPublicEntity,
-              filterBy: 'administrator',
-            },
-          ],
-        },
-        {
           entity: entities.Domain,
         },
         {
-          entity: entities.BannedAddress,
+          entity: entities.WebPortal,
+        },
+        {
+          entity: entities.ActiveCalls,
+        },
+        {
+          entity: entities.BillableCall,
         },
       ],
     },
@@ -107,6 +92,11 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.MediaRelaySet,
+          children: [
+            {
+              entity: entities.Rtpengine,
+            },
+          ],
         },
         {
           entity: entities.ApplicationServer,

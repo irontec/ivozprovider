@@ -8,6 +8,8 @@ import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
+  const edit = props.edit || false;
+
   const DefaultEntityForm = defaultEntityBehavior.Form;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -19,7 +21,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Login Info'),
-      fields: ['username', 'pass', 'active', 'timezone', 'restricted'],
+      fields: ['username', 'pass', edit && 'active', 'timezone', 'restricted'],
     },
     {
       legend: _('Personal data'),

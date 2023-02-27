@@ -5,37 +5,37 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import selectOptions from './SelectOptions';
 import Form from './Form';
 import {
-  MediaRelaySetProperties,
-  MediaRelaySetPropertyList,
-} from './MediaRelaySetProperties';
+  RtpengineProperties,
+  RtpenginePropertyList,
+} from './RtpengineProperties';
 import { EntityValue } from '@irontec/ivoz-ui';
 
-const properties: MediaRelaySetProperties = {
+const properties: RtpengineProperties = {
+  url: {
+    label: _('URL'),
+  },
+  weight: {
+    label: _('Weight'),
+  },
   description: {
     label: _('Description'),
   },
-  name: {
-    label: _('Name'),
+  disabled: {
+    label: _('Disabled'),
   },
 };
 
-const MediaRelaySet: EntityInterface = {
+const Rtpengine: EntityInterface = {
   ...defaultEntityBehavior,
-  acl: {
-    ...defaultEntityBehavior.acl,
-    update: false,
-    delete: false,
-    detail: false,
-  },
   icon: PlayLessonIcon,
-  iden: 'MediaRelaySet',
-  title: _('Media Relay Set', { count: 2 }),
-  path: '/media_relay_sets',
-  toStr: (row: MediaRelaySetPropertyList<EntityValue>) => row.name as string,
+  iden: 'Rtpengine',
+  title: _('Media Relay', { count: 2 }),
+  path: '/rtpengines',
+  toStr: (row: RtpenginePropertyList<EntityValue>) => row.url as string,
   properties,
-  columns: ['name', 'description'],
+  columns: ['url', 'weight', 'description', 'disabled'],
   selectOptions,
   Form,
 };
 
-export default MediaRelaySet;
+export default Rtpengine;

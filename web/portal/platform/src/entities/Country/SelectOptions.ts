@@ -1,8 +1,9 @@
-import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 import { getI18n } from 'react-i18next';
+import { CountryPropertiesList } from './CountryProperties';
 
 const CountrySelectOptions: SelectOptionsType = ({
   callback,
@@ -15,7 +16,7 @@ const CountrySelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     Country.path + `?_order[name.${[language]}]=ASC`,
     ['id', 'name', 'countryCode'],
-    (data: Array<EntityValues>) => {
+    (data: CountryPropertiesList) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         const name = item.name as Record<string, string>;

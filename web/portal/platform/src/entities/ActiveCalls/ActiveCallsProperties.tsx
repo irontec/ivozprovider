@@ -4,7 +4,7 @@ import {
   EntityValues,
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
-export type ActiveCallsPropertyList<T> = {
+export type ActiveCallPropertyList<T> = {
   Event?: T;
   Time?: T;
   ID?: T;
@@ -17,10 +17,10 @@ export type ActiveCallsPropertyList<T> = {
   DdiProvider?: T;
 };
 
-export type ActiveCallsProperties = ActiveCallsPropertyList<
+export type ActiveCallProperties = ActiveCallPropertyList<
   Partial<PropertySpec>
 >;
 
-export type ActiveCallsPropertiesList = Array<
-  ActiveCallsPropertyList<EntityValue | EntityValues>
+export type ActiveCallPropertiesList = Array<
+  ActiveCallPropertyList<EntityValue | EntityValues>
 >;

@@ -26,7 +26,7 @@ const TerminalManufacturer: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CallIcon,
   iden: 'TerminalManufacturer',
-  title: _('Terminal Manufacturer', { count: 2 }),
+  title: _('Terminal manufacturer', { count: 2 }),
   path: '/terminal_manufacturers',
   toStr: (row: TerminalManufacturerPropertyList<EntityValue>) =>
     row.iden as string,

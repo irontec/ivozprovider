@@ -3,12 +3,14 @@ import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyGetter } from './ForeignKeyGetter';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match, foreignKeyGetter } = props;
-
+  const { entityService, row, match } = props;
   const DefaultEntityForm = defaultEntityBehavior.Form;
+  const edit = props.edit || false;
+
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -21,10 +23,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Basic Configuration'),
       fields: [
         'name',
-        'nif',
-        //'proxyTrunks', // TODO:
-        'features', // TODO:
-        'logo',
+        edit && 'invoice.nif',
+        'proxyTrunks',
+        'features',
+        edit && 'logo',
         'maxCalls',
       ],
     },
@@ -32,19 +34,19 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Locales'),
       fields: ['defaultTimezone', 'language', 'currency'],
     },
-    {
+    edit && {
       legend: _('Domain Sip'),
       fields: ['domainUsers'],
     },
-    {
+    edit && {
       legend: _('Invoice Data'),
       fields: [
-        'postalAddress',
-        'postalCode',
-        'city',
-        'province',
-        'country',
-        'registerInfo',
+        'invoice.postalAddress',
+        'invoice.postalCode',
+        'invoice.town',
+        'invoice.province',
+        'invoice.country',
+        'invoice.registryData',
       ],
     },
   ];

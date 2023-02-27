@@ -1,7 +1,8 @@
-import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
+import { FeaturePropertiesList } from './FeatureProperties';
 
 const FeatureSelectOptions: SelectOptionsType = ({
   callback,
@@ -13,7 +14,7 @@ const FeatureSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     Feature.path,
     ['id', 'iden', 'name'],
-    (data: Array<EntityValues>) => {
+    (data: FeaturePropertiesList) => {
       const options: DropdownChoices = [];
 
       for (const item of data) {

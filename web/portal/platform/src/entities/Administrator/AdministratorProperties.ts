@@ -15,6 +15,7 @@ export type AdministratorPropertyList<T> = {
   id?: T;
   company?: T;
   timezone?: T;
+  brand?: T;
 };
 
 export type AdministratorProperties = AdministratorPropertyList<
