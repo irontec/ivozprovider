@@ -30,7 +30,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'friday',
         'saturday',
         'sunday',
-        'id',
         'ratingPlanGroup',
         'destinationRateGroup',
       ],
