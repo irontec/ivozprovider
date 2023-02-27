@@ -14,7 +14,6 @@ const properties: WebPortalProperties = {
   url: {
     label: _('URL'),
     pattern: new RegExp(`^https://[^/]*$`),
-    maxLength: 255,
     helpText: _(`'https://' URLs valid only (without trailing '/')`),
   },
   klearTheme: {
@@ -67,7 +66,6 @@ const properties: WebPortalProperties = {
   },
   name: {
     label: _('Name'),
-    maxLength: 200,
     helpText: _(`Will be shown on page footer`),
   },
   logo: {

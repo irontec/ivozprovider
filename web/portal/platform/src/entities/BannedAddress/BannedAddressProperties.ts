@@ -7,6 +7,9 @@ import {
 export type BannedAddressPropertyList<T> = {
   ip?: T;
   lastTimeBanned?: T;
+  id?: T;
+  blocker?: T;
+  aor?: T;
 };
 
 export type BannedAddressProperties = BannedAddressPropertyList<

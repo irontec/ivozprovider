@@ -5,7 +5,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { getI18n } from 'react-i18next';
 import { CountryProperties, CountryPropertyList } from './CountryProperties';
 import selectOptions from './SelectOptions';
-import { EntityValue } from '@irontec/ivoz-ui';
+import { EntityValues } from '@irontec/ivoz-ui';
 
 const properties: CountryProperties = {
   name: {
@@ -22,9 +22,11 @@ const country: EntityInterface = {
   iden: 'Country',
   title: _('Country', { count: 2 }),
   path: '/countries',
-  toStr: (row: CountryPropertyList<EntityValue>) => {
+  toStr: (row: CountryPropertyList<EntityValues>) => {
     const language = getI18n().language.substring(0, 2);
-    return (row.name as string)[language as any];
+    const name = row.name as Record<string, string>;
+
+    return name[language];
   },
   properties,
   acl: {

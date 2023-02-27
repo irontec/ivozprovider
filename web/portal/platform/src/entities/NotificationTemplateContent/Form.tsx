@@ -27,7 +27,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Contents configuration'),
-      fields: ['subject', 'body', 'bodyType', 'language'],
+      fields: ['bodyType', 'subject', 'body'],
     },
   ];
 

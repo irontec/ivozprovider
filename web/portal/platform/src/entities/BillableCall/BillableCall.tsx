@@ -6,12 +6,10 @@ import {
   BillableCallProperties,
   BillableCallPropertyList,
 } from './BillableCallProperties';
+import View from './View';
 import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: BillableCallProperties = {
-  brand: {
-    label: _('Brand'),
-  },
   callid: {
     label: _('Call ID'),
   },
@@ -23,6 +21,9 @@ const properties: BillableCallProperties = {
   },
   caller: {
     label: _('Caller'),
+  },
+  brand: {
+    label: _('Brand'),
   },
   callee: {
     label: _('Callee'),
@@ -74,12 +75,6 @@ const properties: BillableCallProperties = {
   carrier: {
     label: _('Carrier', { count: 1 }),
   },
-  destination: {
-    label: _('Destination', { count: 1 }),
-  },
-  ratingPlanGroup: {
-    label: _('Rating Plan Group', { count: 1 }),
-  },
   invoice: {
     label: _('Invoice', { count: 1 }),
     null: _('Unassigned'),
@@ -120,6 +115,7 @@ const BillableCall: EntityInterface = {
     update: false,
     delete: false,
   },
+  View,
 };
 
 export default BillableCall;

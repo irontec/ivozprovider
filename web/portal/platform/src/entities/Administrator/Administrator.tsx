@@ -77,7 +77,7 @@ const Administrator: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AdminPanelSettingsIcon,
   iden: 'Administrator',
-  title: _('Administrator', { count: 2 }),
+  title: _('Main operator', { count: 2 }),
   path: '/administrators',
   toStr: (row: EntityValues): string => row.username as string,
   properties,

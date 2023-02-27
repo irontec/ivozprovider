@@ -21,11 +21,18 @@ const Domain: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SipIcon,
   iden: 'Domain',
-  title: _('Domain', { count: 2 }),
+  title: _('SIP domain', { count: 2 }),
   path: '/domains',
   toStr: (row: DomainPropertyList<EntityValue>) => row.domain as string,
   properties,
   columns: ['domain', 'brandName', 'companyName'],
+  acl: {
+    read: true,
+    detail: false,
+    create: false,
+    update: false,
+    delete: false,
+  },
 };
 
 export default Domain;

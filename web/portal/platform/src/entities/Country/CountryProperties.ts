@@ -7,6 +7,9 @@ import {
 export type CountryPropertyList<T> = {
   name?: T;
   countryCode?: T;
+  id?: T;
+  code?: T;
+  zone?: T;
 };
 
 export type CountryProperties = CountryPropertyList<Partial<PropertySpec>>;

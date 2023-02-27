@@ -13,6 +13,7 @@ import { EntityValue } from '@irontec/ivoz-ui';
 const properties: ProxyUserProperties = {
   name: {
     label: _('Name'),
+    readOnly: true,
   },
   ip: {
     label: _('IP'),

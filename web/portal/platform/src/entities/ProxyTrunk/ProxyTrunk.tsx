@@ -13,6 +13,7 @@ import Form from './Form';
 const properties: ProxyTrunkProperties = {
   name: {
     label: _('Name'),
+    readOnly: true,
   },
   ip: {
     label: _('IP'),
@@ -24,11 +25,16 @@ const properties: ProxyTrunkProperties = {
 
 const ProxyTrunk: EntityInterface = {
   ...defaultEntityBehavior,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    create: true,
+  },
   icon: CallMissedOutgoingIcon,
   iden: 'ProxyTrunk',
   title: _('Proxy Trunk', { count: 2 }),
   path: '/proxy_trunks',
-  toStr: (row: ProxyTrunkPropertyList<EntityValue>) => row.ip as string,
+  toStr: (row: ProxyTrunkPropertyList<EntityValue>) =>
+    `${row.name} (${row.ip})`,
   columns: ['name', 'ip'],
   properties,
   selectOptions,

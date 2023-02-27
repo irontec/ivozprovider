@@ -4,20 +4,20 @@ import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 import { NotificationTemplateContentPropertiesList } from './NotificationTemplateContentProperties';
 
-const InvoiceTemplateSelectOptions: SelectOptionsType = ({
+const NotificationTemplateContentSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const InvoiceTemplate = entities.InvoiceTemplate;
+  const NotificationTemplateContent = entities.NotificationTemplateContent;
 
   return defaultEntityBehavior.fetchFks(
-    InvoiceTemplate.path,
-    ['id', 'name'],
+    NotificationTemplateContent.path + '?_order[fromName]=ASC',
+    ['id', 'fromName'],
     (data: NotificationTemplateContentPropertiesList) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id as string, label: item.fromName as string });
+        options.push({ id: item.id as number, label: item.fromName as string });
       }
 
       callback(options);
@@ -26,4 +26,4 @@ const InvoiceTemplateSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default InvoiceTemplateSelectOptions;
+export default NotificationTemplateContentSelectOptions;

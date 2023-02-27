@@ -6,7 +6,7 @@ import BannedAddress from '../BannedAddress/BannedAddress';
 const BannedAddressBruteForce: EntityInterface = {
   ...BannedAddress,
   icon: WhatshotIcon,
-  title: _('Banned IP address', { count: 2 }),
+  title: _('Brute-force attacks', { count: 2 }),
   localPath: '/brute_force',
   columns: ['company', 'aor', 'ip', 'lastTimeBanned', 'description'],
 };

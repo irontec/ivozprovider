@@ -57,6 +57,8 @@
   "Brand": "Marca",
   "Brand service_one": "Servei de marca",
   "Brand service_other": "Serveis de marca",
+  "Brute-force attacks_one": "Atac de força bruta",
+  "Brute-force attacks_other": "Atacs de força bruta",
   "CIDR notation (e.g. 8.8.8.0/24) or specific IP address (e.g. 8.8.8.8)": "Format CIDR (ex. 8.8.8.0/24) o amfitrió específic (ex. 8.8.8.8)",
   "Calculate cost?": "Calcula cost?",
   "Call ACL": "ACL de trucada",

@@ -57,6 +57,8 @@
   "Brand": "Brand",
   "Brand service_one": "Brand service",
   "Brand service_other": "Brand services",
+  "Brute-force attacks_one": "Brute-force attacks",
+  "Brute-force attacks_other": "Brute-force attacks",
   "CIDR notation (e.g. 8.8.8.0/24) or specific IP address (e.g. 8.8.8.8)": "CIDR notation (e.g. 8.8.8.0/24) or specific IP address (e.g. 8.8.8.8)",
   "Calculate cost?": "Calculate cost?",
   "Call ACL": "Call ACL",

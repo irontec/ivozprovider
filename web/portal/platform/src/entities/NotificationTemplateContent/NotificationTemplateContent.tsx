@@ -39,7 +39,7 @@ const properties: NotificationTemplateContentProperties = {
   },
   language: {
     label: _('Language'),
-    multilang: true,
+    readOnly: true,
   },
 };
 
