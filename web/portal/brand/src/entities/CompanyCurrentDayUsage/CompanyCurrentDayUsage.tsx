@@ -19,7 +19,7 @@ const CompanyCurrentDayUsage = {
     'name',
     'currentDayUsage',
     'maxDailyUsage',
-    'accountStatus',
+    //'accountStatus', @TODO
   ],
 };
 
