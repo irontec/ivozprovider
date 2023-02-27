@@ -178,7 +178,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
             {
               entity: entities.BalanceMovement,
-              filterBy: 'company',
+              filterBy: 'carrier',
               //@TODO ${auth.brandFeatures.billing.enabled}
             },
             {
