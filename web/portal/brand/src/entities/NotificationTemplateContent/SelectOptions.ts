@@ -2,6 +2,7 @@ import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
+import { NotificationTemplateContentPropertiesList } from './NotificationTemplateContentProperties';
 
 const NotificationTemplateContentSelectOptions: SelectOptionsType = ({
   callback,
@@ -11,12 +12,12 @@ const NotificationTemplateContentSelectOptions: SelectOptionsType = ({
   const NotificationTemplateContent = entities.NotificationTemplateContent;
 
   return defaultEntityBehavior.fetchFks(
-    NotificationTemplateContent.path + '?_order[name]=ASC',
-    ['id', 'name'],
-    (data: any) => {
+    NotificationTemplateContent.path + '?_order[fromName]=ASC',
+    ['id', 'fromName'],
+    (data: NotificationTemplateContentPropertiesList) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id, label: item.name });
+        options.push({ id: item.id as number, label: item.fromName as string });
       }
 
       callback(options);
