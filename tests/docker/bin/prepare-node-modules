@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Install portal dependencies
+yarn config set network-timeout 1000000
+yarn --cwd /opt/irontec/ivozprovider/web/portal --cache-folder /opt/web-node_modules install
