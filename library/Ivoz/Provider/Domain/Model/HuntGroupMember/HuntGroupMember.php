@@ -19,6 +19,16 @@ class HuntGroupMember extends HuntGroupMemberAbstract implements HuntGroupMember
         $huntGroup = $this->getHuntGroup();
         Assertion::notNull($huntGroup, 'huntGroup value is null, but non null value was expected.');
 
+        if ($this->getRouteType() === HuntGroupMemberInterface::ROUTETYPE_NUMBER) {
+            if (!$this->getNumberValue()) {
+                throw new \DomainException('NumberValue is required for number route type');
+            }
+
+            if (!$this->getNumberCountry()) {
+                throw new \DomainException('NumberCountry is required for number route type');
+            }
+        }
+
         $priorityRequired = !in_array(
             $huntGroup->getStrategy(),
             [

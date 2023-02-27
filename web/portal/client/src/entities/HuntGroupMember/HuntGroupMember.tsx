@@ -30,9 +30,11 @@ const properties: HuntGroupMemberProperties = {
   },
   numberCountry: {
     label: _('Country'),
+    required: true,
   },
   numberValue: {
     label: _('Number'),
+    required: true,
   },
   user: {
     label: _('User'),
