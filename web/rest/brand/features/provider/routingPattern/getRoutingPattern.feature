@@ -22,12 +22,24 @@ Feature: Retrieve routing patterns
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           },
           {
               "prefix": "+35",
               "id": 2,
               "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
