@@ -1,6 +1,6 @@
 services:
   _defaults:
-    autowire: false
+    autowire: true
     public: false
 
   Ivoz\Provider\Domain\Service\Carrier\SyncBalances:
@@ -12,7 +12,7 @@ services:
     arguments:
       $entityTools: '@Ivoz\Core\Domain\Service\EntityTools'
       $logger: '@logger'
-      $client: '@Ivoz\Cgr\Infrastructure\Cgrates\Service\CarrierBalanceService'
+      $carrierBalanceService: '@Ivoz\Cgr\Infrastructure\Cgrates\Service\CarrierBalanceService'
       $syncBalanceService: '@Ivoz\Provider\Domain\Service\Carrier\SyncBalances'
       $carrierRepository: '@Ivoz\Provider\Domain\Model\Carrier\CarrierRepository'
       $createBalanceMovementByCarrier: '@Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier'
@@ -26,3 +26,30 @@ services:
     public: true
     autowire: false
     parent: Ivoz\Provider\Domain\Service\Carrier\AbstractBalanceOperation
+
+when@test:
+  services:
+    _defaults:
+      autowire: true
+      autoconfigure: true
+      public: false
+
+    Ivoz\Provider\Domain\Service\Carrier\SyncBalances:
+      public: true
+      arguments:
+        $logger: '@logger'
+        $client: '@Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCarrierBalanceService'
+
+    Ivoz\Provider\Domain\Service\Carrier\IncrementBalance:
+      public: true
+      autowire: false
+      parent: Ivoz\Provider\Domain\Service\Carrier\AbstractBalanceOperation
+      arguments:
+        $carrierBalanceService: '@Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCarrierBalanceService'
+
+    Ivoz\Provider\Domain\Service\Carrier\DecrementBalance:
+      public: true
+      autowire: false
+      parent: Ivoz\Provider\Domain\Service\Carrier\AbstractBalanceOperation
+      arguments:
+        $carrierBalanceService: '@Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCarrierBalanceService'

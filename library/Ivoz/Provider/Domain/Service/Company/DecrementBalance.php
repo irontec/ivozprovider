@@ -13,7 +13,7 @@ class DecrementBalance extends AbstractBalanceOperation
     {
         $this->logger->info('Company#%s\'s balance will be decreased by ' . $amount);
         $company = $this->companyRepository->find($companyId);
-        $response = $this->client->decrementBalance($company, $amount);
+        $response = $this->companyBalanceService->decrementBalance($company, $amount);
 
         return $this->handleResponse(
             ($amount * -1),

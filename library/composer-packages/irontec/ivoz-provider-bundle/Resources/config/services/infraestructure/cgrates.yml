@@ -57,3 +57,12 @@ services:
   Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService:
     public: true
 
+when@test:
+  services:
+    _defaults:
+      autowire: true
+      autoconfigure: true
+      public: false
+
+    Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCompanyBalanceService: ~
+    Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCarrierBalanceService: ~

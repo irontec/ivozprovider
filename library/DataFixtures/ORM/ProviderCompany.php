@@ -85,6 +85,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setDomainUsers("test.irontec.com");
             $this->setMaxCalls(0);
             $this->setIpfilter(true);
+            $this->setBillingMethod("postpaid");
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
             $this->invoicing = $invoicing;

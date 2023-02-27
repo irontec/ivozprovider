@@ -13,7 +13,7 @@ class DecrementBalance extends AbstractBalanceOperation
     {
         $this->logger->info('Carrier#%s\'s balance will be decreased by ' . $amount);
         $carrier = $this->carrierRepository->find($carrierId);
-        $response = $this->client->decrementBalance($carrier, $amount);
+        $response = $this->carrierBalanceService->decrementBalance($carrier, $amount);
 
         return $this->handleResponse(
             ($amount * -1),

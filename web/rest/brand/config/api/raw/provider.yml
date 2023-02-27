@@ -348,6 +348,37 @@ Ivoz\Provider\Domain\Model\Company\Company:
     get: ~
     put: ~
     delete: ~
+    post_company_modify_balance:
+      method: 'POST'
+      path: '/company/{id}/modify_balance'
+      route_name: 'post_company_modify_balance'
+      pagination_enabled: false
+      swagger_context:
+        consumes:
+          - 'application/x-www-form-urlencoded'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: operation
+            in: formData
+            type: string
+            enum: [increment, decrement]
+            required: true
+            description: 'Balance operation'
+          - name: amount
+            in: formData
+            type: string
+            required: true
+            description: 'Value for modification'
+        responses:
+          200:
+            description: "Balance Modified"
+          404:
+            description: "Resource not found"
+          400:
+            description: "Invalid input"
   collectionOperations:
     get: ~
     post: ~
@@ -849,6 +880,41 @@ Ivoz\Provider\Domain\Model\Carrier\CarrierStatus:
   collectionOperations: []
 
 Ivoz\Provider\Domain\Model\Carrier\Carrier:
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+    post_carrier_modify_balance:
+      method: 'POST'
+      path: '/carrier/{id}/modify_balance'
+      route_name: 'post_carrier_modify_balance'
+      pagination_enabled: false
+      swagger_context:
+        consumes:
+          - 'application/x-www-form-urlencoded'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: operation
+            in: formData
+            type: string
+            enum: [ increment, decrement ]
+            required: true
+            description: 'Balance operation'
+          - name: amount
+            in: formData
+            type: string
+            required: true
+            description: 'Value for modification'
+        responses:
+          200:
+            description: "Balance Modified"
+          404:
+            description: "Resource not found"
+          400:
+            description: "Invalid input"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
