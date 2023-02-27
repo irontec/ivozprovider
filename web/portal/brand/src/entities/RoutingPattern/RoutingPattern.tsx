@@ -11,7 +11,7 @@ import foreignKeyResolver from './ForeignKeyResolver';
 const properties: RoutingPatternProperties = {
   prefix: {
     label: _('Prefix'),
-    pattern: new RegExp('/+[0-9]*/'),
+    pattern: new RegExp(/\+[0-9]*/),
     maxLength: 80,
     helpText: _(`Must start with '+' followed by zero or more digits.`),
   },
