@@ -1,8 +1,9 @@
-import { EntityValues } from '@irontec/ivoz-ui';
+import { DropdownArrayChoices, EntityValues } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
+  PropertyFkChoices,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 
@@ -15,6 +16,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
 
   const DefaultEntityForm = defaultEntityBehavior.Form;
 
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -22,20 +24,30 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     match,
   });
 
-  const formik = useFormHandler(props);
+  if (fkChoices.featureIds && aboutMe?.features) {
+    const filteredFeatures: PropertyFkChoices = [];
+    for (const feature of fkChoices.featureIds as DropdownArrayChoices) {
+      if (!aboutMe?.features.includes(feature.extraData?.iden as string)) {
+        continue;
+      }
+      filteredFeatures.push(feature);
+    }
 
-  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+    fkChoices.featureIds = filteredFeatures;
+  }
+
+  const formik = useFormHandler(props);
   const hasInvoicesFeature = aboutMe?.features.includes('invoices');
 
   const recordingFeatureId = fkChoices.featureIds?.find(
     (row: EntityValues) => (row.extraData as EntityValues).iden === 'recordings'
-  ).id;
+  )?.id as number | null;
   const recordingEnabled =
     formik.values.featureIds.includes(recordingFeatureId);
 
   const faxFeatureId = fkChoices.featureIds?.find(
     (row: EntityValues) => (row.extraData as EntityValues).iden === 'faxes'
-  ).id;
+  )?.id as number | null;
   const faxEnabled = formik.values.featureIds.includes(faxFeatureId);
 
   const type = row?.type ?? formik.initialValues.type;
