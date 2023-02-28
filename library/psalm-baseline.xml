@@ -6638,6 +6638,12 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroup.php">
+    <LessSpecificReturnStatement occurrences="1">
+      <code>parent::setName($name)</code>
+    </LessSpecificReturnStatement>
+    <MoreSpecificReturnType occurrences="1">
+      <code>static</code>
+    </MoreSpecificReturnType>
     <UnnecessaryVarAnnotation occurrences="1">
       <code>RoutingPatternGroupsRelPatternInterface</code>
     </UnnecessaryVarAnnotation>
