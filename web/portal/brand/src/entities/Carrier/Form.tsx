@@ -4,6 +4,7 @@ import defaultEntityBehavior, {
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useStoreState } from 'store';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
@@ -15,6 +16,9 @@ const Form = (props: EntityFormProps): JSX.Element => {
     row,
     match,
   });
+
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const hasBillingFeature = aboutMe?.features.includes('billing');
 
   const groups: Array<FieldsetGroups | false> = [
     {
@@ -30,9 +34,9 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Extra Configuration'),
       fields: [
         'transformationRuleSet',
-        'externallyRated',
-        'calculateCost',
-        'currency',
+        hasBillingFeature && 'externallyRated',
+        hasBillingFeature && 'calculateCost',
+        hasBillingFeature && 'currency',
       ],
     },
   ];
