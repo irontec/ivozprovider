@@ -26,7 +26,8 @@ Feature: Manage brands
         },
         "language": 1,
         "defaultTimezone": 145,
-        "features": [1]
+        "features": [1],
+        "proxyTrunks": [1]
       }
     """
     Then the response status code should be 200
@@ -62,6 +63,9 @@ Feature: Manage brands
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
           "features": [
+              1
+          ],
+          "proxyTrunks": [
               1
           ]
       }

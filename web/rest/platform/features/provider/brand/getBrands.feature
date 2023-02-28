@@ -133,6 +133,9 @@ Feature: Manage brands
               5,
               6,
               7
+          ],
+          "proxyTrunks": [
+              1
           ]
       }
       """

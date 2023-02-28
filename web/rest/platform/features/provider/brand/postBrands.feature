@@ -24,7 +24,9 @@ Feature: Manage brands
         },
         "defaultTimezone": 145,
         "language": 1,
-        "currency": 1
+        "currency": 1,
+        "features": [1,2],
+        "proxyTrunks": [1]
       }
     """
     Then the response status code should be 201
@@ -89,7 +91,13 @@ Feature: Manage brands
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
-          "features": []
+          "features": [
+              1,
+              2
+          ],
+          "proxyTrunks": [
+              1
+          ]
       }
     """
 
@@ -159,7 +167,13 @@ Feature: Manage brands
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
-          "features": []
+          "features": [
+              1,
+              2
+          ],
+          "proxyTrunks": [
+              1
+          ]
       }
     """
 
@@ -190,7 +204,8 @@ Content-Disposition: form-data; name="brand"
         "defaultTimezone": 145,
         "language": 1,
         "currency": 1,
-        "features": [1]
+        "features": [1],
+        "proxyTrunks": [1]
       }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="Logo"; filename="uploadable"
@@ -263,6 +278,9 @@ This is file content
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
           "features": [
+              1
+          ],
+          "proxyTrunks": [
               1
           ]
       }
