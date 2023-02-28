@@ -4938,11 +4938,17 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Invoice/Invoice.php">
-    <LessSpecificReturnStatement occurrences="2">
+    <LessSpecificReturnStatement occurrences="5">
+      <code>parent::setInDate($inDate)</code>
       <code>parent::setNumber($number)</code>
+      <code>parent::setOutDate($outDate)</code>
       <code>parent::setStatusMsg($statusMsg)</code>
+      <code>parent::setTaxRate($taxRate)</code>
     </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="2">
+    <MoreSpecificReturnType occurrences="5">
+      <code>static</code>
+      <code>static</code>
+      <code>static</code>
       <code>static</code>
       <code>static</code>
     </MoreSpecificReturnType>
