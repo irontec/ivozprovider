@@ -12,6 +12,7 @@ type aclOverrideType = (aboutMe: AboutMe) => EntityAclType;
 export type ExtendedRouteMapItem = RouteMapItem & {
   isAccessible?: isAccessibleType;
   aclOverride?: aclOverrideType;
+  children?: Array<ExtendedRouteMapItem>;
 };
 export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 
@@ -174,17 +175,17 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.RatingProfile,
               filterBy: 'carrier',
-              //@TODO ${auth.brandFeatures.billing.enabled}
+              isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
             },
             {
               entity: entities.BalanceMovement,
               filterBy: 'carrier',
-              //@TODO ${auth.brandFeatures.billing.enabled}
+              isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
             },
             {
               entity: entities.BalanceNotification,
               filterBy: 'carrier',
-              //@TODO ${auth.brandFeatures.billing.enabled}
+              isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
             },
             {
               entity: entities.BillableCall,

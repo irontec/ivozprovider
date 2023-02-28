@@ -119,7 +119,7 @@ Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.brandHasFeature("billing") && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_BRAND_ADMIN:
         or:
@@ -210,7 +210,7 @@ Ivoz\Provider\Domain\Model\Brand\Invoice:
 Ivoz\Provider\Domain\Model\Brand\Logo:
 Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification:
   attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.brandHasFeature("billing") && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_BRAND_ADMIN:
         or:
@@ -1132,7 +1132,7 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
           400:
             description: "Invalid input"
   attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.brandHasFeature("billing") && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_BRAND_ADMIN:
       - or:
