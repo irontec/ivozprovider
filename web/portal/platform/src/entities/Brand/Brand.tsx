@@ -58,6 +58,8 @@ const properties: BrandProperties = {
   features: {
     label: _('Features', { count: 20 }),
     null: _('There are not associated elements'),
+    type: 'array',
+    $ref: '#/definitions/Features',
   },
   proxyTrunks: {
     label: _('Proxy Trunks', { count: 20 }),
