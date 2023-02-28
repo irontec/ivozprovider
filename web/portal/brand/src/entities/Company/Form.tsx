@@ -38,6 +38,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
 
   const formik = useFormHandler(props);
   const hasInvoicesFeature = aboutMe?.features.includes('invoices');
+  const hasBillingFeature = aboutMe?.features.includes('billing');
 
   const recordingFeatureId = fkChoices.featureIds?.find(
     (row: EntityValues) => (row.extraData as EntityValues).iden === 'recordings'
@@ -63,7 +64,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
         'name',
         isVpbx && 'domainUsers',
         'featureIds',
-        'billingMethod',
+        hasBillingFeature && 'billingMethod',
         isResidential && 'outgoingDdi',
       ],
     },
