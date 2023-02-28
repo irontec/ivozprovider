@@ -287,6 +287,12 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.CallAcl,
           isAccessible: (aboutMe) => aboutMe.vpbx,
+          children: [
+            {
+              entity: entities.CallAclRelMatchList,
+              filterBy: 'callAcl',
+            },
+          ],
         },
         {
           entity: entities.Location,
