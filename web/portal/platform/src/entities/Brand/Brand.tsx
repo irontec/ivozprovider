@@ -64,6 +64,7 @@ const properties: BrandProperties = {
   proxyTrunks: {
     label: _('Proxy Trunks', { count: 20 }),
     null: _('There are not associated elements'),
+    $ref: '#/definitions/ProxyTrunk',
   },
 };
 
