@@ -54,44 +54,39 @@ const updateRouteMapItemByAcls = (
     routeMapItem.entity.acl = aclOverride(aboutMe);
   }
 
-  if (!aboutMe.restricted) {
-    return routeMapItem;
-  }
-
   if (!isEntityItem(routeMapItem)) {
     return routeMapItem;
   }
 
-  const entity = routeMapItem.entity;
-  const entityAcls = entity.acl;
+  if (aboutMe.restricted) {
+    const entity = routeMapItem.entity;
+    const entityAcls = entity.acl;
 
-  if (!entityAcls || !entityAcls.iden) {
-    console.warn(`Unable to calculate ACLs for ${entity.iden}`);
-    return routeMapItem;
+    if (!entityAcls || !entityAcls.iden) {
+      console.warn(`Unable to calculate ACLs for ${entity.iden}`);
+      return routeMapItem;
+    }
+
+    const apiAcls: EntityAcl | undefined = aboutMe.acls.find(
+      (acl: { iden: string }) => entityAcls?.iden === acl.iden
+    );
+
+    if (apiAcls) {
+      const newAcls = {
+        read: entityAcls.read && apiAcls.read,
+        create: entityAcls.create && apiAcls.create,
+        update: entityAcls.update && apiAcls.update,
+        delete: entityAcls.delete && apiAcls.delete,
+      };
+      routeMapItem.entity = {
+        ...entity,
+        acl: {
+          ...entityAcls,
+          ...newAcls,
+        },
+      };
+    }
   }
-
-  const apiAcls: EntityAcl | undefined = aboutMe.acls.find(
-    (acl) => entityAcls?.iden === acl.iden
-  );
-
-  if (!apiAcls) {
-    return routeMapItem;
-  }
-
-  // TODO updated
-  const newAcls = {
-    read: entityAcls.read && apiAcls.read,
-    create: entityAcls.create && apiAcls.create,
-    update: entityAcls.update && apiAcls.update,
-    delete: entityAcls.delete && apiAcls.delete,
-  };
-  routeMapItem.entity = {
-    ...entity,
-    acl: {
-      ...entityAcls,
-      ...newAcls,
-    },
-  };
 
   if (!routeMapItem.children) {
     return routeMapItem;
