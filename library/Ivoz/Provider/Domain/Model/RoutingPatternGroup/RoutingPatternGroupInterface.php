@@ -39,6 +39,8 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      */
     public function getRoutingPatterns(?Criteria $criteria = null): array;
 
+    public function setName(string $name): static;
+
     public static function createDto(string|int|null $id = null): RoutingPatternGroupDto;
 
     /**
