@@ -4,13 +4,11 @@ namespace Ivoz\Provider\Domain\Assembler\Brand;
 
 use Assert\Assertion;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Domain\Service\StoragePathResolverCollection;
-use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
-use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
 
 class BrandDtoAssembler implements CustomDtoAssemblerInterface
 {
@@ -44,36 +42,35 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
             );
         }
 
-        if (in_array($context, BrandDto::CONTEXTS_WITH_FEATURES, true)) {
-            $featureIds = array_map(
-                function (FeaturesRelBrand $relFeature) {
-                    return (int) $relFeature
-                        ->getFeature()
-                        ->getId();
-                },
-                $entity->getRelFeatures()
-            );
-
-            $dto->setFeatures(
-                $featureIds
-            );
+        if ($context === DataTransferObjectInterface::CONTEXT_SIMPLE) {
+            return $dto;
         }
 
-        if (in_array($context, BrandDto::CONTEXTS_WITH_PROXY_TRUNKS, true)) {
-            $proxyTrunksIds = array_map(
-                function (EntityInterface $trunksRelBrand) {
-                    return (int) $trunksRelBrand
-                        ->getProxyTrunk()
-                        ->getId();
-                },
-                $entity->getRelProxyTrunks()
-            );
+        $featureIds = array_map(
+            function (FeaturesRelBrand $relFeature) {
+                return (int) $relFeature
+                    ->getFeature()
+                    ->getId();
+            },
+            $entity->getRelFeatures()
+        );
 
-            $dto->setProxyTrunks(
-                $proxyTrunksIds
-            );
-        }
+        $dto->setFeatures(
+            $featureIds
+        );
 
+        $proxyTrunksIds = array_map(
+            function (EntityInterface $trunksRelBrand) {
+                return (int) $trunksRelBrand
+                    ->getProxyTrunk()
+                    ->getId();
+            },
+            $entity->getRelProxyTrunks()
+        );
+
+        $dto->setProxyTrunks(
+            $proxyTrunksIds
+        );
 
         return $dto;
     }

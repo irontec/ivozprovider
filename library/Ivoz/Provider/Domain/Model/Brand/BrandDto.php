@@ -8,21 +8,6 @@ use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandDto;
 
 class BrandDto extends BrandDtoAbstract
 {
-    public const CONTEXT_WITH_FEATURES = 'withFeatures';
-    public const CONTEXT_WITH_PROXY_TRUNKS = 'withProxyTrunks';
-
-    public const CONTEXTS_WITH_FEATURES = [
-        self::CONTEXT_WITH_FEATURES,
-        self::CONTEXT_DETAILED,
-        self::CONTEXT_COLLECTION
-    ];
-
-    public const CONTEXTS_WITH_PROXY_TRUNKS = [
-        self::CONTEXT_WITH_PROXY_TRUNKS,
-        self::CONTEXT_DETAILED,
-        self::CONTEXT_COLLECTION
-    ];
-
     /** @var ?string */
     private $logoPath;
 
@@ -93,18 +78,13 @@ class BrandDto extends BrandDtoAbstract
                 'invoice' => ['nif', 'postalCode'],
                 'logo' => ['fileSize','mimeType','baseName'],
                 'domainUsers' => 'domainUsers',
-                'features' => 'features',
-                'proxyTrunks' => 'proxyTrunks'
             ];
         } else {
             $response = parent::getPropertyMap($context);
         }
 
-        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
+        if ($context !== self::CONTEXT_SIMPLE) {
             $response['features'] = 'features';
-        }
-
-        if (in_array($context, self::CONTEXTS_WITH_PROXY_TRUNKS, true)) {
             $response['proxyTrunks'] = 'proxyTrunks';
         }
 
@@ -140,13 +120,8 @@ class BrandDto extends BrandDtoAbstract
             $role
         );
 
-        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
-            $response['features'] = $this->features;
-        }
-
-        if (in_array($context, self::CONTEXTS_WITH_PROXY_TRUNKS, true)) {
-            $response['proxyTrunks'] = $this->proxyTrunks;
-        }
+        $response['features'] = $this->features;
+        $response['proxyTrunks'] = $this->proxyTrunks;
 
         return $response;
     }

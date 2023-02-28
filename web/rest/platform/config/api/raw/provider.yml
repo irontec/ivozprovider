@@ -82,7 +82,7 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
       groups: [
-        !php/const Ivoz\Provider\Domain\Model\Brand\BrandDto::CONTEXT_WITH_FEATURES
+        !php/const Ivoz\Provider\Domain\Model\Brand\BrandDto::CONTEXT_DETAILED
       ]
 
 Ivoz\Provider\Domain\Model\Brand\Invoice:
