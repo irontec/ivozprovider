@@ -5,6 +5,7 @@ import defaultEntityBehavior, {
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useStoreState } from 'store';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { useCompanyDdis } from './hook/useCompanyDdis';
 import { useCompanyFaxes } from './hook/useCompanyFaxes';
@@ -24,6 +25,9 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     row,
     match,
   });
+
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const hasFaxesFeature = aboutMe?.features.includes('faxes');
 
   const formik = useFormHandler(props);
   const companyId = formik.values[formik.values.companyType];
@@ -81,7 +85,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
         'residentialEndpointType',
         'user',
         'friend',
-        'fax',
+        hasFaxesFeature && 'fax',
         'retailAccount',
         'residentialDevice',
       ],
