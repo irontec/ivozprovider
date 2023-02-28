@@ -20,7 +20,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     data,
     cancelToken,
     entityService,
-    skip: ['features', 'proxyTrunks'],
+    skip: ['features'],
   });
 
   promises.push(
@@ -35,19 +35,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
           const name = row.name as Record<string, string>;
           return name[language];
         },
-      },
-      cancelToken,
-    })
-  );
-
-  promises.push(
-    genericForeignKeyResolver({
-      data,
-      fkFld: 'proxyTrunks',
-      addLink: false,
-      entity: {
-        ...entities.ProxyTrunk,
-        toStr: (row: ProxyTrunkPropertyList<EntityValue>) => row.ip as string,
       },
       cancelToken,
     })
