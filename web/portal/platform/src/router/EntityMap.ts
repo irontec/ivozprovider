@@ -22,6 +22,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.Administrator,
+              filterBy: 'brand',
             },
             ...Object.values(entities.Brand.customActions),
           ],
@@ -44,6 +45,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.TerminalModel,
+              filterBy: 'terminalManufacturer',
             },
           ],
         },
@@ -58,6 +60,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.NotificationTemplateContent,
+              filterBy: 'notificationTemplate',
             },
           ],
         },
@@ -95,6 +98,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.Rtpengine,
+              filterBy: 'mediaRelaySet',
             },
           ],
         },
