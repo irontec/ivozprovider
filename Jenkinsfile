@@ -327,6 +327,7 @@ pipeline {
                                 anyOf {
                                     expression { hasLabel("ci-force-tests-front") }
                                     expression { hasLabel("ci-force-tests") }
+                                    expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/platform:") }
                                     branch "bleeding"
                                     branch "halliday"
@@ -353,6 +354,7 @@ pipeline {
                                 anyOf {
                                     expression { hasLabel("ci-force-tests-front") }
                                     expression { hasLabel("ci-force-tests") }
+                                    expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/brand:") }
                                     branch "bleeding"
                                     branch "halliday"
@@ -380,6 +382,7 @@ pipeline {
                                 anyOf {
                                     expression { hasLabel("ci-force-tests-front") }
                                     expression { hasLabel("ci-force-tests") }
+                                    expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/client:") }
                                     branch "bleeding"
                                     branch "halliday"
@@ -406,6 +409,7 @@ pipeline {
                                 anyOf {
                                     expression { hasLabel("ci-force-tests-front") }
                                     expression { hasLabel("ci-force-tests") }
+                                    expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/user:") }
                                     branch "bleeding"
                                     branch "halliday"
