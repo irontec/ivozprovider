@@ -75,37 +75,37 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $invoiceNif = null;
+    private $invoiceNif = '';
 
     /**
      * @var string|null
      */
-    private $invoicePostalAddress = null;
+    private $invoicePostalAddress = '';
 
     /**
      * @var string|null
      */
-    private $invoicePostalCode = null;
+    private $invoicePostalCode = '';
 
     /**
      * @var string|null
      */
-    private $invoiceTown = null;
+    private $invoiceTown = '';
 
     /**
      * @var string|null
      */
-    private $invoiceProvince = null;
+    private $invoiceProvince = '';
 
     /**
      * @var string|null
      */
-    private $invoiceCountry = null;
+    private $invoiceCountry = '';
 
     /**
      * @var string|null
      */
-    private $invoiceRegistryData = null;
+    private $invoiceRegistryData = '';
 
     /**
      * @var DomainDto | null

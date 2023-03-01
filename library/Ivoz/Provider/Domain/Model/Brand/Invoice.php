@@ -15,49 +15,49 @@ final class Invoice
     /**
      * @var string
      */
-    private $nif;
+    private $nif = '';
 
     /**
      * @var string
      */
-    private $postalAddress;
+    private $postalAddress = '';
 
     /**
      * @var string
      */
-    private $postalCode;
+    private $postalCode = '';
 
     /**
      * @var string
      */
-    private $town;
+    private $town = '';
 
     /**
      * @var string
      */
-    private $province;
+    private $province = '';
 
     /**
      * @var string
      */
-    private $country;
+    private $country = '';
 
     /**
      * @var ?string
      */
-    private $registryData = null;
+    private $registryData = '';
 
     /**
      * Constructor
      */
     public function __construct(
-        string $nif,
-        string $postalAddress,
-        string $postalCode,
-        string $town,
-        string $province,
-        string $country,
-        ?string $registryData
+        string $nif = '',
+        string $postalAddress = '',
+        string $postalCode = '',
+        string $town = '',
+        string $province = '',
+        string $country = '',
+        ?string $registryData = ''
     ) {
         $this->setNif($nif);
         $this->setPostalAddress($postalAddress);
