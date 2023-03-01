@@ -222,8 +222,11 @@ class BillableCallRepositoryTest extends KernelTestCase
         $invoiceDto = new InvoiceDto();
 
         $invoiceDto
+            ->setNumber('+34234123')
             ->setBrandId(1)
             ->setCompanyId(1)
+            ->setTotal(23.5)
+            ->setTaxRate(0.1)
             ->setInDate(
                 new \DateTime($inDate)
             )
