@@ -1,3 +1,4 @@
+import { ScalarProperty, PropertyList } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
@@ -15,7 +16,8 @@ import { useCompanyRetailAccount } from './hook/useCompanyRetailAccount';
 import { useCompanyUsers } from './hook/useCompanyUsers';
 
 const Form = (props: EntityFormProps): JSX.Element | null => {
-  const { entityService, match, row } = props;
+  const { entityService, match, row, properties } = props;
+
   const edit = props.edit || false;
 
   const DefaultEntityForm = defaultEntityBehavior.Form;
@@ -27,7 +29,48 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
   });
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const newProperties: PropertyList = { ...properties };
+
+  const companyType = {
+    ...properties.companyType,
+    enum: { ...properties.companyType.enum },
+  } as ScalarProperty;
+  const hasResidentialFeature = aboutMe?.features.includes('residential');
+  if (!hasResidentialFeature) {
+    delete companyType.enum.residential;
+  }
+
+  const hasWholesaleFeature = aboutMe?.features.includes('wholesale');
+  if (!hasWholesaleFeature) {
+    delete companyType.enum.wholesale;
+  }
+
+  const hasRetailFeature = aboutMe?.features.includes('retail');
+  if (!hasRetailFeature) {
+    delete companyType.enum.retail;
+  }
+
+  const hasVpbxFeature = aboutMe?.features.includes('vpbx');
+  if (!hasVpbxFeature) {
+    delete companyType.enum.vpbx;
+  }
+  newProperties.companyType = companyType;
+
+  const endpointType = {
+    ...properties.endpointType,
+    enum: { ...properties.endpointType.enum },
+  } as ScalarProperty;
   const hasFaxesFeature = aboutMe?.features.includes('faxes');
+  if (!hasFaxesFeature) {
+    delete endpointType.enum.fax;
+  }
+  const hasFriendsFeature = aboutMe?.features.includes('friends');
+  if (!hasFriendsFeature) {
+    delete endpointType.enum.friend;
+  }
+  newProperties.endpointType = endpointType;
+
+  entityService.replaceProperties(newProperties);
 
   const formik = useFormHandler(props);
   const companyId = formik.values[formik.values.companyType];
@@ -76,18 +119,18 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     {
       legend: _('Client filters'),
       fields: [
-        'vpbx',
-        'retail',
-        'residential',
-        'wholesale',
+        hasVpbxFeature && 'vpbx',
+        hasRetailFeature && 'retail',
+        hasResidentialFeature && 'residential',
+        hasWholesaleFeature && 'wholesale',
         'ddi',
         'endpointType',
-        'residentialEndpointType',
-        'user',
-        'friend',
+        hasResidentialFeature && 'residentialEndpointType',
+        hasVpbxFeature && 'user',
+        hasFriendsFeature && 'friend',
         hasFaxesFeature && 'fax',
-        'retailAccount',
-        'residentialDevice',
+        hasRetailFeature && 'retailAccount',
+        hasResidentialFeature && 'residentialDevice',
       ],
     },
   ];
