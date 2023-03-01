@@ -18,6 +18,10 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
         BrandInterface $brand,
         StoragePathResolverCollection $storagePathResolverCollection
     ) {
+
+        $brand->getRelFeatures()->willReturn([]);
+        $brand->getRelProxyTrunks()->willReturn([]);
+
         $this->brand = $brand;
         $storagePathResolver = new CommonStoragePathResolver(
             '/opt/storage/',
