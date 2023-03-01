@@ -642,10 +642,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@irontec/ivoz-ui@^0.13.6":
-  version "0.13.6"
-  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.13.6.tgz#a75edf9f2b83f732ee947853c3cd4473661a48f3"
-  integrity sha512-w+oLtcr3HQBX2TsJnke9aD9J2oZ6jlWUnkrL52JwAo1a0VIVTOhYXOs2JYgyJI/J85IcsT97WJI8OZWp0jYbsw==
+"@irontec/ivoz-ui@^0.13.7":
+  version "0.13.7"
+  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.13.7.tgz#ae4999372de13ac42689e4fb962ca8a17b868012"
+  integrity sha512-Bem+rwpifOd2F6LnbnVKaAfh1+CBt2N/0AFNae2ZnF4hznbDJfihRLCNlMxpOQEuTC+eC0LbH7J8QNxBBWZX3g==
   dependencies:
     "@date-io/date-fns" "^2.10.8"
     axios "^0.21.1"
