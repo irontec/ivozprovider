@@ -118,9 +118,11 @@ class CreateBySchedulerServiceTest extends KernelTestCase
             ->setUnit('week')
             ->setFrequency(1)
             ->setEmail('')
+            ->setTaxRate(0.0)
             ->setNextExecution($nextExecution)
             ->setCompanyId(2)
-            ->setBrandId(1);
+            ->setBrandId(1)
+            ->setNumberSequenceId(1);
 
         /** @var InvoiceScheduler $invoiceScheduler */
         $invoiceScheduler = $this->entityTools
