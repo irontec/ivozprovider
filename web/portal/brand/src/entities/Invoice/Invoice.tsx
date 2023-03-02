@@ -66,7 +66,17 @@ const properties: InvoiceProperties = {
   numberSequence: {
     label: _('Invoice number sequence', { count: 1 }),
     null: _('Unassigned'),
-    //@TODO visualToggle
+    default: '__null__',
+    visualToggle: {
+      __default__: {
+        show: [],
+        hide: ['number'],
+      },
+      __null__: {
+        show: ['number'],
+        hide: [],
+      },
+    },
   },
   scheduler: {
     label: _('Invoice Scheduler', { count: 1 }),
