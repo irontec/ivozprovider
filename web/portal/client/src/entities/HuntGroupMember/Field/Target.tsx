@@ -5,7 +5,7 @@ import withCustomComponentWrapper, {
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { HuntGroupMemberPropertyList } from '../HuntGroupMemberProperties';
 import User from '../../User/User';
-import { CountryPropertyList } from 'entities/Country/CountryProperties';
+import { CountryPropertyList } from '../../Country/CountryProperties';
 
 type CountryProperty = CountryPropertyList<string>;
 
