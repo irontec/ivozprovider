@@ -1,13 +1,21 @@
 import SwapCallsIcon from '@mui/icons-material/SwapCalls';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import selectOptions from './SelectOptions';
 import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { CarrierProperties } from './CarrierProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 import Balance from './Field/Balance';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import BalanceMovement from '../BalanceMovement/BalanceMovement';
+import BalanceNotification from '../BalanceNotification/BalanceNotification';
+import RatingProfile from '../RatingProfile/RatingProfile';
 
 const properties: CarrierProperties = {
   description: {
@@ -92,6 +100,23 @@ const properties: CarrierProperties = {
   },
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  if (row.calculateCost === false && isEntityItem(routeMapItem)) {
+    const actionsToHide = [
+      BalanceMovement.iden,
+      BalanceNotification.iden,
+      RatingProfile.iden,
+    ];
+
+    if (actionsToHide.includes(routeMapItem.entity.iden)) {
+      return null;
+    }
+  }
+  return DefaultChildDecorator(props);
+};
+
 const Carrier: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SwapCallsIcon,
@@ -108,6 +133,7 @@ const Carrier: EntityInterface = {
     'proxyTrunk',
     'statusIcon',
   ],
+  ChildDecorator,
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
