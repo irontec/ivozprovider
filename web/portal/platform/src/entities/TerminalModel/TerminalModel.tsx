@@ -22,11 +22,11 @@ const properties: TerminalModelProperties = {
   },
   genericUrlPattern: {
     label: _('Generic URL Pattern'),
-    prefix: 'http://{PROVISIONING_URL}/provision/',
+    helpText: 'http://{PROVISIONING_URL}/provision/',
   },
   specificUrlPattern: {
     label: _('Specific URL Pattern'),
-    prefix:
+    helpText:
       'https://{PROVISIONING_URL}:{PORT_IN_GENERIC_FILE}/provision/{OPTIONAL_SUBPATHS}/',
   },
   genericTemplate: {
