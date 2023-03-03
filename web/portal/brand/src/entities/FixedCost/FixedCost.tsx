@@ -20,6 +20,7 @@ const properties: FixedCostProperties = {
   cost: {
     label: _('Cost'),
     pattern: new RegExp('^[0-9]{1,6}([.][0-9]{1,4})?$'),
+    required: true,
   },
 };
 
