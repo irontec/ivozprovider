@@ -150,7 +150,8 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
 
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations: []
-  collectionOperations: []
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 
