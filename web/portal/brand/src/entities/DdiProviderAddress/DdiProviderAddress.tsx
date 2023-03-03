@@ -12,6 +12,7 @@ const properties: DdiProviderAddressProperties = {
   ip: {
     label: _('IP address'),
     maxLength: 50,
+    required: true,
   },
   description: {
     label: _('Description'),
