@@ -1,0 +1,35 @@
+{
+  "request": {
+    "name": "aliceUpdated",
+    "allowAudio": "alaw",
+    "allowVideo": null,
+    "directMediaMethod": "invite",
+    "password": "ZGthe7E2+1",
+    "mac": "aabbccddeeff",
+    "lastProvisionDate": null,
+    "t38Passthrough": "no",
+    "rtpEncryption": false,
+    "id": 1,
+    "terminalModel": 2
+  },
+  "response": {
+    "body": {
+      "name": "aliceUpdated",
+      "disallow": "all",
+      "allowAudio": "alaw",
+      "allowVideo": null,
+      "directMediaMethod": "invite",
+      "password": "ZGthe7E2+1",
+      "mac": "aabbccddeeff",
+      "lastProvisionDate": null,
+      "t38Passthrough": "no",
+      "rtpEncryption": false,
+      "id": 1,
+      "terminalModel": 2
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
