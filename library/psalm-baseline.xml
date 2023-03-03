@@ -4538,6 +4538,14 @@
       <code>parent::__construct(...func_get_args())</code>
     </TooManyArguments>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/FixedCost/FixedCost.php">
+    <LessSpecificReturnStatement occurrences="1">
+      <code>parent::setCost($cost)</code>
+    </LessSpecificReturnStatement>
+    <MoreSpecificReturnType occurrences="1">
+      <code>static</code>
+    </MoreSpecificReturnType>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCost/FixedCostAbstract.php">
     <MixedArgument occurrences="2">
       <code>$fkTransformer-&gt;transform($brand)</code>
