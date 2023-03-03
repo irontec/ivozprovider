@@ -40,6 +40,7 @@ production:
           friendValue: true
           queue: true
           conditionalRoute: true
+          voicemail: true
         order:
           number: true
           routeType: true
