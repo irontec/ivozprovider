@@ -1,0 +1,34 @@
+{
+  "body": {
+    "name": "alice",
+    "disallow": "all",
+    "allowAudio": "alaw",
+    "allowVideo": null,
+    "directMediaMethod": "invite",
+    "password": "AUfVkn498_",
+    "mac": null,
+    "lastProvisionDate": null,
+    "t38Passthrough": "no",
+    "rtpEncryption": false,
+    "id": 1,
+    "terminalModel": {
+      "iden": "Generic",
+      "name": "Generic SIP Model",
+      "description": "Generic SIP Model",
+      "id": 1
+    },
+    "status": [
+      {
+        "contact": "sip:yealinktest@10.10.1.106:5060",
+        "received": "sip:212.64.172.23:5060",
+        "publicReceived": true,
+        "expires": "2031-01-01 00:59:59",
+        "userAgent": "Yealink SIP-T23G 44.80.0.130"
+      }
+    ]
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}
