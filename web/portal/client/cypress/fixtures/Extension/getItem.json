@@ -1,0 +1,21 @@
+{
+  "body": {
+    "number": "101",
+    "routeType": "user",
+    "numberValue": null,
+    "friendValue": null,
+    "id": 1,
+    "ivr": null,
+    "huntGroup": null,
+    "conferenceRoom": null,
+    "user": "~",
+    "queue": null,
+    "conditionalRoute": null,
+    "numberCountry": null,
+    "voicemail": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}
