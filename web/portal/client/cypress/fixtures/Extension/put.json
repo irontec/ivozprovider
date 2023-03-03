@@ -1,0 +1,37 @@
+{
+  "request": {
+    "number": "108",
+    "routeType": "user",
+    "numberValue": null,
+    "friendValue": null,
+    "id": 1,
+    "ivr": null,
+    "huntGroup": null,
+    "conferenceRoom": null,
+    "user": 1,
+    "queue": null,
+    "conditionalRoute": null,
+    "voicemail": null
+  },
+  "response": {
+    "body": {
+      "number": "108",
+      "routeType": "user",
+      "numberValue": null,
+      "friendValue": null,
+      "id": 1,
+      "ivr": null,
+      "huntGroup": null,
+      "conferenceRoom": null,
+      "user": 1,
+      "queue": null,
+      "conditionalRoute": null,
+      "numberCountry": 2,
+      "voicemail": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
