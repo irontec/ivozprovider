@@ -17,10 +17,6 @@ class CarrierLifecycleServiceCollection implements LifecycleServiceCollectionInt
 
     /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
-        "pre_persist" =>
-        [
-            \Ivoz\Provider\Domain\Service\Carrier\ForceExternallyRated::class => 200,
-        ],
         "post_persist" =>
         [
             \Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCarrier::class => 200,

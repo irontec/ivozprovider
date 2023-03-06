@@ -24,24 +24,6 @@ const properties: CarrierProperties = {
   name: {
     label: _('Name'),
   },
-  externallyRated: {
-    label: _('Externally rated'),
-    default: 0,
-    enum: {
-      '0': _('No'),
-      '1': _('Yes'),
-    },
-    visualToggle: {
-      '0': {
-        show: ['balance', 'calculateCost'],
-        hide: [],
-      },
-      '1': {
-        show: [],
-        hide: ['balance', 'calculateCost', 'currency'],
-      },
-    },
-  },
   calculateCost: {
     label: _('Calculate cost?'),
     default: 0,

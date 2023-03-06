@@ -7,7 +7,6 @@ import {
 export type DdiProviderPropertyList<T> = {
   description?: T;
   name?: T;
-  externallyRated?: T;
   id?: T;
   transformationRuleSet?: T;
   proxyTrunk?: T;

@@ -17,7 +17,6 @@ Feature: Retrieve carriers
           {
               "description": "CarrierDescription",
               "name": "CarrierName",
-              "externallyRated": false,
               "balance": 0,
               "calculateCost": true,
               "id": 1,
@@ -28,9 +27,8 @@ Feature: Retrieve carriers
               }
           },
           {
-              "description": "Externally rated",
-              "name": "ExternallyRatedCarrier",
-              "externallyRated": true,
+              "description": "Another carrier description",
+              "name": "AnotherCarrierName",
               "balance": 0,
               "calculateCost": false,
               "id": 2,
@@ -55,7 +53,6 @@ Feature: Retrieve carriers
       {
           "description": "CarrierDescription",
           "name": "CarrierName",
-          "externallyRated": false,
           "calculateCost": true,
           "id": 1,
           "transformationRuleSet": {

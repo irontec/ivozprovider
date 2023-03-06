@@ -40,7 +40,6 @@ production:
           name: true
           description: true
         blacklist:
-          externallyRated: true
           mediaRelaySets: ${auth.isNotMainOperator}
       options:
         title: _("Options")
@@ -63,7 +62,6 @@ production:
         order:
           <<: *PeerContractsOrder_Link
         blacklist:
-          externallyRated: ${auth.brandFeatures.billing.disabled}
           mediaRelaySets: ${auth.isNotMainOperator}
       fixedPositions: &ddiProvidersNew_fixedPositionsLink
         group0:
@@ -79,7 +77,6 @@ production:
           colsPerRow: 6
           fields:
             transformationRuleSet: 3
-            externallyRated: 3
 
     ddiProvidersEdit_screen: &ddiProvidersEdit_screenLink
       <<: *DdiProviders
@@ -93,7 +90,6 @@ production:
         order:
           <<: *PeerContractsOrder_Link
         blacklist:
-          externallyRated: ${auth.brandFeatures.billing.disabled}
           mediaRelaySets: ${auth.isNotMainOperator}
       fixedPositions:
         <<: *ddiProvidersNew_fixedPositionsLink

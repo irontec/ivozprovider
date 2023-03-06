@@ -1141,9 +1141,6 @@ msgid_plural "External call filters"
 msgstr[0] "Filtro de entrada externo"
 msgstr[1] "Filtros de entrada externo"
 
-msgid "Externally rated"
-msgstr "Tarificación externa"
-
 msgid ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
 msgstr ""

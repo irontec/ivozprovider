@@ -34,7 +34,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Extra Configuration'),
       fields: [
         'transformationRuleSet',
-        hasBillingFeature && 'externallyRated',
         hasBillingFeature && 'calculateCost',
         hasBillingFeature && 'currency',
       ],

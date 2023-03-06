@@ -54,7 +54,6 @@ Feature: Create ddis
           "ddiProvider": {
               "description": "DDIProviderDescription",
               "name": "DDIProviderName",
-              "externallyRated": false,
               "id": 1,
               "transformationRuleSet": 1
           },

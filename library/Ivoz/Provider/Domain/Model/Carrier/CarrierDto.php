@@ -27,7 +27,6 @@ class CarrierDto extends CarrierDtoAbstract
                 'id' => 'id',
                 'description' => 'description',
                 'name' => 'name',
-                'externallyRated' => 'externallyRated',
                 'calculateCost' => 'calculateCost',
                 'transformationRuleSetId' => 'transformationRuleSet',
                 'balance' => 'balance',

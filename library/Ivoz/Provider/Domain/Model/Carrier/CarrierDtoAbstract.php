@@ -34,11 +34,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $name = null;
 
     /**
-     * @var bool|null
-     */
-    private $externallyRated = false;
-
-    /**
      * @var float|null
      */
     private $balance = 0;
@@ -123,7 +118,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return [
             'description' => 'description',
             'name' => 'name',
-            'externallyRated' => 'externallyRated',
             'balance' => 'balance',
             'calculateCost' => 'calculateCost',
             'id' => 'id',
@@ -143,7 +137,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         $response = [
             'description' => $this->getDescription(),
             'name' => $this->getName(),
-            'externallyRated' => $this->getExternallyRated(),
             'balance' => $this->getBalance(),
             'calculateCost' => $this->getCalculateCost(),
             'id' => $this->getId(),
@@ -195,18 +188,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getName(): ?string
     {
         return $this->name;
-    }
-
-    public function setExternallyRated(?bool $externallyRated): static
-    {
-        $this->externallyRated = $externallyRated;
-
-        return $this;
-    }
-
-    public function getExternallyRated(): ?bool
-    {
-        return $this->externallyRated;
     }
 
     public function setBalance(?float $balance): static

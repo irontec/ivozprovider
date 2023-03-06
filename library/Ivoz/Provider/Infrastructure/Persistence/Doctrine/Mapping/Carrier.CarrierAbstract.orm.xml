@@ -15,12 +15,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="externallyRated" type="boolean" column="externallyRated" nullable="true">
-      <options>
-        <option name="default">0</option>
-        <option name="unsigned">1</option>
-      </options>
-    </field>
     <field name="balance" type="decimal" column="balance" precision="10" scale="4" nullable="true">
       <options>
         <option name="default">0.0000</option>
