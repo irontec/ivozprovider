@@ -35,27 +35,14 @@
       <code>require $this-&gt;getProjectDir() . '/config/bundles.php'</code>
     </UnresolvableInclude>
   </file>
-  <file src="src/Worker/AsteriskHintUpdater.php">
-    <MixedArgument occurrences="1">
-      <code>$data</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$data</code>
-    </MixedAssignment>
-    <PossiblyNullArgument occurrences="1">
-      <code>$response</code>
-    </PossiblyNullArgument>
-  </file>
   <file src="src/Worker/Cgrates.php">
-    <MixedArgument occurrences="4">
+    <MixedArgument occurrences="3">
       <code>$cgratesTpid</code>
       <code>$cgratesTpid</code>
-      <code>$data</code>
       <code>$job['disableDestinations']</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment occurrences="1">
       <code>$cgratesTpid</code>
-      <code>$data</code>
     </MixedAssignment>
     <MixedInferredReturnType occurrences="1">
       <code>array</code>
@@ -63,9 +50,6 @@
     <MixedReturnStatement occurrences="1">
       <code>\json_decode($data, true)</code>
     </MixedReturnStatement>
-    <PossiblyNullArgument occurrences="1">
-      <code>$response</code>
-    </PossiblyNullArgument>
   </file>
   <file src="src/Worker/Invoices.php">
     <MixedArgument occurrences="2">
@@ -79,9 +63,6 @@
     <MixedAssignment occurrences="1">
       <code>$totals</code>
     </MixedAssignment>
-    <PossiblyNullArgument occurrences="1">
-      <code>$response</code>
-    </PossiblyNullArgument>
     <PossiblyNullOperand occurrences="1">
       <code>$invoice-&gt;getNumber()</code>
     </PossiblyNullOperand>
@@ -133,8 +114,7 @@
       <code>$entity</code>
       <code>$entity</code>
     </ImplicitToStringCast>
-    <MixedArgument occurrences="8">
-      <code>$data</code>
+    <MixedArgument occurrences="7">
       <code>$entityDto-&gt;getOriginalFileBaseName()</code>
       <code>$entityId</code>
       <code>$entityId</code>
@@ -143,8 +123,7 @@
       <code>$entityName</code>
       <code>$entityName</code>
     </MixedArgument>
-    <MixedAssignment occurrences="4">
-      <code>$data</code>
+    <MixedAssignment occurrences="3">
       <code>$entityId</code>
       <code>$entityName</code>
       <code>$originalFile</code>
@@ -160,10 +139,9 @@
     <MixedReturnStatement occurrences="1">
       <code>\json_decode($data, true)</code>
     </MixedReturnStatement>
-    <PossiblyNullArgument occurrences="3">
+    <PossiblyNullArgument occurrences="2">
       <code>$process-&gt;getExitCode()</code>
       <code>$process-&gt;getExitCode()</code>
-      <code>$response</code>
     </PossiblyNullArgument>
     <UndefinedInterfaceMethod occurrences="4">
       <code>getOriginalFileBaseName</code>
@@ -173,12 +151,11 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Worker/Rates.php">
-    <MixedArgument occurrences="15">
+    <MixedArgument occurrences="14">
       <code>$column</code>
       <code>$csvLines</code>
       <code>$csvLines</code>
       <code>$csvLines</code>
-      <code>$data</code>
       <code>$destinationPrefixes[$prefix]</code>
       <code>$destinationRateGroupDto-&gt;getFilePath()</code>
       <code>$importerArguments['columns']</code>
@@ -216,10 +193,9 @@
       <code>$destinationPrefixes[$prefix]</code>
       <code>$line[$key]</code>
     </MixedArrayOffset>
-    <MixedAssignment occurrences="7">
+    <MixedAssignment occurrences="6">
       <code>$column</code>
       <code>$csvLines</code>
-      <code>$data</code>
       <code>$k</code>
       <code>$key</code>
       <code>$line</code>
@@ -240,9 +216,8 @@
     <MixedReturnStatement occurrences="1">
       <code>\json_decode($data, true)</code>
     </MixedReturnStatement>
-    <PossiblyNullArgument occurrences="2">
+    <PossiblyNullArgument occurrences="1">
       <code>$importerArguments['columns']</code>
-      <code>$response</code>
     </PossiblyNullArgument>
     <PossiblyNullArrayAccess occurrences="2">
       <code>$importerArguments['columns']</code>
