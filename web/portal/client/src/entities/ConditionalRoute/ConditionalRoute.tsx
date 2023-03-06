@@ -28,7 +28,7 @@ const properties: ConditionalRouteProperties = {
   },
   locution: {
     label: _('Locution'),
-    null: _('Unassgined'),
+    null: _('Unassigned'),
     default: '__null__',
   },
   routetype: {
