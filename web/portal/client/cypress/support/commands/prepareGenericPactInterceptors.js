@@ -2,6 +2,7 @@ import apiSpec from '../../fixtures/apiSpec.json';
 import TerminalCollection from '../../fixtures/Terminal/getCollection.json';
 import ExtensionCollection from '../../fixtures/Extension/getCollection.json';
 import FaxCollection from '../../fixtures/Fax/getCollection.json';
+import ContactCollection from '../../fixtures/Contact/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -32,4 +33,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/faxes?*', {
     ...FaxCollection,
   }).as('getFax');
+
+  cy.intercept('GET', '**/api/client/contacts?*', {
+    ...ContactCollection,
+  }).as('getContact');
 });

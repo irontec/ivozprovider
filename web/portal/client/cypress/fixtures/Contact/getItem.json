@@ -1,0 +1,52 @@
+{
+  "body": {
+    "name": "Test Contact name",
+    "lastname": "Test Contact Lastname",
+    "email": "testcontact@email.com",
+    "workPhone": "456123",
+    "workPhoneE164": "+34456123",
+    "mobilePhone": "111222",
+    "mobilePhoneE164": "+34111222",
+    "otherPhone": "4001",
+    "id": 1,
+    "user": null,
+    "workPhoneCountry": {
+      "code": "ES",
+      "countryCode": "+34",
+      "id": 68,
+      "name": {
+        "en": "Spain",
+        "es": "Espa\u00f1a",
+        "ca": "Espa\u00f1a",
+        "it": "Spagna"
+      },
+      "zone": {
+        "en": "Europe",
+        "es": "Europa",
+        "ca": "Europa",
+        "it": "Europe"
+      }
+    },
+    "mobilePhoneCountry": {
+      "code": "ES",
+      "countryCode": "+34",
+      "id": 68,
+      "name": {
+        "en": "Spain",
+        "es": "Espa\u00f1a",
+        "ca": "Espa\u00f1a",
+        "it": "Spagna"
+      },
+      "zone": {
+        "en": "Europe",
+        "es": "Europa",
+        "ca": "Europa",
+        "it": "Europe"
+      }
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

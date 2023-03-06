@@ -1,0 +1,34 @@
+{
+  "request": {
+    "name": "Updated",
+    "lastname": "Contact",
+    "email": "testcontact@email.com",
+    "workPhone": "222333444",
+    "mobilePhone": "444333222",
+    "otherPhone": "1004",
+    "id": 1,
+    "user": null,
+    "workPhoneCountry": 65,
+    "mobilePhoneCountry": 65
+  },
+  "response": {
+    "body": {
+      "name": "Updated",
+      "lastname": "Contact",
+      "email": "testcontact@email.com",
+      "workPhone": "222333444",
+      "workPhoneE164": "+20222333444",
+      "mobilePhone": "444333222",
+      "mobilePhoneE164": "+20444333222",
+      "otherPhone": "1004",
+      "id": 1,
+      "user": null,
+      "workPhoneCountry": 65,
+      "mobilePhoneCountry": 65
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
