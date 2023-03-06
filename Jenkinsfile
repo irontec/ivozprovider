@@ -484,7 +484,7 @@ void notifyFailureGithub() {
 void notifyFailureMattermost() {
     if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'halliday') {
         mattermostSend([
-            channel: "#ivozprovider",
+            channel: "#comms-provider",
             color: "#FF0000",
             message: ":red_circle: Branch ${env.GIT_BRANCH} tests failed :red_circle: - (<${env.BUILD_URL}|Open>)"
         ])
@@ -494,7 +494,7 @@ void notifyFailureMattermost() {
 void notifyFixedMattermost() {
     if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'halliday') {
         mattermostSend([
-            channel: "#ivozprovider",
+            channel: "#comms-provider",
             color: "#008000",
             message: ":thumbsup_all: Branch ${env.GIT_BRANCH} tests fixed :thumbsup_all: - (<${env.BUILD_URL}|Open>)"
         ])
