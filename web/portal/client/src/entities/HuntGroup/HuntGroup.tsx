@@ -104,6 +104,7 @@ const properties: HuntGroupProperties = {
   },
   noAnswerLocution: {
     label: _('No answer locution'),
+    null: _('Unassigned'),
   },
   noAnswerNumberCountry: {
     label: _('Country'),
