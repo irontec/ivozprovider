@@ -18,9 +18,8 @@ Feature: Modify carrier balances
       And the JSON should be like:
       """
       {
-          "description": "Externally rated",
-          "name": "ExternallyRatedCarrier",
-          "externallyRated": true,
+          "description": "Another carrier description",
+          "name": "AnotherCarrierName",
           "balance": 10,
           "calculateCost": false,
           "id": 2,
@@ -66,7 +65,6 @@ Feature: Modify carrier balances
       {
           "description": "CarrierDescription",
           "name": "CarrierName",
-          "externallyRated": false,
           "balance": -10,
           "calculateCost": true,
           "id": 1,
