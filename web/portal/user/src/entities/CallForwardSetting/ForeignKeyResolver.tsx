@@ -18,7 +18,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     skip: ['extension'],
   });
 
-  debugger;
   promises.push(
     genericForeignKeyResolver({
       data,
