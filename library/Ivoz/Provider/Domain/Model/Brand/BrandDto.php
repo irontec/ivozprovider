@@ -103,7 +103,7 @@ class BrandDto extends BrandDtoAbstract
     {
         $contextProperties = self::getPropertyMap($context, $role);
 
-        if ($context === self::CONTEXT_SIMPLE) {
+        if ($context === self::CONTEXT_DETAILED) {
             $contextProperties['logo'][] = 'path';
         }
 

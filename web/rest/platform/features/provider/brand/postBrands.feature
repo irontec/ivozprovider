@@ -227,7 +227,7 @@ This is file content
           "id": 3,
           "logo": {
               "fileSize": 20,
-              "mimeType": "text/plain",
+              "mimeType": "text/plain; charset=us-ascii",
               "baseName": "uploadable"
           },
           "invoice": {
@@ -285,3 +285,10 @@ This is file content
           ]
       }
     """
+
+  Scenario: Retrieve uploaded brand logo
+    Given I add Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "/brands/3/logo"
+     Then the response status code should be 200
+      And the header "Content-Type" should be equal to "text/plain; charset=us-ascii"
