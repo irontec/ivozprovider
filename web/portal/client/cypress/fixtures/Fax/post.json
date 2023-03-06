@@ -1,0 +1,26 @@
+{
+  "request": {
+    "name": "New Fax",
+    "email": "something@irontec.com",
+    "sendByEmail": true,
+    "outgoingDdi": null
+  },
+  "response": {
+    "body": {
+      "name": "New Fax",
+      "email": "something@irontec.com",
+      "sendByEmail": true,
+      "id": 2,
+      "outgoingDdi": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

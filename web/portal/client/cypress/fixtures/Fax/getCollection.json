@@ -1,0 +1,19 @@
+{
+  "body": [
+    {
+      "name": "Test Fax",
+      "email": null,
+      "sendByEmail": false,
+      "id": 1,
+      "outgoingDdi": null
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/faxes?_page=1",
+    "x-last-page": "/api/client/faxes?_page=1",
+    "x-next-page": "/api/client/faxes?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
