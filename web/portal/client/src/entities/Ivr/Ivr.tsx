@@ -33,6 +33,7 @@ const properties: IvrProperties = {
   },
   noInputLocution: {
     label: _('No input locution'),
+    null: _('Unassigned'),
   },
   errorLocution: {
     label: _('Locution'),
@@ -40,6 +41,7 @@ const properties: IvrProperties = {
   },
   successLocution: {
     label: _('Success locution'),
+    null: _('Unassigned'),
   },
   timeout: {
     label: _('Timeout'),
