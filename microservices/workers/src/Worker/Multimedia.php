@@ -146,10 +146,15 @@ class Multimedia
             );
 
         try {
+            /** @var array<string> | false $response */
             $response = $redisMaster->blPop(
                 [RecoderJobInterface::CHANNEL],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . $channel);
+            }
 
             $data = end($response);
             return \json_decode($data, true);

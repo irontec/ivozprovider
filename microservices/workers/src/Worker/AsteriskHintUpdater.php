@@ -69,10 +69,15 @@ class AsteriskHintUpdater
             );
 
         try {
+            /** @var array<string> | false $response */
             $response = $redisMaster->blPop(
                 [$channel],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . $channel);
+            }
 
             $data = end($response);
 

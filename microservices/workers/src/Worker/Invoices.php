@@ -121,10 +121,15 @@ class Invoices
             );
 
         try {
+            /** @var array<string> | false $response */
             $response = $redisMaster->blPop(
                 [InvoicerJobInterface::CHANNEL],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . $channel);
+            }
 
             return intval(end($response));
         } catch (\RedisException $e) {
