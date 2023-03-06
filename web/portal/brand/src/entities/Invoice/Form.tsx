@@ -21,7 +21,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: '',
       fields: [
         !edit && 'numberSequence',
-        'number',
+        !row?.numberSequence && 'number',
         'company',
         'invoiceTemplate',
       ],

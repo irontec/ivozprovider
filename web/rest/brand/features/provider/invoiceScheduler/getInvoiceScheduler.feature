@@ -44,11 +44,13 @@ Feature: Retrieve invoice scheduler
           "lastExecution": "2018-12-01 09:00:00",
           "lastExecutionError": "",
           "nextExecution": "2018-12-02 09:00:00",
-          "taxRate": null,
+          "taxRate": 0,
           "id": 1,
           "invoiceTemplate": null,
           "brand": "~",
           "company": "~",
-          "numberSequence": null
+          "numberSequence": {
+            "id": 1
+          }
       }
       """

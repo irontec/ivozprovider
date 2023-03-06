@@ -58,12 +58,12 @@ Feature: Create fixed costs rel invoice schedulers
               "lastExecution": "2018-12-01 09:00:00",
               "lastExecutionError": "",
               "nextExecution": "2018-12-02 09:00:00",
-              "taxRate": null,
+              "taxRate": 0,
               "id": 1,
               "invoiceTemplate": null,
               "brand": 1,
               "company": 1,
-              "numberSequence": null
+              "numberSequence": 1
           }
       }
       """

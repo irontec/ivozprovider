@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
+use DateTimeInterface;
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 
@@ -50,6 +51,12 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
         if (!$isNew && !$onGoing && count($changedFields) > 0) {
             $this->reset();
         }
+
+        $numberSequence = $this->getNumberSequence();
+        $number = $this->getNumber();
+        if (!$numberSequence && !$number) {
+            throw new \DomainException('Number or number sequence required');
+        }
     }
 
     private function reset(): void
@@ -60,6 +67,15 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
             ->setStatus(null)
             ->setStatusMsg(null)
             ->setPdf(new Pdf(null, null, null));
+    }
+
+    protected function setTaxRate(?float $taxRate = null): static
+    {
+        if (is_null($taxRate)) {
+            throw new \DomainException('Tax Rate, cannot be null');
+        }
+
+        return parent::setTaxRate($taxRate);
     }
 
     private function sanitizeOutDate(): void
@@ -133,6 +149,23 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
         }
 
         return parent::setNumber($number);
+    }
+
+    protected function setInDate(DateTimeInterface|string|null $inDate = null): static
+    {
+        if (! $inDate) {
+            throw new \DomainException('In date cannot be empty');
+        }
+
+        return parent::setInDate($inDate);
+    }
+    protected function setOutDate(DateTimeInterface|string|null $outDate = null): static
+    {
+        if (! $outDate) {
+            throw new \DomainException('Out date cannot be empty');
+        }
+
+        return parent::setOutDate($outDate);
     }
 
     public function mustRunInvoicer(): bool
