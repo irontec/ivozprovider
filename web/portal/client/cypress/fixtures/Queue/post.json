@@ -1,0 +1,68 @@
+{
+  "request": {
+    "name": "newQueue",
+    "displayName": "Display Name for newQueue",
+    "maxWaitTime": 10,
+    "timeoutTargetType": "number",
+    "timeoutNumberValue": "946002121",
+    "maxlen": 5,
+    "fullTargetType": "number",
+    "fullNumberValue": "946002023",
+    "periodicAnnounceFrequency": 7,
+    "announcePosition": "yes",
+    "announceFrequency": 20,
+    "memberCallRest": 0,
+    "memberCallTimeout": 1,
+    "strategy": "rrmemory",
+    "weight": 2,
+    "preventMissedCalls": 1,
+    "periodicAnnounceLocution": null,
+    "timeoutLocution": null,
+    "timeoutExtension": null,
+    "timeoutVoicemail": null,
+    "fullLocution": null,
+    "fullExtension": null,
+    "fullVoicemail": null,
+    "timeoutNumberCountry": 68,
+    "fullNumberCountry": 68
+  },
+  "response": {
+    "body": {
+      "name": "newQueue",
+      "displayName": "Display Name for newQueue",
+      "maxWaitTime": 10,
+      "timeoutTargetType": "number",
+      "timeoutNumberValue": "946002121",
+      "maxlen": 5,
+      "fullTargetType": "number",
+      "fullNumberValue": "946002023",
+      "periodicAnnounceFrequency": 7,
+      "announcePosition": "yes",
+      "announceFrequency": 20,
+      "memberCallRest": 0,
+      "memberCallTimeout": 1,
+      "strategy": "rrmemory",
+      "weight": 2,
+      "preventMissedCalls": 1,
+      "id": 2,
+      "periodicAnnounceLocution": null,
+      "timeoutLocution": null,
+      "timeoutExtension": null,
+      "timeoutVoicemail": null,
+      "fullLocution": null,
+      "fullExtension": null,
+      "fullVoicemail": null,
+      "timeoutNumberCountry": 68,
+      "fullNumberCountry": 68
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
