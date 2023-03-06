@@ -31,7 +31,13 @@ describe('in Terminal', () => {
 
     cy.get('[aria-label=Add]').click();
 
-    cy.fillTheForm(newTerminal.request);
+    const { name, password, terminalModel, mac } = newTerminal.request;
+    cy.fillTheForm({
+      name,
+      password,
+      terminalModel,
+      mac,
+    });
 
     cy.get('h3').should('contain', 'List of Terminales');
 
@@ -59,7 +65,30 @@ describe('in Terminal', () => {
 
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
-    cy.fillTheForm(editTerminal.request);
+    const {
+      name,
+      password,
+      allowAudio,
+      allowVideo,
+      directMediaMethod,
+      t38Passthrough,
+      rtpEncryption,
+      terminalModel,
+      mac,
+      lastProvisionDate,
+    } = editTerminal.request;
+    cy.fillTheForm({
+      name,
+      password,
+      allowAudio,
+      allowVideo,
+      directMediaMethod,
+      t38Passthrough,
+      rtpEncryption,
+      terminalModel,
+      mac,
+      lastProvisionDate,
+    });
 
     cy.contains('List of Terminales');
 

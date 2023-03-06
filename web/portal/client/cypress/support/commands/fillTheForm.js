@@ -46,6 +46,8 @@ Cypress.Commands.add('fillTheForm', (values) => {
 
       if (role === 'combobox') {
         cy.get(`input[name="${idx}"]`).click().clear().type('{downArrow}');
+
+        cy.get(`li[data-value=${value}]`).click();
       } else {
         cy.get(`div[id=mui-component-select-${idx}]`).click();
         cy.get(`ul.MuiList-root li[data-value=${value}]`).click();

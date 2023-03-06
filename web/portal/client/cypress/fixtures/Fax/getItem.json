@@ -1,0 +1,13 @@
+{
+  "body": {
+    "name": "Test Fax",
+    "email": null,
+    "sendByEmail": false,
+    "id": 1,
+    "outgoingDdi": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

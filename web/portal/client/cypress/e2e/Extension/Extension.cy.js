@@ -31,7 +31,11 @@ describe('in Extension', () => {
 
     cy.get('[aria-label=Add]').click();
 
-    cy.fillTheForm(newExtension.request);
+    const { number, routeType } = newExtension.request;
+    cy.fillTheForm({
+      number,
+      routeType,
+    });
 
     cy.get('h3').should('contain', 'List of Extensiones');
 
@@ -59,7 +63,12 @@ describe('in Extension', () => {
 
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
-    cy.fillTheForm(editExtension.request);
+    const { number, routeType, user } = editExtension.request;
+    cy.fillTheForm({
+      number,
+      routeType,
+      user,
+    });
 
     cy.contains('List of Extensiones');
 
