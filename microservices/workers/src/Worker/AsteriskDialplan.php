@@ -62,10 +62,15 @@ class AsteriskDialplan
             );
 
         try {
-            $redisMaster->blPop(
+            /** @var array<string> | false $response */
+            $response = $redisMaster->blPop(
                 [$channel],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . $channel);
+            }
         } catch (\RedisException $e) {
             $this->logger->error('Asterisk worker timeout: ' . $e->getMessage());
             exit(1);

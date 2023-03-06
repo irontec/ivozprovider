@@ -83,10 +83,15 @@ class Cgrates
             );
 
         try {
+            /** @var array<string> | false $response */
             $response = $redisMaster->blPop(
                 [RaterReloadInterface::CHANNEL],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . RaterReloadInterface::CHANNEL);
+            }
 
             $data = end($response);
             return \json_decode($data, true);
