@@ -1,0 +1,22 @@
+{
+  "body": [
+    {
+      "name": "testQueue",
+      "maxWaitTime": 20,
+      "maxlen": 5,
+      "memberCallRest": 0,
+      "memberCallTimeout": 1,
+      "strategy": "rrmemory",
+      "weight": 5,
+      "id": 1
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/queues?_page=1",
+    "x-last-page": "/api/client/queues?_page=1",
+    "x-next-page": "/api/client/queues?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
