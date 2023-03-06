@@ -1,0 +1,42 @@
+{
+  "body": [
+    {
+      "name": "Test Contact name",
+      "lastname": "Test Contact Lastname",
+      "email": "testcontact@email.com",
+      "workPhoneE164": "+34456123",
+      "mobilePhoneE164": "+34111222",
+      "otherPhone": "4001",
+      "id": 1,
+      "user": null
+    },
+    {
+      "name": "Alice",
+      "lastname": "Allison",
+      "email": "alice@democompany.com",
+      "workPhoneE164": null,
+      "mobilePhoneE164": null,
+      "otherPhone": "101",
+      "id": 2,
+      "user": 1
+    },
+    {
+      "name": "Bob",
+      "lastname": "Bobson",
+      "email": "bob@democompany.com",
+      "workPhoneE164": null,
+      "mobilePhoneE164": null,
+      "otherPhone": "102",
+      "id": 3,
+      "user": 2
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/contacts?_page=1",
+    "x-last-page": "/api/client/contacts?_page=1",
+    "x-next-page": "/api/client/contacts?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
