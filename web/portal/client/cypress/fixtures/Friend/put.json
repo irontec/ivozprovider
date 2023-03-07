@@ -1,0 +1,54 @@
+{
+  "request": {
+    "name": "updatedTestFriend",
+    "description": "description",
+    "transport": "udp",
+    "ip": "1.2.3.4",
+    "port": 5061,
+    "password": "ZEF7t5n+b4",
+    "priority": 1,
+    "allow": "alaw",
+    "fromUser": null,
+    "fromDomain": "domain",
+    "directConnectivity": "yes",
+    "ddiIn": "yes",
+    "rtpEncryption": false,
+    "multiContact": true,
+    "t38Passthrough": "no",
+    "id": 1,
+    "alwaysApplyTransformations": false,
+    "transformationRuleSet": null,
+    "callAcl": null,
+    "outgoingDdi": null,
+    "language": null
+  },
+  "response": {
+    "body": {
+      "name": "updatedTestFriend",
+      "description": "description",
+      "transport": "udp",
+      "ip": "1.2.3.4",
+      "port": 5061,
+      "password": "ZEF7t5n+b4",
+      "priority": 1,
+      "allow": "alaw",
+      "fromUser": null,
+      "fromDomain": "domain",
+      "directConnectivity": "yes",
+      "ddiIn": "yes",
+      "rtpEncryption": false,
+      "multiContact": true,
+      "t38Passthrough": "no",
+      "id": 1,
+      "alwaysApplyTransformations": false,
+      "transformationRuleSet": null,
+      "callAcl": null,
+      "outgoingDdi": null,
+      "language": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

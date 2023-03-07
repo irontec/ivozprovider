@@ -1,0 +1,20 @@
+{
+  "body": [
+    {
+      "name": "testFriend",
+      "description": "",
+      "priority": 1,
+      "directConnectivity": "yes",
+      "id": 1,
+      "domain": 3
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/friends?_page=1",
+    "x-last-page": "/api/client/friends?_page=1",
+    "x-next-page": "/api/client/friends?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
