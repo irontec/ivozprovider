@@ -1,0 +1,25 @@
+{
+  "body": {
+    "name": "testIvrCustom",
+    "timeout": 6,
+    "allowExtensions": false,
+    "noInputRouteType": "number",
+    "noInputNumberValue": "946002020",
+    "errorRouteType": "voicemail",
+    "errorNumberValue": null,
+    "id": 1,
+    "noInputLocution": null,
+    "errorLocution": null,
+    "successLocution": 1,
+    "noInputExtension": null,
+    "errorExtension": null,
+    "noInputVoicemail": null,
+    "errorVoicemail": 1,
+    "noInputNumberCountry": 68,
+    "errorNumberCountry": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

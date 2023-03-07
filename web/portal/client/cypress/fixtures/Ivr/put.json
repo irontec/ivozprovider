@@ -1,0 +1,52 @@
+{
+  "request": {
+    "name": "testIvrCustom",
+    "timeout": 6,
+    "maxDigits": 0,
+    "allowExtensions": false,
+    "noInputRouteType": "number",
+    "noInputNumberValue": "946002020",
+    "errorRouteType": "number",
+    "errorNumberValue": "946002021",
+    "id": 1,
+    "welcomeLocution": null,
+    "noInputLocution": null,
+    "errorLocution": null,
+    "successLocution": null,
+    "noInputExtension": null,
+    "errorExtension": null,
+    "noInputVoicemail": null,
+    "errorVoicemail": null,
+    "noInputNumberCountry": 65,
+    "errorNumberCountry": 68,
+    "excludedExtensionIds": [2]
+  },
+  "response": {
+    "body": {
+      "name": "testIvrCustom",
+      "timeout": 6,
+      "maxDigits": 0,
+      "allowExtensions": false,
+      "noInputRouteType": "number",
+      "noInputNumberValue": "946002020",
+      "errorRouteType": "number",
+      "errorNumberValue": "946002021",
+      "id": 1,
+      "welcomeLocution": null,
+      "noInputLocution": null,
+      "errorLocution": null,
+      "successLocution": null,
+      "noInputExtension": null,
+      "errorExtension": null,
+      "noInputVoicemail": null,
+      "errorVoicemail": null,
+      "noInputNumberCountry": 65,
+      "errorNumberCountry": 68,
+      "excludedExtensionIds": [2]
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
