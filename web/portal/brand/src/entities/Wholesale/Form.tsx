@@ -1,9 +1,7 @@
-import { DropdownArrayChoices } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
-  PropertyFkChoices,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
@@ -64,7 +62,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     edit && {
       legend: _('Notification options'),
       fields: [
-        'invoiceNotificationTemplate',
+        hasInvoicesFeature && 'invoiceNotificationTemplate',
         'callCsvNotificationTemplate',
         'maxDailyUsageNotificationTemplate',
       ],

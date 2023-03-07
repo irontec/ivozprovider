@@ -103,7 +103,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
       fields: [
         'voicemailNotificationTemplate',
         faxEnabled && 'faxNotificationTemplate',
-        'invoiceNotificationTemplate',
+        hasInvoicesFeature && 'invoiceNotificationTemplate',
         'callCsvNotificationTemplate',
         'maxDailyUsageNotificationTemplate',
       ],
