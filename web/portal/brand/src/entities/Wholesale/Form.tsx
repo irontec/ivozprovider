@@ -1,9 +1,12 @@
+import { DropdownArrayChoices } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
+  PropertyFkChoices,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useStoreState } from 'store';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match, foreignKeyGetter } = props;
@@ -18,10 +21,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const hasInvoicesFeature = aboutMe?.features.includes('invoices') || false;
+  const hasBillingFeature = aboutMe?.features.includes('billing') || false;
+
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Basic Configuration'),
-      fields: ['name', 'billingMethod'],
+      fields: ['name', hasBillingFeature && 'billingMethod'],
     },
     {
       legend: _('Security'),
@@ -41,18 +48,19 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Wholesale specific'),
       fields: ['routingTagIds', 'codecIds'],
     },
-    edit && {
-      legend: _('Invoice data'),
-      fields: [
-        'showInvoices',
-        'invoicing.nif',
-        'invoicing.postalAddress',
-        'invoicing.postalCode',
-        'invoicing.town',
-        'invoicing.province',
-        'invoicing.countryName',
-      ],
-    },
+    edit &&
+      hasInvoicesFeature && {
+        legend: _('Invoice data'),
+        fields: [
+          'showInvoices',
+          'invoicing.nif',
+          'invoicing.postalAddress',
+          'invoicing.postalCode',
+          'invoicing.town',
+          'invoicing.province',
+          'invoicing.countryName',
+        ],
+      },
     edit && {
       legend: _('Notification options'),
       fields: [
