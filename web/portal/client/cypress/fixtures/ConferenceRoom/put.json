@@ -1,0 +1,22 @@
+{
+  "request": {
+    "name": "updatedConferenceRoom",
+    "pinProtected": false,
+    "pinCode": null,
+    "maxMembers": 1,
+    "id": 1
+  },
+  "response": {
+    "body": {
+      "name": "updatedConferenceRoom",
+      "pinProtected": false,
+      "pinCode": null,
+      "maxMembers": 1,
+      "id": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

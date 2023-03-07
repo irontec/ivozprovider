@@ -8,6 +8,7 @@ import QueueCollection from '../../fixtures/Queue/getCollection.json';
 import IvrCollection from '../../fixtures/Ivr/getCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
 import FriendCollection from '../../fixtures/Friend/getCollection.json';
+import ConferenceRoomCollection from '../../fixtures/ConferenceRoom/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -62,4 +63,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/friends?*', {
     ...FriendCollection,
   }).as('getFriend');
+
+  cy.intercept('GET', '**/api/client/conference_rooms?*', {
+    ...ConferenceRoomCollection,
+  }).as('getConferenceRoom');
 });
