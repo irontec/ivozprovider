@@ -118,4 +118,18 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
 
         return parent::setAuthPassword($authPassword);
     }
+
+    protected function setSipProxy(?string $sipProxy = null): static
+    {
+        if (! $sipProxy) {
+            throw new \DomainException('Sip Proxy cannot be null');
+        }
+
+        $sipProxy = trim($sipProxy);
+        if ($sipProxy === "") {
+            throw new \DomainException('Sip Proxy cannot be empty');
+        }
+
+        return parent::setSipProxy($sipProxy);
+    }
 }

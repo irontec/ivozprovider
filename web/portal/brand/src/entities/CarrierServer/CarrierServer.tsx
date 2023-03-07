@@ -76,6 +76,7 @@ const properties: CarrierServerProperties = {
     label: _('SIP Proxy'),
     maxLength: 128,
     helpText: _("IP or domain name (port with ':')"),
+    required: true,
   },
   outboundProxy: {
     label: _('Outbound Proxy'),
