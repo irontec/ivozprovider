@@ -2733,14 +2733,16 @@
     <InvalidScalarArgument occurrences="1">
       <code>$port</code>
     </InvalidScalarArgument>
-    <LessSpecificReturnStatement occurrences="2">
+    <LessSpecificReturnStatement occurrences="3">
       <code>parent::setAuthPassword($authPassword)</code>
       <code>parent::setIp($ip)</code>
+      <code>parent::setSipProxy($sipProxy)</code>
     </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>CarrierServer</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="2">
+    <MoreSpecificReturnType occurrences="3">
+      <code>static</code>
       <code>static</code>
       <code>static</code>
     </MoreSpecificReturnType>
