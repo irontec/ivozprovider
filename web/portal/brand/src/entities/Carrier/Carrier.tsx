@@ -20,6 +20,7 @@ import RatingProfile from '../RatingProfile/RatingProfile';
 const properties: CarrierProperties = {
   description: {
     label: _('Description'),
+    required: false,
   },
   name: {
     label: _('Name'),
