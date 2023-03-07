@@ -1,0 +1,44 @@
+{
+  "request": {
+    "name": "testPost",
+    "routetype": "user",
+    "numbervalue": null,
+    "friendvalue": null,
+    "ivr": null,
+    "huntGroup": null,
+    "voicemail": null,
+    "user": 2,
+    "queue": null,
+    "locution": null,
+    "conferenceRoom": null,
+    "extension": null,
+    "numberCountry": null
+  },
+  "response": {
+    "body": {
+      "name": "testPost",
+      "routetype": "user",
+      "numbervalue": null,
+      "friendvalue": null,
+      "id": 3,
+      "ivr": null,
+      "huntGroup": null,
+      "voicemail": null,
+      "user": 2,
+      "queue": null,
+      "locution": null,
+      "conferenceRoom": null,
+      "extension": null,
+      "numberCountry": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
