@@ -1,0 +1,32 @@
+{
+  "request": {
+    "enabled": false,
+    "name": "updatedGeneric",
+    "email": "updated@voicemail.com",
+    "sendMail": true,
+    "attachSound": "0",
+    "id": 1,
+    "user": 2,
+    "residentialDevice": null,
+    "company": 1,
+    "locution": null
+  },
+  "response": {
+    "body": {
+      "enabled": false,
+      "name": "updatedGeneric",
+      "email": "updated@voicemail.com",
+      "sendMail": true,
+      "attachSound": "0",
+      "id": 1,
+      "user": 2,
+      "residentialDevice": null,
+      "company": 1,
+      "locution": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

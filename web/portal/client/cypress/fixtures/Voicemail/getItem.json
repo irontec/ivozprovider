@@ -1,0 +1,13 @@
+{
+  "body": {
+    "enabled": true,
+    "name": "Voicemail For User1",
+    "email": "alice@democompany.com",
+    "id": 1,
+    "user": 1
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}
