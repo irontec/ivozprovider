@@ -1,0 +1,44 @@
+{
+  "body": [
+    {
+      "name": "testConditional",
+      "routetype": "user",
+      "numbervalue": null,
+      "friendvalue": null,
+      "id": 1,
+      "ivr": null,
+      "huntGroup": null,
+      "voicemail": null,
+      "user": 1,
+      "queue": null,
+      "locution": null,
+      "conferenceRoom": null,
+      "extension": null,
+      "numberCountry": null
+    },
+    {
+      "name": "testConditional2",
+      "routetype": "user",
+      "numbervalue": null,
+      "friendvalue": null,
+      "id": 2,
+      "ivr": null,
+      "huntGroup": null,
+      "voicemail": null,
+      "user": 2,
+      "queue": null,
+      "locution": null,
+      "conferenceRoom": null,
+      "extension": null,
+      "numberCountry": null
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/conditional_routes?_page=1",
+    "x-last-page": "/api/client/conditional_routes?_page=1",
+    "x-next-page": "/api/client/conditional_routes?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
