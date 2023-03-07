@@ -46,6 +46,7 @@ class CarrierServerSpec extends ObjectBehavior
         $dto
             ->setAuthNeeded('yes')
             ->setBrand($brandDto)
+            ->setSipProxy('myhost.net')
             ->setCarrier($carrierDto);
 
         $this->transformer = new DtoToEntityFakeTransformer([
