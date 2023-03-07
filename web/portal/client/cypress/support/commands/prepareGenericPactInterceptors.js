@@ -6,6 +6,7 @@ import ContactCollection from '../../fixtures/Contact/getCollection.json';
 import ConditionalRouteCollection from '../../fixtures/ConditionalRoute/getCollection.json';
 import QueueCollection from '../../fixtures/Queue/getCollection.json';
 import IvrCollection from '../../fixtures/Ivr/getCollection.json';
+import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -52,4 +53,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/ivrs?*', {
     ...IvrCollection,
   }).as('getIvr');
+  
+  cy.intercept('GET', '**/api/client/voicemails?*', {
+    ...VoicemailCollection,
+  }).as('getVoicemail');
 });
