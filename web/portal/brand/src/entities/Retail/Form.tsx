@@ -1,9 +1,13 @@
+import { DropdownArrayChoices, EntityValues } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
+  PropertyFkChoices,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useStoreState } from 'store';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match, foreignKeyGetter } = props;
@@ -18,10 +22,44 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  if (fkChoices.featureIds && aboutMe?.features) {
+    const filteredFeatures: PropertyFkChoices = [];
+    for (const feature of fkChoices.featureIds as DropdownArrayChoices) {
+      if (!aboutMe?.features.includes(feature.extraData?.iden as string)) {
+        continue;
+      }
+      filteredFeatures.push(feature);
+    }
+
+    fkChoices.featureIds = filteredFeatures;
+  }
+
+  const formik = useFormHandler(props);
+  const hasInvoicesFeature = aboutMe?.features.includes('invoices') || false;
+  const hasBillingFeature = aboutMe?.features.includes('billing') || false;
+
+  const featureIds = (fkChoices.featureIds as EntityValues[]) || [];
+  const recordingFeatureId = featureIds.find(
+    (row: EntityValues) => (row.extraData as EntityValues).iden === 'recordings'
+  )?.id as number | null;
+  const recordingEnabled =
+    formik.values.featureIds.includes(recordingFeatureId);
+
+  const faxFeatureId = featureIds.find(
+    (row: EntityValues) => (row.extraData as EntityValues).iden === 'faxes'
+  )?.id as number | null;
+  const faxEnabled = formik.values.featureIds.includes(faxFeatureId);
+
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Basic Configuration'),
-      fields: ['name', 'billingMethod', 'outgoingDdi', 'featureIds'],
+      fields: [
+        'name',
+        hasBillingFeature && 'billingMethod',
+        'outgoingDdi',
+        'featureIds',
+      ],
     },
     {
       legend: _('Security'),
@@ -47,39 +85,48 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Retail specific'),
       fields: ['routingTagIds', 'codecIds'],
     },
-    edit && {
-      legend: _('Invoice data'),
-      fields: [
-        'showInvoices',
-        'invoicing.nif',
-        'invoicing.postalAddress',
-        'invoicing.postalCode',
-        'invoicing.town',
-        'invoicing.province',
-        'invoicing.countryName',
-      ],
-    },
+    edit &&
+      hasInvoicesFeature && {
+        legend: _('Invoice data'),
+        fields: [
+          'showInvoices',
+          'invoicing.nif',
+          'invoicing.postalAddress',
+          'invoicing.postalCode',
+          'invoicing.town',
+          'invoicing.province',
+          'invoicing.countryName',
+        ],
+      },
     edit && {
       legend: _('Notification options'),
       fields: [
         'voicemailNotificationTemplate',
-        'faxNotificationTemplate',
+        faxEnabled && 'faxNotificationTemplate',
         'invoiceNotificationTemplate',
         'callCsvNotificationTemplate',
         'maxDailyUsageNotificationTemplate',
       ],
     },
-    edit && {
-      legend: _('Recordings'),
-      fields: ['allowRecordingRemoval'],
-    },
+    edit &&
+      recordingEnabled && {
+        legend: _('Recordings'),
+        fields: ['allowRecordingRemoval'],
+      },
     edit && {
       legend: _('Externally rater options'),
       fields: ['externallyextraopts'],
     },
   ];
 
-  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+  return (
+    <DefaultEntityForm
+      {...props}
+      formik={formik}
+      fkChoices={fkChoices}
+      groups={groups}
+    />
+  );
 };
 
 export default Form;

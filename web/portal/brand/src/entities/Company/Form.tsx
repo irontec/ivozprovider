@@ -40,13 +40,14 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
   const hasInvoicesFeature = aboutMe?.features.includes('invoices');
   const hasBillingFeature = aboutMe?.features.includes('billing');
 
-  const recordingFeatureId = fkChoices.featureIds?.find(
+  const featureIds = (fkChoices.featureIds as EntityValues[]) || [];
+  const recordingFeatureId = featureIds.find(
     (row: EntityValues) => (row.extraData as EntityValues).iden === 'recordings'
   )?.id as number | null;
   const recordingEnabled =
     formik.values.featureIds.includes(recordingFeatureId);
 
-  const faxFeatureId = fkChoices.featureIds?.find(
+  const faxFeatureId = featureIds.find(
     (row: EntityValues) => (row.extraData as EntityValues).iden === 'faxes'
   )?.id as number | null;
   const faxEnabled = formik.values.featureIds.includes(faxFeatureId);
@@ -92,7 +93,6 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
       legend: _('Retail specific'),
       fields: ['routingTagIds', edit && 'codecIds'],
     },
-
     isWholesale && {
       legend: _('Wholesale specific'),
       fields: ['routingTagIds', edit && 'codecIds'],
