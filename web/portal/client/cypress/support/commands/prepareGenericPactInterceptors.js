@@ -7,6 +7,7 @@ import ConditionalRouteCollection from '../../fixtures/ConditionalRoute/getColle
 import QueueCollection from '../../fixtures/Queue/getCollection.json';
 import IvrCollection from '../../fixtures/Ivr/getCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
+import FriendCollection from '../../fixtures/Friend/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -53,8 +54,12 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/ivrs?*', {
     ...IvrCollection,
   }).as('getIvr');
-  
+
   cy.intercept('GET', '**/api/client/voicemails?*', {
     ...VoicemailCollection,
   }).as('getVoicemail');
+
+  cy.intercept('GET', '**/api/client/friends?*', {
+    ...FriendCollection,
+  }).as('getFriend');
 });
