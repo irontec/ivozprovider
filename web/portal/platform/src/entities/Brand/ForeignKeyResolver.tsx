@@ -1,8 +1,7 @@
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui';
+import { EntityValues } from '@irontec/ivoz-ui';
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import { ProxyTrunkPropertyList } from '../ProxyTrunk/ProxyTrunkProperties';
 import store from 'store';
 import { BrandPropertiesList } from './BrandProperties';
 import { getI18n } from 'react-i18next';
