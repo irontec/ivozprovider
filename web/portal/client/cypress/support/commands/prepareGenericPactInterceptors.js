@@ -10,6 +10,7 @@ import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
 import FriendCollection from '../../fixtures/Friend/getCollection.json';
 import ConferenceRoomCollection from '../../fixtures/ConferenceRoom/getCollection.json';
 import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getCollection.json';
+import CalendarCollection from '../../fixtures/Calendar/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -72,4 +73,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/external_call_filters?*', {
     ...ExternalCallFilterCollection,
   }).as('getExternalCallFilter');
+  
+  cy.intercept('GET', '**/api/client/calendars?*', {
+    ...CalendarCollection,
+  }).as('getCalendar');
 });
