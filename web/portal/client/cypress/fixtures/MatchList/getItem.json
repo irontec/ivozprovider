@@ -1,0 +1,11 @@
+{
+  "body": {
+    "name": "testMatchlist",
+    "id": 1,
+    "generic": false
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}
