@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { CarrierServerProperties } from './CarrierServerProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import StatusIcon from './Field/StatusIcon';
 
 const properties: CarrierServerProperties = {
   ip: {
@@ -95,7 +96,7 @@ const properties: CarrierServerProperties = {
   },
   statusIcon: {
     label: _('Status'),
-    //@TODO IvozProvider_Klear_Ghost_CarrierServerStatus::getCarrierServerStatusIcon
+    component: StatusIcon,
   },
   carrier: {
     label: _('Carrier', { count: 1 }),
