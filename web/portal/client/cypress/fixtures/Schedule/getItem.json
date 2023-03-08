@@ -1,0 +1,19 @@
+{
+  "body": {
+    "name": "aSchedule",
+    "timeIn": "08:00:00",
+    "timeout": "16:00:00",
+    "monday": true,
+    "tuesday": true,
+    "wednesday": true,
+    "thursday": true,
+    "friday": true,
+    "saturday": false,
+    "sunday": false,
+    "id": 1
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

@@ -1,0 +1,38 @@
+{
+  "request": {
+    "name": "schedule 3",
+    "timeIn": "09:00:00",
+    "timeout": "17:00:00",
+    "monday": true,
+    "tuesday": true,
+    "wednesday": true,
+    "thursday": true,
+    "friday": true,
+    "saturday": false,
+    "sunday": false
+  },
+  "response": {
+    "body": {
+      "name": "schedule 3",
+      "timeIn": "09:00:00",
+      "timeout": "17:00:00",
+      "monday": true,
+      "tuesday": true,
+      "wednesday": true,
+      "thursday": true,
+      "friday": true,
+      "saturday": false,
+      "sunday": false,
+      "id": 3
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
