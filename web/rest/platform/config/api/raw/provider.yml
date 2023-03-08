@@ -199,7 +199,8 @@ Ivoz\Provider\Domain\Model\Language\Name: ~
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
   itemOperations: []
-  collectionOperations: []
+  collectionOperations:
+    get: ~
 Ivoz\Provider\Domain\Model\Invoice\Pdf: ~
 
 Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:

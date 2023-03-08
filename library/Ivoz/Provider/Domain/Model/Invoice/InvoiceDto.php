@@ -20,6 +20,13 @@ class InvoiceDto extends InvoiceDtoAbstract
 
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
+        if ($role === 'ROLE_SUPER_ADMIN') {
+            return [
+                'id' => 'id',
+                'number' => 'number',
+            ];
+        }
+
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
