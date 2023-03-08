@@ -1,0 +1,30 @@
+{
+  "body": [
+    {
+      "name": "Lock name",
+      "description": "Lock description",
+      "open": true,
+      "id": 1,
+      "closeExtension": "",
+      "openExtension": "",
+      "toggleExtension": ""
+    },
+    {
+      "name": "Test Lock",
+      "description": "Test Lock",
+      "open": true,
+      "id": 2,
+      "closeExtension": "",
+      "openExtension": "",
+      "toggleExtension": ""
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/route_locks?_page=1",
+    "x-last-page": "/api/client/route_locks?_page=1",
+    "x-next-page": "/api/client/route_locks?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
