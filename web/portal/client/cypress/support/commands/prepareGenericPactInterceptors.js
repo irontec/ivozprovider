@@ -12,6 +12,7 @@ import ConferenceRoomCollection from '../../fixtures/ConferenceRoom/getCollectio
 import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getCollection.json';
 import CalendarCollection from '../../fixtures/Calendar/getCollection.json';
 import ScheduleCollection from '../../fixtures/Schedule/getCollection.json';
+import MatchListCollection from '../../fixtures/MatchList/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -70,16 +71,20 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/conference_rooms?*', {
     ...ConferenceRoomCollection,
   }).as('getConferenceRoom');
-  
+
   cy.intercept('GET', '**/api/client/external_call_filters?*', {
     ...ExternalCallFilterCollection,
   }).as('getExternalCallFilter');
-  
+
   cy.intercept('GET', '**/api/client/calendars?*', {
     ...CalendarCollection,
   }).as('getCalendar');
-  
+
   cy.intercept('GET', '**/api/client/schedules?*', {
     ...ScheduleCollection,
   }).as('getSchedule');
+
+  cy.intercept('GET', '**/api/client/match_lists?*', {
+    ...MatchListCollection,
+  }).as('getMatchList');
 });

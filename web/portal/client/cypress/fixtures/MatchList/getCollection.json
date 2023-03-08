@@ -1,0 +1,27 @@
+{
+  "body": [
+    {
+      "name": "testMatchlist",
+      "id": 1,
+      "generic": false
+    },
+    {
+      "name": "testMatchlist2",
+      "id": 2,
+      "generic": false
+    },
+    {
+      "name": "testBrandMatchlist",
+      "id": 3,
+      "generic": true
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/match_lists?_page=1",
+    "x-last-page": "/api/client/match_lists?_page=1",
+    "x-next-page": "/api/client/match_lists?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
