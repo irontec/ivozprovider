@@ -13,6 +13,7 @@ import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getC
 import CalendarCollection from '../../fixtures/Calendar/getCollection.json';
 import ScheduleCollection from '../../fixtures/Schedule/getCollection.json';
 import MatchListCollection from '../../fixtures/MatchList/getCollection.json';
+import RouteLockCollection from '../../fixtures/RouteLock/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -87,4 +88,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/match_lists?*', {
     ...MatchListCollection,
   }).as('getMatchList');
+  
+  cy.intercept('GET', '**/api/client/route_locks?*', {
+    ...RouteLockCollection,
+  }).as('getRouteLock');
 });
