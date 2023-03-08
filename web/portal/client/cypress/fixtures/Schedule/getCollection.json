@@ -1,0 +1,38 @@
+{
+  "body": [
+    {
+      "name": "aSchedule",
+      "timeIn": "08:00:00",
+      "timeout": "16:00:00",
+      "monday": true,
+      "tuesday": true,
+      "wednesday": true,
+      "thursday": true,
+      "friday": true,
+      "saturday": false,
+      "sunday": false,
+      "id": 1
+    },
+    {
+      "name": "anotherSchedule",
+      "timeIn": "08:00:00",
+      "timeout": "16:00:00",
+      "monday": true,
+      "tuesday": true,
+      "wednesday": true,
+      "thursday": true,
+      "friday": true,
+      "saturday": false,
+      "sunday": false,
+      "id": 2
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/schedules?_page=1",
+    "x-last-page": "/api/client/schedules?_page=1",
+    "x-next-page": "/api/client/schedules?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
