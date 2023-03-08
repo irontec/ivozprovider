@@ -24,6 +24,7 @@ const properties: UserProperties = {
   },
   pass: {
     label: _('Password'),
+    format: 'password',
   },
   active: {
     label: _('Active'),
@@ -186,17 +187,6 @@ const columns = [
   'statusIcon',
 ];
 
-const marshaller = (
-  values: MarshallerValues,
-  properties: PartialPropertyList
-): MarshallerValues => {
-  if (values.pass === '*****') {
-    delete values.pass;
-  }
-
-  return defaultEntityBehavior.marshaller(values, properties);
-};
-
 const user: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PersonIcon,
@@ -211,7 +201,6 @@ const user: EntityInterface = {
   properties,
   columns,
   Form,
-  marshaller,
   foreignKeyGetter,
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);
