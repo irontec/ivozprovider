@@ -16,6 +16,7 @@ import { isEntityItem } from '@irontec/ivoz-ui';
 import BalanceMovement from '../BalanceMovement/BalanceMovement';
 import BalanceNotification from '../BalanceNotification/BalanceNotification';
 import RatingProfile from '../RatingProfile/RatingProfile';
+import StatusIcon from '../CarrierServer/Field/StatusIcon';
 
 const properties: CarrierProperties = {
   description: {
@@ -61,7 +62,7 @@ const properties: CarrierProperties = {
   },
   statusIcon: {
     label: _('Status'),
-    //@TODO IvozProvider_Klear_Ghost_CarrierServerStatus::getCarrierStatusIcon
+    component: StatusIcon,
   },
   mediaRelaySet: {
     label: _('Media relay Set'),
