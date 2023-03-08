@@ -1,0 +1,22 @@
+{
+  "body": {
+    "name": "testFilter",
+    "holidayTargetType": null,
+    "holidayNumberValue": null,
+    "outOfScheduleTargetType": null,
+    "outOfScheduleNumberValue": null,
+    "id": 1,
+    "holidayLocution": null,
+    "outOfScheduleLocution": null,
+    "holidayExtension": null,
+    "outOfScheduleExtension": null,
+    "holidayVoicemail": null,
+    "outOfScheduleVoicemail": null,
+    "holidayNumberCountry": null,
+    "outOfScheduleNumberCountry": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}
