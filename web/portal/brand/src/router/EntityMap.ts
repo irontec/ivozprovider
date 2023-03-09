@@ -450,6 +450,15 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
+      label: _('Client endpoint'),
+      children: [
+        {
+          entity: entities.ResidentialDevice,
+          isAccessible: (aboutMe) => aboutMe.features.includes('residential'),
+        },
+      ],
+    },
+    {
       label: _('Views'),
       children: [
         {
@@ -461,16 +470,6 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           },
           isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
-        },
-        {
-          entity: {
-            ...entities.ResidentialDevice,
-            acl: {
-              ...denyAllAcl,
-              read: true,
-            },
-          },
-          isAccessible: (aboutMe) => aboutMe.features.includes('residential'),
         },
         {
           entity: {
