@@ -1,5 +1,7 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { ResidentialDevicePropertiesList } from '../ResidentialDeviceProperties';
 import store from 'store';
 
 const ResidentialDeviceSelectOptions: SelectOptionsType = ({
@@ -12,10 +14,13 @@ const ResidentialDeviceSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     ResidentialDevice.path,
     ['id', 'name'],
-    (data: any) => {
-      const options: any = {};
+    (data: ResidentialDevicePropertiesList) => {
+      const options: DropdownChoices = [];
       for (const item of data) {
-        options[item.id] = item.name;
+        options.push({
+          id: item.id as number,
+          label: item.name as string,
+        });
       }
 
       callback(options);
