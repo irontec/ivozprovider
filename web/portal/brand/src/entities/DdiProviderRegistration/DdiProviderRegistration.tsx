@@ -29,12 +29,12 @@ const properties: DdiProviderRegistrationProperties = {
   },
   authPassword: {
     label: _('Password'),
-    pattern: new RegExp('^sip:.*$|^sips:.*$'),
-    helpText: _('Must start with sip or sips followed by colon'),
     format: 'password',
   },
   authProxy: {
     label: _('Registrar Server URI'),
+    pattern: new RegExp('^sip:.*$|^sips:.*$'),
+    helpText: _('Must start with sip or sips followed by colon'),
     required: false,
   },
   expires: {
