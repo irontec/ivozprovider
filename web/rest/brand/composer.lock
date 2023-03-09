@@ -2155,11 +2155,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.9.1",
+            "version": "4.9.2",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "b5058a893ae03d8bf18514a719c37982f73b288e"
+                "reference": "f0bdc10a5ec36af377f42f99d306c18bb1932013"
             },
             "require": {
                 "api-platform/core": "2.6.*",
