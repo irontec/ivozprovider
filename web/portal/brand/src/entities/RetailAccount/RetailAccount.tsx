@@ -15,7 +15,6 @@ const properties: RetailAccountProperties = {
   },
   name: {
     label: _('Name'),
-    readOnly: true,
     pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
     maxLength: 100,
     helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),

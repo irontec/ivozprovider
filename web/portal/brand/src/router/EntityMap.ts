@@ -456,21 +456,15 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: entities.ResidentialDevice,
           isAccessible: (aboutMe) => aboutMe.features.includes('residential'),
         },
+        {
+          entity: entities.RetailAccount,
+          isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
+        },
       ],
     },
     {
       label: _('Views'),
       children: [
-        {
-          entity: {
-            ...entities.RetailAccount,
-            acl: {
-              ...denyAllAcl,
-              read: true,
-            },
-          },
-          isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
-        },
         {
           entity: {
             ...entities.User,
