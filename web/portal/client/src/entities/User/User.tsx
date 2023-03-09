@@ -1,14 +1,11 @@
 import PersonIcon from '@mui/icons-material/Person';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  MarshallerValues,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { UserProperties } from './UserProperties';
 import selectOptions from './SelectOptions';
-import { PartialPropertyList } from '@irontec/ivoz-ui';
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
 
 const properties: UserProperties = {
@@ -84,6 +81,7 @@ const properties: UserProperties = {
   },
   callAcl: {
     label: _('Call ACL'),
+    null: _('Unassigned'),
   },
   doNotDisturb: {
     label: _('Do not disturb'),
