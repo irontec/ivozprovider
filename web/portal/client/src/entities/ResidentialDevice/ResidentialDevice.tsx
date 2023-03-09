@@ -19,6 +19,7 @@ const properties: ResidentialDeviceProperties = {
   },
   description: {
     label: _('Description'),
+    required: false,
   },
   transport: {
     label: _('Transport'),
