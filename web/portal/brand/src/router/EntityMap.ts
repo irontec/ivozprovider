@@ -278,7 +278,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: entities.CompanyBalances,
           isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
           filterValues: {
-            billingMethod: 'prepaid', //@TODO: ['prepaid', 'pseudoprepaid'],
+            'billingMethod[exact]': ['prepaid', 'pseudoprepaid'],
           },
           children: [
             {
