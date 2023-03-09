@@ -26,6 +26,7 @@ const properties: AdministratorProperties = {
   email: {
     label: _('Email'),
     maxLength: 100,
+    required: false,
   },
   active: {
     label: _('Active'),
