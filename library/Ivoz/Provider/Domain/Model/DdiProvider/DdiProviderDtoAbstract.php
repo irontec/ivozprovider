@@ -286,6 +286,9 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return DdiProviderRegistrationDto[] | null
+    */
     public function getDdiProviderRegistrations(): ?array
     {
         return $this->ddiProviderRegistrations;
@@ -298,6 +301,9 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return DdiProviderAddressDto[] | null
+    */
     public function getDdiProviderAddresses(): ?array
     {
         return $this->ddiProviderAddresses;

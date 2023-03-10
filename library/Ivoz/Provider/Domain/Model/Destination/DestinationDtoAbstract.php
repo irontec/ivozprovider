@@ -264,6 +264,9 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return DestinationRateDto[] | null
+    */
     public function getDestinationRates(): ?array
     {
         return $this->destinationRates;

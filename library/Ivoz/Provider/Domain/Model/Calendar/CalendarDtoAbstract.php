@@ -153,6 +153,9 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return HolidayDateDto[] | null
+    */
     public function getHolidayDates(): ?array
     {
         return $this->holidayDates;
@@ -165,6 +168,9 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CalendarPeriodDto[] | null
+    */
     public function getCalendarPeriods(): ?array
     {
         return $this->calendarPeriods;

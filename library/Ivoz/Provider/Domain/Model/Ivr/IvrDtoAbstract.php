@@ -660,6 +660,9 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return IvrEntryDto[] | null
+    */
     public function getEntries(): ?array
     {
         return $this->entries;
@@ -672,6 +675,9 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return IvrExcludedExtensionDto[] | null
+    */
     public function getExcludedExtensions(): ?array
     {
         return $this->excludedExtensions;

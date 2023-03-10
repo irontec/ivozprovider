@@ -383,6 +383,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingDto[] | null
+    */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
@@ -395,6 +398,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingRelCarrierDto[] | null
+    */
     public function getOutgoingRoutingsRelCarriers(): ?array
     {
         return $this->outgoingRoutingsRelCarriers;
@@ -407,6 +413,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CarrierServerDto[] | null
+    */
     public function getServers(): ?array
     {
         return $this->servers;
@@ -419,6 +428,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return RatingProfileDto[] | null
+    */
     public function getRatingProfiles(): ?array
     {
         return $this->ratingProfiles;
@@ -431,6 +443,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TpCdrStatDto[] | null
+    */
     public function getTpCdrStats(): ?array
     {
         return $this->tpCdrStats;

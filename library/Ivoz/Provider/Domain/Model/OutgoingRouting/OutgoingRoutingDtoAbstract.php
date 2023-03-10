@@ -559,6 +559,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TrunksLcrRuleDto[] | null
+    */
     public function getLcrRules(): ?array
     {
         return $this->lcrRules;
@@ -571,6 +574,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TrunksLcrRuleTargetDto[] | null
+    */
     public function getLcrRuleTargets(): ?array
     {
         return $this->lcrRuleTargets;
@@ -583,6 +589,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingRelCarrierDto[] | null
+    */
     public function getRelCarriers(): ?array
     {
         return $this->relCarriers;

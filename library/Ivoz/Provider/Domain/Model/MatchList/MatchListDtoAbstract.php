@@ -184,6 +184,9 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return MatchListPatternDto[] | null
+    */
     public function getPatterns(): ?array
     {
         return $this->patterns;

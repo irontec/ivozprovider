@@ -325,6 +325,9 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return RatingPlanDto[] | null
+    */
     public function getRatingPlan(): ?array
     {
         return $this->ratingPlan;

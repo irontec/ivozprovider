@@ -160,6 +160,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return FriendDto[] | null
+    */
     public function getFriends(): ?array
     {
         return $this->friends;
@@ -172,6 +175,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return ResidentialDeviceDto[] | null
+    */
     public function getResidentialDevices(): ?array
     {
         return $this->residentialDevices;
@@ -184,6 +190,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TerminalDto[] | null
+    */
     public function getTerminals(): ?array
     {
         return $this->terminals;

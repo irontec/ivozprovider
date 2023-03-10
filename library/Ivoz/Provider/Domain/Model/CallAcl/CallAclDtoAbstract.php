@@ -165,6 +165,9 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CallAclRelMatchListDto[] | null
+    */
     public function getRelMatchLists(): ?array
     {
         return $this->relMatchLists;
