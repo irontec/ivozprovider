@@ -260,6 +260,9 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TpRatingProfileDto[] | null
+    */
     public function getTpRatingProfiles(): ?array
     {
         return $this->tpRatingProfiles;

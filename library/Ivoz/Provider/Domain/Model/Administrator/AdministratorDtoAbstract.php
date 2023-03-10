@@ -355,6 +355,9 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return AdministratorRelPublicEntityDto[] | null
+    */
     public function getRelPublicEntities(): ?array
     {
         return $this->relPublicEntities;

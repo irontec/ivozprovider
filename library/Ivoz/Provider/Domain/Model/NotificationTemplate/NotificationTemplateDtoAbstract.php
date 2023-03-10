@@ -165,6 +165,9 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
+    /**
+    * @return NotificationTemplateContentDto[] | null
+    */
     public function getContents(): ?array
     {
         return $this->contents;

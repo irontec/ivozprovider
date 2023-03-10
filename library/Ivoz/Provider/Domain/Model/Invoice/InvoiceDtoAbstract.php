@@ -492,6 +492,9 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return FixedCostsRelInvoiceDto[] | null
+    */
     public function getRelFixedCosts(): ?array
     {
         return $this->relFixedCosts;

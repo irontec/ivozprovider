@@ -165,6 +165,9 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this;
     }
 
+    /**
+    * @return TpRatingProfileDto[] | null
+    */
     public function getTpRatingProfiles(): ?array
     {
         return $this->tpRatingProfiles;

@@ -172,6 +172,9 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingDto[] | null
+    */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
@@ -184,6 +187,9 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CompanyRelRoutingTagDto[] | null
+    */
     public function getRelCompanies(): ?array
     {
         return $this->relCompanies;

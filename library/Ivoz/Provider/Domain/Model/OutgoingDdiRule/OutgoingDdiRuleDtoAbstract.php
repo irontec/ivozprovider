@@ -203,6 +203,9 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingDdiRulesPatternDto[] | null
+    */
     public function getPatterns(): ?array
     {
         return $this->patterns;

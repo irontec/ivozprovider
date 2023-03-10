@@ -817,6 +817,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return FriendsPatternDto[] | null
+    */
     public function getPatterns(): ?array
     {
         return $this->patterns;
@@ -829,6 +832,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CallForwardSettingDto[] | null
+    */
     public function getCallForwardSettings(): ?array
     {
         return $this->callForwardSettings;

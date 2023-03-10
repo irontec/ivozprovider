@@ -320,6 +320,9 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingDto[] | null
+    */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
@@ -332,6 +335,9 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return RoutingPatternGroupsRelPatternDto[] | null
+    */
     public function getRelPatternGroups(): ?array
     {
         return $this->relPatternGroups;
@@ -344,6 +350,9 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TrunksLcrRuleDto[] | null
+    */
     public function getLcrRules(): ?array
     {
         return $this->lcrRules;

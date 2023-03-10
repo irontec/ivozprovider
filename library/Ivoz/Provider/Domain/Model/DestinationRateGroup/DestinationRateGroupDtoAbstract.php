@@ -462,6 +462,9 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
+    /**
+    * @return DestinationRateDto[] | null
+    */
     public function getDestinationRates(): ?array
     {
         return $this->destinationRates;

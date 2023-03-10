@@ -1243,6 +1243,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return ExtensionDto[] | null
+    */
     public function getExtensions(): ?array
     {
         return $this->extensions;
@@ -1255,6 +1258,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return DdiDto[] | null
+    */
     public function getDdis(): ?array
     {
         return $this->ddis;
@@ -1267,6 +1273,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return FriendDto[] | null
+    */
     public function getFriends(): ?array
     {
         return $this->friends;
@@ -1279,6 +1288,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return ContactDto[] | null
+    */
     public function getContacts(): ?array
     {
         return $this->contacts;
@@ -1291,6 +1303,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CompanyServiceDto[] | null
+    */
     public function getCompanyServices(): ?array
     {
         return $this->companyServices;
@@ -1303,6 +1318,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TerminalDto[] | null
+    */
     public function getTerminals(): ?array
     {
         return $this->terminals;
@@ -1315,6 +1333,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return RatingProfileDto[] | null
+    */
     public function getRatingProfiles(): ?array
     {
         return $this->ratingProfiles;
@@ -1327,6 +1348,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return MusicOnHoldDto[] | null
+    */
     public function getMusicsOnHold(): ?array
     {
         return $this->musicsOnHold;
@@ -1339,6 +1363,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return VoicemailDto[] | null
+    */
     public function getVoicemails(): ?array
     {
         return $this->voicemails;
@@ -1351,6 +1378,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return RecordingDto[] | null
+    */
     public function getRecordings(): ?array
     {
         return $this->recordings;
@@ -1363,6 +1393,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return FeaturesRelCompanyDto[] | null
+    */
     public function getRelFeatures(): ?array
     {
         return $this->relFeatures;
@@ -1375,6 +1408,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CompanyRelGeoIPCountryDto[] | null
+    */
     public function getRelCountries(): ?array
     {
         return $this->relCountries;
@@ -1387,6 +1423,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CompanyRelCodecDto[] | null
+    */
     public function getRelCodecs(): ?array
     {
         return $this->relCodecs;
@@ -1399,6 +1438,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CompanyRelRoutingTagDto[] | null
+    */
     public function getRelRoutingTags(): ?array
     {
         return $this->relRoutingTags;

@@ -779,6 +779,9 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
+    /**
+    * @return DdiDto[] | null
+    */
     public function getDdis(): ?array
     {
         return $this->ddis;
@@ -791,6 +794,9 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
+    /**
+    * @return CallForwardSettingDto[] | null
+    */
     public function getCallForwardSettings(): ?array
     {
         return $this->callForwardSettings;

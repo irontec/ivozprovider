@@ -165,6 +165,9 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return UserDto[] | null
+    */
     public function getUsers(): ?array
     {
         return $this->users;

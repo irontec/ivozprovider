@@ -589,6 +589,9 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return DdiDto[] | null
+    */
     public function getDdis(): ?array
     {
         return $this->ddis;
@@ -601,6 +604,9 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CallForwardSettingDto[] | null
+    */
     public function getCallForwardSettings(): ?array
     {
         return $this->callForwardSettings;

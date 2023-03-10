@@ -172,6 +172,9 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this;
     }
 
+    /**
+    * @return RoutingPatternGroupsRelPatternDto[] | null
+    */
     public function getRelPatterns(): ?array
     {
         return $this->relPatterns;
@@ -184,6 +187,9 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingDto[] | null
+    */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;

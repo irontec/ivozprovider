@@ -545,6 +545,9 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
+    /**
+    * @return ConditionalRoutesConditionDto[] | null
+    */
     public function getConditions(): ?array
     {
         return $this->conditions;

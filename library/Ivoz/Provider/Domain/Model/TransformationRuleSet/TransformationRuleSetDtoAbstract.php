@@ -359,6 +359,9 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this;
     }
 
+    /**
+    * @return TransformationRuleDto[] | null
+    */
     public function getRules(): ?array
     {
         return $this->rules;

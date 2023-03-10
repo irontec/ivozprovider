@@ -146,6 +146,9 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return PickUpRelUserDto[] | null
+    */
     public function getRelUsers(): ?array
     {
         return $this->relUsers;

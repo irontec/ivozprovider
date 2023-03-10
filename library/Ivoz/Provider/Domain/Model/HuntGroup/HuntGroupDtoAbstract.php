@@ -431,6 +431,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return HuntGroupMemberDto[] | null
+    */
     public function getHuntGroupMembers(): ?array
     {
         return $this->huntGroupMembers;

@@ -862,6 +862,9 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return PickUpRelUserDto[] | null
+    */
     public function getPickUpRelUsers(): ?array
     {
         return $this->pickUpRelUsers;
@@ -874,6 +877,9 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return QueueMemberDto[] | null
+    */
     public function getQueueMembers(): ?array
     {
         return $this->queueMembers;
@@ -886,6 +892,9 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CallForwardSettingDto[] | null
+    */
     public function getCallForwardSettings(): ?array
     {
         return $this->callForwardSettings;
