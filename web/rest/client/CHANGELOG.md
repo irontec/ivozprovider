@@ -1,4 +1,162 @@
 # Changelog
+## 3.1.0
+* Endpoints
+  - Added _rmAlso parameter to [DELETE] methods to support multi-delete
+  - /call_acl_rel_match_lists:
+    - Added matchList.generic filter parameter
+  - /companies:
+    - Added domainName filter parameter
+    - Renamed nif filter parameter to invoicing.nif
+    - Added invoicing.postalAddress filter parameter
+    - Added invoicing.postalCode filter parameter
+    - Added invoicing.province filter parameter
+    - Added invoicing.town filter parameter
+    - Added _order[invoicing.nif]] querystring argument
+  - /contacts:
+    - Added [GET] and [POST] endpoints
+  - /contacts/{id}:
+    - Added [GET], [PUT] and [DELETE] endpoints
+  - /ddis:
+    - Added description[end|exact|neq|partial|start] and exists[description] filter parameters
+    - Added _order[description] querystring arguments
+  - /external_call_filter_black_lists:
+    - Added matchlist.generic filter parameter
+  - /external_call_filter_white_lists:
+    - Added matchlist.generic filter parameter
+  - /holiday_dates_range:
+    - Added [POST] endpoint
+  - /hunt_group_members:
+    - Added user.contact filter parameter
+  - /invoices:
+    - Added currency filter parameter
+    - Added exists[taxRate] filter parameter
+    - Added taxRate[exists|qt|qte|lt|lte|between|neq] filter parameters
+    - Added _order[taxRate] querystring argument
+  - /match_lists:
+    - Added generic filter parameter
+  - /outgoing_ddi_rules_patterns:
+    - Added forcedDdi.description filter parameter
+    - Added matchList.generic filter parameter
+  - /pick_up_rel_users:
+    - Added user.contact filter parameter
+  - /queue_member:
+    - Added queue.announceFrequency filter parameter
+    - Added queue.announcePosition filter parameter
+    - Added queue.displayName filter parameter
+    - Added user.contact filter parameter
+    - Added user.doNotDisturb filter parameter
+  - /recordings/recorded_files_zip:
+    - Added [GET] endpoint
+  - /residenital_devices:
+    - Added description[end|exact|neq|partial|start] filter parameters
+    - Added directConnectivity[end|exact|neq|partial|start] filter parameters
+    - Added _order[description]  querystring argument
+    - Added _order[directConnectivity] querystring argument
+  - /services:
+    - Added description.ca[end|exact|neq|partial|start] filter parameters
+    - Added description.en[end|exact|neq|partial|start] filter parameters
+    - Added description.es[end|exact|neq|partial|start] filter parameters
+    - Added description.it[end|exact|neq|partial|start] filter parameters
+    - Added _order[description.ca], _order[description.en], _order[description.es] and _order[description.it] querystring arguments
+  - /terminal_models:
+    - Added description[end|exact|neq|partial|start] filter parameters
+    - Added specificTemplate filter parameter
+    - Added _order[description]  querystring argument
+* Models:
+  - Company:
+    - Removed nif property
+    - Added invoicing property
+  - Company-collection:
+    - Added invoicing property
+    - Added domainName property
+  - Company-detailed:
+    - Added invoicing property
+    - Added domainName property
+  - Contact:
+    - Added model
+  - Contact-collection:
+    - Added model
+  - Contact-detailed:
+    - Added model
+  - Ddi:
+    - Added description property
+  - Ddi-collection:
+    - Added description property
+  - Ddi-detailed:
+    - Added description property
+    - Added taxRate property
+    - Added currency property
+  - HolidayDateRange:
+    - Added model
+  - Invoicing:
+    - Added model
+  - MatchList:
+    - Added generic property
+  - MatchList-collection:
+    - Added generic property
+  - MatchList-detailed
+    - Added generic property
+  - Queue:
+    - Added displayName property
+    - Added announcePosition property
+    - Added announceFrequency property
+  - Queue-detailed:
+    - Added displayName property
+    - Added announcePosition property
+    - Added announceFrequency property
+  - Recording:
+    - Added model
+  - ResidentialDevice:
+    - Set name as readonly property
+    - Added allow required property
+    - Added fromDomain property
+    - Added directConnectivity required property
+    - Added ddiIn required property
+    - Added maxCalls required property
+    - Added t38Passthrough required property
+    - Added rtpEncryption required property
+    - Added multiContact required property
+  - ResidentialDevice-collection:
+    - Added description required property
+    - Added directConnectivity required property
+    - Added domainName property
+    - Added status property
+  - ResidentialDevice-detailed:
+    - Set name as readonly property
+    - Added allow required property
+    - Added fromDomain property
+    - Added directConnectivity required property
+    - Added ddiIn required property
+    - Added maxCalls required property
+    - Added t38Passthrough  requiredproperty
+    - Added rtpEncryption required property
+    - Added multiContact required property
+    - Added maxCalls property
+  - ResidentialDevice-status:
+    - Set name as readonly property
+    - Added directConnectivity property
+  - Service-collection:
+    - Added description
+  - TerminalModel-collection:
+    - Added description required property
+    - Added genericTemplate property
+    - Added specificTemplate property
+  - User:
+    - Added contact required property
+  - User-collection:
+    - Added status property
+  - User-detailed:
+    - Added contact property
+  - Voicemail:
+    - Set user as readonly property
+    - Set residentialDevice as readonly property
+  - Voicemail-collection:
+    - Set user as readonly property
+  - Voicemail-detailed:
+    - Set user as readonly property
+    - Set residentialDevice as readonly property
+  - Name:
+    - Added model
 
 ## 3.0.0
 * Disclaimer: The API schema will not be considered stable until version 3.1 and may receive new breaking changes
