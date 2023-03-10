@@ -1,3 +1,73 @@
+Fri, 10 Mar 2023 10:22:06 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+* Ivozprovider 3.1.0 released
+
+* Initial version of new portals for all tenants
+    - Using React 18.2 framework
+    - CRUD operations supported
+    - Still a work in progress, not ready for production usage
+
+* Initial React User portal implementation
+    - Added Calls list section
+    - Added My Account section for changing user's basic information
+    - Added Preferences section for changing call specific settings
+    - Added Call Forward Settings to configure forwarding options
+    - Accessible adding /user/ to existing portal path
+    - Requires user email and password to login
+
+* Initial React Client portal implementation
+    - Added sections for vPBX, Residential, Retail and Wholesale
+    - General section to manage Users, Terminals, Extensions, DDIs, Faxes, Services and Contacts
+    - Routing endpoint section to manage IVRs, Hunt Groups, Queues, Conditional Routes, Friends, Conference Rooms and Voicemails
+    - Routing tools section to manage External Filters, Calendars, Schedules Match Lists and Route Locks
+    - User configuration section to manage Outgoing DDI Rules, Pickup Groups, Call ACLS and Locations
+    - Multimedia section to manage Locutions and Music on Hold
+    - Calls section to manage Call registries, Active Calls, External Calls, Calls CSV Schedules and Recordings
+    - Accessible adding /client/ to existing portal path
+    - Requires Client Administrator credentials to login (or impersonation from Brand portal)
+
+* Initial React Brand portal implementation
+    - Added Clients section to manage Virtual PBX, Residential, Retail and Wholesale clients
+    - Added Providers section to manage Carrier, DDI Providers and DDIs
+    - Added Routing section to manage Outgoing Routing, Routing Patterns, Routing Pattern groups and Routing Tags
+    - Added Billing section to manage Rating Plans, Destinations, Rates, Prepaid Balances and Daily usages
+    - Added Invoice section to manage Invoice, Invoice Schedulers, Fixed costs and Invoice Templates
+    - Added Calls section to manage Active brand Calls, External calls and Call CSV Schedulers
+    - Added Settings section to manage Company Portals, Special Numbers, Numeric Transformation, Notification Templates, Music on Hold, Brand Service and Match Lists
+    - Added View section to display lists of Retail Accounts, Residential Devices, Users, and Banned IP addresses
+    - Added support to impersonate a Client Administrator to access Client portal without credentials
+    - Accessible adding /brand/ to existing portal path
+    - Requires Brand Administrator credentials to login (or impersonation from Platform portal)
+
+* Initial React Platform portal implementation
+    - Added Brand, Main Operators, Anti-flood Banned IPs, Terminal Manufacturers and Services management screens
+    - Added Currencies, Notification templates, Invoice templates, Special numbers, Platform portals management screens
+    - Added realtime Active calls and External calls views
+    - Added Infrastructure section to manage Proxy Users, Proxy Trunks, Media relays and Application Servers
+    - Accessible adding /platform/ to existing portal path
+    - Requires Platform Administrator credentials to login
+
+* API
+    - Lots of changes in Rest API to fulfill new portals requirements. See specific API Changelogs for details.
+    - Main breaking changes
+        * Replaced Company nif, postalAddress, town, province and countryName properties with new Invoice model
+        * Removed externallyRated property from Carrier
+        * Removed billInboundCalls property from DDIs
+
+* Other Features and Fixed
+    - Added configurable Announce Position locutions to Queues
+    - Added Display name in Queues to override default Caller name in Queue members calls
+    - Added Address Book section to store External numbers (not yet used)
+    - Added Description field in DDIs
+    - Added support to use DDIs only for outbound presentation (DDI types)
+    - Changed rtpengine control port to 2223
+    - FastAGI server address is now configurable
+    - Added APIBAN optional configuration for Proxies
+    - Fixed Media Relay selection logic when specific set was configured
+    - Fixed Media management in parallel-forking scenarios
+    - Added RTP timeout settings for vPBX and Residential calls
+
+
 Thu, 23 Jun 2022 13:06:47 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 3.0.0 released
