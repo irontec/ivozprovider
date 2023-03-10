@@ -1946,11 +1946,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:getRelPublicEntities\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:getTimezoneId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
@@ -2571,11 +2566,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getCompanies\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getCurrencyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
@@ -2606,47 +2596,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getMatchLists\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getMaxDailyUsageNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getMusicsOnHold\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getOutgoingRoutings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getRelFeatures\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getRelProxyTrunks\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getResidentialDevices\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getServices\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getUrls\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
 
@@ -2806,17 +2756,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Calendar\\\\CalendarDtoAbstract\\:\\:getCalendarPeriods\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Calendar/CalendarDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Calendar\\\\CalendarDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Calendar/CalendarDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Calendar\\\\CalendarDtoAbstract\\:\\:getHolidayDates\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Calendar/CalendarDtoAbstract.php
 
@@ -2882,11 +2822,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:getRelSchedules\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
 
@@ -2982,11 +2917,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclDtoAbstract\\:\\:getRelMatchLists\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDtoAbstract.php
 
@@ -3466,32 +3396,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getOutgoingRoutings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getOutgoingRoutingsRelCarriers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getProxyTrunkId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getRatingProfiles\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getServers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getTpCdrStats\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
 
@@ -3721,27 +3626,12 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCompanyServices\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getContacts\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCountryId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCurrencyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getDdis\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
@@ -3756,17 +3646,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getExtensions\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getFaxNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getFriends\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
@@ -3791,11 +3671,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getMusicsOnHold\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getOutgoingDdiId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
@@ -3806,52 +3681,12 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getRatingProfiles\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getRecordings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getRelCodecs\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getRelCountries\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getRelFeatures\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getRelRoutingTags\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getTerminals\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getTransformationRuleSetId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getVoicemailNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getVoicemails\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
@@ -4186,11 +4021,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getConditions\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getConferenceRoomId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
@@ -4377,26 +4207,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getQueueId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getRelCalendars\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getRelMatchlists\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getRelRouteLocks\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getRelSchedules\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
 
@@ -4981,16 +4791,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:getDdiProviderAddresses\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:getDdiProviderRegistrations\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:getMediaRelaySetsId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
@@ -5141,11 +4941,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Destination/DestinationDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Destination\\\\DestinationDtoAbstract\\:\\:getDestinationRates\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Destination/DestinationDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Destination\\\\DestinationDtoAbstract\\:\\:getTpDestinationId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Destination/DestinationDtoAbstract.php
@@ -5281,11 +5076,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:getDestinationRates\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:getFileImporterArguments\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
@@ -5354,21 +5144,6 @@ parameters:
 			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\File\\:\\:\\$importerArguments type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/File.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainDtoAbstract\\:\\:getFriends\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Domain/DomainDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainDtoAbstract\\:\\:getResidentialDevices\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Domain/DomainDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainDtoAbstract\\:\\:getTerminals\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Domain/DomainDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainDtoAbstract\\:\\:setFriends\\(\\) has parameter \\$friends with no value type specified in iterable type array\\.$#"
@@ -5442,11 +5217,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getUsers\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
 
@@ -5561,16 +5331,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getBlackLists\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getCalendars\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
@@ -5616,17 +5376,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getSchedules\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getWelcomeLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getWhiteLists\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
@@ -6176,11 +5926,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getCallForwardSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
@@ -6202,11 +5947,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getOutgoingDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getPatterns\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
 
@@ -6406,11 +6146,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getHuntGroupMembers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getNoAnswerExtensionId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
@@ -6556,11 +6291,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDtoAbstract\\:\\:getRelFixedCosts\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDtoAbstract\\:\\:getSchedulerId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php
@@ -6661,11 +6391,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:getRelFixedCosts\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
@@ -6761,11 +6486,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getEntries\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getErrorExtensionId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
@@ -6782,11 +6502,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getErrorVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getExcludedExtensions\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
@@ -7046,11 +6761,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Location/LocationDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Location\\\\LocationDtoAbstract\\:\\:getUsers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Location/LocationDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Location\\\\LocationDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Location/LocationDtoAbstract.php
@@ -7127,11 +6837,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MatchList/MatchListDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListDtoAbstract\\:\\:getPatterns\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MatchList/MatchListDtoAbstract.php
 
@@ -7326,11 +7031,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateDtoAbstract\\:\\:getContents\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDtoAbstract.php
@@ -7402,11 +7102,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDtoAbstract\\:\\:getForcedDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDtoAbstract\\:\\:getPatterns\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDtoAbstract.php
 
@@ -7521,21 +7216,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getLcrRuleTargets\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getLcrRules\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getRelCarriers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getRoutingPatternGroupId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
@@ -7646,11 +7326,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRoutingRelCarrier\\\\OutgoingRoutingRelCarrierDtoAbstract\\:\\:getTpRatingProfiles\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRoutingRelCarrier\\\\OutgoingRoutingRelCarrierDtoAbstract\\:\\:setCarrierId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierDtoAbstract.php
@@ -7687,11 +7362,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupDtoAbstract\\:\\:getRelUsers\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDtoAbstract.php
 
@@ -8076,11 +7746,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:getRatingPlan\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
@@ -8147,11 +7812,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDtoAbstract\\:\\:getRoutingTagId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDtoAbstract\\:\\:getTpRatingProfiles\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php
 
@@ -8266,17 +7926,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getCallForwardSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getDdis\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
 
@@ -8416,17 +8066,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getCallForwardSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getDdis\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
 
@@ -8551,21 +8191,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:getLcrRules\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:getOutgoingRoutings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:getRelPatternGroups\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
@@ -8607,16 +8232,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroup\\\\RoutingPatternGroupDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroup\\\\RoutingPatternGroupDtoAbstract\\:\\:getOutgoingRoutings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroup\\\\RoutingPatternGroupDtoAbstract\\:\\:getRelPatterns\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDtoAbstract.php
 
@@ -8687,16 +8302,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagDtoAbstract\\:\\:getOutgoingRoutings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagDtoAbstract\\:\\:getRelCompanies\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDtoAbstract.php
 
@@ -8852,11 +8457,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:getTerminalModelId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:getUsers\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
 
@@ -9046,11 +8646,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:getRules\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
@@ -9131,11 +8726,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getCallForwardSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
@@ -9167,16 +8757,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getOutgoingDdiRuleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getPickUpRelUsers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getQueueMembers\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
