@@ -20,9 +20,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const formik = useFormHandler(props);
 
   const isCallForwardNoAnswer = formik.values?.callForwardType === 'noAnswer';
-  const isNumberTargetType = formik.values?.targetType === 'number';
-  const isExtensionTargetType = formik.values?.targetType === 'extension';
-  const isVoiceMailTargetType = formik.values?.targetType === 'voicemail';
 
   const groups: Array<FieldsetGroups | false> = [
     {
@@ -33,10 +30,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'callForwardType',
         isCallForwardNoAnswer && 'noAnswerTimeout',
         'targetType',
-        isNumberTargetType && 'numberCountry',
-        isNumberTargetType && 'numberValue',
-        isExtensionTargetType && 'extension',
-        isVoiceMailTargetType && 'voicemail',
+        'numberCountry',
+        'numberValue',
+        'extension',
+        'voicemail',
       ],
     },
   ];
