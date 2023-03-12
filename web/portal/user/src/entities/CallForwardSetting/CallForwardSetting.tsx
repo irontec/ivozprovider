@@ -31,7 +31,20 @@ const properties: CallForwardSettingProperties = {
       number: _('Number'),
       extension: _('Extension'),
       voicemail: _('Voicemail'),
-      retail: _('Retail'),
+    },
+    visualToggle: {
+      number: {
+        show: ['numberCountry', 'numberValue'],
+        hide: ['extension', 'voicemail'],
+      },
+      extension: {
+        show: ['extension'],
+        hide: ['numberCountry', 'numberValue', 'voicemail'],
+      },
+      voicemail: {
+        show: ['voicemail'],
+        hide: ['numberCountry', 'numberValue', 'extension'],
+      },
     },
   },
   numberValue: {
