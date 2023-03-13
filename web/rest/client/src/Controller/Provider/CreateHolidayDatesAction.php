@@ -17,6 +17,7 @@ class CreateHolidayDatesAction
     public function __invoke(Request $request): Response
     {
         $body = $request->toArray();
+
         $holidayDateRange = new HolidayDateRange(
             $body['name'],
             $body['wholeDayEvent'],
@@ -40,3 +41,4 @@ class CreateHolidayDatesAction
         }
     }
 }
+
