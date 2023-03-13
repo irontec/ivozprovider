@@ -1015,7 +1015,29 @@ Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
       required:
       - friend
 
+Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRange:
+  itemOperations: []
+  collectionOperations:
+    post_holiday_dates_range:
+      method: 'POST'
+      path: '/holiday_dates_range'
+      route_name: 'post_holiday_dates_range'
+      swagger_context:
+        consumes:
+          - 'application/json'
+        produces:
+          - 'application/json'
+        responses:
+          201:
+            description: "Holiday Dates created"
+          400:
+            description: "Cannot create holiday dates"
+          500:
+            description: "Internal Server Error"
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
+  collectionOperations:
+    get: ~
+    post: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
