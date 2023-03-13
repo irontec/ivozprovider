@@ -18,6 +18,7 @@ import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json
 import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
 import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getCollection.json';
 import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json';
+import CallAclCollection from '../../fixtures/CallAcl/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -112,4 +113,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/music_on_holds?*', {
     ...MusicOnHoldCollection,
   }).as('getMusicOnHold');
+
+  cy.intercept('GET', '**/api/client/call_acls?*', {
+    ...CallAclCollection,
+  }).as('getCallAcl');
 });

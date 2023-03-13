@@ -1,0 +1,22 @@
+{
+  "body": [
+    {
+      "name": "testACL",
+      "defaultPolicy": "allow",
+      "id": 1
+    },
+    {
+      "name": "testACL2",
+      "defaultPolicy": "deny",
+      "id": 2
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/call_acls?_page=1",
+    "x-last-page": "/api/client/call_acls?_page=1",
+    "x-next-page": "/api/client/call_acls?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
