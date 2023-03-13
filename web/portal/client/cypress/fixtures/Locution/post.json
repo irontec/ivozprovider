@@ -1,0 +1,42 @@
+{
+  "request": {
+    "name": "newLocution",
+    "status": "pending",
+    "encodedFile": {
+      "fileSize": null,
+      "mimeType": null,
+      "baseName": null
+    },
+    "originalFile": {
+      "fileSize": 20,
+      "mimeType": "text/plain; charset=us-ascii",
+      "baseName": "uploadable"
+    }
+  },
+  "response": {
+    "body": {
+      "name": "newLocution",
+      "status": "pending",
+      "id": 2,
+      "encodedFile": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      },
+      "originalFile": {
+        "fileSize": 20,
+        "mimeType": "text/plain; charset=us-ascii",
+        "baseName": "uploadable"
+      }
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

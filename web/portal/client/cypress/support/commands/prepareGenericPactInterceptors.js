@@ -20,6 +20,7 @@ import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getColle
 import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json';
 import CallAclCollection from '../../fixtures/CallAcl/getCollection.json';
 import LocationCollection from '../../fixtures/Location/getCollection.json';
+import LocutionCollection from '../../fixtures/Locution/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -122,4 +123,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/locations?*', {
     ...LocationCollection,
   }).as('getLocation');
+
+  cy.intercept('GET', '**/api/client/locutions?*', {
+    ...LocutionCollection,
+  }).as('getLocution');
 });
