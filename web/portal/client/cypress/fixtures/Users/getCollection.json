@@ -1,61 +1,46 @@
 {
   "body": [
     {
-      "iden": "User1",
-      "email": "user1@irontec",
-      "terminal": "terminal_user1",
-      "enabled": "dual",
-      "remoteId": 1,
-      "lastProvisionDate": "2022-05-31 12:00:00",
+      "name": "Alice",
+      "lastname": "Allison",
       "id": 1,
-      "client": 1
+      "terminal": 1,
+      "extension": null,
+      "outgoingDdi": null,
+      "status": [
+        {
+          "contact": "sip:yealinktest@10.10.1.106:5060",
+          "received": "sip:212.64.172.23:5060",
+          "publicReceived": true,
+          "expires": "2031-01-01 00:59:59",
+          "userAgent": "Yealink SIP-T23G 44.80.0.130"
+        }
+      ]
     },
     {
-      "iden": "User2",
-      "email": "user2@irontec",
-      "terminal": "terminal_user2",
-      "enabled": "mobile",
-      "remoteId": 3,
-      "lastProvisionDate": "2022-05-31 12:00:00",
+      "name": "Bob",
+      "lastname": "Bobson",
       "id": 2,
-      "client": 1
+      "terminal": 2,
+      "extension": null,
+      "outgoingDdi": null,
+      "status": []
     },
     {
-      "iden": "User5",
-      "email": "user5@irontec",
-      "terminal": "terminal_user5",
-      "enabled": "no",
-      "remoteId": 5,
-      "lastProvisionDate": "2022-05-31 12:00:00",
-      "id": 5,
-      "client": 1
-    },
-    {
-      "iden": "UserProvider1",
-      "email": "userProvider1@irontec",
-      "terminal": "terminal_user_provider1",
-      "enabled": "mobile",
-      "remoteId": 2,
-      "lastProvisionDate": "2022-05-31 12:00:00",
+      "name": "Joe",
+      "lastname": "Doe",
       "id": 3,
-      "client": 2
-    },
-    {
-      "iden": "UserProvider2",
-      "email": "userProvider2@irontec",
-      "terminal": "terminal_user_provider2",
-      "enabled": "desktop",
-      "remoteId": 4,
-      "lastProvisionDate": "2022-05-31 12:00:00",
-      "id": 4,
-      "client": 2
+      "terminal": 4,
+      "extension": null,
+      "outgoingDdi": null,
+      "status": []
     }
   ],
   "headers": {
     "x-first-page": "/api/client/users?_page=1",
     "x-last-page": "/api/client/users?_page=1",
     "x-next-page": "/api/client/users?_page=1",
-    "x-total-items": "5",
+    "x-total-items": "3",
     "x-total-pages": "1"
   },
   "statusCode": 200
