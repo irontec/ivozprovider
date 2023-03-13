@@ -1,0 +1,18 @@
+{
+  "request": {
+    "name": "updatedACL",
+    "defaultPolicy": "deny",
+    "id": 1
+  },
+  "response": {
+    "body": {
+      "name": "updatedACL",
+      "defaultPolicy": "deny",
+      "id": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
