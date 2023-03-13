@@ -1,0 +1,22 @@
+{
+  "request": {
+    "name": "new pick up group",
+    "userIds": [1, 2]
+  },
+  "response": {
+    "body": {
+      "name": "new pick up group",
+      "id": 2,
+      "userIds": [1, 2]
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
