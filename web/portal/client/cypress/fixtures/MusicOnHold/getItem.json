@@ -1,0 +1,14 @@
+{
+  "body": {
+    "name": "Something good",
+    "status": null,
+    "id": 1,
+    "originalFile": {
+      "baseName": null
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

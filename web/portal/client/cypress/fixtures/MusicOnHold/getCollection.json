@@ -1,0 +1,20 @@
+{
+  "body": [
+    {
+      "name": "Something good",
+      "status": null,
+      "id": 1,
+      "originalFile": {
+        "baseName": null
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/music_on_holds?_page=1",
+    "x-last-page": "/api/client/music_on_holds?_page=1",
+    "x-next-page": "/api/client/music_on_holds?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
