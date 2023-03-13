@@ -22,6 +22,7 @@ import CallAclCollection from '../../fixtures/CallAcl/getCollection.json';
 import LocationCollection from '../../fixtures/Location/getCollection.json';
 import LocutionCollection from '../../fixtures/Locution/getCollection.json';
 import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
+import CallForwardSettingCollection from '../../fixtures/CallForwardSetting/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -132,4 +133,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/hunt_groups?*', {
     ...HuntGroupCollection,
   }).as('getHuntGroup');
+
+  cy.intercept('GET', '**/api/client/call_forward_settings?*', {
+    ...CallForwardSettingCollection,
+  }).as('getCallForwardSetting');
 });
