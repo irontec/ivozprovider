@@ -1,0 +1,22 @@
+{
+  "request": {
+    "name": "newLocation",
+    "description": "New location from rest API"
+  },
+  "response": {
+    "body": {
+      "name": "newLocation",
+      "description": "New location from rest API",
+      "id": 2
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
