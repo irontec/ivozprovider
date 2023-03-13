@@ -15,6 +15,7 @@ import ScheduleCollection from '../../fixtures/Schedule/getCollection.json';
 import MatchListCollection from '../../fixtures/MatchList/getCollection.json';
 import RouteLockCollection from '../../fixtures/RouteLock/getCollection.json';
 import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json';
+import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
@@ -97,4 +98,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/pick_up_groups?*', {
     ...PickUpGroupCollection,
   }).as('getPickUpGroup');
+  
+  cy.intercept('GET', '**/api/client/outgoing_ddi_rules?*', {
+    ...OutgoingDdiRuleCollection,
+  }).as('getOutgoingDdiRule');
 });
