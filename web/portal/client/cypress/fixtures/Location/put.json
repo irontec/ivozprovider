@@ -1,0 +1,18 @@
+{
+  "request": {
+    "name": "updatesLocation",
+    "description": "Test Location description",
+    "id": 1
+  },
+  "response": {
+    "body": {
+      "name": "updatesLocation",
+      "description": "Test Location description",
+      "id": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
