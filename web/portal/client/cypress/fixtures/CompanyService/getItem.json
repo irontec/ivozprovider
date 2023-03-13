@@ -1,0 +1,26 @@
+{
+  "body": {
+    "code": "94",
+    "id": 1,
+    "service": {
+      "iden": "DirectPickUp",
+      "defaultCode": "94",
+      "extraArgs": true,
+      "id": 1,
+      "name": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca"
+      }
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

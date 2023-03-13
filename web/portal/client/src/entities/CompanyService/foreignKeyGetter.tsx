@@ -2,7 +2,7 @@ import { FkChoices } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import SelectOptions, {
   UnassignedServiceSelectOptions,
-} from 'entities/Service/SelectOptions';
+} from '../Service/SelectOptions';
 import { CompanyServicePropertyList } from './CompanyServiceProperties';
 import axios from 'axios';
 import { ForeignKeyGetterTypeArgs } from '@irontec/ivoz-ui/entities/EntityInterface';
@@ -22,13 +22,6 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
   const promises: Array<Promise<unknown>> = [];
 
   if (filterContext) {
-    promises[promises.length] = SelectOptions({
-      callback: (options: any) => {
-        response.service = options;
-      },
-      cancelToken,
-    });
-  } else {
     promises[promises.length] = UnassignedServiceSelectOptions(
       {
         callback: (options: any) => {
@@ -40,6 +33,13 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
         includeId: currentServiceId,
       }
     );
+  } else {
+    promises[promises.length] = SelectOptions({
+      callback: (options: any) => {
+        response.service = options;
+      },
+      cancelToken,
+    });
   }
 
   await Promise.all(promises);

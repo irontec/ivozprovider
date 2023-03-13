@@ -1,0 +1,18 @@
+{
+  "request": {
+    "code": "92",
+    "id": 1,
+    "service": 4
+  },
+  "response": {
+    "body": {
+      "code": "92",
+      "id": 1,
+      "service": 4
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
