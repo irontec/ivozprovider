@@ -41,6 +41,19 @@
       <code>$code</code>
     </InvalidScalarArgument>
   </file>
+  <file src="src/Controller/Provider/CreateHolidayDatesAction.php">
+    <MixedArgument occurrences="9">
+      <code>$body['calendar']</code>
+      <code>$body['endDate']</code>
+      <code>$body['locution']</code>
+      <code>$body['name']</code>
+      <code>$body['routeType']</code>
+      <code>$body['startDate']</code>
+      <code>$body['timeIn']</code>
+      <code>$body['timeOut']</code>
+      <code>$body['wholeDayEvent']</code>
+    </MixedArgument>
+  </file>
   <file src="src/Controller/Provider/ExtensionsUnassignedAction.php">
     <MixedAssignment occurrences="1">
       <code>$response[]</code>
