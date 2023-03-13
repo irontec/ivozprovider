@@ -1,0 +1,17 @@
+{
+  "body": [
+    {
+      "name": "pick up group",
+      "id": 1,
+      "userIds": [1]
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/pick_up_groups?_page=1",
+    "x-last-page": "/api/client/pick_up_groups?_page=1",
+    "x-next-page": "/api/client/pick_up_groups?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
