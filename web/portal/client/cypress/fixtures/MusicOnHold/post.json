@@ -1,0 +1,42 @@
+{
+  "request": {
+    "name": "Something new",
+    "status": "pending",
+    "originalFile": {
+      "fileSize": 20,
+      "mimeType": "text/plain; charset=us-ascii",
+      "baseName": "uploadable"
+    },
+    "encodedFile": {
+      "fileSize": null,
+      "mimeType": null,
+      "baseName": null
+    }
+  },
+  "response": {
+    "body": {
+      "name": "Something new",
+      "status": "pending",
+      "id": 2,
+      "originalFile": {
+        "fileSize": 20,
+        "mimeType": "text/plain; charset=us-ascii",
+        "baseName": "uploadable"
+      },
+      "encodedFile": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      }
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
