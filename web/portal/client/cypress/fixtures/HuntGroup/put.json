@@ -1,0 +1,38 @@
+{
+  "request": {
+    "name": "updatedHuntGroup",
+    "description": "desc",
+    "strategy": "ringAll",
+    "ringAllTimeout": 10,
+    "noAnswerTargetType": "voicemail",
+    "noAnswerNumberValue": null,
+    "preventMissedCalls": 1,
+    "allowCallForwards": 0,
+    "id": 1,
+    "noAnswerLocution": null,
+    "noAnswerExtension": null,
+    "noAnswerVoicemail": 1,
+    "noAnswerNumberCountry": null
+  },
+  "response": {
+    "body": {
+      "name": "updatedHuntGroup",
+      "description": "desc",
+      "strategy": "ringAll",
+      "ringAllTimeout": 10,
+      "noAnswerTargetType": "voicemail",
+      "noAnswerNumberValue": null,
+      "preventMissedCalls": 1,
+      "allowCallForwards": 0,
+      "id": 1,
+      "noAnswerLocution": null,
+      "noAnswerExtension": null,
+      "noAnswerVoicemail": 1,
+      "noAnswerNumberCountry": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
