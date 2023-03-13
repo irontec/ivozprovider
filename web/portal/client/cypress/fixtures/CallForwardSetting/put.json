@@ -1,0 +1,44 @@
+{
+  "request": {
+    "callTypeFilter": "internal",
+    "callForwardType": "inconditional",
+    "targetType": "number",
+    "numberValue": "946002021",
+    "noAnswerTimeout": 0,
+    "enabled": true,
+    "id": 1,
+    "user": 1,
+    "friend": null,
+    "extension": null,
+    "voicemail": null,
+    "numberCountry": 1,
+    "residentialDevice": null,
+    "retailAccount": null,
+    "cfwToRetailAccount": null,
+    "ddi": null
+  },
+  "response": {
+    "body": {
+      "callTypeFilter": "internal",
+      "callForwardType": "inconditional",
+      "targetType": "number",
+      "numberValue": "946002021",
+      "noAnswerTimeout": 0,
+      "enabled": true,
+      "id": 1,
+      "user": 1,
+      "friend": null,
+      "extension": null,
+      "voicemail": null,
+      "numberCountry": 1,
+      "residentialDevice": null,
+      "retailAccount": null,
+      "cfwToRetailAccount": null,
+      "ddi": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
