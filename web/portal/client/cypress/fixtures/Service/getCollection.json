@@ -1,0 +1,84 @@
+{
+  "body": [
+    {
+      "iden": "DirectPickUp",
+      "defaultCode": "94",
+      "extraArgs": true,
+      "id": 1,
+      "name": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      }
+    },
+    {
+      "iden": "GroupPickUp",
+      "defaultCode": "95",
+      "extraArgs": false,
+      "id": 2,
+      "name": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      }
+    },
+    {
+      "iden": "Voicemail",
+      "defaultCode": "93",
+      "extraArgs": true,
+      "id": 3,
+      "name": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      }
+    },
+    {
+      "iden": "CloseLock",
+      "defaultCode": "30",
+      "extraArgs": true,
+      "id": 5,
+      "name": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/services?_page=1",
+    "x-last-page": "/api/client/services?_page=1",
+    "x-next-page": "/api/client/services?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
