@@ -1,0 +1,17 @@
+{
+  "body": {
+    "name": "SchedulerName",
+    "unit": "day",
+    "frequency": 1,
+    "callDirection": "outbound",
+    "email": "something@domain.net",
+    "lastExecution": "2018-12-01 09:00:00",
+    "lastExecutionError": "",
+    "nextExecution": "2018-12-02 09:00:00",
+    "id": 1
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

@@ -1,0 +1,23 @@
+{
+  "body": [
+    {
+      "name": "SchedulerName",
+      "unit": "day",
+      "frequency": 1,
+      "callDirection": "outbound",
+      "email": "something@domain.net",
+      "lastExecution": "2018-12-01 09:00:00",
+      "lastExecutionError": "",
+      "nextExecution": "2018-12-02 09:00:00",
+      "id": 1
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/call_csv_schedulers?_page=1",
+    "x-last-page": "/api/client/call_csv_schedulers?_page=1",
+    "x-next-page": "/api/client/call_csv_schedulers?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

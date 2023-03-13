@@ -1,0 +1,48 @@
+{
+  "request": {
+    "name": "new scheduler name",
+    "unit": "day",
+    "frequency": 2,
+    "callDirection": "outbound",
+    "email": "something@domain.net",
+    "lastExecution": null,
+    "lastExecutionError": null,
+    "nextExecution": "2018-12-02 09:00:00",
+    "callCsvNotificationTemplate": null,
+    "ddi": 1,
+    "retailAccount": null,
+    "residentialDevice": null,
+    "user": null,
+    "fax": null,
+    "friend": null
+  },
+  "response": {
+    "body": {
+      "name": "new scheduler name",
+      "unit": "day",
+      "frequency": 2,
+      "callDirection": "outbound",
+      "email": "something@domain.net",
+      "lastExecution": null,
+      "lastExecutionError": null,
+      "nextExecution": "2018-12-02 09:00:00",
+      "id": 2,
+      "callCsvNotificationTemplate": null,
+      "ddi": 1,
+      "retailAccount": null,
+      "residentialDevice": null,
+      "user": null,
+      "fax": null,
+      "friend": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
