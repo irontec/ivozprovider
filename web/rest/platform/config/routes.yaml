@@ -36,3 +36,10 @@ put_billable_call_rate_by_callid:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\BillableCall\BillableCall'
     _api_item_operation_name: 'put_billable_call_rate_by_callid'
     _api_receive: false
+
+get_invoice_preview:
+  path: '/invoice_templates/{id}/preview'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\InvoiceTemplatePreviewAction
+    _api_item_operation_name: 'get_invoice_preview'
