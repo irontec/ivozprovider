@@ -2,7 +2,7 @@
 
 namespace Controller\Provider;
 
-use Service\InvoiceTemplate\InvoiceTemplateGenerator;
+use Ivoz\Provider\Domain\Service\InvoiceTemplate\InvoiceTemplateGenerator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
