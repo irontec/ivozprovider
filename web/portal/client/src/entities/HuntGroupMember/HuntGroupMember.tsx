@@ -1,4 +1,4 @@
-import GroupsIcon from '@mui/icons-material/Groups';
+import Groups3Icon from '@mui/icons-material/Groups3';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -64,7 +64,7 @@ const columns = [
 
 const huntGroupMember: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: GroupsIcon,
+  icon: Groups3Icon,
   iden: 'HuntGroupMember',
   title: _('Hunt Group member', { count: 2 }),
   path: '/hunt_group_members',

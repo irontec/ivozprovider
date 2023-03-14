@@ -1,0 +1,35 @@
+{
+  "body": [
+    {
+      "timeoutTime": 1,
+      "priority": 1,
+      "id": 1,
+      "huntGroup": {
+        "name": "testHuntGroup",
+        "description": "desc",
+        "strategy": "ringAll",
+        "ringAllTimeout": 10,
+        "noAnswerTargetType": null,
+        "noAnswerNumberValue": null,
+        "preventMissedCalls": 1,
+        "id": 1,
+        "noAnswerLocution": null,
+        "noAnswerExtension": null,
+        "noAnswerVoicemail": null,
+        "noAnswerNumberCountry": null
+      },
+      "user": {
+        "name": "testHuntGroup"
+      },
+      "routeType": "user"
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/hunt_group_members?_page=1",
+    "x-last-page": "/api/client/hunt_group_members?_page=1",
+    "x-next-page": "/api/client/hunt_group_members?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
