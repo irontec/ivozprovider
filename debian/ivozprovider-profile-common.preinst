@@ -18,6 +18,9 @@ db_stop
 # Make resolv editable
 /usr/bin/chattr -i /etc/resolv.conf
 
+# If resolv.conf is a symlink, break it
+[ -L /etc/resolv.conf ] && rm -f /etc/resolv.conf
+
 /bin/cat > /etc/resolv.conf <<- EOM
 # THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.
 domain ivozprovider.local
