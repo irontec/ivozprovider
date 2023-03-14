@@ -24,9 +24,6 @@ services:
     DataFixtures\:
         resource: '../../../../library/DataFixtures/*'
 
-    Service\InvoiceTemplate\:
-        resource: '../src/Service/InvoiceTemplate/*'
-
     Service\UserProvider:
         arguments:
             $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
