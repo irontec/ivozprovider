@@ -11,6 +11,9 @@ if [ -z "$2" ]; then
     echo >> /root/.bashrc
 fi
 
+# Add date and time to history entries
+grep -q HISTTIMEFORMAT /etc/environment || echo 'export HISTTIMEFORMAT="%F %T "' >> /etc/environment
+
 # Change storage perms
 chmod 777 /opt/irontec/ivozprovider/storage
 
