@@ -52,15 +52,7 @@ const properties: HuntGroupMemberProperties = {
   },
 };
 
-const columns = [
-  'target',
-  'huntGroup',
-  'routeType',
-  'numberCountry',
-  'numberValue',
-  'timeoutTime',
-  'priority',
-];
+const columns = ['target', 'huntGroup', 'timeoutTime', 'priority'];
 
 const huntGroupMember: EntityInterface = {
   ...defaultEntityBehavior,
