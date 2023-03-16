@@ -41,9 +41,11 @@ const properties: HuntGroupMemberProperties = {
   },
   timeoutTime: {
     label: _('Timeout time'),
+    required: true,
   },
   priority: {
     label: _('Priority'),
+    required: true,
   },
   target: {
     label: _('Target'),
