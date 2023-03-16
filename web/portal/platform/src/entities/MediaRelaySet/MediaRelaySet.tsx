@@ -1,14 +1,18 @@
 import PlayLessonIcon from '@mui/icons-material/PlayLesson';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import selectOptions from './SelectOptions';
 import Form from './Form';
 import {
   MediaRelaySetProperties,
   MediaRelaySetPropertyList,
 } from './MediaRelaySetProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
 
 const properties: MediaRelaySetProperties = {
   description: {
@@ -19,14 +23,23 @@ const properties: MediaRelaySetProperties = {
   },
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === MediaRelaySet.iden
+  ) {
+    if (row.id === 0) {
+      return null;
+    }
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const MediaRelaySet: EntityInterface = {
   ...defaultEntityBehavior,
-  acl: {
-    ...defaultEntityBehavior.acl,
-    update: false,
-    delete: false,
-    detail: false,
-  },
   icon: PlayLessonIcon,
   iden: 'MediaRelaySet',
   title: _('Media Relay Set', { count: 2 }),
@@ -35,6 +48,7 @@ const MediaRelaySet: EntityInterface = {
   properties,
   columns: ['name', 'description'],
   selectOptions,
+  ChildDecorator,
   Form,
 };
 
