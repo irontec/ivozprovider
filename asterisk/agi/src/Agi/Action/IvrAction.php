@@ -98,9 +98,6 @@ class IvrAction
             if ($entryMatched) {
                 $this->agi->notice("Entered value %d matches entry %s.", $userPressed, $entry->getEntry());
 
-                // Entered data matched one of the entries, play success (if any)
-                $this->agi->playbackLocution($ivr->getSuccessLocution());
-
                 // Play success locution (if any)
                 $successLocution = is_null($entry->getWelcomeLocution())
                     ? $ivr->getSuccessLocution()
