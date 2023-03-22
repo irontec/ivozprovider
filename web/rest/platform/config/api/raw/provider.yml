@@ -179,6 +179,13 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+    - and:
+      - domain: 
+          neq: '"users.ivozprovider.local"'
+      - domain:
+          neq: '"trunks.ivozprovider.local"'
+          
 
 Ivoz\Provider\Domain\Model\Feature\Feature:
   attributes:
