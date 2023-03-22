@@ -23,7 +23,7 @@ const properties: MediaRelaySetProperties = {
   },
 };
 
-export const ChildDecorator: ChildDecoratorType = (props) => {
+const ChildDecorator: ChildDecoratorType = (props) => {
   const { routeMapItem, row } = props;
 
   if (
