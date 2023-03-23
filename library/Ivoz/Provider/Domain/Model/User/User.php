@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\User;
 
+use DomainException;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
@@ -78,6 +79,10 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             $this->sanitizeNew();
         }
 
+        if ($this->getActive() && !$this->getEmail()) {
+            throw new DomainException('You must set an email to enable user portal access');
+        }
+
         if (!$this->getTimezone()) {
             $this->setTimezone(
                 $this->getCompanyTimezone()
@@ -90,9 +95,6 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             if (!$this->getPass()) {
                 throw new \DomainException('Active users must have a password');
             }
-        } else {
-            $this->setActive(false);
-            $this->setPass(null);
         }
     }
 
