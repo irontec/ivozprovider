@@ -223,6 +223,7 @@ Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
   itemOperations:
     get: ~
     put: ~
+    delete: ~
   collectionOperations:
     get: ~
     post: ~
