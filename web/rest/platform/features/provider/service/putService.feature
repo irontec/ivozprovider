@@ -11,21 +11,8 @@ Feature: Update services
       And I send a "PUT" request to "/services/1" with body:
       """
       {
-          "iden": "UpdatedDirectPickUp",
           "defaultCode": "98",
-          "extraArgs": true,
-          "name": {
-              "en": "english",
-              "es": "ingles",
-              "ca": "ingles",
-              "it": "italiano"
-          },
-          "description": {
-              "en": "descEn",
-              "es": "descEs",
-              "ca": "descCa",
-              "it": "descIt"
-          }
+          "extraArgs": true
       }
       """
      Then the response status code should be 200
@@ -34,10 +21,36 @@ Feature: Update services
       And the JSON should be equal to:
       """
       {
-          "iden": "UpdatedDirectPickUp",
+          "iden": "DirectPickUp",
           "defaultCode": "98",
           "extraArgs": true,
           "id": 1,
+          "name": {
+              "en": "en",
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
+          },
+          "description": {
+              "en": "en",
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
+          }
+      }
+      """
+
+  @createSchema
+  Scenario: Cannot update required services field
+    Given I add Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/services/1" with body:
+      """
+      {
+          "iden": "UpdatedDirectPickUp",
+          "defaultCode": "98",
+          "extraArgs": true,
           "name": {
               "en": "english",
               "es": "ingles",
@@ -52,3 +65,4 @@ Feature: Update services
           }
       }
       """
+     Then the response status code should be 400
