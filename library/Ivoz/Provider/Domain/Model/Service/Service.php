@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Service;
 
 use Assert\Assertion;
+use DomainException;
 
 /**
  * Service
@@ -52,6 +53,43 @@ class Service extends ServiceAbstract implements ServiceInterface
     {
         return parent::getChangeSet();
     }
+
+    /**
+     * @throws \Exception
+     */
+    protected function sanitizeValues(): void
+    {
+
+        if (!$this->isNew()) {
+            $changedIden = $this->hasChanged('iden');
+
+            if ($changedIden) {
+                throw new \DomainException('Forbidden service iden update ');
+            }
+
+            $changedName =
+                $this->hasChanged('nameEn')
+                || $this->hasChanged('nameEs')
+                || $this->hasChanged('nameCa')
+                || $this->hasChanged('nameIt');
+
+            if ($changedName) {
+                throw new \DomainException('Forbidden service name update ');
+            }
+
+            $changedDescription =
+                $this->hasChanged('descriptionEn')
+                || $this->hasChanged('descriptionEs')
+                || $this->hasChanged('descriptionCa')
+                || $this->hasChanged('descriptionIt');
+
+            if ($changedDescription) {
+                throw new \DomainException('Forbidden service description update ');
+            }
+        }
+    }
+
+
 
     /**
      * Get id
