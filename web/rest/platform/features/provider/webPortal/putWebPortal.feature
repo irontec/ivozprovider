@@ -44,7 +44,7 @@ Feature: Update web portals
           },
           "brand": 2
       }
-    """features/provider/brand/getBrands.feature
+    """
 
   @createSchema
   Scenario: Update a web portal logo
