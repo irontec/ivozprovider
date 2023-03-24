@@ -229,6 +229,10 @@ Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
     post: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    delete_access_control:
+      ROLE_SUPER_ADMIN:
+        id:
+          neq: 1
 
 Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand:
   itemOperations:
