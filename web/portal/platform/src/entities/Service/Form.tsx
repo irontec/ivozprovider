@@ -5,6 +5,7 @@ import defaultEntityBehavior, {
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const DefaultEntityForm = defaultEntityBehavior.Form;
+  const edit = props.edit || false;
 
   const groups: Array<FieldsetGroups | false> = [
     {
@@ -29,7 +30,13 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
   ];
 
-  return <DefaultEntityForm {...props} groups={groups} />;
+  return (
+    <DefaultEntityForm
+      {...props}
+      readOnlyProperties={{ iden: edit, name: edit, description: edit }}
+      groups={groups}
+    />
+  );
 };
 
 export default Form;

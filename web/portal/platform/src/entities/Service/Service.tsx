@@ -26,7 +26,7 @@ const properties: ServiceProperties = {
     label: _('Code'),
     maxLength: 3,
     prefix: '*',
-    pattern: new RegExp('/[#0-9*]+/'),
+    pattern: new RegExp('^[#0-9]{1,3}$'),
     helpText: _(
       'Future brands will have services enabled with this codes by default'
     ),
