@@ -98,6 +98,8 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
           neq: "1"
         company:
           isNull: ~
+        brand:
+          isNull: ~
     write_access_control:
       ROLE_SUPER_ADMIN:
         raw: "id > 0 or id === null"
