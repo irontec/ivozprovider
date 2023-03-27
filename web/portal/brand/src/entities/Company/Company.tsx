@@ -48,21 +48,27 @@ const properties: CompanyProperties = {
   invoicing: {},
   'invoicing.nif': {
     label: _('Nif'),
+    required: false,
   },
   'invoicing.postalAddress': {
     label: _('Postal address'),
+    required: false,
   },
   'invoicing.postalCode': {
     label: _('Postal code'),
+    required: false,
   },
   'invoicing.town': {
     label: _('Town'),
+    required: false,
   },
   'invoicing.province': {
     label: _('Province'),
+    required: false,
   },
   'invoicing.countryName': {
     label: _('Country', { count: 1 }),
+    required: false,
   },
   ipfilter: {
     label: _('Filter by IP address'),
