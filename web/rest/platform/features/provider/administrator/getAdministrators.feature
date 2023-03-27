@@ -24,15 +24,6 @@ Feature: Retrieve administrators
               "id": 1
           },
           {
-              "username": "test_brand_admin",
-              "email": "nightwatch@irontec.com",
-              "active": true,
-              "restricted": false,
-              "name": "night",
-              "lastname": "watch",
-              "id": 2
-          },
-          {
               "username": "irontec",
               "email": "vozip@irontec.com",
               "active": true,
@@ -49,15 +40,6 @@ Feature: Retrieve administrators
               "name": "Admin in UTC timezone",
               "lastname": "Admin Lastname",
               "id": 5
-          },
-          {
-              "username": "restrictedBrandAdmin",
-              "email": "restrictedAdmin@irontec.com",
-              "active": true,
-              "restricted": true,
-              "name": "RestrictedAdmin",
-              "lastname": "Lastname",
-              "id": 6
           }
       ]
       """
