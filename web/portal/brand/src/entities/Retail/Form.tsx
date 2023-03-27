@@ -29,6 +29,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
       if (!aboutMe?.features.includes(feature.extraData?.iden as string)) {
         continue;
       }
+
+      if (feature.extraData?.iden === 'faxes') {
+        continue;
+      }
+
       filteredFeatures.push(feature);
     }
 
@@ -45,11 +50,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
   )?.id as number | null;
   const recordingEnabled =
     formik.values.featureIds.includes(recordingFeatureId);
-
-  const faxFeatureId = featureIds.find(
-    (row: EntityValues) => (row.extraData as EntityValues).iden === 'faxes'
-  )?.id as number | null;
-  const faxEnabled = formik.values.featureIds.includes(faxFeatureId);
 
   const groups: Array<FieldsetGroups | false> = [
     {
@@ -102,7 +102,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Notification options'),
       fields: [
         'voicemailNotificationTemplate',
-        faxEnabled && 'faxNotificationTemplate',
         hasInvoicesFeature && 'invoiceNotificationTemplate',
         'callCsvNotificationTemplate',
         'maxDailyUsageNotificationTemplate',
