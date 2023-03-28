@@ -8,10 +8,12 @@ import { foreignKeyGetter } from './ForeignKeyGetter';
 import { RetailAccountProperties } from './RetailAccountProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 import StatusIcon from './Field/StatusIcon';
+import Password from '../ResidentialDevice/Field/Password';
 
 const properties: RetailAccountProperties = {
   company: {
     label: _('Client'),
+    required: true,
   },
   name: {
     label: _('Name'),
@@ -49,13 +51,13 @@ const properties: RetailAccountProperties = {
   },
   password: {
     label: _('Password'),
+    component: Password,
     pattern: new RegExp(
       '^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$'
     ),
     helpText: _(
       "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'"
     ),
-    //@TODO pass generator
   },
   outgoingDdi: {
     label: _('Fallback Outgoing DDI'),
@@ -78,11 +80,11 @@ const properties: RetailAccountProperties = {
     visualToggle: {
       yes: {
         show: ['ip', 'port', 'transport'],
-        hide: [],
+        hide: ['multiContact'],
       },
       no: {
         hide: ['ip', 'port', 'transport'],
-        show: [],
+        show: ['multiContact'],
       },
     },
   },
@@ -126,7 +128,7 @@ const properties: RetailAccountProperties = {
   },
   multiContact: {
     label: _('Multi contact'),
-    default: 1,
+    default: 0,
     enum: {
       '0': _('No'),
       '1': _('Yes'),
