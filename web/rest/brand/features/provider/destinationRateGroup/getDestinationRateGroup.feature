@@ -23,6 +23,12 @@ Feature: Retrieve destination rate group
                   "ca": "Standard",
                   "it": "Standard"
               },
+              "description": {
+                  "en": "",
+                  "es": "",
+                  "ca": "",
+                  "it": ""
+              },
               "file": {
                   "fileSize": null,
                   "mimeType": null,
@@ -38,6 +44,12 @@ Feature: Retrieve destination rate group
                   "es": "Fallback",
                   "ca": "Fallback",
                   "it": "Fallback"
+              },
+              "description": {
+                  "en": "",
+                  "es": "",
+                  "ca": "",
+                  "it": ""
               },
               "file": {
                   "fileSize": null,
