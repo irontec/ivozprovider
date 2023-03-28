@@ -35,6 +35,7 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
                 'status' => 'status',
                 'id' => 'id',
                 'name' => ['en', 'es','ca','it'],
+                'description' => ['en', 'es','ca','it'],
                 'file' => ['fileSize', 'mimeType', 'baseName'],
                 'brandId' => 'brand',
                 'currencyId' => 'currency'
