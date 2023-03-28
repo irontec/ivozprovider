@@ -8,6 +8,7 @@ import Form from './Form';
 import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
 import selectOptions from './SelectOptions';
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
+import Password from './Field/Password';
 
 const properties: ResidentialDeviceProperties = {
   name: {
@@ -41,7 +42,7 @@ const properties: ResidentialDeviceProperties = {
   },
   password: {
     label: _('Password'),
-    //@TODO pass generator
+    component: Password,
     pattern: new RegExp(
       `^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$`
     ),
@@ -55,18 +56,19 @@ const properties: ResidentialDeviceProperties = {
   },
   directConnectivity: {
     label: _('Direct connectivity'),
+    default: 'no',
     enum: {
       yes: _('Yes'),
       no: _('No'),
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport', 'auth_needed'],
+        show: ['ip', 'port', 'transport'],
         hide: ['multiContact'],
       },
       no: {
         show: ['multiContact'],
-        hide: ['ip', 'port', 'transport', 'auth_needed'],
+        hide: ['ip', 'port', 'transport'],
       },
     },
   },
