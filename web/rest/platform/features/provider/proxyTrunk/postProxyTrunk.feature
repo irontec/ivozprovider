@@ -23,14 +23,14 @@ Feature: Create proxy trunks
       {
         "name": "proxyTrunkPlatform1",
         "ip": "0.0.0.0",
-        "id": 3
+        "id": 4
       }
       """
 
   Scenario: Retrieve created proxy trunk rel brand
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "proxy_trunks/3"
+      And I send a "GET" request to "proxy_trunks/4"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -39,6 +39,6 @@ Feature: Create proxy trunks
       {
         "name": "proxyTrunkPlatform1",
         "ip": "0.0.0.0",
-        "id": 3
+        "id": 4
       }
       """

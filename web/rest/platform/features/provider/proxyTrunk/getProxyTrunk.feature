@@ -14,17 +14,22 @@ Feature: Retrieve proxy trunks
       And the JSON should be equal to:
       """
       [
-            {
-                "name": "proxytrunks",
-                "ip": "127.0.0.1",
-                "id": 1
-            },
-            {
-                "name": "ExtraIP",
-                "ip": "127.0.0.3",
-                "id": 2
-            }
-        ]
+          {
+              "name": "proxytrunks",
+              "ip": "127.0.0.1",
+              "id": 1
+          },
+          {
+              "name": "ExtraIP",
+              "ip": "127.0.0.3",
+              "id": 2
+          },
+          {
+              "name": "ip_for_delete_process",
+              "ip": "10.50.23.146",
+              "id": 3
+          }
+      ]
       """
 
   Scenario: Retrieve certain proxy trunk json
