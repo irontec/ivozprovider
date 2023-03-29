@@ -152,7 +152,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: {
                 ...entities.HuntGroupMember,
-                columns: ['routeType', 'target', 'timeoutTime'],
+                columns: ['routeType', 'target', 'timeoutTime', 'priority'],
               },
               filterBy: 'huntGroup',
             },
