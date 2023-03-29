@@ -19,9 +19,9 @@ const Form = (props: EntityFormProps): JSX.Element => {
     {
       legend: '',
       fields: [
+        'company',
         'name',
         'description',
-        'company',
         'password',
         'directConnectivity',
         'ip',

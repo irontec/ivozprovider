@@ -123,6 +123,7 @@ const properties: ResidentialDeviceProperties = {
   },
   company: {
     label: _('Client'),
+    required: true,
   },
   transformationRuleSet: {
     label: _('Numeric transformation', { count: 1 }),
