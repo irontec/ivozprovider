@@ -25,6 +25,10 @@ const getEntityMap = (): ExtendedRouteMap => {
               filterBy: 'brand',
             },
             ...Object.values(entities.Brand.customActions),
+            {
+              entity: entities.WebPortal,
+              filterBy: 'brand',
+            },
           ],
         },
         {
