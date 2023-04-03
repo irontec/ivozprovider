@@ -105,3 +105,11 @@ post_holiday_dates_range:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRange'
     _api_collection_operation_name: 'post_holiday_dates_range'
     _api_receive: false
+
+get_multiple_recorderded_files:
+  path: '/recordings/recorded_files_zip'
+  methods: [ 'GET' ]
+  defaults:
+    _controller: Controller\Provider\RecordedFilesZipAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Recording\Recording'
+    _api_collection_operation_name: 'get_multiple_recorderded_files'

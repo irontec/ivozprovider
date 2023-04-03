@@ -1569,10 +1569,32 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
 
 Ivoz\Provider\Domain\Model\Recording\Recording:
   itemOperations:
-    get: ~
+    get:
+      method: 'GET'
+      path: '/recordings/{id}'
+      requirements:
+        id: '\d+'
     delete: ~
   collectionOperations:
     get: ~
+    get_multiple_recorderded_files:
+      method: 'GET'
+      path: '/recordings/recorded_files_zip'
+      route_name: 'get_multiple_recorderded_files'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/octet-stream'
+        tags:
+          - Provider
+        parameters:
+          - name: _recordingIds
+            in: query
+            type: array
+            required: false
+            items:
+              type: string
+            description: 'Ensure download of multiple recording files'
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
