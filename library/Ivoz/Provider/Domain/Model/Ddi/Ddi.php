@@ -50,6 +50,17 @@ class Ddi extends DdiAbstract implements DdiInterface
 
     protected function sanitizeValues(): void
     {
+        $isNew = $this->isNew();
+        $changedClient = $this->hasChanged('companyId');
+
+        if (!$isNew && $changedClient) {
+            throw new \DomainException(
+                'Forbidden ddi client update',
+                403
+            );
+        }
+
+
         if (! $this->getCountry()) {
             $this->setCountry(
                 $this->getCompany()->getCountry()
