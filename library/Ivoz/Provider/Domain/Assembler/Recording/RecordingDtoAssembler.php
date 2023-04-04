@@ -4,10 +4,9 @@ namespace Ivoz\Provider\Domain\Assembler\Recording;
 
 use Assert\Assertion;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Domain\Service\StoragePathResolverCollection;
-use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 
 class RecordingDtoAssembler implements CustomDtoAssemblerInterface
@@ -32,7 +31,7 @@ class RecordingDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        if ($recording->getRecordedFile()->getFileSize()) {
+        if ($recording->getRecordedFile()->getFileSize() !== null) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('RecordedFile');

@@ -2,50 +2,38 @@
 
 namespace DataFixtures\ORM;
 
+use DataFixtures\Stub\Provider\RecordingStub;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\Recording\Recording;
-use Ivoz\Provider\Domain\Model\Recording\RecordedFile;
 
 class ProviderRecording extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
+    public function __construct(
+        private RecordingStub $recordingStub,
+    ) {
+    }
     /**
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager)
     {
-        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Recording::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        /** @var Recording $item1 */
-        $item1 = $this->createEntityInstance(Recording::class);
+        $entities = $this->recordingStub->getAll();
 
-
-        (function () use ($fixture) {
-            $this->setCallid('7602fd7f-4153-4475-9100-d89ff70cdf76');
-            $this->calldate = new \DateTime('2017-01-05 00:15:15', new \DateTimeZone('UTC'));
-            $this->setType('ondemand');
-            $this->setDuration(3);
-            $this->setCaller('34946002020');
-            $this->setCallee('34946002021');
-            $this->recordedFile = new RecordedFile(
-                4280,
-                'audio/mpeg; charset=binary',
-                '7602fd7f-4153-4475-9100-d89ff70cdf76.0.mp3'
+        foreach ($entities as $entity) {
+            $this->addReference(
+                '_reference_Recording' . $entity->getId(),
+                $entity
             );
-            $this->setCompany(
-                $fixture->getReference('_reference_ProviderCompany1')
-            );
-        })->call($item1);
-
-        $this->addReference('_reference_ProviderRecording1', $item1);
-        $this->sanitizeEntityValues($item1);
-        $manager->persist($item1);
+            $manager->persist($entity);
+        }
 
         $manager->flush();
     }
