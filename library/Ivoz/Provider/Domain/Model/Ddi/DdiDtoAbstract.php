@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto;
@@ -41,6 +41,11 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
+    private $description = null;
+
+    /**
+     * @var string|null
+     */
     private $recordCalls = 'none';
 
     /**
@@ -54,14 +59,14 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     private $routeType = null;
 
     /**
-     * @var bool|null
+     * @var string|null
      */
-    private $billInboundCalls = false;
+    private $friendValue = null;
 
     /**
      * @var string|null
      */
-    private $friendValue = null;
+    private $type = 'inout';
 
     /**
      * @var int|null
@@ -163,11 +168,12 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return [
             'ddi' => 'ddi',
             'ddie164' => 'ddie164',
+            'description' => 'description',
             'recordCalls' => 'recordCalls',
             'displayName' => 'displayName',
             'routeType' => 'routeType',
-            'billInboundCalls' => 'billInboundCalls',
             'friendValue' => 'friendValue',
+            'type' => 'type',
             'id' => 'id',
             'companyId' => 'company',
             'brandId' => 'brand',
@@ -195,11 +201,12 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         $response = [
             'ddi' => $this->getDdi(),
             'ddie164' => $this->getDdie164(),
+            'description' => $this->getDescription(),
             'recordCalls' => $this->getRecordCalls(),
             'displayName' => $this->getDisplayName(),
             'routeType' => $this->getRouteType(),
-            'billInboundCalls' => $this->getBillInboundCalls(),
             'friendValue' => $this->getFriendValue(),
+            'type' => $this->getType(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'brand' => $this->getBrand(),
@@ -256,6 +263,18 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->ddie164;
     }
 
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
     public function setRecordCalls(string $recordCalls): static
     {
         $this->recordCalls = $recordCalls;
@@ -292,18 +311,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->routeType;
     }
 
-    public function setBillInboundCalls(bool $billInboundCalls): static
-    {
-        $this->billInboundCalls = $billInboundCalls;
-
-        return $this;
-    }
-
-    public function getBillInboundCalls(): ?bool
-    {
-        return $this->billInboundCalls;
-    }
-
     public function setFriendValue(?string $friendValue): static
     {
         $this->friendValue = $friendValue;
@@ -314,6 +321,18 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     public function getFriendValue(): ?string
     {
         return $this->friendValue;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 
     public function setId($id): static

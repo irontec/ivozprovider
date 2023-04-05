@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
@@ -589,6 +589,9 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return DdiDto[] | null
+    */
     public function getDdis(): ?array
     {
         return $this->ddis;
@@ -601,6 +604,9 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CallForwardSettingDto[] | null
+    */
     public function getCallForwardSettings(): ?array
     {
         return $this->callForwardSettings;

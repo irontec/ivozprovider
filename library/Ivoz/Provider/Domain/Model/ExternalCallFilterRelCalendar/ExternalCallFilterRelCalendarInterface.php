@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 
@@ -52,6 +52,4 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
     public function getFilter(): ?ExternalCallFilterInterface;
 
     public function getCalendar(): CalendarInterface;
-
-    public function isInitialized(): bool;
 }

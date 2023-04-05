@@ -4,8 +4,8 @@ namespace Ivoz\Kam\Domain\Model\TrunksUacreg;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
@@ -92,6 +92,4 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getDdiProviderRegistration(): DdiProviderRegistrationInterface;
 
     public function getBrand(): BrandInterface;
-
-    public function isInitialized(): bool;
 }

@@ -438,6 +438,7 @@ production:
       required: false
       source:
         data: inline
+        filterClass: IvozProvider_Klear_Filter_CallCsvSchedulerEndpointType
         values:
           '_NULL_':
             title: _('All')

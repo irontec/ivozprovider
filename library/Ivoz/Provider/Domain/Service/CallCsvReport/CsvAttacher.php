@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\CallCsvReport;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
@@ -34,23 +34,23 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    public function execute(CallCsvReportInterface $callCsvReport)
+    public function execute(CallCsvReportInterface $report)
     {
-        $isNew = $callCsvReport->isNew();
+        $isNew = $report->isNew();
         if (!$isNew) {
             return;
         }
 
-        $scheduler = $callCsvReport->getCallCsvScheduler();
+        $scheduler = $report->getCallCsvScheduler();
         if (!$scheduler) {
             return;
         }
 
-        $inDate = $callCsvReport->getInDate();
-        $outDate = $callCsvReport->getOutDate();
+        $inDate = $report->getInDate();
+        $outDate = $report->getOutDate();
 
-        $company = $callCsvReport->getCompany();
-        $brand = $callCsvReport->getBrand();
+        $company = $report->getCompany();
+        $brand = $report->getBrand();
 
         $csvContent = $this->csvExporter->execute(
             $inDate,
@@ -77,11 +77,11 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
 
         /** @var CallCsvReportDto $callCsvReportDto */
         $callCsvReportDto = $this->entityTools->entityToDto(
-            $callCsvReport
+            $report
         );
 
         $timezone = new \DateTimeZone(
-            $callCsvReport->getTimezone()->getTz()
+            $report->getTimezone()->getTz()
         );
         $inDate = $inDate->setTimezone($timezone);
         $outDate = $outDate->setTimezone($timezone);
@@ -103,7 +103,7 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             ->setCsvBaseName($fileName);
 
         $this->entityTools->updateEntityByDto(
-            $callCsvReport,
+            $report,
             $callCsvReportDto
         );
     }

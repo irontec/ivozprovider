@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagDto;
@@ -172,6 +172,9 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingDto[] | null
+    */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
@@ -184,6 +187,9 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CompanyRelRoutingTagDto[] | null
+    */
     public function getRelCompanies(): ?array
     {
         return $this->relCompanies;

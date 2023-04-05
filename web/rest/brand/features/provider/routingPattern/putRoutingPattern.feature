@@ -9,7 +9,7 @@ Feature: Update routing patterns
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/routing_patterns/1" with body:
-    """
+      """
       {
           "prefix": "+349",
           "name": {
@@ -25,12 +25,12 @@ Feature: Update routing patterns
               "it": "it"
           }
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "prefix": "+349",
           "id": 1,
@@ -47,4 +47,4 @@ Feature: Update routing patterns
               "it": "it"
           }
       }
-    """
+      """

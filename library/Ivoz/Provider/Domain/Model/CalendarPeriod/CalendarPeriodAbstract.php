@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\CalendarPeriod;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
@@ -240,11 +240,10 @@ abstract class CalendarPeriodAbstract
     protected function setStartDate(string|\DateTimeInterface $startDate): static
     {
 
-        /** @var \Datetime */
-        $startDate = DateTimeHelper::createOrFix(
-            $startDate,
-            null
-        );
+        /** @var \DateTime */
+        $startDate = !($startDate instanceof \DateTimeInterface)
+            ? \DateTime::createFromFormat($startDate, 'Y-m-d', new \DateTimeZone('UTC'))
+            : $startDate;
 
         if ($this->isInitialized() && $this->startDate == $startDate) {
             return $this;
@@ -263,11 +262,10 @@ abstract class CalendarPeriodAbstract
     protected function setEndDate(string|\DateTimeInterface $endDate): static
     {
 
-        /** @var \Datetime */
-        $endDate = DateTimeHelper::createOrFix(
-            $endDate,
-            null
-        );
+        /** @var \DateTime */
+        $endDate = !($endDate instanceof \DateTimeInterface)
+            ? \DateTime::createFromFormat($endDate, 'Y-m-d', new \DateTimeZone('UTC'))
+            : $endDate;
 
         if ($this->isInitialized() && $this->endDate == $endDate) {
             return $this;

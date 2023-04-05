@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressInterface;
 
 interface BannedAddressLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(BannedAddressInterface $entity): void;
+    public function execute(BannedAddressInterface $bannedAddress): void;
 }

@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDto;
@@ -203,6 +203,9 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingDdiRulesPatternDto[] | null
+    */
     public function getPatterns(): ?array
     {
         return $this->patterns;

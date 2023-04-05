@@ -6,7 +6,7 @@ Feature: Create billable calls
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/billable_calls" with body:
-    """
+      """
       {}
-    """
-    Then the response status code should be 405
+      """
+     Then the response status code should be 405

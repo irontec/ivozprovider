@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface;

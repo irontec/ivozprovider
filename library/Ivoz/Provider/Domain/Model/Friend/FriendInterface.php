@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
@@ -218,8 +218,6 @@ interface FriendInterface extends LoggableEntityInterface
     public function getLanguage(): ?LanguageInterface;
 
     public function getInterCompany(): ?CompanyInterface;
-
-    public function isInitialized(): bool;
 
     public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
 

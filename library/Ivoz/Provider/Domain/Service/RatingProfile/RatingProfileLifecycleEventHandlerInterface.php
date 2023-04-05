@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 
 interface RatingProfileLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(RatingProfileInterface $entity);
+    public function execute(RatingProfileInterface $ratingProfile);
 }

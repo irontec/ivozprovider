@@ -9,23 +9,23 @@ Feature: Create features rel brands
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/features_rel_brands" with body:
-    """
+      """
       {
           "brand": 2,
           "feature": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "id": 8,
           "brand": 2,
           "feature": 1
       }
-    """
+      """
 
   Scenario: Retrieve created features rel brand
     Given I add Authorization header
@@ -35,7 +35,7 @@ Feature: Create features rel brands
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "id": 8,
           "brand": {
@@ -59,7 +59,12 @@ Feature: Create features rel brands
               },
               "language": 1,
               "defaultTimezone": 145,
-              "currency": 2
+              "currency": 2,
+              "voicemailNotificationTemplate": null,
+              "faxNotificationTemplate": null,
+              "invoiceNotificationTemplate": null,
+              "callCsvNotificationTemplate": null,
+              "maxDailyUsageNotificationTemplate": null
           },
           "feature": {
               "iden": "queues",
@@ -72,4 +77,4 @@ Feature: Create features rel brands
               }
           }
       }
-    """
+      """

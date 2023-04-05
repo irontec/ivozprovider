@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
@@ -80,8 +80,6 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     public function getBrand(): BrandInterface;
 
     public function getCurrency(): ?CurrencyInterface;
-
-    public function isInitialized(): bool;
 
     public function addRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface;
 

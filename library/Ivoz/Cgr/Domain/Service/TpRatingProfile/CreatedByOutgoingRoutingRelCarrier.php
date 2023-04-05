@@ -5,7 +5,7 @@ namespace Ivoz\Cgr\Domain\Service\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
 

@@ -1,0 +1,38 @@
+{
+  "request": {
+    "name": "updatesLocution",
+    "status": null,
+    "id": 1,
+    "encodedFile": {
+      "fileSize": null,
+      "mimeType": null,
+      "baseName": null
+    },
+    "originalFile": {
+      "fileSize": null,
+      "mimeType": null,
+      "baseName": null
+    }
+  },
+  "response": {
+    "body": {
+      "name": "updatesLocution",
+      "status": null,
+      "id": 1,
+      "encodedFile": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      },
+      "originalFile": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      }
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

@@ -24,6 +24,7 @@ class ProviderQueue extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(Queue::class);
         (function () use ($fixture) {
             $this->setName("testQueue");
+            $this->setDisplayName("testQueue DisplayName");
             $this->setMaxWaitTime(20);
             $this->setTimeoutTargetType("number");
             $this->setTimeoutNumberValue("946002020");
@@ -31,6 +32,8 @@ class ProviderQueue extends Fixture implements DependentFixtureInterface
             $this->setFullTargetType("number");
             $this->setFullNumberValue("946002021");
             $this->setPeriodicAnnounceFrequency(7);
+            $this->setAnnouncePosition('yes');
+            $this->setAnnounceFrequency(10);
             $this->setMemberCallRest(0);
             $this->setMemberCallTimeout(1);
             $this->setStrategy("rrmemory");

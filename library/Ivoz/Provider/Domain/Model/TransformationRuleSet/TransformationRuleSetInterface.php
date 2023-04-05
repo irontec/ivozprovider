@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
@@ -77,8 +77,6 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getBrand(): ?BrandInterface;
 
     public function getCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 
     public function addRule(TransformationRuleInterface $rule): TransformationRuleSetInterface;
 

@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
@@ -72,8 +72,6 @@ interface RatingProfileInterface extends LoggableEntityInterface
     public function getRatingPlanGroup(): RatingPlanGroupInterface;
 
     public function getRoutingTag(): ?RoutingTagInterface;
-
-    public function isInitialized(): bool;
 
     public function addTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): RatingProfileInterface;
 

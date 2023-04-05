@@ -7,8 +7,8 @@ use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Psr\Log\LoggerInterface;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
 use Symfony\Component\HttpFoundation\Response;
 
 class Cgrates
@@ -83,10 +83,15 @@ class Cgrates
             );
 
         try {
+            /** @var array<string> | false $response */
             $response = $redisMaster->blPop(
                 [RaterReloadInterface::CHANNEL],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . RaterReloadInterface::CHANNEL);
+            }
 
             $data = end($response);
             return \json_decode($data, true);

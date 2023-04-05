@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * UsersLocationAttrInterface
@@ -14,9 +14,8 @@ interface UsersLocationAttrInterface extends EntityInterface
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
      */
-    public function getId(): ?int;
+    public function getId(): ?string;
 
     public static function createDto(string|int|null $id = null): UsersLocationAttrDto;
 
@@ -51,6 +50,4 @@ interface UsersLocationAttrInterface extends EntityInterface
     public function getAvalue(): string;
 
     public function getLastModified(): \DateTime;
-
-    public function isInitialized(): bool;
 }

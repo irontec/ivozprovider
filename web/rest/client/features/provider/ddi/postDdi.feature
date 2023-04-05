@@ -9,14 +9,14 @@ Feature: Create Ddis
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/ddis" with body:
-    """
+      """
       {
           "ddi": "1234",
           "ddie164": "+341234",
+          "description": "Description for DDI 1234",
           "recordCalls": "none",
           "displayName": "",
           "routeType": "user",
-          "billInboundCalls": false,
           "friendValue": "",
           "conferenceRoom": null,
           "language": null,
@@ -31,6 +31,5 @@ Feature: Create Ddis
           "residentialDevice": null,
           "conditionalRoute": null
       }
-    """
-    Then the response status code should be 405
-
+      """
+     Then the response status code should be 405

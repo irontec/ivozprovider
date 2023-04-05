@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
@@ -76,8 +76,6 @@ interface CarrierInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    public function getExternallyRated(): ?bool;
-
     public function getBalance(): ?float;
 
     public function getCalculateCost(): ?bool;
@@ -91,8 +89,6 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getProxyTrunk(): ?ProxyTrunkInterface;
 
     public function getMediaRelaySets(): ?MediaRelaySetInterface;
-
-    public function isInitialized(): bool;
 
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): CarrierInterface;
 

@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrGateway;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto;

@@ -30,6 +30,9 @@ class ProviderRatingPlanGroups extends Fixture implements DependentFixtureInterf
         (function () use ($fixture) {
             $this->name = new Name('Something', 'Algo', 'Algo mes', 'Più');
             $this->description = new Description('en', 'es', 'ca', 'it');
+            $this->setCurrency(
+                $fixture->getReference('_reference_ProviderCurrency1')
+            );
             $this->setBrand(
                 $fixture->getReference('_reference_ProviderBrand1')
             );
@@ -44,6 +47,9 @@ class ProviderRatingPlanGroups extends Fixture implements DependentFixtureInterf
         (function () use ($fixture) {
             $this->name = new Name('Something more', 'Algo más', 'Algo mes', 'Più');
             $this->description = new Description('en', 'es', 'ca', 'it');
+            $this->setCurrency(
+                $fixture->getReference('_reference_ProviderCurrency1')
+            );
             $this->setBrand(
                 $fixture->getReference('_reference_ProviderBrand1')
             );
@@ -60,6 +66,7 @@ class ProviderRatingPlanGroups extends Fixture implements DependentFixtureInterf
     {
         return array(
             ProviderBrand::class,
+            ProviderCurrency::class,
         );
     }
 }

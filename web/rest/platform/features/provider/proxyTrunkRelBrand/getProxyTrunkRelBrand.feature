@@ -6,13 +6,13 @@ Feature: Retrieve proxy trunks rel brands
   @createSchema
   Scenario: Retrieve the proxy trunks rel brands json list
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "proxy_trunks_rel_brands"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "proxy_trunks_rel_brands"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "id": 1,
@@ -37,7 +37,12 @@ Feature: Retrieve proxy trunks rel brands
                   },
                   "language": 1,
                   "defaultTimezone": 145,
-                  "currency": 1
+                  "currency": 1,
+                  "voicemailNotificationTemplate": null,
+                  "faxNotificationTemplate": null,
+                  "invoiceNotificationTemplate": null,
+                  "callCsvNotificationTemplate": null,
+                  "maxDailyUsageNotificationTemplate": null
               },
               "proxyTrunk": {
                   "name": "proxytrunks",
@@ -46,17 +51,17 @@ Feature: Retrieve proxy trunks rel brands
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain proxy trunk rel brand json
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "proxy_trunks_rel_brands/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "proxy_trunks_rel_brands/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "id": 1,
           "brand": {
@@ -80,7 +85,12 @@ Feature: Retrieve proxy trunks rel brands
               },
               "language": 1,
               "defaultTimezone": 145,
-              "currency": 1
+              "currency": 1,
+              "voicemailNotificationTemplate": null,
+              "faxNotificationTemplate": null,
+              "invoiceNotificationTemplate": null,
+              "callCsvNotificationTemplate": null,
+              "maxDailyUsageNotificationTemplate": null
           },
           "proxyTrunk": {
               "name": "proxytrunks",
@@ -88,4 +98,4 @@ Feature: Retrieve proxy trunks rel brands
               "id": 1
           }
       }
-    """
+      """

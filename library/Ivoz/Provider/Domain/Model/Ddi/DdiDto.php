@@ -33,6 +33,7 @@ class DdiDto extends DdiDtoAbstract
                 'countryId' => 'country',
                 'ddi' => 'ddi',
                 'ddie164' => 'ddie164',
+                'description' => 'description',
                 'externalCallFilterId' => 'externalCallFilter',
                 'routeType' => 'routeType',
                 'friendValue' => 'friendValue',
@@ -44,9 +45,10 @@ class DdiDto extends DdiDtoAbstract
                 'huntGroupId' => 'huntGroup',
                 'faxId' => 'fax',
                 'ddiProviderId' => 'ddiProvider',
+                'companyId' => 'company',
                 'residentialDeviceId' => 'residentialDevice',
                 'conditionalRouteId' => 'conditionalRoute',
-                'retailAccountId' => 'retailAccount'
+                'retailAccountId' => 'retailAccount',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -90,9 +92,11 @@ class DdiDto extends DdiDtoAbstract
         $allowedFields = [
             'ddi',
             'ddie164',
+            'description',
             'id',
             'companyId',
             'ddiProviderId',
+            'type',
             'countryId'
         ];
 
@@ -104,6 +108,7 @@ class DdiDto extends DdiDtoAbstract
         $allowedFields = [
             'ddi',
             'ddie164',
+            'description',
             'recordCalls',
             'displayName',
             'routeType',

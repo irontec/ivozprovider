@@ -11,4 +11,6 @@ interface BrandRepository extends ObjectRepository, Selectable
      * @return string[]
      */
     public function getNames();
+
+    public function findOneByDomain(string $domainUsers): ?BrandInterface;
 }

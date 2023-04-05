@@ -12,12 +12,14 @@ Feature: Retrieve retail accounts
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "testRetailAccount",
               "description": "",
               "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
               "id": 1,
               "company": 3,
               "domainName": "retail.irontec.com",
@@ -33,7 +35,7 @@ Feature: Retrieve retail accounts
               ]
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain retail account json
     Given I add Brand Authorization header
@@ -43,7 +45,7 @@ Feature: Retrieve retail accounts
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "testRetailAccount",
           "description": "",
@@ -60,4 +62,4 @@ Feature: Retrieve retail accounts
           "transformationRuleSet": null,
           "outgoingDdi": null
       }
-    """
+      """

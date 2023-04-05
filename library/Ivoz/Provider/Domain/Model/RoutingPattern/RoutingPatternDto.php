@@ -14,7 +14,8 @@ class RoutingPatternDto extends RoutingPatternDtoAbstract
             $response = [
                 'id' => 'id',
                 'prefix' => 'prefix',
-                'name' => ['en','es','ca','it']
+                'name' => ['en','es','ca','it'],
+                'description' => ['en','es','ca','it'],
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

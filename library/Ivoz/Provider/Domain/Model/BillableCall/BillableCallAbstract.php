@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -396,7 +396,7 @@ abstract class BillableCallAbstract
     {
         if (!is_null($startTime)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $startTime = DateTimeHelper::createOrFix(
                 $startTime,
                 null

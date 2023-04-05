@@ -4,8 +4,8 @@ namespace Worker;
 
 use Ivoz\Ast\Domain\Job\AriDialplanReloadJobInterface;
 use Ivoz\Ast\Infrastructure\Asterisk\ARI\ARIConnector;
-use Ivoz\Core\Application\RegisterCommandTrait;
-use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Symfony\Component\HttpFoundation\Response;
@@ -62,10 +62,15 @@ class AsteriskDialplan
             );
 
         try {
-            $redisMaster->blPop(
+            /** @var array<string> | false $response */
+            $response = $redisMaster->blPop(
                 [$channel],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . $channel);
+            }
         } catch (\RedisException $e) {
             $this->logger->error('Asterisk worker timeout: ' . $e->getMessage());
             exit(1);

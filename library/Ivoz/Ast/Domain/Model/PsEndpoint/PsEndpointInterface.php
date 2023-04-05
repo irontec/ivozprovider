@@ -4,8 +4,8 @@ namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
@@ -135,6 +135,10 @@ interface PsEndpointInterface extends LoggableEntityInterface
 
     public function getT38UdptlNat(): string;
 
+    public function getRtpTimeout(): int;
+
+    public function getRtpTimeoutHold(): int;
+
     public function setTerminal(?TerminalInterface $terminal = null): static;
 
     public function getTerminal(): ?TerminalInterface;
@@ -150,6 +154,4 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
     public function getRetailAccount(): ?RetailAccountInterface;
-
-    public function isInitialized(): bool;
 }

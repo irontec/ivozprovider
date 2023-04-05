@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Kam\Domain\Model\TrunksCdr;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -394,7 +394,7 @@ abstract class TrunksCdrAbstract
     protected function setStartTime(string|\DateTimeInterface $startTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $startTime = DateTimeHelper::createOrFix(
             $startTime,
             '2000-01-01 00:00:00'
@@ -417,7 +417,7 @@ abstract class TrunksCdrAbstract
     protected function setEndTime(string|\DateTimeInterface $endTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $endTime = DateTimeHelper::createOrFix(
             $endTime,
             '2000-01-01 00:00:00'
@@ -572,7 +572,7 @@ abstract class TrunksCdrAbstract
     protected function setParserScheduledAt(string|\DateTimeInterface $parserScheduledAt): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $parserScheduledAt = DateTimeHelper::createOrFix(
             $parserScheduledAt,
             'CURRENT_TIMESTAMP'

@@ -6,7 +6,7 @@ use Agi\Agents\ResidentialAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
@@ -193,7 +193,11 @@ class ServiceAction
             return;
         }
 
-        $this->agi->checkVoicemail($voicemail->getVoicemailName(), $voicemailOpts);
+        $this->agi->setVariable("VOICEMAIL_MAILBOX", $voicemail->getVoicemailName());
+        $this->agi->setVariable("VOICEMAIL_OPTS", $voicemailOpts);
+
+        // Redirect to service check context
+        $this->agi->redirect('check-voicemail');
     }
 
     protected function processDirectPickUp()

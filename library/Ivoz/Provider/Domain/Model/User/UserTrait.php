@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\User;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -30,6 +31,12 @@ trait UserTrait
      * mappedBy user
      */
     protected $voicemail;
+
+    /**
+     * @var ContactInterface
+     * mappedBy user
+     */
+    protected $contact;
 
     /**
      * @var Collection<array-key, PickUpRelUserInterface> & Selectable<array-key, PickUpRelUserInterface>
@@ -80,6 +87,14 @@ trait UserTrait
                 $dto->getVoicemail()
             );
             $self->setVoicemail($entity);
+        }
+
+        if (!is_null($dto->getContact())) {
+            /** @var ContactInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getContact()
+            );
+            $self->setContact($entity);
         }
 
         $pickUpRelUsers = $dto->getPickUpRelUsers();
@@ -136,6 +151,14 @@ trait UserTrait
                 $dto->getVoicemail()
             );
             $this->setVoicemail($entity);
+        }
+
+        if (!is_null($dto->getContact())) {
+            /** @var ContactInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getContact()
+            );
+            $this->setContact($entity);
         }
 
         $pickUpRelUsers = $dto->getPickUpRelUsers();
@@ -204,6 +227,18 @@ trait UserTrait
         return $this->voicemail;
     }
 
+    public function setContact(ContactInterface $contact): static
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    public function getContact(): ?ContactInterface
+    {
+        return $this->contact;
+    }
+
     public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface
     {
         $this->pickUpRelUsers->add($pickUpRelUser);
@@ -223,31 +258,53 @@ trait UserTrait
      */
     public function replacePickUpRelUsers(Collection $pickUpRelUsers): UserInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($pickUpRelUsers as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setUser($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->pickUpRelUsers as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->pickUpRelUsers->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($pickUpRelUsers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($pickUpRelUsers[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->pickUpRelUsers->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->pickUpRelUsers->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($pickUpRelUsers as $entity) {
             $this->addPickUpRelUser($entity);
         }
 
@@ -285,31 +342,53 @@ trait UserTrait
      */
     public function replaceQueueMembers(Collection $queueMembers): UserInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($queueMembers as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setUser($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->queueMembers as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->queueMembers->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($queueMembers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($queueMembers[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->queueMembers->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->queueMembers->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($queueMembers as $entity) {
             $this->addQueueMember($entity);
         }
 
@@ -347,31 +426,53 @@ trait UserTrait
      */
     public function replaceCallForwardSettings(Collection $callForwardSettings): UserInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($callForwardSettings as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setUser($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->callForwardSettings as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->callForwardSettings->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($callForwardSettings as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($callForwardSettings[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->callForwardSettings->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->callForwardSettings->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($callForwardSettings as $entity) {
             $this->addCallForwardSetting($entity);
         }
 

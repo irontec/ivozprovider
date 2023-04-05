@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Service\InvoiceNumberSequence\NextValGenerator;
@@ -58,12 +58,12 @@ class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
             return;
         }
 
-        $invoiceNumberGenerator = $invoice->getNumberSequence();
-        if (!$invoiceNumberGenerator) {
+        $sequence = $invoice->getNumberSequence();
+        if (!$sequence) {
             return;
         }
 
-        $invoiceNumber = $this->nextValGenerator->execute($invoiceNumberGenerator);
+        $invoiceNumber = $this->nextValGenerator->execute($sequence);
 
         /** @var InvoiceDto $invoiceDto */
         $invoiceDto = $this->entityTools->entityToDto($invoice);

@@ -5,7 +5,7 @@ namespace spec\Ivoz\Cgr\Infrastructure\Cgrates\Service;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\ProcessExternalCdr;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ApiClient;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
@@ -79,9 +79,9 @@ class ProcessExternalCdrSpec extends ObjectBehavior
         $this->execute($trunksCdr);
     }
 
-    function it_does_nothing_with_externallyRated_carrier(
+    function it_does_nothing_with_companies_without_billing_method(
         TrunksCdrInterface $trunksCdr,
-        CarrierInterface $carrier
+        CompanyInterface $company
     ) {
         $trunksCdr
             ->isOutboundCall()
@@ -89,13 +89,15 @@ class ProcessExternalCdrSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $trunksCdr
-            ->getCarrier()
-            ->willReturn($carrier)
+            ->getCompany()
+            ->willReturn($company)
             ->shouldBeCalled();
 
-        $carrier
-            ->getExternallyRated()
-            ->willReturn(true);
+        $company
+            ->getBillingMethod()
+            ->willReturn(
+                CompanyInterface::BILLINGMETHOD_NONE
+            );
 
         $this
             ->execute($trunksCdr)
@@ -210,11 +212,6 @@ class ProcessExternalCdrSpec extends ObjectBehavior
             ->getCarrier()
             ->willReturn($carrier)
             ->shouldBeCalled();
-
-        $carrier
-            ->getExternallyRated()
-            ->willReturn(false);
-
 
         $carrier
             ->getCalculateCost()

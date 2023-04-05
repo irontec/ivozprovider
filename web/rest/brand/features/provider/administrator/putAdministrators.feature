@@ -9,7 +9,7 @@ Feature: Update administrators
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/administrators/4" with body:
-    """
+      """
       {
           "username": "newUserName",
           "pass": "1234",
@@ -21,12 +21,12 @@ Feature: Update administrators
           "company": 1,
           "timezone": 158
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "username": "newUserName",
           "pass": "*****",
@@ -39,15 +39,15 @@ Feature: Update administrators
           "company": 1,
           "timezone": 158
       }
-    """
+      """
 
   @createSchema
   Scenario: Fails on unauthorized company
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "PUT" request to "/administrators/4" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/administrators/4" with body:
+      """
       {
           "username": "newUserName",
           "pass": "1234",
@@ -59,5 +59,5 @@ Feature: Update administrators
           "company": 99,
           "timezone": 2
       }
-    """
-    Then the response status code should be 403
+      """
+     Then the response status code should be 403

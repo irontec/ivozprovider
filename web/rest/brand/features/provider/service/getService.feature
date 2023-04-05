@@ -12,7 +12,7 @@ Feature: Retrieve services
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "iden": "DirectPickUp",
@@ -20,6 +20,12 @@ Feature: Retrieve services
               "extraArgs": true,
               "id": 1,
               "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
@@ -36,6 +42,12 @@ Feature: Retrieve services
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           },
           {
@@ -44,6 +56,12 @@ Feature: Retrieve services
               "extraArgs": true,
               "id": 3,
               "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
@@ -60,6 +78,12 @@ Feature: Retrieve services
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           },
           {
@@ -72,10 +96,16 @@ Feature: Retrieve services
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain service json
     Given I add Brand Authorization header
@@ -85,7 +115,7 @@ Feature: Retrieve services
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "iden": "DirectPickUp",
           "defaultCode": "94",
@@ -104,4 +134,4 @@ Feature: Retrieve services
               "it": "it"
           }
       }
-    """
+      """

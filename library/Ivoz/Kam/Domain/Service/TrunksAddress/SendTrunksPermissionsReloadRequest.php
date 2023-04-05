@@ -24,7 +24,7 @@ class SendTrunksPermissionsReloadRequest implements TrunksAddressLifecycleEventH
     /**
      * @return void
      */
-    public function execute(TrunksAddressInterface $entity)
+    public function execute(TrunksAddressInterface $trunksAddress)
     {
         $this->trunksClient->reloadAddressPermissions();
     }

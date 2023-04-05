@@ -1,0 +1,40 @@
+{
+  "request": {
+    "number": "111",
+    "routeType": null,
+    "numberValue": null,
+    "friendValue": null,
+    "ivr": null,
+    "huntGroup": null,
+    "conferenceRoom": null,
+    "queue": null,
+    "conditionalRoute": null,
+    "numberCountry": null,
+    "voicemail": null
+  },
+  "response": {
+    "body": {
+      "number": "111",
+      "routeType": null,
+      "numberValue": null,
+      "friendValue": null,
+      "id": 5,
+      "ivr": null,
+      "huntGroup": null,
+      "conferenceRoom": null,
+      "queue": null,
+      "conditionalRoute": null,
+      "numberCountry": null,
+      "voicemail": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

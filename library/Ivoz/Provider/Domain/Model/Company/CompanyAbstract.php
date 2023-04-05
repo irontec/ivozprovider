@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\Company;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\Invoicing;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
@@ -61,11 +62,6 @@ abstract class CompanyAbstract
 
     /**
      * @var string
-     */
-    protected $nif;
-
-    /**
-     * @var string
      * comment: enum:static|rr|hash
      */
     protected $distributeMethod = 'hash';
@@ -89,32 +85,6 @@ abstract class CompanyAbstract
      * @var ?string
      */
     protected $maxDailyUsageEmail = null;
-
-    /**
-     * @var string
-     */
-    protected $postalAddress;
-
-    /**
-     * @var string
-     */
-    protected $postalCode;
-
-    /**
-     * @var string
-     */
-    protected $town;
-
-    /**
-     * @var string
-     */
-    protected $province;
-
-    /**
-     * @var string
-     * column: country
-     */
-    protected $countryName;
 
     /**
      * @var ?bool
@@ -155,7 +125,7 @@ abstract class CompanyAbstract
 
     /**
      * @var string
-     * comment: enum:postpaid|prepaid|pseudoprepaid
+     * comment: enum:postpaid|prepaid|pseudoprepaid|none
      */
     protected $billingMethod = 'postpaid';
 
@@ -168,6 +138,11 @@ abstract class CompanyAbstract
      * @var ?bool
      */
     protected $showInvoices = false;
+
+    /**
+     * @var Invoicing
+     */
+    protected $invoicing;
 
     /**
      * @var ?LanguageInterface
@@ -256,31 +231,21 @@ abstract class CompanyAbstract
     protected function __construct(
         string $type,
         string $name,
-        string $nif,
         string $distributeMethod,
         int $maxCalls,
         int $maxDailyUsage,
-        string $postalAddress,
-        string $postalCode,
-        string $town,
-        string $province,
-        string $countryName,
         bool $allowRecordingRemoval,
-        string $billingMethod
+        string $billingMethod,
+        Invoicing $invoicing
     ) {
         $this->setType($type);
         $this->setName($name);
-        $this->setNif($nif);
         $this->setDistributeMethod($distributeMethod);
         $this->setMaxCalls($maxCalls);
         $this->setMaxDailyUsage($maxDailyUsage);
-        $this->setPostalAddress($postalAddress);
-        $this->setPostalCode($postalCode);
-        $this->setTown($town);
-        $this->setProvince($province);
-        $this->setCountryName($countryName);
         $this->setAllowRecordingRemoval($allowRecordingRemoval);
         $this->setBillingMethod($billingMethod);
+        $this->invoicing = $invoicing;
     }
 
     abstract public function getId(): null|string|int;
@@ -341,28 +306,28 @@ abstract class CompanyAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CompanyDto::class);
+        $invoicingNif = $dto->getInvoicingNif();
+        Assertion::notNull($invoicingNif, 'invoicingNif value is null, but non null value was expected.');
+        $invoicingPostalAddress = $dto->getInvoicingPostalAddress();
+        Assertion::notNull($invoicingPostalAddress, 'invoicingPostalAddress value is null, but non null value was expected.');
+        $invoicingPostalCode = $dto->getInvoicingPostalCode();
+        Assertion::notNull($invoicingPostalCode, 'invoicingPostalCode value is null, but non null value was expected.');
+        $invoicingTown = $dto->getInvoicingTown();
+        Assertion::notNull($invoicingTown, 'invoicingTown value is null, but non null value was expected.');
+        $invoicingProvince = $dto->getInvoicingProvince();
+        Assertion::notNull($invoicingProvince, 'invoicingProvince value is null, but non null value was expected.');
+        $invoicingCountryName = $dto->getInvoicingCountryName();
+        Assertion::notNull($invoicingCountryName, 'invoicingCountryName value is null, but non null value was expected.');
         $type = $dto->getType();
         Assertion::notNull($type, 'getType value is null, but non null value was expected.');
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
-        $nif = $dto->getNif();
-        Assertion::notNull($nif, 'getNif value is null, but non null value was expected.');
         $distributeMethod = $dto->getDistributeMethod();
         Assertion::notNull($distributeMethod, 'getDistributeMethod value is null, but non null value was expected.');
         $maxCalls = $dto->getMaxCalls();
         Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
         $maxDailyUsage = $dto->getMaxDailyUsage();
         Assertion::notNull($maxDailyUsage, 'getMaxDailyUsage value is null, but non null value was expected.');
-        $postalAddress = $dto->getPostalAddress();
-        Assertion::notNull($postalAddress, 'getPostalAddress value is null, but non null value was expected.');
-        $postalCode = $dto->getPostalCode();
-        Assertion::notNull($postalCode, 'getPostalCode value is null, but non null value was expected.');
-        $town = $dto->getTown();
-        Assertion::notNull($town, 'getTown value is null, but non null value was expected.');
-        $province = $dto->getProvince();
-        Assertion::notNull($province, 'getProvince value is null, but non null value was expected.');
-        $countryName = $dto->getCountryName();
-        Assertion::notNull($countryName, 'getCountryName value is null, but non null value was expected.');
         $allowRecordingRemoval = $dto->getAllowRecordingRemoval();
         Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
         $billingMethod = $dto->getBillingMethod();
@@ -372,20 +337,24 @@ abstract class CompanyAbstract
         $country = $dto->getCountry();
         Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
 
+        $invoicing = new Invoicing(
+            $invoicingNif,
+            $invoicingPostalAddress,
+            $invoicingPostalCode,
+            $invoicingTown,
+            $invoicingProvince,
+            $invoicingCountryName
+        );
+
         $self = new static(
             $type,
             $name,
-            $nif,
             $distributeMethod,
             $maxCalls,
             $maxDailyUsage,
-            $postalAddress,
-            $postalCode,
-            $town,
-            $province,
-            $countryName,
             $allowRecordingRemoval,
-            $billingMethod
+            $billingMethod,
+            $invoicing
         );
 
         $self
@@ -432,28 +401,28 @@ abstract class CompanyAbstract
     ): static {
         Assertion::isInstanceOf($dto, CompanyDto::class);
 
+        $invoicingNif = $dto->getInvoicingNif();
+        Assertion::notNull($invoicingNif, 'invoicingNif value is null, but non null value was expected.');
+        $invoicingPostalAddress = $dto->getInvoicingPostalAddress();
+        Assertion::notNull($invoicingPostalAddress, 'invoicingPostalAddress value is null, but non null value was expected.');
+        $invoicingPostalCode = $dto->getInvoicingPostalCode();
+        Assertion::notNull($invoicingPostalCode, 'invoicingPostalCode value is null, but non null value was expected.');
+        $invoicingTown = $dto->getInvoicingTown();
+        Assertion::notNull($invoicingTown, 'invoicingTown value is null, but non null value was expected.');
+        $invoicingProvince = $dto->getInvoicingProvince();
+        Assertion::notNull($invoicingProvince, 'invoicingProvince value is null, but non null value was expected.');
+        $invoicingCountryName = $dto->getInvoicingCountryName();
+        Assertion::notNull($invoicingCountryName, 'invoicingCountryName value is null, but non null value was expected.');
         $type = $dto->getType();
         Assertion::notNull($type, 'getType value is null, but non null value was expected.');
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
-        $nif = $dto->getNif();
-        Assertion::notNull($nif, 'getNif value is null, but non null value was expected.');
         $distributeMethod = $dto->getDistributeMethod();
         Assertion::notNull($distributeMethod, 'getDistributeMethod value is null, but non null value was expected.');
         $maxCalls = $dto->getMaxCalls();
         Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
         $maxDailyUsage = $dto->getMaxDailyUsage();
         Assertion::notNull($maxDailyUsage, 'getMaxDailyUsage value is null, but non null value was expected.');
-        $postalAddress = $dto->getPostalAddress();
-        Assertion::notNull($postalAddress, 'getPostalAddress value is null, but non null value was expected.');
-        $postalCode = $dto->getPostalCode();
-        Assertion::notNull($postalCode, 'getPostalCode value is null, but non null value was expected.');
-        $town = $dto->getTown();
-        Assertion::notNull($town, 'getTown value is null, but non null value was expected.');
-        $province = $dto->getProvince();
-        Assertion::notNull($province, 'getProvince value is null, but non null value was expected.');
-        $countryName = $dto->getCountryName();
-        Assertion::notNull($countryName, 'getCountryName value is null, but non null value was expected.');
         $allowRecordingRemoval = $dto->getAllowRecordingRemoval();
         Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
         $billingMethod = $dto->getBillingMethod();
@@ -463,21 +432,24 @@ abstract class CompanyAbstract
         $country = $dto->getCountry();
         Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
 
+        $invoicing = new Invoicing(
+            $invoicingNif,
+            $invoicingPostalAddress,
+            $invoicingPostalCode,
+            $invoicingTown,
+            $invoicingProvince,
+            $invoicingCountryName
+        );
+
         $this
             ->setType($type)
             ->setName($name)
             ->setDomainUsers($dto->getDomainUsers())
-            ->setNif($nif)
             ->setDistributeMethod($distributeMethod)
             ->setMaxCalls($maxCalls)
             ->setMaxDailyUsage($maxDailyUsage)
             ->setCurrentDayUsage($dto->getCurrentDayUsage())
             ->setMaxDailyUsageEmail($dto->getMaxDailyUsageEmail())
-            ->setPostalAddress($postalAddress)
-            ->setPostalCode($postalCode)
-            ->setTown($town)
-            ->setProvince($province)
-            ->setCountryName($countryName)
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
             ->setAllowRecordingRemoval($allowRecordingRemoval)
@@ -488,6 +460,7 @@ abstract class CompanyAbstract
             ->setBillingMethod($billingMethod)
             ->setBalance($dto->getBalance())
             ->setShowInvoices($dto->getShowInvoices())
+            ->setInvoicing($invoicing)
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
@@ -517,17 +490,11 @@ abstract class CompanyAbstract
             ->setType(self::getType())
             ->setName(self::getName())
             ->setDomainUsers(self::getDomainUsers())
-            ->setNif(self::getNif())
             ->setDistributeMethod(self::getDistributeMethod())
             ->setMaxCalls(self::getMaxCalls())
             ->setMaxDailyUsage(self::getMaxDailyUsage())
             ->setCurrentDayUsage(self::getCurrentDayUsage())
             ->setMaxDailyUsageEmail(self::getMaxDailyUsageEmail())
-            ->setPostalAddress(self::getPostalAddress())
-            ->setPostalCode(self::getPostalCode())
-            ->setTown(self::getTown())
-            ->setProvince(self::getProvince())
-            ->setCountryName(self::getCountryName())
             ->setIpfilter(self::getIpfilter())
             ->setOnDemandRecord(self::getOnDemandRecord())
             ->setAllowRecordingRemoval(self::getAllowRecordingRemoval())
@@ -538,6 +505,12 @@ abstract class CompanyAbstract
             ->setBillingMethod(self::getBillingMethod())
             ->setBalance(self::getBalance())
             ->setShowInvoices(self::getShowInvoices())
+            ->setInvoicingNif(self::getInvoicing()->getNif())
+            ->setInvoicingPostalAddress(self::getInvoicing()->getPostalAddress())
+            ->setInvoicingPostalCode(self::getInvoicing()->getPostalCode())
+            ->setInvoicingTown(self::getInvoicing()->getTown())
+            ->setInvoicingProvince(self::getInvoicing()->getProvince())
+            ->setInvoicingCountryName(self::getInvoicing()->getCountryName())
             ->setLanguage(Language::entityToDto(self::getLanguage(), $depth))
             ->setMediaRelaySets(MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth))
             ->setDefaultTimezone(Timezone::entityToDto(self::getDefaultTimezone(), $depth))
@@ -565,17 +538,11 @@ abstract class CompanyAbstract
             'type' => self::getType(),
             'name' => self::getName(),
             'domain_users' => self::getDomainUsers(),
-            'nif' => self::getNif(),
             'distributeMethod' => self::getDistributeMethod(),
             'maxCalls' => self::getMaxCalls(),
             'maxDailyUsage' => self::getMaxDailyUsage(),
             'currentDayUsage' => self::getCurrentDayUsage(),
             'maxDailyUsageEmail' => self::getMaxDailyUsageEmail(),
-            'postalAddress' => self::getPostalAddress(),
-            'postalCode' => self::getPostalCode(),
-            'town' => self::getTown(),
-            'province' => self::getProvince(),
-            'country' => self::getCountryName(),
             'ipFilter' => self::getIpfilter(),
             'onDemandRecord' => self::getOnDemandRecord(),
             'allowRecordingRemoval' => self::getAllowRecordingRemoval(),
@@ -586,6 +553,12 @@ abstract class CompanyAbstract
             'billingMethod' => self::getBillingMethod(),
             'balance' => self::getBalance(),
             'showInvoices' => self::getShowInvoices(),
+            'invoicingNif' => self::getInvoicing()->getNif(),
+            'invoicingPostalAddress' => self::getInvoicing()->getPostalAddress(),
+            'invoicingPostalCode' => self::getInvoicing()->getPostalCode(),
+            'invoicingTown' => self::getInvoicing()->getTown(),
+            'invoicingProvince' => self::getInvoicing()->getProvince(),
+            'invoicingCountryName' => self::getInvoicing()->getCountryName(),
             'languageId' => self::getLanguage()?->getId(),
             'mediaRelaySetsId' => self::getMediaRelaySets()?->getId(),
             'defaultTimezoneId' => self::getDefaultTimezone()?->getId(),
@@ -657,20 +630,6 @@ abstract class CompanyAbstract
     public function getDomainUsers(): ?string
     {
         return $this->domainUsers;
-    }
-
-    protected function setNif(string $nif): static
-    {
-        Assertion::maxLength($nif, 25, 'nif value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-
-        $this->nif = $nif;
-
-        return $this;
-    }
-
-    public function getNif(): string
-    {
-        return $this->nif;
     }
 
     protected function setDistributeMethod(string $distributeMethod): static
@@ -754,76 +713,6 @@ abstract class CompanyAbstract
     public function getMaxDailyUsageEmail(): ?string
     {
         return $this->maxDailyUsageEmail;
-    }
-
-    protected function setPostalAddress(string $postalAddress): static
-    {
-        Assertion::maxLength($postalAddress, 255, 'postalAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-
-        $this->postalAddress = $postalAddress;
-
-        return $this;
-    }
-
-    public function getPostalAddress(): string
-    {
-        return $this->postalAddress;
-    }
-
-    protected function setPostalCode(string $postalCode): static
-    {
-        Assertion::maxLength($postalCode, 10, 'postalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-
-        $this->postalCode = $postalCode;
-
-        return $this;
-    }
-
-    public function getPostalCode(): string
-    {
-        return $this->postalCode;
-    }
-
-    protected function setTown(string $town): static
-    {
-        Assertion::maxLength($town, 255, 'town value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-
-        $this->town = $town;
-
-        return $this;
-    }
-
-    public function getTown(): string
-    {
-        return $this->town;
-    }
-
-    protected function setProvince(string $province): static
-    {
-        Assertion::maxLength($province, 255, 'province value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-
-        $this->province = $province;
-
-        return $this;
-    }
-
-    public function getProvince(): string
-    {
-        return $this->province;
-    }
-
-    protected function setCountryName(string $countryName): static
-    {
-        Assertion::maxLength($countryName, 255, 'countryName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-
-        $this->countryName = $countryName;
-
-        return $this;
-    }
-
-    public function getCountryName(): string
-    {
-        return $this->countryName;
     }
 
     protected function setIpfilter(?bool $ipfilter = null): static
@@ -931,6 +820,7 @@ abstract class CompanyAbstract
                 CompanyInterface::BILLINGMETHOD_POSTPAID,
                 CompanyInterface::BILLINGMETHOD_PREPAID,
                 CompanyInterface::BILLINGMETHOD_PSEUDOPREPAID,
+                CompanyInterface::BILLINGMETHOD_NONE,
             ],
             'billingMethodvalue "%s" is not an element of the valid values: %s'
         );
@@ -971,6 +861,22 @@ abstract class CompanyAbstract
     public function getShowInvoices(): ?bool
     {
         return $this->showInvoices;
+    }
+
+    public function getInvoicing(): Invoicing
+    {
+        return $this->invoicing;
+    }
+
+    protected function setInvoicing(Invoicing $invoicing): static
+    {
+        $isEqual = $this->invoicing->equals($invoicing);
+        if ($isEqual) {
+            return $this;
+        }
+
+        $this->invoicing = $invoicing;
+        return $this;
     }
 
     protected function setLanguage(?LanguageInterface $language = null): static

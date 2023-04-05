@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\PickUpGroup;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 
@@ -146,6 +146,9 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return PickUpRelUserDto[] | null
+    */
     public function getRelUsers(): ?array
     {
         return $this->relUsers;

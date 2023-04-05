@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 
@@ -76,6 +76,4 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     public function getOutgoingDdiRule(): OutgoingDdiRuleInterface;
 
     public function getMatchList(): ?MatchListInterface;
-
-    public function isInitialized(): bool;
 }

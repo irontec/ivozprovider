@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Queue;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -28,6 +28,10 @@ interface QueueInterface extends LoggableEntityInterface
     public const FULLTARGETTYPE_EXTENSION = 'extension';
 
     public const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
+
+    public const ANNOUNCEPOSITION_YES = 'yes';
+
+    public const ANNOUNCEPOSITION_NO = 'no';
 
     public const STRATEGY_RINGALL = 'ringall';
 
@@ -115,6 +119,8 @@ interface QueueInterface extends LoggableEntityInterface
 
     public function getName(): ?string;
 
+    public function getDisplayName(): ?string;
+
     public function getMaxWaitTime(): ?int;
 
     public function getTimeoutTargetType(): ?string;
@@ -128,6 +134,10 @@ interface QueueInterface extends LoggableEntityInterface
     public function getFullNumberValue(): ?string;
 
     public function getPeriodicAnnounceFrequency(): ?int;
+
+    public function getAnnouncePosition(): ?string;
+
+    public function getAnnounceFrequency(): ?int;
 
     public function getMemberCallRest(): ?int;
 
@@ -158,8 +168,6 @@ interface QueueInterface extends LoggableEntityInterface
     public function getTimeoutNumberCountry(): ?CountryInterface;
 
     public function getFullNumberCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 
     /**
      * @param string $prefix

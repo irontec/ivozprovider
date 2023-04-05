@@ -3,8 +3,8 @@
 namespace Ivoz\Cgr\Domain\Model\TpCdr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * TpCdrInterface
@@ -88,7 +88,7 @@ interface TpCdrInterface extends EntityInterface
 
     public function getAnswerTime(): \DateTime;
 
-    public function getUsage(): int;
+    public function getUsage(): string;
 
     public function getExtraFields(): string;
 
@@ -105,6 +105,4 @@ interface TpCdrInterface extends EntityInterface
     public function getUpdatedAt(): ?\DateTime;
 
     public function getDeletedAt(): ?\DateTime;
-
-    public function isInitialized(): bool;
 }

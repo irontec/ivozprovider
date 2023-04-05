@@ -15,6 +15,8 @@ class DdiProviderDto extends DdiProviderDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'description' => 'description',
+                'transformationRuleSetId' => 'transformationRuleSet',
+                'proxyTrunkId' => 'proxyTrunk',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

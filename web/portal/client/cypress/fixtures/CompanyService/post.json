@@ -1,0 +1,22 @@
+{
+  "request": {
+    "code": "92",
+    "service": 1
+  },
+  "response": {
+    "body": {
+      "code": "92",
+      "id": 4,
+      "service": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

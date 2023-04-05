@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Kam\Domain\Model\UsersLocation;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 
 /**
@@ -520,7 +520,7 @@ abstract class UsersLocationAbstract
     protected function setExpires(string|\DateTimeInterface $expires): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $expires = DateTimeHelper::createOrFix(
             $expires,
             '2030-05-28 21:32:15'
@@ -581,7 +581,7 @@ abstract class UsersLocationAbstract
     protected function setLastModified(string|\DateTimeInterface $lastModified): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'

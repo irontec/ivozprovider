@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
 use Ivoz\Cgr\Domain\Service\TpRatingProfile\UpdateByRatingProfile;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;

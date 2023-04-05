@@ -24,7 +24,7 @@ class SendTrunksDispatcherReloadRequest implements ApplicationServerLifecycleEve
     /**
      * @return void
      */
-    public function execute(ApplicationServerInterface $entity)
+    public function execute(ApplicationServerInterface $applicationServer)
     {
         $this->trunksGearmanClient->reloadDispatcher();
     }

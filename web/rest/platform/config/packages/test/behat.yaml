@@ -1,2 +1,13 @@
 imports:
   - { resource: "@ApiBundle/Resources/config/services/behat.yml" }
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Service\Behat\FeatureContext:
+    public: true
+    arguments:
+      $kernel: "@kernel"

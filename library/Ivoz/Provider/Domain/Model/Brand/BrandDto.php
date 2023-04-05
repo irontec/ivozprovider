@@ -4,16 +4,10 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
+use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandDto;
 
 class BrandDto extends BrandDtoAbstract
 {
-    public const CONTEXT_WITH_FEATURES = 'withFeatures';
-
-    public const CONTEXTS_WITH_FEATURES = [
-        self::CONTEXT_WITH_FEATURES,
-        self::CONTEXT_DETAILED
-    ];
-
     /** @var ?string */
     private $logoPath;
 
@@ -26,6 +20,17 @@ class BrandDto extends BrandDtoAbstract
      * )
      */
     private $features = [];
+
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Active proxyTrunks ids"
+     * )
+     */
+    private $proxyTrunks = [];
 
     /**
      * @return string[]
@@ -73,14 +78,14 @@ class BrandDto extends BrandDtoAbstract
                 'invoice' => ['nif', 'postalCode'],
                 'logo' => ['fileSize','mimeType','baseName'],
                 'domainUsers' => 'domainUsers',
-                //@TODO relProxyTrunks
             ];
         } else {
             $response = parent::getPropertyMap($context);
         }
 
-        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
+        if ($context !== self::CONTEXT_SIMPLE) {
             $response['features'] = 'features';
+            $response['proxyTrunks'] = 'proxyTrunks';
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -98,7 +103,7 @@ class BrandDto extends BrandDtoAbstract
     {
         $contextProperties = self::getPropertyMap($context, $role);
 
-        if ($context === self::CONTEXT_SIMPLE) {
+        if ($context === self::CONTEXT_DETAILED) {
             $contextProperties['logo'][] = 'path';
         }
 
@@ -115,9 +120,8 @@ class BrandDto extends BrandDtoAbstract
             $role
         );
 
-        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
-            $response['features'] = $this->features;
-        }
+        $response['features'] = $this->features;
+        $response['proxyTrunks'] = $this->proxyTrunks;
 
         return $response;
     }
@@ -169,5 +173,24 @@ class BrandDto extends BrandDtoAbstract
         }
 
         $this->setRelFeatures($relFeatures);
+    }
+
+    /**
+     * @param int[] $proxyTrunksIds
+     *
+     * @return void
+     */
+    public function setProxyTrunks(array $proxyTrunksIds): void
+    {
+        $this->proxyTrunks = $proxyTrunksIds;
+
+        $relProxyTrunks = [];
+        foreach ($proxyTrunksIds as $id) {
+            $dto = new ProxyTrunksRelBrandDto();
+            $dto->setProxyTrunkId($id);
+            $relProxyTrunks[] = $dto;
+        }
+
+        $this->setRelProxyTrunks($relProxyTrunks);
     }
 }

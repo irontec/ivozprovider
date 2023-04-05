@@ -1,0 +1,7 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(dirname $(realpath $0))
+
+pushd ${SCRIPT_DIR}/../
+    ../node_modules/hygen/dist/bin.js entity new $1
+popd

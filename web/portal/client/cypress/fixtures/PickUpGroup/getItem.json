@@ -1,0 +1,11 @@
+{
+  "body": {
+    "name": "pick up group",
+    "id": 1,
+    "userIds": [1]
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

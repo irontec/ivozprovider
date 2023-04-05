@@ -9,6 +9,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="displayName" type="string" column="displayName" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="maxWaitTime" type="integer" column="maxWaitTime" nullable="true">
       <options>
         <option name="unsigned"/>
@@ -42,6 +47,18 @@
       </options>
     </field>
     <field name="periodicAnnounceFrequency" type="integer" column="periodicAnnounceFrequency" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="announcePosition" type="string" column="announcePosition" length="10" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">no</option>
+        <option name="comment">[enum:yes|no]</option>
+      </options>
+    </field>
+    <field name="announceFrequency" type="integer" column="announceFrequency" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>

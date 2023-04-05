@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\FaxesInOut\File;
 use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
@@ -247,7 +247,7 @@ abstract class FaxesInOutAbstract
     protected function setCalldate(string|\DateTimeInterface $calldate): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
             'CURRENT_TIMESTAMP'

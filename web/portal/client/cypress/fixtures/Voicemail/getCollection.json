@@ -1,0 +1,33 @@
+{
+  "body": [
+    {
+      "enabled": true,
+      "name": "Voicemail For User1",
+      "email": "alice@democompany.com",
+      "id": 1,
+      "user": 1
+    },
+    {
+      "enabled": true,
+      "name": "Voicemail Generic 1",
+      "email": "generic@voicemail.com",
+      "id": 2,
+      "user": null
+    },
+    {
+      "enabled": true,
+      "name": "Voicemail For User2",
+      "email": "bob@voicemail.com",
+      "id": 3,
+      "user": 2
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/voicemails?_page=1",
+    "x-last-page": "/api/client/voicemails?_page=1",
+    "x-next-page": "/api/client/voicemails?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

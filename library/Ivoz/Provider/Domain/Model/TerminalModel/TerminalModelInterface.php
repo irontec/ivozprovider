@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\TerminalModel;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface;
 
 /**
@@ -76,6 +76,4 @@ interface TerminalModelInterface extends LoggableEntityInterface
     public function getSpecificUrlPattern(): ?string;
 
     public function getTerminalManufacturer(): TerminalManufacturerInterface;
-
-    public function isInitialized(): bool;
 }

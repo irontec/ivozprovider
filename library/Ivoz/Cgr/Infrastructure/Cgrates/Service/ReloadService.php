@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
-use Ivoz\Core\Application\MutexInterface;
+use Ivoz\Core\Domain\MutexInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractApiBasedService;
 
 class ReloadService extends AbstractApiBasedService

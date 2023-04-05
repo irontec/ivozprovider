@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface;
 
@@ -60,6 +60,4 @@ interface AdministratorRelPublicEntityInterface extends LoggableEntityInterface
     public function getAdministrator(): AdministratorInterface;
 
     public function getPublicEntity(): PublicEntityInterface;
-
-    public function isInitialized(): bool;
 }

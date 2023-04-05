@@ -133,6 +133,35 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
         $this->sanitizeEntityValues($item2555);
         $manager->persist($item2555);
 
+
+        $item1201 = $this->createEntityInstance(TransformationRule::class);
+        (function () use ($fixture) {
+            $this->setType("calleeout");
+            $this->setDescription("From e164 to special national (Generic Transformation Ruleset)");
+            $this->setPriority(3);
+            $this->setMatchExpr("^\+34([0-9]+)\$");
+            $this->setReplaceExpr("\1");
+            $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet120'));
+        })->call($item1201);
+
+        $this->addReference('_reference_ProviderTransformationRule1201', $item1201);
+        $this->sanitizeEntityValues($item1201);
+        $manager->persist($item1201);
+
+        $item1202 = $this->createEntityInstance(TransformationRule::class);
+        (function () use ($fixture) {
+            $this->setType("calleein");
+            $this->setDescription("From special national to e164 (Generic Transformation Ruleset)");
+            $this->setPriority(4);
+            $this->setMatchExpr("^([0-9]+)\$");
+            $this->setReplaceExpr("+34\1");
+            $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet120'));
+        })->call($item1202);
+
+        $this->addReference('_reference_ProviderTransformationRule1202', $item1202);
+        $this->sanitizeEntityValues($item1202);
+        $manager->persist($item1202);
+
         $manager->flush();
     }
 

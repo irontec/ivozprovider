@@ -6,14 +6,14 @@ Feature: Create routing tags
   @createSchema
   Scenario: Create a routing tags
     Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/routing_tags" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/routing_tags" with body:
+      """
       {
           "name": "Mine",
           "tag": "00#",
           "id": 1
       }
-    """
-    Then the response status code should be 405
+      """
+     Then the response status code should be 405

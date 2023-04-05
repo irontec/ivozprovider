@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Company;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCompany;
@@ -15,7 +15,7 @@ abstract class AbstractBalanceOperation
     public function __construct(
         protected EntityTools $entityTools,
         protected Logger $logger,
-        protected CompanyBalanceServiceInterface $client,
+        protected CompanyBalanceServiceInterface $companyBalanceService,
         protected CompanyRepository $companyRepository,
         protected SyncBalances $syncBalanceService,
         protected CreateByCompany $createBalanceMovementByCompany
@@ -46,7 +46,7 @@ abstract class AbstractBalanceOperation
             $this->syncBalanceService->updateCompanies($brandId, $companyIds);
 
             // Get current balance status
-            $balance = $this->client->getBalance(
+            $balance = $this->companyBalanceService->getBalance(
                 $brandId,
                 (int) $company->getId()
             );

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
@@ -162,6 +162,18 @@ abstract class PsEndpointAbstract
     protected $t38UdptlNat = 'no';
 
     /**
+     * @var int
+     * column: rtp_timeout
+     */
+    protected $rtpTimeout = 60;
+
+    /**
+     * @var int
+     * column: rtp_timeout_hold
+     */
+    protected $rtpTimeoutHold = 600;
+
+    /**
      * @var ?TerminalInterface
      * inversedBy psEndpoint
      */
@@ -197,7 +209,9 @@ abstract class PsEndpointAbstract
         string $t38Udptl,
         string $t38UdptlEc,
         int $t38UdptlMaxdatagram,
-        string $t38UdptlNat
+        string $t38UdptlNat,
+        int $rtpTimeout,
+        int $rtpTimeoutHold
     ) {
         $this->setSorceryId($sorceryId);
         $this->setContext($context);
@@ -208,6 +222,8 @@ abstract class PsEndpointAbstract
         $this->setT38UdptlEc($t38UdptlEc);
         $this->setT38UdptlMaxdatagram($t38UdptlMaxdatagram);
         $this->setT38UdptlNat($t38UdptlNat);
+        $this->setRtpTimeout($rtpTimeout);
+        $this->setRtpTimeoutHold($rtpTimeoutHold);
     }
 
     abstract public function getId(): null|string|int;
@@ -286,6 +302,10 @@ abstract class PsEndpointAbstract
         Assertion::notNull($t38UdptlMaxdatagram, 'getT38UdptlMaxdatagram value is null, but non null value was expected.');
         $t38UdptlNat = $dto->getT38UdptlNat();
         Assertion::notNull($t38UdptlNat, 'getT38UdptlNat value is null, but non null value was expected.');
+        $rtpTimeout = $dto->getRtpTimeout();
+        Assertion::notNull($rtpTimeout, 'getRtpTimeout value is null, but non null value was expected.');
+        $rtpTimeoutHold = $dto->getRtpTimeoutHold();
+        Assertion::notNull($rtpTimeoutHold, 'getRtpTimeoutHold value is null, but non null value was expected.');
 
         $self = new static(
             $sorceryId,
@@ -296,7 +316,9 @@ abstract class PsEndpointAbstract
             $t38Udptl,
             $t38UdptlEc,
             $t38UdptlMaxdatagram,
-            $t38UdptlNat
+            $t38UdptlNat,
+            $rtpTimeout,
+            $rtpTimeoutHold
         );
 
         $self
@@ -351,6 +373,10 @@ abstract class PsEndpointAbstract
         Assertion::notNull($t38UdptlMaxdatagram, 'getT38UdptlMaxdatagram value is null, but non null value was expected.');
         $t38UdptlNat = $dto->getT38UdptlNat();
         Assertion::notNull($t38UdptlNat, 'getT38UdptlNat value is null, but non null value was expected.');
+        $rtpTimeout = $dto->getRtpTimeout();
+        Assertion::notNull($rtpTimeout, 'getRtpTimeout value is null, but non null value was expected.');
+        $rtpTimeoutHold = $dto->getRtpTimeoutHold();
+        Assertion::notNull($rtpTimeoutHold, 'getRtpTimeoutHold value is null, but non null value was expected.');
 
         $this
             ->setSorceryId($sorceryId)
@@ -375,6 +401,8 @@ abstract class PsEndpointAbstract
             ->setT38UdptlEc($t38UdptlEc)
             ->setT38UdptlMaxdatagram($t38UdptlMaxdatagram)
             ->setT38UdptlNat($t38UdptlNat)
+            ->setRtpTimeout($rtpTimeout)
+            ->setRtpTimeoutHold($rtpTimeoutHold)
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
@@ -411,6 +439,8 @@ abstract class PsEndpointAbstract
             ->setT38UdptlEc(self::getT38UdptlEc())
             ->setT38UdptlMaxdatagram(self::getT38UdptlMaxdatagram())
             ->setT38UdptlNat(self::getT38UdptlNat())
+            ->setRtpTimeout(self::getRtpTimeout())
+            ->setRtpTimeoutHold(self::getRtpTimeoutHold())
             ->setTerminal(Terminal::entityToDto(self::getTerminal(), $depth))
             ->setFriend(Friend::entityToDto(self::getFriend(), $depth))
             ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
@@ -445,6 +475,8 @@ abstract class PsEndpointAbstract
             't38_udptl_ec' => self::getT38UdptlEc(),
             't38_udptl_maxdatagram' => self::getT38UdptlMaxdatagram(),
             't38_udptl_nat' => self::getT38UdptlNat(),
+            'rtp_timeout' => self::getRtpTimeout(),
+            'rtp_timeout_hold' => self::getRtpTimeoutHold(),
             'terminalId' => self::getTerminal()?->getId(),
             'friendId' => self::getFriend()?->getId(),
             'residentialDeviceId' => self::getResidentialDevice()?->getId(),
@@ -859,6 +891,30 @@ abstract class PsEndpointAbstract
     public function getT38UdptlNat(): string
     {
         return $this->t38UdptlNat;
+    }
+
+    protected function setRtpTimeout(int $rtpTimeout): static
+    {
+        $this->rtpTimeout = $rtpTimeout;
+
+        return $this;
+    }
+
+    public function getRtpTimeout(): int
+    {
+        return $this->rtpTimeout;
+    }
+
+    protected function setRtpTimeoutHold(int $rtpTimeoutHold): static
+    {
+        $this->rtpTimeoutHold = $rtpTimeoutHold;
+
+        return $this;
+    }
+
+    public function getRtpTimeoutHold(): int
+    {
+        return $this->rtpTimeoutHold;
     }
 
     public function setTerminal(?TerminalInterface $terminal = null): static

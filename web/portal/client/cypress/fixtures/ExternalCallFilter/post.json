@@ -1,0 +1,58 @@
+{
+  "request": {
+    "name": "newFilter",
+    "holidayEnabled": true,
+    "holidayTargetType": "number",
+    "holidayNumberValue": "946002021",
+    "outOfScheduleEnabled": true,
+    "outOfScheduleTargetType": "number",
+    "outOfScheduleNumberValue": "946002022",
+    "welcomeLocution": null,
+    "holidayLocution": null,
+    "outOfScheduleLocution": null,
+    "holidayExtension": null,
+    "outOfScheduleExtension": null,
+    "holidayVoicemail": null,
+    "outOfScheduleVoicemail": null,
+    "holidayNumberCountry": 77,
+    "outOfScheduleNumberCountry": 77,
+    "scheduleIds": [2],
+    "calendarIds": [2],
+    "whiteListIds": [2],
+    "blackListIds": [2]
+  },
+  "response": {
+    "body": {
+      "name": "newFilter",
+      "id": 2,
+      "holidayEnabled": true,
+      "holidayTargetType": "number",
+      "holidayNumberValue": "946002021",
+      "outOfScheduleEnabled": true,
+      "outOfScheduleTargetType": "number",
+      "outOfScheduleNumberValue": "946002022",
+      "welcomeLocution": null,
+      "holidayLocution": null,
+      "outOfScheduleLocution": null,
+      "holidayExtension": null,
+      "outOfScheduleExtension": null,
+      "holidayVoicemail": null,
+      "outOfScheduleVoicemail": null,
+      "holidayNumberCountry": 77,
+      "outOfScheduleNumberCountry": 77,
+      "scheduleIds": [2],
+      "calendarIds": [2],
+      "whiteListIds": [2],
+      "blackListIds": [2]
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "request": {
+    "name": "Updated name",
+    "description": "Updated description",
+    "open": false,
+    "id": 1
+  },
+  "response": {
+    "body": {
+      "name": "Updated name",
+      "description": "Updated description",
+      "open": false,
+      "id": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

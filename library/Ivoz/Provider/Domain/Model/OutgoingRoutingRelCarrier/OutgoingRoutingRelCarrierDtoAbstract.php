@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto;
@@ -165,6 +165,9 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this;
     }
 
+    /**
+    * @return TpRatingProfileDto[] | null
+    */
     public function getTpRatingProfiles(): ?array
     {
         return $this->tpRatingProfiles;

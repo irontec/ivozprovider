@@ -1,0 +1,40 @@
+{
+  "request": {
+    "name": "testUpdate",
+    "routetype": "number",
+    "numbervalue": "946002021",
+    "friendvalue": null,
+    "id": 1,
+    "ivr": null,
+    "huntGroup": null,
+    "voicemail": null,
+    "user": null,
+    "queue": null,
+    "locution": null,
+    "conferenceRoom": null,
+    "extension": null,
+    "numberCountry": 68
+  },
+  "response": {
+    "body": {
+      "name": "testUpdate",
+      "routetype": "number",
+      "numbervalue": "946002021",
+      "friendvalue": null,
+      "id": 1,
+      "ivr": null,
+      "huntGroup": null,
+      "voicemail": null,
+      "user": null,
+      "queue": null,
+      "locution": null,
+      "conferenceRoom": null,
+      "extension": null,
+      "numberCountry": 68
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

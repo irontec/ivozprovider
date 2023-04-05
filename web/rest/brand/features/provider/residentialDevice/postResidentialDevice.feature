@@ -9,7 +9,7 @@ Feature: Create residential devices
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/residential_devices" with body:
-    """
+      """
       {
           "name": "testResidentialDevice",
           "description": "",
@@ -28,12 +28,12 @@ Feature: Create residential devices
           "outgoingDdi": null,
           "language": null
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "testResidentialDevice",
           "description": "",
@@ -47,13 +47,15 @@ Feature: Create residential devices
           "ddiIn": "yes",
           "maxCalls": 1,
           "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
           "id": 2,
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }
-    """
+      """
 
   Scenario: Retrieve created ddi
     Given I add Brand Authorization header
@@ -63,7 +65,7 @@ Feature: Create residential devices
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "testResidentialDevice",
           "description": "",
@@ -83,4 +85,4 @@ Feature: Create residential devices
           "outgoingDdi": null,
           "language": null
       }
-    """
+      """

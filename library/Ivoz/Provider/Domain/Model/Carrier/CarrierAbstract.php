@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
@@ -37,11 +37,6 @@ abstract class CarrierAbstract
      * @var string
      */
     protected $name;
-
-    /**
-     * @var ?bool
-     */
-    protected $externallyRated = false;
 
     /**
      * @var ?float
@@ -160,7 +155,6 @@ abstract class CarrierAbstract
         );
 
         $self
-            ->setExternallyRated($dto->getExternallyRated())
             ->setBalance($dto->getBalance())
             ->setCalculateCost($dto->getCalculateCost())
             ->setBrand($fkTransformer->transform($brand))
@@ -194,7 +188,6 @@ abstract class CarrierAbstract
         $this
             ->setDescription($description)
             ->setName($name)
-            ->setExternallyRated($dto->getExternallyRated())
             ->setBalance($dto->getBalance())
             ->setCalculateCost($dto->getCalculateCost())
             ->setBrand($fkTransformer->transform($brand))
@@ -214,7 +207,6 @@ abstract class CarrierAbstract
         return self::createDto()
             ->setDescription(self::getDescription())
             ->setName(self::getName())
-            ->setExternallyRated(self::getExternallyRated())
             ->setBalance(self::getBalance())
             ->setCalculateCost(self::getCalculateCost())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
@@ -232,7 +224,6 @@ abstract class CarrierAbstract
         return [
             'description' => self::getDescription(),
             'name' => self::getName(),
-            'externallyRated' => self::getExternallyRated(),
             'balance' => self::getBalance(),
             'calculateCost' => self::getCalculateCost(),
             'brandId' => self::getBrand()->getId(),
@@ -269,18 +260,6 @@ abstract class CarrierAbstract
     public function getName(): string
     {
         return $this->name;
-    }
-
-    protected function setExternallyRated(?bool $externallyRated = null): static
-    {
-        $this->externallyRated = $externallyRated;
-
-        return $this;
-    }
-
-    public function getExternallyRated(): ?bool
-    {
-        return $this->externallyRated;
     }
 
     protected function setBalance(?float $balance = null): static

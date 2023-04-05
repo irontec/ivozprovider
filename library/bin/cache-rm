@@ -2,33 +2,48 @@
 
 rm -fr /opt/irontec/ivozprovider/schema/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/schema/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/schema/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/web/rest/platform/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/web/rest/platform/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/web/rest/platform/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/web/rest/brand/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/web/rest/brand/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/web/rest/brand/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/web/rest/client/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/web/rest/client/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/web/rest/client/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/web/rest/user/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/web/rest/user/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/web/rest/user/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/asterisk/agi/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/asterisk/agi/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/asterisk/agi/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/microservices/scheduler/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/microservices/scheduler/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/microservices/scheduler/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/microservices/recordings/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/microservices/recordings/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/microservices/recordings/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/microservices/workers/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/microservices/workers/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/microservices/workers/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/microservices/balances/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/microservices/balances/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/microservices/balances/var/cache/test/*
+
+rm -fr /opt/irontec/ivozprovider/microservices/provision/var/cache/dev/*
+rm -fr /opt/irontec/ivozprovider/microservices/provision/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/microservices/provision/var/cache/test/*
 
 rm -fr /opt/irontec/ivozprovider/microservices/realtime/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/microservices/realtime/var/cache/prod/*
+rm -fr /opt/irontec/ivozprovider/microservices/realtime/var/cache/test/*

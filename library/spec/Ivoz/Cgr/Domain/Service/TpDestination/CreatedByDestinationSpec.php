@@ -5,7 +5,7 @@ namespace spec\Ivoz\Cgr\Domain\Service\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Service\TpDestination\CreatedByDestination;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;

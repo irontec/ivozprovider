@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Friend;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
@@ -817,6 +817,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return FriendsPatternDto[] | null
+    */
     public function getPatterns(): ?array
     {
         return $this->patterns;
@@ -829,6 +832,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CallForwardSettingDto[] | null
+    */
     public function getCallForwardSettings(): ?array
     {
         return $this->callForwardSettings;

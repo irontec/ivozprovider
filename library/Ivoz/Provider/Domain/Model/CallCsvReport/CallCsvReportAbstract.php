@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\CallCsvReport\Csv;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -266,7 +266,7 @@ abstract class CallCsvReportAbstract
     protected function setInDate(string|\DateTimeInterface $inDate): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $inDate = DateTimeHelper::createOrFix(
             $inDate,
             null
@@ -289,7 +289,7 @@ abstract class CallCsvReportAbstract
     protected function setOutDate(string|\DateTimeInterface $outDate): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $outDate = DateTimeHelper::createOrFix(
             $outDate,
             null
@@ -312,7 +312,7 @@ abstract class CallCsvReportAbstract
     protected function setCreatedOn(string|\DateTimeInterface $createdOn): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $createdOn = DateTimeHelper::createOrFix(
             $createdOn,
             null

@@ -21,6 +21,10 @@ class FeaturesRelBrandLifecycleServiceCollection implements LifecycleServiceColl
         [
             \Ivoz\Provider\Domain\Service\FeaturesRelBrand\AvoidUpdates::class => 100,
         ],
+        "pre_remove" =>
+        [
+            \Ivoz\Provider\Domain\Service\FeaturesRelBrand\AvoidBillingRemoval::class => 200,
+        ],
     ];
 
     protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void

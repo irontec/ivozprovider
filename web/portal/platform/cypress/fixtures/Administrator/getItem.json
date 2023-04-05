@@ -1,0 +1,15 @@
+{
+  "body": {
+    "id": 1,
+    "active": true,
+    "email": "admin@example.com",
+    "lastname": "ivozprovider",
+    "name": "admin",
+    "restricted": false,
+    "username": "admin"
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoute;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
@@ -545,6 +545,9 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
+    /**
+    * @return ConditionalRoutesConditionDto[] | null
+    */
     public function getConditions(): ?array
     {
         return $this->conditions;

@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\InvoiceScheduler;
 use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -99,8 +99,6 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getCompany(): CompanyInterface;
 
     public function getNumberSequence(): ?InvoiceNumberSequenceInterface;
-
-    public function isInitialized(): bool;
 
     public function addRelFixedCost(FixedCostsRelInvoiceSchedulerInterface $relFixedCost): InvoiceSchedulerInterface;
 

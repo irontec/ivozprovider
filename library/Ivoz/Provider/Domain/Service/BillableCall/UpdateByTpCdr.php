@@ -4,13 +4,14 @@ namespace Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\ProcessExternalCdr;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigratedSubscriberInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Psr\Log\LoggerInterface;
 
 class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
@@ -96,11 +97,11 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
             return;
         }
 
-        $carrier = $billableCall->getCarrier();
-        if ($carrier && $carrier->getExternallyRated()) {
+        $company = $billableCall->getCompany();
+        if ($company && $company->getBillingMethod() === CompanyInterface::BILLINGMETHOD_NONE) {
             $infoMsg = sprintf(
-                'Carrier#%s has external rater. Skipping',
-                (int) $carrier->getId()
+                'Company#%s has no billing method. Skipping',
+                (int) $company->getId()
             );
             $this->logger->info($infoMsg);
             return;

@@ -3,16 +3,22 @@
 namespace Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecDto;
+use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryDto;
+use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagDto;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto;
 
 class CompanyDto extends CompanyDtoAbstract
 {
-    public const CONTEXT_WITH_FEATURES = 'withFeatures';
-
-    public const CONTEXTS_WITH_FEATURES = [
-        self::CONTEXT_WITH_FEATURES,
-        self::CONTEXT_DETAILED
-    ];
+    /**
+     * @var string
+     * @AttributeDefinition(
+     *     type="string",
+     *     writable=false,
+     *     description="Registration domain"
+     * )
+     */
+    protected $domainName;
 
     /**
      * @var int[]
@@ -24,6 +30,36 @@ class CompanyDto extends CompanyDtoAbstract
      */
     private $featureIds = [];
 
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Country ids"
+     * )
+     */
+    private $geoIpAllowedCountries = [];
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Routing tag ids"
+     * )
+     */
+    private $routingTagIds = [];
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Codec ids"
+     * )
+     */
+    private $codecIds = [];
+
     public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
@@ -31,8 +67,11 @@ class CompanyDto extends CompanyDtoAbstract
             $role
         );
 
-        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
+        if ($role === 'ROLE_BRAND_ADMIN') {
             $response['featureIds'] = $this->featureIds;
+            $response['geoIpAllowedCountries'] = $this->geoIpAllowedCountries;
+            $response['routingTagIds'] = $this->routingTagIds;
+            $response['codecIds'] = $this->codecIds;
         }
 
         return $response;
@@ -53,18 +92,24 @@ class CompanyDto extends CompanyDtoAbstract
             $contextProperties['brandId'] = 'brand';
         }
 
+        unset($contextProperties['domainName']);
         $this->setByContext(
             $contextProperties,
             $data
         );
     }
 
+    public function setDomainName(string $name): self
+    {
+        $this->domainName = $name;
+
+        return $this;
+    }
+
     /**
      * @param int[] $featureIds
-     *
-     * @return void
      */
-    public function setFeatureIds(array $featureIds): void
+    public function setFeatureIds(array $featureIds): self
     {
         $this->featureIds = $featureIds;
         $relFeatures = [];
@@ -74,6 +119,59 @@ class CompanyDto extends CompanyDtoAbstract
             $relFeatures[] = $dto;
         }
         $this->setRelFeatures($relFeatures);
+
+        return $this;
+    }
+
+    /**
+     * @param int[] $geoIpAllowedCountries
+     */
+    public function setGeoIpAllowedCountries(array $geoIpAllowedCountries): self
+    {
+        $this->geoIpAllowedCountries = $geoIpAllowedCountries;
+        $relCountries = [];
+        foreach ($geoIpAllowedCountries as $id) {
+            $dto = new CompanyRelGeoIPCountryDto();
+            $dto->setCountryId($id);
+            $relCountries[] = $dto;
+        }
+        $this->setRelCountries($relCountries);
+
+        return $this;
+    }
+
+    /**
+     * @param int[] $routingTagIds
+     */
+    public function setRoutingTagIds(array $routingTagIds): self
+    {
+        $this->routingTagIds = $routingTagIds;
+        $relRoutingTags = [];
+        foreach ($routingTagIds as $id) {
+            $dto = new CompanyRelRoutingTagDto();
+            $dto->setRoutingTagId($id);
+            $relRoutingTags[] = $dto;
+        }
+        $this->setRelRoutingTags($relRoutingTags);
+
+        return $this;
+    }
+
+    /**
+     * @param int[] $codecIds
+     */
+    public function setCodecIds(array $codecIds): self
+    {
+        $this->codecIds = $codecIds;
+        $relCodecs = [];
+        foreach ($codecIds as $id) {
+            $dto = new CompanyRelCodecDto();
+            $dto->setCodecId($id);
+            $relCodecs[] = $dto;
+        }
+        $this->setRelCodecs($relCodecs);
+
+        return $this;
     }
 
     private function filterCompanyReadOnlyFields(array $data): array
@@ -125,24 +223,58 @@ class CompanyDto extends CompanyDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'type' => 'type',
-                'nif' => 'nif'
+                'invoicing' => [
+                    'nif',
+                ],
+                'billingMethod' => 'billingMethod',
+                'currentDayUsage' => 'currentDayUsage',
+                'maxDailyUsage' => 'maxDailyUsage',
             ];
+
+            if ($role === 'ROLE_BRAND_ADMIN') {
+                $response['domainUsers'] = 'domainUsers';
+                $response['balance'] = 'balance';
+                $response['outgoingDdiId'] = 'outgoingDdi';
+            }
         } else {
             $response = parent::getPropertyMap($context);
         }
 
-        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
-            $response['featureIds'] = 'featureIds';
+        unset($response['domainId']);
+
+        $showDomainNameContext = in_array(
+            $context,
+            [
+                    self::CONTEXT_COLLECTION,
+                    self::CONTEXT_DETAILED,
+                    self::CONTEXT_DETAILED_COLLECTION,
+            ]
+        );
+
+        if ($showDomainNameContext) {
+            $response['domainName'] = 'domainName';
         }
 
-        unset($response['domainId']);
         if ($role === 'ROLE_BRAND_ADMIN') {
+            $response['featureIds'] = 'featureIds';
+            $response['geoIpAllowedCountries'] = 'geoIpAllowedCountries';
+            $response['routingTagIds'] = 'routingTagIds';
+            $response['codecIds'] = 'codecIds';
+
             return self::filterFieldsForBrandAdmin($response);
         }
 
         if ($role === 'ROLE_COMPANY_ADMIN') {
             return self::filterFieldsForCompanyAdmin($response);
         }
+
+        return $response;
+    }
+
+    public function toArray(bool $hideSensitiveData = false): array
+    {
+        $response = parent::toArray($hideSensitiveData);
+        $response['domainName'] = $this->domainName;
 
         return $response;
     }
@@ -157,16 +289,12 @@ class CompanyDto extends CompanyDtoAbstract
             'type',
             'name',
             'domainUsers',
-            'nif',
+            'invoicing',
             'maxCalls',
-            'postalAddress',
-            'postalCode',
-            'town',
-            'province',
-            'countryName',
             'ipfilter',
             'onDemandRecord',
             'onDemandRecordCode',
+            'allowRecordingRemoval',
             'externallyextraopts',
             'billingMethod',
             'balance',
@@ -184,8 +312,14 @@ class CompanyDto extends CompanyDtoAbstract
             'invoiceNotificationTemplateId',
             'callCsvNotificationTemplateId',
             'featureIds',
+            'geoIpAllowedCountries',
+            'routingTagIds',
+            'codecIds',
             'maxDailyUsage',
             'maxDailyUsageEmail',
+            'maxDailyUsageNotificationTemplateId',
+            'currentDayUsage' => 'currentDayUsage',
+            'domainName',
         ];
 
         return array_filter(
@@ -197,17 +331,13 @@ class CompanyDto extends CompanyDtoAbstract
         );
     }
 
-    /**
-     * @param array $response
-     * @return array
-     */
     private static function filterFieldsForCompanyAdmin(array $response): array
     {
         $allowedFields = [
             'type',
             'name',
             'domainUsers',
-            'nif',
+            'invoicing' => ['nif'],
             'onDemandRecordCode',
             'balance',
             'id',
@@ -217,14 +347,42 @@ class CompanyDto extends CompanyDtoAbstract
             'transformationRuleSetId',
             'outgoingDdiId',
             'outgoingDdiRuleId',
+            'domainName',
         ];
 
-        return array_filter(
+        $response = array_filter(
             $response,
-            function ($key) use ($allowedFields): bool {
-                return in_array($key, $allowedFields, true);
+            function (string $key) use ($allowedFields): bool {
+                return
+                    in_array($key, $allowedFields, true)
+                    || array_key_exists($key, $allowedFields);
             },
             ARRAY_FILTER_USE_KEY
         );
+
+        foreach ($response as $key => $val) {
+            $isEmbedded = is_array($val);
+            if (!$isEmbedded) {
+                continue;
+            }
+
+            if (!isset($allowedFields[$key])) {
+                continue;
+            }
+
+            $validSubKeys = $allowedFields[$key];
+            if (!is_array($validSubKeys)) {
+                throw new \RuntimeException($key . ' context properties were expected to be array');
+            }
+
+            /** @var array<array-key, string> $embeddedValues */
+            $embeddedValues = $response[$key];
+            $response[$key] = array_intersect(
+                $embeddedValues,
+                $validSubKeys
+            );
+        }
+
+        return $response;
     }
 }

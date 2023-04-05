@@ -9,7 +9,7 @@ Feature: Create outgoing routings
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/outgoing_routings" with body:
-    """
+      """
       {
           "type": "pattern",
           "priority": 2,
@@ -25,12 +25,12 @@ Feature: Create outgoing routings
           "clidCountry": null,
           "carrierIds": [1]
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "type": "pattern",
           "priority": 2,
@@ -41,24 +41,9 @@ Feature: Create outgoing routings
           "forceClid": false,
           "clid": null,
           "id": 3,
-          "company": "~",
+          "company": 2,
           "carrier": null,
-          "routingPattern": {
-              "prefix": "+34",
-              "id": 1,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              },
-              "description": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              }
-          },
+          "routingPattern": 1,
           "routingPatternGroup": null,
           "routingTag": null,
           "clidCountry": null,
@@ -66,7 +51,7 @@ Feature: Create outgoing routings
               1
           ]
       }
-    """
+      """
 
   Scenario: Retrieve created outgoing routing
     Given I add Brand Authorization header
@@ -76,7 +61,7 @@ Feature: Create outgoing routings
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "type": "pattern",
           "priority": 2,
@@ -112,4 +97,4 @@ Feature: Create outgoing routings
               1
           ]
       }
-    """
+      """

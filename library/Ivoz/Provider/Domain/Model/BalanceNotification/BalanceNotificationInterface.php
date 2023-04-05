@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\BalanceNotification;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
@@ -67,6 +67,4 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getCarrier(): ?CarrierInterface;
 
     public function getNotificationTemplate(): ?NotificationTemplateInterface;
-
-    public function isInitialized(): bool;
 }

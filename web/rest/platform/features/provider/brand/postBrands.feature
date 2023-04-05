@@ -24,7 +24,9 @@ Feature: Manage brands
         },
         "defaultTimezone": 145,
         "language": 1,
-        "currency": 1
+        "currency": 1,
+        "features": [1,2],
+        "proxyTrunks": [1]
       }
     """
     Then the response status code should be 201
@@ -84,7 +86,18 @@ Feature: Manage brands
                   "it": "Euro"
               }
           },
-          "features": []
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "features": [
+              1,
+              2
+          ],
+          "proxyTrunks": [
+              1
+          ]
       }
     """
 
@@ -149,7 +162,18 @@ Feature: Manage brands
                   "it": "Euro"
               }
           },
-          "features": []
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "features": [
+              1,
+              2
+          ],
+          "proxyTrunks": [
+              1
+          ]
       }
     """
 
@@ -180,7 +204,8 @@ Content-Disposition: form-data; name="brand"
         "defaultTimezone": 145,
         "language": 1,
         "currency": 1,
-        "features": [1]
+        "features": [1],
+        "proxyTrunks": [1]
       }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="Logo"; filename="uploadable"
@@ -202,7 +227,7 @@ This is file content
           "id": 3,
           "logo": {
               "fileSize": 20,
-              "mimeType": "text/plain",
+              "mimeType": "text/plain; charset=us-ascii",
               "baseName": "uploadable"
           },
           "invoice": {
@@ -247,8 +272,23 @@ This is file content
                   "it": "Euro"
               }
           },
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
           "features": [
+              1
+          ],
+          "proxyTrunks": [
               1
           ]
       }
     """
+
+  Scenario: Retrieve uploaded brand logo
+    Given I add Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "/brands/3/logo"
+     Then the response status code should be 200
+      And the header "Content-Type" should be equal to "text/plain; charset=us-ascii"

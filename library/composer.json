@@ -52,6 +52,10 @@
         {
             "url": "https://github.com/irontec/prophecy.git",
             "type": "git"
+        },
+        {
+            "url": "https://github.com/irontec/handlebars.php",
+            "type": "git"
         }
     ],
     "autoload-dev": {
@@ -74,9 +78,9 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
         "doctrine/persistence": "^2.1",
-        "irontec/ivoz-api-bundle": "^4.3",
-        "irontec/ivoz-core": "^4.5",
-        "irontec/ivoz-dev-tools": "^5.0",
+        "irontec/ivoz-api-bundle": "^4.7",
+        "irontec/ivoz-core": "^4.16.4",
+        "irontec/ivoz-dev-tools": "^5.9.2",
         "irontec/ivoz-provider-bundle": "^2.5",
         "irontec/prophecy": "^1.13",
         "irontec/replacements": "^1.0",
@@ -88,7 +92,7 @@
         "phpxmlrpc/phpxmlrpc": "^4.0",
         "snc/redis-bundle": "^3.2",
         "symfony/polyfill-util": "^1.22",
-        "xamin/handlebars.php": "^0.10.4"
+        "xamin/handlebars.php": "v0.10.5"
     },
     "require-dev": {
         "ext-pcntl": "*",

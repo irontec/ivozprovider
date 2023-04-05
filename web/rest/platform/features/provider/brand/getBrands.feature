@@ -12,7 +12,7 @@ Feature: Manage brands
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "DemoBrand",
@@ -26,7 +26,19 @@ Feature: Manage brands
               "invoice": {
                   "nif": "",
                   "postalCode": ""
-              }
+              },
+              "features": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+              ],
+              "proxyTrunks": [
+                  1
+              ]
           },
           {
               "name": "Irontec_e2e",
@@ -40,10 +52,12 @@ Feature: Manage brands
               "invoice": {
                   "nif": "",
                   "postalCode": ""
-              }
+              },
+              "features": [],
+              "proxyTrunks": []
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain brand json
     Given I add Authorization header
@@ -53,7 +67,7 @@ Feature: Manage brands
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "name": "DemoBrand",
           "domainUsers": "",
@@ -106,6 +120,11 @@ Feature: Manage brands
                   "it": "Euro"
               }
           },
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
           "features": [
               1,
               2,
@@ -114,6 +133,9 @@ Feature: Manage brands
               5,
               6,
               7
+          ],
+          "proxyTrunks": [
+              1
           ]
       }
-    """
+      """

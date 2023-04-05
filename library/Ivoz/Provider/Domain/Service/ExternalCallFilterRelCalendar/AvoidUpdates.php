@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements ExternalCallFil
         ];
     }
     /**
-     * @param ExternalCallFilterRelCalendarInterface $entity
-     *
-     * @throws \DomainException
+     * @param ExternalCallFilterRelCalendarInterface $relCalendar
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(ExternalCallFilterRelCalendarInterface $entity)
+    public function execute(ExternalCallFilterRelCalendarInterface $relCalendar)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relCalendar);
     }
 }

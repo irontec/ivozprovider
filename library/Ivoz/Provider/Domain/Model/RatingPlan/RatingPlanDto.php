@@ -31,6 +31,15 @@ class RatingPlanDto extends RatingPlanDtoAbstract
     }
 
 
+    public function setTimeIn(\DateTimeInterface|string|null $timeIn): static
+    {
+        if (is_null($timeIn)) {
+            $timeIn = new \DateTime('00:00:00');
+        }
+
+        return parent::setTimeIn($timeIn);
+    }
+
     public function setTimingType(?string $timingType = null): static
     {
         if ($timingType == RatingPlanInterface::TIMINGTYPE_ALWAYS) {

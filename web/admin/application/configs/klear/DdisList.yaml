@@ -34,6 +34,8 @@ production:
           externalCallFilter: true
           routeType: true
           target: true
+          ddiProvider: true
+          description: true
         options:
           title: _("Options")
           screens:
@@ -59,6 +61,7 @@ production:
           residentialDevice: true
           conditionalRoute: true
           retailAccount: true
+          type: true
       fixedPositions: &ddisFixedPositions_Link
         group0:
           label: _("Number data")
@@ -66,9 +69,11 @@ production:
           fields:
             country: 1
             ddi: 1
+            type: 1
             ddiProvider: 1
             displayName: 2
             language: 1
+            description: 2
         group1:
           label: _("Filters data")
           colsPerRow: 2
@@ -217,7 +222,7 @@ production:
         company: *forcedCompany
         <<: *forcedBrand
 
-  commands:
+  commands: &exportDDIs_commandsLink
     importDDIsFreeUpload_command:
       <<: *Ddis
       controller: File

@@ -36,10 +36,6 @@ class Carrier extends CarrierAbstract implements CarrierInterface
      */
     protected function sanitizeValues(): void
     {
-        if ($this->getExternallyRated()) {
-            $this->setCalculateCost(false);
-        }
-
         if (!$this->getCalculateCost()) {
             $this->setCurrency(null);
         }

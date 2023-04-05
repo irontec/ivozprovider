@@ -42,6 +42,6 @@ According to their github page the following language/framework code auto-genera
 
 You'll find API specs in the URLs below:
 
-    - `Platform API spec </api/platform/swagger.json>`_
-    - `Brand API spec </api/brand/swagger.json>`_
-    - `Client API spec </api/client/swagger.json>`_
+    - `Platform API spec </api/platform/docs.json>`_
+    - `Brand API spec </api/brand/docs.json>`_
+    - `Client API spec </api/client/docs.json>`_

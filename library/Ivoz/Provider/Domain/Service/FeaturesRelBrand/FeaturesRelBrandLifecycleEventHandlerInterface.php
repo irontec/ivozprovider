@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface;
 
 interface FeaturesRelBrandLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(FeaturesRelBrandInterface $entity);
+    public function execute(FeaturesRelBrandInterface $relBrand);
 }

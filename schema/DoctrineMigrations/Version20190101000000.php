@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Application\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\LoggableMigration;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version00000000000000 extends AbstractMigration
+final class Version00000000000000 extends LoggableMigration
 {
     public function getDescription(): string
     {
@@ -21,7 +21,8 @@ final class Version00000000000000 extends AbstractMigration
     {
         // Delete IvozProvider 1.x migrations tracking table
         $this->addSql("DROP TABLE IF EXISTS changelog");
-        // Delete IvozProvider 2.x migrations tracking records
+        // Update IvozProvider 2.x migrations tracking records
+        $this->addSql("UPDATE migration_versions SET version=CONCAT('Application\\\\Migrations\\\\Version', version) WHERE version NOT LIKE 'Application%'");
         $this->addSql("UPDATE migration_versions SET executed_at = FROM_UNIXTIME(0)");
     }
 

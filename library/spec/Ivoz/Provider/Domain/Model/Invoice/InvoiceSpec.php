@@ -11,6 +11,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
+use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -37,8 +38,14 @@ class InvoiceSpec extends ObjectBehavior
         );
         $brandDto = new BrandDto();
 
+        $timeZone = $this->getInstance(
+            Timezone::class,
+            ['tz' => 'UTC']
+        );
+
         $company = $this->getInstance(
-            Company::class
+            Company::class,
+            ['defaultTimezone' => $timeZone]
         );
         $companyDto = new CompanyDto();
 
@@ -50,7 +57,10 @@ class InvoiceSpec extends ObjectBehavior
             ->setPdfMimeType('')
             ->setPdfBaseName('file.pdf')
             ->setBrand($brandDto)
-            ->setCompany($companyDto);
+            ->setCompany($companyDto)
+            ->setInDate('2023-01-01 10:00:00')
+            ->setOutDate('2023-01-31 10:00:00')
+            ->setTaxRate(21.0);
 
         $this->transformer = new DtoToEntityFakeTransformer([
             [$brandDto, $brand],

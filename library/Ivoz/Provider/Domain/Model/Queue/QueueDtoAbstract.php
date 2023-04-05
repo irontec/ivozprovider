@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Queue;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
@@ -22,6 +22,11 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
      * @var string|null
      */
     private $name = null;
+
+    /**
+     * @var string|null
+     */
+    private $displayName = null;
 
     /**
      * @var int|null
@@ -57,6 +62,16 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
      * @var int|null
      */
     private $periodicAnnounceFrequency = null;
+
+    /**
+     * @var string|null
+     */
+    private $announcePosition = 'no';
+
+    /**
+     * @var int|null
+     */
+    private $announceFrequency = null;
 
     /**
      * @var int|null
@@ -157,6 +172,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
 
         return [
             'name' => 'name',
+            'displayName' => 'displayName',
             'maxWaitTime' => 'maxWaitTime',
             'timeoutTargetType' => 'timeoutTargetType',
             'timeoutNumberValue' => 'timeoutNumberValue',
@@ -164,6 +180,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'fullTargetType' => 'fullTargetType',
             'fullNumberValue' => 'fullNumberValue',
             'periodicAnnounceFrequency' => 'periodicAnnounceFrequency',
+            'announcePosition' => 'announcePosition',
+            'announceFrequency' => 'announceFrequency',
             'memberCallRest' => 'memberCallRest',
             'memberCallTimeout' => 'memberCallTimeout',
             'strategy' => 'strategy',
@@ -190,6 +208,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     {
         $response = [
             'name' => $this->getName(),
+            'displayName' => $this->getDisplayName(),
             'maxWaitTime' => $this->getMaxWaitTime(),
             'timeoutTargetType' => $this->getTimeoutTargetType(),
             'timeoutNumberValue' => $this->getTimeoutNumberValue(),
@@ -197,6 +216,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'fullTargetType' => $this->getFullTargetType(),
             'fullNumberValue' => $this->getFullNumberValue(),
             'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
+            'announcePosition' => $this->getAnnouncePosition(),
+            'announceFrequency' => $this->getAnnounceFrequency(),
             'memberCallRest' => $this->getMemberCallRest(),
             'memberCallTimeout' => $this->getMemberCallTimeout(),
             'strategy' => $this->getStrategy(),
@@ -239,6 +260,18 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     public function getName(): ?string
     {
         return $this->name;
+    }
+
+    public function setDisplayName(?string $displayName): static
+    {
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
     }
 
     public function setMaxWaitTime(?int $maxWaitTime): static
@@ -323,6 +356,30 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
+    }
+
+    public function setAnnouncePosition(?string $announcePosition): static
+    {
+        $this->announcePosition = $announcePosition;
+
+        return $this;
+    }
+
+    public function getAnnouncePosition(): ?string
+    {
+        return $this->announcePosition;
+    }
+
+    public function setAnnounceFrequency(?int $announceFrequency): static
+    {
+        $this->announceFrequency = $announceFrequency;
+
+        return $this;
+    }
+
+    public function getAnnounceFrequency(): ?int
+    {
+        return $this->announceFrequency;
     }
 
     public function setMemberCallRest(?int $memberCallRest): static

@@ -9,7 +9,7 @@ security:
     ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ALLOWED_TO_SWITCH]
 
   # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
-  encoders:
+  password_hashers:
     Ivoz\Provider\Domain\Model\Administrator\Administrator:
       algorithm: bcrypt
       cost: 12

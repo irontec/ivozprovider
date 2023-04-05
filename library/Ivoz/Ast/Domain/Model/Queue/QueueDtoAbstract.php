@@ -2,8 +2,8 @@
 
 namespace Ivoz\Ast\Domain\Model\Queue;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 
 /**
@@ -28,6 +28,16 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
      * @var int|null
      */
     private $periodicAnnounceFrequency = null;
+
+    /**
+     * @var string|null
+     */
+    private $announcePosition = 'no';
+
+    /**
+     * @var int|null
+     */
+    private $announceFrequency = null;
 
     /**
      * @var int|null
@@ -95,6 +105,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'periodicAnnounce' => 'periodicAnnounce',
             'periodicAnnounceFrequency' => 'periodicAnnounceFrequency',
+            'announcePosition' => 'announcePosition',
+            'announceFrequency' => 'announceFrequency',
             'timeout' => 'timeout',
             'autopause' => 'autopause',
             'ringinuse' => 'ringinuse',
@@ -116,6 +128,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'name' => $this->getName(),
             'periodicAnnounce' => $this->getPeriodicAnnounce(),
             'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
+            'announcePosition' => $this->getAnnouncePosition(),
+            'announceFrequency' => $this->getAnnounceFrequency(),
             'timeout' => $this->getTimeout(),
             'autopause' => $this->getAutopause(),
             'ringinuse' => $this->getRinginuse(),
@@ -175,6 +189,30 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
+    }
+
+    public function setAnnouncePosition(?string $announcePosition): static
+    {
+        $this->announcePosition = $announcePosition;
+
+        return $this;
+    }
+
+    public function getAnnouncePosition(): ?string
+    {
+        return $this->announcePosition;
+    }
+
+    public function setAnnounceFrequency(?int $announceFrequency): static
+    {
+        $this->announceFrequency = $announceFrequency;
+
+        return $this;
+    }
+
+    public function getAnnounceFrequency(): ?int
+    {
+        return $this->announceFrequency;
     }
 
     public function setTimeout(?int $timeout): static

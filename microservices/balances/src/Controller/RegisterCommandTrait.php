@@ -2,8 +2,8 @@
 
 namespace Controller;
 
-use Ivoz\Core\Application\Event\CommandWasExecuted;
-use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\Event\CommandWasExecuted;
+use Ivoz\Core\Domain\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 
 trait RegisterCommandTrait

@@ -9,14 +9,14 @@ Feature: Update Ddis
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/ddis/1" with body:
-    """
+      """
       {
           "ddi": "0",
           "ddie164": "0",
+          "description": "New description for DDI 123",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
-          "billInboundCalls": false,
           "friendValue": "",
           "conferenceRoom": null,
           "language": null,
@@ -31,15 +31,16 @@ Feature: Update Ddis
           "residentialDevice": null,
           "conditionalRoute": null
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "ddi": "123",
           "ddie164": "+34123",
+          "description": "New description for DDI 123",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
@@ -58,4 +59,4 @@ Feature: Update Ddis
           "conditionalRoute": null,
           "retailAccount": null
       }
-    """
+      """

@@ -29,6 +29,10 @@ class ProviderInvoiceScheduler extends Fixture implements DependentFixtureInterf
             $this->setUnit('week');
             $this->setFrequency(1);
             $this->setEmail('something@domain.net');
+            $this->setTaxRate(0.0);
+            $this->setNumberSequence(
+                $fixture->getReference('_reference_ProviderInvoiceNumberSequence1')
+            );
             $this->lastExecution = new \DateTime('2018-12-01 08:00:00');
             $this->setLastExecutionError('');
             $this->setNextExecution('2018-12-02 08:00:00');

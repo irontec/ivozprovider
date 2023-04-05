@@ -1842,18 +1842,18 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.5",
+            "version": "6.5.8",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/guzzlehttp/guzzle",
-                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e"
+                "reference": "a52f0440530b54fa079ce76e8c5d196a42cad981"
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.6.1",
+                "guzzlehttp/psr7": "^1.9",
                 "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "^1.17.0"
+                "symfony/polyfill-intl-idn": "^1.17"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -1887,9 +1887,39 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Jeremy Lindblom",
+                    "email": "jeremeamia@gmail.com",
+                    "homepage": "https://github.com/jeremeamia"
+                },
+                {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
                 }
             ],
             "description": "Guzzle is a PHP HTTP client library",
@@ -1985,11 +2015,11 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.8.5",
+            "version": "1.9.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/guzzlehttp/psr7",
-                "reference": "337e3ad8e5716c15f9657bd214d16cc5e69df268"
+                "reference": "e98e3e6d4f86621a9b75f623996e6bbdeb4b9318"
             },
             "require": {
                 "php": ">=5.4.0",
@@ -2009,7 +2039,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -2125,17 +2155,17 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.8.4",
+            "version": "4.9.2",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "62757c696522bcb21c181ca1f5793741cb8b4e74"
+                "reference": "f0bdc10a5ec36af377f42f99d306c18bb1932013"
             },
             "require": {
                 "api-platform/core": "2.6.*",
                 "graze/guzzle-jsonrpc": "3.2.*",
                 "guzzlehttp/guzzle": "^6.3",
-                "irontec/ivoz-core": "^4.4",
+                "irontec/ivoz-core": "^4.16",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=7.4",
                 "symfony/doctrine-bridge": "^5.4",
@@ -2186,16 +2216,16 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.5.1",
+            "version": "4.7",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "90c02b9cc60480ced7a7bc6d6d4f54071e580051"
+                "reference": "02c1b2654c6ac9013b8ac4c21de8190e8161a33a"
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.12",
-                "irontec/ivoz-api": "^4.7.1",
-                "irontec/ivoz-core-bundle": "^4.0.6",
+                "irontec/ivoz-api": "^4.9",
+                "irontec/ivoz-core-bundle": "^4.7",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",
                 "php": ">=7.4"
@@ -2238,11 +2268,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.15.4",
+            "version": "4.16.6",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core",
-                "reference": "52c2d8143c212336922e2b250f413f690495a82d"
+                "reference": "5954470e105faad5f8318b2dee991ca63651e19e"
             },
             "require": {
                 "beberlei/assert": "^3.0",
@@ -2258,6 +2288,7 @@
                 "symfony/finder": "^5.1",
                 "symfony/http-foundation": "^5.1",
                 "symfony/mailer": "^5.4",
+                "symfony/mime": "^5.4",
                 "symfony/serializer": "^5.1"
             },
             "conflict": {
@@ -2313,15 +2344,15 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "4.6.2",
+            "version": "4.7.1",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "1b1abbe4d0a747104f76d3e114d4eb607f5b5a18"
+                "reference": "ba634f1afd0e8dbe65f6d9c1a6a455135439b58d"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
-                "irontec/ivoz-core": "^4.15",
+                "irontec/ivoz-core": "^4.16",
                 "php": ">=7.4",
                 "symfony/monolog-bundle": "^3.5",
                 "symfony/proxy-manager-bridge": "^5.1"
@@ -2357,17 +2388,17 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.34",
+            "version": "2.6.1",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "5f92ab43c4ab8b676fc2c6083bb0ff5a2557d899"
+                "reference": "41722ff9083640621b2792e0444b11e246ebe224"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
                 "incenteev/composer-parameter-handler": "^2.1",
-                "irontec/ivoz-core": "^4.15.3",
-                "irontec/ivoz-core-bundle": "^4.5.2",
+                "irontec/ivoz-core": "^4.16.4",
+                "irontec/ivoz-core-bundle": "^4.7",
                 "php": ">=8.0",
                 "symfony/asset": "^5.1",
                 "symfony/console": "^5.1",
@@ -2379,6 +2410,7 @@
                 "symfony/framework-bundle": "^5.1",
                 "symfony/http-foundation": "^5.1",
                 "symfony/http-kernel": "^5.1",
+                "symfony/mime": "^5.4",
                 "symfony/property-access": "^5.1",
                 "symfony/property-info": "^5.1",
                 "symfony/serializer": "^5.1",
@@ -4998,30 +5030,32 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v6.0.8",
+            "version": "v5.4.13",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/mime",
-                "reference": "c1701e88ad0ca49fc6ad6cdf360bc0e1209fb5e1"
+                "reference": "bb2ccf759e2b967dcd11bdee5bdf30dddd2290bd"
             },
             "require": {
-                "php": ">=8.0.2",
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-intl-idn": "^1.10",
-                "symfony/polyfill-mbstring": "^1.0"
+                "symfony/polyfill-mbstring": "^1.0",
+                "symfony/polyfill-php80": "^1.16"
             },
             "conflict": {
                 "egulias/email-validator": "~3.0.0",
                 "phpdocumentor/reflection-docblock": "<3.2.2",
                 "phpdocumentor/type-resolver": "<1.4.0",
-                "symfony/mailer": "<5.4"
+                "symfony/mailer": "<4.4"
             },
             "require-dev": {
                 "egulias/email-validator": "^2.1.10|^3.1",
                 "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
-                "symfony/dependency-injection": "^5.4|^6.0",
-                "symfony/property-access": "^5.4|^6.0",
-                "symfony/property-info": "^5.4|^6.0",
-                "symfony/serializer": "^5.4|^6.0"
+                "symfony/dependency-injection": "^4.4|^5.0|^6.0",
+                "symfony/property-access": "^4.4|^5.1|^6.0",
+                "symfony/property-info": "^4.4|^5.1|^6.0",
+                "symfony/serializer": "^5.2|^6.0"
             },
             "type": "library",
             "autoload": {
@@ -5280,11 +5314,11 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "dev-main",
+            "version": "v1.26.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-ctype",
-                "reference": "30885182c981ab175d4d034db0f6f469898070ab"
+                "reference": "6fd1b9a79f6e3cf65f9e679b23af304cd9e010d4"
             },
             "require": {
                 "php": ">=7.1"
@@ -5298,7 +5332,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.23-dev"
+                    "dev-main": "1.26-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -5596,11 +5630,11 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.24.0",
+            "version": "v1.26.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-mbstring",
-                "reference": "0abb51d2f102e00a4eefcf46ba7fec406d245825"
+                "reference": "9344f9cb97f3b19424af1a21a3b0e75b0a7d8d7e"
             },
             "require": {
                 "php": ">=7.1"
@@ -5614,7 +5648,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.23-dev"
+                    "dev-main": "1.26-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -5658,11 +5692,11 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.23.0",
+            "version": "v1.26.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-php72",
-                "reference": "9a142215a36a3888e30d0a9eeea9766764e96976"
+                "reference": "bf44a9fd41feaac72b074de600314a93e2ae78e2"
             },
             "require": {
                 "php": ">=7.1"
@@ -5670,7 +5704,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.23-dev"
+                    "dev-main": "1.26-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -7421,11 +7455,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.3.8",
+            "version": "v3.4.3",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/twig/twig",
-                "reference": "972d8604a92b7054828b539f2febb0211dd5945c"
+                "reference": "c38fd6b0b7f370c198db91ffd02e23b517426b58"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -7439,7 +7473,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {

@@ -4,7 +4,7 @@ namespace Ivoz\Ast\Domain\Service\Voicemail;
 
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailDto;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface as IvozVoicemailInterface;
 use Ivoz\Provider\Domain\Service\Voicemail\VoicemailLifecycleEventHandlerInterface;
 

@@ -5,7 +5,7 @@ namespace Ivoz\Cgr\Domain\Service\TpTiming;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Service\RatingPlan\RatingPlanLifecycleEventHandlerInterface;
 

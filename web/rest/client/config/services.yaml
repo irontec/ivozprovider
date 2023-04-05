@@ -66,3 +66,10 @@ services:
     Controller\My\:
         resource: '../src/Controller/My/*'
         tags: ['controller.service_arguments']
+
+###############################################
+## TEST
+###############################################
+when@test:
+    parameters:
+        local_storage_path: /tmp/storage

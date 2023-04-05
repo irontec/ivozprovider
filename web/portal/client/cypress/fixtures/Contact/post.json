@@ -1,0 +1,36 @@
+{
+  "request": {
+    "name": "New",
+    "lastname": "Contact",
+    "email": "newcontact@example.com",
+    "workPhone": "111222333",
+    "mobilePhone": "333222111",
+    "otherPhone": "+34123456789",
+    "user": null,
+    "workPhoneCountry": 1,
+    "mobilePhoneCountry": 1
+  },
+  "response": {
+    "body": {
+      "id": 4,
+      "name": "New",
+      "lastname": "Contact",
+      "email": "newcontact@example.com",
+      "workPhone": "111222333",
+      "mobilePhone": "333222111",
+      "otherPhone": "+34123456789",
+      "user": null,
+      "workPhoneCountry": 1,
+      "mobilePhoneCountry": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

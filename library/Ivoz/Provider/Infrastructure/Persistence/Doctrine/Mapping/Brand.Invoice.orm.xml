@@ -4,36 +4,43 @@
     <field name="nif" type="string" column="nif" length="25" nullable="false">
       <options>
         <option name="fixed"/>
+        <option name="default"></option>
       </options>
     </field>
     <field name="postalAddress" type="string" column="postalAddress" length="255" nullable="false">
       <options>
         <option name="fixed"/>
+        <option name="default"></option>
       </options>
     </field>
     <field name="postalCode" type="string" column="postalCode" length="10" nullable="false">
       <options>
         <option name="fixed"/>
+        <option name="default"></option>
       </options>
     </field>
     <field name="town" type="string" column="town" length="255" nullable="false">
       <options>
         <option name="fixed"/>
+        <option name="default"></option>
       </options>
     </field>
     <field name="province" type="string" column="province" length="255" nullable="false">
       <options>
         <option name="fixed"/>
+        <option name="default"></option>
       </options>
     </field>
     <field name="country" type="string" column="country" length="255" nullable="false">
       <options>
         <option name="fixed"/>
+        <option name="default"></option>
       </options>
     </field>
     <field name="registryData" type="string" column="registryData" length="1024" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="default"></option>
       </options>
     </field>
   </embeddable>

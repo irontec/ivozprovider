@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\IvrExcludedExtension;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 
@@ -52,6 +52,4 @@ interface IvrExcludedExtensionInterface extends LoggableEntityInterface
     public function getIvr(): ?IvrInterface;
 
     public function getExtension(): ExtensionInterface;
-
-    public function isInitialized(): bool;
 }

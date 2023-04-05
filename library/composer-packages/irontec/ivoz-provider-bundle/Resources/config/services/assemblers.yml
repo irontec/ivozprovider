@@ -4,124 +4,119 @@ services:
     autoconfigure: true
     public: true
 
+  Ivoz\Provider\Domain\Assembler\:
+    resource: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Domain/Assembler/*/*'
+    exclude: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Domain/Assembler/*/{StoragePathResolver.php}'
+    public: true
+
   ##########################################
   ## Brand
   ##########################################
-  Ivoz\Provider\Application\Service\Brand\BrandAssembler:
+  Ivoz\Provider\Domain\Assembler\Brand\BrandAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Brand'
 
-  Ivoz\Provider\Application\Service\Brand\BrandDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\Brand\BrandDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Brand'
-
-  ##########################################
-  ## CallAcl
-  ##########################################
-  Ivoz\Provider\Application\Service\CallAcl\CallAclDtoAssembler: ~
 
   ##########################################
   ## WebPortal
   ##########################################
-  Ivoz\Provider\Application\Service\WebPortal\WebPortalAssembler:
+  Ivoz\Provider\Domain\Assembler\WebPortal\WebPortalAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::WebPortal'
 
-  Ivoz\Provider\Application\Service\WebPortal\WebPortalDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\WebPortal\WebPortalDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::WebPortal'
 
   ##########################################
   ## CallCsvReport
   ##########################################
-  Ivoz\Provider\Application\Service\CallCsvReport\CallCsvReportAssembler:
+  Ivoz\Provider\Domain\Assembler\CallCsvReport\CallCsvReportAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::CallCsvReport'
 
-  Ivoz\Provider\Application\Service\CallCsvReport\CallCsvReportDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\CallCsvReport\CallCsvReportDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::CallCsvReport'
 
   ##########################################
   ## FaxesInOut
   ##########################################
-  Ivoz\Provider\Application\Service\FaxesInOut\FaxesInOutAssembler:
+  Ivoz\Provider\Domain\Assembler\FaxesInOut\FaxesInOutAssembler:
     public: true
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::FaxesInOut'
 
-  Ivoz\Provider\Application\Service\FaxesInOut\FaxesInOutDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\FaxesInOut\FaxesInOutDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::FaxesInOut'
 
   ##########################################
   ## Locution
   ##########################################
-  Ivoz\Provider\Application\Service\Locution\LocutionAssembler:
+  Ivoz\Provider\Domain\Assembler\Locution\LocutionAssembler:
     public: true
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Locution'
 
-  Ivoz\Provider\Application\Service\Locution\LocutionDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\Locution\LocutionDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Locution'
 
   ##########################################
   ## Invoice
   ##########################################
-  Ivoz\Provider\Application\Service\Invoice\InvoiceAssembler:
+  Ivoz\Provider\Domain\Assembler\Invoice\InvoiceAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Invoice'
 
-  Ivoz\Provider\Application\Service\Invoice\InvoiceDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\Invoice\InvoiceDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Invoice'
 
   ##########################################
   ## MusicOnHold
   ##########################################
-  Ivoz\Provider\Application\Service\MusicOnHold\MusicOnHoldAssembler:
+  Ivoz\Provider\Domain\Assembler\MusicOnHold\MusicOnHoldAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::MusicOnHold'
 
-  Ivoz\Provider\Application\Service\MusicOnHold\MusicOnHoldDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\MusicOnHold\MusicOnHoldDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::MusicOnHold'
 
   ##########################################
   ## Recording
   ##########################################
-  Ivoz\Provider\Application\Service\Recording\RecordingAssembler:
+  Ivoz\Provider\Domain\Assembler\Recording\RecordingAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Recording'
 
-  Ivoz\Provider\Application\Service\Recording\RecordingDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\Recording\RecordingDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Recording'
 
   ##########################################
   ## DestinationRateGroup
   ##########################################
-  Ivoz\Provider\Application\Service\DestinationRateGroup\DestinationRateGroupAssembler:
+  Ivoz\Provider\Domain\Assembler\DestinationRateGroup\DestinationRateGroupAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRateGroup'
 
-  Ivoz\Provider\Application\Service\DestinationRateGroup\DestinationRateGroupDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\DestinationRateGroup\DestinationRateGroupDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRateGroup'
-
-  ##########################################
-  ## RouteLock
-  ##########################################
-  Ivoz\Provider\Application\Service\RouteLock\RouteLockDtoAssembler: ~
 
   ##########################################
   ## VoicemailMessage
   ##########################################
-  Ivoz\Provider\Application\Service\VoicemailMessage\VoicemailMessageAssembler:
+  Ivoz\Provider\Domain\Assembler\VoicemailMessage\VoicemailMessageAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::VoicemailMessage'
 
-  Ivoz\Provider\Application\Service\VoicemailMessage\VoicemailMessageDtoAssembler:
+  Ivoz\Provider\Domain\Assembler\VoicemailMessage\VoicemailMessageDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::VoicemailMessage'

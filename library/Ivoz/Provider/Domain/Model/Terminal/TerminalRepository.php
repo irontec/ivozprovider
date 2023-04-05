@@ -26,6 +26,12 @@ interface TerminalRepository extends ObjectRepository, Selectable
     public function findOneByMac(string $mac);
 
     /**
+     * @param array<string> $macs
+     * @return TerminalInterface[] | null
+     */
+    public function findByMacs(array $macs): ?array;
+
+    /**
      * @param int $companyId
      * @return string[]
      */

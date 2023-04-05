@@ -118,6 +118,7 @@ production:
         blacklist:
           user: true
           residentialDevice: true
+          locution: ${auth.companyResidential}
         readOnly:
           name: true
           email: ${auth.companyVPBX}

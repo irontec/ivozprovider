@@ -1,0 +1,17 @@
+{
+  "body": [
+    {
+      "id": 1,
+      "name": "namefixture1",
+      "description": "descriptionfixture1"
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/platform/invoice_templates?_page=1",
+    "x-last-page": "/api/platform/invoice_templates?_page=1",
+    "x-next-page": "/api/platform/invoice_templates?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

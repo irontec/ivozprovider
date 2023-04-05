@@ -9,7 +9,7 @@ Feature: Create carrier servers
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/carrier_servers" with body:
-    """
+      """
       {
           "ip": "127.0.0.2",
           "hostname": "newhost.net",
@@ -27,12 +27,12 @@ Feature: Create carrier servers
           "fromDomain": "",
           "carrier": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "ip": null,
           "hostname": "127.0.0.3",
@@ -51,7 +51,7 @@ Feature: Create carrier servers
           "id": 3,
           "carrier": 1
       }
-    """
+      """
 
   Scenario: Retrieve created carrier server
     Given I add Brand Authorization header
@@ -61,7 +61,7 @@ Feature: Create carrier servers
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "ip": null,
           "hostname": "127.0.0.3",
@@ -81,9 +81,8 @@ Feature: Create carrier servers
           "carrier": {
               "description": "CarrierDescription",
               "name": "CarrierName",
-              "externallyRated": false,
               "id": 1,
               "transformationRuleSet": 1
           }
       }
-    """
+      """

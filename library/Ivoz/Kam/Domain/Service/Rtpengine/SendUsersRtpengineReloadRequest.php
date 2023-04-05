@@ -24,7 +24,7 @@ class SendUsersRtpengineReloadRequest implements RtpengineLifecycleEventHandlerI
     /**
      * @return void
      */
-    public function execute(RtpengineInterface $entity)
+    public function execute(RtpengineInterface $rtpengine)
     {
         $this->usersClient->reloadRtpengine();
     }

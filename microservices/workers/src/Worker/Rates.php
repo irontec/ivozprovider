@@ -8,9 +8,9 @@ use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateRepository;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateRepository;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService;
-use Ivoz\Core\Application\RegisterCommandTrait;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Ivoz\Provider\Domain\Job\RatesImporterJobInterface;
@@ -418,10 +418,15 @@ class Rates
             );
 
         try {
+            /** @var array<string> | false $response */
             $response = $redisMaster->blPop(
                 [RatesImporterJobInterface::CHANNEL],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . RatesImporterJobInterface::CHANNEL);
+            }
 
             $data = end($response);
             return \json_decode($data, true);

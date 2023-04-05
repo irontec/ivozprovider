@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
@@ -559,6 +559,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TrunksLcrRuleDto[] | null
+    */
     public function getLcrRules(): ?array
     {
         return $this->lcrRules;
@@ -571,6 +574,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TrunksLcrRuleTargetDto[] | null
+    */
     public function getLcrRuleTargets(): ?array
     {
         return $this->lcrRuleTargets;
@@ -583,6 +589,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingRelCarrierDto[] | null
+    */
     public function getRelCarriers(): ?array
     {
         return $this->relCarriers;

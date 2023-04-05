@@ -4,7 +4,7 @@ default:
   suites:
     default:
       contexts:
-        - Ivoz\Api\Behat\Context\FeatureContext:
+        - Service\Behat\FeatureContext
         - Behat\MinkExtension\Context\MinkContext
         - Behatch\Context\RestContext
         - Behatch\Context\JsonContext

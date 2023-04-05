@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageInterface;
 
 interface VoicemailMessageLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(VoicemailMessageInterface $entity);
+    public function execute(VoicemailMessageInterface $voicemailMessage);
 }

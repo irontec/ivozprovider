@@ -19,6 +19,15 @@ get_my_active_calls:
     _api_item_operation_name: 'get_my_active_calls'
     _api_receive: false
 
+get_my_profile:
+  path: '/my/profile'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\ProfileAction
+    _api_resource_class: 'Model\Profile'
+    _api_item_operation_name: 'get_my_profile'
+    _api_receive: false
+
 put_billable_call_rate_by_callid:
   path: '/billable_calls/{callid}/rate'
   methods: ['PUT']
@@ -27,3 +36,10 @@ put_billable_call_rate_by_callid:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\BillableCall\BillableCall'
     _api_item_operation_name: 'put_billable_call_rate_by_callid'
     _api_receive: false
+
+get_invoice_preview:
+  path: '/invoice_templates/{id}/preview'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\InvoiceTemplatePreviewAction
+    _api_item_operation_name: 'get_invoice_preview'

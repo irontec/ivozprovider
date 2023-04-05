@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface;
@@ -107,8 +107,6 @@ interface DestinationRateInterface extends LoggableEntityInterface
     public function setDestination(DestinationInterface $destination): static;
 
     public function getDestination(): DestinationInterface;
-
-    public function isInitialized(): bool;
 
     public function setTpRate(TpRateInterface $tpRate): static;
 

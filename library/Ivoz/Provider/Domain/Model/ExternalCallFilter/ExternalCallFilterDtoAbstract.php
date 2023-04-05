@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
@@ -618,6 +618,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
+    /**
+    * @return ExternalCallFilterRelCalendarDto[] | null
+    */
     public function getCalendars(): ?array
     {
         return $this->calendars;
@@ -630,6 +633,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
+    /**
+    * @return ExternalCallFilterBlackListDto[] | null
+    */
     public function getBlackLists(): ?array
     {
         return $this->blackLists;
@@ -642,6 +648,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
+    /**
+    * @return ExternalCallFilterWhiteListDto[] | null
+    */
     public function getWhiteLists(): ?array
     {
         return $this->whiteLists;
@@ -654,6 +663,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
+    /**
+    * @return ExternalCallFilterRelScheduleDto[] | null
+    */
     public function getSchedules(): ?array
     {
         return $this->schedules;

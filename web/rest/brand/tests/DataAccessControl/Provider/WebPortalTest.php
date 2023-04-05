@@ -35,7 +35,7 @@ class WebPortalTest extends KernelTestCase
             $accessControl,
             [
                 ['brand', 'eq', 'user.getBrand().getId()'],
-                ['urlType', 'neq', '"god"'],
+                ['urlType', 'notIn', ['"god"', '"brand"']],
             ]
         );
     }
@@ -55,7 +55,7 @@ class WebPortalTest extends KernelTestCase
             $accessControl,
             [
                 ['brand', 'eq', 'user.getBrand().getId()'],
-                ['urlType', 'neq', '"god"'],
+                ['urlType', 'notIn', ['"god"', '"brand"']],
             ]
         );
     }

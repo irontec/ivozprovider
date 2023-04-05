@@ -1,0 +1,12 @@
+{
+  "body": {
+    "name": "testRule",
+    "defaultAction": "keep",
+    "id": 1,
+    "forcedDdi": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

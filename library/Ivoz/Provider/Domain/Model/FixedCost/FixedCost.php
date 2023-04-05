@@ -27,4 +27,13 @@ class FixedCost extends FixedCostAbstract implements FixedCostInterface
     {
         return $this->id;
     }
+
+    protected function setCost(?float $cost = null): static
+    {
+        if (is_null($cost)) {
+            throw new \DomainException('Cost cannot be null');
+        }
+
+        return parent::setCost($cost);
+    }
 }

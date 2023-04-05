@@ -10,7 +10,6 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -21,16 +20,12 @@ class RatingPlanPricesAction
     public function __construct(
         private TokenStorageInterface $tokenStorage,
         private RatingPlanGroupRepository $ratingPlanGroupRepository,
-        private CollectionExtensionList $collectionExtensions,
-        private RequestStack $requestStack
+        private CollectionExtensionList $collectionExtensions
     ) {
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
-
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

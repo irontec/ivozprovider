@@ -4,29 +4,37 @@ Feature: Manage currencies
   I need to be able to update them through the API.
 
   @createSchema
-  Scenario: Can't update a currency
+  Scenario: Can update a currency
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/currencies/2" with body:
-    """
+      And I send a "PUT" request to "/currencies/3" with body:
+      """
       {
-        "name": "api_currency_modified",
-        "domainUsers": "sip-api.irontec.com",
-        "recordingsLimitMB": 0,
-        "recordingsLimitEmail": "",
-        "invoice": {
-          "nif": "1234",
-          "postalAddress": "",
-          "postalCode": "48960",
-          "town": "",
-          "province": "",
-          "country": "",
-          "registryData": ""
-        },
-        "language": 1,
-        "defaultTimezone": 145,
-        "features": [1]
+        "iden": "AUD",
+        "symbol": "$",
+        "name": {
+            "en": "Australia Dólar",
+            "es": "Australia Dólar",
+            "ca": "Australia Dólar",
+            "it": "Australia Dólar"
+        }
       }
-    """
-    Then the response status code should be 404
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+        "iden": "AUD",
+        "symbol": "$",
+        "id": 3,
+        "name": {
+            "en": "Australia Dólar",
+            "es": "Australia Dólar",
+            "ca": "Australia Dólar",
+            "it": "Australia Dólar"
+        }
+      }
+      """

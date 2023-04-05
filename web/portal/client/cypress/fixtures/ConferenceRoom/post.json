@@ -1,0 +1,26 @@
+{
+  "request": {
+    "name": "newConferenceRoom",
+    "pinProtected": true,
+    "pinCode": "1234",
+    "maxMembers": 1
+  },
+  "response": {
+    "body": {
+      "name": "newConferenceRoom",
+      "pinProtected": true,
+      "pinCode": "1234",
+      "maxMembers": 1,
+      "id": 2
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

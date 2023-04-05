@@ -17,8 +17,8 @@ RUN apt-get install --assume-yes --force-yes \
         sqlite3 \
         sphinx-intl \
         nodejs \
-        npm \
         mysql-client \
+        python3-pip \
         php8.0 \
         php8.0-cli \
         php8.0-mysql \
@@ -34,7 +34,8 @@ RUN apt-get install --assume-yes --force-yes \
         php8.0-imagick \
         php8.0-xdebug \
         php8.0-zip \
-        yarnpkg
+        yarn \
+        jq
 RUN apt-get clean
 
 # Create jenkins user (configurable)
@@ -48,10 +49,13 @@ RUN chown jenkins.jenkins /opt/
 # Install node tools for testing
 RUN npm install -g swagger-cli
 
+# Install gherking fromatter
+RUN pip install reformat-gherkin
+
 # Base project
 USER $UNAME
 RUN mkdir -p /opt/irontec
-RUN git clone -b halliday --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
+RUN git clone -b bleeding --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
 # Install phpunit 6.5.14
 RUN mkdir -p /opt/phpunit/
@@ -63,6 +67,9 @@ RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-pr
 
 # Store the main project vendor
 RUN cp -r /opt/irontec/ivozprovider/library/vendor/    /opt/library-vendor
+
+# Get yarn dependencies and store them in the image
+RUN yarn --cwd /opt/irontec/ivozprovider/web/portal --cache-folder /opt/web-node_modules install
 
 # We dont require project files anymore
 RUN rm -fr /opt/irontec/ivozprovider/

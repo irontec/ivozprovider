@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Domain;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
@@ -160,6 +160,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return FriendDto[] | null
+    */
     public function getFriends(): ?array
     {
         return $this->friends;
@@ -172,6 +175,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return ResidentialDeviceDto[] | null
+    */
     public function getResidentialDevices(): ?array
     {
         return $this->residentialDevices;
@@ -184,6 +190,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TerminalDto[] | null
+    */
     public function getTerminals(): ?array
     {
         return $this->terminals;

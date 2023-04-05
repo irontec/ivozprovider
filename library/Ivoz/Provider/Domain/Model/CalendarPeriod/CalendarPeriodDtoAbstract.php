@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\CalendarPeriod;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
@@ -355,6 +355,9 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CalendarPeriodsRelScheduleDto[] | null
+    */
     public function getRelSchedules(): ?array
     {
         return $this->relSchedules;

@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\RouteLock;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
@@ -65,6 +65,4 @@ interface RouteLockInterface extends LoggableEntityInterface
     public function getOpen(): bool;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 }

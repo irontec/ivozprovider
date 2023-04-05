@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Domain\Model\UsersLocation;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * UsersLocationInterface
@@ -81,6 +81,4 @@ interface UsersLocationInterface extends EntityInterface
     public function getKeepalive(): int;
 
     public function getPartition(): int;
-
-    public function isInitialized(): bool;
 }

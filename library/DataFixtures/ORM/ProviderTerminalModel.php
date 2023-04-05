@@ -27,8 +27,8 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
             $this->setName("Generic SIP Model");
             $this->setDescription("Generic SIP Model");
             $this->setGenericTemplate("");
-            $this->setSpecificTemplate("");
             $this->setGenericUrlPattern("");
+            $this->setSpecificTemplate("");
             $this->setSpecificUrlPattern("");
             $this->setTerminalManufacturer($fixture->getReference('_reference_ProviderTerminalManufacturerTerminalManufacturer1'));
         })->call($item1);
@@ -37,12 +37,35 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+
         $item2 = $this->createEntityInstance(TerminalModel::class);
-        (function () use ($fixture) {
+        $specificTemplateContent = file_get_contents(
+            '/opt/irontec/ivozprovider'
+            . '/microservices/provision/templates'
+            . '/provisioning/YealinkT21P_E2/specific.cfg',
+            true
+        );
+        (function () use ($fixture, $specificTemplateContent) {
             $this->setIden("YealinkT21P_E2");
             $this->setName("YealinkT21P_E2");
             $this->setDescription('');
             $this->setGenericUrlPattern("y000000000052.cfg");
+            $this->setGenericTemplate(
+                <<<TPL
+                #!version:1.0.0.1
+                account.1.enable = 1
+                account.1.label = Line
+
+                auto_provision.mode = 6
+                auto_provision.schedule.periodic_minute = 1
+                auto_provision.server.url = https://domain:1443/provision/t21E2
+                auto_provision.dhcp_option.enable = 0
+                auto_provision.pnp_enable = 0
+
+                security.trust_certificates = 0
+                TPL
+            );
+            $this->setSpecificTemplate($specificTemplateContent);
             $this->setSpecificUrlPattern("{mac}");
             $this->setTerminalManufacturer($fixture->getReference('_reference_ProviderTerminalManufacturerTerminalManufacturer2'));
         })->call($item2);

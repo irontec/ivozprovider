@@ -15,16 +15,11 @@ class BalanceNotificationDto extends BalanceNotificationDtoAbstract
                 'id' => 'id',
                 'toAddress' => 'toAddress',
                 'threshold' => 'threshold',
+                'notificationTemplateId' => 'notificationTemplate',
+                'lastSent' => 'lastSent',
             ];
         }
 
-        return [
-            'toAddress' => 'toAddress',
-            'threshold' => 'threshold',
-            'lastSent' => 'lastSent',
-            'id' => 'id',
-            'companyId' => 'company',
-            'notificationTemplateId' => 'notificationTemplate'
-        ];
+        return parent::getPropertyMap($context, $role);
     }
 }

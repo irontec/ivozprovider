@@ -12,7 +12,7 @@ Feature: Retrieve faxes
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "Test Fax",
@@ -22,7 +22,7 @@ Feature: Retrieve faxes
               "outgoingDdi": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain fax json
     Given I add Company Authorization header
@@ -32,7 +32,7 @@ Feature: Retrieve faxes
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "Test Fax",
           "email": null,
@@ -40,4 +40,4 @@ Feature: Retrieve faxes
           "id": 1,
           "outgoingDdi": null
       }
-    """
+      """

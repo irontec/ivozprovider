@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Location;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 
@@ -165,6 +165,9 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return UserDto[] | null
+    */
     public function getUsers(): ?array
     {
         return $this->users;

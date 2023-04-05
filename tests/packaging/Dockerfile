@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y \
     dpkg-dev \
     debhelper \
     nodejs \
-    npm \
     ruby-dev \
     git \
     openssh-client \
@@ -24,7 +23,7 @@ RUN apt-get update && apt-get install -y \
     python \
     make \
     gettext \
-    yarnpkg \
+    yarn \
     sphinx-common \
     python3-sphinx-rtd-theme \
     libjs-sphinxdoc \

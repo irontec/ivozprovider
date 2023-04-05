@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyDto;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
@@ -325,6 +325,9 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return RatingPlanDto[] | null
+    */
     public function getRatingPlan(): ?array
     {
         return $this->ratingPlan;

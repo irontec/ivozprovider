@@ -1,0 +1,18 @@
+{
+  "request": {
+    "name": "updated pick up group",
+    "id": 1,
+    "userIds": [2]
+  },
+  "response": {
+    "body": {
+      "name": "updated pick up group",
+      "id": 1,
+      "userIds": [2]
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

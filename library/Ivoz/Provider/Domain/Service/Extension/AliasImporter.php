@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Extension;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use Ivoz\Provider\Domain\Model\Extension\Extension;

@@ -1,0 +1,20 @@
+{
+  "request": {
+    "name": "updatedRule",
+    "defaultAction": "force",
+    "id": 1,
+    "forcedDdi": 1
+  },
+  "response": {
+    "body": {
+      "name": "updatedRule",
+      "defaultAction": "force",
+      "id": 1,
+      "forcedDdi": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

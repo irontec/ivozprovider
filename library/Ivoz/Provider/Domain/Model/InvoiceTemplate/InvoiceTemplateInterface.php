@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\InvoiceTemplate;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
 /**
@@ -62,6 +62,4 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     public function getTemplateFooter(): ?string;
 
     public function getBrand(): ?BrandInterface;
-
-    public function isInitialized(): bool;
 }

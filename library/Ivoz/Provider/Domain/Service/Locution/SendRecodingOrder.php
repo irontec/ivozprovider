@@ -23,18 +23,18 @@ class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    public function execute(LocutionInterface $entity)
+    public function execute(LocutionInterface $locution)
     {
-        if ($entity->hasBeenDeleted()) {
+        if ($locution->hasBeenDeleted()) {
             return;
         }
 
-        $pendingStatus = $entity->getStatus() === 'pending';
-        $statusHasChanged = $entity->hasChanged('status');
+        $pendingStatus = $locution->getStatus() === 'pending';
+        $statusHasChanged = $locution->hasChanged('status');
 
         if ($pendingStatus && $statusHasChanged) {
             $this->recoder
-                ->setId($entity->getId())
+                ->setId($locution->getId())
                 ->setEntityName(Locution::class)
                 ->send();
         }

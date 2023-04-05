@@ -12,10 +12,10 @@ Feature: Retrieve web theme
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "name": "Irontec Ivozprovider User Admin Portal",
           "theme": "default",
           "logo": "https://users-ivozprovider.irontec.com/fso/webPortal/4-"
       }
-    """
+      """

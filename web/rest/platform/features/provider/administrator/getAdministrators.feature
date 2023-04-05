@@ -12,7 +12,7 @@ Feature: Retrieve administrators
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "username": "admin",
@@ -22,15 +22,6 @@ Feature: Retrieve administrators
               "name": "admin",
               "lastname": "ivozprovider",
               "id": 1
-          },
-          {
-              "username": "test_brand_admin",
-              "email": "nightwatch@irontec.com",
-              "active": true,
-              "restricted": false,
-              "name": "night",
-              "lastname": "watch",
-              "id": 2
           },
           {
               "username": "irontec",
@@ -49,18 +40,9 @@ Feature: Retrieve administrators
               "name": "Admin in UTC timezone",
               "lastname": "Admin Lastname",
               "id": 5
-          },
-          {
-              "username": "restrictedBrandAdmin",
-              "email": "restrictedAdmin@irontec.com",
-              "active": true,
-              "restricted": true,
-              "name": "RestrictedAdmin",
-              "lastname": "Lastname",
-              "id": 6
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain administrator json
     Given I add Authorization header
@@ -70,7 +52,7 @@ Feature: Retrieve administrators
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "username": "admin",
           "pass": "*****",
@@ -95,12 +77,10 @@ Feature: Retrieve administrators
               "country": 68
           }
       }
-    """
+      """
 
   Scenario: Administrator with id zero is filtered
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "administrators/0"
-    Then the response status code should be 404
-
-
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "administrators/0"
+     Then the response status code should be 404

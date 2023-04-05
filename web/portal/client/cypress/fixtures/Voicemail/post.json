@@ -1,0 +1,36 @@
+{
+  "request": {
+    "enabled": true,
+    "name": "newGenericVoicemail",
+    "email": "generic@voicemail.com",
+    "sendMail": true,
+    "attachSound": true,
+    "user": null,
+    "residentialDevice": null,
+    "company": 1,
+    "locution": null
+  },
+  "response": {
+    "body": {
+      "enabled": true,
+      "name": "newGenericVoicemail",
+      "email": "generic@voicemail.com",
+      "sendMail": true,
+      "attachSound": true,
+      "id": 4,
+      "user": null,
+      "residentialDevice": null,
+      "company": 1,
+      "locution": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

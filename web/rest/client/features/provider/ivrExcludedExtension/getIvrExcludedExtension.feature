@@ -6,13 +6,13 @@ Feature: Retrieve ivr excluded extensions
   @createSchema
   Scenario: Retrieve the ivr excluded extensions json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "ivr_excluded_extensions"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "ivr_excluded_extensions"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
        [
           {
               "id": 1,
@@ -54,17 +54,17 @@ Feature: Retrieve ivr excluded extensions
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain ivr excluded extension json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "ivr_excluded_extensions/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "ivr_excluded_extensions/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "id": 1,
           "ivr": {
@@ -104,4 +104,4 @@ Feature: Retrieve ivr excluded extensions
               "voicemail": null
           }
       }
-    """
+      """

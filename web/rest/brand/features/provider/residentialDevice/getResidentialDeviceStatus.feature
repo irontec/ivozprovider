@@ -6,16 +6,17 @@ Feature: Retrieve residential devices status
   @createSchema
   Scenario: Retrieve the residential devices status json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "residential_devices/status"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "residential_devices/status"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "residentialDevice",
+              "directConnectivity": "no",
               "id": 1,
               "company": 4,
               "domainName": "retail.irontec.com",
@@ -37,4 +38,4 @@ Feature: Retrieve residential devices status
               ]
           }
       ]
-    """
+      """

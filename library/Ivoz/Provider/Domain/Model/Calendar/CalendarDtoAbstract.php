@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateDto;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto;
@@ -153,6 +153,9 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return HolidayDateDto[] | null
+    */
     public function getHolidayDates(): ?array
     {
         return $this->holidayDates;
@@ -165,6 +168,9 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CalendarPeriodDto[] | null
+    */
     public function getCalendarPeriods(): ?array
     {
         return $this->calendarPeriods;

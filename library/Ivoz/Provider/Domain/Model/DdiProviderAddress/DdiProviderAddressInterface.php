@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\DdiProviderAddress;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface;
 
@@ -59,8 +59,6 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
     public function setDdiProvider(DdiProviderInterface $ddiProvider): static;
 
     public function getDdiProvider(): DdiProviderInterface;
-
-    public function isInitialized(): bool;
 
     public function setTrunksAddress(TrunksAddressInterface $trunksAddress): static;
 

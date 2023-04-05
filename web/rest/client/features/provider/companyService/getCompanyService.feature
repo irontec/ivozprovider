@@ -12,7 +12,7 @@ Feature: Retrieve company services
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "code": "94",
@@ -30,7 +30,7 @@ Feature: Retrieve company services
               "service": 3
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain company service json
     Given I add Company Authorization header
@@ -40,7 +40,7 @@ Feature: Retrieve company services
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "code": "94",
           "id": 1,
@@ -61,4 +61,4 @@ Feature: Retrieve company services
               }
           }
       }
-    """
+      """

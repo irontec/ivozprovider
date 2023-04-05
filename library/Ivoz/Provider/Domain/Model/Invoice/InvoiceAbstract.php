@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Invoice\Pdf;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
@@ -312,7 +312,7 @@ abstract class InvoiceAbstract
     {
         if (!is_null($inDate)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $inDate = DateTimeHelper::createOrFix(
                 $inDate,
                 null
@@ -337,7 +337,7 @@ abstract class InvoiceAbstract
     {
         if (!is_null($outDate)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $outDate = DateTimeHelper::createOrFix(
                 $outDate,
                 null

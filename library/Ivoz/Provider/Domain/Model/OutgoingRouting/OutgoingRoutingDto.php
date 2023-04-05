@@ -7,13 +7,6 @@ use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarri
 
 class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 {
-    public const CONTEXT_WITH_CARRIERS = 'withCarriers';
-
-    public const CONTEXTS_WITH_CARRIERS = [
-        self::CONTEXT_WITH_CARRIERS,
-        self::CONTEXT_DETAILED
-    ];
-
     /**
      * @var int[]
      * @AttributeDefinition(
@@ -35,14 +28,16 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
                 'routingMode' => 'routingMode',
                 'companyId' => 'company',
                 'routingTagId' => 'routingTag',
+                'carrierId' => 'carrier',
+                'stopper' => 'stopper',
+                'routingPatternId' => 'routingPattern',
+                'routingPatternGroupId' => 'routingPatternGroup',
             ];
         } else {
             $response = parent::getPropertyMap($context);
         }
 
-        if (in_array($context, self::CONTEXTS_WITH_CARRIERS, true)) {
-            $response['carrierIds'] = 'carrierIds';
-        }
+        $response['carrierIds'] = 'carrierIds';
 
         if ($role === 'ROLE_BRAND_ADMIN') {
             unset($response['brandId']);
@@ -71,9 +66,7 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
             $role
         );
 
-        if (in_array($context, self::CONTEXTS_WITH_CARRIERS, true)) {
-            $response['carrierIds'] = $this->carrierIds;
-        }
+        $response['carrierIds'] = $this->carrierIds;
 
         return $response;
     }

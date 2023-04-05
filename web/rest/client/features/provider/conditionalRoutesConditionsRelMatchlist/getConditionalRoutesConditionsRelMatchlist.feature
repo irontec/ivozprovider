@@ -12,7 +12,7 @@ Feature: Retrieve conditional routes conditions rel matchlists
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "id": 1,
@@ -35,11 +35,12 @@ Feature: Retrieve conditional routes conditions rel matchlists
               },
               "matchlist": {
                   "name": "testMatchlist",
-                  "id": 1
+                  "id": 1,
+                  "generic": false
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain conditional routes conditions rel matchlist json
     Given I add Company Authorization header
@@ -49,7 +50,7 @@ Feature: Retrieve conditional routes conditions rel matchlists
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "id": 1,
           "condition": {
@@ -71,7 +72,8 @@ Feature: Retrieve conditional routes conditions rel matchlists
           },
           "matchlist": {
               "name": "testMatchlist",
-              "id": 1
+              "id": 1,
+              "generic": false
           }
       }
-    """
+      """

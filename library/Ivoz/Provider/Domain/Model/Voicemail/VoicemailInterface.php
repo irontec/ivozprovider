@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\Voicemail;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -98,8 +98,6 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getCompany(): CompanyInterface;
 
     public function getLocution(): ?LocutionInterface;
-
-    public function isInitialized(): bool;
 
     public function setAstVoicemail(\Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface $astVoicemail): static;
 

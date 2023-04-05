@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\VoicemailMessage;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile;
 use Ivoz\Provider\Domain\Model\VoicemailMessage\MetadataFile;
@@ -256,7 +256,7 @@ abstract class VoicemailMessageAbstract
     protected function setCalldate(string|\DateTimeInterface $calldate): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
             null

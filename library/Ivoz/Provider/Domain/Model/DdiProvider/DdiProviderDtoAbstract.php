@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto;
@@ -28,11 +28,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
      * @var string|null
      */
     private $name = null;
-
-    /**
-     * @var bool|null
-     */
-    private $externallyRated = false;
 
     /**
      * @var int|null
@@ -89,7 +84,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return [
             'description' => 'description',
             'name' => 'name',
-            'externallyRated' => 'externallyRated',
             'id' => 'id',
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet',
@@ -106,7 +100,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         $response = [
             'description' => $this->getDescription(),
             'name' => $this->getName(),
-            'externallyRated' => $this->getExternallyRated(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
@@ -152,18 +145,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     public function getName(): ?string
     {
         return $this->name;
-    }
-
-    public function setExternallyRated(?bool $externallyRated): static
-    {
-        $this->externallyRated = $externallyRated;
-
-        return $this;
-    }
-
-    public function getExternallyRated(): ?bool
-    {
-        return $this->externallyRated;
     }
 
     public function setId($id): static
@@ -305,6 +286,9 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return DdiProviderRegistrationDto[] | null
+    */
     public function getDdiProviderRegistrations(): ?array
     {
         return $this->ddiProviderRegistrations;
@@ -317,6 +301,9 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return DdiProviderAddressDto[] | null
+    */
     public function getDdiProviderAddresses(): ?array
     {
         return $this->ddiProviderAddresses;

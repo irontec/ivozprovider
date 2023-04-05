@@ -4,8 +4,8 @@ namespace Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
@@ -61,6 +61,4 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
     public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): static;
 
     public function getOutgoingRouting(): OutgoingRoutingInterface;
-
-    public function isInitialized(): bool;
 }

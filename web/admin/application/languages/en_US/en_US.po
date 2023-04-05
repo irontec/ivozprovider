@@ -111,6 +111,11 @@ msgstr "Add of %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Add pattern to %2s"
 
+msgid "Address Book"
+msgid_plural "Address Books"
+msgstr[0] "Address Book"
+msgstr[1] "Address Books"
+
 msgid "Address successfully unbanned"
 msgstr "Address successfully unbanned"
 
@@ -186,6 +191,19 @@ msgstr "An error occurred: check files format and content."
 
 msgid "Announce"
 msgstr "Announce"
+
+msgid "Announce Queue position"
+msgstr "Announce Queue position"
+
+msgid "Announce Queue position frequency"
+msgstr "Announce Queue position frequency"
+
+msgid ""
+"Announce queue position to waiting users when they enter the queue and after "
+"defined frequency"
+msgstr ""
+"Announce queue position to waiting users when they enter the queue and after "
+"defined frequency"
 
 msgid "Antiflood banned IP"
 msgid_plural "Antiflood banned IPs"
@@ -611,6 +629,11 @@ msgstr "Connection fee"
 
 msgid "Connectivity mode"
 msgstr "Connectivity mode"
+
+msgid "Contact"
+msgid_plural "Contacts"
+msgstr[0] "Contact"
+msgstr[1] "Contacts"
 
 msgid "Contact Settings"
 msgstr "Contact Settings"
@@ -1101,9 +1124,6 @@ msgid_plural "External call filters"
 msgstr[0] "External call filter"
 msgstr[1] "External call filters"
 
-msgid "Externally rated"
-msgstr "Externally rated"
-
 msgid ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
 msgstr ""
@@ -1522,6 +1542,9 @@ msgstr "In progress"
 msgid "Inbound"
 msgstr "Inbound"
 
+msgid "Inbound & outbound"
+msgstr "Inbound & outbound"
+
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Inbound Calls cannot be billed as DDI Provider is not externally rated."
@@ -1935,6 +1958,11 @@ msgstr ""
 msgid "Minimal length: 2"
 msgstr "Minimal length: 2"
 
+msgid "Mobile Phone"
+msgid_plural "Mobile Phones"
+msgstr[0] "Mobile Phone"
+msgstr[1] "Mobile Phones"
+
 msgid "Monday"
 msgstr "Monday"
 
@@ -2097,6 +2125,11 @@ msgstr "Origin"
 msgid "Origins matching this list will call directly to the user."
 msgstr "Origins matching this list will call directly to the user."
 
+msgid "Other Phone"
+msgid_plural "Other Phones"
+msgstr[0] "Other Phone"
+msgstr[1] "Other Phones"
+
 msgid "Out"
 msgstr "Out"
 
@@ -2129,6 +2162,9 @@ msgstr "Outbound Proxy IP value is not valid."
 
 msgid "Outbound configuration"
 msgstr "Outbound configuration"
+
+msgid "Outbound only"
+msgstr "Outbound only"
 
 msgid "Outgoing Configuration"
 msgstr "Outgoing Configuration"
@@ -2208,6 +2244,9 @@ msgstr "Phone number"
 
 msgid "Phone number must be in E.164 format (prefixed by \"+\" symbol)"
 msgstr "Phone number must be in E.164 format (prefixed by \"+\" symbol)"
+
+msgid "Phones"
+msgstr "Phones"
 
 msgid "Pick Up Groups"
 msgstr "Pick Up Groups"
@@ -3242,6 +3281,11 @@ msgstr "Wholesale specific"
 
 msgid "Will be shown on page footer"
 msgstr "Will be shown on page footer"
+
+msgid "Work Phone"
+msgid_plural "Work Phones"
+msgstr[0] "Work Phone"
+msgstr[1] "Work Phones"
 
 msgid "Write Access"
 msgstr "Write Access"

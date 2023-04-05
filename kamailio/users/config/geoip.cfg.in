@@ -11,5 +11,5 @@
 
 #!ifdef WITH_GEOIP
 loadmodule    "geoip2.so"
-modparam("geoip2", "path", "/usr/share/GeoIP/GeoLite2-Country.mmdb")
+modparam("geoip2", "path", "/var/lib/GeoIP/GeoLite2-Country.mmdb")
 #!endif

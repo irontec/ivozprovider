@@ -12,7 +12,6 @@ use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -23,7 +22,6 @@ class HuntGroupUsersAvailableAction
         private HuntGroupRepository $huntGroupRepository,
         private HuntGroupMemberRepository $huntGroupsMemberRepository,
         private UserRepository $userRepository,
-        private RequestStack $requestStack,
         private DenormalizerInterface $denormalizer
     ) {
     }
@@ -32,10 +30,8 @@ class HuntGroupUsersAvailableAction
      * @return array<int, mixed>
      * @throws ResourceClassNotFoundException
      */
-    public function __invoke(): array
+    public function __invoke(Request $request): array
     {
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

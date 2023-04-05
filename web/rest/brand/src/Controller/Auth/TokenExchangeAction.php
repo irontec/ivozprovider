@@ -6,13 +6,11 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Api\Operation\ExchangeToken;
 use Model\Token;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
 class TokenExchangeAction
 {
     public function __construct(
-        private RequestStack $requestStack,
         private ExchangeToken $exchangeToken
     ) {
     }
@@ -22,10 +20,10 @@ class TokenExchangeAction
      *
      * @throws ResourceClassNotFoundException
      */
-    public function __invoke(): Response|Token
+    public function __invoke(Request $request): Response|Token
     {
         try {
-            return $this->run();
+            return $this->run($request);
         } catch (\Exception $e) {
             $code = $e->getCode();
             if ($code < 400) {
@@ -45,11 +43,8 @@ class TokenExchangeAction
         }
     }
 
-    private function run(): Token
+    private function run(Request $request): Token
     {
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
-
         /** @var ?string  $inputToken */
         $inputToken =  $request->request->get('token', null);
         if (is_null($inputToken)) {

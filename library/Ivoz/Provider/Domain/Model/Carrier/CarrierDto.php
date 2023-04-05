@@ -2,8 +2,20 @@
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 class CarrierDto extends CarrierDtoAbstract
 {
+    /**
+     * @var ?CarrierStatus
+     * @AttributeDefinition(
+     *     type="object",
+     *     class="Ivoz\Provider\Domain\Model\Carrier\CarrierStatus",
+     *     description="Registration status"
+     * )
+     */
+    private $status = null;
+
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -15,7 +27,11 @@ class CarrierDto extends CarrierDtoAbstract
                 'id' => 'id',
                 'description' => 'description',
                 'name' => 'name',
-                'externallyRated' => 'externallyRated'
+                'calculateCost' => 'calculateCost',
+                'transformationRuleSetId' => 'transformationRuleSet',
+                'balance' => 'balance',
+                'proxyTrunkId' => 'proxyTrunk',
+                'status' => ['registered']
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -39,5 +55,29 @@ class CarrierDto extends CarrierDtoAbstract
             $contextProperties,
             $data
         );
+    }
+
+    public function addStatus(CarrierStatus $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function toArray(bool $hideSensitiveData = false): array
+    {
+        $response = parent::toArray($hideSensitiveData);
+
+        if (is_null($this->status)) {
+            return $response;
+        }
+
+        $response['status'] = array_map(
+            function (bool $registrationStatus): bool {
+                return $registrationStatus;
+            },
+            $this->status->toArray()
+        );
+        return $response;
     }
 }

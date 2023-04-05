@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
 use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
 
@@ -52,6 +52,4 @@ interface ExternalCallFilterRelScheduleInterface extends LoggableEntityInterface
     public function getFilter(): ?ExternalCallFilterInterface;
 
     public function getSchedule(): ScheduleInterface;
-
-    public function isInitialized(): bool;
 }

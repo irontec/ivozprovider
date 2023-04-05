@@ -73,6 +73,27 @@ class TerminalDoctrineRepository extends ServiceEntityRepository implements Term
     }
 
     /**
+     * @return TerminalInterface[] | null
+     */
+    public function findByMacs(array $macs): ?array
+    {
+        $criteria = CriteriaHelper::fromArray([
+            ['mac', 'in', $macs]
+        ]);
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->select('self')
+            ->addCriteria($criteria);
+
+        $response = $qb
+            ->getQuery()
+            ->getResult();
+
+        return $response;
+    }
+
+    /**
      * @param int $companyId
      * @return string[]
      */

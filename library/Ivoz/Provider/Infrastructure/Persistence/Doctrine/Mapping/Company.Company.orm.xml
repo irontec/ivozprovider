@@ -15,6 +15,7 @@
     <one-to-many field="extensions" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" mapped-by="company" fetch="LAZY"/>
     <one-to-many field="ddis" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" mapped-by="company" fetch="LAZY"/>
     <one-to-many field="friends" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="contacts" target-entity="Ivoz\Provider\Domain\Model\Contact\ContactInterface" mapped-by="company" fetch="LAZY"/>
     <one-to-many field="companyServices" target-entity="Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface" mapped-by="company" fetch="LAZY"/>
     <one-to-many field="terminals" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" mapped-by="company" fetch="LAZY"/>
     <one-to-many field="ratingProfiles" target-entity="Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface" mapped-by="company" fetch="LAZY"/>

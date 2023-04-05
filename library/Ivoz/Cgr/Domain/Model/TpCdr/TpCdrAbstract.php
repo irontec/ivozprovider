@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Cgr\Domain\Model\TpCdr;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 
 /**
@@ -96,7 +96,7 @@ abstract class TpCdrAbstract
     protected $answerTime;
 
     /**
-     * @var int
+     * @var string
      */
     protected $usage;
 
@@ -165,7 +165,7 @@ abstract class TpCdrAbstract
         string $destination,
         \DateTimeInterface|string $setupTime,
         \DateTimeInterface|string $answerTime,
-        int $usage,
+        string $usage,
         string $extraFields,
         string $costSource,
         float $cost,
@@ -639,7 +639,7 @@ abstract class TpCdrAbstract
     protected function setSetupTime(string|\DateTimeInterface $setupTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $setupTime = DateTimeHelper::createOrFix(
             $setupTime,
             null
@@ -662,7 +662,7 @@ abstract class TpCdrAbstract
     protected function setAnswerTime(string|\DateTimeInterface $answerTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $answerTime = DateTimeHelper::createOrFix(
             $answerTime,
             null
@@ -682,14 +682,14 @@ abstract class TpCdrAbstract
         return clone $this->answerTime;
     }
 
-    protected function setUsage(int $usage): static
+    protected function setUsage(string $usage): static
     {
         $this->usage = $usage;
 
         return $this;
     }
 
-    public function getUsage(): int
+    public function getUsage(): string
     {
         return $this->usage;
     }
@@ -760,7 +760,7 @@ abstract class TpCdrAbstract
     {
         if (!is_null($createdAt)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $createdAt = DateTimeHelper::createOrFix(
                 $createdAt,
                 null
@@ -785,7 +785,7 @@ abstract class TpCdrAbstract
     {
         if (!is_null($updatedAt)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $updatedAt = DateTimeHelper::createOrFix(
                 $updatedAt,
                 null
@@ -810,7 +810,7 @@ abstract class TpCdrAbstract
     {
         if (!is_null($deletedAt)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $deletedAt = DateTimeHelper::createOrFix(
                 $deletedAt,
                 null

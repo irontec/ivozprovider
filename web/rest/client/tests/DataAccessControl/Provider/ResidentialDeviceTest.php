@@ -63,7 +63,8 @@ class ResidentialDeviceTest extends KernelTestCase
                             'company',
                             'eq',
                             'user.getCompany().getId()'
-                        ]
+                        ],
+                        'this.hasChanged("name") == false'
                     ]
                 ],
                 [

@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\BillableCallHistoric;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -115,6 +115,4 @@ interface BillableCallHistoricInterface extends LoggableEntityInterface
     public function getDdi(): ?DdiInterface;
 
     public function getDdiProvider(): ?DdiProviderInterface;
-
-    public function isInitialized(): bool;
 }

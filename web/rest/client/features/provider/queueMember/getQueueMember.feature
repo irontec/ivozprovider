@@ -6,19 +6,20 @@ Feature: Retrieve queue members
   @createSchema
   Scenario: Retrieve the queue members json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "queue_members"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "queue_members"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "penalty": 1,
               "id": 1,
               "queue": {
                   "name": "testQueue",
+                  "displayName": "testQueue DisplayName",
                   "maxWaitTime": 20,
                   "timeoutTargetType": "number",
                   "timeoutNumberValue": "946002020",
@@ -26,6 +27,8 @@ Feature: Retrieve queue members
                   "fullTargetType": "number",
                   "fullNumberValue": "946002021",
                   "periodicAnnounceFrequency": 7,
+                  "announcePosition": "yes",
+                  "announceFrequency": 10,
                   "memberCallRest": 0,
                   "memberCallTimeout": 1,
                   "strategy": "rrmemory",
@@ -67,26 +70,28 @@ Feature: Retrieve queue members
                   "outgoingDdi": null,
                   "outgoingDdiRule": null,
                   "location": null,
-                  "voicemail": null
+                  "voicemail": null,
+                  "contact": null
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain queue member json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "queue_members/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "queue_members/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "penalty": 1,
           "id": 1,
           "queue": {
               "name": "testQueue",
+              "displayName": "testQueue DisplayName",
               "maxWaitTime": 20,
               "timeoutTargetType": "number",
               "timeoutNumberValue": "946002020",
@@ -94,6 +99,8 @@ Feature: Retrieve queue members
               "fullTargetType": "number",
               "fullNumberValue": "946002021",
               "periodicAnnounceFrequency": 7,
+              "announcePosition": "yes",
+              "announceFrequency": 10,
               "memberCallRest": 0,
               "memberCallTimeout": 1,
               "strategy": "rrmemory",
@@ -135,7 +142,8 @@ Feature: Retrieve queue members
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "location": null,
-              "voicemail": null
+              "voicemail": null,
+              "contact": null
           }
       }
-    """
+      """

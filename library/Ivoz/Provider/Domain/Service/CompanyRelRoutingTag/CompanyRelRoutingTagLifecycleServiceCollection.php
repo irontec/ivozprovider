@@ -20,6 +20,7 @@ class CompanyRelRoutingTagLifecycleServiceCollection implements LifecycleService
         "pre_persist" =>
         [
             \Ivoz\Provider\Domain\Service\CompanyRelRoutingTag\AvoidUpdates::class => 100,
+            \Ivoz\Provider\Domain\Service\CompanyRelRoutingTag\CheckCompanyType::class => 200,
         ],
     ];
 

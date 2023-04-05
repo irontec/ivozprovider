@@ -7,5 +7,5 @@ use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;
 
 interface TrunksUacregLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TrunksUacregInterface $entity);
+    public function execute(TrunksUacregInterface $trunksUacreg);
 }

@@ -6,13 +6,13 @@ Feature: Retrieve transformation rules
   @createSchema
   Scenario: Retrieve the transformation rules json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "transformation_rules"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "transformation_rules"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "type": "callerout",
@@ -45,19 +45,35 @@ Feature: Retrieve transformation rules
               "matchExpr": "^([0-9]+)$",
               "replaceExpr": "+34\u0001",
               "id": 4
+          },
+          {
+              "type": "calleeout",
+              "description": "From e164 to special national (Generic Transformation Ruleset)",
+              "priority": 3,
+              "matchExpr": "^\\+34([0-9]+)$",
+              "replaceExpr": "\u0001",
+              "id": 9
+          },
+          {
+              "type": "calleein",
+              "description": "From special national to e164 (Generic Transformation Ruleset)",
+              "priority": 4,
+              "matchExpr": "^([0-9]+)$",
+              "replaceExpr": "+34\u0001",
+              "id": 10
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain transformation rule json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "transformation_rules/4"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "transformation_rules/4"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "type": "calleein",
           "description": "From special national to e164",
@@ -66,7 +82,7 @@ Feature: Retrieve transformation rules
           "replaceExpr": "+34\u0001",
           "id": 4,
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
@@ -74,12 +90,13 @@ Feature: Retrieve transformation rules
               "generateRules": false,
               "id": 1,
               "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
               },
-              "country": 68
+              "country": 68,
+              "editable": true
           }
       }
-    """
+      """

@@ -9,21 +9,23 @@ Feature: Update company
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/companies/1" with body:
-    """
+      """
       {
           "type": "vpbx",
           "name": "DemoCompanyUpdated",
           "domainUsers": "127.0.0.1",
-          "nif": "12345678B",
+          "invoicing": {
+            "nif": "12345678B",
+            "postalAddress": "Company Address",
+            "postalCode": "54321",
+            "town": "Company Town",
+            "province": "Company Province",
+            "countryName": "Company Country"
+          },
           "distributeMethod": "hash",
           "maxCalls": 0,
           "maxDailyUsage": 100,
           "maxDailyUsageEmail": "no-replay-updated@domain.net",
-          "postalAddress": "Company Address",
-          "postalCode": "54321",
-          "town": "Company Town",
-          "province": "Company Province",
-          "countryName": "Company Country",
           "ipfilter": false,
           "onDemandRecord": 0,
           "onDemandRecordCode": "",
@@ -33,7 +35,6 @@ Feature: Update company
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
-          "id": 1,
           "language": 1,
           "mediaRelaySets": 1,
           "defaultTimezone": 1,
@@ -46,47 +47,61 @@ Feature: Update company
           "faxNotificationTemplate": null,
           "featureIds": [
               3
+          ],
+          "geoIpAllowedCountries": [
+            1
           ]
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "type": "vpbx",
           "name": "DemoCompanyUpdated",
           "domainUsers": "127.0.0.1",
-          "nif": "12345678B",
           "maxCalls": 0,
           "maxDailyUsage": 100,
+          "currentDayUsage": 1,
           "maxDailyUsageEmail": "no-replay-updated@domain.net",
-          "postalAddress": "Company Address",
-          "postalCode": "54321",
-          "town": "Company Town",
-          "province": "Company Province",
-          "countryName": "Company Country",
           "ipfilter": false,
           "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
           "billingMethod": "postpaid",
           "balance": 1.2,
           "showInvoices": false,
           "id": 1,
+          "invoicing": {
+              "nif": "12345678B",
+              "postalAddress": "Company Address",
+              "postalCode": "54321",
+              "town": "Company Town",
+              "province": "Company Province",
+              "countryName": "Company Country"
+          },
           "language": 1,
           "defaultTimezone": 1,
           "country": 68,
           "currency": null,
           "transformationRuleSet": 1,
           "outgoingDdi": null,
+          "outgoingDdiRule": null,
           "voicemailNotificationTemplate": 1,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": 2,
           "featureIds": [
               3
-          ]
+          ],
+          "geoIpAllowedCountries": [
+              1
+          ],
+          "routingTagIds": [],
+          "codecIds": []
       }
-    """
+      """

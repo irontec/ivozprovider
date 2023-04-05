@@ -1,0 +1,56 @@
+{
+  "request": {
+    "name": "testNewIvrCustom",
+    "timeout": 6,
+    "maxDigits": 0,
+    "allowExtensions": false,
+    "noInputRouteType": "number",
+    "noInputNumberValue": "946002021",
+    "errorRouteType": "number",
+    "errorNumberValue": "946002022",
+    "welcomeLocution": null,
+    "noInputLocution": null,
+    "errorLocution": null,
+    "successLocution": null,
+    "noInputExtension": null,
+    "errorExtension": null,
+    "noInputVoicemail": null,
+    "errorVoicemail": null,
+    "noInputNumberCountry": 2,
+    "errorNumberCountry": 3,
+    "excludedExtensionIds": [1, 2]
+  },
+  "response": {
+    "body": {
+      "name": "testNewIvrCustom",
+      "timeout": 6,
+      "maxDigits": 0,
+      "allowExtensions": false,
+      "noInputRouteType": "number",
+      "noInputNumberValue": "946002021",
+      "errorRouteType": "number",
+      "errorNumberValue": "946002022",
+      "id": 3,
+      "welcomeLocution": null,
+      "noInputLocution": null,
+      "errorLocution": null,
+      "successLocution": null,
+      "noInputExtension": null,
+      "errorExtension": null,
+      "noInputVoicemail": null,
+      "errorVoicemail": null,
+      "noInputNumberCountry": 2,
+      "errorNumberCountry": 3,
+      "excludedExtensionIds": [1, 2]
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

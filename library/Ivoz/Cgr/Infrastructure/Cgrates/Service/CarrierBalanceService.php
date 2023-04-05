@@ -16,22 +16,22 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
      * @see \Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface::incrementBalance
      * @inheritdoc
      */
-    public function incrementBalance(CarrierInterface $company, float $amount): array
+    public function incrementBalance(CarrierInterface $carrier, float $amount): array
     {
-        return parent::addBalance($company, $amount);
+        return parent::addBalance($carrier, $amount);
     }
 
     /**
      * @see \Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface::decrementBalance
      * @inheritdoc
      */
-    public function decrementBalance(CarrierInterface $company, float $amount): array
+    public function decrementBalance(CarrierInterface $carrier, float $amount): array
     {
-        return parent::debitBalance($company, $amount);
+        return parent::debitBalance($carrier, $amount);
     }
 
     /**
-     * @see \Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceClientInterface::getBalances
+     * @see \Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface::getBalances
      * @inheritdoc
      */
     public function getBalances($brandId, array $carrierIds)
@@ -47,7 +47,7 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
     }
 
     /**
-     * @see \Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceClientInterface::getBalance
+     * @see \Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface::getBalance
      * @inheritdoc
      */
     public function getBalance($brandId, $carrierId)

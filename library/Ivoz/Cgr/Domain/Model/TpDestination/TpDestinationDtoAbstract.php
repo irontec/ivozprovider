@@ -2,8 +2,8 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpDestination;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
 
 /**

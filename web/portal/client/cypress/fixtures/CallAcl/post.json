@@ -1,0 +1,22 @@
+{
+  "request": {
+    "name": "testNewACL",
+    "defaultPolicy": "allow"
+  },
+  "response": {
+    "body": {
+      "name": "testNewACL",
+      "defaultPolicy": "allow",
+      "id": 3
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

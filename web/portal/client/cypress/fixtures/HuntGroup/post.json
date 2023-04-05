@@ -1,0 +1,42 @@
+{
+  "request": {
+    "name": "newHuntGroup",
+    "description": "none",
+    "strategy": "random",
+    "ringAllTimeout": null,
+    "noAnswerTargetType": "extension",
+    "noAnswerNumberValue": null,
+    "preventMissedCalls": 1,
+    "allowCallForwards": 0,
+    "noAnswerLocution": null,
+    "noAnswerExtension": 1,
+    "noAnswerVoicemail": null,
+    "noAnswerNumberCountry": null
+  },
+  "response": {
+    "body": {
+      "name": "newHuntGroup",
+      "description": "none",
+      "strategy": "random",
+      "ringAllTimeout": null,
+      "noAnswerTargetType": "extension",
+      "noAnswerNumberValue": null,
+      "preventMissedCalls": 1,
+      "allowCallForwards": 0,
+      "id": 2,
+      "noAnswerLocution": null,
+      "noAnswerExtension": 1,
+      "noAnswerVoicemail": null,
+      "noAnswerNumberCountry": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

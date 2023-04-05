@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Destination;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
@@ -264,6 +264,9 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return DestinationRateDto[] | null
+    */
     public function getDestinationRates(): ?array
     {
         return $this->destinationRates;

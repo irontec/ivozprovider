@@ -6,18 +6,20 @@ Feature: Retrieve retail accounts status
   @createSchema
   Scenario: Retrieve the retail accounts status json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "retail_accounts/status"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "retail_accounts/status"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "testRetailAccount",
               "description": "",
               "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
               "id": 1,
               "company": 3,
               "domainName": "retail.irontec.com",
@@ -33,5 +35,4 @@ Feature: Retrieve retail accounts status
               ]
           }
       ]
-    """
-
+      """

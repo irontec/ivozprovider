@@ -12,7 +12,7 @@ Feature: Retrieve conference rooms
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "testConferenceRoom",
@@ -22,7 +22,7 @@ Feature: Retrieve conference rooms
               "id": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain conference room json
     Given I add Company Authorization header
@@ -31,8 +31,8 @@ Feature: Retrieve conference rooms
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+      And the JSON should be like:
+      """
       {
           "name": "testConferenceRoom",
           "pinProtected": true,
@@ -40,4 +40,4 @@ Feature: Retrieve conference rooms
           "maxMembers": 1,
           "id": 1
       }
-    """
+      """

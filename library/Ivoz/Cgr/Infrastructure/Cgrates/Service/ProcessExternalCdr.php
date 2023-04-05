@@ -3,11 +3,12 @@
 namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ApiClient;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Psr\Log\LoggerInterface;
 
 class ProcessExternalCdr
@@ -35,8 +36,8 @@ class ProcessExternalCdr
             return false;
         }
 
-        $carrier = $trunksCdr->getCarrier();
-        if ($carrier && $carrier->getExternallyRated()) {
+        $company = $trunksCdr->getCompany();
+        if ($company && $company->getBillingMethod() === CompanyInterface::BILLINGMETHOD_NONE) {
             return false;
         }
 
@@ -45,7 +46,7 @@ class ProcessExternalCdr
         }
 
         $brand = $trunksCdr->getBrand();
-        $company = $trunksCdr->getCompany();
+
         $time = $trunksCdr
             ->getStartTime()
             ->format(self::DATE_FORMAT);
@@ -66,6 +67,7 @@ class ProcessExternalCdr
             'Usage' => round($trunksCdr->getDuration()) . 's'
         ];
 
+        $carrier = $trunksCdr->getCarrier();
         if ($carrier) {
             $calculateCost = $carrier->getCalculateCost()
                 ? '1'

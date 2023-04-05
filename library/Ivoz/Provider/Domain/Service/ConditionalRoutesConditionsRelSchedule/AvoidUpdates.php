@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements ConditionalRout
         ];
     }
     /**
-     * @param ConditionalRoutesConditionsRelScheduleInterface $entity
-     *
-     * @throws \DomainException
+     * @param ConditionalRoutesConditionsRelScheduleInterface $relSchedule
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(ConditionalRoutesConditionsRelScheduleInterface $entity)
+    public function execute(ConditionalRoutesConditionsRelScheduleInterface $relSchedule)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relSchedule);
     }
 }

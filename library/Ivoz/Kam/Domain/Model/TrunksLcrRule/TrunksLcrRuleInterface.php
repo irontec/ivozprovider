@@ -5,8 +5,8 @@ namespace Ivoz\Kam\Domain\Model\TrunksLcrRule;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 
@@ -79,6 +79,4 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): static;
 
     public function getOutgoingRouting(): OutgoingRoutingInterface;
-
-    public function isInitialized(): bool;
 }

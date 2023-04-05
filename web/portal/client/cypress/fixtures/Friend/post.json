@@ -1,0 +1,58 @@
+{
+  "request": {
+    "name": "beWatterMyFriend",
+    "description": "something",
+    "transport": "tls",
+    "ip": "129.1.2.3",
+    "port": 5060,
+    "password": "ZEF7t5n+b4",
+    "priority": 2,
+    "allow": "alaw",
+    "fromUser": null,
+    "fromDomain": "",
+    "directConnectivity": "yes",
+    "ddiIn": "yes",
+    "t38Passthrough": "no",
+    "alwaysApplyTransformations": false,
+    "rtpEncryption": false,
+    "multiContact": false,
+    "transformationRuleSet": null,
+    "callAcl": null,
+    "outgoingDdi": null,
+    "language": null
+  },
+  "response": {
+    "body": {
+      "name": "beWatterMyFriend",
+      "description": "something",
+      "transport": "tls",
+      "ip": "129.1.2.3",
+      "port": 5060,
+      "password": "ZEF7t5n+b4",
+      "priority": 2,
+      "allow": "alaw",
+      "fromUser": null,
+      "fromDomain": "",
+      "directConnectivity": "yes",
+      "ddiIn": "yes",
+      "t38Passthrough": "no",
+      "alwaysApplyTransformations": false,
+      "rtpEncryption": false,
+      "multiContact": false,
+      "id": 2,
+      "transformationRuleSet": null,
+      "callAcl": null,
+      "outgoingDdi": null,
+      "language": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

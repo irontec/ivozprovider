@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
@@ -355,6 +355,9 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return AdministratorRelPublicEntityDto[] | null
+    */
     public function getRelPublicEntities(): ?array
     {
         return $this->relPublicEntities;

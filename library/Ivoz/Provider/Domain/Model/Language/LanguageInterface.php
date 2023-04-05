@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Language;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * LanguageInterface
@@ -48,6 +48,4 @@ interface LanguageInterface extends LoggableEntityInterface
     public function getIden(): string;
 
     public function getName(): Name;
-
-    public function isInitialized(): bool;
 }

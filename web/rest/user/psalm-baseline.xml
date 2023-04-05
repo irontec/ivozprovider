@@ -62,11 +62,8 @@
     <MixedInferredReturnType occurrences="1">
       <code>Paginator | array | iterable</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="10">
-      <code>andWhere</code>
+    <MixedMethodCall occurrences="7">
       <code>eq</code>
-      <code>eq</code>
-      <code>expr</code>
       <code>expr</code>
       <code>getEndTime</code>
       <code>getStartTime</code>
@@ -116,9 +113,6 @@
     <PossiblyNullArgument occurrences="1">
       <code>$webPortalDto-&gt;getLogoBaseName()</code>
     </PossiblyNullArgument>
-    <PossiblyNullPropertyFetch occurrences="1">
-      <code>$request-&gt;server</code>
-    </PossiblyNullPropertyFetch>
   </file>
   <file src="src/Kernel.php">
     <DeprecatedClass occurrences="4">

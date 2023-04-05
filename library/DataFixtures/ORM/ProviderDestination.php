@@ -36,7 +36,7 @@ class ProviderDestination extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-        /** @var DestinationInterface $item1 */
+        /** @var DestinationInterface $item2 */
         $item2 = $this->createEntityInstance(Destination::class);
         (function () use ($fixture) {
             $this->setPrefix("+94601");
@@ -48,6 +48,19 @@ class ProviderDestination extends Fixture implements DependentFixtureInterface
 
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
+
+        /** @var DestinationInterface $item3 */
+        $item3 = $this->createEntityInstance(Destination::class);
+        (function () use ($fixture) {
+            $this->setPrefix("+94602");
+            $this->name = new Name('Dest3', 'Dest3', 'Dest3', 'Dest3');
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+        })->call($item3);
+
+        $this->addReference('_reference_ProviderDestination3', $item3);
+
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
 
         $manager->flush();
     }

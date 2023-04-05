@@ -12,7 +12,7 @@ Feature: Retrieve conditional routes
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "testConditional",
@@ -47,7 +47,7 @@ Feature: Retrieve conditional routes
               "numberCountry": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain conditional route json
     Given I add Company Authorization header
@@ -57,7 +57,7 @@ Feature: Retrieve conditional routes
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "testConditional",
           "routetype": "user",
@@ -74,4 +74,4 @@ Feature: Retrieve conditional routes
           "extension": null,
           "numberCountry": null
       }
-    """
+      """

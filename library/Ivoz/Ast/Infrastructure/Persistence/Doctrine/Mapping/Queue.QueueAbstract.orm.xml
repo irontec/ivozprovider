@@ -19,6 +19,17 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="announcePosition" type="string" column="announce_position" length="128" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">no</option>
+      </options>
+    </field>
+    <field name="announceFrequency" type="integer" column="announce_frequency" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
     <field name="timeout" type="integer" column="timeout" nullable="true">
       <options>
         <option name="unsigned"/>

@@ -1,0 +1,15 @@
+{
+  "name": "brand",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/brand",
+  "scripts": {
+    "start": "bin/start",
+    "lint:check": "prettier --check src/**/*.tsx src/**/*.ts src/**/*.js",
+    "lint": "eslint --fix src --ext .js,.ts,.tsx",
+    "build": "bin/build",
+    "i18n": "i18next src/**/*.{jsx,tsx} -c i18next-parser.config.mjs",
+    "cy:run": "cypress run --browser electron",
+    "cy:open": "cypress open"
+  }
+}

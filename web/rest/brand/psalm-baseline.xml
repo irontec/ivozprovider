@@ -55,10 +55,6 @@
     <MixedMethodCall occurrences="1">
       <code>getBrand</code>
     </MixedMethodCall>
-    <PossiblyNullPropertyFetch occurrences="2">
-      <code>$request-&gt;files</code>
-      <code>$request-&gt;request</code>
-    </PossiblyNullPropertyFetch>
   </file>
   <file src="src/Controller/Provider/PutBillableCallRatingAction.php">
     <MixedArgument occurrences="1">

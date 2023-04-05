@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 
@@ -60,6 +60,4 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
     public function getCallAcl(): ?CallAclInterface;
 
     public function getMatchList(): MatchListInterface;
-
-    public function isInitialized(): bool;
 }

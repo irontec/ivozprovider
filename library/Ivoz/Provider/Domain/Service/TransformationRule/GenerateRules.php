@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\TransformationRule;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Service\TransformationRuleSet\DisableGenerateRules;

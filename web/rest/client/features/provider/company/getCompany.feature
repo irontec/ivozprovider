@@ -12,16 +12,19 @@ Feature: Retrieve companies
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "type": "vpbx",
               "name": "DemoCompany",
-              "nif": "12345678A",
-              "id": 1
+              "id": 1,
+              "invoicing": {
+                  "nif": "12345678A"
+              },
+              "domainName": "127.0.0.1"
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain company service json
     Given I add Company Authorization header
@@ -31,22 +34,25 @@ Feature: Retrieve companies
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "type": "vpbx",
           "name": "DemoCompany",
           "domainUsers": "127.0.0.1",
-          "nif": "12345678A",
           "onDemandRecordCode": "",
           "balance": 1.2,
           "id": 1,
+          "invoicing": {
+              "nif": "12345678A"
+          },
           "language": {
               "iden": "es",
               "id": 1,
               "name": {
                   "en": "es",
                   "es": "es",
-                  "ca": "es"
+                  "ca": "es",
+                  "it": "es"
               }
           },
           "defaultTimezone": {
@@ -56,7 +62,8 @@ Feature: Retrieve companies
               "label": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           },
@@ -67,16 +74,18 @@ Feature: Retrieve companies
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe"
               }
           },
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
@@ -84,12 +93,15 @@ Feature: Retrieve companies
               "generateRules": false,
               "id": 1,
               "name": {
-                  "en": "en",
-                  "es": "es"
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
               },
               "country": 68
           },
           "outgoingDdi": null,
-          "outgoingDdiRule": null
+          "outgoingDdiRule": null,
+          "domainName": "127.0.0.1"
       }
-    """
+      """

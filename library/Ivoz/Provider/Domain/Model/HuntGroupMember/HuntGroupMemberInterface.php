@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\HuntGroupMember;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
@@ -74,8 +74,6 @@ interface HuntGroupMemberInterface extends LoggableEntityInterface
     public function getUser(): ?UserInterface;
 
     public function getNumberCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 
     /**
      * @param string $prefix

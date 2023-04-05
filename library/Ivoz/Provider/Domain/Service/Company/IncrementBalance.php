@@ -13,7 +13,7 @@ class IncrementBalance extends AbstractBalanceOperation
     {
         $this->logger->info('Company#%s\'s balance will be incremented by ' . $amount);
         $company = $this->companyRepository->find($companyId);
-        $response = $this->client->incrementBalance($company, $amount);
+        $response = $this->companyBalanceService->incrementBalance($company, $amount);
 
         return $this->handleResponse(
             $amount,

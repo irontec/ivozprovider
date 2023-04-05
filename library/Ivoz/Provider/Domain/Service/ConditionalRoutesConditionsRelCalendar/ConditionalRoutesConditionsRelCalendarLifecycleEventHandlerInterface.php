@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\Conditiona
 
 interface ConditionalRoutesConditionsRelCalendarLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(ConditionalRoutesConditionsRelCalendarInterface $entity);
+    public function execute(ConditionalRoutesConditionsRelCalendarInterface $relCalendar);
 }

@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\Schedule;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use DateTimeInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
@@ -76,6 +76,4 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getSunday(): ?bool;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 }

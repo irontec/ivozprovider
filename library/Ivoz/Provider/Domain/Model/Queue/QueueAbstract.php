@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\Queue;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -32,6 +32,11 @@ abstract class QueueAbstract
      * @var ?string
      */
     protected $name = null;
+
+    /**
+     * @var ?string
+     */
+    protected $displayName = null;
 
     /**
      * @var ?int
@@ -69,6 +74,17 @@ abstract class QueueAbstract
      * @var ?int
      */
     protected $periodicAnnounceFrequency = null;
+
+    /**
+     * @var ?string
+     * comment: enum:yes|no
+     */
+    protected $announcePosition = 'no';
+
+    /**
+     * @var ?int
+     */
+    protected $announceFrequency = null;
 
     /**
      * @var ?int
@@ -224,6 +240,7 @@ abstract class QueueAbstract
 
         $self
             ->setName($dto->getName())
+            ->setDisplayName($dto->getDisplayName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
             ->setTimeoutTargetType($dto->getTimeoutTargetType())
             ->setTimeoutNumberValue($dto->getTimeoutNumberValue())
@@ -231,6 +248,8 @@ abstract class QueueAbstract
             ->setFullTargetType($dto->getFullTargetType())
             ->setFullNumberValue($dto->getFullNumberValue())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($dto->getAnnouncePosition())
+            ->setAnnounceFrequency($dto->getAnnounceFrequency())
             ->setMemberCallRest($dto->getMemberCallRest())
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
@@ -268,6 +287,7 @@ abstract class QueueAbstract
 
         $this
             ->setName($dto->getName())
+            ->setDisplayName($dto->getDisplayName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
             ->setTimeoutTargetType($dto->getTimeoutTargetType())
             ->setTimeoutNumberValue($dto->getTimeoutNumberValue())
@@ -275,6 +295,8 @@ abstract class QueueAbstract
             ->setFullTargetType($dto->getFullTargetType())
             ->setFullNumberValue($dto->getFullNumberValue())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($dto->getAnnouncePosition())
+            ->setAnnounceFrequency($dto->getAnnounceFrequency())
             ->setMemberCallRest($dto->getMemberCallRest())
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
@@ -301,6 +323,7 @@ abstract class QueueAbstract
     {
         return self::createDto()
             ->setName(self::getName())
+            ->setDisplayName(self::getDisplayName())
             ->setMaxWaitTime(self::getMaxWaitTime())
             ->setTimeoutTargetType(self::getTimeoutTargetType())
             ->setTimeoutNumberValue(self::getTimeoutNumberValue())
@@ -308,6 +331,8 @@ abstract class QueueAbstract
             ->setFullTargetType(self::getFullTargetType())
             ->setFullNumberValue(self::getFullNumberValue())
             ->setPeriodicAnnounceFrequency(self::getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition(self::getAnnouncePosition())
+            ->setAnnounceFrequency(self::getAnnounceFrequency())
             ->setMemberCallRest(self::getMemberCallRest())
             ->setMemberCallTimeout(self::getMemberCallTimeout())
             ->setStrategy(self::getStrategy())
@@ -332,6 +357,7 @@ abstract class QueueAbstract
     {
         return [
             'name' => self::getName(),
+            'displayName' => self::getDisplayName(),
             'maxWaitTime' => self::getMaxWaitTime(),
             'timeoutTargetType' => self::getTimeoutTargetType(),
             'timeoutNumberValue' => self::getTimeoutNumberValue(),
@@ -339,6 +365,8 @@ abstract class QueueAbstract
             'fullTargetType' => self::getFullTargetType(),
             'fullNumberValue' => self::getFullNumberValue(),
             'periodicAnnounceFrequency' => self::getPeriodicAnnounceFrequency(),
+            'announcePosition' => self::getAnnouncePosition(),
+            'announceFrequency' => self::getAnnounceFrequency(),
             'memberCallRest' => self::getMemberCallRest(),
             'memberCallTimeout' => self::getMemberCallTimeout(),
             'strategy' => self::getStrategy(),
@@ -371,6 +399,22 @@ abstract class QueueAbstract
     public function getName(): ?string
     {
         return $this->name;
+    }
+
+    protected function setDisplayName(?string $displayName = null): static
+    {
+        if (!is_null($displayName)) {
+            Assertion::maxLength($displayName, 50, 'displayName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
     }
 
     protected function setMaxWaitTime(?int $maxWaitTime = null): static
@@ -489,6 +533,42 @@ abstract class QueueAbstract
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
+    }
+
+    protected function setAnnouncePosition(?string $announcePosition = null): static
+    {
+        if (!is_null($announcePosition)) {
+            Assertion::maxLength($announcePosition, 10, 'announcePosition value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $announcePosition,
+                [
+                    QueueInterface::ANNOUNCEPOSITION_YES,
+                    QueueInterface::ANNOUNCEPOSITION_NO,
+                ],
+                'announcePositionvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
+        $this->announcePosition = $announcePosition;
+
+        return $this;
+    }
+
+    public function getAnnouncePosition(): ?string
+    {
+        return $this->announcePosition;
+    }
+
+    protected function setAnnounceFrequency(?int $announceFrequency = null): static
+    {
+        $this->announceFrequency = $announceFrequency;
+
+        return $this;
+    }
+
+    public function getAnnounceFrequency(): ?int
+    {
+        return $this->announceFrequency;
     }
 
     protected function setMemberCallRest(?int $memberCallRest = null): static

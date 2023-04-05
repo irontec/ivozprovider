@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\CallCsvReport;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
@@ -30,30 +30,30 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
     }
 
     /**
-     * @param CallCsvReportInterface $callCsvReport
+     * @param CallCsvReportInterface $report
      * @return void
      * @throws \DomainException
      */
-    public function execute(CallCsvReportInterface $callCsvReport)
+    public function execute(CallCsvReportInterface $report)
     {
-        $isNew = $callCsvReport->isNew();
+        $isNew = $report->isNew();
         if (!$isNew) {
             return;
         }
 
-        $scheduler = $callCsvReport->getCallCsvScheduler();
+        $scheduler = $report->getCallCsvScheduler();
         if (!$scheduler) {
             return;
         }
 
-        $targetEmail = $callCsvReport->getSentTo();
+        $targetEmail = $report->getSentTo();
         if (!$targetEmail) {
             return;
         }
 
         $notificationTemplateContent = $this
             ->callCsvNotificationTemplateByCallCsvReport
-            ->execute($callCsvReport);
+            ->execute($report);
 
         if (!$notificationTemplateContent) {
             return;
@@ -63,17 +63,17 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
         $fromAddress = $notificationTemplateContent->getFromAddress();
         $bodyType = $notificationTemplateContent->getBodyType();
         $body = $this->parseVariables(
-            $callCsvReport,
+            $report,
             $notificationTemplateContent->getBody()
         );
         $subject = $this->parseVariables(
-            $callCsvReport,
+            $report,
             $notificationTemplateContent->getSubject()
         );
 
         /** @var CallCsvReportDto $callCsvReportDto */
         $callCsvReportDto = $this->entityTools->entityToDto(
-            $callCsvReport
+            $report
         );
 
         $mail = new Message();

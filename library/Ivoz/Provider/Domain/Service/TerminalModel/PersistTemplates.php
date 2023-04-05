@@ -23,10 +23,10 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    public function execute(TerminalModelInterface $entity)
+    public function execute(TerminalModelInterface $terminalModel)
     {
-        $genericMustChange = $entity->hasChanged('genericTemplate');
-        $specificMustChange = $entity->hasChanged('specificTemplate');
+        $genericMustChange = $terminalModel->hasChanged('genericTemplate');
+        $specificMustChange = $terminalModel->hasChanged('specificTemplate');
 
         if (!$genericMustChange && !$specificMustChange) {
             return;
@@ -37,17 +37,17 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
             . DIRECTORY_SEPARATOR
             . 'Provision_template'
             . DIRECTORY_SEPARATOR
-            . $entity->getId();
+            . $terminalModel->getId();
 
         if ($genericMustChange) {
-            $template = $entity->getGenericTemplate();
+            $template = $terminalModel->getGenericTemplate();
             $this->createFolder($route);
             $file = 'generic.phtml';
             $this->saveFiles($file, $route, $template);
         }
 
         if ($specificMustChange) {
-            $template = $entity->getSpecificTemplate();
+            $template = $terminalModel->getSpecificTemplate();
             $this->createFolder($route);
             $file = 'specific.phtml';
             $this->saveFiles($file, $route, $template);

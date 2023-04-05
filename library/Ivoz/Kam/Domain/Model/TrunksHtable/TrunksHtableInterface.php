@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Domain\Model\TrunksHtable;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * TrunksHtableInterface
@@ -47,6 +47,4 @@ interface TrunksHtableInterface extends EntityInterface
     public function getKeyValue(): string;
 
     public function getExpires(): int;
-
-    public function isInitialized(): bool;
 }

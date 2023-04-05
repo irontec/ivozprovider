@@ -26,7 +26,8 @@ Feature: Manage brands
         },
         "language": 1,
         "defaultTimezone": 145,
-        "features": [1]
+        "features": [2],
+        "proxyTrunks": [2]
       }
     """
     Then the response status code should be 200
@@ -56,7 +57,17 @@ Feature: Manage brands
           "language": 1,
           "defaultTimezone": 145,
           "currency": 2,
-          "features": [1]
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "features": [
+              2
+          ],
+          "proxyTrunks": [
+              2
+          ]
       }
     """
 
@@ -91,7 +102,7 @@ This is file content
           "id": 2,
           "logo": {
               "fileSize": 20,
-              "mimeType": "text/plain",
+              "mimeType": "text/plain; charset=us-ascii",
               "baseName": "uploadable"
           },
           "invoice": {
@@ -109,3 +120,10 @@ This is file content
           "features": []
       }
     """
+
+  Scenario: Retrieve uploaded brand logo
+    Given I add Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "/brands/2/logo"
+     Then the response status code should be 200
+      And the header "Content-Type" should be equal to "text/plain; charset=us-ascii"

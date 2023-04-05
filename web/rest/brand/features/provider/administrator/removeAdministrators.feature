@@ -22,7 +22,7 @@ Feature: Manage administrators
   @createSchema
   Scenario: Unmanaged administrators are filtered
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/administrators/3"
-    Then the response status code should be 404
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/administrators/3"
+     Then the response status code should be 404

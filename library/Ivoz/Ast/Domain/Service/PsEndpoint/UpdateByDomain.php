@@ -28,33 +28,33 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    public function execute(DomainInterface $entity)
+    public function execute(DomainInterface $domain)
     {
         /** @var FriendInterface[] $friends */
-        $friends = $entity->getFriends();
+        $friends = $domain->getFriends();
 
         foreach ($friends as $friend) {
             if (!$friend->getFromDomain()) {
-                $this->updateEndpoint($friend->getPsEndpoint(), $entity->getDomain());
+                $this->updateEndpoint($friend->getPsEndpoint(), $domain->getDomain());
             }
         }
 
         /** @var ResidentialDeviceInterface[] $residentialDevices */
-        $residentialDevices = $entity->getResidentialDevices();
+        $residentialDevices = $domain->getResidentialDevices();
 
         foreach ($residentialDevices as $residentialDevice) {
             if (!$residentialDevice->getFromDomain()) {
-                $this->updateEndpoint($residentialDevice->getPsEndpoint(), $entity->getDomain());
+                $this->updateEndpoint($residentialDevice->getPsEndpoint(), $domain->getDomain());
             }
         }
 
         /** @var TerminalInterface[] $terminals */
-        $terminals = $entity->getTerminals();
+        $terminals = $domain->getTerminals();
 
         foreach ($terminals as $terminal) {
             $this->updateEndpoint(
                 $terminal->getPsEndpoint(),
-                $entity->getDomain()
+                $domain->getDomain()
             );
         }
 

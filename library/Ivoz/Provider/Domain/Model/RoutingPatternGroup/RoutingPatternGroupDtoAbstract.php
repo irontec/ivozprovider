@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
@@ -172,6 +172,9 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this;
     }
 
+    /**
+    * @return RoutingPatternGroupsRelPatternDto[] | null
+    */
     public function getRelPatterns(): ?array
     {
         return $this->relPatterns;
@@ -184,6 +187,9 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingDto[] | null
+    */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;

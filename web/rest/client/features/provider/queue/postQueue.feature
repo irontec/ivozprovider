@@ -6,12 +6,13 @@ Feature: Create queues
   @createSchema
   Scenario: Create a queue
     Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/queues" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/queues" with body:
+      """
       {
           "name": "newQueue",
+          "displayName": "Display Name for newQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002121",
@@ -25,6 +26,8 @@ Feature: Create queues
           "weight": 2,
           "preventMissedCalls": 1,
           "periodicAnnounceLocution": 1,
+          "announcePosition": "yes",
+          "announceFrequency": 20,
           "timeoutLocution": 1,
           "timeoutExtension": null,
           "timeoutVoicemail": null,
@@ -34,14 +37,15 @@ Feature: Create queues
           "timeoutNumberCountry": 68,
           "fullNumberCountry": 68
       }
-    """
-    Then the response status code should be 201
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "newQueue",
+          "displayName": "Display Name for newQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002121",
@@ -49,6 +53,8 @@ Feature: Create queues
           "fullTargetType": "number",
           "fullNumberValue": "946002023",
           "periodicAnnounceFrequency": 7,
+          "announcePosition": "yes",
+          "announceFrequency": 20,
           "memberCallRest": 0,
           "memberCallTimeout": 1,
           "strategy": "rrmemory",
@@ -65,17 +71,17 @@ Feature: Create queues
           "timeoutNumberCountry": 68,
           "fullNumberCountry": 68
       }
-    """
+      """
 
   Scenario: Retrieve created queue
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/queues/2"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "/queues/2"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "newQueue",
           "maxWaitTime": 10,
@@ -170,4 +176,4 @@ Feature: Create queues
               }
           }
       }
-    """
+      """

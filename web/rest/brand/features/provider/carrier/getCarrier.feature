@@ -6,46 +6,57 @@ Feature: Retrieve carriers
   @createSchema
   Scenario: Retrieve the carriers json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "carriers"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "carriers"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "description": "CarrierDescription",
               "name": "CarrierName",
-              "externallyRated": false,
-              "id": 1
+              "balance": 0,
+              "calculateCost": true,
+              "id": 1,
+              "transformationRuleSet": 1,
+              "proxyTrunk": 1,
+              "status": {
+                  "registered": false
+              }
           },
           {
-              "description": "Externally rated",
-              "name": "ExternallyRatedCarrier",
-              "externallyRated": true,
-              "id": 2
+              "description": "Another carrier description",
+              "name": "AnotherCarrierName",
+              "balance": 0,
+              "calculateCost": false,
+              "id": 2,
+              "transformationRuleSet": 1,
+              "proxyTrunk": 2,
+              "status": {
+                  "registered": false
+              }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain carrier json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "carriers/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "carriers/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "description": "CarrierDescription",
           "name": "CarrierName",
-          "externallyRated": false,
           "calculateCost": true,
           "id": 1,
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
@@ -53,11 +64,13 @@ Feature: Retrieve carriers
               "generateRules": false,
               "id": 1,
               "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
               },
-              "country": 68
+              "country": 68,
+              "editable": true
           }
       }
-    """
+      """

@@ -211,11 +211,6 @@ parameters:
 			path: src/Services/AbstractWsServer.php
 
 		-
-			message: "#^Method Services\\\\JwtToken\\:\\:getPayload\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Services/JwtToken.php
-
-		-
 			message: "#^Property Services\\\\JwtToken\\:\\:\\$jwtManager has no typehint specified\\.$#"
 			count: 1
 			path: src/Services/JwtToken.php
@@ -321,17 +316,22 @@ parameters:
 			path: src/Services/RegistrationChannelResolver.php
 
 		-
-			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:criteriaToString\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Services/RegistrationChannelResolver.php
-
-		-
 			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:criteriaToString\\(\\) has parameter \\$registerCriteria with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Services/RegistrationChannelResolver.php
 
 		-
 			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:criteriaToString\\(\\) has parameter \\$tokenPayload with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:getDefaultCriteria\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:testDbConnnection\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Services/RegistrationChannelResolver.php
 

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\HolidayDate;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
@@ -287,11 +287,10 @@ abstract class HolidayDateAbstract
     protected function setEventDate(string|\DateTimeInterface $eventDate): static
     {
 
-        /** @var \Datetime */
-        $eventDate = DateTimeHelper::createOrFix(
-            $eventDate,
-            null
-        );
+        /** @var \DateTime */
+        $eventDate = !($eventDate instanceof \DateTimeInterface)
+            ? \DateTime::createFromFormat($eventDate, 'Y-m-d', new \DateTimeZone('UTC'))
+            : $eventDate;
 
         if ($this->isInitialized() && $this->eventDate == $eventDate) {
             return $this;
@@ -323,11 +322,10 @@ abstract class HolidayDateAbstract
     {
         if (!is_null($timeIn)) {
 
-            /** @var ?\Datetime */
-            $timeIn = DateTimeHelper::createOrFix(
-                $timeIn,
-                null
-            );
+            /** @var ?\DateTime */
+            $timeIn = !($timeIn instanceof \DateTimeInterface)
+                ? \DateTime::createFromFormat($timeIn, 'H:i:s', new \DateTimeZone('UTC'))
+                : $timeIn;
 
             if ($this->isInitialized() && $this->timeIn == $timeIn) {
                 return $this;
@@ -348,11 +346,10 @@ abstract class HolidayDateAbstract
     {
         if (!is_null($timeOut)) {
 
-            /** @var ?\Datetime */
-            $timeOut = DateTimeHelper::createOrFix(
-                $timeOut,
-                null
-            );
+            /** @var ?\DateTime */
+            $timeOut = !($timeOut instanceof \DateTimeInterface)
+                ? \DateTime::createFromFormat($timeOut, 'H:i:s', new \DateTimeZone('UTC'))
+                : $timeOut;
 
             if ($this->isInitialized() && $this->timeOut == $timeOut) {
                 return $this;

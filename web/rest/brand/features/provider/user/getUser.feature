@@ -12,26 +12,54 @@ Feature: Retrieve users
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "Alice",
               "lastname": "Allison",
+              "email": "alice@democompany.com",
               "id": 1,
               "company": 1,
               "terminal": 1,
-              "outgoingDdi": null
+              "extension": null,
+              "outgoingDdi": null,
+              "location": null,
+              "status": [
+                  {
+                      "contact": "sip:yealinktest@10.10.1.106:5060",
+                      "received": "sip:212.64.172.23:5060",
+                      "publicReceived": true,
+                      "expires": "2031-01-01 00:59:59",
+                      "userAgent": "Yealink SIP-T23G 44.80.0.130"
+                  }
+              ]
           },
           {
               "name": "Bob",
               "lastname": "Bobson",
+              "email": "bob@democompany.com",
               "id": 2,
               "company": 1,
               "terminal": 2,
-              "outgoingDdi": null
+              "extension": null,
+              "outgoingDdi": null,
+              "location": 1,
+              "status": []
+          },
+          {
+              "name": "Joe",
+              "lastname": "Doe",
+              "email": "joe@democompany.com",
+              "id": 3,
+              "company": 1,
+              "terminal": 4,
+              "extension": null,
+              "outgoingDdi": null,
+              "location": 1,
+              "status": []
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain user json
     Given I add Brand Authorization header

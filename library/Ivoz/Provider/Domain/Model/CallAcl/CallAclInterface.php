@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\CallAcl;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
 use Doctrine\Common\Collections\Collection;
@@ -64,8 +64,6 @@ interface CallAclInterface extends LoggableEntityInterface
     public function getDefaultPolicy(): string;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 
     public function addRelMatchList(CallAclRelMatchListInterface $relMatchList): CallAclInterface;
 

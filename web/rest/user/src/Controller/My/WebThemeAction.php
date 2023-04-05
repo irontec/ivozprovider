@@ -3,26 +3,23 @@
 namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
+use Ivoz\Core\Domain\Service\Assembler\DtoAssembler;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
 use Model\WebTheme;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Request;
 
 class WebThemeAction
 {
     public function __construct(
         private DtoAssembler $dtoAssembler,
-        private WebPortalRepository $webPortalRepository,
-        private RequestStack $requestStack
+        private WebPortalRepository $webPortalRepository
     ) {
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        $request = $this->requestStack->getCurrentRequest();
-
         $webPortal = $this->webPortalRepository->findUserUrlByServerName(
             $request->server->get('SERVER_NAME')
         );

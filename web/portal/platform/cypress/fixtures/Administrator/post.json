@@ -1,0 +1,32 @@
+{
+  "request": {
+    "active": true,
+    "email": "admin@example.com",
+    "lastname": "ivozprovider",
+    "name": "admin",
+    "restricted": false,
+    "username": "admin",
+    "pass": "****"
+  },
+  "response": {
+    "body": {
+      "id": 2,
+      "active": true,
+      "email": "admin@example.com",
+      "lastname": "ivozprovider",
+      "name": "admin",
+      "restricted": false,
+      "username": "admin",
+      "pass": "****"
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

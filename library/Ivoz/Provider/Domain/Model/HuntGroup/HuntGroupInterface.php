@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -104,8 +104,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getNoAnswerVoicemail(): ?VoicemailInterface;
 
     public function getNoAnswerNumberCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 
     public function addHuntGroupMember(HuntGroupMemberInterface $huntGroupMember): HuntGroupInterface;
 

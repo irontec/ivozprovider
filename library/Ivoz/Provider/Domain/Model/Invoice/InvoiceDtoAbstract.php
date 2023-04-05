@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
@@ -492,6 +492,9 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return FixedCostsRelInvoiceDto[] | null
+    */
     public function getRelFixedCosts(): ?array
     {
         return $this->relFixedCosts;

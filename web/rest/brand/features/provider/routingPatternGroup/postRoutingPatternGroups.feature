@@ -9,7 +9,7 @@ Feature: Create routing pattern groups
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/routing_pattern_groups" with body:
-    """
+      """
       {
           "name": "Usansolocity",
           "description": "Usansolocity",
@@ -17,12 +17,12 @@ Feature: Create routing pattern groups
               2
           ]
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "Usansolocity",
           "description": "Usansolocity",
@@ -31,7 +31,7 @@ Feature: Create routing pattern groups
               2
           ]
       }
-    """
+      """
 
   Scenario: Retrieve created routing pattern group
     Given I add Brand Authorization header
@@ -41,7 +41,7 @@ Feature: Create routing pattern groups
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "Usansolocity",
           "description": "Usansolocity",
@@ -50,4 +50,4 @@ Feature: Create routing pattern groups
               2
           ]
       }
-    """
+      """

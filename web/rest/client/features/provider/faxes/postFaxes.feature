@@ -9,19 +9,19 @@ Feature: Create faxes
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/faxes" with body:
-    """
+      """
       {
           "name": "New Fax",
           "email": "something@irontec.com",
           "sendByEmail": true,
           "outgoingDdi": null
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "New Fax",
           "email": "something@irontec.com",
@@ -29,7 +29,7 @@ Feature: Create faxes
           "id": 2,
           "outgoingDdi": null
       }
-    """
+      """
 
   Scenario: Retrieve created fax
     Given I add Company Authorization header
@@ -39,7 +39,7 @@ Feature: Create faxes
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "New Fax",
           "email": "something@irontec.com",
@@ -47,4 +47,4 @@ Feature: Create faxes
           "id": 2,
           "outgoingDdi": null
       }
-    """
+      """

@@ -9,7 +9,7 @@ Feature: Update invoice
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/invoices/1" with body:
-    """
+      """
       {
           "number": "1",
           "inDate": "2018-01-02 00:00:00",
@@ -20,12 +20,12 @@ Feature: Update invoice
           "invoiceTemplate": 1,
           "company": 1
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "number": "1",
           "inDate": "2018-01-02 00:00:00",
@@ -44,6 +44,7 @@ Feature: Update invoice
           "invoiceTemplate": 1,
           "company": 1,
           "numberSequence": null,
-          "scheduler": null
+          "scheduler": null,
+          "currency": "€"
       }
-    """
+      """

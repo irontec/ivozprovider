@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
@@ -57,8 +57,6 @@ interface DdiProviderInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    public function getExternallyRated(): ?bool;
-
     public function getBrand(): BrandInterface;
 
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
@@ -66,8 +64,6 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getProxyTrunk(): ?ProxyTrunkInterface;
 
     public function getMediaRelaySets(): ?MediaRelaySetInterface;
-
-    public function isInitialized(): bool;
 
     public function addDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface;
 

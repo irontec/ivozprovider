@@ -4,8 +4,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Ivoz\Provider\Domain\Service\Invoice\CreateByScheduler;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerRepository;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
 
 class InvoiceSchedulerController
 {

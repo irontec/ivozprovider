@@ -3,10 +3,10 @@
 namespace Ivoz\Provider\Domain\Model\CompanyRelRoutingTag;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 
 /**
@@ -14,12 +14,6 @@ use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 */
 interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
 {
-    /**
-     * @param CompanyInterface|null $company
-     * @return static
-     */
-    public function setCompany(?CompanyInterface $company = null): static;
-
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
@@ -53,11 +47,11 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
      */
     public function toDto(int $depth = 0): CompanyRelRoutingTagDto;
 
+    public function setCompany(?CompanyInterface $company = null): static;
+
     public function getCompany(): ?CompanyInterface;
 
     public function setRoutingTag(RoutingTagInterface $routingTag): static;
 
     public function getRoutingTag(): RoutingTagInterface;
-
-    public function isInitialized(): bool;
 }

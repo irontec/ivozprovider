@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\NotificationTemplateContent;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 
@@ -66,6 +66,4 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
     public function getNotificationTemplate(): NotificationTemplateInterface;
 
     public function getLanguage(): ?LanguageInterface;
-
-    public function isInitialized(): bool;
 }

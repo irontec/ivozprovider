@@ -21,11 +21,6 @@ This are the fields that define a carrier:
         outgoing numbers that use this Carrier
         (see :ref:`Numeric transformations`).
 
-    Externally rated
-        This setting requires the external tarification module and allows
-        tarification on special numbers. This module is not standard so don't
-        hesitate in :ref:`contact us <getting_help>` if you are interested.
-
     Calculate cost
         If set, IvozProvider will calculate the cost of the call using the carrier's active rating profile.
 

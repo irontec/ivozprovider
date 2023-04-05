@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 interface TpTimingLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TpTimingInterface $entity);
+    public function execute(TpTimingInterface $tpTiming);
 }

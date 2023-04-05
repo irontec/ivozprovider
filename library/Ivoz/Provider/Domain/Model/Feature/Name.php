@@ -40,10 +40,10 @@ final class Name
      * Constructor
      */
     public function __construct(
-        string $en,
-        string $es,
-        string $ca,
-        string $it
+        string $en = '',
+        string $es = '',
+        string $ca = '',
+        string $it = ''
     ) {
         $this->setEn($en);
         $this->setEs($es);

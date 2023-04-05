@@ -7,5 +7,5 @@ use Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface;
 
 interface TrunksAddressLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TrunksAddressInterface $entity);
+    public function execute(TrunksAddressInterface $trunksAddress);
 }

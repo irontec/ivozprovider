@@ -2,8 +2,8 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 
 /**
 * UsersLocationAttrDtoAbstract
@@ -49,7 +49,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     private $lastModified = '1900-01-01 00:00:01';
 
     /**
-     * @var int|null
+     * @var string|null
      */
     private $id = null;
 
@@ -203,7 +203,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

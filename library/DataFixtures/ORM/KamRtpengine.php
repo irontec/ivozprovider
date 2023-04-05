@@ -27,7 +27,7 @@ class KamRtpengine extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this
                 ->setSetid(0)
-                ->setUrl('udp:127.0.0.1:22223')
+                ->setUrl('udp:127.0.0.1:2223')
                 ->setWeight(1)
                 ->setDisabled(false)
                 ->setDescription('rtpengine01')

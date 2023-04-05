@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * @codeCoverageIgnore
@@ -13,7 +13,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait UsersLocationAttrTrait
 {
     /**
-     * @var ?int
+     * @var ?string
      */
     protected $id = null;
 

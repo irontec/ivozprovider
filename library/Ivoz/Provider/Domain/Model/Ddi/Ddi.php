@@ -6,6 +6,7 @@ use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
  * Ddi
@@ -49,6 +50,17 @@ class Ddi extends DdiAbstract implements DdiInterface
 
     protected function sanitizeValues(): void
     {
+        $isNew = $this->isNew();
+        $changedClient = $this->hasChanged('companyId');
+
+        if (!$isNew && $changedClient) {
+            throw new \DomainException(
+                'Forbidden ddi client update',
+                403
+            );
+        }
+
+
         if (! $this->getCountry()) {
             $this->setCountry(
                 $this->getCompany()->getCountry()
@@ -61,15 +73,8 @@ class Ddi extends DdiAbstract implements DdiInterface
             . $this->getDdi()
         );
 
-        // If billInboundCalls is set, carrier must have externallyRated to 1
-        if (
-            $this->getBillInboundCalls()
-            && !$this->getDdiProvider()->getExternallyRated()
-        ) {
-            throw new \DomainException(
-                'Inbound Calls cannot be billed as PeeringContract is not externally rated',
-                90000
-            );
+        if ($this->getType() === DdiInterface::TYPE_OUT) {
+            $this->setDdiProvider(null);
         }
     }
 

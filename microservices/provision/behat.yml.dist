@@ -1,0 +1,23 @@
+default:
+  calls:
+    error_reporting: 16383 # E_ALL & ~E_USER_DEPRECATED
+  suites:
+    default:
+      contexts:
+        - Behat\MinkExtension\Context\MinkContext
+        - Behat\Context\FeatureContext
+        - Behatch\Context\RestContext
+  extensions:
+    FriendsOfBehat\SymfonyExtension:
+      bootstrap: features/bootstrap/bootstrap.php
+      kernel:
+        environment: "test"
+        debug: true
+        path: "src/Kernel.php"
+        class: "Kernel"
+    Behat\MinkExtension:
+      base_url: "http://ivozprovider/"
+      sessions:
+        default:
+          symfony: ~
+    Behatch\Extension: ~

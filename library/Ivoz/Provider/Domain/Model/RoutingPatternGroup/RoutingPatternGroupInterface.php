@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 use Doctrine\Common\Collections\Collection;
@@ -39,6 +39,8 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      */
     public function getRoutingPatterns(?Criteria $criteria = null): array;
 
+    public function setName(string $name): static;
+
     public static function createDto(string|int|null $id = null): RoutingPatternGroupDto;
 
     /**
@@ -64,8 +66,6 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     public function getDescription(): ?string;
 
     public function getBrand(): BrandInterface;
-
-    public function isInitialized(): bool;
 
     public function addRelPattern(RoutingPatternGroupsRelPatternInterface $relPattern): RoutingPatternGroupInterface;
 

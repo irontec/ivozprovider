@@ -1,0 +1,29 @@
+{
+  "request": {
+    "body": {
+      "username": "irontec",
+      "password": "ee4aeVie7AiH"
+    },
+    "headers": {
+      "Authorization": "Bearer stuff"
+    }
+  },
+  "response": {
+    "body": {
+      "token": "token_token_token",
+      "refresh_token": "refresh_token"
+    },
+    "headers": {
+      "content-type": "application/json"
+    },
+    "statusCode": 200
+  },
+  "matchingRules": {
+    "$.body.token": {
+      "match": "type"
+    },
+    "$.body.refresh_token": {
+      "match": "type"
+    }
+  }
+}

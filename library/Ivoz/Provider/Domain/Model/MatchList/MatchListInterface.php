@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\MatchList;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface;
@@ -65,8 +65,6 @@ interface MatchListInterface extends LoggableEntityInterface
     public function getBrand(): ?BrandInterface;
 
     public function getCompany(): ?CompanyInterface;
-
-    public function isInitialized(): bool;
 
     public function addPattern(MatchListPatternInterface $pattern): MatchListInterface;
 

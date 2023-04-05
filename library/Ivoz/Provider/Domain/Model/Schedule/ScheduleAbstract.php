@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\Schedule;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -268,11 +268,10 @@ abstract class ScheduleAbstract
     protected function setTimeIn(string|\DateTimeInterface $timeIn): static
     {
 
-        /** @var \Datetime */
-        $timeIn = DateTimeHelper::createOrFix(
-            $timeIn,
-            null
-        );
+        /** @var \DateTime */
+        $timeIn = !($timeIn instanceof \DateTimeInterface)
+            ? \DateTime::createFromFormat($timeIn, 'H:i:s', new \DateTimeZone('UTC'))
+            : $timeIn;
 
         if ($this->isInitialized() && $this->timeIn == $timeIn) {
             return $this;
@@ -291,11 +290,10 @@ abstract class ScheduleAbstract
     protected function setTimeout(string|\DateTimeInterface $timeout): static
     {
 
-        /** @var \Datetime */
-        $timeout = DateTimeHelper::createOrFix(
-            $timeout,
-            null
-        );
+        /** @var \DateTime */
+        $timeout = !($timeout instanceof \DateTimeInterface)
+            ? \DateTime::createFromFormat($timeout, 'H:i:s', new \DateTimeZone('UTC'))
+            : $timeout;
 
         if ($this->isInitialized() && $this->timeout == $timeout) {
             return $this;

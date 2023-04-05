@@ -42,7 +42,7 @@ class ProviderVoicemail extends Fixture implements DependentFixtureInterface
             $this->setEmail("");
             $this->setSendMail(false);
             $this->setAttachSound(false);
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany4'));
             $this->setResidentialDevice($fixture->getReference('_reference_ProviderResidentialDevice1'));
         })->call($item2);
 
@@ -77,6 +77,18 @@ class ProviderVoicemail extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
+        $item5 = $this->createEntityInstance(Voicemail::class);
+        (function () use ($fixture) {
+            $this->setName("Voicemail For Other Company");
+            $this->setEmail("other@voicemail.com");
+            $this->setSendMail(true);
+            $this->setAttachSound(false);
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany2'));
+        })->call($item5);
+
+        $this->addReference('_reference_ProviderVoicemail5', $item5);
+        $this->sanitizeEntityValues($item5);
+        $manager->persist($item5);
 
         $manager->flush();
     }

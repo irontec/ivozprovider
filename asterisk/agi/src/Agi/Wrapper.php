@@ -2,7 +2,7 @@
 
 namespace Agi;
 
-use Ivoz\Core\Application\Service\CommonStoragePathResolver;
+use Ivoz\Core\Domain\Service\CommonStoragePathResolver;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 
 /**
@@ -314,16 +314,6 @@ class Wrapper
     public function getConferenceSetting($setting)
     {
         return $this->getVariable("CONFBRIDGE($setting)");
-    }
-
-    public function voicemail($mailbox, $opts = "")
-    {
-        return $this->fastagi->exec('VoiceMail', "$mailbox,$opts");
-    }
-
-    public function checkVoicemail($mailbox, $options = "")
-    {
-        return $this->fastagi->exec('VoiceMailMain', $mailbox . ',' . $options);
     }
 
     public function setCallType($value)

@@ -2,9 +2,9 @@
 
 namespace Worker;
 
-use Ivoz\Core\Application\RegisterCommandTrait;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Ivoz\Provider\Domain\Job\InvoicerJobInterface;
@@ -121,10 +121,15 @@ class Invoices
             );
 
         try {
+            /** @var array<string> | false $response */
             $response = $redisMaster->blPop(
                 [InvoicerJobInterface::CHANNEL],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . InvoicerJobInterface::CHANNEL);
+            }
 
             return intval(end($response));
         } catch (\RedisException $e) {

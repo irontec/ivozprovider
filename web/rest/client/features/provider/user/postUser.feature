@@ -9,7 +9,7 @@ Feature: Create users
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/users" with body:
-    """
+      """
       {
           "name": "Test",
           "lastname": "",
@@ -35,12 +35,12 @@ Feature: Create users
             1
           ]
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "Test",
           "lastname": "",
@@ -52,7 +52,7 @@ Feature: Create users
           "maxCalls": 1,
           "externalIpCalls": "0",
           "gsQRCode": false,
-          "id": 3,
+          "id": 4,
           "callAcl": {
               "name": "testACL",
               "defaultPolicy": "allow",
@@ -61,14 +61,19 @@ Feature: Create users
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
               "nationalLen": 9,
               "generateRules": false,
               "id": 1,
-              "name": "~",
+              "name": {
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
+              },
               "country": 68
           },
           "language": null,
@@ -93,17 +98,17 @@ Feature: Create users
               1
           ]
       }
-    """
+      """
 
   Scenario: Retrieve created user
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "/users/3"
+      And I send a "GET" request to "/users/4"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "Test",
           "lastname": "",
@@ -115,7 +120,7 @@ Feature: Create users
           "maxCalls": 1,
           "externalIpCalls": "0",
           "gsQRCode": false,
-          "id": 3,
+          "id": 4,
           "callAcl": {
               "name": "testACL",
               "defaultPolicy": "allow",
@@ -124,7 +129,7 @@ Feature: Create users
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
@@ -132,9 +137,10 @@ Feature: Create users
               "generateRules": false,
               "id": 1,
               "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
               },
               "country": 68
           },
@@ -170,4 +176,4 @@ Feature: Create users
             1
           ]
       }
-    """
+      """

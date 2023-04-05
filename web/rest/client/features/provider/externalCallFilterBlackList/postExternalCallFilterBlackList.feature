@@ -6,21 +6,21 @@ Feature: Create external call filter black lists
   @createSchema
   Scenario: Create an external call filter black list
     Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/external_call_filter_black_lists" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/external_call_filter_black_lists" with body:
+      """
       {
           "id": 1,
           "filter": 1,
           "matchlist": 2
       }
-    """
-    Then the response status code should be 201
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "id": 2,
           "filter": {
@@ -44,20 +44,21 @@ Feature: Create external call filter black lists
           },
           "matchlist": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           }
       }
-    """
+      """
 
   Scenario: Retrieve created external call filter black list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "external_call_filter_black_lists/2"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "external_call_filter_black_lists/2"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "id": 2,
           "filter": {
@@ -81,7 +82,8 @@ Feature: Create external call filter black lists
           },
           "matchlist": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           }
       }
-    """
+      """

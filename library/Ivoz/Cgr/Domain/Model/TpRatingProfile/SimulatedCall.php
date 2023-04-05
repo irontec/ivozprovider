@@ -9,7 +9,7 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 
@@ -87,17 +87,11 @@ class SimulatedCall
      */
     private $cost;
 
-    /**
-     * @param string $response
-     * @param int $duration
-     * @param EntityTools $entityTools
-     * @return SimulatedCall
-     */
     public static function fromCgRatesResponse(
         string $response,
         int $duration,
         EntityTools $entityTools
-    ) {
+    ): SimulatedCall {
         $response = json_decode($response, null, 512, JSON_THROW_ON_ERROR);
 
         /** @var TpRatingPlanRepository $tpRatingPlanRepository */

@@ -1,6 +1,6 @@
 <?php
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;

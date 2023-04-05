@@ -14,16 +14,16 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements FixedCostsRelIn
         ];
     }
     /**
-     * @param FixedCostsRelInvoiceInterface $entity
-     *
-     * @throws \DomainException
+     * @param FixedCostsRelInvoiceInterface $relInvoice
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(FixedCostsRelInvoiceInterface $entity)
+    public function execute(FixedCostsRelInvoiceInterface $relInvoice)
     {
         $this->assertUnchanged(
-            $entity,
+            $relInvoice,
             [
                 'quantity'
             ]

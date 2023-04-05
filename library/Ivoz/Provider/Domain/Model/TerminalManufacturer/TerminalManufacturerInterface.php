@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\TerminalManufacturer;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * TerminalManufacturerInterface
@@ -50,6 +50,4 @@ interface TerminalManufacturerInterface extends LoggableEntityInterface
     public function getName(): string;
 
     public function getDescription(): string;
-
-    public function isInitialized(): bool;
 }

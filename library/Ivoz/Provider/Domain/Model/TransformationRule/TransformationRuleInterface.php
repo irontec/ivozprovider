@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\TransformationRule;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 
 /**
@@ -72,6 +72,4 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     public function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static;
 
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
-
-    public function isInitialized(): bool;
 }

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -439,7 +439,7 @@ abstract class CallCsvSchedulerAbstract
     {
         if (!is_null($lastExecution)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $lastExecution = DateTimeHelper::createOrFix(
                 $lastExecution,
                 null
@@ -480,7 +480,7 @@ abstract class CallCsvSchedulerAbstract
     {
         if (!is_null($nextExecution)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $nextExecution = DateTimeHelper::createOrFix(
                 $nextExecution,
                 null

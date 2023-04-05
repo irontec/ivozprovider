@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
@@ -125,8 +125,6 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getDomain(): ?DomainInterface;
 
     public function getTerminalModel(): ?TerminalModelInterface;
-
-    public function isInitialized(): bool;
 
     public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
 

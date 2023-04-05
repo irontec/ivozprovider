@@ -1,0 +1,12 @@
+# This file enables HEP siptrace in KamUsers
+#
+# Set params with proper values, rename file to siptrace.cfg and restart Kamailio
+
+loadmodule    "siptrace.so"
+modparam("siptrace", "trace_on", 1)
+modparam("siptrace", "duplicate_uri", "sip:127.0.0.1:9060")
+modparam("siptrace", "trace_to_database", 0)
+modparam("siptrace", "hep_mode_on", 1)
+modparam("siptrace", "hep_version", 3)
+modparam("siptrace", "hep_capture_id", 1)
+modparam("siptrace", "trace_mode", 1)

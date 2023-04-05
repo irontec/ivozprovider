@@ -61,16 +61,6 @@ parameters:
 			path: src/Controller/My/CompanyVoicemailsAction.php
 
 		-
-			message: "#^Cannot call method getContent\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
-			count: 1
-			path: src/Controller/My/PostCallForwardSettingsAction.php
-
-		-
-			message: "#^Cannot call method getRequestFormat\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
-			count: 2
-			path: src/Controller/My/PostCallForwardSettingsAction.php
-
-		-
 			message: "#^Method Controller\\\\My\\\\PostCallForwardSettingsAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Controller/My/PostCallForwardSettingsAction.php
@@ -79,16 +69,6 @@ parameters:
 			message: "#^Method Controller\\\\My\\\\ProfileAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Controller/My/ProfileAction.php
-
-		-
-			message: "#^Cannot call method getContent\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
-			count: 1
-			path: src/Controller/My/PutProfileAction.php
-
-		-
-			message: "#^Cannot call method getRequestFormat\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
-			count: 2
-			path: src/Controller/My/PutProfileAction.php
 
 		-
 			message: "#^Method Controller\\\\My\\\\PutProfileAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
@@ -104,11 +84,6 @@ parameters:
 			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Controller/My/StatusAction.php
-
-		-
-			message: "#^Cannot access property \\$server on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
-			count: 2
-			path: src/Controller/My/WebThemeAction.php
 
 		-
 			message: "#^Method Controller\\\\My\\\\WebThemeAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"

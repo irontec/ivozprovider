@@ -4,8 +4,8 @@ namespace Ivoz\Ast\Domain\Model\VoicemailMessage;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * VoicemailMessageInterface
@@ -82,6 +82,4 @@ interface VoicemailMessageInterface extends LoggableEntityInterface
     public function getMsgId(): ?string;
 
     public function getParsed(): bool;
-
-    public function isInitialized(): bool;
 }

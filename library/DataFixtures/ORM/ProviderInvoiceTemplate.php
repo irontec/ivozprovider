@@ -39,9 +39,62 @@ class ProviderInvoiceTemplate extends Fixture implements DependentFixtureInterfa
         (function () use ($fixture) {
             $this->setName("Generic");
             $this->setDescription("Generic invoice template");
-            $this->setTemplate("Generic Template body");
-            $this->setTemplateHeader("Generic Template header");
-            $this->setTemplateFooter("Generic Template footer");
+
+            $this->setTemplate(
+                <<<HTML
+                <div>
+                    <div class="clientData">
+                        <h2>Cliente</h2>
+                        <p>{{company.name}}</p>
+                        <p>{{company.postalAddress}}</p>
+                        <p>{{company.postalCode}} {{company.town}}, {{company.province}} </p>
+                        <p>NIF / CIF: {{company.nif}}</p>
+                    </div>
+                    <div class="invoiceData">
+                        <p class="bold">Nº de factura</p>
+                        <p>{{invoice.number}}</p>
+                        <p class="bold">Periodo de facturación</p>
+                        <p>{{invoice.inDate}} - {{invoice.outDate}}</p>
+                    </div>
+                </div>
+                HTML
+            );
+            $this->setTemplateHeader(
+                <<<HTML
+                <div>
+                    <p class="bold">{{brand.name}}</p>
+                    <p class="bold">{{brand.invoice.postalAddress}}, {{brand.invoice.postalCode}} {{brand.invoice.town}}, {{brand.invoice.province}} </p>
+                    <p>NIF / CIF: {{brand.invoice.nif}}</p>
+                </div>
+                HTML
+            );
+            $this->setTemplateFooter(
+                <<<HTML
+                <body>
+                    <p id="registryData">
+                        #{{brand.invoice.registryData}}
+                    </p>
+                    <div id="footer">
+                      <p>
+                        <span id="page"></span>
+                        / <span id="topage"></span>
+                      </p>
+                    </div>
+                    <script>
+                      var vars = {};
+                      var query_strings_from_url = document.location.search.substring(1).split('&');
+                      for (var query_string in query_strings_from_url) {
+                          if (query_strings_from_url.hasOwnProperty(query_string)) {
+                              var temp_var = query_strings_from_url[query_string].split('=', 2);
+                              vars[temp_var[0]] = decodeURI(temp_var[1]);
+                          }
+                      }
+                      document.getElementById('page').innerHTML = vars.page;
+                      document.getElementById('topage').innerHTML = vars.topage;
+                    </script>
+                </body>
+                HTML
+            );
         })->call($item2);
 
         $this->addReference('_reference_ProviderInvoiceTemplate2', $item2);

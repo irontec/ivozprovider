@@ -19,6 +19,11 @@ class WebPortalDto extends WebPortalDtoAbstract
                 'url' => 'url',
                 'name' => 'name',
                 'urlType' => 'urlType',
+                'logo' => [
+                    'fileSize',
+                    'mimeType',
+                    'baseName',
+                ],
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

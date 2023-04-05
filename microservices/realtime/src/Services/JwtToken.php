@@ -18,7 +18,10 @@ class JwtToken
         $this->jwtManager = $jwtManager;
     }
 
-    public function getPayload(string $jsonWebToken)
+    /**
+     * @return array{username: string, roles: string[]}
+     */
+    public function getPayload(string $jsonWebToken): array
     {
         $preAuthToken = new PreAuthenticationJWTUserToken(
             $jsonWebToken

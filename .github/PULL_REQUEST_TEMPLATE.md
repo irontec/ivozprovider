@@ -13,6 +13,7 @@
 - [ ] Commits are split per component (schema, web/admin, kamusers, agis, ..)
 - [ ] Changes have been tested locally
 - [ ] Fixes an existing issue (Fixes #XXXX) <!-- Replace XXXX with issue id -->
+- [ ] Upport from existing Pull request #XXXX
 
 #### Description
 <!-- Describe your changes in detail -->

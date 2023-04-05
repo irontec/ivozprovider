@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
@@ -162,6 +163,42 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
         $criteria = CriteriaHelper::fromArray([
             ['brand', 'eq', $brandId],
             ['type', 'eq', $type]
+        ]);
+
+        $qb
+            ->select('self.id')
+            ->addCriteria($criteria);
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        return
+            array_map(
+                'intval',
+                array_column(
+                    $result,
+                    'id'
+                )
+            );
+    }
+
+    public function findOneByDomain(string $domainUsers): ?CompanyInterface
+    {
+        /** @var ?CompanyInterface $response */
+        $response = $this->findOneBy([
+            'domainUsers' => $domainUsers
+        ]);
+
+        return $response;
+    }
+
+    public function getBillingEnabledCompanyIdsByBrand(int $brandId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $criteria = CriteriaHelper::fromArray([
+            ['brand', 'eq', $brandId],
+            ['billingMethod', 'neq', CompanyInterface::BILLINGMETHOD_NONE]
         ]);
 
         $qb

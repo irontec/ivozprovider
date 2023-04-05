@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\Calendar;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use DateTimeInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Doctrine\Common\Collections\Collection;
@@ -70,8 +70,6 @@ interface CalendarInterface extends LoggableEntityInterface
     public function getName(): string;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 
     public function addHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface;
 

@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 
 interface ExtensionLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(ExtensionInterface $entity);
+    public function execute(ExtensionInterface $extension);
 }

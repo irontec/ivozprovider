@@ -26,6 +26,7 @@ run_test () {
 run_test library Ivoz $1
 run_test asterisk/agi src $1
 run_test microservices/balances src $1
+run_test microservices/provision src $1
 run_test microservices/recordings src $1
 run_test microservices/scheduler src $1
 run_test microservices/workers src $1

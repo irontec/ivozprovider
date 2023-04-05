@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\InvoiceScheduler;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
@@ -346,7 +346,7 @@ abstract class InvoiceSchedulerAbstract
     {
         if (!is_null($lastExecution)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $lastExecution = DateTimeHelper::createOrFix(
                 $lastExecution,
                 null
@@ -387,7 +387,7 @@ abstract class InvoiceSchedulerAbstract
     {
         if (!is_null($nextExecution)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $nextExecution = DateTimeHelper::createOrFix(
                 $nextExecution,
                 null

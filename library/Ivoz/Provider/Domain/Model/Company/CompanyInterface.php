@@ -6,8 +6,8 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
@@ -22,6 +22,7 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterfac
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
@@ -57,6 +58,8 @@ interface CompanyInterface extends LoggableEntityInterface
     public const BILLINGMETHOD_PREPAID = 'prepaid';
 
     public const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
+
+    public const BILLINGMETHOD_NONE = 'none';
 
     /**
      * @codeCoverageIgnore
@@ -224,8 +227,6 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getDomainUsers(): ?string;
 
-    public function getNif(): string;
-
     public function getDistributeMethod(): string;
 
     public function getMaxCalls(): int;
@@ -235,16 +236,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCurrentDayUsage(): ?float;
 
     public function getMaxDailyUsageEmail(): ?string;
-
-    public function getPostalAddress(): string;
-
-    public function getPostalCode(): string;
-
-    public function getTown(): string;
-
-    public function getProvince(): string;
-
-    public function getCountryName(): string;
 
     public function getIpfilter(): ?bool;
 
@@ -265,6 +256,8 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBalance(): ?float;
 
     public function getShowInvoices(): ?bool;
+
+    public function getInvoicing(): Invoicing;
 
     public function getMediaRelaySets(): ?MediaRelaySetInterface;
 
@@ -297,8 +290,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCallCsvNotificationTemplate(): ?NotificationTemplateInterface;
 
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface;
-
-    public function isInitialized(): bool;
 
     public function addExtension(ExtensionInterface $extension): CompanyInterface;
 
@@ -341,6 +332,20 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return array<array-key, FriendInterface>
      */
     public function getFriends(?Criteria $criteria = null): array;
+
+    public function addContact(ContactInterface $contact): CompanyInterface;
+
+    public function removeContact(ContactInterface $contact): CompanyInterface;
+
+    /**
+     * @param Collection<array-key, ContactInterface> $contacts
+     */
+    public function replaceContacts(Collection $contacts): CompanyInterface;
+
+    /**
+     * @return array<array-key, ContactInterface>
+     */
+    public function getContacts(?Criteria $criteria = null): array;
 
     public function addCompanyService(CompanyServiceInterface $companyService): CompanyInterface;
 

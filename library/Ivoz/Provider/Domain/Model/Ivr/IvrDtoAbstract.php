@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
@@ -660,6 +660,9 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return IvrEntryDto[] | null
+    */
     public function getEntries(): ?array
     {
         return $this->entries;
@@ -672,6 +675,9 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return IvrExcludedExtensionDto[] | null
+    */
     public function getExcludedExtensions(): ?array
     {
         return $this->excludedExtensions;

@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleDto;
@@ -359,6 +359,9 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this;
     }
 
+    /**
+    * @return TransformationRuleDto[] | null
+    */
     public function getRules(): ?array
     {
         return $this->rules;

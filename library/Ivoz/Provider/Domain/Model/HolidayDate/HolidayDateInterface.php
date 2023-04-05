@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\HolidayDate;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -88,8 +88,6 @@ interface HolidayDateInterface extends LoggableEntityInterface
     public function getVoicemail(): ?VoicemailInterface;
 
     public function getNumberCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 
     /**
      * @param string $prefix

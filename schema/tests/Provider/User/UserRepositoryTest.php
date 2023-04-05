@@ -27,6 +27,7 @@ class UserRepositoryTest extends KernelTestCase
         $this->it_users_by_company_excluding_ids();
         $this->it_searchs_one_by_company_and_name();
         $this->it_searchs_one_by_email();
+        $this->it_searchs_one_by_terminnal_id();
     }
 
     public function it_finds_by_bossAssistantId()
@@ -156,6 +157,23 @@ class UserRepositoryTest extends KernelTestCase
         $user = $userRepository
             ->findOneByEmail(
                 'alice@democompany.com'
+            );
+
+        $this->assertInstanceOf(
+            User::class,
+            $user
+        );
+    }
+
+    public function it_searchs_one_by_terminnal_id()
+    {
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->em
+            ->getRepository(User::class);
+
+        $user = $userRepository
+            ->findOneByTerminalId(
+                1
             );
 
         $this->assertInstanceOf(

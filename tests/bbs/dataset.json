@@ -983,7 +983,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"description\": \"BBS DDI Provider\",\n  \"name\": \"BBS DDI Provider\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70,\n  \"proxyTrunk\": 1\n}\n"
+							"raw": "{\n  \"description\": \"BBS DDI Provider\",\n  \"name\": \"BBS DDI Provider\",\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70,\n  \"proxyTrunk\": 1\n}\n"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/ddi_providers",
@@ -1133,7 +1133,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"description\": \"BBS Carrier\",\n  \"name\": \"BBS Carrier\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70,\n  \"proxyTrunk\": 1\n}\n"
+							"raw": "{\n  \"description\": \"BBS Carrier\",\n  \"name\": \"BBS Carrier\",\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70,\n  \"proxyTrunk\": 1\n}\n"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/carriers",

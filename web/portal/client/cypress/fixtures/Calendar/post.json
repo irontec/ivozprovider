@@ -1,0 +1,20 @@
+{
+  "request": {
+    "name": "testNewCalendar"
+  },
+  "response": {
+    "body": {
+      "name": "testNewCalendar",
+      "id": 3
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

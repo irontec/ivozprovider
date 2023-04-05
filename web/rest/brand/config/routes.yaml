@@ -72,3 +72,96 @@ antibruteforce_banned_address_delete_item:
     _api_resource_class: Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress
     _controller: api_platform.action.delete_item
     _format: NULL
+
+get_my_profile:
+  path: '/my/profile'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\ProfileAction
+    _api_resource_class: 'Model\Profile'
+    _api_item_operation_name: 'get_my_profile'
+    _api_receive: false
+
+# fake endpoint, required in serialization by api-platform in order to calculate it's iri
+get_my_profile_acl:
+  path: '/my/profile/acls'
+  methods: ['GET']
+  defaults:
+    _api_resource_class: 'Model\ProfileAcl'
+    _api_item_operation_name: 'get_my_profile_acl'
+
+get_services_unassigned:
+  path: '/services/unassigned'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\ServicesUnassignedAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Service\Service'
+    _api_collection_operation_name: 'get_services_unassigned'
+    _api_receive: false
+
+get_invoice_preview:
+  path: '/invoice_templates/{id}/preview'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\InvoiceTemplatePreviewAction
+    _api_item_operation_name: 'get_invoice_preview'
+
+post_provider_administrator_revoke_all:
+  path: '/administrators/{id}/revoke_all'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Administrator\MassUpdateAclsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+    _api_item_operation_name: 'post_provider_administrator_revoke_all'
+    _api_receive: false
+
+post_provider_administrator_grant_all:
+  path: '/administrators/{id}/grant_all'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Administrator\MassUpdateAclsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+    _api_item_operation_name: 'post_provider_administrator_grant_all'
+    _api_receive: false
+
+post_provider_administrator_grant_read_only:
+  path: '/administrators/{id}/grant_read_only'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Administrator\MassUpdateAclsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+    _api_item_operation_name: 'post_provider_administrator_grant_read_only'
+
+post_rating_plan_groups_simulate_call:
+  path: '/rating_plan_groups/{id}/simulate_call'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\SimulateCall\SimulateCallRatingPlanGroupAction
+    _api_item_operation_name: 'post_rating_plan_groups_simulate_call'
+    _api_receive: false
+
+post_rating_profiles_simulate_call:
+  path: '/rating_profiles/{id}/simulate_call'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\SimulateCall\SimulateCallRatingProfileAction
+    _api_item_operation_name: 'post_rating_profiles_simulate_call'
+    _api_receive: false
+
+post_company_modify_balance:
+  path: '/company/{id}/modify_balance'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Company\ModifyCompanyBalanceAction
+    _api_item_operation_name: 'post_company_modify_balance'
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Company\Company'
+    _api_receive: false
+
+post_carrier_modify_balance:
+  path: '/carrier/{id}/modify_balance'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Carrier\ModifyCarrierBalanceAction
+    _api_item_operation_name: 'post_carrier_modify_balance'
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+    _api_receive: false

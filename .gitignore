@@ -5,13 +5,15 @@
 .idea/*
 .vscode
 
+**/.unison.**
+
 vendor
 **/coverage/
 storage/*
 mount-storage.sh
 **.phplint-cache
 **.phpunit.result.cache
-
+**/.nvmrc
 web/admin/storage
 web/admin/application/cache/*
 web/admin/public/img/
@@ -23,7 +25,7 @@ web/user/scripts/
 web/user/app/styles/main.css.map
 web/user/app/styles/main.css
 
-web/client/.history
+web/portal/client/.history
 
 doc/html/*
 doc/doctrees/
@@ -33,3 +35,12 @@ kamailio/trunks/config/kamailio-selfsigned.key
 
 kamailio/users/config/listeners.cfg
 kamailio/trunks/config/listeners.cfg
+
+kamailio/users/config/pushservers.cfg
+kamailio/users/config/geoip.cfg
+kamailio/users/config/multisocket.cfg
+kamailio/users/config/apiban.cfg
+kamailio/users/config/siptrace.cfg
+kamailio/trunks/config/custom_settings.cfg
+kamailio/trunks/config/apiban.cfg
+kamailio/trunks/config/siptrace.cfg

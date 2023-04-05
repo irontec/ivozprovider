@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
@@ -156,8 +156,6 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface;
 
-    public function isInitialized(): bool;
-
     public function addCompany(CompanyInterface $company): BrandInterface;
 
     public function removeCompany(CompanyInterface $company): BrandInterface;
@@ -301,7 +299,7 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
     public function getTempFiles();
 
     /**
-     * @var string $fldName
+     * @param string $fldName
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);

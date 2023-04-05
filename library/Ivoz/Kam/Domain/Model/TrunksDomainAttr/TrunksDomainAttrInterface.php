@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Domain\Model\TrunksDomainAttr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * TrunksDomainAttrInterface
@@ -47,6 +47,4 @@ interface TrunksDomainAttrInterface extends EntityInterface
     public function getValue(): string;
 
     public function getLastModified(): \DateTime;
-
-    public function isInitialized(): bool;
 }

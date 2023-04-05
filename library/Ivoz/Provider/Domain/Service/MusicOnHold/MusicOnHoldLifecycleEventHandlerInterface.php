@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 
 interface MusicOnHoldLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(MusicOnHoldInterface $entity);
+    public function execute(MusicOnHoldInterface $musicOnHold);
 }

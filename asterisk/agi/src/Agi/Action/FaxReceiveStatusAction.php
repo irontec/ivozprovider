@@ -4,7 +4,7 @@ namespace Agi\Action;
 
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;

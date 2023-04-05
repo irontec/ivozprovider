@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Core\Domain\Service\TempFile;
@@ -91,8 +91,6 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
 
     public function getDstCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     /**
      * @return void
      */
@@ -110,7 +108,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
     public function getTempFiles();
 
     /**
-     * @var string $fldName
+     * @param string $fldName
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);

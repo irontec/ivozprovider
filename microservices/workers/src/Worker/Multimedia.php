@@ -3,7 +3,7 @@
 namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Ivoz\Provider\Domain\Job\RecoderJobInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
@@ -12,8 +12,8 @@ use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Process\Process;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
 
 class Multimedia
 {
@@ -146,10 +146,15 @@ class Multimedia
             );
 
         try {
+            /** @var array<string> | false $response */
             $response = $redisMaster->blPop(
                 [RecoderJobInterface::CHANNEL],
                 $this->redisTimeout
             );
+
+            if (!$response) {
+                throw new \DomainException('redis blPop error on channel ' . RecoderJobInterface::CHANNEL);
+            }
 
             $data = end($response);
             return \json_decode($data, true);

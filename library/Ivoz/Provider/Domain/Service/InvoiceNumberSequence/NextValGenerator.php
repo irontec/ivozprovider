@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\InvoiceNumberSequence;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
 
 /**
@@ -20,16 +20,16 @@ class NextValGenerator
      *
      * @return null|string
      */
-    public function execute(InvoiceNumberSequenceInterface $invoiceNumberGenerator): ?string
+    public function execute(InvoiceNumberSequenceInterface $sequence): ?string
     {
         $this->entityTools->lock(
-            $invoiceNumberGenerator,
-            $invoiceNumberGenerator->getVersion()
+            $sequence,
+            $sequence->getVersion()
         );
 
-        $nextVal = $invoiceNumberGenerator->nextval();
+        $nextVal = $sequence->nextval();
         $this->entityTools->persist(
-            $invoiceNumberGenerator
+            $sequence
         );
 
         return $nextVal;

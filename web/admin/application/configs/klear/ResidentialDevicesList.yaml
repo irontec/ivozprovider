@@ -58,7 +58,7 @@ production:
         options:
           title: _("Options")
           screens:
-            residentialDevicesEdit_screen: $[${auth.acls.ResidentialDevices.update} && ${auth.canSeeBrand} && ${auth.companyResidential}]
+            residentialDevicesEdit_screen: $[${auth.acls.ResidentialDevices.update} && ${auth.companyResidential}]
             callForwardSettingsList_screen: $[${auth.acls.CallForwardSettings.read} && ${auth.acls.CallForwardSettings.read} && ${auth.companyResidential}]
           dialogs:
             residentialDevicesDel_dialog: $[${auth.canSeeBrand} && ${auth.companyResidential}]
@@ -169,6 +169,8 @@ production:
         name: jquery.passwordgenedit.js
       plugin: passwordgen
       fields:
+        readOnly:
+          name: ${auth.isCompanyOperator}
         order:
           <<: *residentialDevices_orderLink
         blacklist:

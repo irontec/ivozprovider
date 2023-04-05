@@ -9,24 +9,22 @@ Feature: Create carriers
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/carriers" with body:
-    """
+      """
       {
           "description": "Artemis-New",
           "name": "Artemis-New",
-          "externallyRated": false,
           "proxyTrunk": 1,
           "transformationRuleSet": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
             "description": "Artemis-New",
             "name": "Artemis-New",
-            "externallyRated": false,
             "balance": 0,
             "calculateCost": false,
             "id": 3,
@@ -34,7 +32,7 @@ Feature: Create carriers
             "currency": null,
             "proxyTrunk": 1
         }
-    """
+      """
 
   Scenario: Retrieve created carrier
     Given I add Brand Authorization header
@@ -44,15 +42,14 @@ Feature: Create carriers
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "description": "Artemis-New",
           "name": "Artemis-New",
-          "externallyRated": false,
           "calculateCost": false,
           "id": 3,
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
@@ -60,11 +57,13 @@ Feature: Create carriers
               "generateRules": false,
               "id": 1,
               "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
               },
-              "country": 68
+              "country": 68,
+              "editable": true
           }
       }
-    """
+      """

@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Country;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * CountryInterface
@@ -52,6 +52,4 @@ interface CountryInterface extends LoggableEntityInterface
     public function getName(): Name;
 
     public function getZone(): Zone;
-
-    public function isInitialized(): bool;
 }

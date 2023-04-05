@@ -9,7 +9,7 @@ Feature: Create administrators
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/administrators" with body:
-    """
+      """
       {
           "username": "post-test",
           "pass": "changeme",
@@ -23,12 +23,12 @@ Feature: Create administrators
           "company": null,
           "timezone": 145
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "username": "post-test",
           "pass": "*****",
@@ -42,7 +42,7 @@ Feature: Create administrators
           "company": null,
           "timezone": 145
       }
-    """
+      """
 
   Scenario: Retrieve created administrator
     Given I add Authorization header
@@ -52,7 +52,7 @@ Feature: Create administrators
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "username": "post-test",
           "pass": "*****",
@@ -77,4 +77,4 @@ Feature: Create administrators
               "country": 68
           }
       }
-    """
+      """

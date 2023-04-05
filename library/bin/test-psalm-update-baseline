@@ -1,5 +1,16 @@
 #!/bin/bash
+# Stop on first non-zero exit code
+set -e
 
-pushd /opt/irontec/ivozprovider/library/bin
-  ./test-psalm --update-baseline
+pushd /opt/irontec/ivozprovider/library
+    # Regenerate psalm baseline
+    bin/test-psalm --set-baseline=psalm-baseline.xml
+
+    # Check baseline has changed
+    if [ -n "$(git status -s | grep psalm-baseline.xml)" ]; then
+        echo "Psalm baselines have been updated. Commit their changes!"
+        git status -s
+        exit 1
+    fi
 popd
+

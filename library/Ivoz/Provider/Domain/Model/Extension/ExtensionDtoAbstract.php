@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Extension;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
@@ -506,6 +506,9 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return UserDto[] | null
+    */
     public function getUsers(): ?array
     {
         return $this->users;

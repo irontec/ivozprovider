@@ -1,0 +1,15 @@
+{
+  "body": {
+    "name": "Lock name",
+    "description": "Lock description",
+    "open": true,
+    "id": 1,
+    "closeExtension": "",
+    "openExtension": "",
+    "toggleExtension": ""
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

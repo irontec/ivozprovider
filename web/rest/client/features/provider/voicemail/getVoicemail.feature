@@ -12,7 +12,7 @@ Feature: Retrieve voicemails
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "enabled": true,
@@ -20,13 +20,6 @@ Feature: Retrieve voicemails
               "email": "alice@democompany.com",
               "id": 1,
               "user": 1
-          },
-          {
-              "enabled": true,
-              "name": "Voicemail For Residential 1",
-              "email": "",
-              "id": 2,
-              "user": null
           },
           {
               "enabled": true,
@@ -43,20 +36,27 @@ Feature: Retrieve voicemails
               "user": 2
           }
       ]
-    """
+      """
 
   Scenario: Retrieve the voicemails json list
     Given I add Residential Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "voicemails"
      Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
+          {
+              "enabled": true,
+              "name": "Voicemail For Residential 1",
+              "email": "",
+              "id": 2,
+              "user": null
+          }
       ]
-    """
+      """
 
   Scenario: Retrieve voicemails as retail admin
     Given I add Retail Company Authorization header
@@ -78,7 +78,7 @@ Feature: Retrieve voicemails
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "enabled": true,
           "name": "Voicemail For User1",
@@ -110,17 +110,21 @@ Feature: Retrieve voicemails
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
-              "voicemail": null
+              "location": null,
+              "voicemail": null,
+              "contact": null
           },
           "residentialDevice": null,
           "company": {
               "type": "vpbx",
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
-              "nif": "12345678A",
               "onDemandRecordCode": "",
               "balance": 1.2,
               "id": 1,
+              "invoicing": {
+                  "nif": "12345678A"
+              },
               "language": 1,
               "defaultTimezone": 145,
               "country": 68,
@@ -144,4 +148,4 @@ Feature: Retrieve voicemails
               }
           }
       }
-    """
+      """

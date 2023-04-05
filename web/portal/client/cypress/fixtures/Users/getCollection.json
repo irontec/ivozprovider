@@ -1,0 +1,47 @@
+{
+  "body": [
+    {
+      "name": "Alice",
+      "lastname": "Allison",
+      "id": 1,
+      "terminal": 1,
+      "extension": null,
+      "outgoingDdi": null,
+      "status": [
+        {
+          "contact": "sip:yealinktest@10.10.1.106:5060",
+          "received": "sip:212.64.172.23:5060",
+          "publicReceived": true,
+          "expires": "2031-01-01 00:59:59",
+          "userAgent": "Yealink SIP-T23G 44.80.0.130"
+        }
+      ]
+    },
+    {
+      "name": "Bob",
+      "lastname": "Bobson",
+      "id": 2,
+      "terminal": 2,
+      "extension": null,
+      "outgoingDdi": null,
+      "status": []
+    },
+    {
+      "name": "Joe",
+      "lastname": "Doe",
+      "id": 3,
+      "terminal": 4,
+      "extension": null,
+      "outgoingDdi": null,
+      "status": []
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/users?_page=1",
+    "x-last-page": "/api/client/users?_page=1",
+    "x-next-page": "/api/client/users?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

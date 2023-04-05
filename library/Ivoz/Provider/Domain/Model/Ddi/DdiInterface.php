@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
@@ -55,6 +55,10 @@ interface DdiInterface extends LoggableEntityInterface
     public const ROUTETYPE_RESIDENTIAL = 'residential';
 
     public const ROUTETYPE_RETAIL = 'retail';
+
+    public const TYPE_INOUT = 'inout';
+
+    public const TYPE_OUT = 'out';
 
     /**
      * @codeCoverageIgnore
@@ -107,15 +111,17 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function getDdi(): string;
 
+    public function getDescription(): ?string;
+
     public function getRecordCalls(): string;
 
     public function getDisplayName(): ?string;
 
     public function getRouteType(): ?string;
 
-    public function getBillInboundCalls(): bool;
-
     public function getFriendValue(): ?string;
+
+    public function getType(): string;
 
     public function setCompany(CompanyInterface $company): static;
 
@@ -152,8 +158,6 @@ interface DdiInterface extends LoggableEntityInterface
     public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
     public function getRetailAccount(): ?RetailAccountInterface;
-
-    public function isInitialized(): bool;
 
     /**
      * @param string $prefix

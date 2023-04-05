@@ -56,9 +56,13 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
             \Ivoz\Kam\Domain\Service\TrunksClientInterface::class
         );
 
-        $regInfo = $trunksClient->getUacRegistrationInfo(
-            $kamTrunksUacreg->getLUuid()
-        );
+        try {
+            $regInfo = $trunksClient->getUacRegistrationInfo(
+                $kamTrunksUacreg->getLUuid()
+            );
+        } catch (\Exception $e) {
+            $regInfo = null;
+        };
 
         $status = $regInfo['flags'] ?? '';
 

@@ -4,7 +4,7 @@ namespace spec\Ivoz\Cgr\Domain\Service\TpTiming;
 
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
 use Ivoz\Cgr\Domain\Service\TpTiming\DeletedByRatingPlan;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;

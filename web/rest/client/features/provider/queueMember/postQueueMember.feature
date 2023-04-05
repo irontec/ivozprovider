@@ -9,23 +9,24 @@ Feature: Create queue members
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/queue_members" with body:
-    """
+      """
       {
           "penalty": 1,
           "queue": 1,
           "user": 2
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
        {
           "penalty": 1,
           "id": 2,
           "queue": {
               "name": "testQueue",
+              "displayName": "testQueue DisplayName",
               "maxWaitTime": 20,
               "timeoutTargetType": "number",
               "timeoutNumberValue": "946002020",
@@ -33,6 +34,8 @@ Feature: Create queue members
               "fullTargetType": "number",
               "fullNumberValue": "946002021",
               "periodicAnnounceFrequency": 7,
+              "announcePosition": "yes",
+              "announceFrequency": 10,
               "memberCallRest": 0,
               "memberCallTimeout": 1,
               "strategy": "rrmemory",
@@ -74,10 +77,11 @@ Feature: Create queue members
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "location": 1,
-              "voicemail": null
+              "voicemail": null,
+              "contact": null
           }
       }
-    """
+      """
 
   Scenario: Retrieve created queue member
     Given I add Company Authorization header
@@ -87,12 +91,13 @@ Feature: Create queue members
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "penalty": 1,
           "id": 2,
           "queue": {
               "name": "testQueue",
+              "displayName": "testQueue DisplayName",
               "maxWaitTime": 20,
               "timeoutTargetType": "number",
               "timeoutNumberValue": "946002020",
@@ -100,6 +105,8 @@ Feature: Create queue members
               "fullTargetType": "number",
               "fullNumberValue": "946002021",
               "periodicAnnounceFrequency": 7,
+              "announcePosition": "yes",
+              "announceFrequency": 10,
               "memberCallRest": 0,
               "memberCallTimeout": 1,
               "strategy": "rrmemory",
@@ -141,7 +148,8 @@ Feature: Create queue members
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "location": 1,
-              "voicemail": null
+              "voicemail": null,
+              "contact": null
           }
       }
-    """
+      """

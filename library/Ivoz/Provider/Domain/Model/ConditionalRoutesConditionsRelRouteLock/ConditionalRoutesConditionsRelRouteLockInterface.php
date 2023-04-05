@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
 use Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface;
 
@@ -52,6 +52,4 @@ interface ConditionalRoutesConditionsRelRouteLockInterface extends LoggableEntit
     public function getCondition(): ?ConditionalRoutesConditionInterface;
 
     public function getRouteLock(): RouteLockInterface;
-
-    public function isInitialized(): bool;
 }

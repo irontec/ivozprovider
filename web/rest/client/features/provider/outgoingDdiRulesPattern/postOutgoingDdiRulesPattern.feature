@@ -9,7 +9,7 @@ Feature: Create outgoing ddi rules patterns
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/outgoing_ddi_rules_patterns" with body:
-    """
+      """
       {
           "type": "destination",
           "action": "force",
@@ -18,12 +18,12 @@ Feature: Create outgoing ddi rules patterns
           "matchList": 2,
           "forcedDdi": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "type": "destination",
           "prefix": null,
@@ -38,11 +38,12 @@ Feature: Create outgoing ddi rules patterns
           },
           "matchList": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           },
           "forcedDdi": "~"
       }
-    """
+      """
 
   Scenario: Retrieve created outgoing ddi rule pattern
     Given I add Company Authorization header
@@ -52,7 +53,7 @@ Feature: Create outgoing ddi rules patterns
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "type": "destination",
           "prefix": null,
@@ -67,8 +68,9 @@ Feature: Create outgoing ddi rules patterns
           },
           "matchList": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           },
           "forcedDdi": "~"
       }
-    """
+      """

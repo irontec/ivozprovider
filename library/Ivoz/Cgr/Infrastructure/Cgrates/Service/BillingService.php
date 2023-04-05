@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Service\RatingProfile\BillingServiceInterface;
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
@@ -25,7 +25,7 @@ class BillingService implements BillingServiceInterface
      * @throws \DomainException
      * @return SimulatedCall
      */
-    public function simulateCall(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall
+    public function simulateCallByRatingProfile(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall
     {
         $answerDateTime = new \DateTime();
         $answerDateTime->setTimestamp(time());
@@ -47,15 +47,8 @@ class BillingService implements BillingServiceInterface
 
     /**
      * Simulate call and get billing details
-     *
-     * @param string $tenant
-     * @param string $ratingPlanTag
-     * @param string $destination
-     * @param int $durationSeconds
-     *
-     * @return SimulatedCall
      */
-    public function simulateCallByRatingPlan(string $tenant, string $ratingPlanTag, string $destination, int $durationSeconds)
+    public function simulateCallByRatingPlan(string $tenant, string $ratingPlanTag, string $destination, int $durationSeconds): SimulatedCall
     {
         $answerDateTime = new \DateTime();
         $answerDateTime->setTimestamp(time());

@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
@@ -566,6 +566,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this;
     }
 
+    /**
+    * @return ConditionalRoutesConditionsRelMatchlistDto[] | null
+    */
     public function getRelMatchlists(): ?array
     {
         return $this->relMatchlists;
@@ -578,6 +581,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this;
     }
 
+    /**
+    * @return ConditionalRoutesConditionsRelScheduleDto[] | null
+    */
     public function getRelSchedules(): ?array
     {
         return $this->relSchedules;
@@ -590,6 +596,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this;
     }
 
+    /**
+    * @return ConditionalRoutesConditionsRelCalendarDto[] | null
+    */
     public function getRelCalendars(): ?array
     {
         return $this->relCalendars;
@@ -602,6 +611,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this;
     }
 
+    /**
+    * @return ConditionalRoutesConditionsRelRouteLockDto[] | null
+    */
     public function getRelRouteLocks(): ?array
     {
         return $this->relRouteLocks;

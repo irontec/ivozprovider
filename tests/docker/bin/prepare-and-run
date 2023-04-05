@@ -26,5 +26,9 @@ cp /opt/irontec/ivozprovider/schema/var/cache/test/db.sqlite.back /opt/irontec/i
 mkdir -m 777 -p /opt/irontec/ivozprovider/web/rest/user/var/cache/test
 cp /opt/irontec/ivozprovider/schema/var/cache/test/db.sqlite.back /opt/irontec/ivozprovider/web/rest/user/var/cache/test/db.sqlite.back
 
+# Install portal dependencies
+yarn config set network-timeout 1000000
+yarn --cwd /opt/irontec/ivozprovider/web/portal --cache-folder /opt/web-node_modules install
+
 # Run requested command
 exec $*

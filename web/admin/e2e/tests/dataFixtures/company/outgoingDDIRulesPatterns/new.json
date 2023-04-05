@@ -1,7 +1,0 @@
-{
-  "type": "destination",
-  "matchList": "1",
-  "priority": "1",
-  "action": "keep",
-  "forcedDdi": "__NULL__"
-}

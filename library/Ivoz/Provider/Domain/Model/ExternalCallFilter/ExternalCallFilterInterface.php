@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -169,8 +169,6 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getHolidayNumberCountry(): ?CountryInterface;
 
     public function getOutOfScheduleNumberCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 
     public function addCalendar(ExternalCallFilterRelCalendarInterface $calendar): ExternalCallFilterInterface;
 

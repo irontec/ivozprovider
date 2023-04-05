@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Ast\Domain\Model\Voicemail;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 
@@ -1031,7 +1031,7 @@ abstract class VoicemailAbstract
     {
         if (!is_null($stamp)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $stamp = DateTimeHelper::createOrFix(
                 $stamp,
                 null

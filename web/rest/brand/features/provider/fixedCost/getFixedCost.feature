@@ -6,38 +6,42 @@ Feature: Retrieve fixed costs
   @createSchema
   Scenario: Retrieve the fixed costs json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "fixed_costs"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "fixed_costs"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "Monitoring",
+              "description": "Something",
+              "cost": 1,
               "id": 1
           },
           {
               "name": "24x7",
+              "description": "Something",
+              "cost": 100,
               "id": 2
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain fixed cost json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "fixed_costs/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "fixed_costs/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "Monitoring",
           "description": "Something",
           "cost": 1,
           "id": 1
       }
-    """
+      """

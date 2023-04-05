@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -159,31 +159,53 @@ trait DdiProviderTrait
      */
     public function replaceDdiProviderRegistrations(Collection $ddiProviderRegistrations): DdiProviderInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($ddiProviderRegistrations as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setDdiProvider($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->ddiProviderRegistrations as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->ddiProviderRegistrations->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($ddiProviderRegistrations as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($ddiProviderRegistrations[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->ddiProviderRegistrations->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->ddiProviderRegistrations->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($ddiProviderRegistrations as $entity) {
             $this->addDdiProviderRegistration($entity);
         }
 
@@ -221,31 +243,53 @@ trait DdiProviderTrait
      */
     public function replaceDdiProviderAddresses(Collection $ddiProviderAddresses): DdiProviderInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($ddiProviderAddresses as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setDdiProvider($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->ddiProviderAddresses as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->ddiProviderAddresses->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($ddiProviderAddresses as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($ddiProviderAddresses[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->ddiProviderAddresses->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->ddiProviderAddresses->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($ddiProviderAddresses as $entity) {
             $this->addDdiProviderAddress($entity);
         }
 

@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterR
 
 interface ExternalCallFilterRelScheduleLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(ExternalCallFilterRelScheduleInterface $entity);
+    public function execute(ExternalCallFilterRelScheduleInterface $relSchedule);
 }

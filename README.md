@@ -1,4 +1,4 @@
-![IvozProvider Logo](web/admin/public/images/logoprovider.png) ![stable](https://raster.shields.io/badge/sable-2.21-blue.png) ![release](https://raster.shields.io/badge/release-artemis-14b9bc.png)
+![IvozProvider Logo](web/admin/public/images/logoprovider.png) ![stable](https://raster.shields.io/badge/sable-2.23-blue.png) ![release](https://raster.shields.io/badge/release-artemis-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
@@ -48,11 +48,11 @@ There are [several ways](https://irontec.github.io/ivozprovider/en/artemis/basic
 If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/artemis/basic_concepts/installation/install_types.html#standalone-install) installation, we recommend using one of auto-install CDs based on Debian Stretch 9.4 amd64.
 
 
-| Version  | 64 bits  | 32 bits |
-|----------|:--------:|:-------:|
-|oldstable (oasis 1.7) | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-i386.iso)|
-|stable (artemis 2.21.0) | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-2.21~2.21.0-artemis-amd64.iso)| |
-|testing (halliday 3.0.0) |[![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-3.0~3.0.0-halliday-amd64.iso)| |
+| Version                  |                                                                 64 bits                                                                 | 32 bits |
+|--------------------------|:---------------------------------------------------------------------------------------------------------------------------------------:|:-------:|
+| oldstable (oasis 1.7)    |     [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-amd64.iso)     | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-i386.iso)|
+| stable (artemis 2.23.0)  | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-2.23~2.23.0-artemis-amd64.iso) | |
+| testing (halliday 3.1.0) | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-3.1~3.1.0-halliday-amd64.iso)  | |
 
 
 You can read about differences between releases [here](https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md#what-release-should-i-use).

@@ -6,13 +6,13 @@ Feature: Retrieve queues
   @createSchema
   Scenario: Retrieve the queues json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "queues"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "queues"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "testQueue",
@@ -25,19 +25,20 @@ Feature: Retrieve queues
               "id": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain queue json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "queues/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "queues/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
        {
           "name": "testQueue",
+          "displayName": "testQueue DisplayName",
           "maxWaitTime": 20,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002020",
@@ -130,4 +131,4 @@ Feature: Retrieve queues
               }
           }
       }
-    """
+      """

@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
@@ -75,37 +75,37 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $invoiceNif = null;
+    private $invoiceNif = '';
 
     /**
      * @var string|null
      */
-    private $invoicePostalAddress = null;
+    private $invoicePostalAddress = '';
 
     /**
      * @var string|null
      */
-    private $invoicePostalCode = null;
+    private $invoicePostalCode = '';
 
     /**
      * @var string|null
      */
-    private $invoiceTown = null;
+    private $invoiceTown = '';
 
     /**
      * @var string|null
      */
-    private $invoiceProvince = null;
+    private $invoiceProvince = '';
 
     /**
      * @var string|null
      */
-    private $invoiceCountry = null;
+    private $invoiceCountry = '';
 
     /**
      * @var string|null
      */
-    private $invoiceRegistryData = null;
+    private $invoiceRegistryData = '';
 
     /**
      * @var DomainDto | null
@@ -776,6 +776,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CompanyDto[] | null
+    */
     public function getCompanies(): ?array
     {
         return $this->companies;
@@ -788,6 +791,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return BrandServiceDto[] | null
+    */
     public function getServices(): ?array
     {
         return $this->services;
@@ -800,6 +806,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return WebPortalDto[] | null
+    */
     public function getUrls(): ?array
     {
         return $this->urls;
@@ -812,6 +821,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return FeaturesRelBrandDto[] | null
+    */
     public function getRelFeatures(): ?array
     {
         return $this->relFeatures;
@@ -824,6 +836,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return ProxyTrunksRelBrandDto[] | null
+    */
     public function getRelProxyTrunks(): ?array
     {
         return $this->relProxyTrunks;
@@ -836,6 +851,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return ResidentialDeviceDto[] | null
+    */
     public function getResidentialDevices(): ?array
     {
         return $this->residentialDevices;
@@ -848,6 +866,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return MusicOnHoldDto[] | null
+    */
     public function getMusicsOnHold(): ?array
     {
         return $this->musicsOnHold;
@@ -860,6 +881,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return MatchListDto[] | null
+    */
     public function getMatchLists(): ?array
     {
         return $this->matchLists;
@@ -872,6 +896,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingDto[] | null
+    */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;

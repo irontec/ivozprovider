@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyDto;
@@ -32,11 +32,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
      * @var string|null
      */
     private $name = null;
-
-    /**
-     * @var bool|null
-     */
-    private $externallyRated = false;
 
     /**
      * @var float|null
@@ -123,7 +118,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return [
             'description' => 'description',
             'name' => 'name',
-            'externallyRated' => 'externallyRated',
             'balance' => 'balance',
             'calculateCost' => 'calculateCost',
             'id' => 'id',
@@ -143,7 +137,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         $response = [
             'description' => $this->getDescription(),
             'name' => $this->getName(),
-            'externallyRated' => $this->getExternallyRated(),
             'balance' => $this->getBalance(),
             'calculateCost' => $this->getCalculateCost(),
             'id' => $this->getId(),
@@ -195,18 +188,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getName(): ?string
     {
         return $this->name;
-    }
-
-    public function setExternallyRated(?bool $externallyRated): static
-    {
-        $this->externallyRated = $externallyRated;
-
-        return $this;
-    }
-
-    public function getExternallyRated(): ?bool
-    {
-        return $this->externallyRated;
     }
 
     public function setBalance(?float $balance): static
@@ -402,6 +383,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingDto[] | null
+    */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
@@ -414,6 +398,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return OutgoingRoutingRelCarrierDto[] | null
+    */
     public function getOutgoingRoutingsRelCarriers(): ?array
     {
         return $this->outgoingRoutingsRelCarriers;
@@ -426,6 +413,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return CarrierServerDto[] | null
+    */
     public function getServers(): ?array
     {
         return $this->servers;
@@ -438,6 +428,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return RatingProfileDto[] | null
+    */
     public function getRatingProfiles(): ?array
     {
         return $this->ratingProfiles;
@@ -450,6 +443,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
+    /**
+    * @return TpCdrStatDto[] | null
+    */
     public function getTpCdrStats(): ?array
     {
         return $this->tpCdrStats;

@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -135,8 +135,6 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getRoutingTag(): ?RoutingTagInterface;
 
     public function getClidCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 
     public function setTpLcrRule(TpLcrRuleInterface $tpLcrRule): static;
 

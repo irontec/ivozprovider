@@ -10,7 +10,7 @@ use Ivoz\Provider\Domain\Service\Carrier\SyncBalances;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Symfony\Bridge\Monolog\Logger;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
