@@ -9,6 +9,7 @@ import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
+//TODO merge this into Company/Form
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match, foreignKeyGetter } = props;
   const edit = props.edit || false;
