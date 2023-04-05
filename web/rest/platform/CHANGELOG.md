@@ -1,4 +1,157 @@
 # Changelog
+## 3.1.0
+* Endpoints:
+  - Added _rmAlso parameter to [DELETE] methods to support multi-delete
+  - /application_servers:
+    - Added ip[end|exact|neq|partial|start] filter parameters
+    - Added _order[ip] querystring arguments
+  - /brands:
+    - Added callCsvNotificationTemplate, callCsvNotificationTemplate[] and callCsvNotificationTemplate[exists] filter parameters
+    - Added faxNotificationTemplate, faxNotificationTemplate[] and faxNotificationTemplate[exists] filter parameters
+    - Added invoiceNotificationTemplate, invoiceNotificationTemplate[] and invoiceNotificationTemplate[exists] filter parameters
+    - Added maxDailyUsageNotificationTemplate, maxDailyUsageNotificationTemplate[] and maxDailyUsageNotificationTemplate[exists] filter parameters
+    - Added voicemailNotificationTemplate, voicemailNotificationTemplate[] and voicemailNotificationTemplate[exists] filter parameters
+  - /companies:
+    - Added [GET] endpoint
+  - /currencies:
+    - Added [POST] endpoint
+  - /currencies/{id}:
+    - Added [GET], [PUT] and [DELETE] endpoints
+  - /features:
+    - Added name.ca[end|exact|neq|partial|start] filter parameters
+    - Added name.en[end|exact|neq|partial|start] filter parameters
+    - Added name.es[end|exact|neq|partial|start] filter parameters
+    - Added name.it[end|exact|neq|partial|start] filter parameters
+    - Added _order[name.ca], _order[name.en], _order[name.es] and _order[name.it] querystring arguments
+  - /invoices:
+    - Added [GET] endpoint
+  - /invoice_templates:
+    - Added description[end|exact|neq|partial|start] and exists[description] filter parameters
+    - Added _order[description] querystring arguments
+  - /my/profile:
+    - Added [GET] endpoint
+  - /notification_template_contents:
+    - Added [GET] and [PUT]endpoints
+    - Added fromAddress[end|exact|neq|partial|start] and exists[fromAddress] filter parameters
+    - Added fromName[end|exact|neq|partial|start] and exists[fromName] filter parameters
+    - Added language, language[] and language[exists] and exists[language] filter parameters
+    - Added notificationTemplate and notificationTemplate[] filter parameters
+    - Added _order[fromAddress] querystring arguments
+    - Added _order[fromName] querystring arguments
+    - Added _order[id] querystring arguments
+  - /notification_templates:
+    - Added [GET] and [PUT]endpoints
+    - Added brand, brand[] and brand[exists] filter parameters
+    - Added id[exact|neq] filter parameters
+    - Added name[end|exact|neq|partial|start] filter parameters
+    - Added type[end|exact|neq|partial|start] filter parameters
+    - Added _order[id], _order[name], _order[type] querystring arguments
+  - /proxy_trunks:
+    - Added [POST] endpoint
+  - /services:
+    - Added description.ca[end|exact|neq|partial|start] filter parameters
+    - Added description.en[end|exact|neq|partial|start] filter parameters
+    - Added description.es[end|exact|neq|partial|start] filter parameters
+    - Added description.it[end|exact|neq|partial|start] filter parameters
+    - Added _order[description.ca], _order[description.en], _order[description.es] and _order[description.it] querystring arguments
+  - /terminal_manufacturers:
+    - Added description[end|exact|neq|partial|start] filter parameters
+    - Added _order[description] querystring arguments
+  - /terminal_models:
+    - Added description[end|exact|neq|partial|start] filter parameters
+    - Added genericTemplate[end|exact|neq|partial|start] and exists[genericTemplate] filter parameters
+    - Added specificTemplate[end|exact|neq|partial|start] and exists[specificTemplate] filter parameters
+    - Added _order[description] querystring arguments
+    - Added _order[genericTemplate] querystring arguments
+    - Added _order[specificTemplate] querystring arguments
+  - /web_portals:
+    - Added logo.baseName[end|exact|neq|partial|start] and exists[logo.baseName] filter parameters
+    - Added logo.fileSize[exists|qt|qte|lt|lte|between|neq] and exists[logo.fileSize] filter parameters
+    - Added logo.mimeType[end|exact|neq|partial|start] and exists[logo.mimeType] filter parameters
+    - Added _order[logo.baseName], _order[logo.fileSize] and _order[logo.mimeType] querystring arguments
+* Models:
+  - ApplicationServer-collection:
+    - Set ip as required
+  - BillableCall-rating
+    - Added readonly id property
+  - Brand:
+    - Added voicemailNotificationTemplate property
+    - Added faxNotificationTemplate property
+    - Added invoiceNotificationTemplate property
+    - Added callCsvNotificationTemplate property
+    - Added maxDailyUsageNotificationTemplate property
+    - Added features[] property
+    - Added proxyTrunks[] property
+  - Brand-collection:
+    - Added proxyTrunks[] property
+  - Brand-detailed:
+    - Added voicemailNotificationTemplate property
+    - Added faxNotificationTemplate property
+    - Added invoiceNotificationTemplate property
+    - Added callCsvNotificationTemplate property
+    - Added maxDailyUsageNotificationTemplate property
+    - Added proxyTrunks[] property
+  - BrandService-collection:
+    - Added service required property
+  - Carrier:
+    - Removed externallyRated property
+  - Company:
+    - Removed nif, postalAddress, town, province and countryName properties
+    - Added invoicing property
+    - Added voicemailNotificationTemplate property
+    - Added faxNotificationTemplate property
+    - Added invoiceNotificationTemplate property
+    - Added callCsvNotificationTemplate property
+    - Added maxDailyUsageNotificationTemplate property
+  - Company-collection:
+    - Added model
+  - Currency-detailed:
+    - Added model
+  - Ddi:
+    - Removed billInboundCalls property
+    - Removed externallyRated property
+    - Added description property
+    - Added type property
+  - Domain-collection:
+    - Added brandName property
+    - Added companyName property
+  - Feature-collection:
+    - Added name property
+  - Invoice:
+    - Added currency property
+  - Invoice-collection:
+    - Added model
+  - InvoiceTemplate-collection:
+    - Added description property
+  - Invoicing:
+    - Added model
+  - NotificationTemplate:
+    - Added model
+  - NotificationTemplate-collection:
+    - Added model
+  - NotificationTemplateContent:
+    - Added model
+  - NotificationTemplateContent-collection:
+    - Added model
+  - NotificationTemplateContent-detailed:
+    - Added model
+  - Profile:
+    - Added model
+  - ProfileAcl:
+    - Added model
+  - Service-collection:
+    - Added description property
+  - TerminalManufacturer-collection:
+    - Added description property
+  - TerminalModel-collection:
+    - Added description property
+    - Added genericTemplate property
+    - Added specificTemplate property
+  - WebPortal-collection:
+    - Added logo property
+  - CarrierStatus:
+    - Added model
+
 ## 3.0.0
 * Disclaimer: The API schema will not be considered stable until version 3.1 and may receive new breaking changes
 * Endpoints:
@@ -24,7 +177,6 @@
     - MediaRelaySet-collection:
       - Removed type property
 
-# Changelog
 ## 2.19.0
 * Endpoints:
     - /brands:

@@ -1,9 +1,497 @@
 # Changelog
+## 3.1.0
+* Endpoints:
+  - Added _rmAlso parameter to [DELETE] methods to support multi-delete
+  - /administrators/{id}:
+    - Added endpoint: [POST] /administrators/{id}/grant_all
+    - Added endpoint: [POST] /administrators/{id}/grant_read_only
+    - Added endpoint: [POST] /administrators/{id}/revoke_all
+  - /balance_movements:
+    - Added [GET] endpoint
+  - /balance_movements/{id}:
+    - Added [GET] endpoint
+  - /balance_notifications:
+    - Added carrier, carrier[] and carrier[exists] filter parameters
+    - Added lastSent[after|before|exists|neq|start|strictly_after|strictly_before] and exists[lastSent] filter parameters
+    - Added exists[notificationTemplate] filter parameter
+    - Added _order[lastSent] querystring argument
+    - Added _timezone querystring arguments
+  - /call_csv_schedulers:
+    - Added exists[company] filter parameter
+  - /carrier/{id}:
+    - Added endpoint: [POST] /carrier/{id}/modify_balance
+  - /carrier_servers:
+    - Added outboundProxy[end|exact|neq|partial|start] and exists[outboundProxy] filter parameters
+    - Added _order[outboundProxy] querystring argument
+  - /carrier_servers/{id}:
+    - Added endpoint: [GET] /carrier_servers/{id}/status
+  - /carriers:
+    - Added balance[exists|qt|qte|lt|lte|between|neq] and exists[balance] filter parameters
+    - Added calculateCost, calculateCost[exists] and exists[calculateCost] filter parameters
+    - Added status.registered filter parameter
+    - Added _order[balance] querystring argument
+    - Added _order[calculateCost] querystring argument
+    - Removed externallyRated, externallyRated[exists] and exists[externallyRated] filter parameters
+  - /codecs:
+    - Added [GET] endpoint
+  - /codecs/{id}:
+    - Added [GET] endpoint
+  - /companies:
+    - Added balance[exists|qt|qte|lt|lte|between|neq] and exists[balance] filter parameters
+    - Added billingMethod[end|exact|neq|partial|start] and exists[billingMethod] filter parameters
+    - Added currentDayUsage[end|exact|neq|partial|start] and exists[currentDayUsage] filter parameters
+    - Added domainName filter parameter
+    - Added domainUsers[end|exact|neq|partial|start] and exists[domainUsers] filter parameters
+    - Added invoicing.countryName[end|exact|neq|partial|start] filter parameters
+    - Added invoicing.nif[end|exact|neq|partial|start] filter parameters
+    - Added invoicing.postalAddress[end|exact|neq|partial|start] filter parameters
+    - Added invoicing.postalCode[end|exact|neq|partial|start] filter parameters
+    - Added invoicing.province[end|exact|neq|partial|start] filter parameters
+    - Added invoicing.town[end|exact|neq|partial|start] filter parameters
+    - Added maxDailyUsage[exists|qt|qte|lt|lte|between|neq] filter parameters
+    - Added maxDailyUsageNotificationTemplate, maxDailyUsageNotificationTemplate[] and maxDailyUsageNotificationTemplate[exists] filter parameters
+    - Added outgoingDdiRule, outgoingDdiRule[] and outgoingDdiRule[exists] filter parameters
+    - Added _order[balance] querystring argument
+    - Added _order[billingMethod] querystring argument
+    - Added _order[currentDayUsage] querystring argument
+    - Added _order[domainUsers] querystring argument
+    - Added _order[invoicing.countryName] querystring argument
+    - Added _order[invoicing.nif]] querystring argument
+    - Added _order[invoicing.postalAddress] querystring argument
+    - Added _order[invoicing.postalCode] querystring argument
+    - Added _order[invoicing.province] querystring argument
+    - Added _order[invoicing.town] querystring argument
+    - Added _order[maxDailyUsage] querystring argument
+  - /company/{id}:
+    - Added endpoint: [POST] /company/{id}/modify_balance
+  - /company_rel_codecs:
+    - Added [GET] and [POST] endpoints
+  - /company_rel_codecs/{id}:
+    - Added [GET], [PUT] and [DELETE] endpoints
+  - /ddi_provider_registrations/{id}:
+    - Added endpoint: [GET] /ddi_provider_registrations/{id}/status
+  - /ddi_providers:
+    - Added exists[proxyTrunk] filter parameter
+    - Added exists[transformationRuleSet] filter parameter
+  - /ddi:
+    - Added description[end|exact|neq|partial|start] and exists[description] filter parameters
+    - Added _order[description] querystring arguments
+  - /destination_rates:
+    - Added currencySymbol filter parameter
+  - /extensions:
+    - Added [GET] endpoint
+  - /extensions/{id}:
+    - Added [GET] endpoint
+  - /faxes:
+    - Added name.ca[end|exact|neq|partial|start] filter parameters
+    - Added name.en[end|exact|neq|partial|start] filter parameters
+    - Added name.es[end|exact|neq|partial|start] filter parameters
+    - Added name.it[end|exact|neq|partial|start] filter parameters
+    - Added _order[name.ca], _order[name.en], _order[name.es] and _order[name.it] querystring arguments
+  - /fixed_costs:
+    - Added cost[exists|qt|qte|lt|lte|between|neq] and exists[cost] filter parameters
+    - Added description[end|exact|neq|partial|start] and exists[description] filter parameters
+    - Added _order[cost] querystring arguments
+    - Added _order[description] querystring arguments
+  - /fixed_costs_rel_invoices:
+    - Added invoice.currency filter parameter
+  - /friends/status:
+    - Added company.allowRecordingRemoval filter parameter
+    - Added _order[invoicing.countryName] querystring argument
+    - Added _order[invoicing.nif]] querystring argument
+    - Added _order[invoicing.postalAddress] querystring argument
+    - Added _order[invoicing.postalCode] querystring argument
+    - Added _order[invoicing.province] querystring argument
+    - Added _order[invoicing.town] querystring argument
+    - Added _order[maxDailyUsage] querystring argument
+  - /invoice_templates:
+    - Added description[end|exact|neq|partial|start] and exists[description] filter parameters
+    - Added _order[description] querystring arguments
+  - /invoices:
+    - Added currency filter parameter
+    - Added exists[scheduler] filter parameter
+    - Added exists[taxRate] filter parameter
+    - Added taxRate[exists|qt|qte|lt|lte|between|neq] filter parameters
+    - Added _order[taxRate] querystring argument
+  - /locations:
+    - Added [GET] endpoint
+  - /match_list_patterns:
+    - Added [GET] and [POST] endpoints
+  - /match_list_patterns/{id}:
+    - Added [GET], [PUT] and [DELETE] endpoints
+  - /match_lists:
+    - Added [GET] and [POST] endpoints
+  - /match_lists/{id}:
+    - Added [GET], [PUT] and [DELETE] endpoints
+  - /music_on_holds:
+    - Added [GET] and [POST] endpoints
+  - /music_on_holds/{id}:
+    - Added [GET], [PUT] and [DELETE] endpoints
+    - Added endpoint: [GET] /music_on_holds/{id}/encodedfile
+    - Added endpoint: [GET] /music_on_holds/{id}/originalfile
+  - /my/profile:
+    - Added [GET] endpoint
+  - /my/registration_summary:
+    - Added exists[language] filter parameter
+  - /outgoing_ddi_rules:
+    - Added [GET] endpoint
+  - /outgoing_ddi_rules/{id}:
+    - Added [GET] endpoint
+  - /outgoing_routings:
+    - Added exists[carrier] filter parameter
+    - Added exists[routingPatternGroup] filter parameter
+    - Added exists[routingPattern] filter parameter
+    - Added stopper filter parameter
+    - Added _order[stopper] querystring argument
+  - /rating_plan_groups:
+    - Added description.ca[end|exact|neq|partial|start] filter parameters
+    - Added description.en[end|exact|neq|partial|start] filter parameters
+    - Added description.es[end|exact|neq|partial|start] filter parameters
+    - Added description.it[end|exact|neq|partial|start] filter parameters
+    - Added _order[description.ca], _order[description.en], _order[description.es] and _order[description.it] querystring arguments
+  - /rating_plan_groups/{id}:
+    - Added endpoint: [POST] /rating_plan_groups/{id}/simulate_call
+  - /rating_profiles/{id}:
+    - Added endpoint: [POST] /rating_profiles/{id}/simulate_call
+  - /residential_devices:
+    - Added description[end|exact|neq|partial|start] filter parameters
+    - Added directConnectivity[end|exact|neq|partial|start] filter parameters
+    - Added multiContact filter parameter
+    - Added rtpEncryption filter parameter
+    - Added _order[description]  querystring argument
+    - Added _order[directConnectivity] querystring argument
+    - Added _order[multiContact] querystring argument
+    - Added _order[rtpEncryption] querystring argument
+  - /residential_devices/status
+    - Added company.allowRecordingRemoval filter parameter
+    - Added company.currentDayUsage filter parameter
+    - Added company.maxDailyUsageNotificationTemplate filter parameter
+    - Added company.outgoingDdiRule filter parameter
+    - Added directConnectivity filter parameter
+    - Added invoicing.countryName filter parameters
+    - Added invoicing.nif filter parameters
+    - Added invoicing.postalAddress filter parameters
+    - Added invoicing.postalCode filter parameters
+    - Added invoicing.province filter parameters
+    - Added invoicing.town filter parameters
+    - Added _order[directConnectivity] querystring argument
+  - /retail_accounts:
+    - Added multiContact filter parameter
+    - Added rtpEncryption filter parameter
+    - Added _order[multiContact] querystring argument
+    - Added _order[rtpEncryption] querystring argument
+  - /retail_accounts/status:
+    - Added company.allowRecordingRemoval filter parameter
+    - Added company.currentDayUsage filter parameter
+    - Added company.maxDailyUsageNotificationTemplate filter parameter
+    - Added company.outgoingDdiRule filter parameter
+    - Added invoicing.countryName filter parameters
+    - Added invoicing.nif filter parameters
+    - Added invoicing.postalAddress filter parameters
+    - Added invoicing.postalCode filter parameters
+    - Added invoicing.province filter parameters
+    - Added invoicing.town filter parameters
+    - Added multiContact filter parameter
+    - Added rtpEncryption filter parameter- 
+    - Added _order[multiContact] querystring argument
+    - Added _order[rtpEncryption] querystring argument
+  - /routing_patterns:
+    - Added description.ca[end|exact|neq|partial|start] filter parameters
+    - Added description.en[end|exact|neq|partial|start] filter parameters
+    - Added description.es[end|exact|neq|partial|start] filter parameters
+    - Added description.it[end|exact|neq|partial|start] filter parameters
+    - Added _order[description.ca], _order[description.en], _order[description.es] and _order[description.it] querystring arguments
+  - /services:
+    - Added description.ca[end|exact|neq|partial|start] filter parameters
+    - Added description.en[end|exact|neq|partial|start] filter parameters
+    - Added description.es[end|exact|neq|partial|start] filter parameters
+    - Added description.it[end|exact|neq|partial|start] filter parameters
+    - Added _order[description.ca], _order[description.en], _order[description.es] and _order[description.it] querystring argument
+  - /services/unassigned:
+    - Added [GET] endpoint
+  - /terminals:
+    - Added [GET] endpoint
+  - /terminals/status:
+    - Added company.allowRecordingRemoval filter parameter
+    - Added company.currentDayUsage filter parameter
+    - Added company.maxDailyUsageNotificationTemplate filter parameter
+    - Added company.outgoingDdiRule filter parameter
+    - Added editable filter parameter
+    - Added invoicing.countryName filter parameters
+    - Added invoicing.nif filter parameters
+    - Added invoicing.postalAddress filter parameters
+    - Added invoicing.postalCode filter parameters
+    - Added invoicing.province filter parameters
+    - Added invoicing.town filter parameters
+  - /trusteds:
+    - Added [GET] and [POST] endpoints
+  - /trusteds/{id}:
+    - Added [GET], [PUT] and [DELETE] endpoints
+  - /users:
+    - Added bossAssistantWhiteList, bossAssistantWhiteList[] and bossAssistantWhiteList[exists] filter parameters
+    - Added extension, extension[] and extension[exists] filter parameters
+    - Added location, location[] and location[exists] filter parameters
+    - Added email[end|exact|neq|partial|start] filter parameters
+    - Added exists[email] filter parameter
+    - Added exists[extension] filter parameter
+    - Added exists[location] filter parameter
+    - Added _order[email] querystring argument
+  - /web_portals:
+    - Added logo.baseName[end|exact|neq|partial|start] and exists[logo.baseName] filter parameters
+    - Added logo.fileSize[exists|qt|qte|lt|lte|between|neq] and exists[logo.fileSize] filter parameters
+    - Added logo.mimeType[end|exact|neq|partial|start] and exists[logo.mimeType] filter parameters
+    - Added _order[logo.baseName], _order[logo.fileSize] and _order[logo.mimeType] querystring arguments
+* Models:
+  - BalanceMovement-collection:
+    - Added model
+  - BalanceMovement-detailed:
+    - Added model
+  - BalanceNotification:
+    - Added carrier property
+    - Added notificationTemplate property
+    - Added lastSent property
+  - BalanceNotification-detailed:
+    - Added carrier property
+  - BrandService-collection:
+    - Added service required property
+  - CallCsvScheduler-collection:
+    - Added company property
+  - Carrier-collection:
+    - Removed externallyRated property
+    - Added calculateCost property
+    - Added transformationRuleSet property
+    - Added balance property
+    - Added proxyTrunk property
+    - Added status property
+  - Carrier-detailed:
+    - Removed externallyRated property
+    - Added outboundProxy property
+    - Added status property
+  - CarrierServer-status:
+    - Added model
+  - CarrierServerStatus:
+    - Added model
+  - CarrierStatus:
+    - Added model
+  - Codec:
+    - Added model
+  - Codec-collection:
+    - Added model
+  - Codec-detailed:
+    - Added model
+  - Company:
+    - Removed nif property
+    - Removed postalAddress property
+    - Removed postalCode property
+    - Removed town property
+    - Removed province property
+    - Removed countryName property
+    - Added allowRecordingRemoval required property
+    - Added currentDayUsage property
+    - Added invoicing property
+    - Added outgoingDdiRule property
+    - Added maxDailyUsageNotificationTemplate property
+    - Added featureIds property
+    - Added geoIpAllowedCountries property
+    - Added routingTagIds property
+    - Added codecIds property
+  - Company-collection:
+    - Removed nif property
+    - Added invoicing property
+    - Added billingMethod property
+    - Added currentDayUsage property
+    - Added maxDailyUsage property
+    - Added domainUsers property
+    - Added balance property
+    - Added outgoingDdi property
+    - Added domainName property
+    - Added featureIds property
+    - Added geoIpAllowedCountries property
+    - Added routingTagIds property
+    - Added codecIds property
+  - Company-detailed:
+    - Removed nif property
+    - Removed postalAddress property
+    - Removed postalCode property
+    - Removed town property
+    - Removed province property
+    - Removed countryName property
+    - Added allowRecordingRemoval required property
+    - Added currentDayUsage property
+    - Added invoicing property
+    - Added outgoingDdiRule property
+    - Added maxDailyUsageNotificationTemplate property
+    - Added domainName property
+    - Added geoIpAllowedCountries property
+    - Added routingTagIds property
+    - Added codecIds property
+  - Company-withFeatures:
+    - Removed model
+  - CompanyRelCodec:
+    - Added model
+  - CompanyRelCodec-collection:
+    - Added model
+  - CompanyRelCodec-detailed:
+    - Added model
+  - Company_Invoicing:
+    - Added model
+  - Ddi:
+    - Added description property
+    - Added type property
+  - Ddi-collection:
+    - Added company required property
+    - Added description property
+  - Ddi-detailed:
+    - Added type required property
+    - Added description property
+  - DdiProvider-collection:
+    - Added transformationRuleSet required property
+    - Added proxyTrunk property
+  - DdiProviderRegistration-status:
+    - Added model
+  - DdiProviderRegistrationStatus:
+    - Added currencySymbol property
+  - DestinationRate-detailed:
+    - Added currencySymbol property
+  - DestinationRateGroup:
+    - Added importerArguments property
+  - Extension:
+    - Added model
+  - Extension-collection:
+    - Added model
+  - Extension-detailed:
+    - Added model
+  - Fax:
+    - Added name property
+  - FileImporterArguments:
+    - Added model
+  - FixedCost-collection:
+    - Added description property
+    - Added cost property
+  - Invoice:
+    - Added currency property
+  - Invoice-collection:
+    - Added taxRate property
+    - Added scheduler property
+    - Added currency property
+  - Invoice-detailed:
+    - Added currency property
+  - InvoiceTemplate-collection:
+    - Added description property
+  - Location:
+    - Added model
+  - Location-collection:
+    - Added model
+  - MatchList:
+    - Added model
+  - MatchList-collection:
+    - Added model
+  - MatchList-detailed:
+    - Added model
+  - MatchListPattern:
+    - Added model
+  - MatchListPattern-collection:
+    - Added model
+  - MatchListPattern-detailed:
+    - Added model
+  - MusicOnHold:
+    - Added model
+  - MusicOnHold-collection:
+    - Added model
+  - MusicOnHold-detailed:
+    - Added model
+  - MusicOnHold_EncodedFile:
+    - Added model
+  - MusicOnHold_OriginalFile:
+    - Added model
+  - NotificationTemplateContent-collection:
+    - Added language property
+  - OutgoingDdiRule:
+    - Added model
+  - OutgoingDdiRule-collection:
+    - Added model
+  - OutgoingRouting:
+    - Added carrierIds property
+  - OutgoingRouting-collection:
+    - Add stopper required property
+    - Add carrier property
+    - Add routingPattern property
+    - Add routingPatternGroup property
+    - Add carrierIds property
+  - OutgoingRouting-withCarriers:
+    - Removed model
+  - Profile:
+    - Added model
+  - RatingPlanGroup-collection:
+    - Added description property
+  - ResidentialDevice:
+    - Added rtpEncryption required property
+    - Added multiContact required property
+  - ResidentialDevice-collection:
+    - Added description required property
+    - Added directConnectivity required property
+    - Added company required property
+    - Added rtpEncryption required property
+    - Added multiContact required property
+    - Added domainName property
+    - Added status property
+  - ResidentialDevice-detailed:
+    - Added rtpEncryption required property
+    - Added multiContact required property
+  - ResidentialDevice-status:
+    - Added directConnectivity required property
+  - RetailAccount:
+    - Added rtpEncryption required property
+    - Added multiContact required property
+  - RetailAccount-collection:
+    - Added rtpEncryption required property
+    - Added multiContact required property
+  - RetailAccount-detailed:
+    - Added rtpEncryption required property
+    - Added multiContact required property
+  - RetailAccount-status:
+    - Added rtpEncryption required property
+    - Added multiContact required property
+  - RoutingPattern-collection:
+    - Added description property
+  - RoutingPatternGroup-collection:
+    - Added patternIds property
+  - Service-collection:
+    - Added description property
+  - TarificationInfo:
+    - Added model
+  - Terminal-collection:
+    - Added model
+  - TransformationRuleSet:
+    - Added editable property
+  - TransformationRuleSet-collection:
+    - Added editable property
+  - TransformationRuleSet-detailed:
+    - Added editable property
+  - Trusted:
+    - Added model
+  - Trusted-collection:
+    - Added model
+  - Trusted-detailed:
+    - Added model
+  - User:
+    - Added bossAssistantWhiteList property
+    - Added extension property
+    - Added outgoingDdiRule property
+    - Added location property
+  - User-collection:
+    - Added extension property
+    - Added status property
+    - Added email property
+    - Added location property
+  - WebPortal-collection:
+    - Added logo property
+
 ## 3.0.0
 * Disclaimer: The API schema will not be considered stable until version 3.1 and may receive new breaking changes
 * Endpoints:
     - Added not equal [neq] filters
-    - Added exits[fldName] filters
+    - Added exists[fldName] filters
     - Fixed downloadable file spec
     - Fixed embeddable model spec
 * Models:
