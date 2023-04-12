@@ -1023,6 +1023,8 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRange:
       path: '/holiday_dates_range'
       route_name: 'post_holiday_dates_range'
       swagger_context:
+        tags:
+          - Provider
         consumes:
           - 'application/json'
         produces:
@@ -1034,6 +1036,7 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRange:
             description: "Cannot create holiday dates"
           500:
             description: "Internal Server Error"
+
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
   collectionOperations:
     get: ~
