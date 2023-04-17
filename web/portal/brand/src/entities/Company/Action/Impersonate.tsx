@@ -21,7 +21,7 @@ const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
   return (
     <a href={`/client/?${queryString}`} target="_impersonate-client">
       <Tooltip
-        title={_('Impersonate as brand admin')}
+        title={_('Impersonate as client admin')}
         placement="bottom-start"
         enterTouchDelay={0}
       >
