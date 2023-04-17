@@ -288,7 +288,7 @@
   "Iden": "Iden",
   "If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this residential device.": "Si activado, se utilizará el DDI llamado como destino de las llamadas a este dispositivo residencial (cabeceras R-URI y To).",
   "If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this retail account.": "Si activado, se utilizará el DDI llamado como destino de las llamadas a esta cuenta retail (cabeceras R-URI y To).",
-  "Impersonate as brand admin": "Impersonarse como admin de marca",
+  "Impersonate as client admin": "Impersonarse como administrador del cliente",
   "Imported": "Importado",
   "Imported file": "Fichero importado",
   "In Progress": "En curso",
