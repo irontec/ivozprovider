@@ -52,10 +52,12 @@ export interface OutputStuct {
   event: Events;
   time: number;
   duration: string;
+  brand: string;
   company: string;
   caller: string;
   callee: string;
   operator: string;
+  party?: string;
 }
 
 export type Calls = { [key: string]: OutputStuct };
