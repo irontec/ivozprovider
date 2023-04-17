@@ -72,6 +72,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
       event: data.Event,
       time: data.Time,
       duration: '',
+      brand: data.Brand,
       company: data.Company,
       caller: data.Caller,
       callee: data.Callee,

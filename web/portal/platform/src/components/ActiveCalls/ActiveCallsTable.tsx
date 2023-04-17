@@ -57,6 +57,9 @@ export default function ActiveCallsTable(
             {_('Duration')}
           </TableCell>
           <TableCell align="left" padding="normal">
+            {_('Brand')}
+          </TableCell>
+          <TableCell align="left" padding="normal">
             {_('Client')}
           </TableCell>
           <TableCell align="left" padding="normal">
@@ -103,6 +106,7 @@ export default function ActiveCallsTable(
                 &nbsp;
                 <span>{call.duration}</span>
               </TableCell>
+              <TableCell>{call.brand}</TableCell>
               <TableCell>{call.company}</TableCell>
               <TableCell>{call.caller}</TableCell>
               <TableCell>{call.callee}</TableCell>
