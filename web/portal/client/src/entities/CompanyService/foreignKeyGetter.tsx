@@ -21,7 +21,7 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
   const response: CompanyServicePropertyList<unknown> = {};
   const promises: Array<Promise<unknown>> = [];
 
-  if (filterContext) {
+  if (!filterContext) {
     promises[promises.length] = UnassignedServiceSelectOptions(
       {
         callback: (options: any) => {
