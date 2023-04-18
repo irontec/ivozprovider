@@ -7,6 +7,8 @@ doctrine:
         Ivoz\Ast\Domain\Model\PsIdentify\PsIdentify
       Ivoz\Ast\Domain\Model\Queue\QueueInterface:
         Ivoz\Ast\Domain\Model\Queue\Queue
+      Ivoz\Ast\Domain\Model\Queue\QueueMemberInterface:
+        Ivoz\Ast\Domain\Model\Queue\QueueMember
       Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface:
         Ivoz\Ast\Domain\Model\Voicemail\Voicemail
       Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageInterface:
