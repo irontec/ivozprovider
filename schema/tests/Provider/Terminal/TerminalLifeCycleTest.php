@@ -4,6 +4,7 @@ namespace Tests\Provider\Terminal;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentify;
+use Ivoz\Ast\Domain\Model\QueueMember\QueueMember;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -112,6 +113,7 @@ class TerminalLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             Terminal::class,
             PsEndpoint::class,
+            QueueMember::class,
         ]);
     }
 
