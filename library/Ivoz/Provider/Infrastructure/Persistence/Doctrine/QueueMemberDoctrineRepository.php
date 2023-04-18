@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMember;
+use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,5 +21,34 @@ class QueueMemberDoctrineRepository extends ServiceEntityRepository implements Q
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, QueueMember::class);
+    }
+
+    public function findByUserId(int $userId): array
+    {
+        /** @var QueueMemberInterface[] $queueMembers */
+        $queueMembers = $this->findBy([
+            'user' => $userId
+        ]);
+
+        return $queueMembers;
+    }
+
+    public function findOneByQueueAndExtension(int $queueid, int $extension): ?QueueMemberInterface
+    {
+        $qb = $this->createQueryBuilder('self');
+        $query = $qb
+            ->select('self')
+            ->innerJoin('self.user', 'user')
+            ->innerJoin('user.extension', 'extension')
+            ->where(
+                $qb->expr()->eq('extension.number', $extension)
+            )
+            ->andWhere(
+                $qb->expr()->eq('self.queue', $queueid)
+            )
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getSingleResult();
     }
 }
