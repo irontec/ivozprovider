@@ -50,7 +50,7 @@ class QueueAction
 
         // Set queue options
         $this->agi->setVariable("QUEUE", $queue->getAstQueueName());
-        $this->agi->setVariable("QUEUE_ID", $queue->getId());
+        $this->agi->setVariable("_QUEUE_ID", $queue->getId());
 
         // Max time in queue (Note: zero does NOT mean infinite)
         if ($queue->getMaxWaitTime() > 0) {

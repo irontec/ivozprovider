@@ -49,16 +49,23 @@ class Queues extends RouteHandlerAbstract
      */
     public function process()
     {
-        // Queue member id from dialed extension
-        $queueMemberId = $this->agi->getExtension();
+        // Screen Extension for Queue Member
+        $extension = $this->agi->getExtension();
+
+        // Current Queue ID
+        $queueId = $this->agi->getVariable("QUEUE_ID");
 
         /** @var QueueMemberRepository $queueMemberRepository */
         $queueMemberRepository = $this->em->getRepository(QueueMember::class);
 
         /** @var QueueMemberInterface|null $queueMember */
-        $queueMember = $queueMemberRepository->find($queueMemberId);
+        $queueMember = $queueMemberRepository->findOneByQueueAndExtension(
+            (int) $queueId,
+            (int) $extension,
+        );
+
         if (is_null($queueMember)) {
-            $this->agi->error("Queue member with id %d does not exists.", $queueMemberId);
+            $this->agi->error("Queue member with extension %d does not exists in queue %d.", $extension, $queueId);
             return;
         }
 
