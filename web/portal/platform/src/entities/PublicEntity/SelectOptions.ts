@@ -1,9 +1,9 @@
-import { DropdownArrayChoices, EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { getI18n } from 'react-i18next';
 import store from 'store';
 import { PublicEntityPropertiesList } from './PublicEntityProperties';
+import { DropdownArrayChoices, EntityValues } from '@irontec/ivoz-ui';
 
 const PublicEntitySelectOptions: SelectOptionsType = ({
   callback,
@@ -21,7 +21,10 @@ const PublicEntitySelectOptions: SelectOptionsType = ({
 
       for (const item of data) {
         const name = item.name as EntityValues;
-        options.push({ id: item.id as string, label: name[language] as string});
+        options.push({
+          id: item.id as string,
+          label: name[language] as string,
+        });
       }
 
       callback(options);
