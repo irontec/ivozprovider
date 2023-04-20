@@ -21,7 +21,10 @@ const PublicEntitySelectOptions: SelectOptionsType = ({
 
       for (const item of data) {
         const name = item.name as EntityValues;
-        options.push({ id: item.id as string, label: name[language] as string});
+        options.push({
+          id: item.id as string,
+          label: name[language] as string,
+        });
       }
 
       callback(options);
