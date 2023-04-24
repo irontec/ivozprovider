@@ -143,6 +143,11 @@ const properties: UserProperties = {
   rejectCallMethod: {
     label: _('Call rejection method'),
     default: 'rfc',
+    enum: {
+      rfc: _('Depending on response code'),
+      '486': _('Cancel call only in current device'),
+      '600': _('Cancel call in all devices'),
+    },
   },
   gsQRCode: {
     label: _('QR Code'),
