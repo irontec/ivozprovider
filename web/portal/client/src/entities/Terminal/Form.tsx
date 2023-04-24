@@ -36,7 +36,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Provisioning Info'),
       fields: ['terminalModel', 'mac', edit && 'lastProvisionDate'],
     },
-    {
+    edit && {
       legend: _('Status'),
       fields: ['status'],
     },
