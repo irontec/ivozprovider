@@ -218,8 +218,8 @@ const properties: QueueProperties = {
 
 const columns = [
   'name',
-  'weight',
   'strategy',
+  'weight',
   'memberCallTimeout',
   'memberCallRest',
   'maxWaitTime',
