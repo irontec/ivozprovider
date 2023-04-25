@@ -38,6 +38,8 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
   attributes:
     pagination_client_enabled: true
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      startTime: ASC
 
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
   itemOperations: []
@@ -50,6 +52,8 @@ Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
   collectionOperations: []
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
 
 Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
   itemOperations:
@@ -58,6 +62,8 @@ Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      ip: ASC
     read_access_control:
       ROLE_SUPER_ADMIN:
         brand:
@@ -80,6 +86,8 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
       depth: 1
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
     normalization_context:
       groups: [
         !php/const Ivoz\Provider\Domain\Model\Brand\BrandDto::CONTEXT_DETAILED
@@ -90,6 +98,8 @@ Ivoz\Provider\Domain\Model\Brand\Logo:
 Ivoz\Provider\Domain\Model\Administrator\Administrator:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      username: ASC
     read_access_control:
       ROLE_SUPER_ADMIN:
         id:
@@ -114,6 +124,8 @@ Ivoz\Provider\Domain\Model\Currency\Currency:
     post: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      iden: ASC
 Ivoz\Provider\Domain\Model\Currency\Name: ~
 
 Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity:
@@ -126,6 +138,8 @@ Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEn
       depth: 1
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
+    order:
+      publicEntity: ASC
     read_access_control:
       ROLE_SUPER_ADMIN:
         inherited:
@@ -135,13 +149,22 @@ Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEn
 Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
+
 Ivoz\Provider\Domain\Model\BrandService\BrandService:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      service: ASC
+      code: ASC
 
 Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
+
 Ivoz\Provider\Domain\Model\WebPortal\Logo: ~
 
 Ivoz\Provider\Domain\Model\Carrier\Carrier:
@@ -149,6 +172,8 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
   collectionOperations: []
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
 
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations: []
@@ -167,6 +192,8 @@ Ivoz\Provider\Domain\Model\Country\Country:
   attributes:
     pagination_client_enabled: true
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name.en: ASC
 
 Ivoz\Provider\Domain\Model\Destination\Destination:
   itemOperations: []
@@ -181,6 +208,8 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      domain: ASC
     read_access_control:
     - and:
       - domain: 
@@ -192,6 +221,8 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
 Ivoz\Provider\Domain\Model\Feature\Feature:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      iden: ASC
 Ivoz\Provider\Domain\Model\Feature\Name: ~
 
 Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
@@ -204,6 +235,8 @@ Ivoz\Provider\Domain\Model\Language\Language:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      iden: ASC
 Ivoz\Provider\Domain\Model\Language\Name: ~
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
@@ -215,6 +248,8 @@ Ivoz\Provider\Domain\Model\Invoice\Pdf: ~
 Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
     write_access_control:
       ROLE_SUPER_ADMIN:
         raw: "id !== 0"
@@ -229,6 +264,8 @@ Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
     post: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
     delete_access_control:
       ROLE_SUPER_ADMIN:
         id:
@@ -255,6 +292,8 @@ Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
 
 Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity:
   itemOperations:
@@ -297,9 +336,14 @@ Ivoz\Provider\Domain\Model\SpecialNumber\SpecialNumber:
 Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      iden: ASC
+
 Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      iden: ASC
 
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations:
@@ -314,6 +358,8 @@ Ivoz\Provider\Domain\Model\Timezone\Label: ~
 Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
     read_access_control:
       ROLE_SUPER_ADMIN:
         brand:
@@ -326,6 +372,8 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
     read_access_control:
       ROLE_SUPER_ADMIN:
         brand:
@@ -339,6 +387,8 @@ Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateConte
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      language: ASC
     read_access_control:
       inherited:
         notificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'

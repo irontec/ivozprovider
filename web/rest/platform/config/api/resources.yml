@@ -22,6 +22,9 @@ Model\ActiveCalls:
           required: false
           description: 'Brand Id'
   collectionOperations: []
+  attributes:
+    order:
+      startTime: ASC
 
 Model\Profile:
   itemOperations:
