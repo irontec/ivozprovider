@@ -112,6 +112,7 @@ const CalendarPeriod: EntityInterface = {
     'locution',
     'routeType',
     'target',
+    'voicemail',
   ],
   foreignKeyResolver,
   foreignKeyGetter,
