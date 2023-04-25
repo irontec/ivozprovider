@@ -25,16 +25,6 @@ Feature: Retrieve destination
               }
           },
           {
-              "prefix": "+94601",
-              "id": 2,
-              "name": {
-                  "en": "Usansolocity",
-                  "es": "Usansolocity",
-                  "ca": "Usansolocity",
-                  "it": "Usansolocity"
-              }
-          },
-          {
               "prefix": "+94602",
               "id": 3,
               "name": {
@@ -42,6 +32,16 @@ Feature: Retrieve destination
                   "es": "Dest3",
                   "ca": "Dest3",
                   "it": "Dest3"
+              }
+          },
+          {
+              "prefix": "+94601",
+              "id": 2,
+              "name": {
+                  "en": "Usansolocity",
+                  "es": "Usansolocity",
+                  "ca": "Usansolocity",
+                  "it": "Usansolocity"
               }
           }
       ]

@@ -26,17 +26,6 @@ Feature: Retrieve currencies
               }
           },
           {
-              "iden": "USD",
-              "symbol": "$",
-              "id": 2,
-              "name": {
-                  "en": "Dollar",
-                  "es": "Dóllar",
-                  "ca": "Dollar",
-                  "it": "Dollar"
-              }
-          },
-          {
               "iden": "GBP",
               "symbol": "£",
               "id": 3,
@@ -45,6 +34,17 @@ Feature: Retrieve currencies
                   "es": "Libra",
                   "ca": "Libra",
                   "it": "Pound"
+              }
+          },
+          {
+              "iden": "USD",
+              "symbol": "$",
+              "id": 2,
+              "name": {
+                  "en": "Dollar",
+                  "es": "Dóllar",
+                  "ca": "Dollar",
+                  "it": "Dollar"
               }
           }
       ]

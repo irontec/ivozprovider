@@ -15,17 +15,17 @@ Feature: Retrieve routing pattern groups
       """
       [
           {
-              "name": "Europe",
-              "description": "",
-              "id": 1,
+              "name": "Empty",
+              "description": "Empty",
+              "id": 2,
               "patternIds": [
                   1
               ]
           },
           {
-              "name": "Empty",
-              "description": "Empty",
-              "id": 2,
+              "name": "Europe",
+              "description": "",
+              "id": 1,
               "patternIds": [
                   1
               ]

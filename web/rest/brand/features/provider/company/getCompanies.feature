@@ -59,6 +59,25 @@ Feature: Retrieve companies
               "codecIds": []
           },
           {
+              "type": "residential",
+              "name": "Residential Company",
+              "domainUsers": null,
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": 0,
+              "billingMethod": "postpaid",
+              "balance": 0,
+              "id": 4,
+              "invoicing": {
+                  "nif": "12345679-Z"
+              },
+              "outgoingDdi": null,
+              "domainName": "retail.irontec.com",
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
+          },
+          {
               "type": "retail",
               "name": "Retail Company",
               "domainUsers": null,
@@ -77,25 +96,6 @@ Feature: Retrieve companies
               "routingTagIds": [
                   1
               ],
-              "codecIds": []
-          },
-          {
-              "type": "residential",
-              "name": "Residential Company",
-              "domainUsers": null,
-              "maxDailyUsage": 1000000,
-              "currentDayUsage": 0,
-              "billingMethod": "postpaid",
-              "balance": 0,
-              "id": 4,
-              "invoicing": {
-                  "nif": "12345679-Z"
-              },
-              "outgoingDdi": null,
-              "domainName": "retail.irontec.com",
-              "featureIds": [],
-              "geoIpAllowedCountries": [],
-              "routingTagIds": [],
               "codecIds": []
           }
       ]
