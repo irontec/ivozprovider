@@ -16,6 +16,8 @@ Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
 Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      sourceAddress: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         company:
@@ -24,6 +26,8 @@ Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress:
 Ivoz\Kam\Domain\Model\Trusted\Trusted:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      srcIp: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         company:
