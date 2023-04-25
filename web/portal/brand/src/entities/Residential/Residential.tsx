@@ -22,10 +22,15 @@ const Residential: EntityInterface = {
   localPath: '/residential',
   columns: [
     'name',
-    'invocing.nif',
+    'invoicing.nif',
     'billingMethod',
     'outgoingDdi',
     'featureIds',
+    'invoicing.postalAddress',
+    'invoicing.postalCode',
+    'invoicing.town',
+    'invoicing.province',
+    'invoicing.countryName',
   ],
   foreignKeyGetter,
 };
