@@ -15,18 +15,6 @@ Feature: Retrieve carriers
       """
       [
           {
-              "description": "CarrierDescription",
-              "name": "CarrierName",
-              "balance": 0,
-              "calculateCost": true,
-              "id": 1,
-              "transformationRuleSet": 1,
-              "proxyTrunk": 1,
-              "status": {
-                  "registered": false
-              }
-          },
-          {
               "description": "Another carrier description",
               "name": "AnotherCarrierName",
               "balance": 0,
@@ -34,6 +22,18 @@ Feature: Retrieve carriers
               "id": 2,
               "transformationRuleSet": 1,
               "proxyTrunk": 2,
+              "status": {
+                  "registered": false
+              }
+          },
+          {
+              "description": "CarrierDescription",
+              "name": "CarrierName",
+              "balance": 0,
+              "calculateCost": true,
+              "id": 1,
+              "transformationRuleSet": 1,
+              "proxyTrunk": 1,
               "status": {
                   "registered": false
               }

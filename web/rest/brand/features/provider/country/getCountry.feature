@@ -15,58 +15,14 @@ Feature: Retrieve countries
       """
       [
           {
-              "code": "AD",
-              "countryCode": "+376",
-              "id": 1,
-              "name": {
-                  "en": "Andorra",
-                  "es": "Andorra",
-                  "ca": "Andorra",
-                  "it": "Andorra"
-              }
-          },
-          {
-              "code": "AE",
-              "countryCode": "+971",
-              "id": 2,
-              "name": {
-                  "en": "United Arab Emirates",
-                  "es": "Emiratos \u00c1rabes Unidos",
-                  "ca": "Emiratos \u00c1rabes Unidos",
-                  "it": "United Arab Emirates"
-              }
-          },
-          {
               "code": "AF",
               "countryCode": "+93",
               "id": 3,
               "name": {
                   "en": "Afghanistan",
-                  "es": "Afganist\u00e1n",
-                  "ca": "Afganist\u00e1n",
+                  "es": "Afganistán",
+                  "ca": "Afganistán",
                   "it": "Afghanistan"
-              }
-          },
-          {
-              "code": "AG",
-              "countryCode": "+1268",
-              "id": 4,
-              "name": {
-                  "en": "Antigua and Barbuda",
-                  "es": "Antigua y Barbuda",
-                  "ca": "Antigua y Barbuda",
-                  "it": "Antigua and Barbuda"
-              }
-          },
-          {
-              "code": "AI",
-              "countryCode": "+1264",
-              "id": 5,
-              "name": {
-                  "en": "Anguilla",
-                  "es": "Anguila",
-                  "ca": "Anguila",
-                  "it": "Anguilla"
               }
           },
           {
@@ -81,47 +37,14 @@ Feature: Retrieve countries
               }
           },
           {
-              "code": "AM",
-              "countryCode": "+374",
-              "id": 7,
+              "code": "DZ",
+              "countryCode": "+213",
+              "id": 62,
               "name": {
-                  "en": "Armenia",
-                  "es": "Armenia",
-                  "ca": "Armenia",
-                  "it": "Armenia"
-              }
-          },
-          {
-              "code": "AO",
-              "countryCode": "+244",
-              "id": 8,
-              "name": {
-                  "en": "Angola",
-                  "es": "Angola",
-                  "ca": "Angola",
-                  "it": "Angola"
-              }
-          },
-          {
-              "code": "AQ",
-              "countryCode": "+672",
-              "id": 9,
-              "name": {
-                  "en": "Antarctica",
-                  "es": "Ant\u00e1rtida",
-                  "ca": "Ant\u00e1rtida",
-                  "it": "Antarctica"
-              }
-          },
-          {
-              "code": "AR",
-              "countryCode": "+54",
-              "id": 10,
-              "name": {
-                  "en": "Argentina",
-                  "es": "Argentina",
-                  "ca": "Argentina",
-                  "it": "Argentina"
+                  "en": "Algeria",
+                  "es": "Algeria",
+                  "ca": "Algeria",
+                  "it": "Algeria"
               }
           },
           {
@@ -136,25 +59,80 @@ Feature: Retrieve countries
               }
           },
           {
-              "code": "AT",
-              "countryCode": "+43",
-              "id": 12,
+              "code": "AD",
+              "countryCode": "+376",
+              "id": 1,
               "name": {
-                  "en": "Austria",
-                  "es": "Austria",
-                  "ca": "Austria",
-                  "it": "Austria"
+                  "en": "Andorra",
+                  "es": "Andorra",
+                  "ca": "Andorra",
+                  "it": "Andorra"
               }
           },
           {
-              "code": "AU",
-              "countryCode": "+61",
-              "id": 13,
+              "code": "AO",
+              "countryCode": "+244",
+              "id": 8,
               "name": {
-                  "en": "Australia",
-                  "es": "Australia",
-                  "ca": "Australia",
-                  "it": "Australia"
+                  "en": "Angola",
+                  "es": "Angola",
+                  "ca": "Angola",
+                  "it": "Angola"
+              }
+          },
+          {
+              "code": "AI",
+              "countryCode": "+1264",
+              "id": 5,
+              "name": {
+                  "en": "Anguilla",
+                  "es": "Anguila",
+                  "ca": "Anguila",
+                  "it": "Anguilla"
+              }
+          },
+          {
+              "code": "AQ",
+              "countryCode": "+672",
+              "id": 9,
+              "name": {
+                  "en": "Antarctica",
+                  "es": "Antártida",
+                  "ca": "Antártida",
+                  "it": "Antarctica"
+              }
+          },
+          {
+              "code": "AG",
+              "countryCode": "+1268",
+              "id": 4,
+              "name": {
+                  "en": "Antigua and Barbuda",
+                  "es": "Antigua y Barbuda",
+                  "ca": "Antigua y Barbuda",
+                  "it": "Antigua and Barbuda"
+              }
+          },
+          {
+              "code": "AR",
+              "countryCode": "+54",
+              "id": 10,
+              "name": {
+                  "en": "Argentina",
+                  "es": "Argentina",
+                  "ca": "Argentina",
+                  "it": "Argentina"
+              }
+          },
+          {
+              "code": "AM",
+              "countryCode": "+374",
+              "id": 7,
+              "name": {
+                  "en": "Armenia",
+                  "es": "Armenia",
+                  "ca": "Armenia",
+                  "it": "Armenia"
               }
           },
           {
@@ -169,14 +147,36 @@ Feature: Retrieve countries
               }
           },
           {
-              "code": "AX",
-              "countryCode": "+358",
-              "id": 15,
+              "code": "SH",
+              "countryCode": "+290",
+              "id": 199,
               "name": {
-                  "en": "\u00c5land Islands",
-                  "es": "Islas de \u00c5land",
-                  "ca": "Islas de \u00c5land",
-                  "it": "\u00c5land Islands"
+                  "en": "Ascensión y Tristán de Acuña",
+                  "es": "Santa Elena",
+                  "ca": "Santa Elena",
+                  "it": "Ascensión y Tristán de Acuña"
+              }
+          },
+          {
+              "code": "AU",
+              "countryCode": "+61",
+              "id": 13,
+              "name": {
+                  "en": "Australia",
+                  "es": "Australia",
+                  "ca": "Australia",
+                  "it": "Australia"
+              }
+          },
+          {
+              "code": "AT",
+              "countryCode": "+43",
+              "id": 12,
+              "name": {
+                  "en": "Austria",
+                  "es": "Austria",
+                  "ca": "Austria",
+                  "it": "Austria"
               }
           },
           {
@@ -185,75 +185,20 @@ Feature: Retrieve countries
               "id": 16,
               "name": {
                   "en": "Azerbaijan",
-                  "es": "Azerbay\u00e1n",
-                  "ca": "Azerbay\u00e1n",
+                  "es": "Azerbayán",
+                  "ca": "Azerbayán",
                   "it": "Azerbaijan"
               }
           },
           {
-              "code": "BA",
-              "countryCode": "+387",
-              "id": 17,
+              "code": "BS",
+              "countryCode": "+1242",
+              "id": 32,
               "name": {
-                  "en": "Bosnia and Herzegovina",
-                  "es": "Bosnia y Herzegovina",
-                  "ca": "Bosnia y Herzegovina",
-                  "it": "Bosnia and Herzegovina"
-              }
-          },
-          {
-              "code": "BB",
-              "countryCode": "+1246",
-              "id": 18,
-              "name": {
-                  "en": "Barbados",
-                  "es": "Barbados",
-                  "ca": "Barbados",
-                  "it": "Barbados"
-              }
-          },
-          {
-              "code": "BD",
-              "countryCode": "+880",
-              "id": 19,
-              "name": {
-                  "en": "Bangladesh",
-                  "es": "Bangladesh",
-                  "ca": "Bangladesh",
-                  "it": "Bangladesh"
-              }
-          },
-          {
-              "code": "BE",
-              "countryCode": "+32",
-              "id": 20,
-              "name": {
-                  "en": "Belgium",
-                  "es": "B\u00e9lgica",
-                  "ca": "B\u00e9lgica",
-                  "it": "Belgium"
-              }
-          },
-          {
-              "code": "BF",
-              "countryCode": "+226",
-              "id": 21,
-              "name": {
-                  "en": "Burkina Faso",
-                  "es": "Burkina Faso",
-                  "ca": "Burkina Faso",
-                  "it": "Burkina Faso"
-              }
-          },
-          {
-              "code": "BG",
-              "countryCode": "+359",
-              "id": 22,
-              "name": {
-                  "en": "Bulgaria",
-                  "es": "Bulgaria",
-                  "ca": "Bulgaria",
-                  "it": "Bulgaria"
+                  "en": "Bahamas",
+                  "es": "Bahamas",
+                  "ca": "Bahamas",
+                  "it": "Bahamas"
               }
           },
           {
@@ -268,14 +213,58 @@ Feature: Retrieve countries
               }
           },
           {
-              "code": "BI",
-              "countryCode": "+257",
-              "id": 24,
+              "code": "BD",
+              "countryCode": "+880",
+              "id": 19,
               "name": {
-                  "en": "Burundi",
-                  "es": "Burundi",
-                  "ca": "Burundi",
-                  "it": "Burundi"
+                  "en": "Bangladesh",
+                  "es": "Bangladesh",
+                  "ca": "Bangladesh",
+                  "it": "Bangladesh"
+              }
+          },
+          {
+              "code": "BB",
+              "countryCode": "+1246",
+              "id": 18,
+              "name": {
+                  "en": "Barbados",
+                  "es": "Barbados",
+                  "ca": "Barbados",
+                  "it": "Barbados"
+              }
+          },
+          {
+              "code": "BY",
+              "countryCode": "+375",
+              "id": 36,
+              "name": {
+                  "en": "Belarus",
+                  "es": "Bielorrusia",
+                  "ca": "Bielorrusia",
+                  "it": "Belarus"
+              }
+          },
+          {
+              "code": "BE",
+              "countryCode": "+32",
+              "id": 20,
+              "name": {
+                  "en": "Belgium",
+                  "es": "Bélgica",
+                  "ca": "Bélgica",
+                  "it": "Belgium"
+              }
+          },
+          {
+              "code": "BZ",
+              "countryCode": "+501",
+              "id": 37,
+              "name": {
+                  "en": "Belize",
+                  "es": "Belice",
+                  "ca": "Belice",
+                  "it": "Belize"
               }
           },
           {
@@ -284,20 +273,9 @@ Feature: Retrieve countries
               "id": 25,
               "name": {
                   "en": "Benin",
-                  "es": "Ben\u00edn",
-                  "ca": "Ben\u00edn",
+                  "es": "Benín",
+                  "ca": "Benín",
                   "it": "Benin"
-              }
-          },
-          {
-              "code": "BL",
-              "countryCode": "+590",
-              "id": 26,
-              "name": {
-                  "en": "Saint Barth\u00e9lemy",
-                  "es": "San Bartolom\u00e9",
-                  "ca": "San Bartolom\u00e9",
-                  "it": "Saint Barth\u00e9lemy"
               }
           },
           {
@@ -312,14 +290,14 @@ Feature: Retrieve countries
               }
           },
           {
-              "code": "BN",
-              "countryCode": "+673",
-              "id": 28,
+              "code": "BT",
+              "countryCode": "+975",
+              "id": 33,
               "name": {
-                  "en": "Brunei",
-                  "es": "Brun\u00e9i",
-                  "ca": "Brun\u00e9i",
-                  "it": "Brunei"
+                  "en": "Bhutan",
+                  "es": "Bhután",
+                  "ca": "Bhután",
+                  "it": "Bhutan"
               }
           },
           {
@@ -342,6 +320,28 @@ Feature: Retrieve countries
                   "es": "Bonaire",
                   "ca": "Bonaire",
                   "it": "Bonaire"
+              }
+          },
+          {
+              "code": "BA",
+              "countryCode": "+387",
+              "id": 17,
+              "name": {
+                  "en": "Bosnia and Herzegovina",
+                  "es": "Bosnia y Herzegovina",
+                  "ca": "Bosnia y Herzegovina",
+                  "it": "Bosnia and Herzegovina"
+              }
+          },
+          {
+              "code": "BW",
+              "countryCode": "+267",
+              "id": 35,
+              "name": {
+                  "en": "Botswana",
+                  "es": "Botsuana",
+                  "ca": "Botsuana",
+                  "it": "Botswana"
               }
           }
       ]
@@ -383,4 +383,4 @@ Feature: Retrieve countries
       And the streamed response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the streamed JSON node "root" should have 249 elements
-      And the streamed JSON node "root[0].code" should be equal to "AD"
+      And the streamed JSON node "root[0].code" should be equal to "AF"

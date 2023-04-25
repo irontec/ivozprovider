@@ -15,18 +15,18 @@ Feature: Retrieve balance notifications
       """
       [
             {
-                "toAddress": "balance@ivozprovider.com",
-                "threshold": 4.5,
-                "lastSent": null,
-                "id": 1,
-                "notificationTemplate": 1
-            },
-            {
                 "toAddress": "balance2@ivozprovider.com",
                 "threshold": 0,
                 "lastSent": null,
                 "id": 2,
                 "notificationTemplate": null
+            },
+            {
+                "toAddress": "balance@ivozprovider.com",
+                "threshold": 4.5,
+                "lastSent": null,
+                "id": 1,
+                "notificationTemplate": 1
             }
       ]
       """
