@@ -20,14 +20,14 @@ Feature: Retrieve notification templates
               "id": 2
           },
           {
-              "name": "Max daily usage notification",
-              "type": "maxDailyUsage",
-              "id": 3
-          },
-          {
               "name": "Invoice notification",
               "type": "invoice",
               "id": 4
+          },
+          {
+              "name": "Max daily usage notification",
+              "type": "maxDailyUsage",
+              "id": 3
           }
       ]
       """

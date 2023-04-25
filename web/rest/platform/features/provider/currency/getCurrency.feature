@@ -16,7 +16,7 @@ Feature: Manage currencies
       [
           {
               "iden": "EUR",
-              "symbol": "\u20ac",
+              "symbol": "€",
               "id": 1,
               "name": {
                   "en": "Euro",
@@ -26,25 +26,25 @@ Feature: Manage currencies
               }
           },
           {
-              "iden": "USD",
-              "symbol": "$",
-              "id": 2,
-              "name": {
-                  "en": "Dollar",
-                  "es": "D\u00f3llar",
-                  "ca": "Dollar",
-                  "it": "Dollar"
-              }
-          },
-          {
               "iden": "GBP",
-              "symbol": "\u00a3",
+              "symbol": "£",
               "id": 3,
               "name": {
                   "en": "Pound",
                   "es": "Libra",
                   "ca": "Libra",
                   "it": "Pound"
+              }
+          },
+          {
+              "iden": "USD",
+              "symbol": "$",
+              "id": 2,
+              "name": {
+                  "en": "Dollar",
+                  "es": "Dóllar",
+                  "ca": "Dollar",
+                  "it": "Dollar"
               }
           }
       ]
