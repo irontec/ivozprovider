@@ -43,6 +43,8 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
 Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      startDate: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         inherited:
@@ -78,6 +80,9 @@ Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
         ]
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      schedule.name: ASC
+      calendarPeriod.startDate: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         inherited:
@@ -103,6 +108,8 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -123,6 +130,8 @@ Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
         ]
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      priority: ASC
     read_access_control:
       inherited:
         callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
@@ -147,6 +156,8 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
           readOnly: true
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -183,6 +194,8 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
     get: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      id: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -200,12 +213,13 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
     get: ~
     put: ~
     delete: ~
-
   collectionOperations:
     get: ~
     post: ~
   attributes:
     access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod()))'
+    order:
+      enabled: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
       - or:
@@ -288,6 +302,8 @@ Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      service: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -302,6 +318,8 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -353,6 +371,8 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
       depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      priority: ASC
     normalization_context:
       groups: [
         !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto::CONTEXT_WITH_INVERSE_RELATIONSHIPS
@@ -505,6 +525,8 @@ Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
       && user.isVpbxAdmin()
       && user.companyHasFeature('conferences')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -532,6 +554,8 @@ Ivoz\Provider\Domain\Model\Contact\Contact:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -583,6 +607,8 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
       "ROLE_COMPANY_ADMIN" in roles
       && (user.isVpbxAdmin() || user.isResidentialAdmin() || user.isRetailAdmin())
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      country: ASC
     read_access_control:
       company:
         eq: "user.getCompany().getId()"
@@ -674,6 +700,8 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      number: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -725,6 +753,8 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
       "ROLE_COMPANY_ADMIN" in roles
       && (user.isVpbxAdmin() || user.isResidentialAdmin())
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     normalization_context:
       groups: [
         !php/const Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto::CONTEXT_WITH_INVERSE_RELATIONSHIPS
@@ -885,6 +915,8 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
           readOnly: true
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      calldate: ASC
     read_access_control:
       inherited:
         fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
@@ -907,6 +939,8 @@ Ivoz\Provider\Domain\Model\Fax\Fax:
       "ROLE_COMPANY_ADMIN" in roles
       && user.companyHasFeature('faxes')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -958,6 +992,8 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
       && user.isVpbxAdmin()
       && user.companyHasFeature('friends')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1043,6 +1079,8 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
     post: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
     read_access_control:
       inherited:
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
@@ -1070,6 +1108,8 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       company:
         eq: "user.getCompany().getId()"
@@ -1104,6 +1144,8 @@ Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember:
       depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      priority: ASC
     read_access_control:
       inherited:
         huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
@@ -1128,6 +1170,8 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
       "ROLE_COMPANY_ADMIN" in roles
       && user.getCompany().getShowInvoices()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      number: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1144,6 +1188,8 @@ Ivoz\Provider\Domain\Model\Invoice\Pdf: ~
 Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      entry: ASC
     read_access_control:
       inherited:
         ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
@@ -1185,6 +1231,8 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     normalization_context:
       groups: [
         !php/const Ivoz\Provider\Domain\Model\Ivr\IvrDto::CONTEXT_WITH_EXCLUDED_EXTENSIONS
@@ -1266,6 +1314,8 @@ Ivoz\Provider\Domain\Model\Location\Location:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1280,6 +1330,8 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1327,6 +1379,8 @@ Ivoz\Provider\Domain\Model\MatchList\MatchList:
 Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      type: ASC
     read_access_control:
       inherited:
         matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
@@ -1343,6 +1397,8 @@ Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1361,6 +1417,8 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1389,6 +1447,8 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
       depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      priority: ASC
     read_access_control:
       inherited:
         outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
@@ -1424,6 +1484,8 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     normalization_context:
       groups: [
         !php/const Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto::CONTEXT_WITH_USERS
@@ -1474,6 +1536,8 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
       depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      queue: ASC
     read_access_control:
       inherited:
         queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
@@ -1493,6 +1557,8 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
       && user.isVpbxAdmin()
       && user.companyHasFeature('queues')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       company:
         eq: "user.getCompany().getId()"
@@ -1559,6 +1625,8 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
       && user.brandHasFeature('billing')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
       && user.getCompany().getShowInvoices()
+    order:
+      activationTime: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1603,6 +1671,8 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
       "ROLE_COMPANY_ADMIN" in roles
       && user.companyHasFeature('recordings')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      calldate: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1623,6 +1693,8 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
         "ROLE_COMPANY_ADMIN" in roles
         && user.isResidentialAdmin()
         && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1674,6 +1746,8 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isRetailAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1717,6 +1791,8 @@ Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1734,6 +1810,8 @@ Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         id:
@@ -1750,6 +1828,8 @@ Ivoz\Provider\Domain\Model\Schedule\Schedule:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1854,6 +1934,8 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1959,6 +2041,8 @@ Ivoz\Provider\Domain\Model\User\User:
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -2011,6 +2095,8 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
       "ROLE_COMPANY_ADMIN" in roles
       && (user.isVpbxAdmin() || user.isResidentialAdmin())
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      enabled: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
