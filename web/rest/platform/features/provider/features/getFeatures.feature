@@ -15,8 +15,8 @@ Feature: Retrieve features
       """
       [
           {
-              "iden": "queues",
-              "id": 1,
+              "iden": "billing",
+              "id": 6,
               "name": {
                   "en": "en",
                   "es": "es",
@@ -25,8 +25,8 @@ Feature: Retrieve features
               }
           },
           {
-              "iden": "recordings",
-              "id": 2,
+              "iden": "conferences",
+              "id": 5,
               "name": {
                   "en": "en",
                   "es": "es",
@@ -55,26 +55,6 @@ Feature: Retrieve features
               }
           },
           {
-              "iden": "conferences",
-              "id": 5,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              }
-          },
-          {
-              "iden": "billing",
-              "id": 6,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              }
-          },
-          {
               "iden": "invoices",
               "id": 7,
               "name": {
@@ -87,6 +67,26 @@ Feature: Retrieve features
           {
               "iden": "progress",
               "id": 8,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
+          },
+          {
+              "iden": "queues",
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
+          },
+          {
+              "iden": "recordings",
+              "id": 2,
               "name": {
                   "en": "en",
                   "es": "es",

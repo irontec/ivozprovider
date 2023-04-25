@@ -22,6 +22,13 @@ Feature: Retrieve domains
               "companyName": "DemoCompany"
           },
           {
+              "domain": "retail.irontec.com",
+              "pointsTo": "proxyusers",
+              "id": 6,
+              "brandName": "",
+              "companyName": ""
+          },
+          {
               "domain": "sip.irontec.com",
               "pointsTo": "proxyusers",
               "id": 4,
@@ -34,13 +41,6 @@ Feature: Retrieve domains
               "id": 5,
               "brandName": "",
               "companyName": "Irontec Test Company"
-          },
-          {
-              "domain": "retail.irontec.com",
-              "pointsTo": "proxyusers",
-              "id": 6,
-              "brandName": "",
-              "companyName": ""
           }
       ]
       """
