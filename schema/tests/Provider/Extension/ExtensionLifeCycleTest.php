@@ -3,6 +3,7 @@
 namespace Tests\Provider\Extension;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
+use Ivoz\Ast\Domain\Model\QueueMember\QueueMember;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail as AstVoicemail;
 use Ivoz\Provider\Domain\Model\Contact\Contact;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
@@ -96,6 +97,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
             Voicemail::class,
             AstVoicemail::class,
             Contact::class,
+            QueueMember::class,
         ]);
     }
 
@@ -130,7 +132,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
         );
 
         $this->assertCount(
-            2,
+            3,
             $changelogEntries
         );
 

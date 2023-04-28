@@ -23,6 +23,7 @@ class UserLifecycleServiceCollection implements LifecycleServiceCollectionInterf
             \Ivoz\Provider\Domain\Service\User\UnsetBossAssistant::class => 30,
             \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByUser::class => 40,
             \Ivoz\Provider\Domain\Service\Voicemail\UpdateByUser::class => 100,
+            \Ivoz\Ast\Domain\Service\QueueMember\UpdateByUser::class => 200,
             \Ivoz\Provider\Domain\Service\Contact\UpdateByUser::class => 200,
         ],
         "post_remove" =>

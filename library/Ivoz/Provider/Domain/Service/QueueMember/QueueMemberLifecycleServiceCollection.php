@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\Extension;
+namespace Ivoz\Provider\Domain\Service\QueueMember;
 
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
@@ -11,7 +11,7 @@ use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 /**
  * @codeCoverageIgnore
  */
-class ExtensionLifecycleServiceCollection implements LifecycleServiceCollectionInterface
+class QueueMemberLifecycleServiceCollection implements LifecycleServiceCollectionInterface
 {
     use LifecycleServiceCollectionTrait;
 
@@ -19,20 +19,13 @@ class ExtensionLifecycleServiceCollection implements LifecycleServiceCollectionI
     public static $bindedBaseServices = [
         "post_persist" =>
         [
-            \Ivoz\Provider\Domain\Service\User\UpdateByExtension::class => 10,
-            \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByExtension::class => 20,
-            \Ivoz\Ast\Domain\Service\QueueMember\UpdateByExtension::class => 200,
-            \Ivoz\Provider\Domain\Service\Contact\UpdateByExtension::class => 200,
-        ],
-        "pre_remove" =>
-        [
-            \Ivoz\Provider\Domain\Service\Ivr\UpdateByExtension::class => 10,
+            \Ivoz\Ast\Domain\Service\QueueMember\UpdateByIvozQueueMember::class => 200,
         ],
     ];
 
     protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
     {
-        Assertion::isInstanceOf($service, ExtensionLifecycleEventHandlerInterface::class);
+        Assertion::isInstanceOf($service, QueueMemberLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

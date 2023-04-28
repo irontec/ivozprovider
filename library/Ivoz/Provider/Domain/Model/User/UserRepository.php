@@ -57,4 +57,8 @@ interface UserRepository extends ObjectRepository, Selectable
     public function findOneByTerminalId(
         ?int $terminalId
     ): ?UserInterface;
+
+    public function findOneByExtensionId(
+        ?int $extensionId
+    ): ?UserInterface;
 }

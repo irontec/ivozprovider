@@ -118,6 +118,30 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Ast/Domain/Model/QueueMember/QueueMemberAbstract.php">
+    <MixedArgument occurrences="2">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getQueueMember())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getQueueMember())</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Ast/Domain/Model/QueueMember/QueueMemberDtoAbstract.php">
+    <MissingParamType occurrences="2">
+      <code>$id</code>
+      <code>$id</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="1">
+      <code>getQueueMemberId</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>$id</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Ast/Domain/Model/QueueMember/QueueMemberTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
   <file src="Ivoz/Ast/Domain/Model/Voicemail/Voicemail.php">
     <MethodSignatureMismatch occurrences="1">
       <code>Voicemail</code>
@@ -8213,6 +8237,11 @@
     </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Queue/QueueLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/QueueMember/QueueMemberLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>

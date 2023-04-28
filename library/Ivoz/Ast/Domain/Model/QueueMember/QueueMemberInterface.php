@@ -1,13 +1,11 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\QueueMember;
+namespace Ivoz\Ast\Domain\Model\QueueMember;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
 * QueueMemberInterface
@@ -23,11 +21,8 @@ interface QueueMemberInterface extends LoggableEntityInterface
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
      */
-    public function getId(): ?int;
-
-    public function getAstQueueMemberName(): string;
+    public function getId(): string|int|null;
 
     public static function createDto(string|int|null $id = null): QueueMemberDto;
 
@@ -49,11 +44,19 @@ interface QueueMemberInterface extends LoggableEntityInterface
      */
     public function toDto(int $depth = 0): QueueMemberDto;
 
-    public function getPenalty(): ?int;
+    public function getUniqueid(): string;
 
-    public function getQueue(): QueueInterface;
+    public function getQueueName(): string;
 
-    public function setUser(UserInterface $user): static;
+    public function getInterface(): string;
 
-    public function getUser(): UserInterface;
+    public function getMembername(): string;
+
+    public function getStateInterface(): string;
+
+    public function getPenalty(): int;
+
+    public function getPaused(): int;
+
+    public function getQueueMember(): ?\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 }

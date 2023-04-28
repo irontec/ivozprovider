@@ -136,6 +136,31 @@ parameters:
 			path: Ivoz/Ast/Domain/Model/Queue/QueueRepository.php
 
 		-
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberDtoAbstract\\:\\:getQueueMemberId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Model/QueueMember/QueueMemberDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Model/QueueMember/QueueMemberDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberDtoAbstract\\:\\:setQueueMemberId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Model/QueueMember/QueueMemberDtoAbstract.php
+
+		-
+			message: "#^Interface Ivoz\\\\Ast\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Model/QueueMember/QueueMemberRepository.php
+
+		-
+			message: "#^Interface Ivoz\\\\Ast\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Model/QueueMember/QueueMemberRepository.php
+
+		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
