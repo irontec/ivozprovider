@@ -663,6 +663,11 @@ msgstr "Pannello di controllo"
 msgid "Copy callid"
 msgstr "Copia il callid"
 
+msgid "Corporation"
+msgid_plural "Corporations"
+msgstr[0] "Corporation"
+msgstr[1] "Corporations"
+
 msgid "Cost"
 msgstr "Costo"
 

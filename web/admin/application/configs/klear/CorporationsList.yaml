@@ -1,0 +1,89 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: corporationsList_screen
+  screens: &corporations_screensLink
+    corporationsList_screen: &corporationsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *Corporations
+      class: ui-silk-timeline-marker
+      title: _("List of %s %2s", ngettext('Corporation', 'Corporations', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/brand/settings/corporations.html"
+      forcedValues:
+        <<: *forcedBrand
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            corporationsEdit_screen: ${auth.acls.Corporations.update}
+          dialogs:
+            corporationsDel_dialog: ${auth.acls.Corporations.delete}
+          default: corporationsEdit_screen
+        order: &corporations_orderLink
+          name: true
+          description: true
+      options:
+        title: _("Options")
+        screens:
+          corporationsNew_screen: ${auth.acls.Corporations.create}
+        dialogs:
+          corporationsDel_dialog: ${auth.acls.Corporations.delete}
+    corporationsNew_screen: &corporationsNew_screenLink
+      <<: *Corporations
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s %2s", ngettext('Corporation', 'Corporations', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      forcedValues:
+        <<: *forcedBrand
+      fields:
+        order:
+          <<: *corporations_orderLink
+      fixedPositions: &corporations_fixedPositionsLink
+        group0:
+          colsPerRow: 12
+          fields:
+            name: 8
+            description: 12
+    corporationsEdit_screen: &corporationsEdit_screenLink
+      <<: *Corporations
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Corporation', 'Corporations', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fields:
+        order:
+          <<: *corporations_orderLink
+      fixedPositions:
+        <<: *corporations_fixedPositionsLink
+  dialogs: &corporations_dialogsLink
+    corporationsDel_dialog: &corporationsDel_dialogLink
+      <<: *Corporations
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Corporation', 'Corporations', 1))
+      description: _("Do you want to delete this %s?", ngettext('Corporation', 'Corporations', 1))
+      message: _("%s successfully deleted.", ngettext('Corporation', 'Corporations', 1))
+      multiItem: 1
+      labelOnList: 1
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

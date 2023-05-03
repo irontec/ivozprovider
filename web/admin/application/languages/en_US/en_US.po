@@ -653,6 +653,11 @@ msgstr "Control Panel"
 msgid "Copy callid"
 msgstr "Copy callid"
 
+msgid "Corporation"
+msgid_plural "Corporations"
+msgstr[0] "Corporation"
+msgstr[1] "Corporations"
+
 msgid "Cost"
 msgstr "Cost"
 

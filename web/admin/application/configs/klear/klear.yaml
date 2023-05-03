@@ -297,6 +297,10 @@ production:
               title: ngettext('Generic Match List', 'Generic Match Lists', 0)
               class: ui-silk-text-list-numbers
               description: _("List of %s", ngettext('Generic Match List', 'Generic Match Lists', 0))
+            CorporationsList:
+              title: ngettext('Corporation', 'Corporations', 0)
+              class: ui-silk-timeline-marker
+              description: _("List of %s", ngettext('Corporation', 'Corporations', 0))
         Views:
           title: _("Views")
           class: ui-silk-eye
