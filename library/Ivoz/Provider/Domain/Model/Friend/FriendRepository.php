@@ -26,4 +26,9 @@ interface FriendRepository extends ObjectRepository, Selectable
      * @return int
      */
     public function countRegistrableDevices(array $companyIds): int;
+
+    /**
+     * @return FriendInterface[]
+     */
+    public function findByCompanyAndInterCompany(int $company, int $interCompany): array;
 }
