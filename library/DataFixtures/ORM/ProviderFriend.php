@@ -38,6 +38,19 @@ class ProviderFriend extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        $item2 = $this->createEntityInstance(Friend::class);
+        (function () use ($fixture) {
+            $this->setName("testFriend2");
+            $this->setDirectConnectivity("intervpbx");
+            $this->setPriority(2);
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany2'));
+            $this->setInterCompany($fixture->getReference('_reference_ProviderCompany1'));
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderFriend2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
+
         $manager->flush();
     }
 
