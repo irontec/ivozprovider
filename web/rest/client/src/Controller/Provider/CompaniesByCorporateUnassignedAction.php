@@ -1,16 +1,11 @@
-<<<<<<< HEAD
-* b7b6249c8 - (HEAD -> PROVIDER-1172-backend-new-corporations-section, origin/PROVIDER-1172-backend-new-corporations-section) core: Added Friend repository method 59 minutes ago Roger Batista
-=======
 <?php
 
 namespace Controller\Provider;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Corporation\CorporationInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
-use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Symfony\Component\HttpFoundation\Request;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -62,7 +57,7 @@ class CompaniesByCorporateUnassignedAction
             if ($company->getId() === $interCompany->getId()) {
                 continue;
             }
-            
+
             $friends = $this->friendRepository->findByCompanyAndInterCompany(
                 (int) $company->getId(),
                 (int) $interCompany->getId()
@@ -78,4 +73,3 @@ class CompaniesByCorporateUnassignedAction
         return $response;
     }
 }
->>>>>>> 4d6c11a36 (fixup)
