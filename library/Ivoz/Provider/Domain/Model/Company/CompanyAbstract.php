@@ -22,6 +22,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
+use Ivoz\Provider\Domain\Model\Corporation\CorporationInterface;
 use Ivoz\Provider\Domain\Model\Language\Language;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
@@ -34,6 +35,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
+use Ivoz\Provider\Domain\Model\Corporation\Corporation;
 
 /**
 * CompanyAbstract
@@ -226,6 +228,11 @@ abstract class CompanyAbstract
     protected $maxDailyUsageNotificationTemplate = null;
 
     /**
+     * @var ?CorporationInterface
+     */
+    protected $corporation = null;
+
+    /**
      * Constructor
      */
     protected function __construct(
@@ -384,7 +391,8 @@ abstract class CompanyAbstract
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
-            ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()));
+            ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()))
+            ->setCorporation($fkTransformer->transform($dto->getCorporation()));
 
         $self->initChangelog();
 
@@ -476,7 +484,8 @@ abstract class CompanyAbstract
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
-            ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()));
+            ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()))
+            ->setCorporation($fkTransformer->transform($dto->getCorporation()));
 
         return $this;
     }
@@ -526,7 +535,8 @@ abstract class CompanyAbstract
             ->setFaxNotificationTemplate(NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
             ->setInvoiceNotificationTemplate(NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
             ->setCallCsvNotificationTemplate(NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth))
-            ->setMaxDailyUsageNotificationTemplate(NotificationTemplate::entityToDto(self::getMaxDailyUsageNotificationTemplate(), $depth));
+            ->setMaxDailyUsageNotificationTemplate(NotificationTemplate::entityToDto(self::getMaxDailyUsageNotificationTemplate(), $depth))
+            ->setCorporation(Corporation::entityToDto(self::getCorporation(), $depth));
     }
 
     /**
@@ -574,7 +584,8 @@ abstract class CompanyAbstract
             'faxNotificationTemplateId' => self::getFaxNotificationTemplate()?->getId(),
             'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate()?->getId(),
             'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
-            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate()?->getId()
+            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate()?->getId(),
+            'corporationId' => self::getCorporation()?->getId()
         ];
     }
 
@@ -1069,5 +1080,17 @@ abstract class CompanyAbstract
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->maxDailyUsageNotificationTemplate;
+    }
+
+    protected function setCorporation(?CorporationInterface $corporation = null): static
+    {
+        $this->corporation = $corporation;
+
+        return $this;
+    }
+
+    public function getCorporation(): ?CorporationInterface
+    {
+        return $this->corporation;
     }
 }
