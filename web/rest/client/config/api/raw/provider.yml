@@ -1020,9 +1020,6 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
           eq: "user.getCompany().getId()"
     - or:
       - inheritedOrNull:
-          interCompany: 'Ivoz\Provider\Domain\Model\Company\Company'
-    - or:
-      - inheritedOrNull:
           callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
     - or:
       - inheritedOrNull:
