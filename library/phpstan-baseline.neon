@@ -3651,6 +3651,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCorporationId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCountryId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
@@ -3737,6 +3742,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:setContacts\\(\\) has parameter \\$contacts with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:setCorporationId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
@@ -4564,6 +4574,31 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Contact/ContactRepository.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Corporation\\\\CorporationDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Corporation/CorporationDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Corporation\\\\CorporationDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Corporation/CorporationDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Corporation\\\\CorporationDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Corporation/CorporationDtoAbstract.php
+
+		-
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Corporation\\\\CorporationRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Corporation/CorporationRepository.php
+
+		-
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Corporation\\\\CorporationRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Corporation/CorporationRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"

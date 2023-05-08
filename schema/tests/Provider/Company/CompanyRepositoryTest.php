@@ -22,6 +22,7 @@ class CompanyRepositoryTest extends KernelTestCase
         $this->it_finds_prepaid_companies();
         $this->it_finds_vpbx_company_ids_by_brand();
         $this->it_finds_one_by_domain();
+        $this->it_finds_by_corporation_id();
     }
 
     public function it_finds_one_by_domain()
@@ -104,6 +105,25 @@ class CompanyRepositoryTest extends KernelTestCase
 
         $this->assertIsInt(
             $ids[0]
+        );
+    }
+
+    public function it_finds_by_corporation_id()
+    {
+        /** @var CompanyRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Company::class);
+
+        $companies = $repository->findByCorporationId(1);
+
+        $this->assertIsArray(
+            $companies
+        );
+
+        $this->assertInstanceOf(
+            CompanyInterface::class,
+            $companies[0]
         );
     }
 }

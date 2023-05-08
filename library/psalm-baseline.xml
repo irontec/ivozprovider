@@ -2857,7 +2857,7 @@
     </UnnecessaryVarAnnotation>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyAbstract.php">
-    <MixedArgument occurrences="32">
+    <MixedArgument occurrences="34">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($country)</code>
@@ -2866,6 +2866,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServer())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCallCsvNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCallCsvNotificationTemplate())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCorporation())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCorporation())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDefaultTimezone())</code>
@@ -2898,7 +2900,8 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php">
-    <MissingParamType occurrences="17">
+    <MissingParamType occurrences="18">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
@@ -2917,10 +2920,11 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="16">
+    <MissingReturnType occurrences="17">
       <code>getApplicationServerId</code>
       <code>getBrandId</code>
       <code>getCallCsvNotificationTemplateId</code>
+      <code>getCorporationId</code>
       <code>getCountryId</code>
       <code>getCurrencyId</code>
       <code>getDefaultTimezoneId</code>
@@ -2935,7 +2939,8 @@
       <code>getTransformationRuleSetId</code>
       <code>getVoicemailNotificationTemplateId</code>
     </MissingReturnType>
-    <MixedArgument occurrences="16">
+    <MixedArgument occurrences="17">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
@@ -3545,6 +3550,35 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Contact/ContactTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Corporation/CorporationAbstract.php">
+    <MixedArgument occurrences="2">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Corporation/CorporationDto.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Corporation/CorporationDtoAbstract.php">
+    <MissingParamType occurrences="2">
+      <code>$id</code>
+      <code>$id</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="1">
+      <code>getBrandId</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>$id</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Corporation/CorporationTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>

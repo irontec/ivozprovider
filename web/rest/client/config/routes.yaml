@@ -113,3 +113,12 @@ get_multiple_recorderded_files:
     _controller: Controller\Provider\RecordedFilesZipAction
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Recording\Recording'
     _api_collection_operation_name: 'get_multiple_recorderded_files'
+
+get_companies_corporate_unassigned:
+  path: '/companies/corporate/unassigned'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\CompaniesByCorporateUnassignedAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Company\Company'
+    _api_collection_operation_name: 'get_companies_corporate_unassigned'
+    _api_receive: false

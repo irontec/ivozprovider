@@ -260,6 +260,7 @@ class CompanyDto extends CompanyDtoAbstract
             $response['geoIpAllowedCountries'] = 'geoIpAllowedCountries';
             $response['routingTagIds'] = 'routingTagIds';
             $response['codecIds'] = 'codecIds';
+            $response['corporationId'] = 'corporation';
 
             return self::filterFieldsForBrandAdmin($response);
         }
@@ -348,6 +349,7 @@ class CompanyDto extends CompanyDtoAbstract
             'outgoingDdiId',
             'outgoingDdiRuleId',
             'domainName',
+            'corporationId'
         ];
 
         $response = array_filter(

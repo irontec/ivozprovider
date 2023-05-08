@@ -257,6 +257,22 @@ Ivoz\Provider\Domain\Model\Company\Company:
     get: ~
   collectionOperations:
     get: ~
+    get_companies_corporate_unassigned:
+      method: 'GET'
+      path: '/companies/corporate/unassigned'
+      route_name: 'get_companies_corporate_unassigned'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: _includeId
+            in: query
+            type: integer
+            required: false
+            description: 'Ensure certain company id is included'
   properties:
     name:
       attributes:

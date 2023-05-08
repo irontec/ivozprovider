@@ -361,6 +361,19 @@ Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
       - urlType
 Ivoz\Provider\Domain\Model\WebPortal\Logo: ~
 
+Ivoz\Provider\Domain\Model\Corporation\Corporation:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+    swagger_context:
+      required:
+      - brand
+
 Ivoz\Provider\Domain\Model\Company\Invoicing: ~
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations:

@@ -193,6 +193,15 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
         return $response;
     }
 
+    public function findByCorporationId(int $corporationId): ?array
+    {
+        $response = $this->findBy([
+            'corporation' => $corporationId
+        ]);
+
+        return $response;
+    }
+
     public function getBillingEnabledCompanyIdsByBrand(int $brandId): array
     {
         $qb = $this->createQueryBuilder('self');

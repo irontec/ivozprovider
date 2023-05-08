@@ -231,6 +231,24 @@ doctrine:
         Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
       Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface:
         Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule
+      Ivoz\Provider\Domain\Model\User\UserInterface:
+        Ivoz\Provider\Domain\Model\User\User
+      Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface:
+        Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate
+      Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface:
+        Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup
+      Ivoz\Provider\Domain\Model\Destination\DestinationInterface:
+        Ivoz\Provider\Domain\Model\Destination\Destination
+      Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface:
+        Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
+      Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface:
+        Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup
+      Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface:
+        Ivoz\Provider\Domain\Model\Voicemail\Voicemail
+      Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageInterface:
+        Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage
+      Ivoz\Provider\Domain\Model\Corporation\CorporationInterface:
+        Ivoz\Provider\Domain\Model\Corporation\Corporation
       Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtableInterface:
         Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtable
       Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface:
@@ -241,8 +259,7 @@ doctrine:
         Ivoz\Kam\Domain\Model\UsersHtable\UsersHtable
       Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationInterface:
         Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation
-      Ivoz\Provider\Domain\Model\User\UserInterface:
-        Ivoz\Provider\Domain\Model\User\User
+
       Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface:
         Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway
       Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface:
@@ -279,20 +296,6 @@ doctrine:
         Ivoz\Kam\Domain\Model\User\User
       Ivoz\Kam\Domain\Model\Version\VersionInterface:
         Ivoz\Kam\Domain\Model\Version\Version
-      Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface:
-        Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate
-      Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface:
-        Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup
-      Ivoz\Provider\Domain\Model\Destination\DestinationInterface:
-        Ivoz\Provider\Domain\Model\Destination\Destination
-      Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface:
-        Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
-      Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface:
-        Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup
-      Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface:
-        Ivoz\Provider\Domain\Model\Voicemail\Voicemail
-      Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageInterface:
-        Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage
       Ivoz\Cgr\Domain\Model\TpAccount\TpAccountInterface:
         Ivoz\Cgr\Domain\Model\TpAccount\TpAccount
       Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface:

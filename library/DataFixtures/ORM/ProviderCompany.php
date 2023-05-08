@@ -62,6 +62,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
+            $this->setCorporation($fixture->getReference('_reference_Corporation1'));
         })->call($item1);
 
         $this->addReference('_reference_ProviderCompany1', $item1);
@@ -97,6 +98,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
+            $this->setCorporation($fixture->getReference('_reference_Corporation1'));
         })->call($item2);
 
         $this->addReference('_reference_ProviderCompany2', $item2);
@@ -202,7 +204,8 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             ProviderDomain::class,
             ProviderCountry::class,
             ProviderTransformationRuleSet::class,
-            ProviderNotificationTemplate::class
+            ProviderNotificationTemplate::class,
+            ProviderCorporation::class
         );
     }
 }
