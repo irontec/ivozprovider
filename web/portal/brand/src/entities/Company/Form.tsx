@@ -64,6 +64,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
       fields: [
         'name',
         isVpbx && 'domainUsers',
+        isVpbx && 'corporation',
         'featureIds',
         hasBillingFeature && 'billingMethod',
         isResidential && 'outgoingDdi',

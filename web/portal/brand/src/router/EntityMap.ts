@@ -450,7 +450,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _('Client endpoint'),
+      label: _('Client configurations'),
       children: [
         {
           entity: entities.ResidentialDevice,
@@ -459,6 +459,9 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.RetailAccount,
           isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
+        },
+        {
+          entity: entities.Corporation,
         },
       ],
     },

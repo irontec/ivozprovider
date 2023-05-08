@@ -10,6 +10,7 @@ import {
   VoicemailSelectOptions,
   MaxDailyUsageSelectOptions,
 } from '../NotificationTemplate/SelectOptions';
+import { CorporationSelectOptions } from './SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   row,
@@ -30,6 +31,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
       'invoiceNotificationTemplate',
       'callCsvNotificationTemplate',
       'maxDailyUsageNotificationTemplate',
+      'corporation',
     ],
   });
 
@@ -45,6 +47,15 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
         companyId: row?.id as number,
       }
     );
+  }
+
+  if (row?.type === 'vpbx') {
+    promises[promises.length] = CorporationSelectOptions({
+      callback: (options) => {
+        response.corporation = options;
+      },
+      cancelToken,
+    });
   }
 
   promises[promises.length] = CountryNameSelectOptions({

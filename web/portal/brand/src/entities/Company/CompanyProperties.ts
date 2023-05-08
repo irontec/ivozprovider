@@ -53,6 +53,7 @@ export type CompanyPropertyList<T> = {
   geoIpAllowedCountries?: T;
   routingTagIds?: T;
   codecIds?: T;
+  corporation?: T;
 };
 
 export type CompanyProperties = CompanyPropertyList<Partial<PropertySpec>>;

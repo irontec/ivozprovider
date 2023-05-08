@@ -5,6 +5,7 @@ import { DestinationRatePropertiesList } from './DestinationRateProperties';
 import { getI18n } from 'react-i18next';
 import store from 'store';
 import { DestinationPropertyList } from '../Destination/DestinationProperties';
+import { EntityValues } from '@irontec/ivoz-ui';
 
 /** TODO remove this file unless you need to change default behaviour **/
 const foreignKeyResolver: foreignKeyResolverType = async function ({
@@ -27,9 +28,9 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
       fkFld: 'destination',
       entity: {
         ...entities.Destination,
-        toStr: (row: DestinationPropertyList) => {
+        toStr: (row: DestinationPropertyList<EntityValues>) => {
           const language = getI18n().language.substring(0, 2);
-          return `${row.name[language]} (${row.prefix})`;
+          return `${row.name?.[language]} (${row.prefix})`;
         },
       },
       cancelToken,

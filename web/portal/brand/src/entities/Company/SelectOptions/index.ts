@@ -3,6 +3,7 @@ import VpbxSelectOptions from './VpbxSelectOptions';
 import RetailSelectOptions from './RetailSelectOptions';
 import ResidentialSelectOptions from './ResidentialSelectOptions';
 import WholesaleSelectOptions from './WholesaleSelectOptions';
+import CorporationSelectOptions from './CorporationSelectOptions';
 
 export default CompanySelectOptions;
 
@@ -11,4 +12,5 @@ export {
   RetailSelectOptions,
   ResidentialSelectOptions,
   WholesaleSelectOptions,
+  CorporationSelectOptions,
 };

@@ -27,6 +27,7 @@ Feature: Retrieve companies
                   "nif": "12345678A"
               },
               "outgoingDdi": null,
+              "corporation": 1,
               "domainName": "127.0.0.1",
               "featureIds": [
                   1,
@@ -52,6 +53,7 @@ Feature: Retrieve companies
                   "nif": "12345678-Z"
               },
               "outgoingDdi": null,
+              "corporation": 1,
               "domainName": "test.irontec.com",
               "featureIds": [],
               "geoIpAllowedCountries": [],
@@ -71,6 +73,7 @@ Feature: Retrieve companies
                   "nif": "12345679-Z"
               },
               "outgoingDdi": null,
+              "corporation": null,
               "domainName": "retail.irontec.com",
               "featureIds": [],
               "geoIpAllowedCountries": [],
@@ -90,6 +93,7 @@ Feature: Retrieve companies
                   "nif": "12345679-Z"
               },
               "outgoingDdi": null,
+              "corporation": null,
               "domainName": "retail.irontec.com",
               "featureIds": [],
               "geoIpAllowedCountries": [],
@@ -206,6 +210,11 @@ Feature: Retrieve companies
               "name": "CallCsv notification",
               "type": "callCsv",
               "id": 2
+          },
+          "corporation": {
+              "name": "Irontec Test Corporation",
+              "description": "Irontec Test Desc Corporation",
+              "id": 1
           },
           "domainName": "127.0.0.1",
           "featureIds": [
