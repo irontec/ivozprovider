@@ -69,20 +69,6 @@ class FriendTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'interCompany',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
-                        ],
-                        [
-                            'interCompany',
-                            'isNull',
-                            null
-                        ]
-                    ]
-                ],
-                [
-                    'or' => [
-                        [
                             'callAcl',
                             'in',
                             'CallAclRepository([["company","eq","user.getCompany().getId()"]])'
