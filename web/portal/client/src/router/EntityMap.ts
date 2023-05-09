@@ -130,6 +130,10 @@ const getEntityMap = (): ExtendedRouteMap => {
           },
           isAccessible: (aboutMe) => aboutMe.billingInfo,
         },
+        {
+          entity: entities.Invoice,
+          isAccessible: (aboutMe) => aboutMe.billingInfo,
+        },
       ],
     },
     {
@@ -178,10 +182,6 @@ const getEntityMap = (): ExtendedRouteMap => {
               filterBy: 'conditionalRoute',
             },
           ],
-        },
-        {
-          entity: entities.Invoice,
-          isAccessible: (aboutMe) => aboutMe.billingInfo,
         },
         {
           entity: entities.Friend,
