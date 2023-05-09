@@ -55,7 +55,8 @@ Feature: Create friends
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "interCompany": null
       }
       """
 
