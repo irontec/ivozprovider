@@ -660,6 +660,11 @@ msgstr "Panel de control"
 msgid "Copy callid"
 msgstr "Copiar callid"
 
+msgid "Corporation"
+msgid_plural "Corporations"
+msgstr[0] "Corporación"
+msgstr[1] "Corporaciones"
+
 msgid "Cost"
 msgstr "Coste"
 

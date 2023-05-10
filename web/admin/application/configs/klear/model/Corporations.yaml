@@ -1,0 +1,37 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\Corporation\Corporation
+  fields:
+    brand:
+      title: ngettext('Corporation', 'Corporations', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      required: true
+      default: true
+      maxLength: 255
+    description:
+      title: _('Description')
+      type: text
+      trim: both
+      maxLength: 255
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

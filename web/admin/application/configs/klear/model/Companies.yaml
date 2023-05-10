@@ -36,6 +36,21 @@ production:
       type: text
       trim: both
       defaultValue: ''
+    corporation:
+      title: ngettext('Corporation', 'Corporations', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Corporation\Corporation
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Corporation.name: asc
+        'null': _("Unassigned")
     defaultTimezone:
       title: _('Default timezone')
       type: select

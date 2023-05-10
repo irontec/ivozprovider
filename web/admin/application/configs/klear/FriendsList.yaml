@@ -184,13 +184,14 @@ production:
         order:
           <<: *friends_orderLink
         blacklist:
-          interCompany: ${auth.isCompanyOperator}
           domain: true
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true
           disallow: true
           statusIcon: true
+        readOnly:
+          interCompany: true
       fixedPositions:
           <<: *friends_FixedPositionsLink
       forcedValues:
