@@ -37,6 +37,7 @@ const Corporation: EntityInterface = {
   path: '/corporations',
   toStr: (row: CorporationPropertyList<EntityValue>) => row.name as string,
   columns: ['name', 'description'],
+  defaultOrderBy: 'name',
   properties,
   selectOptions,
   foreignKeyResolver,
