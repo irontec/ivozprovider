@@ -59,4 +59,11 @@ interface CompanyRepository extends ObjectRepository, Selectable
      * @return CompanyInterface[] | null
      */
     public function findByCorporationId(int $corporationId): ?array;
+
+
+    /**
+     * Used by brand API access controls
+     * @return int[]
+     */
+    public function getCompanyIdsByAdminCorporation(AdministratorInterface $admin): array;
 }
