@@ -63,6 +63,11 @@ class FriendTest extends KernelTestCase
                             'company',
                             'eq',
                             'user.getCompany().getId()'
+                        ],
+                        [
+                            'interCompany',
+                            'in',
+                            'companyRepository.getCompanyIdsByAdminCorporation(user)',
                         ]
                     ]
                 ],
