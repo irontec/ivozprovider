@@ -2,6 +2,8 @@
 
 namespace Tests\Provider\Company;
 
+use Ivoz\Provider\Domain\Model\Administrator\Administrator;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
@@ -23,6 +25,7 @@ class CompanyRepositoryTest extends KernelTestCase
         $this->it_finds_vpbx_company_ids_by_brand();
         $this->it_finds_one_by_domain();
         $this->it_finds_by_corporation_id();
+        $this->it_finds_companyIds_by_admin_corporation();
     }
 
     public function it_finds_one_by_domain()
@@ -124,6 +127,29 @@ class CompanyRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             CompanyInterface::class,
             $companies[0]
+        );
+    }
+
+    public function it_finds_companyIds_by_admin_corporation()
+    {
+        /** @var CompanyRepository $companyRepository */
+        $companyRepository = $this
+            ->em
+            ->getRepository(Company::class);
+
+        /** @var AdministratorRepository $adminRepository */
+        $adminRepository = $this->em->getRepository(Administrator::class);
+
+        $admin = $adminRepository->findClientAdminByUsername('test_company_admin');
+        $companyIds = $companyRepository->getCompanyIdsByAdminCorporation($admin);
+
+        $this->assertIsArray(
+            $companyIds
+        );
+
+        $this->assertEquals(
+            1,
+            $companyIds[0]
         );
     }
 }
