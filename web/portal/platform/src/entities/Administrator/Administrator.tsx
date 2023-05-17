@@ -1,18 +1,15 @@
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { AdministratorProperties } from './AdministratorProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+
 import AdministratorRelPublicEntity from '../AdministratorRelPublicEntity/AdministratorRelPublicEntity';
+import { AdministratorProperties } from './AdministratorProperties';
 
 const properties: AdministratorProperties = {
   username: {
@@ -84,10 +81,26 @@ const Administrator: EntityInterface = {
   properties,
   columns: ['username', 'active', 'restricted'],
   ChildDecorator,
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Administrator;

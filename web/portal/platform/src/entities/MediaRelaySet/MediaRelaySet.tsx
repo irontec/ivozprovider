@@ -1,18 +1,17 @@
-import PlayLessonIcon from '@mui/icons-material/PlayLesson';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import PlayLessonIcon from '@mui/icons-material/PlayLesson';
+
 import {
   MediaRelaySetProperties,
   MediaRelaySetPropertyList,
 } from './MediaRelaySetProperties';
-import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
 
 const properties: MediaRelaySetProperties = {
   description: {
@@ -47,9 +46,17 @@ const MediaRelaySet: EntityInterface = {
   toStr: (row: MediaRelaySetPropertyList<EntityValue>) => row.name as string,
   properties,
   columns: ['name', 'description'],
-  selectOptions,
   ChildDecorator,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default MediaRelaySet;

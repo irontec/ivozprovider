@@ -2,6 +2,7 @@ import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
+
 import { FeaturePropertiesList } from './FeatureProperties';
 
 const FeatureSelectOptions: SelectOptionsType = ({

@@ -1,13 +1,13 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
 import {
   PublicEntityProperties,
   PublicEntityPropertyList,
 } from './PublicEntityProperties';
-import { EntityValues } from '@irontec/ivoz-ui';
 
 const properties: PublicEntityProperties = {
   iden: {
@@ -39,7 +39,11 @@ const PublicEntity: EntityInterface = {
   toStr: (row: PublicEntityPropertyList<EntityValues>) =>
     row.name?.en as string,
   properties,
-  selectOptions,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default PublicEntity;

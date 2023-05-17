@@ -1,14 +1,13 @@
-import CallIcon from '@mui/icons-material/Call';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import CallIcon from '@mui/icons-material/Call';
+
 import {
   TerminalModelProperties,
   TerminalModelPropertyList,
 } from './TerminalModelProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: TerminalModelProperties = {
   description: {
@@ -54,8 +53,16 @@ const TerminalModel: EntityInterface = {
     'genericUrlPattern',
     'specificUrlPattern',
   ],
-  selectOptions,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default TerminalModel;

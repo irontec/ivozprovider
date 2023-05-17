@@ -1,18 +1,17 @@
-import RequestQuoteIcon from '@mui/icons-material/RequestQuote';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import RequestQuoteIcon from '@mui/icons-material/RequestQuote';
+
 import {
   InvoiceTemplateProperties,
   InvoiceTemplatePropertyList,
 } from './InvoiceTemplateProperties';
-import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
 
 const properties: InvoiceTemplateProperties = {
   description: {
@@ -59,8 +58,16 @@ const InvoiceTemplate: EntityInterface = {
   toStr: (row: InvoiceTemplatePropertyList<EntityValue>) => row.name as string,
   properties,
   columns: ['name', 'description'],
-  selectOptions,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default InvoiceTemplate;

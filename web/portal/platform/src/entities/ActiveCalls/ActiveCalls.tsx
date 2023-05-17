@@ -2,6 +2,7 @@ import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CellTowerIcon from '@mui/icons-material/CellTower';
+
 import { ActiveCallProperties } from './ActiveCallsProperties';
 
 const properties: ActiveCallProperties = {};

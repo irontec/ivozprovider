@@ -1,17 +1,13 @@
 import { EntityValue } from '@irontec/ivoz-ui';
-import defaultEntityBehavior, {
-  foreignKeyGetter,
-  foreignKeyResolver,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import Form from './Form';
+
 import {
   NotificationTemplateProperties,
   NotificationTemplatePropertyList,
 } from './NotificationTemplateProperties';
-import selectOptions from './SelectOptions';
 
 const properties: NotificationTemplateProperties = {
   name: {
@@ -50,11 +46,17 @@ const NotificationTemplate: EntityInterface = {
   columns: ['name', 'type'],
   toStr: (row: NotificationTemplatePropertyList<EntityValue>) =>
     row.name as string,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions,
   properties,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default NotificationTemplate;

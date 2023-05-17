@@ -1,14 +1,13 @@
-import PlayLessonIcon from '@mui/icons-material/PlayLesson';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import PlayLessonIcon from '@mui/icons-material/PlayLesson';
+
 import {
   RtpengineProperties,
   RtpenginePropertyList,
 } from './RtpengineProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: RtpengineProperties = {
   url: {
@@ -34,8 +33,16 @@ const Rtpengine: EntityInterface = {
   toStr: (row: RtpenginePropertyList<EntityValue>) => row.url as string,
   properties,
   columns: ['url', 'weight', 'description', 'disabled'],
-  selectOptions,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Rtpengine;
