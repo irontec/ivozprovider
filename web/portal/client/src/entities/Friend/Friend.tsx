@@ -1,12 +1,18 @@
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import Password from 'entities/Terminal/Field/Password';
 import StatusIcon from './Field/StatusIcon';
 import Form from './Form';
 import { FriendProperties } from './FriendProperties';
-import Password from 'entities/Terminal/Field/Password';
-import selectOptions from './SelectOptions';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import FriendsPattern from '../FriendsPattern/FriendsPattern';
 
 const properties: FriendProperties = {
   name: {
@@ -152,7 +158,7 @@ const properties: FriendProperties = {
           'callACL',
           'rtpEncryption',
         ],
-        hide: ['multiContact'],
+        hide: ['multiContact', 'interCompany'],
       },
       no: {
         show: [
@@ -168,12 +174,11 @@ const properties: FriendProperties = {
           'rtpEncryption',
           'multiContact',
         ],
-        hide: ['ip', 'port', 'transport'],
+        hide: ['ip', 'port', 'transport', 'interCompany'],
       },
       intervpbx: {
         show: [],
         hide: [
-          'name',
           'ip',
           'port',
           'transport',
@@ -255,11 +260,31 @@ const properties: FriendProperties = {
     label: _('Status'),
     component: StatusIcon,
   },
+  interCompany: {
+    label: _('Target client'),
+    required: true,
+    null: _('Not configured'),
+    default: '__null__',
+  },
+};
+
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  if (row.directConnectivity === 'intervpbx' && isEntityItem(routeMapItem)) {
+    const actionsToHide = [FriendsPattern.iden];
+
+    if (actionsToHide.includes(routeMapItem.entity.iden)) {
+      return null;
+    }
+  }
+
+  return DefaultChildDecorator(props);
 };
 
 const columns = ['name', 'domain', 'description', 'priority', 'statusIcon'];
 
-const friend: EntityInterface = {
+const Friend: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FavoriteIcon,
   iden: 'Friend',
@@ -273,9 +298,8 @@ const friend: EntityInterface = {
   },
   Form,
   toStr: (row) => (row?.name as string) || '',
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
-  },
+  foreignKeyGetter,
+  ChildDecorator,
 };
 
-export default friend;
+export default Friend;

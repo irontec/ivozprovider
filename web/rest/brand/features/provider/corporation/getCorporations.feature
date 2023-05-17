@@ -16,10 +16,12 @@ Feature: Retrieve corporations
       [
           {
               "name": "Irontec Test Corporation",
+              "description": "Irontec Test Desc Corporation",
               "id": 1
           },
           {
               "name": "Irontec Test Corporation2",
+              "description": "Irontec Test Desc Corporation",
               "id": 2
           }
       ]

@@ -95,6 +95,7 @@ Feature: Update company
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": 2,
+          "corporation": 1,
           "featureIds": [
               3
           ],

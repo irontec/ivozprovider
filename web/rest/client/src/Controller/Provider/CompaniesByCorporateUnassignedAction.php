@@ -24,7 +24,7 @@ class CompaniesByCorporateUnassignedAction
      */
     public function __invoke(Request $request): array
     {
-        //$corporationId = (int) $request->query->get('_includeId');
+        $includeId = $request->query->get('_includeId');
         $token =  $this->tokenStorage->getToken();
 
 
@@ -54,6 +54,10 @@ class CompaniesByCorporateUnassignedAction
         }
 
         foreach ($companies as $interCompany) {
+            if (!is_null($includeId) && $interCompany->getId() === (int) $includeId) {
+                $response[] = $interCompany;
+            }
+
             if ($company->getId() === $interCompany->getId()) {
                 continue;
             }

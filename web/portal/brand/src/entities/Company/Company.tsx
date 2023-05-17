@@ -351,6 +351,11 @@ const properties: CompanyProperties = {
     type: 'array',
     $ref: '#/definitions/Codec',
   },
+  corporation: {
+    label: _('Corporations'),
+    null: _('Not configured'),
+    default: '__null__',
+  },
 };
 
 const Company: EntityInterface = {

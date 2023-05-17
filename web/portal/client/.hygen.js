@@ -4,6 +4,6 @@ module.exports = {
   templates: `${__dirname}/../node_modules/@irontec/ivoz-ui/hygen/templates`,
   helpers: {
     ...helpers,
-    url: () => "https://localhost/api/brand/docs.json",
+    url: () => "https://localhost/api/client/docs.json",
   },
 };

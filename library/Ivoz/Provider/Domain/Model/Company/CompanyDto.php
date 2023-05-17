@@ -321,6 +321,7 @@ class CompanyDto extends CompanyDtoAbstract
             'maxDailyUsageNotificationTemplateId',
             'currentDayUsage' => 'currentDayUsage',
             'domainName',
+            'corporationId'
         ];
 
         return array_filter(

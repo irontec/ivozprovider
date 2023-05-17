@@ -1014,13 +1014,16 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    delete_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
     write_access_control:
     - and:
       - company:
           eq: "user.getCompany().getId()"
-    - or:
-      - inheritedOrNull:
-          interCompany: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - interCompany:
+          in: "companyRepository.getCompanyIdsByAdminCorporation(user)"
     - or:
       - inheritedOrNull:
           callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'

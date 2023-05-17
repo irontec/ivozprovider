@@ -14,6 +14,7 @@ class CorporationDto extends CorporationDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
+                'description' => 'description'
             ];
         }
 

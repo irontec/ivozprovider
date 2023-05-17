@@ -20,7 +20,8 @@ Feature: Retrieve friends status
               "priority": 2,
               "directConnectivity": "intervpbx",
               "id": 2,
-              "domain": 5
+              "domain": 5,
+              "interCompany": 1
           },
           {
               "name": "testFriend",
@@ -28,7 +29,8 @@ Feature: Retrieve friends status
               "priority": 1,
               "directConnectivity": "yes",
               "id": 1,
-              "domain": 3
+              "domain": 3,
+              "interCompany": null
           }
       ]
       """

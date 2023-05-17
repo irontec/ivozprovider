@@ -63,20 +63,11 @@ class FriendTest extends KernelTestCase
                             'company',
                             'eq',
                             'user.getCompany().getId()'
-                        ]
-                    ]
-                ],
-                [
-                    'or' => [
-                        [
-                            'interCompany',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'interCompany',
-                            'isNull',
-                            null
+                            'in',
+                            'companyRepository.getCompanyIdsByAdminCorporation(user)',
                         ]
                     ]
                 ],

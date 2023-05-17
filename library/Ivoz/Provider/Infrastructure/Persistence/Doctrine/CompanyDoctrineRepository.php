@@ -5,7 +5,6 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
@@ -226,5 +225,45 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
                     'id'
                 )
             );
+    }
+
+    /**
+     * Used by brand API access controls
+     * @inheritdoc
+     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getCompanyIdsByAdminCorporation
+     */
+    public function getCompanyIdsByAdminCorporation(AdministratorInterface $admin): array
+    {
+        if (!$admin->isVpbxAdmin()) {
+            throw new \DomainException('User must be client admin');
+        }
+
+        $company = $admin->getCompany();
+
+        if (is_null($company)) {
+            throw new \DomainException('Company cannot be null');
+        }
+
+        $corporation = $company->getCorporation();
+
+        if (is_null($corporation)) {
+            throw new \DomainException('Corporation cannot be null');
+        }
+
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.id')
+            ->where(
+                $expression->eq(
+                    'self.corporation',
+                    $corporation->getId()
+                )
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_column($result, 'id');
     }
 }
