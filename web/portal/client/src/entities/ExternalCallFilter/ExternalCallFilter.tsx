@@ -1,12 +1,12 @@
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { ExternalCallFilterProperties } from './ExternalCallFilterProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+
+import {
+  ExternalCallFilterProperties,
+  ExternalCallFilterPropertyList,
+} from './ExternalCallFilterProperties';
 
 const holidayFields = [
   'holidayNumberCountry',
@@ -216,18 +216,32 @@ const externalCallFilter: EntityInterface = {
   iden: 'ExternalCallFilter',
   title: _('External call filter', { count: 2 }),
   path: '/external_call_filters',
-  toStr: (row: any) => row.name,
+  toStr: (row: ExternalCallFilterPropertyList<string>) => `${row.name}`,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ExternalCallFilters',
   },
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

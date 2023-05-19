@@ -1,10 +1,8 @@
-import QuickreplyIcon from '@mui/icons-material/Quickreply';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import selectOptions from './SelectOptions';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import QuickreplyIcon from '@mui/icons-material/Quickreply';
 
 const properties: PartialPropertyList = {
   name: {
@@ -48,9 +46,15 @@ const outgoingDdiRule: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'OutgoingDDIRules',
   },
-  Form,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

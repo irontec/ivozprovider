@@ -1,10 +1,9 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { EntityValue } from '@irontec/ivoz-ui';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
 import { CompanyProperties, CompanyPropertyList } from './CompanyProperties';
 
 const properties: CompanyProperties = {
@@ -66,8 +65,16 @@ const Company: EntityInterface = {
   path: '/companies',
   toStr: (row: CompanyPropertyList<EntityValue>) => (row?.name as string) || '',
   properties,
-  selectOptions,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Company;

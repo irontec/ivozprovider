@@ -1,8 +1,9 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { CompanyPropertiesList } from '../CompanyProperties';
-import { DropdownChoices } from '@irontec/ivoz-ui';
 import store from 'store';
+
+import { CompanyPropertiesList } from '../CompanyProperties';
 
 const CompanySelectOptions: SelectOptionsType = ({
   callback,

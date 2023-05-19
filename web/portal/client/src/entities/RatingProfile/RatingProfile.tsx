@@ -1,10 +1,9 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+
 import { RatingProfileProperties } from './RatingProfileProperties';
-import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: RatingProfileProperties = {
   activationTime: {
@@ -30,8 +29,16 @@ const ratingProfile: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'RatingProfiles',
   },
-  Form,
-  foreignKeyResolver,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default ratingProfile;

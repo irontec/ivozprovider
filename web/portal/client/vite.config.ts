@@ -50,5 +50,35 @@ export default ({ mode }) => {
         define: {
             "process.env.BASE_URL": `"${base}"`
         },
+        build: {
+            minify: true,
+            rollupOptions: {
+                output: {
+                    manualChunks: (id, { getModuleInfo, getModuleIds }) => {
+
+                        if (id.startsWith('vite/') || id.startsWith('\0vite/')) {
+                            // Put the Vite modules and virtual modules (beginning with \0) into a vite chunk.
+                            return 'vite';
+                        }
+
+                        if (id.includes('/node_modules/')) {
+                            return 'vendor';
+                        }
+
+                        if (
+                            id.includes('ForeignKeyResolver.ts')
+                            || id.includes('ForeignKeyGetter.ts')
+                            || id.includes('Form.ts')
+                            || id.includes('SelectOptions.ts')
+                            || id.includes('/SelectOptions/')
+                        ) {
+                            return 'app-async';
+                        }
+
+                        return;
+                    },
+                }
+            }
+        },
     })
 }

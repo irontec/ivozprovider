@@ -1,13 +1,15 @@
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { ConditionalRoutesConditionProperties } from './ConditionalRoutesConditionProperties';
-import Target from './Field/Target';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+
+import {
+  ConditionalRoutesConditionProperties,
+  ConditionalRoutesConditionPropertyList,
+} from './ConditionalRoutesConditionProperties';
 import ConditionMatch from './Field/ConditionMatch';
-import foreignKeyResolver from './foreignKeyResolver';
-import Form from './Form';
 import RouteType from './Field/RouteType';
+import Target from './Field/Target';
 
 const routableFields = [
   'numberCountry',
@@ -198,7 +200,7 @@ const ConditionalRoutesCondition: EntityInterface = {
   iden: 'ConditionalRoutesCondition',
   title: _('Condition', { count: 2 }),
   path: '/conditional_routes_conditions',
-  toStr: (row: any) => row.name,
+  toStr: (row: ConditionalRoutesConditionPropertyList<string>) => `${row.id}`,
   properties,
   columns: [
     'priority',
@@ -212,8 +214,16 @@ const ConditionalRoutesCondition: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'ConditionalRoutesConditions',
   },
-  foreignKeyResolver,
-  Form,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default ConditionalRoutesCondition;

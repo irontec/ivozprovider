@@ -1,13 +1,13 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior, {
   MarshallerValues,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import LastExecution from './Field/LastExecution';
-import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+
+import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
+import LastExecution from './Field/LastExecution';
 
 const properties: CallCsvSchedulerProperties = {
   name: {
@@ -159,7 +159,11 @@ const CallCsvScheduler: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'CallCsvSchedulers',
   },
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
   marshaller,
   unmarshaller,
 };

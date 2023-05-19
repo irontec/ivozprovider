@@ -1,12 +1,11 @@
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import View from './View';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+
 import { UsersCdrProperties } from './UsersCdrProperties';
-import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: UsersCdrProperties = {
   startTime: {
@@ -71,10 +70,18 @@ const usersCdr: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'kam_users_cdrs',
   },
-  foreignKeyResolver,
-  View,
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  View: async () => {
+    const module = await import('./View');
+
+    return module.default;
+  },
 };
 
 export default usersCdr;

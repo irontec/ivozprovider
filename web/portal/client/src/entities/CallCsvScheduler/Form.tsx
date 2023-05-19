@@ -1,9 +1,10 @@
 import { PropertyList, ScalarProperty } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
   foreignKeyGetter,
+  Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
@@ -12,7 +13,6 @@ import { ClientFeatures } from 'store/clientSession/aboutMe';
 const Form = (props: EntityFormProps): JSX.Element => {
   const edit = props.edit || false;
   const { entityService, row, match, properties } = props;
-  const DefaultEntityForm = defaultEntityBehavior.Form;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -21,7 +21,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   });
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
-  const newProperties: PropertyList = { ...properties };
+  const newProperties = { ...properties } as PropertyList;
   const endpointType = {
     ...properties.endpointType,
     enum: { ...properties.endpointType.enum },

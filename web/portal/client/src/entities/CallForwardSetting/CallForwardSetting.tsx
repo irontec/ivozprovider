@@ -1,15 +1,12 @@
-import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
+
 import { CallForwardSettingProperties } from './CallForwardSettingProperties';
-import Form from './Form';
-import TargetTypeValue from './Field/TargetTypeValue';
-import TargetType from './Field/TargetType';
 import CallForwardType from './Field/CallForwardType';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import TargetType from './Field/TargetType';
+import TargetTypeValue from './Field/TargetTypeValue';
 
 const properties: CallForwardSettingProperties = {
   user: {
@@ -179,11 +176,25 @@ const CallForwardSetting: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'CallForwardSettings',
   },
-  Form,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

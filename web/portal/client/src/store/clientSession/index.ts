@@ -1,7 +1,7 @@
+import aboutMe, { AboutMeStore } from './aboutMe';
 import recordLocutionService, {
   RecordLocutionServiceStore,
 } from './recordLocutionService';
-import aboutMe, { AboutMeStore } from './aboutMe';
 
 export interface ClientSessionStore {
   recordLocutionService: RecordLocutionServiceStore;

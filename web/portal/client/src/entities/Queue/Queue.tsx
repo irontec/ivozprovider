@@ -1,12 +1,10 @@
-import HourglassTopIcon from '@mui/icons-material/HourglassTop';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { QueueProperties } from './QueueProperties';
-import selectOptions from './SelectOptions';
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
+
 import Strategy from './Field/Strategy';
+import { QueueProperties, QueuePropertyList } from './QueueProperties';
 
 const timeoutFields = [
   'timeoutNumberCountry',
@@ -232,17 +230,27 @@ const queue: EntityInterface = {
   iden: 'Queue',
   title: _('Queue', { count: 2 }),
   path: '/queues',
-  toStr: (row: any) => row.name,
+  toStr: (row: QueuePropertyList<string>) => `${row.name}`,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Queues',
   },
-  Form,
-  foreignKeyGetter,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

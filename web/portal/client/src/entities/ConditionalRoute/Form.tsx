@@ -1,17 +1,18 @@
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
+  Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+
 import { ConditionalRoutePropertyList } from './ConditionalRouteProperties';
-import { foreignKeyGetter } from './foreignKeyGetter';
+import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
 
-  const DefaultEntityForm = defaultEntityBehavior.Form;
-  const fkChoices: ConditionalRoutePropertyList<any> = useFkChoices({
+  const fkChoices: ConditionalRoutePropertyList<unknown> = useFkChoices({
     foreignKeyGetter,
     entityService,
     row,

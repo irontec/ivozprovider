@@ -1,13 +1,11 @@
-import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { OutgoingDdiRulesPatternProperties } from './OutgoingDdiRulesPatternProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
+
 import ForcedDdiStr from './Field/ForcedDdiStr';
 import Rule from './Field/Rule';
+import { OutgoingDdiRulesPatternProperties } from './OutgoingDdiRulesPatternProperties';
 
 const properties: OutgoingDdiRulesPatternProperties = {
   outgoingDdiRule: {
@@ -94,10 +92,20 @@ const OutgoingDdiRulesPattern: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'OutgoingDDIRulesPatterns',
   },
-  Form,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

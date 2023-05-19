@@ -1,12 +1,11 @@
-import CampaignIcon from '@mui/icons-material/Campaign';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { LocutionProperties } from './LocutionProperties';
-import RecordingExtension from './Field/RecordingExtension';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
-import selectOptions from './SelectOptions';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import CampaignIcon from '@mui/icons-material/Campaign';
+
+import RecordingExtension from './Field/RecordingExtension';
+import { LocutionProperties } from './LocutionProperties';
 
 const properties: LocutionProperties = {
   name: {
@@ -47,10 +46,16 @@ const locution: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Locutions',
   },
-  Form,
   toStr: (row: EntityValues) => row.name as string,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

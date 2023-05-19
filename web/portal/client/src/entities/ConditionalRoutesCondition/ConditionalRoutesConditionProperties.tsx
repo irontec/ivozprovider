@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type ConditionalRoutesConditionPropertyList<T> = {
+  id?: T;
   conditionalRoute?: T;
   priority?: T;
   matchListIds?: T;

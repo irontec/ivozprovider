@@ -1,3 +1,4 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
@@ -13,8 +14,8 @@ const CalendarPeriodsRelScheduleSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     CalendarPeriodsRelSchedule.path,
     ['id', 'schedule'],
-    (data: any) => {
-      const options: any = {};
+    (data) => {
+      const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = Schedule.toStr(item.schedule);
       }

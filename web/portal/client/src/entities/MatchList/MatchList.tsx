@@ -1,14 +1,16 @@
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
+import EditRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/EditRowButton';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+
 import { MatchListProperties } from './MatchListProperties';
-import selectOptions from './SelectOptions';
-import { isEntityItem } from '@irontec/ivoz-ui';
 
 const properties: MatchListProperties = {
   name: {
@@ -17,7 +19,7 @@ const properties: MatchListProperties = {
 };
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, row } = props;
+  const { routeMapItem, row, entityService } = props;
 
   if (
     isEntityItem(routeMapItem) &&
@@ -25,8 +27,21 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
   ) {
     const isDeletePath = routeMapItem.route === `${MatchList.path}/:id`;
     const isUpdatePath = routeMapItem.route === `${MatchList.path}/:id/update`;
-    if ((isDeletePath || isUpdatePath) && row.generic) {
-      return null;
+
+    if (row.generic) {
+      if (isDeletePath) {
+        return (
+          <DeleteRowButton
+            disabled={true}
+            row={row}
+            entityService={entityService}
+          />
+        );
+      }
+
+      if (isUpdatePath) {
+        return <EditRowButton disabled={true} row={row} path={''} />;
+      }
     }
   }
 
@@ -48,8 +63,10 @@ const MatchList: EntityInterface = {
     return (item.name as string) || '';
   },
   ChildDecorator,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
 };
 

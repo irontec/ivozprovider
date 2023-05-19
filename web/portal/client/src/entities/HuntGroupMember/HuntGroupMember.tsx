@@ -1,11 +1,13 @@
-import Groups3Icon from '@mui/icons-material/Groups3';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { HuntGroupMemberProperties } from './HuntGroupMemberProperties';
+import Groups3Icon from '@mui/icons-material/Groups3';
+
 import Type from './Field/Target';
-import Form from './Form';
-import foreignKeyResolver from './foreignKeyResolver';
+import {
+  HuntGroupMemberProperties,
+  HuntGroupMemberPropertyList,
+} from './HuntGroupMemberProperties';
 
 const properties: HuntGroupMemberProperties = {
   huntGroup: {
@@ -70,15 +72,23 @@ const huntGroupMember: EntityInterface = {
   iden: 'HuntGroupMember',
   title: _('Hunt Group member', { count: 2 }),
   path: '/hunt_group_members',
-  toStr: (row: any) => row.name,
+  toStr: (row: HuntGroupMemberPropertyList<string>) => `${row.id}`,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'HuntGroupMembers',
   },
-  foreignKeyResolver,
-  Form,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default huntGroupMember;

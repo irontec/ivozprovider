@@ -1,10 +1,9 @@
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
+  Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const DefaultEntityForm = defaultEntityBehavior.Form;
-
   return <DefaultEntityForm {...props} />;
 };
 

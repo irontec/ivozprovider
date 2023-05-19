@@ -1,10 +1,10 @@
-import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
+
 import Type from './Field/Type';
 import { RecordingProperties } from './RecordingProperties';
-import View from './View';
 
 const properties: RecordingProperties = {
   callid: {
@@ -53,7 +53,11 @@ const recording: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Recordings',
   },
-  View,
+  View: async () => {
+    const module = await import('./View');
+
+    return module.default;
+  },
 };
 
 export default recording;

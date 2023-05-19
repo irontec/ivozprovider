@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type IvrEntryPropertyList<T> = {
+  id?: T;
   ivr?: T;
   entry?: T;
   welcomeLocution?: T;

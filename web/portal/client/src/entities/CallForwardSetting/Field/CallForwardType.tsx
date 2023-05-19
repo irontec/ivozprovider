@@ -4,6 +4,7 @@ import {
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { useStoreState } from 'store';
+
 import { CallForwardSettingPropertyList } from '../CallForwardSettingProperties';
 
 type CallForwardTypeValues = CallForwardSettingPropertyList<string>;

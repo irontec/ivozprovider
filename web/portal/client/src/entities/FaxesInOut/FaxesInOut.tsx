@@ -1,8 +1,12 @@
-import OutboundIcon from '@mui/icons-material/Outbound';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { FaxesInOutProperties } from './FaxesInOutProperties';
+import OutboundIcon from '@mui/icons-material/Outbound';
+
+import {
+  FaxesInOutProperties,
+  FaxesInOutPropertyList,
+} from './FaxesInOutProperties';
 
 const properties: FaxesInOutProperties = {
   calldate: {
@@ -53,7 +57,7 @@ const FaxesInOut: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'FaxesInOut',
   },
-  toStr: (row: any) => row.name,
+  toStr: (row: FaxesInOutPropertyList<string>) => `${row.id}`,
   properties,
   columns: ['calldate', 'dst', 'src', 'status'],
 };

@@ -1,3 +1,5 @@
+import { isEntityItem } from '@irontec/ivoz-ui';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -6,13 +8,11 @@ import EntityInterface, {
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import Password from 'entities/Terminal/Field/Password';
-import StatusIcon from './Field/StatusIcon';
-import Form from './Form';
-import { FriendProperties } from './FriendProperties';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { isEntityItem } from '@irontec/ivoz-ui';
+
 import FriendsPattern from '../FriendsPattern/FriendsPattern';
+import Password from '../Terminal/Field/Password';
+import StatusIcon from './Field/StatusIcon';
+import { FriendProperties } from './FriendProperties';
 
 const properties: FriendProperties = {
   name: {
@@ -275,7 +275,13 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
     const actionsToHide = [FriendsPattern.iden];
 
     if (actionsToHide.includes(routeMapItem.entity.iden)) {
-      return null;
+      return (
+        <ChildEntityLink
+          row={row}
+          routeMapItem={routeMapItem}
+          disabled={true}
+        />
+      );
     }
   }
 
@@ -296,10 +302,18 @@ const Friend: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Friends',
   },
-  Form,
   toStr: (row) => (row?.name as string) || '',
-  foreignKeyGetter,
   ChildDecorator,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default Friend;

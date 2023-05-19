@@ -1,17 +1,18 @@
-import { styled } from '@mui/styles';
-import { Tooltip } from '@mui/material';
-import DoneIcon from '@mui/icons-material/Done';
-import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
-import CloseIcon from '@mui/icons-material/Close';
-import EastIcon from '@mui/icons-material/East';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import PublicIcon from '@mui/icons-material/Public';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from '@mui/icons-material/Done';
+import EastIcon from '@mui/icons-material/East';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import PublicIcon from '@mui/icons-material/Public';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { Tooltip } from '@mui/material';
+import { styled } from '@mui/styles';
+
 import {
   RetailAccountPropertyList,
   RetailAccountStatus,
@@ -35,6 +36,7 @@ const Status: StatusIconProps = (props): JSX.Element | null => {
 
   if (values.directConnectivity === 'yes') {
     const StyledIcon = styled(EastIcon)(iconStyler);
+
     return (
       <span>
         <StyledIcon /> Direct connectivity
@@ -44,6 +46,7 @@ const Status: StatusIconProps = (props): JSX.Element | null => {
 
   if (values.directConnectivity === 'intervpbx') {
     const StyledIcon = styled(RestartAltIcon)(iconStyler);
+
     return (
       <span>
         <StyledIcon /> Inter company connectivity
@@ -57,6 +60,7 @@ const Status: StatusIconProps = (props): JSX.Element | null => {
     values.status.length === 0
   ) {
     const StyledIcon = styled(CloseIcon)(iconStyler);
+
     return (
       <span>
         <StyledIcon /> Not registered

@@ -1,10 +1,10 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+
 import { CountryProperties, CountryPropertyList } from './CountryProperties';
-import selectOptions from './SelectOptions';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: CountryProperties = {
   name: {
@@ -24,8 +24,10 @@ const country: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Countries',
   },
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
 };
 

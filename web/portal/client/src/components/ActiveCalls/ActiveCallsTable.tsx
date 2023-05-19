@@ -1,3 +1,11 @@
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import CallEndIcon from '@mui/icons-material/CallEnd';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import DialpadIcon from '@mui/icons-material/Dialpad';
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+import RingVolumeIcon from '@mui/icons-material/RingVolume';
 import {
   Table,
   TableBody,
@@ -5,14 +13,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import RingVolumeIcon from '@mui/icons-material/RingVolume';
-import DialpadIcon from '@mui/icons-material/Dialpad';
-import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
-import CallEndIcon from '@mui/icons-material/CallEnd';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+
 import { Calls } from './types';
 
 type ActiveCallsTableProps = {
@@ -44,25 +45,27 @@ export default function ActiveCallsTable(
       return;
     }
     navigator.clipboard.writeText(text).then(
-      () => console.log('Call id copied: ' + text),
+      // eslint-disable-next-line no-console
+      () => console.log(`Call id copied: ${text}`),
+      // eslint-disable-next-line no-console
       (err) => console.error('Could not copy text', err)
     );
   };
 
   return (
-    <Table size="medium" sx={{ tableLayout: 'fixed' }}>
+    <Table size='medium' sx={{ tableLayout: 'fixed' }}>
       <TableHead>
         <TableRow>
-          <TableCell align="left" padding="normal">
+          <TableCell align='left' padding='normal'>
             {_('Duration')}
           </TableCell>
-          <TableCell align="left" padding="normal">
+          <TableCell align='left' padding='normal'>
             {_('Owner')}
           </TableCell>
-          <TableCell align="left" padding="normal">
+          <TableCell align='left' padding='normal'>
             {_('Party')}
           </TableCell>
-          <TableCell align="left" padding="normal">
+          <TableCell align='left' padding='normal'>
             {_('Options')}
           </TableCell>
         </TableRow>
@@ -70,13 +73,13 @@ export default function ActiveCallsTable(
       <TableBody>
         {sortedCalls.map((call) => {
           return (
-            <TableRow key={call.id + '#' + call.callId}>
+            <TableRow key={`${call.id}#${call.callId}`}>
               <TableCell>
                 {call.direction === 'outbound' && (
-                  <ArrowLeftIcon titleAccess="outbound" sx={directionStyles} />
+                  <ArrowLeftIcon titleAccess='outbound' sx={directionStyles} />
                 )}
                 {call.direction === 'inbound' && (
-                  <ArrowRightIcon titleAccess="inbound" sx={directionStyles} />
+                  <ArrowRightIcon titleAccess='inbound' sx={directionStyles} />
                 )}
                 &nbsp;
                 {call.event === 'Trying' && (
@@ -101,7 +104,7 @@ export default function ActiveCallsTable(
               <TableCell>{call.party}</TableCell>
               <TableCell>
                 <ContentCopyIcon
-                  titleAccess="Copy call id into the clipboard"
+                  titleAccess='Copy call id into the clipboard'
                   sx={copyButtonStyles}
                   onClick={() => copyTextToClipboard(call.callId)}
                 />

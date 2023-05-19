@@ -1,5 +1,6 @@
-import { action, Action, Computed, computed, Thunk, thunk } from 'easy-peasy';
 import { CancelTokenSource } from 'axios';
+import { Action, action, Computed, computed, Thunk, thunk } from 'easy-peasy';
+
 import { AppStore } from '../index';
 
 type NullableRecordType = Record<string, string | number> | null;
@@ -40,7 +41,7 @@ interface RecordLocutionServiceActions {
   loadCompanyRecordLocutionService: Thunk<
     () => Promise<void>,
     loadCompanyRecordLocutionServiceProps,
-    any,
+    unknown,
     AppStore
   >;
 }
@@ -62,15 +63,15 @@ const recordLocutionService: RecordLocutionServiceStore = {
   ///////////////////////////////
   // Actions
   ///////////////////////////////
-  reset: action<RecordLocutionServiceState, void>((state: any) => {
+  reset: action<RecordLocutionServiceState, void>((state) => {
     state.loading = false;
     state.recordLocutionService = null;
     state.companyRecordLocutionService = null;
   }),
-  setLoading: action<RecordLocutionServiceState, void>((state: any) => {
+  setLoading: action<RecordLocutionServiceState, void>((state) => {
     state.loading = true;
   }),
-  unsetLoading: action<RecordLocutionServiceState, void>((state: any) => {
+  unsetLoading: action<RecordLocutionServiceState, void>((state) => {
     state.loading = false;
   }),
   setRecordLocutionService: action<
@@ -111,7 +112,7 @@ const recordLocutionService: RecordLocutionServiceStore = {
   loadRecordLocutionService: thunk<
     RecordLocutionServiceStore,
     CancelTokenSourceProps,
-    any,
+    unknown,
     AppStore
   >(async (actions, { cancelTokenSource }, { getStoreActions }) => {
     const apiGet = getStoreActions().api.get;
@@ -137,7 +138,7 @@ const recordLocutionService: RecordLocutionServiceStore = {
   loadCompanyRecordLocutionService: thunk<
     RecordLocutionServiceStore,
     loadCompanyRecordLocutionServiceProps,
-    any,
+    unknown,
     AppStore
   >(async (actions, { id, cancelTokenSource }, { getStoreActions }) => {
     const apiGet = getStoreActions().api.get;

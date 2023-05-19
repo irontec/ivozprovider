@@ -1,9 +1,9 @@
-import DateRangeIcon from '@mui/icons-material/DateRange';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+
 import { CalendarPeriodsRelScheduleProperties } from './CalendarPeriodsRelScheduleProperties';
-import selectOptions from './SelectOptions';
 
 const properties: CalendarPeriodsRelScheduleProperties = {
   condition: {
@@ -25,8 +25,10 @@ const CalendarPeriod: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'CalendarPeriodsRelSchedules',
   },
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
 };
 
