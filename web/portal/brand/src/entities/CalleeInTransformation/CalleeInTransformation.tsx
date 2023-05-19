@@ -1,10 +1,11 @@
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import TransformationRule from '../TransformationRule/TransformationRule';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+
+import TransformationRule from '../TransformationRule/TransformationRule';
 
 const CalleeInTransformation: EntityInterface = {
   ...TransformationRule,
-  localPath: TransformationRule.path + '_calleein',
+  localPath: `${TransformationRule.path}_calleein`,
   title: _('Callee In Transformation', { count: 2 }),
 };
 

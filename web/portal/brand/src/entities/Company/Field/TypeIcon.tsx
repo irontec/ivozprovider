@@ -2,8 +2,9 @@ import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import { CompanyPropertyList } from '../CompanyProperties';
 import store from 'store';
+
+import { CompanyPropertyList } from '../CompanyProperties';
 
 type RouteTypeValues = CompanyPropertyList<string>;
 type RouteTypeProps = PropertyCustomFunctionComponent<

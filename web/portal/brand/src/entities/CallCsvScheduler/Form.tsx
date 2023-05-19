@@ -1,12 +1,14 @@
-import { ScalarProperty, PropertyList } from '@irontec/ivoz-ui';
+import { PropertyList, ScalarProperty } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
 import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
+
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { useCompanyDdis } from './hook/useCompanyDdis';
 import { useCompanyFaxes } from './hook/useCompanyFaxes';
@@ -20,7 +22,6 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
 
   const edit = props.edit || false;
 
-  const DefaultEntityForm = defaultEntityBehavior.Form;
   let fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,

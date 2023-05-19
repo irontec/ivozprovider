@@ -15,9 +15,9 @@ const CompanyRetailAccountSelectOptions: SelectOptionsType<
   const companyId = customProps?.companyId;
 
   return defaultEntityBehavior.fetchFks(
-    RetailAccount.path + `?company[]=${companyId}`,
+    `${RetailAccount.path}?company[]=${companyId}`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = item.name;

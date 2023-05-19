@@ -1,14 +1,15 @@
-import KeyIcon from '@mui/icons-material/Key';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { RetailAccountProperties } from './RetailAccountProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
-import StatusIcon from './Field/StatusIcon';
+import KeyIcon from '@mui/icons-material/Key';
+
 import Password from '../ResidentialDevice/Field/Password';
+import StatusIcon from './Field/StatusIcon';
+import {
+  RetailAccountProperties,
+  RetailAccountPropertyList,
+} from './RetailAccountProperties';
 
 const properties: RetailAccountProperties = {
   company: {
@@ -145,13 +146,29 @@ const RetailAccount: EntityInterface = {
   iden: 'RetailAccount',
   title: _('Retail Account', { count: 2 }),
   path: '/retail_accounts',
-  toStr: (row: any) => row.id,
+  toStr: (row: RetailAccountPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['company', 'name', 'domainName', 'description', 'statusIcon'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default RetailAccount;

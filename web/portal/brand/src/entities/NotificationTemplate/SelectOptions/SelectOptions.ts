@@ -11,9 +11,9 @@ const SelectOptions: SelectOptionsType = ({
   const NotificationTemplate = entities.NotificationTemplate;
 
   return defaultEntityBehavior.fetchFks(
-    NotificationTemplate.path + '?_order[name]=ASC',
+    `${NotificationTemplate.path}?_order[name]=ASC`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({

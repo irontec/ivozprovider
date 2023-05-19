@@ -1,17 +1,17 @@
-import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { isEntityItem } from '@irontec/ivoz-ui';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { SpecialNumberProperties } from './SpecialNumberProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+
+import {
+  SpecialNumberProperties,
+  SpecialNumberPropertyList,
+} from './SpecialNumberProperties';
 
 const properties: SpecialNumberProperties = {
   number: {
@@ -56,14 +56,30 @@ const SpecialNumber: EntityInterface = {
   iden: 'SpecialNumber',
   title: _('Special Number', { count: 2 }),
   path: '/special_numbers',
-  toStr: (row: any) => row.id,
+  toStr: (row: SpecialNumberPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['country', 'number', 'disableCDR'],
   ChildDecorator,
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default SpecialNumber;

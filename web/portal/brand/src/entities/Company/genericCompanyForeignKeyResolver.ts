@@ -1,11 +1,12 @@
 import { EntityValues, StoreContainer } from '@irontec/ivoz-ui';
-import store from 'store';
-import { CompanyPropertiesList } from './CompanyProperties';
-import { DdiPropertiesList } from '../Ddi/DdiProperties';
 import {
   entityObject2ListLink,
   GenericForeignKeyResolverProps,
 } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import store from 'store';
+
+import { DdiPropertiesList } from '../Ddi/DdiProperties';
+import { CompanyPropertiesList } from './CompanyProperties';
 
 export default async function genericCompanyForeignKeyResolver(
   props: Omit<GenericForeignKeyResolverProps, 'entity'>

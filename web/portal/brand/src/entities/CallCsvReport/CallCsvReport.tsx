@@ -1,12 +1,13 @@
-import SummarizeIcon from '@mui/icons-material/Summarize';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { CallCsvReportProperties } from './CallCsvReportProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+
+import {
+  CallCsvReportProperties,
+  CallCsvReportPropertyList,
+} from './CallCsvReportProperties';
 
 const properties: CallCsvReportProperties = {
   inDate: {
@@ -47,13 +48,29 @@ const CallCsvReport: EntityInterface = {
   iden: 'CallCsvReport',
   title: _('Call Csv Report', { count: 2 }),
   path: '/call_csv_reports',
-  toStr: (row: any) => row.id,
+  toStr: (row: CallCsvReportPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['csv', 'inDate', 'outDate', 'createdOn', 'sentTo'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default CallCsvReport;

@@ -1,15 +1,16 @@
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior, {
   marshaller as defaultMarshaller,
   unmarshaller as defaultUnmarshaller,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+
+import {
+  CallCsvSchedulerProperties,
+  CallCsvSchedulerPropertyList,
+} from './CallCsvSchedulerProperties';
 
 const properties: CallCsvSchedulerProperties = {
   name: {
@@ -331,6 +332,7 @@ const properties: CallCsvSchedulerProperties = {
 type MarshallerType = typeof defaultMarshaller;
 const marshaller: MarshallerType = (values, properties) => {
   values.company = values[values.companyType];
+
   return defaultMarshaller(values, properties);
 };
 
@@ -361,7 +363,7 @@ const CallCsvScheduler: EntityInterface = {
   iden: 'CallCsvScheduler',
   title: _('Call CSV Scheduler', { count: 2 }),
   path: '/call_csv_schedulers',
-  toStr: (row: any) => row.name,
+  toStr: (row: CallCsvSchedulerPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: [
     'name',
@@ -373,10 +375,26 @@ const CallCsvScheduler: EntityInterface = {
     'lastExecution',
     'nextExecution',
   ],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
   marshaller,
   unmarshaller,
 };

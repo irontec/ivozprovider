@@ -1,12 +1,13 @@
+import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ArticleIcon from '@mui/icons-material/Article';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
-import Form from './Form';
-import { NotificationTemplateContentProperties } from './NotificationTemplateContentProperties';
-import selectOptions from './SelectOptions';
+
+import {
+  NotificationTemplateContentProperties,
+  NotificationTemplateContentPropertyList,
+} from './NotificationTemplateContentProperties';
 
 const properties: NotificationTemplateContentProperties = {
   fromName: {
@@ -87,13 +88,30 @@ const NotificationTemplateContent: EntityInterface = {
   iden: 'NotificationTemplateContent',
   title: _('Notification template content', { count: 2 }),
   path: '/notification_template_contents',
-  toStr: (row: any) => row.id,
+  toStr: (row: NotificationTemplateContentPropertyList<EntityValues>) =>
+    `${row.id}`,
   properties,
   columns: ['language', 'fromName', 'fromAddress'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default NotificationTemplateContent;

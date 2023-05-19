@@ -1,5 +1,6 @@
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+
 import { ServicePropertiesList } from './ServiceProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/

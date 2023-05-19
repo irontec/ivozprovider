@@ -1,14 +1,15 @@
+import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import RoofingIcon from '@mui/icons-material/Roofing';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
-import Form from './Form';
-import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
-import selectOptions from './SelectOptions';
+
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
 import Password from './Field/Password';
+import {
+  ResidentialDeviceProperties,
+  ResidentialDevicePropertyList,
+} from './ResidentialDeviceProperties';
 
 const properties: ResidentialDeviceProperties = {
   name: {
@@ -214,13 +215,29 @@ const ResidentialDevice: EntityInterface = {
   iden: 'ResidentialDevice',
   title: _('Residential Device', { count: 2 }),
   path: '/residential_devices',
-  toStr: (row: any) => row.id,
+  toStr: (row: ResidentialDevicePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['company', 'name', 'domainName', 'description', 'statusIcon'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default ResidentialDevice;

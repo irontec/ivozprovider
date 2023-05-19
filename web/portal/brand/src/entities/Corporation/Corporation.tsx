@@ -6,6 +6,7 @@ import defaultEntityBehavior, {
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
+
 import {
   CorporationProperties,
   CorporationPropertyList,

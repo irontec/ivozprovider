@@ -11,9 +11,9 @@ const BalanceMovementSelectOptions: SelectOptionsType = ({
   const BalanceMovement = entities.BalanceMovement;
 
   return defaultEntityBehavior.fetchFks(
-    BalanceMovement.path + '?_order[name]=ASC',
+    `${BalanceMovement.path}?_order[name]=ASC`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: item.name });

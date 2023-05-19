@@ -11,9 +11,9 @@ const BalanceNotificationSelectOptions: SelectOptionsType = ({
   const BalanceNotification = entities.BalanceNotification;
 
   return defaultEntityBehavior.fetchFks(
-    BalanceNotification.path + '?_order[name]=ASC',
+    `${BalanceNotification.path}?_order[name]=ASC`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: item.name });

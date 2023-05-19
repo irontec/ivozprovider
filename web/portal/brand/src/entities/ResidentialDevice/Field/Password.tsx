@@ -1,14 +1,15 @@
-import { InputAdornment, Tooltip } from '@mui/material';
 import { isPropertyScalar } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import {
+  CustomFunctionComponentContext,
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-  CustomFunctionComponentContext,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import { StyledTextField } from '@irontec/ivoz-ui/services/form/FormFieldFactory.styles';
-import { ResidentialDevicePropertyList } from '../ResidentialDeviceProperties';
+import { StyledTextField } from '@irontec/ivoz-ui/services/form/Field/TextField/TextField.styles';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
+import { InputAdornment, Tooltip } from '@mui/material';
 import { styled } from '@mui/styles';
+
+import { ResidentialDevicePropertyList } from '../ResidentialDeviceProperties';
 
 type ResidentialDeviceValues = ResidentialDevicePropertyList<string | number>;
 type PasswordType = PropertyCustomFunctionComponent<
@@ -82,7 +83,7 @@ const Password: PasswordType = (props): JSX.Element => {
     return <>{values[columnName]}</>;
   }
 
-  const inputProps: any = {};
+  const inputProps: Record<string, string | number> = {};
   if (isPropertyScalar(property) && property.maxLength) {
     inputProps.maxLength = property.maxLength;
   }
@@ -101,7 +102,7 @@ const Password: PasswordType = (props): JSX.Element => {
 
   const InputProps = {
     endAdornment: (
-      <InputAdornment position="end">
+      <InputAdornment position='end'>
         <StyledRegeneratePasswordIcon
           label={'Generate new secure password'}
           onClick={passGenerator}
@@ -111,13 +112,13 @@ const Password: PasswordType = (props): JSX.Element => {
   };
 
   const hasChanged =
-    formik.initialValues[columnName] != formik.values[columnName];
+    formik.initialValues[columnName] !== formik.values[columnName];
 
   return (
     <div>
       <StyledTextField
         name={columnName}
-        type="text"
+        type='text'
         value={values[columnName]}
         disabled={disabled}
         label={property.label}

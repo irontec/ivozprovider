@@ -1,13 +1,11 @@
-import PersonIcon from '@mui/icons-material/Person';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { UserProperties } from './UserProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import PersonIcon from '@mui/icons-material/Person';
+
 import StatusIcon from './Field/StatusIcon';
+import { UserProperties, UserPropertyList } from './UserProperties';
 
 const properties: UserProperties = {
   name: {
@@ -187,7 +185,7 @@ const User: EntityInterface = {
   iden: 'User',
   title: _('User', { count: 2 }),
   path: '/users',
-  toStr: (row: any) => row.id,
+  toStr: (row: UserPropertyList<EntityValues>) => `${row?.id}`,
   properties,
   columns: [
     'company',
@@ -199,10 +197,26 @@ const User: EntityInterface = {
     'statusIcon',
     'location',
   ],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default User;

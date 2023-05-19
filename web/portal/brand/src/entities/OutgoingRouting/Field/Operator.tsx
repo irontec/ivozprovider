@@ -1,9 +1,10 @@
 import { ListDecorator, ScalarProperty } from '@irontec/ivoz-ui';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+
 import { OutgoingRoutingPropertyList } from '../OutgoingRoutingProperties';
 
 type DestinationValues = OutgoingRoutingPropertyList<string>;

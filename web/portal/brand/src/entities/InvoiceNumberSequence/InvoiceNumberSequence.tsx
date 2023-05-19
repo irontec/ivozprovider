@@ -1,12 +1,13 @@
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { InvoiceNumberSequenceProperties } from './InvoiceNumberSequenceProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+
+import {
+  InvoiceNumberSequenceProperties,
+  InvoiceNumberSequencePropertyList,
+} from './InvoiceNumberSequenceProperties';
 
 const properties: InvoiceNumberSequenceProperties = {
   name: {
@@ -48,12 +49,28 @@ const InvoiceNumberSequence: EntityInterface = {
   iden: 'InvoiceNumberSequence',
   title: _('Invoice number sequence', { count: 2 }),
   path: '/invoice_number_sequences',
-  toStr: (row: any) => row.id,
+  toStr: (row: InvoiceNumberSequencePropertyList<EntityValues>) => `${row.id}`,
   properties,
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default InvoiceNumberSequence;

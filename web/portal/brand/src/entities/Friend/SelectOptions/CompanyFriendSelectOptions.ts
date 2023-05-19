@@ -15,9 +15,9 @@ const CompanyFriendSelectOptions: SelectOptionsType<
   const companyId = customProps?.companyId;
 
   return defaultEntityBehavior.fetchFks(
-    Friend.path + `?company[]=${companyId}`,
+    `${Friend.path}?company[]=${companyId}`,
     ['id', 'name', 'lastname'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = item.name;

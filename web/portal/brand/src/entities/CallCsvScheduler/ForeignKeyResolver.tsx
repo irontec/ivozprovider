@@ -1,5 +1,6 @@
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+
 import { CallCsvSchedulerPropertiesList } from './CallCsvSchedulerProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/

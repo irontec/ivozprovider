@@ -1,6 +1,6 @@
-import DdiSelectOptions from './SelectOptions';
 import CompanyDdiSelectOptions from './CompanyDdiSelectOptions';
+import DdiSelectOptions from './SelectOptions';
 
-export { DdiSelectOptions, CompanyDdiSelectOptions };
+export { CompanyDdiSelectOptions, DdiSelectOptions };
 
 export default DdiSelectOptions;
