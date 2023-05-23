@@ -1,13 +1,14 @@
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import VoicemailSelectOptions from 'entities/Voicemail/SelectOptions';
+
+import VoicemailSelectOptions from '../Voicemail/SelectOptions';
 import { CallForwardSettingPropertyList } from './CallForwardSettingProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
   entityService,
   match,
-}): Promise<any> => {
+}): Promise<unknown> => {
   const response: CallForwardSettingPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({

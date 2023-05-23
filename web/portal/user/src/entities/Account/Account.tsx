@@ -4,8 +4,8 @@ import EntityInterface, {
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import User from 'entities/User/User';
-import Form from './Form';
+
+import User from '../User/User';
 
 const validator: EntityValidator = (values, properties, visualToggle) => {
   const response = User.validator(values, properties, visualToggle);
@@ -95,7 +95,11 @@ const Account: EntityInterface = {
     },
   },
   validator,
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
   unmarshaller,
   marshaller,
   title: _('My Account', { count: 2 }),

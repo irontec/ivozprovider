@@ -2,8 +2,8 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import Form from './Form';
-import { UserProperties } from './UserProperties';
+
+import { UserProperties, UserPropertyList } from './UserProperties';
 
 const properties: UserProperties = {
   bossAssistant: {
@@ -44,10 +44,14 @@ const User: EntityInterface = {
   title: _('Profile', { count: 2 }),
   path: '/my/profile',
   localPath: '/profile',
-  toStr: (row: any) => row.id,
+  toStr: (row: UserPropertyList<string>) => `${row.id}`,
   properties,
   columns,
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default User;

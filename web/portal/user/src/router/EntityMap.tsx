@@ -1,7 +1,7 @@
 import routeMapParser, {
   RouteMap,
 } from '@irontec/ivoz-ui/router/routeMapParser';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+
 import entities from '../entities/index';
 
 export type ExtendedRouteMap = RouteMap;
@@ -9,32 +9,24 @@ export type ExtendedRouteMap = RouteMap;
 const getEntityMap = (): RouteMap => {
   const map: RouteMap = [
     {
-      label: _('Calls'),
-      children: [
-        {
-          entity: {
-            ...entities.UsersCdr,
-            acl: {
-              ...entities.UsersCdr.acl,
-              detail: false,
-            },
-          },
+      entity: {
+        ...entities.UsersCdr,
+        acl: {
+          ...entities.UsersCdr.acl,
+          detail: false,
         },
-      ],
+      },
+      divider: true,
     },
     {
-      label: _('Configuration'),
-      children: [
-        {
-          entity: entities.Account,
-        },
-        {
-          entity: entities.Preferences,
-        },
-        {
-          entity: entities.CallForwardSetting,
-        },
-      ],
+      entity: entities.Account,
+      divider: true,
+    },
+    {
+      entity: entities.Preferences,
+    },
+    {
+      entity: entities.CallForwardSetting,
     },
   ];
 

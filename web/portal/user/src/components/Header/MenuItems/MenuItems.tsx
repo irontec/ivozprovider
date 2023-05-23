@@ -1,17 +1,18 @@
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { ListItemIcon, MenuItem, Typography } from '@mui/material';
 import { useStoreActions } from 'store';
-import StyledBadge from '../avatar/StyledBadge';
+
+import StyledBadge from '../Avatar/StyledBadge';
 import useTerminalStatus from '../useTerminalStatus';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import useWebTheme from '../useWebTheme';
 import {
   ContainerStatus,
   Logo,
   StatusMenuItem,
-  StyledHorizontalLine,
   StyledCompanyName,
+  StyledHorizontalLine,
 } from './MenuItems.styles';
-import useWebTheme from '../useWebTheme';
 
 const CustomMenuItems = (): JSX.Element => {
   const resetAuth = useStoreActions((actions) => actions.auth.resetAll);
@@ -20,7 +21,7 @@ const CustomMenuItems = (): JSX.Element => {
   };
 
   const status = useTerminalStatus();
-  const web_theme = useWebTheme();
+  const webTheme = useWebTheme();
 
   return (
     <>
@@ -32,7 +33,7 @@ const CustomMenuItems = (): JSX.Element => {
       </MenuItem>
       <StatusMenuItem key='status'>
         <ContainerStatus>
-          <Logo style={{ backgroundImage: web_theme.logo }} />
+          <Logo style={{ backgroundImage: webTheme.logo }} />
           <p>{status.userName}</p>
           <StyledCompanyName>{status.companyName}</StyledCompanyName>
           <StyledHorizontalLine />
