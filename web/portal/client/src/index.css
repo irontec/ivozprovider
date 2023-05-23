@@ -2,7 +2,7 @@
 
 :root {
   /** COLORS **/
-  --color-primary: #FF664A;
-  --color-primary-rgb: rgb(255, 102, 74);
-  --color-primary-tonal: hsl(9, 100%, 95%);
+  --color-primary: #0277bd;
+  --color-primary-rgb: rgb(2, 119, 189);
+  --color-primary-tonal: hsl(202, 98%, 90%);
 }
