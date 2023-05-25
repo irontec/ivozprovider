@@ -67,16 +67,6 @@ export default ({ mode }) => {
                             return 'vendor';
                         }
 
-                        if (
-                            id.includes('ForeignKeyResolver.ts')
-                            || id.includes('ForeignKeyGetter.ts')
-                            || id.includes('Form.ts')
-                            || id.includes('SelectOptions.ts')
-                            || id.includes('/SelectOptions/')
-                        ) {
-                            return 'app-async';
-                        }
-
                         return;
                     },
                 }
