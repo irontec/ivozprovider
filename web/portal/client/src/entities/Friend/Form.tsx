@@ -10,6 +10,7 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const edit = props.edit || false;
+  const create = props.create || false;
   const { entityService, row, match } = props;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -20,10 +21,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const isInterVpbx = row?.directConnectivity === 'intervpbx';
   const interVpbxEdition = edit && isInterVpbx;
+  const interVpbxNew = create && isInterVpbx;
   const readOnlyProperties = {
     directConnectivity: interVpbxEdition,
     priority: interVpbxEdition,
-    description: interVpbxEdition,
+    name: interVpbxEdition,
   };
 
   const groups: Array<FieldsetGroups | false> = [
@@ -33,7 +35,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'directConnectivity',
         'priority',
         'description',
-        'name',
+        interVpbxNew && 'name',
         'password',
         'transport',
         'ip',
