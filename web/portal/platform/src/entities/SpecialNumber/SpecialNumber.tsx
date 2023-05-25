@@ -1,19 +1,17 @@
-import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+
 import {
   SpecialNumberProperties,
   SpecialNumberPropertyList,
 } from './SpecialNumberProperties';
-import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
-import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: SpecialNumberProperties = {
   number: {
@@ -59,9 +57,21 @@ const SpecialNumber: EntityInterface = {
   properties,
   columns: ['country', 'number', 'disableCDR'],
   ChildDecorator,
-  selectOptions,
-  foreignKeyResolver,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default SpecialNumber;

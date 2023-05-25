@@ -1,6 +1,6 @@
-import es from './es';
-import en from './en';
 import ca from './ca';
+import en from './en';
+import es from './es';
 import it from './it';
 
 const translations = {

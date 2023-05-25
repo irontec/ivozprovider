@@ -1,12 +1,13 @@
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+
 import { CarrierServerPropertyList } from './CarrierServerProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
   entityService,
-}): Promise<any> => {
+}): Promise<unknown> => {
   const response: CarrierServerPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({

@@ -1,8 +1,8 @@
-import Company from '../Company/Company';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import HouseIcon from '@mui/icons-material/House';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import HouseIcon from '@mui/icons-material/House';
+
+import Company from '../Company/Company';
 
 const Residential: EntityInterface = {
   ...Company,
@@ -32,7 +32,11 @@ const Residential: EntityInterface = {
     'invoicing.province',
     'invoicing.countryName',
   ],
-  foreignKeyGetter,
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
 };
 
 export default Residential;

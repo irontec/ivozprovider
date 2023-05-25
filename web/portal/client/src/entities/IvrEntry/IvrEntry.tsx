@@ -1,12 +1,10 @@
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { IvrEntryProperties } from './IvrEntryProperties';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+
 import Target from './Field/Target';
-import foreignKeyResolver from './foreignKeyResolver';
+import { IvrEntryProperties, IvrEntryPropertyList } from './IvrEntryProperties';
 
 const toggleFlds = [
   'numberCountry',
@@ -109,16 +107,28 @@ const IvrEntry: EntityInterface = {
   iden: 'IvrEntry',
   title: _('IVR entry', { count: 2 }),
   path: '/ivr_entries',
-  toStr: (row: any) => row.name,
+  toStr: (row: IvrEntryPropertyList<string>) => `${row.id}`,
   properties,
   columns: ['entry', 'displayName', 'welcomeLocution', 'routeType', 'target'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'IVREntries',
   },
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default IvrEntry;

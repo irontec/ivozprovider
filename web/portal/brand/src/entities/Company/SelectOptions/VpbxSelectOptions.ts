@@ -11,9 +11,9 @@ const VpbxSelectOptions: SelectOptionsType = ({
   const Company = entities.Company;
 
   return defaultEntityBehavior.fetchFks(
-    Company.path + '?type=vpbx&_order[name]=ASC',
+    `${Company.path}?type=vpbx&_order[name]=ASC`,
     ['id', 'name', 'company'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({

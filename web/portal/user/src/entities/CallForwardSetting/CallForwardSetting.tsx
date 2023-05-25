@@ -2,10 +2,11 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
-import { CallForwardSettingProperties } from './CallForwardSettingProperties';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
-import Form from './Form';
+
+import {
+  CallForwardSettingProperties,
+  CallForwardSettingPropertyList,
+} from './CallForwardSettingProperties';
 
 const properties: CallForwardSettingProperties = {
   callTypeFilter: {
@@ -87,12 +88,24 @@ const CallForwardSetting: EntityInterface = {
   iden: 'CallForwardSetting',
   title: _('Call Forward Settings', { count: 2 }),
   path: '/my/call_forward_settings',
-  toStr: (row: any) => row.id,
+  toStr: (row: CallForwardSettingPropertyList<string>) => `${row.id}`,
   properties,
   columns,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  Form,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default CallForwardSetting;

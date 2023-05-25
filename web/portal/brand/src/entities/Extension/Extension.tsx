@@ -1,8 +1,13 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { ExtensionProperties } from './ExtensionProperties';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
+import {
+  ExtensionProperties,
+  ExtensionPropertyList,
+} from './ExtensionProperties';
 
 const properties: ExtensionProperties = {
   number: {
@@ -16,7 +21,7 @@ const Extension: EntityInterface = {
   iden: 'Extension',
   title: _('Extension', { count: 2 }),
   path: '/extensions',
-  toStr: (row: any) => row.number,
+  toStr: (row: ExtensionPropertyList<EntityValues>) => `${row.number}`,
   properties,
 };
 

@@ -1,16 +1,16 @@
-import MailIcon from '@mui/icons-material/Mail';
-import EntityInterface, {
-  ChildDecoratorType,
-} from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { isEntityItem } from '@irontec/ivoz-ui';
-import Form from './Form';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import MailIcon from '@mui/icons-material/Mail';
+
 import { VoicemailProperties } from './VoicemailProperties';
-import enabledVoicemailSelectOptions from './EnabledVoicemailSelectOptions';
 
 const properties: VoicemailProperties = {
   enabled: {
@@ -65,7 +65,7 @@ const properties: VoicemailProperties = {
 const columns = ['enabled', 'name', 'email'];
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, row } = props;
+  const { routeMapItem, entityService, row } = props;
 
   if (
     isEntityItem(routeMapItem) &&
@@ -74,7 +74,13 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
     const isDeletePath = routeMapItem.route === `${Voicemail.path}/:id`;
     const allowDelete = row.user === null && row.residential === null;
     if (isDeletePath && !allowDelete) {
-      return null;
+      return (
+        <DeleteRowButton
+          disabled={true}
+          row={row}
+          entityService={entityService}
+        />
+      );
     }
   }
 
@@ -94,10 +100,15 @@ const Voicemail: EntityInterface = {
   toStr: (row: EntityValues) => (row.name as string) || '',
   properties,
   columns,
-  Form,
-  ChildDecorator,
-  selectOptions: (props, customProps) => {
-    return enabledVoicemailSelectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./EnabledVoicemailSelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

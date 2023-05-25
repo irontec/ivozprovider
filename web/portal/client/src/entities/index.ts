@@ -16,6 +16,7 @@ const entities: EntityList = {};
 
 const pathToEntityName = (path: string): string => {
   const fileName = path.split('/').pop() as string;
+
   return fileName.replace('.tsx', '');
 };
 
@@ -24,6 +25,7 @@ for (const relativePath in modules) {
   try {
     entities[entityName] = modules[relativePath].default;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('entityName', error);
   }
 }

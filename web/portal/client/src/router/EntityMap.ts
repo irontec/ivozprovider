@@ -1,11 +1,12 @@
-import entities from '../entities';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { EntityAclType } from '@irontec/ivoz-ui';
 import routeMapParser, {
   RouteMap,
   RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { AboutMe, ClientFeatures } from 'store/clientSession/aboutMe';
-import { EntityAclType } from '@irontec/ivoz-ui';
+
+import entities from '../entities';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
 type aclOverrideType = (aboutMe: AboutMe) => EntityAclType;

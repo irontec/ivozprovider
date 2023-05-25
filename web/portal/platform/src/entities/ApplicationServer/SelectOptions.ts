@@ -11,7 +11,7 @@ const ApplicationServerSelectOptions: SelectOptionsType = ({
   const ApplicationServer = entities.ApplicationServer;
 
   return defaultEntityBehavior.fetchFks(
-    ApplicationServer.path + `?_order[name]=ASC`,
+    `${ApplicationServer.path}?_order[name]=ASC`,
     ['id', 'name'],
     (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];

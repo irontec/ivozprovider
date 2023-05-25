@@ -1,12 +1,10 @@
-import PersonIcon from '@mui/icons-material/Person';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { UserProperties } from './UserProperties';
-import selectOptions from './SelectOptions';
+import PersonIcon from '@mui/icons-material/Person';
+
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
+import { UserProperties, UserPropertyList } from './UserProperties';
 
 const properties: UserProperties = {
   name: {
@@ -200,13 +198,23 @@ const user: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Users',
   },
-  toStr: (row: any) => `${row.name} ${row.lastname}`,
+  toStr: (row: UserPropertyList<string>) => `${row.name} ${row.lastname}`,
   properties,
   columns,
-  Form,
-  foreignKeyGetter,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

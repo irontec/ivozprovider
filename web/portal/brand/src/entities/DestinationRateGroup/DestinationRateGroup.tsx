@@ -1,12 +1,13 @@
-import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { DestinationRateGroupProperties } from './DestinationRateGroupProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
+
+import {
+  DestinationRateGroupProperties,
+  DestinationRateGroupPropertyList,
+} from './DestinationRateGroupProperties';
 
 const properties: DestinationRateGroupProperties = {
   status: {
@@ -59,13 +60,30 @@ const DestinationRateGroup: EntityInterface = {
   iden: 'DestinationRateGroup',
   title: _('Destination rate', { count: 2 }),
   path: '/destination_rate_groups',
-  toStr: (row: any) => row.name.en,
+  toStr: (row: DestinationRateGroupPropertyList<EntityValues>) =>
+    `${row.name?.en}`,
   properties,
   columns: ['name', 'description', 'currency', 'file', 'status'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default DestinationRateGroup;

@@ -1,20 +1,21 @@
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { ForeignKeyGetterTypeArgs } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+
 import { UnassignedCompanySelectOptions } from '../Company/SelectOptions';
 import { FriendPropertyList } from './FriendProperties';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 type CompanyServiceForeignKeyGetterType = (
   props: ForeignKeyGetterTypeArgs,
   currentServiceId?: number
-) => Promise<any>;
+) => Promise<unknown>;
 
 export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async ({
   cancelToken,
   filterContext,
   entityService,
   row,
-}): Promise<any> => {
+}): Promise<unknown> => {
   const response: FriendPropertyList<unknown> = {};
   const promises = autoSelectOptions({
     entityService,

@@ -1,11 +1,9 @@
-import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+
 import { CompanyServiceProperties } from './CompanyServiceProperties';
-import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: CompanyServiceProperties = {
   service: {
@@ -33,9 +31,21 @@ const companyService: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'CompanyServices',
   },
-  foreignKeyResolver,
-  Form,
-  foreignKeyGetter,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default companyService;

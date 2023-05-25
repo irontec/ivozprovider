@@ -3,12 +3,9 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AlbumIcon from '@mui/icons-material/Album';
-import { BrandProperties, BrandPropertyList } from './BrandProperties';
-import Form from './Form';
+
 import Actions from './Action';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
-import selectOptions from './SelectOptions';
+import { BrandProperties, BrandPropertyList } from './BrandProperties';
 
 const properties: BrandProperties = {
   domainUsers: {
@@ -86,10 +83,26 @@ const Brand: EntityInterface = {
     'features',
   ],
   customActions: Actions,
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Brand;

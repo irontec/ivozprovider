@@ -1,8 +1,9 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { ResidentialDevicePropertiesList } from '../ResidentialDeviceProperties';
 import store from 'store';
+
+import { ResidentialDevicePropertiesList } from '../ResidentialDeviceProperties';
 
 const ResidentialDeviceSelectOptions: SelectOptionsType = ({
   callback,

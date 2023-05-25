@@ -1,12 +1,13 @@
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+
 import { TransformationRuleSetPropertyList } from './TransformationRuleSetProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
   entityService,
-}): Promise<any> => {
+}): Promise<unknown> => {
   const response: TransformationRuleSetPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({

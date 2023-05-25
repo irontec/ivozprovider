@@ -2,12 +2,11 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
+
 import Status from '../RetailAccount/Field/Status';
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
-import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
-import selectOptions from './SelectOptions';
-import Form from './Form';
 import Password from '../Terminal/Field/Password';
+import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
 
 const properties: ResidentialDeviceProperties = {
   name: {
@@ -261,10 +260,16 @@ const residentialDevice: EntityInterface = {
     iden: 'ResidentialDevices',
   },
   toStr: (row) => (row?.name as string) || '',
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default residentialDevice;

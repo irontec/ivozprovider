@@ -3,10 +3,9 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import Form from './Form';
-import { LanguageProperties, LanguagePropertyList } from './LanguageProperties';
-import selectOptions from './SelectOptions';
 import { getI18n } from 'react-i18next';
+
+import { LanguageProperties, LanguagePropertyList } from './LanguageProperties';
 
 const properties: LanguageProperties = {
   iden: {
@@ -30,11 +29,20 @@ const Language: EntityInterface = {
   toStr: (row: LanguagePropertyList<EntityValues>) => {
     const language = getI18n().language.substring(0, 2);
     const name = row.name as Record<string, string>;
+
     return name[language];
   },
   properties,
-  selectOptions,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Language;

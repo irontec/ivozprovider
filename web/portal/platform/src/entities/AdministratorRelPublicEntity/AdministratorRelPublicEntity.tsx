@@ -1,13 +1,10 @@
-import KeyIcon from '@mui/icons-material/Key';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
+import KeyIcon from '@mui/icons-material/Key';
+
 import { AdministratorRelPublicEntityProperties } from './AdministratorRelPublicEntityProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
-import { EntityValues } from '@irontec/ivoz-ui';
 
 const properties: AdministratorRelPublicEntityProperties = {
   create: {
@@ -61,10 +58,26 @@ const AdministratorRelPublicEntity: EntityInterface = {
   toStr: (row: EntityValues): string => row.id as string,
   properties,
   columns: ['publicEntity', 'create', 'read', 'update', 'delete'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default AdministratorRelPublicEntity;

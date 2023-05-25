@@ -1,11 +1,12 @@
-import ArticleIcon from '@mui/icons-material/Article';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { CallCsvReportProperties } from './CallCsvReportProperties';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import ArticleIcon from '@mui/icons-material/Article';
+
+import { CallCsvReportProperties } from './CallCsvReportProperties';
 
 const properties: CallCsvReportProperties = {
   sentTo: {

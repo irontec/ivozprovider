@@ -13,9 +13,9 @@ const LanguageSelectOptions: SelectOptionsType = ({
   const language = getI18n().language.substring(0, 2);
 
   return defaultEntityBehavior.fetchFks(
-    Language.path + `?_order[name.${[language]}]=ASC`,
+    `${Language.path}?_order[name.${[language]}]=ASC`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: item.name[language] });

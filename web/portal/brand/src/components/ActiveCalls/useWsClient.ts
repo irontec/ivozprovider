@@ -7,12 +7,13 @@ type UseWsClientProps<T> = {
 };
 
 const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
-  const token = useStoreState((actions: any) => actions.auth.token);
+  const token = useStoreState((actions) => actions.auth.token);
   const { wsServerUrl, onMessage } = props;
 
   const [ready, setReady] = useState<boolean>(false);
 
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log('init socket', wsServerUrl);
     const socket = new WebSocket(wsServerUrl);
 
@@ -34,6 +35,7 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
       switch (payload) {
         case 'Challenge':
           if (retries >= maxRetries) {
+            // eslint-disable-next-line no-console
             console.error('Unable to register');
             socket.close();
           } else if (retries === 0) {
@@ -59,12 +61,14 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
 
     socket.onclose = function (event) {
       if (event.wasClean) {
+        // eslint-disable-next-line no-console
         console.log(
           `[ws close] Connection closed cleanly, code=${event.code} reason=${event.reason}`
         );
       } else {
         // e.g. server process killed or network down
         // event.code is usually 1006 in this case
+        // eslint-disable-next-line no-console
         console.log('[ws close] Connection died');
       }
 
@@ -72,11 +76,13 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
     };
 
     socket.onerror = function (error) {
+      // eslint-disable-next-line no-console
       console.log(`[ws error]`, error);
       setReady(false);
     };
 
     return () => {
+      // eslint-disable-next-line no-console
       console.log('socket down');
       if (timeout) {
         clearTimeout(timeout);

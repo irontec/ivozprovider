@@ -1,9 +1,10 @@
-import ReceiptIcon from '@mui/icons-material/Receipt';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { InvoiceProperties } from './InvoiceProperties';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+
+import { InvoiceProperties } from './InvoiceProperties';
 
 const properties: InvoiceProperties = {
   number: {

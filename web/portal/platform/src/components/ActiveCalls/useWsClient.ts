@@ -7,13 +7,13 @@ type UseWsClientProps<T> = {
 };
 
 const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
-  const token = useStoreState((actions: any) => actions.auth.token);
+  const token = useStoreState((actions) => actions.auth.token);
   const { wsServerUrl, onMessage } = props;
 
   const [ready, setReady] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log('init socket', wsServerUrl);
+    // console.log('init socket', wsServerUrl);
     const socket = new WebSocket(wsServerUrl);
 
     let retries = 0;
@@ -59,12 +59,14 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
 
     socket.onclose = function (event) {
       if (event.wasClean) {
+        // eslint-disable-next-line no-console
         console.log(
           `[ws close] Connection closed cleanly, code=${event.code} reason=${event.reason}`
         );
       } else {
         // e.g. server process killed or network down
         // event.code is usually 1006 in this case
+        // eslint-disable-next-line no-console
         console.log('[ws close] Connection died');
       }
 
@@ -72,11 +74,13 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
     };
 
     socket.onerror = function (error) {
-      console.log(`[ws error]`, error);
+      // eslint-disable-next-line no-console
+      console.error(`[ws error]`, error);
       setReady(false);
     };
 
     return () => {
+      // eslint-disable-next-line no-console
       console.log('socket down');
       if (timeout) {
         clearTimeout(timeout);

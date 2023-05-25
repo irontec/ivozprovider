@@ -1,5 +1,6 @@
-import { action, Action, Thunk, thunk } from 'easy-peasy';
 import axios from 'axios';
+import { Action, action, Thunk, thunk } from 'easy-peasy';
+
 import { AppStore } from '../index';
 
 export interface EntityAcl {
@@ -57,7 +58,7 @@ const Acls: AboutMeStore = {
           path: '/my/profile',
           params: {},
           cancelToken: cancelTokenSource.token,
-          successCallback: async (response: any) => {
+          successCallback: async (response) => {
             localStorage.setItem(
               'profile',
               JSON.stringify(response as AboutMe)
@@ -65,7 +66,7 @@ const Acls: AboutMeStore = {
             actions.init();
           },
         });
-      } catch (error: any) {
+      } catch (error) {
         storeActions.auth.setToken(null);
         storeActions.api.setErrorMsg('Unable to load ACLs');
       }

@@ -11,9 +11,9 @@ const DdiProviderSelectOptions: SelectOptionsType = ({
   const DdiProvider = entities.DdiProvider;
 
   return defaultEntityBehavior.fetchFks(
-    DdiProvider.path + '?_order[name]=ASC',
+    `${DdiProvider.path}?_order[name]=ASC`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: item.name });

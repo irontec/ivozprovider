@@ -292,6 +292,7 @@
   "Iden": "Iden",
   "If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this residential device.": "Se impostato a 'Si', imposta il DDI chiamato come destinazione (R-URI e To) per le chiamate verso questo residential device.",
   "If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this retail account.": "Se impostato a 'Si', imposta il DDI chiamato come destinazione (R-URI e To) per le chiamate verso questo account retail.",
+  "Impersonate": "Impersonare",
   "Impersonate as client admin": "Impersonare come amministratore del client",
   "Imported": "Importato",
   "Imported file": "File importato",

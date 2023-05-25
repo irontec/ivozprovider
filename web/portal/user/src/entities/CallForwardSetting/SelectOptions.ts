@@ -1,8 +1,9 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { CallForwardSettingPropertiesList } from './CallForwardSettingProperties';
-import { DropdownChoices } from '@irontec/ivoz-ui';
 import store from 'store';
+
+import { CallForwardSettingPropertiesList } from './CallForwardSettingProperties';
 
 const CallForwardSettingSelectOptions: SelectOptionsType = ({
   callback,

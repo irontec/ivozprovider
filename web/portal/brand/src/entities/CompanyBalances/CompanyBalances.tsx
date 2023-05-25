@@ -1,6 +1,7 @@
-import Company from '../Company/Company';
-import CurrencyYenIcon from '@mui/icons-material/CurrencyYen';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import CurrencyYenIcon from '@mui/icons-material/CurrencyYen';
+
+import Company from '../Company/Company';
 
 const CompanyBalances = {
   ...Company,

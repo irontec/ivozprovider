@@ -1,7 +1,8 @@
-import { AboutMe, EntityAcl } from 'store/clientSession/aboutMe';
-import { useState, useEffect } from 'react';
-import { ExtendedRouteMap, ExtendedRouteMapItem } from './EntityMap';
 import { isEntityItem } from '@irontec/ivoz-ui';
+import { useEffect, useState } from 'react';
+import { AboutMe, EntityAcl } from 'store/clientSession/aboutMe';
+
+import { ExtendedRouteMap, ExtendedRouteMapItem } from './EntityMap';
 
 interface updateEntityMapProps {
   entityMap: ExtendedRouteMap;
@@ -61,12 +62,14 @@ const updateRouteMapItemByAcls = (
   const entityAcls = entity.acl;
 
   if (!entityAcls || !entityAcls.iden) {
+    // eslint-disable-next-line no-console
     console.warn(`Unable to calculate ACLs for ${entity.iden}`);
+
     return routeMapItem;
   }
 
   const apiAcls: EntityAcl | undefined = aboutMe.acls.find(
-    (acl) => entityAcls?.iden === acl.iden
+    (acl: EntityAcl) => entityAcls?.iden === acl.iden
   );
 
   if (!apiAcls) {
@@ -127,6 +130,7 @@ export default function useAclFilteredEntityMap(
   useEffect(() => {
     if (!aboutMe) {
       setRoutes(emptyEntityMap);
+
       return;
     }
 

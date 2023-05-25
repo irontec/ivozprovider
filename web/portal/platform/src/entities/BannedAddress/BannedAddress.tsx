@@ -1,12 +1,13 @@
-import RemoveModeratorIcon from '@mui/icons-material/RemoveModerator';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import RemoveModeratorIcon from '@mui/icons-material/RemoveModerator';
+
 import {
   BannedAddressProperties,
   BannedAddressPropertyList,
 } from './BannedAddressProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: BannedAddressProperties = {
   ip: {

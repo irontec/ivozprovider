@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
-import { useStoreActions, useStoreState } from 'store';
-import { EntityValidator } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { Login as DefaultLogin } from '@irontec/ivoz-ui/components';
+import { EntityValidator } from '@irontec/ivoz-ui/entities/EntityInterface';
+import queryString from 'query-string';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useStoreActions, useStoreState } from 'store';
 
 interface LoginProps {
   validator?: EntityValidator;
@@ -10,20 +12,56 @@ interface LoginProps {
 export default function Login(props: LoginProps): JSX.Element | null {
   const { validator } = props;
 
-  const loggedIn = useStoreState((state) => state.auth.loggedIn);
-  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const qsArgs = queryString.parse(location.search);
+  const {
+    target,
+    token,
+  }: {
+    target?: string;
+    token?: string;
+  } = qsArgs;
 
-  const loadProfile = useStoreActions(
-    (actions) => actions.clientSession.aboutMe.load
+  const loggedIn = useStoreState((state) => state.auth.loggedIn);
+
+  const exchangeToken = useStoreActions(
+    (actions) => actions.auth.exchangeToken
   );
 
   useEffect(() => {
-    if (loggedIn && !aboutMe) {
-      loadProfile();
-    }
-  }, [loggedIn, aboutMe, loadProfile]);
+    if (target && token) {
+      exchangeToken({
+        clientId: target,
+        token,
+      })
+        .then((success: boolean) => {
+          if (!success) {
+            console.error('Unable to echange token');
 
-  if (loggedIn) {
+            return;
+          }
+
+          navigate(`${location.pathname}/`, {
+            replace: true,
+            preventScrollReset: true,
+          });
+        })
+        .catch((err: string) => {
+          console.error(err);
+        });
+
+      return;
+    }
+  }, [target, token, exchangeToken, navigate, location.pathname]);
+
+  useEffect(() => {
+    if (target && token) {
+      return;
+    }
+  }, [target, token, loggedIn]);
+
+  if (loggedIn || (target && token)) {
     return null;
   }
 

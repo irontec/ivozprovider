@@ -1,14 +1,15 @@
-import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-import EntityInterface, {
-  ChildDecoratorType,
-} from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { isEntityItem } from '@irontec/ivoz-ui';
-import Form from './Form';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+
 import { ContactProperties } from './ContactProperties';
 
 const properties: ContactProperties = {
@@ -57,13 +58,19 @@ const columns = [
 ];
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, row } = props;
+  const { routeMapItem, entityService, row } = props;
 
   if (isEntityItem(routeMapItem) && routeMapItem.entity.iden === Contact.iden) {
     const isDeletePath = routeMapItem.route === `${Contact.path}/:id`;
     const allowDelete = row.user === null;
     if (isDeletePath && !allowDelete) {
-      return null;
+      return (
+        <DeleteRowButton
+          disabled={true}
+          row={row}
+          entityService={entityService}
+        />
+      );
     }
   }
 
@@ -83,8 +90,12 @@ const Contact: EntityInterface = {
   toStr: (row: EntityValues) => (row.name as string) || '',
   properties,
   columns,
-  Form,
   ChildDecorator,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Contact;

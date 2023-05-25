@@ -1,13 +1,11 @@
-import DateRangeIcon from '@mui/icons-material/DateRange';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { CalendarPeriodProperties } from './CalendarPeriodProperties';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+
+import { CalendarPeriodProperties } from './CalendarPeriodProperties';
 import Target from './Field/Target';
-import foreignKeyResolver from './foreignKeyResolver';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import Form from './Form';
 
 const routableFields = [
   'numberCountry',
@@ -114,9 +112,21 @@ const CalendarPeriod: EntityInterface = {
     'target',
     'voicemail',
   ],
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default CalendarPeriod;

@@ -1,20 +1,20 @@
 import { DropdownArrayChoices, EntityValues } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
   PropertyFkChoices,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
 import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
-
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
-const Form = (props: EntityFormProps): JSX.Element | null => {
-  const { entityService, row, match, foreignKeyGetter } = props;
-  const edit = props.edit || false;
+import { foreignKeyGetter } from './ForeignKeyGetter';
 
-  const DefaultEntityForm = defaultEntityBehavior.Form;
+const Form = (props: EntityFormProps): JSX.Element | null => {
+  const { entityService, row, match } = props;
+  const edit = props.edit || false;
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
   const fkChoices = useFkChoices({

@@ -1,8 +1,7 @@
-import Company from '../Company/Company';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import Form from './Form';
+
+import Company from '../Company/Company';
 
 const Retail = {
   ...Company,
@@ -26,8 +25,16 @@ const Retail = {
     'codecIds',
     'featureIds',
   ],
-  foreignKeyGetter,
-  Form,
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Retail;

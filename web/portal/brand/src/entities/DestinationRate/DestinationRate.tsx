@@ -1,14 +1,15 @@
-import PaymentsIcon from '@mui/icons-material/Payments';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { DestinationRateProperties } from './DestinationRateProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
-import Cost from './Field/Cost';
+import PaymentsIcon from '@mui/icons-material/Payments';
+
+import {
+  DestinationRateProperties,
+  DestinationRatePropertyList,
+} from './DestinationRateProperties';
 import ConnectionFee from './Field/ConnectionFee';
+import Cost from './Field/Cost';
 
 const properties: DestinationRateProperties = {
   cost: {
@@ -62,7 +63,7 @@ const DestinationRate: EntityInterface = {
   iden: 'DestinationRate',
   title: _('Rate', { count: 2 }),
   path: '/destination_rates',
-  toStr: (row: any) => row.id,
+  toStr: (row: DestinationRatePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: [
     'destination',
@@ -72,10 +73,26 @@ const DestinationRate: EntityInterface = {
     'rateIncrement',
     'currencySymbol',
   ],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default DestinationRate;

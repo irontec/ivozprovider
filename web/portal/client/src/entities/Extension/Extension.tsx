@@ -1,11 +1,12 @@
-import ShortcutIcon from '@mui/icons-material/Shortcut';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { ExtensionProperties } from './ExtensionProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions/SelectOptions';
+import ShortcutIcon from '@mui/icons-material/Shortcut';
+
+import {
+  ExtensionProperties,
+  ExtensionPropertyList,
+} from './ExtensionProperties';
 import RouteType from './Field/RouteType';
 
 const allRoutableFields = [
@@ -139,17 +140,27 @@ const extension: EntityInterface = {
   iden: 'Extension',
   title: _('Extension', { count: 2 }),
   path: '/extensions',
-  toStr: (row: any) => row.number,
+  toStr: (row: ExtensionPropertyList<string>) => `${row.number}`,
   columns,
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Extensions',
   },
-  Form,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

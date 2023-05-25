@@ -1,12 +1,13 @@
-import LanguageIcon from '@mui/icons-material/Language';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { DestinationProperties } from './DestinationProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import LanguageIcon from '@mui/icons-material/Language';
+
+import {
+  DestinationProperties,
+  DestinationPropertyList,
+} from './DestinationProperties';
 
 const properties: DestinationProperties = {
   prefix: {
@@ -29,13 +30,29 @@ const Destination: EntityInterface = {
   iden: 'Destination',
   title: _('Destination', { count: 2 }),
   path: '/destinations',
-  toStr: (row: any) => row.name.en,
+  toStr: (row: DestinationPropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
   columns: ['name', 'prefix'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Destination;

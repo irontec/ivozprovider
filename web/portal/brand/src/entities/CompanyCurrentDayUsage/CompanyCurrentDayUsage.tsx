@@ -1,6 +1,7 @@
-import Company from '../Company/Company';
-import SavingsIcon from '@mui/icons-material/Savings';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import SavingsIcon from '@mui/icons-material/Savings';
+
+import Company from '../Company/Company';
 
 const CompanyCurrentDayUsage = {
   ...Company,

@@ -1,22 +1,19 @@
-import SwapCallsIcon from '@mui/icons-material/SwapCalls';
+import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { CarrierProperties } from './CarrierProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
-import Balance from './Field/Balance';
-import { isEntityItem } from '@irontec/ivoz-ui';
+import SwapCallsIcon from '@mui/icons-material/SwapCalls';
+
 import BalanceMovement from '../BalanceMovement/BalanceMovement';
 import BalanceNotification from '../BalanceNotification/BalanceNotification';
-import RatingProfile from '../RatingProfile/RatingProfile';
 import StatusIcon from '../CarrierServer/Field/StatusIcon';
+import RatingProfile from '../RatingProfile/RatingProfile';
+import { CarrierProperties, CarrierPropertyList } from './CarrierProperties';
+import Balance from './Field/Balance';
 
 const properties: CarrierProperties = {
   description: {
@@ -98,6 +95,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
       return null;
     }
   }
+
   return DefaultChildDecorator(props);
 };
 
@@ -107,7 +105,7 @@ const Carrier: EntityInterface = {
   iden: 'Carrier',
   title: _('Carrier', { count: 2 }),
   path: '/carriers',
-  toStr: (row: any) => row.name,
+  toStr: (row: CarrierPropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: [
     'name',
@@ -118,10 +116,26 @@ const Carrier: EntityInterface = {
     'statusIcon',
   ],
   ChildDecorator,
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Carrier;

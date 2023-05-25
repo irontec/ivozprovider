@@ -1,12 +1,13 @@
-import MoneyIcon from '@mui/icons-material/Money';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { RatingPlanProperties } from './RatingPlanProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import MoneyIcon from '@mui/icons-material/Money';
+
+import {
+  RatingPlanProperties,
+  RatingPlanPropertyList,
+} from './RatingPlanProperties';
 
 const timingFields = [
   'timeIn',
@@ -92,7 +93,7 @@ const RatingPlan: EntityInterface = {
   iden: 'RatingPlan',
   title: _('Destination rate', { count: 2 }),
   path: '/rating_plans',
-  toStr: (row: any) => row.id,
+  toStr: (row: RatingPlanPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: [
     'destinationRateGroup',
@@ -107,10 +108,21 @@ const RatingPlan: EntityInterface = {
     'saturday',
     'sunday',
   ],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default RatingPlan;

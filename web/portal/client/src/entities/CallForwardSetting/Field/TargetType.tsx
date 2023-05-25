@@ -1,10 +1,11 @@
-import { RouteComponentProps } from 'react-router-dom';
 import { ListDecorator, ScalarProperty } from '@irontec/ivoz-ui';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { RouteComponentProps } from 'react-router-dom';
 import { useStoreState } from 'store';
+
 import { CallForwardSettingPropertyList } from '../CallForwardSettingProperties';
 
 type TargetTypeValues = CallForwardSettingPropertyList<string>;

@@ -1,9 +1,10 @@
-import entities from '../entities';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import routeMapParser, {
   RouteMap,
   RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+
+import entities from '../entities';
 import { AboutMe } from '../store/clientSession/aboutMe';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;

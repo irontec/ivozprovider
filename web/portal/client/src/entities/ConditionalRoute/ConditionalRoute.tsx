@@ -1,12 +1,12 @@
-import SwitchCameraIcon from '@mui/icons-material/SwitchCamera';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { ConditionalRouteProperties } from './ConditionalRouteProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import SwitchCameraIcon from '@mui/icons-material/SwitchCamera';
+
+import {
+  ConditionalRouteProperties,
+  ConditionalRoutePropertyList,
+} from './ConditionalRouteProperties';
 import RouteType from './Field/RouteType';
 
 const routableFields = [
@@ -144,18 +144,32 @@ const ConditionalRoute: EntityInterface = {
   iden: 'ConditionalRoute',
   title: _('Conditional Route', { count: 2 }),
   path: '/conditional_routes',
-  toStr: (row: any) => row.name,
+  toStr: (row: ConditionalRoutePropertyList<string>) => `${row.name}`,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ConditionalRoutes',
   },
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

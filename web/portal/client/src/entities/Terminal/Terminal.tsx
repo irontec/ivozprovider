@@ -1,14 +1,12 @@
-import PhoneIcon from '@mui/icons-material/Phone';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import Form from './Form';
-import { TerminalProperties } from './TerminalProperties';
-import Password from './Field/Password';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
-import StatusIcon from '../RetailAccount/Field/StatusIcon';
+import PhoneIcon from '@mui/icons-material/Phone';
+
 import Status from '../RetailAccount/Field/Status';
+import StatusIcon from '../RetailAccount/Field/StatusIcon';
+import Password from './Field/Password';
+import { TerminalProperties, TerminalPropertyList } from './TerminalProperties';
 
 const properties: TerminalProperties = {
   name: {
@@ -107,17 +105,27 @@ const terminal: EntityInterface = {
   iden: 'Terminal',
   title: _('Terminal', { count: 2 }),
   path: '/terminals',
-  toStr: (row: any) => row.name,
+  toStr: (row: TerminalPropertyList<string>) => `${row.name}`,
   properties,
   columns: ['name', 'domainName', 'terminalModel', 'mac', 'statusIcon'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Terminals',
   },
-  Form,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

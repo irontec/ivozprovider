@@ -1,14 +1,13 @@
-import SubjectIcon from '@mui/icons-material/Subject';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
+import SubjectIcon from '@mui/icons-material/Subject';
+
 import {
   NotificationTemplateContentProperties,
   NotificationTemplateContentPropertyList,
 } from './NotificationTemplateContentProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
-import selectOptions from './SelectOptions';
 
 const properties: NotificationTemplateContentProperties = {
   fromName: {
@@ -53,8 +52,16 @@ const NotificationTemplateContent: EntityInterface = {
     row.fromName as string,
   properties,
   columns: ['language', 'fromName', 'fromAddress'],
-  selectOptions,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default NotificationTemplateContent;

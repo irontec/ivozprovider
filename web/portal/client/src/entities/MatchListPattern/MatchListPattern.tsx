@@ -1,18 +1,19 @@
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
-import EntityInterface, {
-  ChildDecoratorType,
-} from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
+import EditRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/EditRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import { useStoreState } from 'store';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
-import matchValue from './Field/MatchValue';
+
 import { MatchListPropertyList } from '../MatchList/MatchListProperties';
+import matchValue from './Field/MatchValue';
 
 const properties: PartialPropertyList = {
   matchList: {
@@ -56,19 +57,43 @@ const properties: PartialPropertyList = {
 const columns = ['type', 'matchValue', 'description'];
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const parent = useStoreState(
+  const { routeMapItem, row, entityService } = props;
+  const parentRow = useStoreState(
     (state) =>
-      state.list.parentRow as MatchListPropertyList<string | number | boolean>
+      state.list.parentRow as
+        | MatchListPropertyList<EntityValue>
+        | null
+        | undefined
   );
 
-  if (parent?.generic === true) {
+  const disableActions = !parentRow || parentRow?.generic === true;
+
+  if (disableActions && isEntityItem(routeMapItem)) {
+    const isDeletePath = routeMapItem.route === `${MatchListPattern.path}/:id`;
+    const isUpdatePath =
+      routeMapItem.route === `${MatchListPattern.path}/:id/update`;
+
+    if (isDeletePath) {
+      return (
+        <DeleteRowButton
+          disabled={true}
+          row={row}
+          entityService={entityService}
+        />
+      );
+    }
+
+    if (isUpdatePath) {
+      return <EditRowButton disabled={true} row={row} path={''} />;
+    }
+
     return null;
   }
 
   return DefaultChildDecorator(props);
 };
 
-const matchListPattern: EntityInterface = {
+const MatchListPattern: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FormatListNumberedIcon,
   iden: 'MatchListPattern',
@@ -80,12 +105,22 @@ const matchListPattern: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'MatchListPatterns',
   },
-  Form,
   ChildDecorator,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 
-export default matchListPattern;
+export default MatchListPattern;

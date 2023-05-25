@@ -1,12 +1,13 @@
-import RadioIcon from '@mui/icons-material/Radio';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { MusicOnHoldProperties } from './MusicOnHoldProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import RadioIcon from '@mui/icons-material/Radio';
+
+import {
+  MusicOnHoldProperties,
+  MusicOnHoldPropertyList,
+} from './MusicOnHoldProperties';
 
 const properties: MusicOnHoldProperties = {
   name: {
@@ -43,13 +44,29 @@ const MusicOnHold: EntityInterface = {
   iden: 'MusicOnHold',
   title: _('Generic Music on Hold', { count: 2 }),
   path: '/music_on_holds',
-  toStr: (row: any) => row.id,
+  toStr: (row: MusicOnHoldPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['name', 'originalFile'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default MusicOnHold;

@@ -1,9 +1,10 @@
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
-import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+
 import { BillableCallProperties } from './ActiveCallsProperties';
 
 const properties: BillableCallProperties = {

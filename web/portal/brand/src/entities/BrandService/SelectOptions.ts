@@ -11,9 +11,9 @@ const BrandServiceSelectOptions: SelectOptionsType = ({
   const BrandService = entities.BrandService;
 
   return defaultEntityBehavior.fetchFks(
-    BrandService.path + '?_order[name]=ASC',
+    `${BrandService.path}?_order[name]=ASC`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: item.name });

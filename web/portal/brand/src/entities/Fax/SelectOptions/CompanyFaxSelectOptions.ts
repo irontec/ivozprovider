@@ -15,9 +15,9 @@ const CompanyFaxSelectOptions: SelectOptionsType<
   const companyId = customProps?.companyId;
 
   return defaultEntityBehavior.fetchFks(
-    Fax.path + `?company[]=${companyId}`,
+    `${Fax.path}?company[]=${companyId}`,
     ['id', 'name', 'lastname'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = item.name;

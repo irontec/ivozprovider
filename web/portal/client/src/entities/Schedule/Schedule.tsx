@@ -1,11 +1,10 @@
-import WatchLaterIcon from '@mui/icons-material/WatchLater';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { ScheduleProperties } from './ScheduleProperties';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
-import selectOptions from './SelectOptions';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import WatchLaterIcon from '@mui/icons-material/WatchLater';
+
+import { ScheduleProperties } from './ScheduleProperties';
 
 const properties: ScheduleProperties = {
   name: {
@@ -64,9 +63,15 @@ const schedule: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Schedules',
   },
-  Form,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

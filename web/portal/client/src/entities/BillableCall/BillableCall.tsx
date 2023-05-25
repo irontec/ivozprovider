@@ -1,12 +1,11 @@
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
-import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import Form from './Form';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+
 import { BillableCallProperties } from './BillableCallProperties';
-import View from './View';
 
 const properties: BillableCallProperties = {
   startTime: {
@@ -77,8 +76,16 @@ const billableCall: EntityInterface = {
     ...DefaultEntityBehavior.acl,
     iden: 'BillableCalls',
   },
-  Form,
-  View,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
+  View: async () => {
+    const module = await import('./View');
+
+    return module.default;
+  },
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
 };

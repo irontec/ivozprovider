@@ -11,7 +11,7 @@ const MediaRelaySetSelectOptions: SelectOptionsType = ({
   const MediaRelaySet = entities.MediaRelaySet;
 
   return defaultEntityBehavior.fetchFks(
-    MediaRelaySet.path + `?_order[name]=ASC`,
+    `${MediaRelaySet.path}?_order[name]=ASC`,
     ['id', 'name'],
     (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];

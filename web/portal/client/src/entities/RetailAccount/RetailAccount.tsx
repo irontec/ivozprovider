@@ -1,13 +1,12 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { RetailAccountProperties } from './RetailAccountProperties';
-import selectOptions from './SelectOptions';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+
+import Password from '../Terminal/Field/Password';
 import Status from './Field/Status';
 import StatusIcon from './Field/StatusIcon';
-import Password from '../Terminal/Field/Password';
-import Form from './Form';
+import { RetailAccountProperties } from './RetailAccountProperties';
 
 const properties: RetailAccountProperties = {
   company: {
@@ -154,10 +153,16 @@ const retailAccount: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'RetailAccounts',
   },
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default retailAccount;

@@ -1,10 +1,12 @@
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { QueueMemberProperties } from './QueueMemberProperties';
-import foreignKeyResolver from './foreignKeyResolver';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+
+import {
+  QueueMemberProperties,
+  QueueMemberPropertyList,
+} from './QueueMemberProperties';
 
 const properties: QueueMemberProperties = {
   queue: {
@@ -33,14 +35,22 @@ const QueueMember: EntityInterface = {
   iden: 'QueueMember',
   title: _('Queue Member', { count: 2 }),
   path: '/queue_members',
-  toStr: (row: any) => row.name,
+  toStr: (row: QueueMemberPropertyList<string>) => `${row.id}`,
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'QueueMembers',
   },
-  foreignKeyResolver,
-  Form,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default QueueMember;

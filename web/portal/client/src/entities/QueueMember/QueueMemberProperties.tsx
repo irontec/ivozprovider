@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type QueueMemberPropertyList<T> = {
+  id?: T;
   queue?: T;
   user?: T;
   penalty?: T;

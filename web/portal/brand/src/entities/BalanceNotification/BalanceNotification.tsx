@@ -1,12 +1,13 @@
-import MoneyOffIcon from '@mui/icons-material/MoneyOff';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { BalanceNotificationProperties } from './BalanceNotificationProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import MoneyOffIcon from '@mui/icons-material/MoneyOff';
+
+import {
+  BalanceNotificationProperties,
+  BalanceNotificationPropertyList,
+} from './BalanceNotificationProperties';
 
 const properties: BalanceNotificationProperties = {
   toAddress: {
@@ -49,13 +50,29 @@ const BalanceNotification: EntityInterface = {
   iden: 'BalanceNotification',
   title: _('Balance Notification', { count: 2 }),
   path: '/balance_notifications',
-  toStr: (row: any) => row.id,
+  toStr: (row: BalanceNotificationPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['notificationTemplate', 'toAddress', 'threshold', 'lastSent'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default BalanceNotification;

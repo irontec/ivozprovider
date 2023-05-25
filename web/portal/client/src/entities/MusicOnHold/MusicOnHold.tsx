@@ -1,7 +1,8 @@
-import AudiotrackIcon from '@mui/icons-material/Audiotrack';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import AudiotrackIcon from '@mui/icons-material/Audiotrack';
+
 import { MusicOnHoldProperties } from './MusicOnHoldProperties';
 
 const properties: MusicOnHoldProperties = {

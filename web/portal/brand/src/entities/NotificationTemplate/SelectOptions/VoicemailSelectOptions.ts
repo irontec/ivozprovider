@@ -1,3 +1,4 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
@@ -12,8 +13,8 @@ const VoicemailSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     `${NotificationTemplate.path}?type=voicemail`,
     ['id', 'name'],
-    (data: any) => {
-      const options: any = {};
+    (data) => {
+      const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = NotificationTemplate.toStr(item);
       }

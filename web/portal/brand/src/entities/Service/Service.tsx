@@ -1,12 +1,10 @@
+import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PlumbingIcon from '@mui/icons-material/Plumbing';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
-import Form from './Form';
-import selectOptions from './SelectOptions';
-import { ServiceProperties } from './ServiceProperties';
+
+import { ServiceProperties, ServicePropertyList } from './ServiceProperties';
 
 const properties: ServiceProperties = {
   iden: {
@@ -41,13 +39,29 @@ const Service: EntityInterface = {
   iden: 'Service',
   title: _('Service', { count: 2 }),
   path: '/services',
-  toStr: (row: any) => row.name.en,
+  toStr: (row: ServicePropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
   columns: ['iden', 'defaultCode'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Service;

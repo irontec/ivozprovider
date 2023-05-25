@@ -2,8 +2,8 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
 import { CallAclRelMatchListProperties } from './CallAclRelMatchListProperties';
-import Form from './Form';
 
 const properties: CallAclRelMatchListProperties = {
   priority: {
@@ -31,7 +31,11 @@ const CallAclRelMatchList: EntityInterface = {
   title: _('CallAclRelMatchList', { count: 2 }),
   path: '/call_acl_rel_match_lists',
   properties,
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default CallAclRelMatchList;

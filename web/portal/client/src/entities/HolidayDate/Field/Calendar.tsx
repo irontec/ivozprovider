@@ -4,6 +4,7 @@ import withCustomComponentWrapper, {
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { Link } from 'react-router-dom';
 import store from 'store';
+
 import { HolidayDatePropertyList } from '../HolidayDateProperties';
 
 type HolidayDateValues = HolidayDatePropertyList<string | number>;

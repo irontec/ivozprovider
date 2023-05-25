@@ -1,45 +1,67 @@
-import { LinearProgress, CssBaseline } from '@mui/material';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { BrowserRouter } from 'react-router-dom';
-import { StyledAppApiLoading, StyledAppFlexDiv } from './App.styles';
-import store, { useStoreActions, useStoreState } from 'store';
-import AppRoutes from './router/AppRoutes';
-import { useEffect } from 'react';
 import { StoreContainer } from '@irontec/ivoz-ui';
+import { CssBaseline, LinearProgress } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { BrowserRouter } from 'react-router-dom';
+import store, { useStoreActions, useStoreState } from 'store';
+
+import { StyledAppApiLoading } from './App.styles';
+import AppRoutesGuard from './router/AppRoutesGuard';
 import { languagesList } from './translations/languages';
 
 export default function App(): JSX.Element {
   StoreContainer.store = store;
-  const setLanguages = useStoreActions(
-    (actions: any) => actions.i18n.setLanguages
-  );
-  setLanguages(languagesList);
+  const setLanguages = useStoreActions((actions) => actions.i18n.setLanguages);
 
-  const apiSpecStore = useStoreActions((actions: any) => {
+  const apiSpecStore = useStoreActions((actions) => {
     return actions.spec;
   });
-  const authStore = useStoreActions((actions: any) => actions.auth);
+  const authStore = useStoreActions((actions) => actions.auth);
 
-  const token = useStoreState((actions: any) => actions.auth.token);
+  const token = useStoreState((actions) => actions.auth.token);
+  const loggedIn = useStoreState((state) => state.auth.loggedIn);
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+
   const aboutMeResetProfile = useStoreActions(
-    (actions: any) => actions.clientSession.aboutMe.resetProfile
+    (actions) => actions.clientSession.aboutMe.resetProfile
   );
   const aboutMeInit = useStoreActions(
-    (actions: any) => actions.clientSession.aboutMe.init
+    (actions) => actions.clientSession.aboutMe.init
+  );
+  const loadProfile = useStoreActions(
+    (actions) => actions.clientSession.aboutMe.load
   );
 
+  useTranslation();
+
   useEffect(() => {
+    if (loggedIn && token && !aboutMe) {
+      loadProfile();
+    }
+  }, [loggedIn, token, aboutMe, loadProfile]);
+
+  useEffect(() => {
+    setLanguages(languagesList);
+
     apiSpecStore.setSessionStoragePrefix('IP-client-');
     apiSpecStore.init();
     authStore.setSessionStoragePrefix('IP-client-');
     authStore.init();
+
     aboutMeResetProfile();
     aboutMeInit();
-  }, [apiSpecStore, authStore, token, aboutMeInit, aboutMeResetProfile]);
+  }, [
+    setLanguages,
+    apiSpecStore,
+    authStore,
+    token,
+    aboutMeInit,
+    aboutMeResetProfile,
+  ]);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
-  const baseUrl = process.env.BASE_URL;
 
   if (!apiSpec || Object.keys(apiSpec).length === 0) {
     return (
@@ -54,11 +76,11 @@ export default function App(): JSX.Element {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <CssBaseline />
-      <StyledAppFlexDiv>
-        <BrowserRouter basename={baseUrl}>
-          <AppRoutes apiSpec={apiSpec} />
+      <div>
+        <BrowserRouter>
+          <AppRoutesGuard apiSpec={apiSpec} />
         </BrowserRouter>
-      </StyledAppFlexDiv>
+      </div>
     </LocalizationProvider>
   );
 }

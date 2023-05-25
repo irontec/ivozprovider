@@ -1,9 +1,13 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import { OutgoingDdiRuleProperties } from './OutgoingDdiRuleProperties';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
+import {
+  OutgoingDdiRuleProperties,
+  OutgoingDdiRulePropertyList,
+} from './OutgoingDdiRuleProperties';
 
 const properties: OutgoingDdiRuleProperties = {
   name: {
@@ -30,9 +34,13 @@ const OutgoingDdiRule: EntityInterface = {
   iden: 'OutgoingDdiRule',
   title: _('Outgoing DDI Rule', { count: 2 }),
   path: '/outgoing_ddi_rules',
-  toStr: (row: any) => row.name,
+  toStr: (row: OutgoingDdiRulePropertyList<EntityValues>) => `${row.name}`,
   properties,
-  selectOptions,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default OutgoingDdiRule;

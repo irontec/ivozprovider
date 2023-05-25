@@ -1,14 +1,12 @@
-import ReceiptIcon from '@mui/icons-material/Receipt';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { InvoiceProperties } from './InvoiceProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+
 import Total from './Field/Total';
 import TotalWithTax from './Field/TotalWithTax';
+import { InvoiceProperties, InvoicePropertyList } from './InvoiceProperties';
 
 const properties: InvoiceProperties = {
   number: {
@@ -32,7 +30,7 @@ const properties: InvoiceProperties = {
   },
   taxRate: {
     label: _('Tax rate'),
-    subfix: '%',
+    suffix: '%',
     required: true,
   },
   totalWithTax: {
@@ -94,7 +92,7 @@ const Invoice: EntityInterface = {
   iden: 'Invoice',
   title: _('Invoice', { count: 2 }),
   path: '/invoices',
-  toStr: (row: any) => row.number,
+  toStr: (row: InvoicePropertyList<EntityValues>) => `${row.number}`,
   properties,
   columns: [
     'company',
@@ -108,10 +106,26 @@ const Invoice: EntityInterface = {
     'invoiceTemplate',
     'pdf',
   ],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Invoice;

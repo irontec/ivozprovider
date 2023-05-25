@@ -11,9 +11,9 @@ const FixedCostSelectOptions: SelectOptionsType = ({
   const FixedCost = entities.FixedCost;
 
   return defaultEntityBehavior.fetchFks(
-    FixedCost.path + '?_order[name]=ASC',
+    `${FixedCost.path}?_order[name]=ASC`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: item.name });

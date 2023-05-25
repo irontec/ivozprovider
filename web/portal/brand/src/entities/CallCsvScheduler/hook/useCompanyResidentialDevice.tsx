@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
 import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
+import { useEffect, useState } from 'react';
+
 import { CompanyResidentialDeviceSelectOptions } from '../..//ResidentialDevice/SelectOptions';
 
 export const useCompanyResidentialDevice = (
@@ -20,7 +21,7 @@ export const useCompanyResidentialDevice = (
 
     CompanyResidentialDeviceSelectOptions(
       {
-        callback: (options: any) => {
+        callback: (options) => {
           setResidentialDevices(options || []);
         },
         cancelToken,

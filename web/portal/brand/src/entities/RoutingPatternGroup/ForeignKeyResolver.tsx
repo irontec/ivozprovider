@@ -1,11 +1,12 @@
+import { EntityValues } from '@irontec/ivoz-ui';
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import { getI18n } from 'react-i18next';
 import store from 'store';
-import { RoutingPatternGroupPropertiesList } from './RoutingPatternGroupProperties';
+
 import { RoutingPatternPropertyList } from '../RoutingPattern/RoutingPatternProperties';
-import { EntityValues } from '@irontec/ivoz-ui';
+import { RoutingPatternGroupPropertiesList } from './RoutingPatternGroupProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
 const foreignKeyResolver: foreignKeyResolverType = async function ({

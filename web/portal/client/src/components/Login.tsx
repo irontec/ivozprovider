@@ -36,7 +36,9 @@ export default function Login(props: LoginProps): JSX.Element | null {
       })
         .then((success: boolean) => {
           if (!success) {
+            // eslint-disable-next-line no-console
             console.error('Unable to echange token');
+
             return;
           }
 
@@ -46,11 +48,13 @@ export default function Login(props: LoginProps): JSX.Element | null {
           });
         })
         .catch((err: string) => {
+          // eslint-disable-next-line no-console
           console.error(err);
         });
+
       return;
     }
-  }, [target, token, exchangeToken, navigate]);
+  }, [target, token, exchangeToken, navigate, location.pathname]);
 
   useEffect(() => {
     if (target && token) {

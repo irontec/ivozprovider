@@ -1,13 +1,13 @@
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+
 import {
   BillableCallProperties,
   BillableCallPropertyList,
 } from './BillableCallProperties';
-import View from './View';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: BillableCallProperties = {
   callid: {
@@ -115,7 +115,11 @@ const BillableCall: EntityInterface = {
     update: false,
     delete: false,
   },
-  View,
+  View: async () => {
+    const module = await import('./View');
+
+    return module.default;
+  },
 };
 
 export default BillableCall;

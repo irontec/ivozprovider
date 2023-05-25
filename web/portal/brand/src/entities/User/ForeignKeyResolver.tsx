@@ -2,6 +2,7 @@ import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityB
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import store from 'store';
+
 import { UserPropertiesList } from './UserProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/

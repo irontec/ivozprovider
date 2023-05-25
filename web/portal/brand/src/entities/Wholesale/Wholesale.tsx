@@ -1,7 +1,7 @@
-import Company from '../Company/Company';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import Form from './Form';
+
+import Company from '../Company/Company';
 
 const Wholesale = {
   ...Company,
@@ -15,7 +15,11 @@ const Wholesale = {
     'routingTagIds',
     'codecIds',
   ],
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Wholesale;

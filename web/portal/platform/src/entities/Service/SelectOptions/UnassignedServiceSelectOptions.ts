@@ -1,8 +1,8 @@
+import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import store from 'store';
 import { getI18n } from 'react-i18next';
-import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
+import store from 'store';
 
 type ServiceSelectOptionsArgs = {
   includeId?: number;
@@ -32,7 +32,7 @@ const UnassignedServiceSelectOptions: SelectOptionsType<
       for (const item of data) {
         options.push({
           id: item.id as number,
-          label: (item.name as string)[language as any],
+          label: (item.name as Record<string, string>)?.[language] || '',
         });
       }
 

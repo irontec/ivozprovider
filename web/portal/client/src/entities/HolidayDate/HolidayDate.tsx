@@ -1,13 +1,11 @@
-import CelebrationIcon from '@mui/icons-material/Celebration';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { HolidayDateProperties } from './HolidayDateProperties';
-import Form from './Form';
-import Target from './Field/Target';
-import foreignKeyResolver from './foreignKeyResolver';
-import { foreignKeyGetter } from './foreignKeyGetter';
+import CelebrationIcon from '@mui/icons-material/Celebration';
+
 import Calendar from './Field/Calendar';
+import Target from './Field/Target';
+import { HolidayDateProperties } from './HolidayDateProperties';
 
 const routableFields = [
   'numberCountry',
@@ -137,13 +135,26 @@ const HolidayDate: EntityInterface = {
     'routeType',
     'target',
   ],
+  toStr: (row) => row.name as string,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'HolidayDates',
   },
-  Form,
-  foreignKeyResolver,
-  foreignKeyGetter,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default HolidayDate;
