@@ -1,18 +1,20 @@
-import { isEntityItem } from '@irontec/ivoz-ui';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
 import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
+  MarshallerValues,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import FriendsPattern from '../FriendsPattern/FriendsPattern';
 import Password from '../Terminal/Field/Password';
 import StatusIcon from './Field/StatusIcon';
-import { FriendProperties } from './FriendProperties';
+import { FriendProperties, FriendPropertyList } from './FriendProperties';
 
 const properties: FriendProperties = {
   name: {
@@ -290,6 +292,22 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 
 const columns = ['name', 'domain', 'description', 'priority', 'statusIcon'];
 
+export const marshaller = (
+  values: FriendPropertyList<EntityValue>,
+  properties: PartialPropertyList
+): MarshallerValues => {
+  const isInterVpbx =
+    (values?.directConnectivity as string | undefined) === 'intervpbx';
+
+  if (isInterVpbx) {
+    values.name = '';
+  }
+
+  const response = defaultEntityBehavior.marshaller(values, properties);
+
+  return response;
+};
+
 const Friend: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FavoriteIcon,
@@ -314,6 +332,7 @@ const Friend: EntityInterface = {
 
     return module.default;
   },
+  marshaller,
 };
 
 export default Friend;
