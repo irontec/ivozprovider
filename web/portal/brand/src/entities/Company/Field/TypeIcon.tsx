@@ -4,6 +4,7 @@ import {
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import store from 'store';
 
+import { ClientTypes } from '../ClientFeatures';
 import { CompanyPropertyList } from '../CompanyProperties';
 
 type RouteTypeValues = CompanyPropertyList<string>;
@@ -18,13 +19,13 @@ const TypeIcon: RouteTypeProps = (props): JSX.Element | null => {
   const entities = store.getState().entities.entities;
 
   switch (type) {
-    case 'vpbx':
+    case ClientTypes.vpbx:
       return <entities.VirtualPbx.icon />;
-    case 'retail':
+    case ClientTypes.retail:
       return <entities.Retail.icon />;
-    case 'wholesale':
+    case ClientTypes.wholesale:
       return <entities.Wholesale.icon />;
-    case 'residential':
+    case ClientTypes.residential:
       return <entities.Residential.icon />;
     default:
       return null;

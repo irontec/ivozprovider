@@ -6,6 +6,7 @@ import routeMapParser, {
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 import entities from '../entities';
+import { ClientTypes } from '../entities/Company/ClientFeatures';
 import { AboutMe } from '../store/clientSession/aboutMe';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
@@ -32,9 +33,10 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         {
           entity: entities.VirtualPbx,
-          isAccessible: (aboutMe) => aboutMe.features.includes('vpbx'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.vpbx),
           filterValues: {
-            type: 'vpbx',
+            type: ClientTypes.vpbx,
           },
           children: [
             {
@@ -67,9 +69,10 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Residential,
-          isAccessible: (aboutMe) => aboutMe.features.includes('residential'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.residential),
           filterValues: {
-            type: 'residential',
+            type: ClientTypes.residential,
           },
           children: [
             {
@@ -95,9 +98,10 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Retail,
-          isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.retail),
           filterValues: {
-            type: 'retail',
+            type: ClientTypes.retail,
           },
           fixedValues: {
             domainUsers: '__null__',
@@ -129,9 +133,10 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Wholesale,
-          isAccessible: (aboutMe) => aboutMe.features.includes('wholesale'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.wholesale),
           filterValues: {
-            type: 'wholesale',
+            type: ClientTypes.wholesale,
           },
           fixedValues: {
             domainUsers: '__null__',
@@ -455,11 +460,13 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         {
           entity: entities.ResidentialDevice,
-          isAccessible: (aboutMe) => aboutMe.features.includes('residential'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.residential),
         },
         {
           entity: entities.RetailAccount,
-          isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.retail),
         },
         {
           entity: entities.Corporation,
@@ -477,7 +484,8 @@ const getEntityMap = (): ExtendedRouteMap => {
               read: true,
             },
           },
-          isAccessible: (aboutMe) => aboutMe.features.includes('vpbx'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.vpbx),
         },
         {
           entity: {
