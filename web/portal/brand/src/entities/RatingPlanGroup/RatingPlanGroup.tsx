@@ -23,6 +23,7 @@ const properties: RatingPlanGroupProperties = {
   currency: {
     label: _('Currency', { count: 1 }),
     null: _('Default currency'),
+    default: '__null__',
   },
 };
 
