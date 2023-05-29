@@ -20,7 +20,7 @@ class CompanyRepositoryTest extends KernelTestCase
     public function test_runner()
     {
         $this->its_instantiable();
-        $this->it_finds_by_brandId();
+        $this->it_find_ids_by_brandId();
         $this->it_finds_prepaid_companies();
         $this->it_finds_vpbx_company_ids_by_brand();
         $this->it_finds_one_by_domain();
@@ -56,7 +56,7 @@ class CompanyRepositoryTest extends KernelTestCase
         );
     }
 
-    public function it_finds_by_brandId()
+    public function it_find_ids_by_brandId()
     {
         /** @var CompanyRepository $repository */
         $repository = $this
