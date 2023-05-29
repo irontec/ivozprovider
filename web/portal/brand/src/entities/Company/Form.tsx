@@ -10,6 +10,7 @@ import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
+import { ClientFeatures, ClientTypes } from './ClientFeatures';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element | null => {
@@ -42,21 +43,23 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
 
   const featureIds = (fkChoices.featureIds as EntityValues[]) || [];
   const recordingFeatureId = featureIds.find(
-    (row: EntityValues) => (row.extraData as EntityValues).iden === 'recordings'
+    (row: EntityValues) =>
+      (row.extraData as EntityValues).iden === ClientFeatures.recordings
   )?.id as number | null;
   const recordingEnabled =
     formik.values.featureIds.includes(recordingFeatureId);
 
   const faxFeatureId = featureIds.find(
-    (row: EntityValues) => (row.extraData as EntityValues).iden === 'faxes'
+    (row: EntityValues) =>
+      (row.extraData as EntityValues).iden === ClientFeatures.faxes
   )?.id as number | null;
   const faxEnabled = formik.values.featureIds.includes(faxFeatureId);
 
   const type = row?.type ?? formik.initialValues.type;
-  const isVpbx = type === 'vpbx';
-  const isResidential = type === 'residential';
-  const isWholesale = type === 'wholesale';
-  const isRetail = type === 'retail';
+  const isVpbx = type === ClientTypes.vpbx;
+  const isResidential = type === ClientTypes.residential;
+  const isWholesale = type === ClientTypes.wholesale;
+  const isRetail = type === ClientTypes.retail;
 
   const groups: Array<FieldsetGroups | false> = [
     {

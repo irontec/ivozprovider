@@ -6,6 +6,7 @@ import {
 import store from 'store';
 
 import { DdiPropertiesList } from '../Ddi/DdiProperties';
+import { ClientTypes } from './ClientFeatures';
 import { CompanyPropertiesList } from './CompanyProperties';
 
 export default async function genericCompanyForeignKeyResolver(
@@ -40,16 +41,16 @@ export default async function genericCompanyForeignKeyResolver(
       for (const ddi of ddis) {
         const company = companies.find((company) => company.id === ddi.company);
 
-        if (company?.type === 'vpbx') {
+        if (company?.type === ClientTypes.vpbx) {
           vpbx.push(ddi);
         }
-        if (company?.type === 'retail') {
+        if (company?.type === ClientTypes.retail) {
           retail.push(ddi);
         }
-        if (company?.type === 'residential') {
+        if (company?.type === ClientTypes.residential) {
           residential.push(ddi);
         }
-        if (company?.type === 'wholesale') {
+        if (company?.type === ClientTypes.wholesale) {
           wholesale.push(ddi);
         }
       }

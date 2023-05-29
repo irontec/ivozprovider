@@ -10,6 +10,8 @@ import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
+import { ClientFeatures } from '../Company/ClientFeatures';
+
 //TODO merge this into Company/Form
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match, foreignKeyGetter } = props;
@@ -30,7 +32,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         continue;
       }
 
-      if (feature.extraData?.iden === 'faxes') {
+      if (feature.extraData?.iden === ClientFeatures.faxes) {
         continue;
       }
 
@@ -46,7 +48,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const featureIds = (fkChoices.featureIds as EntityValues[]) || [];
   const recordingFeatureId = featureIds.find(
-    (row: EntityValues) => (row.extraData as EntityValues).iden === 'recordings'
+    (row: EntityValues) =>
+      (row.extraData as EntityValues).iden === ClientFeatures.recordings
   )?.id as number | null;
   const recordingEnabled =
     formik.values.featureIds.includes(recordingFeatureId);

@@ -10,6 +10,7 @@ import {
   MaxDailyUsageSelectOptions,
   VoicemailSelectOptions,
 } from '../NotificationTemplate/SelectOptions';
+import { ClientTypes } from './ClientFeatures';
 import { CompanyPropertyList } from './CompanyProperties';
 import { CorporationSelectOptions } from './SelectOptions';
 
@@ -50,7 +51,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     );
   }
 
-  if (row?.type === 'vpbx') {
+  if (row?.type === ClientTypes.vpbx) {
     promises[promises.length] = CorporationSelectOptions({
       callback: (options) => {
         response.corporation = options;

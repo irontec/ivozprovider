@@ -74,13 +74,34 @@ const Brand: EntityInterface = {
   toStr: (row: BrandPropertyList<EntityValue>) => row.name as string,
   properties,
   columns: [
-    'name',
-    'invoice.nif',
-    'logo',
-    'invoice.postalCode',
-    'domainUsers',
-    'proxyTrunks',
-    'features',
+    {
+      name: 'name',
+      size: 10,
+    },
+    {
+      name: 'invoice.nif',
+      size: 10,
+    },
+    {
+      name: 'logo',
+      size: 10,
+    },
+    {
+      name: 'invoice.postalCode',
+      size: 5,
+    },
+    {
+      name: 'domainUsers',
+      size: 10,
+    },
+    {
+      name: 'proxyTrunks',
+      size: 15,
+    },
+    {
+      name: 'features',
+      size: 40,
+    },
   ],
   customActions: Actions,
   selectOptions: async () => {

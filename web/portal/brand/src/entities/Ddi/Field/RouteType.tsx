@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { useStoreState } from 'store';
 
+import { ClientFeatures } from '../../../entities/Company/ClientFeatures';
 import { DdiPropertyList } from '../DdiProperties';
 
 type RouteTypeValues = DdiPropertyList<string>;
@@ -62,10 +63,10 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
 
   const companyFeatures = aboutMe.features;
   const conditionalFeatures: Record<string, string> = {
-    queues: 'queue',
-    friends: 'friend',
-    faxes: 'fax',
-    conferences: 'conferenceRoom',
+    [ClientFeatures.queues]: 'queue',
+    [ClientFeatures.friends]: 'friend',
+    [ClientFeatures.faxes]: 'fax',
+    [ClientFeatures.conferences]: 'conferenceRoom',
   };
   const conditionalFeaturesKeys = Object.keys(conditionalFeatures);
 
