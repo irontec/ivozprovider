@@ -1,21 +1,20 @@
 import { Login as DefaultLogin } from '@irontec/ivoz-ui/components';
 import { EntityValidator } from '@irontec/ivoz-ui/entities/EntityInterface';
-import queryString from 'query-string';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'store';
 
 interface LoginProps {
   validator?: EntityValidator;
+  target?: string;
+  token?: string;
 }
 
 export default function Login(props: LoginProps): JSX.Element | null {
-  const { validator } = props;
+  const { validator, target, token } = props;
 
   const location = useLocation();
   const navigate = useNavigate();
-  const qsArgs = queryString.parse(location.search);
-  const { target, token }: { target?: string; token?: string } = qsArgs;
 
   const loggedIn = useStoreState((state) => state.auth.loggedIn);
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
