@@ -14,7 +14,15 @@ export interface EntityAcl {
 export interface AboutMe {
   restricted: boolean;
   acls: Array<EntityAcl>;
-  features: Array<string>;
+  features: Array<
+    | 'queues'
+    | 'recordings'
+    | 'faxes'
+    | 'friends'
+    | 'conferences'
+    | 'billing'
+    | 'invoices'
+  >;
 }
 
 export type AboutMeState = {
