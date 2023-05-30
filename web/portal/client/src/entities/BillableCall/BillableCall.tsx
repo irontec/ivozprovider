@@ -4,6 +4,7 @@ import EntityInterface, {
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import { IvozStoreState } from 'store';
 
 import { BillableCallProperties } from './BillableCallProperties';
 
@@ -62,7 +63,20 @@ const properties: BillableCallProperties = {
   },
 };
 
-const columns = ['startTime', 'direction', 'caller', 'callee', 'duration'];
+const columns = (store: IvozStoreState) => {
+  const billingInfo = store.clientSession.aboutMe.profile?.billingInfo;
+
+  const response = [
+    'startTime',
+    'direction',
+    'caller',
+    'callee',
+    'duration',
+    billingInfo && 'price',
+  ];
+
+  return response.filter((column) => column !== false) as Array<string>;
+};
 
 const billableCall: EntityInterface = {
   ...DefaultEntityBehavior,
