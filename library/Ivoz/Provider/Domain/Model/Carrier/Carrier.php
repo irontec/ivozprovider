@@ -36,6 +36,14 @@ class Carrier extends CarrierAbstract implements CarrierInterface
      */
     protected function sanitizeValues(): void
     {
+        $billingEnabled = $this
+            ->getBrand()
+            ->hasFeatureByIden('billing');
+
+        if (!$billingEnabled) {
+            $this->setCalculateCost(false);
+        }
+
         if (!$this->getCalculateCost()) {
             $this->setCurrency(null);
         }
