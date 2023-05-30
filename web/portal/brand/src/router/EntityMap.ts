@@ -6,7 +6,10 @@ import routeMapParser, {
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 import entities from '../entities';
-import { ClientTypes } from '../entities/Company/ClientFeatures';
+import {
+  ClientFeatures,
+  ClientTypes,
+} from '../entities/Company/ClientFeatures';
 import { AboutMe } from '../store/clientSession/aboutMe';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
@@ -63,6 +66,9 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.RatingProfile,
               filterBy: 'company',
+              isAccessible: (aboutMe) => {
+                return aboutMe.features.includes(ClientFeatures.billing);
+              },
             },
             ...Object.values(entities.VirtualPbx.customActions),
           ],

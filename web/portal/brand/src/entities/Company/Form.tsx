@@ -77,8 +77,8 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
       legend: _('Security'),
       fields: [
         'maxCalls',
-        'maxDailyUsage',
-        'maxDailyUsageEmail',
+        hasBillingFeature && 'maxDailyUsage',
+        hasBillingFeature && 'maxDailyUsageEmail',
         'ipfilter',
         'geoIpAllowedCountries',
       ],
@@ -135,13 +135,14 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
         faxEnabled && 'faxNotificationTemplate',
         hasInvoicesFeature && 'invoiceNotificationTemplate',
         'callCsvNotificationTemplate',
-        'maxDailyUsageNotificationTemplate',
+        hasBillingFeature && 'maxDailyUsageNotificationTemplate',
       ],
     },
-    edit && {
-      legend: _('Externally rater options'),
-      fields: ['externallyextraopts'],
-    },
+    hasBillingFeature &&
+      edit && {
+        legend: _('Externally rater options'),
+        fields: ['externallyextraopts'],
+      },
   ];
 
   return (
