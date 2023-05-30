@@ -25,14 +25,17 @@ class ProviderCarrier extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setDescription("CarrierDescription");
             $this->setName("CarrierName");
-            $this->setCalculateCost(true);
+
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setProxyTrunk($fixture->getReference('_reference_ProviderProxyTrunk1'));
+
+            $this->sanitizeValues();
+            $this->setCalculateCost(true);
+            $this->initChangelog();
         })->call($item1);
 
         $this->addReference('_reference_ProviderCarrier1', $item1);
-        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(Carrier::class);
