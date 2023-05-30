@@ -4,6 +4,7 @@ export enum ClientFeatures {
   'faxes' = 'faxes',
   'friends' = 'friends',
   'conferences' = 'conferences',
+  'billing' = 'billing',
 }
 
 export enum ClientTypes {
