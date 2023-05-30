@@ -165,3 +165,11 @@ post_carrier_modify_balance:
     _api_item_operation_name: 'post_carrier_modify_balance'
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
     _api_receive: false
+
+post_provider_billable_call_rerate:
+  path: '/billable_calls/rerate'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\BillableCall\RerateAction
+    _api_resource_class: 'Model\ACK'
+    _api_receive: false

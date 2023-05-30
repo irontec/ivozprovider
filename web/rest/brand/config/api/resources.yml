@@ -114,3 +114,36 @@ Model\Profile:
           - My
         parameters: []
   collectionOperations: []
+
+Model\ACK:
+  itemOperations: []
+  collectionOperations:
+    post_provider_billable_call_rerate:
+      method: 'POST'
+      path: '/billable_calls/rerate'
+      route_name: 'post_provider_billable_call_rerate'
+      swagger_context:
+        consumes:
+          - 'application/x-www-form-urlencoded'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: billableCallIds
+            in: body
+            required: true
+            schema:
+              type: array
+              items:
+                type: integer
+            description: Ids to rerate.
+        responses:
+          200:
+            description: "Rerate in progress"
+            schema:
+              $ref: "#/definitions/ACK"
+          404:
+            description: "Resource not found"
+          400:
+            description: "Invalid input"

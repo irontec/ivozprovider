@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
+import Actions from './Action';
 import {
   BillableCallProperties,
   BillableCallPropertyList,
@@ -121,6 +122,7 @@ const BillableCall: EntityInterface = {
     update: false,
     delete: false,
   },
+  customActions: Actions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
