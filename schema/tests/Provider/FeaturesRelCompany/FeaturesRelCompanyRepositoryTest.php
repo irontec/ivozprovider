@@ -49,4 +49,19 @@ class FeaturesRelCompanyRepositoryTest extends KernelTestCase
             $idens[0]
         );
     }
+
+    public function it_is_feature_in_use_by_brand()
+    {
+        /** @var FeaturesRelCompanyRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Company::class);
+
+        $isFeatureInUse = $repository->isFeatureInUseByBrandId(1, 1);
+
+        $this->assertEquals(
+            $isFeatureInUse,
+            true
+        );
+    }
 }

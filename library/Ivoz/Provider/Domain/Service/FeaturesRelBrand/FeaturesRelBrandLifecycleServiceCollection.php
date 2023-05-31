@@ -23,6 +23,7 @@ class FeaturesRelBrandLifecycleServiceCollection implements LifecycleServiceColl
         ],
         "pre_remove" =>
         [
+            \Ivoz\Provider\Domain\Service\FeaturesRelBrand\AvoidFeaturesInUseRemoval::class => 100,
             \Ivoz\Provider\Domain\Service\FeaturesRelBrand\AvoidBillingRemoval::class => 200,
         ],
     ];
