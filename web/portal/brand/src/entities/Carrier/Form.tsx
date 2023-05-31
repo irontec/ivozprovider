@@ -7,6 +7,7 @@ import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEnti
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
+import { ClientFeatures } from '../Company/ClientFeatures';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
@@ -19,7 +20,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   });
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
-  const hasBillingFeature = aboutMe?.features.includes('billing');
+  const hasBillingFeature = aboutMe?.features.includes(ClientFeatures.billing);
 
   const groups: Array<FieldsetGroups | false> = [
     {
