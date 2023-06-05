@@ -47,4 +47,10 @@ interface CompanyBalanceServiceInterface
      * @return mixed
      */
     public function getCurrentDayMaxUsage(int $brandId, int $companyId);
+
+
+    /**
+     * @return boolean
+     */
+    public function getAccountStatus(int $brandId, int $companyId);
 }

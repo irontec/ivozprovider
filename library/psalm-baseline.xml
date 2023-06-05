@@ -746,9 +746,6 @@
     <InvalidReturnStatement occurrences="1">
       <code>$payload</code>
     </InvalidReturnStatement>
-    <MissingReturnType occurrences="1">
-      <code>getAccountStatus</code>
-    </MissingReturnType>
     <MixedArgument occurrences="5">
       <code>$balance</code>
       <code>$balance</code>

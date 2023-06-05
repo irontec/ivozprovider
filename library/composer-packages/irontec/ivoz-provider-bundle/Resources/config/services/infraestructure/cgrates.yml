@@ -66,3 +66,6 @@ when@test:
 
     Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCompanyBalanceService: ~
     Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCarrierBalanceService: ~
+
+    Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface:
+      alias: Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCompanyBalanceService

@@ -9,6 +9,7 @@ export type CompanyPropertyList<T> = {
   name?: T;
   domainUsers?: T;
   maxCalls?: T;
+  currencySymbol?: T;
   maxDailyUsage?: T;
   maxDailyUsageEmail?: T;
   invoicing?: T;

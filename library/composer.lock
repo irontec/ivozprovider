@@ -2794,11 +2794,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.6.3",
+            "version": "2.6.4",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "08c6133977eb6286a6ef436cf4f0e84dd9c8c9a8"
+                "reference": "ba4a99cadad8dd636698c16df58e8775985bbff7"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -14647,5 +14647,5 @@
     "platform-overrides": {
         "php": "8.0.9"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.0.0"
 }

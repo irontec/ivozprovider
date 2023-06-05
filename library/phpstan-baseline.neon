@@ -851,11 +851,6 @@ parameters:
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/CompanyBalanceService.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\CompanyBalanceService\\:\\:getAccountStatus\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/CompanyBalanceService.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\CompanyBalanceService\\:\\:getBalances\\(\\) has parameter \\$companyIds with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/CompanyBalanceService.php
