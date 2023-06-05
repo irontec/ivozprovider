@@ -2161,3 +2161,38 @@ Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
         voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
 
 Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile: ~
+
+Ivoz\Provider\Domain\Model\WebPortal\WebTheme:
+  itemOperations:
+    get_my_theme:
+      method: 'GET'
+      path: '/my/theme'
+      route_name: 'get_my_theme'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - My
+    get_my_logo:
+      method: 'GET'
+      path: '/my/logo/{id}/{name}'
+      route_name: 'get_my_logo'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/octet-stream'
+        parameters:
+          - name: id
+            in: path
+            type: integer
+            required: true
+            description: 'web portal id'
+          - name: name
+            in: path
+            type: string
+            required: true
+            description: 'image name'
+        tags:
+          - My
+  collectionOperations: []
