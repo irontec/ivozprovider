@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace Ivoz\Provider\Domain\Model\WebPortal;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
@@ -29,12 +29,18 @@ class WebTheme
      */
     protected $logo;
 
-    public function __construct($brandName, $theme, $logo)
-    {
+    public function __construct(
+        string $brandName,
+        string $theme,
+        string $logo
+    ) {
         $this->name = $brandName;
         $this->theme = $theme;
         $this->logo = $logo;
     }
+
+
+
 
     /**
      * @return string

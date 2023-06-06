@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
+use Assert\Assertion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
@@ -24,16 +24,24 @@ class WebPortalDoctrineRepository extends ServiceEntityRepository implements Web
         parent::__construct($registry, WebPortal::class);
     }
 
-    /**
-     * @param string $serverName
-     * @return WebPortalInterface | null
-     */
-    public function findUserUrlByServerName(string $serverName)
+    public function findByServerNameAndType(string $serverName, string $type): ?WebPortalInterface
     {
+        Assertion::choice(
+            $type,
+            [
+                WebPortalInterface::URLTYPE_GOD,
+                WebPortalInterface::URLTYPE_BRAND,
+                WebPortalInterface::URLTYPE_ADMIN,
+                WebPortalInterface::URLTYPE_USER,
+            ],
+            'urlTypevalue "%s" is not an element of the valid values: %s'
+        );
+
         $conditions = [
             'url' => 'https://' . $serverName,
-            'urlType' => 'user'
+            'urlType' => $type
         ];
+
         /** @var WebPortalInterface $response */
         $response = $this->findOneBy($conditions);
 

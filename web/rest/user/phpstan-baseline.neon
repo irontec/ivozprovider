@@ -86,16 +86,6 @@ parameters:
 			path: src/Controller/My/StatusAction.php
 
 		-
-			message: "#^Method Controller\\\\My\\\\WebThemeAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/My/WebThemeAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function urlencode expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Controller/My/WebThemeAction.php
-
-		-
 			message: "#^Method Model\\\\CallStats\\:\\:__construct\\(\\) has parameter \\$totalCalls with no typehint specified\\.$#"
 			count: 1
 			path: src/Model/CallStats.php
@@ -104,21 +94,6 @@ parameters:
 			message: "#^Method Model\\\\CallStats\\:\\:__construct\\(\\) has parameter \\$totalDetours with no typehint specified\\.$#"
 			count: 1
 			path: src/Model/CallStats.php
-
-		-
-			message: "#^Method Model\\\\WebTheme\\:\\:__construct\\(\\) has parameter \\$brandName with no typehint specified\\.$#"
-			count: 1
-			path: src/Model/WebTheme.php
-
-		-
-			message: "#^Method Model\\\\WebTheme\\:\\:__construct\\(\\) has parameter \\$logo with no typehint specified\\.$#"
-			count: 1
-			path: src/Model/WebTheme.php
-
-		-
-			message: "#^Method Model\\\\WebTheme\\:\\:__construct\\(\\) has parameter \\$theme with no typehint specified\\.$#"
-			count: 1
-			path: src/Model/WebTheme.php
 
 		-
 			message: "#^Cannot access offset 'paths' on array\\|ArrayObject\\|bool\\|float\\|int\\|string\\|null\\.$#"

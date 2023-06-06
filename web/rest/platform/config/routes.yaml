@@ -43,3 +43,20 @@ get_invoice_preview:
   defaults:
     _controller: Controller\Provider\InvoiceTemplatePreviewAction
     _api_item_operation_name: 'get_invoice_preview'
+
+get_my_theme:
+  path: '/my/theme'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\WebThemeAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\WebPortal\WebTheme'
+    _api_item_operation_name: 'get_my_theme'
+    _api_receive: false
+
+get_my_logo:
+  path: '/my/logo/{id}/{name}'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\LogoAction
+    _api_item_operation_name: 'get_my_logo'
+    _api_receive: false

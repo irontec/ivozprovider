@@ -22,7 +22,7 @@ class WebThemeAction
             ->webThemeFactory
             ->execute(
                 $hostname,
-                WebPortalInterface::URLTYPE_USER
+                WebPortalInterface::URLTYPE_BRAND
             );
     }
 }
