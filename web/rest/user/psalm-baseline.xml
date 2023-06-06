@@ -103,17 +103,6 @@
       <code>decode</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="src/Controller/My/WebThemeAction.php">
-    <MixedArgument occurrences="1">
-      <code>$request-&gt;server-&gt;get('SERVER_NAME')</code>
-    </MixedArgument>
-    <MixedOperand occurrences="1">
-      <code>$request-&gt;server-&gt;get('SERVER_NAME')</code>
-    </MixedOperand>
-    <PossiblyNullArgument occurrences="1">
-      <code>$webPortalDto-&gt;getLogoBaseName()</code>
-    </PossiblyNullArgument>
-  </file>
   <file src="src/Kernel.php">
     <DeprecatedClass occurrences="4">
       <code>$routes-&gt;import($confDir . '/{routes}' . self::CONFIG_EXTS, '/', 'glob')</code>
@@ -186,18 +175,6 @@
       <code>$this-&gt;userAgent</code>
       <code>$this-&gt;userName</code>
       <code>$this-&gt;voiceMail</code>
-    </MixedAssignment>
-  </file>
-  <file src="src/Model/WebTheme.php">
-    <MissingParamType occurrences="3">
-      <code>$brandName</code>
-      <code>$logo</code>
-      <code>$theme</code>
-    </MissingParamType>
-    <MixedAssignment occurrences="3">
-      <code>$this-&gt;logo</code>
-      <code>$this-&gt;name</code>
-      <code>$this-&gt;theme</code>
     </MixedAssignment>
   </file>
   <file src="src/Service/AuthEndpointDecorator.php">
