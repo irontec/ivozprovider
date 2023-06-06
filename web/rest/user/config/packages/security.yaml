@@ -56,6 +56,16 @@ security:
             stateless: true
             anonymous: true
 
+        my_theme:
+            pattern:  ^/my/theme
+            stateless: true
+            anonymous: true
+
+        my_logo:
+            pattern:  ^/my/logo/.*
+            stateless: true
+            anonymous: true
+
         api:
             pattern:   ^/.+
             stateless: true
@@ -77,7 +87,9 @@ security:
             #form_login: ~
 
     access_control:
-        - { path: ^/my$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/my/theme, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/my/logo/.*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/token/exchange, roles: IS_AUTHENTICATED_ANONYMOUSLY }
