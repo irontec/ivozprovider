@@ -6,7 +6,6 @@ use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
-use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
 
 class WebPortalRepositoryTest extends KernelTestCase
 {
@@ -41,8 +40,9 @@ class WebPortalRepositoryTest extends KernelTestCase
             ->em
             ->getRepository(WebPortal::class);
 
-        $webPortal = $repository->findUserUrlByServerName(
-            'users-ivozprovider.irontec.com'
+        $webPortal = $repository->findByServerNameAndType(
+            'users-ivozprovider.irontec.com',
+            'user'
         );
 
         $this->assertInstanceOf(
