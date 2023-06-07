@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 
+import Actions from './Action';
 import Total from './Field/Total';
 import TotalWithTax from './Field/TotalWithTax';
 import { InvoiceProperties, InvoicePropertyList } from './InvoiceProperties';
@@ -106,6 +107,7 @@ const Invoice: EntityInterface = {
     'invoiceTemplate',
     'pdf',
   ],
+  customActions: Actions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

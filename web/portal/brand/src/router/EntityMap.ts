@@ -325,7 +325,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.BillableCall,
               filterBy: 'invoice',
             },
-            //@TODO generate invoice
+            ...Object.values(entities.Invoice.customActions),
           ],
         },
         {
