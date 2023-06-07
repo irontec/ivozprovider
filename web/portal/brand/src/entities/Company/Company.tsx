@@ -363,6 +363,7 @@ const Company: EntityInterface = {
   iden: 'Company',
   title: _('Company', { count: 2 }),
   path: '/companies',
+  deleteDoubleCheck: true,
   toStr: (row: CompanyPropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: [

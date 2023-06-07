@@ -71,6 +71,7 @@ const Brand: EntityInterface = {
   iden: 'Brand',
   title: _('Brand', { count: 2 }),
   path: '/brands',
+  deleteDoubleCheck: true,
   toStr: (row: BrandPropertyList<EntityValue>) => row.name as string,
   properties,
   columns: [
