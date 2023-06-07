@@ -790,6 +790,35 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
       - brand
       - company
       - invoiceTemplate
+  collectionOperations:
+    get: ~
+    post: ~
+    invoice_post_regenerate:
+      method: 'POST'
+      path: '/invoices/{id}/regenerate'
+      route_name: 'invoice_post_regenerate'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        parameters:
+          - name: id
+            in: path
+            type: integer
+            required: true
+            description: 'invoice id'
+          - in: body # This is a hack to avoid api platform to inject default parameters
+        responses:
+          200:
+            description: "Invoice resource updated"
+            schema:
+              $ref: "#/definitions/ACK"
+          404:
+            description: "Resource not found"
+          422:
+            description: "Unprocessable entity"
+        tags:
+          - Provider
 Ivoz\Provider\Domain\Model\Invoice\Pdf: ~
 
 Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence:
