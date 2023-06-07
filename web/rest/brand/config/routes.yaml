@@ -190,3 +190,11 @@ post_provider_billable_call_rerate:
     _controller: Controller\Provider\BillableCall\RerateAction
     _api_resource_class: 'Model\ACK'
     _api_receive: false
+
+invoice_post_regenerate:
+  path: '/invoices/{id}/regenerate'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Invoice\RegenerateAction
+    _api_item_operation_name: 'invoice_post_regenerate'
+    _api_receive: false
