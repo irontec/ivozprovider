@@ -326,6 +326,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.BillableCall,
+          children: [...Object.values(entities.BillableCall.customActions)],
         },
         {
           entity: entities.CallCsvScheduler,

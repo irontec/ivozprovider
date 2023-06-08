@@ -6,6 +6,7 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import { IvozStoreState } from 'store';
 
+import Actions from './Action';
 import { BillableCallProperties } from './BillableCallProperties';
 
 const properties: BillableCallProperties = {
@@ -86,6 +87,7 @@ const billableCall: EntityInterface = {
   path: '/billable_calls',
   properties,
   columns,
+  customActions: Actions,
   acl: {
     ...DefaultEntityBehavior.acl,
     iden: 'BillableCalls',

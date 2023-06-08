@@ -16,6 +16,11 @@ const Company: EntityInterface = {
   path: '/companies',
   toStr: (row: CompanyPropertyList<EntityValue>) => row.name as string,
   properties,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default Company;
