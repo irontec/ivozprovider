@@ -530,6 +530,8 @@
   "URL": "URL",
   "URL Type": "Tipus URL",
   "Unassigned": "No adscrit",
+  "Unban IP <strong>{{ip}}</strong>": "Desbloquear IP <strong>{{ip}}</strong>",
+  "Unban address": "Desbloquear dirección",
   "Unit": "Unitat",
   "Update": "Actualizar",
   "Update CallerID?": "Actualitzar ID del trucant?",

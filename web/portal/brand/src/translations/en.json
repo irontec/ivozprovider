@@ -530,6 +530,8 @@
   "URL": "URL",
   "URL Type": "URL Type",
   "Unassigned": "Unassigned",
+  "Unban IP <strong>{{ip}}</strong>": "Unban IP <strong>{{ip}}</strong>",
+  "Unban address": "Unban address",
   "Unit": "Unit",
   "Update": "Update",
   "Update CallerID?": "Update CallerID?",
