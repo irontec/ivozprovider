@@ -516,6 +516,9 @@ const getEntityMap = (): ExtendedRouteMap => {
           filterValues: {
             blocker: 'antibruteforce',
           },
+          children: [
+            ...Object.values(entities.BannedAddressBruteForce.customActions),
+          ],
         },
       ],
     },

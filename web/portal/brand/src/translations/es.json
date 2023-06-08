@@ -600,6 +600,8 @@
   "URL": "URL",
   "URL Type": "Tipo URL",
   "Unassigned": "Sin asignar",
+  "Unban IP <strong>{{ip}}</strong>": "Desbloquear IP <strong>{{ip}}</strong>",
+  "Unban address": "Desbloquear dirección",
   "Unit": "Unidad",
   "Update": "Actualizar",
   "Update CallerID?": "¿Actualización Pantalla?",
