@@ -382,7 +382,7 @@ Ivoz\Provider\Domain\Model\Company\Company:
     delete: ~
     post_company_modify_balance:
       method: 'POST'
-      path: '/company/{id}/modify_balance'
+      path: '/companies/{id}/modify_balance'
       route_name: 'post_company_modify_balance'
       pagination_enabled: false
       swagger_context:
@@ -996,7 +996,7 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
     delete: ~
     post_carrier_modify_balance:
       method: 'POST'
-      path: '/carrier/{id}/modify_balance'
+      path: '/carriers/{id}/modify_balance'
       route_name: 'post_carrier_modify_balance'
       pagination_enabled: false
       swagger_context:
