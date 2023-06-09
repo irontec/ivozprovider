@@ -51,6 +51,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const MatchList: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FormatListBulletedIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_tools/match_lists.html',
   iden: 'MatchList',
   title: _('Match List', { count: 2 }),
   path: '/match_lists',

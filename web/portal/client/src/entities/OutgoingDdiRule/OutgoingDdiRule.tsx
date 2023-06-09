@@ -37,6 +37,7 @@ const columns = ['name', 'defaultAction', 'forcedDdi'];
 const outgoingDdiRule: EntityInterface = {
   ...defaultEntityBehavior,
   icon: QuickreplyIcon,
+  link: '/doc/en/administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.html',
   iden: 'OutgoingDdiRule',
   title: _('Outgoing DDI Rule', { count: 2 }),
   path: '/outgoing_ddi_rules',

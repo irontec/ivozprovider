@@ -191,6 +191,7 @@ const columns = [
 const user: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PersonIcon,
+  link: '/doc/en/administration_portal/client/vpbx/users.html',
   iden: 'User',
   title: _('User', { count: 2 }),
   path: '/users',

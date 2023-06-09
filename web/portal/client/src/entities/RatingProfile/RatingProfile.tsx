@@ -21,6 +21,7 @@ const properties: RatingProfileProperties = {
 const ratingProfile: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplications,
+  link: '/doc/en/administration_portal/client/vpbx/rating_profiles.html',
   iden: 'RatingProfile',
   title: _('Rating profile', { count: 2 }),
   path: '/rating_profiles',

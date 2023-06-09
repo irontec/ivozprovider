@@ -213,6 +213,7 @@ const columns = [
 const externalCallFilter: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FilterAltIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_tools/external_call_filters.html',
   iden: 'ExternalCallFilter',
   title: _('External call filter', { count: 2 }),
   path: '/external_call_filters',

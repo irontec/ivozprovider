@@ -44,6 +44,7 @@ const columns = ['calldate', 'typeGhost', 'caller', 'callee', 'duration'];
 const recording: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsVoiceIcon,
+  link: '/doc/en/administration_portal/client/vpbx/calls/call_recordings.html',
   iden: 'Recording',
   title: _('Recording', { count: 2 }),
   path: '/recordings',

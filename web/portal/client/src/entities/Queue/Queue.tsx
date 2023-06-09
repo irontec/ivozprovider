@@ -227,6 +227,7 @@ const columns = [
 const queue: EntityInterface = {
   ...defaultEntityBehavior,
   icon: HourglassTopIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/queues.html',
   iden: 'Queue',
   title: _('Queue', { count: 2 }),
   path: '/queues',

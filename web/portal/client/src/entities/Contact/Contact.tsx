@@ -80,6 +80,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const Contact: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ContactPhoneIcon,
+  link: '/doc/en/administration_portal/client/vpbx/addressbook.html',
   iden: 'Contact',
   title: _('Contact', { count: 2 }),
   path: '/contacts',

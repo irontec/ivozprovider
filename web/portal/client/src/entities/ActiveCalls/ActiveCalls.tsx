@@ -16,6 +16,7 @@ const properties: BillableCallProperties = {
 const activeCalls: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: ChatBubbleIcon,
+  link: '/doc/en/administration_portal/client/vpbx/calls/active_calls.html',
   iden: 'ActiveCalls',
   title: _('Active calls', { count: 2 }),
   path: '/active_calls',

@@ -50,6 +50,7 @@ const columns = [
 const routeLock: EntityInterface = {
   ...defaultEntityBehavior,
   icon: LockIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_tools/route_locks.html',
   iden: 'RouteLock',
   title: _('Route Lock', { count: 2 }),
   path: '/route_locks',

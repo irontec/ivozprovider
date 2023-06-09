@@ -22,6 +22,7 @@ const columns = ['service', 'code'];
 const companyService: EntityInterface = {
   ...defaultEntityBehavior,
   icon: MiscellaneousServicesIcon,
+  link: '/doc/en/administration_portal/client/vpbx/services.html',
   iden: 'CompanyService',
   title: _('Service', { count: 2 }),
   path: '/company_services',
