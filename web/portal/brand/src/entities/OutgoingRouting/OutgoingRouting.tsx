@@ -166,6 +166,7 @@ const properties: OutgoingRoutingProperties = {
 const OutgoingRouting: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CallSplitIcon,
+  link: '/doc/en/administration_portal/brand/routing/outgoing_routings.html',
   iden: 'OutgoingRouting',
   title: _('Outgoing Routing', { count: 2 }),
   path: '/outgoing_routings',

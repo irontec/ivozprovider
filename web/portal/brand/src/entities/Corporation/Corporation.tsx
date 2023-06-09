@@ -33,6 +33,7 @@ const properties: CorporationProperties = {
 const Corporation: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CorporateFareIcon,
+  link: '/doc/en/administration_portal/brand/settings/corporations.html',
   iden: 'Corporation',
   title: _('Corporation', { count: 2 }),
   path: '/corporations',

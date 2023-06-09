@@ -30,6 +30,7 @@ const properties: NotificationTemplateProperties = {
 const NotificationTemplate: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DraftsIcon,
+  link: '/doc/en/administration_portal/brand/settings/notification_templates.html',
   iden: 'NotificationTemplate',
   title: _('Notification template', { count: 2 }),
   path: '/notification_templates',

@@ -27,6 +27,7 @@ const properties: DdiProviderAddressProperties = {
 const DdiProviderAddress: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DnsIcon,
+  link: '/doc/en/administration_portal/brand/providers/ddi_providers.html#ddi-provider-addresses',
   iden: 'DdiProviderAddress',
   title: _('DDI Provider Address', { count: 2 }),
   path: '/ddi_provider_addresses',

@@ -6,6 +6,7 @@ import Company from '../Company/Company';
 const VirtualPbx = {
   ...Company,
   icon: ApartmentIcon,
+  link: '/doc/en/administration_portal/brand/clients/virtual_pbx.html',
   title: _('Virtual PBX', { count: 2 }),
   localPath: '/vPbx',
 };

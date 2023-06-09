@@ -18,6 +18,7 @@ const Residential: EntityInterface = {
     type: 'residential',
   },
   icon: HouseIcon,
+  link: '/doc/en/administration_portal/brand/clients/residential.html',
   title: _('Residential', { count: 2 }),
   localPath: '/residential',
   columns: [

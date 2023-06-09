@@ -63,6 +63,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const InvoiceTemplate: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ReceiptLongIcon,
+  link: '/doc/en/administration_portal/brand/invoicing/invoice_templates.html',
   iden: 'InvoiceTemplate',
   title: _('Invoice template', { count: 2 }),
   path: '/invoice_templates',

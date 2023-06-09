@@ -28,6 +28,7 @@ const properties: FixedCostProperties = {
 const FixedCost: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AddCardIcon,
+  link: '/doc/en/administration_portal/brand/invoicing/fixed_costs.html',
   iden: 'FixedCost',
   title: _('Fixed cost', { count: 2 }),
   path: '/fixed_costs',

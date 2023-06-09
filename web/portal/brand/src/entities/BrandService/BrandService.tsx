@@ -27,6 +27,7 @@ const properties: BrandServiceProperties = {
 const BrandService: EntityInterface = {
   ...defaultEntityBehavior,
   icon: BuildIcon,
+  link: '/doc/en/administration_portal/brand/settings/generic_services.html',
   iden: 'BrandService',
   title: _('Brand service', { count: 2 }),
   path: '/brand_services',

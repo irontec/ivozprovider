@@ -47,6 +47,7 @@ const properties: BalanceNotificationProperties = {
 const BalanceNotification: EntityInterface = {
   ...defaultEntityBehavior,
   icon: MoneyOffIcon,
+  link: '/doc/en/administration_portal/brand/billing/prepaid_balances.html#balance-notifications',
   iden: 'BalanceNotification',
   title: _('Balance Notification', { count: 2 }),
   path: '/balance_notifications',

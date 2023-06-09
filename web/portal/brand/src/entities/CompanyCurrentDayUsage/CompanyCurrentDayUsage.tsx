@@ -62,6 +62,7 @@ const CompanyCurrentDayUsage = {
     detail: false,
   },
   icon: SavingsIcon,
+  link: '/doc/en/administration_portal/brand/billing/current_day_usages.html',
   title: _('Current Day Usage', { count: 2 }),
   localPath: '/current_day_usage',
   columns: [
