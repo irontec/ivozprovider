@@ -11,6 +11,7 @@ const properties: DdiProperties = {};
 const Ddi: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
+  link: '/doc/en/administration_portal/client/vpbx/ddis.html',
   iden: 'Ddi',
   title: _('Ddi', { count: 2 }),
   path: '/Ddis',

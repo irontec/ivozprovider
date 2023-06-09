@@ -10,6 +10,7 @@ const properties: ActiveCallProperties = {};
 const activeCalls: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: CellTowerIcon,
+  link: '/doc/en/administration_portal/platform/active_calls.html',
   iden: 'ActiveCalls',
   title: _('Active call', { count: 2 }),
   path: '/active_calls',

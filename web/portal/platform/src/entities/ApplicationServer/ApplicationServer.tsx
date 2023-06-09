@@ -21,6 +21,7 @@ const properties: ApplicationServerProperties = {
 const ApplicationServer: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplicationsIcon,
+  link: '/doc/en/administration_portal/platform/infrastructure/application_servers.html',
   iden: 'ApplicationServer',
   title: _('Application Server', { count: 2 }),
   path: '/application_servers',
