@@ -279,7 +279,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.DestinationRate,
               filterBy: 'destinationRateGroup',
             },
-            //@TODO import rates
+            ...Object.values(entities.DestinationRateGroup.customActions),
           ],
         },
         {

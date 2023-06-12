@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 
+import Actions from './Action';
 import {
   DestinationRateGroupProperties,
   DestinationRateGroupPropertyList,
@@ -18,10 +19,12 @@ const properties: DestinationRateGroupProperties = {
       imported: _('Imported'),
       error: _('Error'),
     },
+    readOnly: true,
     //@TODO IvozProvider_Klear_Ghost_DestinationRateGroups::getStatus
   },
   lastExecutionError: {
     label: _('Last execution error'),
+    readOnly: true,
   },
   deductibleConnectionFee: {
     label: _('Deductible Connection Fee'),
@@ -47,10 +50,12 @@ const properties: DestinationRateGroupProperties = {
   file: {
     label: _('Imported file'),
     type: 'file',
+    $ref: 'DestinationRateGroup_File',
   },
   currency: {
     label: _('Currency', { count: 1 }),
     null: _('Default currency'),
+    default: '__null__',
   },
 };
 
@@ -64,6 +69,7 @@ const DestinationRateGroup: EntityInterface = {
     `${row.name?.en}`,
   properties,
   columns: ['name', 'description', 'currency', 'file', 'status'],
+  customActions: Actions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
