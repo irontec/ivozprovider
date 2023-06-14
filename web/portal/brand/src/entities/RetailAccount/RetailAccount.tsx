@@ -143,6 +143,7 @@ const properties: RetailAccountProperties = {
 const RetailAccount: EntityInterface = {
   ...defaultEntityBehavior,
   icon: KeyIcon,
+  link: '/doc/en/administration_portal/brand/views/retail_accounts.html',
   iden: 'RetailAccount',
   title: _('Retail Account', { count: 2 }),
   path: '/retail_accounts',

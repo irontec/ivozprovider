@@ -137,6 +137,7 @@ const columns = ['number', 'routeType', 'target'];
 const extension: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ShortcutIcon,
+  link: '/doc/en/administration_portal/client/vpbx/extensions.html',
   iden: 'Extension',
   title: _('Extension', { count: 2 }),
   path: '/extensions',

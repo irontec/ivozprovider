@@ -43,6 +43,7 @@ const properties: ConferenceRoomProperties = {
 const conferenceRoom: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ForumIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/conference_rooms.html',
   iden: 'ConferenceRoom',
   title: _('Conference room', { count: 2 }),
   path: '/conference_rooms',

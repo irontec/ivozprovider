@@ -19,6 +19,7 @@ const columns = ['name', 'description'];
 const location: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ApartmentIcon,
+  link: '/doc/en/administration_portal/client/vpbx/user_configuration/locations.html',
   iden: 'Location',
   title: _('Location', { count: 2 }),
   path: '/locations',

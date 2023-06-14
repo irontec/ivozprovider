@@ -99,6 +99,7 @@ const properties: BillableCallProperties = {
 const BillableCall: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ChatBubbleIcon,
+  link: '/doc/en/administration_portal/brand/calls/external_calls.html',
   iden: 'BillableCall',
   title: _('External call', { count: 2 }),
   path: '/billable_calls',

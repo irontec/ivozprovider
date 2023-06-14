@@ -21,6 +21,7 @@ const properties: BannedAddressProperties = {
 const BannedAddress: EntityInterface = {
   ...defaultEntityBehavior,
   icon: RemoveModeratorIcon,
+  link: '/doc/en/administration_portal/platform/antiflood_banned_ips.html',
   iden: 'BannedAddress',
   title: _('Antiflood banned IP', { count: 2 }),
   path: '/banned_addresses',

@@ -41,6 +41,7 @@ const properties: MusicOnHoldProperties = {
 const MusicOnHold: EntityInterface = {
   ...defaultEntityBehavior,
   icon: RadioIcon,
+  link: '/doc/en/administration_portal/brand/settings/generic_music_on_hold.html',
   iden: 'MusicOnHold',
   title: _('Generic Music on Hold', { count: 2 }),
   path: '/music_on_holds',

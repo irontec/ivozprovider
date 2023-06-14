@@ -164,6 +164,7 @@ const columns = [
 const ddi: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DialpadIcon,
+  link: '/doc/en/administration_portal/client/vpbx/ddis.html',
   iden: 'Ddi',
   title: _('DDI', { count: 2 }),
   path: '/ddis',

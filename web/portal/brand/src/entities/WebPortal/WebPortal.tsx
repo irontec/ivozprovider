@@ -98,6 +98,7 @@ const properties: WebPortalProperties = {
 const WebPortal: EntityInterface = {
   ...defaultEntityBehavior,
   icon: InsertLinkIcon,
+  link: '/doc/en/administration_portal/brand/settings/client_portals.html',
   iden: 'WebPortal',
   title: _('Company Portal', { count: 2 }),
   path: '/web_portals',

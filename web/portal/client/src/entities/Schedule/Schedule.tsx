@@ -53,6 +53,7 @@ const columns = ['name', 'timeIn', 'timeout'];
 const schedule: EntityInterface = {
   ...defaultEntityBehavior,
   icon: WatchLaterIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_tools/schedules.html',
   iden: 'Schedule',
   title: _('Schedule', { count: 2 }),
   path: '/schedules',

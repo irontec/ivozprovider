@@ -77,6 +77,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const TransformationRuleSet: EntityInterface = {
   ...defaultEntityBehavior,
   icon: TransformIcon,
+  link: '/doc/en/administration_portal/brand/settings/numeric_transformations.html',
   iden: 'TransformationRuleSet',
   title: _('Numeric transformation', { count: 2 }),
   path: '/transformation_rule_sets',

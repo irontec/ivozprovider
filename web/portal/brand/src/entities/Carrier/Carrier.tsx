@@ -103,6 +103,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const Carrier: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SwapCallsIcon,
+  link: '/doc/en/administration_portal/brand/providers/carriers.html',
   iden: 'Carrier',
   title: _('Carrier', { count: 2 }),
   path: '/carriers',

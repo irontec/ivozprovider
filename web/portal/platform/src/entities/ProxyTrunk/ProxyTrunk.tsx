@@ -48,6 +48,7 @@ const ProxyTrunk: EntityInterface = {
     create: true,
   },
   icon: CallMissedOutgoingIcon,
+  link: '/doc/en/administration_portal/platform/infrastructure/proxy_trunks.html',
   iden: 'ProxyTrunk',
   title: _('Proxy Trunk', { count: 2 }),
   path: '/proxy_trunks',

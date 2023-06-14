@@ -40,6 +40,7 @@ const NotificationTemplate: EntityInterface = {
     detail: false,
   },
   icon: MailOutlineIcon,
+  link: '/doc/en/administration_portal/platform/default_notification_templates.html',
   iden: 'NotificationTemplate',
   title: _('Default Notification template', { count: 2 }),
   path: '/notification_templates',

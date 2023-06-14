@@ -25,6 +25,7 @@ const properties: RoutingTagProperties = {
 const RoutingTag: EntityInterface = {
   ...defaultEntityBehavior,
   icon: BookmarkIcon,
+  link: '/doc/en/administration_portal/brand/routing/routing_tags.html',
   iden: 'RoutingTag',
   title: _('Routing Tag', { count: 2 }),
   path: '/routing_tags',

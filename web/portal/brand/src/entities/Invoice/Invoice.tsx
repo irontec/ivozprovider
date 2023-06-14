@@ -90,6 +90,7 @@ const properties: InvoiceProperties = {
 const Invoice: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ReceiptIcon,
+  link: '/doc/en/administration_portal/brand/invoicing/invoices.html',
   iden: 'Invoice',
   title: _('Invoice', { count: 2 }),
   path: '/invoices',

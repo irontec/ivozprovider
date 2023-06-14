@@ -30,6 +30,7 @@ const properties: RatingPlanGroupProperties = {
 const RatingPlanGroup: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AttachMoneyIcon,
+  link: '/doc/en/administration_portal/brand/billing/rating_plans.html',
   iden: 'RatingPlanGroup',
   title: _('Rating Plan Group', { count: 2 }),
   path: '/rating_plan_groups',

@@ -90,6 +90,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const Voicemail: EntityInterface = {
   ...defaultEntityBehavior,
   icon: MailIcon,
+  link: '/doc/en/administration_portal/client/vpbx/voicemails.html',
   iden: 'Voicemail',
   title: _('Voicemail', { count: 2 }),
   path: '/voicemails',

@@ -15,6 +15,7 @@ const properties: CalendarProperties = {
 const calendar: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CalendarTodayIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_tools/calendars.html',
   iden: 'Calendar',
   title: _('Calendar', { count: 2 }),
   path: '/calendars',

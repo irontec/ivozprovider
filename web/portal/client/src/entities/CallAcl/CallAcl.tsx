@@ -22,6 +22,7 @@ const properties: CallAclProperties = {
 const CallAcl: EntityInterface = {
   ...defaultEntityBehavior,
   icon: GavelIcon,
+  link: '/doc/en/administration_portal/client/vpbx/user_configuration/call_acls.html',
   iden: 'CallAcl',
   title: _('Call ACLs', { count: 2 }),
   path: '/call_acls',

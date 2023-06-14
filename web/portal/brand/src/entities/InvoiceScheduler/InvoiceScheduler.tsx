@@ -65,6 +65,7 @@ const properties: InvoiceSchedulerProperties = {
 const InvoiceScheduler: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ManageHistoryIcon,
+  link: '/doc/en/administration_portal/brand/invoicing/invoice_schedulers.html',
   iden: 'InvoiceScheduler',
   title: _('Invoice Scheduler', { count: 2 }),
   path: '/invoice_schedulers',

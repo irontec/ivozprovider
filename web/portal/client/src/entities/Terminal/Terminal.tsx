@@ -102,6 +102,7 @@ const properties: TerminalProperties = {
 const terminal: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PhoneIcon,
+  link: '/doc/en/administration_portal/client/vpbx/terminals.html',
   iden: 'Terminal',
   title: _('Terminal', { count: 2 }),
   path: '/terminals',
