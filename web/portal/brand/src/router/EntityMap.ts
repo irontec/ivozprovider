@@ -203,6 +203,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.BillableCall,
               filterBy: 'carrier',
             },
+            ...Object.values(entities.Carrier.customActions),
           ],
         },
         {
@@ -301,7 +302,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.BalanceNotification,
               filterBy: 'company',
             },
-            //@TODO BalanceOperations
+            ...Object.values(entities.CompanyBalances.customActions),
           ],
         },
         {

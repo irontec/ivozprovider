@@ -8,7 +8,7 @@ Feature: Modify company balances
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/x-www-form-urlencoded"
       And I add "Accept" header equal to "application/json"
-     When I send a "POST" request to "/company/1/modify_balance" with parameters:
+     When I send a "POST" request to "/companies/1/modify_balance" with parameters:
       | key       | value     |
       | operation | increment |
       | amount    | 10        |
@@ -31,7 +31,7 @@ Feature: Modify company balances
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/x-www-form-urlencoded"
       And I add "Accept" header equal to "application/json"
-     When I send a "POST" request to "/company/1/modify_balance" with parameters:
+     When I send a "POST" request to "/companies/1/modify_balance" with parameters:
       | key       | value     |
       | operation | decrement |
       | amount    | 1         |

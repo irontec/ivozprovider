@@ -12,6 +12,7 @@ import BalanceMovement from '../BalanceMovement/BalanceMovement';
 import BalanceNotification from '../BalanceNotification/BalanceNotification';
 import StatusIcon from '../CarrierServer/Field/StatusIcon';
 import RatingProfile from '../RatingProfile/RatingProfile';
+import Actions from './Action';
 import { CarrierProperties, CarrierPropertyList } from './CarrierProperties';
 import Balance from './Field/Balance';
 
@@ -136,6 +137,7 @@ const Carrier: EntityInterface = {
 
     return module.default;
   },
+  customActions: Actions,
 };
 
 export default Carrier;
