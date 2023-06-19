@@ -1,4 +1,4 @@
-import { isEntityItem } from '@irontec/ivoz-ui';
+import { EntityItem, isEntityItem } from '@irontec/ivoz-ui';
 import { useEffect, useState } from 'react';
 import { AboutMe, EntityAcl } from 'store/clientSession/aboutMe';
 
@@ -14,7 +14,26 @@ const updateEntityMapByAcls = (
 ): ExtendedRouteMap => {
   const { entityMap, aboutMe } = props;
 
-  for (const block of entityMap) {
+  for (const key in entityMap) {
+
+    const block = entityMap[key] as EntityItem;
+
+    if (block.entity) {
+      const resp = updateRouteMapItemByAcls({
+        routeMapItem: block,
+        aboutMe,
+      });
+
+      if (!resp) {
+        delete entityMap[key];
+        continue;
+      }
+    }
+
+    if (!block.children) {
+      continue;
+    }
+
     for (const idx in block.children) {
       const resp = updateRouteMapItemByAcls({
         routeMapItem: block.children[idx],
@@ -32,7 +51,15 @@ const updateEntityMapByAcls = (
     block.children = block.children.filter((item) => item);
   }
 
-  return entityMap.filter((item) => item.children.length > 0);
+  const response = entityMap.filter((item) => {
+    const children = (item as EntityItem).children as
+      | Array<unknown>
+      | undefined;
+
+    return !children || children?.length > 0;
+  });
+
+  return response;
 };
 
 interface updateRouteMapProps {
