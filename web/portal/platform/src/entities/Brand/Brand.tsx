@@ -9,16 +9,16 @@ import { BrandProperties, BrandPropertyList } from './BrandProperties';
 
 const properties: BrandProperties = {
   domainUsers: {
-    label: _('SIP domain'),
+    label: _('SIP domain', { count: 1 }),
   },
   defaultTimezone: {
-    label: _('defaultTimezone'),
+    label: _('Default Timezone'),
   },
   currency: {
-    label: _('currency'),
+    label: _('Currency', { count: 2 }),
   },
   language: {
-    label: _('language'),
+    label: _('Language', { count: 1 }),
   },
   invoice: {},
   'invoice.nif': {
@@ -37,10 +37,10 @@ const properties: BrandProperties = {
     label: _('Province'),
   },
   'invoice.registryData': {
-    label: _('Resgistry Data'),
+    label: _('Registry Data'),
   },
   'invoice.country': {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   logo: {
     label: _('Logo'),
@@ -53,13 +53,13 @@ const properties: BrandProperties = {
     label: _('Max Calls'),
   },
   features: {
-    label: _('Features', { count: 20 }),
+    label: _('Feature', { count: 20 }),
     null: _('There are not associated elements'),
     type: 'array',
     $ref: '#/definitions/Features',
   },
   proxyTrunks: {
-    label: _('Proxy Trunks', { count: 20 }),
+    label: _('Proxy Trunk', { count: 20 }),
     null: _('There are not associated elements'),
     $ref: '#/definitions/ProxyTrunk',
   },

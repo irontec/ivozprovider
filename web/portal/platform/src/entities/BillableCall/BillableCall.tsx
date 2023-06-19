@@ -24,7 +24,7 @@ const properties: BillableCallProperties = {
     label: _('Caller'),
   },
   brand: {
-    label: _('Brand'),
+    label: _('Brand', { count: 1 }),
   },
   callee: {
     label: _('Callee'),
@@ -42,7 +42,7 @@ const properties: BillableCallProperties = {
     label: _('Destination', { count: 1 }),
   },
   ratingPlanName: {
-    label: _('Rating plan'),
+    label: _('Rating plan', { count: 1 }),
   },
   endpointType: {
     label: _('Endpoint Type'),
@@ -71,7 +71,7 @@ const properties: BillableCallProperties = {
     label: _('Id'),
   },
   company: {
-    label: _('Client'),
+    label: _('Client', { count: 1 }),
   },
   carrier: {
     label: _('Carrier', { count: 1 }),

@@ -8,13 +8,13 @@ import { DomainProperties, DomainPropertyList } from './DomainProperties';
 
 const properties: DomainProperties = {
   domain: {
-    label: _('Domain'),
+    label: _('SIP domain', { count: 1 }),
   },
   companyName: {
-    label: _('Client'),
+    label: _('Client', { count: 1 }),
   },
   brandName: {
-    label: _('Brand'),
+    label: _('Brand', { count: 1 }),
   },
 };
 

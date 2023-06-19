@@ -18,7 +18,7 @@ const properties: ProxyTrunkProperties = {
     label: _('Name'),
   },
   ip: {
-    label: _('IP'),
+    label: _('IP Address'),
   },
   id: {
     label: _('Id'),

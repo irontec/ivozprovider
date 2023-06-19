@@ -16,20 +16,20 @@ const properties: NotificationTemplateProperties = {
   type: {
     label: _('Type'),
     enum: {
-      voicemail: _('Voicemail'),
-      fax: _('Fax'),
+      voicemail: _('Voicemail', { count: 1 }),
+      fax: _('Fax', { count: 1 }),
       limit: _('Limit'),
-      lowbalance: _('Lowbalance'),
-      invoice: _('Invoice'),
-      callCsv: _('Call Csv'),
-      maxDailyUsage: _('Max DailyUsage'),
+      lowbalance: _('Low Balance'),
+      invoice: _('Invoice', { count: 1 }),
+      callCsv: _('Call CSV'),
+      maxDailyUsage: _('Max Daily Usage'),
     },
   },
   id: {
     label: _('Id'),
   },
   brand: {
-    label: _('Brand'),
+    label: _('Brand', { count: 1 }),
   },
 };
 

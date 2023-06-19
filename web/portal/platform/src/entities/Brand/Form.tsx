@@ -36,7 +36,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
       fields: ['defaultTimezone', 'language', 'currency'],
     },
     edit && {
-      legend: _('Domain Sip'),
+      legend: _('SIP domain', { count: 1 }),
       fields: ['domainUsers'],
     },
     edit && {
