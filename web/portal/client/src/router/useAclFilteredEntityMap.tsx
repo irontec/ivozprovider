@@ -15,10 +15,9 @@ const updateEntityMapByAcls = (
   const { entityMap, aboutMe } = props;
 
   for (const key in entityMap) {
-
     const block = entityMap[key] as EntityItem;
 
-    if (block.entity) {
+    if ((entityMap[key] as ExtendedRouteMapItem).isAccessible) {
       const resp = updateRouteMapItemByAcls({
         routeMapItem: block,
         aboutMe,
