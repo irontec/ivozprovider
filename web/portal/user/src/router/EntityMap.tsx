@@ -9,16 +9,6 @@ export type ExtendedRouteMap = RouteMap;
 const getEntityMap = (): RouteMap => {
   const map: RouteMap = [
     {
-      entity: {
-        ...entities.UsersCdr,
-        acl: {
-          ...entities.UsersCdr.acl,
-          detail: false,
-        },
-      },
-      divider: true,
-    },
-    {
       entity: entities.Account,
       divider: true,
     },
@@ -27,6 +17,16 @@ const getEntityMap = (): RouteMap => {
     },
     {
       entity: entities.CallForwardSetting,
+    },
+    {
+      entity: {
+        ...entities.UsersCdr,
+        acl: {
+          ...entities.UsersCdr.acl,
+          detail: false,
+        },
+      },
+      divider: true,
     },
   ];
 
