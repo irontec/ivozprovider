@@ -3,6 +3,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import { getI18n } from 'react-i18next';
 
 import { ServiceProperties, ServicePropertyList } from './ServiceProperties';
 
@@ -48,7 +49,12 @@ const Service: EntityInterface = {
   iden: 'Service',
   title: _('Service', { count: 2 }),
   path: '/services',
-  toStr: (row: ServicePropertyList<EntityValue>) => row.name as string,
+  toStr: (row: ServicePropertyList<EntityValue>) => {
+    const language = getI18n().language.substring(0, 2);
+    const name = row.name as unknown as Record<string, string>;
+
+    return name[language] as string;
+  },
   properties,
   columns: ['iden', 'name', 'description', 'defaultCode'],
   selectOptions: async () => {
