@@ -2,7 +2,9 @@
 
 namespace Ivoz\Ast\Domain\Service\PsIdentify;
 
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentify;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Service\Friend\FriendLifecycleEventHandlerInterface;
@@ -27,23 +29,27 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
      */
     public function execute(FriendInterface $friend)
     {
-        $isNew = $friend->isNew();
-        if (!$isNew) {
-            return;
-        }
+        $identify = $friend->getPsIdentify();
+
+        /** @var PsIdentifyDto $identifyDto */
+        $identifyDto = is_null($identify)
+            ? PsIdentify::createDto()
+            : $this->entityTools->entityToDto($identify);
 
         // Get sorcery identifier
         $sorceryId = $friend->getSorcery();
 
         // Insert Identify data
-        $identifyDto = new PsIdentifyDto();
         $identifyDto
             ->setSorceryId($sorceryId)
             ->setEndpoint($sorceryId)
             ->setMatchHeader($sorceryId)
             ->setFriendId($friend->getId());
 
-        $this->entityTools
-            ->persistDto($identifyDto);
+        /** @var PsIdentifyInterface $identify */
+        $identify = $this->entityTools
+            ->persistDto($identifyDto, $identify);
+
+        $friend->setPsIdentify($identify);
     }
 }
