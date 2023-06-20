@@ -4,6 +4,15 @@ import routeMapParser, {
   RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import DescriptionIcon from '@mui/icons-material/Description';
+import DirectionsIcon from '@mui/icons-material/Directions';
+import EngineeringIcon from '@mui/icons-material/Engineering';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+import SettingsIcon from '@mui/icons-material/Settings';
+import TtyIcon from '@mui/icons-material/Tty';
+import WalletIcon from '@mui/icons-material/Wallet';
 
 import entities from '../entities';
 import {
@@ -33,6 +42,7 @@ const getEntityMap = (): ExtendedRouteMap => {
   const map: ExtendedRouteMap = [
     {
       label: _('Clients'),
+      icon: MapsHomeWorkIcon,
       children: [
         {
           entity: entities.VirtualPbx,
@@ -176,6 +186,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Providers'),
+      icon: PrecisionManufacturingIcon,
       children: [
         {
           entity: entities.Carrier,
@@ -244,6 +255,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Routing'),
+      icon: DirectionsIcon,
       children: [
         {
           entity: entities.OutgoingRouting,
@@ -261,6 +273,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Billing'),
+      icon: WalletIcon,
       children: [
         {
           entity: entities.RatingPlanGroup,
@@ -313,6 +326,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Invoice', { count: 1 }),
+      icon: DescriptionIcon,
       children: [
         {
           entity: entities.Invoice,
@@ -373,6 +387,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Calls'),
+      icon: TtyIcon,
       children: [
         {
           entity: entities.ActiveCalls,
@@ -396,6 +411,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Settings'),
+      icon: SettingsIcon,
       children: [
         {
           entity: entities.WebPortal,
@@ -464,6 +480,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Client configurations'),
+      icon: EngineeringIcon,
       children: [
         {
           entity: entities.ResidentialDevice,
@@ -482,6 +499,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Views'),
+      icon: LocalLibraryIcon,
       children: [
         {
           entity: {
