@@ -16,11 +16,6 @@ const Wholesale = {
     'routingTagIds',
     'codecIds',
   ],
-  Form: async () => {
-    const module = await import('./Form');
-
-    return module.default;
-  },
 };
 
 export default Wholesale;

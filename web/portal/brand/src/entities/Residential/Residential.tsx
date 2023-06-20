@@ -28,11 +28,6 @@ const Residential: EntityInterface = {
     'outgoingDdi',
     'featureIds',
   ],
-  foreignKeyGetter: async () => {
-    const module = await import('./ForeignKeyGetter');
-
-    return module.foreignKeyGetter;
-  },
 };
 
 export default Residential;

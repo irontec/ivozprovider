@@ -10,15 +10,14 @@ import {
   MaxDailyUsageSelectOptions,
   VoicemailSelectOptions,
 } from '../NotificationTemplate/SelectOptions';
-import { ClientTypes } from './ClientFeatures';
+import VirtualPbx from '../VirtualPbx/VirtualPbx';
 import { CompanyPropertyList } from './CompanyProperties';
 import { CorporationSelectOptions } from './SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({
-  row,
-  cancelToken,
-  entityService,
-}): Promise<unknown> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (
+  props
+): Promise<unknown> => {
+  const { row, cancelToken, entityService, match } = props;
   const response: CompanyPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({
@@ -26,8 +25,8 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     cancelToken,
     response,
     skip: [
-      'geoIpAllowedCountries',
       'outgoingDdi',
+      'geoIpAllowedCountries',
       'voicemailNotificationTemplate',
       'faxNotificationTemplate',
       'invoiceNotificationTemplate',
@@ -49,9 +48,12 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
         companyId: row?.id as number,
       }
     );
+  } else {
+    response.outgoingDdi = [];
   }
 
-  if (row?.type === ClientTypes.vpbx) {
+  const isVpbx = match.pathname.includes(VirtualPbx.localPath);
+  if (isVpbx) {
     promises[promises.length] = CorporationSelectOptions({
       callback: (options) => {
         response.corporation = options;
