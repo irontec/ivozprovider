@@ -19,6 +19,11 @@ class Encoder
      */
     const RECORDING_SIZE_MIN = 512;
 
+    /**
+     * Recording created this seconds ago will be ignored
+     */
+    const RECORDING_AGE_MIN = 10;
+
     public function __construct(
         private TrunksCdrRepository $trunksCdrRepository,
         private UsersCdrRepository $usersCdrRepository,
@@ -56,6 +61,13 @@ class Encoder
                     continue;
                 }
 
+                // Ignore recent files
+                $age = time() - filemtime($filenameabs);
+                if ($age <= self::RECORDING_AGE_MIN) {
+                    $this->logger->info(sprintf("[Recordings] Ignoring too young file %s [%d sec]\n", $filename, $age));
+                    continue;
+                }
+
                 // Delete empty files
                 if (filesize($filenameabs) < self::RECORDING_SIZE_MIN) {
                     $stats['deleted']++;
@@ -78,7 +90,7 @@ class Encoder
         // Check each recording file
         foreach ($files as $filename) {
             // Store valid files
-            if (preg_match("/(.*)-\w+-mix.wav/", $filename, $matches)) {
+            if (preg_match("/\w+-\w+-(.*)-\w+-mix.wav/", $filename, $matches)) {
                 $file = $matches[0];
                 $callid = urldecode($matches[1]);
             } else {
@@ -136,6 +148,7 @@ class Encoder
                     // Check this ddi has recording enabled
                     $ddi = $this->ddiRepository->findOneByDdiE164($recorder);
                     if (!$ddi) {
+                        $stats['error']++;
                         $this->logger->error(
                             sprintf("[Recordings][%s] Unable to find DDI for %s\n", $hashid, $recorder)
                         );
@@ -143,6 +156,7 @@ class Encoder
                     }
 
                     if (!in_array($ddi->getRecordCalls(), array('all', $direction), true)) {
+                        $stats['skipped']++;
                         $this->logger->info(
                             sprintf(
                                 "[Recordings][%s] %s has no %s recording enabled. Skipping.\n",
@@ -168,6 +182,20 @@ class Encoder
                     continue;
                 }
 
+                // Get company for this recording
+                $company = $kamAccCdr->getCompany();
+                if (! $company) {
+                    $stats['error']++;
+                    $this->logger->error(
+                        sprintf(
+                            "[Recordings][%s] Failed to get company for callid = %s\n",
+                            $hashid,
+                            $callid
+                        )
+                    );
+                    continue;
+                }
+
                 // Convert .wav to .mp3
                 $this->logger->info(sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convertMp3)));
 
@@ -180,6 +208,7 @@ class Encoder
                     $metadata,
                     $convertMp3
                 ]);
+                $convertProcess->setTimeout(120);
                 $convertProcess->mustRun();
 
                 if ($convertProcess->getExitCode() != 0) {
@@ -220,7 +249,8 @@ class Encoder
                     . str_replace('+', '', $callee)
                     . '.mp3';
 
-                $recordingDto->setCompanyId($company->getId())
+                $recordingDto
+                    ->setCompanyId($company->getId())
                     ->setCalldate($callDate)
                     ->setType($type)
                     ->setRecorder($recorder)
