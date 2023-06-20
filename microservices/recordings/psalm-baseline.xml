@@ -35,17 +35,6 @@
       <code>require $this-&gt;getProjectDir() . '/config/bundles.php'</code>
     </UnresolvableInclude>
   </file>
-  <file src="src/Recording/Encoder.php">
-    <ImplicitToStringCast occurrences="1">
-      <code>$ddi</code>
-    </ImplicitToStringCast>
-    <PossiblyNullArgument occurrences="4">
-      <code>$callee</code>
-      <code>$caller</code>
-      <code>$recorder</code>
-      <code>$recorder</code>
-    </PossiblyNullArgument>
-  </file>
   <file src="src/Service/Encoder.php">
     <ImplicitToStringCast occurrences="1">
       <code>$ddi</code>
