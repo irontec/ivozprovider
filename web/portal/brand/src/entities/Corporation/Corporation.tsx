@@ -1,7 +1,6 @@
 import { EntityValue } from '@irontec/ivoz-ui';
 import defaultEntityBehavior, {
   foreignKeyGetter,
-  foreignKeyResolver,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
@@ -11,8 +10,6 @@ import {
   CorporationProperties,
   CorporationPropertyList,
 } from './CorporationProperties';
-import Form from './Form';
-import selectOptions from './SelectOptions';
 
 const properties: CorporationProperties = {
   name: {
@@ -41,10 +38,19 @@ const Corporation: EntityInterface = {
   columns: ['name', 'description'],
   defaultOrderBy: 'name',
   properties,
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    return foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Corporation;
