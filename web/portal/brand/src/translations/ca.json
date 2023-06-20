@@ -157,6 +157,7 @@
   "Default": "Per defecte",
   "Default Action": "Acció per defecte",
   "Default currency": "Moneda per defecte",
+  "Default outgoing DDI. This can be overridden in account's edit screen.": "DDI d'origen de trucada per defecte. Es pot sobreescriure a la pantalla d'edició de comptes.",
   "Default outgoing DDI. This can be overridden in caller's edit screen.": "DDI d'origen de trucada per defecte. Es pot sobreescriure a la pantalla d'edició de l'usuari.",
   "Default timezone": "Zona horària per defecte",
   "Delete": "Borrar",
