@@ -165,6 +165,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
             ResidentialDevice::class,
             Voicemail::class,
             PsEndpoint::class,
+            PsIdentify::class,
             AstVoicemail::class,
         ]);
     }

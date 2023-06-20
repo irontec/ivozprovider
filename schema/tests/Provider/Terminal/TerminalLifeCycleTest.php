@@ -113,6 +113,7 @@ class TerminalLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             Terminal::class,
             PsEndpoint::class,
+            PsIdentify::class,
             QueueMember::class,
         ]);
     }
