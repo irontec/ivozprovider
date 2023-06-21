@@ -4,7 +4,7 @@ import { ListItemIcon, MenuItem, Typography } from '@mui/material';
 import { useStoreActions } from 'store';
 
 import StyledBadge from '../Avatar/StyledBadge';
-import useTerminalStatus from '../useTerminalStatus';
+import { Status } from '../useTerminalStatus';
 import useWebTheme from '../useWebTheme';
 import {
   ContainerStatus,
@@ -14,13 +14,13 @@ import {
   StyledHorizontalLine,
 } from './MenuItems.styles';
 
-const CustomMenuItems = (): JSX.Element => {
+const CustomMenuItems = (props: { status: Status }): JSX.Element => {
   const resetAuth = useStoreActions((actions) => actions.auth.resetAll);
   const handleLogout = () => {
     resetAuth();
   };
 
-  const status = useTerminalStatus();
+  const status = props.status;
   const webTheme = useWebTheme();
 
   return (

@@ -18,7 +18,7 @@ const CustomAvatar = (props: AvatarProps): JSX.Element => {
         color={status.registered ? 'success' : 'error'}
       >
         <Avatar {...rest}>
-          <CustomMenuItems />
+          <CustomMenuItems status={status} />
         </Avatar>
       </StyledBadge>
     </div>

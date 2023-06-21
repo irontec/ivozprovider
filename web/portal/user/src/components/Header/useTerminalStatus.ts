@@ -15,7 +15,7 @@ interface SharedAttr {
   voiceMail: string;
 }
 
-interface Status extends SharedAttr {
+export interface Status extends SharedAttr {
   registered: boolean | null;
 }
 
