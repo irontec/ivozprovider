@@ -26,28 +26,6 @@ Feature: Retrieve web portals
               }
           },
           {
-              "url": "https://client-ivozprovider.irontec.com",
-              "urlType": "admin",
-              "name": "Irontec Ivozprovider Client Admin Portal",
-              "id": 3,
-              "logo": {
-                  "fileSize": 10,
-                  "mimeType": "image/jpeg",
-                  "baseName": "client-logo.jpeg"
-              }
-          },
-          {
-              "url": "https://users-ivozprovider.irontec.com",
-              "urlType": "user",
-              "name": "Irontec Ivozprovider User Admin Portal",
-              "id": 4,
-              "logo": {
-                  "fileSize": 10,
-                  "mimeType": "image/jpeg",
-                  "baseName": "user-logo.jpeg"
-              }
-          },
-          {
               "url": "https://platform-ivozprovider.irontec.com",
               "urlType": "god",
               "name": "Platform Administration Portal",

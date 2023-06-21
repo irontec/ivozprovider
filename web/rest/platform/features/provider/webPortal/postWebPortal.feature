@@ -13,8 +13,8 @@ Feature: Create web portals
       {
           "url": "https://post-example.com",
           "klearTheme": "redmond",
-          "urlType": "user",
-          "name": "Platform user Portal",
+          "urlType": "brand",
+          "name": "Platform brand Portal",
           "userTheme": "default",
           "id": 1,
           "brand": 1
@@ -28,8 +28,8 @@ Feature: Create web portals
       {
           "url": "https://post-example.com",
           "klearTheme": "redmond",
-          "urlType": "user",
-          "name": "Platform user Portal",
+          "urlType": "brand",
+          "name": "Platform brand Portal",
           "userTheme": "default",
           "id": 5,
           "logo": {
@@ -53,8 +53,8 @@ Feature: Create web portals
       {
           "url": "https://post-example.com",
           "klearTheme": "redmond",
-          "urlType": "user",
-          "name": "Platform user Portal",
+          "urlType": "brand",
+          "name": "Platform brand Portal",
           "userTheme": "default",
           "id": 5,
           "logo": {
@@ -79,8 +79,8 @@ Content-Disposition: form-data; name="brand"
       {
           "url": "https://post-example.com",
           "klearTheme": "redmond",
-          "urlType": "user",
-          "name": "Platform user Portal",
+          "urlType": "brand",
+          "name": "Platform brand Portal",
           "userTheme": "default",
           "brand": 1
       }
@@ -100,8 +100,8 @@ This is file content
       {
           "url": "https://post-example.com",
           "klearTheme": "redmond",
-          "urlType": "user",
-          "name": "Platform user Portal",
+          "urlType": "brand",
+          "name": "Platform brand Portal",
           "userTheme": "default",
           "id": 5,
           "logo": {
