@@ -164,6 +164,9 @@ Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
       name: ASC
+    read_access_control:
+      urlType:
+        in: ['"god"', '"brand"']
 
 Ivoz\Provider\Domain\Model\WebPortal\Logo: ~
 
