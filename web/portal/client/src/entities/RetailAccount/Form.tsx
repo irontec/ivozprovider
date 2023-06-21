@@ -28,6 +28,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'transport',
         'ip',
         'port',
+        'multiContact',
       ],
     },
     {
@@ -37,6 +38,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
     {
       legend: _('Geographic Configuration'),
       fields: ['transformationRuleSet'],
+    },
+    {
+      legend: _('Advanced Configuration'),
+      fields: ['fromDomain', 'ddiIn', 't38Passthrough', 'rtpEncryption'],
     },
     {
       legend: _('Status'),
