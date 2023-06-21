@@ -27,8 +27,14 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
             ...Object.values(entities.Brand.customActions),
             {
-              entity: entities.WebPortal,
+              entity: {
+                ...entities.WebPortal,
+                title: _('Brand Portal', { count: 2 }),
+              },
               filterBy: 'brand',
+              fixedValues: {
+                urlType: 'brand',
+              },
             },
           ],
         },
@@ -80,6 +86,9 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.WebPortal,
+          filterValues: {
+            urlType: 'god',
+          },
         },
         {
           entity: entities.ActiveCalls,
