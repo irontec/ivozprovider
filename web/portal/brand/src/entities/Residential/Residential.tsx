@@ -27,11 +27,6 @@ const Residential: EntityInterface = {
     'billingMethod',
     'outgoingDdi',
     'featureIds',
-    'invoicing.postalAddress',
-    'invoicing.postalCode',
-    'invoicing.town',
-    'invoicing.province',
-    'invoicing.countryName',
   ],
   foreignKeyGetter: async () => {
     const module = await import('./ForeignKeyGetter');
