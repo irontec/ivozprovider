@@ -16,7 +16,7 @@ abstract class MediaRelaySetDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $name = '0';
+    private $name = '';
 
     /**
      * @var string|null
