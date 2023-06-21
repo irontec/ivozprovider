@@ -1,5 +1,9 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import DefaultMarshaller, {
+  MarshallerValues,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Marshaller';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
@@ -118,6 +122,8 @@ const properties: ExternalCallFilterProperties = {
           'scheduleIds',
           'outOfScheduleTargetType',
           'outOfScheduleLocution',
+          'outOfScheduleNumberCountry',
+          'outOfScheduleNumberValue',
         ],
       },
       '1': {
@@ -125,6 +131,8 @@ const properties: ExternalCallFilterProperties = {
           'scheduleIds',
           'outOfScheduleTargetType',
           'outOfScheduleLocution',
+          'outOfScheduleNumberCountry',
+          'outOfScheduleNumberValue',
         ],
         hide: [],
       },
@@ -223,6 +231,20 @@ const externalCallFilter: EntityInterface = {
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ExternalCallFilters',
+  },
+  marshaller: (
+    values: MarshallerValues,
+    properties: PartialPropertyList,
+    whitelist: string[] = []
+  ): MarshallerValues => {
+    const response = DefaultMarshaller(values, properties, whitelist);
+
+    if (response.outOfScheduleEnabled && response.outOfScheduleNumberValue) {
+      // Force value in residential clients
+      response.outOfScheduleTargetType = 'number';
+    }
+
+    return response;
   },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
