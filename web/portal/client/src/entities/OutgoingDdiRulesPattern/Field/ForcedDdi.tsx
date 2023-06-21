@@ -22,7 +22,7 @@ const Target: TargetGhostType = (props): JSX.Element => {
   }
 
   if (forcedDdi === null) {
-    return <span>{_("Company's default")}</span>;
+    return <span>{_("Client's default")}</span>;
   }
 
   return <span>{forcedDdi as React.ReactNode}</span>;

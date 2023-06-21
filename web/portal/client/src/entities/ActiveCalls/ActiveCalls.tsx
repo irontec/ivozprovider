@@ -18,7 +18,7 @@ const activeCalls: EntityInterface = {
   icon: ChatBubbleIcon,
   link: '/doc/en/administration_portal/client/vpbx/calls/active_calls.html',
   iden: 'ActiveCalls',
-  title: _('Active calls', { count: 2 }),
+  title: _('Active call', { count: 2 }),
   path: '/active_calls',
   properties,
   acl: {

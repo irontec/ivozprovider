@@ -45,7 +45,7 @@ const StatusIcon: StatusIconProps = (props): JSX.Element | null => {
     const StyledIcon = styled(RestartAltIcon)(iconStyler);
 
     return (
-      <Tooltip title={_('Inter company connectivity')} enterTouchDelay={0}>
+      <Tooltip title={_('Inter client connectivity')} enterTouchDelay={0}>
         <StyledIcon />
       </Tooltip>
     );

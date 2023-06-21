@@ -9,7 +9,7 @@ const ratingPlanGroup: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplications,
   iden: 'RatingPlanGroup',
-  title: _('Rating plan groups', { count: 2 }),
+  title: _('Rating plan', { count: 2 }),
   path: '/rating_plan_groups',
   acl: {
     ...defaultEntityBehavior.acl,

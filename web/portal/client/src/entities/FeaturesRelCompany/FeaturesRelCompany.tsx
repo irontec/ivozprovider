@@ -8,7 +8,7 @@ const FeaturesRelCompany: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AttachFileIcon,
   iden: 'FeaturesRelCompany',
-  title: _('FeaturesRelCompany', { count: 2 }),
+  title: _('Feature', { count: 2 }),
   path: '/features_rel_companies',
   acl: {
     ...defaultEntityBehavior.acl,

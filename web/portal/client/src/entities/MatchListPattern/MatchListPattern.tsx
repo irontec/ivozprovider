@@ -17,7 +17,7 @@ import matchValue from './Field/MatchValue';
 
 const properties: PartialPropertyList = {
   matchList: {
-    label: _('Match List'),
+    label: _('Match List', { count: 1 }),
   },
   description: {
     label: _('Description'),
@@ -43,7 +43,7 @@ const properties: PartialPropertyList = {
     label: _('Regular Expression'),
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   numbervalue: {
     label: _('Number'),

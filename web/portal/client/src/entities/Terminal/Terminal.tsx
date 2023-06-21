@@ -81,13 +81,13 @@ const properties: TerminalProperties = {
     ),
   },
   terminalModel: {
-    label: _('Terminal model'),
+    label: _('Terminal model', { count: 1 }),
   },
   domain: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   domainName: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   statusIcon: {
     label: _('Status'),

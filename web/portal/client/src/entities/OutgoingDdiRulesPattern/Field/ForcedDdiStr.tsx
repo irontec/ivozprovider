@@ -22,7 +22,7 @@ const ForcedDdiStr: ForcedDdiStrType = (props): JSX.Element | null => {
   }
 
   if (forcedDdi === null) {
-    return <span>{_("Company's default")}</span>;
+    return <span>{_("Client's default")}</span>;
   }
 
   if (typeof forcedDdi !== 'string') {

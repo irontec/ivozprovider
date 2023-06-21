@@ -59,7 +59,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
       ],
     },
     residential && {
-      legend: _('Call forward setting'),
+      legend: _('Call forward setting', { count: 2 }),
       fields: [
         'outOfScheduleEnabled',
         'outOfScheduleNumberCountry',

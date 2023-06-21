@@ -7,7 +7,7 @@ import { CompanyServiceProperties } from './CompanyServiceProperties';
 
 const properties: CompanyServiceProperties = {
   service: {
-    label: _('Service'),
+    label: _('Service', { count: 1 }),
   },
   code: {
     label: _('Code'),

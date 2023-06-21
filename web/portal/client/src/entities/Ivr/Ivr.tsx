@@ -33,7 +33,7 @@ const properties: IvrProperties = {
     null: _('Unassigned'),
   },
   errorLocution: {
-    label: _('Locution'),
+    label: _('Locution', { count: 1 }),
     null: _('Unassigned'),
   },
   successLocution: {
@@ -75,7 +75,7 @@ const properties: IvrProperties = {
     },
   },
   excludedExtensionIds: {
-    label: _('Excluded Extension'),
+    label: _('Excluded Extensions'),
   },
   noInputRouteType: {
     label: _('No input target type'),
@@ -83,8 +83,8 @@ const properties: IvrProperties = {
     null: _('Unassigned'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     visualToggle: {
       __null__: {
@@ -106,7 +106,7 @@ const properties: IvrProperties = {
     },
   },
   noInputNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   noInputNumberValue: {
@@ -114,11 +114,11 @@ const properties: IvrProperties = {
     required: true,
   },
   noInputExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   noInputVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   errorRouteType: {
@@ -127,8 +127,8 @@ const properties: IvrProperties = {
     null: _('Unassigned'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     visualToggle: {
       __null__: {
@@ -150,7 +150,7 @@ const properties: IvrProperties = {
     },
   },
   errorNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   errorNumberValue: {
@@ -158,11 +158,11 @@ const properties: IvrProperties = {
     required: true,
   },
   errorExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   errorVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   noInputTarget: {

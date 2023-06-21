@@ -20,10 +20,10 @@ const properties: CompanyProperties = {
     label: _('Name'),
   },
   domainUsers: {
-    label: _('Domain Users'),
+    label: _('SIP Domain', { count: 1 }),
   },
   onDemandRecordCode: {
-    label: _('On DemandRecordCode'),
+    label: _('On-demand Record Code'),
   },
   balance: {
     label: _('Balance'),
@@ -35,25 +35,25 @@ const properties: CompanyProperties = {
     label: _('Invoicing'),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
   },
   defaultTimezone: {
     label: _('Default Timezone'),
   },
   country: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   transformationRuleSet: {
-    label: _('Transformation RuleSet'),
+    label: _('Transformation RuleSet', { count: 1 }),
   },
   outgoingDdi: {
-    label: _('Outgoing Ddi'),
+    label: _('Outgoing DDI'),
   },
   outgoingDdiRule: {
-    label: _('Outgoing DdiRule'),
+    label: _('Outgoing DDI Rule', { count: 1 }),
   },
   domainName: {
-    label: _('Domain Name'),
+    label: _('SIP Domain', { count: 1 }),
   },
 };
 
@@ -61,7 +61,7 @@ const Company: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
   iden: 'Company',
-  title: _('Company', { count: 2 }),
+  title: _('Client', { count: 2 }),
   path: '/companies',
   toStr: (row: CompanyPropertyList<EntityValue>) => (row?.name as string) || '',
   properties,

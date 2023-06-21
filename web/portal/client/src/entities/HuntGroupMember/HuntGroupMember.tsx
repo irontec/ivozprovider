@@ -11,12 +11,12 @@ import {
 
 const properties: HuntGroupMemberProperties = {
   huntGroup: {
-    label: _('Hunt Group'),
+    label: _('Hunt Group', { count: 1 }),
   },
   routeType: {
     label: _('Target type'),
     enum: {
-      user: _('User'),
+      user: _('User', { count: 1 }),
       number: _('Number'),
     },
     visualToggle: {
@@ -31,7 +31,7 @@ const properties: HuntGroupMemberProperties = {
     },
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numberValue: {
@@ -39,7 +39,7 @@ const properties: HuntGroupMemberProperties = {
     required: true,
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
   },
   timeoutTime: {
     label: _('Timeout time'),

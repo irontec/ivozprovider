@@ -27,7 +27,7 @@ const properties: ConditionalRouteProperties = {
     label: _('Name'),
   },
   locution: {
-    label: _('Locution'),
+    label: _('Locution', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
@@ -35,15 +35,15 @@ const properties: ConditionalRouteProperties = {
     label: _('Route type'),
     component: RouteType,
     enum: {
-      user: _('User'),
-      ivr: _('IVR'),
-      huntGroup: _('Hunt Group'),
-      voicemail: _('Voicemail'),
+      user: _('User', { count: 1 }),
+      ivr: _('IVR', { count: 1 }),
+      huntGroup: _('Hunt Group', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
       number: _('Number'),
-      friend: _('Friend'),
-      queue: _('Queue'),
-      conferenceRoom: _('Conference room'),
-      extension: _('Extension'),
+      friend: _('Friend', { count: 1 }),
+      queue: _('Queue', { count: 1 }),
+      conferenceRoom: _('Conference room', { count: 1 }),
+      extension: _('Extension', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -91,23 +91,23 @@ const properties: ConditionalRouteProperties = {
     },
   },
   ivr: {
-    label: _('IVR'),
+    label: _('IVR', { count: 1 }),
     required: true,
   },
   huntGroup: {
-    label: _('Hunt Group'),
+    label: _('Hunt Group', { count: 1 }),
     required: true,
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
     required: true,
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numbervalue: {
@@ -119,15 +119,15 @@ const properties: ConditionalRouteProperties = {
     required: true,
   },
   queue: {
-    label: _('Queue'),
+    label: _('Queue', { count: 1 }),
     required: true,
   },
   conferenceRoom: {
-    label: _('Conference room'),
+    label: _('Conference room', { count: 1 }),
     required: true,
   },
   extension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   target: {

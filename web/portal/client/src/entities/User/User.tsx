@@ -40,7 +40,7 @@ const properties: UserProperties = {
     },
   },
   timezone: {
-    label: _('Timezone'),
+    label: _('Timezone', { count: 1 }),
     default: 145,
   },
   transformationRuleSet: {
@@ -49,12 +49,12 @@ const properties: UserProperties = {
     null: _("Client's default"),
   },
   location: {
-    label: _('Location'),
+    label: _('Location', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
   terminal: {
-    label: _('Terminal'),
+    label: _('Terminal', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
@@ -70,7 +70,7 @@ const properties: UserProperties = {
     default: '__null__',
   },
   outgoingDdiRule: {
-    label: _('Outgoing DDI Rule'),
+    label: _('Outgoing DDI Rule', { count: 1 }),
     null: _("Client's default"),
     default: '__null__',
     helpText: _(
@@ -78,7 +78,7 @@ const properties: UserProperties = {
     ),
   },
   callAcl: {
-    label: _('Call ACL'),
+    label: _('Call ACL', { count: 1 }),
     null: _('Unassigned'),
   },
   doNotDisturb: {
@@ -124,10 +124,10 @@ const properties: UserProperties = {
     ),
   },
   pickupGroupIds: {
-    label: _('Pick Up Groups'),
+    label: _('Pickup group', { count: 2 }),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     default: '__null__',
     null: _("Client's default"),
   },

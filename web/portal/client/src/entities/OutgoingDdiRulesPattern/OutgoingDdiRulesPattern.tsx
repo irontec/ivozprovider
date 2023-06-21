@@ -9,7 +9,7 @@ import { OutgoingDdiRulesPatternProperties } from './OutgoingDdiRulesPatternProp
 
 const properties: OutgoingDdiRulesPatternProperties = {
   outgoingDdiRule: {
-    label: _('Outgoing DDI Rule Pattern'),
+    label: _('Outgoing DDI Rule Pattern', { count: 1 }),
     //required: true
   },
   type: {
@@ -38,7 +38,7 @@ const properties: OutgoingDdiRulesPatternProperties = {
     helpText: _('From 1 to 3 digits ended by * symbol'),
   },
   matchList: {
-    label: _('Match List'),
+    label: _('Match List', { count: 1 }),
     //required: true
     null: _('Unassigned'),
     default: '__null__',

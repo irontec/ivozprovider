@@ -10,7 +10,7 @@ import { RetailAccountProperties } from './RetailAccountProperties';
 
 const properties: RetailAccountProperties = {
   company: {
-    label: _('Client'),
+    label: _('Client', { count: 1 }),
   },
   name: {
     label: _('Name'),
@@ -20,10 +20,10 @@ const properties: RetailAccountProperties = {
     helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
   },
   domain: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   domainName: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   description: {
     label: _('Description'),
@@ -146,7 +146,7 @@ const retailAccount: EntityInterface = {
   icon: SettingsApplications,
   link: '/doc/en/administration_portal/client/retail/retail_accounts.html',
   iden: 'RetailAccount',
-  title: _('Retail accounts', { count: 2 }),
+  title: _('Retail Account', { count: 2 }),
   path: '/retail_accounts',
   properties,
   columns: ['name', 'domainName', 'description', 'statusIcon'],

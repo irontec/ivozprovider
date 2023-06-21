@@ -37,15 +37,15 @@ const properties: QueueProperties = {
     ),
   },
   timeoutLocution: {
-    label: _('Locution'),
+    label: _('Locution', { count: 1 }),
     null: _('Unassigned'),
   },
   timeoutTargetType: {
     label: _('Timeout route'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -69,7 +69,7 @@ const properties: QueueProperties = {
     },
   },
   timeoutNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   timeoutNumberValue: {
@@ -77,11 +77,11 @@ const properties: QueueProperties = {
     required: true,
   },
   timeoutExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   timeoutVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   maxlen: {
@@ -98,8 +98,8 @@ const properties: QueueProperties = {
     label: _('Full queue route'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -123,7 +123,7 @@ const properties: QueueProperties = {
     },
   },
   fullNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   fullNumberValue: {
@@ -131,11 +131,11 @@ const properties: QueueProperties = {
     required: true,
   },
   fullExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   fullVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   periodicAnnounceLocution: {

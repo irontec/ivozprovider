@@ -24,7 +24,7 @@ const properties: InvoiceProperties = {
     label: _('Total with tax'),
   },
   pdf: {
-    label: _('Pdf file'),
+    label: _('PDF File'),
     type: 'file',
   },
 };

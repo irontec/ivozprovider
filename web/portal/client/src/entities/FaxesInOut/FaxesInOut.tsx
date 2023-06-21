@@ -10,14 +10,14 @@ import {
 
 const properties: FaxesInOutProperties = {
   calldate: {
-    label: _('Calldate'),
+    label: _('Call date'),
     format: 'date-time',
   },
   src: {
     label: _('Source'),
   },
   dstCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   dst: {
     label: _('Destination'),
@@ -43,7 +43,7 @@ const properties: FaxesInOutProperties = {
     type: 'file',
   },
   fax: {
-    label: _('Fax'),
+    label: _('Fax', { count: 1 }),
   },
 };
 

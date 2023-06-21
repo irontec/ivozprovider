@@ -23,7 +23,7 @@ const properties: FriendProperties = {
     required: true,
   },
   domain: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   description: {
     label: _('Description'),
@@ -32,9 +32,9 @@ const properties: FriendProperties = {
   transport: {
     label: _('Transport'),
     enum: {
-      udp: _('UDP'),
-      tcp: _('TCP'),
-      tls: _('TLS'),
+      udp: 'UDP',
+      tcp: 'TCP',
+      tls: 'TLS',
     },
   },
   ip: {
@@ -56,7 +56,7 @@ const properties: FriendProperties = {
     component: Password,
   },
   callAcl: {
-    label: _('Call ACL'),
+    label: _('Call ACL', { count: 1 }),
     null: _('Allow all outgoing calls'),
   },
   transformationRuleSet: {
@@ -82,31 +82,31 @@ const properties: FriendProperties = {
   allow: {
     label: _('Allowed audio codecs'),
     enum: {
-      alaw: _('alaw - G.711 a-law'),
-      ulaw: _('ulaw - G.711 u-law'),
-      gsm: _('gsm - GSM'),
-      speex: _('speex - SpeeX 32khz'),
-      g722: _('g722 - G.722'),
-      g726: _('g726 - G.726 RFC3551'),
-      g729: _('g729 - G.729A'),
-      ilbc: _('ilbc - iLBC'),
-      opus: _('opus - Opus codec'),
+      alaw: 'alaw - G.711 a-law',
+      ulaw: 'ulaw - G.711 u-law',
+      gsm: 'gsm - GSM',
+      speex: 'speex - SpeeX 32khz',
+      g722: 'g722 - G.722',
+      g726: 'g726 - G.726 RFC3551',
+      g729: 'g729 - G.729A',
+      ilbc: 'ilbc - iLBC',
+      opus: 'opus - Opus codec',
     },
     default: 'alaw',
   },
   directMediaMethod: {
     label: _('CallerID update method'),
     enum: {
-      invite: _('invite'),
-      update: _('update'),
+      invite: 'invite',
+      update: 'update',
     },
     default: 'update',
   },
   calleridUpdateHeader: {
     label: _('CallerID update header'),
     enum: {
-      pai: _('P-Asserted-Identity (PAI)'),
-      rpid: _('Remote-Party-ID (RPID)'),
+      pai: 'P-Asserted-Identity (PAI)',
+      rpid: 'Remote-Party-ID (RPID)',
     },
     default: 'pai',
   },
@@ -213,7 +213,7 @@ const properties: FriendProperties = {
     ),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     default: '__null__',
     null: _("Client's default"),
   },

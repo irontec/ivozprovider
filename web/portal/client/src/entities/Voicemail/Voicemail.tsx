@@ -56,7 +56,7 @@ const properties: VoicemailProperties = {
     default: '1',
   },
   locution: {
-    label: _('Locution'),
+    label: _('Locution', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },

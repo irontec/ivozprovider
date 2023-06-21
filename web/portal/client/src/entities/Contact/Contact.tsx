@@ -23,7 +23,7 @@ const properties: ContactProperties = {
     label: _('Email'),
   },
   workPhoneCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   workPhone: {
     label: _('Work Phone'),
@@ -32,7 +32,7 @@ const properties: ContactProperties = {
     label: _('Work Phone'),
   },
   mobilePhoneCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   mobilePhone: {
     label: _('Mobile Phone'),
@@ -44,7 +44,7 @@ const properties: ContactProperties = {
     label: _('Other Phone'),
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
   },
 };
 

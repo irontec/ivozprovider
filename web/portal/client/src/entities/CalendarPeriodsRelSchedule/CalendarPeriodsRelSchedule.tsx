@@ -10,7 +10,7 @@ const properties: CalendarPeriodsRelScheduleProperties = {
     label: 'Condition',
   },
   schedule: {
-    label: _('Schedule'),
+    label: _('Schedule', { count: 1 }),
   },
 };
 
@@ -18,7 +18,7 @@ const CalendarPeriod: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DateRangeIcon,
   iden: 'CalendarPeriodsRelSchedule',
-  title: _('Calendar Period <-> Schedule', { count: 2 }),
+  title: _('Calendar Period Schedule', { count: 2 }),
   path: '/calendar_periods_rel_schedules',
   properties,
   acl: {

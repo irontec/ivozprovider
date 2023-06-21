@@ -38,15 +38,15 @@ const properties: UsersCdrProperties = {
     readOnly: true,
   },
   callid: {
-    label: _('Callid'),
+    label: 'Call-ID',
     readOnly: true,
   },
   xcallid: {
-    label: _('Xcallid'),
+    label: 'X-Call-ID',
     readOnly: true,
   },
   callidHash: {
-    label: _('CallidHash'),
+    label: 'Call-ID Hash',
     readOnly: true,
   },
   party: {
