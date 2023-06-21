@@ -65,7 +65,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.RetailAccount,
-          isAccessible: (aboutMe) => aboutMe.retail,
+          /* isAccessible: (aboutMe) => aboutMe.retail, */
           children: [
             {
               entity: entities.CallForwardSetting,

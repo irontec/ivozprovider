@@ -78,11 +78,11 @@ const properties: RetailAccountProperties = {
     visualToggle: {
       yes: {
         show: ['ip', 'port', 'transport'],
-        hide: [],
+        hide: ['multiContact'],
       },
       no: {
         hide: ['ip', 'port', 'transport'],
-        show: [],
+        show: ['multiContact'],
       },
     },
   },
