@@ -54,7 +54,7 @@ const properties: AdministratorProperties = {
     label: _('Lastname'),
   },
   company: {
-    label: _('Company', { count: 1 }),
+    label: _('Client', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },

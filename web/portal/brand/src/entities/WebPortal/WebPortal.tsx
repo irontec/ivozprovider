@@ -100,7 +100,7 @@ const WebPortal: EntityInterface = {
   icon: InsertLinkIcon,
   link: '/doc/en/administration_portal/brand/settings/client_portals.html',
   iden: 'WebPortal',
-  title: _('Company Portal', { count: 2 }),
+  title: _('Client Portal', { count: 2 }),
   path: '/web_portals',
   toStr: (row: WebPortalPropertyList<EntityValue>) => `${row.id}`,
   properties,

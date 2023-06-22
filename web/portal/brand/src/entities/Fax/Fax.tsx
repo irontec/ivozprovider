@@ -20,7 +20,7 @@ const properties: FaxProperties = {
     label: _('Id'),
   },
   company: {
-    label: _('Company', { count: 1 }),
+    label: _('Client', { count: 1 }),
   },
   outgoingDdi: {
     label: _('Outgoing DDI'),

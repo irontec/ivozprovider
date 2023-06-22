@@ -43,7 +43,7 @@ const properties: BillableCallProperties = {
     maxLength: 100,
   },
   ratingPlanName: {
-    label: _('Rating plan'),
+    label: _('Rating Plan Group', { count: 1 }),
   },
   endpointType: {
     label: _('Endpoint Type'),

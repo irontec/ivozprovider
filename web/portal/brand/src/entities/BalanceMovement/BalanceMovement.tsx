@@ -19,7 +19,7 @@ const properties: BalanceMovementProperties = {
     //@TODO IvozProvider_Klear_Ghost_BalanceMovements::getBalance
   },
   createdOn: {
-    label: _('Created'),
+    label: _('Created on'),
   },
   id: {
     label: _('Id'),

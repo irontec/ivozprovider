@@ -21,7 +21,7 @@ const properties: OutgoingDdiRuleProperties = {
     },
   },
   company: {
-    label: _('Company', { count: 1 }),
+    label: _('Client', { count: 1 }),
   },
   forcedDdi: {
     label: _('Forced Ddi'),

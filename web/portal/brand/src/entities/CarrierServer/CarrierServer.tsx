@@ -28,17 +28,17 @@ const properties: CarrierServerProperties = {
     label: _('URI scheme'),
     default: 1,
     enum: {
-      '1': _('sip'),
-      '2': _('sips'),
+      '1': 'sip',
+      '2': 'sips',
     },
   },
   transport: {
     label: _('Transport'),
     default: 1,
     enum: {
-      '1': _('UDP'),
-      '2': _('TCP'),
-      '3': _('TLS'),
+      '1': 'UDP',
+      '2': 'TCP',
+      '3': 'TLS',
     },
   },
   sendPAI: {
@@ -67,7 +67,7 @@ const properties: CarrierServerProperties = {
     },
   },
   authUser: {
-    label: _('Auth User'),
+    label: _('Auth Username'),
   },
   authPassword: {
     label: _('Auth Password'),

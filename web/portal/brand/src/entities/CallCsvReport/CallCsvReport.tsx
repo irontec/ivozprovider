@@ -46,7 +46,7 @@ const CallCsvReport: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SummarizeIcon,
   iden: 'CallCsvReport',
-  title: _('Call Csv Report', { count: 2 }),
+  title: _('Call CSV Report', { count: 2 }),
   path: '/call_csv_reports',
   toStr: (row: CallCsvReportPropertyList<EntityValues>) => `${row.id}`,
   properties,

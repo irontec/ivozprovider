@@ -68,7 +68,7 @@ export default function App(): JSX.Element {
       <StyledAppApiLoading>
         <LinearProgress />
         <br />
-        Loading API definition...
+        {_('Loading API definition...')}
       </StyledAppApiLoading>
     );
   }
