@@ -26,18 +26,18 @@ const properties: NotificationTemplateContentProperties = {
   bodyType: {
     label: _('Body Type'),
     enum: {
-      'text/plain': _('Text /plain'),
-      'text/html': _('Text /html'),
+      'text/plain': 'text/plain',
+      'text/html': 'text/html',
     },
   },
   id: {
     label: _('Id'),
   },
   notificationTemplate: {
-    label: _('Notification Template'),
+    label: _('Notification Template', { count: 1 }),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     readOnly: true,
   },
 };
@@ -46,7 +46,7 @@ const NotificationTemplateContent: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SubjectIcon,
   iden: 'NotificationTemplateContent',
-  title: _('NotificationTemplateContent', { count: 2 }),
+  title: _('Notification Template Content', { count: 2 }),
   path: '/notification_template_contents',
   toStr: (row: NotificationTemplateContentPropertyList<EntityValue>) =>
     row.fromName as string,

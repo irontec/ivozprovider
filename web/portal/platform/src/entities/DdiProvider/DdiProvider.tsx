@@ -20,13 +20,13 @@ const properties: DdiProviderProperties = {
     label: _('Id'),
   },
   brand: {
-    label: _('Brand'),
+    label: _('Brand', { count: 1 }),
   },
   proxyTrunk: {
-    label: _('Proxy Trunk'),
+    label: _('Proxy Trunk', { count: 1 }),
   },
   mediaRelaySets: {
-    label: _('Media RelaySets'),
+    label: _('Media Relay Set', { count: 1 }),
   },
 };
 
@@ -35,7 +35,7 @@ const DdiProvider: EntityInterface = {
   icon: AccountTreeIcon,
   link: '/doc/en/administration_portal/brand/providers/ddi_providers.html',
   iden: 'DdiProvider',
-  title: _('DdiProvider', { count: 2 }),
+  title: _('DDI Provider', { count: 2 }),
   path: '/DdiProviders',
   toStr: (row: DdiProviderPropertyList<EntityValue>) => row.name as string,
   properties,

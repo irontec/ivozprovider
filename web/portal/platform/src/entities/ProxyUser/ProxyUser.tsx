@@ -15,7 +15,7 @@ const properties: ProxyUserProperties = {
     readOnly: true,
   },
   ip: {
-    label: _('IP'),
+    label: _('IP Address'),
   },
 };
 

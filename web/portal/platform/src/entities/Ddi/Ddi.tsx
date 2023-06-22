@@ -13,7 +13,7 @@ const Ddi: EntityInterface = {
   icon: AccountTreeIcon,
   link: '/doc/en/administration_portal/client/vpbx/ddis.html',
   iden: 'Ddi',
-  title: _('Ddi', { count: 2 }),
+  title: _('DDI', { count: 2 }),
   path: '/Ddis',
   toStr: (row: DdiPropertyList<EntityValue>) => row.ddie164 as string,
   properties,

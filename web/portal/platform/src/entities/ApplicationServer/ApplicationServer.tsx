@@ -14,7 +14,7 @@ const properties: ApplicationServerProperties = {
     label: _('Name'),
   },
   ip: {
-    label: _('IP'),
+    label: _('IP Address'),
   },
 };
 

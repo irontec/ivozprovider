@@ -59,10 +59,10 @@ export default function ActiveCallsTable(
             {_('Duration')}
           </TableCell>
           <TableCell align='left' padding='normal'>
-            {_('Brand')}
+            {_('Brand', { count: 1 })}
           </TableCell>
           <TableCell align='left' padding='normal'>
-            {_('Client')}
+            {_('Client', { count: 1 })}
           </TableCell>
           <TableCell align='left' padding='normal'>
             {_('Caller')}

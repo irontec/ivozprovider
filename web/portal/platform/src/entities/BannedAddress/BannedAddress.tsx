@@ -11,7 +11,7 @@ import {
 
 const properties: BannedAddressProperties = {
   ip: {
-    label: _('IP address'),
+    label: _('IP Address'),
   },
   lastTimeBanned: {
     label: _('Last time banned'),
