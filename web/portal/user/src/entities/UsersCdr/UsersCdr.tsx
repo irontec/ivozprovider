@@ -38,13 +38,13 @@ const properties: UsersCdrProperties = {
     label: _('Referrer'),
   },
   callid: {
-    label: _('Callid'),
+    label: 'Callid',
   },
   callidHash: {
-    label: _('Callid Hash'),
+    label: 'Callid Hash',
   },
   xcallid: {
-    label: _('Xcallid'),
+    label: 'Xcallid',
   },
   id: {
     label: _('Id'),
@@ -60,7 +60,7 @@ const UsersCdr: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ChatBubbleIcon,
   iden: 'UsersCdr',
-  title: _('Calls', { count: 2 }),
+  title: _('Call', { count: 2 }),
   path: '/my/call_history',
   toStr: (row: UsersCdrPropertyList<string>) => `${row.id}`,
   properties,

@@ -7,16 +7,16 @@ import { UserProperties, UserPropertyList } from './UserProperties';
 
 const properties: UserProperties = {
   bossAssistant: {
-    label: _('Boss Assistant'),
+    label: _('Boss / Assistant'),
   },
   doNotDisturb: {
     label: _('Do Not Disturb'),
   },
   email: {
-    label: _('email'),
+    label: _('Email'),
   },
   id: {
-    label: _('ID'),
+    label: _('Id'),
   },
   isBoss: {
     label: _('Is Boss'),
@@ -31,7 +31,7 @@ const properties: UserProperties = {
     label: _('Name'),
   },
   timezone: {
-    label: _('TimeZone'),
+    label: _('Timezone', { count: 1 }),
   },
 };
 

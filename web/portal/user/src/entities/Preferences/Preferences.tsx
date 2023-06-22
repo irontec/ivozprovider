@@ -17,7 +17,7 @@ const Preferences: EntityInterface = {
 
     return module.default;
   },
-  title: _('My Preferences', { count: 2 }),
+  title: _('My Preferences'),
 };
 
 export default Preferences;

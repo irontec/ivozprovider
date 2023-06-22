@@ -38,7 +38,7 @@ const CustomMenuItems = (): JSX.Element => {
           <StyledCompanyName>{status.companyName}</StyledCompanyName>
           <StyledHorizontalLine />
           <p>
-            {_('Status Terminal')}:{' '}
+            {_('Terminal Status')}:{' '}
             {
               <StyledBadge
                 overlap='circular'

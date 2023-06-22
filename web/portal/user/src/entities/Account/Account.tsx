@@ -102,7 +102,7 @@ const Account: EntityInterface = {
   },
   unmarshaller,
   marshaller,
-  title: _('My Account', { count: 2 }),
+  title: _('My Account'),
 };
 
 export default Account;
