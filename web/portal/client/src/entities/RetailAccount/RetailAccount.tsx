@@ -6,7 +6,10 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import Password from '../Terminal/Field/Password';
 import Status from './Field/Status';
 import StatusIcon from './Field/StatusIcon';
-import { RetailAccountProperties } from './RetailAccountProperties';
+import {
+  RetailAccountProperties,
+  RetailAccountPropertyList,
+} from './RetailAccountProperties';
 
 const properties: RetailAccountProperties = {
   company: {
@@ -150,6 +153,7 @@ const retailAccount: EntityInterface = {
   path: '/retail_accounts',
   properties,
   columns: ['name', 'domainName', 'description', 'statusIcon'],
+  toStr: (row: RetailAccountPropertyList<string>) => `${row.name}`,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RetailAccounts',
