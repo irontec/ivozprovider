@@ -7,6 +7,7 @@ const FaxesIn: EntityInterface = {
   ...FaxesInOut,
   localPath: '/faxes_out',
   title: _('Outgoing faxfile', { count: 2 }),
+  columns: ['calldate', 'dst', 'status', 'type', 'pages'],
   Form: async () => {
     const module = await import('./Form');
 
