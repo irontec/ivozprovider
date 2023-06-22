@@ -12,7 +12,7 @@ const properties: CompanyProperties = {
   type: {
     label: _('Type'),
     enum: {
-      vpbx: _('Vpbx'),
+      vpbx: _('vPbx'),
       retail: _('Retail'),
       wholesale: _('Wholesale', { count: 1 }),
       residential: _('Residential', { count: 1 }),
@@ -46,7 +46,7 @@ const properties: CompanyProperties = {
   },
   invoicing: {},
   'invoicing.nif': {
-    label: _('Nif'),
+    label: _('TIN'),
     required: false,
   },
   'invoicing.postalAddress': {
@@ -74,7 +74,7 @@ const properties: CompanyProperties = {
     default: 0,
     enum: {
       '0': _('No'),
-      '1': _('yes'),
+      '1': _('Yes'),
     },
     visualToggle: {
       '0': {
@@ -303,7 +303,7 @@ const properties: CompanyProperties = {
     null: _('Unassigned'),
     default: '__null__',
     helpText: _(
-      "Default outgoing DDI. This can be overriden in caller's edit screen."
+      "Default outgoing DDI. This can be overridden in caller's edit screen."
     ),
   },
   voicemailNotificationTemplate: {
@@ -351,7 +351,7 @@ const properties: CompanyProperties = {
     $ref: '#/definitions/Codec',
   },
   corporation: {
-    label: _('Corporations'),
+    label: _('Corporation', { count: 1 }),
     null: _('Not configured'),
     default: '__null__',
   },
@@ -361,7 +361,7 @@ const Company: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
   iden: 'Company',
-  title: _('Company', { count: 2 }),
+  title: _('Client', { count: 2 }),
   path: '/companies',
   deleteDoubleCheck: true,
   toStr: (row: CompanyPropertyList<EntityValues>) => `${row.name}`,

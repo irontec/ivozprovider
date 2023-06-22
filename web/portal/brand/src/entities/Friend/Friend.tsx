@@ -16,13 +16,13 @@ const properties: FriendProperties = {
   transport: {
     label: _('Transport'),
     enum: {
-      udp: _('UDP'),
-      tcp: _('TCP'),
-      tls: _('Tls'),
+      udp: 'UDP',
+      tcp: 'TCP',
+      tls: 'TLS',
     },
   },
   ip: {
-    label: _('Ip'),
+    label: _('IP address'),
   },
   port: {
     label: _('Port'),
@@ -68,7 +68,7 @@ const properties: FriendProperties = {
     label: _('Id'),
   },
   company: {
-    label: _('Company', { count: 1 }),
+    label: _('Client', { count: 1 }),
   },
   transformationRuleSet: {
     label: _('Numeric transformation', { count: 1 }),

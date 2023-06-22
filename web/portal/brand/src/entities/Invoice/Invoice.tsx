@@ -53,7 +53,7 @@ const properties: InvoiceProperties = {
     label: _('Status Msg'),
   },
   pdf: {
-    label: _('Pdf file'),
+    label: _('PDF file'),
     type: 'file',
     readOnly: true,
     //@TODO file preview

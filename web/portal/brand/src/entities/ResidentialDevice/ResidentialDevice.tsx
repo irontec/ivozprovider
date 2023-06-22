@@ -26,13 +26,13 @@ const properties: ResidentialDeviceProperties = {
   transport: {
     label: _('Transport'),
     enum: {
-      udp: _('UDP'),
-      tcp: _('TCP'),
-      tls: _('TLS'),
+      udp: 'UDP',
+      tcp: 'TCP',
+      tls: 'TLS',
     },
   },
   ip: {
-    label: _('Ip'),
+    label: _('IP address'),
     pattern: new RegExp(`^[.0-9]+$`),
     helpText: _(`e.g. 8.8.8.8`),
   },

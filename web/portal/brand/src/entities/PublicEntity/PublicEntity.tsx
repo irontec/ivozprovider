@@ -14,7 +14,7 @@ const properties: PublicEntityProperties = {
     label: _('Iden'),
   },
   fqdn: {
-    label: _('Fqdn'),
+    label: 'FQDN',
   },
   platform: {
     label: _('Platform'),

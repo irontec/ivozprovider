@@ -125,7 +125,7 @@ const properties: UserProperties = {
     ),
   },
   pickupGroupIds: {
-    label: _('Pick Up Groups'),
+    label: _('Pickup Groups'),
   },
   language: {
     label: _('Language', { count: 1 }),
