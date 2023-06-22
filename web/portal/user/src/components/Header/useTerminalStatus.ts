@@ -61,7 +61,7 @@ const useTerminalStatus = (): Status => {
 
     statusReq();
 
-    const interval = setInterval(statusReq, 5000);
+    const interval = setInterval(statusReq, 60000);
 
     return () => {
       clearInterval(interval);
