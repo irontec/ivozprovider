@@ -2,17 +2,28 @@
 
 namespace Controller\My;
 
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
+use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class CallForwardSettingsAction
 {
+    use FilterCollectionTrait;
+
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private CallForwardSettingRepository $callForwardSettingRepository
+        private CallForwardSettingRepository $callForwardSettingRepository,
+        CollectionExtensionList $collectionExtensions,
+        RequestStack $requestStack
     ) {
+        $this->collectionExtensions = $collectionExtensions;
+        $this->request = $requestStack->getCurrentRequest();
     }
 
     public function __invoke()
@@ -26,10 +37,22 @@ class CallForwardSettingsAction
         /** @var UserInterface $user */
         $user = $token->getUser();
 
-        $response = $this
+        $qb = $this
             ->callForwardSettingRepository
-            ->findAndJoinByUser($user);
+            ->prepareAndJoinByUser(
+                $user
+            );
 
-        return $response;
+        $response = $this->applyCollectionExtensions(
+            $qb,
+            CallForwardSetting::class,
+            'get_my_call_forward_settings'
+        );
+
+        $cfs = $response instanceof Paginator
+            ? $response->getIterator()
+            : new \ArrayIterator([...$response]);
+
+        return $cfs;
     }
 }
