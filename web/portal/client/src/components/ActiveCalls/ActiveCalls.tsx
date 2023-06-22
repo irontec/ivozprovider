@@ -11,7 +11,6 @@ export default function ActiveCalls(): JSX.Element | null {
 
   return (
     <div>
-      <h3>{_('Active call', { count: 2 })}</h3>
       {!ready && <div>{_('Loading')}</div>}
       {ready && <ActiveCallsTable calls={deferredCalls} />}
     </div>
