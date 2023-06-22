@@ -13,7 +13,7 @@ Feature: Update web portals
       {
           "url": "https://updated-example.com",
           "klearTheme": "redmond",
-          "urlType": "user",
+          "urlType": "god",
           "name": "Updated Portal",
           "userTheme": "default",
           "id": 1,
@@ -21,8 +21,7 @@ Feature: Update web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "brand": 2
+          }
       }
     """
     Then the response status code should be 200
@@ -33,7 +32,7 @@ Feature: Update web portals
       {
           "url": "https://updated-example.com",
           "klearTheme": "redmond",
-          "urlType": "user",
+          "urlType": "god",
           "name": "Updated Portal",
           "userTheme": "default",
           "id": 2,
@@ -42,7 +41,7 @@ Feature: Update web portals
               "mimeType": null,
               "baseName": null
           },
-          "brand": 2
+          "brand": null
       }
     """
 
