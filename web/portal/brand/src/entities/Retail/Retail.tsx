@@ -31,11 +31,6 @@ const Retail = {
 
     return module.foreignKeyGetter;
   },
-  Form: async () => {
-    const module = await import('./Form');
-
-    return module.default;
-  },
 };
 
 export default Retail;

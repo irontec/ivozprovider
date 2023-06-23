@@ -185,6 +185,7 @@
   "Default": "Predefinita",
   "Default Action": "Azione predefinita",
   "Default currency": "Valuta predefinita",
+  "Default outgoing DDI. This can be overridden in account's edit screen.": "DDI in uscita predefinito. Può essere sovrascritto nella schermata di modifica degli account.",
   "Default outgoing DDI. This can be overridden in caller's edit screen.": "DDI in uscita predefinito. Può essere sovreascritto nella schermata di modifica del chiamante.",
   "Default timezone": "Fuso orario predefinito",
   "Delete": "Elimina",

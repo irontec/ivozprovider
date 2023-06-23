@@ -292,6 +292,9 @@ const properties: CompanyProperties = {
   },
   outgoingDdi: {
     label: _('Outgoing DDI'),
+    helpText: _(
+      `Default outgoing DDI. This can be overridden in account's edit screen.`
+    ),
     null: _('Unassigned'),
     default: '__null__',
   },

@@ -33,20 +33,25 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
       'invoiceNotificationTemplate',
       'callCsvNotificationTemplate',
       'maxDailyUsageNotificationTemplate',
+      'corporation',
     ],
   });
 
-  promises[promises.length] = CompanyDdiSelectOptions(
-    {
-      callback: (options) => {
-        response.outgoingDdi = options;
+  if (row?.id) {
+    promises[promises.length] = CompanyDdiSelectOptions(
+      {
+        callback: (options) => {
+          response.outgoingDdi = options;
+        },
+        cancelToken,
       },
-      cancelToken,
-    },
-    {
-      companyId: row?.id as number,
-    }
-  );
+      {
+        companyId: row?.id as number,
+      }
+    );
+  } else {
+    response.outgoingDdi = [];
+  }
 
   promises[promises.length] = CountryNameSelectOptions({
     callback: (options) => {

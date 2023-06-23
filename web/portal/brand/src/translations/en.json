@@ -157,6 +157,7 @@
   "Default": "Default",
   "Default Action": "Default Action",
   "Default currency": "Default currency",
+  "Default outgoing DDI. This can be overridden in account's edit screen.": "Default outgoing DDI. This can be overriden in account's edit screen.",
   "Default outgoing DDI. This can be overridden in caller's edit screen.": "Default outgoing DDI. This can be overridden in caller's edit screen.",
   "Default timezone": "Default timezone",
   "Delete": "Delete",

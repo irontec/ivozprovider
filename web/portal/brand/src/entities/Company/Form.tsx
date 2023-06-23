@@ -25,12 +25,23 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     match,
   });
 
+  const type = row?.type ?? formik.initialValues.type;
+  const isVpbx = type === ClientTypes.vpbx;
+  const isResidential = type === ClientTypes.residential;
+  const isWholesale = type === ClientTypes.wholesale;
+  const isRetail = type === ClientTypes.retail;
+
   if (fkChoices.featureIds && aboutMe?.features) {
     const filteredFeatures: PropertyFkChoices = [];
     for (const feature of fkChoices.featureIds as DropdownArrayChoices) {
       if (!aboutMe?.features.includes(feature.extraData?.iden as string)) {
         continue;
       }
+
+      if (isRetail && feature.extraData?.iden === ClientFeatures.faxes) {
+        continue; //Retail only
+      }
+
       filteredFeatures.push(feature);
     }
 
@@ -55,22 +66,16 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
   )?.id as number | null;
   const faxEnabled = formik.values.featureIds.includes(faxFeatureId);
 
-  const type = row?.type ?? formik.initialValues.type;
-  const isVpbx = type === ClientTypes.vpbx;
-  const isResidential = type === ClientTypes.residential;
-  const isWholesale = type === ClientTypes.wholesale;
-  const isRetail = type === ClientTypes.retail;
-
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Basic Configuration'),
       fields: [
         'name',
         isVpbx && 'domainUsers',
-        isVpbx && 'corporation',
-        'featureIds',
+        !isWholesale && 'featureIds',
         hasBillingFeature && 'billingMethod',
-        isResidential && 'outgoingDdi',
+        (isResidential || isRetail) && 'outgoingDdi',
+        isVpbx && 'corporation',
       ],
     },
     {
@@ -79,8 +84,8 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
         'maxCalls',
         hasBillingFeature && 'maxDailyUsage',
         hasBillingFeature && 'maxDailyUsageEmail',
-        'ipfilter',
-        'geoIpAllowedCountries',
+        !isWholesale && 'ipfilter',
+        !isWholesale && 'geoIpAllowedCountries',
       ],
     },
     {
@@ -102,7 +107,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
       fields: ['routingTagIds', edit && 'codecIds'],
     },
     edit &&
-      !isResidential && {
+      isVpbx && {
         legend: _('Platform data'),
         fields: ['outgoingDdi', 'outgoingDdiRule'],
       },
@@ -131,7 +136,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     edit && {
       legend: _('Notification options'),
       fields: [
-        'voicemailNotificationTemplate',
+        (isVpbx || isResidential) && 'voicemailNotificationTemplate',
         faxEnabled && 'faxNotificationTemplate',
         hasInvoicesFeature && 'invoiceNotificationTemplate',
         'callCsvNotificationTemplate',
