@@ -14,6 +14,7 @@ export type FaxesInOutPropertyList<T> = {
   type?: T;
   status?: T;
   file?: T;
+  pages?: T;
 };
 
 export type FaxesInOutProperties = FaxesInOutPropertyList<

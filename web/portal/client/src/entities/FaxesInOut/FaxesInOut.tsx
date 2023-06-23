@@ -45,6 +45,9 @@ const properties: FaxesInOutProperties = {
   fax: {
     label: _('Fax', { count: 1 }),
   },
+  pages: {
+    label: _('Page'),
+  },
 };
 
 const FaxesInOut: EntityInterface = {
