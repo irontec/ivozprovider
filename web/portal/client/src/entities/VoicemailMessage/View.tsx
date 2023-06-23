@@ -12,7 +12,7 @@ const View = (props: ViewProps): JSX.Element | null => {
       fields: ['calldate', 'caller', 'duration'],
     },
     {
-      legend: _('Recording'),
+      legend: _('Recording', { count: 1 }),
       fields: ['recordingFile'],
     },
   ];

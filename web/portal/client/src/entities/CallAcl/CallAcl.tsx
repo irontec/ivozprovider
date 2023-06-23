@@ -12,8 +12,8 @@ const properties: CallAclProperties = {
   defaultPolicy: {
     label: _('Default policy'),
     enum: {
-      allow: _('allow'),
-      deny: _('deny'),
+      allow: _('Allow'),
+      deny: _('Deny'),
     },
   },
   //@TODO POSPONED CallAclRelMatchLists subscreen list
@@ -24,7 +24,7 @@ const CallAcl: EntityInterface = {
   icon: GavelIcon,
   link: '/doc/en/administration_portal/client/vpbx/user_configuration/call_acls.html',
   iden: 'CallAcl',
-  title: _('Call ACLs', { count: 2 }),
+  title: _('Call ACL', { count: 2 }),
   path: '/call_acls',
   properties,
   acl: {

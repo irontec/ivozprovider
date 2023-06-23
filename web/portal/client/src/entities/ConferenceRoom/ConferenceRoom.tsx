@@ -16,7 +16,7 @@ const properties: ConferenceRoomProperties = {
     label: _('Pin protected'),
     enum: {
       '0': _('No'),
-      '1': _('yes'),
+      '1': _('Yes'),
     },
     default: '0',
     visualToggle: {

@@ -31,15 +31,15 @@ const properties: ExtensionProperties = {
     label: _('Route type'),
     component: RouteType,
     enum: {
-      user: _('User'),
-      ivr: _('IVR'),
-      huntGroup: _('Hunt Group'),
-      conferenceRoom: _('Conference room'),
+      user: _('User', { count: 1 }),
+      ivr: _('IVR', { count: 1 }),
+      huntGroup: _('Hunt Group', { count: 1 }),
+      conferenceRoom: _('Conference room', { count: 1 }),
       number: _('Number'),
-      friend: _('Friend'),
-      queue: _('Queue'),
-      conditional: _('Conditional Route'),
-      voicemail: _('Voicemail'),
+      friend: _('Friend', { count: 1 }),
+      queue: _('Queue', { count: 1 }),
+      conditional: _('Conditional Route', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     default: '__null__',
     null: _('Unassigned'),
@@ -87,7 +87,7 @@ const properties: ExtensionProperties = {
     },
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numberValue: {
@@ -95,19 +95,19 @@ const properties: ExtensionProperties = {
     required: true,
   },
   ivr: {
-    label: _('IVR'),
+    label: _('IVR', { count: 1 }),
     required: true,
   },
   huntGroup: {
-    label: _('Hunt Group'),
+    label: _('Hunt Group', { count: 1 }),
     required: true,
   },
   conferenceRoom: {
-    label: _('Conference room'),
+    label: _('Conference room', { count: 1 }),
     required: true,
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
     required: true,
   },
   friendValue: {
@@ -115,15 +115,15 @@ const properties: ExtensionProperties = {
     required: true,
   },
   queue: {
-    label: _('Queue'),
+    label: _('Queue', { count: 1 }),
     required: true,
   },
   conditionalRoute: {
-    label: _('Conditional Route'),
+    label: _('Conditional Route', { count: 1 }),
     required: true,
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   target: {

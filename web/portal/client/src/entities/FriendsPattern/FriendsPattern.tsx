@@ -7,7 +7,7 @@ import { FriendsPatternProperties } from './FriendsPatternProperties';
 
 const properties: FriendsPatternProperties = {
   friend: {
-    label: _('Friend'),
+    label: _('Friend', { count: 1 }),
   },
   name: {
     label: _('Name'),

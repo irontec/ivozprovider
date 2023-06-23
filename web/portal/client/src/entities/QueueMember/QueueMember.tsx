@@ -10,12 +10,12 @@ import {
 
 const properties: QueueMemberProperties = {
   queue: {
-    label: _('Queue'),
+    label: _('Queue', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },

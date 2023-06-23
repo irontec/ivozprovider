@@ -26,7 +26,7 @@ const properties: VoicemailMessageProperties = {
     label: _('Duration'),
   },
   recordingFile: {
-    label: _('Recording'),
+    label: _('Recording', { count: 1 }),
     type: 'file',
   },
 };
@@ -37,7 +37,7 @@ const voicemailMessage: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FormatListBulletedIcon,
   iden: 'VoicemailMessage',
-  title: _('VoicemailMessage', { count: 2 }),
+  title: _('Voicemail Message', { count: 2 }),
   path: '/voicemail_messages',
   properties,
   columns,

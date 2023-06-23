@@ -17,10 +17,10 @@ const properties: CallAclRelMatchListProperties = {
     },
   },
   callAcl: {
-    label: _('Call Acl'),
+    label: _('Call ACL', { count: 1 }),
   },
   matchList: {
-    label: _('Match List'),
+    label: _('Match List', { count: 1 }),
   },
 };
 
@@ -28,7 +28,7 @@ const CallAclRelMatchList: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
   iden: 'CallAclRelMatchList',
-  title: _('CallAclRelMatchList', { count: 2 }),
+  title: _('Call ACL MatchList', { count: 2 }),
   path: '/call_acl_rel_match_lists',
   properties,
   Form: async () => {

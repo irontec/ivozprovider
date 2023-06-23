@@ -52,16 +52,16 @@ const properties: CallCsvSchedulerProperties = {
     label: _('Notification template'),
   },
   ddi: {
-    label: _('DDI'),
+    label: _('DDI', { count: 1 }),
     null: _('All'),
     default: '__null__',
   },
   endpointType: {
     label: _('Endpoint type'),
     enum: {
-      user: _('User'),
-      fax: _('Fax'),
-      friend: _('Friend'),
+      user: _('User', { count: 1 }),
+      fax: _('Fax', { count: 1 }),
+      friend: _('Friend', { count: 1 }),
     },
     null: _('All'),
     visualToggle: {
@@ -84,23 +84,23 @@ const properties: CallCsvSchedulerProperties = {
     },
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
     required: true,
   },
   retailAccount: {
-    label: _('Retail Account'),
+    label: _('Retail Account', { count: 1 }),
     required: true,
   },
   residentialDevice: {
-    label: _('Residential Device'),
+    label: _('Residential Device', { count: 1 }),
     required: true,
   },
   fax: {
-    label: _('Fax'),
+    label: _('Fax', { count: 1 }),
     required: true,
   },
   friend: {
-    label: _('Friend'),
+    label: _('Friend', { count: 1 }),
     required: true,
   },
 };
@@ -152,7 +152,7 @@ const CallCsvScheduler: EntityInterface = {
   icon: SettingsApplications,
   link: '/doc/en/administration_portal/client/vpbx/calls/call_csv_schedulers.html',
   iden: 'CallCsvScheduler',
-  title: _('Call csv scheduler', { count: 2 }),
+  title: _('Call CSV scheduler', { count: 2 }),
   path: '/call_csv_schedulers',
   properties,
   columns,

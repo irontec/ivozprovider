@@ -26,10 +26,10 @@ const properties: LocutionProperties = {
     label: _('Status'),
     readOnly: true,
     enum: {
-      pending: _('pending'),
-      encoding: _('encoding'),
-      ready: _('ready'),
-      error: _('error'),
+      pending: _('Pending'),
+      encoding: _('Encoding'),
+      ready: _('Ready'),
+      error: _('Error'),
     },
   },
 };

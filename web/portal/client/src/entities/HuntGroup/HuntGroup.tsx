@@ -79,8 +79,8 @@ const properties: HuntGroupProperties = {
     label: _('Timeout target type'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     default: '__null__',
     visualToggle: {
@@ -108,7 +108,7 @@ const properties: HuntGroupProperties = {
     null: _('Unassigned'),
   },
   noAnswerNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   noAnswerNumberValue: {
@@ -116,11 +116,11 @@ const properties: HuntGroupProperties = {
     required: true,
   },
   noAnswerExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   noAnswerVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
 };

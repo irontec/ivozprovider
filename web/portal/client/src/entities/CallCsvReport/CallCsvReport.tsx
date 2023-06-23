@@ -25,7 +25,7 @@ const properties: CallCsvReportProperties = {
     format: 'date-time',
   },
   csv: {
-    label: _('CSV'),
+    label: 'CSV',
     type: 'file',
   },
 };

@@ -8,7 +8,7 @@ const transformationRuleSet: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
   iden: 'TransformationRuleSet',
-  title: _('TransformationRuleSet', { count: 2 }),
+  title: _('Transformation RuleSet', { count: 2 }),
   path: '/transformation_rule_sets',
   acl: {
     ...defaultEntityBehavior.acl,

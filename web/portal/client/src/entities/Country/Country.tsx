@@ -8,7 +8,7 @@ import { CountryProperties, CountryPropertyList } from './CountryProperties';
 
 const properties: CountryProperties = {
   name: {
-    label: _('name'),
+    label: _('Name'),
   },
 };
 

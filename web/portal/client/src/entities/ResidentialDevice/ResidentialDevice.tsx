@@ -14,7 +14,7 @@ const properties: ResidentialDeviceProperties = {
     pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
   },
   domainName: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   description: {
     label: _('Description'),
@@ -191,7 +191,7 @@ const properties: ResidentialDeviceProperties = {
     ),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     null: _("Client's default"),
   },
   statusIcon: {
@@ -252,7 +252,7 @@ const residentialDevice: EntityInterface = {
   icon: SettingsApplications,
   link: '/doc/en/administration_portal/client/residential/residential_devices.html',
   iden: 'ResidentialDevice',
-  title: _('Residential device', { count: 2 }),
+  title: _('Residential Device', { count: 2 }),
   path: '/residential_devices',
   properties,
   columns: ['name', 'domainName', 'description', 'statusIcon'],

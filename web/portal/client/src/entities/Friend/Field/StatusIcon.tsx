@@ -43,13 +43,13 @@ const StatusIcon: StatusIconType = (props): JSX.Element => {
       return (
         <span>
           <StyledStatusIconRotateLeftIcon />
-          {_('Inter company connectivity')}
+          {_('Inter client connectivity')}
         </span>
       );
     }
 
     return (
-      <Tooltip title={_('Inter company connectivity')}>
+      <Tooltip title={_('Inter client connectivity')}>
         <StyledStatusIconRotateLeftIcon />
       </Tooltip>
     );

@@ -34,7 +34,7 @@ const properties: CalendarPeriodProperties = {
     memoize: false,
   },
   locution: {
-    label: _('Locution'),
+    label: _('Locution', { count: 1 }),
     null: _("Filter's Out of schedule Locution"),
     default: '__null__',
   },
@@ -43,8 +43,8 @@ const properties: CalendarPeriodProperties = {
     null: _("Filter's Out of schedule Routing"),
     default: '__null__',
     enum: {
-      voicemail: _('Voicemail'),
-      extension: _('Extension'),
+      voicemail: _('Voicemail', { count: 1 }),
+      extension: _('Extension', { count: 1 }),
       number: _('Number'),
     },
     visualToggle: {
@@ -67,7 +67,7 @@ const properties: CalendarPeriodProperties = {
     },
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numberValue: {
@@ -76,12 +76,12 @@ const properties: CalendarPeriodProperties = {
     required: true,
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
   extension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },

@@ -21,7 +21,7 @@ const routingTag: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplications,
   iden: 'RoutingTag',
-  title: _('Routing tag', { count: 2 }),
+  title: _('Routing Tag', { count: 2 }),
   path: '/routing_tags',
   toStr: (row: RoutingTagPropertyList<string>) => {
     return `${row.name} (${row.tag})`;

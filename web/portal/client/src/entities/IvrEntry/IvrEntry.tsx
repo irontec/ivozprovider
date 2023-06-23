@@ -16,7 +16,7 @@ const toggleFlds = [
 
 const properties: IvrEntryProperties = {
   ivr: {
-    label: _('IVR'),
+    label: _('IVR', { count: 1 }),
   },
   entry: {
     label: _('Entry'),
@@ -26,7 +26,7 @@ const properties: IvrEntryProperties = {
     ),
   },
   displayName: {
-    label: _('Display Name'),
+    label: _('Display name'),
     helpText: _('This value will be displayed in the called terminals'),
   },
   welcomeLocution: {
@@ -39,9 +39,9 @@ const properties: IvrEntryProperties = {
     required: true,
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
-      conditional: _('Conditional Route'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
+      conditional: _('Conditional Route', { count: 1 }),
     },
     visualToggle: {
       __null__: {
@@ -69,7 +69,7 @@ const properties: IvrEntryProperties = {
     default: '__null__',
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numberValue: {
@@ -77,19 +77,19 @@ const properties: IvrEntryProperties = {
     required: true,
   },
   extension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
     null: _('Unassigned'),
     default: '__null__',
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
     null: _('Unassigned'),
     default: '__null__',
   },
   conditionalRoute: {
-    label: _('Conditional Route'),
+    label: _('Conditional Route', { count: 1 }),
     required: true,
     null: _('Unassigned'),
     default: '__null__',

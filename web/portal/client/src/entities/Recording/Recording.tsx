@@ -8,10 +8,10 @@ import { RecordingProperties } from './RecordingProperties';
 
 const properties: RecordingProperties = {
   callid: {
-    label: _('Callid'),
+    label: 'Callid',
   },
   calldate: {
-    label: _('Calldate'),
+    label: _('Call date'),
   },
   duration: {
     label: _('Duration'),
@@ -26,7 +26,7 @@ const properties: RecordingProperties = {
     label: _('Type'),
     enum: {
       ondemand: _('On-demand'),
-      ddi: _('DDI'),
+      ddi: _('DDI', { count: 1 }),
     },
   },
   typeGhost: {

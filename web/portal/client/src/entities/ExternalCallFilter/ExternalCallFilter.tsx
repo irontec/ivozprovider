@@ -68,8 +68,8 @@ const properties: ExternalCallFilterProperties = {
     label: _('Holiday target type'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -93,7 +93,7 @@ const properties: ExternalCallFilterProperties = {
     },
   },
   holidayNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   holidayNumberValue: {
@@ -101,11 +101,11 @@ const properties: ExternalCallFilterProperties = {
     required: true,
   },
   holidayExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   holidayVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   outOfScheduleEnabled: {
@@ -142,8 +142,8 @@ const properties: ExternalCallFilterProperties = {
     label: _('Out of schedule target type'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -167,7 +167,7 @@ const properties: ExternalCallFilterProperties = {
     },
   },
   outOfScheduleNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   outOfScheduleNumberValue: {
@@ -175,18 +175,18 @@ const properties: ExternalCallFilterProperties = {
     required: true,
   },
   outOfScheduleExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   outOfScheduleVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   scheduleIds: {
-    label: _('Schedule'),
+    label: _('Schedule', { count: 1 }),
   },
   calendarIds: {
-    label: _('Calendar'),
+    label: _('Calendar', { count: 1 }),
   },
   whiteListIds: {
     label: _('White Lists'),

@@ -10,10 +10,10 @@ const properties: RatingProfileProperties = {
     label: _('Activation time'),
   },
   ratingPlanGroup: {
-    label: _('Rating plan'),
+    label: _('Rating plan', { count: 1 }),
   },
   routingTag: {
-    label: _('Routing Tag'),
+    label: _('Routing Tag', { count: 1 }),
     null: _('No routing tag'),
   },
 };

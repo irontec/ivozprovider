@@ -11,7 +11,7 @@ const properties: PickUpGroupProperties = {
     required: true,
   },
   userIds: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
     type: 'array',
     $ref: '#/definitions/User',
   },
@@ -22,7 +22,7 @@ const pickUpGroup: EntityInterface = {
   icon: PhoneCallbackIcon,
   link: '/doc/en/administration_portal/client/vpbx/user_configuration/pick_up_groups.html',
   iden: 'PickUpGroup',
-  title: _('Pick up group', { count: 2 }),
+  title: _('Pickup group', { count: 2 }),
   path: '/pick_up_groups',
   properties,
   acl: {
