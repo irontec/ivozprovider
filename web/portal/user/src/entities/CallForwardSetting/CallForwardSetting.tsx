@@ -20,18 +20,18 @@ const properties: CallForwardSettingProperties = {
   callForwardType: {
     label: _('Call forward type'),
     enum: {
-      inconditional: _('Inconditional'),
-      noAnswer: _('No Answer'),
+      inconditional: _('Unconditional'),
+      noAnswer: _('No answer'),
       busy: _('Busy'),
-      userNotRegistered: _('User NotRegistered'),
+      userNotRegistered: _('User not registered'),
     },
   },
   targetType: {
     label: _('Target type'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     visualToggle: {
       number: {
@@ -64,10 +64,10 @@ const properties: CallForwardSettingProperties = {
     label: _('User'),
   },
   extension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
   },
   numberCountry: {
     label: _('Number country'),
@@ -86,7 +86,7 @@ const CallForwardSetting: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PhoneForwardedIcon,
   iden: 'CallForwardSetting',
-  title: _('Call Forward Settings', { count: 2 }),
+  title: _('Call forward setting', { count: 2 }),
   path: '/my/call_forward_settings',
   toStr: (row: CallForwardSettingPropertyList<string>) => `${row.id}`,
   properties,
