@@ -2,7 +2,9 @@
 
 namespace Ivoz\Ast\Domain\Service\PsIdentify;
 
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentify;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Service\ResidentialDevice\ResidentialDeviceLifecycleEventHandlerInterface;
@@ -27,23 +29,27 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
      */
     public function execute(ResidentialDeviceInterface $residentialDevice)
     {
-        $isNew = $residentialDevice->isNew();
-        if (!$isNew) {
-            return;
-        }
+        $identify = $residentialDevice->getPsIdentify();
+
+        /** @var PsIdentifyDto $identifyDto */
+        $identifyDto = is_null($identify)
+            ? PsIdentify::createDto()
+            : $this->entityTools->entityToDto($identify);
 
         // Get sorcery identifier
         $sorceryId = $residentialDevice->getSorcery();
 
         // Insert Identify data
-        $identifyDto = new PsIdentifyDto();
         $identifyDto
             ->setSorceryId($sorceryId)
             ->setEndpoint($sorceryId)
             ->setMatchHeader($sorceryId)
             ->setResidentialDeviceId($residentialDevice->getId());
 
-        $this->entityTools
-            ->persistDto($identifyDto);
+        /** @var PsIdentifyInterface $identify */
+        $identify = $this->entityTools
+            ->persistDto($identifyDto, $identify);
+
+        $residentialDevice->setPsIdentify($identify);
     }
 }
