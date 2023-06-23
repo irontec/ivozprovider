@@ -43,7 +43,7 @@ const properties: AdministratorRelPublicEntityProperties = {
     },
   },
   administrator: {
-    label: _('Administrator'),
+    label: _('Administrator', { count: 2 }),
     readOnly: true,
   },
   publicEntity: {

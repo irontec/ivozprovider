@@ -34,7 +34,7 @@ const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
         {variant === 'text' && <MoreMenuItem>{_('Impersonate')}</MoreMenuItem>}
         {variant === 'icon' && (
           <Tooltip
-            title={_('Impersonate as client admin')}
+            title={_('Impersonate')}
             placement='bottom-start'
             enterTouchDelay={0}
           >

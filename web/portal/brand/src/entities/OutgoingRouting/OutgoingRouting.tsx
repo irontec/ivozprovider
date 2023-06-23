@@ -103,7 +103,7 @@ const properties: OutgoingRoutingProperties = {
     ),
   },
   forceClid: {
-    label: _('Force Clid'),
+    label: _('Force CLID'),
     helpText: _(
       `Instead of getting the caller from PAI/RPID headers, this clid will be used (and will be adapted using carrier's numeric transformations).`
     ),

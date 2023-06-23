@@ -22,7 +22,7 @@ const properties: RatingProfileProperties = {
     label: _('Carrier', { count: 1 }),
   },
   ratingPlanGroup: {
-    label: _('Rating plan'),
+    label: _('Rating Plan Group', { count: 1 }),
   },
   routingTag: {
     label: _('Routing Tag', { count: 1 }),

@@ -25,7 +25,7 @@ const properties: UsersAddressProperties = {
     label: _('Client'),
   },
   ipAddr: {
-    label: _('Ip addr'),
+    label: _('IP address'),
     maxLength: 50,
   },
   mask: {

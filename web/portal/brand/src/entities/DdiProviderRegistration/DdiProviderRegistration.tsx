@@ -24,7 +24,7 @@ const properties: DdiProviderRegistrationProperties = {
     required: false,
   },
   authUsername: {
-    label: _('Auth username'),
+    label: _('Auth Username'),
     helpText: _("Only if it's different from the Username"),
     required: false,
   },

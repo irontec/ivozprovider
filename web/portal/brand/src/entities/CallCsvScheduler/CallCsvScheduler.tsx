@@ -76,7 +76,7 @@ const properties: CallCsvSchedulerProperties = {
     null: _('All'),
     default: '__null__',
     enum: {
-      vpbx: _('vPBX'),
+      vpbx: _('vPbx'),
       retail: _('Retail'),
       residential: _('Residential', { count: 1 }),
       wholesale: _('Wholesale', { count: 1 }),

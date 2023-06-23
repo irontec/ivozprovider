@@ -19,10 +19,10 @@ const properties: TransformationRuleProperties = {
   type: {
     label: _('Type'),
     enum: {
-      callerin: _('Callerin'),
-      calleein: _('Calleein'),
-      callerout: _('Callerout'),
-      calleeout: _('Calleeout'),
+      callerin: _('Caller In'),
+      calleein: _('Callee In'),
+      callerout: _('Caller Out'),
+      calleeout: _('Callee Out'),
     },
   },
   description: {
