@@ -6,7 +6,7 @@ import Rerate from './Rerate';
 const customAction: CustomActionsType = {
   Export: {
     action: Export,
-    multiselect: true,
+    global: true,
   },
   Rerate: {
     action: Rerate,
