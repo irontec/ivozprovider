@@ -386,30 +386,6 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _('Calls'),
-      icon: TtyIcon,
-      children: [
-        {
-          entity: entities.ActiveCalls,
-        },
-        {
-          entity: entities.BillableCall,
-          children: [
-            //@TODO rerate call
-          ],
-        },
-        {
-          entity: entities.CallCsvScheduler,
-          children: [
-            {
-              entity: entities.CallCsvReport,
-              filterBy: 'callCsvScheduler',
-            },
-          ],
-        },
-      ],
-    },
-    {
       label: _('Settings'),
       icon: SettingsIcon,
       children: [
@@ -537,6 +513,30 @@ const getEntityMap = (): ExtendedRouteMap => {
           },
           children: [
             ...Object.values(entities.BannedAddressBruteForce.customActions),
+          ],
+        },
+      ],
+    },
+    {
+      label: _('Calls'),
+      icon: TtyIcon,
+      children: [
+        {
+          entity: entities.ActiveCalls,
+        },
+        {
+          entity: entities.BillableCall,
+          children: [
+            //@TODO rerate call
+          ],
+        },
+        {
+          entity: entities.CallCsvScheduler,
+          children: [
+            {
+              entity: entities.CallCsvReport,
+              filterBy: 'callCsvScheduler',
+            },
           ],
         },
       ],
