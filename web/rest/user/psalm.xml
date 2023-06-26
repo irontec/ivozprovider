@@ -13,7 +13,9 @@
         <UnusedClass errorLevel="suppress" />
         <PossiblyUnusedMethod errorLevel="suppress" />
         <PossiblyUnusedProperty errorLevel="suppress" />
-        <PossiblyUnusedParam  errorLevel="suppress" />
+        <PossiblyUnusedParam errorLevel="suppress" />
+        <InternalClass errorLevel="suppress" />
+        <InternalMethod errorLevel="suppress" />
     </issueHandlers>
     <projectFiles>
         <directory name="src" />

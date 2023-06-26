@@ -2,31 +2,26 @@
 
 namespace Controller\My;
 
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryResultCollectionExtensionInterface;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGenerator;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use ApiPlatform\Core\Util\RequestParser;
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
 use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
-use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
+use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 
 class CallHistoryAction
 {
-    protected $request;
+    use FilterCollectionTrait;
 
     public function __construct(
         private TokenStorageInterface $tokenStorage,
         private UsersCdrRepository $usersCdrRepository,
-        private CollectionExtensionList $collectionExtensions,
+        CollectionExtensionList $collectionExtensions,
         RequestStack $requestStack
     ) {
+        $this->collectionExtensions = $collectionExtensions;
         $this->request = $requestStack->getCurrentRequest();
     }
 
@@ -60,7 +55,7 @@ class CallHistoryAction
 
         $calls = $response instanceof Paginator
             ? $response->getIterator()
-            : new \ArrayIterator($response);
+            : new \ArrayIterator([...$response]);
 
         $this->setUserTimezone($user, $calls);
 
@@ -83,41 +78,5 @@ class CallHistoryAction
                 ->getEndTime()
                 ->setTimezone($timezone);
         }
-    }
-
-    /**
-     * @param QueryBuilder $qb
-     * @param string $entityClass
-     * @param string $operationName
-     * @return Paginator | array | iterable
-     */
-    protected function applyCollectionExtensions(QueryBuilder $qb, string $entityClass, string $operationName)
-    {
-        $context = [];
-        $queryString = RequestParser::getQueryString($this->request);
-        $context['filters'] = $queryString ? RequestParser::parseRequestParams($queryString) : null;
-
-        $queryNameGenerator = new QueryNameGenerator();
-        foreach ($this->collectionExtensions->get() as $extension) {
-            /** @phpstan-ignore-next-line  */
-            $extension->applyToCollection(
-                $qb,
-                $queryNameGenerator,
-                $entityClass,
-                $operationName,
-                $context
-            );
-
-            $returnResults =
-                $extension instanceof QueryResultCollectionExtensionInterface
-                && $extension->supportsResult($entityClass, $operationName);
-
-            if ($returnResults) {
-                /** @var QueryResultCollectionExtensionInterface $extension */
-                return $extension->getResult($qb);
-            }
-        }
-
-        return $qb->getQuery()->getResult();
     }
 }

@@ -15,7 +15,7 @@ interface SharedAttr {
   voiceMail: string;
 }
 
-interface Status extends SharedAttr {
+export interface Status extends SharedAttr {
   registered: boolean | null;
 }
 
@@ -61,7 +61,7 @@ const useTerminalStatus = (): Status => {
 
     statusReq();
 
-    const interval = setInterval(statusReq, 5000);
+    const interval = setInterval(statusReq, 60000);
 
     return () => {
       clearInterval(interval);

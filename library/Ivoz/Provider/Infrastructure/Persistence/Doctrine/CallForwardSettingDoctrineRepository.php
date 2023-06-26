@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
@@ -40,22 +41,28 @@ class CallForwardSettingDoctrineRepository extends ServiceEntityRepository imple
     }
 
     /**
-     * @param UserInterface $user
      * @return CallForwardSettingInterface[]
      */
     public function findAndJoinByUser(UserInterface $user): array
     {
+        $qb = $this->prepareAndJoinByUser($user);
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
+    public function prepareAndJoinByUser(UserInterface $user): QueryBuilder
+    {
         $qb = $this->createQueryBuilder('self');
 
-        $query = $qb
+        $response = $qb
             ->select('self', 'e', 'v')
             ->where(
                 $qb->expr()->eq('self.user', $user->getId())
             )
             ->leftJoin('self.extension', 'e')
-            ->leftJoin('self.voicemail', 'v')
-            ->getQuery();
+            ->leftJoin('self.voicemail', 'v');
 
-        return $query->getResult();
+        return $response;
     }
 }

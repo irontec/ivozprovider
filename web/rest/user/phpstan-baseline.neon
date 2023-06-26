@@ -16,22 +16,7 @@ parameters:
 			path: src/Controller/My/CallHistoryAction.php
 
 		-
-			message: "#^Method Controller\\\\My\\\\CallHistoryAction\\:\\:applyCollectionExtensions\\(\\) return type has no value type specified in iterable type iterable\\.$#"
-			count: 1
-			path: src/Controller/My/CallHistoryAction.php
-
-		-
 			message: "#^Method Controller\\\\My\\\\CallHistoryAction\\:\\:setUserTimezone\\(\\) has parameter \\$calls with no value type specified in iterable type Traversable\\.$#"
-			count: 1
-			path: src/Controller/My/CallHistoryAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$array of class ArrayIterator constructor expects array\\<TKey of \\(int\\|string\\), TValue\\>, iterable given\\.$#"
-			count: 1
-			path: src/Controller/My/CallHistoryAction.php
-
-		-
-			message: "#^Property Controller\\\\My\\\\CallHistoryAction\\:\\:\\$request has no typehint specified\\.$#"
 			count: 1
 			path: src/Controller/My/CallHistoryAction.php
 
