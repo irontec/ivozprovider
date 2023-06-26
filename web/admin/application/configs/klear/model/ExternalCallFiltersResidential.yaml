@@ -21,21 +21,22 @@ production:
       trim: both
       required: true
       default: true
-    outOfScheduleTargetType:
+    outOfScheduleEnabled:
       title: _('Unconditional Call Forward')
       type: select
+      defaultValue: 0
       source:
         data: inline
         values:
-          '__null__':
-            title: _('Disabled')
+          '0':
+            title: _("No")
             visualFilter:
+              hide: [ outOfScheduleTargetType, outOfScheduleNumberValue, outOfScheduleNumberCountry ]
               show: []
-              hide: [ outOfScheduleNumberValue, outOfScheduleNumberCountry ]
-          'number':
-            title: _('Enabled')
+          '1':
+            title: _("Yes")
             visualFilter:
-              show: [ outOfScheduleNumberValue, outOfScheduleNumberCountry ]
+              show: [ outOfScheduleTargetType, outOfScheduleNumberValue, outOfScheduleNumberCountry ]
               hide: []
     outOfScheduleNumberCountry:
       title: ngettext('Country', 'Countries', 1)
@@ -57,6 +58,14 @@ production:
       type: text
       trim: both
       required: true
+    outOfScheduleTargetType:
+      title: _('Out of schedule target type')
+      type: select
+      source:
+        data: inline
+        values:
+          'number':
+            title: _('Number')
     blackLists:
       title: _('Black Lists')
       type: multiselect

@@ -121,7 +121,7 @@ production:
               hide:
                 <<: *holidayFields
           'extension':
-            title: ngettext('Extension', 'Extension', 1)
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: [ holidayExtension ]
               hide:
@@ -153,7 +153,7 @@ production:
       trim: both
       required: true
     holidayExtension:
-      title: ngettext('Extension', 'Extension', 1)
+      title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
       source:
@@ -267,7 +267,7 @@ production:
       trim: both
       required: true
     outOfScheduleExtension:
-      title: ngettext('Extension', 'Extension', 1)
+      title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
       source:

@@ -98,7 +98,7 @@ production:
               hide:
                 <<: *routableFields
           'extension':
-            title: ngettext('Extension', 'Extension', 1)
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: [ extension ]
               hide:
@@ -148,7 +148,7 @@ production:
             Voicemail.name: asc
         'null': _("Unassigned")
     extension:
-      title: ngettext('Extension', 'Extension', 1)
+      title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
       source:
