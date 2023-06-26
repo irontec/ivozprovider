@@ -52,6 +52,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             type: ClientTypes.vpbx,
           },
           children: [
+            ...Object.values(entities.VirtualPbx.customActions),
             {
               entity: entities.UsersAddress,
               filterBy: 'company',
@@ -80,7 +81,6 @@ const getEntityMap = (): ExtendedRouteMap => {
                 return aboutMe.features.includes(ClientFeatures.billing);
               },
             },
-            ...Object.values(entities.VirtualPbx.customActions),
           ],
         },
         {
@@ -91,6 +91,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             type: ClientTypes.residential,
           },
           children: [
+            ...Object.values(entities.Residential.customActions),
             {
               entity: entities.UsersAddress,
               filterBy: 'company',
@@ -109,7 +110,6 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.RatingProfile,
               filterBy: 'company',
             },
-            ...Object.values(entities.Residential.customActions),
           ],
         },
         {
@@ -123,6 +123,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             domainUsers: '__null__',
           },
           children: [
+            ...Object.values(entities.Retail.customActions),
             {
               entity: entities.UsersAddress,
               filterBy: 'company',
@@ -144,7 +145,6 @@ const getEntityMap = (): ExtendedRouteMap => {
               },
               filterBy: 'company',
             },
-            ...Object.values(entities.Retail.customActions),
           ],
         },
         {
@@ -158,6 +158,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             domainUsers: '__null__',
           },
           children: [
+            ...Object.values(entities.Wholesale.customActions),
             {
               entity: entities.Trusted,
               filterBy: 'company',
@@ -179,7 +180,6 @@ const getEntityMap = (): ExtendedRouteMap => {
               },
               filterBy: 'company',
             },
-            ...Object.values(entities.Wholesale.customActions),
           ],
         },
       ],
