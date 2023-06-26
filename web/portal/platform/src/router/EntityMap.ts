@@ -26,11 +26,11 @@ const getEntityMap = (): ExtendedRouteMap => {
       entity: entities.Brand,
       divider: true,
       children: [
+        ...Object.values(entities.Brand.customActions),
         {
           entity: entities.Administrator,
           filterBy: 'brand',
         },
-        ...Object.values(entities.Brand.customActions),
         {
           entity: {
             ...entities.WebPortal,

@@ -8,7 +8,7 @@ import {
   ActionItemProps,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { Tooltip } from '@mui/material';
 import { useStoreState } from 'store';
 
@@ -28,7 +28,7 @@ const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
       to={`/brand/?${queryString}`}
       parentEntity={entityService.getEntity()}
       parentRow={row}
-      // target="_impersonate-brand"
+      target='_impersonate-brand'
     >
       <>
         {variant === 'text' && <MoreMenuItem>{_('Impersonate')}</MoreMenuItem>}
@@ -39,7 +39,7 @@ const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
             enterTouchDelay={0}
           >
             <StyledTableRowCustomCta>
-              <OpenInNewIcon />
+              <AdminPanelSettingsIcon />
             </StyledTableRowCustomCta>
           </Tooltip>
         )}
