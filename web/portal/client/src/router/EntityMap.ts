@@ -406,7 +406,6 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Calls'),
-      isAccessible: (aboutMe) => !aboutMe.wholesale,
       icon: DialpadIcon,
       children: [
         {
@@ -434,26 +433,6 @@ const getEntityMap = (): ExtendedRouteMap => {
           isAccessible: (aboutMe) =>
             !aboutMe.wholesale &&
             aboutMe.features.includes(ClientFeatures.recordings),
-        },
-      ],
-    },
-    {
-      entity: entities.ActiveCalls,
-      divider: true,
-      isAccessible: (aboutMe) => aboutMe.wholesale,
-    },
-    {
-      entity: entities.BillableCall,
-      isAccessible: (aboutMe) => aboutMe.wholesale,
-      children: [...Object.values(entities.BillableCall.customActions)],
-    },
-    {
-      entity: entities.CallCsvScheduler,
-      isAccessible: (aboutMe) => aboutMe.wholesale,
-      children: [
-        {
-          entity: entities.CallCsvReport,
-          filterBy: 'callCsvScheduler',
         },
       ],
     },
