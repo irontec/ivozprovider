@@ -28,7 +28,10 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         ...Object.values(entities.Brand.customActions),
         {
-          entity: entities.Administrator,
+          entity: {
+            ...entities.Administrator,
+            title: _('Brand operator', { count: 2 }),
+          },
           filterBy: 'brand',
         },
         {
@@ -40,11 +43,6 @@ const getEntityMap = (): ExtendedRouteMap => {
           fixedValues: {
             urlType: 'brand',
           },
-        },
-        ...Object.values(entities.Brand.customActions),
-        {
-          entity: entities.WebPortal,
-          filterBy: 'brand',
         },
       ],
     },
