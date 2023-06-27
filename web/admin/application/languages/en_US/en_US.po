@@ -2011,6 +2011,9 @@ msgstr "National number length"
 msgid "Need help?"
 msgstr "Need help?"
 
+msgid "New Interface"
+msgstr "New Interface"
+
 msgid "Next execution"
 msgstr "Next execution"
 
@@ -3312,6 +3315,9 @@ msgstr "Yes"
 
 msgid "Yes, continue!"
 msgstr "Yes, continue!"
+
+msgid "You can always access classic interface adding /classic to URL"
+msgstr "You can always access classic interface adding /classic to URL"
 
 msgid ""
 "You can call this extension from any company terminal to close this lock"

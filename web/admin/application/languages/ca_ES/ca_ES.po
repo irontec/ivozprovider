@@ -2030,6 +2030,9 @@ msgstr "Longitud números nacionals"
 msgid "Need help?"
 msgstr "Necessites ajuda?"
 
+msgid "New Interface"
+msgstr "Nuevo Interfaz"
+
 msgid "Next execution"
 msgstr "Següent execució"
 
@@ -3344,6 +3347,10 @@ msgstr "Sí"
 
 msgid "Yes, continue!"
 msgstr "Sí, continua!"
+
+msgid "You can always access classic interface adding /classic to URL"
+msgstr ""
+"Siempre podrás acceder a la interfaz clásica añadiendo /classic a la URL"
 
 msgid ""
 "You can call this extension from any company terminal to close this lock"

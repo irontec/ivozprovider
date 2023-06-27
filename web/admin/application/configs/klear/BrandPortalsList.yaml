@@ -61,6 +61,7 @@ production:
             name: 5
             urlType: 2
             url: 7
+            newUI: 4
         group1:
           colsPerRow: 3
           fields:
