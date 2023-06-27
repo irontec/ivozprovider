@@ -63,6 +63,9 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       entity: entities.WebPortal,
+      filterValues: {
+        urlType: 'god',
+      },
       divider: true,
     },
     {
