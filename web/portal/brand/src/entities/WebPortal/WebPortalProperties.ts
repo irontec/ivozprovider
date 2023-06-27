@@ -12,6 +12,7 @@ export type WebPortalPropertyList<T> = {
   userTheme?: T;
   id?: T;
   logo?: T;
+  newUI?: T;
 };
 
 export type WebPortalProperties = WebPortalPropertyList<Partial<PropertySpec>>;
