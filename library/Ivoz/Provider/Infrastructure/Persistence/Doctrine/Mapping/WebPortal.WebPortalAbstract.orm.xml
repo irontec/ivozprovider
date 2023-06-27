@@ -22,6 +22,12 @@
         <option name="comment">[enum:god|brand|admin|user]</option>
       </options>
     </field>
+    <field name="newUI" type="boolean" column="newUI" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
     <field name="name" type="string" column="name" length="200" nullable="true">
       <options>
         <option name="fixed"/>
