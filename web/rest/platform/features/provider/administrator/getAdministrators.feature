@@ -33,6 +33,24 @@ Feature: Retrieve administrators
               "id": 3
           },
           {
+              "username": "restrictedBrandAdmin",
+              "email": "restrictedAdmin@irontec.com",
+              "active": true,
+              "restricted": true,
+              "name": "RestrictedAdmin",
+              "lastname": "Lastname",
+              "id": 6
+          },
+          {
+              "username": "test_brand_admin",
+              "email": "nightwatch@irontec.com",
+              "active": true,
+              "restricted": false,
+              "name": "night",
+              "lastname": "watch",
+              "id": 2
+          },
+          {
               "username": "utcAdmin",
               "email": "utc@irontec.com",
               "active": true,

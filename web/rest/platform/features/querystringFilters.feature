@@ -315,3 +315,24 @@ Feature: Retrieve billable calls
           }
       ]
       """
+
+  Scenario: Retrieve administrators by brand array
+    Given I add Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "administrators?brand[]=1&brand[]=2"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
+       [
+          {
+              "username": "restrictedBrandAdmin",
+              "id": 6
+          },
+          {
+              "username": "test_brand_admin",
+              "id": 2
+          }
+      ]
+      """
