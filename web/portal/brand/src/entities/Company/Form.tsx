@@ -38,10 +38,6 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
         continue;
       }
 
-      if (isRetail && feature.extraData?.iden === ClientFeatures.faxes) {
-        continue; //Retail only
-      }
-
       filteredFeatures.push(feature);
     }
 
