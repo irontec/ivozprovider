@@ -112,6 +112,7 @@
   "Media Relay_one": "Media Relay",
   "Media Relay_other": "Media Relays",
   "Name": "Name",
+  "New Interface": "New Interface",
   "No": "No",
   "Notification Template Content_one": "Notification Template Content",
   "Notification Template Content_other": "Notification Template Contents",
@@ -178,5 +179,6 @@
   "Voicemail_other": "Voicemails",
   "Weight": "Weight",
   "Will be shown on page footer": "Will be shown on page footer",
-  "Yes": "Yes"
+  "Yes": "Yes",
+  "You can always access classic interface adding /classic to URL": "You can always access classic interface adding /classic to URL"
 }

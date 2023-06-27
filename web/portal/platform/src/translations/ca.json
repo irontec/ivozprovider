@@ -112,6 +112,7 @@
   "Media Relay_one": "Retransmisor de mitjà",
   "Media Relay_other": "Retransmisors de mitjà",
   "Name": "Nom",
+  "New Interface": "Nueva interfaz",
   "No": "No",
   "Notification Template Content_one": "Contingut de la plantilla de notificació",
   "Notification Template Content_other": "Continguts de la plantilla de notificació",
@@ -178,5 +179,6 @@
   "Voicemail_other": "Bústies de veu",
   "Weight": "Pes",
   "Will be shown on page footer": "Es mostrarà al peu de pàgina",
-  "Yes": "Sí"
+  "Yes": "Sí",
+  "You can always access classic interface adding /classic to URL": "Siempre podrás acceder a la interfaz clásica añadiendo /classic a la URL"
 }

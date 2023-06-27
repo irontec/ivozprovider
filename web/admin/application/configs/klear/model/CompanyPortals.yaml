@@ -94,6 +94,16 @@ production:
             visualFilter:
               show: ["userTheme"]
               hide: ["klearTheme"]
+    newUI:
+      title: _('New Interface')
+      type: checkbox
+      defaultValue: 0
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("You can always access classic interface adding /classic to URL")
+        label: _("Need help?")
     name:
       title: _('Name')
       type: text

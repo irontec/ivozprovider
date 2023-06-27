@@ -4,7 +4,7 @@ Feature: Create web portals
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create an web portal
+  Scenario: Create a web portal
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
@@ -29,6 +29,7 @@ Feature: Create web portals
           "url": "https://post-example.com",
           "klearTheme": "redmond",
           "urlType": "brand",
+          "newUI": false,
           "name": "Platform brand Portal",
           "userTheme": "default",
           "id": 5,
@@ -54,6 +55,7 @@ Feature: Create web portals
           "url": "https://post-example.com",
           "klearTheme": "redmond",
           "urlType": "brand",
+          "newUI": false,
           "name": "Platform brand Portal",
           "userTheme": "default",
           "id": 5,
@@ -67,7 +69,7 @@ Feature: Create web portals
     """
 
   @createSchema
-  Scenario: Create an web portal with logo
+  Scenario: Create a web portal with logo
     Given I add Authorization header
     When I add "Content-Type" header equal to "multipart/form-data; boundary=----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8"
     And I add "Accept" header equal to "application/json"
@@ -80,6 +82,7 @@ Content-Disposition: form-data; name="brand"
           "url": "https://post-example.com",
           "klearTheme": "redmond",
           "urlType": "brand",
+          "newUI": false,
           "name": "Platform brand Portal",
           "userTheme": "default",
           "brand": 1
@@ -101,6 +104,7 @@ This is file content
           "url": "https://post-example.com",
           "klearTheme": "redmond",
           "urlType": "brand",
+          "newUI": false,
           "name": "Platform brand Portal",
           "userTheme": "default",
           "id": 5,

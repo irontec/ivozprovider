@@ -72,6 +72,8 @@ interface WebPortalInterface extends LoggableEntityInterface, FileContainerInter
 
     public function getUrlType(): string;
 
+    public function getNewUI(): bool;
+
     public function getName(): ?string;
 
     public function getUserTheme(): ?string;

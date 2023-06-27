@@ -38,6 +38,11 @@ abstract class WebPortalAbstract
     protected $urlType;
 
     /**
+     * @var bool
+     */
+    protected $newUI = false;
+
+    /**
      * @var ?string
      */
     protected $name = '';
@@ -64,10 +69,12 @@ abstract class WebPortalAbstract
     protected function __construct(
         string $url,
         string $urlType,
+        bool $newUI,
         Logo $logo
     ) {
         $this->setUrl($url);
         $this->setUrlType($urlType);
+        $this->setNewUI($newUI);
         $this->logo = $logo;
     }
 
@@ -133,6 +140,8 @@ abstract class WebPortalAbstract
         Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
         $urlType = $dto->getUrlType();
         Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
+        $newUI = $dto->getNewUI();
+        Assertion::notNull($newUI, 'getNewUI value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -143,6 +152,7 @@ abstract class WebPortalAbstract
         $self = new static(
             $url,
             $urlType,
+            $newUI,
             $logo
         );
 
@@ -171,6 +181,8 @@ abstract class WebPortalAbstract
         Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
         $urlType = $dto->getUrlType();
         Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
+        $newUI = $dto->getNewUI();
+        Assertion::notNull($newUI, 'getNewUI value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -182,6 +194,7 @@ abstract class WebPortalAbstract
             ->setUrl($url)
             ->setKlearTheme($dto->getKlearTheme())
             ->setUrlType($urlType)
+            ->setNewUI($newUI)
             ->setName($dto->getName())
             ->setUserTheme($dto->getUserTheme())
             ->setLogo($logo)
@@ -199,6 +212,7 @@ abstract class WebPortalAbstract
             ->setUrl(self::getUrl())
             ->setKlearTheme(self::getKlearTheme())
             ->setUrlType(self::getUrlType())
+            ->setNewUI(self::getNewUI())
             ->setName(self::getName())
             ->setUserTheme(self::getUserTheme())
             ->setLogoFileSize(self::getLogo()->getFileSize())
@@ -216,6 +230,7 @@ abstract class WebPortalAbstract
             'url' => self::getUrl(),
             'klearTheme' => self::getKlearTheme(),
             'urlType' => self::getUrlType(),
+            'newUI' => self::getNewUI(),
             'name' => self::getName(),
             'userTheme' => self::getUserTheme(),
             'logoFileSize' => self::getLogo()->getFileSize(),
@@ -277,6 +292,18 @@ abstract class WebPortalAbstract
     public function getUrlType(): string
     {
         return $this->urlType;
+    }
+
+    protected function setNewUI(bool $newUI): static
+    {
+        $this->newUI = $newUI;
+
+        return $this;
+    }
+
+    public function getNewUI(): bool
+    {
+        return $this->newUI;
     }
 
     protected function setName(?string $name = null): static
