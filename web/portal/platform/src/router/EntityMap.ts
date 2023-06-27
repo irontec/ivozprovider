@@ -33,6 +33,12 @@ const getEntityMap = (): ExtendedRouteMap => {
             title: _('Brand operator', { count: 2 }),
           },
           filterBy: 'brand',
+          children: [
+            {
+              entity: entities.AdministratorRelPublicEntity,
+              filterBy: 'administrator',
+            },
+          ],
         },
         {
           entity: {
@@ -70,7 +76,9 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       entity: entities.Administrator,
-      filterBy: 'company',
+      filterValues: {
+        'brand[exists]': false,
+      },
       children: [
         {
           entity: entities.AdministratorRelPublicEntity,
