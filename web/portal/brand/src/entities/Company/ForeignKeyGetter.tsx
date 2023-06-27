@@ -3,6 +3,9 @@ import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface'
 
 import CountryNameSelectOptions from '../Country/CountryNameSelectOptions';
 import CompanyDdiSelectOptions from '../Ddi/SelectOptions/CompanyDdiSelectOptions';
+import { ResidentialFeatureSelectOptions } from '../Feature/SelectOptions';
+import RetailFeatureSelectOptions from '../Feature/SelectOptions/RetailFeatureSelectOptions';
+import FeatureSelectOptions from '../Feature/SelectOptions/SelectOptions';
 import {
   CallCsvSelectOptions,
   FaxSelectOptions,
@@ -10,6 +13,8 @@ import {
   MaxDailyUsageSelectOptions,
   VoicemailSelectOptions,
 } from '../NotificationTemplate/SelectOptions';
+import Residential from '../Residential/Residential';
+import Retail from '../Retail/Retail';
 import VirtualPbx from '../VirtualPbx/VirtualPbx';
 import { CompanyPropertyList } from './CompanyProperties';
 import { CorporationSelectOptions } from './SelectOptions';
@@ -33,6 +38,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
       'callCsvNotificationTemplate',
       'maxDailyUsageNotificationTemplate',
       'corporation',
+      'featureIds',
     ],
   });
 
@@ -57,6 +63,35 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
     promises[promises.length] = CorporationSelectOptions({
       callback: (options) => {
         response.corporation = options;
+      },
+      cancelToken,
+    });
+  }
+
+  const isResidential = match.pathname.includes(
+    Residential.localPath ?? Residential.path
+  );
+
+  const isRetail = match.pathname.includes(Retail.localPath ?? Retail.path);
+
+  if (isResidential) {
+    promises[promises.length] = ResidentialFeatureSelectOptions({
+      callback: (options) => {
+        response.featureIds = options;
+      },
+      cancelToken,
+    });
+  } else if (isRetail) {
+    promises[promises.length] = RetailFeatureSelectOptions({
+      callback: (options) => {
+        response.featureIds = options;
+      },
+      cancelToken,
+    });
+  } else {
+    promises[promises.length] = FeatureSelectOptions({
+      callback: (options) => {
+        response.featureIds = options;
       },
       cancelToken,
     });

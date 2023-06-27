@@ -1,4 +1,4 @@
-import ResidentialFeatureSelectOptions from './ResidentialSelectOptions';
+import ResidentialFeatureSelectOptions from './ResidentialFeatureSelectOptions';
 import RetailSelectOptions from './RetailFeatureSelectOptions';
 import DefaultSelectOptions from './SelectOptions';
 
