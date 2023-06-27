@@ -4,7 +4,7 @@ Feature: Create web portals
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create an web portal
+  Scenario: Create a web portal
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
@@ -33,6 +33,7 @@ Feature: Create web portals
           "url": "https://post-example.com",
           "klearTheme": "redmond",
           "urlType": "user",
+          "newUI": false,
           "name": "Platform user Portal",
           "userTheme": "default",
           "id": 5,
@@ -57,6 +58,7 @@ Feature: Create web portals
           "url": "https://post-example.com",
           "klearTheme": "redmond",
           "urlType": "user",
+          "newUI": false,
           "name": "Platform user Portal",
           "userTheme": "default",
           "id": 5,
