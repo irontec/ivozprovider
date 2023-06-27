@@ -139,6 +139,7 @@
   "Media Relay_one": "Servidor de media",
   "Media Relay_other": "Servidores de media",
   "Name": "Nombre",
+  "New Interface": "Nueva interfaz",
   "No": "No",
   "Notification Template Content_many": "Contenidos de notificaciones",
   "Notification Template Content_one": "Contenido de notificación",
@@ -220,5 +221,6 @@
   "Voicemail_other": "Buzones de voz",
   "Weight": "Peso",
   "Will be shown on page footer": "Se mostrará en el pie de página",
-  "Yes": "Si"
+  "Yes": "Si",
+  "You can always access classic interface adding /classic to URL": "Siempre podrás acceder a la interfaz clásica añadiendo /classic a la URL"
 }
