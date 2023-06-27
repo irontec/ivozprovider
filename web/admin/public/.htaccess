@@ -2,6 +2,11 @@
 RewriteBase /
 
 RewriteEngine On
+
+# Remove classic for URL
+RewriteCond %{REQUEST_URI} !^/classic
+RewriteRule ^(.*)$ /classic/$1 [L]
+
 # The following rule tells Apache that if the requested filename
 # exists, simply serve it.
 RewriteCond %{REQUEST_FILENAME} -s [OR]

@@ -31,6 +31,25 @@ class Builder
 
         $brandURLType = self::$_URL->getUrlType();
 
+        $front = \Zend_Controller_Front::getInstance();
+        $request = $front->getRequest();
+        if ($request->getRequestUri() == '/' && self::$_URL->getNewUI()) {
+            if ($brandURLType == 'god') {
+                header("Location: " . $currentURL . '/platform');
+            } elseif ($brandURLType == 'brand') {
+                header("Location: " . $currentURL . '/brand');
+            } elseif ($brandURLType == 'admin') {
+                header("Location: " . $currentURL . '/client');
+            } elseif ($brandURLType == 'user') {
+                header("Location: " . $currentURL . '/user');
+            } else {
+                self::_failConfiguration();
+            }
+            exit;
+        } else {
+            $request->setBaseUrl('/');
+        }
+
         $dynamic = null;
         if ($brandURLType == 'god') {
             $dynamic = new MainOperator();
