@@ -113,6 +113,8 @@ const properties: UserProperties = {
   bossAssistantWhiteList: {
     label: _('Boss Whitelist'),
     helpText: _('Origins matching this list will call directly to the user.'),
+    default: '__null__',
+    null: _('Unassigned'),
   },
   maxCalls: {
     label: _('Call waiting'),
