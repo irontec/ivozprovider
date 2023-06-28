@@ -10,6 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class Administrator extends AdministratorAbstract implements AdministratorInterface, UserInterface, LegacyPasswordAuthenticatedUserInterface, \Serializable
 {
+    private null|string $onBehalfOf = null;
+
     use AdministratorTrait, AdministratorSecurityTrait {
         AdministratorTrait::getRelPublicEntities insteadof AdministratorSecurityTrait;
     }
@@ -31,6 +33,16 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setOnBehalfOf(string $adminName): void
+    {
+        $this->onBehalfOf = $adminName;
+    }
+
+    public function getOnBehalfOf(): string|null
+    {
+        return $this->onBehalfOf;
     }
 
     /**

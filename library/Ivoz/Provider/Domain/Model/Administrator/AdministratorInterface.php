@@ -31,6 +31,10 @@ interface AdministratorInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
+    public function setOnBehalfOf(string $adminName): void;
+
+    public function getOnBehalfOf(): ?string;
+
     /**
      * @inheritdoc
      */
