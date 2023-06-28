@@ -11,6 +11,7 @@ const properties: FaxProperties = {
   },
   email: {
     label: _('Email'),
+    required: true,
   },
   sendByEmail: {
     label: _('Send by email'),
