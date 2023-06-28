@@ -30,6 +30,10 @@ const getEntityMap = (): ExtendedRouteMap => {
       isAccessible: (aboutMe) => aboutMe.vpbx,
       children: [
         {
+          entity: entities.CallForwardSetting,
+          filterBy: 'user',
+        },
+        {
           entity: {
             ...entities.HuntGroupMember,
             acl: {
@@ -41,10 +45,6 @@ const getEntityMap = (): ExtendedRouteMap => {
               delete: true,
             },
           },
-          filterBy: 'user',
-        },
-        {
-          entity: entities.CallForwardSetting,
           filterBy: 'user',
         },
       ],
