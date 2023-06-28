@@ -6,6 +6,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { IvozStoreState } from 'store';
 
 import {
   ExternalCallFilterProperties,
@@ -210,13 +211,26 @@ const properties: ExternalCallFilterProperties = {
   },
 };
 
-const columns = [
-  'name',
-  'holidayTargetType',
-  'holidayTarget',
-  'outOfScheduleTargetType',
-  'outOfScheduleTarget',
-];
+const columns = (store: IvozStoreState) => {
+  const nonResidentialColumns = [
+    'name',
+    'holidayTargetType',
+    'holidayTarget',
+    'outOfScheduleTargetType',
+    'outOfScheduleTarget',
+  ];
+
+  const residentialColumns = [
+    'name',
+    'blackListIds',
+    'outOfScheduleNumberCountry',
+    'outOfScheduleEnabled',
+    'outOfScheduleNumberValue',
+  ];
+  const residential = store.clientSession.aboutMe.profile?.residential;
+
+  return residential ? residentialColumns : nonResidentialColumns;
+};
 
 const externalCallFilter: EntityInterface = {
   ...defaultEntityBehavior,
