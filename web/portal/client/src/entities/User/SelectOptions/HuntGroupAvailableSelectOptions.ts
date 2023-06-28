@@ -4,7 +4,7 @@ import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import { PathMatch } from 'react-router-dom';
 import store from 'store';
 
-import { HuntGroupPropertyList } from '../../HuntGroup/HuntGroupProperties';
+import { UserPropertyList } from '../UserProperties';
 
 interface CustomArgs {
   row?: EntityValues;
@@ -39,8 +39,8 @@ const HuntGroupAvailableSelectOptions: SelectOptionsType<CustomArgs> = (
     params,
     successCallback: async (data) => {
       const options: DropdownChoices = {};
-      for (const item of data as HuntGroupPropertyList<string>[]) {
-        options[item.id as string] = `${item.name}`;
+      for (const item of data as UserPropertyList<string>[]) {
+        options[item.id as string] = `${item.name} ${item.lastname}`;
       }
       callback(options);
     },
