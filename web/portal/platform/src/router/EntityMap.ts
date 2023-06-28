@@ -31,6 +31,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.Administrator,
             title: _('Brand operator', { count: 2 }),
+            link: '/doc/en/administration_portal/platform/brands.html#brand-operators',
           },
           filterBy: 'brand',
           children: [
