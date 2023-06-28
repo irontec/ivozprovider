@@ -28,6 +28,8 @@ const properties: DdiProperties = {
   },
   externalCallFilter: {
     label: _('External call filter', { count: 1 }),
+    default: '__null__',
+    null: _('Unassigned'),
   },
   routeType: {
     label: _('Route type'),
