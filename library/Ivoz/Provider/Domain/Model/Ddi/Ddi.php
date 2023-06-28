@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
