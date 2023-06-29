@@ -13,6 +13,8 @@ interface AdministratorRepository extends ObjectRepository, Selectable
      */
     public function getInnerGlobalAdmin();
 
+    public function findAdminByUsername(string $username): ?AdministratorInterface;
+
     /**
      * @param string $username
      * @return null| AdministratorInterface

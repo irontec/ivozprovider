@@ -52,6 +52,16 @@ class AdministratorDoctrineRepository extends ServiceEntityRepository implements
         return $privateAdmin;
     }
 
+    public function findAdminByUsername(string $username): ?AdministratorInterface
+    {
+        /** @var AdministratorInterface | null $admin */
+        $admin = $this->findOneBy([
+            'username' => $username
+        ]);
+
+        return $admin;
+    }
+
     /**
      * @param string $username
      * @return null| AdministratorInterface
