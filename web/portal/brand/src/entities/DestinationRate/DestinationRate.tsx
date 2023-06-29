@@ -72,7 +72,6 @@ const DestinationRate: EntityInterface = {
     'groupIntervalStart',
     'cost',
     'rateIncrement',
-    'currencySymbol',
   ],
   selectOptions: async () => {
     const module = await import('./SelectOptions');
