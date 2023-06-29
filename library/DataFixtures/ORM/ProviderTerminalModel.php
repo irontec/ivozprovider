@@ -27,9 +27,9 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
             $this->setName("Generic SIP Model");
             $this->setDescription("Generic SIP Model");
             $this->setGenericTemplate("");
-            $this->setGenericUrlPattern("");
+            $this->setGenericUrlPattern("y000000000051.cfg");
             $this->setSpecificTemplate("");
-            $this->setSpecificUrlPattern("");
+            $this->setSpecificUrlPattern("{mac}");
             $this->setTerminalManufacturer($fixture->getReference('_reference_ProviderTerminalManufacturerTerminalManufacturer1'));
         })->call($item1);
 
