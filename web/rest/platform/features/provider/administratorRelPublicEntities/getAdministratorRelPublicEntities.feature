@@ -53,6 +53,40 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": false,
               "delete": false,
+              "id": 67,
+              "administrator": {
+                  "username": "restrictedBrandAdmin",
+                  "pass": "*****",
+                  "email": "restrictedAdmin@irontec.com",
+                  "active": true,
+                  "restricted": true,
+                  "name": "RestrictedAdmin",
+                  "lastname": "Lastname",
+                  "id": 6,
+                  "brand": 1,
+                  "company": null,
+                  "timezone": 145
+              },
+              "publicEntity": {
+                  "iden": "BillableCalls",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall",
+                  "platform": true,
+                  "brand": true,
+                  "client": true,
+                  "id": 2,
+                  "name": {
+                      "en": "BillableCalls",
+                      "es": "BillableCalls",
+                      "ca": "BillableCalls",
+                      "it": "BillableCalls"
+                  }
+              }
+          },
+          {
+              "create": false,
+              "read": true,
+              "update": false,
+              "delete": false,
               "id": 124,
               "administrator": {
                   "username": "utcAdmin",
@@ -79,40 +113,6 @@ Feature: Manage administrator rel public entities
                       "es": "Companies",
                       "ca": "Companies",
                       "it": "Companies"
-                  }
-              }
-          },
-          {
-              "create": false,
-              "read": true,
-              "update": false,
-              "delete": false,
-              "id": 125,
-              "administrator": {
-                  "username": "utcAdmin",
-                  "pass": "*****",
-                  "email": "utc@irontec.com",
-                  "active": true,
-                  "restricted": true,
-                  "name": "Admin in UTC timezone",
-                  "lastname": "Admin Lastname",
-                  "id": 5,
-                  "brand": null,
-                  "company": null,
-                  "timezone": null
-              },
-              "publicEntity": {
-                  "iden": "Countries",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Country\\Country",
-                  "platform": true,
-                  "brand": true,
-                  "client": true,
-                  "id": 20,
-                  "name": {
-                      "en": "Countries",
-                      "es": "Countries",
-                      "ca": "Countries",
-                      "it": "Countries"
                   }
               }
           }

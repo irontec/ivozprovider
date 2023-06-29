@@ -1,6 +1,7 @@
 import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
+  marshaller as defaultMarshaller,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
@@ -10,6 +11,15 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 import AdministratorRelPublicEntity from '../AdministratorRelPublicEntity/AdministratorRelPublicEntity';
 import { AdministratorProperties } from './AdministratorProperties';
+
+type marshallerType = typeof defaultMarshaller;
+const marshaller: marshallerType = (row, properties, whitelist) => {
+  if (row.brand === false) {
+    row.brand = null;
+  }
+
+  return defaultMarshaller(row, properties, whitelist);
+};
 
 const properties: AdministratorProperties = {
   username: {
@@ -102,6 +112,7 @@ const Administrator: EntityInterface = {
 
     return module.default;
   },
+  marshaller,
 };
 
 export default Administrator;
