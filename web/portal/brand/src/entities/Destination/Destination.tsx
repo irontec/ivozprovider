@@ -21,6 +21,7 @@ const properties: DestinationProperties = {
     label: _('Name'),
     maxLength: 55,
     multilang: true,
+    required: true,
   },
 };
 
