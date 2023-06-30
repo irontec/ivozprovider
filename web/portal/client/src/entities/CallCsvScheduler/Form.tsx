@@ -6,6 +6,7 @@ import {
   foreignKeyGetter,
   Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { DropdownObjectChoices } from '@irontec/ivoz-ui/services/form/Field/Dropdown/Dropdown';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 import { ClientFeatures } from 'store/clientSession/aboutMe';
@@ -21,21 +22,37 @@ const Form = (props: EntityFormProps): JSX.Element => {
   });
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const isVpbx = aboutMe?.vpbx;
+  const isRetail = aboutMe?.retail;
+  const isResidential = aboutMe?.residential;
+  const isWholesale = aboutMe?.wholesale;
+
   const newProperties = { ...properties } as PropertyList;
   const endpointType = {
     ...properties.endpointType,
-    enum: { ...properties.endpointType.enum },
+    enum: { ...(properties.endpointType as ScalarProperty).enum },
   } as ScalarProperty;
   const hasFaxesFeature = aboutMe?.features.includes(ClientFeatures.faxes);
   if (!hasFaxesFeature) {
-    delete endpointType.enum.fax;
+    delete endpointType.enum?.fax;
   }
   const hasFriendsFeature = aboutMe?.features.includes(ClientFeatures.friends);
   if (!hasFriendsFeature) {
-    delete endpointType.enum.friend;
+    delete endpointType.enum?.friend;
   }
-  newProperties.endpointType = endpointType;
 
+  if (isRetail) {
+    (endpointType.enum as DropdownObjectChoices).user = _('Retail Account', {
+      count: 1,
+    });
+  } else if (isResidential) {
+    (endpointType.enum as DropdownObjectChoices).user = _(
+      'Residential Device',
+      { count: 1 }
+    );
+  }
+
+  newProperties.endpointType = endpointType;
   entityService.replaceProperties(newProperties);
 
   const groups: Array<FieldsetGroups> = [
@@ -56,11 +73,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Filters'),
       fields: [
         'callDirection',
-        'ddi',
-        'endpointType',
-        aboutMe?.vpbx && 'user',
-        aboutMe?.retail && 'retailAccount',
-        aboutMe?.residential && 'residentialDevice',
+        !isWholesale && 'ddi',
+        !isWholesale && 'endpointType',
+        isVpbx && 'user',
+        isRetail && 'retailAccount',
+        isResidential && 'residentialDevice',
         hasFaxesFeature && 'fax',
         hasFriendsFeature && 'friend',
       ],
