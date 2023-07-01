@@ -121,6 +121,11 @@ const BillableCall: EntityInterface = {
     delete: false,
   },
   customActions: Actions,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
   View: async () => {
     const module = await import('./View');
 

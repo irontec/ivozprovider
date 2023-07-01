@@ -14,7 +14,7 @@ const Ddi: EntityInterface = {
   link: '/doc/en/administration_portal/client/vpbx/ddis.html',
   iden: 'Ddi',
   title: _('DDI', { count: 2 }),
-  path: '/Ddis',
+  path: '/ddis',
   toStr: (row: DdiPropertyList<EntityValue>) => row.ddie164 as string,
   properties,
 };
