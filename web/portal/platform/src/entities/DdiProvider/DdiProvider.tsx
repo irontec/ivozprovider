@@ -36,7 +36,7 @@ const DdiProvider: EntityInterface = {
   link: '/doc/en/administration_portal/brand/providers/ddi_providers.html',
   iden: 'DdiProvider',
   title: _('DDI Provider', { count: 2 }),
-  path: '/DdiProviders',
+  path: '/ddi_providers',
   toStr: (row: DdiProviderPropertyList<EntityValue>) => row.name as string,
   properties,
 };
