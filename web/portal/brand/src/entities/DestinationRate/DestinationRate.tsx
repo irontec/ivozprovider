@@ -14,7 +14,7 @@ import Cost from './Field/Cost';
 const properties: DestinationRateProperties = {
   cost: {
     label: _('Per minute rate'),
-    pattern: new RegExp(`/^[0-9]{1,6}[.]{0,1}[0-9]*$/`),
+    pattern: new RegExp('^[0-9]{1,6}[.]{0,1}[0-9]*$'),
     default: '0.0000',
     helpText: _(`Use point as decimal delimiter - e.g. 0.02`),
     component: Cost,
@@ -24,7 +24,7 @@ const properties: DestinationRateProperties = {
   },
   connectFee: {
     label: _('Connect Fee'),
-    pattern: new RegExp(`/^[0-9]{1,6}[.]{0,1}[0-9]*$/`),
+    pattern: new RegExp('^[0-9]{1,6}[.]{0,1}[0-9]*$'),
     default: '0.0000',
     helpText: _(`Use point as decimal delimiter - e.g. 0.02`),
     component: ConnectionFee,

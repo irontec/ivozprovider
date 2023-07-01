@@ -1,4 +1,5 @@
-import withCustomComponentWrapper, {
+import { ScalarProperty } from '@irontec/ivoz-ui';
+import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
@@ -13,12 +14,26 @@ type TargetGhostType = PropertyCustomFunctionComponent<
 >;
 
 const Cost: TargetGhostType = (props): JSX.Element => {
-  const { values } = props;
+  const { values, formFieldFactory, _context, _columnName, property } = props;
   const { cost, currencySymbol } = values;
 
   const value = `${cost} ${currencySymbol}`;
 
-  return <span>{value}</span>;
+  if (_context === 'read' || !formFieldFactory) {
+    return <span>{value}</span>;
+  }
+
+  const { choices, readOnly } = props;
+
+  const modifiedProperty = { ...property } as ScalarProperty;
+  delete modifiedProperty.component;
+
+  return formFieldFactory.getInputField(
+    _columnName,
+    modifiedProperty,
+    choices,
+    readOnly
+  );
 };
 
-export default withCustomComponentWrapper<CalendarPeriodValues>(Cost);
+export default Cost;

@@ -14,13 +14,13 @@ const DestinationSelectOptions: SelectOptionsType = ({
 
   return defaultEntityBehavior.fetchFks(
     `${Destination.path}?_order[name.${[language]}]=ASC`,
-    ['id', 'name'],
+    ['id', 'name', 'prefix'],
     (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({
           id: item.id,
-          label: `${item.name[language]} (${item.countryCode})`,
+          label: `${item.name[language]} (${item.prefix})`,
         });
       }
 
