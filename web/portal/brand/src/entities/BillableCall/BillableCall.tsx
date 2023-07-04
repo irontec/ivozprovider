@@ -1,6 +1,8 @@
 import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  OrderDirection,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
@@ -124,6 +126,7 @@ const BillableCall: EntityInterface = {
     delete: false,
   },
   customActions: Actions,
+  defaultOrderDirection: OrderDirection.desc,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
