@@ -3,6 +3,7 @@
 namespace Model\Dashboard;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
 class DashboardBrand
 {
@@ -34,7 +35,7 @@ class DashboardBrand
      * @var int
      * @AttributeDefinition(type="int")
      */
-    protected int $maxCalls;
+    protected $maxCalls;
 
     public function __construct(
         int $id,
@@ -48,6 +49,17 @@ class DashboardBrand
         $this->nif = $nif;
         $this->sipDomain = $sipDomain;
         $this->maxCalls = $maxCalls;
+    }
+
+    public static function fromBrand(BrandInterface $brand): DashboardBrand
+    {
+        return new self(
+            $brand->getId() ?? 0,
+            $brand->getName(),
+            $brand->getInvoice()->getNif(),
+            $brand->getDomainUsers() ?? '',
+            $brand->getMaxCalls()
+        );
     }
 
     public function getId(): int

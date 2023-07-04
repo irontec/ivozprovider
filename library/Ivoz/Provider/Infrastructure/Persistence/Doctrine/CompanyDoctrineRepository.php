@@ -266,4 +266,12 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
 
         return array_column($result, 'id');
     }
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int
+    {
+        return parent::count($criteria);
+    }
 }

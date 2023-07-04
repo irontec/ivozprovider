@@ -65,4 +65,9 @@ interface CompanyRepository extends ObjectRepository, Selectable
      * @return int[]
      */
     public function getCompanyIdsByAdminCorporation(AdministratorInterface $admin): array;
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int;
 }

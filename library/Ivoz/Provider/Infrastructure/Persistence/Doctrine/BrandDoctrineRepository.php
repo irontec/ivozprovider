@@ -7,7 +7,6 @@ use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandRepository;
-use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
 /**
  * BrandDoctrineRepository
@@ -52,5 +51,28 @@ class BrandDoctrineRepository extends ServiceEntityRepository implements BrandRe
         ]);
 
         return $response;
+    }
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int
+    {
+        return parent::count($criteria);
+    }
+
+    /**
+     * @return BrandInterface[]
+     */
+    public function getLatest(int $intemNum = 5): array
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        return $qb
+            ->select('self')
+            ->orderBy('self.id', 'DESC')
+            ->setMaxResults($intemNum)
+            ->getQuery()
+            ->getResult();
     }
 }
