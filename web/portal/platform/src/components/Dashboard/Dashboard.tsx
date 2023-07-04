@@ -15,15 +15,22 @@ import {
   TableRow,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useStoreActions } from 'store';
 
 import IconClientsDashboard from './IconClients';
 import IconPlatformsDashboard from './IconPlatforms';
 import IconUsersDashboard from './IconUsers';
-import { Link } from 'react-router-dom';
 
 export interface DashboardProps {
   className?: string;
+}
+
+interface DashboardAdmin {
+  username: string;
+  name: string;
+  lastname: string;
+  email: string;
 }
 
 interface DashboardRecentActivity {
@@ -35,6 +42,7 @@ interface DashboardRecentActivity {
 }
 
 interface DashboardData {
+  admin: DashboardAdmin;
   recentActivity: DashboardRecentActivity[];
   brandNumber: number;
   clientNumber: number;
@@ -109,17 +117,25 @@ const Dashboard = (props: DashboardProps) => {
         </div>
       </div>
       <div className='card activity'>
-        <div className='title'>{_('Recent activity')}</div>
+        <div className='title'>{_('Operator information')}</div>
 
         <div className='content'>
-          {data.recentActivity.map((row, key) => {
-            return (
-              <div className='row' key={key}>
-                <div className='time'>{row.id}</div>
-                <div className='value'>{row.name}</div>
-              </div>
-            );
-          })}
+          <div className='row'>
+            <div className='time'>{_('Iden')}</div>
+            <div className='value'>{data.admin.username}</div>
+          </div>
+          <div className='row'>
+            <div className='time'>{_('Name')}</div>
+            <div className='value'>{data.admin.name}</div>
+          </div>
+          <div className='row'>
+            <div className='time'>{_('Lastname')}</div>
+            <div className='value'>{data.admin.lastname}</div>
+          </div>
+          <div className='row'>
+            <div className='time'>{_('Email')}</div>
+            <div className='value'>{data.admin.email}</div>
+          </div>
         </div>
       </div>
       <div className='card amount'>
@@ -190,7 +206,7 @@ const Dashboard = (props: DashboardProps) => {
       <div className='card last'>
         <div className='header'>
           <div className='title'>{_('Last added brands')}</div>
-          <Link to="/platform/brands/create">
+          <Link to='/platform/brands/create'>
             <SolidButton>+ {_('Add')}</SolidButton>
           </Link>
         </div>
