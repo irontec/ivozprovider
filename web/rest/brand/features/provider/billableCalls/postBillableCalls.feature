@@ -34,13 +34,13 @@ Feature: Create billable calls
       [
           {
               "cost": null,
-              "price": null,
-              "id": 1
+              "price": 1,
+              "id": 100
           },
           {
               "cost": null,
-              "price": null,
-              "id": 2
+              "price": 1,
+              "id": 99
           }
       ]
       """
