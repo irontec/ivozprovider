@@ -26,6 +26,10 @@ Model\ActiveCalls:
     order:
       startTime: ASC
 
+Model\Dashboard\DashboardAdmin:
+  itemOperations: []
+  collectionOperations: []
+
 Model\Dashboard\DashboardBrand:
   itemOperations: []
   collectionOperations: []

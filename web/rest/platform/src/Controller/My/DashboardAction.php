@@ -3,6 +3,7 @@
 namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Model\Dashboard\Dashboard;
 use Service\Application\Dashboard\GetDashboard;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,6 +25,13 @@ class DashboardAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
-        return $this->getDashboard->execute();
+        $admin = $token->getUser();
+        if (!$admin instanceof AdministratorInterface) {
+            throw new \Exception('User must implement AdministratorInterface', 403);
+        }
+
+        return $this->getDashboard->execute(
+            $admin
+        );
     }
 }

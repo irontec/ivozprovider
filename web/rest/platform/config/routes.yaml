@@ -20,6 +20,14 @@ get_my_dasboard:
     _api_receive: false
 
 # required for IRI generation
+get_my_dasboard_admin:
+  path: '/my/dashboard_admin'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardAdmin'
+    _api_item_operation_name: 'get_my_dasboard_admin'
+
+# required for IRI generation
 get_my_dasboard_brand:
   path: '/my/dashboard_brand'
   methods: []

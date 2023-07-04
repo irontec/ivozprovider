@@ -11,6 +11,12 @@ Feature: Retrieve dashboard
       And the JSON should be equal to:
       """
       {
+          "admin": {
+              "username": "admin",
+              "name": "admin",
+              "lastname": "ivozprovider",
+              "email": "admin@example.com"
+          },
           "recentActivity": [
               {
                   "id": 2,
