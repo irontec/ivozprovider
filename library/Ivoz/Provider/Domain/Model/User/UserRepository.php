@@ -61,4 +61,9 @@ interface UserRepository extends ObjectRepository, Selectable
     public function findOneByExtensionId(
         ?int $extensionId
     ): ?UserInterface;
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int;
 }

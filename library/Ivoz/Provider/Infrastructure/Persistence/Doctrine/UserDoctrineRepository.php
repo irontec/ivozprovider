@@ -248,4 +248,12 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
             $ids
         );
     }
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int
+    {
+        return parent::count($criteria);
+    }
 }

@@ -10,6 +10,31 @@ api_user_login:
 ###############################
 ## Custom routes
 ###############################
+get_my_dasboard:
+  path: '/my/dashboard'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\DashboardAction
+    _api_resource_class: 'Model\Dashboard\Dashboard'
+    _api_item_operation_name: 'get_my_dasboard'
+    _api_receive: false
+
+# required for IRI generation
+get_my_dasboard_admin:
+  path: '/my/dashboard_admin'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardAdmin'
+    _api_item_operation_name: 'get_my_dasboard_admin'
+
+# required for IRI generation
+get_my_dasboard_brand:
+  path: '/my/dashboard_brand'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardBrand'
+    _api_item_operation_name: 'get_my_dasboard_brand'
+
 get_my_active_calls:
   path: '/my/active_calls'
   methods: ['GET']
