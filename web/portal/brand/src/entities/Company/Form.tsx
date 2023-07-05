@@ -25,6 +25,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     match,
   });
 
+  const formik = useFormHandler(props);
   const type = row?.type ?? formik.initialValues.type;
   const isVpbx = type === ClientTypes.vpbx;
   const isResidential = type === ClientTypes.residential;
@@ -44,7 +45,6 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     fkChoices.featureIds = filteredFeatures;
   }
 
-  const formik = useFormHandler(props);
   const hasInvoicesFeature = aboutMe?.features.includes('invoices');
   const hasBillingFeature = aboutMe?.features.includes('billing');
 
