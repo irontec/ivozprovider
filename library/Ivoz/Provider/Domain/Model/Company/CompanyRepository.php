@@ -70,4 +70,11 @@ interface CompanyRepository extends ObjectRepository, Selectable
      * @param array<string, mixed> $criteria
      */
     public function count(array $criteria): int;
+
+    public function countByBrand(int $brandId): int;
+
+    /**
+     * @return CompanyInterface[]
+     */
+    public function getLatestByBrandId(int $brandId, int $intemNum = 5): array;
 }
