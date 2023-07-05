@@ -28,6 +28,7 @@ class UserRepositoryTest extends KernelTestCase
         $this->it_searchs_one_by_company_and_name();
         $this->it_searchs_one_by_email();
         $this->it_searchs_one_by_terminnal_id();
+        $this->it_counts_companies();
     }
 
     public function it_finds_by_bossAssistantId()
@@ -179,6 +180,21 @@ class UserRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             User::class,
             $user
+        );
+    }
+
+    public function it_counts_companies()
+    {
+        /** @var UserRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(User::class);
+
+        $count = $repository->count([]);
+
+        $this->assertEquals(
+            3,
+            $count
         );
     }
 }

@@ -22,6 +22,7 @@ class DdiRepositoryTest extends KernelTestCase
         $this->it_counts_by_company();
         $this->it_counts_by_company_and_country();
         $this->it_counts_by_company_and_not_country();
+        $this->it_counts_ddis_by_brand();
     }
 
     public function its_instantiable()
@@ -106,6 +107,21 @@ class DdiRepositoryTest extends KernelTestCase
 
         $this->assertIsInt(
             $num
+        );
+    }
+
+    public function it_counts_ddis_by_brand()
+    {
+        /** @var DdiRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Ddi::class);
+
+        $count = $repository->countByBrand(1);
+
+        $this->assertEquals(
+            3,
+            $count
         );
     }
 }
