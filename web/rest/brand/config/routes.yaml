@@ -27,6 +27,31 @@ gesdinet_jwt_refresh_token:
 ###############################
 ## Custom routes
 ###############################
+get_my_dasboard:
+  path: '/my/dashboard'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\DashboardAction
+    _api_resource_class: 'Model\Dashboard\Dashboard'
+    _api_item_operation_name: 'get_my_dasboard'
+    _api_receive: false
+
+# required for IRI generation
+get_my_dasboard_client:
+  path: '/my/dashboard_client'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardClient'
+    _api_item_operation_name: 'get_my_dasboard_client'
+
+# required for IRI generation
+get_my_dasboard_brand:
+  path: '/my/dashboard_brand'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardBrand'
+    _api_item_operation_name: 'get_my_dasboard_brand'
+
 get_my_active_calls:
   path: '/my/active_calls'
   methods: ['GET']

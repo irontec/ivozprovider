@@ -85,4 +85,25 @@ class DdiDoctrineRepository extends ServiceEntityRepository implements DdiReposi
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    public function countByBrand(int $brandId): int
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('COUNT(self.id) as count')
+            ->where(
+                $expression->eq(
+                    'self.brand',
+                    $brandId
+                )
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getSingleResult();
+
+        return $result['count'];
+    }
 }

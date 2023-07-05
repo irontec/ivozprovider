@@ -274,4 +274,46 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     {
         return parent::count($criteria);
     }
+
+    public function countByBrand(int $brandId): int
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('COUNT(self.id) as count')
+            ->where(
+                $expression->eq(
+                    'self.brand',
+                    $brandId
+                )
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getSingleResult();
+
+        return $result['count'];
+    }
+
+    /**
+     * @return CompanyInterface[]
+     */
+    public function getLatestByBrandId(int $brandId, int $intemNum = 5): array
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        return $qb
+            ->select('self')
+            ->where(
+                $qb->expr()->eq(
+                    'self.brand',
+                    $brandId
+                )
+            )
+            ->orderBy('self.id', 'DESC')
+            ->setMaxResults($intemNum)
+            ->getQuery()
+            ->getResult();
+    }
 }
