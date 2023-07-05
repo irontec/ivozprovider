@@ -12,8 +12,8 @@ Feature: Retrieve billable calls
       """
       [
           {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
-              "startTime": "2019-01-01 09:00:00",
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7099",
+              "startTime": "2019-01-01 09:01:39",
               "duration": 0,
               "caller": "+34633646464",
               "callee": "+34633656565",
@@ -23,31 +23,31 @@ Feature: Retrieve billable calls
               "endpointId": null,
               "endpointName": null,
               "direction": "outbound",
-              "id": 1,
-              "company": 1,
-              "carrier": 2,
-              "invoice": 1,
-              "ddi": 1,
-              "ddiProvider": 1
-          },
-          {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7001",
-              "startTime": "2019-01-01 09:00:01",
-              "duration": 0,
-              "caller": "+34633646464",
-              "callee": "+34633656565",
-              "cost": null,
-              "price": 1,
-              "endpointType": null,
-              "endpointId": null,
-              "endpointName": null,
-              "direction": "outbound",
-              "id": 2,
+              "id": 100,
               "company": 1,
               "carrier": 1,
               "invoice": null,
               "ddi": 1,
-              "ddiProvider": 1
+              "ddiProvider": null
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7098",
+              "startTime": "2019-01-01 09:01:38",
+              "duration": 0,
+              "caller": "+34633646464",
+              "callee": "+34633656565",
+              "cost": null,
+              "price": 1,
+              "endpointType": null,
+              "endpointId": null,
+              "endpointName": null,
+              "direction": "outbound",
+              "id": 99,
+              "company": 1,
+              "carrier": 1,
+              "invoice": null,
+              "ddi": 1,
+              "ddiProvider": null
           }
       ]
       """
