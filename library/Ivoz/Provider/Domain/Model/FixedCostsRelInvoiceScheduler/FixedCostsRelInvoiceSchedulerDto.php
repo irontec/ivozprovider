@@ -18,7 +18,7 @@ class FixedCostsRelInvoiceSchedulerDto extends FixedCostsRelInvoiceSchedulerDtoA
             'id' => 'id',
             'type' => 'type',
             'ddisCountryMatch' => 'ddisCountryMatch',
-            'ddisCountry' => 'ddisCountry',
+            'ddisCountryId' => 'ddisCountry',
             'fixedCostId' => 'fixedCost',
             'invoiceSchedulerId' => 'invoiceScheduler'
         ];
