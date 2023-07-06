@@ -22,6 +22,11 @@ export interface AboutMe {
     | 'conferences'
     | 'billing'
     | 'invoices'
+    | 'progress'
+    | 'residential'
+    | 'wholesale'
+    | 'retail'
+    | 'vpbx'
   >;
 }
 

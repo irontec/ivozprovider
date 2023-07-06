@@ -16,23 +16,25 @@ const updateEntityMapByAcls = (
 
   for (const block of entityMap) {
     for (const idx in block.children) {
+      const numIdx = parseInt(idx, 10);
+
       const resp = updateRouteMapItemByAcls({
-        routeMapItem: block.children[idx],
+        routeMapItem: block.children[numIdx],
         aboutMe,
       });
 
       if (!resp) {
-        delete block.children[idx];
+        delete block.children[numIdx];
         continue;
       }
 
-      block.children[idx] = resp;
+      block.children[numIdx] = resp;
     }
 
-    block.children = block.children.filter((item) => item);
+    block.children = block.children?.filter((item) => item);
   }
 
-  return entityMap.filter((item) => item.children.length > 0);
+  return entityMap.filter((item) => (item?.children?.length as number) > 0);
 };
 
 interface updateRouteMapProps {
