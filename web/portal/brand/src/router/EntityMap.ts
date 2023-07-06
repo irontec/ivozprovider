@@ -214,7 +214,9 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.BillableCall,
               filterBy: 'carrier',
             },
-            ...Object.values(entities.Carrier.customActions),
+            ...(Object.values(
+              entities.Carrier.customActions
+            ) as ExtendedRouteMapItem[]),
           ],
         },
         {

@@ -93,7 +93,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
     ];
 
     if (actionsToHide.includes(routeMapItem.entity.iden)) {
-      return null;
+      return <a className='disabled'>{routeMapItem.entity.title}</a>;
     }
   }
 
