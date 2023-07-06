@@ -24,7 +24,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: '',
-      fields: ['genericTemplate'],
+      fields: [
+        {
+          name: 'genericTemplate',
+          size: { md: 12, lg: 12, xl: 12 },
+        },
+      ],
     },
     {
       legend: '',
@@ -32,7 +37,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: '',
-      fields: ['specificTemplate'],
+      fields: [
+        {
+          name: 'specificTemplate',
+          size: { md: 12, lg: 12, xl: 12 },
+        },
+      ],
     },
   ];
 
