@@ -57,6 +57,10 @@ const BalanceOperations: ActionFunctionComponent = (props: ActionItemProps) => {
       path: `${Carrier.path}/${row.id}`,
       params: {},
       successCallback: async (value: CompanyPropertyList<EntityValues>) => {
+        if (!value.currency) {
+          return;
+        }
+
         const { symbol } = value.currency as CurrencyPropertyList<EntityValues>;
         setCurrencySymbol(symbol);
 
