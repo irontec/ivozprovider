@@ -12,6 +12,6 @@ Feature: Retrieve active calls
       {
           "name": "Platform Administration Portal",
           "theme": "redmond",
-          "logo": "https://platform-ivozprovider.irontec.com/api/my/logo/1/logo.jpeg"
+          "logo": "https://platform-ivozprovider.irontec.com/api/platform/my/logo/1/logo.jpeg"
       }
       """

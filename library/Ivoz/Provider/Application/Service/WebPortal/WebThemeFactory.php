@@ -31,10 +31,20 @@ class WebThemeFactory
             );
         }
 
+        $api = match ($webPortal->getUrlType()) {
+            WebPortalInterface::URLTYPE_GOD => 'platform',
+            WebPortalInterface::URLTYPE_BRAND => 'brand',
+            WebPortalInterface::URLTYPE_ADMIN => 'client',
+            WebPortalInterface::URLTYPE_USER => 'user',
+            default => throw new \RuntimeException('Unknown web portal type'),
+        };
+
         $publicLogoUrl =
             'https://'
             . $hostname
-            . '/api/my/logo/'
+            . '/api/'
+            . $api
+            . '/my/logo/'
             . (string) $webPortal->getId()
             . '/'
             . urlencode(
