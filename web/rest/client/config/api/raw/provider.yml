@@ -1022,8 +1022,11 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     - and:
       - company:
           eq: "user.getCompany().getId()"
+    - or:
       - interCompany:
           in: "companyRepository.getCompanyIdsByAdminCorporation(user)"
+      - directConnectivity:
+          neq: "'interpbx'" #!php/const Ivoz\Provider\Domain\Model\Friend\FriendInterface::DIRECTCONNECTIVITY_INTERVPBX
     - or:
       - inheritedOrNull:
           callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
