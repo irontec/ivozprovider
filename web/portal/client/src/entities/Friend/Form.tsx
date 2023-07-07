@@ -4,13 +4,13 @@ import {
   FieldsetGroups,
   Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const edit = props.edit || false;
-  const create = props.create || false;
   const { entityService, row, match } = props;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -19,9 +19,9 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
-  const isInterVpbx = row?.directConnectivity === 'intervpbx';
+  const formik = useFormHandler(props);
+  const isInterVpbx = formik.values.directConnectivity === 'intervpbx';
   const interVpbxEdition = edit && isInterVpbx;
-  const interVpbxNew = create && isInterVpbx;
   const readOnlyProperties = {
     directConnectivity: interVpbxEdition,
     priority: interVpbxEdition,
@@ -35,7 +35,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'directConnectivity',
         'priority',
         'description',
-        interVpbxNew && 'name',
+        !isInterVpbx && 'name',
         'password',
         'transport',
         'ip',
@@ -75,6 +75,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   return (
     <DefaultEntityForm
       {...props}
+      formik={formik}
       fkChoices={fkChoices}
       groups={groups}
       readOnlyProperties={readOnlyProperties}
