@@ -210,13 +210,13 @@ const getEntityMap = (): ExtendedRouteMap => {
               filterBy: 'carrier',
               isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
             },
+            ...(Object.values(
+              entities.Carrier.customActions
+            ) as ExtendedRouteMapItem[]),
             {
               entity: entities.BillableCall,
               filterBy: 'carrier',
             },
-            ...(Object.values(
-              entities.Carrier.customActions
-            ) as ExtendedRouteMapItem[]),
           ],
         },
         {
