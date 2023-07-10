@@ -24,4 +24,13 @@ interface UsersCdrRepository extends ObjectRepository, Selectable
      * @return UsersCdrInterface | null
      */
     public function findOneByCallid($callid);
+
+    /**
+     * * @param int $userId
+     */
+    public function countInboundCallsInLastMonthByUser(int $userId): int;
+        /**
+     * * @param int $userId
+     */
+    public function countOutboundCallsInLastMonthByUser(int $userId): int;
 }

@@ -63,4 +63,40 @@ class UsersCdrDoctrineRepository extends ServiceEntityRepository implements User
 
         return $response;
     }
+
+    public function countInboundCallsInLastMonthByUser(int $userId): int
+    {
+        $qb = $this->createQueryBuilder('self');
+        $prevMonth = strtotime('-1 month');
+        $dateTime = date('Y-m-d H:i:s', $prevMonth);
+
+        return $qb
+            ->select('count(self.id)')
+            ->where('self.user = :userId')
+            ->andWhere('self.direction= :direction')
+            ->andWhere('self.startTime > :time')
+            ->setParameter('userId', $userId)
+            ->setParameter('direction', 'inbound')
+            ->setParameter('time', $dateTime)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countOutboundCallsInLastMonthByUser(int $userId): int
+    {
+        $qb = $this->createQueryBuilder('self');
+        $prevMonth = strtotime('-1 month');
+        $dateTime = date('Y-m-d H:i:s', $prevMonth);
+
+        return $qb
+            ->select('count(self.id)')
+            ->where('self.user = :userId')
+            ->andWhere('self.direction= :direction')
+            ->andWhere('self.startTime > :time')
+            ->setParameter('userId', $userId)
+            ->setParameter('direction', 'outbound')
+            ->setParameter('time', $dateTime)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }
