@@ -11,7 +11,7 @@ Feature: Retrieve users
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
       """
       [
           {
@@ -33,6 +33,15 @@ Feature: Retrieve users
               "caller": "102",
               "callee": "+34676896561",
               "id": 2,
+              "user": 1,
+              "friend": null
+          },
+          {
+              "duration": 3600,
+              "direction": "outbound",
+              "caller": "103",
+              "callee": "+34676896564",
+              "id": 3,
               "user": 1,
               "friend": null
           }

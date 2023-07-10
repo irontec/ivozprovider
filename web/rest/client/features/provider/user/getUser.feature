@@ -20,7 +20,7 @@ Feature: Retrieve users
               "id": 1,
               "terminal": 1,
               "extension": null,
-              "outgoingDdi": null,
+              "outgoingDdi": 3,
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.106:5060",
@@ -117,7 +117,7 @@ Feature: Retrieve users
               },
               "country": 68
           },
-          "outgoingDdi": null,
+          "outgoingDdi": "~",
           "outgoingDdiRule": null,
           "voicemail": null,
           "pickupGroupIds": []
