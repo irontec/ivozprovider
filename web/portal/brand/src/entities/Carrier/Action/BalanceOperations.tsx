@@ -23,11 +23,11 @@ import {
   SelectChangeEvent,
   Tooltip,
 } from '@mui/material';
-import { CompanyPropertyList } from 'entities/Company/CompanyProperties';
-import { CurrencyPropertyList } from 'entities/Currency/CurrencyProperties';
 import { useEffect, useState } from 'react';
-import { useStoreActions } from 'store';
+import { useStoreActions, useStoreState } from 'store';
 
+import { CompanyPropertyList } from '../../Company/CompanyProperties';
+import { CurrencyPropertyList } from '../../Currency/CurrencyProperties';
 import Carrier from '../Carrier';
 
 const amountChoices = [
@@ -37,6 +37,10 @@ const amountChoices = [
 
 const BalanceOperations: ActionFunctionComponent = (props: ActionItemProps) => {
   const { row, variant = 'icon' } = props;
+
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const hasBillingFeature = aboutMe?.features.includes('billing') ?? false;
+
   const [amountChoice, setAmountChoice] = useState(amountChoices[0].id);
   const [amountValue, setAmountValue] = useState('0.00');
   const [open, setOpen] = useState(false);
@@ -56,13 +60,16 @@ const BalanceOperations: ActionFunctionComponent = (props: ActionItemProps) => {
     apiGet({
       path: `${Carrier.path}/${row.id}`,
       params: {},
-      successCallback: async (value: CompanyPropertyList<EntityValues>) => {
-        if (!value.currency) {
+      successCallback: async (value) => {
+        const typedValue = value as CompanyPropertyList<EntityValues>;
+        if (!typedValue.currency) {
           return;
         }
 
-        const { symbol } = value.currency as CurrencyPropertyList<EntityValues>;
-        setCurrencySymbol(symbol);
+        const { symbol } = typedValue.currency as CurrencyPropertyList<
+          string | null
+        >;
+        setCurrencySymbol(symbol ?? '');
 
         return;
       },
@@ -70,11 +77,10 @@ const BalanceOperations: ActionFunctionComponent = (props: ActionItemProps) => {
     });
   }, [setCurrencySymbol, row.id, apiGet, cancelToken]);
 
-  if (!row) {
-    return null;
-  }
-
   const handleClickOpen = () => {
+    if (!hasBillingFeature) {
+      return;
+    }
     setOpen(true);
   };
 
@@ -99,6 +105,18 @@ const BalanceOperations: ActionFunctionComponent = (props: ActionItemProps) => {
       reload();
     });
   };
+
+  if (!row || !hasBillingFeature) {
+    return null;
+  }
+
+  if (!row.calculateCost) {
+    return (
+      <MoreMenuItem>
+        <a className='disabled'>{_('Balance Operations')}</a>
+      </MoreMenuItem>
+    );
+  }
 
   return (
     <>
