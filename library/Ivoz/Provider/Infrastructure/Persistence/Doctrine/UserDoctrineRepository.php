@@ -256,4 +256,20 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     {
         return parent::count($criteria);
     }
+
+    public function findLatestAddedByCompany(int $companyId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $result = $qb
+            ->select('self, extension, outgoingDdi')
+            ->leftJoin('self.outgoingDdi', 'outgoingDdi')
+            ->leftJoin('self.extension', 'extension')
+            ->where('self.company=:company')
+            ->orderBy('self.id', 'DESC')
+            ->setParameter('company', $companyId)
+            ->getQuery()
+            ->getResult();
+        return $result;
+    }
 }

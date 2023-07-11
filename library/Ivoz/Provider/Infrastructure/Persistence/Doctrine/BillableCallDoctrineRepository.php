@@ -454,4 +454,19 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             'id'
         );
     }
+
+    public function findInitialFourByCompanyId(int $companyId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $result = $qb
+            ->select('self.startTime, self.caller, self.callee, self.duration')
+            ->where('self.company = :company')
+            ->setParameter('company', $companyId)
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getScalarResult();
+
+        return $result;
+    }
 }
