@@ -28,7 +28,7 @@ const FixedCostsRelInvoice: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AddCardIcon,
   iden: 'FixedCostsRelInvoice',
-  title: _('FixedCostsRelInvoice', { count: 2 }),
+  title: _('Fixed cost', { count: 2 }),
   path: '/fixed_costs_rel_invoices',
   toStr: (row: FixedCostsRelInvoicePropertyList<EntityValues>) => `${row.id}`,
   properties,
