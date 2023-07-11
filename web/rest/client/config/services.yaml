@@ -24,6 +24,12 @@ services:
     DataFixtures\:
         resource: '../../../../library/DataFixtures/*'
 
+    Service\Application\:
+        resource: '../src/Service/Application/*'
+
+    Service\Domain\:
+        resource: '../src/Service/Domain/*'
+        
     Service\UserProvider:
         class: Service\UserProvider
         arguments:
