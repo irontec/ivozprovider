@@ -460,12 +460,12 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         $qb = $this->createQueryBuilder('self');
 
         $result = $qb
-            ->select('self.startTime, self.caller, self.callee, self.duration')
+            ->select('self')
             ->where('self.company = :company')
             ->setParameter('company', $companyId)
             ->setMaxResults(4)
             ->getQuery()
-            ->getScalarResult();
+            ->getResult();
 
         return $result;
     }

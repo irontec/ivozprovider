@@ -50,8 +50,39 @@ class ProviderResidentialDevice extends Fixture implements DependentFixtureInter
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        for ($i = 2; $i < 6; $i++) {
+            /** @var ResidentialDevice $item */
+            $item = $this->createEntityInstance(ResidentialDevice::class);
+            (function () use ($fixture, $i) {
+                $this->setName('residentialDevice' . $i);
+                $this->setDescription('');
+                $this->setTransport('udp');
+                $this->setIp('1.2.3.' . $i);
+                $this->setPort(1024);
+                $this->setPassword('+rA778LidL');
+                $this->setDisallow('all');
+                $this->setAllow('alaw');
+                $this->setDirectMediaMethod('invite');
+                $this->setCalleridUpdateHeader('pai');
+                $this->setUpdateCallerid('yes');
+                $this->setDirectConnectivity('no');
+                $this->setRtpEncryption(false);
+                $this->setBrand(
+                    $fixture->getReference('_reference_ProviderBrand1')
+                );
+                $this->setCompany(
+                    $fixture->getReference('_reference_ProviderCompany1')
+                );
+            })->call($item);
+
+            $this->addReference('_reference_ProviderResidentialDevice' . $i, $item);
+            $this->sanitizeEntityValues($item);
+            $manager->persist($item);
+        }
+
         $manager->flush();
     }
+
 
     public function getDependencies()
     {
