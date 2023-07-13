@@ -1,5 +1,8 @@
 import { EntityValues } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  marshaller as defaultMarshaller,
+  unmarshaller as defaultUnmarshaller,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ReceiptIcon from '@mui/icons-material/Receipt';
@@ -28,6 +31,7 @@ const properties: InvoiceProperties = {
   total: {
     label: _('Total'),
     component: Total,
+    readOnly: true,
   },
   taxRate: {
     label: _('Tax rate'),
@@ -37,6 +41,7 @@ const properties: InvoiceProperties = {
   totalWithTax: {
     label: _('Total with tax'),
     component: TotalWithTax,
+    readOnly: true,
   },
   status: {
     label: _('Status'),
@@ -87,6 +92,23 @@ const properties: InvoiceProperties = {
   },
 };
 
+type MarshallerType = typeof defaultMarshaller;
+const marshaller: MarshallerType = (values, properties) => {
+  delete values.total;
+  delete values.totalWithTax;
+
+  return defaultMarshaller(values, properties);
+};
+
+type UnmarshallerType = typeof defaultUnmarshaller;
+const unmarshaller: UnmarshallerType = (row, properties) => {
+  const values = { ...row };
+  values.inDate = values.inDate.substring(0, 'yyyy-mm-dd'.length);
+  values.outDate = values.outDate.substring(0, 'yyyy-mm-dd'.length);
+
+  return defaultUnmarshaller(values, properties);
+};
+
 const Invoice: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ReceiptIcon,
@@ -94,6 +116,8 @@ const Invoice: EntityInterface = {
   iden: 'Invoice',
   title: _('Invoice', { count: 2 }),
   path: '/invoices',
+  defaultOrderBy: 'inDate',
+  defaultOrderDirection: 'desc',
   toStr: (row: InvoicePropertyList<EntityValues>) => `${row.number}`,
   properties,
   columns: [
@@ -129,6 +153,8 @@ const Invoice: EntityInterface = {
 
     return module.default;
   },
+  marshaller,
+  unmarshaller,
 };
 
 export default Invoice;
