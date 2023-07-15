@@ -108,6 +108,26 @@ Feature: Authorization checking
       """
       [
           {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
+              "startTime": "2019-01-01 09:01:44"
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
+              "startTime": "2019-01-01 09:01:43"
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7102",
+              "startTime": "2019-01-01 09:01:42"
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7101",
+              "startTime": "2019-01-01 09:01:41"
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7100",
+              "startTime": "2019-01-01 09:01:40"
+          },
+          {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7099",
               "startTime": "2019-01-01 09:01:39"
           },
@@ -132,6 +152,26 @@ Feature: Authorization checking
       And the JSON should be like:
       """
       [
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
+              "startTime": "2019-01-01 09:01:44"
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
+              "startTime": "2019-01-01 09:01:43"
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7102",
+              "startTime": "2019-01-01 09:01:42"
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7101",
+              "startTime": "2019-01-01 09:01:41"
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7100",
+              "startTime": "2019-01-01 09:01:40"
+          },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7099",
               "startTime": "2019-01-01 09:01:39"
