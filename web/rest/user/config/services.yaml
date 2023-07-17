@@ -24,6 +24,9 @@ services:
     DataFixtures\:
         resource: '../../../../library/DataFixtures/*'
 
+    Service\:
+        resource: '../src/Service/*'
+        
     Service\UserProvider:
         arguments:
             $entityClass: 'Ivoz\Provider\Domain\Model\User\User'

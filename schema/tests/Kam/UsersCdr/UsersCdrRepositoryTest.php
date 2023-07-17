@@ -21,6 +21,8 @@ class UsersCdrRepositoryTest extends KernelTestCase
         $this->it_counts_by_userId();
         $this->it_finds_by_callid();
         $this->it_finds_one_by_callid();
+        $this->it_counts_inbound_calls_by_userId();
+        $this->it_counts_outbound_calls_by_userId();
     }
 
     public function its_instantiable()
@@ -47,7 +49,7 @@ class UsersCdrRepositoryTest extends KernelTestCase
             ->countByUserId(1);
 
         $this->AssertEquals(
-            2,
+            3,
             $result
         );
     }
@@ -85,6 +87,38 @@ class UsersCdrRepositoryTest extends KernelTestCase
 
         $this->assertInstanceOf(
             UsersCdrInterface::class,
+            $result
+        );
+    }
+
+    public function it_counts_inbound_calls_by_userId()
+    {
+        /** @var UsersCdrRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(UsersCdr::class);
+
+        $result = $repository
+            ->countInboundCallsInLastMonthByUser(1);
+
+        $this->AssertEquals(
+            0,
+            $result
+        );
+    }
+
+    public function it_counts_outbound_calls_by_userId()
+    {
+        /** @var UsersCdrRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(UsersCdr::class);
+
+        $result = $repository
+            ->countOutboundCallsInLastMonthByUser(1);
+
+        $this->AssertEquals(
+            1,
             $result
         );
     }

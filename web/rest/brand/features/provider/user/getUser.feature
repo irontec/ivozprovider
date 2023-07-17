@@ -22,7 +22,7 @@ Feature: Retrieve users
               "company": 1,
               "terminal": 1,
               "extension": null,
-              "outgoingDdi": null,
+              "outgoingDdi": 3,
               "location": null,
               "status": [
                   {

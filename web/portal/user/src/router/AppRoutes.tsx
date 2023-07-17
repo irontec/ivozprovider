@@ -1,4 +1,3 @@
-import Dashboard from '@irontec/ivoz-ui/components/Dashboard';
 import parseRoutes, { RouteSpec } from '@irontec/ivoz-ui/router/parseRoutes';
 import RouteContent from '@irontec/ivoz-ui/router/RouteContent';
 import ParsedApiSpecInterface from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
@@ -7,6 +6,7 @@ import { RouteObject, useRoutes } from 'react-router-dom';
 import { useStoreActions } from 'store';
 
 import AppRouteContentWrapper from '../components/AppRouteContentWrapper';
+import Dashboard from '../components/Dashboard';
 import addCustomRoutes from './addCustomRoutes';
 import useEntityMap from './useEntityMap';
 
@@ -30,7 +30,7 @@ export default function AppRoutes(props: AppRoutesProps) {
     path: baseUrl,
     element: (
       <AppRouteContentWrapper loggedIn={true} routeMap={entityMap}>
-        <Dashboard routeMap={entityMap} />
+        <Dashboard />
       </AppRouteContentWrapper>
     ),
   });

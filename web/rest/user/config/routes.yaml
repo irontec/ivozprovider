@@ -17,6 +17,24 @@ gesdinet_jwt_refresh_token:
 ###############################
 ## Custom routes
 ###############################
+get_my_dasboard:
+  path: '/my/dashboard'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\DashboardAction
+    _api_resource_class: 'Model\Dashboard\Dashboard'
+    _api_item_operation_name: 'get_my_dasboard'
+    _api_receive: false
+    
+get_my_last_month_calls:
+  path: '/my/last_month_calls'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\LastMonthCallsAction
+    _api_resource_class: 'Model\LastMonthCalls'
+    _api_item_operation_name: 'get_my_last_month_calls'
+    _api_receive: false
+
 get_my_rating_plan_prices:
   path: '/rating_plan_groups/{id}/prices'
   methods: ['GET']

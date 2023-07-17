@@ -6,7 +6,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
-use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
