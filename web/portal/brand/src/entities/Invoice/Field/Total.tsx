@@ -1,4 +1,4 @@
-import withCustomComponentWrapper, {
+import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
@@ -13,15 +13,30 @@ type TargetGhostType = PropertyCustomFunctionComponent<
 >;
 
 const Total: TargetGhostType = (props): JSX.Element => {
-  const { values } = props;
+  const { values, formFieldFactory, _context, _columnName, property } = props;
   let { total } = values;
   const { currency } = values;
 
-  total ??= 0;
+  total = total || 0;
 
   const value = `${parseFloat(total).toFixed(2)} ${currency}`;
 
-  return <span>{value}</span>;
+  if (_context === 'read' || !formFieldFactory) {
+    return <span>{value}</span>;
+  }
+
+  const { choices, readOnly } = props;
+
+  const modifiedProperty = { ...property } as ScalarProperty;
+  delete modifiedProperty.component;
+  modifiedProperty.suffix = currency;
+
+  return formFieldFactory.getInputField(
+    _columnName,
+    modifiedProperty,
+    choices,
+    readOnly
+  );
 };
 
-export default withCustomComponentWrapper<InvoiceValues>(Total);
+export default Total;
