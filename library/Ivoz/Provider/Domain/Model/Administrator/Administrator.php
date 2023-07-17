@@ -35,6 +35,21 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
         return $this->id;
     }
 
+    public function __toString(): string
+    {
+        $userName = sprintf(
+            "%s [%s]",
+            $this->getUsername(),
+            parent::__toString(),
+        );
+
+        if ($this->getOnBehalfOf()) {
+            $userName = $this->getOnBehalfOf() . ' > ' . $userName;
+        }
+
+        return $userName;
+    }
+
     public function setOnBehalfOf(string $adminName): void
     {
         $this->onBehalfOf = $adminName;

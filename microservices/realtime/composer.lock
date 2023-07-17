@@ -2150,11 +2150,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.9.9",
+            "version": "4.10.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-api",
-                "reference": "7171154b68abd8eb4044f8de2530034f9c3d1440"
+                "reference": "3daf27565e6ad493b0a2e0f36543af5d0811368a"
             },
             "require": {
                 "api-platform/core": "2.6.*",
@@ -2211,15 +2211,15 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.8",
+            "version": "4.8.1",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "cb215a80b804cf2221984b09e0a812ea0bd08bfe"
+                "reference": "50358dac8fa50bb3f1f0e7276d3e48a9fa5fee75"
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.12",
-                "irontec/ivoz-api": "^4.9.5",
+                "irontec/ivoz-api": "^4.10.0",
                 "irontec/ivoz-core-bundle": "^4.7",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",
@@ -2383,11 +2383,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.6.4",
+            "version": "2.6.5",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "2adc8c39c1f6b240c77f034a3bc5d6faab230c0e"
+                "reference": "3a36f1c803087f33512fe87fb4706df7486537a8"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
