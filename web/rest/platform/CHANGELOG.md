@@ -1,4 +1,24 @@
 # Changelog
+## 3.2.0
+* Endpoints:
+    - /my/dashboard:
+      - Added [GET] endpoint
+    - /my/logo/{id}/{name}:
+      - Added [GET] endpoint
+    - /my/theme:
+      - Added [GET] endpoint
+    - /administrators/{id}/grant_all:
+      - Added [POST] endpoint
+    - /administrators/{id}/grant_read_only:
+      - Added [POST] endpoint
+    - /administrators/{id}/revoke_all:
+      - Added [POST] endpoint
+* Models:
+  - TerminalModel-collection:
+    - Added genericUrlPattern and specificUrlPattern
+  - WebPortal:
+    - Added newUI required field
+
 ## 3.1.0
 * Endpoints:
   - Added _rmAlso parameter to [DELETE] methods to support multi-delete

@@ -1,4 +1,37 @@
 # Changelog
+## 3.2.0
+* Endpoints:
+  - /billable_calls/rerate:
+    - Added [POST] endpoint
+  - /company/{id}/modify_balance:
+    - Renamed to /companies/{id}/modify_balance [BREAKING CHANGE]
+  - /corporations:
+    - Added [GET] endpoint
+    - Added [POST] endpoint
+  - /corporations/{id}:
+    - Added [GET] endpoint
+    - Added [PUT] endpoint
+    - Added [DELETE] endpoint
+  - /invoices/{id}/regenerate:
+    - Added [POST] endpoint
+  - /my/dashboard:
+    - Added [GET] endpoint
+  - /my/logo/{id}/{name}:
+    - Added [GET] endpoint
+  - /my/theme:
+    - Added [GET] endpoint
+* Models:
+  - Company:
+    - Added corporation property
+  - Company-collection:
+    - Added currencySymbol, currentDayMaxUsage, accountStatus and corporation properties
+  - Company-detailed:
+    - Added corporation property
+  - Friend-collection:
+    - Added interCompany property
+  - WebPortal:
+    - Added newUI required field
+
 ## 3.1.0
 * Endpoints:
   - Added _rmAlso parameter to [DELETE] methods to support multi-delete
