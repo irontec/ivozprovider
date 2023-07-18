@@ -1,3 +1,36 @@
+Tue, 18 Jul 2023 11:21:55 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+* Ivozprovider 3.2.0 released
+
+* New React based web portals
+    - Added impersonation between portals using internal administrators
+    - Added translations to officialy supported languages
+    - Added dashboards to all portals
+    - Added support for Web portal customizable Logo
+    - Added a Web Portal based configuration option to load react portals by default
+    - New portals always accessible adding /platform, /brand, /client and /user to URL path
+    - Classic portal always accessible adding /classic to URL path
+    - Added missing action to regenerate invoices
+    - Added missing action to unban brute force attacks
+    - Added missing action to re-rate external calls
+    - Added missing actions to modify pre-paid balances
+    - Added documentation links to all screens
+    - Fixed a bug while adding client services not enabled by brand
+    - Lots of fixes in platform, brand, client and users portals screens
+
+* Proxies
+    - Fixed a bug with unsolicited MWI NOTIFY messages
+
+* Application Server
+    - Updated Queue members table to support future dynamic join and leave functionalities
+    - Fixed a bug identifying Terminals when their name had been changed
+    - Added click2dial contexts
+
+* Core
+    - Added Corporation entity to group vPBX that can share Inter-vPBX Friends (internal calls between vPBX clients)
+    - Improved changelog entries to reflect Administrators impersonation chains
+
+
 Fri, 10 Mar 2023 10:22:06 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
 * Ivozprovider 3.1.0 released
