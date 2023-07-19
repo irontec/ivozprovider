@@ -45,7 +45,7 @@ services:
             - { name: serializer.normalizer, priority: 100 }
 
     Service\AdministratorRelPublicEntity\SwitchAcl:
-        class: Service\AdministratorRelPublicEntity\SwitchAcl
+        class: Ivoz\Provider\Domain\Service\AdministratorRelPublicEntitySwitchAcl
 
     Ivoz\Api\Operation\ExchangeToken:
         arguments:
