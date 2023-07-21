@@ -44,17 +44,6 @@ class MassUpdateAclsAction
             return new Response('Administrator user is not restricted', 403);
         }
 
-        /** @var AdministratorInterface $apiAdmin */
-        $apiAdmin = $token->getUser();
-
-        if (is_null($apiAdmin->getBrand())) {
-            throw new \DomainException('Brand admin required', 403);
-        }
-
-        if ($apiAdmin->getBrand() !== $administrator->getBrand()) {
-            return new Response('You don\'t have access to this administrator', 403);
-        }
-
         match (true) {
             $routeName === 'post_provider_administrator_grant_all' => $this
                 ->switchAcl

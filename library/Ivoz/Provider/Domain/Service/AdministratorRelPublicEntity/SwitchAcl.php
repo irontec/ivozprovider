@@ -1,6 +1,6 @@
 <?php
 
-namespace Service\AdministratorRelPublicEntity;
+namespace Ivoz\Provider\Domain\Service\AdministratorRelPublicEntity;
 
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\AdministratorRelPublicEntityDoctrineRepository;
 
