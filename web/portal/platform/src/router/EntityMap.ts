@@ -45,6 +45,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.WebPortal,
             title: _('Brand Portal', { count: 2 }),
+            link: '/doc/en/administration_portal/platform/brands.html#brand-portals',
           },
           filterBy: 'brand',
           fixedValues: {
