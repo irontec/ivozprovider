@@ -138,7 +138,7 @@ class DomainLifeCycleTest extends KernelTestCase
 
         $residentialDevices = $domain->getResidentialDevices();
         $this->assertCount(
-            1,
+            5,
             $residentialDevices
         );
 

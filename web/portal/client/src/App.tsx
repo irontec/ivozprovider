@@ -53,7 +53,7 @@ export default function App(): JSX.Element {
       console.error('Unable to resolve my theme', error);
       theme.setLogo('logo.svg');
     });
-  }, []);
+  }, [apiGet, theme]);
 
   useEffect(() => {
     if (loggedIn && token && !aboutMe) {

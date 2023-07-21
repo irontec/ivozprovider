@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 use Doctrine\Common\Collections\Selectable;
 use Doctrine\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Model\Dashboard\DashboardResidentialDevice;
 
 interface ResidentialDeviceRepository extends ObjectRepository, Selectable
 {
@@ -25,4 +26,14 @@ interface ResidentialDeviceRepository extends ObjectRepository, Selectable
      * @param int[] $companyIds
      */
     public function countRegistrableDevicesByCompanies(array $companyIds): int;
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int;
+
+    /**
+     * @return ResidentialDeviceInterface[]
+     */
+    public function findLastAddedByCompanyId(int $companyId): array;
 }

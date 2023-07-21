@@ -59,6 +59,34 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
             $this->addReference('_reference_ProviderBillableCall' . $i, $item);
             $manager->persist($item);
         }
+        for ($i = 100; $i < 105; $i++) {
+            $item = $this->createEntityInstance(BillableCall::class);
+            (function () use ($i, $fixture) {
+                $this->setCallid(
+                    '017cc7c8-eb38-4bbd-9318-524a274f7' . str_pad($i, 3, '0', STR_PAD_LEFT)
+                );
+
+                $startTime = new \DateTime(
+                    '2019-01-01 08:00:00',
+                    new \DateTimeZone('UTC')
+                );
+                $startTime->modify("+$i second");
+
+                $this->setStartTime($startTime);
+                $this->setCaller('+34633646464');
+                $this->setCallee('+34633656565');
+                $this->setDirection('outbound');
+                $this->setPrice(1);
+                $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+                $this->setCompany($fixture->getReference('_reference_ProviderCompany5'));
+                $this->setCarrier($fixture->getReference('_reference_ProviderCarrier1'));
+                $this->setDdi($fixture->getReference('_reference_ProviderDdi1'));
+            })->call($item);
+
+            $this->addReference('_reference_ProviderBillableCall' . $i, $item);
+            $manager->persist($item);
+        }
+
 
         $manager->flush();
     }

@@ -19,4 +19,9 @@ interface VoicemailRepository extends ObjectRepository, Selectable
      * @return VoicemailInterface
      */
     public function findByMailboxAndContext($mailbox, $context);
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int;
 }

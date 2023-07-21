@@ -11,15 +11,15 @@ Feature: Authorization checking
      Then the header "X-First-Page" should be equal to "/billable_calls?_page=1"
       And the header "X-Next-Page" should be equal to "/billable_calls?_page=2"
       And the header "X-Last-Page" should be equal to "/billable_calls?_page=4"
-      And the header "X-Total-Items" should be equal to "100"
+      And the header "X-Total-Items" should be equal to "105"
       And the header "X-Total-Pages" should be equal to "4"
 
   Scenario: Items per page can be defined
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "/billable_calls?_itemsPerPage=10"
-     Then the header "X-Last-Page" should be equal to "/billable_calls?_page=10"
-      And the header "X-Total-Pages" should be equal to "10"
+     Then the header "X-Last-Page" should be equal to "/billable_calls?_page=11"
+      And the header "X-Total-Pages" should be equal to "11"
 
   Scenario: Specific page can be requested
     Given I add Authorization header
@@ -34,4 +34,4 @@ Feature: Authorization checking
      Then the response status code should be 200
       And the streamed response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the streamed JSON node "root" should have 100 elements
+      And the streamed JSON node "root" should have 105 elements

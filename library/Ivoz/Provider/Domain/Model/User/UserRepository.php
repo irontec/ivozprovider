@@ -66,4 +66,9 @@ interface UserRepository extends ObjectRepository, Selectable
      * @param array<string, mixed> $criteria
      */
     public function count(array $criteria): int;
+
+    /**
+     * @return UserInterface[]
+     */
+    public function findLatestAddedByCompany(int $companyId): array;
 }

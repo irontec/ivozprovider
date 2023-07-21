@@ -25,4 +25,14 @@ interface RetailAccountRepository extends ObjectRepository, Selectable
      * @param int[] $companyIds
      */
     public function countRegistrableDevicesByCompanies(array $companyIds): int;
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int;
+
+    /**
+     * @return RetailAccountInterface[]
+     */
+    public function findLatestByCompanyId(int $companyId): array;
 }

@@ -12,8 +12,8 @@ Feature: Retrieve billable calls
       """
       [
           {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7099",
-              "startTime": "2019-01-01 09:01:39",
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
+              "startTime": "2019-01-01 09:01:44",
               "duration": 0,
               "caller": "+34633646464",
               "callee": "+34633656565",
@@ -23,17 +23,17 @@ Feature: Retrieve billable calls
               "endpointId": null,
               "endpointName": null,
               "direction": "outbound",
-              "id": 100,
+              "id": 105,
               "brand": 1,
-              "company": 1,
+              "company": 5,
               "carrier": 1,
               "invoice": null,
               "ddi": 1,
               "ddiProvider": null
           },
           {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7098",
-              "startTime": "2019-01-01 09:01:38",
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
+              "startTime": "2019-01-01 09:01:43",
               "duration": 0,
               "caller": "+34633646464",
               "callee": "+34633656565",
@@ -43,9 +43,9 @@ Feature: Retrieve billable calls
               "endpointId": null,
               "endpointName": null,
               "direction": "outbound",
-              "id": 99,
+              "id": 104,
               "brand": 1,
-              "company": 1,
+              "company": 5,
               "carrier": 1,
               "invoice": null,
               "ddi": 1,
@@ -97,6 +97,11 @@ Feature: Retrieve billable calls
       And the streamed response should be equal to:
       """
       callid,startTime,duration,caller,callee,cost,price,endpointType,endpointId,endpointName,direction,id,brand,company,carrier,invoice,ddi,ddiProvider
+      017cc7c8-eb38-4bbd-9318-524a274f7104,"2019-01-01 09:01:44",0,+34633646464,+34633656565,,1,,,,outbound,105,1,5,1,,1,
+      017cc7c8-eb38-4bbd-9318-524a274f7103,"2019-01-01 09:01:43",0,+34633646464,+34633656565,,1,,,,outbound,104,1,5,1,,1,
+      017cc7c8-eb38-4bbd-9318-524a274f7102,"2019-01-01 09:01:42",0,+34633646464,+34633656565,,1,,,,outbound,103,1,5,1,,1,
+      017cc7c8-eb38-4bbd-9318-524a274f7101,"2019-01-01 09:01:41",0,+34633646464,+34633656565,,1,,,,outbound,102,1,5,1,,1,
+      017cc7c8-eb38-4bbd-9318-524a274f7100,"2019-01-01 09:01:40",0,+34633646464,+34633656565,,1,,,,outbound,101,1,5,1,,1,
       017cc7c8-eb38-4bbd-9318-524a274f7099,"2019-01-01 09:01:39",0,+34633646464,+34633656565,,1,,,,outbound,100,1,1,1,,1,
       017cc7c8-eb38-4bbd-9318-524a274f7098,"2019-01-01 09:01:38",0,+34633646464,+34633656565,,1,,,,outbound,99,1,1,1,,1,
       017cc7c8-eb38-4bbd-9318-524a274f7097,"2019-01-01 09:01:37",0,+34633646464,+34633656565,,1,,,,outbound,98,1,1,1,,1,

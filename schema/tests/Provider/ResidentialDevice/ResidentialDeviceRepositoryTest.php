@@ -21,6 +21,7 @@ class ResidentialDeviceRepositoryTest extends KernelTestCase
         $this->its_instantiable();
         $this->it_finds_one_by_name_and_domain();
         $this->it_counts_registrable_devices_by_brand();
+        $this->it_find_last_added_by_company_id();
     }
 
     public function its_instantiable()
@@ -73,6 +74,24 @@ class ResidentialDeviceRepositoryTest extends KernelTestCase
 
         $this->assertIsInt(
             $num
+        );
+    }
+    public function it_find_last_added_by_company_id()
+    {
+        /** @var ResidentialDeviceRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(ResidentialDevice::class);
+
+        $residentialDevices = $repository->findLastAddedByCompanyId(1);
+
+        $this->assertIsArray(
+            $residentialDevices
+        );
+
+        $this->assertCount(
+            4,
+            $residentialDevices
         );
     }
 }
