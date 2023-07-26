@@ -1,18 +1,25 @@
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+  marshaller as defaultMarshaller,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { AdministratorProperties } from './AdministratorProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+
 import AdministratorRelPublicEntity from '../AdministratorRelPublicEntity/AdministratorRelPublicEntity';
+import { AdministratorProperties } from './AdministratorProperties';
+
+type marshallerType = typeof defaultMarshaller;
+const marshaller: marshallerType = (row, properties, whitelist) => {
+  if (row.brand === false) {
+    row.brand = null;
+  }
+
+  return defaultMarshaller(row, properties, whitelist);
+};
 
 const properties: AdministratorProperties = {
   username: {
@@ -77,6 +84,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const Administrator: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AdminPanelSettingsIcon,
+  link: '/doc/en/administration_portal/platform/main_operators.html',
   iden: 'Administrator',
   title: _('Main operator', { count: 2 }),
   path: '/administrators',
@@ -84,10 +92,27 @@ const Administrator: EntityInterface = {
   properties,
   columns: ['username', 'active', 'restricted'],
   ChildDecorator,
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
+  marshaller,
 };
 
 export default Administrator;

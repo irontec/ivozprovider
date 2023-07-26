@@ -19,7 +19,7 @@ default:
         path: "src/Kernel.php"
         class: "Kernel"
     Behat\MinkExtension:
-      base_url: "https://ivozprovider/"
+      base_url: "https://client-ivozprovider.irontec.com/"
       sessions:
         default:
           symfony: ~

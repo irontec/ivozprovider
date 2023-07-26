@@ -1,6 +1,7 @@
 import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
+import { useEffect, useState } from 'react';
+
 import { CompanyUserSelectOptions } from '../../User/SelectOptions';
-import { useState, useEffect } from 'react';
 
 export const useCompanyUsers = (companyId: number | string | null) => {
   const [users, setUsers] = useState<Record<number, string> | null>(null);
@@ -15,7 +16,7 @@ export const useCompanyUsers = (companyId: number | string | null) => {
 
     CompanyUserSelectOptions(
       {
-        callback: (options: any) => {
+        callback: (options) => {
           setUsers(options || []);
         },
         cancelToken,

@@ -104,8 +104,12 @@ mappers:
         entity: 'Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom'
     }
   - &Contacts {
-    modelFile: Contacts,
-    entity: 'Ivoz\\Provider\\Domain\\Model\\Contact\\Contact'
+        modelFile: Contacts,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Contact\\Contact'
+  }
+  - &Corporations {
+        modelFile: Corporations,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Corporations\\Corporations'
   }
   - &Countries {
         modelFile: Countries,

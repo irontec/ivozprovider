@@ -1,4 +1,28 @@
 # Changelog
+## 3.2.0
+* Endpoints:
+    - /companies/corporate/unassigned:
+      - Added [GET] endpoint
+    - /my/dashboard:
+        - Added [GET] endpoint
+    - /my/logo/{id}/{name}:
+        - Added [GET] endpoint
+    - /my/theme:
+        - Added [GET] endpoint
+* Models:
+    - Friend:
+      - Added interCompany property
+    - Friend-collection:
+      - Added interCompany property
+    - Friend-detailed:
+        - Added interCompany property
+    - RetailAccount:
+      - fromDomain and multiContact required properties
+    - RetailAccount-detailed:
+      - fromDomain and multiContact required properties
+    - TerminalModel-collection:
+      - Added genericUrlPattern and specificUrlPattern properties
+
 ## 3.1.0
 * Endpoints
   - Added _rmAlso parameter to [DELETE] methods to support multi-delete

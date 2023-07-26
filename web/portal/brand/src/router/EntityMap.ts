@@ -1,10 +1,24 @@
-import entities from '../entities';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { EntityAclType } from '@irontec/ivoz-ui';
 import routeMapParser, {
   RouteMap,
   RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
-import { EntityAclType } from '@irontec/ivoz-ui';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import DescriptionIcon from '@mui/icons-material/Description';
+import DirectionsIcon from '@mui/icons-material/Directions';
+import EngineeringIcon from '@mui/icons-material/Engineering';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+import SettingsIcon from '@mui/icons-material/Settings';
+import TtyIcon from '@mui/icons-material/Tty';
+import WalletIcon from '@mui/icons-material/Wallet';
+
+import entities from '../entities';
+import {
+  ClientFeatures,
+  ClientTypes,
+} from '../entities/Company/ClientFeatures';
 import { AboutMe } from '../store/clientSession/aboutMe';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
@@ -28,14 +42,17 @@ const getEntityMap = (): ExtendedRouteMap => {
   const map: ExtendedRouteMap = [
     {
       label: _('Clients'),
+      icon: MapsHomeWorkIcon,
       children: [
         {
           entity: entities.VirtualPbx,
-          isAccessible: (aboutMe) => aboutMe.features.includes('vpbx'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.vpbx),
           filterValues: {
-            type: 'vpbx',
+            type: ClientTypes.vpbx,
           },
           children: [
+            ...Object.values(entities.VirtualPbx.customActions),
             {
               entity: entities.UsersAddress,
               filterBy: 'company',
@@ -60,17 +77,21 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.RatingProfile,
               filterBy: 'company',
+              isAccessible: (aboutMe) => {
+                return aboutMe.features.includes(ClientFeatures.billing);
+              },
             },
-            ...Object.values(entities.VirtualPbx.customActions),
           ],
         },
         {
           entity: entities.Residential,
-          isAccessible: (aboutMe) => aboutMe.features.includes('residential'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.residential),
           filterValues: {
-            type: 'residential',
+            type: ClientTypes.residential,
           },
           children: [
+            ...Object.values(entities.Residential.customActions),
             {
               entity: entities.UsersAddress,
               filterBy: 'company',
@@ -89,19 +110,20 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.RatingProfile,
               filterBy: 'company',
             },
-            ...Object.values(entities.Residential.customActions),
           ],
         },
         {
           entity: entities.Retail,
-          isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.retail),
           filterValues: {
-            type: 'retail',
+            type: ClientTypes.retail,
           },
           fixedValues: {
             domainUsers: '__null__',
           },
           children: [
+            ...Object.values(entities.Retail.customActions),
             {
               entity: entities.UsersAddress,
               filterBy: 'company',
@@ -123,19 +145,20 @@ const getEntityMap = (): ExtendedRouteMap => {
               },
               filterBy: 'company',
             },
-            ...Object.values(entities.Retail.customActions),
           ],
         },
         {
           entity: entities.Wholesale,
-          isAccessible: (aboutMe) => aboutMe.features.includes('wholesale'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.wholesale),
           filterValues: {
-            type: 'wholesale',
+            type: ClientTypes.wholesale,
           },
           fixedValues: {
             domainUsers: '__null__',
           },
           children: [
+            ...Object.values(entities.Wholesale.customActions),
             {
               entity: entities.Trusted,
               filterBy: 'company',
@@ -157,13 +180,13 @@ const getEntityMap = (): ExtendedRouteMap => {
               },
               filterBy: 'company',
             },
-            ...Object.values(entities.Wholesale.customActions),
           ],
         },
       ],
     },
     {
       label: _('Providers'),
+      icon: PrecisionManufacturingIcon,
       children: [
         {
           entity: entities.Carrier,
@@ -187,6 +210,9 @@ const getEntityMap = (): ExtendedRouteMap => {
               filterBy: 'carrier',
               isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
             },
+            ...(Object.values(
+              entities.Carrier.customActions
+            ) as ExtendedRouteMapItem[]),
             {
               entity: entities.BillableCall,
               filterBy: 'carrier',
@@ -231,6 +257,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Routing'),
+      icon: DirectionsIcon,
       children: [
         {
           entity: entities.OutgoingRouting,
@@ -248,6 +275,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Billing'),
+      icon: WalletIcon,
       children: [
         {
           entity: entities.RatingPlanGroup,
@@ -267,7 +295,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.DestinationRate,
               filterBy: 'destinationRateGroup',
             },
-            //@TODO import rates
+            ...Object.values(entities.DestinationRateGroup.customActions),
           ],
         },
         {
@@ -289,7 +317,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.BalanceNotification,
               filterBy: 'company',
             },
-            //@TODO BalanceOperations
+            ...Object.values(entities.CompanyBalances.customActions),
           ],
         },
         {
@@ -300,6 +328,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Invoice', { count: 1 }),
+      icon: DescriptionIcon,
       children: [
         {
           entity: entities.Invoice,
@@ -313,7 +342,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.BillableCall,
               filterBy: 'invoice',
             },
-            //@TODO generate invoice
+            ...Object.values(entities.Invoice.customActions),
           ],
         },
         {
@@ -359,30 +388,8 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _('Calls'),
-      children: [
-        {
-          entity: entities.ActiveCalls,
-        },
-        {
-          entity: entities.BillableCall,
-          children: [
-            //@TODO rerate call
-          ],
-        },
-        {
-          entity: entities.CallCsvScheduler,
-          children: [
-            {
-              entity: entities.CallCsvReport,
-              filterBy: 'callCsvScheduler',
-            },
-          ],
-        },
-      ],
-    },
-    {
       label: _('Settings'),
+      icon: SettingsIcon,
       children: [
         {
           entity: entities.WebPortal,
@@ -450,20 +457,27 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _('Client endpoint'),
+      label: _('Client configurations'),
+      icon: EngineeringIcon,
       children: [
         {
           entity: entities.ResidentialDevice,
-          isAccessible: (aboutMe) => aboutMe.features.includes('residential'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.residential),
         },
         {
           entity: entities.RetailAccount,
-          isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.retail),
+        },
+        {
+          entity: entities.Corporation,
         },
       ],
     },
     {
       label: _('Views'),
+      icon: LocalLibraryIcon,
       children: [
         {
           entity: {
@@ -473,7 +487,8 @@ const getEntityMap = (): ExtendedRouteMap => {
               read: true,
             },
           },
-          isAccessible: (aboutMe) => aboutMe.features.includes('vpbx'),
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientTypes.vpbx),
         },
         {
           entity: {
@@ -498,6 +513,33 @@ const getEntityMap = (): ExtendedRouteMap => {
           filterValues: {
             blocker: 'antibruteforce',
           },
+          children: [
+            ...Object.values(entities.BannedAddressBruteForce.customActions),
+          ],
+        },
+      ],
+    },
+    {
+      label: _('Calls'),
+      icon: TtyIcon,
+      children: [
+        {
+          entity: entities.ActiveCalls,
+        },
+        {
+          entity: entities.BillableCall,
+          children: [
+            //@TODO rerate call
+          ],
+        },
+        {
+          entity: entities.CallCsvScheduler,
+          children: [
+            {
+              entity: entities.CallCsvReport,
+              filterBy: 'callCsvScheduler',
+            },
+          ],
         },
       ],
     },

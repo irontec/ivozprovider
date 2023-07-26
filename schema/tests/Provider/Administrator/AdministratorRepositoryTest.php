@@ -17,6 +17,7 @@ class AdministratorRepositoryTest extends KernelTestCase
     public function test_runner()
     {
         $this->it_gets_inner_global_admin();
+        $this->it_gets_admin_by_username();
         $this->it_gets_platform_admin_by_username();
         $this->it_returns_null_if_platform_admin_is_not_found();
     }
@@ -37,6 +38,32 @@ class AdministratorRepositoryTest extends KernelTestCase
         $this->assertEquals(
             $innerAdmin->getId(),
             0
+        );
+    }
+
+    public function it_gets_admin_by_username()
+    {
+        /** @var AdministratorDoctrineRepository $repository */
+        $repository = $this->em
+            ->getRepository(Administrator::class);
+
+        $targetName = 'test_brand_admin';
+        $admin = $repository->findBrandAdminByUsername(
+            $targetName
+        );
+
+        $this->assertInstanceOf(
+            Administrator::class,
+            $admin
+        );
+
+        $this->assertNotEmpty(
+            $admin->getBrand()
+        );
+
+        $this->assertEquals(
+            $targetName,
+            $admin->getUsername()
         );
     }
 

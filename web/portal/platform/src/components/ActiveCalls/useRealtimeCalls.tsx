@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+
 import {
   Calls,
   InputStruct,
@@ -32,6 +33,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
         };
 
         syncCallsRef.current = newValue;
+
         return newValue;
       });
     } else {
@@ -48,6 +50,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
           };
 
           syncCallsRef.current = newValue;
+
           return newValue;
         });
       } else if (event === 'Terminated') {
@@ -56,6 +59,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
           delete newValue[callId];
 
           syncCallsRef.current = newValue;
+
           return newValue;
         });
       }
@@ -72,6 +76,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
       event: data.Event,
       time: data.Time,
       duration: '',
+      brand: data.Brand,
       company: data.Company,
       caller: data.Caller,
       callee: data.Callee,
@@ -85,6 +90,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
       };
 
       syncCallsRef.current = newValue;
+
       return newValue;
     });
   };
@@ -100,6 +106,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
       return createCall(data);
     }
 
+    // eslint-disable-next-line no-console
     console.log('Ignore update for unknown call', data);
   }, []);
 
@@ -138,7 +145,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
         const hoursStr = hours > 0 ? `${hours}h ` : '';
         const minutesStr = minutes > 0 ? `${minutes}m ` : '';
 
-        newValue[idx].duration = hoursStr + minutesStr + seconds + 's';
+        newValue[idx].duration = `${hoursStr + minutesStr + seconds}s`;
       }
 
       setCalls(newValue);

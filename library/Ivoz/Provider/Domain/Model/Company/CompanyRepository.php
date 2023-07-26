@@ -54,4 +54,27 @@ interface CompanyRepository extends ObjectRepository, Selectable
      * @return int[]
      */
     public function getBillingEnabledCompanyIdsByBrand(int $brandId): array;
+
+    /**
+     * @return CompanyInterface[] | null
+     */
+    public function findByCorporationId(int $corporationId): ?array;
+
+    /**
+     * Used by brand API access controls
+     * @return int[]
+     */
+    public function getCompanyIdsByAdminCorporation(AdministratorInterface $admin): array;
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int;
+
+    public function countByBrand(int $brandId): int;
+
+    /**
+     * @return CompanyInterface[]
+     */
+    public function getLatestByBrandId(int $brandId, int $intemNum = 5): array;
 }

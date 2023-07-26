@@ -1,6 +1,40 @@
 ########################################
 ## Custom models
 ########################################
+Model\Dashboard\DashboardBillableCall:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Dashboard\DashboardClient:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Dashboard\DashboardResidentialDevice:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Dashboard\DashboardRetailAccount:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Dashboard\DashboardUser:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Dashboard\Dashboard:
+  itemOperations:
+    get_my_dasboard:
+      access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+      method: 'GET'
+      path: '/my/dashboard'
+      route_name: 'get_my_dasboard'
+      parameters: []
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - My
+  collectionOperations: []
 
 Model\Token:
   itemOperations: []

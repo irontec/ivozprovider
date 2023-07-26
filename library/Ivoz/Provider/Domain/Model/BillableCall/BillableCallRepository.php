@@ -108,4 +108,9 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      * @return int[]
      */
     public function getIdsInRange(int $fromId, int $untilId, int $limit): array;
+
+    /**
+     * @return BillableCallInterface[]
+     */
+    public function findInitialFourByCompanyId(int $companyId): array;
 }

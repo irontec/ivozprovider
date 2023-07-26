@@ -11,9 +11,9 @@ const InvoiceTemplateSelectOptions: SelectOptionsType = ({
   const InvoiceTemplate = entities.InvoiceTemplate;
 
   return defaultEntityBehavior.fetchFks(
-    InvoiceTemplate.path + '?_order[name]=ASC',
+    `${InvoiceTemplate.path}?_order[name]=ASC`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: item.name });

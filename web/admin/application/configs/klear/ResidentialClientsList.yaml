@@ -43,11 +43,11 @@ production:
           typeIcon: true
           domainUsers: true
           transformationRuleSet: true
-          postalAddress: true
-          postalCode: true
-          town: true
-          province: true
-          countryName: true
+          invoicing.postalAddress: true
+          invoicing.postalCode: true
+          invoicing.town: true
+          invoicing.province: true
+          invoicing.countryName: true
           country: true
           outgoingDdiRule: true
           registryData: true
@@ -182,11 +182,11 @@ production:
         type: "residential"
         <<: *forcedBrand
         invoicing.nif: '12345678-Z'
-        postalAddress: 'Postal address'
-        postalCode: 'PC'
-        town: 'Town'
-        countryName: 'Country'
-        province: 'Province'
+        invoicing.postalAddress: 'Postal address'
+        invoicing.postalCode: 'PC'
+        invoicing.town: 'Town'
+        invoicing.countryName: 'Country'
+        invoicing.province: 'Province'
 
     residentialClientsEdit_screen: &residentialClientsEdit_screenLink
       <<: *ResidentialClients

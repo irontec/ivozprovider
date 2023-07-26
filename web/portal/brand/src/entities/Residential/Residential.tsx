@@ -1,8 +1,8 @@
-import Company from '../Company/Company';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import HouseIcon from '@mui/icons-material/House';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import HouseIcon from '@mui/icons-material/House';
+
+import Company from '../Company/Company';
 
 const Residential: EntityInterface = {
   ...Company,
@@ -18,16 +18,16 @@ const Residential: EntityInterface = {
     type: 'residential',
   },
   icon: HouseIcon,
+  link: '/doc/en/administration_portal/brand/clients/residential.html',
   title: _('Residential', { count: 2 }),
   localPath: '/residential',
   columns: [
     'name',
-    'invocing.nif',
+    'invoicing.nif',
     'billingMethod',
     'outgoingDdi',
     'featureIds',
   ],
-  foreignKeyGetter,
 };
 
 export default Residential;

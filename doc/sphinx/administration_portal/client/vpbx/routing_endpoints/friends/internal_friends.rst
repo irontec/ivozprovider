@@ -1,7 +1,9 @@
+.. _internal_friends:
+
 Internal friends
 ================
 
-Internal friends allows a vPBX client to call to **Extensions** of another vPBX client in the same brand.
+Internal friends allows a vPBX client to call to **Extensions** of another vPBX client in the same :ref:`Corporation <corporations>`.
 
 .. important:: Only extensions in :ref:`Extensions <extensions>` section.
 
@@ -37,7 +39,7 @@ These are the configurable settings of *internal friends*:
         Choose "IntervPBX" for internal friends.
 
     Target Client
-        vPBX client inside the same brand you want to connect.
+        vPBX client inside the same :ref:`corporation <corporations>` you want to connect.
 
     Fallback Outgoing DDI
         If called extension causes an external call, this DDI will be used as source number.
@@ -56,7 +58,7 @@ Summary of internal friends
 These are key points to understand *internal friends*:
 
 - They have been designed to allow users from a vPBX to call to extensions (normally users)
-  of another vPBX of the same brand.
+  of another vPBX of the same :ref:`corporation <corporations>`.
 
 - Usually they will allow user-user calls.
 

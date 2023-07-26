@@ -15,16 +15,16 @@ Feature: Retrieve fixed costs
       """
       [
           {
-              "name": "Monitoring",
-              "description": "Something",
-              "cost": 1,
-              "id": 1
-          },
-          {
               "name": "24x7",
               "description": "Something",
               "cost": 100,
               "id": 2
+          },
+          {
+              "name": "Monitoring",
+              "description": "Something",
+              "cost": 1,
+              "id": 1
           }
       ]
       """

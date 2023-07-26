@@ -2,12 +2,11 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
+
 import Status from '../RetailAccount/Field/Status';
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
-import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
-import selectOptions from './SelectOptions';
-import Form from './Form';
 import Password from '../Terminal/Field/Password';
+import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
 
 const properties: ResidentialDeviceProperties = {
   name: {
@@ -15,7 +14,7 @@ const properties: ResidentialDeviceProperties = {
     pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
   },
   domainName: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   description: {
     label: _('Description'),
@@ -192,7 +191,7 @@ const properties: ResidentialDeviceProperties = {
     ),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     null: _("Client's default"),
   },
   statusIcon: {
@@ -251,8 +250,9 @@ const properties: ResidentialDeviceProperties = {
 const residentialDevice: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplications,
+  link: '/doc/en/administration_portal/client/residential/residential_devices.html',
   iden: 'ResidentialDevice',
-  title: _('Residential device', { count: 2 }),
+  title: _('Residential Device', { count: 2 }),
   path: '/residential_devices',
   properties,
   columns: ['name', 'domainName', 'description', 'statusIcon'],
@@ -261,10 +261,16 @@ const residentialDevice: EntityInterface = {
     iden: 'ResidentialDevices',
   },
   toStr: (row) => (row?.name as string) || '',
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default residentialDevice;

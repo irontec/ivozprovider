@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type TerminalPropertyList<T> = {
+  id?: T;
   name?: T;
   mac?: T;
   lastProvisionDate?: T;

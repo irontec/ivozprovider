@@ -1,12 +1,20 @@
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+  MarshallerValues,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+import FriendsPattern from '../FriendsPattern/FriendsPattern';
+import Password from '../Terminal/Field/Password';
 import StatusIcon from './Field/StatusIcon';
-import Form from './Form';
-import { FriendProperties } from './FriendProperties';
-import Password from 'entities/Terminal/Field/Password';
-import selectOptions from './SelectOptions';
+import { FriendProperties, FriendPropertyList } from './FriendProperties';
 
 const properties: FriendProperties = {
   name: {
@@ -15,7 +23,7 @@ const properties: FriendProperties = {
     required: true,
   },
   domain: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   description: {
     label: _('Description'),
@@ -24,9 +32,9 @@ const properties: FriendProperties = {
   transport: {
     label: _('Transport'),
     enum: {
-      udp: _('UDP'),
-      tcp: _('TCP'),
-      tls: _('TLS'),
+      udp: 'UDP',
+      tcp: 'TCP',
+      tls: 'TLS',
     },
   },
   ip: {
@@ -48,7 +56,7 @@ const properties: FriendProperties = {
     component: Password,
   },
   callAcl: {
-    label: _('Call ACL'),
+    label: _('Call ACL', { count: 1 }),
     null: _('Allow all outgoing calls'),
   },
   transformationRuleSet: {
@@ -74,31 +82,31 @@ const properties: FriendProperties = {
   allow: {
     label: _('Allowed audio codecs'),
     enum: {
-      alaw: _('alaw - G.711 a-law'),
-      ulaw: _('ulaw - G.711 u-law'),
-      gsm: _('gsm - GSM'),
-      speex: _('speex - SpeeX 32khz'),
-      g722: _('g722 - G.722'),
-      g726: _('g726 - G.726 RFC3551'),
-      g729: _('g729 - G.729A'),
-      ilbc: _('ilbc - iLBC'),
-      opus: _('opus - Opus codec'),
+      alaw: 'alaw - G.711 a-law',
+      ulaw: 'ulaw - G.711 u-law',
+      gsm: 'gsm - GSM',
+      speex: 'speex - SpeeX 32khz',
+      g722: 'g722 - G.722',
+      g726: 'g726 - G.726 RFC3551',
+      g729: 'g729 - G.729A',
+      ilbc: 'ilbc - iLBC',
+      opus: 'opus - Opus codec',
     },
     default: 'alaw',
   },
   directMediaMethod: {
     label: _('CallerID update method'),
     enum: {
-      invite: _('invite'),
-      update: _('update'),
+      invite: 'invite',
+      update: 'update',
     },
     default: 'update',
   },
   calleridUpdateHeader: {
     label: _('CallerID update header'),
     enum: {
-      pai: _('P-Asserted-Identity (PAI)'),
-      rpid: _('Remote-Party-ID (RPID)'),
+      pai: 'P-Asserted-Identity (PAI)',
+      rpid: 'Remote-Party-ID (RPID)',
     },
     default: 'pai',
   },
@@ -152,7 +160,7 @@ const properties: FriendProperties = {
           'callACL',
           'rtpEncryption',
         ],
-        hide: ['multiContact'],
+        hide: ['multiContact', 'interCompany'],
       },
       no: {
         show: [
@@ -168,12 +176,11 @@ const properties: FriendProperties = {
           'rtpEncryption',
           'multiContact',
         ],
-        hide: ['ip', 'port', 'transport'],
+        hide: ['ip', 'port', 'transport', 'interCompany'],
       },
       intervpbx: {
         show: [],
         hide: [
-          'name',
           'ip',
           'port',
           'transport',
@@ -206,7 +213,7 @@ const properties: FriendProperties = {
     ),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     default: '__null__',
     null: _("Client's default"),
   },
@@ -255,13 +262,56 @@ const properties: FriendProperties = {
     label: _('Status'),
     component: StatusIcon,
   },
+  interCompany: {
+    label: _('Target client'),
+    required: true,
+    null: _('Not configured'),
+    default: '__null__',
+  },
+};
+
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  if (row.directConnectivity === 'intervpbx' && isEntityItem(routeMapItem)) {
+    const actionsToHide = [FriendsPattern.iden];
+
+    if (actionsToHide.includes(routeMapItem.entity.iden)) {
+      return (
+        <ChildEntityLink
+          row={row}
+          routeMapItem={routeMapItem}
+          disabled={true}
+        />
+      );
+    }
+  }
+
+  return DefaultChildDecorator(props);
 };
 
 const columns = ['name', 'domain', 'description', 'priority', 'statusIcon'];
 
-const friend: EntityInterface = {
+export const marshaller = (
+  values: FriendPropertyList<EntityValue>,
+  properties: PartialPropertyList
+): MarshallerValues => {
+  const isInterVpbx =
+    (values?.directConnectivity as string | undefined) === 'intervpbx';
+
+  if (isInterVpbx) {
+    values.name = '';
+  }
+
+  const response = defaultEntityBehavior.marshaller(values, properties);
+
+  return response;
+};
+
+const Friend: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FavoriteIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/friends/index.html',
   iden: 'Friend',
   title: _('Friend', { count: 2 }),
   path: '/friends',
@@ -271,11 +321,19 @@ const friend: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Friends',
   },
-  Form,
   toStr: (row) => (row?.name as string) || '',
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  ChildDecorator,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  marshaller,
 };
 
-export default friend;
+export default Friend;

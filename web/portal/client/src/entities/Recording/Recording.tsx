@@ -1,17 +1,17 @@
-import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
+
 import Type from './Field/Type';
 import { RecordingProperties } from './RecordingProperties';
-import View from './View';
 
 const properties: RecordingProperties = {
   callid: {
-    label: _('Callid'),
+    label: 'Callid',
   },
   calldate: {
-    label: _('Calldate'),
+    label: _('Call date'),
   },
   duration: {
     label: _('Duration'),
@@ -26,7 +26,7 @@ const properties: RecordingProperties = {
     label: _('Type'),
     enum: {
       ondemand: _('On-demand'),
-      ddi: _('DDI'),
+      ddi: _('DDI', { count: 1 }),
     },
   },
   typeGhost: {
@@ -44,6 +44,7 @@ const columns = ['calldate', 'typeGhost', 'caller', 'callee', 'duration'];
 const recording: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsVoiceIcon,
+  link: '/doc/en/administration_portal/client/vpbx/calls/call_recordings.html',
   iden: 'Recording',
   title: _('Recording', { count: 2 }),
   path: '/recordings',
@@ -53,7 +54,11 @@ const recording: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Recordings',
   },
-  View,
+  View: async () => {
+    const module = await import('./View');
+
+    return module.default;
+  },
 };
 
 export default recording;

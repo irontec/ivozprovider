@@ -15,9 +15,9 @@ const CompanyResidentialDeviceSelectOptions: SelectOptionsType<
   const companyId = customProps?.companyId;
 
   return defaultEntityBehavior.fetchFks(
-    ResidentialDevice.path + `?company[]=${companyId}`,
+    `${ResidentialDevice.path}?company[]=${companyId}`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = item.name;

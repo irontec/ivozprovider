@@ -12,14 +12,15 @@ const TransformationRuleSetSelectOptions: SelectOptionsType = ({
   const language = getI18n().language.substring(0, 2);
 
   const getAction = store.getActions().api.get;
+
   return getAction({
-    path: TransformationRuleSet.path + `?_order[name.${[language]}]=ASC`,
+    path: `${TransformationRuleSet.path}?_order[name.${[language]}]=ASC`,
     params: {
       _pagination: false,
       _itemsPerPage: 1000,
       _properties: ['id', 'name'],
     },
-    successCallback: async (data: any) => {
+    successCallback: async (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: item.name[language] });

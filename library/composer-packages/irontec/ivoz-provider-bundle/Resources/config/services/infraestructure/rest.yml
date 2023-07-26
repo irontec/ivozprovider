@@ -21,6 +21,10 @@ services:
     tags:
       - { name: kernel.event_listener, event: kernel.request, priority: 5 }
 
+  Ivoz\Provider\Infrastructure\Api\Jwt\JWTCreatedListener:
+    tags:
+      - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+
 when@test:
   services:
     _defaults:

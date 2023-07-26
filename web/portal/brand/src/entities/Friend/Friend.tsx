@@ -1,12 +1,10 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { FriendProperties } from './FriendProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
+import { FriendProperties, FriendPropertyList } from './FriendProperties';
 
 const properties: FriendProperties = {
   name: {
@@ -18,13 +16,13 @@ const properties: FriendProperties = {
   transport: {
     label: _('Transport'),
     enum: {
-      udp: _('UDP'),
-      tcp: _('TCP'),
-      tls: _('Tls'),
+      udp: 'UDP',
+      tcp: 'TCP',
+      tls: 'TLS',
     },
   },
   ip: {
-    label: _('Ip'),
+    label: _('IP address'),
   },
   port: {
     label: _('Port'),
@@ -70,7 +68,7 @@ const properties: FriendProperties = {
     label: _('Id'),
   },
   company: {
-    label: _('Company', { count: 1 }),
+    label: _('Client', { count: 1 }),
   },
   transformationRuleSet: {
     label: _('Numeric transformation', { count: 1 }),
@@ -101,12 +99,28 @@ const Friend: EntityInterface = {
   iden: 'Friend',
   title: _('Friend', { count: 2 }),
   path: '/friends',
-  toStr: (row: any) => row.name,
+  toStr: (row: FriendPropertyList<EntityValues>) => `${row.name}`,
   properties,
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Friend;

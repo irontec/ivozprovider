@@ -1,12 +1,13 @@
-import InsertLinkIcon from '@mui/icons-material/InsertLink';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { WebPortalProperties } from './WebPortalProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import InsertLinkIcon from '@mui/icons-material/InsertLink';
+
+import {
+  WebPortalProperties,
+  WebPortalPropertyList,
+} from './WebPortalProperties';
 
 const properties: WebPortalProperties = {
   url: {
@@ -92,21 +93,44 @@ const properties: WebPortalProperties = {
     label: _('Logo'),
     type: 'file',
   },
+  newUI: {
+    label: _('New Interface'),
+    helpText: _(
+      `You can always access classic interface adding /classic to URL`
+    ),
+  },
 };
 
 const WebPortal: EntityInterface = {
   ...defaultEntityBehavior,
   icon: InsertLinkIcon,
+  link: '/doc/en/administration_portal/brand/settings/client_portals.html',
   iden: 'WebPortal',
-  title: _('Company Portal', { count: 2 }),
+  title: _('Client Portal', { count: 2 }),
   path: '/web_portals',
-  toStr: (row: any) => row.id,
+  toStr: (row: WebPortalPropertyList<EntityValue>) => `${row.id}`,
   properties,
   columns: ['name', 'urlType', 'url', 'logo'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default WebPortal;

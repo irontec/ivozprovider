@@ -1,8 +1,7 @@
-import Company from '../Company/Company';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import Form from './Form';
+
+import Company from '../Company/Company';
 
 const Retail = {
   ...Company,
@@ -15,6 +14,7 @@ const Retail = {
     },
   },
   icon: ShoppingBasketIcon,
+  link: '/doc/en/administration_portal/brand/clients/retail.html',
   title: _('Retail', { count: 2 }),
   localPath: '/retail',
   columns: [
@@ -26,8 +26,11 @@ const Retail = {
     'codecIds',
     'featureIds',
   ],
-  foreignKeyGetter,
-  Form,
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
 };
 
 export default Retail;

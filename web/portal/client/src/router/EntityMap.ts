@@ -1,11 +1,18 @@
-import entities from '../entities';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { EntityAclType } from '@irontec/ivoz-ui';
 import routeMapParser, {
   RouteMap,
   RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import AltRouteIcon from '@mui/icons-material/AltRoute';
+import DialpadIcon from '@mui/icons-material/Dialpad';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import PlayLessonIcon from '@mui/icons-material/PlayLesson';
+import PlumbingIcon from '@mui/icons-material/Plumbing';
+import WalletIcon from '@mui/icons-material/Wallet';
 import { AboutMe, ClientFeatures } from 'store/clientSession/aboutMe';
-import { EntityAclType } from '@irontec/ivoz-ui';
+
+import entities from '../entities';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
 type aclOverrideType = (aboutMe: AboutMe) => EntityAclType;
@@ -18,122 +25,150 @@ export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 const getEntityMap = (): ExtendedRouteMap => {
   const map: ExtendedRouteMap = [
     {
-      label: _('General'),
+      entity: entities.User,
+      divider: true,
+      isAccessible: (aboutMe) => aboutMe.vpbx,
       children: [
         {
-          entity: entities.User,
-          isAccessible: (aboutMe) => aboutMe.vpbx,
-          children: [
-            {
-              entity: {
-                ...entities.HuntGroupMember,
-                acl: {
-                  iden: entities.HuntGroupMember.acl.iden,
-                  read: true,
-                  detail: false,
-                  create: false,
-                  update: false,
-                  delete: true,
-                },
-              },
-              filterBy: 'user',
-            },
-            {
-              entity: entities.CallForwardSetting,
-              filterBy: 'user',
-            },
-          ],
-        },
-        {
-          entity: entities.ResidentialDevice,
-          isAccessible: (aboutMe) => aboutMe.residential,
-          children: [
-            {
-              entity: entities.CallForwardSetting,
-              filterBy: 'residentialDevice',
-            },
-          ],
-        },
-        {
-          entity: entities.Terminal,
-          isAccessible: (aboutMe) => aboutMe.vpbx,
-        },
-        {
-          entity: entities.Extension,
-          isAccessible: (aboutMe) => aboutMe.vpbx,
-        },
-        {
-          entity: entities.RetailAccount,
-          isAccessible: (aboutMe) => aboutMe.retail,
-          children: [
-            {
-              entity: entities.CallForwardSetting,
-              filterBy: 'retailAccount',
-              fixedValues: {
-                callTypeFilter: 'both',
-              },
-            },
-            {
-              entity: entities.Ddi,
-              filterBy: 'retailAccount',
-            },
-          ],
-        },
-        {
-          entity: entities.Ddi,
-          isAccessible: (aboutMe) =>
-            aboutMe.vpbx || aboutMe.retail || aboutMe.residential,
-          children: [
-            {
-              entity: entities.BillableCall,
-              filterBy: 'ddi',
-            },
-          ],
-        },
-        {
-          entity: entities.Fax,
-          isAccessible: (aboutMe) => {
-            return aboutMe.features.includes(ClientFeatures.faxes);
-          },
-          children: [
-            {
-              entity: entities.FaxesOut,
-              filterBy: 'fax',
-              filterValues: {
-                'type[exact]': 'Out',
-              },
-            },
-            {
-              entity: entities.FaxesIn,
-              filterBy: 'fax',
-              filterValues: {
-                'type[exact]': 'In',
-              },
-            },
-          ],
-        },
-        {
-          entity: entities.CompanyService,
-          isAccessible: (aboutMe) => aboutMe.vpbx,
-        },
-        {
-          entity: entities.Contact,
-          isAccessible: (aboutMe) => aboutMe.vpbx,
+          entity: entities.CallForwardSetting,
+          filterBy: 'user',
         },
         {
           entity: {
-            ...entities.RatingProfile,
+            ...entities.HuntGroupMember,
             acl: {
-              ...entities.RatingProfile.acl,
+              iden: entities.HuntGroupMember.acl.iden,
+              read: true,
               detail: false,
+              create: false,
+              update: false,
+              delete: true,
             },
           },
-          isAccessible: (aboutMe) => aboutMe.billingInfo,
+          filterBy: 'user',
         },
       ],
     },
     {
+      entity: entities.ResidentialDevice,
+      divider: true,
+      isAccessible: (aboutMe) => aboutMe.residential,
+      children: [
+        {
+          entity: entities.CallForwardSetting,
+          filterBy: 'residentialDevice',
+        },
+      ],
+    },
+    {
+      entity: entities.RetailAccount,
+      divider: true,
+      isAccessible: (aboutMe) => aboutMe.retail,
+      children: [
+        {
+          entity: entities.CallForwardSetting,
+          filterBy: 'retailAccount',
+          fixedValues: {
+            callTypeFilter: 'both',
+          },
+        },
+        {
+          entity: entities.Ddi,
+          filterBy: 'retailAccount',
+        },
+      ],
+    },
+    {
+      entity: entities.Voicemail,
+      isAccessible: (aboutMe) => aboutMe.residential,
+      aclOverride: (aboutMe) => {
+        return {
+          iden: entities.Voicemail.acl.iden,
+          read: true,
+          detail: false,
+          create: aboutMe.vpbx,
+          update: true,
+          delete: aboutMe.vpbx,
+        };
+      },
+      children: [
+        {
+          entity: entities.VoicemailMessage,
+          filterBy: 'voicemail',
+        },
+      ],
+    },
+    {
+      entity: entities.Fax,
+      isAccessible: (aboutMe) => {
+        return (
+          aboutMe.residential && aboutMe.features.includes(ClientFeatures.faxes)
+        );
+      },
+      children: [
+        {
+          entity: entities.FaxesOut,
+          filterBy: 'fax',
+          filterValues: {
+            'type[exact]': 'Out',
+          },
+        },
+        {
+          entity: entities.FaxesIn,
+          filterBy: 'fax',
+          filterValues: {
+            'type[exact]': 'In',
+          },
+        },
+      ],
+    },
+    {
+      entity: entities.Terminal,
+      isAccessible: (aboutMe) => aboutMe.vpbx,
+    },
+    {
+      entity: entities.Extension,
+      isAccessible: (aboutMe) => aboutMe.vpbx,
+    },
+    {
+      entity: entities.Ddi,
+      isAccessible: (aboutMe) => aboutMe.residential,
+      divider: true,
+      children: [
+        {
+          entity: entities.BillableCall,
+          filterBy: 'ddi',
+        },
+      ],
+    },
+    {
+      entity: entities.Ddi,
+      isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.retail,
+      children: [
+        {
+          entity: entities.BillableCall,
+          filterBy: 'ddi',
+        },
+      ],
+    },
+    {
+      entity: entities.MatchList,
+      isAccessible: (aboutMe) => aboutMe.residential,
+      children: [
+        {
+          entity: entities.MatchListPattern,
+          filterBy: 'matchList',
+        },
+      ],
+    },
+    {
+      entity: entities.ExternalCallFilter,
+      isAccessible: (aboutMe) => aboutMe.residential,
+    },
+    {
       label: _('Routing endpoints'),
+      icon: AltRouteIcon,
+      isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
           entity: entities.Ivr,
@@ -180,10 +215,6 @@ const getEntityMap = (): ExtendedRouteMap => {
           ],
         },
         {
-          entity: entities.Invoice,
-          isAccessible: (aboutMe) => aboutMe.billingInfo,
-        },
-        {
           entity: entities.Friend,
           isAccessible: (aboutMe) =>
             aboutMe.vpbx && aboutMe.features.includes(ClientFeatures.friends),
@@ -224,10 +255,37 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           ],
         },
+        {
+          entity: entities.Fax,
+          isAccessible: (aboutMe) => {
+            return (
+              !aboutMe.residential &&
+              aboutMe.features.includes(ClientFeatures.faxes)
+            );
+          },
+          children: [
+            {
+              entity: entities.FaxesOut,
+              filterBy: 'fax',
+              filterValues: {
+                'type[exact]': 'Out',
+              },
+            },
+            {
+              entity: entities.FaxesIn,
+              filterBy: 'fax',
+              filterValues: {
+                'type[exact]': 'In',
+              },
+            },
+          ],
+        },
       ],
     },
     {
       label: _('Routing tools'),
+      icon: PlumbingIcon,
+      isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
           entity: entities.ExternalCallFilter,
@@ -269,6 +327,8 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('User configuration'),
+      icon: ManageAccountsIcon,
+      isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
           entity: entities.OutgoingDdiRule,
@@ -302,6 +362,8 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Multimedia'),
+      icon: PlayLessonIcon,
+      isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
           entity: entities.Locution,
@@ -314,7 +376,37 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
+      entity: entities.CompanyService,
+      divider: true,
+      isAccessible: (aboutMe) => aboutMe.vpbx,
+    },
+    {
+      entity: entities.Contact,
+      isAccessible: (aboutMe) => aboutMe.vpbx,
+    },
+    {
+      label: _('Billing'),
+      icon: WalletIcon,
+      children: [
+        {
+          entity: {
+            ...entities.RatingProfile,
+            acl: {
+              ...entities.RatingProfile.acl,
+              detail: false,
+            },
+          },
+          isAccessible: (aboutMe) => aboutMe.billingInfo,
+        },
+        {
+          entity: entities.Invoice,
+          isAccessible: (aboutMe) => aboutMe.billingInfo,
+        },
+      ],
+    },
+    {
       label: _('Calls'),
+      icon: DialpadIcon,
       children: [
         {
           entity: entities.UsersCdr,
@@ -325,6 +417,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.BillableCall,
+          children: [...Object.values(entities.BillableCall.customActions)],
         },
         {
           entity: entities.CallCsvScheduler,

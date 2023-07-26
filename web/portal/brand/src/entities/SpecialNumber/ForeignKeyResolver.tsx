@@ -2,9 +2,10 @@ import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityB
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import { getI18n } from 'react-i18next';
-import { SpecialNumberPropertiesList } from './SpecialNumberProperties';
-import { CountryPropertyList } from '../Country/CountryProperties';
 import store from 'store';
+
+import { CountryPropertyList } from '../Country/CountryProperties';
+import { SpecialNumberPropertiesList } from './SpecialNumberProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
 const foreignKeyResolver: foreignKeyResolverType = async function ({
@@ -29,6 +30,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
         ...entities.Country,
         toStr: (row: CountryPropertyList) => {
           const language = getI18n().language.substring(0, 2);
+
           return `${row.name[language]} (${row.countryCode})`;
         },
       },

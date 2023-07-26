@@ -15,6 +15,13 @@ Feature: Retrieve friends status
       """
       [
           {
+              "name": "InterCompany1_2",
+              "id": 2,
+              "company": 2,
+              "domainName": "test.irontec.com",
+              "status": []
+          },
+          {
               "name": "testFriend",
               "id": 1,
               "company": 1,

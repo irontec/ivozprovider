@@ -1,6 +1,7 @@
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 
 const ConditionalRoutesCondition: EntityInterface = {
   ...defaultEntityBehavior,
@@ -12,7 +13,7 @@ const ConditionalRoutesCondition: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'ConditionalRoutesConditionsRelSchedules',
   },
-  toStr: (row: any) => row.id,
+  toStr: (row: EntityValues) => `${row.id}`,
   properties: {},
 };
 

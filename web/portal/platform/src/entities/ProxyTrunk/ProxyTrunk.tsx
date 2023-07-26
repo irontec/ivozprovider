@@ -1,25 +1,24 @@
-import CallMissedOutgoingIcon from '@mui/icons-material/CallMissedOutgoing';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import CallMissedOutgoingIcon from '@mui/icons-material/CallMissedOutgoing';
+
 import {
   ProxyTrunkProperties,
   ProxyTrunkPropertyList,
 } from './ProxyTrunkProperties';
-import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
-import selectOptions from './SelectOptions';
-import Form from './Form';
 
 const properties: ProxyTrunkProperties = {
   name: {
     label: _('Name'),
   },
   ip: {
-    label: _('IP'),
+    label: _('IP Address'),
   },
   id: {
     label: _('Id'),
@@ -38,6 +37,7 @@ const ChildDecorator: ChildDecoratorType = (props) => {
       return null;
     }
   }
+
   return DefaultChildDecorator(props);
 };
 
@@ -48,6 +48,7 @@ const ProxyTrunk: EntityInterface = {
     create: true,
   },
   icon: CallMissedOutgoingIcon,
+  link: '/doc/en/administration_portal/platform/infrastructure/proxy_trunks.html',
   iden: 'ProxyTrunk',
   title: _('Proxy Trunk', { count: 2 }),
   path: '/proxy_trunks',
@@ -55,9 +56,17 @@ const ProxyTrunk: EntityInterface = {
     `${row.name} (${row.ip})`,
   columns: ['name', 'ip'],
   properties,
-  selectOptions,
   ChildDecorator,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default ProxyTrunk;

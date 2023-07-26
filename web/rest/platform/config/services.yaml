@@ -24,9 +24,15 @@ services:
     DataFixtures\:
         resource: '../../../../library/DataFixtures/*'
 
+    Service\:
+        resource: '../src/Service/*'
+
     Service\UserProvider:
         arguments:
             $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+
+    Service\AdministratorRelPublicEntity\SwitchAcl:
+        class: Ivoz\Provider\Domain\Service\AdministratorRelPublicEntitySwitchAcl
 
     Service\AuthEndpointDecorator:
         decorates: 'api_platform.swagger.normalizer.documentation'

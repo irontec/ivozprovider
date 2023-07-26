@@ -106,8 +106,19 @@ class Company extends CompanyAbstract implements CompanyInterface
             true
         );
 
-        if ($this->getOnDemandRecord() && ! $allowedOndemandRecord) {
+        if ($this->getOnDemandRecord() && !$allowedOndemandRecord) {
             throw new \DomainException('On demand record is only allowed on vpbx and residential clients');
+        }
+
+        $corporation = $this->getCorporation();
+
+        if (!is_null($corporation) && $this->gettype() !== self::TYPE_VPBX) {
+            throw new \DomainException(
+                sprintf(
+                    'Only %s clients can be part of a corporation.',
+                    self::TYPE_VPBX
+                )
+            );
         }
     }
 

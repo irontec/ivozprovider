@@ -5,6 +5,8 @@ import defaultEntityBehavior, {
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
+import { ClientTypes } from '../../Company/ClientFeatures';
+
 const FeatureSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
@@ -21,10 +23,10 @@ const FeatureSelectOptions: SelectOptionsType = ({
       const featuresToIgnore = [
         'billing',
         'invoices',
-        'residential',
-        'retail',
-        'vpbx',
-        'wholesale',
+        ClientTypes.residential,
+        ClientTypes.retail,
+        ClientTypes.vpbx,
+        ClientTypes.wholesale,
       ];
 
       for (const item of data) {

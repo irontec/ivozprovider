@@ -15,5 +15,5 @@ interface WebPortalRepository extends ObjectRepository, Selectable
      * @param string $serverName
      * @return WebPortalInterface | null
      */
-    public function findUserUrlByServerName(string $serverName);
+    public function findByServerNameAndType(string $serverName, string $type);
 }

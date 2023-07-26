@@ -19,7 +19,7 @@ Feature: Retrieve companies
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
               "maxDailyUsage": 2,
-              "currentDayUsage": 1,
+              "currentDayUsage": -1,
               "billingMethod": "prepaid",
               "balance": 1.2,
               "id": 1,
@@ -27,7 +27,11 @@ Feature: Retrieve companies
                   "nif": "12345678A"
               },
               "outgoingDdi": null,
+              "corporation": 1,
               "domainName": "127.0.0.1",
+              "currencySymbol": "€",
+              "currentDayMaxUsage": "Unavailable",
+              "accountStatus": "Unavailable",
               "featureIds": [
                   1,
                   2,
@@ -44,7 +48,7 @@ Feature: Retrieve companies
               "name": "Irontec Test Company",
               "domainUsers": "test.irontec.com",
               "maxDailyUsage": 1000000,
-              "currentDayUsage": 0,
+              "currentDayUsage": -1,
               "billingMethod": "postpaid",
               "balance": 0,
               "id": 2,
@@ -52,7 +56,34 @@ Feature: Retrieve companies
                   "nif": "12345678-Z"
               },
               "outgoingDdi": null,
+              "corporation": 1,
               "domainName": "test.irontec.com",
+              "currencySymbol": "€",
+              "currentDayMaxUsage": "Unavailable",
+              "accountStatus": "Unavailable",
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
+          },
+          {
+              "type": "residential",
+              "name": "Residential Company",
+              "domainUsers": null,
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": -1,
+              "billingMethod": "postpaid",
+              "balance": 0,
+              "id": 4,
+              "invoicing": {
+                  "nif": "12345679-Z"
+              },
+              "outgoingDdi": null,
+              "corporation": null,
+              "domainName": "retail.irontec.com",
+              "currencySymbol": "€",
+              "currentDayMaxUsage": "Unavailable",
+              "accountStatus": "Unavailable",
               "featureIds": [],
               "geoIpAllowedCountries": [],
               "routingTagIds": [],
@@ -63,7 +94,7 @@ Feature: Retrieve companies
               "name": "Retail Company",
               "domainUsers": null,
               "maxDailyUsage": 1000000,
-              "currentDayUsage": 0,
+              "currentDayUsage": -1,
               "billingMethod": "postpaid",
               "balance": 0,
               "id": 3,
@@ -71,31 +102,16 @@ Feature: Retrieve companies
                   "nif": "12345679-Z"
               },
               "outgoingDdi": null,
+              "corporation": null,
               "domainName": "retail.irontec.com",
+              "currencySymbol": "€",
+              "currentDayMaxUsage": "Unavailable",
+              "accountStatus": "Unavailable",
               "featureIds": [],
               "geoIpAllowedCountries": [],
               "routingTagIds": [
                   1
               ],
-              "codecIds": []
-          },
-          {
-              "type": "residential",
-              "name": "Residential Company",
-              "domainUsers": null,
-              "maxDailyUsage": 1000000,
-              "currentDayUsage": 0,
-              "billingMethod": "postpaid",
-              "balance": 0,
-              "id": 4,
-              "invoicing": {
-                  "nif": "12345679-Z"
-              },
-              "outgoingDdi": null,
-              "domainName": "retail.irontec.com",
-              "featureIds": [],
-              "geoIpAllowedCountries": [],
-              "routingTagIds": [],
               "codecIds": []
           }
       ]
@@ -206,6 +222,11 @@ Feature: Retrieve companies
               "name": "CallCsv notification",
               "type": "callCsv",
               "id": 2
+          },
+          "corporation": {
+              "name": "Irontec Test Corporation",
+              "description": "Irontec Test Desc Corporation",
+              "id": 1
           },
           "domainName": "127.0.0.1",
           "featureIds": [

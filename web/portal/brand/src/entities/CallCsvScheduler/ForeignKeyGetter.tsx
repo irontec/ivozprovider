@@ -1,18 +1,19 @@
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { CallCsvSchedulerPropertyList } from './CallCsvSchedulerProperties';
-import { CallCsvSelectOptions } from '../NotificationTemplate/SelectOptions';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+
 import {
-  VpbxSelectOptions,
-  RetailSelectOptions,
   ResidentialSelectOptions,
+  RetailSelectOptions,
+  VpbxSelectOptions,
   WholesaleSelectOptions,
 } from '../Company/SelectOptions';
+import { CallCsvSelectOptions } from '../NotificationTemplate/SelectOptions';
+import { CallCsvSchedulerPropertyList } from './CallCsvSchedulerProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
   entityService,
-}): Promise<any> => {
+}): Promise<unknown> => {
   const response: CallCsvSchedulerPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({
@@ -36,35 +37,35 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
   });
 
   promises[promises.length] = CallCsvSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.callCsvNotificationTemplate = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = VpbxSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.vpbx = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = RetailSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.retail = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = ResidentialSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.residential = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = WholesaleSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.wholesale = options;
     },
     cancelToken,

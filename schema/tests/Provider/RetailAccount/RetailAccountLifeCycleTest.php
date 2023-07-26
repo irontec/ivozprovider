@@ -116,6 +116,7 @@ class RetailAccountLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             RetailAccount::class,
             PsEndpoint::class,
+            PsIdentify::class,
         ]);
     }
 

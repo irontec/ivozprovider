@@ -1,12 +1,11 @@
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
+  Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const DefaultEntityForm = defaultEntityBehavior.Form;
-
   const groups: Array<FieldsetGroups> = [
     {
       legend: _('Basic Configuration'),

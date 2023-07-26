@@ -2,6 +2,7 @@ import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+
 import { MatchListPatternPropertyList } from '../MatchListPatternProperties';
 
 type MatchListPatternValues = MatchListPatternPropertyList<
@@ -16,7 +17,7 @@ const Target: TargetGhostType = (props): JSX.Element => {
   const { type, numbervalue, numberCountry, regexp } = values;
 
   if (type === 'number') {
-    return <span>{numberCountry + ' ' + numbervalue}</span>;
+    return <span>{`${numberCountry} ${numbervalue}`}</span>;
   }
 
   return <span>{regexp as React.ReactNode}</span>;

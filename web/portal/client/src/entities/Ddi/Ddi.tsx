@@ -1,12 +1,9 @@
-import DialpadIcon from '@mui/icons-material/Dialpad';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { DdiProperties } from './DdiProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import DialpadIcon from '@mui/icons-material/Dialpad';
+
+import { DdiProperties, DdiPropertyList } from './DdiProperties';
 import RouteType from './Field/RouteType';
 
 const allRoutableFields = [
@@ -24,28 +21,30 @@ const allRoutableFields = [
 
 const properties: DdiProperties = {
   ddi: {
-    label: _('DDI'),
+    label: _('DDI', { count: 1 }),
   },
   description: {
     label: _('Description'),
   },
   externalCallFilter: {
-    label: _('External call filter'),
+    label: _('External call filter', { count: 1 }),
+    default: '__null__',
+    null: _('Unassigned'),
   },
   routeType: {
     label: _('Route type'),
     component: RouteType,
     enum: {
-      user: _('User'),
-      ivr: _('IVR'),
-      huntGroup: _('Hunt Group'),
-      fax: _('Fax'),
-      conferenceRoom: _('Conference room'),
-      friend: _('Friend'),
-      queue: _('Queue'),
-      residential: _('Residential Device'),
-      conditional: _('Conditional Route'),
-      retail: _('Retail Account'),
+      user: _('User', { count: 1 }),
+      ivr: _('IVR', { count: 1 }),
+      huntGroup: _('Hunt Group', { count: 1 }),
+      fax: _('Fax', { count: 1 }),
+      conferenceRoom: _('Conference room', { count: 1 }),
+      friend: _('Friend', { count: 1 }),
+      queue: _('Queue', { count: 1 }),
+      residential: _('Residential Device', { count: 1 }),
+      conditional: _('Conditional Route', { count: 1 }),
+      retail: _('Retail Account', { count: 1 }),
     },
     null: _('Unassigned'),
     visualToggle: {
@@ -113,41 +112,41 @@ const properties: DdiProperties = {
     helpText: _('This value will be displayed in the called terminals'),
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
   },
   ivr: {
-    label: _('IVR'),
+    label: _('IVR', { count: 1 }),
   },
   huntGroup: {
-    label: _('Hunt Group'),
+    label: _('Hunt Group', { count: 1 }),
   },
   fax: {
-    label: _('Fax'),
+    label: _('Fax', { count: 1 }),
   },
   conferenceRoom: {
-    label: _('Conference room'),
+    label: _('Conference room', { count: 1 }),
   },
   residentialDevice: {
-    label: _('Residential Device'),
+    label: _('Residential Device', { count: 1 }),
   },
   friendValue: {
     label: _('Friend value'),
   },
   country: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     null: _("Client's default"),
   },
   queue: {
-    label: _('Queue'),
+    label: _('Queue', { count: 1 }),
   },
   conditionalRoute: {
-    label: _('Conditional Route'),
+    label: _('Conditional Route', { count: 1 }),
   },
   retailAccount: {
-    label: _('Retail Account'),
+    label: _('Retail Account', { count: 1 }),
   },
   target: {
     label: _('Target'),
@@ -167,21 +166,36 @@ const columns = [
 const ddi: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DialpadIcon,
+  link: '/doc/en/administration_portal/client/vpbx/ddis.html',
   iden: 'Ddi',
   title: _('DDI', { count: 2 }),
   path: '/ddis',
-  toStr: (row: any) => row.ddie164,
+  toStr: (row: DdiPropertyList<string>) => `${row.ddie164}`,
   columns,
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'DDIs',
   },
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

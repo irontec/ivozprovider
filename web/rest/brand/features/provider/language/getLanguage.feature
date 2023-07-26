@@ -15,13 +15,13 @@ Feature: Retrieve languages
       """
       [
           {
-              "iden": "es",
-              "id": 1,
+              "iden": "ca",
+              "id": 3,
               "name": {
-                  "en": "es",
-                  "es": "es",
-                  "ca": "es",
-                  "it": "es"
+                  "en": "ca",
+                  "es": "ca",
+                  "ca": "ca",
+                  "it": "ca"
               }
           },
           {
@@ -35,13 +35,13 @@ Feature: Retrieve languages
               }
           },
           {
-              "iden": "ca",
-              "id": 3,
+              "iden": "es",
+              "id": 1,
               "name": {
-                  "en": "ca",
-                  "es": "ca",
-                  "ca": "ca",
-                  "it": "ca"
+                  "en": "es",
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
               }
           },
           {

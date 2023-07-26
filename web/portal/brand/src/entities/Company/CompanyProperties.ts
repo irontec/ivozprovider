@@ -9,6 +9,7 @@ export type CompanyPropertyList<T> = {
   name?: T;
   domainUsers?: T;
   maxCalls?: T;
+  currencySymbol?: T;
   maxDailyUsage?: T;
   maxDailyUsageEmail?: T;
   invoicing?: T;
@@ -53,6 +54,7 @@ export type CompanyPropertyList<T> = {
   geoIpAllowedCountries?: T;
   routingTagIds?: T;
   codecIds?: T;
+  corporation?: T;
 };
 
 export type CompanyProperties = CompanyPropertyList<Partial<PropertySpec>>;

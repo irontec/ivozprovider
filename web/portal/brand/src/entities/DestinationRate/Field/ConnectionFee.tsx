@@ -1,7 +1,9 @@
-import withCustomComponentWrapper, {
+import { ScalarProperty } from '@irontec/ivoz-ui';
+import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+
 import { DestinationRatePropertyList } from '../DestinationRateProperties';
 
 type DestinationRateValues = DestinationRatePropertyList<
@@ -12,12 +14,26 @@ type TargetGhostType = PropertyCustomFunctionComponent<
 >;
 
 const ConnectionFee: TargetGhostType = (props): JSX.Element => {
-  const { values } = props;
+  const { values, formFieldFactory, _context, _columnName, property } = props;
   const { connectFee, currencySymbol } = values;
 
   const value = `${connectFee} ${currencySymbol}`;
 
-  return <span>{value}</span>;
+  if (_context === 'read' || !formFieldFactory) {
+    return <span>{value}</span>;
+  }
+
+  const { choices, readOnly } = props;
+
+  const modifiedProperty = { ...property } as ScalarProperty;
+  delete modifiedProperty.component;
+
+  return formFieldFactory.getInputField(
+    _columnName,
+    modifiedProperty,
+    choices,
+    readOnly
+  );
 };
 
-export default withCustomComponentWrapper<DestinationRateValues>(ConnectionFee);
+export default ConnectionFee;

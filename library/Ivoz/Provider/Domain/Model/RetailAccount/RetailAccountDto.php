@@ -192,6 +192,8 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'transformationRuleSetId',
             'outgoingDdiId',
             'password',
+            'multiContact',
+            'fromDomain',
             'status',
         ];
 

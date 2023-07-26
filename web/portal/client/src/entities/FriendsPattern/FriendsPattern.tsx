@@ -1,13 +1,13 @@
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+
 import { FriendsPatternProperties } from './FriendsPatternProperties';
-import Form from './Form';
 
 const properties: FriendsPatternProperties = {
   friend: {
-    label: _('Friend'),
+    label: _('Friend', { count: 1 }),
   },
   name: {
     label: _('Name'),
@@ -31,7 +31,11 @@ const FriendsPattern: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'FriendsPatterns',
   },
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default FriendsPattern;

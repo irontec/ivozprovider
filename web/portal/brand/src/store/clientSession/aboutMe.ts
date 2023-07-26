@@ -1,5 +1,6 @@
-import { action, Action, Thunk, thunk } from 'easy-peasy';
 import axios from 'axios';
+import { Action, action, Thunk, thunk } from 'easy-peasy';
+
 import { AppStore } from '../index';
 
 export interface EntityAcl {
@@ -13,7 +14,20 @@ export interface EntityAcl {
 export interface AboutMe {
   restricted: boolean;
   acls: Array<EntityAcl>;
-  features: Array<string>;
+  features: Array<
+    | 'queues'
+    | 'recordings'
+    | 'faxes'
+    | 'friends'
+    | 'conferences'
+    | 'billing'
+    | 'invoices'
+    | 'progress'
+    | 'residential'
+    | 'wholesale'
+    | 'retail'
+    | 'vpbx'
+  >;
 }
 
 export type AboutMeState = {
@@ -58,7 +72,7 @@ const Acls: AboutMeStore = {
           path: '/my/profile',
           params: {},
           cancelToken: cancelTokenSource.token,
-          successCallback: async (response: any) => {
+          successCallback: async (response) => {
             localStorage.setItem(
               'profile',
               JSON.stringify(response as AboutMe)
@@ -66,7 +80,7 @@ const Acls: AboutMeStore = {
             actions.init();
           },
         });
-      } catch (error: any) {
+      } catch (error) {
         storeActions.auth.setToken(null);
         storeActions.api.setErrorMsg('Unable to load ACLs');
       }

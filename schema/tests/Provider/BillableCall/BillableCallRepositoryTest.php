@@ -31,6 +31,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         $this->it_finds_min_start_time();
         $this->it_finds_ids_in_range();
         $this->it_finds_max_id_until_date();
+        $this->it_finds_initial_four_by_company_id();
     }
 
     private function it_finds_outgoing_call_by_callid()
@@ -380,6 +381,25 @@ class BillableCallRepositoryTest extends KernelTestCase
         $this->assertCount(
             3,
             $ids
+        );
+    }
+
+    private function it_finds_initial_four_by_company_id()
+    {
+        /** @var BillableCallRepository $billableCallRepository */
+        $billableCallRepository = $this->em
+            ->getRepository(BillableCall::class);
+
+        /** @var BillableCallInterface[] $billableCall1 */
+        $billableCalls = $billableCallRepository->findInitialFourByCompanyId(1);
+
+        $this->assertIsArray(
+            $billableCalls
+        );
+
+        $this->assertCount(
+            4,
+            $billableCalls
         );
     }
 }

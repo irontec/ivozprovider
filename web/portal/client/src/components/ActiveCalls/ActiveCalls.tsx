@@ -1,5 +1,6 @@
-import { useDeferredValue } from 'react';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useDeferredValue } from 'react';
+
 import ActiveCallsTable from './ActiveCallsTable';
 import useRealtimeCalls from './useRealtimeCalls';
 
@@ -10,8 +11,7 @@ export default function ActiveCalls(): JSX.Element | null {
 
   return (
     <div>
-      <h3>{_('Active calls')}</h3>
-      {!ready && <div>Loaging</div>}
+      {!ready && <div>{_('Loading')}</div>}
       {ready && <ActiveCallsTable calls={deferredCalls} />}
     </div>
   );

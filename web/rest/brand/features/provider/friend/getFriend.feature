@@ -15,12 +15,22 @@ Feature: Retrieve friends status
       """
       [
           {
+              "name": "InterCompany1_2",
+              "description": "",
+              "priority": 2,
+              "directConnectivity": "intervpbx",
+              "id": 2,
+              "domain": 5,
+              "interCompany": 1
+          },
+          {
               "name": "testFriend",
               "description": "",
               "priority": 1,
               "directConnectivity": "yes",
               "id": 1,
-              "domain": 3
+              "domain": 3,
+              "interCompany": null
           }
       ]
       """

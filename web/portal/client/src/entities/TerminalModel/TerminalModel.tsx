@@ -1,9 +1,10 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import selectOptions from './SelectOptions';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+
+import { TerminalModelPropertyList } from './TerminalModelProperties';
 
 const properties: PartialPropertyList = {};
 
@@ -22,11 +23,13 @@ const terminalModel: EntityInterface = {
   iden: 'TerminalModel',
   title: _('Terminal model', { count: 2 }),
   path: '/terminal_models',
-  toStr: (row: any) => row.name,
+  toStr: (row: TerminalModelPropertyList<string>) => `${row.name}`,
   properties,
   acl,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
 };
 

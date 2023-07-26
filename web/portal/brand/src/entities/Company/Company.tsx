@@ -1,19 +1,18 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { CompanyProperties } from './CompanyProperties';
-import TypeIcon from './Field/TypeIcon';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
 import Actions from './Action';
+import { CompanyProperties, CompanyPropertyList } from './CompanyProperties';
+import TypeIcon from './Field/TypeIcon';
 
 const properties: CompanyProperties = {
   type: {
     label: _('Type'),
     enum: {
-      vpbx: _('Vpbx'),
+      vpbx: _('vPbx'),
       retail: _('Retail'),
       wholesale: _('Wholesale', { count: 1 }),
       residential: _('Residential', { count: 1 }),
@@ -47,7 +46,7 @@ const properties: CompanyProperties = {
   },
   invoicing: {},
   'invoicing.nif': {
-    label: _('Nif'),
+    label: _('TIN'),
     required: false,
   },
   'invoicing.postalAddress': {
@@ -75,7 +74,7 @@ const properties: CompanyProperties = {
     default: 0,
     enum: {
       '0': _('No'),
-      '1': _('yes'),
+      '1': _('Yes'),
     },
     visualToggle: {
       '0': {
@@ -116,7 +115,7 @@ const properties: CompanyProperties = {
   onDemandRecordCode: {
     label: _('Code'),
     maxLength: 3,
-    prefix: <span className="asterisc">*</span>,
+    prefix: <span className='asterisc'>*</span>,
     pattern: new RegExp('[0-9*]+'),
   },
   allowRecordingRemoval: {
@@ -293,6 +292,9 @@ const properties: CompanyProperties = {
   },
   outgoingDdi: {
     label: _('Outgoing DDI'),
+    helpText: _(
+      `Default outgoing DDI. This can be overridden in account's edit screen.`
+    ),
     null: _('Unassigned'),
     default: '__null__',
   },
@@ -304,7 +306,7 @@ const properties: CompanyProperties = {
     null: _('Unassigned'),
     default: '__null__',
     helpText: _(
-      "Default outgoing DDI. This can be overriden in caller's edit screen."
+      "Default outgoing DDI. This can be overridden in caller's edit screen."
     ),
   },
   voicemailNotificationTemplate: {
@@ -351,15 +353,21 @@ const properties: CompanyProperties = {
     type: 'array',
     $ref: '#/definitions/Codec',
   },
+  corporation: {
+    label: _('Corporation', { count: 1 }),
+    null: _('Not configured'),
+    default: '__null__',
+  },
 };
 
 const Company: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
   iden: 'Company',
-  title: _('Company', { count: 2 }),
+  title: _('Client', { count: 2 }),
   path: '/companies',
-  toStr: (row: any) => row.name,
+  deleteDoubleCheck: true,
+  toStr: (row: CompanyPropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: [
     'name',
@@ -370,9 +378,21 @@ const Company: EntityInterface = {
     'featureIds',
   ],
   customActions: Actions,
-  selectOptions,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Company;

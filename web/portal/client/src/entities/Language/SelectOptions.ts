@@ -1,3 +1,4 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { getI18n } from 'react-i18next';
@@ -13,8 +14,8 @@ const LanguageSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     Language.path,
     ['id', 'name'],
-    (data: any) => {
-      const options: any = {};
+    (data) => {
+      const options: DropdownChoices = {};
       const language = getI18n().language.substring(0, 2);
       for (const item of data) {
         options[item.id] = item.name[language];

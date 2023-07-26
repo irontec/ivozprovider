@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type HuntGroupMemberPropertyList<T> = {
+  id?: T;
   huntGroup?: T;
   routeType?: T;
   numberCountry?: T;

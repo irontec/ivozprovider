@@ -1,25 +1,27 @@
-import SipIcon from '@mui/icons-material/Sip';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import SipIcon from '@mui/icons-material/Sip';
+
 import { DomainProperties, DomainPropertyList } from './DomainProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: DomainProperties = {
   domain: {
-    label: _('Domain'),
+    label: _('SIP domain', { count: 1 }),
   },
   companyName: {
-    label: _('Client'),
+    label: _('Client', { count: 1 }),
   },
   brandName: {
-    label: _('Brand'),
+    label: _('Brand', { count: 1 }),
   },
 };
 
 const Domain: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SipIcon,
+  link: '/doc/en/administration_portal/platform/sip_domains.html',
   iden: 'Domain',
   title: _('SIP domain', { count: 2 }),
   path: '/domains',

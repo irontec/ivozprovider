@@ -1,8 +1,10 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { LocationProperties } from './LocationProperties';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
+import { LocationProperties, LocationPropertyList } from './LocationProperties';
 
 const properties: LocationProperties = {
   name: {
@@ -16,7 +18,7 @@ const Location: EntityInterface = {
   iden: 'Location',
   title: _('Location', { count: 2 }),
   path: '/locations',
-  toStr: (row: any) => row.name,
+  toStr: (row: LocationPropertyList<EntityValues>) => `${row.name}`,
   properties,
 };
 

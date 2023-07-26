@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type UserPropertyList<T> = {
+  id?: T;
   name?: T;
   lastname?: T;
   email?: T;

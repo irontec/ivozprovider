@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+        xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Ivoz\Ast\Domain\Model\QueueMember\QueueMemberAbstract" table="queue_member_abstract">
+        <indexes>
+            <index name="queueMember_queueMemberId" columns="queueMemberId"/>
+        </indexes>
+        <field name="uniqueid" type="string" column="uniqueid" length="80" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="queueName" type="string" column="queue_name" length="128" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="interface" type="string" column="interface" length="80" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="membername" type="string" column="membername" length="256" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="stateInterface" type="string" column="state_interface" length="80" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="penalty" type="integer" column="penalty" nullable="false">
+            <options>
+                <option name="unsigned"/>
+            </options>
+        </field>
+        <field name="paused" type="integer" column="paused" nullable="false">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <many-to-one field="queueMember" target-entity="Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="queueMemberId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
+            </join-columns>
+        </many-to-one>
+    </mapped-superclass>
+</doctrine-mapping>

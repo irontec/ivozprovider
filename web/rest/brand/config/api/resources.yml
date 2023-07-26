@@ -52,6 +52,29 @@ Model\ActiveCalls:
           description: 'Company Id'
   collectionOperations: []
 
+Model\Dashboard\DashboardClient:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Dashboard\DashboardBrand:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Dashboard\Dashboard:
+  itemOperations:
+    get_my_dasboard:
+      access_control: '"ROLE_BRAND_ADMIN" in roles'
+      method: 'GET'
+      path: '/my/dashboard'
+      route_name: 'get_my_dasboard'
+      parameters: []
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - My
+  collectionOperations: []
+
 Model\UsersMassImport:
   itemOperations: []
   collectionOperations:
@@ -114,3 +137,36 @@ Model\Profile:
           - My
         parameters: []
   collectionOperations: []
+
+Model\ACK:
+  itemOperations: []
+  collectionOperations:
+    post_provider_billable_call_rerate:
+      method: 'POST'
+      path: '/billable_calls/rerate'
+      route_name: 'post_provider_billable_call_rerate'
+      swagger_context:
+        consumes:
+          - 'application/x-www-form-urlencoded'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: billableCallIds
+            in: body
+            required: true
+            schema:
+              type: array
+              items:
+                type: integer
+            description: Ids to rerate.
+        responses:
+          200:
+            description: "Rerate in progress"
+            schema:
+              $ref: "#/definitions/ACK"
+          404:
+            description: "Resource not found"
+          400:
+            description: "Invalid input"

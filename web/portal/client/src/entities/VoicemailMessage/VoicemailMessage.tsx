@@ -1,12 +1,12 @@
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { VoicemailMessageProperties } from './VoicemailMessageProperties';
-import View from './View';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+
 import Status from '../VoicemailMessage/Field/Status';
+import { VoicemailMessageProperties } from './VoicemailMessageProperties';
 
 const properties: VoicemailMessageProperties = {
   status: {
@@ -26,7 +26,7 @@ const properties: VoicemailMessageProperties = {
     label: _('Duration'),
   },
   recordingFile: {
-    label: _('Recording'),
+    label: _('Recording', { count: 1 }),
     type: 'file',
   },
 };
@@ -37,7 +37,7 @@ const voicemailMessage: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FormatListBulletedIcon,
   iden: 'VoicemailMessage',
-  title: _('VoicemailMessage', { count: 2 }),
+  title: _('Voicemail Message', { count: 2 }),
   path: '/voicemail_messages',
   properties,
   columns,
@@ -45,9 +45,13 @@ const voicemailMessage: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'VoicemailMessages',
   },
-  View,
   defaultOrderBy: 'calldate',
   defaultOrderDirection: OrderDirection.desc,
+  View: async () => {
+    const module = await import('./View');
+
+    return module.default;
+  },
 };
 
 export default voicemailMessage;

@@ -24,12 +24,12 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
 
         $item1 = $this->createEntityInstance(WebPortal::class);
         (function () use ($fixture) {
-            $this->setUrl("https://example.com");
+            $this->setUrl("https://platform-ivozprovider.irontec.com");
             $this->setKlearTheme("redmond");
             $this->setUrlType("god");
             $this->setName("Platform Administration Portal");
             $this->setUserTheme("default");
-            $this->logo = new Logo(null, null, null);
+            $this->logo = new Logo(10, 'image/jpeg', 'logo.jpeg');
         })->call($item1);
 
         $this->addReference('_reference_ProviderWebPortal1', $item1);
@@ -43,7 +43,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setUrlType("brand");
             $this->setName("Irontec Ivozprovider Brand Admin Portal");
             $this->setUserTheme("default");
-            $this->logo = new Logo(null, null, null);
+            $this->logo = new Logo(10, 'image/jpeg', 'brand-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
         })->call($item2);
 
@@ -59,7 +59,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setUrlType("admin");
             $this->setName("Irontec Ivozprovider Client Admin Portal");
             $this->setUserTheme("default");
-            $this->logo = new Logo(null, null, null);
+            $this->logo = new Logo(10, 'image/jpeg', 'client-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
         })->call($item3);
 
@@ -74,7 +74,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setUrlType("user");
             $this->setName("Irontec Ivozprovider User Admin Portal");
             $this->setUserTheme("default");
-            $this->logo = new Logo(null, null, null);
+            $this->logo = new Logo(10, 'image/jpeg', 'user-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
         })->call($item4);
 

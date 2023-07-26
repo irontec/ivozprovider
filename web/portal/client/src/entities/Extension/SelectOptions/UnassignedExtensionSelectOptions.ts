@@ -1,6 +1,9 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
+
 import Extension from '../Extension';
+import { ExtensionPropertyList } from '../ExtensionProperties';
 
 type CustomPropsType = {
   _includeId: number;
@@ -10,7 +13,7 @@ const UnassignedExtensionSelectOptions: SelectOptionsType<CustomPropsType> = (
   { callback, cancelToken },
   customProps
 ): Promise<unknown> => {
-  const params: any = {
+  const params: Record<string, unknown> = {
     _properties: ['id', 'number'],
   };
   const _includeId = customProps?._includeId;
@@ -19,13 +22,14 @@ const UnassignedExtensionSelectOptions: SelectOptionsType<CustomPropsType> = (
   }
 
   const getAction = store.getActions().api.get;
+
   return getAction({
-    path: Extension.path + '/unassigned',
+    path: `${Extension.path}/unassigned`,
     params,
-    successCallback: async (data: any) => {
-      const options: any = {};
-      for (const item of data) {
-        options[item.id] = item.number;
+    successCallback: async (data) => {
+      const options: DropdownChoices = {};
+      for (const item of data as ExtensionPropertyList<string>[]) {
+        options[item.id as string] = item.number as string;
       }
       callback(options);
     },

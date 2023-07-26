@@ -20,9 +20,9 @@ Feature: Retrieve web portals
               "name": "Irontec Ivozprovider Client Admin Portal",
               "id": 3,
               "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 10,
+                  "mimeType": "image/jpeg",
+                  "baseName": "client-logo.jpeg"
               }
           },
           {
@@ -31,9 +31,9 @@ Feature: Retrieve web portals
               "name": "Irontec Ivozprovider User Admin Portal",
               "id": 4,
               "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 10,
+                  "mimeType": "image/jpeg",
+                  "baseName": "user-logo.jpeg"
               }
           }
       ]
@@ -52,13 +52,14 @@ Feature: Retrieve web portals
           "url": "https://client-ivozprovider.irontec.com",
           "klearTheme": "irontec-red",
           "urlType": "admin",
+          "newUI": false,
           "name": "Irontec Ivozprovider Client Admin Portal",
           "userTheme": "default",
           "id": 3,
           "logo": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
+              "fileSize": 10,
+              "mimeType": "image/jpeg",
+              "baseName": "client-logo.jpeg"
           }
       }
       """

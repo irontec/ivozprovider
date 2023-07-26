@@ -90,6 +90,7 @@ class FriendDto extends FriendDtoAbstract
                 'description' => 'description',
                 'priority' => 'priority',
                 'directConnectivity' => 'directConnectivity',
+                'interCompanyId' => 'interCompany'
             ];
         }
 
@@ -177,6 +178,7 @@ class FriendDto extends FriendDtoAbstract
             'callAclId',
             'outgoingDdiId',
             'languageId',
+            'interCompanyId'
         ];
 
         return array_filter(

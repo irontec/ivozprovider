@@ -31,6 +31,14 @@ Feature: Retrieve transformation rules
               "id": 2
           },
           {
+              "type": "calleeout",
+              "description": "From e164 to special national (Generic Transformation Ruleset)",
+              "priority": 3,
+              "matchExpr": "^\\+34([0-9]+)$",
+              "replaceExpr": "\u0001",
+              "id": 9
+          },
+          {
               "type": "callerin",
               "description": "From special national to e164",
               "priority": 4,
@@ -45,14 +53,6 @@ Feature: Retrieve transformation rules
               "matchExpr": "^([0-9]+)$",
               "replaceExpr": "+34\u0001",
               "id": 4
-          },
-          {
-              "type": "calleeout",
-              "description": "From e164 to special national (Generic Transformation Ruleset)",
-              "priority": 3,
-              "matchExpr": "^\\+34([0-9]+)$",
-              "replaceExpr": "\u0001",
-              "id": 9
           },
           {
               "type": "calleein",

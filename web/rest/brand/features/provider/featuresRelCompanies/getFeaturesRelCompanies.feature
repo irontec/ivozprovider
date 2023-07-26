@@ -140,6 +140,7 @@ Feature: Retrieve features rel brand
               "invoiceNotificationTemplate": null,
               "callCsvNotificationTemplate": null,
               "maxDailyUsageNotificationTemplate": 2,
+              "corporation": 1,
               "featureIds": [],
               "geoIpAllowedCountries": [],
               "routingTagIds": [],

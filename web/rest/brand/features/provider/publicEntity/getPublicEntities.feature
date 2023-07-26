@@ -15,16 +15,6 @@ Feature: Retrieve public entities
       """
       [
           {
-              "iden": "_RatingPlanPrices",
-              "id": 1,
-              "name": {
-                  "en": "_RatingPlanPrices",
-                  "es": "_RatingPlanPrices",
-                  "ca": "_RatingPlanPrices",
-                  "it": "_RatingPlanPrices"
-              }
-          },
-          {
               "iden": "BillableCalls",
               "id": 2,
               "name": {
@@ -32,16 +22,6 @@ Feature: Retrieve public entities
                   "es": "BillableCalls",
                   "ca": "BillableCalls",
                   "it": "BillableCalls"
-              }
-          },
-          {
-              "iden": "Calendars",
-              "id": 3,
-              "name": {
-                  "en": "Calendars",
-                  "es": "Calendars",
-                  "ca": "Calendars",
-                  "it": "Calendars"
               }
           },
           {
@@ -62,6 +42,26 @@ Feature: Retrieve public entities
                   "es": "CalendarPeriodsRelSchedules",
                   "ca": "CalendarPeriodsRelSchedules",
                   "it": "CalendarPeriodsRelSchedules"
+              }
+          },
+          {
+              "iden": "Calendars",
+              "id": 3,
+              "name": {
+                  "en": "Calendars",
+                  "es": "Calendars",
+                  "ca": "Calendars",
+                  "it": "Calendars"
+              }
+          },
+          {
+              "iden": "CallACL",
+              "id": 6,
+              "name": {
+                  "en": "CallACL",
+                  "es": "CallACL",
+                  "ca": "CallACL",
+                  "it": "CallACL"
               }
           }
       ]

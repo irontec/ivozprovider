@@ -1,19 +1,23 @@
-import OutboundIcon from '@mui/icons-material/Outbound';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { FaxesInOutProperties } from './FaxesInOutProperties';
+import OutboundIcon from '@mui/icons-material/Outbound';
+
+import {
+  FaxesInOutProperties,
+  FaxesInOutPropertyList,
+} from './FaxesInOutProperties';
 
 const properties: FaxesInOutProperties = {
   calldate: {
-    label: _('Calldate'),
+    label: _('Call date'),
     format: 'date-time',
   },
   src: {
     label: _('Source'),
   },
   dstCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   dst: {
     label: _('Destination'),
@@ -39,7 +43,10 @@ const properties: FaxesInOutProperties = {
     type: 'file',
   },
   fax: {
-    label: _('Fax'),
+    label: _('Fax', { count: 1 }),
+  },
+  pages: {
+    label: _('Page'),
   },
 };
 
@@ -53,7 +60,7 @@ const FaxesInOut: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'FaxesInOut',
   },
-  toStr: (row: any) => row.name,
+  toStr: (row: FaxesInOutPropertyList<string>) => `${row.id}`,
   properties,
   columns: ['calldate', 'dst', 'src', 'status'],
 };

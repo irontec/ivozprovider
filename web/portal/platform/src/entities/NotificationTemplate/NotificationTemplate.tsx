@@ -1,17 +1,13 @@
 import { EntityValue } from '@irontec/ivoz-ui';
-import defaultEntityBehavior, {
-  foreignKeyGetter,
-  foreignKeyResolver,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import Form from './Form';
+
 import {
   NotificationTemplateProperties,
   NotificationTemplatePropertyList,
 } from './NotificationTemplateProperties';
-import selectOptions from './SelectOptions';
 
 const properties: NotificationTemplateProperties = {
   name: {
@@ -20,20 +16,20 @@ const properties: NotificationTemplateProperties = {
   type: {
     label: _('Type'),
     enum: {
-      voicemail: _('Voicemail'),
-      fax: _('Fax'),
+      voicemail: _('Voicemail', { count: 1 }),
+      fax: _('Fax', { count: 1 }),
       limit: _('Limit'),
-      lowbalance: _('Lowbalance'),
-      invoice: _('Invoice'),
-      callCsv: _('Call Csv'),
-      maxDailyUsage: _('Max DailyUsage'),
+      lowbalance: _('Low Balance'),
+      invoice: _('Invoice', { count: 1 }),
+      callCsv: _('Call CSV'),
+      maxDailyUsage: _('Max Daily Usage'),
     },
   },
   id: {
     label: _('Id'),
   },
   brand: {
-    label: _('Brand'),
+    label: _('Brand', { count: 1 }),
   },
 };
 
@@ -44,17 +40,24 @@ const NotificationTemplate: EntityInterface = {
     detail: false,
   },
   icon: MailOutlineIcon,
+  link: '/doc/en/administration_portal/platform/default_notification_templates.html',
   iden: 'NotificationTemplate',
   title: _('Default Notification template', { count: 2 }),
   path: '/notification_templates',
   columns: ['name', 'type'],
   toStr: (row: NotificationTemplatePropertyList<EntityValue>) =>
     row.name as string,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions,
   properties,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default NotificationTemplate;

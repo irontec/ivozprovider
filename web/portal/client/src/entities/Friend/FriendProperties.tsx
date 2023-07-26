@@ -31,6 +31,7 @@ export type FriendPropertyList<T> = {
   rtpEncryption?: T;
   multiContact?: T;
   statusIcon?: T;
+  interCompany?: T;
 };
 
 export type FriendProperties = FriendPropertyList<Partial<PropertySpec>>;

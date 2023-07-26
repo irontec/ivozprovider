@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Api\Timezone;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,6 +18,7 @@ class UserTimezoneInjector
     public function __construct(
         private TokenStorageInterface $tokenStorage,
         private LoggerInterface $logger,
+        private AdministratorRepository $administratorRepository,
         private string $tzParamName = '_timezone'
     ) {
     }
@@ -71,6 +73,24 @@ class UserTimezoneInjector
         }
 
         $timeZone = $user->getTimezone();
+
+        $timezoneOverride =
+            $user instanceof AdministratorInterface
+            && $user->getInternal()
+            && $user->getOnBehalfOf();
+
+        if ($timezoneOverride) {
+            $adminChain = explode(',', $user->getOnBehalfOf() ?? '');
+            $originalAdminUsername = $adminChain[0];
+
+            $originalAdmin = $this
+                ->administratorRepository
+                ->findAdminByUsername($originalAdminUsername);
+
+            if ($originalAdmin) {
+                $timeZone = $originalAdmin->getTimezone();
+            }
+        }
 
         return $timeZone
             ? $timeZone->getTz()

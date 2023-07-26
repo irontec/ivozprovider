@@ -11,9 +11,9 @@ const CompanySelectOptions: SelectOptionsType = ({
   const Company = entities.Company;
 
   return defaultEntityBehavior.fetchFks(
-    Company.path + '?_order[name]=ASC',
+    `${Company.path}?_order[name]=ASC`,
     ['id', 'name'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: item.name });

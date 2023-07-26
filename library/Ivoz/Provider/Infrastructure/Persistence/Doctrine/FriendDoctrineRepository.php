@@ -80,4 +80,13 @@ class FriendDoctrineRepository extends ServiceEntityRepository implements Friend
 
         return $this->countByCriteria($criteria);
     }
+
+    public function findByCompanyAndInterCompany(int $company, int $interCompany): array
+    {
+        return $this->findBy([
+            'company' => $company,
+            'interCompany' => $interCompany,
+
+        ]);
+    }
 }

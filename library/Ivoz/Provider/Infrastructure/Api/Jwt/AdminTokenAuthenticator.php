@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Infrastructure\Api\Jwt;
 
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\PreAuthenticationJWTUserToken;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -51,6 +53,17 @@ class AdminTokenAuthenticator extends JWTTokenAuthenticator
         $user = parent::getUser(...func_get_args());
         if ($user) {
             $this->tokenStorage->setToken($preAuthToken);
+
+            /** @var array{onBehalfOf?: string} $payload */
+            $payload = $preAuthToken->getPayload();
+            if (
+                array_key_exists('onBehalfOf', $payload)
+                && $user instanceof AdministratorInterface
+            ) {
+                $user->setOnBehalfOf(
+                    $payload['onBehalfOf']
+                );
+            }
         }
 
         return $user;

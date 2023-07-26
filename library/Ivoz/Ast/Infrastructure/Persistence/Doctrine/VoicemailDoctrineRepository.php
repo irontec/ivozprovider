@@ -50,4 +50,12 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
 
         return $response;
     }
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int
+    {
+        return parent::count($criteria);
+    }
 }

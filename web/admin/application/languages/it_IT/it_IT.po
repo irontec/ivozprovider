@@ -663,6 +663,11 @@ msgstr "Pannello di controllo"
 msgid "Copy callid"
 msgstr "Copia il callid"
 
+msgid "Corporation"
+msgid_plural "Corporations"
+msgstr[0] "Corporation"
+msgstr[1] "Corporations"
+
 msgid "Cost"
 msgstr "Costo"
 
@@ -2036,6 +2041,9 @@ msgstr "Lunghezza del numero nazionale"
 msgid "Need help?"
 msgstr "Hai bisogno di aiuto?"
 
+msgid "New Interface"
+msgstr "New Interface"
+
 msgid "Next execution"
 msgstr "Prossima esecuzione"
 
@@ -3358,6 +3366,9 @@ msgstr "Sì"
 
 msgid "Yes, continue!"
 msgstr "Sì, continua!"
+
+msgid "You can always access classic interface adding /classic to URL"
+msgstr "You can always access classic interface adding /classic to URL"
 
 msgid ""
 "You can call this extension from any company terminal to close this lock"

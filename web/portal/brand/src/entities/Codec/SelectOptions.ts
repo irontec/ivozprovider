@@ -1,3 +1,4 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
@@ -12,8 +13,8 @@ const CodecSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     Codec.path,
     ['id', 'iden'],
-    (data: any) => {
-      const options: any = {};
+    (data) => {
+      const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = item.iden;
       }

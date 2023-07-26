@@ -22,6 +22,32 @@ Model\ActiveCalls:
           required: false
           description: 'Brand Id'
   collectionOperations: []
+  attributes:
+    order:
+      startTime: ASC
+
+Model\Dashboard\DashboardAdmin:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Dashboard\DashboardBrand:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Dashboard\Dashboard:
+  itemOperations:
+    get_my_dasboard:
+      access_control: '"ROLE_SUPER_ADMIN" in roles'
+      method: 'GET'
+      path: '/my/dashboard'
+      route_name: 'get_my_dasboard'
+      parameters: []
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - My
+  collectionOperations: []
 
 Model\Profile:
   itemOperations:

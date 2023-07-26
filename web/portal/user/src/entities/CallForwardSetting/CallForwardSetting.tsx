@@ -2,10 +2,11 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
-import { CallForwardSettingProperties } from './CallForwardSettingProperties';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
-import Form from './Form';
+
+import {
+  CallForwardSettingProperties,
+  CallForwardSettingPropertyList,
+} from './CallForwardSettingProperties';
 
 const properties: CallForwardSettingProperties = {
   callTypeFilter: {
@@ -19,18 +20,18 @@ const properties: CallForwardSettingProperties = {
   callForwardType: {
     label: _('Call forward type'),
     enum: {
-      inconditional: _('Inconditional'),
-      noAnswer: _('No Answer'),
+      inconditional: _('Unconditional'),
+      noAnswer: _('No answer'),
       busy: _('Busy'),
-      userNotRegistered: _('User NotRegistered'),
+      userNotRegistered: _('User not registered'),
     },
   },
   targetType: {
     label: _('Target type'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     visualToggle: {
       number: {
@@ -63,10 +64,10 @@ const properties: CallForwardSettingProperties = {
     label: _('User'),
   },
   extension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
   },
   numberCountry: {
     label: _('Number country'),
@@ -85,14 +86,26 @@ const CallForwardSetting: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PhoneForwardedIcon,
   iden: 'CallForwardSetting',
-  title: _('Call Forward Settings', { count: 2 }),
+  title: _('Call forward setting', { count: 2 }),
   path: '/my/call_forward_settings',
-  toStr: (row: any) => row.id,
+  toStr: (row: CallForwardSettingPropertyList<string>) => `${row.id}`,
   properties,
   columns,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  Form,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default CallForwardSetting;

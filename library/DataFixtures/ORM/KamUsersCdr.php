@@ -68,6 +68,35 @@ class KamUsersCdr extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
+        /** @var UsersCdrInterface $item3 */
+        $item3 = $this->createEntityInstance(UsersCdr::class);
+        (function () use ($fixture) {
+            $prevMonth = strtotime('-1 week');
+            $dateTime = date('Y-m-d H:i:s', $prevMonth);
+
+            $this->setStartTime($dateTime);
+            $this->setEndTime($dateTime);
+            $this->setDuration(3600);
+            $this->setDirection('outbound');
+            $this->setCaller('103');
+            $this->setCallee('+34676896564');
+            $this->setCallid('8297bdde-309cd49f@10.10.1.124');
+            $this->setCallidHash('517fa1eb');
+            $this->setBrand(
+                $fixture->getReference('_reference_ProviderBrand1')
+            );
+            $this->setCompany(
+                $fixture->getReference('_reference_ProviderCompany1')
+            );
+            $this->setUser(
+                $fixture->getReference('_reference_ProviderUser1')
+            );
+        })->call($item3);
+
+        $this->addReference('_reference_KamUsersCdr3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
+
         $manager->flush();
     }
 

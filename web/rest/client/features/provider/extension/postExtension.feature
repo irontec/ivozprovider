@@ -87,8 +87,11 @@ Feature: Create extensions
               "terminal": 1,
               "extension": 5,
               "timezone": 145,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null
+              "outgoingDdi": 3,
+              "outgoingDdiRule": null,
+              "location": null,
+              "voicemail": null,
+              "contact": null
           },
           "queue": null,
           "conditionalRoute": null,

@@ -1,5 +1,6 @@
 import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import CompanyFriendSelectOptions from '../..//Friend/SelectOptions/CompanyFriendSelectOptions';
 
 export const useCompanyFriends = (companyId: number | string | null) => {
@@ -15,7 +16,7 @@ export const useCompanyFriends = (companyId: number | string | null) => {
 
     CompanyFriendSelectOptions(
       {
-        callback: (options: any) => {
+        callback: (options) => {
           setUsers(options || []);
         },
         cancelToken,

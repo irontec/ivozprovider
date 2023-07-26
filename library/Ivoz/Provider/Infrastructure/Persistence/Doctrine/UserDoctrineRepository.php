@@ -193,6 +193,15 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
         return $user;
     }
 
+    public function findOneByExtensionId(?int $extensionId): ?UserInterface
+    {
+        $user = $this->findOneBy([
+            'extension' => $extensionId
+        ]);
+
+        return $user;
+    }
+
     private function getBrandUsersIdsOrderByTerminalExpireDateQuery(
         int $brandId,
         string $order,
@@ -238,5 +247,29 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
             fn($id) => (int) $id,
             $ids
         );
+    }
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int
+    {
+        return parent::count($criteria);
+    }
+
+    public function findLatestAddedByCompany(int $companyId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $result = $qb
+            ->select('self, extension, outgoingDdi')
+            ->leftJoin('self.outgoingDdi', 'outgoingDdi')
+            ->leftJoin('self.extension', 'extension')
+            ->where('self.company=:company')
+            ->orderBy('self.id', 'DESC')
+            ->setParameter('company', $companyId)
+            ->getQuery()
+            ->getResult();
+        return $result;
     }
 }

@@ -26,6 +26,55 @@ gesdinet_jwt_refresh_token:
 ###############################
 ## Custom routes
 ###############################
+get_my_dasboard:
+  path: '/my/dashboard'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\DashboardAction
+    _api_resource_class: 'Model\Dashboard\Dashboard'
+    _api_item_operation_name: 'get_my_dasboard'
+    _api_receive: false
+
+# required for IRI generation
+get_my_dasboard_client:
+  path: '/my/dashboard_client'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardClient'
+    _api_item_operation_name: 'get_my_dasboard_client'
+
+# required for IRI generation
+get_my_dasboard_user:
+  path: '/my/dashboard_user'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardUser'
+    _api_item_operation_name: 'get_my_dasboard_user'
+
+# required for IRI generation
+get_my_dasboard_retail:
+  path: '/my/dashboard_retail'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardRetailAccount'
+    _api_item_operation_name: 'get_my_dasboard_retail'
+
+# required for IRI generation
+get_my_dasboard_residential:
+  path: '/my/dashboard_residential_retail'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardResidentialDevice'
+    _api_item_operation_name: 'get_my_dasboard_residential'
+
+# required for IRI generation
+get_my_dasboard_billable_call:
+  path: '/my/dashboard_billable_call'
+  methods: []
+  defaults:
+    _api_resource_class: 'Model\Dashboard\DashboardBillableCall'
+    _api_item_operation_name: 'get_my_dasboard_billable_call'
+    
 get_my_rating_plan_prices:
   path: '/rating_plan_groups/{id}/prices'
   methods: ['GET']
@@ -51,6 +100,23 @@ get_my_profile:
     _controller: Controller\My\ProfileAction
     _api_resource_class: 'Model\Profile'
     _api_item_operation_name: 'get_my_profile'
+    _api_receive: false
+
+get_my_theme:
+  path: '/my/theme'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\WebThemeAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\WebPortal\WebTheme'
+    _api_item_operation_name: 'get_my_theme'
+    _api_receive: false
+
+get_my_logo:
+  path: '/my/logo/{id}/{name}'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\LogoAction
+    _api_item_operation_name: 'get_my_logo'
     _api_receive: false
 
 # fake endpoint, required in serialization by api-platform in order to calculate it's iri
@@ -113,3 +179,12 @@ get_multiple_recorderded_files:
     _controller: Controller\Provider\RecordedFilesZipAction
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Recording\Recording'
     _api_collection_operation_name: 'get_multiple_recorderded_files'
+
+get_companies_corporate_unassigned:
+  path: '/companies/corporate/unassigned'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\CompaniesByCorporateUnassignedAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Company\Company'
+    _api_collection_operation_name: 'get_companies_corporate_unassigned'
+    _api_receive: false

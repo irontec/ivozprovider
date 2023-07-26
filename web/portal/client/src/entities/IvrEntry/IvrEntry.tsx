@@ -1,12 +1,10 @@
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { IvrEntryProperties } from './IvrEntryProperties';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+
 import Target from './Field/Target';
-import foreignKeyResolver from './foreignKeyResolver';
+import { IvrEntryProperties, IvrEntryPropertyList } from './IvrEntryProperties';
 
 const toggleFlds = [
   'numberCountry',
@@ -18,7 +16,7 @@ const toggleFlds = [
 
 const properties: IvrEntryProperties = {
   ivr: {
-    label: _('IVR'),
+    label: _('IVR', { count: 1 }),
   },
   entry: {
     label: _('Entry'),
@@ -28,7 +26,7 @@ const properties: IvrEntryProperties = {
     ),
   },
   displayName: {
-    label: _('Display Name'),
+    label: _('Display name'),
     helpText: _('This value will be displayed in the called terminals'),
   },
   welcomeLocution: {
@@ -41,9 +39,9 @@ const properties: IvrEntryProperties = {
     required: true,
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
-      conditional: _('Conditional Route'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
+      conditional: _('Conditional Route', { count: 1 }),
     },
     visualToggle: {
       __null__: {
@@ -71,7 +69,7 @@ const properties: IvrEntryProperties = {
     default: '__null__',
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numberValue: {
@@ -79,19 +77,19 @@ const properties: IvrEntryProperties = {
     required: true,
   },
   extension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
     null: _('Unassigned'),
     default: '__null__',
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
     null: _('Unassigned'),
     default: '__null__',
   },
   conditionalRoute: {
-    label: _('Conditional Route'),
+    label: _('Conditional Route', { count: 1 }),
     required: true,
     null: _('Unassigned'),
     default: '__null__',
@@ -109,16 +107,28 @@ const IvrEntry: EntityInterface = {
   iden: 'IvrEntry',
   title: _('IVR entry', { count: 2 }),
   path: '/ivr_entries',
-  toStr: (row: any) => row.name,
+  toStr: (row: IvrEntryPropertyList<string>) => `${row.id}`,
   properties,
   columns: ['entry', 'displayName', 'welcomeLocution', 'routeType', 'target'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'IVREntries',
   },
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default IvrEntry;

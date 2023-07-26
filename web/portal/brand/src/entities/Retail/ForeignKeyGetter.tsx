@@ -1,23 +1,23 @@
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+
 import { CompanyPropertyList } from '../Company/CompanyProperties';
 import CountryNameSelectOptions from '../Country/CountryNameSelectOptions';
-import RetailFeatureSelectOptions from '../Feature/SelectOptions/RetailFeatureSelectOptions';
 import CompanyDdiSelectOptions from '../Ddi/SelectOptions/CompanyDdiSelectOptions';
-
+import RetailFeatureSelectOptions from '../Feature/SelectOptions/RetailFeatureSelectOptions';
 import {
   CallCsvSelectOptions,
   FaxSelectOptions,
   InvoiceSelectOptions,
-  VoicemailSelectOptions,
   MaxDailyUsageSelectOptions,
+  VoicemailSelectOptions,
 } from '../NotificationTemplate/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   row,
   cancelToken,
   entityService,
-}): Promise<any> => {
+}): Promise<unknown> => {
   const response: CompanyPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({
@@ -33,65 +33,70 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
       'invoiceNotificationTemplate',
       'callCsvNotificationTemplate',
       'maxDailyUsageNotificationTemplate',
+      'corporation',
     ],
   });
 
-  promises[promises.length] = CompanyDdiSelectOptions(
-    {
-      callback: (options: any) => {
-        response.outgoingDdi = options;
+  if (row?.id) {
+    promises[promises.length] = CompanyDdiSelectOptions(
+      {
+        callback: (options) => {
+          response.outgoingDdi = options;
+        },
+        cancelToken,
       },
-      cancelToken,
-    },
-    {
-      companyId: row?.id as number,
-    }
-  );
+      {
+        companyId: row?.id as number,
+      }
+    );
+  } else {
+    response.outgoingDdi = [];
+  }
 
   promises[promises.length] = CountryNameSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.geoIpAllowedCountries = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = RetailFeatureSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.featureIds = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = VoicemailSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.voicemailNotificationTemplate = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = FaxSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.faxNotificationTemplate = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = InvoiceSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.invoiceNotificationTemplate = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = CallCsvSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.callCsvNotificationTemplate = options;
     },
     cancelToken,
   });
 
   promises[promises.length] = MaxDailyUsageSelectOptions({
-    callback: (options: any) => {
+    callback: (options) => {
       response.maxDailyUsageNotificationTemplate = options;
     },
     cancelToken,

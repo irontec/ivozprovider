@@ -1,39 +1,39 @@
-import entities from '../entities';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import routeMapParser, {
+  ActionItem,
+  EntityItem,
   RouteMap,
-  RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import DialpadIcon from '@mui/icons-material/Dialpad';
+import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
+import SwapCallsIcon from '@mui/icons-material/SwapCalls';
+
+import entities from '../entities';
 import { AboutMe } from '../store/clientSession/aboutMe';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
-export type ExtendedRouteMapItem = RouteMapItem & {
-  isAccessible?: isAccessibleType;
-};
+
+export type isAccesibleCallBack = { isAccessible?: isAccessibleType };
+
+export type ExtendedRouteMapItem =
+  | (EntityItem & isAccesibleCallBack)
+  | (ActionItem & isAccesibleCallBack);
 export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 
 const getEntityMap = (): ExtendedRouteMap => {
   const map: ExtendedRouteMap = [
     {
-      label: _('Global Configuration'),
+      entity: entities.Brand,
+      divider: true,
       children: [
+        ...Object.values(entities.Brand.customActions),
         {
-          entity: entities.Brand,
-          children: [
-            {
-              entity: entities.Administrator,
-              filterBy: 'brand',
-            },
-            ...Object.values(entities.Brand.customActions),
-            {
-              entity: entities.WebPortal,
-              filterBy: 'brand',
-            },
-          ],
-        },
-        {
-          entity: entities.Administrator,
-          filterBy: 'company',
+          entity: {
+            ...entities.Administrator,
+            title: _('Brand operator', { count: 2 }),
+            link: '/doc/en/administration_portal/platform/brands.html#brand-operators',
+          },
+          filterBy: 'brand',
           children: [
             {
               entity: entities.AdministratorRelPublicEntity,
@@ -42,17 +42,56 @@ const getEntityMap = (): ExtendedRouteMap => {
           ],
         },
         {
-          entity: entities.BannedAddress,
+          entity: {
+            ...entities.WebPortal,
+            title: _('Brand Portal', { count: 2 }),
+            link: '/doc/en/administration_portal/platform/brands.html#brand-portals',
+          },
+          filterBy: 'brand',
+          fixedValues: {
+            urlType: 'brand',
+          },
         },
+      ],
+    },
+    {
+      entity: entities.Domain,
+    },
+    {
+      entity: entities.BannedAddress,
+    },
+    {
+      entity: entities.TerminalManufacturer,
+      children: [
         {
-          entity: entities.TerminalManufacturer,
-          children: [
-            {
-              entity: entities.TerminalModel,
-              filterBy: 'terminalManufacturer',
-            },
-          ],
+          entity: entities.TerminalModel,
+          filterBy: 'terminalManufacturer',
         },
+      ],
+    },
+    {
+      entity: entities.WebPortal,
+      filterValues: {
+        urlType: 'god',
+      },
+      divider: true,
+    },
+    {
+      entity: entities.Administrator,
+      filterValues: {
+        'brand[exists]': false,
+      },
+      children: [
+        {
+          entity: entities.AdministratorRelPublicEntity,
+          filterBy: 'administrator',
+        },
+      ],
+    },
+    {
+      label: _('Generic Configuration'),
+      icon: PhonelinkSetupIcon,
+      children: [
         {
           entity: entities.Service,
         },
@@ -74,22 +113,11 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.SpecialNumber,
         },
-        {
-          entity: entities.Domain,
-        },
-        {
-          entity: entities.WebPortal,
-        },
-        {
-          entity: entities.ActiveCalls,
-        },
-        {
-          entity: entities.BillableCall,
-        },
       ],
     },
     {
       label: _('Infrastructure'),
+      icon: SwapCallsIcon,
       children: [
         {
           entity: entities.ProxyUser,
@@ -108,6 +136,19 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.ApplicationServer,
+        },
+      ],
+    },
+    {
+      label: _('Calls'),
+      icon: DialpadIcon,
+      children: [
+        {
+          entity: entities.ActiveCalls,
+        },
+        {
+          entity: entities.BillableCall,
+          children: [...Object.values(entities.BillableCall.customActions)],
         },
       ],
     },

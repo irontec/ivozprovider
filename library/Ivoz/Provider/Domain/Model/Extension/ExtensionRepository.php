@@ -23,4 +23,9 @@ interface ExtensionRepository extends ObjectRepository, Selectable
      * @return ExtensionInterface[]
      */
     public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array;
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int;
 }

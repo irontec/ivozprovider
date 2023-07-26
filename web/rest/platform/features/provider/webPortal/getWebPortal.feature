@@ -15,47 +15,25 @@ Feature: Retrieve web portals
       """
       [
           {
-              "url": "https://example.com",
-              "urlType": "god",
-              "name": "Platform Administration Portal",
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              }
-          },
-          {
               "url": "https://brand-ivozprovider.irontec.com",
               "urlType": "brand",
               "name": "Irontec Ivozprovider Brand Admin Portal",
               "id": 2,
               "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 10,
+                  "mimeType": "image/jpeg",
+                  "baseName": "brand-logo.jpeg"
               }
           },
           {
-              "url": "https://client-ivozprovider.irontec.com",
-              "urlType": "admin",
-              "name": "Irontec Ivozprovider Client Admin Portal",
-              "id": 3,
+              "url": "https://platform-ivozprovider.irontec.com",
+              "urlType": "god",
+              "name": "Platform Administration Portal",
+              "id": 1,
               "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              }
-          },
-          {
-              "url": "https://users-ivozprovider.irontec.com",
-              "urlType": "user",
-              "name": "Irontec Ivozprovider User Admin Portal",
-              "id": 4,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 10,
+                  "mimeType": "image/jpeg",
+                  "baseName": "logo.jpeg"
               }
           }
       ]
@@ -71,16 +49,17 @@ Feature: Retrieve web portals
       And the JSON should be like:
       """
       {
-          "url": "https://example.com",
+          "url": "https://platform-ivozprovider.irontec.com",
           "klearTheme": "redmond",
           "urlType": "god",
+          "newUI": false,
           "name": "Platform Administration Portal",
           "userTheme": "default",
           "id": 1,
           "logo": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
+              "fileSize": 10,
+              "mimeType": "image/jpeg",
+              "baseName": "logo.jpeg"
           },
           "brand": null
       }

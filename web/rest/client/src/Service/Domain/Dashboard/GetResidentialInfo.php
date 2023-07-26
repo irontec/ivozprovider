@@ -1,0 +1,65 @@
+<?php
+
+namespace Service\Domain\Dashboard;
+
+use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
+use Model\Dashboard\Dashboard;
+use Model\Dashboard\DashboardClient;
+use Model\Dashboard\DashboardResidentialDevice;
+
+class GetResidentialInfo
+{
+    public function __construct(
+        private ResidentialDeviceRepository $residentialDeviceRepository,
+        private DdiRepository $ddiRepository,
+        private VoicemailRepository $voicemailRepository
+    ) {
+    }
+
+    public function execute(CompanyInterface $company): Dashboard
+    {
+        $client = DashboardClient::fromCompany($company);
+
+        $residentialDeviceNum = $this
+            ->residentialDeviceRepository
+            ->count([
+                'company' => $company->getId()
+            ]);
+
+        $ddiNum = $this
+            ->ddiRepository
+            ->countByCompany(
+                (int) $company->getId()
+            );
+
+        $voiceMailNum = $this
+            ->voicemailRepository
+            ->count([]);
+
+        $residentialDevices = $this
+            ->residentialDeviceRepository
+            ->findLastAddedByCompanyId(
+                (int) $company->getId()
+            );
+
+        /** @var DashboardResidentialDevice[] $dashboardResidentialDevices */
+        $dashboardResidentialDevices = [];
+        foreach ($residentialDevices as $residentialDevice) {
+            $dashboardResidentialDevices[] = DashboardResidentialDevice::fromResidentialDevice($residentialDevice);
+        }
+
+        $dashboard = new Dashboard(
+            client: $client,
+            residentialDeviceNum: $residentialDeviceNum,
+            ddiNum: $ddiNum,
+            voiceMailNum: $voiceMailNum,
+            latestResidentialDevices: $dashboardResidentialDevices
+        );
+
+
+        return $dashboard;
+    }
+}

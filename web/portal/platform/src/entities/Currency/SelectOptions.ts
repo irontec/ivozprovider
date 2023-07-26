@@ -3,6 +3,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { getI18n } from 'react-i18next';
 import store from 'store';
+
 import { CurrencyPropertiesList } from './CurrencyProperties';
 
 const CurrencySelectOptions: SelectOptionsType = ({
@@ -14,7 +15,7 @@ const CurrencySelectOptions: SelectOptionsType = ({
   const Currency = entities.Currency;
 
   return defaultEntityBehavior.fetchFks(
-    Currency.path + `?_order[name.${[language]}]=ASC`,
+    `${Currency.path}?_order[name.${[language]}]=ASC`,
     ['id', 'name', 'symbol'],
     (data: CurrencyPropertiesList) => {
       const options: DropdownChoices = [];

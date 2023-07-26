@@ -82,6 +82,7 @@ production:
           allowRecordingRemoval: true
           externallyExtraOpts: true
           relCountries: true
+          corporation: true
         order:
           name: true
           invoicing.nif: true
@@ -145,6 +146,7 @@ production:
           accountStatus: true
           allowRecordingRemoval: true
           maxDailyUsageNotificationTemplate: true
+          corporation: true
         order: &companiesOrder_Link
           id: true
           name: true
@@ -248,6 +250,7 @@ production:
             domainUsers: 3
             relFeatures: 3
             billingMethod: 3
+            corporation: 3
         group1:
           colsPerRow: 12
           label: _("Security")

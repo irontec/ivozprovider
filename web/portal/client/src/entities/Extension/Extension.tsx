@@ -1,11 +1,12 @@
-import ShortcutIcon from '@mui/icons-material/Shortcut';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { ExtensionProperties } from './ExtensionProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions/SelectOptions';
+import ShortcutIcon from '@mui/icons-material/Shortcut';
+
+import {
+  ExtensionProperties,
+  ExtensionPropertyList,
+} from './ExtensionProperties';
 import RouteType from './Field/RouteType';
 
 const allRoutableFields = [
@@ -30,15 +31,15 @@ const properties: ExtensionProperties = {
     label: _('Route type'),
     component: RouteType,
     enum: {
-      user: _('User'),
-      ivr: _('IVR'),
-      huntGroup: _('Hunt Group'),
-      conferenceRoom: _('Conference room'),
+      user: _('User', { count: 1 }),
+      ivr: _('IVR', { count: 1 }),
+      huntGroup: _('Hunt Group', { count: 1 }),
+      conferenceRoom: _('Conference room', { count: 1 }),
       number: _('Number'),
-      friend: _('Friend'),
-      queue: _('Queue'),
-      conditional: _('Conditional Route'),
-      voicemail: _('Voicemail'),
+      friend: _('Friend', { count: 1 }),
+      queue: _('Queue', { count: 1 }),
+      conditional: _('Conditional Route', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     default: '__null__',
     null: _('Unassigned'),
@@ -86,7 +87,7 @@ const properties: ExtensionProperties = {
     },
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numberValue: {
@@ -94,19 +95,19 @@ const properties: ExtensionProperties = {
     required: true,
   },
   ivr: {
-    label: _('IVR'),
+    label: _('IVR', { count: 1 }),
     required: true,
   },
   huntGroup: {
-    label: _('Hunt Group'),
+    label: _('Hunt Group', { count: 1 }),
     required: true,
   },
   conferenceRoom: {
-    label: _('Conference room'),
+    label: _('Conference room', { count: 1 }),
     required: true,
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
     required: true,
   },
   friendValue: {
@@ -114,15 +115,15 @@ const properties: ExtensionProperties = {
     required: true,
   },
   queue: {
-    label: _('Queue'),
+    label: _('Queue', { count: 1 }),
     required: true,
   },
   conditionalRoute: {
-    label: _('Conditional Route'),
+    label: _('Conditional Route', { count: 1 }),
     required: true,
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   target: {
@@ -136,20 +137,31 @@ const columns = ['number', 'routeType', 'target'];
 const extension: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ShortcutIcon,
+  link: '/doc/en/administration_portal/client/vpbx/extensions.html',
   iden: 'Extension',
   title: _('Extension', { count: 2 }),
   path: '/extensions',
-  toStr: (row: any) => row.number,
+  toStr: (row: ExtensionPropertyList<string>) => `${row.number}`,
   columns,
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Extensions',
   },
-  Form,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

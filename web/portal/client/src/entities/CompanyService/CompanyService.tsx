@@ -1,15 +1,13 @@
-import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+
 import { CompanyServiceProperties } from './CompanyServiceProperties';
-import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: CompanyServiceProperties = {
   service: {
-    label: _('Service'),
+    label: _('Service', { count: 1 }),
   },
   code: {
     label: _('Code'),
@@ -24,6 +22,7 @@ const columns = ['service', 'code'];
 const companyService: EntityInterface = {
   ...defaultEntityBehavior,
   icon: MiscellaneousServicesIcon,
+  link: '/doc/en/administration_portal/client/vpbx/services.html',
   iden: 'CompanyService',
   title: _('Service', { count: 2 }),
   path: '/company_services',
@@ -33,9 +32,21 @@ const companyService: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'CompanyServices',
   },
-  foreignKeyResolver,
-  Form,
-  foreignKeyGetter,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default companyService;

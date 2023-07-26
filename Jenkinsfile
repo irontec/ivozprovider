@@ -342,6 +342,7 @@ pipeline {
                             }
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-lint'
+                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-i18n'
                                 sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-build'
                             }
                             post {
@@ -397,6 +398,7 @@ pipeline {
                             }
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-lint'
+                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-i18n'
                                 sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-build'
                             }
                             post {
@@ -424,6 +426,7 @@ pipeline {
                             }
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-lint'
+                                sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-i18n'
                                 sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-build'
                             }
                             post {

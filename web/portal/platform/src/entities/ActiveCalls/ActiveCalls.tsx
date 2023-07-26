@@ -2,6 +2,7 @@ import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CellTowerIcon from '@mui/icons-material/CellTower';
+
 import { ActiveCallProperties } from './ActiveCallsProperties';
 
 const properties: ActiveCallProperties = {};
@@ -9,6 +10,7 @@ const properties: ActiveCallProperties = {};
 const activeCalls: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: CellTowerIcon,
+  link: '/doc/en/administration_portal/platform/active_calls.html',
   iden: 'ActiveCalls',
   title: _('Active call', { count: 2 }),
   path: '/active_calls',

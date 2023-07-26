@@ -13,6 +13,7 @@ CHANGED_FILES=$(git diff --name-only .)
 
 if [ -z "$CHANGED_FILES" ]; then
     echo "No files were changed in these commits."
+    git diff
     exit 0
 fi
 

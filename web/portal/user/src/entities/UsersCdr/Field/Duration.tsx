@@ -3,6 +3,7 @@ import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+
 import { UsersCdrPropertyList } from '../UsersCdrProperties';
 
 type DurationValues = UsersCdrPropertyList<string>;

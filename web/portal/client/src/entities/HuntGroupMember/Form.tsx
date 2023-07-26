@@ -1,15 +1,17 @@
 import { EntityValue } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
+  Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import useParentRow from '@irontec/ivoz-ui/hooks/useParentRow';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import { HuntGroupPropertyList } from '../HuntGroup/HuntGroupProperties';
+
 import huntGroup from '../HuntGroup/HuntGroup';
-import { foreignKeyGetter } from './foreignKeyGetter';
+import { HuntGroupPropertyList } from '../HuntGroup/HuntGroupProperties';
+import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element | null => {
   const { entityService, row, match } = props;
@@ -19,7 +21,6 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
   const edit = props.edit || false;
   const create = props.create || false;
 
-  const DefaultEntityForm = defaultEntityBehavior.Form;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -33,7 +34,6 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
 
   const parentRow = useParentRow<HuntGroupPropertyList<EntityValue>>({
     parentEntity: huntGroup,
-    match,
     parentId: values.client,
   });
 

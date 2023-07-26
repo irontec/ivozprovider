@@ -1,13 +1,14 @@
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { MatchListPatternProperties } from './MatchListPatternProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+
 import MatchValue from './Field/MatchValue';
+import {
+  MatchListPatternProperties,
+  MatchListPatternPropertyList,
+} from './MatchListPatternProperties';
 
 const properties: MatchListPatternProperties = {
   description: {
@@ -60,13 +61,29 @@ const MatchListPattern: EntityInterface = {
   iden: 'MatchListPattern',
   title: _('Match List Pattern', { count: 2 }),
   path: '/match_list_patterns',
-  toStr: (row: any) => row.id,
+  toStr: (row: MatchListPatternPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['type', 'matchValue', 'description'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default MatchListPattern;

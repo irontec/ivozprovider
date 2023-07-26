@@ -1,12 +1,17 @@
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { ExternalCallFilterProperties } from './ExternalCallFilterProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import DefaultMarshaller, {
+  MarshallerValues,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Marshaller';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { IvozStoreState } from 'store';
+
+import {
+  ExternalCallFilterProperties,
+  ExternalCallFilterPropertyList,
+} from './ExternalCallFilterProperties';
 
 const holidayFields = [
   'holidayNumberCountry',
@@ -64,8 +69,8 @@ const properties: ExternalCallFilterProperties = {
     label: _('Holiday target type'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -89,7 +94,7 @@ const properties: ExternalCallFilterProperties = {
     },
   },
   holidayNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   holidayNumberValue: {
@@ -97,11 +102,11 @@ const properties: ExternalCallFilterProperties = {
     required: true,
   },
   holidayExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   holidayVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   outOfScheduleEnabled: {
@@ -118,6 +123,8 @@ const properties: ExternalCallFilterProperties = {
           'scheduleIds',
           'outOfScheduleTargetType',
           'outOfScheduleLocution',
+          'outOfScheduleNumberCountry',
+          'outOfScheduleNumberValue',
         ],
       },
       '1': {
@@ -125,6 +132,8 @@ const properties: ExternalCallFilterProperties = {
           'scheduleIds',
           'outOfScheduleTargetType',
           'outOfScheduleLocution',
+          'outOfScheduleNumberCountry',
+          'outOfScheduleNumberValue',
         ],
         hide: [],
       },
@@ -134,8 +143,8 @@ const properties: ExternalCallFilterProperties = {
     label: _('Out of schedule target type'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -159,7 +168,7 @@ const properties: ExternalCallFilterProperties = {
     },
   },
   outOfScheduleNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   outOfScheduleNumberValue: {
@@ -167,18 +176,18 @@ const properties: ExternalCallFilterProperties = {
     required: true,
   },
   outOfScheduleExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   outOfScheduleVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   scheduleIds: {
-    label: _('Schedule'),
+    label: _('Schedule', { count: 1 }),
   },
   calendarIds: {
-    label: _('Calendar'),
+    label: _('Calendar', { count: 1 }),
   },
   whiteListIds: {
     label: _('White Lists'),
@@ -202,32 +211,74 @@ const properties: ExternalCallFilterProperties = {
   },
 };
 
-const columns = [
-  'name',
-  'holidayTargetType',
-  'holidayTarget',
-  'outOfScheduleTargetType',
-  'outOfScheduleTarget',
-];
+const columns = (store: IvozStoreState) => {
+  const nonResidentialColumns = [
+    'name',
+    'holidayTargetType',
+    'holidayTarget',
+    'outOfScheduleTargetType',
+    'outOfScheduleTarget',
+  ];
+
+  const residentialColumns = [
+    'name',
+    'blackListIds',
+    'outOfScheduleNumberCountry',
+    'outOfScheduleEnabled',
+    'outOfScheduleNumberValue',
+  ];
+  const residential = store.clientSession.aboutMe.profile?.residential;
+
+  return residential ? residentialColumns : nonResidentialColumns;
+};
 
 const externalCallFilter: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FilterAltIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_tools/external_call_filters.html',
   iden: 'ExternalCallFilter',
   title: _('External call filter', { count: 2 }),
   path: '/external_call_filters',
-  toStr: (row: any) => row.name,
+  toStr: (row: ExternalCallFilterPropertyList<string>) => `${row.name}`,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ExternalCallFilters',
   },
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  marshaller: (
+    values: MarshallerValues,
+    properties: PartialPropertyList,
+    whitelist: string[] = []
+  ): MarshallerValues => {
+    const response = DefaultMarshaller(values, properties, whitelist);
+
+    if (response.outOfScheduleEnabled && response.outOfScheduleNumberValue) {
+      // Force value in residential clients
+      response.outOfScheduleTargetType = 'number';
+    }
+
+    return response;
+  },
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

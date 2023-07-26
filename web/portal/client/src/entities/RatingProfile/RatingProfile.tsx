@@ -1,20 +1,19 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+
 import { RatingProfileProperties } from './RatingProfileProperties';
-import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: RatingProfileProperties = {
   activationTime: {
     label: _('Activation time'),
   },
   ratingPlanGroup: {
-    label: _('Rating plan'),
+    label: _('Rating plan', { count: 1 }),
   },
   routingTag: {
-    label: _('Routing Tag'),
+    label: _('Routing Tag', { count: 1 }),
     null: _('No routing tag'),
   },
 };
@@ -22,6 +21,7 @@ const properties: RatingProfileProperties = {
 const ratingProfile: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplications,
+  link: '/doc/en/administration_portal/client/vpbx/rating_profiles.html',
   iden: 'RatingProfile',
   title: _('Rating profile', { count: 2 }),
   path: '/rating_profiles',
@@ -30,8 +30,16 @@ const ratingProfile: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'RatingProfiles',
   },
-  Form,
-  foreignKeyResolver,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default ratingProfile;

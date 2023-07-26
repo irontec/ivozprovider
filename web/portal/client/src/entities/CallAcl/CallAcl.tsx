@@ -1,10 +1,9 @@
-import GavelIcon from '@mui/icons-material/Gavel';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
+import GavelIcon from '@mui/icons-material/Gavel';
+
 import { CallAclProperties } from './CallAclProperties';
-import selectOptions from './SelectOptions';
 
 const properties: CallAclProperties = {
   name: {
@@ -13,8 +12,8 @@ const properties: CallAclProperties = {
   defaultPolicy: {
     label: _('Default policy'),
     enum: {
-      allow: _('allow'),
-      deny: _('deny'),
+      allow: _('Allow'),
+      deny: _('Deny'),
     },
   },
   //@TODO POSPONED CallAclRelMatchLists subscreen list
@@ -23,17 +22,24 @@ const properties: CallAclProperties = {
 const CallAcl: EntityInterface = {
   ...defaultEntityBehavior,
   icon: GavelIcon,
+  link: '/doc/en/administration_portal/client/vpbx/user_configuration/call_acls.html',
   iden: 'CallAcl',
-  title: _('Call ACLs', { count: 2 }),
+  title: _('Call ACL', { count: 2 }),
   path: '/call_acls',
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'CallACL',
   },
-  Form,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

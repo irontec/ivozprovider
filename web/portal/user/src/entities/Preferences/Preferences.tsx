@@ -1,8 +1,8 @@
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import SettingsIcon from '@mui/icons-material/Settings';
-import User from 'entities/User/User';
-import Form from './Form';
+
+import User from '../User/User';
 
 const Preferences: EntityInterface = {
   ...User,
@@ -12,8 +12,12 @@ const Preferences: EntityInterface = {
     ...User.acl,
     create: false,
   },
-  Form,
-  title: _('My Preferences', { count: 2 }),
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
+  title: _('My Preferences'),
 };
 
 export default Preferences;

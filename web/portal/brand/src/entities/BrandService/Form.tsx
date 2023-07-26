@@ -1,17 +1,18 @@
 import { PropertyList } from '@irontec/ivoz-ui';
-import useFkChoices from './ForeignKeyGetter';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
+
+import useFkChoices from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, match, properties } = props;
   const edit = props.edit || false;
-  const DefaultEntityForm = defaultEntityBehavior.Form;
 
-  const service = props.row?.service as Record<string, any> | undefined;
-  const currentServiceId: number | undefined = service?.id;
+  const service = props.row?.service as Record<string, number> | undefined;
+  const currentServiceId = service?.id;
 
   const fkChoices = useFkChoices({
     entityService,

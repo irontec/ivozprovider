@@ -4,7 +4,10 @@ import {
   EntityValues,
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
-export type TerminalModelPropertyList<T> = Record<string, T>;
+export type TerminalModelPropertyList<T> = {
+  id?: T;
+  name?: T;
+};
 
 export type TerminalModelProperties = TerminalModelPropertyList<
   Partial<PropertySpec>

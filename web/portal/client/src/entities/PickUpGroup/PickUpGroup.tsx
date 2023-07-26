@@ -1,11 +1,9 @@
-import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
+import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
+
 import { PickUpGroupProperties } from './PickUpGroupProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
 
 const properties: PickUpGroupProperties = {
   name: {
@@ -13,7 +11,7 @@ const properties: PickUpGroupProperties = {
     required: true,
   },
   userIds: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
     type: 'array',
     $ref: '#/definitions/User',
   },
@@ -22,18 +20,29 @@ const properties: PickUpGroupProperties = {
 const pickUpGroup: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PhoneCallbackIcon,
+  link: '/doc/en/administration_portal/client/vpbx/user_configuration/pick_up_groups.html',
   iden: 'PickUpGroup',
-  title: _('Pick up group', { count: 2 }),
+  title: _('Pickup group', { count: 2 }),
   path: '/pick_up_groups',
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'PickUpGroups',
   },
-  Form,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

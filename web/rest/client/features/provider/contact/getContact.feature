@@ -15,16 +15,6 @@ Feature: Retrieve contacts
       """
       [
           {
-              "name": "Test Contact name",
-              "lastname": "Test Contact Lastname",
-              "email": "testcontact@email.com",
-              "workPhoneE164": "+34456123",
-              "mobilePhoneE164": "+34111222",
-              "otherPhone": "4001",
-              "id": 1,
-              "user": null
-          },
-          {
               "name": "Alice",
               "lastname": "Allison",
               "email": "alice@democompany.com",
@@ -43,6 +33,16 @@ Feature: Retrieve contacts
               "otherPhone": "102",
               "id": 3,
               "user": 2
+          },
+          {
+              "name": "Test Contact name",
+              "lastname": "Test Contact Lastname",
+              "email": "testcontact@email.com",
+              "workPhoneE164": "+34456123",
+              "mobilePhoneE164": "+34111222",
+              "otherPhone": "4001",
+              "id": 1,
+              "user": null
           }
       ]
       """

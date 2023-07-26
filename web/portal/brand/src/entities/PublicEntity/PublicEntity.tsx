@@ -1,16 +1,20 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import { PublicEntityProperties } from './PublicEntityProperties';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
+import {
+  PublicEntityProperties,
+  PublicEntityPropertyList,
+} from './PublicEntityProperties';
 
 const properties: PublicEntityProperties = {
   iden: {
     label: _('Iden'),
   },
   fqdn: {
-    label: _('Fqdn'),
+    label: 'FQDN',
   },
   platform: {
     label: _('Platform'),
@@ -32,9 +36,14 @@ const PublicEntity: EntityInterface = {
   iden: 'PublicEntity',
   title: _('PublicEntity', { count: 2 }),
   path: '/public_entities',
-  toStr: (row: any) => row.name.en,
+  toStr: (row: PublicEntityPropertyList<EntityValues>) =>
+    row.name?.en as string,
   properties,
-  selectOptions,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default PublicEntity;

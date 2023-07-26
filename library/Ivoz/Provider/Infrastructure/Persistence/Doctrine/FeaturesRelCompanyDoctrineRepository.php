@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyRepository;
@@ -55,5 +54,32 @@ class FeaturesRelCompanyDoctrineRepository extends ServiceEntityRepository imple
         );
 
         return $features;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function isFeatureInUseByBrandId(int $brandId, int $featureId): bool
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self, company')
+            ->innerJoin('self.company', 'company')
+            ->where(
+                $expression->eq('company.brand', $brandId)
+            )
+            ->andWhere(
+                $expression->eq('self.feature', $featureId)
+            )
+            ->setMaxResults(1);
+
+        /** @var FeaturesRelCompanyInterface[] $result  */
+        $result = $qb
+            ->getQuery()
+            ->getResult();
+
+        return count($result) > 0;
     }
 }

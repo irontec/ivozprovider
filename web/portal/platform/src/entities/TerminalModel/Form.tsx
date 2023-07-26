@@ -1,11 +1,10 @@
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const DefaultEntityForm = defaultEntityBehavior.Form;
-
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: '',
@@ -25,7 +24,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: '',
-      fields: ['genericTemplate'],
+      fields: [
+        {
+          name: 'genericTemplate',
+          size: { md: 12, lg: 12, xl: 12 },
+        },
+      ],
     },
     {
       legend: '',
@@ -33,7 +37,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: '',
-      fields: ['specificTemplate'],
+      fields: [
+        {
+          name: 'specificTemplate',
+          size: { md: 12, lg: 12, xl: 12 },
+        },
+      ],
     },
   ];
 

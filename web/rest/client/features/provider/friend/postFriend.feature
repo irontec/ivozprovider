@@ -16,18 +16,19 @@ Feature: Create friends
           "transport": "tls",
           "ip": "129.1.2.3",
           "port": 5060,
-          "password": "ZEF7t5n+b4",
+          "password": "",
           "priority": 2,
           "allow": "alaw",
           "fromDomain": "",
-          "directConnectivity": "yes",
+          "directConnectivity": "intervpbx",
           "ddiIn": "yes",
           "t38Passthrough": "no",
-          "id": 2,
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "interCompany": 1,
+          "company": 1
       }
       """
      Then the response status code should be 201
@@ -36,60 +37,69 @@ Feature: Create friends
       And the JSON should be equal to:
       """
       {
-          "name": "beWatterMyFriend",
+          "name": "InterCompany1_1",
           "description": "something",
           "transport": "tls",
           "ip": "129.1.2.3",
           "port": 5060,
-          "password": "ZEF7t5n+b4",
+          "password": null,
           "priority": 2,
           "allow": "alaw",
           "fromUser": null,
-          "fromDomain": "",
-          "directConnectivity": "yes",
+          "fromDomain": "127.0.0.1",
+          "directConnectivity": "intervpbx",
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "alwaysApplyTransformations": false,
           "rtpEncryption": false,
           "multiContact": true,
-          "id": 2,
+          "id": 3,
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "interCompany": 1
       }
       """
 
   Scenario: Retrieve created friends
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "friends/2"
+      And I send a "GET" request to "friends/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
       {
-          "name": "beWatterMyFriend",
+          "name": "InterCompany1_1",
           "description": "something",
           "transport": "tls",
           "ip": "129.1.2.3",
           "port": 5060,
-          "password": "ZEF7t5n+b4",
+          "password": null,
           "priority": 2,
           "allow": "alaw",
-                "fromUser": null,
-          "fromDomain": "",
-          "directConnectivity": "yes",
+          "fromUser": null,
+          "fromDomain": "127.0.0.1",
+          "directConnectivity": "intervpbx",
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "alwaysApplyTransformations": false,
           "rtpEncryption": false,
           "multiContact": true,
-          "id": 2,
+          "id": 3,
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "interCompany": {
+            "type": "vpbx",
+            "name": "DemoCompany",
+            "domainUsers": "127.0.0.1",
+            "onDemandRecordCode": "",
+            "balance": 1.2,
+            "id": 1
+          }
       }
       """

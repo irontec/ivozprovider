@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type ExtensionPropertyList<T> = {
+  id?: T;
   number?: T;
   routeType?: T;
   numberCountry?: T;

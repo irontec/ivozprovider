@@ -1,12 +1,10 @@
-import PersonIcon from '@mui/icons-material/Person';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { UserProperties } from './UserProperties';
-import selectOptions from './SelectOptions';
+import PersonIcon from '@mui/icons-material/Person';
+
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
+import { UserProperties, UserPropertyList } from './UserProperties';
 
 const properties: UserProperties = {
   name: {
@@ -42,7 +40,7 @@ const properties: UserProperties = {
     },
   },
   timezone: {
-    label: _('Timezone'),
+    label: _('Timezone', { count: 1 }),
     default: 145,
   },
   transformationRuleSet: {
@@ -51,12 +49,12 @@ const properties: UserProperties = {
     null: _("Client's default"),
   },
   location: {
-    label: _('Location'),
+    label: _('Location', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
   terminal: {
-    label: _('Terminal'),
+    label: _('Terminal', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
@@ -72,7 +70,7 @@ const properties: UserProperties = {
     default: '__null__',
   },
   outgoingDdiRule: {
-    label: _('Outgoing DDI Rule'),
+    label: _('Outgoing DDI Rule', { count: 1 }),
     null: _("Client's default"),
     default: '__null__',
     helpText: _(
@@ -80,7 +78,7 @@ const properties: UserProperties = {
     ),
   },
   callAcl: {
-    label: _('Call ACL'),
+    label: _('Call ACL', { count: 1 }),
     null: _('Unassigned'),
   },
   doNotDisturb: {
@@ -115,6 +113,8 @@ const properties: UserProperties = {
   bossAssistantWhiteList: {
     label: _('Boss Whitelist'),
     helpText: _('Origins matching this list will call directly to the user.'),
+    default: '__null__',
+    null: _('Unassigned'),
   },
   maxCalls: {
     label: _('Call waiting'),
@@ -126,10 +126,10 @@ const properties: UserProperties = {
     ),
   },
   pickupGroupIds: {
-    label: _('Pick Up Groups'),
+    label: _('Pickup group', { count: 2 }),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     default: '__null__',
     null: _("Client's default"),
   },
@@ -143,6 +143,11 @@ const properties: UserProperties = {
   rejectCallMethod: {
     label: _('Call rejection method'),
     default: 'rfc',
+    enum: {
+      rfc: _('Depending on response code'),
+      '486': _('Cancel call only in current device'),
+      '600': _('Cancel call in all devices'),
+    },
   },
   gsQRCode: {
     label: _('QR Code'),
@@ -188,6 +193,7 @@ const columns = [
 const user: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PersonIcon,
+  link: '/doc/en/administration_portal/client/vpbx/users.html',
   iden: 'User',
   title: _('User', { count: 2 }),
   path: '/users',
@@ -195,13 +201,23 @@ const user: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Users',
   },
-  toStr: (row: any) => `${row.name} ${row.lastname}`,
+  toStr: (row: UserPropertyList<string>) => `${row.name} ${row.lastname}`,
   properties,
   columns,
-  Form,
-  foreignKeyGetter,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

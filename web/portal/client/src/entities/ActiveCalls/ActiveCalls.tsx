@@ -1,9 +1,10 @@
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
-import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+
 import { BillableCallProperties } from './ActiveCallsProperties';
 
 const properties: BillableCallProperties = {
@@ -15,8 +16,9 @@ const properties: BillableCallProperties = {
 const activeCalls: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: ChatBubbleIcon,
+  link: '/doc/en/administration_portal/client/vpbx/calls/active_calls.html',
   iden: 'ActiveCalls',
-  title: _('Active calls', { count: 2 }),
+  title: _('Active call', { count: 2 }),
   path: '/active_calls',
   properties,
   acl: {

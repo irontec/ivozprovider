@@ -1,7 +1,7 @@
+import { Login as DefaultLogin } from '@irontec/ivoz-ui/components';
+import { EntityValidator } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { useEffect } from 'react';
 import { useStoreActions, useStoreState } from 'store';
-import { EntityValidator } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { Login as DefaultLogin } from '@irontec/ivoz-ui/components';
 
 interface LoginProps {
   validator?: EntityValidator;

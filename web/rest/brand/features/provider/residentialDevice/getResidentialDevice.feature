@@ -15,6 +15,50 @@ Feature: Retrieve residential devices
       """
       [
           {
+              "name": "residentialDevice2",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 2,
+              "company": 1,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "residentialDevice3",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 3,
+              "company": 1,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "residentialDevice4",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 4,
+              "company": 1,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "residentialDevice5",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 5,
+              "company": 1,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
               "name": "residentialDevice",
               "description": "",
               "directConnectivity": "no",

@@ -1,13 +1,14 @@
-import CallSplitIcon from '@mui/icons-material/CallSplit';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { OutgoingRoutingProperties } from './OutgoingRoutingProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import CallSplitIcon from '@mui/icons-material/CallSplit';
+
 import Operator from './Field/Operator';
+import {
+  OutgoingRoutingProperties,
+  OutgoingRoutingPropertyList,
+} from './OutgoingRoutingProperties';
 
 const properties: OutgoingRoutingProperties = {
   type: {
@@ -102,7 +103,7 @@ const properties: OutgoingRoutingProperties = {
     ),
   },
   forceClid: {
-    label: _('Force Clid'),
+    label: _('Force CLID'),
     helpText: _(
       `Instead of getting the caller from PAI/RPID headers, this clid will be used (and will be adapted using carrier's numeric transformations).`
     ),
@@ -165,10 +166,11 @@ const properties: OutgoingRoutingProperties = {
 const OutgoingRouting: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CallSplitIcon,
+  link: '/doc/en/administration_portal/brand/routing/outgoing_routings.html',
   iden: 'OutgoingRouting',
   title: _('Outgoing Routing', { count: 2 }),
   path: '/outgoing_routings',
-  toStr: (row: any) => row.id,
+  toStr: (row: OutgoingRoutingPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: [
     'company',
@@ -181,10 +183,26 @@ const OutgoingRouting: EntityInterface = {
     'weight',
     'stopper',
   ],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default OutgoingRouting;

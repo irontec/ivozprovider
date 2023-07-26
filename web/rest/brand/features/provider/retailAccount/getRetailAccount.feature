@@ -15,6 +15,50 @@ Feature: Retrieve retail accounts
       """
       [
           {
+              "name": "testRetailAccount2",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 2,
+              "company": 1,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "testRetailAccount3",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 3,
+              "company": 1,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "testRetailAccount4",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 4,
+              "company": 1,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "testRetailAccount5",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 5,
+              "company": 1,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
               "name": "testRetailAccount",
               "description": "",
               "directConnectivity": "no",

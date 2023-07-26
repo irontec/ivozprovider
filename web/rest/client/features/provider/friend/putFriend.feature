@@ -16,7 +16,7 @@ Feature: Update friends
           "transport": "udp",
           "ip": "1.2.3.4",
           "port": 5061,
-          "password": "ZEF7t5n+b4",
+          "password": "",
           "priority": 1,
           "disallow": "all",
           "allow": "alaw",
@@ -24,11 +24,12 @@ Feature: Update friends
           "calleridUpdateHeader": "pai",
           "updateCallerid": "yes",
           "fromDomain": "",
-          "directConnectivity": "yes",
+          "directConnectivity": "intervpbx",
           "id": 1,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "interCompany": 1
       }
       """
      Then the response status code should be 200
@@ -37,22 +38,24 @@ Feature: Update friends
       And the JSON should be like:
       """
       {
-          "name": "updatedTestFriend",
+          "name": "InterCompany1_1",
           "description": "",
           "transport": "udp",
           "ip": "1.2.3.4",
           "port": 5061,
-          "password": "ZEF7t5n+b4",
+          "password": null,
           "priority": 1,
           "allow": "alaw",
-          "fromDomain": "",
-          "directConnectivity": "yes",
+          "fromUser": null,
+          "fromDomain": "127.0.0.1",
+          "directConnectivity": "intervpbx",
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "id": 1,
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "interCompany": 1
       }
       """

@@ -1,8 +1,9 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { EntityValue } from '@irontec/ivoz-ui';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
 import { CarrierProperties, CarrierPropertyList } from './CarrierProperties';
 
 const properties: CarrierProperties = {};
@@ -10,6 +11,7 @@ const properties: CarrierProperties = {};
 const Carrier: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
+  link: '/doc/en/administration_portal/brand/providers/carriers.html',
   iden: 'Carrier',
   title: _('Carrier', { count: 2 }),
   path: '/Carriers',

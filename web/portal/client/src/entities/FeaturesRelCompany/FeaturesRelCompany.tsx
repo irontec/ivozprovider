@@ -1,15 +1,14 @@
-import AttachFileIcon from '@mui/icons-material/AttachFile';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 const FeaturesRelCompany: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AttachFileIcon,
   iden: 'FeaturesRelCompany',
-  title: _('FeaturesRelCompany', { count: 2 }),
+  title: _('Feature', { count: 2 }),
   path: '/features_rel_companies',
   acl: {
     ...defaultEntityBehavior.acl,
@@ -17,8 +16,10 @@ const FeaturesRelCompany: EntityInterface = {
   },
   toStr: (row: EntityValues) =>
     ((row?.feature as EntityValues)?.iden as string) || '',
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
 };
 

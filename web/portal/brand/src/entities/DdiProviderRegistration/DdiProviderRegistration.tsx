@@ -1,12 +1,13 @@
-import InsertLinkIcon from '@mui/icons-material/InsertLink';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { DdiProviderRegistrationProperties } from './DdiProviderRegistrationProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import InsertLinkIcon from '@mui/icons-material/InsertLink';
+
+import {
+  DdiProviderRegistrationProperties,
+  DdiProviderRegistrationPropertyList,
+} from './DdiProviderRegistrationProperties';
 
 const properties: DdiProviderRegistrationProperties = {
   username: {
@@ -23,7 +24,7 @@ const properties: DdiProviderRegistrationProperties = {
     required: false,
   },
   authUsername: {
-    label: _('Auth username'),
+    label: _('Auth Username'),
     helpText: _("Only if it's different from the Username"),
     required: false,
   },
@@ -80,16 +81,34 @@ const properties: DdiProviderRegistrationProperties = {
 const DdiProviderRegistration: EntityInterface = {
   ...defaultEntityBehavior,
   icon: InsertLinkIcon,
+  link: '/doc/en/administration_portal/brand/providers/ddi_providers.html#ddi-provider-registrations',
   iden: 'DdiProviderRegistration',
   title: _('DDI Provider Registration', { count: 2 }),
   path: '/ddi_provider_registrations',
-  toStr: (row: any) => row.id,
+  toStr: (row: DdiProviderRegistrationPropertyList<EntityValues>) =>
+    `${row.id}`,
   properties,
   columns: ['username', 'domain', 'statusIcon'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default DdiProviderRegistration;

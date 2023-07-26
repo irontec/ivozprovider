@@ -1,10 +1,12 @@
-import ForumIcon from '@mui/icons-material/Forum';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { ConferenceRoomProperties } from './ConferenceRoomProperties';
-import selectOptions from './SelectOptions';
+import ForumIcon from '@mui/icons-material/Forum';
+
+import {
+  ConferenceRoomProperties,
+  ConferenceRoomPropertyList,
+} from './ConferenceRoomProperties';
 
 const properties: ConferenceRoomProperties = {
   name: {
@@ -14,7 +16,7 @@ const properties: ConferenceRoomProperties = {
     label: _('Pin protected'),
     enum: {
       '0': _('No'),
-      '1': _('yes'),
+      '1': _('Yes'),
     },
     default: '0',
     visualToggle: {
@@ -41,19 +43,26 @@ const properties: ConferenceRoomProperties = {
 const conferenceRoom: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ForumIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/conference_rooms.html',
   iden: 'ConferenceRoom',
   title: _('Conference room', { count: 2 }),
   path: '/conference_rooms',
-  toStr: (row: any) => row.name,
+  toStr: (row: ConferenceRoomPropertyList<string>) => `${row.name}`,
   properties,
   columns: ['name', 'maxMembers', 'pinProtected', 'pinCode'],
-  Form,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ConferenceRooms',
   },
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

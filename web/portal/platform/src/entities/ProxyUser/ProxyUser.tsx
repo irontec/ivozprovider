@@ -1,14 +1,13 @@
-import SchemaIcon from '@mui/icons-material/Schema';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import SchemaIcon from '@mui/icons-material/Schema';
+
 import {
   ProxyUserProperties,
   ProxyUserPropertyList,
 } from './ProxyUserProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: ProxyUserProperties = {
   name: {
@@ -16,21 +15,30 @@ const properties: ProxyUserProperties = {
     readOnly: true,
   },
   ip: {
-    label: _('IP'),
+    label: _('IP Address'),
   },
 };
 
 const ProxyUser: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SchemaIcon,
+  link: '/doc/en/administration_portal/platform/infrastructure/proxy_users.html',
   iden: 'ProxyUser',
   title: _('Proxy User', { count: 2 }),
   path: '/proxy_users',
   toStr: (row: ProxyUserPropertyList<EntityValue>) => row.name as string,
   properties,
   columns: ['name', 'ip'],
-  selectOptions,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default ProxyUser;

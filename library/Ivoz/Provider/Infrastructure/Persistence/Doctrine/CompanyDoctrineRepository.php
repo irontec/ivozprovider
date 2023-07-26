@@ -5,7 +5,6 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
@@ -193,6 +192,15 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
         return $response;
     }
 
+    public function findByCorporationId(int $corporationId): ?array
+    {
+        $response = $this->findBy([
+            'corporation' => $corporationId
+        ]);
+
+        return $response;
+    }
+
     public function getBillingEnabledCompanyIdsByBrand(int $brandId): array
     {
         $qb = $this->createQueryBuilder('self');
@@ -217,5 +225,95 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
                     'id'
                 )
             );
+    }
+
+    /**
+     * Used by brand API access controls
+     * @inheritdoc
+     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getCompanyIdsByAdminCorporation
+     */
+    public function getCompanyIdsByAdminCorporation(AdministratorInterface $admin): array
+    {
+        if (!$admin->isVpbxAdmin()) {
+            throw new \DomainException('User must be client admin');
+        }
+
+        $company = $admin->getCompany();
+
+        if (is_null($company)) {
+            throw new \DomainException('Company cannot be null');
+        }
+
+        $corporation = $company->getCorporation();
+
+        if (is_null($corporation)) {
+            throw new \DomainException('Corporation cannot be null');
+        }
+
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.id')
+            ->where(
+                $expression->eq(
+                    'self.corporation',
+                    $corporation->getId()
+                )
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_column($result, 'id');
+    }
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int
+    {
+        return parent::count($criteria);
+    }
+
+    public function countByBrand(int $brandId): int
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('COUNT(self.id) as count')
+            ->where(
+                $expression->eq(
+                    'self.brand',
+                    $brandId
+                )
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getSingleResult();
+
+        return $result['count'];
+    }
+
+    /**
+     * @return CompanyInterface[]
+     */
+    public function getLatestByBrandId(int $brandId, int $intemNum = 5): array
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        return $qb
+            ->select('self')
+            ->where(
+                $qb->expr()->eq(
+                    'self.brand',
+                    $brandId
+                )
+            )
+            ->orderBy('self.id', 'DESC')
+            ->setMaxResults($intemNum)
+            ->getQuery()
+            ->getResult();
     }
 }

@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type VoicemailPropertyList<T> = {
+  id?: T;
   enabled?: T;
   user?: T;
   residential?: T;

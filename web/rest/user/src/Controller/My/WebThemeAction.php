@@ -2,47 +2,27 @@
 
 namespace Controller\My;
 
-use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Core\Domain\Service\Assembler\DtoAssembler;
-use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
-use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
-use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
-use Model\WebTheme;
+use Ivoz\Provider\Application\Service\WebPortal\WebThemeFactory;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
+use Ivoz\Provider\Domain\Model\WebPortal\WebTheme;
 use Symfony\Component\HttpFoundation\Request;
 
 class WebThemeAction
 {
     public function __construct(
-        private DtoAssembler $dtoAssembler,
-        private WebPortalRepository $webPortalRepository
+        private WebThemeFactory $webThemeFactory
     ) {
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): WebTheme
     {
-        $webPortal = $this->webPortalRepository->findUserUrlByServerName(
-            $request->server->get('SERVER_NAME')
-        );
+        $hostname = $request->getHost();
 
-        if (!$webPortal) {
-            throw new ResourceClassNotFoundException('WebPortal not found');
-        }
-
-        /** @var WebPortalDto $webPortalDto */
-        $webPortalDto = $this->dtoAssembler->toDto($webPortal);
-
-        $publicLogoUrl =
-            'https://'
-            . $request->server->get('SERVER_NAME')
-            . '/fso/webPortal/'
-            . (string) $webPortalDto->getId()
-            . '-'
-            . urlencode($webPortalDto->getLogoBaseName());
-
-        return new WebTheme(
-            $webPortalDto->getName(),
-            $webPortalDto->getUserTheme(),
-            $publicLogoUrl
-        );
+        return $this
+            ->webThemeFactory
+            ->execute(
+                $hostname,
+                WebPortalInterface::URLTYPE_USER
+            );
     }
 }

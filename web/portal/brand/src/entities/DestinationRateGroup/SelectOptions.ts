@@ -1,8 +1,9 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
-import { getI18n } from 'react-i18next';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { getI18n } from 'react-i18next';
 import store from 'store';
+
 import { DestinationRateGroupPropertiesList } from './DestinationRateGroupProperties';
 
 const DestinationRateGroupSelectOptions: SelectOptionsType = ({

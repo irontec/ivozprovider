@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type FaxesInOutPropertyList<T> = {
+  id?: T;
   calldate?: T;
   fax?: T;
   src?: T;
@@ -13,6 +14,7 @@ export type FaxesInOutPropertyList<T> = {
   type?: T;
   status?: T;
   file?: T;
+  pages?: T;
 };
 
 export type FaxesInOutProperties = FaxesInOutPropertyList<

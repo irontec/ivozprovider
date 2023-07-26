@@ -37,31 +37,13 @@
     </MixedMethodCall>
   </file>
   <file src="src/Controller/My/CallHistoryAction.php">
-    <InternalClass occurrences="2">
-      <code>RequestParser::getQueryString($this-&gt;request)</code>
-      <code>RequestParser::parseRequestParams($queryString)</code>
-    </InternalClass>
-    <InternalMethod occurrences="2">
-      <code>RequestParser::getQueryString($this-&gt;request)</code>
-      <code>RequestParser::parseRequestParams($queryString)</code>
-    </InternalMethod>
-    <InvalidArgument occurrences="1">
-      <code>$response</code>
-    </InvalidArgument>
-    <MissingPropertyType occurrences="1">
-      <code>$request</code>
-    </MissingPropertyType>
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="1">
       <code>$qb</code>
-      <code>$this-&gt;request</code>
     </MixedArgument>
     <MixedAssignment occurrences="2">
       <code>$call</code>
       <code>$qb</code>
     </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>Paginator | array | iterable</code>
-    </MixedInferredReturnType>
     <MixedMethodCall occurrences="7">
       <code>eq</code>
       <code>expr</code>
@@ -71,15 +53,17 @@
       <code>setTimezone</code>
       <code>where</code>
     </MixedMethodCall>
-    <MixedReturnStatement occurrences="1">
-      <code>$qb-&gt;getQuery()-&gt;getResult()</code>
-    </MixedReturnStatement>
-    <TooManyArguments occurrences="1">
-      <code>applyToCollection</code>
-    </TooManyArguments>
     <UndefinedInterfaceMethod occurrences="1">
       <code>createQueryBuilder</code>
     </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Controller/My/FilterCollectionTrait.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>array&lt;int, EntityInterface&gt; | iterable | Paginator</code>
+    </MixedInferredReturnType>
+    <TooManyArguments occurrences="1">
+      <code>applyToCollection</code>
+    </TooManyArguments>
   </file>
   <file src="src/Controller/My/PostCallForwardSettingsAction.php">
     <MixedArrayAssignment occurrences="1">
@@ -102,17 +86,6 @@
     <UndefinedInterfaceMethod occurrences="1">
       <code>decode</code>
     </UndefinedInterfaceMethod>
-  </file>
-  <file src="src/Controller/My/WebThemeAction.php">
-    <MixedArgument occurrences="1">
-      <code>$request-&gt;server-&gt;get('SERVER_NAME')</code>
-    </MixedArgument>
-    <MixedOperand occurrences="1">
-      <code>$request-&gt;server-&gt;get('SERVER_NAME')</code>
-    </MixedOperand>
-    <PossiblyNullArgument occurrences="1">
-      <code>$webPortalDto-&gt;getLogoBaseName()</code>
-    </PossiblyNullArgument>
   </file>
   <file src="src/Kernel.php">
     <DeprecatedClass occurrences="4">
@@ -186,18 +159,6 @@
       <code>$this-&gt;userAgent</code>
       <code>$this-&gt;userName</code>
       <code>$this-&gt;voiceMail</code>
-    </MixedAssignment>
-  </file>
-  <file src="src/Model/WebTheme.php">
-    <MissingParamType occurrences="3">
-      <code>$brandName</code>
-      <code>$logo</code>
-      <code>$theme</code>
-    </MissingParamType>
-    <MixedAssignment occurrences="3">
-      <code>$this-&gt;logo</code>
-      <code>$this-&gt;name</code>
-      <code>$this-&gt;theme</code>
     </MixedAssignment>
   </file>
   <file src="src/Service/AuthEndpointDecorator.php">

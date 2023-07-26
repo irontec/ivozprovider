@@ -1,13 +1,16 @@
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { EntityValue } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface, {
+  OrderDirection,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+
+import Actions from './Action';
 import {
   BillableCallProperties,
   BillableCallPropertyList,
 } from './BillableCallProperties';
-import View from './View';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: BillableCallProperties = {
   callid: {
@@ -23,7 +26,7 @@ const properties: BillableCallProperties = {
     label: _('Caller'),
   },
   brand: {
-    label: _('Brand'),
+    label: _('Brand', { count: 1 }),
   },
   callee: {
     label: _('Callee'),
@@ -41,7 +44,7 @@ const properties: BillableCallProperties = {
     label: _('Destination', { count: 1 }),
   },
   ratingPlanName: {
-    label: _('Rating plan'),
+    label: _('Rating plan', { count: 1 }),
   },
   endpointType: {
     label: _('Endpoint Type'),
@@ -70,7 +73,7 @@ const properties: BillableCallProperties = {
     label: _('Id'),
   },
   company: {
-    label: _('Client'),
+    label: _('Client', { count: 1 }),
   },
   carrier: {
     label: _('Carrier', { count: 1 }),
@@ -91,11 +94,13 @@ const properties: BillableCallProperties = {
 const BillableCall: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ChatBubbleIcon,
+  link: '/doc/en/administration_portal/platform/external_calls.html',
   iden: 'BillableCall',
   title: _('External call', { count: 2 }),
   path: '/billable_calls',
   toStr: (row: BillableCallPropertyList<EntityValue>) => row.callid as string,
   properties,
+  defaultOrderDirection: OrderDirection.desc,
   columns: [
     'startTime',
     'brand',
@@ -115,7 +120,17 @@ const BillableCall: EntityInterface = {
     update: false,
     delete: false,
   },
-  View,
+  customActions: Actions,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  View: async () => {
+    const module = await import('./View');
+
+    return module.default;
+  },
 };
 
 export default BillableCall;

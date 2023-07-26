@@ -108,7 +108,7 @@ Feature: Retrieve voicemails
               "terminal": 1,
               "extension": null,
               "timezone": 145,
-              "outgoingDdi": null,
+              "outgoingDdi": 3,
               "outgoingDdiRule": null,
               "location": null,
               "voicemail": null,

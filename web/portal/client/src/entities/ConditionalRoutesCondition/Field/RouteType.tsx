@@ -4,6 +4,7 @@ import {
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { useStoreState } from 'store';
+
 import { ConditionalRoutesConditionPropertyList } from '../ConditionalRoutesConditionProperties';
 
 type RouteTypeValues = ConditionalRoutesConditionPropertyList<string>;

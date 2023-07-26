@@ -1,7 +1,7 @@
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import sprintf from 'i18next-sprintf-postprocessor';
+import { initReactI18next } from 'react-i18next';
 import translations from 'translations/index';
 
 i18n

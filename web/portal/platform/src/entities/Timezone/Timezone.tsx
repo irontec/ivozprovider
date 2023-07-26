@@ -3,7 +3,6 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import selectOptions from './SelectOptions';
 
 const timezone: EntityInterface = {
   ...defaultEntityBehavior,
@@ -16,7 +15,11 @@ const timezone: EntityInterface = {
     iden: 'Timezones',
   },
   toStr: (row: EntityValues) => row.tz as string,
-  selectOptions,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default timezone;

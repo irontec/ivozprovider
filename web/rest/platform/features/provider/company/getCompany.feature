@@ -18,7 +18,7 @@ Feature: Manage companies
               "type": "vpbx",
               "name": "DemoCompany",
               "maxDailyUsage": 2,
-              "currentDayUsage": 1,
+              "currentDayUsage": -1,
               "billingMethod": "prepaid",
               "id": 1,
               "invoicing": {
@@ -30,7 +30,7 @@ Feature: Manage companies
               "type": "vpbx",
               "name": "Irontec Test Company",
               "maxDailyUsage": 1000000,
-              "currentDayUsage": 0,
+              "currentDayUsage": -1,
               "billingMethod": "postpaid",
               "id": 2,
               "invoicing": {
@@ -42,7 +42,7 @@ Feature: Manage companies
               "type": "retail",
               "name": "Retail Company",
               "maxDailyUsage": 1000000,
-              "currentDayUsage": 0,
+              "currentDayUsage": -1,
               "billingMethod": "postpaid",
               "id": 3,
               "invoicing": {
@@ -54,7 +54,7 @@ Feature: Manage companies
               "type": "residential",
               "name": "Residential Company",
               "maxDailyUsage": 1000000,
-              "currentDayUsage": 0,
+              "currentDayUsage": -1,
               "billingMethod": "postpaid",
               "id": 4,
               "invoicing": {
@@ -66,7 +66,7 @@ Feature: Manage companies
               "type": "wholesale",
               "name": "Wholesale Company",
               "maxDailyUsage": 1000000,
-              "currentDayUsage": 0,
+              "currentDayUsage": -1,
               "billingMethod": "postpaid",
               "id": 5,
               "invoicing": {

@@ -79,4 +79,30 @@ class ResidentialDeviceDoctrineRepository extends ServiceEntityRepository implem
 
         return $this->countByCriteria($criteria);
     }
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int
+    {
+        return parent::count($criteria);
+    }
+
+    public function findLastAddedByCompanyId(int $companyId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $result = $qb
+            ->select('self, outgoingDdi')
+            ->leftJoin('self.outgoingDdi', 'outgoingDdi')
+            ->where('self.company=:company')
+            ->orderBy('self.id', 'ASC')
+            ->setMaxResults(4)
+            ->setParameter('company', $companyId)
+            ->getQuery()
+            ->getResult();
+
+
+        return $result;
+    }
 }

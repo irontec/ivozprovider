@@ -1,44 +1,52 @@
-import { createRoot } from 'react-dom/client';
+import './index.css';
+
 import {
-  ThemeProvider,
   createTheme,
   StyledEngineProvider,
+  ThemeProvider,
 } from '@mui/material';
 import * as locales from '@mui/material/locale';
-import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from 'easy-peasy';
+import { createRoot } from 'react-dom/client';
 import store from 'store';
-import i18n from './i18n';
-import './index.css';
+
 import App from './App';
+import i18n from './i18n';
+import reportWebVitals from './reportWebVitals';
 
-const currentLanguage = i18n.language.replace('-', '');
-const currentLocale = (locales as Record<string, locales.Localization>)[
-  currentLanguage
-];
+const currentLanguage =
+  i18n.language.substring(0, 2) === 'es' ? 'esES' : 'enUS';
 
-if (!currentLocale || !currentLocale.components) {
-  console.log(
-    `${currentLanguage} locale was not found in`,
-    Object.keys(locales)
-  );
-}
-const theme = createTheme(
-  {
-    palette: {
-      primary: {
-        main: '#248475',
-      },
-      secondary: {
-        main: '#e53935',
-      },
+const computedStyle = getComputedStyle(document.documentElement);
+const colorPrimary = computedStyle.getPropertyValue('--color-primary').trim();
+const colorSecondary = computedStyle
+  .getPropertyValue('--color-secondary')
+  .trim();
+const colorContrastText = computedStyle
+  .getPropertyValue('--color-button')
+  .trim();
+
+const theme = createTheme({
+  ...locales[currentLanguage],
+  palette: {
+    primary: {
+      main: colorPrimary,
+      contrastText: colorContrastText,
+    },
+    secondary: {
+      main: colorSecondary,
+      contrastText: colorContrastText,
     },
   },
-  currentLocale
-);
+  typography: {
+    allVariants: {
+      fontFamily: ['PublicSans', 'Roboto', 'Arial', 'sans-serif'].join(','),
+    },
+  },
+});
 
 const container = document.getElementById('root');
-const root = createRoot(container as any);
+const root = createRoot(container as Element);
 
 //@see https://github.com/ctrlplusb/easy-peasy/issues/741
 type Props = StoreProvider['props'] & { children: React.ReactNode };

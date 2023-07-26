@@ -4,8 +4,9 @@ import {
   StoreContainer,
   storeModel as ivozStoreModel,
 } from '@irontec/ivoz-ui/store';
-import config from '../config';
 import { createStore, createTypedHooks } from 'easy-peasy';
+
+import config from '../config';
 
 ApiClient.API_URL = config.API_URL;
 
@@ -23,4 +24,4 @@ export default store;
 const { useStoreActions, useStoreState, useStoreDispatch, useStore } =
   createTypedHooks<AppStore>();
 
-export { useStoreActions, useStoreState, useStoreDispatch, useStore };
+export { useStore, useStoreActions, useStoreDispatch, useStoreState };

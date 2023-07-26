@@ -23,6 +23,10 @@ that require feature-full call flows.
         When billing feature is enabled determines when calls will be priced. 'none' disables billing.
         See :ref:`Billing` section.
 
+    Corporation
+        Select which corporation this client belongs to. Enables using :ref:`Inter VPBX friends <internal_friends>` to
+        dial other client extensions.
+
     Geographic Configuration
         General client configuration for language and timezones. Most of the settings in the section can be
         configured per user if required.

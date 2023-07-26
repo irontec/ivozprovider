@@ -1,5 +1,6 @@
 import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import CompanyRetailAccountSelectOptions from '../..//RetailAccount/SelectOptions/CompanyRetailAccountSelectOptions';
 
 export const useCompanyRetailAccount = (companyId: number | string | null) => {
@@ -18,7 +19,7 @@ export const useCompanyRetailAccount = (companyId: number | string | null) => {
 
     CompanyRetailAccountSelectOptions(
       {
-        callback: (options: any) => {
+        callback: (options) => {
           setRetailAccounts(options || []);
         },
         cancelToken,

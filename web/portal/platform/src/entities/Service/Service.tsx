@@ -1,10 +1,10 @@
-import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { EntityValue } from '@irontec/ivoz-ui';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import { getI18n } from 'react-i18next';
+
 import { ServiceProperties, ServicePropertyList } from './ServiceProperties';
 
 const properties: ServiceProperties = {
@@ -45,14 +45,28 @@ const properties: ServiceProperties = {
 const Service: EntityInterface = {
   ...defaultEntityBehavior,
   icon: HomeRepairServiceIcon,
+  link: '/doc/en/administration_portal/platform/services.html',
   iden: 'Service',
   title: _('Service', { count: 2 }),
   path: '/services',
-  toStr: (row: ServicePropertyList<EntityValue>) => row.name as string,
+  toStr: (row: ServicePropertyList<EntityValue>) => {
+    const language = getI18n().language.substring(0, 2);
+    const name = row.name as unknown as Record<string, string>;
+
+    return name[language] as string;
+  },
   properties,
   columns: ['iden', 'name', 'description', 'defaultCode'],
-  selectOptions,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default Service;

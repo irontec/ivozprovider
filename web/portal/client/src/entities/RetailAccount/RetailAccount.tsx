@@ -1,17 +1,19 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { RetailAccountProperties } from './RetailAccountProperties';
-import selectOptions from './SelectOptions';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+
+import Password from '../Terminal/Field/Password';
 import Status from './Field/Status';
 import StatusIcon from './Field/StatusIcon';
-import Password from '../Terminal/Field/Password';
-import Form from './Form';
+import {
+  RetailAccountProperties,
+  RetailAccountPropertyList,
+} from './RetailAccountProperties';
 
 const properties: RetailAccountProperties = {
   company: {
-    label: _('Client'),
+    label: _('Client', { count: 1 }),
   },
   name: {
     label: _('Name'),
@@ -21,10 +23,10 @@ const properties: RetailAccountProperties = {
     helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
   },
   domain: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   domainName: {
-    label: _('Domain'),
+    label: _('SIP Domain', { count: 1 }),
   },
   description: {
     label: _('Description'),
@@ -79,11 +81,11 @@ const properties: RetailAccountProperties = {
     visualToggle: {
       yes: {
         show: ['ip', 'port', 'transport'],
-        hide: [],
+        hide: ['multiContact'],
       },
       no: {
         hide: ['ip', 'port', 'transport'],
-        show: [],
+        show: ['multiContact'],
       },
     },
   },
@@ -145,19 +147,27 @@ const properties: RetailAccountProperties = {
 const retailAccount: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplications,
+  link: '/doc/en/administration_portal/client/retail/retail_accounts.html',
   iden: 'RetailAccount',
-  title: _('Retail accounts', { count: 2 }),
+  title: _('Retail Account', { count: 2 }),
   path: '/retail_accounts',
   properties,
   columns: ['name', 'domainName', 'description', 'statusIcon'],
+  toStr: (row: RetailAccountPropertyList<string>) => `${row.name}`,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RetailAccounts',
   },
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default retailAccount;

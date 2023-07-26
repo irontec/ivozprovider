@@ -4,3 +4,5 @@
 Ivoz\Kam\Domain\Model\Rtpengine\Rtpengine:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      url: ASC

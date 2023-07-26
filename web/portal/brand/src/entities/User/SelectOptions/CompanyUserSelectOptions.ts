@@ -15,9 +15,9 @@ const CompanyUserSelectOptions: SelectOptionsType<
   const companyId = customProps?.companyId;
 
   return defaultEntityBehavior.fetchFks(
-    User.path + `?company[]=${companyId}`,
+    `${User.path}?company[]=${companyId}`,
     ['id', 'name', 'lastname'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: `${item.name} ${item.lastname}` });

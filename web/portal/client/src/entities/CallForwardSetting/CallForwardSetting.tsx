@@ -1,28 +1,25 @@
-import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
+
 import { CallForwardSettingProperties } from './CallForwardSettingProperties';
-import Form from './Form';
-import TargetTypeValue from './Field/TargetTypeValue';
-import TargetType from './Field/TargetType';
 import CallForwardType from './Field/CallForwardType';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import TargetType from './Field/TargetType';
+import TargetTypeValue from './Field/TargetTypeValue';
 
 const properties: CallForwardSettingProperties = {
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
   },
   residentialDevice: {
-    label: _('Residential Device'),
+    label: _('Residential Device', { count: 1 }),
   },
   retailAccount: {
-    label: _('Retail Account'),
+    label: _('Retail Account', { count: 1 }),
   },
   friend: {
-    label: _('Friend'),
+    label: _('Friend', { count: 1 }),
   },
   ddi: {
     label: _('Called DDI'),
@@ -30,7 +27,7 @@ const properties: CallForwardSettingProperties = {
     default: '__null__',
   },
   cfwToRetailAccount: {
-    label: _('Retail Account'),
+    label: _('Retail Account', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
     required: true,
@@ -47,7 +44,7 @@ const properties: CallForwardSettingProperties = {
     label: _('Call forward type'),
     component: CallForwardType,
     enum: {
-      inconditional: _('Inconditional'),
+      inconditional: _('Unconditional'),
       noAnswer: _('No Answer'),
       busy: _('Busy'),
       userNotRegistered: _('Unreachable'),
@@ -76,9 +73,9 @@ const properties: CallForwardSettingProperties = {
     component: TargetType,
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
-      retail: _('Retail Account'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
+      retail: _('Retail Account', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -122,7 +119,7 @@ const properties: CallForwardSettingProperties = {
     },
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numberValue: {
@@ -131,13 +128,13 @@ const properties: CallForwardSettingProperties = {
     required: true,
   },
   extension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
     required: true,
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
     required: true,
@@ -179,11 +176,25 @@ const CallForwardSetting: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'CallForwardSettings',
   },
-  Form,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

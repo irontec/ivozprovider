@@ -1,14 +1,15 @@
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { ResidentialDevicePropertyList } from './ResidentialDeviceProperties';
-import { ResidentialSelectOptions } from '../Company/SelectOptions';
 import { DropdownChoices } from '@irontec/ivoz-ui';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+
+import { ResidentialSelectOptions } from '../Company/SelectOptions';
+import { ResidentialDevicePropertyList } from './ResidentialDeviceProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
   entityService,
-}): Promise<any> => {
+}): Promise<unknown> => {
   const response: ResidentialDevicePropertyList<unknown> = {};
 
   const promises = autoSelectOptions({

@@ -3,6 +3,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { getI18n } from 'react-i18next';
 import store from 'store';
+
 import { LanguagePropertiesList } from './LanguageProperties';
 
 const LanguageSelectOptions: SelectOptionsType = ({
@@ -14,7 +15,7 @@ const LanguageSelectOptions: SelectOptionsType = ({
   const Language = entities.Language;
 
   return defaultEntityBehavior.fetchFks(
-    Language.path + `?_order[name.${[language]}]=ASC`,
+    `${Language.path}?_order[name.${[language]}]=ASC`,
     ['id', 'name'],
     (data: LanguagePropertiesList) => {
       const options: DropdownChoices = [];

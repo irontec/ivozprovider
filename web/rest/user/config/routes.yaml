@@ -17,6 +17,24 @@ gesdinet_jwt_refresh_token:
 ###############################
 ## Custom routes
 ###############################
+get_my_dasboard:
+  path: '/my/dashboard'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\DashboardAction
+    _api_resource_class: 'Model\Dashboard\Dashboard'
+    _api_item_operation_name: 'get_my_dasboard'
+    _api_receive: false
+    
+get_my_last_month_calls:
+  path: '/my/last_month_calls'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\LastMonthCallsAction
+    _api_resource_class: 'Model\LastMonthCalls'
+    _api_item_operation_name: 'get_my_last_month_calls'
+    _api_receive: false
+
 get_my_rating_plan_prices:
   path: '/rating_plan_groups/{id}/prices'
   methods: ['GET']
@@ -44,13 +62,21 @@ get_my_status:
     _api_item_operation_name: 'get_my_status'
     _api_receive: false
 
-get_my_web_theme:
-  path: '/my/web_theme'
+get_my_theme:
+  path: '/my/theme'
   methods: ['GET']
   defaults:
     _controller: Controller\My\WebThemeAction
-    _api_resource_class: 'Model\WebTheme'
-    _api_item_operation_name: 'get_my_web_theme'
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\WebPortal\WebTheme'
+    _api_item_operation_name: 'get_my_theme'
+    _api_receive: false
+
+get_my_logo:
+  path: '/my/logo/{id}/{name}'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\LogoAction
+    _api_item_operation_name: 'get_my_logo'
     _api_receive: false
 
 get_my_call_stats:

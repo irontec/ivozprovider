@@ -1,12 +1,11 @@
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import View from './View';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+
 import { UsersCdrProperties } from './UsersCdrProperties';
-import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: UsersCdrProperties = {
   startTime: {
@@ -39,15 +38,15 @@ const properties: UsersCdrProperties = {
     readOnly: true,
   },
   callid: {
-    label: _('Callid'),
+    label: 'Call-ID',
     readOnly: true,
   },
   xcallid: {
-    label: _('Xcallid'),
+    label: 'X-Call-ID',
     readOnly: true,
   },
   callidHash: {
-    label: _('CallidHash'),
+    label: 'Call-ID Hash',
     readOnly: true,
   },
   party: {
@@ -62,6 +61,7 @@ const columns = ['startTime', 'owner', 'direction', 'party', 'duration'];
 const usersCdr: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ChatBubbleOutlineIcon,
+  link: '/doc/en/administration_portal/client/vpbx/calls/call_registry.html',
   iden: 'UsersCdr',
   title: _('Call registry', { count: 2 }),
   path: '/users_cdrs',
@@ -71,10 +71,18 @@ const usersCdr: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'kam_users_cdrs',
   },
-  foreignKeyResolver,
-  View,
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  View: async () => {
+    const module = await import('./View');
+
+    return module.default;
+  },
 };
 
 export default usersCdr;

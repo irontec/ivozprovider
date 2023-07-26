@@ -1,11 +1,12 @@
-import GroupsIcon from '@mui/icons-material/Groups';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { HuntGroupProperties } from './HuntGroupProperties';
-import selectOptions from './SelectOptions';
+import GroupsIcon from '@mui/icons-material/Groups';
+
+import {
+  HuntGroupProperties,
+  HuntGroupPropertyList,
+} from './HuntGroupProperties';
 
 const routableFields = [
   'noAnswerNumberCountry',
@@ -78,8 +79,8 @@ const properties: HuntGroupProperties = {
     label: _('Timeout target type'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     default: '__null__',
     visualToggle: {
@@ -107,7 +108,7 @@ const properties: HuntGroupProperties = {
     null: _('Unassigned'),
   },
   noAnswerNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   noAnswerNumberValue: {
@@ -115,11 +116,11 @@ const properties: HuntGroupProperties = {
     required: true,
   },
   noAnswerExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   noAnswerVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
 };
@@ -127,19 +128,30 @@ const properties: HuntGroupProperties = {
 const huntGroup: EntityInterface = {
   ...defaultEntityBehavior,
   icon: GroupsIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/hunt_groups.html',
   iden: 'HuntGroup',
   title: _('Hunt Group', { count: 2 }),
   path: '/hunt_groups',
-  toStr: (row: any) => row.name,
+  toStr: (row: HuntGroupPropertyList<string>) => `${row.name}`,
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'HuntGroups',
   },
-  Form,
-  foreignKeyGetter,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

@@ -21,7 +21,7 @@ abstract class MediaRelaySetAbstract
     /**
      * @var string
      */
-    protected $name = '0';
+    protected $name = '';
 
     /**
      * @var ?string

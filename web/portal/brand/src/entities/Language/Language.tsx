@@ -1,9 +1,10 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import { LanguageProperties } from './LanguageProperties';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
+import { LanguageProperties, LanguagePropertyList } from './LanguageProperties';
 
 const properties: LanguageProperties = {
   iden: {
@@ -23,9 +24,13 @@ const Language: EntityInterface = {
   iden: 'Language',
   title: _('Language', { count: 2 }),
   path: '/languages',
-  toStr: (row: any) => row.name.en,
+  toStr: (row: LanguagePropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
-  selectOptions,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default Language;

@@ -1,12 +1,13 @@
-import { styled } from '@mui/material';
-import { CancelTokenSource } from 'axios';
 import withCustomComponentWrapper, {
+  CustomFunctionComponentContext,
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-  CustomFunctionComponentContext,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { styled } from '@mui/material';
+import { CancelTokenSource } from 'axios';
 import { useEffect, useState } from 'react';
 import { useStoreActions, useStoreState } from 'store';
+
 import { LocutionPropertyList } from '../LocutionProperties';
 
 type RecordingExtensionValues = LocutionPropertyList<string | number>;

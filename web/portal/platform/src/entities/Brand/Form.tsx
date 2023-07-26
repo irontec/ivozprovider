@@ -1,14 +1,17 @@
+import { DropdownArrayChoices } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { foreignKeyGetter } from './ForeignKeyGetter';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+
+import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
-  const DefaultEntityForm = defaultEntityBehavior.Form;
   const edit = props.edit || false;
 
   const fkChoices = useFkChoices({
@@ -17,6 +20,21 @@ const Form = (props: EntityFormProps): JSX.Element => {
     row,
     match,
   });
+
+  const enableSipDomainFeatures = (
+    (fkChoices.features as DropdownArrayChoices) || []
+  ).filter((row) => ['residential', 'retail'].includes(row.label as string));
+
+  const enableSipDomainFeaturesIds = enableSipDomainFeatures.map(
+    (row) => row.id
+  );
+
+  const formik = useFormHandler(props);
+  const { values } = formik;
+  const showDomainSipFlds =
+    values.features.filter((id: number) =>
+      enableSipDomainFeaturesIds.includes(id)
+    ).length > 0;
 
   const groups: Array<FieldsetGroups | false> = [
     {
@@ -34,8 +52,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Locales'),
       fields: ['defaultTimezone', 'language', 'currency'],
     },
-    edit && {
-      legend: _('Domain Sip'),
+    showDomainSipFlds && {
+      legend: _('SIP domain', { count: 1 }),
       fields: ['domainUsers'],
     },
     edit && {
@@ -51,7 +69,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
   ];
 
-  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+  return (
+    <DefaultEntityForm
+      {...props}
+      formik={formik}
+      fkChoices={fkChoices}
+      groups={groups}
+    />
+  );
 };
 
 export default Form;

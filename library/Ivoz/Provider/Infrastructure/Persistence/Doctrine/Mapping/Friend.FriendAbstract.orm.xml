@@ -3,6 +3,7 @@
   <mapped-superclass name="Ivoz\Provider\Domain\Model\Friend\FriendAbstract" table="friend_abstract">
     <unique-constraints>
       <unique-constraint name="name_domain" columns="name,domainId"/>
+      <unique-constraint name="companyInterCompany" columns="companyId,interCompanyId"/>
       <unique-constraint name="companyPrio" columns="companyId,priority"/>
     </unique-constraints>
     <field name="name" type="string" column="name" length="65" nullable="false">

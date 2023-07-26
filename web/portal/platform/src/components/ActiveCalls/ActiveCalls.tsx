@@ -1,5 +1,6 @@
-import { useDeferredValue } from 'react';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useDeferredValue } from 'react';
+
 import ActiveCallsTable from './ActiveCallsTable';
 import useRealtimeCalls from './useRealtimeCalls';
 

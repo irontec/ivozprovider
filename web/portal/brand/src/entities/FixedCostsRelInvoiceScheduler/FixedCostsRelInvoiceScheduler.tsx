@@ -1,12 +1,13 @@
-import AddCardIcon from '@mui/icons-material/AddCard';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { FixedCostsRelInvoiceSchedulerProperties } from './FixedCostsRelInvoiceSchedulerProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import AddCardIcon from '@mui/icons-material/AddCard';
+
+import {
+  FixedCostsRelInvoiceSchedulerProperties,
+  FixedCostsRelInvoiceSchedulerPropertyList,
+} from './FixedCostsRelInvoiceSchedulerProperties';
 
 const properties: FixedCostsRelInvoiceSchedulerProperties = {
   quantity: {
@@ -86,13 +87,30 @@ const FixedCostsRelInvoiceScheduler: EntityInterface = {
   iden: 'FixedCostsRelInvoiceScheduler',
   title: _('Fixed cost', { count: 2 }),
   path: '/fixed_costs_rel_invoice_schedulers',
-  toStr: (row: any) => row.id,
+  toStr: (row: FixedCostsRelInvoiceSchedulerPropertyList<EntityValues>) =>
+    `${row.id}`,
   properties,
   columns: ['fixedCost', 'type', 'quantity'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default FixedCostsRelInvoiceScheduler;

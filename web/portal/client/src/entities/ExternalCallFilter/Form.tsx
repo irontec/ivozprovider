@@ -1,14 +1,17 @@
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
+  Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import { foreignKeyGetter } from './foreignKeyGetter';
+import { useStoreState } from 'store';
+
+import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
-  const DefaultEntityForm = defaultEntityBehavior.Form;
+
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -16,16 +19,20 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
+  const residential = useStoreState(
+    (state) => state.clientSession.aboutMe.profile.residential
+  );
+
   const groups: Array<FieldsetGroups> = [
     {
       legend: _('Basic Info'),
-      fields: ['name', 'welcomeLocution'],
+      fields: ['name', !residential && 'welcomeLocution'],
     },
     {
       legend: _('Filtering info'),
-      fields: ['whiteListIds', 'blackListIds'],
+      fields: [!residential && 'whiteListIds', 'blackListIds'],
     },
-    {
+    !residential && {
       legend: _('Holidays configuration'),
       fields: [
         'holidayEnabled',
@@ -38,7 +45,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'holidayVoicemail',
       ],
     },
-    {
+    !residential && {
       legend: _('Out of schedule configuration'),
       fields: [
         'outOfScheduleEnabled',
@@ -49,6 +56,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'outOfScheduleNumberValue',
         'outOfScheduleExtension',
         'outOfScheduleVoicemail',
+      ],
+    },
+    residential && {
+      legend: _('Call forward setting', { count: 2 }),
+      fields: [
+        'outOfScheduleEnabled',
+        'outOfScheduleNumberCountry',
+        'outOfScheduleNumberValue',
       ],
     },
   ];

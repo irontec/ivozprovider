@@ -32,4 +32,6 @@ interface DdiRepository extends ObjectRepository, Selectable
      * @return int Number of DDIs of the given Company and not Country as prefix
      */
     public function countByCompanyAndNotCountry(int $companyId, int $countryId): int;
+
+    public function countByBrand(int $brandId): int;
 }

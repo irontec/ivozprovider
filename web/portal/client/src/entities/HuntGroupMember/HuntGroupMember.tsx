@@ -1,20 +1,22 @@
-import Groups3Icon from '@mui/icons-material/Groups3';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { HuntGroupMemberProperties } from './HuntGroupMemberProperties';
+import Groups3Icon from '@mui/icons-material/Groups3';
+
 import Type from './Field/Target';
-import Form from './Form';
-import foreignKeyResolver from './foreignKeyResolver';
+import {
+  HuntGroupMemberProperties,
+  HuntGroupMemberPropertyList,
+} from './HuntGroupMemberProperties';
 
 const properties: HuntGroupMemberProperties = {
   huntGroup: {
-    label: _('Hunt Group'),
+    label: _('Hunt Group', { count: 1 }),
   },
   routeType: {
     label: _('Target type'),
     enum: {
-      user: _('User'),
+      user: _('User', { count: 1 }),
       number: _('Number'),
     },
     visualToggle: {
@@ -29,7 +31,7 @@ const properties: HuntGroupMemberProperties = {
     },
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numberValue: {
@@ -37,7 +39,7 @@ const properties: HuntGroupMemberProperties = {
     required: true,
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
   },
   timeoutTime: {
     label: _('Timeout time'),
@@ -54,7 +56,15 @@ const properties: HuntGroupMemberProperties = {
   },
 };
 
-const columns = ['target', 'huntGroup', 'timeoutTime', 'priority'];
+const columns = [
+  'target',
+  'huntGroup',
+  'routeType',
+  'numberCountry',
+  'numberValue',
+  'timeoutTime',
+  'priority',
+];
 
 const huntGroupMember: EntityInterface = {
   ...defaultEntityBehavior,
@@ -62,15 +72,23 @@ const huntGroupMember: EntityInterface = {
   iden: 'HuntGroupMember',
   title: _('Hunt Group member', { count: 2 }),
   path: '/hunt_group_members',
-  toStr: (row: any) => row.name,
+  toStr: (row: HuntGroupMemberPropertyList<string>) => `${row.id}`,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'HuntGroupMembers',
   },
-  foreignKeyResolver,
-  Form,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default huntGroupMember;

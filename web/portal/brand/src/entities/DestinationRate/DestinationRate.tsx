@@ -1,19 +1,20 @@
-import PaymentsIcon from '@mui/icons-material/Payments';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { DestinationRateProperties } from './DestinationRateProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
-import Cost from './Field/Cost';
+import PaymentsIcon from '@mui/icons-material/Payments';
+
+import {
+  DestinationRateProperties,
+  DestinationRatePropertyList,
+} from './DestinationRateProperties';
 import ConnectionFee from './Field/ConnectionFee';
+import Cost from './Field/Cost';
 
 const properties: DestinationRateProperties = {
   cost: {
     label: _('Per minute rate'),
-    pattern: new RegExp(`/^[0-9]{1,6}[.]{0,1}[0-9]*$/`),
+    pattern: new RegExp('^[0-9]{1,6}[.]{0,1}[0-9]*$'),
     default: '0.0000',
     helpText: _(`Use point as decimal delimiter - e.g. 0.02`),
     component: Cost,
@@ -23,7 +24,7 @@ const properties: DestinationRateProperties = {
   },
   connectFee: {
     label: _('Connect Fee'),
-    pattern: new RegExp(`/^[0-9]{1,6}[.]{0,1}[0-9]*$/`),
+    pattern: new RegExp('^[0-9]{1,6}[.]{0,1}[0-9]*$'),
     default: '0.0000',
     helpText: _(`Use point as decimal delimiter - e.g. 0.02`),
     component: ConnectionFee,
@@ -59,10 +60,11 @@ const properties: DestinationRateProperties = {
 const DestinationRate: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PaymentsIcon,
+  link: '/doc/en/administration_portal/brand/billing/destination_rates.html',
   iden: 'DestinationRate',
   title: _('Rate', { count: 2 }),
   path: '/destination_rates',
-  toStr: (row: any) => row.id,
+  toStr: (row: DestinationRatePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: [
     'destination',
@@ -70,12 +72,27 @@ const DestinationRate: EntityInterface = {
     'groupIntervalStart',
     'cost',
     'rateIncrement',
-    'currencySymbol',
   ],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default DestinationRate;

@@ -1,12 +1,13 @@
-import clientSession, { ClientSessionStore } from './clientSession';
-import { createStore, createTypedHooks } from 'easy-peasy';
+import ApiClient from '@irontec/ivoz-ui/services/api/ApiClient';
 import {
-  storeModel as ivozStoreModel,
   IvozStore,
   StoreContainer,
+  storeModel as ivozStoreModel,
 } from '@irontec/ivoz-ui/store';
-import ApiClient from '@irontec/ivoz-ui/services/api/ApiClient';
+import { createStore, createTypedHooks } from 'easy-peasy';
+
 import config from '../config';
+import clientSession, { ClientSessionStore } from './clientSession';
 
 ApiClient.API_URL = config.API_URL;
 
@@ -27,4 +28,4 @@ export default store;
 const { useStoreActions, useStoreState, useStoreDispatch, useStore } =
   createTypedHooks<AppStore>();
 
-export { useStoreActions, useStoreState, useStoreDispatch, useStore };
+export { useStore, useStoreActions, useStoreDispatch, useStoreState };

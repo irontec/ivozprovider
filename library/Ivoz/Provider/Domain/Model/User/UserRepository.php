@@ -57,4 +57,18 @@ interface UserRepository extends ObjectRepository, Selectable
     public function findOneByTerminalId(
         ?int $terminalId
     ): ?UserInterface;
+
+    public function findOneByExtensionId(
+        ?int $extensionId
+    ): ?UserInterface;
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int;
+
+    /**
+     * @return UserInterface[]
+     */
+    public function findLatestAddedByCompany(int $companyId): array;
 }

@@ -1,12 +1,9 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { IvrProperties } from './IvrProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
+import { IvrProperties, IvrPropertyList } from './IvrProperties';
 
 const noInputFields = [
   'noInputNumberCountry',
@@ -36,7 +33,7 @@ const properties: IvrProperties = {
     null: _('Unassigned'),
   },
   errorLocution: {
-    label: _('Locution'),
+    label: _('Locution', { count: 1 }),
     null: _('Unassigned'),
   },
   successLocution: {
@@ -78,7 +75,7 @@ const properties: IvrProperties = {
     },
   },
   excludedExtensionIds: {
-    label: _('Excluded Extension'),
+    label: _('Excluded Extensions'),
   },
   noInputRouteType: {
     label: _('No input target type'),
@@ -86,8 +83,8 @@ const properties: IvrProperties = {
     null: _('Unassigned'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     visualToggle: {
       __null__: {
@@ -109,7 +106,7 @@ const properties: IvrProperties = {
     },
   },
   noInputNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   noInputNumberValue: {
@@ -117,11 +114,11 @@ const properties: IvrProperties = {
     required: true,
   },
   noInputExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   noInputVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   errorRouteType: {
@@ -130,8 +127,8 @@ const properties: IvrProperties = {
     null: _('Unassigned'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     visualToggle: {
       __null__: {
@@ -153,7 +150,7 @@ const properties: IvrProperties = {
     },
   },
   errorNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   errorNumberValue: {
@@ -161,11 +158,11 @@ const properties: IvrProperties = {
     required: true,
   },
   errorExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   errorVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   noInputTarget: {
@@ -191,21 +188,36 @@ const columns = [
 const ivr: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/ivrs.html',
   iden: 'Ivr',
   title: _('IVR', { count: 2 }),
   path: '/ivrs',
-  toStr: (row: any) => row.name,
+  toStr: (row: IvrPropertyList<string>) => `${row.name}`,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'IVRs',
   },
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

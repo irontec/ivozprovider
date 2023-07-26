@@ -1,12 +1,13 @@
-import TimelineIcon from '@mui/icons-material/Timeline';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { BalanceMovementProperties } from './BalanceMovementProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import TimelineIcon from '@mui/icons-material/Timeline';
+
+import {
+  BalanceMovementProperties,
+  BalanceMovementPropertyList,
+} from './BalanceMovementProperties';
 
 const properties: BalanceMovementProperties = {
   amount: {
@@ -18,7 +19,7 @@ const properties: BalanceMovementProperties = {
     //@TODO IvozProvider_Klear_Ghost_BalanceMovements::getBalance
   },
   createdOn: {
-    label: _('Created'),
+    label: _('Created on'),
   },
   id: {
     label: _('Id'),
@@ -34,10 +35,11 @@ const properties: BalanceMovementProperties = {
 const BalanceMovement: EntityInterface = {
   ...defaultEntityBehavior,
   icon: TimelineIcon,
+  link: '/doc/en/administration_portal/brand/billing/prepaid_balances.html#balance-movements-list',
   iden: 'BalanceMovement',
   title: _('Balance Movement', { count: 2 }),
   path: '/balance_movements',
-  toStr: (row: any) => row.id,
+  toStr: (row: BalanceMovementPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['createdOn', 'amount', 'balance'],
   acl: {
@@ -47,10 +49,26 @@ const BalanceMovement: EntityInterface = {
     update: false,
     delete: false,
   },
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default BalanceMovement;

@@ -16,6 +16,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto;
+use Ivoz\Provider\Domain\Model\Corporation\CorporationDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\Contact\ContactDto;
@@ -244,6 +245,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $maxDailyUsageNotificationTemplate = null;
 
     /**
+     * @var CorporationDto | null
+     */
+    private $corporation = null;
+
+    /**
      * @var ExtensionDto[] | null
      */
     private $extensions = null;
@@ -373,7 +379,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'faxNotificationTemplateId' => 'faxNotificationTemplate',
             'invoiceNotificationTemplateId' => 'invoiceNotificationTemplate',
             'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate',
-            'maxDailyUsageNotificationTemplateId' => 'maxDailyUsageNotificationTemplate'
+            'maxDailyUsageNotificationTemplateId' => 'maxDailyUsageNotificationTemplate',
+            'corporationId' => 'corporation'
         ];
     }
 
@@ -426,6 +433,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'invoiceNotificationTemplate' => $this->getInvoiceNotificationTemplate(),
             'callCsvNotificationTemplate' => $this->getCallCsvNotificationTemplate(),
             'maxDailyUsageNotificationTemplate' => $this->getMaxDailyUsageNotificationTemplate(),
+            'corporation' => $this->getCorporation(),
             'extensions' => $this->getExtensions(),
             'ddis' => $this->getDdis(),
             'friends' => $this->getFriends(),
@@ -1230,6 +1238,36 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getMaxDailyUsageNotificationTemplateId()
     {
         if ($dto = $this->getMaxDailyUsageNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setCorporation(?CorporationDto $corporation): static
+    {
+        $this->corporation = $corporation;
+
+        return $this;
+    }
+
+    public function getCorporation(): ?CorporationDto
+    {
+        return $this->corporation;
+    }
+
+    public function setCorporationId($id): static
+    {
+        $value = !is_null($id)
+            ? new CorporationDto($id)
+            : null;
+
+        return $this->setCorporation($value);
+    }
+
+    public function getCorporationId()
+    {
+        if ($dto = $this->getCorporation()) {
             return $dto->getId();
         }
 

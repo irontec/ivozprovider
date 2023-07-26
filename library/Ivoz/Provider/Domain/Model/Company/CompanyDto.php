@@ -60,6 +60,33 @@ class CompanyDto extends CompanyDtoAbstract
      */
     private $codecIds = [];
 
+    /**
+     * @var string
+     * @AttributeDefinition(
+     *     type="string",
+     *     description="Currency symbol"
+     * )
+     */
+    private $currencySymbol;
+
+    /**
+     * @var string
+     * @AttributeDefinition(
+     *     type="string",
+     *     description="Active, inactive or unavailable"
+     * )
+     */
+    private $currentDayMaxUsage;
+
+    /**
+     * @var string
+     * @AttributeDefinition(
+     *     type="string",
+     *     description="Active, inactive or unavailable"
+     * )
+     */
+    private $accountStatus;
+
     public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
@@ -72,6 +99,9 @@ class CompanyDto extends CompanyDtoAbstract
             $response['geoIpAllowedCountries'] = $this->geoIpAllowedCountries;
             $response['routingTagIds'] = $this->routingTagIds;
             $response['codecIds'] = $this->codecIds;
+            $response['accountStatus'] = $this->accountStatus;
+            $response['currentDayMaxUsage'] = $this->currentDayMaxUsage;
+            $response['accountStatus'] = $this->accountStatus;
         }
 
         return $response;
@@ -104,6 +134,29 @@ class CompanyDto extends CompanyDtoAbstract
         $this->domainName = $name;
 
         return $this;
+    }
+
+    public function setCurrencySymbol(string $currencySymbol): self
+    {
+        $this->currencySymbol = $currencySymbol;
+
+        return $this;
+    }
+
+    public function setCurrentDayMaxUsage(string $currentDayMaxUsage): self
+    {
+        $this->currentDayMaxUsage = $currentDayMaxUsage;
+
+        return $this;
+    }
+
+
+    /**
+     * @param string $accountStatus
+     */
+    public function setAccountStatus(string $accountStatus): void
+    {
+        $this->accountStatus = $accountStatus;
     }
 
     /**
@@ -235,6 +288,10 @@ class CompanyDto extends CompanyDtoAbstract
                 $response['domainUsers'] = 'domainUsers';
                 $response['balance'] = 'balance';
                 $response['outgoingDdiId'] = 'outgoingDdi';
+
+                $response['currencySymbol'] = 'currencySymbol';
+                $response['currentDayMaxUsage'] = 'currentDayMaxUsage';
+                $response['accountStatus'] = 'accountStatus';
             }
         } else {
             $response = parent::getPropertyMap($context);
@@ -260,6 +317,7 @@ class CompanyDto extends CompanyDtoAbstract
             $response['geoIpAllowedCountries'] = 'geoIpAllowedCountries';
             $response['routingTagIds'] = 'routingTagIds';
             $response['codecIds'] = 'codecIds';
+            $response['corporationId'] = 'corporation';
 
             return self::filterFieldsForBrandAdmin($response);
         }
@@ -275,6 +333,10 @@ class CompanyDto extends CompanyDtoAbstract
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
+
+        $response['currencySymbol'] = $this->currencySymbol;
+        $response['currentDayMaxUsage'] = $this->currentDayMaxUsage;
+        $response['accountStatus'] = $this->accountStatus;
 
         return $response;
     }
@@ -320,6 +382,10 @@ class CompanyDto extends CompanyDtoAbstract
             'maxDailyUsageNotificationTemplateId',
             'currentDayUsage' => 'currentDayUsage',
             'domainName',
+            'corporationId',
+            'currentDayMaxUsage',
+            'accountStatus',
+            'currencySymbol',
         ];
 
         return array_filter(
@@ -348,6 +414,7 @@ class CompanyDto extends CompanyDtoAbstract
             'outgoingDdiId',
             'outgoingDdiRuleId',
             'domainName',
+            'corporationId'
         ];
 
         $response = array_filter(

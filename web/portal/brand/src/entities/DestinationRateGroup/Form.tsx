@@ -1,14 +1,14 @@
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
+
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
-  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const { entityService, row, match, edit = false } = props;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -17,17 +17,45 @@ const Form = (props: EntityFormProps): JSX.Element => {
   });
 
   const groups: Array<FieldsetGroups | false> = [
+    edit && {
+      legend: '',
+      fields: [edit && 'status', edit && 'lastExecutionError'],
+    },
     {
-      legend: _('Main'),
+      legend: '',
       fields: [
-        'status',
-        'lastExecutionError',
-        'deductibleConnectionFee',
-        'id',
-        'name',
-        'description',
-        'file',
-        'currency',
+        {
+          name: 'name',
+          size: {
+            md: 12,
+            lg: 6,
+            xl: 6,
+          },
+        },
+        {
+          name: 'description',
+          size: {
+            md: 12,
+            lg: 6,
+            xl: 6,
+          },
+        },
+        {
+          name: 'currency',
+          size: {
+            md: 12,
+            lg: 6,
+            xl: 6,
+          },
+        },
+        {
+          name: 'deductibleConnectionFee',
+          size: {
+            md: 12,
+            lg: 6,
+            xl: 6,
+          },
+        },
       ],
     },
   ];

@@ -1,12 +1,15 @@
-import { ScalarProperty, PropertyList } from '@irontec/ivoz-ui';
+import { PropertyList, ScalarProperty } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, {
+import {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
 import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
+
+import { ClientFeatures, ClientTypes } from '../Company/ClientFeatures';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { useCompanyDdis } from './hook/useCompanyDdis';
 import { useCompanyFaxes } from './hook/useCompanyFaxes';
@@ -20,7 +23,6 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
 
   const edit = props.edit || false;
 
-  const DefaultEntityForm = defaultEntityBehavior.Form;
   let fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -35,22 +37,24 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     ...properties.companyType,
     enum: { ...properties.companyType.enum },
   } as ScalarProperty;
-  const hasResidentialFeature = aboutMe?.features.includes('residential');
+  const hasResidentialFeature = aboutMe?.features.includes(
+    ClientTypes.residential
+  );
   if (!hasResidentialFeature) {
     delete companyType.enum.residential;
   }
 
-  const hasWholesaleFeature = aboutMe?.features.includes('wholesale');
+  const hasWholesaleFeature = aboutMe?.features.includes(ClientTypes.wholesale);
   if (!hasWholesaleFeature) {
     delete companyType.enum.wholesale;
   }
 
-  const hasRetailFeature = aboutMe?.features.includes('retail');
+  const hasRetailFeature = aboutMe?.features.includes(ClientTypes.retail);
   if (!hasRetailFeature) {
     delete companyType.enum.retail;
   }
 
-  const hasVpbxFeature = aboutMe?.features.includes('vpbx');
+  const hasVpbxFeature = aboutMe?.features.includes(ClientTypes.vpbx);
   if (!hasVpbxFeature) {
     delete companyType.enum.vpbx;
   }
@@ -60,11 +64,11 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     ...properties.endpointType,
     enum: { ...properties.endpointType.enum },
   } as ScalarProperty;
-  const hasFaxesFeature = aboutMe?.features.includes('faxes');
+  const hasFaxesFeature = aboutMe?.features.includes(ClientFeatures.faxes);
   if (!hasFaxesFeature) {
     delete endpointType.enum.fax;
   }
-  const hasFriendsFeature = aboutMe?.features.includes('friends');
+  const hasFriendsFeature = aboutMe?.features.includes(ClientFeatures.friends);
   if (!hasFriendsFeature) {
     delete endpointType.enum.friend;
   }
@@ -75,9 +79,11 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
   const formik = useFormHandler(props);
   const companyId = formik.values[formik.values.companyType];
   const retailId =
-    formik.values.companyType === 'retail' ? formik.values.retail : null;
+    formik.values.companyType === ClientTypes.retail
+      ? formik.values.retail
+      : null;
   const residentialId =
-    formik.values.companyType === 'residential'
+    formik.values.companyType === ClientTypes.residential
       ? formik.values.residential
       : null;
 

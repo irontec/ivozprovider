@@ -1,12 +1,10 @@
-import HourglassTopIcon from '@mui/icons-material/HourglassTop';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { QueueProperties } from './QueueProperties';
-import selectOptions from './SelectOptions';
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
+
 import Strategy from './Field/Strategy';
+import { QueueProperties, QueuePropertyList } from './QueueProperties';
 
 const timeoutFields = [
   'timeoutNumberCountry',
@@ -39,15 +37,15 @@ const properties: QueueProperties = {
     ),
   },
   timeoutLocution: {
-    label: _('Locution'),
+    label: _('Locution', { count: 1 }),
     null: _('Unassigned'),
   },
   timeoutTargetType: {
     label: _('Timeout route'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -71,7 +69,7 @@ const properties: QueueProperties = {
     },
   },
   timeoutNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   timeoutNumberValue: {
@@ -79,11 +77,11 @@ const properties: QueueProperties = {
     required: true,
   },
   timeoutExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   timeoutVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   maxlen: {
@@ -100,8 +98,8 @@ const properties: QueueProperties = {
     label: _('Full queue route'),
     enum: {
       number: _('Number'),
-      extension: _('Extension'),
-      voicemail: _('Voicemail'),
+      extension: _('Extension', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -125,7 +123,7 @@ const properties: QueueProperties = {
     },
   },
   fullNumberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   fullNumberValue: {
@@ -133,11 +131,11 @@ const properties: QueueProperties = {
     required: true,
   },
   fullExtension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   fullVoicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   periodicAnnounceLocution: {
@@ -218,8 +216,8 @@ const properties: QueueProperties = {
 
 const columns = [
   'name',
-  'weight',
   'strategy',
+  'weight',
   'memberCallTimeout',
   'memberCallRest',
   'maxWaitTime',
@@ -229,20 +227,31 @@ const columns = [
 const queue: EntityInterface = {
   ...defaultEntityBehavior,
   icon: HourglassTopIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/queues.html',
   iden: 'Queue',
   title: _('Queue', { count: 2 }),
   path: '/queues',
-  toStr: (row: any) => row.name,
+  toStr: (row: QueuePropertyList<string>) => `${row.name}`,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Queues',
   },
-  Form,
-  foreignKeyGetter,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

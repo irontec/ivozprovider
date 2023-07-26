@@ -14,7 +14,7 @@ Feature: Retrieve call stats
       And the JSON should be equal to:
       """
       {
-          "totalCalls": 2,
+          "totalCalls": 3,
           "totalDetours": 4
       }
       """

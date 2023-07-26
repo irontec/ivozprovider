@@ -1,18 +1,34 @@
 ########################################
 ## Custom models
 ########################################
-
-Model\WebTheme:
+Model\Dashboard\Dashboard:
   itemOperations:
-    get:
+    get_my_dasboard:
+      access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
-      path: '/my/web_theme'
-      route_name: 'get_my_web_theme'
+      path: '/my/dashboard'
+      route_name: 'get_my_dasboard'
+      parameters: []
       swagger_context:
+        produces:
+          - 'application/json'
         tags:
           - My
-        parameters: []
-  collectionOperations: {}
+  collectionOperations: []
+  
+Model\LastMonthCalls:
+  itemOperations:
+    get_my_last_month_calls:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/last_month_calls'
+      route_name: 'get_my_last_month_calls'
+      swagger_context:
+        produces:
+        - 'application/json'
+        tags:
+        - My
+  collectionOperations: []
 
 Model\UserStatus:
   attributes:

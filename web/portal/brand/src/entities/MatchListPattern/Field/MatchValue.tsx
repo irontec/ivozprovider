@@ -2,6 +2,7 @@ import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+
 import { MatchListPatternPropertyList } from '../MatchListPatternProperties';
 
 type MatchListPatternValues = MatchListPatternPropertyList<

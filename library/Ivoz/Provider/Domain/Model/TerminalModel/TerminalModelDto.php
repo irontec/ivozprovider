@@ -17,7 +17,9 @@ class TerminalModelDto extends TerminalModelDtoAbstract
                 'name' => 'name',
                 'description' => 'description',
                 'genericTemplate' => 'genericTemplate',
-                'specificTemplate' => 'specificTemplate'
+                'specificTemplate' => 'specificTemplate',
+                'genericUrlPattern' => 'genericUrlPattern',
+                'specificUrlPattern' => 'specificUrlPattern',
             ];
         }
 

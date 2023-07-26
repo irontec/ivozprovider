@@ -84,4 +84,12 @@ class ExtensionDoctrineRepository extends ServiceEntityRepository implements Ext
 
         return $query->getResult();
     }
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int
+    {
+        return parent::count($criteria);
+    }
 }

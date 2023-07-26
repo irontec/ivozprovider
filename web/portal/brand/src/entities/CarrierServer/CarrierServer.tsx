@@ -1,12 +1,13 @@
-import StorageIcon from '@mui/icons-material/Storage';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { CarrierServerProperties } from './CarrierServerProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import StorageIcon from '@mui/icons-material/Storage';
+
+import {
+  CarrierServerProperties,
+  CarrierServerPropertyList,
+} from './CarrierServerProperties';
 import StatusIcon from './Field/StatusIcon';
 
 const properties: CarrierServerProperties = {
@@ -27,17 +28,17 @@ const properties: CarrierServerProperties = {
     label: _('URI scheme'),
     default: 1,
     enum: {
-      '1': _('sip'),
-      '2': _('sips'),
+      '1': 'sip',
+      '2': 'sips',
     },
   },
   transport: {
     label: _('Transport'),
     default: 1,
     enum: {
-      '1': _('UDP'),
-      '2': _('TCP'),
-      '3': _('TLS'),
+      '1': 'UDP',
+      '2': 'TCP',
+      '3': 'TLS',
     },
   },
   sendPAI: {
@@ -66,7 +67,7 @@ const properties: CarrierServerProperties = {
     },
   },
   authUser: {
-    label: _('Auth User'),
+    label: _('Auth Username'),
   },
   authPassword: {
     label: _('Auth Password'),
@@ -106,16 +107,33 @@ const properties: CarrierServerProperties = {
 const CarrierServer: EntityInterface = {
   ...defaultEntityBehavior,
   icon: StorageIcon,
+  link: '/doc/en/administration_portal/brand/providers/carriers.html#carrier-servers',
   iden: 'CarrierServer',
   title: _('Carrier server', { count: 2 }),
   path: '/carrier_servers',
-  toStr: (row: any) => row.id,
+  toStr: (row: CarrierServerPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['sipProxy', 'outboundProxy', 'statusIcon'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default CarrierServer;

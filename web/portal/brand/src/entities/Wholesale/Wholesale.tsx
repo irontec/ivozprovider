@@ -1,11 +1,12 @@
-import Company from '../Company/Company';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import Form from './Form';
+
+import Company from '../Company/Company';
 
 const Wholesale = {
   ...Company,
   icon: ShoppingCartIcon,
+  link: '/doc/en/administration_portal/brand/clients/wholesale.html',
   title: _('Wholesale', { count: 2 }),
   localPath: '/wholesale',
   columns: [
@@ -15,7 +16,6 @@ const Wholesale = {
     'routingTagIds',
     'codecIds',
   ],
-  Form,
 };
 
 export default Wholesale;

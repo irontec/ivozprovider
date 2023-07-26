@@ -11,9 +11,9 @@ const RoutingTagSelectOptions: SelectOptionsType = ({
   const RoutingTag = entities.RoutingTag;
 
   return defaultEntityBehavior.fetchFks(
-    RoutingTag.path + '?_order[name]=ASC',
+    `${RoutingTag.path}?_order[name]=ASC`,
     ['id', 'name', 'tag'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: `${item.name} (${item.tag})` });

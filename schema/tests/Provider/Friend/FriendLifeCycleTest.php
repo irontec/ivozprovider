@@ -119,6 +119,7 @@ class FriendLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             Friend::class,
             PsEndpoint::class,
+            PsIdentify::class,
         ]);
     }
 

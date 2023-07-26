@@ -1,14 +1,15 @@
-import _ from '@irontec/ivoz-ui/services/translations/translate';
-import { Tooltip } from '@mui/material';
-import {
-  StyledStatusIconArrowForwardIcon,
-  StyledStatusIconRotateLeftIcon,
-} from './StatusIcon.styles';
-import { FriendPropertyList } from '../FriendProperties';
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { Tooltip } from '@mui/material';
+
+import { FriendPropertyList } from '../FriendProperties';
+import {
+  StyledStatusIconArrowForwardIcon,
+  StyledStatusIconRotateLeftIcon,
+} from './StatusIcon.styles';
 
 type FriendPropertyListValues = FriendPropertyList<string | number>;
 type StatusIconType = PropertyCustomFunctionComponent<
@@ -42,13 +43,13 @@ const StatusIcon: StatusIconType = (props): JSX.Element => {
       return (
         <span>
           <StyledStatusIconRotateLeftIcon />
-          {_('Inter company connectivity')}
+          {_('Inter client connectivity')}
         </span>
       );
     }
 
     return (
-      <Tooltip title={_('Inter company connectivity')}>
+      <Tooltip title={_('Inter client connectivity')}>
         <StyledStatusIconRotateLeftIcon />
       </Tooltip>
     );

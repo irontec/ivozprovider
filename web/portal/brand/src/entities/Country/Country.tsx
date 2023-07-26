@@ -1,10 +1,11 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import { getI18n } from 'react-i18next';
-import { CountryProperties } from './CountryProperties';
-import selectOptions from './SelectOptions';
+
+import { CountryProperties, CountryPropertyList } from './CountryProperties';
 
 const properties: CountryProperties = {
   name: {
@@ -21,16 +22,21 @@ const country: EntityInterface = {
   iden: 'Country',
   title: _('Country', { count: 2 }),
   path: '/countries',
-  toStr: (row: any) => {
+  toStr: (row: CountryPropertyList<EntityValues>) => {
     const language = getI18n().language.substring(0, 2);
-    return row.name[language];
+
+    return row.name?.[language] as string;
   },
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Countries',
   },
-  selectOptions,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default country;

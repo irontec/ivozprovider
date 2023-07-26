@@ -3,6 +3,7 @@ import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+
 import { CarrierPropertyList } from '../CarrierProperties';
 
 type BalanceValues = CarrierPropertyList<string>;

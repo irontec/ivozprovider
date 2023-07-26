@@ -71,12 +71,12 @@ class FriendTest extends KernelTestCase
                         [
                             'interCompany',
                             'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                            'companyRepository.getCompanyIdsByAdminCorporation(user)',
                         ],
                         [
-                            'interCompany',
-                            'isNull',
-                            null
+                            'directConnectivity',
+                            'neq',
+                            "'interpbx'"
                         ]
                     ]
                 ],

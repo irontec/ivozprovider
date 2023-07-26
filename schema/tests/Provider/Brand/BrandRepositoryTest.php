@@ -17,6 +17,7 @@ class BrandRepositoryTest extends KernelTestCase
     public function test_runner()
     {
         $this->it_finds_one_by_domain();
+        $this->it_counts_brands();
     }
 
     public function it_finds_one_by_domain()
@@ -31,6 +32,36 @@ class BrandRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             Brand::class,
             $company
+        );
+    }
+
+    public function it_counts_brands()
+    {
+        /** @var BrandRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Brand::class);
+
+        $count = $repository->count([]);
+
+        $this->assertEquals(
+            2,
+            $count
+        );
+    }
+
+    public function it_finds_latest_brands()
+    {
+        /** @var BrandRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Brand::class);
+
+        $brands = $repository->getLatest(2);
+
+        $this->assertInstanceOf(
+            Brand::class,
+            $brands[0]
         );
     }
 }

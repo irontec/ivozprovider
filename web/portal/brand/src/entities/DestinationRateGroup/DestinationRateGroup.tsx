@@ -1,12 +1,14 @@
-import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { DestinationRateGroupProperties } from './DestinationRateGroupProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
+
+import Actions from './Action';
+import {
+  DestinationRateGroupProperties,
+  DestinationRateGroupPropertyList,
+} from './DestinationRateGroupProperties';
 
 const properties: DestinationRateGroupProperties = {
   status: {
@@ -17,10 +19,12 @@ const properties: DestinationRateGroupProperties = {
       imported: _('Imported'),
       error: _('Error'),
     },
+    readOnly: true,
     //@TODO IvozProvider_Klear_Ghost_DestinationRateGroups::getStatus
   },
   lastExecutionError: {
     label: _('Last execution error'),
+    readOnly: true,
   },
   deductibleConnectionFee: {
     label: _('Deductible Connection Fee'),
@@ -46,26 +50,47 @@ const properties: DestinationRateGroupProperties = {
   file: {
     label: _('Imported file'),
     type: 'file',
+    $ref: 'DestinationRateGroup_File',
   },
   currency: {
     label: _('Currency', { count: 1 }),
     null: _('Default currency'),
+    default: '__null__',
   },
 };
 
 const DestinationRateGroup: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PointOfSaleIcon,
+  link: '/doc/en/administration_portal/brand/billing/destination_rates.html',
   iden: 'DestinationRateGroup',
   title: _('Destination rate', { count: 2 }),
   path: '/destination_rate_groups',
-  toStr: (row: any) => row.name.en,
+  toStr: (row: DestinationRateGroupPropertyList<EntityValues>) =>
+    `${row.name?.en}`,
   properties,
   columns: ['name', 'description', 'currency', 'file', 'status'],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  customActions: Actions,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default DestinationRateGroup;

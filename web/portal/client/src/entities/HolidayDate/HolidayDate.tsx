@@ -1,13 +1,11 @@
-import CelebrationIcon from '@mui/icons-material/Celebration';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { HolidayDateProperties } from './HolidayDateProperties';
-import Form from './Form';
-import Target from './Field/Target';
-import foreignKeyResolver from './foreignKeyResolver';
-import { foreignKeyGetter } from './foreignKeyGetter';
+import CelebrationIcon from '@mui/icons-material/Celebration';
+
 import Calendar from './Field/Calendar';
+import Target from './Field/Target';
+import { HolidayDateProperties } from './HolidayDateProperties';
 
 const routableFields = [
   'numberCountry',
@@ -18,7 +16,7 @@ const routableFields = [
 
 const properties: HolidayDateProperties = {
   calendar: {
-    label: _('Calendar'),
+    label: _('Calendar', { count: 1 }),
     component: Calendar,
     readOnly: true,
   },
@@ -31,7 +29,7 @@ const properties: HolidayDateProperties = {
     format: 'date',
   },
   locution: {
-    label: _('Locution'),
+    label: _('Locution', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
@@ -68,8 +66,8 @@ const properties: HolidayDateProperties = {
   routeType: {
     label: _('Route type'),
     enum: {
-      voicemail: _('Voicemail'),
-      extension: _('Extension'),
+      voicemail: _('Voicemail', { count: 1 }),
+      extension: _('Extension', { count: 1 }),
       number: _('Number'),
     },
     null: _('Default holiday routing'),
@@ -94,7 +92,7 @@ const properties: HolidayDateProperties = {
     },
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numberValue: {
@@ -103,13 +101,13 @@ const properties: HolidayDateProperties = {
     required: true,
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
     null: _('Unassigned'),
     default: '__null__',
   },
   extension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
     null: _('Unassigned'),
     default: '__null__',
@@ -137,13 +135,26 @@ const HolidayDate: EntityInterface = {
     'routeType',
     'target',
   ],
+  toStr: (row) => row.name as string,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'HolidayDates',
   },
-  Form,
-  foreignKeyResolver,
-  foreignKeyGetter,
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default HolidayDate;

@@ -1,12 +1,12 @@
-import SwitchCameraIcon from '@mui/icons-material/SwitchCamera';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
-import { ConditionalRouteProperties } from './ConditionalRouteProperties';
-import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import SwitchCameraIcon from '@mui/icons-material/SwitchCamera';
+
+import {
+  ConditionalRouteProperties,
+  ConditionalRoutePropertyList,
+} from './ConditionalRouteProperties';
 import RouteType from './Field/RouteType';
 
 const routableFields = [
@@ -27,7 +27,7 @@ const properties: ConditionalRouteProperties = {
     label: _('Name'),
   },
   locution: {
-    label: _('Locution'),
+    label: _('Locution', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
@@ -35,15 +35,15 @@ const properties: ConditionalRouteProperties = {
     label: _('Route type'),
     component: RouteType,
     enum: {
-      user: _('User'),
-      ivr: _('IVR'),
-      huntGroup: _('Hunt Group'),
-      voicemail: _('Voicemail'),
+      user: _('User', { count: 1 }),
+      ivr: _('IVR', { count: 1 }),
+      huntGroup: _('Hunt Group', { count: 1 }),
+      voicemail: _('Voicemail', { count: 1 }),
       number: _('Number'),
-      friend: _('Friend'),
-      queue: _('Queue'),
-      conferenceRoom: _('Conference room'),
-      extension: _('Extension'),
+      friend: _('Friend', { count: 1 }),
+      queue: _('Queue', { count: 1 }),
+      conferenceRoom: _('Conference room', { count: 1 }),
+      extension: _('Extension', { count: 1 }),
     },
     null: _('Unassigned'),
     default: '__null__',
@@ -91,23 +91,23 @@ const properties: ConditionalRouteProperties = {
     },
   },
   ivr: {
-    label: _('IVR'),
+    label: _('IVR', { count: 1 }),
     required: true,
   },
   huntGroup: {
-    label: _('Hunt Group'),
+    label: _('Hunt Group', { count: 1 }),
     required: true,
   },
   voicemail: {
-    label: _('Voicemail'),
+    label: _('Voicemail', { count: 1 }),
     required: true,
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
     required: true,
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     required: true,
   },
   numbervalue: {
@@ -119,15 +119,15 @@ const properties: ConditionalRouteProperties = {
     required: true,
   },
   queue: {
-    label: _('Queue'),
+    label: _('Queue', { count: 1 }),
     required: true,
   },
   conferenceRoom: {
-    label: _('Conference room'),
+    label: _('Conference room', { count: 1 }),
     required: true,
   },
   extension: {
-    label: _('Extension'),
+    label: _('Extension', { count: 1 }),
     required: true,
   },
   target: {
@@ -141,21 +141,36 @@ const columns = ['name', 'locution', 'routetype', 'target'];
 const ConditionalRoute: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SwitchCameraIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/conditional_routes.html',
   iden: 'ConditionalRoute',
   title: _('Conditional Route', { count: 2 }),
   path: '/conditional_routes',
-  toStr: (row: any) => row.name,
+  toStr: (row: ConditionalRoutePropertyList<string>) => `${row.name}`,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ConditionalRoutes',
   },
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

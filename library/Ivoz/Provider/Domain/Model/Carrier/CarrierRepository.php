@@ -34,4 +34,7 @@ interface CarrierRepository extends ObjectRepository, Selectable
      * @return string[]
      */
     public function getNames($brandId = null);
+
+
+    public function countByBrand(int $brandId): int;
 }

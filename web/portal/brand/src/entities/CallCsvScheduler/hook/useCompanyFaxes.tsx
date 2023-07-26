@@ -1,5 +1,6 @@
 import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { CompanyFaxSelectOptions } from '../../Fax/SelectOptions';
 
 export const useCompanyFaxes = (companyId: number | string | null) => {
@@ -15,7 +16,7 @@ export const useCompanyFaxes = (companyId: number | string | null) => {
 
     CompanyFaxSelectOptions(
       {
-        callback: (options: any) => {
+        callback: (options) => {
           setFaxes(options || []);
         },
         cancelToken,

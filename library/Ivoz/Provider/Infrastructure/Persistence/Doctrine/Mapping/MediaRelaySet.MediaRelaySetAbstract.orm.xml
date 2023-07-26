@@ -7,7 +7,7 @@
     <field name="name" type="string" column="name" length="32" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="default">0</option>
+        <option name="default"/>
       </options>
     </field>
     <field name="description" type="string" column="description" length="200" nullable="true">

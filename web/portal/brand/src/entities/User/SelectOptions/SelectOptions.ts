@@ -11,9 +11,9 @@ const UserSelectOptions: SelectOptionsType = ({
   const User = entities.User;
 
   return defaultEntityBehavior.fetchFks(
-    User.path + '?_order[name]=ASC',
+    `${User.path}?_order[name]=ASC`,
     ['id', 'name', 'lastname'],
-    (data: any) => {
+    (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id, label: `${item.name} ${item.lastname}` });

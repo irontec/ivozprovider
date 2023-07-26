@@ -1,9 +1,10 @@
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { MatchListPatternPropertiesList } from './MatchListPatternProperties';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
 import store from 'store';
+
+import { MatchListPatternPropertiesList } from './MatchListPatternProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
 const foreignKeyResolver: foreignKeyResolverType = async function ({

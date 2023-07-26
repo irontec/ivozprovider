@@ -22,6 +22,7 @@ class RetailAccountRepositoryTest extends KernelTestCase
         $this->its_instantiable();
         $this->it_finds_one_by_name_and_domain();
         $this->it_counts_registrable_devices_by_brand();
+        $this->it_find_latest_by_company_id();
     }
 
     public function its_instantiable()
@@ -74,6 +75,26 @@ class RetailAccountRepositoryTest extends KernelTestCase
 
         $this->assertIsInt(
             $num
+        );
+    }
+
+    public function it_find_latest_by_company_id()
+    {
+        /** @var RetailAccountRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(RetailAccount::class);
+
+        $retailAccounts = $repository->findLatestByCompanyId(1);
+
+
+        $this->assertIsArray(
+            $retailAccounts
+        );
+
+        $this->assertCount(
+            4,
+            $retailAccounts
         );
     }
 }

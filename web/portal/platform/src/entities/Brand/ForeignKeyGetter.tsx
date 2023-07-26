@@ -1,12 +1,13 @@
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { BrandPropertyList } from './BrandProperties';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+
+import currencySelectOptions from '../Currency/SelectOptions';
 import featureSelectOptions from '../Feature/SelectOptions';
+import languageSelectOptions from '../Language/SelectOptions';
 import proxyTrunkSelectOptions from '../ProxyTrunk/SelectOptions';
 import timezoneSelectOptions from '../Timezone/SelectOptions';
-import languageSelectOptions from '../Language/SelectOptions';
-import currencySelectOptions from '../Currency/SelectOptions';
-import { DropdownChoices } from '@irontec/ivoz-ui';
+import { BrandPropertyList } from './BrandProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,

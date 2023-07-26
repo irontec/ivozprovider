@@ -1,16 +1,17 @@
-import RemoveModeratorIcon from '@mui/icons-material/RemoveModerator';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import RemoveModeratorIcon from '@mui/icons-material/RemoveModerator';
+
 import {
   BannedAddressProperties,
   BannedAddressPropertyList,
 } from './BannedAddressProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: BannedAddressProperties = {
   ip: {
-    label: _('IP address'),
+    label: _('IP Address'),
   },
   lastTimeBanned: {
     label: _('Last time banned'),
@@ -20,6 +21,7 @@ const properties: BannedAddressProperties = {
 const BannedAddress: EntityInterface = {
   ...defaultEntityBehavior,
   icon: RemoveModeratorIcon,
+  link: '/doc/en/administration_portal/platform/antiflood_banned_ips.html',
   iden: 'BannedAddress',
   title: _('Antiflood banned IP', { count: 2 }),
   path: '/banned_addresses',

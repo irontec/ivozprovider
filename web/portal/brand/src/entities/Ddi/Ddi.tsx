@@ -1,12 +1,10 @@
-import DialpadIcon from '@mui/icons-material/Dialpad';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { DdiProperties } from './DdiProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
-import selectOptions from './SelectOptions';
+import DialpadIcon from '@mui/icons-material/Dialpad';
+
+import { DdiProperties, DdiPropertyList } from './DdiProperties';
 import RouteType from './Field/RouteType';
 
 const allRoutableFields = [
@@ -183,20 +181,37 @@ const properties: DdiProperties = {
 const ddi: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DialpadIcon,
+  link: '/doc/en/administration_portal/brand/views/ddis.html',
   iden: 'Ddi',
   title: _('DDI', { count: 2 }),
   path: '/ddis',
-  toStr: (row: any) => row.ddie164,
+  toStr: (row: DdiPropertyList<EntityValues>) => `${row.ddie164}`,
   properties,
   columns: ['country', 'ddi', 'company', 'ddiProvider', 'description'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'DDIs',
   },
-  Form,
-  foreignKeyGetter,
-  foreignKeyResolver,
-  selectOptions,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default ddi;

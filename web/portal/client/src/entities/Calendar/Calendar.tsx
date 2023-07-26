@@ -1,10 +1,10 @@
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { CalendarProperties } from './CalendarProperties';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
-import selectOptions from './SelectOptions';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+
+import { CalendarProperties } from './CalendarProperties';
 
 const properties: CalendarProperties = {
   name: {
@@ -15,6 +15,7 @@ const properties: CalendarProperties = {
 const calendar: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CalendarTodayIcon,
+  link: '/doc/en/administration_portal/client/vpbx/routing_tools/calendars.html',
   iden: 'Calendar',
   title: _('Calendar', { count: 2 }),
   path: '/calendars',
@@ -24,8 +25,10 @@ const calendar: EntityInterface = {
     iden: 'Calendars',
   },
   toStr: (row: EntityValues) => row?.name as string | '',
-  selectOptions: (props, customProps) => {
-    return selectOptions(props, customProps);
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
   },
 };
 

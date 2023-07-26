@@ -1,12 +1,16 @@
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import { BillableCallProperties } from './BillableCallProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
+import EntityInterface, {
+  OrderDirection,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+
+import Actions from './Action';
+import {
+  BillableCallProperties,
+  BillableCallPropertyList,
+} from './BillableCallProperties';
 
 const properties: BillableCallProperties = {
   callid: {
@@ -41,7 +45,7 @@ const properties: BillableCallProperties = {
     maxLength: 100,
   },
   ratingPlanName: {
-    label: _('Rating plan'),
+    label: _('Rating Plan Group', { count: 1 }),
   },
   endpointType: {
     label: _('Endpoint Type'),
@@ -97,10 +101,11 @@ const properties: BillableCallProperties = {
 const BillableCall: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ChatBubbleIcon,
+  link: '/doc/en/administration_portal/brand/calls/external_calls.html',
   iden: 'BillableCall',
   title: _('External call', { count: 2 }),
   path: '/billable_calls',
-  toStr: (row: any) => row.id,
+  toStr: (row: BillableCallPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: [
     'startTime',
@@ -120,10 +125,28 @@ const BillableCall: EntityInterface = {
     update: false,
     delete: false,
   },
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  customActions: Actions,
+  defaultOrderDirection: OrderDirection.desc,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default BillableCall;

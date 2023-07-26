@@ -16,12 +16,12 @@ Feature: Retrieve destination rate group
       [
           {
               "status": "inProgress",
-              "id": 1,
+              "id": 2,
               "name": {
-                  "en": "Standard",
-                  "es": "Standard",
-                  "ca": "Standard",
-                  "it": "Standard"
+                  "en": "Fallback",
+                  "es": "Fallback",
+                  "ca": "Fallback",
+                  "it": "Fallback"
               },
               "description": {
                   "en": "",
@@ -38,12 +38,12 @@ Feature: Retrieve destination rate group
           },
           {
               "status": "inProgress",
-              "id": 2,
+              "id": 1,
               "name": {
-                  "en": "Fallback",
-                  "es": "Fallback",
-                  "ca": "Fallback",
-                  "it": "Fallback"
+                  "en": "Standard",
+                  "es": "Standard",
+                  "ca": "Standard",
+                  "it": "Standard"
               },
               "description": {
                   "en": "",

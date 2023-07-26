@@ -1,14 +1,13 @@
+import { EntityValue } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
-import Form from './Form';
-import selectOptions from './SelectOptions';
+
 import {
   WebPortalProperties,
   WebPortalPropertyList,
 } from './WebPortalProperties';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: WebPortalProperties = {
   url: {
@@ -72,19 +71,34 @@ const properties: WebPortalProperties = {
     label: _('Logo'),
     type: 'file',
   },
+  newUI: {
+    label: _('New Interface'),
+    helpText: _(
+      `You can always access classic interface adding /classic to URL`
+    ),
+  },
 };
 
 const WebPortal: EntityInterface = {
   ...defaultEntityBehavior,
   icon: InsertLinkIcon,
+  link: '/doc/en/administration_portal/platform/portals.html',
   iden: 'WebPortal',
   title: _('Platform Portal', { count: 2 }),
   path: '/web_portals',
   toStr: (row: WebPortalPropertyList<EntityValue>) => row.name as string,
   properties,
   columns: ['name', 'url', 'logo'],
-  selectOptions,
-  Form,
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default WebPortal;

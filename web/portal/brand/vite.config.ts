@@ -50,5 +50,25 @@ export default ({ mode }) => {
         define: {
             "process.env.BASE_URL": `"${base}"`
         },
+        build: {
+            minify: true,
+            rollupOptions: {
+                output: {
+                    manualChunks: (id, { getModuleInfo, getModuleIds }) => {
+
+                        if (id.startsWith('vite/') || id.startsWith('\0vite/')) {
+                            // Put the Vite modules and virtual modules (beginning with \0) into a vite chunk.
+                            return 'vite';
+                        }
+
+                        if (id.includes('/node_modules/')) {
+                            return 'vendor';
+                        }
+
+                        return;
+                    },
+                }
+            }
+        },
     })
 }

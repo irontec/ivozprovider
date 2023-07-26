@@ -1,14 +1,15 @@
+import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import RoofingIcon from '@mui/icons-material/Roofing';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
-import Form from './Form';
-import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
-import selectOptions from './SelectOptions';
+
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
 import Password from './Field/Password';
+import {
+  ResidentialDeviceProperties,
+  ResidentialDevicePropertyList,
+} from './ResidentialDeviceProperties';
 
 const properties: ResidentialDeviceProperties = {
   name: {
@@ -25,13 +26,13 @@ const properties: ResidentialDeviceProperties = {
   transport: {
     label: _('Transport'),
     enum: {
-      udp: _('UDP'),
-      tcp: _('TCP'),
-      tls: _('TLS'),
+      udp: 'UDP',
+      tcp: 'TCP',
+      tls: 'TLS',
     },
   },
   ip: {
-    label: _('Ip'),
+    label: _('IP address'),
     pattern: new RegExp(`^[.0-9]+$`),
     helpText: _(`e.g. 8.8.8.8`),
   },
@@ -211,24 +212,33 @@ const properties: ResidentialDeviceProperties = {
 const ResidentialDevice: EntityInterface = {
   ...defaultEntityBehavior,
   icon: RoofingIcon,
+  link: '/doc/en/administration_portal/brand/views/residential_devices.html',
   iden: 'ResidentialDevice',
   title: _('Residential Device', { count: 2 }),
   path: '/residential_devices',
-  toStr: (row: any) => row.id,
+  toStr: (row: ResidentialDevicePropertyList<EntityValues>) => `${row.id}`,
   properties,
-  columns: [
-    'company',
-    'name',
-    'domainName',
-    'description',
-    'statusIcon',
-    'rtpEncryption',
-    'multiContact',
-  ],
-  selectOptions,
-  foreignKeyResolver,
-  foreignKeyGetter,
-  Form,
+  columns: ['company', 'name', 'domainName', 'description', 'statusIcon'],
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default ResidentialDevice;

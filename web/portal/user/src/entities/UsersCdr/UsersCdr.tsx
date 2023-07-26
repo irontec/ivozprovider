@@ -4,9 +4,9 @@ import EntityInterface, {
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+
 import Duration from './Field/Duration';
-import Form from './Form';
-import { UsersCdrProperties } from './UsersCdrProperties';
+import { UsersCdrProperties, UsersCdrPropertyList } from './UsersCdrProperties';
 
 const properties: UsersCdrProperties = {
   startTime: {
@@ -38,13 +38,13 @@ const properties: UsersCdrProperties = {
     label: _('Referrer'),
   },
   callid: {
-    label: _('Callid'),
+    label: 'Callid',
   },
   callidHash: {
-    label: _('Callid Hash'),
+    label: 'Callid Hash',
   },
   xcallid: {
-    label: _('Xcallid'),
+    label: 'Xcallid',
   },
   id: {
     label: _('Id'),
@@ -60,14 +60,18 @@ const UsersCdr: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ChatBubbleIcon,
   iden: 'UsersCdr',
-  title: _('Calls', { count: 2 }),
+  title: _('Call', { count: 2 }),
   path: '/my/call_history',
-  toStr: (row: any) => row.id,
+  toStr: (row: UsersCdrPropertyList<string>) => `${row.id}`,
   properties,
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
   columns,
-  Form,
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
+  },
 };
 
 export default UsersCdr;

@@ -11,7 +11,7 @@ const WebPortalSelectOptions: SelectOptionsType = ({
   const WebPortal = entities.WebPortal;
 
   return defaultEntityBehavior.fetchFks(
-    WebPortal.path + '?_order[name]=ASC',
+    `${WebPortal.path}?_order[name]=ASC`,
     ['id', 'name'],
     (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];

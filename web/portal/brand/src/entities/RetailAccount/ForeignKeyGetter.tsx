@@ -1,13 +1,14 @@
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { RetailAccountPropertyList } from './RetailAccountProperties';
-import { RetailSelectOptions } from '../Company/SelectOptions';
 import { DropdownChoices } from '@irontec/ivoz-ui';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+
+import { RetailSelectOptions } from '../Company/SelectOptions';
+import { RetailAccountPropertyList } from './RetailAccountProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
   entityService,
-}): Promise<any> => {
+}): Promise<unknown> => {
   const response: RetailAccountPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({
