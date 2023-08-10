@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Stop on first error
 set -e
 
 SCRIPT_DIR=$(dirname $(realpath $0))
@@ -11,5 +12,5 @@ pushd ${SCRIPT_DIR}/../
     date=$(date '+%Y%m%d%H%M%S')
     version_info="$date-$commit"
 
-    VITE_VERSION_INFO=$version_info $YARN vite build
+    VITE_BUILD_VERSION=$version_info $YARN vite build
 popd
