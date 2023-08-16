@@ -54,6 +54,14 @@ export default function AppRoutes(props: AppRoutesProps) {
     });
   });
 
+  if (routeSpecs.length === 0) {
+    // Avoid warnings while routes are being parsed
+    routes.push({
+      path: '*',
+      element: <div />,
+    });
+  }
+
   useEffect(() => {
     setRoutes(routes);
   }, [setRoutes, routes]);
