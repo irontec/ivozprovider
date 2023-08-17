@@ -38,172 +38,396 @@ Feature: Retrieve active calls
           "restricted": true,
           "acls": [
               {
-                  "iden": "BillableCalls"
+                  "iden": "BillableCalls",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "CallCsvSchedulers"
+                  "iden": "CallCsvSchedulers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "CallCsvReports"
+                  "iden": "CallCsvReports",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Companies"
+                  "iden": "Companies",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Countries"
+                  "iden": "Countries",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "DDIs"
+                  "iden": "DDIs",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Features"
+                  "iden": "Features",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "FeaturesRelCompanies"
+                  "iden": "FeaturesRelCompanies",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Friends"
+                  "iden": "Friends",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Invoices"
+                  "iden": "Invoices",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Languages"
+                  "iden": "Languages",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "NotificationTemplates"
+                  "iden": "NotificationTemplates",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "RatingPlanGroups"
+                  "iden": "RatingPlanGroups",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "RatingProfiles"
+                  "iden": "RatingProfiles",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "ResidentialDevices"
+                  "iden": "ResidentialDevices",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "RetailAccounts"
+                  "iden": "RetailAccounts",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Services"
+                  "iden": "Services",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Terminals"
+                  "iden": "Terminals",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Timezones"
+                  "iden": "Timezones",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "TransformationRuleSets"
+                  "iden": "TransformationRuleSets",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "_ActiveCalls"
+                  "iden": "_ActiveCalls",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "_RegistrationSummary"
+                  "iden": "_RegistrationSummary",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "_DdiProviderRegistrationStatus"
+                  "iden": "_DdiProviderRegistrationStatus",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "_RegistrationStatus"
+                  "iden": "_RegistrationStatus",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "kam_users_address"
+                  "iden": "kam_users_address",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Administrators"
+                  "iden": "Administrators",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "BalanceNotifications"
+                  "iden": "BalanceNotifications",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Brands"
+                  "iden": "Brands",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "BrandServices"
+                  "iden": "BrandServices",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Carriers"
+                  "iden": "Carriers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "CarrierServers"
+                  "iden": "CarrierServers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Currencies"
+                  "iden": "Currencies",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "DDIProviderAddresses"
+                  "iden": "DDIProviderAddresses",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "DDIProviders"
+                  "iden": "DDIProviders",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "DDIProviderRegistrations"
+                  "iden": "DDIProviderRegistrations",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Destinations"
+                  "iden": "Destinations",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "DestinationRates"
+                  "iden": "DestinationRates",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "DestinationRateGroups"
+                  "iden": "DestinationRateGroups",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Domains"
+                  "iden": "Domains",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "FeaturesRelBrands"
+                  "iden": "FeaturesRelBrands",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "FixedCosts"
+                  "iden": "FixedCosts",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "FixedCostsRelInvoices"
+                  "iden": "FixedCostsRelInvoices",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "FixedCostsRelInvoiceSchedulers"
+                  "iden": "FixedCostsRelInvoiceSchedulers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "InvoiceNumberSequences"
+                  "iden": "InvoiceNumberSequences",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "InvoiceSchedulers"
+                  "iden": "InvoiceSchedulers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "InvoiceTemplates"
+                  "iden": "InvoiceTemplates",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "NotificationTemplatesContents"
+                  "iden": "NotificationTemplatesContents",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "OutgoingRouting"
+                  "iden": "OutgoingRouting",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "RatingPlans"
+                  "iden": "RatingPlans",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "RoutingPatternGroups"
+                  "iden": "RoutingPatternGroups",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "RoutingPatternGroupsRelPatterns"
+                  "iden": "RoutingPatternGroupsRelPatterns",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "RoutingPatterns"
+                  "iden": "RoutingPatterns",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "RoutingTags"
+                  "iden": "RoutingTags",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "SpecialNumbers"
+                  "iden": "SpecialNumbers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "TransformationRules"
+                  "iden": "TransformationRules",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "WebPortals"
+                  "iden": "WebPortals",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               }
           ],
           "features": [
