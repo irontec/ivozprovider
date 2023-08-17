@@ -124,6 +124,7 @@ const BillableCall: EntityInterface = {
     create: false,
     update: false,
     delete: false,
+    iden: 'BillableCalls',
   },
   customActions: Actions,
   defaultOrderDirection: OrderDirection.desc,

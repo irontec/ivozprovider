@@ -54,6 +54,10 @@ const BalanceNotification: EntityInterface = {
   toStr: (row: BalanceNotificationPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['notificationTemplate', 'toAddress', 'threshold', 'lastSent'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'BalanceNotifications',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

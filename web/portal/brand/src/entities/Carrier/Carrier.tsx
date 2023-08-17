@@ -117,6 +117,10 @@ const Carrier: EntityInterface = {
     'proxyTrunk',
     'statusIcon',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Carriers',
+  },
   ChildDecorator,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

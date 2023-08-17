@@ -36,6 +36,10 @@ const NotificationTemplate: EntityInterface = {
   path: '/notification_templates',
   toStr: (row: NotificationTemplatePropertyList<EntityValues>) => `${row.name}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'NotificationTemplates',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

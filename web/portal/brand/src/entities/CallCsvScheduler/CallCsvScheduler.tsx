@@ -376,6 +376,10 @@ const CallCsvScheduler: EntityInterface = {
     'lastExecution',
     'nextExecution',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'CallCsvSchedulers',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

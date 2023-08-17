@@ -21,7 +21,7 @@ const activeCalls: EntityInterface = {
     detail: false,
     update: false,
     delete: false,
-    iden: 'ActiveCalls',
+    iden: '_ActiveCalls',
   },
 };
 

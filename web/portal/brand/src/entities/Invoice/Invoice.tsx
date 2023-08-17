@@ -3,7 +3,9 @@ import defaultEntityBehavior, {
   marshaller as defaultMarshaller,
   unmarshaller as defaultUnmarshaller,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  OrderDirection,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 
@@ -117,7 +119,7 @@ const Invoice: EntityInterface = {
   title: _('Invoice', { count: 2 }),
   path: '/invoices',
   defaultOrderBy: 'inDate',
-  defaultOrderDirection: 'desc',
+  defaultOrderDirection: OrderDirection.desc,
   toStr: (row: InvoicePropertyList<EntityValues>) => `${row.number}`,
   properties,
   columns: [
@@ -132,6 +134,10 @@ const Invoice: EntityInterface = {
     'invoiceTemplate',
     'pdf',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Invoices',
+  },
   customActions: Actions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

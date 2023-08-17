@@ -44,6 +44,10 @@ const Trusted: EntityInterface = {
   path: '/trusteds',
   toStr: (row: TrustedPropertyList<EntityValues>) => `${row?.id}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'kam_trusted',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

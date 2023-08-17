@@ -483,6 +483,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.User,
             acl: {
+              ...entities.User.acl,
               ...denyAllAcl,
               read: true,
             },
@@ -494,6 +495,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.BannedAddress,
             acl: {
+              ...entities.BannedAddress.acl,
               ...denyAllAcl,
               read: true,
             },
@@ -506,6 +508,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.BannedAddressBruteForce,
             acl: {
+              ...entities.BannedAddressBruteForce.acl,
               ...denyAllAcl,
               read: true,
             },

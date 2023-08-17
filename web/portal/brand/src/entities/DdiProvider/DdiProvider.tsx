@@ -49,6 +49,10 @@ const DdiProvider: EntityInterface = {
     'proxyTrunk',
     //@TODO status
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'DDIProviders',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

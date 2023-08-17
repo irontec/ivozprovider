@@ -32,6 +32,10 @@ const RoutingTag: EntityInterface = {
   toStr: (row: RoutingTagPropertyList<EntityValues>) =>
     `${row.name} (${row.tag})`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'RoutingTags',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

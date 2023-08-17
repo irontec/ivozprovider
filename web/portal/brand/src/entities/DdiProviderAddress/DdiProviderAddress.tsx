@@ -33,6 +33,10 @@ const DdiProviderAddress: EntityInterface = {
   path: '/ddi_provider_addresses',
   toStr: (row: DdiProviderAddressPropertyList<EntityValues>) => `${row.id}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'DDIProviderAddresses',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

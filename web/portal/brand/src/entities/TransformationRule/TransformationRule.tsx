@@ -73,6 +73,10 @@ const TransformationRule: EntityInterface = {
   toStr: (row: TransformationRulePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['description', 'priority', 'matchExpr', 'replaceExpr'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'TransformationRules',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

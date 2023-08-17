@@ -40,6 +40,10 @@ const RatingProfile: EntityInterface = {
   toStr: (row: RatingProfilePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['activationTime', 'ratingPlanGroup'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'RatingProfiles',
+  },
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
 

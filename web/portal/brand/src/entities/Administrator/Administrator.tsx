@@ -89,6 +89,10 @@ const Administrator: EntityInterface = {
     (row?.username as string | undefined) || '',
   properties,
   columns: ['username', 'active', 'restricted'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Administrators',
+  },
   ChildDecorator,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

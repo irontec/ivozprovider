@@ -35,6 +35,10 @@ const Fax: EntityInterface = {
   path: '/faxes',
   toStr: (row: FaxPropertyList<EntityValues>) => `${row.name}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Faxes',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

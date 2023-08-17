@@ -35,6 +35,10 @@ const Destination: EntityInterface = {
   toStr: (row: DestinationPropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
   columns: ['name', 'prefix'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Destinations',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

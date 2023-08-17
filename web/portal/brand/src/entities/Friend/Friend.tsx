@@ -101,6 +101,10 @@ const Friend: EntityInterface = {
   path: '/friends',
   toStr: (row: FriendPropertyList<EntityValues>) => `${row.name}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Friends',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

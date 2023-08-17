@@ -29,6 +29,10 @@ const ProxyTrunk: EntityInterface = {
   path: '/proxy_trunks',
   toStr: (row: ProxyTrunkPropertyList<EntityValues>) => `${row.ip}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'ProxyTrunks',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

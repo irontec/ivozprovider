@@ -48,6 +48,10 @@ const MusicOnHold: EntityInterface = {
   toStr: (row: MusicOnHoldPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['name', 'originalFile'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'MusicOnHold',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

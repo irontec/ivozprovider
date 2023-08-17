@@ -183,6 +183,10 @@ const OutgoingRouting: EntityInterface = {
     'weight',
     'stopper',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'OutgoingRouting',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

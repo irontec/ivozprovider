@@ -26,6 +26,10 @@ const Language: EntityInterface = {
   path: '/languages',
   toStr: (row: LanguagePropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Languages',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

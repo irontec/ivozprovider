@@ -91,6 +91,10 @@ const FixedCostsRelInvoiceScheduler: EntityInterface = {
     `${row.id}`,
   properties,
   columns: ['fixedCost', 'type', 'quantity'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'FixedCostsRelInvoiceSchedulers',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

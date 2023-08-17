@@ -50,6 +50,10 @@ const UsersAddress: EntityInterface = {
   path: '/users_addresses',
   toStr: (row: UsersAddressPropertyList<EntityValues>) => `${row?.id}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'kam_users_address',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

@@ -36,6 +36,10 @@ const RatingPlanGroup: EntityInterface = {
   path: '/rating_plan_groups',
   toStr: (row: RatingPlanGroupPropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'RatingPlanGroups',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
