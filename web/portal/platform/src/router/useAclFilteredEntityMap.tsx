@@ -1,4 +1,4 @@
-import { EntityItem, isEntityItem } from '@irontec/ivoz-ui';
+import { EntityItem, isEntityItem, RouteMapItem } from '@irontec/ivoz-ui';
 import { useEffect, useState } from 'react';
 
 import { AboutMe, EntityAcl } from '../store/clientSession/aboutMe';
@@ -29,7 +29,7 @@ const updateEntityMapByAcls = (
 
     entityMap[key] = resp;
 
-    if (!block.children) {
+    if (!block.children || block.children.length === 0) {
       continue;
     }
 
@@ -51,6 +51,10 @@ const updateEntityMapByAcls = (
   }
 
   const response = entityMap.filter((item) => {
+    if (isEntityItem(item as RouteMapItem)) {
+      return true;
+    }
+
     const children = (item as EntityItem).children as
       | Array<unknown>
       | undefined;
