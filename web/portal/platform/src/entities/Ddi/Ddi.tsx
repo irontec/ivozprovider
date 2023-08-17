@@ -17,6 +17,10 @@ const Ddi: EntityInterface = {
   path: '/ddis',
   toStr: (row: DdiPropertyList<EntityValue>) => row.ddie164 as string,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'DDIs',
+  },
 };
 
 export default Ddi;

@@ -25,6 +25,7 @@ export default function AppRoutes(props: AppRoutesProps) {
     return [];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aclFilteredEntityMap]);
+
   routes.push({
     path: baseUrl,
     element: (

@@ -29,6 +29,10 @@ const ApplicationServer: EntityInterface = {
     row.name as string,
   properties,
   columns: ['name', 'ip'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'ApplicationServers',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

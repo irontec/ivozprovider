@@ -59,6 +59,10 @@ const InvoiceTemplate: EntityInterface = {
   toStr: (row: InvoiceTemplatePropertyList<EntityValue>) => row.name as string,
   properties,
   columns: ['name', 'description'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'InvoiceTemplates',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

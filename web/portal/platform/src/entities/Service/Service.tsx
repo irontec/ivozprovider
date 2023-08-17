@@ -57,6 +57,10 @@ const Service: EntityInterface = {
   },
   properties,
   columns: ['iden', 'name', 'description', 'defaultCode'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Services',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

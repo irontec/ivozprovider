@@ -114,6 +114,7 @@ const BillableCall: EntityInterface = {
     'invoice',
   ],
   acl: {
+    iden: 'BillableCalls',
     read: true,
     detail: true,
     create: false,

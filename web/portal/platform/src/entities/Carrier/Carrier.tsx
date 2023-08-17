@@ -14,9 +14,13 @@ const Carrier: EntityInterface = {
   link: '/doc/en/administration_portal/brand/providers/carriers.html',
   iden: 'Carrier',
   title: _('Carrier', { count: 2 }),
-  path: '/Carriers',
+  path: '/carriers',
   toStr: (row: CarrierPropertyList<EntityValue>) => row.name as string,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Carriers',
+  },
 };
 
 export default Carrier;

@@ -53,6 +53,10 @@ const TerminalModel: EntityInterface = {
     'genericUrlPattern',
     'specificUrlPattern',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'TerminalModels',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
