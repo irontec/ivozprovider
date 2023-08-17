@@ -31,6 +31,10 @@ const Currency: EntityInterface = {
   title: _('Currency', { count: 2 }),
   path: '/currencies',
   columns: ['iden', 'name', 'symbol'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Currencies',
+  },
   toStr: (row: CurrencyPropertyList<EntityValues>) => {
     const language = getI18n().language.substring(0, 2);
     const name = row.name as Record<string, string>;

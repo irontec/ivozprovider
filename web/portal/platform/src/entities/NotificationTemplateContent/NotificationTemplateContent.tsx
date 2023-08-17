@@ -52,6 +52,10 @@ const NotificationTemplateContent: EntityInterface = {
     row.fromName as string,
   properties,
   columns: ['language', 'fromName', 'fromAddress'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'NotificationTemplateContents',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

@@ -33,6 +33,10 @@ const Language: EntityInterface = {
     return name[language];
   },
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Languages',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

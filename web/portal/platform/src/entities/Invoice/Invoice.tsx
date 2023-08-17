@@ -17,6 +17,10 @@ const Invoice: EntityInterface = {
   path: '/invoices',
   toStr: (row: InvoicePropertyList<EntityValue>) => row.number as string,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Invoices',
+  },
 };
 
 export default Invoice;

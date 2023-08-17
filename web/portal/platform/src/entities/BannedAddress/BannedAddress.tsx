@@ -27,6 +27,7 @@ const BannedAddress: EntityInterface = {
   path: '/banned_addresses',
   acl: {
     ...defaultEntityBehavior.acl,
+    iden: 'BannedAddresses',
     detail: false,
   },
   toStr: (row: BannedAddressPropertyList<EntityValue>) => row.ip as string,

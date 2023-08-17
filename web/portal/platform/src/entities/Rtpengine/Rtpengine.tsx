@@ -33,6 +33,10 @@ const Rtpengine: EntityInterface = {
   toStr: (row: RtpenginePropertyList<EntityValue>) => row.url as string,
   properties,
   columns: ['url', 'weight', 'description', 'disabled'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'kam_rtpengine',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

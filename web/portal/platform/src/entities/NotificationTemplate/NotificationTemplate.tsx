@@ -38,6 +38,7 @@ const NotificationTemplate: EntityInterface = {
   acl: {
     ...defaultEntityBehavior.acl,
     detail: false,
+    iden: 'NotificationTemplates',
   },
   icon: MailOutlineIcon,
   link: '/doc/en/administration_portal/platform/default_notification_templates.html',

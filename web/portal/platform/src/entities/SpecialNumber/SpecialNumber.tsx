@@ -57,6 +57,10 @@ const SpecialNumber: EntityInterface = {
   toStr: (row: SpecialNumberPropertyList<EntityValue>) => row.number as string,
   properties,
   columns: ['country', 'number', 'disableCDR'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'SpecialNumbers',
+  },
   ChildDecorator,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

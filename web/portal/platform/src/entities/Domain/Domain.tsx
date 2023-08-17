@@ -29,6 +29,7 @@ const Domain: EntityInterface = {
   properties,
   columns: ['domain', 'brandName', 'companyName'],
   acl: {
+    iden: 'Domains',
     read: true,
     detail: false,
     create: false,

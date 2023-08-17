@@ -105,6 +105,10 @@ const Brand: EntityInterface = {
       size: 40,
     },
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Brands',
+  },
   customActions: Actions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
