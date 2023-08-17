@@ -29,82 +29,186 @@ Feature: Retrieve active calls
           "restricted": true,
           "acls": [
               {
-                  "iden": "BillableCalls"
+                  "iden": "BillableCalls",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Companies"
+                  "iden": "Companies",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Countries"
+                  "iden": "Countries",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Features"
+                  "iden": "Features",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Invoices"
+                  "iden": "Invoices",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Languages"
+                  "iden": "Languages",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "RatingPlanGroups"
+                  "iden": "RatingPlanGroups",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Services"
+                  "iden": "Services",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "TerminalModels"
+                  "iden": "TerminalModels",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Timezones"
+                  "iden": "Timezones",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "_ActiveCalls"
+                  "iden": "_ActiveCalls",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Administrators"
+                  "iden": "Administrators",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Brands"
+                  "iden": "Brands",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "BrandServices"
+                  "iden": "BrandServices",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Destinations"
+                  "iden": "Destinations",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "Domains"
+                  "iden": "Domains",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "FeaturesRelBrands"
+                  "iden": "FeaturesRelBrands",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "InvoiceTemplates"
+                  "iden": "InvoiceTemplates",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "SpecialNumbers"
+                  "iden": "SpecialNumbers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "WebPortals"
+                  "iden": "WebPortals",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "kam_rtpengine"
+                  "iden": "kam_rtpengine",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "ApplicationServers"
+                  "iden": "ApplicationServers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "MediaRelaySets"
+                  "iden": "MediaRelaySets",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "ProxyTrunks"
+                  "iden": "ProxyTrunks",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "ProxyUsers"
+                  "iden": "ProxyUsers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               },
               {
-                  "iden": "TerminalManufacturers"
+                  "iden": "TerminalManufacturers",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               }
           ]
       }
