@@ -36,6 +36,10 @@ const OutgoingDdiRule: EntityInterface = {
   path: '/outgoing_ddi_rules',
   toStr: (row: OutgoingDdiRulePropertyList<EntityValues>) => `${row.name}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'OutgoingDdiRules',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

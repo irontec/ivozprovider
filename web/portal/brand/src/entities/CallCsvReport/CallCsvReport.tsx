@@ -51,6 +51,10 @@ const CallCsvReport: EntityInterface = {
   toStr: (row: CallCsvReportPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['csv', 'inDate', 'outDate', 'createdOn', 'sentTo'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'CallCsvReports',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

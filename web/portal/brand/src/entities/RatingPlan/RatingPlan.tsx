@@ -108,6 +108,10 @@ const RatingPlan: EntityInterface = {
     'saturday',
     'sunday',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'RatingPlan',
+  },
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
 

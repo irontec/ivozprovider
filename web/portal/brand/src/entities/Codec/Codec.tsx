@@ -33,6 +33,10 @@ const Codec: EntityInterface = {
   path: '/codecs',
   toStr: (row: CodecPropertyList<EntityValues>) => `${row.iden}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Codecs',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

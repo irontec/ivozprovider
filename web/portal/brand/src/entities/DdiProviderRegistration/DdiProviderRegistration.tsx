@@ -88,6 +88,10 @@ const DdiProviderRegistration: EntityInterface = {
   toStr: (row: DdiProviderRegistrationPropertyList<EntityValues>) =>
     `${row.id}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'DDIProviderRegistrations',
+  },
   columns: ['username', 'domain', 'statusIcon'],
   selectOptions: async () => {
     const module = await import('./SelectOptions');

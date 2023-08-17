@@ -150,6 +150,10 @@ const RetailAccount: EntityInterface = {
   toStr: (row: RetailAccountPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['company', 'name', 'domainName', 'description', 'statusIcon'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'RetailAccounts',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

@@ -38,6 +38,10 @@ const RoutingPattern: EntityInterface = {
   toStr: (row: RoutingPatternPropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
   columns: ['name', 'description', 'prefix'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'RoutingPatterns',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

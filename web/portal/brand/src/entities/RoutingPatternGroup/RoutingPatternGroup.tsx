@@ -36,6 +36,10 @@ const RoutingPatternGroup: EntityInterface = {
   toStr: (row: RoutingPatternGroupPropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: ['name', 'description', 'patternIds'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'RoutingPatternGroups',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

@@ -20,6 +20,10 @@ const Location: EntityInterface = {
   path: '/locations',
   toStr: (row: LocationPropertyList<EntityValues>) => `${row.name}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Locations',
+  },
 };
 
 export default Location;

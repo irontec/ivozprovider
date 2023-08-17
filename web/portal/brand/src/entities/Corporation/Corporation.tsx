@@ -38,6 +38,10 @@ const Corporation: EntityInterface = {
   columns: ['name', 'description'],
   defaultOrderBy: 'name',
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Corporations',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

@@ -30,6 +30,10 @@ const Currency: EntityInterface = {
   toStr: (row: CurrencyPropertyList<EntityValues>) =>
     `${row.name?.en} (${row.symbol})`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Currencies',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

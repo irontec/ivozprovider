@@ -23,6 +23,10 @@ const Extension: EntityInterface = {
   path: '/extensions',
   toStr: (row: ExtensionPropertyList<EntityValues>) => `${row.number}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Extensions',
+  },
 };
 
 export default Extension;

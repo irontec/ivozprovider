@@ -198,6 +198,10 @@ const User: EntityInterface = {
     'statusIcon',
     'location',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Users',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

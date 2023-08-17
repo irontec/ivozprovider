@@ -377,6 +377,10 @@ const Company: EntityInterface = {
     'domainUsers',
     'featureIds',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Companies',
+  },
   customActions: Actions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

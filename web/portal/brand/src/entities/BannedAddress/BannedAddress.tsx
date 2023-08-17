@@ -50,6 +50,7 @@ const BannedAddress: EntityInterface = {
     detail: false,
     update: false,
     delete: false,
+    iden: 'BannedAddresses',
   },
   properties,
   columns: ['company', 'ip', 'lastTimeBanned'],

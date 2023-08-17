@@ -111,6 +111,10 @@ const WebPortal: EntityInterface = {
   toStr: (row: WebPortalPropertyList<EntityValue>) => `${row.id}`,
   properties,
   columns: ['name', 'urlType', 'url', 'logo'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'WebPortals',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

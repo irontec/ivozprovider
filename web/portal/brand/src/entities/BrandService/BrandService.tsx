@@ -34,6 +34,10 @@ const BrandService: EntityInterface = {
   toStr: (row: BrandServicePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['service', 'code'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'BrandServices',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

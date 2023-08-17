@@ -60,6 +60,7 @@ const CompanyCurrentDayUsage = {
     delete: false,
     update: false,
     detail: false,
+    iden: 'Companies',
   },
   icon: SavingsIcon,
   link: '/doc/en/administration_portal/brand/billing/current_day_usages.html',

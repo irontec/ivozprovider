@@ -20,6 +20,10 @@ const Terminal: EntityInterface = {
   path: '/terminals',
   toStr: (row: TerminalPropertyList<EntityValues>) => `${row.name}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Terminals',
+  },
 };
 
 export default Terminal;

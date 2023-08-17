@@ -114,6 +114,10 @@ const CarrierServer: EntityInterface = {
   toStr: (row: CarrierServerPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['sipProxy', 'outboundProxy', 'statusIcon'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'CarrierServers',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
