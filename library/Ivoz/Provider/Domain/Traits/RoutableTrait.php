@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Traits;
 
+use Ivoz\Provider\Domain\Model\Feature\Feature;
+
 /**
  * RoutableTrait
  *
@@ -23,11 +25,10 @@ trait RoutableTrait
         'queue',
         'voicemail',
         'extension',
-        'retail',
         'conditional',
         'fax',
-        'residential',
-        'retail'
+        Feature::RESIDENTIAL_IDEN,
+        Feature::RETAIL_IDEN
     ];
 
     /**
@@ -87,14 +88,14 @@ trait RoutableTrait
                 }
                 return $this->{$voicemailGetter}()->getName();
 
-            case 'residential':
+            case Feature::RESIDENTIAL_IDEN:
                 $residentialGetter = 'get' . $prefix . 'ResidentialDevice';
                 if (!$this->{$residentialGetter}()) {
                     return "";
                 }
                 return $this->{$residentialGetter}()->getName();
 
-            case 'retail':
+            case Feature::RETAIL_IDEN:
                 $retailGetter = 'get' . $prefix . 'RetailAccount';
                 if (!$this->{$retailGetter}()) {
                     return "";

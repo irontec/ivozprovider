@@ -5,6 +5,7 @@ namespace DataFixtures\Stub\Ast;
 use DataFixtures\Stub\StubTrait;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailDto;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 
 class VoicemailStub
 {
@@ -46,7 +47,7 @@ class VoicemailStub
         $dto = (new VoicemailDto(3))
             ->setContext('company4')
             ->setMailbox('residentialDevice')
-            ->setCallback('residential')
+            ->setCallback(Feature::RESIDENTIAL_IDEN)
             ->setFullname('residentialDevice ')
             ->setEmail('residential@democompany.com')
             ->setAttach('yes')

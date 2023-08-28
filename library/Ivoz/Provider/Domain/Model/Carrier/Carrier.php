@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 
 /**
@@ -38,7 +39,7 @@ class Carrier extends CarrierAbstract implements CarrierInterface
     {
         $billingEnabled = $this
             ->getBrand()
-            ->hasFeatureByIden('billing');
+            ->hasFeatureByIden(Feature::BILLING_IDEN);
 
         if (!$billingEnabled) {
             $this->setCalculateCost(false);
