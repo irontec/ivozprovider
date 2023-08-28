@@ -8,11 +8,11 @@ use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
-use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Fax\Fax;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotification;
@@ -195,7 +195,7 @@ class CompanyLifeCycleTest extends KernelTestCase
 
         $repository = $this->em->getRepository(Company::class);
         $company = $repository->findOneBy([
-            'type' => 'wholesale'
+            'type' => Feature::WHOLESALE_IDEN
         ]);
         $this->entityTools->remove(
             $company
