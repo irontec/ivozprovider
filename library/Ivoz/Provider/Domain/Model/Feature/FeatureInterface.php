@@ -12,6 +12,19 @@ use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 */
 interface FeatureInterface extends LoggableEntityInterface
 {
+    public const QUEUES_IDEN = 'queues';
+    public const RECORDINGS_IDEN = 'recordings';
+    public const FAXES_IDEN = 'faxes';
+    public const FRIENDS_IDEN = 'friends';
+    public const CONFERENCES_IDEN = 'conferences';
+    public const BILLING_IDEN = 'billing';
+    public const INVOICES_IDEN = 'invoices';
+    public const PROGRESS_IDEN = 'progress';
+    public const RESIDENTIAL_IDEN = 'residential';
+    public const WHOLESALE_IDEN = 'wholesale';
+    public const RETAIL_IDEN = 'retail';
+    public const VPBX_IDEN = 'vpbx';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
