@@ -230,7 +230,7 @@ const Dashboard = (props: DashboardProps) => {
       </div>
       <div className='card last'>
         <div className='header'>
-          <div className='title'>{_('Last added clients')}</div>
+          <div className='title'>{_('Last Calls')}</div>
         </div>
 
         <div className='table'>
