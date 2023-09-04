@@ -13,13 +13,14 @@ type TargetGhostType = PropertyCustomFunctionComponent<
 >;
 
 const MatchValue: TargetGhostType = (props): JSX.Element => {
-  const { values } = props;
+  const { numberCountry, numbervalue, type, regexp } = props.values;
+  const isRegex = type === 'regexp';
 
-  const { numberCountry, numbervalue } = values;
+  if (isRegex) {
+    return <span>{`${regexp}`}</span>;
+  }
 
-  const value = `${numberCountry}${numbervalue}`;
-
-  return <span>{value}</span>;
+  return <span>{`${numberCountry}${numbervalue}`}</span>;
 };
 
 export default withCustomComponentWrapper<MatchListPatternValues>(MatchValue);
