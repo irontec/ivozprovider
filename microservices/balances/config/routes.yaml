@@ -3,5 +3,5 @@ sync:
     controller: Controller\Sync::index
 
 reset-counter:
-  path: /
+  path: /reset-counter
   controller: Controller\ResetCounter::index

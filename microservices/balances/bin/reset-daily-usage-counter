@@ -15,3 +15,7 @@ $request = new Request([], [], [], [], [], ['REQUEST_URI' => '/reset-counter']);
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
+if ($response->getStatusCode() >= 300) {
+    die(1);
+}
