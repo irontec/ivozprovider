@@ -5,6 +5,7 @@ namespace Controller\Provider\Company;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Service\Company\DecrementBalance;
 use Ivoz\Provider\Domain\Service\Company\IncrementBalance;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +35,7 @@ class ModifyCompanyBalanceAction
         $token =  $this->tokenStorage->getToken();
         /** @var AdministratorInterface $user */
         $user = $token->getUser();
-        if (!$user->brandHasFeature('billing')) {
+        if (!$user->brandHasFeature(Feature::BILLING_IDEN)) {
             throw new AccessDeniedHttpException();
         }
 

@@ -6,7 +6,7 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyRepository;
 use Model\Profile;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -59,7 +59,7 @@ class ProfileAction
         $brand = $company->getBrand();
         $showBillingInfo =
             $company->getShowInvoices()
-            && $brand->hasFeatureByIden('billing');
+            && $brand->hasFeatureByIden(Feature::BILLING_IDEN);
 
         return new Profile(
             $restricted,

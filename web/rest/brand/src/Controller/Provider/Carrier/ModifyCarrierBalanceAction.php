@@ -5,6 +5,7 @@ namespace Controller\Provider\Carrier;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Service\Carrier\DecrementBalance;
 use Ivoz\Provider\Domain\Service\Carrier\IncrementBalance;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +35,7 @@ class ModifyCarrierBalanceAction
         $token =  $this->tokenStorage->getToken();
         /** @var AdministratorInterface $user */
         $user = $token->getUser();
-        if (!$user->brandHasFeature('billing')) {
+        if (!$user->brandHasFeature(Feature::BILLING_IDEN)) {
             throw new AccessDeniedHttpException();
         }
 
