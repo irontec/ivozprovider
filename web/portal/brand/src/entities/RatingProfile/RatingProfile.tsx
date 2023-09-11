@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 
+import Actions from './Action';
 import {
   RatingProfileProperties,
   RatingProfilePropertyList,
@@ -59,6 +60,7 @@ const RatingProfile: EntityInterface = {
 
     return module.default;
   },
+  customActions: Actions,
 };
 
 export default RatingProfile;
