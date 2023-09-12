@@ -51,10 +51,13 @@ class SimulateCallByRatingProfile
         $subject = $company->getCgrSubject();
         $brandTenant = $brand->getCgrTenant();
 
-        /** @var CurrencyInterface $currency */
         $currency = $ratingProfile
             ->getRatingPlanGroup()
             ->getCurrency();
+
+        if (!$currency) {
+            $currency = $brand->getCurrency();
+        }
 
         return $this->simulateCall(
             $duration,
