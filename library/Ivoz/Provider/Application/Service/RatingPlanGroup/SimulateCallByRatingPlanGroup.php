@@ -44,7 +44,7 @@ class SimulateCallByRatingPlanGroup
         $currency = $ratingPlanGroup->getCurrency();
 
         if (!$currency) {
-            throw new \DomainException('Currency not found', 404);
+            $currency = $brand->getCurrency();
         }
 
         $cgrTag = $ratingPlanGroup->getCgrTag();
