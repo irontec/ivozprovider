@@ -7,6 +7,7 @@ import {
 } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
 import {
   ActionFunctionComponent,
+  ActionItemProps,
   isSingleRowAction,
   MultiSelectActionItemProps,
 } from '@irontec/ivoz-ui/router/routeMapParser';
@@ -27,14 +28,19 @@ import { ClientFeatures } from '../../Company/ClientFeatures';
 import BillableCall from '../BillableCall';
 
 const UpdateLicenses: ActionFunctionComponent = (
-  props: MultiSelectActionItemProps
+  props: MultiSelectActionItemProps | ActionItemProps
 ) => {
-  const { selectedValues = [], variant = 'icon' } = props;
+  const { selectedValues = [], variant = 'icon' } =
+    props as MultiSelectActionItemProps;
+  const { row } = props as ActionItemProps;
+  const isSingleRow = isSingleRowAction(props);
+
   const profile = useStoreState((state) => state.clientSession.aboutMe.profile);
 
   const hasBillingFeature =
     profile?.features?.includes(ClientFeatures.billing) || false;
-  const disabled = !hasBillingFeature || selectedValues.length === 0;
+  const disabled =
+    !hasBillingFeature || (!isSingleRow && selectedValues.length === 0);
 
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
@@ -61,9 +67,11 @@ const UpdateLicenses: ActionFunctionComponent = (
   };
 
   const handleUpdate = () => {
+    const values = isSingleRow ? [row.id] : selectedValues;
+
     const resp = apiPost({
       path: `${BillableCall.path}/rerate`,
-      values: selectedValues as unknown as EntityValues,
+      values: values as unknown as EntityValues,
       contentType: 'application/json',
       silenceErrors: true,
     })
@@ -88,8 +96,31 @@ const UpdateLicenses: ActionFunctionComponent = (
       );
   };
 
-  if (isSingleRowAction(props)) {
-    return <span className='display-none'></span>;
+  if (isSingleRow) {
+    if (disabled) {
+      return <span className='display-none'></span>;
+    }
+
+    return (
+      <a onClick={handleUpdate}>
+        {variant === 'text' && (
+          <MoreMenuItem>{_('Rerate calls', { count: 1 })}</MoreMenuItem>
+        )}
+        {variant === 'icon' && (
+          <Tooltip
+            title={_('Rerate calls', { count: 1 })}
+            placement='bottom'
+            enterTouchDelay={0}
+          >
+            <span>
+              <StyledTableRowCustomCta disabled={disabled}>
+                <CurrencyExchangeIcon />
+              </StyledTableRowCustomCta>
+            </span>
+          </Tooltip>
+        )}
+      </a>
+    );
   }
 
   return (
@@ -97,12 +128,12 @@ const UpdateLicenses: ActionFunctionComponent = (
       <a className={disabled ? 'disabled' : ''} onClick={handleClickOpen}>
         {variant === 'text' && (
           <MoreMenuItem onClick={handleClickOpen}>
-            {_('Rerate calls')}
+            {_('Rerate calls', { count: 2 })}
           </MoreMenuItem>
         )}
         {variant === 'icon' && (
           <Tooltip
-            title={_('Rerate calls')}
+            title={_('Rerate calls', { count: 2 })}
             placement='bottom'
             enterTouchDelay={0}
           >
@@ -116,7 +147,7 @@ const UpdateLicenses: ActionFunctionComponent = (
       </a>
       {open && (
         <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle>{_('Rerate calls')}</DialogTitle>
+          <DialogTitle>{_('Rerate calls', { count: 2 })}</DialogTitle>
           <DialogContent sx={{ textAlign: 'left!important' }}>
             {!error && (
               <>
@@ -140,7 +171,7 @@ const UpdateLicenses: ActionFunctionComponent = (
             )}
           </DialogContent>
           <DialogActions>
-            <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
+            <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
             {!error && (
               <SolidButton onClick={handleUpdate} autoFocus>
                 {_('Accept')}
