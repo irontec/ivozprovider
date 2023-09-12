@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
+import Actions from './Action';
 import {
   RatingPlanGroupProperties,
   RatingPlanGroupPropertyList,
@@ -60,6 +61,7 @@ const RatingPlanGroup: EntityInterface = {
 
     return module.default;
   },
+  customActions: Actions,
 };
 
 export default RatingPlanGroup;

@@ -288,6 +288,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.RatingPlan,
               filterBy: 'ratingPlanGroup',
             },
+            ...Object.values(entities.RatingPlanGroup.customActions),
           ],
         },
         {
