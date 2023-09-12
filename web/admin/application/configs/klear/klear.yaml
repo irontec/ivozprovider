@@ -3,7 +3,7 @@ production:
     dynamicConfigClass: IvozProvider\Klear\Dynamic\Builder
     sitename: "Main administration portal"
     sitesubname: "Main website"
-    logo: images/irontec.png
+    logo: images/logoprovider.png
     year: 2022
     lang: en
     langs:
