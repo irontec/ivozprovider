@@ -80,6 +80,9 @@ const getEntityMap = (): ExtendedRouteMap => {
               isAccessible: (aboutMe) => {
                 return aboutMe.features.includes(ClientFeatures.billing);
               },
+              children: [
+                ...Object.values(entities.RatingProfile.customActions),
+              ],
             },
           ],
         },
