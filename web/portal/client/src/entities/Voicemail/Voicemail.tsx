@@ -1,5 +1,4 @@
 import { isEntityItem } from '@irontec/ivoz-ui';
-import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -65,7 +64,7 @@ const properties: VoicemailProperties = {
 const columns = ['enabled', 'name', 'email'];
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, entityService, row } = props;
+  const { routeMapItem, row } = props;
 
   if (
     isEntityItem(routeMapItem) &&
@@ -74,13 +73,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
     const isDeletePath = routeMapItem.route === `${Voicemail.path}/:id`;
     const allowDelete = row.user === null && row.residential === null;
     if (isDeletePath && !allowDelete) {
-      return (
-        <DeleteRowButton
-          disabled={true}
-          row={row}
-          entityService={entityService}
-        />
-      );
+      return null;
     }
   }
 
@@ -111,6 +104,7 @@ const Voicemail: EntityInterface = {
 
     return module.default;
   },
+  ChildDecorator,
 };
 
 export default Voicemail;
