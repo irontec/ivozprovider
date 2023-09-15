@@ -3,6 +3,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 
+import CustomActions from './Action';
 import Calendar from './Field/Calendar';
 import Target from './Field/Target';
 import { HolidayDateProperties } from './HolidayDateProperties';
@@ -140,6 +141,7 @@ const HolidayDate: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'HolidayDates',
   },
+  customActions: CustomActions,
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
 
