@@ -386,7 +386,10 @@ const getEntityMap = (): ExtendedRouteMap => {
       isAccessible: (aboutMe) => aboutMe.vpbx,
     },
     {
-      entity: entities.Contact,
+      entity: {
+        ...entities.Contact,
+        title: _('Address Book'),
+      },
       isAccessible: (aboutMe) => aboutMe.vpbx,
     },
     {
