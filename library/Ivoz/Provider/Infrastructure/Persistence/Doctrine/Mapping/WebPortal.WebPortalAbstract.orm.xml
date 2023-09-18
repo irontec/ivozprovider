@@ -24,7 +24,7 @@
     </field>
     <field name="newUI" type="boolean" column="newUI" nullable="false">
       <options>
-        <option name="default">0</option>
+        <option name="default">1</option>
         <option name="unsigned">1</option>
       </options>
     </field>
