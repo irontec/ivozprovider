@@ -1614,6 +1614,11 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
       required:
       - company
 
+Ivoz\Provider\Domain\Model\RatingPlanGroup\Name: ~
+Ivoz\Provider\Domain\Model\RatingPlanGroup\Description: ~
+Ivoz\Provider\Domain\Model\RatingPlanGroup\TarificationInfo:
+  itemOperations: []
+  collectionOperations: []
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
   itemOperations:
     get: ~
@@ -1633,12 +1638,42 @@ Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
-Ivoz\Provider\Domain\Model\RatingPlanGroup\Name: ~
-Ivoz\Provider\Domain\Model\RatingPlanGroup\Description: ~
 
 Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   itemOperations:
     get: ~
+    post_rating_profiles_simulate_call:
+      method: 'POST'
+      path: '/rating_profiles/{id}/simulate_call'
+      route_name: 'post_rating_profiles_simulate_call'
+      pagination_enabled: false
+      swagger_context:
+        consumes:
+          - 'application/x-www-form-urlencoded'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: number
+            in: formData
+            type: string
+            required: true
+            description: 'Phone number'
+          - name: duration
+            in: formData
+            type: integer
+            required: true
+            description: 'Call duration'
+        responses:
+          201:
+            description: "Simulated Call"
+            schema:
+              $ref: "#/definitions/TarificationInfo"
+          404:
+            description: "Resource not found"
+          400:
+            description: "Invalid input"
   collectionOperations:
     get: ~
   attributes:
