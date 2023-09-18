@@ -3,6 +3,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
 
+import Actions from './Action';
 import { RatingProfileProperties } from './RatingProfileProperties';
 
 const properties: RatingProfileProperties = {
@@ -41,6 +42,7 @@ const ratingProfile: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'RatingProfiles',
   },
+  customActions: Actions,
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
 

@@ -405,6 +405,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           },
           isAccessible: (aboutMe) => aboutMe.billingInfo,
+          children: [...Object.values(entities.RatingProfile.customActions)],
         },
         {
           entity: entities.Invoice,
