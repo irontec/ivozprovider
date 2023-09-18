@@ -32,7 +32,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @var bool|null
      */
-    private $newUI = false;
+    private $newUI = true;
 
     /**
      * @var string|null
