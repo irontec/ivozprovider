@@ -26,6 +26,17 @@ const ratingProfile: EntityInterface = {
   title: _('Rating profile', { count: 2 }),
   path: '/rating_profiles',
   properties,
+  columns: (state) => {
+    const { retail, wholesale } = state.clientSession.aboutMe.profile || {};
+
+    const columns = ['activationTime', 'ratingPlanGroup'];
+
+    if (retail || wholesale) {
+      columns.push('routingTag');
+    }
+
+    return columns;
+  },
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RatingProfiles',
