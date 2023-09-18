@@ -218,6 +218,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             ) as ExtendedRouteMapItem[]),
             {
               entity: entities.BillableCall,
+              children: [...Object.values(entities.BillableCall.customActions)],
               filterBy: 'carrier',
             },
           ],
@@ -535,9 +536,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.BillableCall,
-          children: [
-            //@TODO rerate call
-          ],
+          children: [...Object.values(entities.BillableCall.customActions)],
         },
         {
           entity: entities.CallCsvScheduler,
