@@ -9,6 +9,7 @@ import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { edit } = props;
+
   const { entityService, row, match } = props;
   const fkChoices = useFkChoices({
     foreignKeyGetter,

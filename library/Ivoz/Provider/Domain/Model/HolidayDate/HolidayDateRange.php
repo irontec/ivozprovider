@@ -8,7 +8,7 @@ class HolidayDateRange
 {
     /**
      * @var string
-     * @AttributeDefinition(type="string")
+     * @AttributeDefinition(type="string", required=true)
      */
     private $name = '';
 
@@ -18,10 +18,9 @@ class HolidayDateRange
      */
     private $locution;
 
-
     /**
      * @var int
-     * @AttributeDefinition(type="int")
+     * @AttributeDefinition(type="int", required=true)
      */
     private $wholeDayEvent;
 
@@ -44,34 +43,61 @@ class HolidayDateRange
     private $routeType;
 
     /**
-     * @var string
+     * @var ?int
+     * @AttributeDefinition(type="int")
+     */
+    private $extension;
+
+    /**
+     * @var ?int
+     * @AttributeDefinition(type="int")
+     */
+    private $voicemail;
+
+    /**
+     * @var ?int
+     * @AttributeDefinition(type="int")
+     */
+    private $numberCountry;
+
+    /**
+     * @var ?string
      * @AttributeDefinition(type="string")
+     */
+    private $numberValue;
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string", required=true)
      */
     private $startDate;
 
     /**
      * @var string
-     * @AttributeDefinition(type="string")
+     * @AttributeDefinition(type="string", required=true)
      */
     private $endDate;
 
     /**
      * @var int
-     * @AttributeDefinition(type="int")
+     * @AttributeDefinition(type="int", required=true)
      */
     private $calendar;
 
-
     public function __construct(
+        int $calendar,
         string $name,
-        int $wholeDayEvent,
         string $startDate,
         string $endDate,
-        int $calendar,
+        int $wholeDayEvent,
+        ?int $locution,
         ?string $timeIn,
         ?string $timeOut,
         ?string $routeType,
-        ?int $locution
+        ?int $extension,
+        ?int $voicemail,
+        ?int $numberCountry,
+        ?string $numberValue,
     ) {
         $this->name = $name;
         $this->wholeDayEvent = $wholeDayEvent;
@@ -82,6 +108,10 @@ class HolidayDateRange
         $this->timeOut = $timeOut;
         $this->routeType = $routeType;
         $this->locution = $locution;
+        $this->extension = $extension;
+        $this->voicemail = $voicemail;
+        $this->numberCountry = $numberCountry;
+        $this->numberValue = $numberValue;
     }
 
     /**
@@ -95,6 +125,10 @@ class HolidayDateRange
      *     'timeOut': string | null,
      *     'routeType': string | null,
      *     'locution': int | null,
+     *     'extension': int | null,
+     *     'voicemail': int | null,
+     *     'numberCountry': int | null,
+     *     'numberValue': string | null,
      *   }
      */
     public function toArray(): array
@@ -109,6 +143,10 @@ class HolidayDateRange
             'timeOut' => $this->getTimeOut(),
             'routeType' => $this->getRouteType(),
             'locution' => $this->getLocution(),
+            'extension' => $this->getExtension(),
+            'voicemail' => $this->getVoicemail(),
+            'numberCountry' => $this->getNumberCountry(),
+            'numberValue' => $this->getNumberValue(),
         ];
     }
 
@@ -156,5 +194,25 @@ class HolidayDateRange
     public function getCalendar(): int
     {
         return $this->calendar;
+    }
+
+    public function getExtension(): ?int
+    {
+        return $this->extension;
+    }
+
+    public function getVoicemail(): ?int
+    {
+        return $this->voicemail;
+    }
+
+    public function getNumberCountry(): ?int
+    {
+        return $this->numberCountry;
+    }
+
+    public function getNumberValue(): ?string
+    {
+        return $this->numberValue;
     }
 }

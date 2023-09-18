@@ -16,18 +16,39 @@ class CreateHolidayDatesAction
 
     public function __invoke(Request $request): Response
     {
+        /**
+         * @var array{
+         * calendar: int,
+         * name: string,
+         * startDate: string,
+         * endDate: string,
+         * wholeDayEvent: int,
+         * locution?: int,
+         * timeIn?: string,
+         * timeOut?: string,
+         * routeType?: string | null,
+         * extension?: int | null,
+         * voicemail?: int | null,
+         * numberCountry?: int | null,
+         * numberValue?: string,
+         * } $body
+         */
         $body = $request->toArray();
 
         $holidayDateRange = new HolidayDateRange(
-            $body['name'],
-            $body['wholeDayEvent'],
-            $body['startDate'],
-            $body['endDate'],
-            $body['calendar'],
-            $body['timeIn'],
-            $body['timeOut'],
-            $body['routeType'],
-            $body['locution'],
+            calendar: $body['calendar'],
+            name: $body['name'],
+            startDate: $body['startDate'],
+            endDate: $body['endDate'],
+            wholeDayEvent: $body['wholeDayEvent'],
+            locution: $body['locution'] ?? null,
+            timeIn: $body['timeIn'] ?? null,
+            timeOut: $body['timeOut'] ?? null,
+            routeType: $body['routeType'] ?? null,
+            extension: $body['extension'] ?? null,
+            voicemail: $body['voicemail'] ?? null,
+            numberCountry: $body['numberCountry'] ?? null,
+            numberValue: $body['numberValue'] ?? null,
         );
 
         try {
@@ -36,6 +57,8 @@ class CreateHolidayDatesAction
             );
 
             return new Response('Holiday Dates created', 201);
+        } catch (\DomainException $e) {
+            throw $e;
         } catch (\Exception $e) {
             return new Response('Cannot create holiday dates', 400);
         }
