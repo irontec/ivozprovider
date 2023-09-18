@@ -188,3 +188,11 @@ get_companies_corporate_unassigned:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Company\Company'
     _api_collection_operation_name: 'get_companies_corporate_unassigned'
     _api_receive: false
+
+post_rating_profiles_simulate_call:
+  path: '/rating_profiles/{id}/simulate_call'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\SimulateCall\SimulateCallRatingProfileAction
+    _api_item_operation_name: 'post_rating_profiles_simulate_call'
+    _api_receive: false

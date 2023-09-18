@@ -6,7 +6,7 @@ This section allows the client to:
 
 - See the list of rating plans and their activation time.
 
-- Download a CSV with each rating plan (Due to this feature relays on client API it requires you to have a client administrator, you'll get error 403 otherwise).
+- Check available routing tags (only for retail and wholesale clients) to reach different destinations.
 
 - Simulate a call and guess the cost of a given call.
 
