@@ -123,3 +123,31 @@ Model\Profile:
           - My
         parameters: []
   collectionOperations: []
+
+Model\HolidaysMassImport:
+  itemOperations: []
+  collectionOperations:
+    post_holidays_dates_mass_import:
+      access_control: '"ROLE_COMPANY_ADMIN" in roles'
+      method: 'POST'
+      path: '/holiday_dates/mass_import'
+      route_name: 'post_holidays_dates_mass_import'
+      swagger_context:
+        consumes:
+          - 'multipart/form-data'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: csv
+            in: formData
+            type: file
+            required: true
+            description: "*name, event data"
+          - name: calendar
+            in: formData
+            type: integer
+            required: false
+            description: 'Ensure certain calendar id is included'
+
