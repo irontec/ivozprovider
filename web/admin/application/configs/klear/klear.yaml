@@ -3,7 +3,7 @@ production:
     dynamicConfigClass: IvozProvider\Klear\Dynamic\Builder
     sitename: "Main administration portal"
     sitesubname: "Main website"
-    logo: images/logoprovider.png
+    logo: classic/images/logoprovider.png
     year: 2022
     lang: en
     langs:
@@ -27,17 +27,17 @@ production:
       theme: redmond
     raw:
       css:
-        - "css/klear.css"
-        - "default/css/customMenu.css"
-        - "default/css/customFields.css"
-        - "default/css/global.css"
-        - "default/css/jquery.ui.spinner.css"
+        - "classic/css/klear.css"
+        - "classic/default/css/customMenu.css"
+        - "classic/default/css/customFields.css"
+        - "classic/default/css/global.css"
+        - "classic/default/css/jquery.ui.spinner.css"
       javascript:
-        - "default/js/customMenu.js"
-        - "default/js/customTooltip.js"
-        - "default/js/customSpinner.js"
+        - "classic/default/js/customMenu.js"
+        - "classic/default/js/customTooltip.js"
+        - "classic/default/js/customSpinner.js"
     cssExtended:
-      silkExtendedIconPath: /css/ui-klear/icons
+      silkExtendedIconPath: /classic/css/ui-klear/icons
     actionHelpers:
     auth:
       adapter: IvozProvider\Klear\Auth\Adapter
