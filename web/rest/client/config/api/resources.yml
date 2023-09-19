@@ -171,5 +171,5 @@ Model\ExtensionsMassImport:
             in: formData
             type: file
             required: true
-            description: "*extension, *country prefix, number, country code"
+            description: "*extension, *country prefix, *number, country code"
           
