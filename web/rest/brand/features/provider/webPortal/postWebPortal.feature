@@ -14,6 +14,7 @@ Feature: Create web portals
           "url": "https://post-example.com",
           "klearTheme": "redmond",
           "urlType": "user",
+          "newUI": false,
           "name": "Platform user Portal",
           "userTheme": "default",
           "id": 1,
