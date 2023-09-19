@@ -30,10 +30,6 @@ if ($request->headers->has('cookie')) {
     }
 }
 
-try {
-    $response = $kernel->handle($request);
-    $response->send();
-    $kernel->terminate($request, $response);
-} catch (\Exception $e) {
-    $break = 1;
-}
+$response = $kernel->handle($request);
+$response->send();
+$kernel->terminate($request, $response);
