@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+#DEBHELPER#
+
+# Set current environment
+export APP_ENV=prod
+
+# Create project cache
+cd /opt/irontec/ivozprovider/microservices/router
+
+# Set proper var permissions
+setfacl -dR -m u:www-data:rwX -m u:root:rwX var
+setfacl  -R -m u:www-data:rwX -m u:root:rwX var
+
+bin/console cache:clear --no-warmup -q -n
+
+:
