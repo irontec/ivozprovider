@@ -141,12 +141,12 @@ get_services_unassigned:
     _api_collection_operation_name: 'get_services_unassigned'
     _api_receive: false
 
-get_invoice_preview:
+get_invoice_template_preview:
   path: '/invoice_templates/{id}/preview'
   methods: ['GET']
   defaults:
     _controller: Controller\Provider\InvoiceTemplatePreviewAction
-    _api_item_operation_name: 'get_invoice_preview'
+    _api_item_operation_name: 'get_invoice_template_preview'
 
 post_provider_administrator_revoke_all:
   path: '/administrators/{id}/revoke_all'

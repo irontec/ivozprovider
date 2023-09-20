@@ -3,16 +3,20 @@
 namespace Ivoz\Provider\Domain\Service\InvoiceTemplate;
 
 use Handlebars\Handlebars;
+use Knp\Snappy\Pdf;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateRepository;
 
-class InvoiceTemplateGenerator
+class InvoiceTemplatePreviewGenerator
 {
     public function __construct(
         private InvoiceTemplateRepository $invoiceTemplateRepository
     ) {
     }
 
+    /**
+     * @return string|null path to pdf file
+     */
     public function execute(int $invoiceTemplateId): ?string
     {
         /** @var ?InvoiceTemplate $invoiceTemplate */
@@ -24,6 +28,40 @@ class InvoiceTemplateGenerator
             return null;
         }
 
+        $tmpFilename = tempnam(
+            '/tmp',
+            'invoice-template-preview-'
+        );
+        if (!$tmpFilename) {
+            return null;
+        }
+
+        $handle = fopen($tmpFilename, 'w');
+        if (!$handle) {
+            return null;
+        }
+
+        [$header, $body, $footer] = $this->getHtml($invoiceTemplate);
+
+        $snappy = new Pdf('/opt/irontec/ivozprovider/library/vendor/bin/wkhtmltopdf-amd64');
+        $snappy->setOption('header-html', $header);
+        $snappy->setOption('header-spacing', 3);
+        $snappy->setOption('footer-html', $footer);
+        $snappy->setOption('footer-spacing', 3);
+        $content = $snappy->getOutputFromHtml($body);
+        $snappy->removeTemporaryFiles();
+
+        fwrite($handle, $content);
+        fclose($handle);
+
+        return $tmpFilename;
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getHtml(InvoiceTemplate $invoiceTemplate): array
+    {
         $templateEngine = new Handlebars();
         $variables = $this->getSampleData();
         $header = $templateEngine->render(
@@ -39,7 +77,11 @@ class InvoiceTemplateGenerator
             $variables
         );
 
-        return $header . $body . $footer;
+        return [
+            $header,
+            $body,
+            $footer
+        ];
     }
 
     /**

@@ -2,29 +2,49 @@
 
 namespace Controller\Provider;
 
-use Ivoz\Provider\Domain\Service\InvoiceTemplate\InvoiceTemplateGenerator;
+use Ivoz\Provider\Domain\Service\InvoiceTemplate\InvoiceTemplatePreviewGenerator;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class InvoiceTemplatePreviewAction
 {
     public function __construct(
-        private InvoiceTemplateGenerator $invoiceTemplateGenerator
+        private InvoiceTemplatePreviewGenerator $invoiceTemplatePreviewGenerator
     ) {
     }
 
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request): BinaryFileResponse
     {
-        $invoiceTemplateId = (int)$request->attributes->get('id');
+        $invoiceTemplateId = (int) $request->attributes->get('id');
 
-        $invoiceTemplate = $this
-            ->invoiceTemplateGenerator
+        $invoicePreviewFile = $this
+            ->invoiceTemplatePreviewGenerator
             ->execute($invoiceTemplateId);
 
-        if (is_null($invoiceTemplate)) {
-            return new Response('Invoice Template not found', 404);
+        if (is_null($invoicePreviewFile)) {
+            throw new NotFoundHttpException(
+                'Invoice Template not found',
+            );
         }
 
-        return new Response($invoiceTemplate, 200);
+        $response = new BinaryFileResponse(
+            $invoicePreviewFile
+        );
+
+        /** @var string $disposition */
+        $disposition = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            'invoice_template_preview.pdf'
+        );
+        $response->headers->set(
+            'Content-Disposition',
+            $disposition
+        );
+
+        $response->deleteFileAfterSend(true);
+
+        return $response;
     }
 }
