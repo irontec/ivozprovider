@@ -151,9 +151,11 @@ const StyledDashboard = styled(Dashboard)(({ theme }: { theme: Theme }) => {
     },
 
     '& .licenses': {
+      [theme.breakpoints.between('md', 'lg')]: {
+        gridColumn: 'auto / span 3',
+      },
       padding: '0',
-      display: 'flex',
-      flexDirection: 'column',
+      display: 'grid',
       '& .title': {
         padding: 'var(--spacing-lg)',
         paddingBlockEnd: '0',
@@ -235,6 +237,8 @@ const StyledDashboard = styled(Dashboard)(({ theme }: { theme: Theme }) => {
       [theme.breakpoints.up('lg')]: {
         gridColumn: 'auto / span 2',
       },
+      maxWidth: '100%',
+      overflowX: 'auto',
       '& .header': {
         padding: 'var(--spacing-lg)',
         display: 'flex',
