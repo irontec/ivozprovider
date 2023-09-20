@@ -5,6 +5,7 @@ import EntityInterface, {
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
+import Actions from './Action';
 import { UsersCdrProperties } from './UsersCdrProperties';
 
 const properties: UsersCdrProperties = {
@@ -67,6 +68,7 @@ const usersCdr: EntityInterface = {
   path: '/users_cdrs',
   properties,
   columns,
+  customActions: Actions,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'kam_users_cdrs',
