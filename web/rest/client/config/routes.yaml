@@ -196,3 +196,13 @@ post_rating_profiles_simulate_call:
     _controller: Controller\Provider\SimulateCall\SimulateCallRatingProfileAction
     _api_item_operation_name: 'post_rating_profiles_simulate_call'
     _api_receive: false
+
+post_holidays_dates_mass_import:
+  path: '/holiday_dates/mass_import'
+  methods: ['POST', 'GET']
+  defaults:
+    _controller: Controller\Provider\PostHolidaysMassImportAction
+    _api_resource_class: 'Model\HolidaysMassImport'
+    _api_item_operation_name: 'post_holidays_dates_mass_import'
+    _api_collection_operation_name: 'post_holidays_dates_mass_import'
+    _api_receive: false
