@@ -905,6 +905,35 @@ Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
     swagger_context:
       required:
       - brand
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/invoice_templates/{id}'
+      requirements:
+        id: '\d+'
+    put:
+      method: 'PUT'
+      path: '/invoice_templates/{id}'
+      requirements:
+        id: '\d+'
+    delete:
+      method: 'DELETE'
+      path: '/invoice_templates/{id}'
+      requirements:
+        id: '\d+'
+    get_invoice_template_preview:
+      method: 'GET'
+      path: '/invoice_templates/{id}/preview'
+      requirements:
+        id: '\d+'
+      route_name: 'get_invoice_template_preview'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/pdf'
+        tags:
+          - Provider
+
 
 Ivoz\Provider\Domain\Model\Language\Name:
 Ivoz\Provider\Domain\Model\Language\Language:

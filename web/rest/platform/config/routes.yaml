@@ -88,12 +88,12 @@ put_billable_call_rate_by_callid:
     _api_item_operation_name: 'put_billable_call_rate_by_callid'
     _api_receive: false
 
-get_invoice_preview:
+get_invoice_template_preview:
   path: '/invoice_templates/{id}/preview'
   methods: ['GET']
   defaults:
     _controller: Controller\Provider\InvoiceTemplatePreviewAction
-    _api_item_operation_name: 'get_invoice_preview'
+    _api_item_operation_name: 'get_invoice_template_preview'
 
 get_my_theme:
   path: '/my/theme'
