@@ -3,6 +3,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ShortcutIcon from '@mui/icons-material/Shortcut';
 
+import CustomActions from './Action';
 import {
   ExtensionProperties,
   ExtensionPropertyList,
@@ -148,6 +149,7 @@ const extension: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Extensions',
   },
+  customActions: CustomActions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
