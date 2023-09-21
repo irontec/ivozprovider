@@ -1871,16 +1871,6 @@ parameters:
 			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersLocationDoctrineRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string, array\\|string given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Application/Service/Extension/SyncFromCsv.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function trim expects string, array\\|string given\\.$#"
-			count: 2
-			path: Ivoz/Provider/Application/Service/Extension/SyncFromCsv.php
-
-		-
 			message: "#^Parameter \\#1 \\$array of function array_shift expects array, array\\|string given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Application/Service/User/SyncFromCsv.php
