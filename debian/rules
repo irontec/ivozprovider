@@ -53,6 +53,7 @@ build_microservices: build_library
 	cd microservices/workers; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 	cd microservices/scheduler; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 	cd microservices/realtime; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd microservices/router; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
 build_schema: build_library
 	cd schema ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
