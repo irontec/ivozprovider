@@ -144,7 +144,7 @@ Model\HolidaysMassImport:
             in: formData
             type: file
             required: true
-            description: "*name, event data"
+            description: "*name, date"
           - name: calendar
             in: formData
             type: integer
