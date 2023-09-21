@@ -109,6 +109,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.InvoiceTemplate,
+          children: [...Object.values(entities.InvoiceTemplate.customActions)],
         },
         {
           entity: entities.SpecialNumber,

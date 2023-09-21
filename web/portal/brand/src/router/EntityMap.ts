@@ -386,9 +386,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.InvoiceTemplate,
           isAccessible: (aboutMe) => aboutMe.features.includes('invoices'),
-          children: [
-            //@TODO template testing
-          ],
+          children: [...Object.values(entities.InvoiceTemplate.customActions)],
         },
       ],
     },

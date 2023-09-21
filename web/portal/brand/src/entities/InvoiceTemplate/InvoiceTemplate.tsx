@@ -8,6 +8,7 @@ import EntityInterface, {
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 
+import Actions from './Action';
 import {
   InvoiceTemplateProperties,
   InvoiceTemplatePropertyList,
@@ -70,6 +71,7 @@ const InvoiceTemplate: EntityInterface = {
   toStr: (row: InvoiceTemplatePropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: ['name', 'description'],
+  customActions: Actions,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'InvoiceTemplates',
