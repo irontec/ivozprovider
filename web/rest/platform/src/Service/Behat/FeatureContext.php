@@ -2,6 +2,7 @@
 
 namespace Service\Behat;
 
+use Behat\Gherkin\Node\PyStringNode;
 use Ivoz\Api\Behat\Context\FeatureContext as BaseFeatureContext;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -59,6 +60,30 @@ class FeatureContext extends BaseFeatureContext
         file_put_contents(
             $filePath,
             'random data'
+        );
+    }
+
+    /**
+     * Sends a HTTP request
+     *
+     * @param array<string> $files
+     *
+     * @Given I send a :method request to :url under :domain
+     * @return \Behat\Mink\Element\DocumentElement
+     */
+    public function iSendARequestToDomain(string $method, string $url, string $domain, PyStringNode $body = null, $files = [])
+    {
+        $this->setMinkParameter('base_url', $domain);
+
+        /** @var \Behatch\HttpCall\Request\BrowserKit $request */
+        $request = $this->request;
+
+        return $request->send(
+            $method,
+            $this->locatePath($url),
+            [],
+            $files,
+            $body !== null ? $body->getRaw() : null
         );
     }
 }

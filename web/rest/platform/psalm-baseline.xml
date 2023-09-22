@@ -116,6 +116,10 @@
     <DeprecatedInterface occurrences="1">
       <code>FeatureContext</code>
     </DeprecatedInterface>
+    <MixedInferredReturnType occurrences="1">
+      <code>\Behat\Mink\Element\DocumentElement</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1"/>
     <PropertyNotSetInConstructor occurrences="1">
       <code>FeatureContext</code>
     </PropertyNotSetInConstructor>
