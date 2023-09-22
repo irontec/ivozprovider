@@ -1,10 +1,15 @@
 import { CustomActionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 import AddHolidayDateRange from './AddHolidayDateRange';
+import Import from './Import';
 
 const customAction: CustomActionsType = {
   AddHolidayDateRange: {
     action: AddHolidayDateRange,
+    global: true,
+  },
+  Import: {
+    action: Import,
     global: true,
   },
 };
