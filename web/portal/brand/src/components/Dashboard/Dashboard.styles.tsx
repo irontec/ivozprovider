@@ -168,28 +168,6 @@ const StyledDashboard = styled(Dashboard)(({ theme }: { theme: Theme }) => {
         flexGrow: '1',
         padding: 'var(--spacing-lg)',
       },
-      '& .circle': {
-        minWidth: '160px',
-        width: '100%',
-        maxWidth: '260px',
-        aspectRatio: '1',
-        background: `
-          radial-gradient(
-            circle closest-side,
-            white 0,
-            white 82%,
-            transparent 0%,
-            transparent 100%,
-            white 0
-          ),
-          conic-gradient(
-            var(--color-danger) 0,
-            var(--color-danger) var(--inbound),
-            var(--color-warning) 0,
-            var(--color-warning) var(--outbound)
-          )
-        `,
-      },
       '& .data': {
         display: 'flex',
         flexDirection: 'column',
