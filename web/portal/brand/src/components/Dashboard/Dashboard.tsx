@@ -1,3 +1,7 @@
+import {
+  CircleChart,
+  CircleProps,
+} from '@irontec/ivoz-ui/components/Dashboard/CircleChart';
 import { LightButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
 import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
@@ -10,6 +14,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Tooltip,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -92,6 +97,13 @@ const Dashboard = (props: DashboardProps) => {
     total === 0
       ? '50%'
       : `${Math.round((activeCalls.outbound / total) * 100)}%`;
+
+  const circleProps: CircleProps = {
+    data: [
+      { key: 'inbound', color: '#e54560', percentage: inbound },
+      { key: 'outbound', color: '#f8c14a', percentage: outbound },
+    ],
+  };
 
   return (
     <section className={className}>
@@ -182,15 +194,7 @@ const Dashboard = (props: DashboardProps) => {
         <div className='title'>{_('Active call', { count: 2 })}</div>
 
         <div className='radial'>
-          <div
-            className='circle'
-            style={
-              {
-                '--inbound': inbound,
-                '--outbound': outbound,
-              } as React.CSSProperties
-            }
-          ></div>
+          <CircleChart {...circleProps} />
           <div className='data'>
             <div className='total'>{_('Total')}</div>
             <div className='number'>{activeCalls?.total}</div>
@@ -199,12 +203,24 @@ const Dashboard = (props: DashboardProps) => {
 
         <div className='legend'>
           <div className='label'>
-            <div className='color orange'></div>
+            <Tooltip
+              title={`${activeCalls.outbound} outbound(s)`}
+              placement='bottom-start'
+              enterTouchDelay={0}
+            >
+              <div className='color orange'></div>
+            </Tooltip>
             <div className='text'>{_('Outbound')}</div>
           </div>
 
           <div className='label'>
-            <div className='color red'></div>
+            <Tooltip
+              title={`${activeCalls.inbound} inbound(s)`}
+              placement='bottom-start'
+              enterTouchDelay={0}
+            >
+              <div className='color red'></div>
+            </Tooltip>
             <div className='text'>{_('Inbound')}</div>
           </div>
         </div>
