@@ -45,7 +45,7 @@ Feature: Retrieve users
               "lastname": "Doe",
               "id": 3,
               "terminal": 4,
-              "extension": null,
+              "extension": 2,
               "outgoingDdi": null,
               "status": []
           }

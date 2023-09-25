@@ -53,7 +53,7 @@ Feature: Retrieve users
               "id": 3,
               "company": 1,
               "terminal": 4,
-              "extension": null,
+              "extension": 2,
               "outgoingDdi": null,
               "location": 1,
               "status": []
