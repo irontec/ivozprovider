@@ -39,17 +39,27 @@ class WebThemeFactory
             default => throw new \RuntimeException('Unknown web portal type'),
         };
 
-        $publicLogoUrl =
-            'https://'
-            . $hostname
-            . '/api/'
-            . $api
-            . '/my/logo/'
-            . (string) $webPortal->getId()
-            . '/'
-            . urlencode(
-                $webPortal->getLogo()->getBaseName() ?? ''
-            );
+        $baseName = $webPortal->getLogo()->getBaseName();
+        $baseUrl = 'https://' . $hostname;
+
+        if (!$baseName) {
+            $publicLogoUrl =
+                $baseUrl
+                . '/'
+                . $api
+                . '/logo.svg';
+        } else {
+            $publicLogoUrl =
+                $baseUrl
+                . '/api/'
+                . $api
+                . '/my/logo/'
+                . (string) $webPortal->getId()
+                . '/'
+                . urlencode(
+                    $webPortal->getLogo()->getBaseName() ?? ''
+                );
+        }
 
         $theme = $urlType === WebPortalInterface::URLTYPE_USER
             ? $webPortal->getUserTheme()

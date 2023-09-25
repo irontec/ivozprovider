@@ -37,7 +37,7 @@ Feature: Create web portals
           "newUI": false,
           "name": "Platform user Portal",
           "userTheme": "default",
-          "id": 5,
+          "id": 6,
           "logo": {
               "fileSize": null,
               "mimeType": null,
@@ -49,7 +49,7 @@ Feature: Create web portals
   Scenario: Retrieve created web portals
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "web_portals/5"
+      And I send a "GET" request to "web_portals/6"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -62,7 +62,7 @@ Feature: Create web portals
           "newUI": false,
           "name": "Platform user Portal",
           "userTheme": "default",
-          "id": 5,
+          "id": 6,
           "logo": {
               "fileSize": null,
               "mimeType": null,

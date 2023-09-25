@@ -82,6 +82,21 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
+
+        $item5 = $this->createEntityInstance(WebPortal::class);
+        (function () use ($fixture) {
+            $this->setUrl("https://nologo-platform-ivozprovider.irontec.com");
+            $this->setKlearTheme("redmond");
+            $this->setUrlType("god");
+            $this->setName("No logo");
+            $this->setUserTheme("default");
+            $this->logo = new Logo(null, null, null);
+        })->call($item5);
+
+        $this->addReference('_reference_ProviderWebPortal5', $item5);
+        $this->sanitizeEntityValues($item5);
+        $manager->persist($item5);
+
         $manager->flush();
     }
 
