@@ -226,6 +226,22 @@ pipeline {
                                 failure { notifyFailureGithub() }
                             }
                         }
+                        stage('microservice-provision') {
+                            agent {
+                                docker {
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
+                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    reuseNode true
+                                }
+                            }
+                            steps {
+                                sh '/opt/irontec/ivozprovider/microservices/provision/bin/test-provision'
+                            }
+                            post {
+                                success { notifySuccessGithub() }
+                                failure { notifyFailureGithub() }
+                            }
+                        }
                         stage('orm') {
                             agent {
                                 docker {
