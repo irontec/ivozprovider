@@ -6,32 +6,128 @@ use Ivoz\Core\Domain\DataTransferObjectInterface;
 
 class TemplateRenderer
 {
+    const FORBIDDEN_FUNCTIONS = [
+        'exec',       // Returns last line of commands output
+        'passthru',   // Passes commands output directly to the browser
+        'system',     // Passes commands output directly to the browser and returns last line
+        'shell_exec', // Returns commands output
+        'popen',      // Opens read or write pipe to process of a command
+        'proc_open',  // Similar to popen() but greater degree of control
+        'pcntl_exec', // Executes a program
+
+        'require',
+        'require_once',
+        'include',
+        'include_once',
+
+        'phpinfo',
+        'getenv',
+        'putenv',
+
+        'fopen',
+        'file_get_contents',
+        'file_put_contents',
+    ];
+
     /**
      * @param array<string, DataTransferObjectInterface> $args
      */
     public function __construct(
         private string $templatePath,
-        array $args
+        private array $args
     ) {
         if (!is_file($this->templatePath)) {
             throw new \Exception(
                 'Template not found in path ' . $this->templatePath
             );
         }
-
-        foreach ($args as $key => $value) {
-            $this->$key = $value;
-        }
     }
 
     public function execute(): string
     {
-        ob_start();
-        include($this->templatePath);
-        /** @var string $content */
-        $content = ob_get_contents();
-        ob_end_clean();
+        $templateWrapper = str_replace(
+            '[__TEMPLATE_BODY__]',
+            (string) \file_get_contents($this->templatePath),
+            $this->getTemplateWrapper()
+        );
+
+        $serializedArgs = base64_encode(
+            serialize($this->args)
+        );
+
+        $tmpFilePath = $this->createTmpFile(
+            $templateWrapper
+        );
+
+        $command = sprintf(
+            'php -d disable_functions=%s %s %s',
+            implode(',', self::FORBIDDEN_FUNCTIONS),
+            $tmpFilePath,
+            $serializedArgs
+        );
+
+        $content = shell_exec($command);
+        unlink($tmpFilePath);
+        if (!$content) {
+            throw new \RuntimeException('Unable to evaluate template');
+        }
 
         return $content;
+    }
+
+    private function getTemplateWrapper(): string
+    {
+        $templateWrapper = '<?php
+            require \'/opt/irontec/ivozprovider/library/vendor/autoload.php\';
+
+            function getenv() {
+                return ""; // Some vendor require this function
+            }
+
+            class TemplateWrapper
+            {
+                public function __construct($input)
+                {
+                    $data = unserialize(base64_decode($input));
+                    foreach ($data as $key => $val) {
+                        $this->$key = $val;
+                    }
+                }
+
+                public function run()
+                {
+                    error_reporting(error_reporting() & ~E_NOTICE);
+                    ?>
+                    [__TEMPLATE_BODY__]
+                    <?php
+                }
+            }
+
+            $wrapper = new TemplateWrapper($argv[count($argv) - 1]);
+            $wrapper->run();
+        ?>';
+        return $templateWrapper;
+    }
+
+    public function createTmpFile(string $templateWrapper): string
+    {
+        $tmpFilePath = tempnam(
+            '/tmp',
+            'provision-template-'
+        );
+        if (!$tmpFilePath) {
+            throw new \RuntimeException('Unable to create tmp file');
+        }
+        $tmpFilePath .= '.php';
+
+        $handle = fopen($tmpFilePath, 'w');
+        if (!$handle) {
+            throw new \RuntimeException('Unable to open tmp file');
+        }
+
+        fwrite($handle, $templateWrapper);
+        fclose($handle);
+
+        return $tmpFilePath;
     }
 }
