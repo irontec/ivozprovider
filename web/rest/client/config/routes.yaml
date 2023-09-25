@@ -163,6 +163,16 @@ get_hunt_group_users_available:
     _api_collection_operation_name: 'get_hunt_group_users_available'
     _api_receive: false
 
+post_extensions_mass_import:
+  path: '/extensions/mass_import'
+  methods: ['POST', 'GET']
+  defaults:
+    _controller: Controller\Provider\PostExtensionsMassImportAction
+    _api_resource_class: 'Model\ExtensionsMassImport'
+    _api_item_operation_name: 'post_extensions_mass_import'
+    _api_collection_operation_name: 'post_extensions_mass_import'
+    _api_receive: false
+
 post_holiday_dates_range:
   path: '/holiday_dates_range'
   methods: [ 'POST' ]

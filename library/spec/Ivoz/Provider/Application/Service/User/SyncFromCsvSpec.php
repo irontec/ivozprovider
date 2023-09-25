@@ -143,7 +143,10 @@ EOCSV;
             ->fromMassProvisioningCsv(
                 $this->company->getId(),
                 '2002',
-                Argument::type(UserInterface::class)
+                Argument::type(UserInterface::class),
+                null,
+                null,
+                null
             )
             ->shouldBeCalled()
             ->willReturn(
@@ -249,6 +252,9 @@ EOE;
         $this
             ->extensionFactory
             ->fromMassProvisioningCsv(
+                Argument::any(),
+                Argument::any(),
+                Argument::any(),
                 Argument::any(),
                 Argument::any(),
                 Argument::any()

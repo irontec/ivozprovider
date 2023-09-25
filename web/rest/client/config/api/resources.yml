@@ -151,3 +151,25 @@ Model\HolidaysMassImport:
             required: false
             description: 'Ensure certain calendar id is included'
 
+Model\ExtensionsMassImport:
+  itemOperations: []
+  collectionOperations:
+    post_extensions_mass_import:
+      access_control: '"ROLE_COMPANY_ADMIN" in roles'
+      method: 'POST'
+      path: '/extensions/mass_import'
+      route_name: 'post_extensions_mass_import'
+      swagger_context:
+        consumes:
+          - 'multipart/form-data'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: csv
+            in: formData
+            type: file
+            required: true
+            description: "*extension, *country prefix, *number, country code"
+          
