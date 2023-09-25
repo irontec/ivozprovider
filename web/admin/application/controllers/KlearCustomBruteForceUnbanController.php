@@ -87,7 +87,7 @@ class KlearCustomBruteForceUnbanController extends Zend_Controller_Action
         }
 
         $jsonResponse = new Klear_Model_DispatchResponse();
-        $jsonResponse->setModule('default');
+        $jsonResponse->setModule('classic/default');
         $jsonResponse->setPlugin('customTextFileReader');
         $jsonResponse->addJsFile("/../klearMatrix/js/plugins/jquery.klearmatrix.genericdialog.js");
         $jsonResponse->addJsFile("/js/customTextFileReader.js");

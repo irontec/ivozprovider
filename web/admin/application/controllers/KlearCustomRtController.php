@@ -223,7 +223,7 @@ class KlearCustomRtController extends Zend_Controller_Action
         $data
     ) {
         $jsonResponse = new Klear_Model_DispatchResponse();
-        $jsonResponse->setModule('default');
+        $jsonResponse->setModule('classic/default');
         $jsonResponse->setPlugin('rt');
 
         $jsonResponse->addTemplate(

@@ -245,7 +245,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
         ];
 
         $jsonResponse = new Klear_Model_DispatchResponse();
-        $jsonResponse->setModule('default');
+        $jsonResponse->setModule('classic/default');
         $jsonResponse->setPlugin('customIncrementBalance');
         $jsonResponse->addJsFile("/../klearMatrix/js/plugins/jquery.klearmatrix.genericdialog.js");
         $jsonResponse->addJsFile("/js/customIncrementBalance.js");
