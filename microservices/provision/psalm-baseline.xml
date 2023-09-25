@@ -38,4 +38,9 @@
       <code>registerBundles</code>
     </MoreSpecificReturnType>
   </file>
+  <file src="src/Services/TemplateRenderer.php">
+    <ForbiddenCode occurrences="1">
+      <code>shell_exec($command)</code>
+    </ForbiddenCode>
+  </file>
 </files>
