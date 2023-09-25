@@ -252,6 +252,7 @@
   "If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this retail account.": "Si activado, se utilizará el DDI llamado como destino de las llamadas a esta cuenta retail (cabeceras R-URI y To).",
   "If set to 'Yes', set destination (R-URI and To) to called DDI/number when calling to this friend.": "Si activado, se utilizará el DDI llamado como destino de las llamadas a este friend (cabeceras R-URI y To).",
   "Import CSV": "Importar CSV",
+  "Import Extensions": "Importar Extensiones",
   "Import Holiday Dates": "Importar fechas festivas",
   "In": "Entrada",
   "In Progress": "En curso",
