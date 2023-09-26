@@ -23,7 +23,7 @@ Feature: Retrieve dashboard
               {
                   "name": "Joe",
                   "lastName": "Doe",
-                  "extension": "",
+                  "extension": "102",
                   "outgoingDdi": ""
               },
               {
