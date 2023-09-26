@@ -55,3 +55,26 @@ services:
     Controller\Provider\:
         resource: '../src/Controller/Provider/*'
         tags: ['controller.service_arguments']
+
+    Controller\Provider\TerminalModel\DefaultTemplateAction:
+        arguments:
+            $defaultTemplatePath: '%default_prov_template_path%'
+        tags: ['controller.service_arguments']
+
+###############################################
+## TEST
+###############################################
+when@test:
+    parameters:
+        storagePath: '/tmp/storage_path'
+    services:
+        _defaults:
+            autowire: true
+            autoconfigure: true
+            public: false
+        Ivoz\Provider\Domain\Service\Terminal\Provision\ProvisionGeneric:
+            arguments:
+                $storagePath: '%storagePath%'
+        Ivoz\Provider\Domain\Service\Terminal\Provision\ProvisionSpecific:
+            arguments:
+                $storagePath: '%storagePath%'

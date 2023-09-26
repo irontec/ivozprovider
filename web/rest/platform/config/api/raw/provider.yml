@@ -408,6 +408,58 @@ Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:
       iden: ASC
 
 Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/terminal_models/{id}'
+      requirements:
+        id: '\d+'
+    get_test_generic_template:
+      method: 'GET'
+      path: '/terminal_models/{id}/test_generic_template'
+      route_name: 'get_test_generic_template'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'text/plain'
+    get_test_specific_template:
+      method: 'GET'
+      path: '/terminal_models/{id}/test_specific_template'
+      route_name: 'get_test_specific_template'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'text/plain'
+        parameters:
+          - name: mac
+            in: query
+            type: string
+            required: true
+            description: 'existing terminal mac'
+    get_default_terminal_model_template:
+      method: 'GET'
+      path: '/terminal_models/{id}/default_template'
+      requirements:
+        id: '\d+'
+        type: '\s+'
+      route_name: 'get_default_terminal_model_template'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'text/plain'
+        parameters:
+          - name: type
+            in: query
+            type: string
+            enum:
+              - generic
+              - specific
+            required: true
+            description: 'template type: generic or specific'
+        tags:
+          - Provider
+    put: ~
+    delete: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:

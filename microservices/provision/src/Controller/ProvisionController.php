@@ -3,7 +3,7 @@
 namespace Controller;
 
 use Psr\Log\LoggerInterface;
-use Services\Provision;
+use Ivoz\Provider\Domain\Service\Terminal\Provision\Provision;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;

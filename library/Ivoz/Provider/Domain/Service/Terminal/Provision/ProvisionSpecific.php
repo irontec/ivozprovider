@@ -1,6 +1,6 @@
 <?php
 
-namespace Services;
+namespace Ivoz\Provider\Domain\Service\Terminal\Provision;
 
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Service\EntityTools;
@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
+use Ivoz\Provider\Domain\Service\TerminalModel\TemplateRenderer;
 
 class ProvisionSpecific
 {
@@ -21,12 +22,13 @@ class ProvisionSpecific
     }
 
     public function execute(
-        string $mac
+        string $mac,
+        ?TerminalModelInterface $expectedTerminalModel = null
     ): string {
 
         $terminal = $this->getTerminalByUrl($mac);
         if (!$terminal) {
-            throw new \DomainException('Terminal not found for url ' . $mac, 404);
+            throw new \DomainException('Terminal not found with mac ' . $mac, 404);
         }
 
         $user = $this
@@ -49,6 +51,10 @@ class ProvisionSpecific
         $brand = $company->getBrand();
         /** @var TerminalModelInterface $terminalModel */
         $terminalModel = $terminal->getTerminalModel();
+
+        if ($expectedTerminalModel && $expectedTerminalModel !== $terminalModel) {
+            throw new \DomainException('Terminal model missmatch');
+        }
 
         /** @var array<string, EntityInterface> $args */
         $args = [

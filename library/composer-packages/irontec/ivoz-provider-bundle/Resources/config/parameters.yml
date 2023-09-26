@@ -17,6 +17,7 @@ parameters:
     ari_port: 8088
     local_storage_path: /opt/irontec/ivozprovider/storage
     raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/
+    default_prov_template_path: /opt/irontec/ivozprovider/microservices/provision/templates/
     sentinels:
         - { host: 'cache.ivozprovider.local', port: '26379' }
     redis_jobs_db: 2
