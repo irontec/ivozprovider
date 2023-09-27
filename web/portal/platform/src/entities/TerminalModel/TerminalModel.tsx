@@ -5,6 +5,7 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CallIcon from '@mui/icons-material/Call';
 
 import GenericTemplate from './Field/GenericTemplate/GenericTemplate';
+import SpecificTemplate from './Field/SpecificTemplate/SpecificTemplate';
 import {
   TerminalModelProperties,
   TerminalModelPropertyList,
@@ -37,6 +38,7 @@ const properties: TerminalModelProperties = {
   specificTemplate: {
     label: _('Specific Template'),
     format: 'textarea',
+    component: SpecificTemplate,
   },
 };
 
