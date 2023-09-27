@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CallIcon from '@mui/icons-material/Call';
 
+import GenericTemplate from './Field/GenericTemplate/GenericTemplate';
 import {
   TerminalModelProperties,
   TerminalModelPropertyList,
@@ -31,6 +32,7 @@ const properties: TerminalModelProperties = {
   genericTemplate: {
     label: _('Generic Template'),
     format: 'textarea',
+    component: GenericTemplate,
   },
   specificTemplate: {
     label: _('Specific Template'),
