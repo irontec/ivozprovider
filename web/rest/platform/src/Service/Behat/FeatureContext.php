@@ -64,6 +64,26 @@ class FeatureContext extends BaseFeatureContext
     }
 
     /**
+     * @Given :file exists with the content of :source
+     */
+    public function copyFileInStorage(string $dst, string $source): void
+    {
+        $dir = dirname($dst);
+
+        if (!file_exists($dir)) {
+            mkdir(
+                directory: $dir,
+                recursive: true,
+            );
+        }
+
+        copy(
+            $source,
+            $dst
+        );
+    }
+
+    /**
      * Sends a HTTP request
      *
      * @param array<string> $files

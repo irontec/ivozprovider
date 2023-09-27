@@ -1,6 +1,6 @@
 <?php
 
-namespace Services;
+namespace Ivoz\Provider\Domain\Service\TerminalModel;
 
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 
@@ -79,6 +79,8 @@ class TemplateRenderer
     {
         $templateWrapper = '<?php
             require \'/opt/irontec/ivozprovider/library/vendor/autoload.php\';
+            // There is no SERVER_NAME in console commands, inject it
+            $_SERVER["SERVER_NAME"] = "[__SERVER_NAME__]";
 
             function getenv() {
                 return ""; // Some vendor require this function
@@ -106,10 +108,16 @@ class TemplateRenderer
             $wrapper = new TemplateWrapper($argv[count($argv) - 1]);
             $wrapper->run();
         ?>';
-        return $templateWrapper;
+
+        $serverName = ($_SERVER['SERVER_NAME'] ?? 'unknown.server.name');
+        return str_replace(
+            '[__SERVER_NAME__]',
+            (string) $serverName,
+            $templateWrapper,
+        );
     }
 
-    public function createTmpFile(string $templateWrapper): string
+    private function createTmpFile(string $templateWrapper): string
     {
         $tmpFilePath = tempnam(
             '/tmp',

@@ -16,3 +16,11 @@ services:
 
   Ivoz\Provider\Domain\Service\Extension\AliasImporter:
     public: true
+
+  Ivoz\Provider\Domain\Service\Terminal\Provision\Provision: ~
+  Ivoz\Provider\Domain\Service\Terminal\Provision\ProvisionGeneric:
+    arguments:
+      $storagePath: '%local_storage_path%'
+  Ivoz\Provider\Domain\Service\Terminal\Provision\ProvisionSpecific:
+    arguments:
+      $storagePath: '%local_storage_path%'

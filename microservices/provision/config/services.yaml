@@ -11,8 +11,6 @@ parameters:
 services:
     # default configuration for services in *this* file
     _defaults:
-        bind:
-            $storagePath: '/opt/irontec/ivozprovider/storage'
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         public: false       # Allows optimizing the container by removing unused services; this also means
@@ -25,8 +23,6 @@ services:
         resource: '../src/Controller/*'
         tags: ['controller.service_arguments']
 
-    Services\:
-        resource: '../src/Services/*'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
@@ -41,9 +37,9 @@ when@test:
             autowire: true
             autoconfigure: true
             public: false
-        Services\ProvisionGeneric:
+        Ivoz\Provider\Domain\Service\Terminal\Provision\ProvisionGeneric:
             arguments:
                 $storagePath: '%storagePath%'
-        Services\ProvisionSpecific:
+        Ivoz\Provider\Domain\Service\Terminal\Provision\ProvisionSpecific:
             arguments:
                 $storagePath: '%storagePath%'
