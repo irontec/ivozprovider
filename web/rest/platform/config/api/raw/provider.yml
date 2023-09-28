@@ -422,6 +422,11 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
       swagger_context:
         produces:
           - 'text/plain'
+        responses:
+          '200':
+            description: parsed generic template
+          '404':
+            description: Resource not found
     get_test_specific_template:
       method: 'GET'
       path: '/terminal_models/{id}/test_specific_template'
@@ -436,6 +441,11 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
             type: string
             required: true
             description: 'existing terminal mac'
+        responses:
+          '200':
+            description: parsed specific template
+          '404':
+            description: Resource not found
     get_default_terminal_model_template:
       method: 'GET'
       path: '/terminal_models/{id}/default_template'
@@ -456,6 +466,11 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
               - specific
             required: true
             description: 'template type: generic or specific'
+        responses:
+          '200':
+            description: TerminalModel default template
+          '404':
+            description: Resource not found
         tags:
           - Provider
     put: ~
