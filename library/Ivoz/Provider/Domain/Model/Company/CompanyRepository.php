@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Company;
 
-use Doctrine\Common\Collections\Selectable;
-use Doctrine\Persistence\ObjectRepository;
+use Ivoz\Core\Domain\Service\Repository\RepositoryInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 
-interface CompanyRepository extends ObjectRepository, Selectable
+/**
+ * @extends RepositoryInterface<CompanyInterface, CompanyDto>
+ */
+interface CompanyRepository extends RepositoryInterface
 {
     /**
      * @param int $id
