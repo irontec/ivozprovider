@@ -2602,16 +2602,16 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.16.6",
+            "version": "4.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "5954470e105faad5f8318b2dee991ca63651e19e"
+                "reference": "8a7d8e66fbf2b8e9ec40508a06ee1ce950df29f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/5954470e105faad5f8318b2dee991ca63651e19e",
-                "reference": "5954470e105faad5f8318b2dee991ca63651e19e",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/8a7d8e66fbf2b8e9ec40508a06ee1ce950df29f2",
+                "reference": "8a7d8e66fbf2b8e9ec40508a06ee1ce950df29f2",
                 "shasum": ""
             },
             "require": {
@@ -2680,9 +2680,9 @@
             "description": "Core library for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-core/issues",
-                "source": "https://github.com/irontec/ivoz-core/tree/4.16.6"
+                "source": "https://github.com/irontec/ivoz-core/tree/4.17.0"
             },
-            "time": "2023-02-22T08:35:11+00:00"
+            "time": "2023-09-29T12:00:47+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
