@@ -192,7 +192,6 @@ class CompanyDoctrineRepository extends DoctrineRepository implements CompanyRep
 
     public function findOneByDomain(string $domainUsers): ?CompanyInterface
     {
-        /** @var ?CompanyInterface $response */
         $response = $this->findOneBy([
             'domainUsers' => $domainUsers
         ]);

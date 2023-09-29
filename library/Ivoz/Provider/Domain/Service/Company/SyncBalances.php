@@ -111,7 +111,6 @@ class SyncBalances
                 continue;
             }
 
-            /** @var CompanyInterface | null $company */
             $company = $this->companyRepository->find($companyId);
             if (!$company) {
                 $this->logger->error(

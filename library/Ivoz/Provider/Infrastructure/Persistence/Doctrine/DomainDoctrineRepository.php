@@ -92,7 +92,6 @@ class DomainDoctrineRepository extends ServiceEntityRepository implements Domain
      */
     public function findByCompanyId(int $companyId)
     {
-        /** @var CompanyInterface|null $company */
         $company = $this->companyRepository->find($companyId);
         if (!$company) {
             return null;
