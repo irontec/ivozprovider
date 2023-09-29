@@ -13,6 +13,9 @@ class DecrementBalance extends AbstractBalanceOperation
     {
         $this->logger->info('Company#%s\'s balance will be decreased by ' . $amount);
         $company = $this->companyRepository->find($companyId);
+        if (!$company) {
+            throw new \DomainException('Company not found');
+        }
         $response = $this->companyBalanceService->decrementBalance($company, $amount);
 
         return $this->handleResponse(

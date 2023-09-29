@@ -13,6 +13,9 @@ class IncrementBalance extends AbstractBalanceOperation
     {
         $this->logger->info('Company#%s\'s balance will be incremented by ' . $amount);
         $company = $this->companyRepository->find($companyId);
+        if (!$company) {
+            throw new \DomainException('Company not found');
+        }
         $response = $this->companyBalanceService->incrementBalance($company, $amount);
 
         return $this->handleResponse(
