@@ -1,4 +1,5 @@
 import { EntityValues } from '@irontec/ivoz-ui';
+import ErrorMessageComponent from '@irontec/ivoz-ui/components/ErrorMessageComponent';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import {
@@ -13,7 +14,6 @@ import {
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import ErrorIcon from '@mui/icons-material/Error';
 import {
   Dialog,
   DialogActions,
@@ -159,16 +159,7 @@ const UpdateLicenses: ActionFunctionComponent = (
                 </p>
               </>
             )}
-            {error && (
-              <span>
-                <ErrorIcon
-                  sx={{
-                    verticalAlign: 'bottom',
-                  }}
-                />
-                {errorMsg ?? 'There was a problem'}
-              </span>
-            )}
+            {error && <ErrorMessageComponent message={errorMsg} />}
           </DialogContent>
           <DialogActions>
             <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
