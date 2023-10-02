@@ -7731,16 +7731,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/Company/DecrementBalance.php">
-    <MixedArgument occurrences="1">
-      <code>$company</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/Company/IncrementBalance.php">
-    <MixedArgument occurrences="1">
-      <code>$company</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/Company/SearchBrokenThresholds.php">
     <MixedArgument occurrences="2">
       <code>$prevBalance</code>
@@ -7774,16 +7764,9 @@
     <InvalidScalarArgument occurrences="1">
       <code>$amount</code>
     </InvalidScalarArgument>
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="1">
       <code>$amount</code>
-      <code>$company</code>
     </MixedArgument>
-    <MixedMethodCall occurrences="1">
-      <code>getId</code>
-    </MixedMethodCall>
-    <MixedOperand occurrences="1">
-      <code>$company-&gt;getId()</code>
-    </MixedOperand>
   </file>
   <file src="Ivoz/Provider/Domain/Service/CompanyRelCodec/CompanyRelCodecLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
