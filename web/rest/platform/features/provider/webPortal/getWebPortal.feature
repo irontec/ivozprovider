@@ -26,6 +26,17 @@ Feature: Retrieve web portals
               }
           },
           {
+              "url": "https://nologo-platform-ivozprovider.irontec.com",
+              "urlType": "god",
+              "name": "No logo",
+              "id": 5,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              }
+          },
+          {
               "url": "https://platform-ivozprovider.irontec.com",
               "urlType": "god",
               "name": "Platform Administration Portal",
@@ -52,7 +63,7 @@ Feature: Retrieve web portals
           "url": "https://platform-ivozprovider.irontec.com",
           "klearTheme": "redmond",
           "urlType": "god",
-          "newUI": false,
+          "newUI": true,
           "name": "Platform Administration Portal",
           "userTheme": "default",
           "id": 1,

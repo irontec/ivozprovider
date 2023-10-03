@@ -64,6 +64,10 @@ const MatchListPattern: EntityInterface = {
   toStr: (row: MatchListPatternPropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['type', 'matchValue', 'description'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'MatchListPatterns',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

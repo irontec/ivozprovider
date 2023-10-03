@@ -1886,11 +1886,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.16.6",
+            "version": "4.17.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "5954470e105faad5f8318b2dee991ca63651e19e"
+                "reference": "8a7d8e66fbf2b8e9ec40508a06ee1ce950df29f2"
             },
             "require": {
                 "beberlei/assert": "^3.0",
@@ -2006,11 +2006,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.6.5",
+            "version": "2.6.6",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "3a36f1c803087f33512fe87fb4706df7486537a8"
+                "reference": "d5d10b403f411d7ea38a982e53eba5398a1c843e"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -5320,11 +5320,11 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.27.0",
+            "version": "1.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php80",
-                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936"
+                "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5"
             },
             "require": {
                 "php": ">=7.1"
@@ -5332,7 +5332,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -5382,7 +5382,7 @@
         },
         {
             "name": "symfony/polyfill-php81",
-            "version": "dev-main",
+            "version": "v1.25.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php81",
@@ -5685,11 +5685,11 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v5.4.5",
+            "version": "v5.4.26",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security-bundle",
-                "reference": "d6ae2f605fa8e4e0860c1a6574271af2bb4ba16c"
+                "reference": "38d674b6150ebd638f7c517b19790ac631f8dc35"
             },
             "require": {
                 "ext-xml": "*",
@@ -5705,7 +5705,7 @@
                 "symfony/security-core": "^5.4|^6.0",
                 "symfony/security-csrf": "^4.4|^5.0|^6.0",
                 "symfony/security-guard": "^5.3",
-                "symfony/security-http": "^5.4|^6.0"
+                "symfony/security-http": "^5.4.20|~6.0.20|~6.1.12|^6.2.6"
             },
             "conflict": {
                 "symfony/browser-kit": "<4.4",
@@ -5715,7 +5715,7 @@
                 "symfony/twig-bundle": "<4.4"
             },
             "require-dev": {
-                "doctrine/annotations": "^1.10.4",
+                "doctrine/annotations": "^1.10.4|^2",
                 "symfony/asset": "^4.4|^5.0|^6.0",
                 "symfony/browser-kit": "^4.4|^5.0|^6.0",
                 "symfony/console": "^4.4|^5.0|^6.0",
@@ -5766,11 +5766,11 @@
         },
         {
             "name": "symfony/security-core",
-            "version": "v5.4.7",
+            "version": "v5.4.22",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security-core",
-                "reference": "8d622c29dd018a5fb4a3994c9eeae2e9dfe68e96"
+                "reference": "a801d525c7545332e2ddf7f52c163959354b1650"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -5935,11 +5935,11 @@
         },
         {
             "name": "symfony/security-http",
-            "version": "v5.4.5",
+            "version": "v5.4.26",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security-http",
-                "reference": "53d572f06fc438faae3713cc97d186d941919748"
+                "reference": "9291eec227de5179eb0a1b60cc6265ee6f987b4a"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -5949,7 +5949,7 @@
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php80": "^1.16",
                 "symfony/property-access": "^4.4|^5.0|^6.0",
-                "symfony/security-core": "^5.4|^6.0"
+                "symfony/security-core": "^5.4.19|~6.0.19|~6.1.11|^6.2.5"
             },
             "conflict": {
                 "symfony/event-dispatcher": "<4.3",

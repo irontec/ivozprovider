@@ -10,9 +10,9 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import PlayLessonIcon from '@mui/icons-material/PlayLesson';
 import PlumbingIcon from '@mui/icons-material/Plumbing';
 import WalletIcon from '@mui/icons-material/Wallet';
-import { AboutMe, ClientFeatures } from 'store/clientSession/aboutMe';
 
 import entities from '../entities';
+import { AboutMe, ClientFeatures } from '../store/clientSession/aboutMe';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
 type aclOverrideType = (aboutMe: AboutMe) => EntityAclType;
@@ -296,8 +296,13 @@ const getEntityMap = (): ExtendedRouteMap => {
           isAccessible: (aboutMe) => aboutMe.vpbx,
           children: [
             {
+              entity: entities.HolidayDateRange,
+              filterBy: 'calendar',
+            },
+            {
               entity: entities.HolidayDate,
               filterBy: 'calendar',
+              children: [...Object.values(entities.HolidayDate.customActions)],
             },
             {
               entity: entities.CalendarPeriod,
@@ -381,7 +386,10 @@ const getEntityMap = (): ExtendedRouteMap => {
       isAccessible: (aboutMe) => aboutMe.vpbx,
     },
     {
-      entity: entities.Contact,
+      entity: {
+        ...entities.Contact,
+        title: _('Address Book'),
+      },
       isAccessible: (aboutMe) => aboutMe.vpbx,
     },
     {
@@ -397,6 +405,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           },
           isAccessible: (aboutMe) => aboutMe.billingInfo,
+          children: [...Object.values(entities.RatingProfile.customActions)],
         },
         {
           entity: entities.Invoice,
@@ -411,6 +420,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.UsersCdr,
           isAccessible: (aboutMe) => aboutMe.vpbx,
+          children: [...Object.values(entities.UsersCdr.customActions)],
         },
         {
           entity: entities.ActiveCalls,

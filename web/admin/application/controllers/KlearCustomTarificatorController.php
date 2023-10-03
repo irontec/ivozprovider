@@ -631,7 +631,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     protected function _dispatch(array $data)
     {
         $jsonResponse = new Klear_Model_DispatchResponse();
-        $jsonResponse->setModule('default');
+        $jsonResponse->setModule('classic/default');
         $jsonResponse->setPlugin('customTarificator');
         $jsonResponse->addJsFile("/../klearMatrix/js/plugins/jquery.klearmatrix.genericdialog.js");
         $jsonResponse->addJsFile("/js/customTarificator.js");

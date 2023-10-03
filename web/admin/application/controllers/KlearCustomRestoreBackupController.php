@@ -70,7 +70,7 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
         }
 
         $jsonResponse = new Klear_Model_DispatchResponse();
-        $jsonResponse->setModule('default');
+        $jsonResponse->setModule('classic/default');
         $jsonResponse->setPlugin('customRestoreBackup');
         $jsonResponse->addJsFile("/../klearMatrix/js/plugins/jquery.klearmatrix.genericdialog.js");
         $jsonResponse->addJsFile("/js/customRestoreBackup.js");

@@ -9,6 +9,7 @@ Feature: Generic Provision
     Then the response status code should be 200
     And the response should be equal to:
     """
+    #!version:1.0.0.1
     account.1.enable = 1
     account.1.label = Line
 

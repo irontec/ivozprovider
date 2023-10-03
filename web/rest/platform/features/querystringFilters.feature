@@ -30,14 +30,9 @@ Feature: Retrieve billable calls
       """
       [
           {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
-              "startTime": "2019-01-01 09:01:44",
-              "id": 105
-          },
-          {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
-              "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
+              "startTime": "2019-01-01 09:00:00",
+              "id": 1
           }
       ]
       """
@@ -304,14 +299,9 @@ Feature: Retrieve billable calls
       """
       [
           {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
-              "startTime": "2019-01-01 09:01:44",
-              "id": 105
-          },
-          {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
-              "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
+              "startTime": "2019-01-01 09:00:00",
+              "id": 1
           }
       ]
       """
@@ -356,29 +346,6 @@ Feature: Retrieve billable calls
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "billable_calls?startTime=2019-01-01&_itemsPerPage=2"
-     Then the response status code should be 200
-      And the response should be in JSON
-      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
-      """
-      [
-          {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
-              "startTime": "2019-01-01 09:01:44",
-              "id": 105
-          },
-          {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
-              "startTime": "2019-01-01 09:01:43",
-              "id": 104
-          }
-      ]
-      """
-
-  Scenario: Retrieve billable call by partial startTime array
-    Given I add Authorization header
-     When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "billable_calls?startTime[]=2019-01-01&_itemsPerPage=2"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -623,6 +590,39 @@ Feature: Retrieve billable calls
           {
               "username": "test_brand_admin",
               "id": 2
+          }
+      ]
+      """
+
+  Scenario: Retrieve features by id array
+    Given I add Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "features?id[]=1&id[]=2&_pagination=false&_itemsPerPage=1000"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
+      [
+          {
+              "iden": "queues",
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
+          },
+          {
+              "iden": "recordings",
+              "id": 2,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           }
       ]
       """

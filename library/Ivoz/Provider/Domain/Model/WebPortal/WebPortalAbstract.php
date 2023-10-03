@@ -40,7 +40,7 @@ abstract class WebPortalAbstract
     /**
      * @var bool
      */
-    protected $newUI = false;
+    protected $newUI = true;
 
     /**
      * @var ?string

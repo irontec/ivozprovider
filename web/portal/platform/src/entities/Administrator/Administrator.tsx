@@ -90,6 +90,10 @@ const Administrator: EntityInterface = {
   path: '/administrators',
   toStr: (row: EntityValues): string => row.username as string,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Administrators',
+  },
   columns: ['username', 'active', 'restricted'],
   ChildDecorator,
   selectOptions: async () => {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "481ca8a44de038c0696931a2de01de50",
+    "content-hash": "525d1c6a6857694fb14ca7c356fa3569",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2150,11 +2150,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.10.0",
+            "version": "4.10.3",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "3daf27565e6ad493b0a2e0f36543af5d0811368a"
+                "reference": "b2df4cfc27a93284cb500a39a295d06a0c8b47e1"
             },
             "require": {
                 "api-platform/core": "2.6.*",
@@ -2263,11 +2263,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.16.6",
+            "version": "4.17.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core",
-                "reference": "5954470e105faad5f8318b2dee991ca63651e19e"
+                "reference": "8a7d8e66fbf2b8e9ec40508a06ee1ce950df29f2"
             },
             "require": {
                 "beberlei/assert": "^3.0",
@@ -2383,11 +2383,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.6.5",
+            "version": "2.6.6",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "3a36f1c803087f33512fe87fb4706df7486537a8"
+                "reference": "d5d10b403f411d7ea38a982e53eba5398a1c843e"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -2480,12 +2480,52 @@
             }
         },
         {
+            "name": "irontec/wkhtmltopdf-amd64",
+            "version": "0.12.6.1",
+            "dist": {
+                "type": "path",
+                "url": "../../../library/vendor/irontec/wkhtmltopdf-amd64",
+                "reference": "a6187e5ef77c13c4fcd7416c9edd811b474a4e8b"
+            },
+            "bin": [
+                "bin/wkhtmltopdf-amd64"
+            ],
+            "type": "library",
+            "license": [
+                "LGPL Version 3"
+            ],
+            "authors": [
+                {
+                    "name": "Julius Beckmann",
+                    "email": "github@h4cc.de"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
+            "homepage": "http://wkhtmltopdf.org/",
+            "keywords": [
+                "binary",
+                "convert",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "knplabs/knp-snappy",
-            "version": "v1.4.2",
+            "version": "v1.4.3",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/knplabs/knp-snappy",
-                "reference": "b66f79334421c26d9c244427963fa2d92980b5d3"
+                "reference": "d3b742d61a68bf93866032c2c0a7f1486128b67e"
             },
             "require": {
                 "php": ">=7.1",
@@ -2495,8 +2535,8 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.16||^3.0",
                 "pedrotroller/php-cs-custom-fixer": "^2.19",
-                "phpstan/phpstan": "^0.12.7",
-                "phpstan/phpstan-phpunit": "^0.12.6",
+                "phpstan/phpstan": "^1.0.0",
+                "phpstan/phpstan-phpunit": "^1.0.0",
                 "phpunit/phpunit": "~7.4||~8.5"
             },
             "suggest": {
@@ -5804,11 +5844,11 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.27.0",
+            "version": "1.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-php80",
-                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936"
+                "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5"
             },
             "require": {
                 "php": ">=7.1"
@@ -5816,7 +5856,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -5866,7 +5906,7 @@
         },
         {
             "name": "symfony/polyfill-php81",
-            "version": "dev-main",
+            "version": "v1.25.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-php81",
@@ -5924,11 +5964,11 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.4.21",
+            "version": "v5.4.28",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/process",
-                "reference": "d4ce417ebcb0b7d090b4c178ed6d3accc518e8bd"
+                "reference": "45261e1fccad1b5447a8d7a8e67aa7b4a9798b7b"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6210,11 +6250,11 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v5.4.5",
+            "version": "v5.4.26",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/security-bundle",
-                "reference": "d6ae2f605fa8e4e0860c1a6574271af2bb4ba16c"
+                "reference": "38d674b6150ebd638f7c517b19790ac631f8dc35"
             },
             "require": {
                 "ext-xml": "*",
@@ -6230,7 +6270,7 @@
                 "symfony/security-core": "^5.4|^6.0",
                 "symfony/security-csrf": "^4.4|^5.0|^6.0",
                 "symfony/security-guard": "^5.3",
-                "symfony/security-http": "^5.4|^6.0"
+                "symfony/security-http": "^5.4.20|~6.0.20|~6.1.12|^6.2.6"
             },
             "conflict": {
                 "symfony/browser-kit": "<4.4",
@@ -6240,7 +6280,7 @@
                 "symfony/twig-bundle": "<4.4"
             },
             "require-dev": {
-                "doctrine/annotations": "^1.10.4",
+                "doctrine/annotations": "^1.10.4|^2",
                 "symfony/asset": "^4.4|^5.0|^6.0",
                 "symfony/browser-kit": "^4.4|^5.0|^6.0",
                 "symfony/console": "^4.4|^5.0|^6.0",
@@ -6291,11 +6331,11 @@
         },
         {
             "name": "symfony/security-core",
-            "version": "v5.4.7",
+            "version": "v5.4.22",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/security-core",
-                "reference": "8d622c29dd018a5fb4a3994c9eeae2e9dfe68e96"
+                "reference": "a801d525c7545332e2ddf7f52c163959354b1650"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6460,11 +6500,11 @@
         },
         {
             "name": "symfony/security-http",
-            "version": "v5.4.5",
+            "version": "v5.4.26",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/security-http",
-                "reference": "53d572f06fc438faae3713cc97d186d941919748"
+                "reference": "9291eec227de5179eb0a1b60cc6265ee6f987b4a"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6474,7 +6514,7 @@
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php80": "^1.16",
                 "symfony/property-access": "^4.4|^5.0|^6.0",
-                "symfony/security-core": "^5.4|^6.0"
+                "symfony/security-core": "^5.4.19|~6.0.19|~6.1.11|^6.2.5"
             },
             "conflict": {
                 "symfony/event-dispatcher": "<4.3",

@@ -23,13 +23,17 @@ class CreateHolidayDateRange
             $holidayDto = new HolidayDateDto();
             $holidayDto
                 ->setCalendarId($holidayDateRange->getCalendar())
+                ->setName($holidayDateRange->getName())
+                ->setEventDate($startDate)
                 ->setWholeDayEvent((bool) $holidayDateRange->getWholeDayEvent())
                 ->setLocutionId($holidayDateRange->getLocution())
-                ->setName($holidayDateRange->getName())
                 ->setRouteType($holidayDateRange->getRouteType())
-                ->setEventDate($startDate);
+                ->setExtensionId($holidayDateRange->getExtension())
+                ->setVoicemailId($holidayDateRange->getVoicemail())
+                ->setNumberCountryId($holidayDateRange->getNumberCountry())
+                ->setNumberValue($holidayDateRange->getNumberValue());
 
-            if ($holidayDateRange->getWholeDayEvent() === 1) {
+            if (!$holidayDateRange->getWholeDayEvent()) {
                 $timeIn = new \DateTime((string) $holidayDateRange->getTimeIn());
                 $timeOut = new \DateTime((string) $holidayDateRange->getTimeOut());
 

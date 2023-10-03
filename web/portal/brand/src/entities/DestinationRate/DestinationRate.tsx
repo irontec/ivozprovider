@@ -73,6 +73,10 @@ const DestinationRate: EntityInterface = {
     'cost',
     'rateIncrement',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'DestinationRates',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

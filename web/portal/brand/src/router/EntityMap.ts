@@ -80,6 +80,9 @@ const getEntityMap = (): ExtendedRouteMap => {
               isAccessible: (aboutMe) => {
                 return aboutMe.features.includes(ClientFeatures.billing);
               },
+              children: [
+                ...Object.values(entities.RatingProfile.customActions),
+              ],
             },
           ],
         },
@@ -215,6 +218,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             ) as ExtendedRouteMapItem[]),
             {
               entity: entities.BillableCall,
+              children: [...Object.values(entities.BillableCall.customActions)],
               filterBy: 'carrier',
             },
           ],
@@ -285,6 +289,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.RatingPlan,
               filterBy: 'ratingPlanGroup',
             },
+            ...Object.values(entities.RatingPlanGroup.customActions),
           ],
         },
         {
@@ -381,9 +386,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.InvoiceTemplate,
           isAccessible: (aboutMe) => aboutMe.features.includes('invoices'),
-          children: [
-            //@TODO template testing
-          ],
+          children: [...Object.values(entities.InvoiceTemplate.customActions)],
         },
       ],
     },
@@ -483,6 +486,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.User,
             acl: {
+              ...entities.User.acl,
               ...denyAllAcl,
               read: true,
             },
@@ -494,6 +498,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.BannedAddress,
             acl: {
+              ...entities.BannedAddress.acl,
               ...denyAllAcl,
               read: true,
             },
@@ -506,6 +511,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.BannedAddressBruteForce,
             acl: {
+              ...entities.BannedAddressBruteForce.acl,
               ...denyAllAcl,
               read: true,
             },
@@ -528,9 +534,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.BillableCall,
-          children: [
-            //@TODO rerate call
-          ],
+          children: [...Object.values(entities.BillableCall.customActions)],
         },
         {
           entity: entities.CallCsvScheduler,

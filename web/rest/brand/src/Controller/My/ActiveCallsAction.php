@@ -48,7 +48,6 @@ class ActiveCallsAction
             );
         }
 
-        /** @var CompanyInterface | null $company */
         $company = $this->companyRepository->find($companyId);
         if (!$company) {
             throw new NotFoundHttpException('Company not found');

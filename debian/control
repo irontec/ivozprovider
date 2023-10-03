@@ -42,6 +42,7 @@ Depends: debconf, po-debconf,
     ivozprovider-kamailio-users (=${binary:Version}),
     ivozprovider-kamailio-trunks (=${binary:Version}),
     ivozprovider-recordings (=${binary:Version}),
+    ivozprovider-router (=${binary:Version}),
     ivozprovider-rtpengine
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Virtual standalone package
@@ -152,6 +153,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
         ivozprovider-kamailio-trunks (=${binary:Version}),
         ivozprovider-kamailio-users (=${binary:Version}),
         ivozprovider-recordings (=${binary:Version}),
+        ivozprovider-router (=${binary:Version}),
         ivozprovider-cgrates,
         ivozprovider-cgrates-tools,
         ivozprovider-cgrates-config (=${binary:Version}),
@@ -273,6 +275,15 @@ Depends: ivozprovider-common-library (=${binary:Version}),
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Recordings - Symfony microservice
  Recordings Microservice for encoding storage recordings
+ .
+
+Package: ivozprovider-router
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version})
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Router - Symfony microservice
+ Determine portal type based on site domain
  .
 
 Package: ivozprovider-async-workers

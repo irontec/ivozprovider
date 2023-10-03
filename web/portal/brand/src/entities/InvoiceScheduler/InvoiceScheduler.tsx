@@ -79,6 +79,10 @@ const InvoiceScheduler: EntityInterface = {
     'lastExecution',
     'nextExecution',
   ],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'InvoiceSchedulers',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

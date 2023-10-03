@@ -45,16 +45,9 @@
     <InvalidScalarArgument occurrences="1">
       <code>$rowsFailed</code>
     </InvalidScalarArgument>
-    <MixedArgument occurrences="2">
-      <code>$company</code>
+    <MixedArgument occurrences="1">
       <code>$request-&gt;files-&gt;get('csv')</code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$company</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="1">
-      <code>getBrand</code>
-    </MixedMethodCall>
   </file>
   <file src="src/Controller/Provider/PutBillableCallRatingAction.php">
     <MixedArgument occurrences="1">

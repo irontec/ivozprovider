@@ -4,15 +4,13 @@ namespace spec\Ivoz\Provider\Domain\Service\Extension;
 
 use Doctrine\ORM\UnitOfWork;
 use Ivoz\Core\Domain\Service\EntityTools;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
-use Doctrine\ORM\EntityManager;
+use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -22,17 +20,21 @@ class ExtensionFactorySpec extends ObjectBehavior
     use HelperTrait;
 
     protected $extensionRepository;
+    protected $countryRepository;
     protected $entityTools;
 
     public function let(
         ExtensionRepository $extensionRepository,
+        CountryRepository $countryRepository,
         EntityTools $entityTools
     ) {
         $this->extensionRepository = $extensionRepository;
+        $this->countryRepository = $countryRepository;
         $this->entityTools = $entityTools;
 
         $this->beConstructedWith(
             $this->extensionRepository,
+            $this->countryRepository,
             $this->entityTools
         );
     }
@@ -106,7 +108,10 @@ class ExtensionFactorySpec extends ObjectBehavior
         return [
             1,
             202,
-            $this->getInstance(User::class)
+            $this->getInstance(User::class),
+            null,
+            null,
+            null
         ];
     }
 

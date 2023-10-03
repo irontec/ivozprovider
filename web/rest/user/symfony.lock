@@ -224,6 +224,9 @@
     "irontec/replacements": {
         "version": "1.0.0.0"
     },
+    "irontec/wkhtmltopdf-amd64": {
+        "version": "0.12.6.1"
+    },
     "justinrainbow/json-schema": {
         "version": "5.2.10"
     },

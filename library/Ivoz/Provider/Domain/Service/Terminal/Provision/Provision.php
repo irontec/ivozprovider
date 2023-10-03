@@ -1,6 +1,6 @@
 <?php
 
-namespace Services;
+namespace Ivoz\Provider\Domain\Service\Terminal\Provision;
 
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelRepository;
 

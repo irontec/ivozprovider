@@ -6,6 +6,7 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Domain\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Service\ResidentialDevice\ResidentialDeviceLifecycleEventHandlerInterface;
 
@@ -42,7 +43,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
         if (is_null($endpoint)) {
             $endpointDto = PsEndpoint::createDto();
             $endpointDto
-                ->setContext('residential')
+                ->setContext(Feature::RESIDENTIAL_IDEN)
                 ->setSendDiversion('yes')
                 ->setSendPai('yes');
         } else {

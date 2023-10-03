@@ -73,7 +73,7 @@ This is file content
         "url": "https://client-ivozprovider.irontec.com",
         "klearTheme": "irontec-red",
         "urlType": "admin",
-        "newUI": false,
+        "newUI": true,
         "name": "Irontec Ivozprovider Client Admin Portal",
         "userTheme": "default",
         "id": 3,

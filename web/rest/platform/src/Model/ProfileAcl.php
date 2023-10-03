@@ -57,22 +57,22 @@ class ProfileAcl
         return $this->iden;
     }
 
-    public function canCreate(): bool
+    public function getCreate(): bool
     {
         return $this->create;
     }
 
-    public function canRead(): bool
+    public function getRead(): bool
     {
         return $this->read;
     }
 
-    public function canUpdate(): bool
+    public function getUpdate(): bool
     {
         return $this->update;
     }
 
-    public function canDelete(): bool
+    public function getDelete(): bool
     {
         return $this->delete;
     }

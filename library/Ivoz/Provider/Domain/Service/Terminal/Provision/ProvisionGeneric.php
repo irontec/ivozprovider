@@ -1,9 +1,10 @@
 <?php
 
-namespace Services;
+namespace Ivoz\Provider\Domain\Service\Terminal\Provision;
 
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
+use Ivoz\Provider\Domain\Service\TerminalModel\TemplateRenderer;
 
 class ProvisionGeneric
 {

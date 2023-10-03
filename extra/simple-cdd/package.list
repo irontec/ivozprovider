@@ -40,6 +40,7 @@ ivozprovider-profile-portal
 ivozprovider-profile-proxy
 ivozprovider-realtime
 ivozprovider-recordings
+ivozprovider-router
 ivozprovider-rtpengine
 ivozprovider-rtpengine-dbgsym
 ivozprovider-scheduler

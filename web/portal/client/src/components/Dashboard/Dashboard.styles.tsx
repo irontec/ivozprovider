@@ -151,9 +151,11 @@ const StyledDashboard = styled(Dashboard)(({ theme }: { theme: Theme }) => {
     },
 
     '& .licenses': {
+      [theme.breakpoints.between('md', 'lg')]: {
+        gridColumn: 'auto / span 3',
+      },
       padding: '0',
-      display: 'flex',
-      flexDirection: 'column',
+      display: 'grid',
       '& .title': {
         padding: 'var(--spacing-lg)',
         paddingBlockEnd: '0',
@@ -165,28 +167,6 @@ const StyledDashboard = styled(Dashboard)(({ theme }: { theme: Theme }) => {
         position: 'relative',
         flexGrow: '1',
         padding: 'var(--spacing-lg)',
-      },
-      '& .circle': {
-        minWidth: '160px',
-        width: '100%',
-        maxWidth: '260px',
-        aspectRatio: '1',
-        background: `
-          radial-gradient(
-            circle closest-side,
-            white 0,
-            white 82%,
-            transparent 0%,
-            transparent 100%,
-            white 0
-          ),
-          conic-gradient(
-            var(--color-danger) 0,
-            var(--color-danger) var(--inbound),
-            var(--color-warning) 0,
-            var(--color-warning) var(--outbound)
-          )
-        `,
       },
       '& .data': {
         display: 'flex',
@@ -235,6 +215,8 @@ const StyledDashboard = styled(Dashboard)(({ theme }: { theme: Theme }) => {
       [theme.breakpoints.up('lg')]: {
         gridColumn: 'auto / span 2',
       },
+      maxWidth: '100%',
+      overflowX: 'auto',
       '& .header': {
         padding: 'var(--spacing-lg)',
         display: 'flex',

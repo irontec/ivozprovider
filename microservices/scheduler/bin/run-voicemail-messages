@@ -16,3 +16,7 @@ $request = new Request([], [], [], [], [], ['REQUEST_URI' => '/voicemail-message
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
+if ($response->getStatusCode() >= 300) {
+    die(1);
+}

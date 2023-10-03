@@ -47,6 +47,10 @@ const MediaRelaySet: EntityInterface = {
   toStr: (row: MediaRelaySetPropertyList<EntityValue>) => row.name as string,
   properties,
   columns: ['name', 'description'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'MediaRelaySets',
+  },
   ChildDecorator,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

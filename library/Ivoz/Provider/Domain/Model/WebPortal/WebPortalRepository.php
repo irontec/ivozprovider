@@ -11,9 +11,7 @@ use Doctrine\Persistence\ObjectRepository;
  */
 interface WebPortalRepository extends ObjectRepository, Selectable
 {
-    /**
-     * @param string $serverName
-     * @return WebPortalInterface | null
-     */
-    public function findByServerNameAndType(string $serverName, string $type);
+    public function findByServerName(string $serverName): ?WebPortalInterface;
+
+    public function findByServerNameAndType(string $serverName, string $type): ?WebPortalInterface;
 }

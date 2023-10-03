@@ -86,6 +86,10 @@ const TransformationRuleSet: EntityInterface = {
   defaultOrderBy: '',
   properties,
   columns: ['name', 'description'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'TransformationRuleSets',
+  },
   ChildDecorator,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

@@ -9,15 +9,17 @@ Feature: Specific Provision
     Then the response status code should be 200
     And the response should be equal to:
     """
-    account.1.user_name = testTerminal4 
-    account.1.auth_name = testTerminal4 
-    account.1.password = fLgQYa6-57 
-    account.1.display_name = Joe 
-    account.1.label = Joe 
-    account.1.sip_server_host = 127.0.0.1 
-    account.1.sip_server_port = 5060 
+    #!version:1.0.0.1
+    account.1.user_name = testTerminal4
+    account.1.auth_name = testTerminal4
+    account.1.password = fLgQYa6-57
+    account.1.display_name = Joe
+    account.1.label = Joe
+    account.1.sip_server_host = 127.0.0.1
+    account.1.sip_server_port = 5060
 
-    lang.gui = eslang.wui = es
+    lang.gui = es
+    lang.wui = es
     """
 
   Scenario: Specific provision without subpath
@@ -25,15 +27,17 @@ Feature: Specific Provision
     Then the response status code should be 200
     And the response should be equal to:
     """
-    account.1.user_name = testTerminal4 
-    account.1.auth_name = testTerminal4 
-    account.1.password = fLgQYa6-57 
-    account.1.display_name = Joe 
-    account.1.label = Joe 
-    account.1.sip_server_host = 127.0.0.1 
-    account.1.sip_server_port = 5060 
+    #!version:1.0.0.1
+    account.1.user_name = testTerminal4
+    account.1.auth_name = testTerminal4
+    account.1.password = fLgQYa6-57
+    account.1.display_name = Joe
+    account.1.label = Joe
+    account.1.sip_server_host = 127.0.0.1
+    account.1.sip_server_port = 5060
 
-    lang.gui = eslang.wui = es
+    lang.gui = es
+    lang.wui = es
     """
 
   Scenario: Request unknown terminal MAC

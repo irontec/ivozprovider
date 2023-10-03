@@ -52,6 +52,10 @@ const InvoiceNumberSequence: EntityInterface = {
   path: '/invoice_number_sequences',
   toStr: (row: InvoiceNumberSequencePropertyList<EntityValues>) => `${row.id}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'InvoiceNumberSequences',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

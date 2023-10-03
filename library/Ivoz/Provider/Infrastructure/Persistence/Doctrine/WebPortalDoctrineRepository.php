@@ -24,6 +24,18 @@ class WebPortalDoctrineRepository extends ServiceEntityRepository implements Web
         parent::__construct($registry, WebPortal::class);
     }
 
+    public function findByServerName(string $serverName): ?WebPortalInterface
+    {
+        $conditions = [
+            'url' => 'https://' . $serverName,
+        ];
+
+        /** @var WebPortalInterface $response */
+        $response = $this->findOneBy($conditions);
+
+        return $response;
+    }
+
     public function findByServerNameAndType(string $serverName, string $type): ?WebPortalInterface
     {
         Assertion::choice(

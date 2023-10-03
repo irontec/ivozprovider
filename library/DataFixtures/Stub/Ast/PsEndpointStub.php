@@ -6,6 +6,7 @@ use DataFixtures\Stub\StubTrait;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 
 class PsEndpointStub
 {
@@ -89,7 +90,7 @@ class PsEndpointStub
             ->setSorceryId('b1c1f1_testFriend')
             ->setFromDomain('127.0.0.1')
             ->setAors('b1c1f1_testFriend')
-            ->setContext('friends')
+            ->setContext(Feature::FRIENDS_IDEN)
             ->setAllow('alaw')
             ->setDisallow('')
             ->setDirectMediaMethod('invite')
@@ -111,7 +112,7 @@ class PsEndpointStub
             ->setSorceryId('b1c1r5_testResidential')
             ->setFromDomain('127.0.0.1')
             ->setAors('b1c1f1_testResidential')
-            ->setContext('residential')
+            ->setContext(Feature::RESIDENTIAL_IDEN)
             ->setAllow('alaw')
             ->setDisallow('')
             ->setDirectMediaMethod('invite')

@@ -26,6 +26,10 @@ const Feature: EntityInterface = {
   path: '/features',
   toStr: (row: FeaturePropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Features',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

@@ -25,6 +25,7 @@ export default function AppRoutes(props: AppRoutesProps) {
     return [];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aclFilteredEntityMap]);
+
   routes.push({
     path: baseUrl,
     element: (
@@ -52,6 +53,14 @@ export default function AppRoutes(props: AppRoutesProps) {
       ),
     });
   });
+
+  if (routeSpecs.length === 0) {
+    // Avoid warnings while routes are being parsed
+    routes.push({
+      path: '*',
+      element: <div />,
+    });
+  }
 
   useEffect(() => {
     setRoutes(routes);

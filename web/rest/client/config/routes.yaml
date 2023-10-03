@@ -163,6 +163,16 @@ get_hunt_group_users_available:
     _api_collection_operation_name: 'get_hunt_group_users_available'
     _api_receive: false
 
+post_extensions_mass_import:
+  path: '/extensions/mass_import'
+  methods: ['POST', 'GET']
+  defaults:
+    _controller: Controller\Provider\PostExtensionsMassImportAction
+    _api_resource_class: 'Model\ExtensionsMassImport'
+    _api_item_operation_name: 'post_extensions_mass_import'
+    _api_collection_operation_name: 'post_extensions_mass_import'
+    _api_receive: false
+
 post_holiday_dates_range:
   path: '/holiday_dates_range'
   methods: [ 'POST' ]
@@ -187,4 +197,22 @@ get_companies_corporate_unassigned:
     _controller: Controller\Provider\CompaniesByCorporateUnassignedAction
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Company\Company'
     _api_collection_operation_name: 'get_companies_corporate_unassigned'
+    _api_receive: false
+
+post_rating_profiles_simulate_call:
+  path: '/rating_profiles/{id}/simulate_call'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\SimulateCall\SimulateCallRatingProfileAction
+    _api_item_operation_name: 'post_rating_profiles_simulate_call'
+    _api_receive: false
+
+post_holidays_dates_mass_import:
+  path: '/holiday_dates/mass_import'
+  methods: ['POST', 'GET']
+  defaults:
+    _controller: Controller\Provider\PostHolidaysMassImportAction
+    _api_resource_class: 'Model\HolidaysMassImport'
+    _api_item_operation_name: 'post_holidays_dates_mass_import'
+    _api_collection_operation_name: 'post_holidays_dates_mass_import'
     _api_receive: false

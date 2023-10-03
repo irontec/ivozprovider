@@ -88,12 +88,19 @@ put_billable_call_rate_by_callid:
     _api_item_operation_name: 'put_billable_call_rate_by_callid'
     _api_receive: false
 
-get_invoice_preview:
+get_invoice_template_preview:
   path: '/invoice_templates/{id}/preview'
   methods: ['GET']
   defaults:
     _controller: Controller\Provider\InvoiceTemplatePreviewAction
-    _api_item_operation_name: 'get_invoice_preview'
+    _api_item_operation_name: 'get_invoice_template_preview'
+
+get_default_terminal_model_template:
+  path: '/terminal_models/{id}/default_template'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\TerminalModel\DefaultTemplateAction
+    _api_item_operation_name: 'get_default_terminal_model_template'
 
 get_my_theme:
   path: '/my/theme'
@@ -110,4 +117,20 @@ get_my_logo:
   defaults:
     _controller: Controller\My\LogoAction
     _api_item_operation_name: 'get_my_logo'
+    _api_receive: false
+
+get_test_generic_template:
+  path: '/terminal_models/{id}/test_generic_template'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\TerminalModel\TestGenericTemplateAction
+    _api_item_operation_name: 'get_test_generic_template'
+    _api_receive: false
+
+get_test_specific_template:
+  path: '/terminal_models/{id}/test_specific_template'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\TerminalModel\TestSpecificTemplateAction
+    _api_item_operation_name: 'get_test_specific_template'
     _api_receive: false

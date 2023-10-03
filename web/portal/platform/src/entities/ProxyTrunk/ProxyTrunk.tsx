@@ -46,6 +46,7 @@ const ProxyTrunk: EntityInterface = {
   acl: {
     ...defaultEntityBehavior.acl,
     create: true,
+    iden: 'ProxyTrunks',
   },
   icon: CallMissedOutgoingIcon,
   link: '/doc/en/administration_portal/platform/infrastructure/proxy_trunks.html',

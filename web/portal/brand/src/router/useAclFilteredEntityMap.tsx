@@ -1,7 +1,7 @@
-import { isEntityItem } from '@irontec/ivoz-ui';
+import { EntityItem, isEntityItem, RouteMapItem } from '@irontec/ivoz-ui';
 import { useEffect, useState } from 'react';
-import { AboutMe, EntityAcl } from 'store/clientSession/aboutMe';
 
+import { AboutMe, EntityAcl } from '../store/clientSession/aboutMe';
 import { ExtendedRouteMap, ExtendedRouteMapItem } from './EntityMap';
 
 interface updateEntityMapProps {
@@ -14,27 +14,55 @@ const updateEntityMapByAcls = (
 ): ExtendedRouteMap => {
   const { entityMap, aboutMe } = props;
 
-  for (const block of entityMap) {
-    for (const idx in block.children) {
-      const numIdx = parseInt(idx, 10);
+  for (const key in entityMap) {
+    const block = entityMap[key] as EntityItem;
 
+    const resp = updateRouteMapItemByAcls({
+      routeMapItem: block,
+      aboutMe,
+    });
+
+    if (!resp) {
+      delete entityMap[key];
+      continue;
+    }
+
+    entityMap[key] = resp;
+
+    if (!block.children || block.children.length === 0) {
+      continue;
+    }
+
+    for (const idx in block.children) {
       const resp = updateRouteMapItemByAcls({
-        routeMapItem: block.children[numIdx],
+        routeMapItem: block.children[idx],
         aboutMe,
       });
 
       if (!resp) {
-        delete block.children[numIdx];
+        delete block.children[idx];
         continue;
       }
 
-      block.children[numIdx] = resp;
+      block.children[idx] = resp;
     }
 
-    block.children = block.children?.filter((item) => item);
+    block.children = block.children.filter((item) => item);
   }
 
-  return entityMap.filter((item) => (item?.children?.length as number) > 0);
+  const response = entityMap.filter((item) => {
+    if (isEntityItem(item as RouteMapItem)) {
+      return true;
+    }
+
+    const children = (item as EntityItem).children as
+      | Array<unknown>
+      | undefined;
+
+    return !children || children?.length > 0;
+  });
+
+  return response;
 };
 
 interface updateRouteMapProps {
@@ -52,45 +80,69 @@ const updateRouteMapItemByAcls = (
     return null;
   }
 
-  const aclOverride = routeMapItem.aclOverride;
-  if (aclOverride && isEntityItem(routeMapItem)) {
-    routeMapItem.entity.acl = aclOverride(aboutMe);
+  if (!aboutMe.restricted) {
+    return routeMapItem;
   }
 
   if (!isEntityItem(routeMapItem)) {
     return routeMapItem;
   }
 
-  if (aboutMe.restricted) {
-    const entity = routeMapItem.entity;
-    const entityAcls = entity.acl;
+  const entity = routeMapItem.entity;
+  const entityAcls = entity.acl;
 
-    if (!entityAcls || !entityAcls.iden) {
-      // eslint-disable-next-line no-console
-      console.warn(`Unable to calculate ACLs for ${entity.iden}`);
+  if (!entityAcls || !entityAcls.iden) {
+    // eslint-disable-next-line no-console
+    console.warn(`Unable to calculate ACLs for ${entity.iden}`);
 
-      return routeMapItem;
-    }
+    return routeMapItem;
+  }
 
-    const apiAcls: EntityAcl | undefined = aboutMe.acls.find(
-      (acl: { iden: string }) => entityAcls?.iden === acl.iden
-    );
+  const profileAcls: EntityAcl | undefined = aboutMe.acls.find(
+    (acl: EntityAcl) => entityAcls?.iden === acl.iden
+  );
 
-    if (apiAcls) {
-      const newAcls = {
-        read: entityAcls.read && apiAcls.read,
-        create: entityAcls.create && apiAcls.create,
-        update: entityAcls.update && apiAcls.update,
-        delete: entityAcls.delete && apiAcls.delete,
-      };
-      routeMapItem.entity = {
-        ...entity,
-        acl: {
-          ...entityAcls,
-          ...newAcls,
-        },
-      };
-    }
+  if (!profileAcls) {
+    // eslint-disable-next-line no-console
+    console.warn(`No ACL rules found for ${entityAcls?.iden}`);
+
+    return null;
+  }
+
+  // TODO updated
+  const newAcls = {
+    read: entityAcls.read && profileAcls.read,
+    detail: entityAcls.detail && profileAcls.read,
+    create: entityAcls.create && profileAcls.create,
+    update: entityAcls.update && profileAcls.update,
+    delete: entityAcls.delete && profileAcls.delete,
+  };
+  routeMapItem.entity = {
+    ...entity,
+    acl: {
+      ...entityAcls,
+      ...newAcls,
+    },
+  };
+
+  const {
+    read: canRead,
+    detail: canReadDetail,
+    create: canCreate,
+    update: canUpdate,
+    delete: canDelete,
+  } = routeMapItem.entity.acl;
+
+  const forbidden = !(
+    canRead ||
+    canReadDetail ||
+    canCreate ||
+    canUpdate ||
+    canDelete
+  );
+
+  if (forbidden) {
+    return null;
   }
 
   if (!routeMapItem.children) {

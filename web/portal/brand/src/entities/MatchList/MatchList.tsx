@@ -28,6 +28,10 @@ const MatchList: EntityInterface = {
   toStr: (row: MatchListPropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: ['name'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'MatchLists',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

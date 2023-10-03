@@ -2,9 +2,10 @@ FROM debian:stretch
 
 MAINTAINER Irontec IvozProvider Team <ivozprovider@irontec.com>
 
-RUN echo deb http://ftp.es.debian.org/debian stretch-backports main contrib non-free > /etc/apt/sources.list.d/backports.list
+RUN echo deb http://archive.debian.org/debian stretch main contrib non-free > /etc/apt/sources.list
+RUN echo deb http://archive.debian.org/debian stretch-backports main contrib non-free > /etc/apt/sources.list.d/backports.list
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --allow-downgrades \
     gnupg \
     wget \
     sudo \
@@ -13,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     python-sphinx-rtd-theme \
     texlive-latex-base \
     texlive-latex-extra \
-    texlive-latex-recommended
+    texlive-latex-recommended \
+    libnettle6=3.3-1+b2
 
 # Install sphinx multiversion plugin
 RUN pip install colorclass click

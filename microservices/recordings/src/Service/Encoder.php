@@ -208,10 +208,16 @@ class Encoder
                     $metadata,
                     $convertMp3
                 ]);
-                $convertProcess->setTimeout(120);
-                $convertProcess->mustRun();
 
-                if ($convertProcess->getExitCode() != 0) {
+                try {
+                    $convertProcess->setTimeout(120);
+                    $convertProcess->mustRun();
+                    $conversionError = $convertProcess->getExitCode() != 0;
+                } catch (\Exception $e) {
+                    $conversionError = true;
+                }
+
+                if ($conversionError) {
                     $stats['error']++;
                     $this->logger->error(
                         sprintf(

@@ -33,6 +33,10 @@ const FixedCostsRelInvoice: EntityInterface = {
   toStr: (row: FixedCostsRelInvoicePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['fixedCost', 'quantity'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'FixedCostsRelInvoices',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

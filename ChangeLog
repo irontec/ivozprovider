@@ -1,10 +1,29 @@
+Tue, 03 Oct 2023 09:39:40 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+* Ivozprovider 3.3.0 released
+
+* New Portals
+    - New portals are now loaded by default unless explicit configuration
+    - Old portals are still available adding /classic to URL path
+    - Portals header images are now properly load
+    - Added missing actions to simulate calls
+    - Added missing actions to preview invoices templates
+    - Added missing actions to test and restore terminal provisioning templates
+    - Improved Terminal provisioning template parser security
+    - Added missing importer for Holiday dates
+    - Added missing exporter for Call registry
+* Other
+    - Fixed a bug in Recordings encoder that stopped the process on first error
+    - Added new router microservice to determine the portal associated to each domain
+
+
 Tue, 18 Jul 2023 11:21:55 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
 * Ivozprovider 3.2.0 released
 
 * New React based web portals
     - Added impersonation between portals using internal administrators
-    - Added translations to officialy supported languages
+    - Added translations to officially supported languages
     - Added dashboards to all portals
     - Added support for Web portal customizable Logo
     - Added a Web Portal based configuration option to load react portals by default

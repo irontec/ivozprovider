@@ -29,6 +29,10 @@ const ProxyUser: EntityInterface = {
   toStr: (row: ProxyUserPropertyList<EntityValue>) => row.name as string,
   properties,
   columns: ['name', 'ip'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'ProxyUsers',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

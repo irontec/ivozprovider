@@ -32,6 +32,10 @@ const Feature: EntityInterface = {
     return name[language];
   },
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Features',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

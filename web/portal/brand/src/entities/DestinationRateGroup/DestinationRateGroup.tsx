@@ -70,6 +70,10 @@ const DestinationRateGroup: EntityInterface = {
     `${row.name?.en}`,
   properties,
   columns: ['name', 'description', 'currency', 'file', 'status'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'DestinationRateGroups',
+  },
   customActions: Actions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

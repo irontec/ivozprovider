@@ -48,6 +48,7 @@ const BalanceMovement: EntityInterface = {
     create: false,
     update: false,
     delete: false,
+    iden: 'BalanceMovements',
   },
   selectOptions: async () => {
     const module = await import('./SelectOptions');

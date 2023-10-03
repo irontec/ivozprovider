@@ -39,6 +39,10 @@ const DdiProvider: EntityInterface = {
   path: '/ddi_providers',
   toStr: (row: DdiProviderPropertyList<EntityValue>) => row.name as string,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'DDIProviders',
+  },
 };
 
 export default DdiProvider;

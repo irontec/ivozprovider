@@ -36,5 +36,11 @@ $application = new Zend_Application(
     APPLICATION_PATH . '/configs/application.ini'
 );
 
+$_SERVER['SCRIPT_NAME'] = str_replace(
+    '/index.php',
+    '',
+    $_SERVER['SCRIPT_NAME']
+);
+
 $application->bootstrap()
             ->run();

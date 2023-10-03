@@ -9,6 +9,7 @@ use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Ivoz\Provider\Domain\Job\InvoicerJobInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
@@ -43,7 +44,7 @@ class Invoices
         try {
             $id = $this->getInvoiceId();
 
-            $this->registerCommand('Worker', 'invoices', ['id' => $id]);
+            $this->registerCommand('Worker', Feature::INVOICES_IDEN, ['id' => $id]);
 
             $this->logger->info("[INVOICER] ID = " . $id);
 

@@ -219,6 +219,10 @@ const ResidentialDevice: EntityInterface = {
   toStr: (row: ResidentialDevicePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['company', 'name', 'domainName', 'description', 'statusIcon'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'ResidentialDevices',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

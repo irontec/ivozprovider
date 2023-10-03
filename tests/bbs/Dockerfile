@@ -2,7 +2,9 @@ FROM debian:stretch
 
 MAINTAINER Irontec IvozProvider Team <ivozprovider@irontec.com>
 
-RUN apt-get update && apt-get install -y \
+RUN echo "deb http://archive.debian.org/debian stretch main contrib non-free" > /etc/apt/sources.list
+
+RUN apt-get update && apt-get install -y --allow-downgrades \
     gnupg \
     sudo \
     wget \
@@ -14,7 +16,9 @@ RUN apt-get update && apt-get install -y \
     python-setuptools \
     python-junit.xml \
     python-yaml \
-    libasound2-dev
+    libasound2-dev \
+    libnettle6=3.3-1+b2
+
 
 # Download and compile pjproject
 WORKDIR /usr/src/

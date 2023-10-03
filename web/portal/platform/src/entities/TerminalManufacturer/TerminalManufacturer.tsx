@@ -32,6 +32,10 @@ const TerminalManufacturer: EntityInterface = {
     row.iden as string,
   properties,
   columns: ['iden', 'name', 'description'],
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'TerminalManufacturers',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

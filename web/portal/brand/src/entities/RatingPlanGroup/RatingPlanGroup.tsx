@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
+import Actions from './Action';
 import {
   RatingPlanGroupProperties,
   RatingPlanGroupPropertyList,
@@ -36,6 +37,10 @@ const RatingPlanGroup: EntityInterface = {
   path: '/rating_plan_groups',
   toStr: (row: RatingPlanGroupPropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'RatingPlanGroups',
+  },
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
@@ -56,6 +61,7 @@ const RatingPlanGroup: EntityInterface = {
 
     return module.default;
   },
+  customActions: Actions,
 };
 
 export default RatingPlanGroup;
