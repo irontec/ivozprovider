@@ -1,4 +1,12 @@
 # Changelog
+## 3.3.0
+* Endpoints:
+  - /invoice_templates/{id}/preview:
+    - Added [GET] endpoint
+* Models:
+  - WebPortal:
+    - updated newUI default value
+
 ## 3.2.0
 * Endpoints:
   - /billable_calls/rerate:
