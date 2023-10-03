@@ -1,4 +1,17 @@
 # Changelog
+## 3.3.0
+* Endpoints:
+    - /extensions/mass_import:
+      - Added [POST] endpoint
+    - /holiday_dates/mass_import
+      - Added [POST] endpoint 
+    - /rating_profiles/{id}/simulate_call
+      - Added [POST] endpoint
+* Models:
+    - HolidayDateRange:
+        - Added extension, voicemail, numberCountry, numberValue properties
+        - Set name, wholeDayEvent, startDate, endDate, calendar as required
+
 ## 3.2.0
 * Endpoints:
     - /companies/corporate/unassigned:

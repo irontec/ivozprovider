@@ -1,4 +1,18 @@
 # Changelog
+## 3.3.0
+* Endpoints:
+    - /invoice_templates/{id}/preview:
+      - Added [GET] endpoint
+    - /terminal_models/{id}/default_template
+      - Added [GET] endpoint
+    - /terminal_models/{id}/test_generic_template
+      - Added [GET] endpoint
+    - /terminal_models/{id}/test_specific_template
+      - Added [GET] endpoint
+* Models:
+    - WebPortal:
+      - updated newUI default value
+
 ## 3.2.0
 * Endpoints:
     - /my/dashboard:
