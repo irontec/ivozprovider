@@ -1,3 +1,5 @@
+import DialogContentBody from '@irontec/ivoz-ui/components/Dialog/DialogContentBody';
+import ErrorMessageComponent from '@irontec/ivoz-ui/components/ErrorMessageComponent';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import {
@@ -10,9 +12,7 @@ import {
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import EmojiFlagsIcon from '@mui/icons-material/EmojiFlags';
-import ErrorIcon from '@mui/icons-material/Error';
 import {
-  Box,
   Dialog,
   DialogActions,
   DialogContent,
@@ -83,28 +83,15 @@ const Unban: ActionFunctionComponent = (props: ActionItemProps) => {
           <DialogTitle>{_('Unban address')}</DialogTitle>
           <DialogContent sx={{ textAlign: 'left!important' }}>
             {!error && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <FormHelperText>
-                  {_('Unban IP <strong>{{ip}}</strong>', { ip: row.ip })}
-                </FormHelperText>
-              </Box>
+              <DialogContentBody
+                child={
+                  <FormHelperText>
+                    {_('Unban IP <strong>{{ip}}</strong>', { ip: row.ip })}
+                  </FormHelperText>
+                }
+              />
             )}
-            {error && (
-              <span>
-                <ErrorIcon
-                  sx={{
-                    verticalAlign: 'bottom',
-                  }}
-                />
-                {errorMsg ?? 'There was a problem'}
-              </span>
-            )}
+            {error && <ErrorMessageComponent message={errorMsg} />}
           </DialogContent>
           <DialogActions>
             <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>

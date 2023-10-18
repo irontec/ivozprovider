@@ -1,3 +1,5 @@
+import DialogContentBody from '@irontec/ivoz-ui/components/Dialog/DialogContentBody';
+import ErrorMessageComponent from '@irontec/ivoz-ui/components/ErrorMessageComponent';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import { OutlinedButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
@@ -8,9 +10,7 @@ import {
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import ErrorIcon from '@mui/icons-material/Error';
 import {
-  Box,
   Dialog,
   DialogActions,
   DialogContent,
@@ -103,27 +103,8 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
         <Dialog open={open} onClose={handleClose} keepMounted>
           <DialogTitle>Downloading</DialogTitle>
           <DialogContent sx={{ textAlign: 'left!important' }}>
-            {!error && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <CircularProgress />
-              </Box>
-            )}
-            {error && (
-              <span>
-                <ErrorIcon
-                  sx={{
-                    verticalAlign: 'bottom',
-                  }}
-                />
-                {errorMsg ?? 'There was a problem'}
-              </span>
-            )}
+            {!error && <DialogContentBody child={<CircularProgress />} />}
+            {error && <ErrorMessageComponent message={errorMsg} />}
           </DialogContent>
           <DialogActions>
             <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
