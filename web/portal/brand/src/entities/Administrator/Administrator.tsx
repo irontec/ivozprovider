@@ -83,7 +83,7 @@ const Administrator: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AdminPanelSettingsIcon,
   iden: 'Administrator',
-  title: _('Administrator', { count: 2 }),
+  title: _('Administrator of client', { count: 2 }),
   path: '/administrators',
   toStr: (row: AdministratorPropertyList<EntityValues>) =>
     (row?.username as string | undefined) || '',
