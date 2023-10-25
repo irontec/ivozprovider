@@ -1,53 +1,14 @@
 #!/bin/bash
 
+# This MUST be the first composer, the others will link to this vendor
 pushd /opt/irontec/ivozprovider/library
     composer require $*
 popd
 
-pushd /opt/irontec/ivozprovider/asterisk/agi
-    composer require $*
-popd
+APPS=$(find /opt/irontec/ivozprovider -name composer.json ! -path '*/vendor/*' ! -path '*/library/*' -printf "%h\n")
 
-pushd /opt/irontec/ivozprovider/microservices/recordings
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/workers
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/balances
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/provision
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/scheduler
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/realtime
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/schema
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/platform
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/brand
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/client
-    composer require $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/user
-    composer require $*
-popd
+for APP in $APPS; do
+    pushd $APP
+        composer require $*
+    popd
+done

@@ -3,41 +3,15 @@
 # Stop on first non-zero exit code
 set -e
 
-pushd /opt/irontec/ivozprovider
+APPS=$(find /opt/irontec/ivozprovider -name composer.json ! -path '*/vendor/*' ! -path '*/library/*' -printf "%h\n")
 
-    echo "testing asterisk/agi"
-    ./asterisk/agi/bin/console > /dev/null
-
-    echo "testing microservices/balances"
-    ./microservices/balances/bin/console > /dev/null
-
-    echo "testing microservices/provision"
-    ./microservices/provision/bin/console > /dev/null
-
-    echo "testing microservices/realtime"
-    ./microservices/realtime/bin/console > /dev/null
-
-    echo "testing microservices/recordings"
-    ./microservices/recordings/bin/console > /dev/null
-
-    echo "testing microservices/scheduler"
-    ./microservices/scheduler/bin/console > /dev/null
-
-    echo "testing microservices/workers"
-    ./microservices/workers/bin/console > /dev/null
-
-    if [ "$1" == "--full" ]; then
-
-        echo "testing rest/user"
-        ./web/rest/user/bin/console > /dev/null
-
-        echo "testing rest/client"
-        ./web/rest/client/bin/console > /dev/null
-
-        echo "testing rest/brand"
-        ./web/rest/brand/bin/console > /dev/null
-
-        echo "testing rest/platform"
-        ./web/rest/platform/bin/console > /dev/null
+for APP in $APPS; do
+    # rest apps only tested when --full argument is used
+    if [ "$1" != "--full" ] && [[ "$APP" == *"rest"* ]]; then
+        continue
     fi
-popd
+
+    cd $APP
+    echo "testing $APP"
+    bin/console > /dev/null
+done

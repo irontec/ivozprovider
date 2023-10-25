@@ -1,23 +1,8 @@
 #!/bin/bash
+APPS=$(find /opt/irontec/ivozprovider -name composer.json ! -path '*/vendor/*' ! -path '*/composer-packages/*' -printf "%h\n")
 
-rm -fr /opt/irontec/ivozprovider/schema/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/web/rest/platform/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/web/rest/brand/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/web/rest/client/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/asterisk/agi/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/microservices/scheduler/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/microservices/recordings/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/microservices/workers/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/microservices/balances/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/microservices/provision/vendor/*
-
-rm -fr /opt/irontec/ivozprovider/microservices/realtime/vendor/*
+for APP in $APPS; do
+    pushd $APP
+        rm -fr $APP/vendor/*
+    popd
+done
