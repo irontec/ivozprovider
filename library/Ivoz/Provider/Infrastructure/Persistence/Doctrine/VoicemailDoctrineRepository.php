@@ -44,4 +44,9 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
 
         return $query->getResult();
     }
+
+    public function count(array $criteria): int
+    {
+        return parent::count($criteria);
+    }
 }
