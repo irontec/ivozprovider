@@ -2,52 +2,11 @@
 
 set -e
 
-pushd /opt/irontec/ivozprovider/library
-    echo "=========== library ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
+APPS=$(find /opt/irontec/ivozprovider -name composer.json ! -path '*/vendor/*' ! -path '*/composer-packages/*' ! -path "*/agi/*" ! -path "*/schema/*" ! -path "*/realtime/*" -printf "%h\n")
 
-pushd /opt/irontec/ivozprovider/web/rest/user
-    echo "=========== web/rest/user ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/platform
-    echo "=========== web/rest/platform ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/client
-    echo "=========== web/rest/client ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/brand
-    echo "=========== web/rest/brand ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/recordings
-    echo "=========== microservices/recordings ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/balances
-    echo "=========== microservices/balances ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/provision
-    echo "=========== microservices/provision ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/scheduler
-    echo "=========== microservices/scheduler ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/workers
-    echo "=========== microservices/workers ==========="
-    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
-popd
+for APP in $APPS; do
+    pushd $APP
+        echo "=========== $APP ==========="
+        ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
+    popd
+done

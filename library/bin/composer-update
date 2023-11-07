@@ -6,51 +6,11 @@ if [ "$1" == "--full" ]; then
     popd
 fi
 
-pushd /opt/irontec/ivozprovider/asterisk/agi
-    composer update $*
-popd
+APPS=$(find /opt/irontec/ivozprovider -name composer.json ! -path '*/vendor/*' ! -path '*/library/*' -printf "%h\n")
 
-pushd /opt/irontec/ivozprovider/microservices/recordings
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/workers
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/balances
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/provision
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/scheduler
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/realtime
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/schema
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/platform
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/brand
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/client
-    composer update $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/user
-    composer update $*
-popd
+for APP in $APPS; do
+    pushd $APP
+        composer update $*
+    popd
+done
 

@@ -2,21 +2,10 @@
 
 set -e
 
-APP_PATHS=()
-APP_PATHS+=(/opt/irontec/ivozprovider/library)
-APP_PATHS+=(/opt/irontec/ivozprovider/asterisk/agi)
-APP_PATHS+=(/opt/irontec/ivozprovider/microservices/balances)
-APP_PATHS+=(/opt/irontec/ivozprovider/microservices/provision)
-APP_PATHS+=(/opt/irontec/ivozprovider/microservices/realtime)
-APP_PATHS+=(/opt/irontec/ivozprovider/microservices/recordings)
-APP_PATHS+=(/opt/irontec/ivozprovider/microservices/scheduler)
-APP_PATHS+=(/opt/irontec/ivozprovider/microservices/workers)
-APP_PATHS+=(/opt/irontec/ivozprovider/schema)
-APP_PATHS+=(/opt/irontec/ivozprovider/web/rest/platform)
+APPS=$(find /opt/irontec/ivozprovider -name composer.json ! -path '*/vendor/*' ! -path '*/composer-packages/*' -printf "%h\n")
 
-
-for APPLICATION_PATH in ${APP_PATHS[@]}; do
-    pushd $APPLICATION_PATH
+for APP in $APPS; do
+    pushd $APP
         # basic phplint in source code
         /opt/irontec/ivozprovider/library/vendor/bin/phplint . --exclude=vendor --exclude=var
         # basic console check
