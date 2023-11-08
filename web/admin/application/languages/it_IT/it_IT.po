@@ -212,6 +212,9 @@ msgstr ""
 "Announce queue position to waiting users when they enter the queue and after "
 "defined frequency"
 
+msgid "Announce user count"
+msgstr "Announce user count"
+
 msgid "Antiflood banned IP"
 msgid_plural "Antiflood banned IPs"
 msgstr[0] "Antiflood banned IP"
@@ -1225,6 +1228,9 @@ msgstr "Filtri"
 
 msgid "Filters data"
 msgstr "Dati filtri"
+
+msgid "First member"
+msgstr "First member"
 
 msgid "Fixed cost"
 msgid_plural "Fixed costs"
