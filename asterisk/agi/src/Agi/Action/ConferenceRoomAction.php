@@ -58,6 +58,13 @@ class ConferenceRoomAction
             $this->agi->setConferenceSetting('user,pin', $room->getPinCode());
         }
 
+        // Announce member count if requested
+        if ($room->getAnnounceUserCount() == ConferenceRoomInterface::ANNOUNCEUSERCOUNT_ALWAYS) {
+            $this->agi->setConferenceSetting('user,announce_user_count', 'yes');
+        } else {
+            $this->agi->setConferenceSetting('user,announce_user_count', 'no');
+        }
+
         // Check if conference has max members
         if ($room->getMaxMembers()) {
             $this->agi->setConferenceSetting('bridge,max_members', $room->getMaxMembers());
