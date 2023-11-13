@@ -210,6 +210,9 @@ msgstr ""
 "Anunciar posición cuando los usuarios entran en cola o tras la frecuencia "
 "definida"
 
+msgid "Announce user count"
+msgstr "Anunciar número de participantes"
+
 msgid "Antiflood banned IP"
 msgid_plural "Antiflood banned IPs"
 msgstr[0] "IP bloqueada antiflood"
@@ -1223,6 +1226,9 @@ msgstr "Filtros"
 
 msgid "Filters data"
 msgstr "Filtres de dates"
+
+msgid "First member"
+msgstr "Primer miembro"
 
 msgid "Fixed cost"
 msgid_plural "Fixed costs"

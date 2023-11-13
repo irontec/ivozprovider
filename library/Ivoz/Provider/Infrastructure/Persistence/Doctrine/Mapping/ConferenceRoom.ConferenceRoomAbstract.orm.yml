@@ -33,6 +33,15 @@ Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomAbstract:
         default: 0
         unsigned: true
       column: maxMembers
+    announceUserCount:
+      type: string
+      nullable: false
+      length: 10
+      options:
+        fixed: false
+        comment: '[enum:always|first]'
+        default: first
+      column: announceUserCount
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface

@@ -34,6 +34,12 @@ abstract class ConferenceRoomAbstract
     protected $maxMembers = 0;
 
     /**
+     * comment: enum:always|first
+     * @var string
+     */
+    protected $announceUserCount = 'first';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -44,11 +50,16 @@ abstract class ConferenceRoomAbstract
     /**
      * Constructor
      */
-    protected function __construct($name, $pinProtected, $maxMembers)
-    {
+    protected function __construct(
+        $name,
+        $pinProtected,
+        $maxMembers,
+        $announceUserCount
+    ) {
         $this->setName($name);
         $this->setPinProtected($pinProtected);
         $this->setMaxMembers($maxMembers);
+        $this->setAnnounceUserCount($announceUserCount);
     }
 
     abstract public function getId();
@@ -122,7 +133,8 @@ abstract class ConferenceRoomAbstract
         $self = new static(
             $dto->getName(),
             $dto->getPinProtected(),
-            $dto->getMaxMembers()
+            $dto->getMaxMembers(),
+            $dto->getAnnounceUserCount()
         );
 
         $self
@@ -151,6 +163,7 @@ abstract class ConferenceRoomAbstract
             ->setPinProtected($dto->getPinProtected())
             ->setPinCode($dto->getPinCode())
             ->setMaxMembers($dto->getMaxMembers())
+            ->setAnnounceUserCount($dto->getAnnounceUserCount())
             ->setCompany($fkTransformer->transform($dto->getCompany()));
 
 
@@ -170,6 +183,7 @@ abstract class ConferenceRoomAbstract
             ->setPinProtected(self::getPinProtected())
             ->setPinCode(self::getPinCode())
             ->setMaxMembers(self::getMaxMembers())
+            ->setAnnounceUserCount(self::getAnnounceUserCount())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
@@ -183,6 +197,7 @@ abstract class ConferenceRoomAbstract
             'pinProtected' => self::getPinProtected(),
             'pinCode' => self::getPinCode(),
             'maxMembers' => self::getMaxMembers(),
+            'announceUserCount' => self::getAnnounceUserCount(),
             'companyId' => self::getCompany()->getId()
         ];
     }
@@ -297,6 +312,37 @@ abstract class ConferenceRoomAbstract
     public function getMaxMembers(): int
     {
         return $this->maxMembers;
+    }
+
+    /**
+     * Set announceUserCount
+     *
+     * @param string $announceUserCount
+     *
+     * @return static
+     */
+    protected function setAnnounceUserCount($announceUserCount)
+    {
+        Assertion::notNull($announceUserCount, 'announceUserCount value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($announceUserCount, 10, 'announceUserCount value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($announceUserCount, [
+            ConferenceRoomInterface::ANNOUNCEUSERCOUNT_ALWAYS,
+            ConferenceRoomInterface::ANNOUNCEUSERCOUNT_FIRST
+        ], 'announceUserCountvalue "%s" is not an element of the valid values: %s');
+
+        $this->announceUserCount = $announceUserCount;
+
+        return $this;
+    }
+
+    /**
+     * Get announceUserCount
+     *
+     * @return string
+     */
+    public function getAnnounceUserCount(): string
+    {
+        return $this->announceUserCount;
     }
 
     /**

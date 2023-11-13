@@ -41,6 +41,17 @@ production:
       type: text
       required: true
       maxLength: 6
+    announceUserCount:
+      title: _('Announce user count')
+      type: select
+      defaultValue: alone
+      source:
+        data: inline
+        values:
+          'first':
+            title: _("First member")
+          'always':
+            title: _("Always")
     maxMembers:
       title: _('Max member')
       type: number

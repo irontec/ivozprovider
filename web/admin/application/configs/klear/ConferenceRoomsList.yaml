@@ -25,6 +25,8 @@ production:
           maxMembers: true
           pinProtected: true
           pinCode: true
+        blacklist:
+          announceUserCount: true
         options:
           title: _("Options")
           screens:
@@ -54,6 +56,7 @@ production:
           fields:
             name: 2
             maxMembers: 1
+            announceUserCount: 2
         group1:
           label: _("Authentication Settings")
           colsPerRow: 3

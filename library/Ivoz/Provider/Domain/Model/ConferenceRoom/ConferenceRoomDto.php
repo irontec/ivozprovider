@@ -17,6 +17,7 @@ class ConferenceRoomDto extends ConferenceRoomDtoAbstract
                 'maxMembers' => 'maxMembers',
                 'pinProtected' => 'pinProtected',
                 'pinCode' => 'pinCode',
+                'announceUserCount' => 'announceUserCount',
             ];
         }
 

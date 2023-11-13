@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface ConferenceRoomInterface extends LoggableEntityInterface
 {
+    const ANNOUNCEUSERCOUNT_ALWAYS = 'always';
+    const ANNOUNCEUSERCOUNT_FIRST = 'first';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -39,6 +43,13 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getMaxMembers(): int;
+
+    /**
+     * Get announceUserCount
+     *
+     * @return string
+     */
+    public function getAnnounceUserCount(): string;
 
     /**
      * Get company
