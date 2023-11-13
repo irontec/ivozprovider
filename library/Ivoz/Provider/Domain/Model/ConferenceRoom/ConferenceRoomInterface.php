@@ -13,6 +13,10 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 */
 interface ConferenceRoomInterface extends LoggableEntityInterface
 {
+    public const ANNOUNCEUSERCOUNT_ALWAYS = 'always';
+
+    public const ANNOUNCEUSERCOUNT_FIRST = 'first';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
@@ -53,6 +57,8 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     public function getPinCode(): ?string;
 
     public function getMaxMembers(): int;
+
+    public function getAnnounceUserCount(): string;
 
     public function getCompany(): CompanyInterface;
 }
