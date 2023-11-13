@@ -102,6 +102,16 @@ Model\ActiveCalls:
         tags:
         - My
         parameters: []
+    get_my_active_calls_realtime_filter:
+      access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+      method: 'GET'
+      path: '/my/active_calls/realtime_filter'
+      route_name: 'get_my_active_calls_realtime_filter'
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - My
   collectionOperations: []
 
 Model\ProfileAcl:
