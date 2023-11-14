@@ -35,6 +35,11 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     private $maxMembers = 0;
 
     /**
+     * @var string|null
+     */
+    private $announceUserCount = 'first';
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -66,6 +71,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
             'pinProtected' => 'pinProtected',
             'pinCode' => 'pinCode',
             'maxMembers' => 'maxMembers',
+            'announceUserCount' => 'announceUserCount',
             'id' => 'id',
             'companyId' => 'company'
         ];
@@ -81,6 +87,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
             'pinProtected' => $this->getPinProtected(),
             'pinCode' => $this->getPinCode(),
             'maxMembers' => $this->getMaxMembers(),
+            'announceUserCount' => $this->getAnnounceUserCount(),
             'id' => $this->getId(),
             'company' => $this->getCompany()
         ];
@@ -145,6 +152,18 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     public function getMaxMembers(): ?int
     {
         return $this->maxMembers;
+    }
+
+    public function setAnnounceUserCount(string $announceUserCount): static
+    {
+        $this->announceUserCount = $announceUserCount;
+
+        return $this;
+    }
+
+    public function getAnnounceUserCount(): ?string
+    {
+        return $this->announceUserCount;
     }
 
     public function setId($id): static

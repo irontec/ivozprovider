@@ -10,6 +10,7 @@ export type ConferenceRoomPropertyList<T> = {
   pinProtected?: T;
   pinCode?: T;
   maxMembers?: T;
+  announceUserCount?: T;
 };
 
 export type ConferenceRoomProperties = ConferenceRoomPropertyList<

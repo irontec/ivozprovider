@@ -41,6 +41,12 @@ abstract class ConferenceRoomAbstract
     protected $maxMembers = 0;
 
     /**
+     * @var string
+     * comment: enum:always|first
+     */
+    protected $announceUserCount = 'first';
+
+    /**
      * @var CompanyInterface
      */
     protected $company;
@@ -51,11 +57,13 @@ abstract class ConferenceRoomAbstract
     protected function __construct(
         string $name,
         bool $pinProtected,
-        int $maxMembers
+        int $maxMembers,
+        string $announceUserCount
     ) {
         $this->setName($name);
         $this->setPinProtected($pinProtected);
         $this->setMaxMembers($maxMembers);
+        $this->setAnnounceUserCount($announceUserCount);
     }
 
     abstract public function getId(): null|string|int;
@@ -122,13 +130,16 @@ abstract class ConferenceRoomAbstract
         Assertion::notNull($pinProtected, 'getPinProtected value is null, but non null value was expected.');
         $maxMembers = $dto->getMaxMembers();
         Assertion::notNull($maxMembers, 'getMaxMembers value is null, but non null value was expected.');
+        $announceUserCount = $dto->getAnnounceUserCount();
+        Assertion::notNull($announceUserCount, 'getAnnounceUserCount value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
             $name,
             $pinProtected,
-            $maxMembers
+            $maxMembers,
+            $announceUserCount
         );
 
         $self
@@ -156,6 +167,8 @@ abstract class ConferenceRoomAbstract
         Assertion::notNull($pinProtected, 'getPinProtected value is null, but non null value was expected.');
         $maxMembers = $dto->getMaxMembers();
         Assertion::notNull($maxMembers, 'getMaxMembers value is null, but non null value was expected.');
+        $announceUserCount = $dto->getAnnounceUserCount();
+        Assertion::notNull($announceUserCount, 'getAnnounceUserCount value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
@@ -164,6 +177,7 @@ abstract class ConferenceRoomAbstract
             ->setPinProtected($pinProtected)
             ->setPinCode($dto->getPinCode())
             ->setMaxMembers($maxMembers)
+            ->setAnnounceUserCount($announceUserCount)
             ->setCompany($fkTransformer->transform($company));
 
         return $this;
@@ -179,6 +193,7 @@ abstract class ConferenceRoomAbstract
             ->setPinProtected(self::getPinProtected())
             ->setPinCode(self::getPinCode())
             ->setMaxMembers(self::getMaxMembers())
+            ->setAnnounceUserCount(self::getAnnounceUserCount())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
@@ -192,6 +207,7 @@ abstract class ConferenceRoomAbstract
             'pinProtected' => self::getPinProtected(),
             'pinCode' => self::getPinCode(),
             'maxMembers' => self::getMaxMembers(),
+            'announceUserCount' => self::getAnnounceUserCount(),
             'companyId' => self::getCompany()->getId()
         ];
     }
@@ -250,6 +266,28 @@ abstract class ConferenceRoomAbstract
     public function getMaxMembers(): int
     {
         return $this->maxMembers;
+    }
+
+    protected function setAnnounceUserCount(string $announceUserCount): static
+    {
+        Assertion::maxLength($announceUserCount, 10, 'announceUserCount value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $announceUserCount,
+            [
+                ConferenceRoomInterface::ANNOUNCEUSERCOUNT_ALWAYS,
+                ConferenceRoomInterface::ANNOUNCEUSERCOUNT_FIRST,
+            ],
+            'announceUserCountvalue "%s" is not an element of the valid values: %s'
+        );
+
+        $this->announceUserCount = $announceUserCount;
+
+        return $this;
+    }
+
+    public function getAnnounceUserCount(): string
+    {
+        return $this->announceUserCount;
     }
 
     protected function setCompany(CompanyInterface $company): static
