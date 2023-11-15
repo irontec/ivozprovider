@@ -2,10 +2,10 @@
 
 namespace Service\Domain\Dashboard;
 
-use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailRepository;
 use Model\Dashboard\Dashboard;
 use Model\Dashboard\DashboardClient;
 use Model\Dashboard\DashboardResidentialDevice;
@@ -32,17 +32,19 @@ class GetResidentialInfo
         $ddiNum = $this
             ->ddiRepository
             ->countByCompany(
-                (int) $company->getId()
+                (int)$company->getId()
             );
 
         $voiceMailNum = $this
             ->voicemailRepository
-            ->count([]);
+            ->count([
+                'company' => $company->getId()
+            ]);
 
         $residentialDevices = $this
             ->residentialDeviceRepository
             ->findLastAddedByCompanyId(
-                (int) $company->getId()
+                (int)$company->getId()
             );
 
         /** @var DashboardResidentialDevice[] $dashboardResidentialDevices */

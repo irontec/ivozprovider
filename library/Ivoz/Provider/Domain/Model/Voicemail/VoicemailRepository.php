@@ -13,4 +13,9 @@ interface VoicemailRepository extends ObjectRepository, Selectable
      * @return VoicemailInterface[]
      */
     public function getAvailableVoicemailsForUser(UserInterface $user): array;
+
+    /**
+     * @param array<string, mixed> $criteria
+     */
+    public function count(array $criteria): int;
 }
