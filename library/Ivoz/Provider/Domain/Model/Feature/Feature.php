@@ -24,6 +24,7 @@ class Feature extends FeatureAbstract implements FeatureInterface
     public const WHOLESALE         = 10;
     public const RETAIL            = 11;
     public const VPBX              = 12;
+    public const OPERATOR_PANEL    = 13;
 
     /**
      * Available features constants
@@ -40,6 +41,7 @@ class Feature extends FeatureAbstract implements FeatureInterface
     public const WHOLESALE_IDEN = 'wholesale';
     public const RETAIL_IDEN = 'retail';
     public const VPBX_IDEN = 'vpbx';
+    public const OPERATOR_PANEL_IDEN = 'operatorPanel';
 
     /**
      * @codeCoverageIgnore

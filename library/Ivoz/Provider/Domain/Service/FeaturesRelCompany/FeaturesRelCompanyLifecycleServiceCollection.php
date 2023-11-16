@@ -20,6 +20,7 @@ class FeaturesRelCompanyLifecycleServiceCollection implements LifecycleServiceCo
         "pre_persist" =>
         [
             \Ivoz\Provider\Domain\Service\FeaturesRelCompany\AvoidUpdates::class => 100,
+            \Ivoz\Provider\Domain\Service\FeaturesRelCompany\CheckValidity::class => 100,
         ],
     ];
 
