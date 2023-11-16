@@ -19,7 +19,7 @@ const FeatureSelectOptions: SelectOptionsType = ({
       const options: DropdownChoices = [];
 
       for (const item of data) {
-        options.push({ id: item.id as number, label: item.iden as string });
+        options.push({ id: item.id as number, label: Feature.toStr(item) });
       }
 
       callback(options);
