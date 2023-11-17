@@ -26,6 +26,7 @@ const RetailFeatureSelectOptions: SelectOptionsType = ({
         ClientFeatures.conferences,
         ClientFeatures.billing,
         ClientFeatures.invoices,
+        ClientFeatures.operatorPanel,
         ClientFeatures.faxes,
         ClientTypes.residential,
         ClientTypes.retail,
