@@ -5,8 +5,8 @@ namespace Controller\My;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
-use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
-use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -72,10 +72,6 @@ class CallHistoryAction
         foreach ($calls as $call) {
             $call
                 ->getStartTime()
-                ->setTimezone($timezone);
-
-            $call
-                ->getEndTime()
                 ->setTimezone($timezone);
         }
     }
