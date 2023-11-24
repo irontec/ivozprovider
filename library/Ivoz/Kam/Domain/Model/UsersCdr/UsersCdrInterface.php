@@ -79,6 +79,8 @@ interface UsersCdrInterface extends EntityInterface
 
     public function getXcallid(): ?string;
 
+    public function getResponseCode(): string;
+
     public function getBrand(): ?BrandInterface;
 
     public function getCompany(): ?CompanyInterface;

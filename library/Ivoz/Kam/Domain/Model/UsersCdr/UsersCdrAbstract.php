@@ -90,6 +90,11 @@ abstract class UsersCdrAbstract
     protected $xcallid = null;
 
     /**
+     * @var string
+     */
+    protected $responseCode = '200';
+
+    /**
      * @var ?BrandInterface
      */
     protected $brand = null;
@@ -115,11 +120,13 @@ abstract class UsersCdrAbstract
     protected function __construct(
         \DateTimeInterface|string $startTime,
         \DateTimeInterface|string $endTime,
-        float $duration
+        float $duration,
+        string $responseCode
     ) {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
         $this->setDuration($duration);
+        $this->setResponseCode($responseCode);
     }
 
     abstract public function getId(): null|string|int;
@@ -189,11 +196,14 @@ abstract class UsersCdrAbstract
         Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $responseCode = $dto->getResponseCode();
+        Assertion::notNull($responseCode, 'getResponseCode value is null, but non null value was expected.');
 
         $self = new static(
             $startTime,
             $endTime,
-            $duration
+            $duration,
+            $responseCode
         );
 
         $self
@@ -232,6 +242,8 @@ abstract class UsersCdrAbstract
         Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $responseCode = $dto->getResponseCode();
+        Assertion::notNull($responseCode, 'getResponseCode value is null, but non null value was expected.');
 
         $this
             ->setStartTime($startTime)
@@ -246,6 +258,7 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
+            ->setResponseCode($responseCode)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
@@ -272,6 +285,7 @@ abstract class UsersCdrAbstract
             ->setCallid(self::getCallid())
             ->setCallidHash(self::getCallidHash())
             ->setXcallid(self::getXcallid())
+            ->setResponseCode(self::getResponseCode())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setUser(User::entityToDto(self::getUser(), $depth))
@@ -296,6 +310,7 @@ abstract class UsersCdrAbstract
             'callid' => self::getCallid(),
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
+            'responseCode' => self::getResponseCode(),
             'brandId' => self::getBrand()?->getId(),
             'companyId' => self::getCompany()?->getId(),
             'userId' => self::getUser()?->getId(),
@@ -499,6 +514,20 @@ abstract class UsersCdrAbstract
     public function getXcallid(): ?string
     {
         return $this->xcallid;
+    }
+
+    protected function setResponseCode(string $responseCode): static
+    {
+        Assertion::maxLength($responseCode, 64, 'responseCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->responseCode = $responseCode;
+
+        return $this;
+    }
+
+    public function getResponseCode(): string
+    {
+        return $this->responseCode;
     }
 
     protected function setBrand(?BrandInterface $brand = null): static
