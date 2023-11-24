@@ -2234,3 +2234,24 @@ Ivoz\Provider\Domain\Model\WebPortal\WebTheme:
         tags:
           - My
   collectionOperations: []
+
+Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr:
+  attributes:
+    pagination_client_enabled: true
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get:
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        - 'text/csv'
