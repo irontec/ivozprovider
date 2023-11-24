@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrAbstract" table="provider_users_cdr_abstract">
+    <unique-constraints>
+      <unique-constraint name="provider_usersCdr_callid_direction" columns="callid,direction"/>
+    </unique-constraints>
+    <indexes>
+      <index name="provider_usersCdr_brandId" columns="brandId"/>
+      <index name="provider_usersCdr_companyId_startTime" columns="companyId,startTime"/>
+      <index name="provider_usersCdr_userId" columns="userId"/>
+      <index name="provider_usersCdr_friendId" columns="friendId"/>
+    </indexes>
+    <field name="startTime" type="datetime" column="startTime" nullable="true"/>
+    <field name="duration" type="float" column="duration" precision="10" scale="3" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="direction" type="string" column="direction" length="8" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:inbound|outbound]</option>
+        <option name="default">outbound</option>
+      </options>
+    </field>
+    <field name="caller" type="string" column="caller" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="callee" type="string" column="callee" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="owner" type="string" column="owner" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="callid" type="string" column="callid" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="charset" value="ascii"/>
+      </options>
+    </field>
+    <field name="brandId" type="integer" column="brandId" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="disposition" type="string" column="disposition" length="8" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:answered|missed|bussy]</option>
+        <option name="default">answered</option>
+      </options>
+    </field>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="friendId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="kamUsersCdr" target-entity="Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="kamUsersCdrId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>
