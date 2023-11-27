@@ -7,9 +7,12 @@ RUN apt-get update && apt-get -y install gnupg wget
 
 RUN echo deb http://packages.irontec.com/debian halliday main extra >> \
     /etc/apt/sources.list
+RUN echo deb http://ftp.debian.org/debian bullseye-backports main contrib non-free >> \
+    /etc/apt/sources.list
 
 RUN wget http://packages.irontec.com/public.key -q -O - | apt-key add -
 
+# Packages from standard repository
 RUN apt-get update && apt-get install -y \
     composer \
     curl \
@@ -37,6 +40,9 @@ RUN apt-get update && apt-get install -y \
     sphinx-common \
     yarn
 
+# Packages from backports
+RUN apt-get install -y -t bullseye-backports \
+    golang
 
 # Create jenkins user (configurable)
 ARG UNAME=jenkins

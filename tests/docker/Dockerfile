@@ -3,8 +3,11 @@ FROM debian:bullseye
 MAINTAINER Mikel Madariaga <mikel@irontec.com>
 
 RUN echo 'deb [trusted=yes] http://packages.irontec.com/debian halliday main extra' >> /etc/apt/sources.list
+RUN echo deb http://ftp.debian.org/debian bullseye-backports main contrib non-free >> /etc/apt/sources.list
 
 RUN apt-get update
+
+# Packages from standard repository
 RUN apt-get install --assume-yes --force-yes \
         gettext \
         composer \
@@ -37,6 +40,11 @@ RUN apt-get install --assume-yes --force-yes \
         yarn \
         jq \
         libxrender1
+
+# Packages from backports
+RUN apt-get install -y -t bullseye-backports \
+    golang
+
 RUN apt-get clean
 
 # Create jenkins user (configurable)

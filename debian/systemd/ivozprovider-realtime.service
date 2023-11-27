@@ -1,9 +1,13 @@
 [Unit]
 Description=Ivozprovider Realtime Websockets Server
+After=network.target
 
 [Service]
 User=root
-ExecStart=/opt/irontec/ivozprovider/microservices/realtime/bin/run
+WorkingDirectory=/opt/irontec/ivozprovider/microservices/realtime
+ExecStart=/opt/irontec/ivozprovider/microservices/realtime/server
+Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
