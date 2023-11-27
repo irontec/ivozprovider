@@ -1,3 +1,18 @@
+Tue, 28 Nov 2023 13:33:23 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+* Ivozprovider 3.4.0 released
+
+* New Portals
+    - Fixed prepaid balances operations
+    - Fixed voicemail message counter on dashboards
+    - Fixed labels in platform portal feature selectors
+    - Fixed audio players
+* Application Server
+    - Configurable setting to announce how many participants are already present when joining a conference room.
+    - Pause and unpause services for queues
+* Other
+    - Brand new realtime active calls microservice written in go that replaces the old one written in openswoole
+
 Tue, 03 Oct 2023 09:39:40 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
 * Ivozprovider 3.3.0 released
