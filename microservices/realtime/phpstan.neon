@@ -1,8 +1,0 @@
-includes:
-    - phpstan-baseline.neon
-
-parameters:
-    scanDirectories:
-        - %currentWorkingDirectory%/vendor/swoole/ide-helper/src/
-    ignoreErrors:
-        - '#Constant SWOOLE.* not found#'
