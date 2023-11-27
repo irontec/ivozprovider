@@ -1,5 +1,6 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
+  ChildDecoratorType,
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
@@ -38,26 +39,25 @@ const properties: UsersCdrProperties = {
     label: _('Destination'),
     readOnly: true,
   },
-  callid: {
-    label: 'Call-ID',
+  disposition: {
+    label: 'Tipificación',
     readOnly: true,
-  },
-  xcallid: {
-    label: 'X-Call-ID',
-    readOnly: true,
-  },
-  callidHash: {
-    label: 'Call-ID Hash',
-    readOnly: true,
-  },
-  party: {
-    label: _('Party'),
-    readOnly: true,
-    memoize: false,
   },
 };
 
-const columns = ['startTime', 'owner', 'direction', 'party', 'duration'];
+export const ChildDecorator: ChildDecoratorType = () => {
+  return null;
+};
+
+const columns = [
+  'startTime',
+  'owner',
+  'direction',
+  'caller',
+  'callee',
+  'duration',
+  'disposition',
+];
 
 const usersCdr: EntityInterface = {
   ...defaultEntityBehavior,
@@ -71,17 +71,13 @@ const usersCdr: EntityInterface = {
   customActions: Actions,
   acl: {
     ...defaultEntityBehavior.acl,
-    iden: 'kam_users_cdrs',
+    iden: 'provider_users_cdrs',
   },
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
+  ChildDecorator,
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
-
-    return module.default;
-  },
-  View: async () => {
-    const module = await import('./View');
 
     return module.default;
   },

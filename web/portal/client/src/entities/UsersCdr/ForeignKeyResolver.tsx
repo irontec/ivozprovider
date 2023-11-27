@@ -5,41 +5,11 @@ import store from 'store';
 
 import { UsersCdrRow, UsersCdrRows } from './UsersCdrProperties';
 
-function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
-  // Owner
-  if (row.userId) {
-    row.owner = row.user;
-    if (addLinks) {
-      row.ownerId = row.userId;
-      row.ownerLink = row.userLink;
-    }
-  } else if (row.friendId) {
-    row.owner = row.friendId;
-    if (addLinks) {
-      row.ownerId = row.friendId;
-      row.ownerLink = row.friendLink;
-    }
-  } else if (row.retailAccountId) {
-    row.owner = row.retailAccount;
-    row.ownerId = row.retailAccountId;
-    row.ownerLink = row.retailAccountLink;
-  } else if (row.residentialDeviceId) {
-    row.owner = row.residentialDevice;
-    if (addLinks) {
-      row.ownerId = row.residentialDeviceId;
-      row.ownerLink = row.residentialDeviceLink;
-    }
-  } else if (row.direction === 'outbound') {
+function ownerResolver(row: UsersCdrRow): UsersCdrRow {
+  if (row.direction === 'outbound') {
     row.owner = row.caller;
   } else {
     row.owner = row.callee;
-  }
-
-  // Party
-  if (row.direction === 'outbound') {
-    row.party = row.callee;
-  } else {
-    row.party = row.caller;
   }
 
   return row;
@@ -98,7 +68,7 @@ export const foreignKeyResolver: foreignKeyResolverType = async function ({
   const iterable = Array.isArray(data) ? data : [data];
 
   for (const idx in iterable) {
-    iterable[idx] = ownerAndPartyResolver(iterable[idx]);
+    iterable[idx] = ownerResolver(iterable[idx]);
     iterable[idx].duration = Math.round(iterable[idx].duration as number);
   }
 
