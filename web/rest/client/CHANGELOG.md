@@ -1,4 +1,13 @@
 # Changelog
+## 3.4.0
+* Models:
+    - ConferenceRoom:
+      - Added announceUserCount required property
+    - ConferenceRoom-collection:
+      - Added announceUserCount required property
+    - ConferenceRoom-detailed
+      - Added announceUserCount required property
+
 ## 3.3.0
 * Endpoints:
     - /extensions/mass_import:
