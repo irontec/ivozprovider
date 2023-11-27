@@ -32,4 +32,14 @@ class QueueMemberDoctrineRepository extends ServiceEntityRepository implements Q
 
         return $response;
     }
+
+    public function findByInterface(string $interface): array
+    {
+        /** @var QueueMemberInterface[] $response */
+        $response = $this->findBy([
+            'stateInterface' => $interface
+        ]);
+
+        return $response;
+    }
 }
