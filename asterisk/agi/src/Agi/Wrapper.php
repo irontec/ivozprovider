@@ -391,4 +391,14 @@ class Wrapper
 
         return array_shift($dialedNumberParts);
     }
+
+    public function queuePause(string $queuename, string $interface): void
+    {
+        $this->fastagi->exec("PauseQueueMember", "$queuename,$interface");
+    }
+
+    public function queueUnpause(string $queuename, string $interface): void
+    {
+        $this->fastagi->exec("UnpauseQueueMember", "$queuename,$interface");
+    }
 }

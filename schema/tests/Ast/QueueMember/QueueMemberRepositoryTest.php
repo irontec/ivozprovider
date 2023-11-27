@@ -16,6 +16,7 @@ class QueueMemberRepositoryTest extends KernelTestCase
     {
         $this->its_instantiable();
         $this->it_finds_one_by_queueMemberId();
+        $this->it_finds_by_interface();
     }
 
     public function its_instantiable()
@@ -43,6 +44,21 @@ class QueueMemberRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             QueueMemberInterface::class,
             $result
+        );
+    }
+
+    public function it_finds_by_interface()
+    {
+        /** @var QueueMemberRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(QueueMember::class);
+
+        $result = $repository->findByInterface("PJSIP/b1c1t1_alice");
+
+        $this->assertInstanceOf(
+            QueueMemberInterface::class,
+            $result[0]
         );
     }
 }
