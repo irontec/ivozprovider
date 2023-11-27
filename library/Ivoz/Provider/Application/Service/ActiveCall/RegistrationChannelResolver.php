@@ -160,13 +160,17 @@ class RegistrationChannelResolver
         }
 
         foreach ($criteria as $key => $value) {
-            if (is_null($value)) {
+            if (is_null($value) || $value == "*") {
                 $response[] = '*';
                 continue;
             }
+
             $response[] = $key . $value;
         }
-        $response[] = '*';
+
+        if (end($response) !== '*') {
+            $response[] = "*";
+        }
 
         return implode(
             ':',
