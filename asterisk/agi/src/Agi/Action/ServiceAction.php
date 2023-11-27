@@ -6,6 +6,8 @@ use Agi\Agents\ResidentialAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Ast\Domain\Model\QueueMember\QueueMemberInterface;
+use Ivoz\Ast\Domain\Model\QueueMember\QueueMemberRepository;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
@@ -57,22 +59,30 @@ class ServiceAction
     protected $service;
 
     /**
+     * @var QueueMemberRepository
+     */
+    protected $queueMemberRepository;
+
+    /**
      * ServiceAction constructor.
      * @param Wrapper $agi
      * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      * @param EntityTools $entityTools
+     * @param QueueMemberRepository $queueMemberRepository
      */
     public function __construct(
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EntityManagerInterface $em,
-        EntityTools $entityTools
+        EntityTools $entityTools,
+        QueueMemberRepository $queueMemberRepository,
     ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->em = $em;
         $this->entityTools = $entityTools;
+        $this->queueMemberRepository = $queueMemberRepository;
     }
 
     /**
@@ -136,6 +146,12 @@ class ServiceAction
                 break;
             case Service::CALL_FORWARD_UNREACHEABLE:
                 $this->processCfwUnreachable();
+                break;
+            case Service::QUEUE_PAUSE:
+                $this->processQueuePause();
+                break;
+            case Service::QUEUE_UNPAUSE:
+                $this->processQueueUnpause();
                 break;
         }
     }
@@ -527,6 +543,36 @@ class ServiceAction
         // Call Forward enabled
         $this->agi->notice("%s CFW enabled for %s", $callForwardType, $caller);
         $this->agi->playback("ivozprovider/cfw-enabled");
+    }
+
+    protected function processQueuePause(): void
+    {
+        $endpoint = $this->agi->getEndpoint();
+
+        /** @var QueueMemberInterface[] $queueMembers */
+        $queueMembers = $this->queueMemberRepository->findByInterface("PJSIP/$endpoint");
+
+        foreach ($queueMembers as $queueMember) {
+            $this->agi->queuePause(
+                $queueMember->getQueueName(),
+                $queueMember->getInterface(),
+            );
+        }
+    }
+
+    protected function processQueueUnpause(): void
+    {
+        $endpoint = $this->agi->getEndpoint();
+
+        /** @var QueueMemberInterface[] $queueMembers */
+        $queueMembers = $this->queueMemberRepository->findByInterface("PJSIP/$endpoint");
+
+        foreach ($queueMembers as $queueMember) {
+            $this->agi->queueUnpause(
+                $queueMember->getQueueName(),
+                $queueMember->getInterface(),
+            );
+        }
     }
 
     public function processHello()
