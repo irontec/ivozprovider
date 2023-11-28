@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca1d3cd2151c2e8d648121f5e962d729",
+    "content-hash": "5218868629cf0fde611b0f8f232cde47",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2738,22 +2738,22 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.9.5",
+            "version": "5.9.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "6ca5e6265895cf892856e54aa6626eece02fb7f6"
+                "reference": "87e71928da210086e1b29f36ddf04399d200774c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/6ca5e6265895cf892856e54aa6626eece02fb7f6",
-                "reference": "6ca5e6265895cf892856e54aa6626eece02fb7f6",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/87e71928da210086e1b29f36ddf04399d200774c",
+                "reference": "87e71928da210086e1b29f36ddf04399d200774c",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
                 "doctrine/orm": "^2.5",
-                "irontec/ivoz-core": "^4.16",
+                "irontec/ivoz-core": "^4.16.7",
                 "php": ">=8.0",
                 "symfony/console": "^5.1",
                 "symfony/maker-bundle": "^1.33"
@@ -2788,9 +2788,9 @@
             "description": "DevTools for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-dev-tools/issues",
-                "source": "https://github.com/irontec/ivoz-dev-tools/tree/5.9.5"
+                "source": "https://github.com/irontec/ivoz-dev-tools/tree/5.9.8"
             },
-            "time": "2023-03-10T11:16:38+00:00"
+            "time": "2023-11-28T13:27:59+00:00"
         },
         {
             "name": "irontec/ivoz-provider-bundle",
@@ -14649,5 +14649,5 @@
     "platform-overrides": {
         "php": "8.0.9"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.0.0"
 }
