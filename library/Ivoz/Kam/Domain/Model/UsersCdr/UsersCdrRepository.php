@@ -39,7 +39,7 @@ interface UsersCdrRepository extends ObjectRepository, Selectable
      * This method expects results to be marked as parsed as soon as they're used:
      * a.k.a it does not apply any query offset, just a limit
      *
-     * @param array<string|OrderBy, string>|null $order
+     * @param array<string, string>|array<array-key, OrderBy> $order
      * @return \Generator<array<UsersCdrInterface>>
      */
     public function getUnparsedCallsGeneratorWithoutOffset(int $batchSize, array $order = null): \Generator;

@@ -13,7 +13,7 @@ interface TrunksCdrRepository extends ObjectRepository, Selectable
      *
      * @param int $batchSize
      * @param array|null $order
-     * @return \Generator
+     * @return \Generator<array<TrunksCdrInterface>>
      */
     public function getUnparsedCallsGeneratorWithoutOffset(int $batchSize, array $order = null);
 

@@ -3,6 +3,7 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\OrderBy;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
@@ -126,12 +127,22 @@ class UsersCdrDoctrineRepository extends ServiceEntityRepository implements User
         $qb->setMaxResults($batchSize);
 
         if ($order) {
-            $qb->orderBy(...$order);
+            foreach ($order as $k => $val) {
+                if ($val instanceof OrderBy) {
+                    $qb->orderBy($val);
+                } else {
+                    $qb->orderBy(
+                        (string) $k,
+                        $val
+                    );
+                }
+            }
         }
 
         $continue =  true;
         while ($continue) {
             $query = $qb->getQuery();
+            /** @var UsersCdrInterface[] $results */
             $results = $query->getResult();
             $continue = count($results) === $batchSize;
 

@@ -8,7 +8,6 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Repository\DoctrineRepository;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrRepository;
-use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrDto;
 
 /**
@@ -35,7 +34,7 @@ class UsersCdrDoctrineRepository extends DoctrineRepository implements UsersCdrR
     public function findByKamUsersCdrId(int $id): ?UsersCdrInterface
     {
         return $this->findOneBy([
-            'id' => $id,
+            'kamUsersCdr' => $id,
         ]);
     }
 }
