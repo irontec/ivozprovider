@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Provider\UsersCdr;
+namespace Tests\Kam\UsersCdr;
 
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
