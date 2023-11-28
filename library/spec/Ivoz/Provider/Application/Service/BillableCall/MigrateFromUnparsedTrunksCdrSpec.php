@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
+namespace spec\Ivoz\Provider\Application\Service\BillableCall;
 
+use Ivoz\Core\Domain\Model\Commandlog\Commandlog;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
-use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr;
-use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromUnparsedTrunksCdr;
+use Ivoz\Provider\Application\Service\BillableCall\MigrateFromUnparsedTrunksCdr;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Psr\Log\LoggerInterface;
