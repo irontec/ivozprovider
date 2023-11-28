@@ -7,7 +7,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/sirupsen/logrus"
+	logger "github.com/sirupsen/logrus"
 	"irontec.com/realtime/pkg/config"
 )
 
@@ -26,7 +26,7 @@ type CriteriaResponse struct {
 	Criteria string `json:"criteria"`
 }
 
-func GetActiveCallsFilter(token string, role string, logger *logrus.Logger) (*string, error) {
+func GetActiveCallsFilter(token string, role string) (*string, error) {
 	var api string
 
 	switch role {

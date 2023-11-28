@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/redis/go-redis/v9"
-	"github.com/sirupsen/logrus"
+	logger "github.com/sirupsen/logrus"
 
 	"irontec.com/realtime/pkg/config"
 )
@@ -36,10 +36,8 @@ const (
 )
 
 var SIGNIFICANT_CALL_EVENTS = [...]string{CALL_SETUP, RINGING, IN_CALL, HANG_UP, UPDATE_CLID}
-var logger = logrus.New()
 
 func InitRedisControlClients() {
-	logger.SetLevel(config.GetLogLevel())
 	redisClient := CreateFailOverClient()
 
 	channelPatterns := []string{"trunks:*", "users:*"}

@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"irontec.com/realtime/pkg/config"
+	"irontec.com/realtime/pkg/log"
 	"irontec.com/realtime/pkg/services"
 	"irontec.com/realtime/pkg/utils"
 	websocket_server "irontec.com/realtime/pkg/websocket"
@@ -11,6 +12,7 @@ import (
 
 func main() {
 	loadConfig()
+	log.InitLog()
 	go services.InitRedisControlClients()
 	websocket_server.OnWorkerStart()
 }

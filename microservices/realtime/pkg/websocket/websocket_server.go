@@ -11,7 +11,7 @@ import (
 
 	"github.com/gorilla/websocket"
 	"github.com/redis/go-redis/v9"
-	"github.com/sirupsen/logrus"
+	logger "github.com/sirupsen/logrus"
 	"irontec.com/realtime/pkg/config"
 	"irontec.com/realtime/pkg/services"
 	"irontec.com/realtime/pkg/utils"
@@ -26,11 +26,8 @@ var upgrader = websocket.Upgrader{
 }
 
 var redisPool sync.Map
-var logger = logrus.New()
 
 func OnWorkerStart() {
-	logger.SetLevel(config.GetLogLevel())
-
 	logger.Info("Init Redis Pool")
 
 	http.HandleFunc("/", handler)
@@ -104,7 +101,7 @@ func onMessage(conn *websocket.Conn) {
 			}
 
 			role := tokenPayload.Roles[0]
-			registerChannel, err := services.GetActiveCallsFilter(data.Auth, role, logger)
+			registerChannel, err := services.GetActiveCallsFilter(data.Auth, role)
 
 			if err != nil {
 				conn.WriteMessage(websocket.TextMessage, []byte("Challenge"))
