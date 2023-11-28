@@ -1,6 +1,5 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
-  ChildDecoratorType,
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
@@ -40,13 +39,9 @@ const properties: UsersCdrProperties = {
     readOnly: true,
   },
   disposition: {
-    label: 'Tipificación',
+    label: _('Disposition'),
     readOnly: true,
   },
-};
-
-export const ChildDecorator: ChildDecoratorType = () => {
-  return null;
 };
 
 const columns = [
@@ -70,12 +65,15 @@ const usersCdr: EntityInterface = {
   columns,
   customActions: Actions,
   acl: {
-    ...defaultEntityBehavior.acl,
+    update: false,
+    create: false,
+    read: true,
+    detail: false,
+    delete: false,
     iden: 'provider_users_cdrs',
   },
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
-  ChildDecorator,
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
 

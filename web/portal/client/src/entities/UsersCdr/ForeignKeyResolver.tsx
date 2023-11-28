@@ -3,17 +3,7 @@ import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterfac
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import store from 'store';
 
-import { UsersCdrRow, UsersCdrRows } from './UsersCdrProperties';
-
-function ownerResolver(row: UsersCdrRow): UsersCdrRow {
-  if (row.direction === 'outbound') {
-    row.owner = row.caller;
-  } else {
-    row.owner = row.callee;
-  }
-
-  return row;
-}
+import { UsersCdrRows } from './UsersCdrProperties';
 
 export const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
@@ -68,7 +58,6 @@ export const foreignKeyResolver: foreignKeyResolverType = async function ({
   const iterable = Array.isArray(data) ? data : [data];
 
   for (const idx in iterable) {
-    iterable[idx] = ownerResolver(iterable[idx]);
     iterable[idx].duration = Math.round(iterable[idx].duration as number);
   }
 
