@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"strconv"
 	"time"
 
 	"github.com/redis/go-redis/v9"
@@ -16,7 +15,7 @@ type EventData struct {
 	Time      int64  `json:"Time"`
 	ID        string `json:"ID"`
 	CallID    string `json:"Call-ID"`
-	Party     int    `json:"Party"`
+	Party     string `json:"Party"`
 	Brand     string `json:"Brand"`
 	Company   string `json:"Company"`
 	Direction string `json:"Direction"`
@@ -111,7 +110,7 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 	var logInfo string
 	if event == UPDATE_CLID {
 		data.Party = eventData.Party
-		logInfo = event + " => party " + strconv.Itoa(data.Party)
+		logInfo = event + " => party " + data.Party
 	} else {
 		data.Event = event
 		logInfo = event

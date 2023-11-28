@@ -3,27 +3,36 @@ package feeder
 import (
 	"fmt"
 	"math/rand"
+	"strconv"
 	"time"
 )
 
 type UsersCall struct {
 	AbstractCall
-	party int
+	party string
 }
 
 func NewUsersCall() *UsersCall {
 	u := &UsersCall{}
 	u.ID = RandomAlphaNum(8)
 
-	u.callId = fmt.Sprintf(
-		"%s@192.168.0.%d",
-		RandomAlphaNum(10),
-		rand.Intn(255)+1,
+	u.SetCallId(
+		fmt.Sprintf(
+			"%s@192.168.0.%d",
+			RandomAlphaNum(10),
+			rand.Intn(255)+1,
+		),
 	)
 
-	u.party = rand.Intn(301) + 100
+	u.setParty(
+		strconv.Itoa(rand.Intn(301) + 100),
+	)
 
 	return u
+}
+
+func (uc *UsersCall) setParty(party string) {
+	uc.party = party
 }
 
 func (u *UsersCall) Progress() (map[string]interface{}, error) {
@@ -36,11 +45,6 @@ func (u *UsersCall) Progress() (map[string]interface{}, error) {
 		return u.inCall(), nil
 	case IN_CALL:
 		return u.hangUp(), nil
-	// case IN_CALL:
-	// 	if rand.Intn(11) > 2 {
-	// 		return u.AbstractCall.Progress()
-	// 	}
-	// 	return u.updateClid(), nil
 	default:
 		panic(fmt.Sprintf("No progress to apply on status %s", u.status))
 	}
