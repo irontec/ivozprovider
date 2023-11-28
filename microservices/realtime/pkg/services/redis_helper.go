@@ -3,10 +3,11 @@ package services
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"time"
 
 	"github.com/redis/go-redis/v9"
+	"github.com/sirupsen/logrus"
+
 	"irontec.com/realtime/pkg/config"
 )
 
@@ -35,8 +36,10 @@ const (
 )
 
 var SIGNIFICANT_CALL_EVENTS = [...]string{CALL_SETUP, RINGING, IN_CALL, HANG_UP, UPDATE_CLID}
+var logger = logrus.New()
 
 func InitRedisControlClients() {
+	logger.SetLevel(config.GetLogLevel())
 	redisClient := CreateFailOverClient()
 
 	channelPatterns := []string{"trunks:*", "users:*"}
@@ -69,19 +72,19 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 	var eventData EventData
 	err := json.Unmarshal([]byte(payload), &eventData)
 	if err != nil {
-		fmt.Println("Error:", err)
+		logger.Errorf("Error: %v", err)
 		return
 	}
 
 	event := eventData.Event
 	if event == HANG_UP {
-		fmt.Println("[DEL] " + channel)
+		logger.Info("[DEL] " + channel)
 		redisClient.Del(context.Background(), channel)
 		return
 	}
 
 	if event == CALL_SETUP {
-		fmt.Println("[SETEX] " + channel + "\n" + payload)
+		logger.Info("[SETEX] " + channel + "\n" + payload)
 		redisClient.SetEx(
 			context.Background(),
 			channel,
@@ -94,7 +97,7 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 	dataStr, err := redisClient.Get(context.Background(), channel).Result()
 	if err != nil {
 		if err != redis.Nil {
-			fmt.Println("Error converting result to string:", err)
+			logger.Errorf("Error converting result to string: %v", err)
 			return
 		}
 		return
@@ -103,7 +106,7 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 	var data EventData
 	err = json.Unmarshal([]byte(dataStr), &data)
 	if err != nil {
-		fmt.Println("Error:", err)
+		logger.Errorf("Error: %v", err)
 		return
 	}
 
@@ -116,7 +119,7 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 		logInfo = event
 	}
 
-	fmt.Println("[SETEX] ", channel+" "+logInfo)
+	logger.Infof("[SETEX] %s", channel+" "+logInfo)
 
 	ttl := func() time.Duration {
 		if event == "IN_CALL" {

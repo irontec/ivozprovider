@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"log"
 	"net/http"
 	"sort"
@@ -12,6 +11,7 @@ import (
 
 	"github.com/gorilla/websocket"
 	"github.com/redis/go-redis/v9"
+	"github.com/sirupsen/logrus"
 	"irontec.com/realtime/pkg/config"
 	"irontec.com/realtime/pkg/services"
 	"irontec.com/realtime/pkg/utils"
@@ -26,14 +26,16 @@ var upgrader = websocket.Upgrader{
 }
 
 var redisPool sync.Map
+var logger = logrus.New()
 
 func OnWorkerStart() {
-	log.Println("Init Redis Pool")
+	logger.SetLevel(config.GetLogLevel())
+
+	logger.Info("Init Redis Pool")
 
 	http.HandleFunc("/", handler)
 	listen := config.GetWsListenAddress()
-	log.Fatal(http.ListenAndServe(listen, nil))
-
+	logger.Fatal(http.ListenAndServe(listen, nil))
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -45,30 +47,30 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer onClose(conn)
 
-	fmt.Println("Connection open")
+	logger.Info("Connection open")
 	conn.WriteMessage(websocket.TextMessage, []byte("Challenge"))
 
 	onMessage(conn)
 }
 
 func onClose(conn *websocket.Conn) {
-	log.Println("Connection closed")
+	logger.Info("Connection closed")
 
 	storedClient, ok := redisPool.Load(conn)
 	if !ok {
-		fmt.Println("Could not find Redis client for the WebSocket connection.")
+		logger.Error("Could not find Redis client for the WebSocket connection.")
 		return
 	}
 
 	client, ok := storedClient.(*redis.Client)
 	if !ok {
-		fmt.Println("Unexpected type found in the map.")
+		logger.Error("Unexpected type found in the map.")
 		return
 	}
 
 	err := client.Close()
 	if err != nil {
-		fmt.Println("Error closing Redis client:", err)
+		logger.Errorf("Error closing Redis client: %v", err)
 		return
 	}
 }
@@ -77,18 +79,18 @@ func onMessage(conn *websocket.Conn) {
 	for {
 		messageType, p, err := conn.ReadMessage()
 		if err != nil {
-			log.Println("Error reading message:", err)
+			logger.Errorf("Error reading message: %s", err)
 			return
 		}
 
 		if messageType == websocket.TextMessage {
-			log.Println("<< Received message:", string(p))
+			logger.Infof("<< Received message: %s", string(p))
 
 			data := utils.GetPayload(string(p))
 			token, err := utils.GetToken(data.Auth)
 
 			if err != nil {
-				log.Println("Error reading token:", err)
+				logger.Errorf("Error reading token: %s", err)
 				conn.WriteMessage(websocket.TextMessage, []byte("Challenge"))
 				return
 			}
@@ -96,13 +98,13 @@ func onMessage(conn *websocket.Conn) {
 			tokenPayload, err := utils.Decode(token)
 
 			if err != nil {
-				log.Println("Error decoding token:", err)
+				logger.Errorf("Error decoding token: %s", err)
 				conn.WriteMessage(websocket.TextMessage, []byte("Challenge"))
 				return
 			}
 
 			role := tokenPayload.Roles[0]
-			registerChannel, err := services.GetActiveCallsFilter(data.Auth, role)
+			registerChannel, err := services.GetActiveCallsFilter(data.Auth, role, logger)
 
 			if err != nil {
 				conn.WriteMessage(websocket.TextMessage, []byte("Challenge"))
@@ -121,7 +123,7 @@ func sendCurrentStateAndUpdate(conn *websocket.Conn, registerChannel string) {
 		redisClient, err := getRedisClientByConnection(server)
 
 		if err != nil {
-			fmt.Println("Unable to create redis client")
+			logger.Error("Unable to create redis client")
 			return
 		}
 
@@ -140,16 +142,16 @@ func sendCurrentStateAndUpdate(conn *websocket.Conn, registerChannel string) {
 }
 
 func sendCurrentState(redisClient *redis.Client, mask string, conn *websocket.Conn) {
-	fmt.Println("Sending current state (" + mask + ")")
+	logger.Info("Sending current state (" + mask + ")")
 
 	keys, err := redisClient.Keys(context.Background(), mask).Result()
 	if err != nil {
-		log.Fatal(err)
+		logger.Fatal(err)
 	}
 
 	currentState, err := redisClient.MGet(context.Background(), keys...).Result()
 	if err != nil {
-		fmt.Println("No call info found on redis")
+		logger.Error("No call info found on redis")
 		return
 	}
 
@@ -158,14 +160,14 @@ func sendCurrentState(redisClient *redis.Client, mask string, conn *websocket.Co
 
 		itemStr, ok := item.(string)
 		if !ok {
-			fmt.Println("Unexpected type for item in itemStr")
+			logger.Warning("Unexpected type for item in itemStr")
 			return
 		}
 
 		var event services.EventData
 		err := json.Unmarshal([]byte(itemStr), &event)
 		if err != nil {
-			fmt.Println("Error unmarshalling JSON data:", err)
+			logger.Errorf("Error unmarshalling JSON data: %v", err)
 			return
 		}
 
@@ -184,7 +186,7 @@ func sendCurrentState(redisClient *redis.Client, mask string, conn *websocket.Co
 	for _, item := range events {
 		result, err := json.Marshal(item)
 		if err != nil {
-			fmt.Println("Error marshalling struct to JSON:", err)
+			logger.Errorf("Error marshalling struct to JSON: %v", err)
 			return
 		}
 		conn.WriteMessage(websocket.TextMessage, result)
@@ -200,7 +202,7 @@ func forwardStateUpdates(redisClient *redis.Client, mask string, conn *websocket
 			if subscription, ok := msg.(*redis.Subscription); ok {
 
 				if subscription.Kind == "unsubscribe" {
-					fmt.Println("Unsubscribe")
+					logger.Info("Unsubscribe")
 					break
 				}
 			} else if message, ok := msg.(*redis.Message); ok {
@@ -210,13 +212,13 @@ func forwardStateUpdates(redisClient *redis.Client, mask string, conn *websocket
 
 					err := json.Unmarshal([]byte(payload), &eventData)
 					if err != nil {
-						fmt.Println("Error:", err)
+						logger.Errorf("Error: %v", err)
 						return
 					}
 
 					forward := utils.InArray(eventData.Event, services.SIGNIFICANT_CALL_EVENTS[:])
 					if !forward {
-						fmt.Println("Cannot forward message:", payload)
+						logger.Errorf("Cannot forward message: %v", payload)
 						return
 					}
 					conn.WriteMessage(websocket.TextMessage, []byte(payload))
@@ -225,7 +227,7 @@ func forwardStateUpdates(redisClient *redis.Client, mask string, conn *websocket
 			}
 
 			if err != nil {
-				log.Printf("Error receiving message from Redis: %v", err)
+				logger.Errorf("Error receiving message from Redis: %v", err)
 				return
 			}
 
@@ -237,7 +239,7 @@ func getRedisClientByConnection(conn *websocket.Conn) (*redis.Client, error) {
 
 	storedClient, ok := redisPool.Load(conn)
 	if !ok {
-		fmt.Println("Could not find Redis client for the WebSocket connection.")
+		logger.Warning("Could not find Redis client for the WebSocket connection.")
 		client := services.CreateFailOverClient()
 		redisPool.Store(conn, client)
 		return client, nil

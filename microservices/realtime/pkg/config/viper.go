@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
 
@@ -52,4 +53,27 @@ func GetRedisMaster() string {
 
 func GetRedisDatabase() int {
 	return viper.GetInt("redis.db")
+}
+
+func GetLogLevel() logrus.Level {
+	level := logrus.ErrorLevel
+
+	switch viper.GetInt("log.level") {
+	case 0:
+		level = logrus.PanicLevel
+	case 1:
+		level = logrus.FatalLevel
+	case 2:
+		level = logrus.ErrorLevel
+	case 3:
+		level = logrus.WarnLevel
+	case 4:
+		level = logrus.InfoLevel
+	case 5:
+		level = logrus.DebugLevel
+	case 6:
+		level = logrus.TraceLevel
+	}
+
+	return level
 }

@@ -12,3 +12,5 @@ http:
       platform: https://127.0.0.1/api/platform
       brand: https://127.0.0.1/api/brand
       client: https://127.0.0.1/api/client
+log:
+   level: 3
