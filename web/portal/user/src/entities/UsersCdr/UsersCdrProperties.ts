@@ -6,19 +6,13 @@ import {
 
 export type UsersCdrPropertyList<T> = {
   startTime?: T;
-  endTime?: T;
-  duration?: T;
+  owner?: T;
   direction?: T;
   caller?: T;
   callee?: T;
-  diversion?: T;
-  referee?: T;
-  referrer?: T;
-  callid?: T;
-  callidHash?: T;
-  xcallid?: T;
+  duration?: T;
+  disposition?: T;
   id?: T;
-  user?: T;
 };
 
 export type UsersCdrProperties = UsersCdrPropertyList<Partial<PropertySpec>>;

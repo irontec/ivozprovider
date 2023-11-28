@@ -1,10 +1,12 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
+  ChildDecoratorType,
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
+import Actions from './Action';
 import Duration from './Field/Duration';
 import { UsersCdrProperties, UsersCdrPropertyList } from './UsersCdrProperties';
 
@@ -12,8 +14,10 @@ const properties: UsersCdrProperties = {
   startTime: {
     label: _('Start Time'),
   },
-  endTime: {
-    label: _('End Time'),
+  owner: {
+    label: _('Owner'),
+    readOnly: true,
+    memoize: false,
   },
   duration: {
     label: _('Duration'),
@@ -28,33 +32,28 @@ const properties: UsersCdrProperties = {
   callee: {
     label: _('Callee'),
   },
-  diversion: {
-    label: _('Diversion'),
-  },
-  referee: {
-    label: _('Referee'),
-  },
-  referrer: {
-    label: _('Referrer'),
-  },
-  callid: {
-    label: 'Callid',
-  },
-  callidHash: {
-    label: 'Callid Hash',
-  },
-  xcallid: {
-    label: 'Xcallid',
+  disposition: {
+    label: 'Tipificación',
+    readOnly: true,
   },
   id: {
     label: _('Id'),
   },
-  user: {
-    label: _('User'),
-  },
 };
 
-const columns = ['startTime', 'caller', 'duration', 'direction'];
+export const ChildDecorator: ChildDecoratorType = () => {
+  return null;
+};
+
+const columns = [
+  'startTime',
+  'owner',
+  'direction',
+  'caller',
+  'callee',
+  'duration',
+  'disposition',
+];
 
 const UsersCdr: EntityInterface = {
   ...defaultEntityBehavior,
@@ -66,7 +65,9 @@ const UsersCdr: EntityInterface = {
   properties,
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
+  ChildDecorator,
   columns,
+  customActions: Actions,
   Form: async () => {
     const module = await import('./Form');
 
