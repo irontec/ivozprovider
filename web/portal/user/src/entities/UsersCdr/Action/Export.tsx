@@ -37,6 +37,7 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
     const search = location.search;
     const glue = search.includes('?') ? '&' : '?';
 
+    debugger;
     apiDownload({
       path: `${UsersCdr.path + search + glue}_pagination=false`,
       params: {},
@@ -101,13 +102,13 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
       </a>
       {open && (
         <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle>Downloading</DialogTitle>
+          <DialogTitle>{_('Downloading')}</DialogTitle>
           <DialogContent sx={{ textAlign: 'left!important' }}>
             {!error && <DialogContentBody child={<CircularProgress />} />}
             {error && <ErrorMessageComponent message={errorMsg} />}
           </DialogContent>
           <DialogActions>
-            <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
+            <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
           </DialogActions>
         </Dialog>
       )}
