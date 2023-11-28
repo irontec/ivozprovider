@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/sirupsen/logrus"
 	"irontec.com/realtime/pkg/config"
 )
 
@@ -25,7 +26,7 @@ type CriteriaResponse struct {
 	Criteria string `json:"criteria"`
 }
 
-func GetActiveCallsFilter(token string, role string) (*string, error) {
+func GetActiveCallsFilter(token string, role string, logger *logrus.Logger) (*string, error) {
 	var api string
 
 	switch role {
@@ -45,7 +46,7 @@ func GetActiveCallsFilter(token string, role string) (*string, error) {
 	req, err := http.NewRequest("GET", apiUrl, nil)
 
 	if err != nil {
-		fmt.Println("Error creating request:", err)
+		logger.Errorf("Error creating request: %v", err)
 		return nil, err
 	}
 
@@ -60,26 +61,26 @@ func GetActiveCallsFilter(token string, role string) (*string, error) {
 	// Perform the HTTP request using the global client
 	resp, err := client.Do(req)
 	if err != nil {
-		fmt.Println("Error making request:", err)
+		logger.Errorf("Error making request: %v", err)
 		return nil, err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Println("Request failed with status code:", resp.StatusCode)
+		logger.Errorf("Request failed with status code: %v", resp.StatusCode)
 		return nil, err
 	}
 
 	// Read the response body
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println("Error reading response body:", err)
+		logger.Errorf("Error reading response body: %v", err)
 		return nil, err
 	}
 	var criteriaResponse *CriteriaResponse
 
 	if err := json.Unmarshal(body, &criteriaResponse); err != nil {
-		fmt.Println("Error unmarshaling JSON:", err)
+		logger.Errorf("Error unmarshaling JSON: %v", err)
 		return nil, err
 	}
 
