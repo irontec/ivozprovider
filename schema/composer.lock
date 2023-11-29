@@ -2060,19 +2060,19 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.9.5",
+            "version": "5.10.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-dev-tools",
-                "reference": "6ca5e6265895cf892856e54aa6626eece02fb7f6"
+                "reference": "ccbee70f0a0f4c403d1dfc5ea8768e9a780ca2bb"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
                 "doctrine/orm": "^2.5",
-                "irontec/ivoz-core": "^4.16",
+                "irontec/ivoz-core": "^4.17.0",
                 "php": ">=8.0",
                 "symfony/console": "^5.1",
-                "symfony/maker-bundle": "^1.33"
+                "symfony/maker-bundle": "<=1.38"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.0"
