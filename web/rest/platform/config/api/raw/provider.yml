@@ -527,6 +527,11 @@ Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
           - 'application/pdf'
         tags:
           - Provider
+        responses:
+          '200':
+            description: Downloaded Generic template
+          '404':
+            description: Resource not found
 
 Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
   itemOperations:
