@@ -220,7 +220,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->setIvr($value);
     }
 
-    public function getIvrId()
+    public function getIvrId(): ?int
     {
         if ($dto = $this->getIvr()) {
             return $dto->getId();
@@ -250,7 +250,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->setWelcomeLocution($value);
     }
 
-    public function getWelcomeLocutionId()
+    public function getWelcomeLocutionId(): ?int
     {
         if ($dto = $this->getWelcomeLocution()) {
             return $dto->getId();
@@ -280,7 +280,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->setExtension($value);
     }
 
-    public function getExtensionId()
+    public function getExtensionId(): ?int
     {
         if ($dto = $this->getExtension()) {
             return $dto->getId();
@@ -310,7 +310,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->setVoicemail($value);
     }
 
-    public function getVoicemailId()
+    public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
             return $dto->getId();
@@ -340,7 +340,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->setConditionalRoute($value);
     }
 
-    public function getConditionalRouteId()
+    public function getConditionalRouteId(): ?int
     {
         if ($dto = $this->getConditionalRoute()) {
             return $dto->getId();
@@ -370,7 +370,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->setNumberCountry($value);
     }
 
-    public function getNumberCountryId()
+    public function getNumberCountryId(): ?int
     {
         if ($dto = $this->getNumberCountry()) {
             return $dto->getId();

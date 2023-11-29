@@ -142,7 +142,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
         return $this->setFriend($value);
     }
 
-    public function getFriendId()
+    public function getFriendId(): ?int
     {
         if ($dto = $this->getFriend()) {
             return $dto->getId();

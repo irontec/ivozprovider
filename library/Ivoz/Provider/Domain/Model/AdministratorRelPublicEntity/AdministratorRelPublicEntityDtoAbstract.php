@@ -188,7 +188,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->setAdministrator($value);
     }
 
-    public function getAdministratorId()
+    public function getAdministratorId(): ?int
     {
         if ($dto = $this->getAdministrator()) {
             return $dto->getId();
@@ -218,7 +218,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->setPublicEntity($value);
     }
 
-    public function getPublicEntityId()
+    public function getPublicEntityId(): ?int
     {
         if ($dto = $this->getPublicEntity()) {
             return $dto->getId();

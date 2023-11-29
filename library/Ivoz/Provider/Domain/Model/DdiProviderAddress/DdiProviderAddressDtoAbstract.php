@@ -150,7 +150,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return $this->setDdiProvider($value);
     }
 
-    public function getDdiProviderId()
+    public function getDdiProviderId(): ?int
     {
         if ($dto = $this->getDdiProvider()) {
             return $dto->getId();
@@ -180,7 +180,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return $this->setTrunksAddress($value);
     }
 
-    public function getTrunksAddressId()
+    public function getTrunksAddressId(): ?int
     {
         if ($dto = $this->getTrunksAddress()) {
             return $dto->getId();

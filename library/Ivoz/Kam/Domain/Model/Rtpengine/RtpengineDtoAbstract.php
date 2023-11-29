@@ -218,7 +218,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->setMediaRelaySet($value);
     }
 
-    public function getMediaRelaySetId()
+    public function getMediaRelaySetId(): ?int
     {
         if ($dto = $this->getMediaRelaySet()) {
             return $dto->getId();

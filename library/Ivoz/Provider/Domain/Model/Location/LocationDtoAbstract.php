@@ -149,7 +149,7 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();

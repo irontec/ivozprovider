@@ -520,7 +520,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setDomain($value);
     }
 
-    public function getDomainId()
+    public function getDomainId(): ?int
     {
         if ($dto = $this->getDomain()) {
             return $dto->getId();
@@ -550,7 +550,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setLanguage($value);
     }
 
-    public function getLanguageId()
+    public function getLanguageId(): ?int
     {
         if ($dto = $this->getLanguage()) {
             return $dto->getId();
@@ -580,7 +580,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setDefaultTimezone($value);
     }
 
-    public function getDefaultTimezoneId()
+    public function getDefaultTimezoneId(): ?int
     {
         if ($dto = $this->getDefaultTimezone()) {
             return $dto->getId();
@@ -610,7 +610,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setCurrency($value);
     }
 
-    public function getCurrencyId()
+    public function getCurrencyId(): ?int
     {
         if ($dto = $this->getCurrency()) {
             return $dto->getId();
@@ -640,7 +640,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setVoicemailNotificationTemplate($value);
     }
 
-    public function getVoicemailNotificationTemplateId()
+    public function getVoicemailNotificationTemplateId(): ?int
     {
         if ($dto = $this->getVoicemailNotificationTemplate()) {
             return $dto->getId();
@@ -670,7 +670,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setFaxNotificationTemplate($value);
     }
 
-    public function getFaxNotificationTemplateId()
+    public function getFaxNotificationTemplateId(): ?int
     {
         if ($dto = $this->getFaxNotificationTemplate()) {
             return $dto->getId();
@@ -700,7 +700,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setInvoiceNotificationTemplate($value);
     }
 
-    public function getInvoiceNotificationTemplateId()
+    public function getInvoiceNotificationTemplateId(): ?int
     {
         if ($dto = $this->getInvoiceNotificationTemplate()) {
             return $dto->getId();
@@ -730,7 +730,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setCallCsvNotificationTemplate($value);
     }
 
-    public function getCallCsvNotificationTemplateId()
+    public function getCallCsvNotificationTemplateId(): ?int
     {
         if ($dto = $this->getCallCsvNotificationTemplate()) {
             return $dto->getId();
@@ -760,7 +760,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setMaxDailyUsageNotificationTemplate($value);
     }
 
-    public function getMaxDailyUsageNotificationTemplateId()
+    public function getMaxDailyUsageNotificationTemplateId(): ?int
     {
         if ($dto = $this->getMaxDailyUsageNotificationTemplate()) {
             return $dto->getId();

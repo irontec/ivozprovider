@@ -142,7 +142,7 @@ abstract class CorporationDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();

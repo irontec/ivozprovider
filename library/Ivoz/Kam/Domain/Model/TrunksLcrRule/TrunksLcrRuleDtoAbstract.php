@@ -253,7 +253,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingPattern($value);
     }
 
-    public function getRoutingPatternId()
+    public function getRoutingPatternId(): ?int
     {
         if ($dto = $this->getRoutingPattern()) {
             return $dto->getId();
@@ -283,7 +283,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingPatternGroupsRelPattern($value);
     }
 
-    public function getRoutingPatternGroupsRelPatternId()
+    public function getRoutingPatternGroupsRelPatternId(): ?int
     {
         if ($dto = $this->getRoutingPatternGroupsRelPattern()) {
             return $dto->getId();
@@ -313,7 +313,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingRouting($value);
     }
 
-    public function getOutgoingRoutingId()
+    public function getOutgoingRoutingId(): ?int
     {
         if ($dto = $this->getOutgoingRouting()) {
             return $dto->getId();

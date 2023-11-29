@@ -204,7 +204,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->setDestinationRateGroup($value);
     }
 
-    public function getDestinationRateGroupId()
+    public function getDestinationRateGroupId(): ?int
     {
         if ($dto = $this->getDestinationRateGroup()) {
             return $dto->getId();
@@ -234,7 +234,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->setDestination($value);
     }
 
-    public function getDestinationId()
+    public function getDestinationId(): ?int
     {
         if ($dto = $this->getDestination()) {
             return $dto->getId();
@@ -264,7 +264,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->setTpRate($value);
     }
 
-    public function getTpRateId()
+    public function getTpRateId(): ?int
     {
         if ($dto = $this->getTpRate()) {
             return $dto->getId();
@@ -294,7 +294,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->setTpDestinationRate($value);
     }
 
-    public function getTpDestinationRateId()
+    public function getTpDestinationRateId(): ?int
     {
         if ($dto = $this->getTpDestinationRate()) {
             return $dto->getId();

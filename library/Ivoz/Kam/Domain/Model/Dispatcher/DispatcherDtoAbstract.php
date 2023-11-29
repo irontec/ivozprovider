@@ -218,7 +218,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->setApplicationServer($value);
     }
 
-    public function getApplicationServerId()
+    public function getApplicationServerId(): ?int
     {
         if ($dto = $this->getApplicationServer()) {
             return $dto->getId();

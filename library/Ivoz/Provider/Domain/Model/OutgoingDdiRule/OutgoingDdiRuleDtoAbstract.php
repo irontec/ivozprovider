@@ -157,7 +157,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -187,7 +187,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this->setForcedDdi($value);
     }
 
-    public function getForcedDdiId()
+    public function getForcedDdiId(): ?int
     {
         if ($dto = $this->getForcedDdi()) {
             return $dto->getId();

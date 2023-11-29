@@ -416,7 +416,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -446,7 +446,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->setCurrency($value);
     }
 
-    public function getCurrencyId()
+    public function getCurrencyId(): ?int
     {
         if ($dto = $this->getCurrency()) {
             return $dto->getId();

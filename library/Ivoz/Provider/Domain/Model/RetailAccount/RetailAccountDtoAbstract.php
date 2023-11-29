@@ -393,7 +393,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -423,7 +423,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->setDomain($value);
     }
 
-    public function getDomainId()
+    public function getDomainId(): ?int
     {
         if ($dto = $this->getDomain()) {
             return $dto->getId();
@@ -453,7 +453,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -483,7 +483,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->setTransformationRuleSet($value);
     }
 
-    public function getTransformationRuleSetId()
+    public function getTransformationRuleSetId(): ?int
     {
         if ($dto = $this->getTransformationRuleSet()) {
             return $dto->getId();
@@ -513,7 +513,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingDdi($value);
     }
 
-    public function getOutgoingDdiId()
+    public function getOutgoingDdiId(): ?int
     {
         if ($dto = $this->getOutgoingDdi()) {
             return $dto->getId();
@@ -543,7 +543,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->setPsEndpoint($value);
     }
 
-    public function getPsEndpointId()
+    public function getPsEndpointId(): ?int
     {
         if ($dto = $this->getPsEndpoint()) {
             return $dto->getId();
@@ -573,7 +573,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->setPsIdentify($value);
     }
 
-    public function getPsIdentifyId()
+    public function getPsIdentifyId(): ?int
     {
         if ($dto = $this->getPsIdentify()) {
             return $dto->getId();

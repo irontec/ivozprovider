@@ -344,7 +344,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -374,7 +374,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setWelcomeLocution($value);
     }
 
-    public function getWelcomeLocutionId()
+    public function getWelcomeLocutionId(): ?int
     {
         if ($dto = $this->getWelcomeLocution()) {
             return $dto->getId();
@@ -404,7 +404,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setNoInputLocution($value);
     }
 
-    public function getNoInputLocutionId()
+    public function getNoInputLocutionId(): ?int
     {
         if ($dto = $this->getNoInputLocution()) {
             return $dto->getId();
@@ -434,7 +434,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setErrorLocution($value);
     }
 
-    public function getErrorLocutionId()
+    public function getErrorLocutionId(): ?int
     {
         if ($dto = $this->getErrorLocution()) {
             return $dto->getId();
@@ -464,7 +464,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setSuccessLocution($value);
     }
 
-    public function getSuccessLocutionId()
+    public function getSuccessLocutionId(): ?int
     {
         if ($dto = $this->getSuccessLocution()) {
             return $dto->getId();
@@ -494,7 +494,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setNoInputExtension($value);
     }
 
-    public function getNoInputExtensionId()
+    public function getNoInputExtensionId(): ?int
     {
         if ($dto = $this->getNoInputExtension()) {
             return $dto->getId();
@@ -524,7 +524,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setErrorExtension($value);
     }
 
-    public function getErrorExtensionId()
+    public function getErrorExtensionId(): ?int
     {
         if ($dto = $this->getErrorExtension()) {
             return $dto->getId();
@@ -554,7 +554,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setNoInputVoicemail($value);
     }
 
-    public function getNoInputVoicemailId()
+    public function getNoInputVoicemailId(): ?int
     {
         if ($dto = $this->getNoInputVoicemail()) {
             return $dto->getId();
@@ -584,7 +584,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setErrorVoicemail($value);
     }
 
-    public function getErrorVoicemailId()
+    public function getErrorVoicemailId(): ?int
     {
         if ($dto = $this->getErrorVoicemail()) {
             return $dto->getId();
@@ -614,7 +614,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setNoInputNumberCountry($value);
     }
 
-    public function getNoInputNumberCountryId()
+    public function getNoInputNumberCountryId(): ?int
     {
         if ($dto = $this->getNoInputNumberCountry()) {
             return $dto->getId();
@@ -644,7 +644,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setErrorNumberCountry($value);
     }
 
-    public function getErrorNumberCountryId()
+    public function getErrorNumberCountryId(): ?int
     {
         if ($dto = $this->getErrorNumberCountry()) {
             return $dto->getId();

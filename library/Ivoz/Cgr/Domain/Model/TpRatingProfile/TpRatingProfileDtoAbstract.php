@@ -321,7 +321,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingProfile($value);
     }
 
-    public function getRatingProfileId()
+    public function getRatingProfileId(): ?int
     {
         if ($dto = $this->getRatingProfile()) {
             return $dto->getId();
@@ -351,7 +351,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingRoutingRelCarrier($value);
     }
 
-    public function getOutgoingRoutingRelCarrierId()
+    public function getOutgoingRoutingRelCarrierId(): ?int
     {
         if ($dto = $this->getOutgoingRoutingRelCarrier()) {
             return $dto->getId();

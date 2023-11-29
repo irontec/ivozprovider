@@ -250,7 +250,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -280,7 +280,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->setIvr($value);
     }
 
-    public function getIvrId()
+    public function getIvrId(): ?int
     {
         if ($dto = $this->getIvr()) {
             return $dto->getId();
@@ -310,7 +310,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->setHuntGroup($value);
     }
 
-    public function getHuntGroupId()
+    public function getHuntGroupId(): ?int
     {
         if ($dto = $this->getHuntGroup()) {
             return $dto->getId();
@@ -340,7 +340,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->setConferenceRoom($value);
     }
 
-    public function getConferenceRoomId()
+    public function getConferenceRoomId(): ?int
     {
         if ($dto = $this->getConferenceRoom()) {
             return $dto->getId();
@@ -370,7 +370,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -400,7 +400,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->setQueue($value);
     }
 
-    public function getQueueId()
+    public function getQueueId(): ?int
     {
         if ($dto = $this->getQueue()) {
             return $dto->getId();
@@ -430,7 +430,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->setConditionalRoute($value);
     }
 
-    public function getConditionalRouteId()
+    public function getConditionalRouteId(): ?int
     {
         if ($dto = $this->getConditionalRoute()) {
             return $dto->getId();
@@ -460,7 +460,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->setNumberCountry($value);
     }
 
-    public function getNumberCountryId()
+    public function getNumberCountryId(): ?int
     {
         if ($dto = $this->getNumberCountry()) {
             return $dto->getId();
@@ -490,7 +490,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->setVoicemail($value);
     }
 
-    public function getVoicemailId()
+    public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
             return $dto->getId();

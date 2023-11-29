@@ -112,7 +112,7 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
         return $this->setFeature($value);
     }
 
-    public function getFeatureId()
+    public function getFeatureId(): ?int
     {
         if ($dto = $this->getFeature()) {
             return $dto->getId();

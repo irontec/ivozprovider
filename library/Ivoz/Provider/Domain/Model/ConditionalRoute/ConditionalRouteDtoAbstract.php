@@ -259,7 +259,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -289,7 +289,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setIvr($value);
     }
 
-    public function getIvrId()
+    public function getIvrId(): ?int
     {
         if ($dto = $this->getIvr()) {
             return $dto->getId();
@@ -319,7 +319,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setHuntGroup($value);
     }
 
-    public function getHuntGroupId()
+    public function getHuntGroupId(): ?int
     {
         if ($dto = $this->getHuntGroup()) {
             return $dto->getId();
@@ -349,7 +349,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setVoicemail($value);
     }
 
-    public function getVoicemailId()
+    public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
             return $dto->getId();
@@ -379,7 +379,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -409,7 +409,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setQueue($value);
     }
 
-    public function getQueueId()
+    public function getQueueId(): ?int
     {
         if ($dto = $this->getQueue()) {
             return $dto->getId();
@@ -439,7 +439,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setLocution($value);
     }
 
-    public function getLocutionId()
+    public function getLocutionId(): ?int
     {
         if ($dto = $this->getLocution()) {
             return $dto->getId();
@@ -469,7 +469,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setConferenceRoom($value);
     }
 
-    public function getConferenceRoomId()
+    public function getConferenceRoomId(): ?int
     {
         if ($dto = $this->getConferenceRoom()) {
             return $dto->getId();
@@ -499,7 +499,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setExtension($value);
     }
 
-    public function getExtensionId()
+    public function getExtensionId(): ?int
     {
         if ($dto = $this->getExtension()) {
             return $dto->getId();
@@ -529,7 +529,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setNumberCountry($value);
     }
 
-    public function getNumberCountryId()
+    public function getNumberCountryId(): ?int
     {
         if ($dto = $this->getNumberCountry()) {
             return $dto->getId();

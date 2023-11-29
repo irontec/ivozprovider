@@ -112,7 +112,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $this->setIvr($value);
     }
 
-    public function getIvrId()
+    public function getIvrId(): ?int
     {
         if ($dto = $this->getIvr()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $this->setExtension($value);
     }
 
-    public function getExtensionId()
+    public function getExtensionId(): ?int
     {
         if ($dto = $this->getExtension()) {
             return $dto->getId();

@@ -584,7 +584,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->setTerminal($value);
     }
 
-    public function getTerminalId()
+    public function getTerminalId(): ?int
     {
         if ($dto = $this->getTerminal()) {
             return $dto->getId();
@@ -614,7 +614,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->setFriend($value);
     }
 
-    public function getFriendId()
+    public function getFriendId(): ?int
     {
         if ($dto = $this->getFriend()) {
             return $dto->getId();
@@ -644,7 +644,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->setResidentialDevice($value);
     }
 
-    public function getResidentialDeviceId()
+    public function getResidentialDeviceId(): ?int
     {
         if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
@@ -674,7 +674,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->setRetailAccount($value);
     }
 
-    public function getRetailAccountId()
+    public function getRetailAccountId(): ?int
     {
         if ($dto = $this->getRetailAccount()) {
             return $dto->getId();

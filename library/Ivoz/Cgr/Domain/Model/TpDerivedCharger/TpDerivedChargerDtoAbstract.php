@@ -598,7 +598,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();

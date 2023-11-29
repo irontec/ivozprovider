@@ -279,7 +279,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -309,7 +309,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -339,7 +339,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->setTimezone($value);
     }
 
-    public function getTimezoneId()
+    public function getTimezoneId(): ?int
     {
         if ($dto = $this->getTimezone()) {
             return $dto->getId();

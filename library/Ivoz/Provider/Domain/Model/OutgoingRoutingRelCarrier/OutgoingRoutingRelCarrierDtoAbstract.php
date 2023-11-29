@@ -119,7 +119,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this->setOutgoingRouting($value);
     }
 
-    public function getOutgoingRoutingId()
+    public function getOutgoingRoutingId(): ?int
     {
         if ($dto = $this->getOutgoingRouting()) {
             return $dto->getId();
@@ -149,7 +149,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this->setCarrier($value);
     }
 
-    public function getCarrierId()
+    public function getCarrierId(): ?int
     {
         if ($dto = $this->getCarrier()) {
             return $dto->getId();

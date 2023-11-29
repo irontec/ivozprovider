@@ -199,7 +199,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
         return $this->setTransformationRuleSet($value);
     }
 
-    public function getTransformationRuleSetId()
+    public function getTransformationRuleSetId(): ?int
     {
         if ($dto = $this->getTransformationRuleSet()) {
             return $dto->getId();

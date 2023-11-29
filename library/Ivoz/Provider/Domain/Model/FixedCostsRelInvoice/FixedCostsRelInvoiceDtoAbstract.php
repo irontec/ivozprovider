@@ -131,7 +131,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return $this->setFixedCost($value);
     }
 
-    public function getFixedCostId()
+    public function getFixedCostId(): ?int
     {
         if ($dto = $this->getFixedCost()) {
             return $dto->getId();
@@ -161,7 +161,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return $this->setInvoice($value);
     }
 
-    public function getInvoiceId()
+    public function getInvoiceId(): ?int
     {
         if ($dto = $this->getInvoice()) {
             return $dto->getId();

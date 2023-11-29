@@ -112,7 +112,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return $this->setCondition($value);
     }
 
-    public function getConditionId()
+    public function getConditionId(): ?int
     {
         if ($dto = $this->getCondition()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return $this->setRouteLock($value);
     }
 
-    public function getRouteLockId()
+    public function getRouteLockId(): ?int
     {
         if ($dto = $this->getRouteLock()) {
             return $dto->getId();

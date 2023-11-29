@@ -257,7 +257,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -287,7 +287,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -317,7 +317,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->setCallCsvScheduler($value);
     }
 
-    public function getCallCsvSchedulerId()
+    public function getCallCsvSchedulerId(): ?int
     {
         if ($dto = $this->getCallCsvScheduler()) {
             return $dto->getId();

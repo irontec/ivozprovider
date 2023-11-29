@@ -237,7 +237,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $this->setTerminalManufacturer($value);
     }
 
-    public function getTerminalManufacturerId()
+    public function getTerminalManufacturerId(): ?int
     {
         if ($dto = $this->getTerminalManufacturer()) {
             return $dto->getId();

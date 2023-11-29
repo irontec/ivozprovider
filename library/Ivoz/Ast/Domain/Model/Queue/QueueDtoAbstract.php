@@ -332,7 +332,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setQueue($value);
     }
 
-    public function getQueueId()
+    public function getQueueId(): ?int
     {
         if ($dto = $this->getQueue()) {
             return $dto->getId();
