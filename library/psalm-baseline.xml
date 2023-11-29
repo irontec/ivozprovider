@@ -26,12 +26,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getFriendId</code>
-      <code>getResidentialDeviceId</code>
-      <code>getRetailAccountId</code>
-      <code>getTerminalId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
@@ -76,12 +70,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getFriendId</code>
-      <code>getResidentialDeviceId</code>
-      <code>getRetailAccountId</code>
-      <code>getTerminalId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
@@ -106,9 +94,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getQueueId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -130,9 +115,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getQueueMemberId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -162,9 +144,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -240,10 +219,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCarrierId</code>
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -296,9 +271,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCarrierId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -320,9 +292,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -349,9 +318,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getDestinationId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -383,9 +349,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getDestinationRateId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -412,9 +375,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getOutgoingRoutingId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -449,9 +409,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getDestinationRateId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -478,9 +435,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getRatingPlanId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -557,10 +511,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getOutgoingRoutingRelCarrierId</code>
-      <code>getRatingProfileId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -588,9 +538,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getRatingPlanId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -856,9 +803,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getApplicationServerId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -893,9 +837,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getMediaRelaySetId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -922,9 +863,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getDdiProviderAddressId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -973,18 +911,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="10">
-      <code>getBrandId</code>
-      <code>getCarrierId</code>
-      <code>getCompanyId</code>
-      <code>getDdiId</code>
-      <code>getDdiProviderId</code>
-      <code>getFaxId</code>
-      <code>getFriendId</code>
-      <code>getResidentialDeviceId</code>
-      <code>getRetailAccountId</code>
-      <code>getUserId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="10">
       <code>$id</code>
       <code>$id</code>
@@ -1051,9 +977,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCarrierServerId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -1096,11 +1019,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getOutgoingRoutingId</code>
-      <code>getRoutingPatternGroupsRelPatternId</code>
-      <code>getRoutingPatternId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$id</code>
       <code>$id</code>
@@ -1140,11 +1058,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getGwId</code>
-      <code>getOutgoingRoutingId</code>
-      <code>getRuleId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$id</code>
       <code>$id</code>
@@ -1189,10 +1102,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getDdiProviderRegistrationId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -1226,9 +1135,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -1263,9 +1169,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -1301,12 +1204,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-      <code>getFriendId</code>
-      <code>getUserId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
@@ -1779,11 +1676,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-      <code>getTimezoneId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$id</code>
       <code>$id</code>
@@ -1831,10 +1723,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getAdministratorId</code>
-      <code>getPublicEntityId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -1884,10 +1772,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCarrierId</code>
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -1921,11 +1805,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getCarrierId</code>
-      <code>getCompanyId</code>
-      <code>getNotificationTemplateId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$id</code>
       <code>$id</code>
@@ -1954,10 +1833,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -2013,17 +1888,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="9">
-      <code>getBrandId</code>
-      <code>getCarrierId</code>
-      <code>getCompanyId</code>
-      <code>getDdiId</code>
-      <code>getDdiProviderId</code>
-      <code>getDestinationId</code>
-      <code>getInvoiceId</code>
-      <code>getRatingPlanGroupId</code>
-      <code>getTrunksCdrId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="9">
       <code>$id</code>
       <code>$id</code>
@@ -2081,17 +1945,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="9">
-      <code>getBrandId</code>
-      <code>getCarrierId</code>
-      <code>getCompanyId</code>
-      <code>getDdiId</code>
-      <code>getDdiProviderId</code>
-      <code>getDestinationId</code>
-      <code>getInvoiceId</code>
-      <code>getRatingPlanGroupId</code>
-      <code>getTrunksCdrId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="9">
       <code>$id</code>
       <code>$id</code>
@@ -2164,17 +2017,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="9">
-      <code>getCallCsvNotificationTemplateId</code>
-      <code>getCurrencyId</code>
-      <code>getDefaultTimezoneId</code>
-      <code>getDomainId</code>
-      <code>getFaxNotificationTemplateId</code>
-      <code>getInvoiceNotificationTemplateId</code>
-      <code>getLanguageId</code>
-      <code>getMaxDailyUsageNotificationTemplateId</code>
-      <code>getVoicemailNotificationTemplateId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="9">
       <code>$id</code>
       <code>$id</code>
@@ -2239,10 +2081,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getServiceId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -2270,9 +2108,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -2319,13 +2154,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="5">
-      <code>getCalendarId</code>
-      <code>getExtensionId</code>
-      <code>getLocutionId</code>
-      <code>getNumberCountryId</code>
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="5">
       <code>$id</code>
       <code>$id</code>
@@ -2369,10 +2197,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCalendarPeriodId</code>
-      <code>getScheduleId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -2405,9 +2229,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -2445,10 +2266,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCallAclId</code>
-      <code>getMatchListId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -2482,11 +2299,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getBrandId</code>
-      <code>getCallCsvSchedulerId</code>
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$id</code>
       <code>$id</code>
@@ -2563,19 +2375,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="11">
-      <code>getBrandId</code>
-      <code>getCallCsvNotificationTemplateId</code>
-      <code>getCarrierId</code>
-      <code>getCompanyId</code>
-      <code>getDdiId</code>
-      <code>getDdiProviderId</code>
-      <code>getFaxId</code>
-      <code>getFriendId</code>
-      <code>getResidentialDeviceId</code>
-      <code>getRetailAccountId</code>
-      <code>getUserId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="11">
       <code>$id</code>
       <code>$id</code>
@@ -2647,17 +2446,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="9">
-      <code>getCfwToRetailAccountId</code>
-      <code>getDdiId</code>
-      <code>getExtensionId</code>
-      <code>getFriendId</code>
-      <code>getNumberCountryId</code>
-      <code>getResidentialDeviceId</code>
-      <code>getRetailAccountId</code>
-      <code>getUserId</code>
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="9">
       <code>$id</code>
       <code>$id</code>
@@ -2723,13 +2511,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="5">
-      <code>getBrandId</code>
-      <code>getCurrencyId</code>
-      <code>getMediaRelaySetsId</code>
-      <code>getProxyTrunkId</code>
-      <code>getTransformationRuleSetId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="5">
       <code>$id</code>
       <code>$id</code>
@@ -2793,11 +2574,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getBrandId</code>
-      <code>getCarrierId</code>
-      <code>getLcrGatewayId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$id</code>
       <code>$id</code>
@@ -2917,25 +2693,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="17">
-      <code>getApplicationServerId</code>
-      <code>getBrandId</code>
-      <code>getCallCsvNotificationTemplateId</code>
-      <code>getCorporationId</code>
-      <code>getCountryId</code>
-      <code>getCurrencyId</code>
-      <code>getDefaultTimezoneId</code>
-      <code>getDomainId</code>
-      <code>getFaxNotificationTemplateId</code>
-      <code>getInvoiceNotificationTemplateId</code>
-      <code>getLanguageId</code>
-      <code>getMaxDailyUsageNotificationTemplateId</code>
-      <code>getMediaRelaySetsId</code>
-      <code>getOutgoingDdiId</code>
-      <code>getOutgoingDdiRuleId</code>
-      <code>getTransformationRuleSetId</code>
-      <code>getVoicemailNotificationTemplateId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="17">
       <code>$id</code>
       <code>$id</code>
@@ -3009,10 +2766,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCodecId</code>
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3045,10 +2798,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCompanyId</code>
-      <code>getCountryId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3081,10 +2830,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCompanyId</code>
-      <code>getRoutingTagId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3126,10 +2871,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCompanyId</code>
-      <code>getServiceId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3184,18 +2925,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="10">
-      <code>getCompanyId</code>
-      <code>getConferenceRoomId</code>
-      <code>getExtensionId</code>
-      <code>getHuntGroupId</code>
-      <code>getIvrId</code>
-      <code>getLocutionId</code>
-      <code>getNumberCountryId</code>
-      <code>getQueueId</code>
-      <code>getUserId</code>
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="10">
       <code>$id</code>
       <code>$id</code>
@@ -3278,18 +3007,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="10">
-      <code>getConditionalRouteId</code>
-      <code>getConferenceRoomId</code>
-      <code>getExtensionId</code>
-      <code>getHuntGroupId</code>
-      <code>getIvrId</code>
-      <code>getLocutionId</code>
-      <code>getNumberCountryId</code>
-      <code>getQueueId</code>
-      <code>getUserId</code>
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="10">
       <code>$id</code>
       <code>$id</code>
@@ -3341,10 +3058,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCalendarId</code>
-      <code>getConditionId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3382,10 +3095,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getConditionId</code>
-      <code>getMatchlistId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3418,10 +3127,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getConditionId</code>
-      <code>getRouteLockId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3459,10 +3164,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getConditionId</code>
-      <code>getScheduleId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3490,9 +3191,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -3533,12 +3231,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getCompanyId</code>
-      <code>getMobilePhoneCountryId</code>
-      <code>getUserId</code>
-      <code>getWorkPhoneCountryId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
@@ -3568,9 +3260,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -3686,23 +3375,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="15">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-      <code>getConditionalRouteId</code>
-      <code>getConferenceRoomId</code>
-      <code>getCountryId</code>
-      <code>getDdiProviderId</code>
-      <code>getExternalCallFilterId</code>
-      <code>getFaxId</code>
-      <code>getHuntGroupId</code>
-      <code>getIvrId</code>
-      <code>getLanguageId</code>
-      <code>getQueueId</code>
-      <code>getResidentialDeviceId</code>
-      <code>getRetailAccountId</code>
-      <code>getUserId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="15">
       <code>$id</code>
       <code>$id</code>
@@ -3763,12 +3435,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getBrandId</code>
-      <code>getMediaRelaySetsId</code>
-      <code>getProxyTrunkId</code>
-      <code>getTransformationRuleSetId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
@@ -3819,10 +3485,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getDdiProviderId</code>
-      <code>getTrunksAddressId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3863,10 +3525,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getDdiProviderId</code>
-      <code>getTrunksUacregId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3903,10 +3561,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getTpDestinationId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -3964,12 +3618,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getDestinationId</code>
-      <code>getDestinationRateGroupId</code>
-      <code>getTpDestinationRateId</code>
-      <code>getTpRateId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
@@ -4018,10 +3666,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getCurrencyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4117,17 +3761,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="9">
-      <code>getCompanyId</code>
-      <code>getConditionalRouteId</code>
-      <code>getConferenceRoomId</code>
-      <code>getHuntGroupId</code>
-      <code>getIvrId</code>
-      <code>getNumberCountryId</code>
-      <code>getQueueId</code>
-      <code>getUserId</code>
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="9">
       <code>$id</code>
       <code>$id</code>
@@ -4203,18 +3836,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="10">
-      <code>getCompanyId</code>
-      <code>getHolidayExtensionId</code>
-      <code>getHolidayLocutionId</code>
-      <code>getHolidayNumberCountryId</code>
-      <code>getHolidayVoicemailId</code>
-      <code>getOutOfScheduleExtensionId</code>
-      <code>getOutOfScheduleLocutionId</code>
-      <code>getOutOfScheduleNumberCountryId</code>
-      <code>getOutOfScheduleVoicemailId</code>
-      <code>getWelcomeLocutionId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="10">
       <code>$id</code>
       <code>$id</code>
@@ -4271,10 +3892,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getFilterId</code>
-      <code>getMatchlistId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4312,10 +3929,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCalendarId</code>
-      <code>getFilterId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4353,10 +3966,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getFilterId</code>
-      <code>getScheduleId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4394,10 +4003,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getFilterId</code>
-      <code>getMatchlistId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4436,10 +4041,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCompanyId</code>
-      <code>getOutgoingDdiId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4481,10 +4082,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getDstCountryId</code>
-      <code>getFaxId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4540,10 +4137,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getFeatureId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4581,10 +4174,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCompanyId</code>
-      <code>getFeatureId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4623,9 +4212,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -4662,10 +4248,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getFixedCostId</code>
-      <code>getInvoiceId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -4699,11 +4281,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getDdisCountryId</code>
-      <code>getFixedCostId</code>
-      <code>getInvoiceSchedulerId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$id</code>
       <code>$id</code>
@@ -4778,17 +4355,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="9">
-      <code>getCallAclId</code>
-      <code>getCompanyId</code>
-      <code>getDomainId</code>
-      <code>getInterCompanyId</code>
-      <code>getLanguageId</code>
-      <code>getOutgoingDdiId</code>
-      <code>getPsEndpointId</code>
-      <code>getPsIdentifyId</code>
-      <code>getTransformationRuleSetId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="9">
       <code>$id</code>
       <code>$id</code>
@@ -4832,9 +4398,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getFriendId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -4881,13 +4444,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="5">
-      <code>getCalendarId</code>
-      <code>getExtensionId</code>
-      <code>getLocutionId</code>
-      <code>getNumberCountryId</code>
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="5">
       <code>$id</code>
       <code>$id</code>
@@ -4935,13 +4491,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="5">
-      <code>getCompanyId</code>
-      <code>getNoAnswerExtensionId</code>
-      <code>getNoAnswerLocutionId</code>
-      <code>getNoAnswerNumberCountryId</code>
-      <code>getNoAnswerVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="5">
       <code>$id</code>
       <code>$id</code>
@@ -4986,11 +4535,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getHuntGroupId</code>
-      <code>getNumberCountryId</code>
-      <code>getUserId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$id</code>
       <code>$id</code>
@@ -5052,13 +4596,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="5">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-      <code>getInvoiceTemplateId</code>
-      <code>getNumberSequenceId</code>
-      <code>getSchedulerId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="5">
       <code>$id</code>
       <code>$id</code>
@@ -5102,9 +4639,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -5155,12 +4689,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-      <code>getInvoiceTemplateId</code>
-      <code>getNumberSequenceId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
@@ -5210,9 +4738,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -5269,19 +4794,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="11">
-      <code>getCompanyId</code>
-      <code>getErrorExtensionId</code>
-      <code>getErrorLocutionId</code>
-      <code>getErrorNumberCountryId</code>
-      <code>getErrorVoicemailId</code>
-      <code>getNoInputExtensionId</code>
-      <code>getNoInputLocutionId</code>
-      <code>getNoInputNumberCountryId</code>
-      <code>getNoInputVoicemailId</code>
-      <code>getSuccessLocutionId</code>
-      <code>getWelcomeLocutionId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="11">
       <code>$id</code>
       <code>$id</code>
@@ -5348,14 +4860,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="6">
-      <code>getConditionalRouteId</code>
-      <code>getExtensionId</code>
-      <code>getIvrId</code>
-      <code>getNumberCountryId</code>
-      <code>getVoicemailId</code>
-      <code>getWelcomeLocutionId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="6">
       <code>$id</code>
       <code>$id</code>
@@ -5397,10 +4901,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getExtensionId</code>
-      <code>getIvrId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -5446,9 +4946,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -5481,9 +4978,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -5521,10 +5015,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -5563,10 +5053,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getMatchListId</code>
-      <code>getNumberCountryId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -5597,10 +5083,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCompanyId</code>
-      <code>getNotificationTemplateId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -5657,10 +5139,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -5688,9 +5166,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -5728,10 +5203,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getLanguageId</code>
-      <code>getNotificationTemplateId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -5762,10 +5233,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCompanyId</code>
-      <code>getForcedDdiId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -5813,11 +5280,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getForcedDdiId</code>
-      <code>getMatchListId</code>
-      <code>getOutgoingDdiRuleId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$id</code>
       <code>$id</code>
@@ -5874,16 +5336,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="8">
-      <code>getBrandId</code>
-      <code>getCarrierId</code>
-      <code>getClidCountryId</code>
-      <code>getCompanyId</code>
-      <code>getRoutingPatternGroupId</code>
-      <code>getRoutingPatternId</code>
-      <code>getRoutingTagId</code>
-      <code>getTpLcrRuleId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="8">
       <code>$id</code>
       <code>$id</code>
@@ -5927,10 +5379,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getCarrierId</code>
-      <code>getOutgoingRoutingId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -5961,9 +5409,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -6003,10 +5448,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getPickUpGroupId</code>
-      <code>getUserId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -6070,10 +5511,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getProxyTrunkId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -6176,18 +5613,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="10">
-      <code>getCompanyId</code>
-      <code>getFullExtensionId</code>
-      <code>getFullLocutionId</code>
-      <code>getFullNumberCountryId</code>
-      <code>getFullVoicemailId</code>
-      <code>getPeriodicAnnounceLocutionId</code>
-      <code>getTimeoutExtensionId</code>
-      <code>getTimeoutLocutionId</code>
-      <code>getTimeoutNumberCountryId</code>
-      <code>getTimeoutVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="10">
       <code>$id</code>
       <code>$id</code>
@@ -6233,10 +5658,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getQueueId</code>
-      <code>getUserId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -6319,12 +5740,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getDestinationRateGroupId</code>
-      <code>getRatingPlanGroupId</code>
-      <code>getTpRatingPlanId</code>
-      <code>getTpTimingId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
@@ -6357,10 +5772,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getCurrencyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -6410,12 +5821,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getCarrierId</code>
-      <code>getCompanyId</code>
-      <code>getRatingPlanGroupId</code>
-      <code>getRoutingTagId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
@@ -6453,9 +5858,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -6527,17 +5929,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="9">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-      <code>getDomainId</code>
-      <code>getLanguageId</code>
-      <code>getOutgoingDdiId</code>
-      <code>getPsEndpointId</code>
-      <code>getPsIdentifyId</code>
-      <code>getTransformationRuleSetId</code>
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="9">
       <code>$id</code>
       <code>$id</code>
@@ -6608,15 +5999,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="7">
-      <code>getBrandId</code>
-      <code>getCompanyId</code>
-      <code>getDomainId</code>
-      <code>getOutgoingDdiId</code>
-      <code>getPsEndpointId</code>
-      <code>getPsIdentifyId</code>
-      <code>getTransformationRuleSetId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="7">
       <code>$id</code>
       <code>$id</code>
@@ -6653,9 +6035,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -6693,9 +6072,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -6738,9 +6114,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -6781,10 +6154,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getRoutingPatternGroupId</code>
-      <code>getRoutingPatternId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -6820,9 +6189,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -6857,9 +6223,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCompanyId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -6915,10 +6278,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getCountryId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -6985,13 +6344,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="5">
-      <code>getCompanyId</code>
-      <code>getDomainId</code>
-      <code>getPsEndpointId</code>
-      <code>getPsIdentifyId</code>
-      <code>getTerminalModelId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="5">
       <code>$id</code>
       <code>$id</code>
@@ -7062,9 +6414,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getTerminalManufacturerId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -7091,9 +6440,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getCountryId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -7131,9 +6477,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getTransformationRuleSetId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -7173,10 +6516,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getBrandId</code>
-      <code>getCountryId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -7263,22 +6602,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="14">
-      <code>getBossAssistantId</code>
-      <code>getBossAssistantWhiteListId</code>
-      <code>getCallAclId</code>
-      <code>getCompanyId</code>
-      <code>getContactId</code>
-      <code>getExtensionId</code>
-      <code>getLanguageId</code>
-      <code>getLocationId</code>
-      <code>getOutgoingDdiId</code>
-      <code>getOutgoingDdiRuleId</code>
-      <code>getTerminalId</code>
-      <code>getTimezoneId</code>
-      <code>getTransformationRuleSetId</code>
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="14">
       <code>$id</code>
       <code>$id</code>
@@ -7362,13 +6685,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="5">
-      <code>getAstVoicemailId</code>
-      <code>getCompanyId</code>
-      <code>getLocutionId</code>
-      <code>getResidentialDeviceId</code>
-      <code>getUserId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="5">
       <code>$id</code>
       <code>$id</code>
@@ -7402,10 +6718,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getAstVoicemailMessageId</code>
-      <code>getVoicemailId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$id</code>
       <code>$id</code>
@@ -7447,9 +6759,6 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="1">
-      <code>getBrandId</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
@@ -7538,13 +6847,6 @@
     </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php">
-    <MixedArgument occurrences="5">
-      <code>$trunksCdrDto-&gt;getFaxId()</code>
-      <code>$trunksCdrDto-&gt;getFriendId()</code>
-      <code>$trunksCdrDto-&gt;getResidentialDeviceId()</code>
-      <code>$trunksCdrDto-&gt;getRetailAccountId()</code>
-      <code>$trunksCdrDto-&gt;getUserId()</code>
-    </MixedArgument>
     <PossiblyNullArgument occurrences="1">
       <code>$trunksCdrDto-&gt;getDuration()</code>
     </PossiblyNullArgument>
