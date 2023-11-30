@@ -44,12 +44,10 @@
       <code>$call</code>
       <code>$qb</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="7">
+    <MixedMethodCall occurrences="5">
       <code>eq</code>
       <code>expr</code>
-      <code>getEndTime</code>
       <code>getStartTime</code>
-      <code>setTimezone</code>
       <code>setTimezone</code>
       <code>where</code>
     </MixedMethodCall>
