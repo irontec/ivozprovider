@@ -169,7 +169,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -199,7 +199,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    public function getCarrierId()
+    public function getCarrierId(): ?int
     {
         if ($dto = $this->getCarrier()) {
             return $dto->getId();

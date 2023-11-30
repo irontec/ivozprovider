@@ -188,7 +188,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->setMatchList($value);
     }
 
-    public function getMatchListId()
+    public function getMatchListId(): ?int
     {
         if ($dto = $this->getMatchList()) {
             return $dto->getId();
@@ -218,7 +218,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->setNumberCountry($value);
     }
 
-    public function getNumberCountryId()
+    public function getNumberCountryId(): ?int
     {
         if ($dto = $this->getNumberCountry()) {
             return $dto->getId();

@@ -196,7 +196,7 @@ abstract class HuntGroupMemberDtoAbstract implements DataTransferObjectInterface
         return $this->setHuntGroup($value);
     }
 
-    public function getHuntGroupId()
+    public function getHuntGroupId(): ?int
     {
         if ($dto = $this->getHuntGroup()) {
             return $dto->getId();
@@ -226,7 +226,7 @@ abstract class HuntGroupMemberDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -256,7 +256,7 @@ abstract class HuntGroupMemberDtoAbstract implements DataTransferObjectInterface
         return $this->setNumberCountry($value);
     }
 
-    public function getNumberCountryId()
+    public function getNumberCountryId(): ?int
     {
         if ($dto = $this->getNumberCountry()) {
             return $dto->getId();

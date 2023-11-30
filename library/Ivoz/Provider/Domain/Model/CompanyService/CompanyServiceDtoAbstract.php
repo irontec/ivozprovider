@@ -131,7 +131,7 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -161,7 +161,7 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
         return $this->setService($value);
     }
 
-    public function getServiceId()
+    public function getServiceId(): ?int
     {
         if ($dto = $this->getService()) {
             return $dto->getId();

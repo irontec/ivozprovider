@@ -169,7 +169,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -199,7 +199,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $this->setCountry($value);
     }
 
-    public function getCountryId()
+    public function getCountryId(): ?int
     {
         if ($dto = $this->getCountry()) {
             return $dto->getId();

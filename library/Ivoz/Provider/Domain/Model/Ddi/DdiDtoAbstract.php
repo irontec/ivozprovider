@@ -368,7 +368,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -398,7 +398,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -428,7 +428,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setConferenceRoom($value);
     }
 
-    public function getConferenceRoomId()
+    public function getConferenceRoomId(): ?int
     {
         if ($dto = $this->getConferenceRoom()) {
             return $dto->getId();
@@ -458,7 +458,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setLanguage($value);
     }
 
-    public function getLanguageId()
+    public function getLanguageId(): ?int
     {
         if ($dto = $this->getLanguage()) {
             return $dto->getId();
@@ -488,7 +488,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setQueue($value);
     }
 
-    public function getQueueId()
+    public function getQueueId(): ?int
     {
         if ($dto = $this->getQueue()) {
             return $dto->getId();
@@ -518,7 +518,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setExternalCallFilter($value);
     }
 
-    public function getExternalCallFilterId()
+    public function getExternalCallFilterId(): ?int
     {
         if ($dto = $this->getExternalCallFilter()) {
             return $dto->getId();
@@ -548,7 +548,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -578,7 +578,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setIvr($value);
     }
 
-    public function getIvrId()
+    public function getIvrId(): ?int
     {
         if ($dto = $this->getIvr()) {
             return $dto->getId();
@@ -608,7 +608,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setHuntGroup($value);
     }
 
-    public function getHuntGroupId()
+    public function getHuntGroupId(): ?int
     {
         if ($dto = $this->getHuntGroup()) {
             return $dto->getId();
@@ -638,7 +638,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setFax($value);
     }
 
-    public function getFaxId()
+    public function getFaxId(): ?int
     {
         if ($dto = $this->getFax()) {
             return $dto->getId();
@@ -668,7 +668,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProvider($value);
     }
 
-    public function getDdiProviderId()
+    public function getDdiProviderId(): ?int
     {
         if ($dto = $this->getDdiProvider()) {
             return $dto->getId();
@@ -698,7 +698,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setCountry($value);
     }
 
-    public function getCountryId()
+    public function getCountryId(): ?int
     {
         if ($dto = $this->getCountry()) {
             return $dto->getId();
@@ -728,7 +728,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setResidentialDevice($value);
     }
 
-    public function getResidentialDeviceId()
+    public function getResidentialDeviceId(): ?int
     {
         if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
@@ -758,7 +758,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setConditionalRoute($value);
     }
 
-    public function getConditionalRouteId()
+    public function getConditionalRouteId(): ?int
     {
         if ($dto = $this->getConditionalRoute()) {
             return $dto->getId();
@@ -788,7 +788,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setRetailAccount($value);
     }
 
-    public function getRetailAccountId()
+    public function getRetailAccountId(): ?int
     {
         if ($dto = $this->getRetailAccount()) {
             return $dto->getId();

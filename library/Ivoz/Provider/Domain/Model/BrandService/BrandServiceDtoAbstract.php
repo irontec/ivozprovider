@@ -131,7 +131,7 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -161,7 +161,7 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
         return $this->setService($value);
     }
 
-    public function getServiceId()
+    public function getServiceId(): ?int
     {
         if ($dto = $this->getService()) {
             return $dto->getId();

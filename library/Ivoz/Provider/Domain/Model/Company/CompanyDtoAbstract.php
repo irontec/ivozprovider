@@ -785,7 +785,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setLanguage($value);
     }
 
-    public function getLanguageId()
+    public function getLanguageId(): ?int
     {
         if ($dto = $this->getLanguage()) {
             return $dto->getId();
@@ -815,7 +815,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setMediaRelaySets($value);
     }
 
-    public function getMediaRelaySetsId()
+    public function getMediaRelaySetsId(): ?int
     {
         if ($dto = $this->getMediaRelaySets()) {
             return $dto->getId();
@@ -845,7 +845,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setDefaultTimezone($value);
     }
 
-    public function getDefaultTimezoneId()
+    public function getDefaultTimezoneId(): ?int
     {
         if ($dto = $this->getDefaultTimezone()) {
             return $dto->getId();
@@ -875,7 +875,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -905,7 +905,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setDomain($value);
     }
 
-    public function getDomainId()
+    public function getDomainId(): ?int
     {
         if ($dto = $this->getDomain()) {
             return $dto->getId();
@@ -935,7 +935,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setApplicationServer($value);
     }
 
-    public function getApplicationServerId()
+    public function getApplicationServerId(): ?int
     {
         if ($dto = $this->getApplicationServer()) {
             return $dto->getId();
@@ -965,7 +965,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setCountry($value);
     }
 
-    public function getCountryId()
+    public function getCountryId(): ?int
     {
         if ($dto = $this->getCountry()) {
             return $dto->getId();
@@ -995,7 +995,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setCurrency($value);
     }
 
-    public function getCurrencyId()
+    public function getCurrencyId(): ?int
     {
         if ($dto = $this->getCurrency()) {
             return $dto->getId();
@@ -1025,7 +1025,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setTransformationRuleSet($value);
     }
 
-    public function getTransformationRuleSetId()
+    public function getTransformationRuleSetId(): ?int
     {
         if ($dto = $this->getTransformationRuleSet()) {
             return $dto->getId();
@@ -1055,7 +1055,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingDdi($value);
     }
 
-    public function getOutgoingDdiId()
+    public function getOutgoingDdiId(): ?int
     {
         if ($dto = $this->getOutgoingDdi()) {
             return $dto->getId();
@@ -1085,7 +1085,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingDdiRule($value);
     }
 
-    public function getOutgoingDdiRuleId()
+    public function getOutgoingDdiRuleId(): ?int
     {
         if ($dto = $this->getOutgoingDdiRule()) {
             return $dto->getId();
@@ -1115,7 +1115,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setVoicemailNotificationTemplate($value);
     }
 
-    public function getVoicemailNotificationTemplateId()
+    public function getVoicemailNotificationTemplateId(): ?int
     {
         if ($dto = $this->getVoicemailNotificationTemplate()) {
             return $dto->getId();
@@ -1145,7 +1145,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setFaxNotificationTemplate($value);
     }
 
-    public function getFaxNotificationTemplateId()
+    public function getFaxNotificationTemplateId(): ?int
     {
         if ($dto = $this->getFaxNotificationTemplate()) {
             return $dto->getId();
@@ -1175,7 +1175,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setInvoiceNotificationTemplate($value);
     }
 
-    public function getInvoiceNotificationTemplateId()
+    public function getInvoiceNotificationTemplateId(): ?int
     {
         if ($dto = $this->getInvoiceNotificationTemplate()) {
             return $dto->getId();
@@ -1205,7 +1205,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setCallCsvNotificationTemplate($value);
     }
 
-    public function getCallCsvNotificationTemplateId()
+    public function getCallCsvNotificationTemplateId(): ?int
     {
         if ($dto = $this->getCallCsvNotificationTemplate()) {
             return $dto->getId();
@@ -1235,7 +1235,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setMaxDailyUsageNotificationTemplate($value);
     }
 
-    public function getMaxDailyUsageNotificationTemplateId()
+    public function getMaxDailyUsageNotificationTemplateId(): ?int
     {
         if ($dto = $this->getMaxDailyUsageNotificationTemplate()) {
             return $dto->getId();
@@ -1265,7 +1265,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->setCorporation($value);
     }
 
-    public function getCorporationId()
+    public function getCorporationId(): ?int
     {
         if ($dto = $this->getCorporation()) {
             return $dto->getId();

@@ -112,7 +112,7 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $this->setCondition($value);
     }
 
-    public function getConditionId()
+    public function getConditionId(): ?int
     {
         if ($dto = $this->getCondition()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $this->setCalendar($value);
     }
 
-    public function getCalendarId()
+    public function getCalendarId(): ?int
     {
         if ($dto = $this->getCalendar()) {
             return $dto->getId();

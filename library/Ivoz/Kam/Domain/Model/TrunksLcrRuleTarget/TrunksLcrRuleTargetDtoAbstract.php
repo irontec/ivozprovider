@@ -177,7 +177,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->setRule($value);
     }
 
-    public function getRuleId()
+    public function getRuleId(): ?int
     {
         if ($dto = $this->getRule()) {
             return $dto->getId();
@@ -207,7 +207,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->setGw($value);
     }
 
-    public function getGwId()
+    public function getGwId(): ?int
     {
         if ($dto = $this->getGw()) {
             return $dto->getId();
@@ -237,7 +237,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->setOutgoingRouting($value);
     }
 
-    public function getOutgoingRoutingId()
+    public function getOutgoingRoutingId(): ?int
     {
         if ($dto = $this->getOutgoingRouting()) {
             return $dto->getId();

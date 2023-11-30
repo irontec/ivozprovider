@@ -177,7 +177,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this->setFixedCost($value);
     }
 
-    public function getFixedCostId()
+    public function getFixedCostId(): ?int
     {
         if ($dto = $this->getFixedCost()) {
             return $dto->getId();
@@ -207,7 +207,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this->setInvoiceScheduler($value);
     }
 
-    public function getInvoiceSchedulerId()
+    public function getInvoiceSchedulerId(): ?int
     {
         if ($dto = $this->getInvoiceScheduler()) {
             return $dto->getId();
@@ -237,7 +237,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this->setDdisCountry($value);
     }
 
-    public function getDdisCountryId()
+    public function getDdisCountryId(): ?int
     {
         if ($dto = $this->getDdisCountry()) {
             return $dto->getId();

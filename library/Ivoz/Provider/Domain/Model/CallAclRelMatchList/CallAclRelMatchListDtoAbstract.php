@@ -150,7 +150,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->setCallAcl($value);
     }
 
-    public function getCallAclId()
+    public function getCallAclId(): ?int
     {
         if ($dto = $this->getCallAcl()) {
             return $dto->getId();
@@ -180,7 +180,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->setMatchList($value);
     }
 
-    public function getMatchListId()
+    public function getMatchListId(): ?int
     {
         if ($dto = $this->getMatchList()) {
             return $dto->getId();

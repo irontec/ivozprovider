@@ -333,7 +333,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -363,7 +363,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -393,7 +393,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    public function getCarrierId()
+    public function getCarrierId(): ?int
     {
         if ($dto = $this->getCarrier()) {
             return $dto->getId();
@@ -423,7 +423,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingPattern($value);
     }
 
-    public function getRoutingPatternId()
+    public function getRoutingPatternId(): ?int
     {
         if ($dto = $this->getRoutingPattern()) {
             return $dto->getId();
@@ -453,7 +453,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingPatternGroup($value);
     }
 
-    public function getRoutingPatternGroupId()
+    public function getRoutingPatternGroupId(): ?int
     {
         if ($dto = $this->getRoutingPatternGroup()) {
             return $dto->getId();
@@ -483,7 +483,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingTag($value);
     }
 
-    public function getRoutingTagId()
+    public function getRoutingTagId(): ?int
     {
         if ($dto = $this->getRoutingTag()) {
             return $dto->getId();
@@ -513,7 +513,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setClidCountry($value);
     }
 
-    public function getClidCountryId()
+    public function getClidCountryId(): ?int
     {
         if ($dto = $this->getClidCountry()) {
             return $dto->getId();
@@ -543,7 +543,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setTpLcrRule($value);
     }
 
-    public function getTpLcrRuleId()
+    public function getTpLcrRuleId(): ?int
     {
         if ($dto = $this->getTpLcrRule()) {
             return $dto->getId();

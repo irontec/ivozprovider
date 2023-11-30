@@ -356,7 +356,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -386,7 +386,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -416,7 +416,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -446,7 +446,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setFriend($value);
     }
 
-    public function getFriendId()
+    public function getFriendId(): ?int
     {
         if ($dto = $this->getFriend()) {
             return $dto->getId();

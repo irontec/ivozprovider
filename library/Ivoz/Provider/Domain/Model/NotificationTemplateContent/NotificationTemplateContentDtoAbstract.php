@@ -207,7 +207,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->setNotificationTemplate($value);
     }
 
-    public function getNotificationTemplateId()
+    public function getNotificationTemplateId(): ?int
     {
         if ($dto = $this->getNotificationTemplate()) {
             return $dto->getId();
@@ -237,7 +237,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->setLanguage($value);
     }
 
-    public function getLanguageId()
+    public function getLanguageId(): ?int
     {
         if ($dto = $this->getLanguage()) {
             return $dto->getId();

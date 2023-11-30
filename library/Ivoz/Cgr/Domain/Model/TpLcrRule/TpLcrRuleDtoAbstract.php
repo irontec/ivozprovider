@@ -351,7 +351,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingRouting($value);
     }
 
-    public function getOutgoingRoutingId()
+    public function getOutgoingRoutingId(): ?int
     {
         if ($dto = $this->getOutgoingRouting()) {
             return $dto->getId();

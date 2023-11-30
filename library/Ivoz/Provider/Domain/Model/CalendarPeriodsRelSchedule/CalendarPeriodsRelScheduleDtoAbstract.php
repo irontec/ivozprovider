@@ -112,7 +112,7 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return $this->setCalendarPeriod($value);
     }
 
-    public function getCalendarPeriodId()
+    public function getCalendarPeriodId(): ?int
     {
         if ($dto = $this->getCalendarPeriod()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return $this->setSchedule($value);
     }
 
-    public function getScheduleId()
+    public function getScheduleId(): ?int
     {
         if ($dto = $this->getSchedule()) {
             return $dto->getId();

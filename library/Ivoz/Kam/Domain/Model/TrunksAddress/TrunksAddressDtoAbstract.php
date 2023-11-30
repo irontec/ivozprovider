@@ -199,7 +199,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProviderAddress($value);
     }
 
-    public function getDdiProviderAddressId()
+    public function getDdiProviderAddressId(): ?int
     {
         if ($dto = $this->getDdiProviderAddress()) {
             return $dto->getId();

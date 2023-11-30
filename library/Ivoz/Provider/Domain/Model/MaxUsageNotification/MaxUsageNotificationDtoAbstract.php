@@ -169,7 +169,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this->setNotificationTemplate($value);
     }
 
-    public function getNotificationTemplateId()
+    public function getNotificationTemplateId(): ?int
     {
         if ($dto = $this->getNotificationTemplate()) {
             return $dto->getId();
@@ -199,7 +199,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();

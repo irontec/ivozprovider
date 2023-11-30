@@ -332,7 +332,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $this->setCarrierServer($value);
     }
 
-    public function getCarrierServerId()
+    public function getCarrierServerId(): ?int
     {
         if ($dto = $this->getCarrierServer()) {
             return $dto->getId();

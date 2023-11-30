@@ -112,7 +112,7 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
         return $this->setCountry($value);
     }
 
-    public function getCountryId()
+    public function getCountryId(): ?int
     {
         if ($dto = $this->getCountry()) {
             return $dto->getId();

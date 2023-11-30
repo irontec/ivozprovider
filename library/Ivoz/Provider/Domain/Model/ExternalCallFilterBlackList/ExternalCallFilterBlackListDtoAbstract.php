@@ -112,7 +112,7 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
         return $this->setFilter($value);
     }
 
-    public function getFilterId()
+    public function getFilterId(): ?int
     {
         if ($dto = $this->getFilter()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
         return $this->setMatchlist($value);
     }
 
-    public function getMatchlistId()
+    public function getMatchlistId(): ?int
     {
         if ($dto = $this->getMatchlist()) {
             return $dto->getId();

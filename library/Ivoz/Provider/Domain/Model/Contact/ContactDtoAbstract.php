@@ -279,7 +279,7 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -309,7 +309,7 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -339,7 +339,7 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
         return $this->setWorkPhoneCountry($value);
     }
 
-    public function getWorkPhoneCountryId()
+    public function getWorkPhoneCountryId(): ?int
     {
         if ($dto = $this->getWorkPhoneCountry()) {
             return $dto->getId();
@@ -369,7 +369,7 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
         return $this->setMobilePhoneCountry($value);
     }
 
-    public function getMobilePhoneCountryId()
+    public function getMobilePhoneCountryId(): ?int
     {
         if ($dto = $this->getMobilePhoneCountry()) {
             return $dto->getId();

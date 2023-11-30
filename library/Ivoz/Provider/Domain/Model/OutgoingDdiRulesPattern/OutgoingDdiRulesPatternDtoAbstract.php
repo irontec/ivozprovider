@@ -196,7 +196,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->setOutgoingDdiRule($value);
     }
 
-    public function getOutgoingDdiRuleId()
+    public function getOutgoingDdiRuleId(): ?int
     {
         if ($dto = $this->getOutgoingDdiRule()) {
             return $dto->getId();
@@ -226,7 +226,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->setMatchList($value);
     }
 
-    public function getMatchListId()
+    public function getMatchListId(): ?int
     {
         if ($dto = $this->getMatchList()) {
             return $dto->getId();
@@ -256,7 +256,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->setForcedDdi($value);
     }
 
-    public function getForcedDdiId()
+    public function getForcedDdiId(): ?int
     {
         if ($dto = $this->getForcedDdi()) {
             return $dto->getId();

@@ -453,7 +453,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -483,7 +483,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -513,7 +513,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    public function getCarrierId()
+    public function getCarrierId(): ?int
     {
         if ($dto = $this->getCarrier()) {
             return $dto->getId();
@@ -543,7 +543,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setDestination($value);
     }
 
-    public function getDestinationId()
+    public function getDestinationId(): ?int
     {
         if ($dto = $this->getDestination()) {
             return $dto->getId();
@@ -573,7 +573,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingPlanGroup($value);
     }
 
-    public function getRatingPlanGroupId()
+    public function getRatingPlanGroupId(): ?int
     {
         if ($dto = $this->getRatingPlanGroup()) {
             return $dto->getId();
@@ -603,7 +603,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setInvoice($value);
     }
 
-    public function getInvoiceId()
+    public function getInvoiceId(): ?int
     {
         if ($dto = $this->getInvoice()) {
             return $dto->getId();
@@ -633,7 +633,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setTrunksCdr($value);
     }
 
-    public function getTrunksCdrId()
+    public function getTrunksCdrId(): ?int
     {
         if ($dto = $this->getTrunksCdr()) {
             return $dto->getId();
@@ -663,7 +663,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setDdi($value);
     }
 
-    public function getDdiId()
+    public function getDdiId(): ?int
     {
         if ($dto = $this->getDdi()) {
             return $dto->getId();
@@ -693,7 +693,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProvider($value);
     }
 
-    public function getDdiProviderId()
+    public function getDdiProviderId(): ?int
     {
         if ($dto = $this->getDdiProvider()) {
             return $dto->getId();

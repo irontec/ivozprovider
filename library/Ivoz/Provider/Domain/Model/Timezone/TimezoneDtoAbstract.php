@@ -222,7 +222,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->setCountry($value);
     }
 
-    public function getCountryId()
+    public function getCountryId(): ?int
     {
         if ($dto = $this->getCountry()) {
             return $dto->getId();

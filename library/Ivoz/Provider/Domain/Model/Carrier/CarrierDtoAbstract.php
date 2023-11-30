@@ -247,7 +247,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -277,7 +277,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->setTransformationRuleSet($value);
     }
 
-    public function getTransformationRuleSetId()
+    public function getTransformationRuleSetId(): ?int
     {
         if ($dto = $this->getTransformationRuleSet()) {
             return $dto->getId();
@@ -307,7 +307,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->setCurrency($value);
     }
 
-    public function getCurrencyId()
+    public function getCurrencyId(): ?int
     {
         if ($dto = $this->getCurrency()) {
             return $dto->getId();
@@ -337,7 +337,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->setProxyTrunk($value);
     }
 
-    public function getProxyTrunkId()
+    public function getProxyTrunkId(): ?int
     {
         if ($dto = $this->getProxyTrunk()) {
             return $dto->getId();
@@ -367,7 +367,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->setMediaRelaySets($value);
     }
 
-    public function getMediaRelaySetsId()
+    public function getMediaRelaySetsId(): ?int
     {
         if ($dto = $this->getMediaRelaySets()) {
             return $dto->getId();

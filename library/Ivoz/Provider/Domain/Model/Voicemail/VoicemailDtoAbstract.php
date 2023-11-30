@@ -231,7 +231,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -261,7 +261,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->setResidentialDevice($value);
     }
 
-    public function getResidentialDeviceId()
+    public function getResidentialDeviceId(): ?int
     {
         if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
@@ -291,7 +291,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -321,7 +321,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->setLocution($value);
     }
 
-    public function getLocutionId()
+    public function getLocutionId(): ?int
     {
         if ($dto = $this->getLocution()) {
             return $dto->getId();
@@ -351,7 +351,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->setAstVoicemail($value);
     }
 
-    public function getAstVoicemailId()
+    public function getAstVoicemailId(): ?int
     {
         if ($dto = $this->getAstVoicemail()) {
             return $dto->getId();

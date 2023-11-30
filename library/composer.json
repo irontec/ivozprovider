@@ -80,7 +80,7 @@
         "doctrine/persistence": "^2.1",
         "irontec/ivoz-api-bundle": "^4.7",
         "irontec/ivoz-core": "^4.17",
-        "irontec/ivoz-dev-tools": "^5.9",
+        "irontec/ivoz-dev-tools": "^5.10.1",
         "irontec/ivoz-provider-bundle": "^2.5",
         "irontec/prophecy": "^1.13",
         "irontec/replacements": "^1.0",

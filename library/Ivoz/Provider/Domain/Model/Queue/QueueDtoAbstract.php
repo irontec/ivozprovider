@@ -475,7 +475,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -505,7 +505,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setPeriodicAnnounceLocution($value);
     }
 
-    public function getPeriodicAnnounceLocutionId()
+    public function getPeriodicAnnounceLocutionId(): ?int
     {
         if ($dto = $this->getPeriodicAnnounceLocution()) {
             return $dto->getId();
@@ -535,7 +535,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setTimeoutLocution($value);
     }
 
-    public function getTimeoutLocutionId()
+    public function getTimeoutLocutionId(): ?int
     {
         if ($dto = $this->getTimeoutLocution()) {
             return $dto->getId();
@@ -565,7 +565,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setTimeoutExtension($value);
     }
 
-    public function getTimeoutExtensionId()
+    public function getTimeoutExtensionId(): ?int
     {
         if ($dto = $this->getTimeoutExtension()) {
             return $dto->getId();
@@ -595,7 +595,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setTimeoutVoicemail($value);
     }
 
-    public function getTimeoutVoicemailId()
+    public function getTimeoutVoicemailId(): ?int
     {
         if ($dto = $this->getTimeoutVoicemail()) {
             return $dto->getId();
@@ -625,7 +625,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setFullLocution($value);
     }
 
-    public function getFullLocutionId()
+    public function getFullLocutionId(): ?int
     {
         if ($dto = $this->getFullLocution()) {
             return $dto->getId();
@@ -655,7 +655,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setFullExtension($value);
     }
 
-    public function getFullExtensionId()
+    public function getFullExtensionId(): ?int
     {
         if ($dto = $this->getFullExtension()) {
             return $dto->getId();
@@ -685,7 +685,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setFullVoicemail($value);
     }
 
-    public function getFullVoicemailId()
+    public function getFullVoicemailId(): ?int
     {
         if ($dto = $this->getFullVoicemail()) {
             return $dto->getId();
@@ -715,7 +715,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setTimeoutNumberCountry($value);
     }
 
-    public function getTimeoutNumberCountryId()
+    public function getTimeoutNumberCountryId(): ?int
     {
         if ($dto = $this->getTimeoutNumberCountry()) {
             return $dto->getId();
@@ -745,7 +745,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setFullNumberCountry($value);
     }
 
-    public function getFullNumberCountryId()
+    public function getFullNumberCountryId(): ?int
     {
         if ($dto = $this->getFullNumberCountry()) {
             return $dto->getId();

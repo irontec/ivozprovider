@@ -456,7 +456,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -486,7 +486,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setCallAcl($value);
     }
 
-    public function getCallAclId()
+    public function getCallAclId(): ?int
     {
         if ($dto = $this->getCallAcl()) {
             return $dto->getId();
@@ -516,7 +516,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setBossAssistant($value);
     }
 
-    public function getBossAssistantId()
+    public function getBossAssistantId(): ?int
     {
         if ($dto = $this->getBossAssistant()) {
             return $dto->getId();
@@ -546,7 +546,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setBossAssistantWhiteList($value);
     }
 
-    public function getBossAssistantWhiteListId()
+    public function getBossAssistantWhiteListId(): ?int
     {
         if ($dto = $this->getBossAssistantWhiteList()) {
             return $dto->getId();
@@ -576,7 +576,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setTransformationRuleSet($value);
     }
 
-    public function getTransformationRuleSetId()
+    public function getTransformationRuleSetId(): ?int
     {
         if ($dto = $this->getTransformationRuleSet()) {
             return $dto->getId();
@@ -606,7 +606,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setLanguage($value);
     }
 
-    public function getLanguageId()
+    public function getLanguageId(): ?int
     {
         if ($dto = $this->getLanguage()) {
             return $dto->getId();
@@ -636,7 +636,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setTerminal($value);
     }
 
-    public function getTerminalId()
+    public function getTerminalId(): ?int
     {
         if ($dto = $this->getTerminal()) {
             return $dto->getId();
@@ -666,7 +666,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setExtension($value);
     }
 
-    public function getExtensionId()
+    public function getExtensionId(): ?int
     {
         if ($dto = $this->getExtension()) {
             return $dto->getId();
@@ -696,7 +696,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setTimezone($value);
     }
 
-    public function getTimezoneId()
+    public function getTimezoneId(): ?int
     {
         if ($dto = $this->getTimezone()) {
             return $dto->getId();
@@ -726,7 +726,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingDdi($value);
     }
 
-    public function getOutgoingDdiId()
+    public function getOutgoingDdiId(): ?int
     {
         if ($dto = $this->getOutgoingDdi()) {
             return $dto->getId();
@@ -756,7 +756,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingDdiRule($value);
     }
 
-    public function getOutgoingDdiRuleId()
+    public function getOutgoingDdiRuleId(): ?int
     {
         if ($dto = $this->getOutgoingDdiRule()) {
             return $dto->getId();
@@ -786,7 +786,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setLocation($value);
     }
 
-    public function getLocationId()
+    public function getLocationId(): ?int
     {
         if ($dto = $this->getLocation()) {
             return $dto->getId();
@@ -816,7 +816,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setVoicemail($value);
     }
 
-    public function getVoicemailId()
+    public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
             return $dto->getId();
@@ -846,7 +846,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setContact($value);
     }
 
-    public function getContactId()
+    public function getContactId(): ?int
     {
         if ($dto = $this->getContact()) {
             return $dto->getId();

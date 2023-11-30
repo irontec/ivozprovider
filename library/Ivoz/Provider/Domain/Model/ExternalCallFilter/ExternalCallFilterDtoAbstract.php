@@ -332,7 +332,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -362,7 +362,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setWelcomeLocution($value);
     }
 
-    public function getWelcomeLocutionId()
+    public function getWelcomeLocutionId(): ?int
     {
         if ($dto = $this->getWelcomeLocution()) {
             return $dto->getId();
@@ -392,7 +392,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setHolidayLocution($value);
     }
 
-    public function getHolidayLocutionId()
+    public function getHolidayLocutionId(): ?int
     {
         if ($dto = $this->getHolidayLocution()) {
             return $dto->getId();
@@ -422,7 +422,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setOutOfScheduleLocution($value);
     }
 
-    public function getOutOfScheduleLocutionId()
+    public function getOutOfScheduleLocutionId(): ?int
     {
         if ($dto = $this->getOutOfScheduleLocution()) {
             return $dto->getId();
@@ -452,7 +452,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setHolidayExtension($value);
     }
 
-    public function getHolidayExtensionId()
+    public function getHolidayExtensionId(): ?int
     {
         if ($dto = $this->getHolidayExtension()) {
             return $dto->getId();
@@ -482,7 +482,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setOutOfScheduleExtension($value);
     }
 
-    public function getOutOfScheduleExtensionId()
+    public function getOutOfScheduleExtensionId(): ?int
     {
         if ($dto = $this->getOutOfScheduleExtension()) {
             return $dto->getId();
@@ -512,7 +512,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setHolidayVoicemail($value);
     }
 
-    public function getHolidayVoicemailId()
+    public function getHolidayVoicemailId(): ?int
     {
         if ($dto = $this->getHolidayVoicemail()) {
             return $dto->getId();
@@ -542,7 +542,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setOutOfScheduleVoicemail($value);
     }
 
-    public function getOutOfScheduleVoicemailId()
+    public function getOutOfScheduleVoicemailId(): ?int
     {
         if ($dto = $this->getOutOfScheduleVoicemail()) {
             return $dto->getId();
@@ -572,7 +572,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setHolidayNumberCountry($value);
     }
 
-    public function getHolidayNumberCountryId()
+    public function getHolidayNumberCountryId(): ?int
     {
         if ($dto = $this->getHolidayNumberCountry()) {
             return $dto->getId();
@@ -602,7 +602,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->setOutOfScheduleNumberCountry($value);
     }
 
-    public function getOutOfScheduleNumberCountryId()
+    public function getOutOfScheduleNumberCountryId(): ?int
     {
         if ($dto = $this->getOutOfScheduleNumberCountry()) {
             return $dto->getId();

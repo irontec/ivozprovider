@@ -287,7 +287,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $this->setFax($value);
     }
 
-    public function getFaxId()
+    public function getFaxId(): ?int
     {
         if ($dto = $this->getFax()) {
             return $dto->getId();
@@ -317,7 +317,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $this->setDstCountry($value);
     }
 
-    public function getDstCountryId()
+    public function getDstCountryId(): ?int
     {
         if ($dto = $this->getDstCountry()) {
             return $dto->getId();

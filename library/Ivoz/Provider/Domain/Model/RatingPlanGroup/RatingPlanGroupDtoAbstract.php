@@ -279,7 +279,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -309,7 +309,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->setCurrency($value);
     }
 
-    public function getCurrencyId()
+    public function getCurrencyId(): ?int
     {
         if ($dto = $this->getCurrency()) {
             return $dto->getId();

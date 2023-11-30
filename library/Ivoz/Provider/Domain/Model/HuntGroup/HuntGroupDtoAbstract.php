@@ -295,7 +295,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -325,7 +325,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->setNoAnswerLocution($value);
     }
 
-    public function getNoAnswerLocutionId()
+    public function getNoAnswerLocutionId(): ?int
     {
         if ($dto = $this->getNoAnswerLocution()) {
             return $dto->getId();
@@ -355,7 +355,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->setNoAnswerExtension($value);
     }
 
-    public function getNoAnswerExtensionId()
+    public function getNoAnswerExtensionId(): ?int
     {
         if ($dto = $this->getNoAnswerExtension()) {
             return $dto->getId();
@@ -385,7 +385,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->setNoAnswerVoicemail($value);
     }
 
-    public function getNoAnswerVoicemailId()
+    public function getNoAnswerVoicemailId(): ?int
     {
         if ($dto = $this->getNoAnswerVoicemail()) {
             return $dto->getId();
@@ -415,7 +415,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->setNoAnswerNumberCountry($value);
     }
 
-    public function getNoAnswerNumberCountryId()
+    public function getNoAnswerNumberCountryId(): ?int
     {
         if ($dto = $this->getNoAnswerNumberCountry()) {
             return $dto->getId();
