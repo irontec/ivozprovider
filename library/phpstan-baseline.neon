@@ -2836,11 +2836,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierRepository\\:\\:getCarrierIdsByBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierRepository\\:\\:getCarrierIdsWithCalculatecostGroupByBrand\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierRepository.php
@@ -3127,11 +3122,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyRepository\\:\\:findIdsByBrandId\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyRepository\\:\\:getSupervisedCompanyIdsByAdmin\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyRepository.php
 
@@ -3832,11 +3822,6 @@ parameters:
 
 		-
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderRepository\\:\\:getDdiProviderIdsByBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderRepository.php
 
@@ -8446,11 +8431,6 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierDoctrineRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CarrierDoctrineRepository\\:\\:getCarrierIdsByBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CarrierDoctrineRepository\\:\\:getCarrierIdsWithCalculatecostGroupByBrand\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierDoctrineRepository.php
@@ -8471,11 +8451,6 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyDoctrineRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CompanyDoctrineRepository\\:\\:getSupervisedCompanyIdsByAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyDoctrineRepository.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
@@ -8487,11 +8462,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DdiProviderDoctrineRepository\\:\\:findByProxyTrunks\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DdiProviderDoctrineRepository\\:\\:getDdiProviderIdsByBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
 
