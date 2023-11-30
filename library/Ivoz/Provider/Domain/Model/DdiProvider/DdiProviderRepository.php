@@ -10,6 +10,9 @@ use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 
 interface DdiProviderRepository extends ObjectRepository, Selectable
 {
+    /**
+     * @return array<array-key, int>
+     */
     public function getDdiProviderIdsByBrandAdmin(AdministratorInterface $admin): array;
 
     /**

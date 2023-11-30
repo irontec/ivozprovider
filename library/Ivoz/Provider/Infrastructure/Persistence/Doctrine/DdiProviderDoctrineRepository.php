@@ -46,9 +46,12 @@ class DdiProviderDoctrineRepository extends ServiceEntityRepository implements D
 
         $result = $qb->getQuery()->getScalarResult();
 
-        return array_column(
-            $result,
-            'id'
+        return array_map(
+            'intval',
+            array_column(
+                $result,
+                'id'
+            )
         );
     }
 
