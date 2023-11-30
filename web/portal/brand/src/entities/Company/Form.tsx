@@ -124,7 +124,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
       recordingEnabled && {
         legend: _('Recordings'),
         fields: [
-          'onDemandRecord',
+          !isRetail && 'onDemandRecord',
           'allowRecordingRemoval',
           'onDemandRecordCode',
         ],
