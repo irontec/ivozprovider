@@ -40,7 +40,7 @@ const Trusted: EntityInterface = {
   ...defaultEntityBehavior,
   icon: MeetingRoomIcon,
   iden: 'Trusted',
-  title: _('Trusted'),
+  title: _('Authorized Ip address', { count: 2 }),
   path: '/trusteds',
   toStr: (row: TrustedPropertyList<EntityValues>) => `${row?.id}`,
   properties,
