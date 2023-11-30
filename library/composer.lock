@@ -2596,7 +2596,7 @@
             "description": "Symfony bridge for ivoz-api",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api-bundle/issues",
-                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.8.2"
+                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.8.1"
             },
             "time": "2023-11-21T10:43:00+00:00"
         },
@@ -14649,5 +14649,5 @@
     "platform-overrides": {
         "php": "8.0.9"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.0.0"
 }
