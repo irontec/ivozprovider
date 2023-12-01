@@ -83,7 +83,10 @@ abstract class MatchListPatternAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): MatchListPatternDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): MatchListPatternDto
     {
         return new MatchListPatternDto($id);
     }

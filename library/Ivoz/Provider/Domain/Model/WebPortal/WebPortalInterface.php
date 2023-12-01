@@ -46,7 +46,10 @@ interface WebPortalInterface extends LoggableEntityInterface, FileContainerInter
      */
     public function setUrl(string $url): static;
 
-    public static function createDto(string|int|null $id = null): WebPortalDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): WebPortalDto;
 
     /**
      * @internal use EntityTools instead

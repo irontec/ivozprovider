@@ -80,7 +80,10 @@ abstract class ServiceAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ServiceDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ServiceDto
     {
         return new ServiceDto($id);
     }

@@ -86,10 +86,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
      */
     private $rules = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -232,6 +229,9 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this->generateRules;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -304,7 +304,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -334,7 +334,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this->country;
     }
 
-    public function setCountryId($id): static
+    public function setCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -352,6 +352,9 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return null;
     }
 
+    /**
+     * @param TransformationRuleDto[] | null $rules
+     */
     public function setRules(?array $rules): static
     {
         $this->rules = $rules;

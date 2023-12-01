@@ -186,7 +186,10 @@ abstract class BillableCallHistoricAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): BillableCallHistoricDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BillableCallHistoricDto
     {
         return new BillableCallHistoricDto($id);
     }

@@ -91,7 +91,10 @@ abstract class TerminalModelAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TerminalModelDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TerminalModelDto
     {
         return new TerminalModelDto($id);
     }

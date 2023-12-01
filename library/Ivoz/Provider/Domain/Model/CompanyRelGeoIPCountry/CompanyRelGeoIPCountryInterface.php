@@ -27,7 +27,10 @@ interface CompanyRelGeoIPCountryInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): CompanyRelGeoIPCountryDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CompanyRelGeoIPCountryDto;
 
     /**
      * @internal use EntityTools instead

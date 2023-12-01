@@ -34,10 +34,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
      */
     private $friend = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -109,6 +106,9 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
         return $this->regExp;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -133,7 +133,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
         return $this->friend;
     }
 
-    public function setFriendId($id): static
+    public function setFriendId(?int $id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)

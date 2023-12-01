@@ -30,10 +30,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
      */
     private $extension = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -79,6 +76,9 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -103,7 +103,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $this->ivr;
     }
 
-    public function setIvrId($id): static
+    public function setIvrId(?int $id): static
     {
         $value = !is_null($id)
             ? new IvrDto($id)
@@ -133,7 +133,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $this->extension;
     }
 
-    public function setExtensionId($id): static
+    public function setExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)

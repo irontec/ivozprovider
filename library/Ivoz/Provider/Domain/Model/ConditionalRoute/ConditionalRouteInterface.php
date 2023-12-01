@@ -63,7 +63,10 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
-    public static function createDto(string|int|null $id = null): ConditionalRouteDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConditionalRouteDto;
 
     /**
      * @internal use EntityTools instead

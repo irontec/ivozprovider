@@ -149,7 +149,10 @@ abstract class CallForwardSettingAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CallForwardSettingDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CallForwardSettingDto
     {
         return new CallForwardSettingDto($id);
     }

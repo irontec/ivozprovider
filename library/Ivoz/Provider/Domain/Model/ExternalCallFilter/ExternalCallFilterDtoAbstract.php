@@ -132,10 +132,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
      */
     private $schedules = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -299,6 +296,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->outOfScheduleNumberValue;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -323,7 +323,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -353,7 +353,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->welcomeLocution;
     }
 
-    public function setWelcomeLocutionId($id): static
+    public function setWelcomeLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -383,7 +383,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->holidayLocution;
     }
 
-    public function setHolidayLocutionId($id): static
+    public function setHolidayLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -413,7 +413,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->outOfScheduleLocution;
     }
 
-    public function setOutOfScheduleLocutionId($id): static
+    public function setOutOfScheduleLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -443,7 +443,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->holidayExtension;
     }
 
-    public function setHolidayExtensionId($id): static
+    public function setHolidayExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -473,7 +473,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->outOfScheduleExtension;
     }
 
-    public function setOutOfScheduleExtensionId($id): static
+    public function setOutOfScheduleExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -503,7 +503,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->holidayVoicemail;
     }
 
-    public function setHolidayVoicemailId($id): static
+    public function setHolidayVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -533,7 +533,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->outOfScheduleVoicemail;
     }
 
-    public function setOutOfScheduleVoicemailId($id): static
+    public function setOutOfScheduleVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -563,7 +563,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->holidayNumberCountry;
     }
 
-    public function setHolidayNumberCountryId($id): static
+    public function setHolidayNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -593,7 +593,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->outOfScheduleNumberCountry;
     }
 
-    public function setOutOfScheduleNumberCountryId($id): static
+    public function setOutOfScheduleNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -611,6 +611,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return null;
     }
 
+    /**
+     * @param ExternalCallFilterRelCalendarDto[] | null $calendars
+     */
     public function setCalendars(?array $calendars): static
     {
         $this->calendars = $calendars;
@@ -626,6 +629,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->calendars;
     }
 
+    /**
+     * @param ExternalCallFilterBlackListDto[] | null $blackLists
+     */
     public function setBlackLists(?array $blackLists): static
     {
         $this->blackLists = $blackLists;
@@ -641,6 +647,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->blackLists;
     }
 
+    /**
+     * @param ExternalCallFilterWhiteListDto[] | null $whiteLists
+     */
     public function setWhiteLists(?array $whiteLists): static
     {
         $this->whiteLists = $whiteLists;
@@ -656,6 +665,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->whiteLists;
     }
 
+    /**
+     * @param ExternalCallFilterRelScheduleDto[] | null $schedules
+     */
     public function setSchedules(?array $schedules): static
     {
         $this->schedules = $schedules;

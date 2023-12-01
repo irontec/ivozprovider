@@ -102,7 +102,10 @@ abstract class CarrierAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CarrierDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CarrierDto
     {
         return new CarrierDto($id);
     }

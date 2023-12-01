@@ -54,7 +54,10 @@ interface RatingPlanInterface extends LoggableEntityInterface
      */
     public function getCgrTimingTag();
 
-    public static function createDto(string|int|null $id = null): RatingPlanDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RatingPlanDto;
 
     /**
      * @internal use EntityTools instead

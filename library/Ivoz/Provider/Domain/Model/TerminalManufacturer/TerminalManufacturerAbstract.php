@@ -64,7 +64,10 @@ abstract class TerminalManufacturerAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TerminalManufacturerDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TerminalManufacturerDto
     {
         return new TerminalManufacturerDto($id);
     }

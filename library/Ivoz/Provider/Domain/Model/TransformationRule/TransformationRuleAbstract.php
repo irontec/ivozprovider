@@ -81,7 +81,10 @@ abstract class TransformationRuleAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TransformationRuleDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TransformationRuleDto
     {
         return new TransformationRuleDto($id);
     }

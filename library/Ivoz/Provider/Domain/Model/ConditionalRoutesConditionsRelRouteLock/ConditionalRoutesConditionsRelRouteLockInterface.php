@@ -27,7 +27,10 @@ interface ConditionalRoutesConditionsRelRouteLockInterface extends LoggableEntit
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionsRelRouteLockDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConditionalRoutesConditionsRelRouteLockDto;
 
     /**
      * @internal use EntityTools instead

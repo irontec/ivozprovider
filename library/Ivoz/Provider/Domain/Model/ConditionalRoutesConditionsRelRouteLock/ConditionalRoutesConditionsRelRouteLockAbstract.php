@@ -58,7 +58,10 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionsRelRouteLockDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConditionalRoutesConditionsRelRouteLockDto
     {
         return new ConditionalRoutesConditionsRelRouteLockDto($id);
     }

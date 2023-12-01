@@ -49,10 +49,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
      */
     private $transformationRuleSet = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -166,6 +163,9 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
         return $this->replaceExpr;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -190,7 +190,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
         return $this->transformationRuleSet;
     }
 
-    public function setTransformationRuleSetId($id): static
+    public function setTransformationRuleSetId(?int $id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)

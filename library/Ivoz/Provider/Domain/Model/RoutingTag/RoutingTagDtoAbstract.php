@@ -46,10 +46,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
      */
     private $relCompanies = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -123,6 +120,9 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this->tag;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -147,7 +147,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -165,6 +165,9 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param OutgoingRoutingDto[] | null $outgoingRoutings
+     */
     public function setOutgoingRoutings(?array $outgoingRoutings): static
     {
         $this->outgoingRoutings = $outgoingRoutings;
@@ -180,6 +183,9 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingRoutings;
     }
 
+    /**
+     * @param CompanyRelRoutingTagDto[] | null $relCompanies
+     */
     public function setRelCompanies(?array $relCompanies): static
     {
         $this->relCompanies = $relCompanies;

@@ -51,10 +51,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
      */
     private $ddisCountry = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -144,6 +141,9 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this->ddisCountryMatch;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -168,7 +168,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this->fixedCost;
     }
 
-    public function setFixedCostId($id): static
+    public function setFixedCostId(?int $id): static
     {
         $value = !is_null($id)
             ? new FixedCostDto($id)
@@ -198,7 +198,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this->invoiceScheduler;
     }
 
-    public function setInvoiceSchedulerId($id): static
+    public function setInvoiceSchedulerId(?int $id): static
     {
         $value = !is_null($id)
             ? new InvoiceSchedulerDto($id)
@@ -228,7 +228,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this->ddisCountry;
     }
 
-    public function setDdisCountryId($id): static
+    public function setDdisCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)

@@ -29,7 +29,10 @@ interface LocationInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): LocationDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): LocationDto;
 
     /**
      * @internal use EntityTools instead

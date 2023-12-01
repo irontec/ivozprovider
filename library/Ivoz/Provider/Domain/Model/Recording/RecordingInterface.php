@@ -37,7 +37,10 @@ interface RecordingInterface extends LoggableEntityInterface, FileContainerInter
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): RecordingDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RecordingDto;
 
     /**
      * @internal use EntityTools instead

@@ -132,7 +132,10 @@ abstract class TpRatingProfileAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TpRatingProfileDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpRatingProfileDto
     {
         return new TpRatingProfileDto($id);
     }

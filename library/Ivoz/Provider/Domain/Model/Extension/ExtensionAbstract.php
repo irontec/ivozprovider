@@ -130,7 +130,10 @@ abstract class ExtensionAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ExtensionDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ExtensionDto
     {
         return new ExtensionDto($id);
     }

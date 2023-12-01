@@ -50,7 +50,10 @@ interface LocutionInterface extends LoggableEntityInterface, FileContainerInterf
      */
     public function addTmpFile(string $fldName, TempFile $file);
 
-    public static function createDto(string|int|null $id = null): LocutionDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): LocutionDto;
 
     /**
      * @internal use EntityTools instead

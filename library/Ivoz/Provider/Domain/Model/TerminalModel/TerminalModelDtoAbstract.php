@@ -59,10 +59,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
      */
     private $terminalManufacturer = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -204,6 +201,9 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $this->specificUrlPattern;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -228,7 +228,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $this->terminalManufacturer;
     }
 
-    public function setTerminalManufacturerId($id): static
+    public function setTerminalManufacturerId(?int $id): static
     {
         $value = !is_null($id)
             ? new TerminalManufacturerDto($id)

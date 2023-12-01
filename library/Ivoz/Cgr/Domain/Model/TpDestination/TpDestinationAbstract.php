@@ -79,7 +79,10 @@ abstract class TpDestinationAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TpDestinationDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpDestinationDto
     {
         return new TpDestinationDto($id);
     }

@@ -88,7 +88,10 @@ abstract class DestinationRateAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): DestinationRateDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DestinationRateDto
     {
         return new DestinationRateDto($id);
     }

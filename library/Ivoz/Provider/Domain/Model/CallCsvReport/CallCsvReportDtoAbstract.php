@@ -71,10 +71,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
      */
     private $callCsvScheduler = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -188,6 +185,9 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->createdOn;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -248,7 +248,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -278,7 +278,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -308,7 +308,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->callCsvScheduler;
     }
 
-    public function setCallCsvSchedulerId($id): static
+    public function setCallCsvSchedulerId(?int $id): static
     {
         $value = !is_null($id)
             ? new CallCsvSchedulerDto($id)

@@ -75,10 +75,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
      */
     private $dstCountry = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -218,6 +215,9 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $this->status;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -278,7 +278,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $this->fax;
     }
 
-    public function setFaxId($id): static
+    public function setFaxId(?int $id): static
     {
         $value = !is_null($id)
             ? new FaxDto($id)
@@ -308,7 +308,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $this->dstCountry;
     }
 
-    public function setDstCountryId($id): static
+    public function setDstCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)

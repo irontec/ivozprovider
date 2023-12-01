@@ -40,10 +40,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
      */
     private $matchList = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -117,6 +114,9 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->policy;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -141,7 +141,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->callAcl;
     }
 
-    public function setCallAclId($id): static
+    public function setCallAclId(?int $id): static
     {
         $value = !is_null($id)
             ? new CallAclDto($id)
@@ -171,7 +171,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->matchList;
     }
 
-    public function setMatchListId($id): static
+    public function setMatchListId(?int $id): static
     {
         $value = !is_null($id)
             ? new MatchListDto($id)

@@ -59,10 +59,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
      */
     private $brand = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -204,6 +201,9 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->version;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -228,7 +228,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)

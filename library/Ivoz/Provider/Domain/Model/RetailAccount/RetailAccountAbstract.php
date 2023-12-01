@@ -158,7 +158,10 @@ abstract class RetailAccountAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): RetailAccountDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RetailAccountDto
     {
         return new RetailAccountDto($id);
     }

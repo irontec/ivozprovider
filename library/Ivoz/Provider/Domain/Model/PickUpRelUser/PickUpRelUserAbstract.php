@@ -59,7 +59,10 @@ abstract class PickUpRelUserAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): PickUpRelUserDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): PickUpRelUserDto
     {
         return new PickUpRelUserDto($id);
     }

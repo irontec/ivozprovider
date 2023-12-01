@@ -83,10 +83,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
      */
     private $numberCountry = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -236,6 +233,9 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->numberValue;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -260,7 +260,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->calendar;
     }
 
-    public function setCalendarId($id): static
+    public function setCalendarId(?int $id): static
     {
         $value = !is_null($id)
             ? new CalendarDto($id)
@@ -290,7 +290,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->locution;
     }
 
-    public function setLocutionId($id): static
+    public function setLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -320,7 +320,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->extension;
     }
 
-    public function setExtensionId($id): static
+    public function setExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -350,7 +350,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->voicemail;
     }
 
-    public function setVoicemailId($id): static
+    public function setVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -380,7 +380,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->numberCountry;
     }
 
-    public function setNumberCountryId($id): static
+    public function setNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)

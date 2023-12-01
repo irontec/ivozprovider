@@ -37,7 +37,10 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      */
     public function getNumberE164();
 
-    public static function createDto(string|int|null $id = null): MatchListPatternDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): MatchListPatternDto;
 
     /**
      * @internal use EntityTools instead

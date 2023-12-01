@@ -43,7 +43,10 @@ interface HolidayDateInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
-    public static function createDto(string|int|null $id = null): HolidayDateDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): HolidayDateDto;
 
     /**
      * @internal use EntityTools instead

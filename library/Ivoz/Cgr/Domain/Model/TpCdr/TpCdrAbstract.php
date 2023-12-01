@@ -212,7 +212,10 @@ abstract class TpCdrAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TpCdrDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpCdrDto
     {
         return new TpCdrDto($id);
     }

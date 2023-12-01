@@ -80,7 +80,10 @@ abstract class BalanceNotificationAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): BalanceNotificationDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BalanceNotificationDto
     {
         return new BalanceNotificationDto($id);
     }

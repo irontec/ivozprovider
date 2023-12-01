@@ -93,7 +93,10 @@ abstract class TpRatingPlanAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TpRatingPlanDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpRatingPlanDto
     {
         return new TpRatingPlanDto($id);
     }

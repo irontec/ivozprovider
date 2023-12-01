@@ -42,7 +42,10 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): FixedCostsRelInvoiceSchedulerDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FixedCostsRelInvoiceSchedulerDto;
 
     /**
      * @internal use EntityTools instead

@@ -97,7 +97,10 @@ abstract class InvoiceNumberSequenceAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): InvoiceNumberSequenceDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): InvoiceNumberSequenceDto
     {
         return new InvoiceNumberSequenceDto($id);
     }

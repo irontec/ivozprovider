@@ -27,7 +27,10 @@ interface ExternalCallFilterWhiteListInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): ExternalCallFilterWhiteListDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ExternalCallFilterWhiteListDto;
 
     /**
      * @internal use EntityTools instead

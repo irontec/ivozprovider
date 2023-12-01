@@ -109,7 +109,10 @@ abstract class TpTimingAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TpTimingDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpTimingDto
     {
         return new TpTimingDto($id);
     }

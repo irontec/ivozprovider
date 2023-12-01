@@ -63,7 +63,10 @@ abstract class DomainAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): DomainDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DomainDto
     {
         return new DomainDto($id);
     }

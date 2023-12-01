@@ -84,7 +84,10 @@ abstract class BannedAddressAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): BannedAddressDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BannedAddressDto
     {
         return new BannedAddressDto($id);
     }

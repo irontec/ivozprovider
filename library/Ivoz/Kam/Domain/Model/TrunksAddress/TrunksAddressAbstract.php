@@ -83,7 +83,10 @@ abstract class TrunksAddressAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TrunksAddressDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksAddressDto
     {
         return new TrunksAddressDto($id);
     }

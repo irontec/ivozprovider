@@ -26,7 +26,10 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): TrunksAddressDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksAddressDto;
 
     /**
      * @internal use EntityTools instead

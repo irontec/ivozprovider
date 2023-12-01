@@ -34,7 +34,10 @@ interface FaxInterface extends LoggableEntityInterface
      */
     public function getOutgoingDdi(): ?DdiInterface;
 
-    public static function createDto(string|int|null $id = null): FaxDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FaxDto;
 
     /**
      * @internal use EntityTools instead

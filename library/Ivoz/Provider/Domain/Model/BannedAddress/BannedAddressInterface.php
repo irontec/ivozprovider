@@ -33,7 +33,10 @@ interface BannedAddressInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): BannedAddressDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BannedAddressDto;
 
     /**
      * @internal use EntityTools instead

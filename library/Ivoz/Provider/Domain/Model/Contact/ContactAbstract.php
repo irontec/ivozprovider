@@ -113,7 +113,10 @@ abstract class ContactAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ContactDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ContactDto
     {
         return new ContactDto($id);
     }

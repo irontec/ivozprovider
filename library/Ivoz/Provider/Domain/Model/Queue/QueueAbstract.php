@@ -189,7 +189,10 @@ abstract class QueueAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): QueueDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): QueueDto
     {
         return new QueueDto($id);
     }

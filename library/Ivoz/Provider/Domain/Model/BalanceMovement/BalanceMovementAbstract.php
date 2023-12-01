@@ -73,7 +73,10 @@ abstract class BalanceMovementAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): BalanceMovementDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BalanceMovementDto
     {
         return new BalanceMovementDto($id);
     }

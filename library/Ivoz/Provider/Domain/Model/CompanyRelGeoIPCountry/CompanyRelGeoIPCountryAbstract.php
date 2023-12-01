@@ -58,7 +58,10 @@ abstract class CompanyRelGeoIPCountryAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CompanyRelGeoIPCountryDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CompanyRelGeoIPCountryDto
     {
         return new CompanyRelGeoIPCountryDto($id);
     }

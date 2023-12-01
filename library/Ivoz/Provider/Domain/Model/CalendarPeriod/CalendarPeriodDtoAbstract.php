@@ -74,10 +74,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
      */
     private $relSchedules = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -186,6 +183,9 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->numberValue;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -210,7 +210,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->calendar;
     }
 
-    public function setCalendarId($id): static
+    public function setCalendarId(?int $id): static
     {
         $value = !is_null($id)
             ? new CalendarDto($id)
@@ -240,7 +240,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->locution;
     }
 
-    public function setLocutionId($id): static
+    public function setLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -270,7 +270,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->extension;
     }
 
-    public function setExtensionId($id): static
+    public function setExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -300,7 +300,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->voicemail;
     }
 
-    public function setVoicemailId($id): static
+    public function setVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -330,7 +330,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->numberCountry;
     }
 
-    public function setNumberCountryId($id): static
+    public function setNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -348,6 +348,9 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param CalendarPeriodsRelScheduleDto[] | null $relSchedules
+     */
     public function setRelSchedules(?array $relSchedules): static
     {
         $this->relSchedules = $relSchedules;

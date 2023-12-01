@@ -29,7 +29,10 @@ interface CodecInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): CodecDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CodecDto;
 
     /**
      * @internal use EntityTools instead

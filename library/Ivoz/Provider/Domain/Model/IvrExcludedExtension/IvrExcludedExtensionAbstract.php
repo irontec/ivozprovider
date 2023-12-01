@@ -58,7 +58,10 @@ abstract class IvrExcludedExtensionAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): IvrExcludedExtensionDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): IvrExcludedExtensionDto
     {
         return new IvrExcludedExtensionDto($id);
     }

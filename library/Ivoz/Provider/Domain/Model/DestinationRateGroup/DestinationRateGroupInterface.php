@@ -75,7 +75,10 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
      */
     public function getRoundingMethod();
 
-    public static function createDto(string|int|null $id = null): DestinationRateGroupDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DestinationRateGroupDto;
 
     /**
      * @internal use EntityTools instead

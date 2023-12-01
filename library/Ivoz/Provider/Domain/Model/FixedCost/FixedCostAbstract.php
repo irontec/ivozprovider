@@ -67,7 +67,10 @@ abstract class FixedCostAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): FixedCostDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FixedCostDto
     {
         return new FixedCostDto($id);
     }

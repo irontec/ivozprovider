@@ -50,10 +50,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
      */
     private $publicEntity = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -155,6 +152,9 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->delete;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -179,7 +179,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->administrator;
     }
 
-    public function setAdministratorId($id): static
+    public function setAdministratorId(?int $id): static
     {
         $value = !is_null($id)
             ? new AdministratorDto($id)
@@ -209,7 +209,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->publicEntity;
     }
 
-    public function setPublicEntityId($id): static
+    public function setPublicEntityId(?int $id): static
     {
         $value = !is_null($id)
             ? new PublicEntityDto($id)

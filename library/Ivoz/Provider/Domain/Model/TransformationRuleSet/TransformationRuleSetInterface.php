@@ -40,7 +40,10 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
      */
     public function setTrunkPrefix(?string $trunkPrefix = null): static;
 
-    public static function createDto(string|int|null $id = null): TransformationRuleSetDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TransformationRuleSetDto;
 
     /**
      * @internal use EntityTools instead

@@ -30,10 +30,7 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
      */
     private $calendar = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -79,6 +76,9 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -103,7 +103,7 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $this->condition;
     }
 
-    public function setConditionId($id): static
+    public function setConditionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConditionalRoutesConditionDto($id)
@@ -133,7 +133,7 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $this->calendar;
     }
 
-    public function setCalendarId($id): static
+    public function setCalendarId(?int $id): static
     {
         $value = !is_null($id)
             ? new CalendarDto($id)

@@ -148,10 +148,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     private $ddiProvider = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -409,6 +406,9 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->cgrid;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -433,7 +433,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -463,7 +463,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -493,7 +493,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->carrier;
     }
 
-    public function setCarrierId($id): static
+    public function setCarrierId(?int $id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -523,7 +523,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->retailAccount;
     }
 
-    public function setRetailAccountId($id): static
+    public function setRetailAccountId(?int $id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)
@@ -553,7 +553,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->residentialDevice;
     }
 
-    public function setResidentialDeviceId($id): static
+    public function setResidentialDeviceId(?int $id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -583,7 +583,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -613,7 +613,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->friend;
     }
 
-    public function setFriendId($id): static
+    public function setFriendId(?int $id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)
@@ -643,7 +643,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->fax;
     }
 
-    public function setFaxId($id): static
+    public function setFaxId(?int $id): static
     {
         $value = !is_null($id)
             ? new FaxDto($id)
@@ -673,7 +673,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->ddi;
     }
 
-    public function setDdiId($id): static
+    public function setDdiId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -703,7 +703,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->ddiProvider;
     }
 
-    public function setDdiProviderId($id): static
+    public function setDdiProviderId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)

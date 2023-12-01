@@ -82,7 +82,10 @@ abstract class UsersHtableAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): UsersHtableDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): UsersHtableDto
     {
         return new UsersHtableDto($id);
     }

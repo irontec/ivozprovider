@@ -35,7 +35,10 @@ interface ScheduleInterface extends LoggableEntityInterface
      */
     public function isOnSchedule(DateTimeInterface $time);
 
-    public static function createDto(string|int|null $id = null): ScheduleDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ScheduleDto;
 
     /**
      * @internal use EntityTools instead

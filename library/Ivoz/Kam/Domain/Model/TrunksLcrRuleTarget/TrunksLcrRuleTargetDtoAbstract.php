@@ -51,10 +51,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
      */
     private $outgoingRouting = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -144,6 +141,9 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->weight;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -168,7 +168,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->rule;
     }
 
-    public function setRuleId($id): static
+    public function setRuleId(?int $id): static
     {
         $value = !is_null($id)
             ? new TrunksLcrRuleDto($id)
@@ -198,7 +198,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->gw;
     }
 
-    public function setGwId($id): static
+    public function setGwId(?int $id): static
     {
         $value = !is_null($id)
             ? new TrunksLcrGatewayDto($id)
@@ -228,7 +228,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->outgoingRouting;
     }
 
-    public function setOutgoingRoutingId($id): static
+    public function setOutgoingRoutingId(?int $id): static
     {
         $value = !is_null($id)
             ? new OutgoingRoutingDto($id)

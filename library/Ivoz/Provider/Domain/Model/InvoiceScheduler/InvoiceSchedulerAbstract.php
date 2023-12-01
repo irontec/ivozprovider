@@ -121,7 +121,10 @@ abstract class InvoiceSchedulerAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): InvoiceSchedulerDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): InvoiceSchedulerDto
     {
         return new InvoiceSchedulerDto($id);
     }

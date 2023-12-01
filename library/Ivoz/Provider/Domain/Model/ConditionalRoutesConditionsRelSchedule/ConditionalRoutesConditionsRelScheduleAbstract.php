@@ -58,7 +58,10 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionsRelScheduleDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConditionalRoutesConditionsRelScheduleDto
     {
         return new ConditionalRoutesConditionsRelScheduleDto($id);
     }

@@ -104,10 +104,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
      */
     private $users = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -300,6 +297,9 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->rtpEncryption;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -324,7 +324,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -354,7 +354,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->domain;
     }
 
-    public function setDomainId($id): static
+    public function setDomainId(?int $id): static
     {
         $value = !is_null($id)
             ? new DomainDto($id)
@@ -384,7 +384,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->terminalModel;
     }
 
-    public function setTerminalModelId($id): static
+    public function setTerminalModelId(?int $id): static
     {
         $value = !is_null($id)
             ? new TerminalModelDto($id)
@@ -414,7 +414,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->psEndpoint;
     }
 
-    public function setPsEndpointId($id): static
+    public function setPsEndpointId(?int $id): static
     {
         $value = !is_null($id)
             ? new PsEndpointDto($id)
@@ -444,7 +444,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->psIdentify;
     }
 
-    public function setPsIdentifyId($id): static
+    public function setPsIdentifyId(?int $id): static
     {
         $value = !is_null($id)
             ? new PsIdentifyDto($id)
@@ -462,6 +462,9 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param UserDto[] | null $users
+     */
     public function setUsers(?array $users): static
     {
         $this->users = $users;

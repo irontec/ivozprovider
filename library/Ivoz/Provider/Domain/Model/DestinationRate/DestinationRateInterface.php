@@ -72,7 +72,10 @@ interface DestinationRateInterface extends LoggableEntityInterface
      */
     public function setRateIncrement(string $rateIncrement): static;
 
-    public static function createDto(string|int|null $id = null): DestinationRateDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DestinationRateDto;
 
     /**
      * @internal use EntityTools instead

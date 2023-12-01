@@ -18,7 +18,10 @@ interface UsersLocationInterface extends EntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): UsersLocationDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): UsersLocationDto;
 
     /**
      * @internal use EntityTools instead

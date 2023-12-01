@@ -88,7 +88,10 @@ abstract class MusicOnHoldAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): MusicOnHoldDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): MusicOnHoldDto
     {
         return new MusicOnHoldDto($id);
     }

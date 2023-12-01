@@ -232,7 +232,10 @@ abstract class FriendAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): FriendDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FriendDto
     {
         return new FriendDto($id);
     }

@@ -90,7 +90,10 @@ abstract class TrustedAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TrustedDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrustedDto
     {
         return new TrustedDto($id);
     }

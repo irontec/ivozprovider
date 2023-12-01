@@ -62,7 +62,10 @@ abstract class RoutingPatternGroupAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): RoutingPatternGroupDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RoutingPatternGroupDto
     {
         return new RoutingPatternGroupDto($id);
     }

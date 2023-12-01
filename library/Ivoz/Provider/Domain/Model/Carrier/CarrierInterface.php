@@ -52,7 +52,10 @@ interface CarrierInterface extends LoggableEntityInterface
      */
     public function getCurrencyIden(): string;
 
-    public static function createDto(string|int|null $id = null): CarrierDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CarrierDto;
 
     /**
      * @internal use EntityTools instead

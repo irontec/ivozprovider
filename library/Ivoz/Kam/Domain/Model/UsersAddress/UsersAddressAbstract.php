@@ -88,7 +88,10 @@ abstract class UsersAddressAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): UsersAddressDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): UsersAddressDto
     {
         return new UsersAddressDto($id);
     }

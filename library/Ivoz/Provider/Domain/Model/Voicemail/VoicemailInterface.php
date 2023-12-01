@@ -55,7 +55,10 @@ interface VoicemailInterface extends LoggableEntityInterface
      */
     public function getLanguage(): ?LanguageInterface;
 
-    public static function createDto(string|int|null $id = null): VoicemailDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): VoicemailDto;
 
     /**
      * @internal use EntityTools instead

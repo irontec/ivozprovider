@@ -32,7 +32,10 @@ interface UsersCdrInterface extends EntityInterface
      */
     public function getParty(): ?string;
 
-    public static function createDto(string|int|null $id = null): UsersCdrDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): UsersCdrDto;
 
     /**
      * @internal use EntityTools instead

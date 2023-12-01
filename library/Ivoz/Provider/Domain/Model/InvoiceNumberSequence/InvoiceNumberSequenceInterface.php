@@ -33,7 +33,10 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
      */
     public function nextval(): ?string;
 
-    public static function createDto(string|int|null $id = null): InvoiceNumberSequenceDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): InvoiceNumberSequenceDto;
 
     /**
      * @internal use EntityTools instead

@@ -89,7 +89,10 @@ interface DdiInterface extends LoggableEntityInterface
      */
     public function getDdie164(): string;
 
-    public static function createDto(string|int|null $id = null): DdiDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DdiDto;
 
     /**
      * @internal use EntityTools instead

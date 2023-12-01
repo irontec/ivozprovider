@@ -153,10 +153,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
      */
     private $fullNumberCountry = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -442,6 +439,9 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->preventMissedCalls;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -466,7 +466,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -496,7 +496,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->periodicAnnounceLocution;
     }
 
-    public function setPeriodicAnnounceLocutionId($id): static
+    public function setPeriodicAnnounceLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -526,7 +526,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeoutLocution;
     }
 
-    public function setTimeoutLocutionId($id): static
+    public function setTimeoutLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -556,7 +556,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeoutExtension;
     }
 
-    public function setTimeoutExtensionId($id): static
+    public function setTimeoutExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -586,7 +586,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeoutVoicemail;
     }
 
-    public function setTimeoutVoicemailId($id): static
+    public function setTimeoutVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -616,7 +616,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->fullLocution;
     }
 
-    public function setFullLocutionId($id): static
+    public function setFullLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -646,7 +646,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->fullExtension;
     }
 
-    public function setFullExtensionId($id): static
+    public function setFullExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -676,7 +676,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->fullVoicemail;
     }
 
-    public function setFullVoicemailId($id): static
+    public function setFullVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -706,7 +706,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeoutNumberCountry;
     }
 
-    public function setTimeoutNumberCountryId($id): static
+    public function setTimeoutNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -736,7 +736,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->fullNumberCountry;
     }
 
-    public function setFullNumberCountryId($id): static
+    public function setFullNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)

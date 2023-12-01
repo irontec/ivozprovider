@@ -154,10 +154,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
      */
     private $brand = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -565,6 +562,9 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
         return $this->createdAt;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -589,7 +589,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)

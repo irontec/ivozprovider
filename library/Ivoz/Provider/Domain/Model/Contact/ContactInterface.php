@@ -28,7 +28,10 @@ interface ContactInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): ContactDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ContactDto;
 
     /**
      * @internal use EntityTools instead

@@ -71,7 +71,10 @@ abstract class RouteLockAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): RouteLockDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RouteLockDto
     {
         return new RouteLockDto($id);
     }

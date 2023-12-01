@@ -97,10 +97,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
      */
     private $users = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -217,6 +214,9 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->friendValue;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -241,7 +241,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -271,7 +271,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->ivr;
     }
 
-    public function setIvrId($id): static
+    public function setIvrId(?int $id): static
     {
         $value = !is_null($id)
             ? new IvrDto($id)
@@ -301,7 +301,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->huntGroup;
     }
 
-    public function setHuntGroupId($id): static
+    public function setHuntGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new HuntGroupDto($id)
@@ -331,7 +331,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->conferenceRoom;
     }
 
-    public function setConferenceRoomId($id): static
+    public function setConferenceRoomId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConferenceRoomDto($id)
@@ -361,7 +361,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -391,7 +391,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->queue;
     }
 
-    public function setQueueId($id): static
+    public function setQueueId(?int $id): static
     {
         $value = !is_null($id)
             ? new QueueDto($id)
@@ -421,7 +421,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->conditionalRoute;
     }
 
-    public function setConditionalRouteId($id): static
+    public function setConditionalRouteId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConditionalRouteDto($id)
@@ -451,7 +451,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->numberCountry;
     }
 
-    public function setNumberCountryId($id): static
+    public function setNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -481,7 +481,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this->voicemail;
     }
 
-    public function setVoicemailId($id): static
+    public function setVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -499,6 +499,9 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param UserDto[] | null $users
+     */
     public function setUsers(?array $users): static
     {
         $this->users = $users;

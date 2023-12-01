@@ -54,10 +54,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
      */
     private $ratingPlan = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -185,6 +182,9 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->createdAt;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -209,7 +209,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->ratingPlan;
     }
 
-    public function setRatingPlanId($id): static
+    public function setRatingPlanId(?int $id): static
     {
         $value = !is_null($id)
             ? new RatingPlanDto($id)

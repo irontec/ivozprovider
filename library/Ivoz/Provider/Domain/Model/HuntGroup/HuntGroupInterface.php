@@ -59,7 +59,10 @@ interface HuntGroupInterface extends LoggableEntityInterface
      */
     public function getNoAnswerNumberValueE164();
 
-    public static function createDto(string|int|null $id = null): HuntGroupDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): HuntGroupDto;
 
     /**
      * @internal use EntityTools instead

@@ -183,10 +183,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
      */
     private $callForwardSettings = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -528,6 +525,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->multiContact;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -552,7 +552,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -582,7 +582,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->domain;
     }
 
-    public function setDomainId($id): static
+    public function setDomainId(?int $id): static
     {
         $value = !is_null($id)
             ? new DomainDto($id)
@@ -612,7 +612,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->transformationRuleSet;
     }
 
-    public function setTransformationRuleSetId($id): static
+    public function setTransformationRuleSetId(?int $id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -642,7 +642,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->callAcl;
     }
 
-    public function setCallAclId($id): static
+    public function setCallAclId(?int $id): static
     {
         $value = !is_null($id)
             ? new CallAclDto($id)
@@ -672,7 +672,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingDdi;
     }
 
-    public function setOutgoingDdiId($id): static
+    public function setOutgoingDdiId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -702,7 +702,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->language;
     }
 
-    public function setLanguageId($id): static
+    public function setLanguageId(?int $id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -732,7 +732,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->interCompany;
     }
 
-    public function setInterCompanyId($id): static
+    public function setInterCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -762,7 +762,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->psEndpoint;
     }
 
-    public function setPsEndpointId($id): static
+    public function setPsEndpointId(?int $id): static
     {
         $value = !is_null($id)
             ? new PsEndpointDto($id)
@@ -792,7 +792,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->psIdentify;
     }
 
-    public function setPsIdentifyId($id): static
+    public function setPsIdentifyId(?int $id): static
     {
         $value = !is_null($id)
             ? new PsIdentifyDto($id)
@@ -810,6 +810,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param FriendsPatternDto[] | null $patterns
+     */
     public function setPatterns(?array $patterns): static
     {
         $this->patterns = $patterns;
@@ -825,6 +828,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->patterns;
     }
 
+    /**
+     * @param CallForwardSettingDto[] | null $callForwardSettings
+     */
     public function setCallForwardSettings(?array $callForwardSettings): static
     {
         $this->callForwardSettings = $callForwardSettings;

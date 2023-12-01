@@ -27,7 +27,10 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): ExternalCallFilterRelCalendarDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ExternalCallFilterRelCalendarDto;
 
     /**
      * @internal use EntityTools instead

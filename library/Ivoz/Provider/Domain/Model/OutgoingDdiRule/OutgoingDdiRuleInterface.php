@@ -49,7 +49,10 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      */
     public function getOutgoingDdi($originalDdi, $e164destination, $prefix = '');
 
-    public static function createDto(string|int|null $id = null): OutgoingDdiRuleDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): OutgoingDdiRuleDto;
 
     /**
      * @internal use EntityTools instead

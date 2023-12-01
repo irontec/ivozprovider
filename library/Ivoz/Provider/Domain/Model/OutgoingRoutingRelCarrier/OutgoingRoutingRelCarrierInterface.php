@@ -30,7 +30,10 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): OutgoingRoutingRelCarrierDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): OutgoingRoutingRelCarrierDto;
 
     /**
      * @internal use EntityTools instead

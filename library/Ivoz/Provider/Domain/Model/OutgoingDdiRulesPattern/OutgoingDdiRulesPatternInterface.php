@@ -43,7 +43,10 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      */
     public function getForcedDdi(): ?DdiInterface;
 
-    public static function createDto(string|int|null $id = null): OutgoingDdiRulesPatternDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): OutgoingDdiRulesPatternDto;
 
     /**
      * @internal use EntityTools instead

@@ -40,10 +40,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
      */
     private $trunksAddress = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -117,6 +114,9 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return $this->description;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -141,7 +141,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return $this->ddiProvider;
     }
 
-    public function setDdiProviderId($id): static
+    public function setDdiProviderId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)
@@ -171,7 +171,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return $this->trunksAddress;
     }
 
-    public function setTrunksAddressId($id): static
+    public function setTrunksAddressId(?int $id): static
     {
         $value = !is_null($id)
             ? new TrunksAddressDto($id)

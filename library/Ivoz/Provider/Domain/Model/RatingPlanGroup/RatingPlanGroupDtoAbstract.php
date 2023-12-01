@@ -76,10 +76,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
      */
     private $ratingPlan = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -150,6 +147,9 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -270,7 +270,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -300,7 +300,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->currency;
     }
 
-    public function setCurrencyId($id): static
+    public function setCurrencyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CurrencyDto($id)
@@ -318,6 +318,9 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param RatingPlanDto[] | null $ratingPlan
+     */
     public function setRatingPlan(?array $ratingPlan): static
     {
         $this->ratingPlan = $ratingPlan;

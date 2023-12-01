@@ -27,7 +27,10 @@ interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntity
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionsRelScheduleDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConditionalRoutesConditionsRelScheduleDto;
 
     /**
      * @internal use EntityTools instead

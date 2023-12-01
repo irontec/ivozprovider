@@ -42,7 +42,10 @@ interface DestinationInterface extends LoggableEntityInterface
      */
     public function getCgrTag(): string;
 
-    public static function createDto(string|int|null $id = null): DestinationDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DestinationDto;
 
     /**
      * @internal use EntityTools instead

@@ -58,7 +58,10 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionsRelMatchlistDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConditionalRoutesConditionsRelMatchlistDto
     {
         return new ConditionalRoutesConditionsRelMatchlistDto($id);
     }

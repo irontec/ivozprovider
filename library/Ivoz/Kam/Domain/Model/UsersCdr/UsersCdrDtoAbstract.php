@@ -102,10 +102,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
      */
     private $friend = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -323,6 +320,9 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->xcallid;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -347,7 +347,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -377,7 +377,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -407,7 +407,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -437,7 +437,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->friend;
     }
 
-    public function setFriendId($id): static
+    public function setFriendId(?int $id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)

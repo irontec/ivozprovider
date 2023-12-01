@@ -57,7 +57,10 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
      */
     public function addTmpFile(string $fldName, TempFile $file);
 
-    public static function createDto(string|int|null $id = null): MusicOnHoldDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): MusicOnHoldDto;
 
     /**
      * @internal use EntityTools instead

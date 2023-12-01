@@ -87,7 +87,10 @@ interface ExtensionInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
-    public static function createDto(string|int|null $id = null): ExtensionDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ExtensionDto;
 
     /**
      * @internal use EntityTools instead

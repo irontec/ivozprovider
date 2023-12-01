@@ -25,7 +25,10 @@ interface CorporationInterface extends LoggableEntityInterface
      */
     public function getId(): string|int|null;
 
-    public static function createDto(string|int|null $id = null): CorporationDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CorporationDto;
 
     /**
      * @internal use EntityTools instead

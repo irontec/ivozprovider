@@ -53,7 +53,10 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      */
     public function assertNoDuplicatedDestinationRateGroups();
 
-    public static function createDto(string|int|null $id = null): RatingPlanGroupDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RatingPlanGroupDto;
 
     /**
      * @internal use EntityTools instead

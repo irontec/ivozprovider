@@ -40,10 +40,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
      */
     private $contents = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -116,6 +113,9 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return $this->type;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -140,7 +140,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -158,6 +158,9 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return null;
     }
 
+    /**
+     * @param NotificationTemplateContentDto[] | null $contents
+     */
     public function setContents(?array $contents): static
     {
         $this->contents = $contents;

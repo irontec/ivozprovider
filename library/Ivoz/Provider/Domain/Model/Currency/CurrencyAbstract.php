@@ -65,7 +65,10 @@ abstract class CurrencyAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CurrencyDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CurrencyDto
     {
         return new CurrencyDto($id);
     }

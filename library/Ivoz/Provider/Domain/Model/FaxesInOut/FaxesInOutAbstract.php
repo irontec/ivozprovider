@@ -100,7 +100,10 @@ abstract class FaxesInOutAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): FaxesInOutDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FaxesInOutDto
     {
         return new FaxesInOutDto($id);
     }

@@ -58,7 +58,10 @@ abstract class ExternalCallFilterRelCalendarAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ExternalCallFilterRelCalendarDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ExternalCallFilterRelCalendarDto
     {
         return new ExternalCallFilterRelCalendarDto($id);
     }

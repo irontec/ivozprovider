@@ -104,7 +104,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function getService($exten);
 
-    public static function createDto(string|int|null $id = null): BrandDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BrandDto;
 
     /**
      * @internal use EntityTools instead

@@ -57,7 +57,10 @@ abstract class ApplicationServerAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ApplicationServerDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ApplicationServerDto
     {
         return new ApplicationServerDto($id);
     }

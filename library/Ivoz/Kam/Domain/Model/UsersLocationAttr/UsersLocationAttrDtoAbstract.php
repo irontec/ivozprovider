@@ -53,10 +53,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
      */
     private $id = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?string $id = null)
     {
         $this->setId($id);
     }
@@ -196,6 +193,9 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->lastModified;
     }
 
+    /**
+     * @param string|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;

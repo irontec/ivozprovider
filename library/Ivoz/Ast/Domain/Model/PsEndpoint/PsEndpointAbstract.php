@@ -244,7 +244,10 @@ abstract class PsEndpointAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): PsEndpointDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): PsEndpointDto
     {
         return new PsEndpointDto($id);
     }

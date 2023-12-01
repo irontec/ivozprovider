@@ -62,7 +62,10 @@ abstract class CorporationAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CorporationDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CorporationDto
     {
         return new CorporationDto($id);
     }

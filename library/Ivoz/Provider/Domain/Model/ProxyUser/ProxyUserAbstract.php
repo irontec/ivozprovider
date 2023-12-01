@@ -53,7 +53,10 @@ abstract class ProxyUserAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ProxyUserDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ProxyUserDto
     {
         return new ProxyUserDto($id);
     }

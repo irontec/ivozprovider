@@ -58,7 +58,10 @@ abstract class ExternalCallFilterBlackListAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ExternalCallFilterBlackListDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ExternalCallFilterBlackListDto
     {
         return new ExternalCallFilterBlackListDto($id);
     }
