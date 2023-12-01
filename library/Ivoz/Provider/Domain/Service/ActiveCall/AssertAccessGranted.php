@@ -88,15 +88,14 @@ class AssertAccessGranted
             $this->assertBrand($admin, $brand);
         }
 
-        $company = strval($channel['c'] ?? '');
-        if ($company) {
-            /** @var array<array-key, string> $companyIds */
+        $companyId = intval($channel['c'] ?? '');
+        if ($companyId > 0) {
             $companyIds = $this->companyRepository->getSupervisedCompanyIdsByAdmin(
                 $admin
             );
 
             $validCompany = in_array(
-                $company,
+                $companyId,
                 $companyIds,
                 true
             );
@@ -106,8 +105,8 @@ class AssertAccessGranted
             }
         }
 
-        $carrier = strval($channel['cr'] ?? '');
-        if ($carrier) {
+        $carrierId = intval($channel['cr'] ?? '');
+        if ($carrierId > 0) {
             $carrierIds = $this
                 ->carrierRepository
                 ->getCarrierIdsByBrandAdmin(
@@ -115,7 +114,7 @@ class AssertAccessGranted
                 );
 
             $validCarrier = in_array(
-                $carrier,
+                $carrierId,
                 $carrierIds,
                 true
             );
@@ -125,8 +124,8 @@ class AssertAccessGranted
             }
         }
 
-        $ddiProvider = strval($channel['dp'] ?? '');
-        if ($ddiProvider) {
+        $ddiProviderId = intval($channel['dp'] ?? '');
+        if ($ddiProviderId > 0) {
             $ddiProviderIds = $this
                 ->ddiProviderRepository
                 ->getDdiProviderIdsByBrandAdmin(
@@ -134,7 +133,7 @@ class AssertAccessGranted
                 );
 
             $validDdiProvider = in_array(
-                $ddiProvider,
+                $ddiProviderId,
                 $ddiProviderIds,
                 true
             );

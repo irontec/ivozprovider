@@ -15,6 +15,9 @@ interface CarrierRepository extends ObjectRepository, Selectable
      */
     public function getCarrierIdsWithCalculatecostGroupByBrand();
 
+    /**
+     * @return array<array-key, int>
+     */
     public function getCarrierIdsByBrandAdmin(AdministratorInterface $admin): array;
     /**
      * @param BrandInterface $brand

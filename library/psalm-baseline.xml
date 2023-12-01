@@ -2734,11 +2734,6 @@
       <code>$exten</code>
     </MissingParamType>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Company/CompanyRepository.php">
-    <MissingReturnType occurrences="1">
-      <code>getSupervisedCompanyIdsByAdmin</code>
-    </MissingReturnType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
