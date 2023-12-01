@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage;
-use Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageInterface;
 use Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

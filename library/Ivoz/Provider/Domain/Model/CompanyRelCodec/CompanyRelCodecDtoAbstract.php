@@ -112,7 +112,7 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return $this->setCodec($value);
     }
 
-    public function getCodecId()
+    public function getCodecId(): ?int
     {
         if ($dto = $this->getCodec()) {
             return $dto->getId();

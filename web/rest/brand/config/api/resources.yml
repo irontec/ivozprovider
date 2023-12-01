@@ -50,6 +50,49 @@ Model\ActiveCalls:
           type: integer
           required: false
           description: 'Company Id'
+    get_my_active_calls_realtime_filter:
+      access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+      method: 'GET'
+      path: '/my/active_calls/realtime_filter'
+      route_name: 'get_my_active_calls_realtime_filter'
+      swagger_context:
+        produces:
+        - 'application/json'
+        tags:
+        - My
+        parameters:
+        - name: c
+          in: query
+          type: string
+          required: false
+          description: 'Company Id'
+        - name: dp
+          in: query
+          type: string
+          required: false
+          description: 'DdiProvider Id'
+        - name: cr
+          in: query
+          type: string
+          required: false
+          description: 'CarrierRegistration Id'
+        - name: direction
+          in: query
+          required: false
+          description: 'Direction'
+          type: string
+          enum:
+            - inbound
+            - outbound
+        responses:
+          200:
+            description: 'Criteria response'
+            schema:
+              type: object
+              properties:
+                criteria:
+                  description: 'Criteria'
+                  type: string
   collectionOperations: []
 
 Model\Dashboard\DashboardClient:

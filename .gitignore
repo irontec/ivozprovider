@@ -6,7 +6,7 @@
 .vscode
 
 **/.unison.**
-
+**/__debug**
 vendor
 **/coverage/
 storage/*

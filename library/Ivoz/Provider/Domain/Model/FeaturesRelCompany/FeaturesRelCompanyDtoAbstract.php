@@ -112,7 +112,7 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
         return $this->setFeature($value);
     }
 
-    public function getFeatureId()
+    public function getFeatureId(): ?int
     {
         if ($dto = $this->getFeature()) {
             return $dto->getId();

@@ -386,7 +386,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    public function getCarrierId()
+    public function getCarrierId(): ?int
     {
         if ($dto = $this->getCarrier()) {
             return $dto->getId();
@@ -416,7 +416,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -446,7 +446,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->setLcrGateway($value);
     }
 
-    public function getLcrGatewayId()
+    public function getLcrGatewayId(): ?int
     {
         if ($dto = $this->getLcrGateway()) {
             return $dto->getId();

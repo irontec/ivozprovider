@@ -112,7 +112,7 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
         return $this->setCondition($value);
     }
 
-    public function getConditionId()
+    public function getConditionId(): ?int
     {
         if ($dto = $this->getCondition()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
         return $this->setSchedule($value);
     }
 
-    public function getScheduleId()
+    public function getScheduleId(): ?int
     {
         if ($dto = $this->getSchedule()) {
             return $dto->getId();

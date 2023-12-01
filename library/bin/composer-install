@@ -3,54 +3,15 @@
 # Stop on first non-zero exit code
 set -e
 
+# This MUST be the first composer, the others will link to this vendor
 pushd /opt/irontec/ivozprovider/library
     composer install $*
 popd
 
-pushd /opt/irontec/ivozprovider/asterisk/agi
-    composer install $*
-popd
+APPS=$(find /opt/irontec/ivozprovider -name composer.json ! -path '*/vendor/*' ! -path '*/library/*' -printf "%h\n")
 
-pushd /opt/irontec/ivozprovider/microservices/recordings
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/workers
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/balances
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/provision
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/scheduler
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/realtime
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/schema
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/platform
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/brand
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/client
-    composer install $*
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest/user
-    composer install $*
-popd
+for APP in $APPS; do
+    pushd $APP
+        composer install $*
+    popd
+done

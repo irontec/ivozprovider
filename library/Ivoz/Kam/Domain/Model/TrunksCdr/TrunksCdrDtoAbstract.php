@@ -442,7 +442,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -472,7 +472,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -502,7 +502,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    public function getCarrierId()
+    public function getCarrierId(): ?int
     {
         if ($dto = $this->getCarrier()) {
             return $dto->getId();
@@ -532,7 +532,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setRetailAccount($value);
     }
 
-    public function getRetailAccountId()
+    public function getRetailAccountId(): ?int
     {
         if ($dto = $this->getRetailAccount()) {
             return $dto->getId();
@@ -562,7 +562,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setResidentialDevice($value);
     }
 
-    public function getResidentialDeviceId()
+    public function getResidentialDeviceId(): ?int
     {
         if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
@@ -592,7 +592,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -622,7 +622,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setFriend($value);
     }
 
-    public function getFriendId()
+    public function getFriendId(): ?int
     {
         if ($dto = $this->getFriend()) {
             return $dto->getId();
@@ -652,7 +652,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setFax($value);
     }
 
-    public function getFaxId()
+    public function getFaxId(): ?int
     {
         if ($dto = $this->getFax()) {
             return $dto->getId();
@@ -682,7 +682,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setDdi($value);
     }
 
-    public function getDdiId()
+    public function getDdiId(): ?int
     {
         if ($dto = $this->getDdi()) {
             return $dto->getId();
@@ -712,7 +712,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProvider($value);
     }
 
-    public function getDdiProviderId()
+    public function getDdiProviderId(): ?int
     {
         if ($dto = $this->getDdiProvider()) {
             return $dto->getId();

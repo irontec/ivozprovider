@@ -117,7 +117,7 @@ Feature: Retrieve dashboard
           "extensionNum": null,
           "ddiNum": 1,
           "residentialDeviceNum": 1,
-          "voiceMailNum": 3,
+          "voiceMailNum": 1,
           "retailsAccountNum": null
       }
       """

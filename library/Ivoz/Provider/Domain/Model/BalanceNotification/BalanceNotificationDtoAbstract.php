@@ -177,7 +177,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -207,7 +207,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return $this->setCarrier($value);
     }
 
-    public function getCarrierId()
+    public function getCarrierId(): ?int
     {
         if ($dto = $this->getCarrier()) {
             return $dto->getId();
@@ -237,7 +237,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return $this->setNotificationTemplate($value);
     }
 
-    public function getNotificationTemplateId()
+    public function getNotificationTemplateId(): ?int
     {
         if ($dto = $this->getNotificationTemplate()) {
             return $dto->getId();

@@ -112,7 +112,7 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
         return $this->setRoutingTag($value);
     }
 
-    public function getRoutingTagId()
+    public function getRoutingTagId(): ?int
     {
         if ($dto = $this->getRoutingTag()) {
             return $dto->getId();

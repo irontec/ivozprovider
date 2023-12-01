@@ -275,7 +275,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->setDestinationRate($value);
     }
 
-    public function getDestinationRateId()
+    public function getDestinationRateId(): ?int
     {
         if ($dto = $this->getDestinationRate()) {
             return $dto->getId();

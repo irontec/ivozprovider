@@ -218,7 +218,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingPlan($value);
     }
 
-    public function getRatingPlanId()
+    public function getRatingPlanId(): ?int
     {
         if ($dto = $this->getRatingPlan()) {
             return $dto->getId();

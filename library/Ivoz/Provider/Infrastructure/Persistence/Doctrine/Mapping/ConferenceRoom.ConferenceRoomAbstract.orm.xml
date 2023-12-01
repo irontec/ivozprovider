@@ -26,6 +26,13 @@
         <option name="unsigned">1</option>
       </options>
     </field>
+    <field name="announceUserCount" type="string" column="announceUserCount" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:always|first]</option>
+        <option name="default">first</option>
+      </options>
+    </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>

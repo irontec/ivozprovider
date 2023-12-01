@@ -318,7 +318,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingPlanGroup($value);
     }
 
-    public function getRatingPlanGroupId()
+    public function getRatingPlanGroupId(): ?int
     {
         if ($dto = $this->getRatingPlanGroup()) {
             return $dto->getId();
@@ -348,7 +348,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setDestinationRateGroup($value);
     }
 
-    public function getDestinationRateGroupId()
+    public function getDestinationRateGroupId(): ?int
     {
         if ($dto = $this->getDestinationRateGroup()) {
             return $dto->getId();
@@ -378,7 +378,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setTpTiming($value);
     }
 
-    public function getTpTimingId()
+    public function getTpTimingId(): ?int
     {
         if ($dto = $this->getTpTiming()) {
             return $dto->getId();
@@ -408,7 +408,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setTpRatingPlan($value);
     }
 
-    public function getTpRatingPlanId()
+    public function getTpRatingPlanId(): ?int
     {
         if ($dto = $this->getTpRatingPlan()) {
             return $dto->getId();

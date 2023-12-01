@@ -112,7 +112,7 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
         return $this->setPickUpGroup($value);
     }
 
-    public function getPickUpGroupId()
+    public function getPickUpGroupId(): ?int
     {
         if ($dto = $this->getPickUpGroup()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();

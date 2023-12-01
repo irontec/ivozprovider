@@ -154,7 +154,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -184,7 +184,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    public function getCarrierId()
+    public function getCarrierId(): ?int
     {
         if ($dto = $this->getCarrier()) {
             return $dto->getId();
@@ -214,7 +214,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingPlanGroup($value);
     }
 
-    public function getRatingPlanGroupId()
+    public function getRatingPlanGroupId(): ?int
     {
         if ($dto = $this->getRatingPlanGroup()) {
             return $dto->getId();
@@ -244,7 +244,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingTag($value);
     }
 
-    public function getRoutingTagId()
+    public function getRoutingTagId(): ?int
     {
         if ($dto = $this->getRoutingTag()) {
             return $dto->getId();

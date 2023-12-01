@@ -1,0 +1,16 @@
+ws:
+   listen: 127.0.0.1:8081
+   jwt_public: /opt/irontec/ivozprovider/storage/jwt/public.pem
+   jwt_private: /opt/irontec/ivozprovider/storage/jwt/private.pem
+redis:
+   master: mymaster
+   sentinel_host: cache.ivozprovider.local
+   sentinel_port: 26379
+   db: 1
+http:
+   api:
+      platform: https://127.0.0.1/api/platform
+      brand: https://127.0.0.1/api/brand
+      client: https://127.0.0.1/api/client
+log:
+   level: 3

@@ -1,3 +1,4 @@
+import ErrorMessageComponent from '@irontec/ivoz-ui/components/ErrorMessageComponent';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import {
   StyledTable,
@@ -15,7 +16,6 @@ import {
 import { StyledTextField } from '@irontec/ivoz-ui/services/form/Field/TextField/TextField.styles';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import ErrorIcon from '@mui/icons-material/Error';
 import {
   Box,
   Dialog,
@@ -225,16 +225,7 @@ const SimulateCall: ActionFunctionComponent = (
                 )}
               </>
             )}
-            {error && (
-              <span>
-                <ErrorIcon
-                  sx={{
-                    verticalAlign: 'bottom',
-                  }}
-                />
-                {errorMsg ?? 'There was a problem'}
-              </span>
-            )}
+            {error && <ErrorMessageComponent message={errorMsg} />}
           </DialogContent>
           <DialogActions>
             <OutlinedButton onClick={handleClose}>

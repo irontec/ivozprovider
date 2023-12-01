@@ -523,7 +523,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -553,7 +553,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->setDomain($value);
     }
 
-    public function getDomainId()
+    public function getDomainId(): ?int
     {
         if ($dto = $this->getDomain()) {
             return $dto->getId();
@@ -583,7 +583,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -613,7 +613,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->setTransformationRuleSet($value);
     }
 
-    public function getTransformationRuleSetId()
+    public function getTransformationRuleSetId(): ?int
     {
         if ($dto = $this->getTransformationRuleSet()) {
             return $dto->getId();
@@ -643,7 +643,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->setOutgoingDdi($value);
     }
 
-    public function getOutgoingDdiId()
+    public function getOutgoingDdiId(): ?int
     {
         if ($dto = $this->getOutgoingDdi()) {
             return $dto->getId();
@@ -673,7 +673,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->setLanguage($value);
     }
 
-    public function getLanguageId()
+    public function getLanguageId(): ?int
     {
         if ($dto = $this->getLanguage()) {
             return $dto->getId();
@@ -703,7 +703,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->setVoicemail($value);
     }
 
-    public function getVoicemailId()
+    public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
             return $dto->getId();
@@ -733,7 +733,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->setPsEndpoint($value);
     }
 
-    public function getPsEndpointId()
+    public function getPsEndpointId(): ?int
     {
         if ($dto = $this->getPsEndpoint()) {
             return $dto->getId();
@@ -763,7 +763,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->setPsIdentify($value);
     }
 
-    public function getPsIdentifyId()
+    public function getPsIdentifyId(): ?int
     {
         if ($dto = $this->getPsIdentify()) {
             return $dto->getId();

@@ -112,7 +112,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $this->setRoutingPattern($value);
     }
 
-    public function getRoutingPatternId()
+    public function getRoutingPatternId(): ?int
     {
         if ($dto = $this->getRoutingPattern()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $this->setRoutingPatternGroup($value);
     }
 
-    public function getRoutingPatternGroupId()
+    public function getRoutingPatternGroupId(): ?int
     {
         if ($dto = $this->getRoutingPatternGroup()) {
             return $dto->getId();

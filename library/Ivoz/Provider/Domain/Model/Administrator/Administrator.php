@@ -10,6 +10,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class Administrator extends AdministratorAbstract implements AdministratorInterface, UserInterface, LegacyPasswordAuthenticatedUserInterface, \Serializable
 {
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+    const ROLE_BRAND_ADMIN = 'ROLE_BRAND_ADMIN';
+    const ROLE_COMPANY_ADMIN = 'ROLE_COMPANY_ADMIN';
     private null|string $onBehalfOf = null;
 
     use AdministratorTrait, AdministratorSecurityTrait {

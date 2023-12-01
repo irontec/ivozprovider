@@ -112,7 +112,7 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
         return $this->setFilter($value);
     }
 
-    public function getFilterId()
+    public function getFilterId(): ?int
     {
         if ($dto = $this->getFilter()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
         return $this->setCalendar($value);
     }
 
-    public function getCalendarId()
+    public function getCalendarId(): ?int
     {
         if ($dto = $this->getCalendar()) {
             return $dto->getId();

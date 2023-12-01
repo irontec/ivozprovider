@@ -336,7 +336,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -366,7 +366,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -396,7 +396,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setCallCsvNotificationTemplate($value);
     }
 
-    public function getCallCsvNotificationTemplateId()
+    public function getCallCsvNotificationTemplateId(): ?int
     {
         if ($dto = $this->getCallCsvNotificationTemplate()) {
             return $dto->getId();
@@ -426,7 +426,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setDdi($value);
     }
 
-    public function getDdiId()
+    public function getDdiId(): ?int
     {
         if ($dto = $this->getDdi()) {
             return $dto->getId();
@@ -456,7 +456,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setCarrier($value);
     }
 
-    public function getCarrierId()
+    public function getCarrierId(): ?int
     {
         if ($dto = $this->getCarrier()) {
             return $dto->getId();
@@ -486,7 +486,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setRetailAccount($value);
     }
 
-    public function getRetailAccountId()
+    public function getRetailAccountId(): ?int
     {
         if ($dto = $this->getRetailAccount()) {
             return $dto->getId();
@@ -516,7 +516,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setResidentialDevice($value);
     }
 
-    public function getResidentialDeviceId()
+    public function getResidentialDeviceId(): ?int
     {
         if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
@@ -546,7 +546,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -576,7 +576,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setFax($value);
     }
 
-    public function getFaxId()
+    public function getFaxId(): ?int
     {
         if ($dto = $this->getFax()) {
             return $dto->getId();
@@ -606,7 +606,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setFriend($value);
     }
 
-    public function getFriendId()
+    public function getFriendId(): ?int
     {
         if ($dto = $this->getFriend()) {
             return $dto->getId();
@@ -636,7 +636,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setDdiProvider($value);
     }
 
-    public function getDdiProviderId()
+    public function getDdiProviderId(): ?int
     {
         if ($dto = $this->getDdiProvider()) {
             return $dto->getId();

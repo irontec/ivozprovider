@@ -180,7 +180,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $this->setDestination($value);
     }
 
-    public function getDestinationId()
+    public function getDestinationId(): ?int
     {
         if ($dto = $this->getDestination()) {
             return $dto->getId();

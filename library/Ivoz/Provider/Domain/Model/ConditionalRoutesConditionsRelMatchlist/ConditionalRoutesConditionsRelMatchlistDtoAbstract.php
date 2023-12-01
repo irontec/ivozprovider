@@ -112,7 +112,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
         return $this->setCondition($value);
     }
 
-    public function getConditionId()
+    public function getConditionId(): ?int
     {
         if ($dto = $this->getCondition()) {
             return $dto->getId();
@@ -142,7 +142,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
         return $this->setMatchlist($value);
     }
 
-    public function getMatchlistId()
+    public function getMatchlistId(): ?int
     {
         if ($dto = $this->getMatchlist()) {
             return $dto->getId();

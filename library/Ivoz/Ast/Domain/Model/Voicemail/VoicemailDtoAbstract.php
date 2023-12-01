@@ -731,7 +731,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->setVoicemail($value);
     }
 
-    public function getVoicemailId()
+    public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
             return $dto->getId();

@@ -93,6 +93,14 @@ get_my_active_calls:
     _api_item_operation_name: 'get_my_active_calls'
     _api_receive: false
 
+get_my_active_calls_realtime_filter:
+  path: '/my/active_calls/realtime_filter'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\ActiveCallsRealtimeFilterAction
+    _api_item_operation_name: 'get_my_active_calls_realtime_filter'
+    _api_receive: false
+
 get_my_profile:
   path: '/my/profile'
   methods: ['GET']

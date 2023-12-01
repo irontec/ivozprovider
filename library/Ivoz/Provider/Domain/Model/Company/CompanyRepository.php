@@ -19,7 +19,7 @@ interface CompanyRepository extends RepositoryInterface
     /**
      * Used by brand API access controls
      * @inheritdoc
-     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getSupervisedCompanyIdsByAdmin
+     * @return array<array-key, int>
      */
     public function getSupervisedCompanyIdsByAdmin(AdministratorInterface $admin);
 

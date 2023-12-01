@@ -169,7 +169,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -199,7 +199,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingDdi($value);
     }
 
-    public function getOutgoingDdiId()
+    public function getOutgoingDdiId(): ?int
     {
         if ($dto = $this->getOutgoingDdi()) {
             return $dto->getId();

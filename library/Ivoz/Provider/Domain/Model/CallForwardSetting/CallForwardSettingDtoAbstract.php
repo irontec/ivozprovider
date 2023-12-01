@@ -281,7 +281,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->setUser($value);
     }
 
-    public function getUserId()
+    public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
             return $dto->getId();
@@ -311,7 +311,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->setFriend($value);
     }
 
-    public function getFriendId()
+    public function getFriendId(): ?int
     {
         if ($dto = $this->getFriend()) {
             return $dto->getId();
@@ -341,7 +341,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->setExtension($value);
     }
 
-    public function getExtensionId()
+    public function getExtensionId(): ?int
     {
         if ($dto = $this->getExtension()) {
             return $dto->getId();
@@ -371,7 +371,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->setVoicemail($value);
     }
 
-    public function getVoicemailId()
+    public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
             return $dto->getId();
@@ -401,7 +401,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->setNumberCountry($value);
     }
 
-    public function getNumberCountryId()
+    public function getNumberCountryId(): ?int
     {
         if ($dto = $this->getNumberCountry()) {
             return $dto->getId();
@@ -431,7 +431,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->setResidentialDevice($value);
     }
 
-    public function getResidentialDeviceId()
+    public function getResidentialDeviceId(): ?int
     {
         if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
@@ -461,7 +461,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->setRetailAccount($value);
     }
 
-    public function getRetailAccountId()
+    public function getRetailAccountId(): ?int
     {
         if ($dto = $this->getRetailAccount()) {
             return $dto->getId();
@@ -491,7 +491,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->setCfwToRetailAccount($value);
     }
 
-    public function getCfwToRetailAccountId()
+    public function getCfwToRetailAccountId(): ?int
     {
         if ($dto = $this->getCfwToRetailAccount()) {
             return $dto->getId();
@@ -521,7 +521,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->setDdi($value);
     }
 
-    public function getDdiId()
+    public function getDdiId(): ?int
     {
         if ($dto = $this->getDdi()) {
             return $dto->getId();

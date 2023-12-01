@@ -283,7 +283,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->setDdiProvider($value);
     }
 
-    public function getDdiProviderId()
+    public function getDdiProviderId(): ?int
     {
         if ($dto = $this->getDdiProvider()) {
             return $dto->getId();
@@ -313,7 +313,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->setTrunksUacreg($value);
     }
 
-    public function getTrunksUacregId()
+    public function getTrunksUacregId(): ?int
     {
         if ($dto = $this->getTrunksUacreg()) {
             return $dto->getId();

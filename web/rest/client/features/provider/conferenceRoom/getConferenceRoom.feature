@@ -19,6 +19,7 @@ Feature: Retrieve conference rooms
               "pinProtected": true,
               "pinCode": "4321",
               "maxMembers": 1,
+              "announceUserCount": "first",
               "id": 1
           }
       ]
@@ -31,13 +32,14 @@ Feature: Retrieve conference rooms
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
+      And the JSON should be equal to:
       """
       {
           "name": "testConferenceRoom",
           "pinProtected": true,
           "pinCode": "4321",
           "maxMembers": 1,
+          "announceUserCount": "first",
           "id": 1
       }
       """

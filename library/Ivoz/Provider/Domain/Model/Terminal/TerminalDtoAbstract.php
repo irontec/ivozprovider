@@ -333,7 +333,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -363,7 +363,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->setDomain($value);
     }
 
-    public function getDomainId()
+    public function getDomainId(): ?int
     {
         if ($dto = $this->getDomain()) {
             return $dto->getId();
@@ -393,7 +393,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->setTerminalModel($value);
     }
 
-    public function getTerminalModelId()
+    public function getTerminalModelId(): ?int
     {
         if ($dto = $this->getTerminalModel()) {
             return $dto->getId();
@@ -423,7 +423,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->setPsEndpoint($value);
     }
 
-    public function getPsEndpointId()
+    public function getPsEndpointId(): ?int
     {
         if ($dto = $this->getPsEndpoint()) {
             return $dto->getId();
@@ -453,7 +453,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->setPsIdentify($value);
     }
 
-    public function getPsIdentifyId()
+    public function getPsIdentifyId(): ?int
     {
         if ($dto = $this->getPsIdentify()) {
             return $dto->getId();

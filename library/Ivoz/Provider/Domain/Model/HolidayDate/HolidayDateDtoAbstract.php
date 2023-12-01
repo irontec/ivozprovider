@@ -269,7 +269,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setCalendar($value);
     }
 
-    public function getCalendarId()
+    public function getCalendarId(): ?int
     {
         if ($dto = $this->getCalendar()) {
             return $dto->getId();
@@ -299,7 +299,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setLocution($value);
     }
 
-    public function getLocutionId()
+    public function getLocutionId(): ?int
     {
         if ($dto = $this->getLocution()) {
             return $dto->getId();
@@ -329,7 +329,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setExtension($value);
     }
 
-    public function getExtensionId()
+    public function getExtensionId(): ?int
     {
         if ($dto = $this->getExtension()) {
             return $dto->getId();
@@ -359,7 +359,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setVoicemail($value);
     }
 
-    public function getVoicemailId()
+    public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
             return $dto->getId();
@@ -389,7 +389,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setNumberCountry($value);
     }
 
-    public function getNumberCountryId()
+    public function getNumberCountryId(): ?int
     {
         if ($dto = $this->getNumberCountry()) {
             return $dto->getId();

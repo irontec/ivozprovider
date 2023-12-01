@@ -34,6 +34,10 @@ class Service extends ServiceAbstract implements ServiceInterface
 
     public const CALL_FORWARD_UNREACHEABLE = "CallForwardUnreachable";
 
+    public const QUEUE_PAUSE  = "QueuePause";
+
+    public const QUEUE_UNPAUSE = "QueueUnpause";
+
     // Available services for vPBX clients
     public const VPBX_AVAILABLE_SERVICES = [
         Service::DIRECT_PICKUP,
@@ -43,6 +47,8 @@ class Service extends ServiceAbstract implements ServiceInterface
         Service::CLOSE_LOCK,
         Service::OPEN_LOCK,
         Service::TOGGLE_LOCK,
+        Service::QUEUE_PAUSE,
+        Service::QUEUE_UNPAUSE,
     ];
 
     /**

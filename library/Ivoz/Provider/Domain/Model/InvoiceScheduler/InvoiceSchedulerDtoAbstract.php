@@ -287,7 +287,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setInvoiceTemplate($value);
     }
 
-    public function getInvoiceTemplateId()
+    public function getInvoiceTemplateId(): ?int
     {
         if ($dto = $this->getInvoiceTemplate()) {
             return $dto->getId();
@@ -317,7 +317,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();
@@ -347,7 +347,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setCompany($value);
     }
 
-    public function getCompanyId()
+    public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
             return $dto->getId();
@@ -377,7 +377,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->setNumberSequence($value);
     }
 
-    public function getNumberSequenceId()
+    public function getNumberSequenceId(): ?int
     {
         if ($dto = $this->getNumberSequence()) {
             return $dto->getId();

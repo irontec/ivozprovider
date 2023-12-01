@@ -1,26 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:getFriendId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:getRetailAccountId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:getTerminalId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:setFriendId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
@@ -54,26 +34,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsIdentify\\\\PsIdentifyDtoAbstract\\:\\:getFriendId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsIdentify\\\\PsIdentifyDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsIdentify\\\\PsIdentifyDtoAbstract\\:\\:getRetailAccountId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsIdentify\\\\PsIdentifyDtoAbstract\\:\\:getTerminalId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsIdentify\\\\PsIdentifyDtoAbstract\\:\\:setFriendId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -111,11 +71,6 @@ parameters:
 			path: Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getQueueId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/Queue/QueueDtoAbstract.php
@@ -136,11 +91,6 @@ parameters:
 			path: Ivoz/Ast/Domain/Model/Queue/QueueRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberDtoAbstract\\:\\:getQueueMemberId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/QueueMember/QueueMemberDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/QueueMember/QueueMemberDtoAbstract.php
@@ -159,11 +109,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Ast\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/QueueMember/QueueMemberRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -321,16 +266,6 @@ parameters:
 			path: Ivoz/Ast/Infrastructure/Persistence/Doctrine/VoicemailMessageDoctrineRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:setCarrierId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
@@ -441,11 +376,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:setCarrierId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
@@ -466,11 +396,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
@@ -489,11 +414,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestination\\\\TpDestinationDtoAbstract\\:\\:getDestinationId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestination/TpDestinationDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestination\\\\TpDestinationDtoAbstract\\:\\:setDestinationId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -521,11 +441,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpDestination/TpDestinationRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateDtoAbstract\\:\\:getDestinationRateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateDtoAbstract\\:\\:setDestinationRateId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php
@@ -544,11 +459,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:getOutgoingRoutingId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -571,11 +481,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateDtoAbstract\\:\\:getDestinationRateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateDtoAbstract\\:\\:setDestinationRateId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
@@ -594,11 +499,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingPlan\\\\TpRatingPlanDtoAbstract\\:\\:getRatingPlanId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingPlan/TpRatingPlanDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingPlan\\\\TpRatingPlanDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -631,16 +531,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/SimulatedCall.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileDtoAbstract\\:\\:getOutgoingRoutingRelCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileDtoAbstract\\:\\:getRatingProfileId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
@@ -664,11 +554,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:getRatingPlanId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -986,11 +871,6 @@ parameters:
 			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpTimingDoctrineRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherDtoAbstract\\:\\:getApplicationServerId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherDtoAbstract\\:\\:setApplicationServerId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php
@@ -1009,11 +889,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Rtpengine\\\\RtpengineDtoAbstract\\:\\:getMediaRelaySetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Rtpengine/RtpengineDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Rtpengine\\\\RtpengineDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -1036,11 +911,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/Rtpengine/RtpengineRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksAddress\\\\TrunksAddressDtoAbstract\\:\\:getDdiProviderAddressId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksAddress\\\\TrunksAddressDtoAbstract\\:\\:setDdiProviderAddressId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressDtoAbstract.php
@@ -1059,56 +929,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksAddress\\\\TrunksAddressRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getDdiProviderId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getFaxId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getFriendId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getRetailAccountId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -1221,11 +1041,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrGateway\\\\TrunksLcrGatewayDtoAbstract\\:\\:getCarrierServerId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrGateway\\\\TrunksLcrGatewayDtoAbstract\\:\\:setCarrierServerId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayDtoAbstract.php
@@ -1249,21 +1064,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrGateway\\\\TrunksLcrGatewayRepository\\:\\:findDummyGateway\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRule\\\\TrunksLcrRuleDtoAbstract\\:\\:getOutgoingRoutingId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRule\\\\TrunksLcrRuleDtoAbstract\\:\\:getRoutingPatternGroupsRelPatternId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRule\\\\TrunksLcrRuleDtoAbstract\\:\\:getRoutingPatternId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRule\\\\TrunksLcrRuleDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -1294,21 +1094,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRule\\\\TrunksLcrRuleRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRuleTarget\\\\TrunksLcrRuleTargetDtoAbstract\\:\\:getGwId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRuleTarget\\\\TrunksLcrRuleTargetDtoAbstract\\:\\:getOutgoingRoutingId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRuleTarget\\\\TrunksLcrRuleTargetDtoAbstract\\:\\:getRuleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRuleTarget\\\\TrunksLcrRuleTargetDtoAbstract\\:\\:setGwId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -1351,16 +1136,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/TrunksUacreg/DdiProviderRegistrationStatus.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:getDdiProviderRegistrationId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
@@ -1391,11 +1166,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/Trusted/Trusted.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Trusted\\\\TrustedDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Trusted/TrustedDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Trusted\\\\TrustedDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/Trusted/TrustedDtoAbstract.php
@@ -1421,11 +1191,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddress.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersAddress\\\\UsersAddressDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersAddress\\\\UsersAddressDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressDtoAbstract.php
@@ -1444,26 +1209,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersAddress\\\\UsersAddressRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:getFriendId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -1956,21 +1701,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Administrator/Administrator.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:getTimezoneId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
@@ -2021,16 +1751,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityDtoAbstract\\:\\:getAdministratorId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityDtoAbstract\\:\\:getPublicEntityId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityDtoAbstract\\:\\:setAdministratorId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityDtoAbstract.php
@@ -2071,16 +1791,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ApplicationServer/ApplicationServerRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BalanceMovement\\\\BalanceMovementDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BalanceMovement/BalanceMovementDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BalanceMovement\\\\BalanceMovementDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BalanceMovement/BalanceMovementDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BalanceMovement\\\\BalanceMovementDtoAbstract\\:\\:setCarrierId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BalanceMovement/BalanceMovementDtoAbstract.php
@@ -2111,21 +1821,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/BalanceNotification/BalanceNotification.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BalanceNotification\\\\BalanceNotificationDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BalanceNotification/BalanceNotificationDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BalanceNotification\\\\BalanceNotificationDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BalanceNotification/BalanceNotificationDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BalanceNotification\\\\BalanceNotificationDtoAbstract\\:\\:getNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BalanceNotification/BalanceNotificationDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BalanceNotification\\\\BalanceNotificationDtoAbstract\\:\\:setCarrierId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BalanceNotification/BalanceNotificationDtoAbstract.php
@@ -2154,16 +1849,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BalanceNotification\\\\BalanceNotificationRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BalanceNotification/BalanceNotificationRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BannedAddress\\\\BannedAddressDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BannedAddress/BannedAddressDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BannedAddress\\\\BannedAddressDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BannedAddress/BannedAddressDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BannedAddress\\\\BannedAddressDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -2226,52 +1911,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getDdiProviderId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getDestinationId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getInvoiceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getPriceDetails\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getRatingPlanGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:getTrunksCdrId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
 
@@ -2416,52 +2056,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getDdiProviderId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getDestinationId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getInvoiceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getPriceDetails\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getRatingPlanGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:getTrunksCdrId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
 
@@ -2581,51 +2176,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getCallCsvNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getCurrencyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getDefaultTimezoneId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getDomainId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getFaxNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getInvoiceNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getLanguageId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getMaxDailyUsageNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:getVoicemailNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:setCallCsvNotificationTemplateId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
@@ -2741,16 +2291,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceDtoAbstract\\:\\:getServiceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceDtoAbstract.php
@@ -2774,11 +2314,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Calendar\\\\CalendarDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Calendar/CalendarDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Calendar\\\\CalendarDtoAbstract\\:\\:setCalendarPeriods\\(\\) has parameter \\$calendarPeriods with no value type specified in iterable type array\\.$#"
@@ -2826,31 +2361,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:getCalendarId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:getExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:getLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:setCalendarId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
@@ -2896,16 +2406,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriodsRelSchedule\\\\CalendarPeriodsRelScheduleDtoAbstract\\:\\:getCalendarPeriodId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriodsRelSchedule/CalendarPeriodsRelScheduleDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriodsRelSchedule\\\\CalendarPeriodsRelScheduleDtoAbstract\\:\\:getScheduleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriodsRelSchedule/CalendarPeriodsRelScheduleDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriodsRelSchedule\\\\CalendarPeriodsRelScheduleDtoAbstract\\:\\:setCalendarPeriodId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CalendarPeriodsRelSchedule/CalendarPeriodsRelScheduleDtoAbstract.php
@@ -2936,11 +2436,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDtoAbstract.php
@@ -2964,16 +2459,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAclRelMatchList\\\\CallAclRelMatchListDtoAbstract\\:\\:getCallAclId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallAclRelMatchList/CallAclRelMatchListDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAclRelMatchList\\\\CallAclRelMatchListDtoAbstract\\:\\:getMatchListId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallAclRelMatchList/CallAclRelMatchListDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAclRelMatchList\\\\CallAclRelMatchListDtoAbstract\\:\\:setCallAclId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -3024,21 +2509,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDto\\:\\:filterFieldsForBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:getCallCsvSchedulerId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -3134,61 +2604,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDto\\:\\:setVpbxId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getCallCsvNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getDdiProviderId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getFaxId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getFriendId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getRetailAccountId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -3291,51 +2706,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSetting.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getCfwToRetailAccountId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getFriendId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getRetailAccountId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:setCfwToRetailAccountId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
@@ -3399,31 +2769,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$num of function round expects float\\|int, float\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Carrier/Carrier.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getCurrencyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getMediaRelaySetsId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getProxyTrunkId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getTransformationRuleSetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -3491,11 +2836,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierRepository\\:\\:getCarrierIdsByBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierRepository\\:\\:getCarrierIdsWithCalculatecostGroupByBrand\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierRepository.php
@@ -3509,21 +2849,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$string of function explode expects string, string\\|null given\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServer.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerDtoAbstract\\:\\:getLcrGatewayId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -3629,91 +2954,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getApplicationServerId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCallCsvNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCorporationId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCurrencyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getDefaultTimezoneId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getDomainId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getFaxNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getInvoiceNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getLanguageId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getMaxDailyUsageNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getMediaRelaySetsId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getOutgoingDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getOutgoingDdiRuleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getTransformationRuleSetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getVoicemailNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:setApplicationServerId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -3886,21 +3126,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyRepository\\:\\:getSupervisedCompanyIdsByAdmin\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelCodec\\\\CompanyRelCodecDtoAbstract\\:\\:getCodecId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodecDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelCodec\\\\CompanyRelCodecDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodecDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelCodec\\\\CompanyRelCodecDtoAbstract\\:\\:setCodecId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodecDtoAbstract.php
@@ -3924,16 +3149,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelCodec\\\\CompanyRelCodecRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodecRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelGeoIPCountry\\\\CompanyRelGeoIPCountryDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyRelGeoIPCountry/CompanyRelGeoIPCountryDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelGeoIPCountry\\\\CompanyRelGeoIPCountryDtoAbstract\\:\\:getCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyRelGeoIPCountry/CompanyRelGeoIPCountryDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelGeoIPCountry\\\\CompanyRelGeoIPCountryDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -3961,16 +3176,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CompanyRelGeoIPCountry/CompanyRelGeoIPCountryRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelRoutingTag\\\\CompanyRelRoutingTagDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelRoutingTag\\\\CompanyRelRoutingTagDtoAbstract\\:\\:getRoutingTagId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelRoutingTag\\\\CompanyRelRoutingTagDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagDtoAbstract.php
@@ -3994,16 +3199,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelRoutingTag\\\\CompanyRelRoutingTagRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceDtoAbstract\\:\\:getServiceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -4034,56 +3229,6 @@ parameters:
 			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRoute.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getConferenceRoomId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getHuntGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getIvrId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getQueueId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -4191,56 +3336,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getConditionalRouteId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getConferenceRoomId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getHuntGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getIvrId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getQueueId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:setConditionalRouteId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
@@ -4326,16 +3421,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelCalendar\\\\ConditionalRoutesConditionsRelCalendarDtoAbstract\\:\\:getCalendarId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelCalendar\\\\ConditionalRoutesConditionsRelCalendarDtoAbstract\\:\\:getConditionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelCalendar\\\\ConditionalRoutesConditionsRelCalendarDtoAbstract\\:\\:setCalendarId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarDtoAbstract.php
@@ -4359,16 +3444,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelCalendar\\\\ConditionalRoutesConditionsRelCalendarRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelMatchlist\\\\ConditionalRoutesConditionsRelMatchlistDtoAbstract\\:\\:getConditionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelMatchlist/ConditionalRoutesConditionsRelMatchlistDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelMatchlist\\\\ConditionalRoutesConditionsRelMatchlistDtoAbstract\\:\\:getMatchlistId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelMatchlist/ConditionalRoutesConditionsRelMatchlistDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelMatchlist\\\\ConditionalRoutesConditionsRelMatchlistDtoAbstract\\:\\:setConditionId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -4401,16 +3476,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelRouteLock\\\\ConditionalRoutesConditionsRelRouteLockDtoAbstract\\:\\:getConditionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelRouteLock\\\\ConditionalRoutesConditionsRelRouteLockDtoAbstract\\:\\:getRouteLockId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelRouteLock\\\\ConditionalRoutesConditionsRelRouteLockDtoAbstract\\:\\:setConditionId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockDtoAbstract.php
@@ -4436,16 +3501,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelSchedule\\\\ConditionalRoutesConditionsRelScheduleDtoAbstract\\:\\:getConditionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelSchedule\\\\ConditionalRoutesConditionsRelScheduleDtoAbstract\\:\\:getScheduleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelSchedule\\\\ConditionalRoutesConditionsRelScheduleDtoAbstract\\:\\:setConditionId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleDtoAbstract.php
@@ -4469,11 +3524,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelSchedule\\\\ConditionalRoutesConditionsRelScheduleRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -4504,26 +3554,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDto\\:\\:filterUserContactReadOnlyFields\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Contact/ContactDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:getMobilePhoneCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:getWorkPhoneCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -4559,11 +3589,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Contact/ContactRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Corporation\\\\CorporationDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Corporation/CorporationDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Corporation\\\\CorporationDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -4666,81 +3691,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ddi/DdiDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getConditionalRouteId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getConferenceRoomId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getDdiProviderId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getExternalCallFilterId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getFaxId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getHuntGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getIvrId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getLanguageId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getQueueId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getRetailAccountId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
@@ -4831,26 +3781,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ddi/DdiRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:getMediaRelaySetsId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:getProxyTrunkId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:getTransformationRuleSetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
@@ -4896,24 +3826,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderRepository\\:\\:getDdiProviderIdsByBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderRepository.php
-
-		-
 			message: "#^Parameter \\#1 \\$value of static method Assert\\\\Assertion\\:\\:ip\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProviderAddress/DdiProviderAddress.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderAddress\\\\DdiProviderAddressDtoAbstract\\:\\:getDdiProviderId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderAddress/DdiProviderAddressDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderAddress\\\\DdiProviderAddressDtoAbstract\\:\\:getTrunksAddressId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderAddress/DdiProviderAddressDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderAddress\\\\DdiProviderAddressDtoAbstract\\:\\:setDdiProviderId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -4946,16 +3861,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:getDdiProviderId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:getTrunksUacregId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:setDdiProviderId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
@@ -4979,16 +3884,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Destination\\\\DestinationDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Destination/DestinationDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Destination\\\\DestinationDtoAbstract\\:\\:getTpDestinationId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Destination/DestinationDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Destination\\\\DestinationDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -5034,26 +3929,6 @@ parameters:
 			message: "#^PHPDoc tag @throws with type Doctrine\\\\DBAL\\\\ConnectionException\\|Doctrine\\\\DBAL\\\\DBALException is not subtype of Throwable$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Destination/DestinationRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:getDestinationId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:getDestinationRateGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:getTpDestinationRateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:getTpRateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:setDestinationId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -5109,16 +3984,6 @@ parameters:
 			message: "#^Cannot assign new offset to array\\<array\\<int, string\\>\\|string\\>\\|string\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:getCurrencyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:getFileImporterArguments\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -5226,51 +4091,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Extension/Extension.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getConditionalRouteId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getConferenceRoomId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getHuntGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getIvrId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getQueueId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
@@ -5376,56 +4196,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getHolidayExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getHolidayLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getHolidayNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getHolidayVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getOutOfScheduleExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getOutOfScheduleLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getOutOfScheduleNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getOutOfScheduleVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getWelcomeLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:setBlackLists\\(\\) has parameter \\$blackLists with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
@@ -5516,16 +4286,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterBlackList\\\\ExternalCallFilterBlackListDtoAbstract\\:\\:getFilterId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilterBlackList/ExternalCallFilterBlackListDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterBlackList\\\\ExternalCallFilterBlackListDtoAbstract\\:\\:getMatchlistId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilterBlackList/ExternalCallFilterBlackListDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterBlackList\\\\ExternalCallFilterBlackListDtoAbstract\\:\\:setFilterId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilterBlackList/ExternalCallFilterBlackListDtoAbstract.php
@@ -5549,16 +4309,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterBlackList\\\\ExternalCallFilterBlackListRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilterBlackList/ExternalCallFilterBlackListRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterRelCalendar\\\\ExternalCallFilterRelCalendarDtoAbstract\\:\\:getCalendarId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterRelCalendar\\\\ExternalCallFilterRelCalendarDtoAbstract\\:\\:getFilterId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterRelCalendar\\\\ExternalCallFilterRelCalendarDtoAbstract\\:\\:setCalendarId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -5586,16 +4336,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterRelSchedule\\\\ExternalCallFilterRelScheduleDtoAbstract\\:\\:getFilterId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterRelSchedule\\\\ExternalCallFilterRelScheduleDtoAbstract\\:\\:getScheduleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterRelSchedule\\\\ExternalCallFilterRelScheduleDtoAbstract\\:\\:setFilterId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleDtoAbstract.php
@@ -5621,16 +4361,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterWhiteList\\\\ExternalCallFilterWhiteListDtoAbstract\\:\\:getFilterId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterWhiteList\\\\ExternalCallFilterWhiteListDtoAbstract\\:\\:getMatchlistId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterWhiteList\\\\ExternalCallFilterWhiteListDtoAbstract\\:\\:setFilterId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListDtoAbstract.php
@@ -5654,16 +4384,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilterWhiteList\\\\ExternalCallFilterWhiteListRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Fax/FaxDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxDtoAbstract\\:\\:getOutgoingDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Fax/FaxDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -5704,16 +4424,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOut.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutDtoAbstract\\:\\:getDstCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutDtoAbstract\\:\\:getFaxId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutDtoAbstract\\:\\:setDstCountryId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -5761,16 +4471,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Feature/FeatureRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelBrand\\\\FeaturesRelBrandDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelBrand\\\\FeaturesRelBrandDtoAbstract\\:\\:getFeatureId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelBrand\\\\FeaturesRelBrandDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandDtoAbstract.php
@@ -5794,16 +4494,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelBrand\\\\FeaturesRelBrandRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelCompany\\\\FeaturesRelCompanyDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelCompany\\\\FeaturesRelCompanyDtoAbstract\\:\\:getFeatureId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelCompany\\\\FeaturesRelCompanyDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -5831,11 +4521,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCost\\\\FixedCostDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FixedCost/FixedCostDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCost\\\\FixedCostDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FixedCost/FixedCostDtoAbstract.php
@@ -5854,16 +4539,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCost\\\\FixedCostRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FixedCost/FixedCostRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoice\\\\FixedCostsRelInvoiceDtoAbstract\\:\\:getFixedCostId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoice\\\\FixedCostsRelInvoiceDtoAbstract\\:\\:getInvoiceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoice\\\\FixedCostsRelInvoiceDtoAbstract\\:\\:setFixedCostId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -5889,21 +4564,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoice\\\\FixedCostsRelInvoiceRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerDtoAbstract\\:\\:getDdisCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerDtoAbstract\\:\\:getFixedCostId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerDtoAbstract\\:\\:getInvoiceSchedulerId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerDtoAbstract\\:\\:setDdisCountryId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -5964,51 +4624,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDto\\:\\:filterFieldsForCompanyAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getCallAclId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getDomainId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getInterCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getLanguageId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getOutgoingDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getPsEndpointId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getPsIdentifyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getTransformationRuleSetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:setCallAclId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -6081,11 +4696,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Friend/FriendRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FriendsPattern\\\\FriendsPatternDtoAbstract\\:\\:getFriendId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FriendsPattern\\\\FriendsPatternDtoAbstract\\:\\:setFriendId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternDtoAbstract.php
@@ -6109,31 +4719,6 @@ parameters:
 			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDate.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:getCalendarId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:getExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:getLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:setCalendarId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -6186,31 +4771,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroup.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getNoAnswerExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getNoAnswerLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getNoAnswerNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getNoAnswerVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
@@ -6256,21 +4816,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:getHuntGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:setHuntGroupId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
@@ -6314,31 +4859,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\Invoice\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Invoice/Invoice.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDtoAbstract\\:\\:getInvoiceTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDtoAbstract\\:\\:getNumberSequenceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDtoAbstract\\:\\:getSchedulerId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -6391,11 +4911,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php
@@ -6414,26 +4929,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:getInvoiceTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:getNumberSequenceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -6491,11 +4986,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceTemplate\\\\InvoiceTemplateDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceTemplate\\\\InvoiceTemplateDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateDtoAbstract.php
@@ -6524,61 +5014,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getErrorExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getErrorLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getErrorNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getErrorVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getNoInputExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getNoInputLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getNoInputNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getNoInputVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getSuccessLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getWelcomeLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -6676,36 +5111,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntry.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:getConditionalRouteId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:getExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:getIvrId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:getWelcomeLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:setConditionalRouteId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
@@ -6751,16 +5156,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrExcludedExtension\\\\IvrExcludedExtensionDtoAbstract\\:\\:getExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrExcludedExtension/IvrExcludedExtensionDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrExcludedExtension\\\\IvrExcludedExtensionDtoAbstract\\:\\:getIvrId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrExcludedExtension/IvrExcludedExtensionDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrExcludedExtension\\\\IvrExcludedExtensionDtoAbstract\\:\\:setExtensionId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/IvrExcludedExtension/IvrExcludedExtensionDtoAbstract.php
@@ -6799,11 +5194,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Language/LanguageRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Location\\\\LocationDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Location/LocationDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Location\\\\LocationDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -6846,11 +5236,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Locution/LocutionDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionDtoAbstract.php
@@ -6874,16 +5259,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MatchList/MatchListDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MatchList/MatchListDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -6926,16 +5301,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPattern.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchListPattern\\\\MatchListPatternDtoAbstract\\:\\:getMatchListId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchListPattern\\\\MatchListPatternDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchListPattern\\\\MatchListPatternDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternDtoAbstract.php
@@ -6959,16 +5324,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchListPattern\\\\MatchListPatternRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MaxUsageNotification\\\\MaxUsageNotificationDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MaxUsageNotification/MaxUsageNotificationDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MaxUsageNotification\\\\MaxUsageNotificationDtoAbstract\\:\\:getNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MaxUsageNotification/MaxUsageNotificationDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MaxUsageNotification\\\\MaxUsageNotificationDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -7031,16 +5386,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDtoAbstract.php
@@ -7071,11 +5416,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDtoAbstract.php
@@ -7099,16 +5439,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentDtoAbstract\\:\\:getLanguageId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentDtoAbstract\\:\\:getNotificationTemplateId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -7141,16 +5471,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRule.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDtoAbstract\\:\\:getForcedDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDtoAbstract.php
@@ -7179,21 +5499,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRulesPattern\\\\OutgoingDdiRulesPatternDtoAbstract\\:\\:getForcedDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRulesPattern\\\\OutgoingDdiRulesPatternDtoAbstract\\:\\:getMatchListId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRulesPattern\\\\OutgoingDdiRulesPatternDtoAbstract\\:\\:getOutgoingDdiRuleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRulesPattern\\\\OutgoingDdiRulesPatternDtoAbstract\\:\\:setForcedDdiId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -7239,46 +5544,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getClidCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getRoutingPatternGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getRoutingPatternId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getRoutingTagId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:getTpLcrRuleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -7361,16 +5626,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRoutingRelCarrier\\\\OutgoingRoutingRelCarrierDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRoutingRelCarrier\\\\OutgoingRoutingRelCarrierDtoAbstract\\:\\:getOutgoingRoutingId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRoutingRelCarrier\\\\OutgoingRoutingRelCarrierDtoAbstract\\:\\:setCarrierId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierDtoAbstract.php
@@ -7406,11 +5661,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDtoAbstract.php
@@ -7434,16 +5684,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpRelUser\\\\PickUpRelUserDtoAbstract\\:\\:getPickUpGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PickUpRelUser/PickUpRelUserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpRelUser\\\\PickUpRelUserDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PickUpRelUser/PickUpRelUserDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpRelUser\\\\PickUpRelUserDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -7484,16 +5724,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ProxyTrunk\\\\ProxyTrunkRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ProxyTrunk/ProxyTrunkRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ProxyTrunksRelBrand\\\\ProxyTrunksRelBrandDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ProxyTrunksRelBrand/ProxyTrunksRelBrandDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ProxyTrunksRelBrand\\\\ProxyTrunksRelBrandDtoAbstract\\:\\:getProxyTrunkId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ProxyTrunksRelBrand/ProxyTrunksRelBrandDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ProxyTrunksRelBrand\\\\ProxyTrunksRelBrandDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -7554,56 +5784,6 @@ parameters:
 			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Model/Queue/Queue.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getFullExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getFullLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getFullNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getFullVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getPeriodicAnnounceLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getTimeoutExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getTimeoutLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getTimeoutNumberCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getTimeoutVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -7671,16 +5851,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Queue/QueueRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberDtoAbstract\\:\\:getQueueId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/QueueMember/QueueMemberDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/QueueMember/QueueMemberDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\QueueMember\\\\QueueMemberDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/QueueMember/QueueMemberDtoAbstract.php
@@ -7726,26 +5896,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RatingPlan/Name.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlan\\\\RatingPlanDtoAbstract\\:\\:getDestinationRateGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlan\\\\RatingPlanDtoAbstract\\:\\:getRatingPlanGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlan\\\\RatingPlanDtoAbstract\\:\\:getTpRatingPlanId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlan\\\\RatingPlanDtoAbstract\\:\\:getTpTimingId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlan\\\\RatingPlanDtoAbstract\\:\\:setDestinationRateGroupId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDtoAbstract.php
@@ -7779,16 +5929,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlan\\\\RatingPlanRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:getCurrencyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -7841,26 +5981,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDtoAbstract\\:\\:getCarrierId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDtoAbstract\\:\\:getRatingPlanGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDtoAbstract\\:\\:getRoutingTagId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDtoAbstract\\:\\:setCarrierId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php
@@ -7904,11 +6024,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\Recording\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Recording/Recording.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Recording/RecordingDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -7964,51 +6079,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDto\\:\\:filterFieldsForCompanyAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getDomainId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getLanguageId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getOutgoingDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getPsEndpointId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getPsIdentifyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getTransformationRuleSetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -8106,41 +6176,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getDomainId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getOutgoingDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getPsEndpointId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getPsIdentifyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:getTransformationRuleSetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
@@ -8201,11 +6236,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RouteLock\\\\RouteLockDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RouteLock/RouteLockDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RouteLock\\\\RouteLockDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RouteLock/RouteLockDtoAbstract.php
@@ -8229,11 +6259,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$prefix of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternAbstract\\:\\:setPrefix\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPattern.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -8276,11 +6301,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroup\\\\RoutingPatternGroupDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroup\\\\RoutingPatternGroupDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDtoAbstract.php
@@ -8311,16 +6331,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroupsRelPattern\\\\RoutingPatternGroupsRelPatternDtoAbstract\\:\\:getRoutingPatternGroupId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroupsRelPattern\\\\RoutingPatternGroupsRelPatternDtoAbstract\\:\\:getRoutingPatternId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroupsRelPattern\\\\RoutingPatternGroupsRelPatternDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternDtoAbstract.php
@@ -8344,11 +6354,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroupsRelPattern\\\\RoutingPatternGroupsRelPatternRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -8384,11 +6389,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Schedule\\\\Schedule\\), non\\-empty\\-string\\) given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Schedule/Schedule.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Schedule\\\\ScheduleDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Schedule/ScheduleDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Schedule\\\\ScheduleDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -8436,16 +6436,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\SpecialNumber\\\\SpecialNumberDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\SpecialNumber\\\\SpecialNumberDtoAbstract\\:\\:getCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\SpecialNumber\\\\SpecialNumberDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDtoAbstract.php
@@ -8479,31 +6469,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$name of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalAbstract\\:\\:setName\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Terminal/Terminal.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:getDomainId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:getPsEndpointId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:getPsIdentifyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:getTerminalModelId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -8606,11 +6571,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalModel\\\\TerminalModelDtoAbstract\\:\\:getTerminalManufacturerId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalModel\\\\TerminalModelDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelDtoAbstract.php
@@ -8629,11 +6589,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalModel\\\\TerminalModelRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneDtoAbstract\\:\\:getCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Timezone/TimezoneDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneDtoAbstract\\:\\:setCountryId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -8656,11 +6611,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Timezone/TimezoneRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRule\\\\TransformationRuleDtoAbstract\\:\\:getTransformationRuleSetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRule\\\\TransformationRuleDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleDtoAbstract.php
@@ -8679,16 +6629,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRule\\\\TransformationRuleRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:getCountryId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -8754,76 +6694,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getBossAssistantId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getBossAssistantWhiteListId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getCallAclId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getContactId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getExtensionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getLanguageId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getLocationId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getOutgoingDdiId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getOutgoingDdiRuleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getTerminalId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getTimezoneId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getTransformationRuleSetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:setBossAssistantId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -8966,31 +6836,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Voicemail/Voicemail.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getAstVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getLocutionId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setAstVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
@@ -9041,16 +6886,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessage.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:getAstVoicemailMessageId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:setAstVoicemailMessageId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
@@ -9094,11 +6929,6 @@ parameters:
 			message: "#^Cannot assign new offset to array\\<array\\<int, string\\>\\|string\\>\\|string\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -10601,11 +8431,6 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierDoctrineRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CarrierDoctrineRepository\\:\\:getCarrierIdsByBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CarrierDoctrineRepository\\:\\:getCarrierIdsWithCalculatecostGroupByBrand\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierDoctrineRepository.php
@@ -10626,11 +8451,6 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyDoctrineRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CompanyDoctrineRepository\\:\\:getSupervisedCompanyIdsByAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyDoctrineRepository.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
@@ -10642,11 +8462,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DdiProviderDoctrineRepository\\:\\:findByProxyTrunks\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DdiProviderDoctrineRepository\\:\\:getDdiProviderIdsByBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
 

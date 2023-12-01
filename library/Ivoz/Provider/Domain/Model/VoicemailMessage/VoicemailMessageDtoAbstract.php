@@ -310,7 +310,7 @@ abstract class VoicemailMessageDtoAbstract implements DataTransferObjectInterfac
         return $this->setVoicemail($value);
     }
 
-    public function getVoicemailId()
+    public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
             return $dto->getId();
@@ -340,7 +340,7 @@ abstract class VoicemailMessageDtoAbstract implements DataTransferObjectInterfac
         return $this->setAstVoicemailMessage($value);
     }
 
-    public function getAstVoicemailMessageId()
+    public function getAstVoicemailMessageId(): ?int
     {
         if ($dto = $this->getAstVoicemailMessage()) {
             return $dto->getId();

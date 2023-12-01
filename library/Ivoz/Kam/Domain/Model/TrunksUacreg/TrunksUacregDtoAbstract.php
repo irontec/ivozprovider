@@ -397,7 +397,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProviderRegistration($value);
     }
 
-    public function getDdiProviderRegistrationId()
+    public function getDdiProviderRegistrationId(): ?int
     {
         if ($dto = $this->getDdiProviderRegistration()) {
             return $dto->getId();
@@ -427,7 +427,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    public function getBrandId()
+    public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
             return $dto->getId();

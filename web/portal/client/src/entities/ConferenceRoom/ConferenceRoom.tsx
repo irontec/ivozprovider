@@ -38,6 +38,13 @@ const properties: ConferenceRoomProperties = {
     label: _('Max member'),
     default: 0,
   },
+  announceUserCount: {
+    label: _('Announce user count'),
+    enum: {
+      first: _('First member'),
+      always: _('Always'),
+    },
+  },
 };
 
 const conferenceRoom: EntityInterface = {
