@@ -18,21 +18,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php">
-    <MissingParamType occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -62,21 +47,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyDtoAbstract.php">
-    <MissingParamType occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -89,15 +59,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Ast/Domain/Model/Queue/QueueDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Ast/Domain/Model/Queue/QueueTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -109,15 +70,6 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getQueueMember())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Ast/Domain/Model/QueueMember/QueueMemberDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Ast/Domain/Model/QueueMember/QueueMemberTrait.php">
     <MixedArgument occurrences="1">
@@ -139,15 +91,6 @@
     </RedundantCast>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Ast/Domain/Model/Voicemail/VoicemailTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -155,11 +98,6 @@
   </file>
   <file src="Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessageAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessageTrait.php">
     <MixedArgument occurrences="1">
@@ -213,17 +151,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionRepository.php">
     <MissingReturnType occurrences="2">
       <code>findByCarrier</code>
@@ -244,11 +171,6 @@
   <file src="Ivoz/Cgr/Domain/Model/TpCdr/TpCdrAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
-  </file>
   <file src="Ivoz/Cgr/Domain/Model/TpCdr/TpCdrTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -266,15 +188,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -286,15 +199,6 @@
       <code>$fkTransformer-&gt;transform($brand)</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerTrait.php">
     <MixedArgument occurrences="1">
@@ -312,15 +216,6 @@
       <code>$fkTransformer-&gt;transform($destination)</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpDestination/TpDestinationDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpDestination/TpDestinationRepository.php">
     <MissingParamType occurrences="1">
@@ -344,15 +239,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -369,15 +255,6 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingRouting())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleTrait.php">
     <MixedArgument occurrences="1">
@@ -404,15 +281,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Cgr/Domain/Model/TpRate/TpRateTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -429,15 +297,6 @@
       <code>$fkTransformer-&gt;transform($ratingPlan)</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpRatingPlan/TpRatingPlanDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpRatingPlan/TpRatingPlanTrait.php">
     <MixedArgument occurrences="1">
@@ -505,17 +364,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -532,15 +380,6 @@
       <code>$fkTransformer-&gt;transform($ratingPlan)</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpTiming/TpTimingTrait.php">
     <MixedArgument occurrences="1">
@@ -798,15 +637,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/Dispatcher/DispatcherTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -832,15 +662,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/Rtpengine/RtpengineDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/Rtpengine/RtpengineTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -857,15 +678,6 @@
       <code>$fkTransformer-&gt;transform($ddiProviderAddress)</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressTrait.php">
     <MixedArgument occurrences="1">
@@ -897,33 +709,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php">
-    <MissingParamType occurrences="11">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -932,11 +717,6 @@
   <file src="Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -944,11 +724,6 @@
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableTrait.php">
     <MixedArgument occurrences="1">
@@ -970,15 +745,6 @@
   <file src="Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayRepository.php">
@@ -1012,19 +778,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -1049,19 +802,6 @@
   <file src="Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetRepository.php">
@@ -1096,17 +836,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -1129,15 +858,6 @@
       <code>$fkTransformer-&gt;transform($company)</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/Trusted/TrustedDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Kam/Domain/Model/Trusted/TrustedTrait.php">
     <MixedArgument occurrences="1">
@@ -1164,15 +884,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -1196,21 +907,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php">
-    <MissingParamType occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -1218,11 +914,6 @@
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersHtable/UsersHtableAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersHtable/UsersHtableDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersHtable/UsersHtableTrait.php">
     <MixedArgument occurrences="1">
@@ -1232,11 +923,6 @@
   <file src="Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -1244,11 +930,6 @@
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrTrait.php">
     <MixedArgument occurrences="1">
@@ -1669,22 +1350,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$relPublicEntities</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Administrator/AdministratorInterface.php">
     <MissingParamType occurrences="1">
       <code>$serialized</code>
@@ -1717,17 +1382,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -1740,11 +1394,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ApplicationServer/ApplicationServerDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ApplicationServer/ApplicationServerTrait.php">
     <MixedArgument occurrences="1">
@@ -1765,17 +1414,6 @@
     <UnsafeInstantiation occurrences="1">
       <code>new static()</code>
     </UnsafeInstantiation>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/BalanceMovement/BalanceMovementDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/BalanceMovement/BalanceMovementTrait.php">
     <TooManyArguments occurrences="1">
@@ -1798,19 +1436,6 @@
       <code>new static()</code>
     </UnsafeInstantiation>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/BalanceNotification/BalanceNotificationDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/BalanceNotification/BalanceNotificationTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -1826,17 +1451,6 @@
     <UnsafeInstantiation occurrences="1">
       <code>new static()</code>
     </UnsafeInstantiation>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/BannedAddress/BannedAddressDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/BannedAddress/BannedAddressTrait.php">
     <TooManyArguments occurrences="1">
@@ -1875,31 +1489,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php">
-    <MissingParamType occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="9">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/BillableCall/BillableCallTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -1931,31 +1520,6 @@
       <code>(float) $price</code>
     </RedundantCast>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php">
-    <MissingParamType occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="9">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricTrait.php">
     <MixedArgument occurrences="1">
@@ -2004,42 +1568,6 @@
       <code>$contextProperties['logo'][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php">
-    <MissingParamType occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="9">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="9">
-      <code>$companies</code>
-      <code>$matchLists</code>
-      <code>$musicsOnHold</code>
-      <code>$outgoingRoutings</code>
-      <code>$relFeatures</code>
-      <code>$relProxyTrunks</code>
-      <code>$residentialDevices</code>
-      <code>$services</code>
-      <code>$urls</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Brand/BrandInterface.php">
     <MissingReturnType occurrences="1">
       <code>getRecordingsDiskUsage</code>
@@ -2075,17 +1603,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/BrandService/BrandServiceDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/BrandService/BrandServiceTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -2102,19 +1619,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Calendar/CalendarDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="2">
-      <code>$calendarPeriods</code>
-      <code>$holidayDates</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Calendar/CalendarTrait.php">
     <MixedArgument occurrences="1">
@@ -2145,26 +1649,6 @@
     </PossiblyInvalidArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php">
-    <MissingParamType occurrences="6">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$relSchedules</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -2191,17 +1675,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CalendarPeriodsRelSchedule/CalendarPeriodsRelScheduleDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CalendarPeriodsRelSchedule/CalendarPeriodsRelScheduleTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -2223,18 +1696,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CallAcl/CallAclDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$relMatchLists</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallAcl/CallAclTrait.php">
     <MixedArgument occurrences="1">
@@ -2260,17 +1721,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CallAclRelMatchList/CallAclRelMatchListDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CallAclRelMatchList/CallAclRelMatchListTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -2290,19 +1740,6 @@
   <file src="Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportTrait.php">
@@ -2356,37 +1793,11 @@
       <code>getRetailId</code>
       <code>getVpbxId</code>
     </MissingReturnType>
-    <MixedArgument occurrences="1">
+    <MixedArgument occurrences="4">
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php">
-    <MissingParamType occurrences="12">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="11">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerRepository.php">
@@ -2433,31 +1844,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php">
-    <MissingParamType occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="9">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -2502,30 +1888,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php">
-    <MissingParamType occurrences="6">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="5">
-      <code>$outgoingRoutings</code>
-      <code>$outgoingRoutingsRelCarriers</code>
-      <code>$ratingProfiles</code>
-      <code>$servers</code>
-      <code>$tpCdrStats</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Carrier/CarrierTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -2567,19 +1929,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -2587,11 +1936,6 @@
   </file>
   <file src="Ivoz/Provider/Domain/Model/Codec/CodecAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Codec/CodecDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Codec/CodecTrait.php">
     <MixedArgument occurrences="1">
@@ -2672,63 +2016,6 @@
     </RedundantCast>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php">
-    <MissingParamType occurrences="18">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="17">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="14">
-      <code>$companyServices</code>
-      <code>$contacts</code>
-      <code>$ddis</code>
-      <code>$extensions</code>
-      <code>$friends</code>
-      <code>$musicsOnHold</code>
-      <code>$ratingProfiles</code>
-      <code>$recordings</code>
-      <code>$relCodecs</code>
-      <code>$relCountries</code>
-      <code>$relFeatures</code>
-      <code>$relRoutingTags</code>
-      <code>$terminals</code>
-      <code>$voicemails</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyInterface.php">
     <MissingParamType occurrences="1">
       <code>$exten</code>
@@ -2755,17 +2042,6 @@
       <code>new static()</code>
     </UnsafeInstantiation>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodecDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodecTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -2787,17 +2063,6 @@
       <code>new static()</code>
     </UnsafeInstantiation>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CompanyRelGeoIPCountry/CompanyRelGeoIPCountryDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelGeoIPCountry/CompanyRelGeoIPCountryTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -2818,17 +2083,6 @@
     <UnsafeInstantiation occurrences="1">
       <code>new static()</code>
     </UnsafeInstantiation>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagTrait.php">
     <TooManyArguments occurrences="1">
@@ -2858,17 +2112,6 @@
   <file src="Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceTrait.php">
@@ -2905,36 +2148,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php">
-    <MissingParamType occurrences="11">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$conditions</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteTrait.php">
     <MixedArgument occurrences="1">
@@ -2978,7 +2191,11 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDto.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument occurrences="5">
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
       <code>func_get_args()</code>
     </MixedArgument>
     <MixedPropertyTypeCoercion occurrences="4">
@@ -2986,39 +2203,6 @@
       <code>$matchlistIds</code>
       <code>$routeLockIds</code>
       <code>$scheduleIds</code>
-    </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php">
-    <MissingParamType occurrences="11">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="4">
-      <code>$relCalendars</code>
-      <code>$relMatchlists</code>
-      <code>$relRouteLocks</code>
-      <code>$relSchedules</code>
     </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionTrait.php">
@@ -3047,17 +2231,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -3084,17 +2257,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelMatchlist/ConditionalRoutesConditionsRelMatchlistDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelMatchlist/ConditionalRoutesConditionsRelMatchlistTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -3115,17 +2277,6 @@
     <UnsafeInstantiation occurrences="1">
       <code>new static()</code>
     </UnsafeInstantiation>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockTrait.php">
     <TooManyArguments occurrences="1">
@@ -3153,17 +2304,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -3179,15 +2319,6 @@
   <file src="Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomTrait.php">
@@ -3218,21 +2349,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php">
-    <MissingParamType occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Contact/ContactTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3250,15 +2366,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Corporation/CorporationDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Corporation/CorporationTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3272,11 +2379,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Country/CountryDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Country/CountryTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3289,11 +2391,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Currency/CurrencyDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Currency/CurrencyTrait.php">
     <MixedArgument occurrences="1">
@@ -3351,43 +2448,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php">
-    <MissingParamType occurrences="16">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="15">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Ddi/DdiTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3422,25 +2482,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php">
-    <MissingParamType occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="2">
-      <code>$ddiProviderAddresses</code>
-      <code>$ddiProviderRegistrations</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3474,17 +2515,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DdiProviderAddress/DdiProviderAddressDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProviderAddress/DdiProviderAddressTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -3514,17 +2544,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3549,20 +2568,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Destination/DestinationDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$destinationRates</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Destination/DestinationRepository.php">
     <UndefinedDocblockClass occurrences="1">
@@ -3605,21 +2610,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php">
-    <MissingParamType occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateRepository.php">
     <UndefinedDocblockClass occurrences="1">
       <code>\Doctrine\DBAL\DBALException</code>
@@ -3655,20 +2645,6 @@
       <code>$contextProperties['file'][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$destinationRates</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3681,16 +2657,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Domain/DomainDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
-    <MixedPropertyTypeCoercion occurrences="3">
-      <code>$friends</code>
-      <code>$residentialDevices</code>
-      <code>$terminals</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Domain/DomainTrait.php">
     <MixedArgument occurrences="1">
@@ -3743,34 +2709,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php">
-    <MissingParamType occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="9">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$users</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Extension/ExtensionTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3807,7 +2745,11 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDto.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument occurrences="5">
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
       <code>func_get_args()</code>
     </MixedArgument>
     <MixedPropertyTypeCoercion occurrences="4">
@@ -3815,39 +2757,6 @@
       <code>$calendarIds</code>
       <code>$scheduleIds</code>
       <code>$whiteListIds</code>
-    </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php">
-    <MissingParamType occurrences="11">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="4">
-      <code>$blackLists</code>
-      <code>$calendars</code>
-      <code>$schedules</code>
-      <code>$whiteLists</code>
     </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterInterface.php">
@@ -3881,17 +2790,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterBlackList/ExternalCallFilterBlackListDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterBlackList/ExternalCallFilterBlackListTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -3916,17 +2814,6 @@
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarTrait.php">
@@ -3955,17 +2842,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -3990,17 +2866,6 @@
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListTrait.php">
@@ -4028,17 +2893,6 @@
   <file src="Ivoz/Provider/Domain/Model/Fax/FaxDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Fax/FaxDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Fax/FaxTrait.php">
@@ -4071,17 +2925,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -4094,11 +2937,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Feature/FeatureDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Feature/FeatureTrait.php">
     <MixedArgument occurrences="1">
@@ -4126,17 +2964,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -4161,17 +2988,6 @@
   <file src="Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyTrait.php">
@@ -4202,15 +3018,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/FixedCost/FixedCostDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCost/FixedCostTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -4237,17 +3044,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -4268,19 +3064,6 @@
       <code>$fkTransformer-&gt;transform($fixedCost)</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerTrait.php">
     <MixedArgument occurrences="1">
@@ -4337,35 +3120,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php">
-    <MissingParamType occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="9">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="2">
-      <code>$callForwardSettings</code>
-      <code>$patterns</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Friend/FriendTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -4386,15 +3140,6 @@
   <file src="Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternTrait.php">
@@ -4430,23 +3175,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php">
-    <MissingParamType occurrences="6">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateRepository.php">
     <MissingReturnType occurrences="1">
       <code>findMatchingDateSiblings</code>
@@ -4477,26 +3205,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php">
-    <MissingParamType occurrences="6">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$huntGroupMembers</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -4521,19 +3229,6 @@
   <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberTrait.php">
@@ -4582,26 +3277,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php">
-    <MissingParamType occurrences="6">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$relFixedCosts</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Invoice/InvoiceTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -4628,15 +3303,6 @@
       <code>static</code>
       <code>static</code>
     </MoreSpecificReturnType>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceTrait.php">
     <MixedArgument occurrences="1">
@@ -4676,24 +3342,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php">
-    <MissingParamType occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$relFixedCosts</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerRepository.php">
     <MissingParamType occurrences="1">
       <code>$schedulerIdToExclude</code>
@@ -4726,15 +3374,6 @@
     <MixedArgument occurrences="2">
       <code>func_get_args()</code>
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateTrait.php">
@@ -4774,39 +3413,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php">
-    <MissingParamType occurrences="12">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="11">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="2">
-      <code>$entries</code>
-      <code>$excludedExtensions</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Ivr/IvrRepository.php">
     <MissingReturnType occurrences="2">
       <code>findByExtension</code>
@@ -4845,25 +3451,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php">
-    <MissingParamType occurrences="7">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="6">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -4890,17 +3477,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/IvrExcludedExtension/IvrExcludedExtensionDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/IvrExcludedExtension/IvrExcludedExtensionTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -4913,11 +3489,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Language/LanguageDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Language/LanguageTrait.php">
     <MixedArgument occurrences="1">
@@ -4935,18 +3506,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Location/LocationDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$users</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Location/LocationTrait.php">
     <MixedArgument occurrences="1">
@@ -4967,15 +3526,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$contextProperties['originalFile'][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Locution/LocutionDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Locution/LocutionTrait.php">
     <MixedArgument occurrences="1">
@@ -5004,20 +3554,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/MatchList/MatchListDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$patterns</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/MatchList/MatchListTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5042,17 +3578,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5072,17 +3597,6 @@
       <code>new static()</code>
     </UnsafeInstantiation>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/MaxUsageNotification/MaxUsageNotificationDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/MaxUsageNotification/MaxUsageNotificationTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -5095,11 +3609,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/MediaRelaySet/MediaRelaySetDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/MediaRelaySet/MediaRelaySetTrait.php">
     <MixedArgument occurrences="1">
@@ -5128,17 +3637,6 @@
       <code>$contextProperties['originalFile'][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5155,18 +3653,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$contents</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateTrait.php">
     <MixedArgument occurrences="1">
@@ -5192,17 +3678,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5221,20 +3696,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$patterns</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleTrait.php">
     <MixedArgument occurrences="1">
@@ -5266,19 +3727,6 @@
   <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternTrait.php">
@@ -5319,34 +3767,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php">
-    <MissingParamType occurrences="9">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="8">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="3">
-      <code>$lcrRuleTargets</code>
-      <code>$lcrRules</code>
-      <code>$relCarriers</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5368,20 +3788,6 @@
       <code>new static()</code>
     </UnsafeInstantiation>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$tpRatingProfiles</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -5398,18 +3804,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$relUsers</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupTrait.php">
     <MixedArgument occurrences="1">
@@ -5437,17 +3831,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/PickUpRelUser/PickUpRelUserDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/PickUpRelUser/PickUpRelUserTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -5468,11 +3851,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ProxyTrunk/ProxyTrunkDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ProxyTrunk/ProxyTrunkTrait.php">
     <MixedArgument occurrences="1">
@@ -5500,17 +3878,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ProxyTrunksRelBrand/ProxyTrunksRelBrandDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ProxyTrunksRelBrand/ProxyTrunksRelBrandTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -5526,11 +3893,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ProxyUser/ProxyUserDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ProxyUser/ProxyUserTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -5538,11 +3900,6 @@
   </file>
   <file src="Ivoz/Provider/Domain/Model/PublicEntity/PublicEntityAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/PublicEntity/PublicEntityDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/PublicEntity/PublicEntityTrait.php">
     <MixedArgument occurrences="1">
@@ -5594,33 +3951,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php">
-    <MissingParamType occurrences="11">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Queue/QueueTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5645,17 +3975,6 @@
   <file src="Ivoz/Provider/Domain/Model/QueueMember/QueueMemberDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/QueueMember/QueueMemberDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/QueueMember/QueueMemberTrait.php">
@@ -5727,21 +4046,6 @@
       <code>static</code>
     </MoreSpecificReturnType>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDtoAbstract.php">
-    <MissingParamType occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5760,20 +4064,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$ratingPlan</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupRepository.php">
     <MissingParamType occurrences="1">
@@ -5808,24 +4098,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php">
-    <MissingParamType occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$tpRatingProfiles</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5846,15 +4118,6 @@
   <file src="Ivoz/Provider/Domain/Model/Recording/RecordingDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Recording/RecordingDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Recording/RecordingTrait.php">
@@ -5911,35 +4174,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php">
-    <MissingParamType occurrences="10">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="9">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="2">
-      <code>$callForwardSettings</code>
-      <code>$ddis</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceInterface.php">
     <MissingParamType occurrences="1">
       <code>$ddieE164</code>
@@ -5983,31 +4217,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php">
-    <MissingParamType occurrences="8">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="7">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="2">
-      <code>$callForwardSettings</code>
-      <code>$ddis</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6023,15 +4232,6 @@
   <file src="Ivoz/Provider/Domain/Model/RouteLock/RouteLockDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/RouteLock/RouteLockDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RouteLock/RouteLockTrait.php">
@@ -6062,20 +4262,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="3">
-      <code>$lcrRules</code>
-      <code>$outgoingRoutings</code>
-      <code>$relPatternGroups</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6104,19 +4290,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="2">
-      <code>$outgoingRoutings</code>
-      <code>$relPatterns</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6141,17 +4314,6 @@
   <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternTrait.php">
@@ -6179,19 +4341,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="2">
-      <code>$outgoingRoutings</code>
-      <code>$relCompanies</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6211,15 +4360,6 @@
   <file src="Ivoz/Provider/Domain/Model/Schedule/ScheduleDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Schedule/ScheduleDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Schedule/ScheduleTrait.php">
@@ -6243,11 +4383,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Service/ServiceTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6265,17 +4400,6 @@
   <file src="Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberTrait.php">
@@ -6330,26 +4454,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php">
-    <MissingParamType occurrences="6">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$users</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Terminal/TerminalInterface.php">
     <MissingReturnType occurrences="1">
       <code>getUser</code>
@@ -6367,11 +4471,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/TerminalManufacturer/TerminalManufacturerDtoAbstract.php">
-    <MissingParamType occurrences="1">
-      <code>$id</code>
-    </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/TerminalManufacturer/TerminalManufacturerTrait.php">
     <MixedArgument occurrences="1">
@@ -6404,15 +4503,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6428,15 +4518,6 @@
   <file src="Ivoz/Provider/Domain/Model/Timezone/TimezoneDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Timezone/TimezoneDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Timezone/TimezoneTrait.php">
@@ -6467,15 +4548,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6504,20 +4576,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$rules</code>
-    </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetTrait.php">
     <MixedArgument occurrences="1">
@@ -6579,46 +4637,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php">
-    <MissingParamType occurrences="15">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="14">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="3">
-      <code>$callForwardSettings</code>
-      <code>$pickUpRelUsers</code>
-      <code>$queueMembers</code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/User/UserInterface.php">
     <MissingParamType occurrences="1">
       <code>$serialized</code>
@@ -6671,23 +4689,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php">
-    <MissingParamType occurrences="6">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="5">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Voicemail/VoicemailTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6705,17 +4706,6 @@
   <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageTrait.php">
@@ -6748,15 +4738,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$contextProperties['logo'][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortalDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortalTrait.php">
     <MixedArgument occurrences="1">
