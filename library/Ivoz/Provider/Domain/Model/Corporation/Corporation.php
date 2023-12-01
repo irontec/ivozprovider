@@ -22,7 +22,7 @@ class Corporation extends CorporationAbstract implements CorporationInterface
      * Get id
      * @codeCoverageIgnore
      */
-    public function getId(): int|string|null
+    public function getId(): int|null
     {
         return $this->id;
     }

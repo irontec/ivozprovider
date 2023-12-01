@@ -23,7 +23,7 @@ interface CorporationInterface extends LoggableEntityInterface
      * Get id
      * @codeCoverageIgnore
      */
-    public function getId(): string|int|null;
+    public function getId(): ?int;
 
     /**
      * @param int | null $id
