@@ -2542,16 +2542,16 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.8.1",
+            "version": "4.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api-bundle.git",
-                "reference": "50358dac8fa50bb3f1f0e7276d3e48a9fa5fee75"
+                "reference": "ea9257ab6844d7ac6b9ae73871473a797eb38f1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/50358dac8fa50bb3f1f0e7276d3e48a9fa5fee75",
-                "reference": "50358dac8fa50bb3f1f0e7276d3e48a9fa5fee75",
+                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/ea9257ab6844d7ac6b9ae73871473a797eb38f1a",
+                "reference": "ea9257ab6844d7ac6b9ae73871473a797eb38f1a",
                 "shasum": ""
             },
             "require": {
@@ -2596,9 +2596,9 @@
             "description": "Symfony bridge for ivoz-api",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api-bundle/issues",
-                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.8.1"
+                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.8.2"
             },
-            "time": "2023-07-12T17:02:59+00:00"
+            "time": "2023-11-21T10:43:00+00:00"
         },
         {
             "name": "irontec/ivoz-core",
@@ -14649,5 +14649,5 @@
     "platform-overrides": {
         "php": "8.0.9"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }
