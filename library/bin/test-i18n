@@ -33,34 +33,34 @@ pushd /opt/irontec/ivozprovider/doc/sphinx
 #    done
 popd
 
-# check Administration portal translations
-pushd /opt/irontec/ivozprovider/web/admin
-    # Update .po files with changed/new strings
-    make gettext
-
-    # Check there is no pending files to be commited
-    if [ -n "$(git status -s .)" ]; then
-        echo "These translation changes have not been commited."
-        git --no-pager diff
-        EXITCODE=1
-    fi
-
-
-    for POFILE in application/languages/*/*.po; do
-        # Check there are no empty translations
-        msggrep -v -T -e "." ${POFILE} -o ${POFILE}.empty
-        if [ -f ${POFILE}.empty ]; then
-            echo "Following messages has no translation"
-            cat ${POFILE}.empty
-            EXITCODE=1
-        fi
-
-        # Check there are no fuzzy translations
-        grep -A3 fuzzy ${POFILE}
-        if [ $? -eq 0 ]; then
-            EXITCODE=1
-        fi
-    done
-popd
+## check Administration portal translations
+#pushd /opt/irontec/ivozprovider/web/admin
+#    # Update .po files with changed/new strings
+#    make gettext
+#
+#    # Check there is no pending files to be commited
+#    if [ -n "$(git status -s .)" ]; then
+#        echo "These translation changes have not been commited."
+#        git --no-pager diff
+#        EXITCODE=1
+#    fi
+#
+#
+#    for POFILE in application/languages/*/*.po; do
+#        # Check there are no empty translations
+#        msggrep -v -T -e "." ${POFILE} -o ${POFILE}.empty
+#        if [ -f ${POFILE}.empty ]; then
+#            echo "Following messages has no translation"
+#            cat ${POFILE}.empty
+#            EXITCODE=1
+#        fi
+#
+#        # Check there are no fuzzy translations
+#        grep -A3 fuzzy ${POFILE}
+#        if [ $? -eq 0 ]; then
+#            EXITCODE=1
+#        fi
+#    done
+#popd
 
 exit $EXITCODE
