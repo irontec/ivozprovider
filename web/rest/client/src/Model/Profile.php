@@ -48,6 +48,13 @@ class Profile
      */
     private $billingInfo;
 
+
+    /**
+     * @var int
+     * @AttributeDefinition(type="int")
+     */
+    private $defaultCountryId;
+
     /**
      * @var ProfileAcl[]
      * @AttributeDefinition(
@@ -74,12 +81,14 @@ class Profile
         bool $restricted,
         string $type,
         ?bool $showBillingInfo,
+        int $defaultCountryId,
         array $adminRelPublicEntities,
         array $features
     ) {
         $this->restricted = $restricted;
         $this->setType($type);
         $this->billingInfo = $showBillingInfo ?? false;
+        $this->defaultCountryId = $defaultCountryId;
 
         foreach ($adminRelPublicEntities as $adminRelPublicEntity) {
             $this->addAcl(
@@ -90,6 +99,57 @@ class Profile
         foreach ($features as $feature) {
             $this->addFeature($feature);
         }
+    }
+
+    public function isRestricted(): bool
+    {
+        return $this->restricted;
+    }
+
+    public function isVpbx(): bool
+    {
+        return $this->vpbx;
+    }
+
+    public function isResidential(): bool
+    {
+        return $this->residential;
+    }
+
+    public function isRetail(): bool
+    {
+        return $this->retail;
+    }
+
+    public function isWholesale(): bool
+    {
+        return $this->wholesale;
+    }
+
+    public function hasBillingInfo(): bool
+    {
+        return $this->billingInfo;
+    }
+
+    public function getDefaultCountryId(): int
+    {
+        return $this->defaultCountryId;
+    }
+
+    /**
+     * @return ProfileAcl[]
+     */
+    public function getAcls(): array
+    {
+        return $this->acls;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getFeatures(): array
+    {
+        return $this->features;
     }
 
     private function setType(string $type): static
@@ -135,51 +195,5 @@ class Profile
         $this->features[] = $feature;
 
         return $this;
-    }
-
-    public function isRestricted(): bool
-    {
-        return $this->restricted;
-    }
-
-    public function isVpbx(): bool
-    {
-        return $this->vpbx;
-    }
-
-    public function isResidential(): bool
-    {
-        return $this->residential;
-    }
-
-    public function isRetail(): bool
-    {
-        return $this->retail;
-    }
-
-    public function isWholesale(): bool
-    {
-        return $this->wholesale;
-    }
-
-    public function hasBillingInfo(): bool
-    {
-        return $this->billingInfo;
-    }
-
-    /**
-     * @return ProfileAcl[]
-     */
-    public function getAcls(): array
-    {
-        return $this->acls;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getFeatures(): array
-    {
-        return $this->features;
     }
 }
