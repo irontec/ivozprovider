@@ -5,12 +5,15 @@ import {
   Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useStoreState } from 'store';
 
 import { ConditionalRoutePropertyList } from './ConditionalRouteProperties';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
+  const { entityService, row, match, initialValues, create } = props;
+
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
   const fkChoices: ConditionalRoutePropertyList<unknown> = useFkChoices({
     foreignKeyGetter,
@@ -18,6 +21,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
     row,
     match,
   });
+
+  if (create) {
+    initialValues.numberCountry = aboutMe?.defaultCountryId ?? null;
+  }
 
   const groups: Array<FieldsetGroups> = [
     {

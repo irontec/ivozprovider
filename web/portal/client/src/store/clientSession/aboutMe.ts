@@ -26,6 +26,7 @@ export interface AboutMe {
   wholesale: boolean;
   billingInfo: boolean;
   restricted: boolean;
+  defaultCountryId: number;
   acls: Array<EntityAcl>;
   features: Array<string>;
 }

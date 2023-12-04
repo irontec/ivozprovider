@@ -10,7 +10,7 @@ import { useStoreState } from 'store';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
+  const { entityService, row, match, initialValues, create } = props;
 
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -19,11 +19,16 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
-  const residential = useStoreState(
-    (state) => state.clientSession.aboutMe.profile.residential
-  );
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const residential = aboutMe?.residential;
 
-  const groups: Array<FieldsetGroups> = [
+  if (create) {
+    initialValues.holidayNumberCountry = aboutMe?.defaultCountryId ?? null;
+    initialValues.outOfScheduleNumberCountry =
+      aboutMe?.defaultCountryId ?? null;
+  }
+
+  const groups: Array<FieldsetGroups | false | undefined> = [
     {
       legend: _('Basic Info'),
       fields: ['name', !residential && 'welcomeLocution'],
