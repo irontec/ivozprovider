@@ -5,6 +5,7 @@ import {
 } from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type CountryPropertyList<T> = {
+  id?: T;
   name?: T;
   countryCode?: T;
 };
