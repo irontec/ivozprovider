@@ -36,7 +36,10 @@ interface TpRateInterface extends LoggableEntityInterface
      */
     public function setGroupIntervalStart(string $groupIntervalStart): static;
 
-    public static function createDto(string|int|null $id = null): TpRateDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpRateDto;
 
     /**
      * @internal use EntityTools instead

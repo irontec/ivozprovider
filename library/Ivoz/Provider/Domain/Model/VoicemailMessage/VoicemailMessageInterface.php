@@ -31,7 +31,10 @@ interface VoicemailMessageInterface extends LoggableEntityInterface, FileContain
      */
     public function getFileObjects(?int $filter = null): array;
 
-    public static function createDto(string|int|null $id = null): VoicemailMessageDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): VoicemailMessageDto;
 
     /**
      * @internal use EntityTools instead

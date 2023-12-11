@@ -41,10 +41,7 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
      */
     private $calendarPeriods = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -104,6 +101,9 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -128,7 +128,7 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -146,6 +146,9 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param HolidayDateDto[] | null $holidayDates
+     */
     public function setHolidayDates(?array $holidayDates): static
     {
         $this->holidayDates = $holidayDates;
@@ -161,6 +164,9 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return $this->holidayDates;
     }
 
+    /**
+     * @param CalendarPeriodDto[] | null $calendarPeriods
+     */
     public function setCalendarPeriods(?array $calendarPeriods): static
     {
         $this->calendarPeriods = $calendarPeriods;

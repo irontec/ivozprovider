@@ -84,7 +84,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): FixedCostsRelInvoiceSchedulerDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FixedCostsRelInvoiceSchedulerDto
     {
         return new FixedCostsRelInvoiceSchedulerDto($id);
     }

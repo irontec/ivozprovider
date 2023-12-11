@@ -38,7 +38,10 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
 
     public function getTimezone(): ?TimezoneInterface;
 
-    public static function createDto(string|int|null $id = null): CallCsvReportDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CallCsvReportDto;
 
     /**
      * @internal use EntityTools instead

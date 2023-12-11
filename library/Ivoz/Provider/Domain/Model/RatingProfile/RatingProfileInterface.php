@@ -39,7 +39,10 @@ interface RatingProfileInterface extends LoggableEntityInterface
      */
     public function getCgrRatingProfile();
 
-    public static function createDto(string|int|null $id = null): RatingProfileDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RatingProfileDto;
 
     /**
      * @internal use EntityTools instead

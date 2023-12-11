@@ -26,7 +26,10 @@ interface TimezoneInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): TimezoneDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TimezoneDto;
 
     /**
      * @internal use EntityTools instead

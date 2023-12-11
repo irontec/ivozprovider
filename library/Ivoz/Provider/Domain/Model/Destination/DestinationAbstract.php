@@ -65,7 +65,10 @@ abstract class DestinationAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): DestinationDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DestinationDto
     {
         return new DestinationDto($id);
     }

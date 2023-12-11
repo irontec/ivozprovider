@@ -89,10 +89,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
      */
     private $outgoingRouting = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -318,6 +315,9 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->createdAt;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -342,7 +342,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingRouting;
     }
 
-    public function setOutgoingRoutingId($id): static
+    public function setOutgoingRoutingId(?int $id): static
     {
         $value = !is_null($id)
             ? new OutgoingRoutingDto($id)

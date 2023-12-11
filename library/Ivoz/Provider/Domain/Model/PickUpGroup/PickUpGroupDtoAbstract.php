@@ -35,10 +35,7 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
      */
     private $relUsers = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -97,6 +94,9 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -121,7 +121,7 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -139,6 +139,9 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param PickUpRelUserDto[] | null $relUsers
+     */
     public function setRelUsers(?array $relUsers): static
     {
         $this->relUsers = $relUsers;

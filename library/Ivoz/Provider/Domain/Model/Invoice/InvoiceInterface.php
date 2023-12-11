@@ -59,7 +59,10 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
 
     public function mustCheckValidity(): bool;
 
-    public static function createDto(string|int|null $id = null): InvoiceDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): InvoiceDto;
 
     /**
      * @internal use EntityTools instead

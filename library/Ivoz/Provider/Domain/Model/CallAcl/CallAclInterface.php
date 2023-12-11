@@ -39,7 +39,10 @@ interface CallAclInterface extends LoggableEntityInterface
      */
     public function dstIsCallable($dst);
 
-    public static function createDto(string|int|null $id = null): CallAclDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CallAclDto;
 
     /**
      * @internal use EntityTools instead

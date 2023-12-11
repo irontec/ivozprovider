@@ -30,10 +30,7 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
      */
     private $schedule = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -79,6 +76,9 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -103,7 +103,7 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return $this->calendarPeriod;
     }
 
-    public function setCalendarPeriodId($id): static
+    public function setCalendarPeriodId(?int $id): static
     {
         $value = !is_null($id)
             ? new CalendarPeriodDto($id)
@@ -133,7 +133,7 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return $this->schedule;
     }
 
-    public function setScheduleId($id): static
+    public function setScheduleId(?int $id): static
     {
         $value = !is_null($id)
             ? new ScheduleDto($id)

@@ -25,7 +25,10 @@ interface PublicEntityInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): PublicEntityDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): PublicEntityDto;
 
     /**
      * @internal use EntityTools instead

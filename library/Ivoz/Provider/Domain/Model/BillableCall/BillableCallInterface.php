@@ -50,7 +50,10 @@ interface BillableCallInterface extends LoggableEntityInterface
 
     public function isOutboundCall(): bool;
 
-    public static function createDto(string|int|null $id = null): BillableCallDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BillableCallDto;
 
     /**
      * @internal use EntityTools instead

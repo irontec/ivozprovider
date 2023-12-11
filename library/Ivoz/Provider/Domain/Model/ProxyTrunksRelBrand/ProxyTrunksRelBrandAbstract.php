@@ -58,7 +58,10 @@ abstract class ProxyTrunksRelBrandAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ProxyTrunksRelBrandDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ProxyTrunksRelBrandDto
     {
         return new ProxyTrunksRelBrandDto($id);
     }

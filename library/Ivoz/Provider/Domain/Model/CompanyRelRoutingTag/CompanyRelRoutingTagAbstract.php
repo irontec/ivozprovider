@@ -59,7 +59,10 @@ abstract class CompanyRelRoutingTagAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CompanyRelRoutingTagDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CompanyRelRoutingTagDto
     {
         return new CompanyRelRoutingTagDto($id);
     }

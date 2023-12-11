@@ -34,7 +34,10 @@ interface RoutingTagInterface extends LoggableEntityInterface
      */
     public function getCgrSubject(): string;
 
-    public static function createDto(string|int|null $id = null): RoutingTagDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RoutingTagDto;
 
     /**
      * @internal use EntityTools instead

@@ -43,10 +43,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
      */
     private $nameIt = '';
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -114,6 +111,9 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
         return $this->iden;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;

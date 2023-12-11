@@ -128,7 +128,10 @@ abstract class VoicemailMessageAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): VoicemailMessageDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): VoicemailMessageDto
     {
         return new VoicemailMessageDto($id);
     }

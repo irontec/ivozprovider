@@ -84,7 +84,10 @@ abstract class PublicEntityAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): PublicEntityDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): PublicEntityDto
     {
         return new PublicEntityDto($id);
     }

@@ -71,7 +71,10 @@ interface PsEndpointInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): PsEndpointDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): PsEndpointDto;
 
     /**
      * @internal use EntityTools instead

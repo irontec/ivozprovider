@@ -174,7 +174,10 @@ abstract class TrunksUacregAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TrunksUacregDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksUacregDto
     {
         return new TrunksUacregDto($id);
     }

@@ -41,7 +41,10 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
 
     public function setName(string $name): static;
 
-    public static function createDto(string|int|null $id = null): RoutingPatternGroupDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RoutingPatternGroupDto;
 
     /**
      * @internal use EntityTools instead

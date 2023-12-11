@@ -75,10 +75,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
      */
     private $trunksUacreg = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -250,6 +247,9 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->contactUsername;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -274,7 +274,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->ddiProvider;
     }
 
-    public function setDdiProviderId($id): static
+    public function setDdiProviderId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)
@@ -304,7 +304,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->trunksUacreg;
     }
 
-    public function setTrunksUacregId($id): static
+    public function setTrunksUacregId(?int $id): static
     {
         $value = !is_null($id)
             ? new TrunksUacregDto($id)

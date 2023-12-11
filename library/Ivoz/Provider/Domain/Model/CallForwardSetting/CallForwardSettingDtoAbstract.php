@@ -101,10 +101,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
      */
     private $ddi = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -248,6 +245,9 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->enabled;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -272,7 +272,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -302,7 +302,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->friend;
     }
 
-    public function setFriendId($id): static
+    public function setFriendId(?int $id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)
@@ -332,7 +332,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->extension;
     }
 
-    public function setExtensionId($id): static
+    public function setExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -362,7 +362,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->voicemail;
     }
 
-    public function setVoicemailId($id): static
+    public function setVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -392,7 +392,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->numberCountry;
     }
 
-    public function setNumberCountryId($id): static
+    public function setNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -422,7 +422,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->residentialDevice;
     }
 
-    public function setResidentialDeviceId($id): static
+    public function setResidentialDeviceId(?int $id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -452,7 +452,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->retailAccount;
     }
 
-    public function setRetailAccountId($id): static
+    public function setRetailAccountId(?int $id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)
@@ -482,7 +482,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->cfwToRetailAccount;
     }
 
-    public function setCfwToRetailAccountId($id): static
+    public function setCfwToRetailAccountId(?int $id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)
@@ -512,7 +512,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->ddi;
     }
 
-    public function setDdiId($id): static
+    public function setDdiId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)

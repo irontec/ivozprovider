@@ -41,7 +41,10 @@ interface TerminalModelInterface extends LoggableEntityInterface
      */
     public function setSpecificTemplate(?string $specificTemplate = null): static;
 
-    public static function createDto(string|int|null $id = null): TerminalModelDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TerminalModelDto;
 
     /**
      * @internal use EntityTools instead

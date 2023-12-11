@@ -27,7 +27,10 @@ interface CalendarPeriodsRelScheduleInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): CalendarPeriodsRelScheduleDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CalendarPeriodsRelScheduleDto;
 
     /**
      * @internal use EntityTools instead

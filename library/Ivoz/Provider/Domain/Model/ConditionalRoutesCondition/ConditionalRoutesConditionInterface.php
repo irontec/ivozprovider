@@ -130,7 +130,10 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function getMatchData(): string;
 
-    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConditionalRoutesConditionDto;
 
     /**
      * @internal use EntityTools instead

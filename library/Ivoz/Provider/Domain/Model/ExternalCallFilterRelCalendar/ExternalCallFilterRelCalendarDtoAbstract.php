@@ -30,10 +30,7 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
      */
     private $calendar = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -79,6 +76,9 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -103,7 +103,7 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
         return $this->filter;
     }
 
-    public function setFilterId($id): static
+    public function setFilterId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExternalCallFilterDto($id)
@@ -133,7 +133,7 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
         return $this->calendar;
     }
 
-    public function setCalendarId($id): static
+    public function setCalendarId(?int $id): static
     {
         $value = !is_null($id)
             ? new CalendarDto($id)

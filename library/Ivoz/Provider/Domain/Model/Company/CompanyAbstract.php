@@ -273,7 +273,10 @@ abstract class CompanyAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CompanyDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CompanyDto
     {
         return new CompanyDto($id);
     }

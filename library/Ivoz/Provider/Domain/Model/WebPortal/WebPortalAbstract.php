@@ -96,7 +96,10 @@ abstract class WebPortalAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): WebPortalDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): WebPortalDto
     {
         return new WebPortalDto($id);
     }

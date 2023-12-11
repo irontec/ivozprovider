@@ -105,7 +105,10 @@ abstract class CalendarPeriodAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CalendarPeriodDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CalendarPeriodDto
     {
         return new CalendarPeriodDto($id);
     }

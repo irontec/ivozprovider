@@ -38,7 +38,10 @@ interface MatchListInterface extends LoggableEntityInterface
      */
     public function numberMatches($number);
 
-    public static function createDto(string|int|null $id = null): MatchListDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): MatchListDto;
 
     /**
      * @internal use EntityTools instead

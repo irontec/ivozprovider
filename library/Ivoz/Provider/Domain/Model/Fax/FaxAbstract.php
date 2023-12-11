@@ -76,7 +76,10 @@ abstract class FaxAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): FaxDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FaxDto
     {
         return new FaxDto($id);
     }

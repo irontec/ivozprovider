@@ -92,7 +92,10 @@ abstract class DispatcherAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): DispatcherDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DispatcherDto
     {
         return new DispatcherDto($id);
     }

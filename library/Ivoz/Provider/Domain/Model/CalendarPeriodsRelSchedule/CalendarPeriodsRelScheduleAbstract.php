@@ -58,7 +58,10 @@ abstract class CalendarPeriodsRelScheduleAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CalendarPeriodsRelScheduleDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CalendarPeriodsRelScheduleDto
     {
         return new CalendarPeriodsRelScheduleDto($id);
     }

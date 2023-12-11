@@ -80,7 +80,10 @@ abstract class TrunksDomainAttrAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TrunksDomainAttrDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksDomainAttrDto
     {
         return new TrunksDomainAttrDto($id);
     }

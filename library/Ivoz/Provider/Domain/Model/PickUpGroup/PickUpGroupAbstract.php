@@ -57,7 +57,10 @@ abstract class PickUpGroupAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): PickUpGroupDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): PickUpGroupDto
     {
         return new PickUpGroupDto($id);
     }

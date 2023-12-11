@@ -68,10 +68,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
      */
     private $zoneIt = '';
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -165,6 +162,9 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->countryCode;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;

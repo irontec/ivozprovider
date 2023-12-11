@@ -62,10 +62,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      */
     private $tpDestinationRate = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -171,6 +168,9 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->groupIntervalStart;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -195,7 +195,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->destinationRateGroup;
     }
 
-    public function setDestinationRateGroupId($id): static
+    public function setDestinationRateGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new DestinationRateGroupDto($id)
@@ -225,7 +225,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->destination;
     }
 
-    public function setDestinationId($id): static
+    public function setDestinationId(?int $id): static
     {
         $value = !is_null($id)
             ? new DestinationDto($id)
@@ -255,7 +255,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->tpRate;
     }
 
-    public function setTpRateId($id): static
+    public function setTpRateId(?int $id): static
     {
         $value = !is_null($id)
             ? new TpRateDto($id)
@@ -285,7 +285,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->tpDestinationRate;
     }
 
-    public function setTpDestinationRateId($id): static
+    public function setTpDestinationRateId(?int $id): static
     {
         $value = !is_null($id)
             ? new TpDestinationRateDto($id)

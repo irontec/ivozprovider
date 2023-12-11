@@ -36,7 +36,10 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
      */
     public static function getFromUriForOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): string;
 
-    public static function createDto(string|int|null $id = null): TrunksLcrRuleDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksLcrRuleDto;
 
     /**
      * @internal use EntityTools instead

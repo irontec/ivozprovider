@@ -133,10 +133,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
      */
     private $id = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -440,6 +437,9 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->cost;
     }
 
+    /**
+     * @param array $costDetails
+     */
     public function setCostDetails(array $costDetails): static
     {
         $this->costDetails = $costDetails;
@@ -500,6 +500,9 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->deletedAt;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;

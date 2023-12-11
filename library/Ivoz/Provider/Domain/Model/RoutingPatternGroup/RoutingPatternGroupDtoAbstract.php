@@ -46,10 +46,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
      */
     private $outgoingRoutings = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -123,6 +120,9 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this->description;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -147,7 +147,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -165,6 +165,9 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return null;
     }
 
+    /**
+     * @param RoutingPatternGroupsRelPatternDto[] | null $relPatterns
+     */
     public function setRelPatterns(?array $relPatterns): static
     {
         $this->relPatterns = $relPatterns;
@@ -180,6 +183,9 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this->relPatterns;
     }
 
+    /**
+     * @param OutgoingRoutingDto[] | null $outgoingRoutings
+     */
     public function setOutgoingRoutings(?array $outgoingRoutings): static
     {
         $this->outgoingRoutings = $outgoingRoutings;

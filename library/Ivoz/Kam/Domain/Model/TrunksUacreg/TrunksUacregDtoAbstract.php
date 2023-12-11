@@ -105,10 +105,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
      */
     private $brand = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -364,6 +361,9 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->contactAddr;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -388,7 +388,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->ddiProviderRegistration;
     }
 
-    public function setDdiProviderRegistrationId($id): static
+    public function setDdiProviderRegistrationId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiProviderRegistrationDto($id)
@@ -418,7 +418,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)

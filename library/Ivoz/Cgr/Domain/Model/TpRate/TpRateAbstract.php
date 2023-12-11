@@ -112,7 +112,10 @@ abstract class TpRateAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TpRateDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpRateDto
     {
         return new TpRateDto($id);
     }

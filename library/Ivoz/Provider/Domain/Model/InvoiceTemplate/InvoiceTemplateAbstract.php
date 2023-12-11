@@ -79,7 +79,10 @@ abstract class InvoiceTemplateAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): InvoiceTemplateDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): InvoiceTemplateDto
     {
         return new InvoiceTemplateDto($id);
     }

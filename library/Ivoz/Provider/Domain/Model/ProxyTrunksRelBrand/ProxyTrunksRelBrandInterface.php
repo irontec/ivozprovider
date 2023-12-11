@@ -27,7 +27,10 @@ interface ProxyTrunksRelBrandInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): ProxyTrunksRelBrandDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ProxyTrunksRelBrandDto;
 
     /**
      * @internal use EntityTools instead

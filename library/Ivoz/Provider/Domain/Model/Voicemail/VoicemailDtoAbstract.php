@@ -73,10 +73,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
      */
     private $astVoicemail = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -198,6 +195,9 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->attachSound;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -222,7 +222,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -252,7 +252,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->residentialDevice;
     }
 
-    public function setResidentialDeviceId($id): static
+    public function setResidentialDeviceId(?int $id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -282,7 +282,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -312,7 +312,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->locution;
     }
 
-    public function setLocutionId($id): static
+    public function setLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -342,7 +342,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->astVoicemail;
     }
 
-    public function setAstVoicemailId($id): static
+    public function setAstVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)

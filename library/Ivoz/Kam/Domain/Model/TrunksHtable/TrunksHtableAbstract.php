@@ -82,7 +82,10 @@ abstract class TrunksHtableAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TrunksHtableDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksHtableDto
     {
         return new TrunksHtableDto($id);
     }

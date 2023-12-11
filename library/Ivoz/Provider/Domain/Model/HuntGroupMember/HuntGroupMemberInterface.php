@@ -39,7 +39,10 @@ interface HuntGroupMemberInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164(): string;
 
-    public static function createDto(string|int|null $id = null): HuntGroupMemberDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): HuntGroupMemberDto;
 
     /**
      * @internal use EntityTools instead

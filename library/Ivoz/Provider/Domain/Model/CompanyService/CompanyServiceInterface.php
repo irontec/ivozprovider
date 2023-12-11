@@ -32,7 +32,10 @@ interface CompanyServiceInterface extends LoggableEntityInterface
      */
     public function setCode(string $code): static;
 
-    public static function createDto(string|int|null $id = null): CompanyServiceDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CompanyServiceDto;
 
     /**
      * @internal use EntityTools instead

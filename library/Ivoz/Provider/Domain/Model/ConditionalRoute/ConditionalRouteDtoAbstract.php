@@ -104,10 +104,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
      */
     private $conditions = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -226,6 +223,9 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->friendvalue;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -250,7 +250,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -280,7 +280,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->ivr;
     }
 
-    public function setIvrId($id): static
+    public function setIvrId(?int $id): static
     {
         $value = !is_null($id)
             ? new IvrDto($id)
@@ -310,7 +310,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->huntGroup;
     }
 
-    public function setHuntGroupId($id): static
+    public function setHuntGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new HuntGroupDto($id)
@@ -340,7 +340,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->voicemail;
     }
 
-    public function setVoicemailId($id): static
+    public function setVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -370,7 +370,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -400,7 +400,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->queue;
     }
 
-    public function setQueueId($id): static
+    public function setQueueId(?int $id): static
     {
         $value = !is_null($id)
             ? new QueueDto($id)
@@ -430,7 +430,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->locution;
     }
 
-    public function setLocutionId($id): static
+    public function setLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -460,7 +460,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->conferenceRoom;
     }
 
-    public function setConferenceRoomId($id): static
+    public function setConferenceRoomId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConferenceRoomDto($id)
@@ -490,7 +490,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->extension;
     }
 
-    public function setExtensionId($id): static
+    public function setExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -520,7 +520,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->numberCountry;
     }
 
-    public function setNumberCountryId($id): static
+    public function setNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -538,6 +538,9 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
+    /**
+     * @param ConditionalRoutesConditionDto[] | null $conditions
+     */
     public function setConditions(?array $conditions): static
     {
         $this->conditions = $conditions;

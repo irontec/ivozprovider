@@ -76,7 +76,10 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function setMac(?string $mac = null): static;
 
-    public static function createDto(string|int|null $id = null): TerminalDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TerminalDto;
 
     /**
      * @internal use EntityTools instead

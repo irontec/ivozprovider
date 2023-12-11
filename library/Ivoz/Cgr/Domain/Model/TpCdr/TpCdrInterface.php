@@ -40,7 +40,10 @@ interface TpCdrInterface extends EntityInterface
      */
     public function getMatchedDestinationTag(): string;
 
-    public static function createDto(string|int|null $id = null): TpCdrDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpCdrDto;
 
     /**
      * @internal use EntityTools instead

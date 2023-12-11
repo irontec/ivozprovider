@@ -61,10 +61,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
      */
     private $destinationRates = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -137,6 +134,9 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this->prefix;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -209,7 +209,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -239,7 +239,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this->tpDestination;
     }
 
-    public function setTpDestinationId($id): static
+    public function setTpDestinationId(?int $id): static
     {
         $value = !is_null($id)
             ? new TpDestinationDto($id)
@@ -257,6 +257,9 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param DestinationRateDto[] | null $destinationRates
+     */
     public function setDestinationRates(?array $destinationRates): static
     {
         $this->destinationRates = $destinationRates;

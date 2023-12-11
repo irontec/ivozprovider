@@ -36,10 +36,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
      */
     private $tpRatingProfiles = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -86,6 +83,9 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -110,7 +110,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this->outgoingRouting;
     }
 
-    public function setOutgoingRoutingId($id): static
+    public function setOutgoingRoutingId(?int $id): static
     {
         $value = !is_null($id)
             ? new OutgoingRoutingDto($id)
@@ -140,7 +140,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this->carrier;
     }
 
-    public function setCarrierId($id): static
+    public function setCarrierId(?int $id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -158,6 +158,9 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return null;
     }
 
+    /**
+     * @param TpRatingProfileDto[] | null $tpRatingProfiles
+     */
     public function setTpRatingProfiles(?array $tpRatingProfiles): static
     {
         $this->tpRatingProfiles = $tpRatingProfiles;

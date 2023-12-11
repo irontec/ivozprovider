@@ -72,7 +72,10 @@ abstract class OutgoingDdiRuleAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): OutgoingDdiRuleDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): OutgoingDdiRuleDto
     {
         return new OutgoingDdiRuleDto($id);
     }

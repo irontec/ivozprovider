@@ -25,7 +25,10 @@ interface ApplicationServerInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): ApplicationServerDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ApplicationServerDto;
 
     /**
      * @internal use EntityTools instead

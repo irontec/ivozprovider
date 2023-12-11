@@ -102,7 +102,10 @@ abstract class RecordingAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): RecordingDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RecordingDto
     {
         return new RecordingDto($id);
     }

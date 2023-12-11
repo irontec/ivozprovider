@@ -30,10 +30,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
      */
     private $routeLock = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -79,6 +76,9 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -103,7 +103,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return $this->condition;
     }
 
-    public function setConditionId($id): static
+    public function setConditionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConditionalRoutesConditionDto($id)
@@ -133,7 +133,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return $this->routeLock;
     }
 
-    public function setRouteLockId($id): static
+    public function setRouteLockId(?int $id): static
     {
         $value = !is_null($id)
             ? new RouteLockDto($id)

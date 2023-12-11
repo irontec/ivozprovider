@@ -18,7 +18,10 @@ interface UsersHtableInterface extends EntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): UsersHtableDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): UsersHtableDto;
 
     /**
      * @internal use EntityTools instead

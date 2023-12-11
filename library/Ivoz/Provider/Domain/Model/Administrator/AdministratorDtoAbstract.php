@@ -82,10 +82,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
      */
     private $relPublicEntities = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -246,6 +243,9 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->lastname;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -270,7 +270,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -300,7 +300,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -330,7 +330,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->timezone;
     }
 
-    public function setTimezoneId($id): static
+    public function setTimezoneId(?int $id): static
     {
         $value = !is_null($id)
             ? new TimezoneDto($id)
@@ -348,6 +348,9 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param AdministratorRelPublicEntityDto[] | null $relPublicEntities
+     */
     public function setRelPublicEntities(?array $relPublicEntities): static
     {
         $this->relPublicEntities = $relPublicEntities;

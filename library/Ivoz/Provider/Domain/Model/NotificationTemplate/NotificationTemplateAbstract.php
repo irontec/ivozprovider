@@ -65,7 +65,10 @@ abstract class NotificationTemplateAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): NotificationTemplateDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): NotificationTemplateDto
     {
         return new NotificationTemplateDto($id);
     }

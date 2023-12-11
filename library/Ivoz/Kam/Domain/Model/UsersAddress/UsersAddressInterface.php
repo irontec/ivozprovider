@@ -30,7 +30,10 @@ interface UsersAddressInterface extends LoggableEntityInterface
 
     public function setMask(?int $mask = null): static;
 
-    public static function createDto(string|int|null $id = null): UsersAddressDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): UsersAddressDto;
 
     /**
      * @internal use EntityTools instead

@@ -85,7 +85,10 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
 
     public function getCallForwardTarget(): ?string;
 
-    public static function createDto(string|int|null $id = null): CallForwardSettingDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CallForwardSettingDto;
 
     /**
      * @internal use EntityTools instead

@@ -27,7 +27,10 @@ interface FeaturesRelCompanyInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): FeaturesRelCompanyDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FeaturesRelCompanyDto;
 
     /**
      * @internal use EntityTools instead

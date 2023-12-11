@@ -45,10 +45,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
      */
     private $company = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -136,6 +133,9 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this->lastSent;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -160,7 +160,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this->notificationTemplate;
     }
 
-    public function setNotificationTemplateId($id): static
+    public function setNotificationTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -190,7 +190,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)

@@ -247,7 +247,10 @@ abstract class TpDerivedChargerAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TpDerivedChargerDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpDerivedChargerDto
     {
         return new TpDerivedChargerDto($id);
     }

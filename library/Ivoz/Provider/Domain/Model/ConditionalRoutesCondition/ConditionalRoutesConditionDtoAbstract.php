@@ -122,10 +122,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
      */
     private $relRouteLocks = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -247,6 +244,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->friendValue;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -271,7 +271,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->conditionalRoute;
     }
 
-    public function setConditionalRouteId($id): static
+    public function setConditionalRouteId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConditionalRouteDto($id)
@@ -301,7 +301,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->ivr;
     }
 
-    public function setIvrId($id): static
+    public function setIvrId(?int $id): static
     {
         $value = !is_null($id)
             ? new IvrDto($id)
@@ -331,7 +331,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->huntGroup;
     }
 
-    public function setHuntGroupId($id): static
+    public function setHuntGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new HuntGroupDto($id)
@@ -361,7 +361,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->voicemail;
     }
 
-    public function setVoicemailId($id): static
+    public function setVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -391,7 +391,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -421,7 +421,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->queue;
     }
 
-    public function setQueueId($id): static
+    public function setQueueId(?int $id): static
     {
         $value = !is_null($id)
             ? new QueueDto($id)
@@ -451,7 +451,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->locution;
     }
 
-    public function setLocutionId($id): static
+    public function setLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -481,7 +481,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->conferenceRoom;
     }
 
-    public function setConferenceRoomId($id): static
+    public function setConferenceRoomId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConferenceRoomDto($id)
@@ -511,7 +511,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->extension;
     }
 
-    public function setExtensionId($id): static
+    public function setExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -541,7 +541,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->numberCountry;
     }
 
-    public function setNumberCountryId($id): static
+    public function setNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -559,6 +559,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return null;
     }
 
+    /**
+     * @param ConditionalRoutesConditionsRelMatchlistDto[] | null $relMatchlists
+     */
     public function setRelMatchlists(?array $relMatchlists): static
     {
         $this->relMatchlists = $relMatchlists;
@@ -574,6 +577,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->relMatchlists;
     }
 
+    /**
+     * @param ConditionalRoutesConditionsRelScheduleDto[] | null $relSchedules
+     */
     public function setRelSchedules(?array $relSchedules): static
     {
         $this->relSchedules = $relSchedules;
@@ -589,6 +595,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->relSchedules;
     }
 
+    /**
+     * @param ConditionalRoutesConditionsRelCalendarDto[] | null $relCalendars
+     */
     public function setRelCalendars(?array $relCalendars): static
     {
         $this->relCalendars = $relCalendars;
@@ -604,6 +613,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->relCalendars;
     }
 
+    /**
+     * @param ConditionalRoutesConditionsRelRouteLockDto[] | null $relRouteLocks
+     */
     public function setRelRouteLocks(?array $relRouteLocks): static
     {
         $this->relRouteLocks = $relRouteLocks;

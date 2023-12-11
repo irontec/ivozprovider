@@ -116,7 +116,10 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      */
     public function getOutOfScheduleRouteType(): ?string;
 
-    public static function createDto(string|int|null $id = null): ExternalCallFilterDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ExternalCallFilterDto;
 
     /**
      * @internal use EntityTools instead

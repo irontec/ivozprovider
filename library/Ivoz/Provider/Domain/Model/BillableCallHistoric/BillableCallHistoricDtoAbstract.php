@@ -147,10 +147,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
      */
     private $ddiProvider = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -324,6 +321,9 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->price;
     }
 
+    /**
+     * @param array|null $priceDetails
+     */
     public function setPriceDetails(?array $priceDetails): static
     {
         $this->priceDetails = $priceDetails;
@@ -420,6 +420,9 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->direction;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -444,7 +447,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -474,7 +477,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -504,7 +507,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->carrier;
     }
 
-    public function setCarrierId($id): static
+    public function setCarrierId(?int $id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -534,7 +537,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->destination;
     }
 
-    public function setDestinationId($id): static
+    public function setDestinationId(?int $id): static
     {
         $value = !is_null($id)
             ? new DestinationDto($id)
@@ -564,7 +567,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->ratingPlanGroup;
     }
 
-    public function setRatingPlanGroupId($id): static
+    public function setRatingPlanGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new RatingPlanGroupDto($id)
@@ -594,7 +597,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->invoice;
     }
 
-    public function setInvoiceId($id): static
+    public function setInvoiceId(?int $id): static
     {
         $value = !is_null($id)
             ? new InvoiceDto($id)
@@ -624,7 +627,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->trunksCdr;
     }
 
-    public function setTrunksCdrId($id): static
+    public function setTrunksCdrId(?int $id): static
     {
         $value = !is_null($id)
             ? new TrunksCdrDto($id)
@@ -654,7 +657,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->ddi;
     }
 
-    public function setDdiId($id): static
+    public function setDdiId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -684,7 +687,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->ddiProvider;
     }
 
-    public function setDdiProviderId($id): static
+    public function setDdiProviderId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)

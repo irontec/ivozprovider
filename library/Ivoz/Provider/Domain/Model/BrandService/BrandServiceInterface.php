@@ -32,7 +32,10 @@ interface BrandServiceInterface extends LoggableEntityInterface
      */
     public function setCode(string $code): static;
 
-    public static function createDto(string|int|null $id = null): BrandServiceDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BrandServiceDto;
 
     /**
      * @internal use EntityTools instead

@@ -106,10 +106,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
      */
     private $lcrGateway = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -353,6 +350,9 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->fromDomain;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -377,7 +377,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->carrier;
     }
 
-    public function setCarrierId($id): static
+    public function setCarrierId(?int $id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -407,7 +407,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -437,7 +437,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->lcrGateway;
     }
 
-    public function setLcrGatewayId($id): static
+    public function setLcrGatewayId(?int $id): static
     {
         $value = !is_null($id)
             ? new TrunksLcrGatewayDto($id)

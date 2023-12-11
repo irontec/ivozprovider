@@ -188,7 +188,10 @@ abstract class BillableCallAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): BillableCallDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BillableCallDto
     {
         return new BillableCallDto($id);
     }

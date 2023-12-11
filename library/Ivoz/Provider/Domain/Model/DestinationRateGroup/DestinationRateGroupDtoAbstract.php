@@ -111,10 +111,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
      */
     private $destinationRates = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -239,6 +236,9 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->deductibleConnectionFee;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -383,6 +383,9 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->fileBaseName;
     }
 
+    /**
+     * @param array|null $fileImporterArguments
+     */
     public function setFileImporterArguments(?array $fileImporterArguments): static
     {
         $this->fileImporterArguments = $fileImporterArguments;
@@ -407,7 +410,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -437,7 +440,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->currency;
     }
 
-    public function setCurrencyId($id): static
+    public function setCurrencyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CurrencyDto($id)
@@ -455,6 +458,9 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return null;
     }
 
+    /**
+     * @param DestinationRateDto[] | null $destinationRates
+     */
     public function setDestinationRates(?array $destinationRates): static
     {
         $this->destinationRates = $destinationRates;

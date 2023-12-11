@@ -162,10 +162,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
      */
     private $retailAccount = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -551,6 +548,9 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->rtpTimeoutHold;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -575,7 +575,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->terminal;
     }
 
-    public function setTerminalId($id): static
+    public function setTerminalId(?int $id): static
     {
         $value = !is_null($id)
             ? new TerminalDto($id)
@@ -605,7 +605,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->friend;
     }
 
-    public function setFriendId($id): static
+    public function setFriendId(?int $id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)
@@ -635,7 +635,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->residentialDevice;
     }
 
-    public function setResidentialDeviceId($id): static
+    public function setResidentialDeviceId(?int $id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -665,7 +665,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->retailAccount;
     }
 
-    public function setRetailAccountId($id): static
+    public function setRetailAccountId(?int $id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)

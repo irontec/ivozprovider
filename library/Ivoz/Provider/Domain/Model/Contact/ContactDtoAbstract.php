@@ -81,10 +81,7 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
      */
     private $mobilePhoneCountry = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -246,6 +243,9 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
         return $this->otherPhone;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -270,7 +270,7 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -300,7 +300,7 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -330,7 +330,7 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
         return $this->workPhoneCountry;
     }
 
-    public function setWorkPhoneCountryId($id): static
+    public function setWorkPhoneCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -360,7 +360,7 @@ abstract class ContactDtoAbstract implements DataTransferObjectInterface
         return $this->mobilePhoneCountry;
     }
 
-    public function setMobilePhoneCountryId($id): static
+    public function setMobilePhoneCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)

@@ -54,10 +54,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
      */
     private $mediaRelaySet = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -185,6 +182,9 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -209,7 +209,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->mediaRelaySet;
     }
 
-    public function setMediaRelaySetId($id): static
+    public function setMediaRelaySetId(?int $id): static
     {
         $value = !is_null($id)
             ? new MediaRelaySetDto($id)

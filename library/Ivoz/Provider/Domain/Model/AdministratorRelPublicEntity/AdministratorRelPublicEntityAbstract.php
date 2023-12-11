@@ -86,7 +86,10 @@ abstract class AdministratorRelPublicEntityAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): AdministratorRelPublicEntityDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): AdministratorRelPublicEntityDto
     {
         return new AdministratorRelPublicEntityDto($id);
     }

@@ -30,10 +30,7 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
      */
     private $proxyTrunk = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -79,6 +76,9 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -103,7 +103,7 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -133,7 +133,7 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
         return $this->proxyTrunk;
     }
 
-    public function setProxyTrunkId($id): static
+    public function setProxyTrunkId(?int $id): static
     {
         $value = !is_null($id)
             ? new ProxyTrunkDto($id)

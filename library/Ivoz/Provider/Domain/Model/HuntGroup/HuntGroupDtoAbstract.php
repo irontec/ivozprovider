@@ -94,10 +94,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
      */
     private $huntGroupMembers = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -262,6 +259,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->allowCallForwards;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -286,7 +286,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -316,7 +316,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerLocution;
     }
 
-    public function setNoAnswerLocutionId($id): static
+    public function setNoAnswerLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -346,7 +346,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerExtension;
     }
 
-    public function setNoAnswerExtensionId($id): static
+    public function setNoAnswerExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -376,7 +376,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerVoicemail;
     }
 
-    public function setNoAnswerVoicemailId($id): static
+    public function setNoAnswerVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -406,7 +406,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerNumberCountry;
     }
 
-    public function setNoAnswerNumberCountryId($id): static
+    public function setNoAnswerNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -424,6 +424,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param HuntGroupMemberDto[] | null $huntGroupMembers
+     */
     public function setHuntGroupMembers(?array $huntGroupMembers): static
     {
         $this->huntGroupMembers = $huntGroupMembers;

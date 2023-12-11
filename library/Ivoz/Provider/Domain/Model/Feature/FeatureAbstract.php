@@ -58,7 +58,10 @@ abstract class FeatureAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): FeatureDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FeatureDto
     {
         return new FeatureDto($id);
     }

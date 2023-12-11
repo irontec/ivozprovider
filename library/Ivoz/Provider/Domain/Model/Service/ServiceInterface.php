@@ -30,7 +30,10 @@ interface ServiceInterface extends LoggableEntityInterface
      */
     public function setDefaultCode(string $defaultCode): static;
 
-    public static function createDto(string|int|null $id = null): ServiceDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ServiceDto;
 
     /**
      * @internal use EntityTools instead

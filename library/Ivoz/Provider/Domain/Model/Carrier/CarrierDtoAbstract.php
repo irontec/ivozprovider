@@ -98,10 +98,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
      */
     private $tpCdrStats = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -214,6 +211,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->calculateCost;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -238,7 +238,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -268,7 +268,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->transformationRuleSet;
     }
 
-    public function setTransformationRuleSetId($id): static
+    public function setTransformationRuleSetId(?int $id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -298,7 +298,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->currency;
     }
 
-    public function setCurrencyId($id): static
+    public function setCurrencyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CurrencyDto($id)
@@ -328,7 +328,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->proxyTrunk;
     }
 
-    public function setProxyTrunkId($id): static
+    public function setProxyTrunkId(?int $id): static
     {
         $value = !is_null($id)
             ? new ProxyTrunkDto($id)
@@ -358,7 +358,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->mediaRelaySets;
     }
 
-    public function setMediaRelaySetsId($id): static
+    public function setMediaRelaySetsId(?int $id): static
     {
         $value = !is_null($id)
             ? new MediaRelaySetDto($id)
@@ -376,6 +376,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param OutgoingRoutingDto[] | null $outgoingRoutings
+     */
     public function setOutgoingRoutings(?array $outgoingRoutings): static
     {
         $this->outgoingRoutings = $outgoingRoutings;
@@ -391,6 +394,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingRoutings;
     }
 
+    /**
+     * @param OutgoingRoutingRelCarrierDto[] | null $outgoingRoutingsRelCarriers
+     */
     public function setOutgoingRoutingsRelCarriers(?array $outgoingRoutingsRelCarriers): static
     {
         $this->outgoingRoutingsRelCarriers = $outgoingRoutingsRelCarriers;
@@ -406,6 +412,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingRoutingsRelCarriers;
     }
 
+    /**
+     * @param CarrierServerDto[] | null $servers
+     */
     public function setServers(?array $servers): static
     {
         $this->servers = $servers;
@@ -421,6 +430,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->servers;
     }
 
+    /**
+     * @param RatingProfileDto[] | null $ratingProfiles
+     */
     public function setRatingProfiles(?array $ratingProfiles): static
     {
         $this->ratingProfiles = $ratingProfiles;
@@ -436,6 +448,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->ratingProfiles;
     }
 
+    /**
+     * @param TpCdrStatDto[] | null $tpCdrStats
+     */
     public function setTpCdrStats(?array $tpCdrStats): static
     {
         $this->tpCdrStats = $tpCdrStats;

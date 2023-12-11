@@ -107,7 +107,10 @@ abstract class PsIdentifyAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): PsIdentifyDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): PsIdentifyDto
     {
         return new PsIdentifyDto($id);
     }

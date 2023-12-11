@@ -35,10 +35,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
      */
     private $user = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -98,6 +95,9 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
         return $this->penalty;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -122,7 +122,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
         return $this->queue;
     }
 
-    public function setQueueId($id): static
+    public function setQueueId(?int $id): static
     {
         $value = !is_null($id)
             ? new QueueDto($id)
@@ -152,7 +152,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)

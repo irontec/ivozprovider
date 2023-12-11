@@ -84,10 +84,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
      */
     private $carrierServer = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -299,6 +296,9 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $this->defunct;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -323,7 +323,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $this->carrierServer;
     }
 
-    public function setCarrierServerId($id): static
+    public function setCarrierServerId(?int $id): static
     {
         $value = !is_null($id)
             ? new CarrierServerDto($id)

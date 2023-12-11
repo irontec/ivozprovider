@@ -49,10 +49,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
      */
     private $company = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -166,6 +163,9 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $this->announceUserCount;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -190,7 +190,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)

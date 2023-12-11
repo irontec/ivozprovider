@@ -35,7 +35,10 @@ interface CarrierServerInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    public static function createDto(string|int|null $id = null): CarrierServerDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CarrierServerDto;
 
     /**
      * @internal use EntityTools instead

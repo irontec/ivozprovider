@@ -25,7 +25,10 @@ interface LanguageInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): LanguageDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): LanguageDto;
 
     /**
      * @internal use EntityTools instead

@@ -73,7 +73,10 @@ abstract class CallAclRelMatchListAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CallAclRelMatchListDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CallAclRelMatchListDto
     {
         return new CallAclRelMatchListDto($id);
     }

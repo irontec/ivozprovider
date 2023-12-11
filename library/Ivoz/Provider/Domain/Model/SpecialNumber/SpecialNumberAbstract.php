@@ -76,7 +76,10 @@ abstract class SpecialNumberAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): SpecialNumberDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): SpecialNumberDto
     {
         return new SpecialNumberDto($id);
     }

@@ -111,7 +111,10 @@ abstract class IvrEntryAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): IvrEntryDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): IvrEntryDto
     {
         return new IvrEntryDto($id);
     }

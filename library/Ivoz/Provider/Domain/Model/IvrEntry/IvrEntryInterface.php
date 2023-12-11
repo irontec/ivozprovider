@@ -46,7 +46,10 @@ interface IvrEntryInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
-    public static function createDto(string|int|null $id = null): IvrEntryDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): IvrEntryDto;
 
     /**
      * @internal use EntityTools instead

@@ -30,7 +30,10 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): TpDestinationRateDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpDestinationRateDto;
 
     /**
      * @internal use EntityTools instead

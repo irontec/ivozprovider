@@ -31,7 +31,10 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      */
     public function setTemplate(string $template): static;
 
-    public static function createDto(string|int|null $id = null): InvoiceTemplateDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): InvoiceTemplateDto;
 
     /**
      * @internal use EntityTools instead

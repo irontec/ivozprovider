@@ -22,7 +22,7 @@ class QueueMember extends QueueMemberAbstract implements QueueMemberInterface
      * Get id
      * @codeCoverageIgnore
      */
-    public function getId(): null|string|int
+    public function getId(): null|int
     {
         return $this->id;
     }

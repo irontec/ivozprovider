@@ -144,7 +144,10 @@ abstract class BrandAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): BrandDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BrandDto
     {
         return new BrandDto($id);
     }

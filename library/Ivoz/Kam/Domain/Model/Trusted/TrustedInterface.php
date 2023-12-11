@@ -28,7 +28,10 @@ interface TrustedInterface extends LoggableEntityInterface
 
     public function setSrcIp(?string $srcIp = null): static;
 
-    public static function createDto(string|int|null $id = null): TrustedDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrustedDto;
 
     /**
      * @internal use EntityTools instead

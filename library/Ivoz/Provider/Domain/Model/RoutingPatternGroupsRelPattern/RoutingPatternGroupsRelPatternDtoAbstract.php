@@ -30,10 +30,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
      */
     private $routingPatternGroup = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -79,6 +76,9 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -103,7 +103,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $this->routingPattern;
     }
 
-    public function setRoutingPatternId($id): static
+    public function setRoutingPatternId(?int $id): static
     {
         $value = !is_null($id)
             ? new RoutingPatternDto($id)
@@ -133,7 +133,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $this->routingPatternGroup;
     }
 
-    public function setRoutingPatternGroupId($id): static
+    public function setRoutingPatternGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new RoutingPatternGroupDto($id)

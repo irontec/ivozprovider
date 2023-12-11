@@ -55,7 +55,10 @@ abstract class ProxyTrunkAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ProxyTrunkDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ProxyTrunkDto
     {
         return new ProxyTrunkDto($id);
     }

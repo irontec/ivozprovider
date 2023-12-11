@@ -74,10 +74,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
      */
     private $numberCountry = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -187,6 +184,9 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->numberValue;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -211,7 +211,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->ivr;
     }
 
-    public function setIvrId($id): static
+    public function setIvrId(?int $id): static
     {
         $value = !is_null($id)
             ? new IvrDto($id)
@@ -241,7 +241,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->welcomeLocution;
     }
 
-    public function setWelcomeLocutionId($id): static
+    public function setWelcomeLocutionId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -271,7 +271,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->extension;
     }
 
-    public function setExtensionId($id): static
+    public function setExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -301,7 +301,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->voicemail;
     }
 
-    public function setVoicemailId($id): static
+    public function setVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -331,7 +331,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->conditionalRoute;
     }
 
-    public function setConditionalRouteId($id): static
+    public function setConditionalRouteId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConditionalRouteDto($id)
@@ -361,7 +361,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->numberCountry;
     }
 
-    public function setNumberCountryId($id): static
+    public function setNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)

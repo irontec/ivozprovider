@@ -36,7 +36,10 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
      */
     public function getEntityName();
 
-    public static function createDto(string|int|null $id = null): BalanceNotificationDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): BalanceNotificationDto;
 
     /**
      * @internal use EntityTools instead

@@ -81,7 +81,10 @@ abstract class RatingProfileAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): RatingProfileDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RatingProfileDto
     {
         return new RatingProfileDto($id);
     }

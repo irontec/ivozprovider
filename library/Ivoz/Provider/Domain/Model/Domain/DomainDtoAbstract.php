@@ -51,10 +51,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
      */
     private $terminals = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -141,6 +138,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -153,6 +153,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 
+    /**
+     * @param FriendDto[] | null $friends
+     */
     public function setFriends(?array $friends): static
     {
         $this->friends = $friends;
@@ -168,6 +171,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this->friends;
     }
 
+    /**
+     * @param ResidentialDeviceDto[] | null $residentialDevices
+     */
     public function setResidentialDevices(?array $residentialDevices): static
     {
         $this->residentialDevices = $residentialDevices;
@@ -183,6 +189,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this->residentialDevices;
     }
 
+    /**
+     * @param TerminalDto[] | null $terminals
+     */
     public function setTerminals(?array $terminals): static
     {
         $this->terminals = $terminals;

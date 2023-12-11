@@ -197,10 +197,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
      */
     private $outgoingRoutings = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -367,6 +364,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->maxCalls;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -511,7 +511,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->domain;
     }
 
-    public function setDomainId($id): static
+    public function setDomainId(?int $id): static
     {
         $value = !is_null($id)
             ? new DomainDto($id)
@@ -541,7 +541,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->language;
     }
 
-    public function setLanguageId($id): static
+    public function setLanguageId(?int $id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -571,7 +571,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->defaultTimezone;
     }
 
-    public function setDefaultTimezoneId($id): static
+    public function setDefaultTimezoneId(?int $id): static
     {
         $value = !is_null($id)
             ? new TimezoneDto($id)
@@ -601,7 +601,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->currency;
     }
 
-    public function setCurrencyId($id): static
+    public function setCurrencyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CurrencyDto($id)
@@ -631,7 +631,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->voicemailNotificationTemplate;
     }
 
-    public function setVoicemailNotificationTemplateId($id): static
+    public function setVoicemailNotificationTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -661,7 +661,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->faxNotificationTemplate;
     }
 
-    public function setFaxNotificationTemplateId($id): static
+    public function setFaxNotificationTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -691,7 +691,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoiceNotificationTemplate;
     }
 
-    public function setInvoiceNotificationTemplateId($id): static
+    public function setInvoiceNotificationTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -721,7 +721,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->callCsvNotificationTemplate;
     }
 
-    public function setCallCsvNotificationTemplateId($id): static
+    public function setCallCsvNotificationTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -751,7 +751,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->maxDailyUsageNotificationTemplate;
     }
 
-    public function setMaxDailyUsageNotificationTemplateId($id): static
+    public function setMaxDailyUsageNotificationTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -769,6 +769,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param CompanyDto[] | null $companies
+     */
     public function setCompanies(?array $companies): static
     {
         $this->companies = $companies;
@@ -784,6 +787,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->companies;
     }
 
+    /**
+     * @param BrandServiceDto[] | null $services
+     */
     public function setServices(?array $services): static
     {
         $this->services = $services;
@@ -799,6 +805,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->services;
     }
 
+    /**
+     * @param WebPortalDto[] | null $urls
+     */
     public function setUrls(?array $urls): static
     {
         $this->urls = $urls;
@@ -814,6 +823,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->urls;
     }
 
+    /**
+     * @param FeaturesRelBrandDto[] | null $relFeatures
+     */
     public function setRelFeatures(?array $relFeatures): static
     {
         $this->relFeatures = $relFeatures;
@@ -829,6 +841,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->relFeatures;
     }
 
+    /**
+     * @param ProxyTrunksRelBrandDto[] | null $relProxyTrunks
+     */
     public function setRelProxyTrunks(?array $relProxyTrunks): static
     {
         $this->relProxyTrunks = $relProxyTrunks;
@@ -844,6 +859,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->relProxyTrunks;
     }
 
+    /**
+     * @param ResidentialDeviceDto[] | null $residentialDevices
+     */
     public function setResidentialDevices(?array $residentialDevices): static
     {
         $this->residentialDevices = $residentialDevices;
@@ -859,6 +877,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->residentialDevices;
     }
 
+    /**
+     * @param MusicOnHoldDto[] | null $musicsOnHold
+     */
     public function setMusicsOnHold(?array $musicsOnHold): static
     {
         $this->musicsOnHold = $musicsOnHold;
@@ -874,6 +895,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->musicsOnHold;
     }
 
+    /**
+     * @param MatchListDto[] | null $matchLists
+     */
     public function setMatchLists(?array $matchLists): static
     {
         $this->matchLists = $matchLists;
@@ -889,6 +913,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->matchLists;
     }
 
+    /**
+     * @param OutgoingRoutingDto[] | null $outgoingRoutings
+     */
     public function setOutgoingRoutings(?array $outgoingRoutings): static
     {
         $this->outgoingRoutings = $outgoingRoutings;

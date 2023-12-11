@@ -58,7 +58,10 @@ abstract class CompanyRelCodecAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CompanyRelCodecDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CompanyRelCodecDto
     {
         return new CompanyRelCodecDto($id);
     }

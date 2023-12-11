@@ -124,10 +124,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
      */
     private $ddiProvider = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -303,6 +300,9 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->nextExecution;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -327,7 +327,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -357,7 +357,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -387,7 +387,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->callCsvNotificationTemplate;
     }
 
-    public function setCallCsvNotificationTemplateId($id): static
+    public function setCallCsvNotificationTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -417,7 +417,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->ddi;
     }
 
-    public function setDdiId($id): static
+    public function setDdiId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -447,7 +447,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->carrier;
     }
 
-    public function setCarrierId($id): static
+    public function setCarrierId(?int $id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -477,7 +477,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->retailAccount;
     }
 
-    public function setRetailAccountId($id): static
+    public function setRetailAccountId(?int $id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)
@@ -507,7 +507,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->residentialDevice;
     }
 
-    public function setResidentialDeviceId($id): static
+    public function setResidentialDeviceId(?int $id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -537,7 +537,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -567,7 +567,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->fax;
     }
 
-    public function setFaxId($id): static
+    public function setFaxId(?int $id): static
     {
         $value = !is_null($id)
             ? new FaxDto($id)
@@ -597,7 +597,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->friend;
     }
 
-    public function setFriendId($id): static
+    public function setFriendId(?int $id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)
@@ -627,7 +627,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->ddiProvider;
     }
 
-    public function setDdiProviderId($id): static
+    public function setDdiProviderId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)

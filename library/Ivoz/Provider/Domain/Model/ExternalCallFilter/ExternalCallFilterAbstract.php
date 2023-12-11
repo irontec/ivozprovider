@@ -146,7 +146,10 @@ abstract class ExternalCallFilterAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ExternalCallFilterDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ExternalCallFilterDto
     {
         return new ExternalCallFilterDto($id);
     }

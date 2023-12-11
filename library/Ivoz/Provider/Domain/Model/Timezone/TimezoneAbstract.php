@@ -70,7 +70,10 @@ abstract class TimezoneAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TimezoneDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TimezoneDto
     {
         return new TimezoneDto($id);
     }

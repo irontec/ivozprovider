@@ -77,7 +77,10 @@ interface IvrInterface extends LoggableEntityInterface
      */
     public function getErrorTarget(): ?string;
 
-    public static function createDto(string|int|null $id = null): IvrDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): IvrDto;
 
     /**
      * @internal use EntityTools instead

@@ -101,7 +101,10 @@ abstract class CallCsvReportAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CallCsvReportDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CallCsvReportDto
     {
         return new CallCsvReportDto($id);
     }

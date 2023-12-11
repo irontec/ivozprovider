@@ -54,10 +54,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
      */
     private $company = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -185,6 +182,9 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -209,7 +209,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
