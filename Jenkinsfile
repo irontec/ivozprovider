@@ -75,7 +75,7 @@ pipeline {
                 }
                 stage('test-backend') {
                     parallel {
-                        stage('app-console') {
+                        stage('app-generic') {
                             agent {
                                 docker {
                                     image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
@@ -85,6 +85,7 @@ pipeline {
                             }
                             steps {
                                 sh '/opt/irontec/ivozprovider/library/bin/test-app-console'
+                                sh '/opt/irontec/ivozprovider/library/bin/test-app-dependencies'
                             }
                             post {
                                 success { notifySuccessGithub() }
