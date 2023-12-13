@@ -71,6 +71,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="responseCode" type="string" column="responseCode" length="64" nullable="false">
+      <options>
+        <option name="default">200</option>
+      </options>
+    </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="set null"/>
