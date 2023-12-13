@@ -14,7 +14,8 @@ import User from '../User/User';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match, properties } = props;
+  const { entityService, row, match, properties, create, initialValues } =
+    props;
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
@@ -64,6 +65,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
   }
 
   entityService.replaceProperties(newProperties as PropertyList);
+
+  if (create) {
+    initialValues.numberCountry = aboutMe?.defaultCountryId ?? null;
+  }
 
   const groups: Array<FieldsetGroups> = [
     {

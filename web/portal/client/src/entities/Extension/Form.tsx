@@ -5,11 +5,12 @@ import {
   foreignKeyGetter,
   Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useStoreState } from 'store';
 
 import { ExtensionPropertyList } from './ExtensionProperties';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
+  const { entityService, row, match, initialValues, create } = props;
 
   const fkChoices: ExtensionPropertyList<unknown> = useFkChoices({
     foreignKeyGetter,
@@ -17,6 +18,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
     row,
     match,
   });
+
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  if (create) {
+    initialValues.numberCountry = aboutMe?.defaultCountryId ?? null;
+  }
 
   const groups: Array<FieldsetGroups> = [
     {

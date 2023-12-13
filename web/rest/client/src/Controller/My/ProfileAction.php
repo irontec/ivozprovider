@@ -62,11 +62,12 @@ class ProfileAction
             && $brand->hasFeatureByIden(Feature::BILLING_IDEN);
 
         return new Profile(
-            $restricted,
-            $type,
-            $showBillingInfo,
-            $adminRelPublicEntities,
-            $features
+            restricted: $restricted,
+            type: $type,
+            showBillingInfo: $showBillingInfo,
+            defaultCountryId: $company->getCountry()->getId() ?? 0,
+            adminRelPublicEntities: $adminRelPublicEntities,
+            features: $features
         );
     }
 }
