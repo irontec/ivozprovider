@@ -29,29 +29,31 @@ class WebTheme
      */
     protected $logo;
 
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
+    protected $color;
+
     public function __construct(
         string $brandName,
         string $theme,
-        string $logo
+        string $logo,
+        string $color,
     ) {
         $this->name = $brandName;
         $this->theme = $theme;
         $this->logo = $logo;
+        $this->color = $color;
     }
 
 
-
-
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
      * @return WebTheme
      */
     public function setName(string $name): WebTheme
@@ -59,17 +61,12 @@ class WebTheme
         $this->name = $name;
         return $this;
     }
-
-    /**
-     * @return string | null
-     */
-    public function getTheme()
+    public function getTheme(): ?string
     {
         return $this->theme;
     }
 
     /**
-     * @param string $theme
      * @return WebTheme
      */
     public function setTheme(string $theme): WebTheme
@@ -78,21 +75,22 @@ class WebTheme
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
-    public function getLogo()
+    public function getLogo(): ?string
     {
         return $this->logo;
     }
 
     /**
-     * @param string $logo
      * @return WebTheme
      */
     public function setLogo(string $logo): WebTheme
     {
         $this->logo = $logo;
         return $this;
+    }
+
+    public function getColor(): string
+    {
+        return $this->color;
     }
 }
