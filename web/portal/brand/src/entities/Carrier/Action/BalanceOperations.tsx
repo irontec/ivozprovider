@@ -90,7 +90,7 @@ const BalanceOperations: ActionFunctionComponent = (props: ActionItemProps) => {
 
   const handleSend = () => {
     const operation = amountChoices.find((choice) => choice.id === amountChoice)
-    ?.operation as string;
+      ?.operation as string;
 
     apiPost({
       path: `${Carrier.path}/${row.id}/modify_balance`,
