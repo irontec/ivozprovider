@@ -2596,7 +2596,7 @@
             "description": "Symfony bridge for ivoz-api",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api-bundle/issues",
-                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.8.2"
+                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.8.1"
             },
             "time": "2023-11-21T10:43:00+00:00"
         },
@@ -2794,11 +2794,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.6.6",
+            "version": "2.6.7",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "fb9ba7213a1c9c4311793dc8836a9c78058b0ef7"
+                "reference": "9ee87305b0d974dd7a155614995b569c014ecc9a"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -14649,5 +14649,5 @@
     "platform-overrides": {
         "php": "8.0.9"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.0.0"
 }

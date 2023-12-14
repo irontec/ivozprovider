@@ -232,3 +232,33 @@ Ivoz\Provider\Domain\Model\WebPortal\WebTheme:
         tags:
           - My
   collectionOperations: []
+
+
+Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr:
+  attributes:
+    pagination_client_enabled: true
+    access_control: '"ROLE_COMPANY_USER" in roles'
+    read_access_control:
+      ROLE_COMPANY_USER:
+        company:
+          eq: "user.getCompany().getId()"
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get:
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        - 'text/csv'
+    get_my_call_history:
+      method: 'GET'
+      path: '/my/call_history'
+      route_name: 'get_my_call_history'
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        - 'text/csv'
+        tags:
+        - My

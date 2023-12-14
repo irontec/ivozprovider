@@ -11,31 +11,9 @@ export type UsersCdrPropertyList<T> = {
   direction?: T;
   caller?: T;
   callee?: T;
-  callid?: T;
-  xcallid?: T;
-  callidHash?: T;
   party?: T;
-
-  //////
+  disposition?: T;
   owner?: T;
-  ownerId?: T;
-  ownerLink?: T;
-
-  user?: T;
-  userId?: T;
-  userLink?: T;
-
-  friend?: T;
-  friendId?: T;
-  friendLink?: T;
-
-  retailAccount?: T;
-  retailAccountId?: T;
-  retailAccountLink?: T;
-
-  residentialDevice?: T;
-  residentialDeviceId?: T;
-  residentialDeviceLink?: T;
 };
 
 export type UsersCdrProperties = UsersCdrPropertyList<Partial<PropertySpec>>;

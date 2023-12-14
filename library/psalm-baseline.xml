@@ -4663,6 +4663,31 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/UsersCdr/UsersCdrAbstract.php">
+    <MixedArgument occurrences="10">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getExtension())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getExtension())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFriend())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFriend())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getKamUsersCdr())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getKamUsersCdr())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/UsersCdr/UsersCdrDto.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/UsersCdr/UsersCdrTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/Voicemail/Voicemail.php">
     <LessSpecificImplementedReturnType occurrences="1">
       <code>array</code>

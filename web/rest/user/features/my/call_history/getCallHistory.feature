@@ -16,27 +16,32 @@ Feature: Retrieve call history
       [
           {
               "startTime": "2018-11-22 17:54:49",
-              "endTime": "2018-11-22 17:54:54",
-              "duration": 4.539,
-              "direction": "outbound",
-              "caller": "102",
-              "callee": "+34676896561",
-              "id": 1
-          },
-          {
-              "startTime": "2018-11-23 17:54:49",
-              "endTime": "2018-11-23 18:54:49",
               "duration": 3600,
               "direction": "outbound",
               "caller": "102",
               "callee": "+34676896561",
+              "owner": null,
+              "disposition": "answered",
+              "id": 1
+          },
+          {
+              "startTime": "2018-11-22 17:54:49",
+              "duration": 3600,
+              "direction": "outbound",
+              "caller": "102",
+              "callee": "+34676896561",
+              "owner": null,
+              "disposition": "answered",
               "id": 2
           },
           {
+              "startTime": "match:regexp(/\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}/)",
               "duration": 3600,
               "direction": "outbound",
               "caller": "103",
               "callee": "+34676896564",
+              "owner": null,
+              "disposition": "answered",
               "id": 3
           }
       ]
@@ -54,12 +59,23 @@ Feature: Retrieve call history
       [
           {
               "startTime": "2018-11-22 17:54:49",
-              "endTime": "2018-11-22 17:54:54",
-              "duration": 4.539,
+              "duration": 3600,
               "direction": "outbound",
               "caller": "102",
               "callee": "+34676896561",
+              "owner": null,
+              "disposition": "answered",
               "id": 1
+          },
+          {
+              "startTime": "2018-11-22 17:54:49",
+              "duration": 3600,
+              "direction": "outbound",
+              "caller": "102",
+              "callee": "+34676896561",
+              "owner": null,
+              "disposition": "answered",
+              "id": 2
           }
       ]
       """

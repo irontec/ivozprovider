@@ -233,6 +233,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule
       Ivoz\Provider\Domain\Model\User\UserInterface:
         Ivoz\Provider\Domain\Model\User\User
+      Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface:
+        Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr
       Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface:
         Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate
       Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface:
@@ -259,6 +261,8 @@ doctrine:
         Ivoz\Kam\Domain\Model\UsersHtable\UsersHtable
       Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationInterface:
         Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation
+      Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface:
+        Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr
 
       Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface:
         Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway

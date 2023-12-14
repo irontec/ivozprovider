@@ -38,26 +38,21 @@ const properties: UsersCdrProperties = {
     label: _('Destination'),
     readOnly: true,
   },
-  callid: {
-    label: 'Call-ID',
+  disposition: {
+    label: _('Disposition'),
     readOnly: true,
-  },
-  xcallid: {
-    label: 'X-Call-ID',
-    readOnly: true,
-  },
-  callidHash: {
-    label: 'Call-ID Hash',
-    readOnly: true,
-  },
-  party: {
-    label: _('Party'),
-    readOnly: true,
-    memoize: false,
   },
 };
 
-const columns = ['startTime', 'owner', 'direction', 'party', 'duration'];
+const columns = [
+  'startTime',
+  'owner',
+  'direction',
+  'caller',
+  'callee',
+  'duration',
+  'disposition',
+];
 
 const usersCdr: EntityInterface = {
   ...defaultEntityBehavior,
@@ -70,18 +65,17 @@ const usersCdr: EntityInterface = {
   columns,
   customActions: Actions,
   acl: {
-    ...defaultEntityBehavior.acl,
-    iden: 'kam_users_cdrs',
+    update: false,
+    create: false,
+    read: true,
+    detail: false,
+    delete: false,
+    iden: 'provider_users_cdrs',
   },
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
-
-    return module.default;
-  },
-  View: async () => {
-    const module = await import('./View');
 
     return module.default;
   },
