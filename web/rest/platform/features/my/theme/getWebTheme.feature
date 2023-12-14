@@ -12,7 +12,8 @@ Feature: Retrieve active calls
       {
           "name": "Platform Administration Portal",
           "theme": "redmond",
-          "logo": "https://platform-ivozprovider.irontec.com/api/platform/my/logo/1/logo.jpeg"
+          "logo": "https://platform-ivozprovider.irontec.com/api/platform/my/logo/1/logo.jpeg",
+          "color": "#000000"
       }
       """
 
@@ -27,6 +28,7 @@ Feature: Retrieve active calls
       {
           "name": "No logo",
           "theme": "redmond",
-          "logo": "https://nologo-platform-ivozprovider.irontec.com/platform/logo.svg"
+          "logo": "https://nologo-platform-ivozprovider.irontec.com/platform/logo.svg",
+          "color": "#000000"
       }
       """

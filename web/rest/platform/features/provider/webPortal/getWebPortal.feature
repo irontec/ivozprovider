@@ -66,6 +66,7 @@ Feature: Retrieve web portals
           "newUI": true,
           "name": "Platform Administration Portal",
           "userTheme": "default",
+          "color": "#000000",
           "id": 1,
           "logo": {
               "fileSize": 10,

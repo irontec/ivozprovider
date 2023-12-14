@@ -37,6 +37,7 @@ Feature: Create web portals
           "newUI": false,
           "name": "Platform user Portal",
           "userTheme": "default",
+          "color": "#000000",
           "id": 6,
           "logo": {
               "fileSize": null,
