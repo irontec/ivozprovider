@@ -15,8 +15,20 @@ type TokenPayload struct {
 	Roles    []string `json:"roles"`
 }
 
+type Trunks struct {
+	B  int    `json:"b"`
+	C  string `json:"c"`
+	Dp string `json:"dp"`
+	Cr string `json:"cr"`
+}
+
+type Register struct {
+	Trunks *Trunks `json:"trunks"`
+}
+
 type AuthData struct {
-	Auth string `json:"auth"`
+	Auth     string    `json:"auth"`
+	Register *Register `json:"register"`
 }
 
 var jwtPublicCert *rsa.PublicKey
