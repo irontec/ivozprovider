@@ -89,16 +89,15 @@ const BalanceOperations: ActionFunctionComponent = (props: ActionItemProps) => {
   };
 
   const handleSend = () => {
-    const formData = new FormData();
-    formData.append(
-      'operation',
-      amountChoices.find((choice) => choice.id === amountChoice)
-        ?.operation as string
-    );
-    formData.append('value', amountValue);
+    const operation = amountChoices.find((choice) => choice.id === amountChoice)
+      ?.operation as string;
+
     apiPost({
       path: `${Carrier.path}/${row.id}/modify_balance`,
-      values: formData,
+      values: {
+        operation,
+        amount: amountValue,
+      },
       contentType: 'application/x-www-form-urlencoded',
     }).then(() => {
       setOpen(false);
