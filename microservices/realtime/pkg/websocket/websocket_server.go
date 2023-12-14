@@ -101,7 +101,7 @@ func onMessage(conn *websocket.Conn) {
 			}
 
 			role := tokenPayload.Roles[0]
-			registerChannel, err := services.GetActiveCallsFilter(data.Auth, role)
+			registerChannel, err := services.GetActiveCallsFilter(data.Auth, role, data.Register)
 
 			if err != nil {
 				conn.WriteMessage(websocket.TextMessage, []byte("Challenge"))
