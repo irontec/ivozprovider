@@ -12,7 +12,7 @@
     <field name="type" type="string" column="type" length="25" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">[enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage]</option>
+        <option name="comment">[enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage|accessCredentials]</option>
       </options>
     </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">

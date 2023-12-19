@@ -31,6 +31,8 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
 
     public const TYPE_MAXDAILYUSAGE = 'maxDailyUsage';
 
+    public const TYPE_ACCESSCREDENTIALS = 'accessCredentials';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
