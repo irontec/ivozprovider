@@ -45,6 +45,11 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     private $userTheme = '';
 
     /**
+     * @var string|null
+     */
+    private $color = '#000000';
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -90,6 +95,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
             'newUI' => 'newUI',
             'name' => 'name',
             'userTheme' => 'userTheme',
+            'color' => 'color',
             'id' => 'id',
             'logo' => [
                 'fileSize',
@@ -112,6 +118,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
             'newUI' => $this->getNewUI(),
             'name' => $this->getName(),
             'userTheme' => $this->getUserTheme(),
+            'color' => $this->getColor(),
             'id' => $this->getId(),
             'logo' => [
                 'fileSize' => $this->getLogoFileSize(),
@@ -205,6 +212,18 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     public function getUserTheme(): ?string
     {
         return $this->userTheme;
+    }
+
+    public function setColor(string $color): static
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
     }
 
     /**

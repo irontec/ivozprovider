@@ -32,6 +32,7 @@ Feature: Create web portals
           "newUI": false,
           "name": "Platform brand Portal",
           "userTheme": "default",
+          "color": "#000000",
           "id": 6,
           "logo": {
               "fileSize": null,
@@ -58,6 +59,7 @@ Feature: Create web portals
           "newUI": false,
           "name": "Platform brand Portal",
           "userTheme": "default",
+          "color": "#000000",
           "id": 6,
           "logo": {
               "fileSize": null,
@@ -107,6 +109,7 @@ This is file content
           "newUI": false,
           "name": "Platform brand Portal",
           "userTheme": "default",
+          "color": "#000000",
           "id": 6,
           "logo": {
               "fileSize": 20,

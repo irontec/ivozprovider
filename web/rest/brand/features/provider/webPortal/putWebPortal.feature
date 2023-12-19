@@ -76,6 +76,7 @@ This is file content
         "newUI": true,
         "name": "Irontec Ivozprovider Client Admin Portal",
         "userTheme": "default",
+        "color": "#000000",
         "id": 3,
         "logo": {
             "fileSize": 20,
