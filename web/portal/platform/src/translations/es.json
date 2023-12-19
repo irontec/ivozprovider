@@ -1,5 +1,6 @@
 {
   "'https://' URLs valid only (without trailing '/')": "Solo se permiten URLS 'https://' (sin '/' al final)",
+  "Access Credentials": "Credenciales de Acceso",
   "Access privileges": "Control de acceso",
   "Active": "Activo",
   "Active call_many": "Llamadas en curso",
