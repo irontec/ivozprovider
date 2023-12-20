@@ -14,6 +14,7 @@ export type ActiveCallPropertyList<T> = {
   Brand?: T;
   Company?: T;
   Direction?: T;
+  Carrier?: T;
   DdiProvider?: T;
 };
 
