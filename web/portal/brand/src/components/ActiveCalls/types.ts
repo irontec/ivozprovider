@@ -60,3 +60,5 @@ export interface OutputStuct {
 }
 
 export type Calls = { [key: string]: OutputStuct };
+
+export type WsFilters = Record<string, Record<string, string | number>> | null;

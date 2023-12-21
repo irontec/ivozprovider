@@ -9,9 +9,11 @@ import { memo, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import ActiveCalls from '../../entities/ActiveCalls/ActiveCalls';
+import useCriteriaChangeListener from './hooks/useCriteriaChangeListener';
 
 const FilterComponentMemo = memo(
   function FilterComponent(): JSX.Element {
+    useCriteriaChangeListener();
     const [, cancelToken] = useCancelToken();
     const location = useLocation();
     const match = useCurrentPathMatch();
@@ -19,61 +21,8 @@ const FilterComponentMemo = memo(
     const mobile = useMediaQuery(useTheme().breakpoints.down('md'));
 
     const entityService = useMemo(() => {
-      const actions: ActionsSpec = {
-        get: {
-          collection: {
-            'Company-collection': {
-              paths: ['/active_calls'],
-              parameters: [
-                {
-                  name: 'Company',
-                  in: 'query',
-                  required: false,
-                  type: 'string',
-                },
-                {
-                  name: 'Carrier',
-                  in: 'query',
-                  required: false,
-                  type: 'string',
-                },
-                {
-                  name: 'Direction',
-                  in: 'query',
-                  required: false,
-                  type: 'string',
-                },
-                {
-                  name: 'DdiProvider',
-                  in: 'query',
-                  required: false,
-                  type: 'string',
-                },
-              ],
-              properties: {
-                Company: {
-                  type: 'integer',
-                },
-                Carrier: {
-                  type: 'integer',
-                },
-                Direction: {
-                  enum: ['Inbound', 'Outbound'],
-                  type: 'string',
-                },
-                DdiProvider: {
-                  type: 'integer',
-                },
-              },
-              required: [],
-              type: 'object',
-            },
-          },
-        },
-      };
-
       return new EntityService(
-        actions,
+        getActions(),
         ActiveCalls.properties as PropertyList,
         ActiveCalls
       );
@@ -96,5 +45,62 @@ const FilterComponentMemo = memo(
   },
   () => true
 );
+
+function getActions(): ActionsSpec {
+  const actions: ActionsSpec = {
+    get: {
+      collection: {
+        'Company-collection': {
+          paths: ['/active_calls'],
+          parameters: [
+            {
+              name: 'Company',
+              in: 'query',
+              required: false,
+              type: 'string',
+            },
+            {
+              name: 'Carrier',
+              in: 'query',
+              required: false,
+              type: 'string',
+            },
+            {
+              name: 'Direction',
+              in: 'query',
+              required: false,
+              type: 'string',
+            },
+            {
+              name: 'DdiProvider',
+              in: 'query',
+              required: false,
+              type: 'string',
+            },
+          ],
+          properties: {
+            Company: {
+              type: 'integer',
+            },
+            Carrier: {
+              type: 'integer',
+            },
+            Direction: {
+              enum: ['Inbound', 'Outbound'],
+              type: 'string',
+            },
+            DdiProvider: {
+              type: 'integer',
+            },
+          },
+          required: [],
+          type: 'object',
+        },
+      },
+    },
+  };
+
+  return actions;
+}
 
 export default FilterComponentMemo;
