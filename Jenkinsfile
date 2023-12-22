@@ -26,6 +26,7 @@ pipeline {
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
         SYMFONY_PHPUNIT_VERSION = "9.5.3"
         DOCKER_IMAGE_TAG = getDockerImageTag()
+        JIRA_TICKET = getJiraTicket()
     }
 
     stages {
@@ -473,6 +474,47 @@ pipeline {
                 }
             }
         }
+        // --------------------------------------------------------------------
+        // Functional Testing stage
+        // --------------------------------------------------------------------
+        stage('functional') {
+            steps {
+                script {
+                    if (!env.JIRA_TICKET) {
+                        echo "No ticket associated."
+                        return
+                    }
+
+                    def issue = jiraGetIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET
+
+                    // Functional Reviewer - 10105
+                    if (issue.data.fields.customfield_10105) {
+                        println "Functional Reviewer: ${issue.data.fields.customfield_10105.displayName}"
+                    } else {
+                        println "No functional reviewer assigned."
+                    }
+
+                    // Link issue Pull Request field with current branch
+                    // customfield_10126 - Pull Request
+                    def fields = [fields: [customfield_10126: env.JOB_BASE_NAME]]
+                    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
+
+                    // Validated - 10325
+                    def status = issue.data.fields.status
+                    println "Issue Status: ${status.name} (${status.id})"
+
+                    // For Issues with Functional reviewer and not validated
+                    if (issue.data.fields.customfield_10105 && status.id != "10325") {
+                        unstable "Functional approval required."
+                    }
+                }
+            }
+            post {
+                success { notifySuccessGithub() }
+                failure { notifyFailureGithub() }
+                unstable { notifyUnstableGithub() }
+            }
+        }
     }
 
     // ------------------------------------------------------------------------
@@ -481,6 +523,7 @@ pipeline {
     post {
         failure { notifyFailureMattermost() }
         fixed { notifyFixedMattermost() }
+        unstable { script { currentBuild.result = 'ABORTED' } }
         cleanup { cleanWs() }
     }
 }
@@ -488,6 +531,15 @@ pipeline {
 // -----------------------------------------------------------------------------
 // Helper Functions
 // -----------------------------------------------------------------------------
+void getJiraTicket() {
+    def matcher = "${env.CHANGE_BRANCH}" =~ /^(?<jira>\w+-\d+)-.*$/
+    if (matcher.matches()) {
+        return matcher.group("jira")
+    } else {
+        return ""
+    }
+}
+
 boolean hasLabel(String label) {
     return env.CHANGE_ID && pullRequest.labels.contains(label)
 }
@@ -516,6 +568,14 @@ void notifyFailureGithub() {
         context: "ivozprovider-testing-${STAGE_NAME}",
         description: "Finished",
         status: "FAILURE"
+    ])
+}
+
+void notifyUnstableGithub() {
+    githubNotify([
+        context: "ivozprovider-testing-${STAGE_NAME}",
+        description: "Cancelled",
+        status: "ERROR"
     ])
 }
 
