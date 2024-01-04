@@ -184,6 +184,11 @@
         <join-column name="maxDailyUsageNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="accessCredentialNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="accessCredentialNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="corporation" target-entity="Ivoz\Provider\Domain\Model\Corporation\CorporationInterface" fetch="LAZY">
       <join-columns>
         <join-column name="corporationId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
