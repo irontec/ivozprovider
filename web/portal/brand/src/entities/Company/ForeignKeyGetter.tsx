@@ -7,6 +7,7 @@ import { ResidentialFeatureSelectOptions } from '../Feature/SelectOptions';
 import RetailFeatureSelectOptions from '../Feature/SelectOptions/RetailFeatureSelectOptions';
 import FeatureSelectOptions from '../Feature/SelectOptions/SelectOptions';
 import {
+  AccessCredentialSelectOptions,
   CallCsvSelectOptions,
   FaxSelectOptions,
   InvoiceSelectOptions,
@@ -37,6 +38,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
       'invoiceNotificationTemplate',
       'callCsvNotificationTemplate',
       'maxDailyUsageNotificationTemplate',
+      'accessCredentialNotificationTemplate',
       'corporation',
       'featureIds',
     ],
@@ -135,6 +137,13 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
   promises[promises.length] = MaxDailyUsageSelectOptions({
     callback: (options) => {
       response.maxDailyUsageNotificationTemplate = options;
+    },
+    cancelToken,
+  });
+
+  promises[promises.length] = AccessCredentialSelectOptions({
+    callback: (options) => {
+      response.accessCredentialNotificationTemplate = options;
     },
     cancelToken,
   });
