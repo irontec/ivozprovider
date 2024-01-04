@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useStoreState } from 'store';
 
+import { WsFilters } from '../types';
+
 type UseWsClientProps<T> = {
   wsServerUrl: string;
   onMessage: (data: T) => void;
+  filters?: WsFilters;
 };
 
 const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
   const token = useStoreState((actions) => actions.auth.token);
-  const { wsServerUrl, onMessage } = props;
+  const { wsServerUrl, filters, onMessage } = props;
+  const filtersStr = JSON.stringify(filters);
 
   const [ready, setReady] = useState<boolean>(false);
 
@@ -22,9 +26,12 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
     let timeout: NodeJS.Timeout;
 
     function register() {
-      const payload = {
-        auth: token,
-      };
+      const payload: Record<string, unknown> = {};
+
+      if (filters) {
+        payload.register = filters;
+      }
+      payload.auth = token;
 
       socket.send(JSON.stringify(payload));
     }
@@ -71,13 +78,11 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
         // eslint-disable-next-line no-console
         console.log('[ws close] Connection died');
       }
-
-      setReady(false);
     };
 
     socket.onerror = function (error) {
       // eslint-disable-next-line no-console
-      console.log(`[ws error]`, error);
+      console.error(`[ws error]`, error);
       setReady(false);
     };
 
@@ -88,9 +93,10 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
         clearTimeout(timeout);
       }
 
+      setReady(false);
       socket.close();
     };
-  }, [token, wsServerUrl, onMessage]);
+  }, [token, wsServerUrl, filtersStr, onMessage]);
 
   return ready;
 };

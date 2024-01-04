@@ -8,10 +8,16 @@ import {
   OutputStuct,
   TryingStuct,
   UpdateStuct,
-} from './types';
+  WsFilters,
+} from '../types';
 import useWsClient from './useWsClient';
 
-const useRealtimeCalls = (): [boolean, Calls] => {
+interface UseRealtimeCallsProps {
+  filters?: WsFilters;
+}
+
+const useRealtimeCalls = (props: UseRealtimeCallsProps): [boolean, Calls] => {
+  const { filters } = props;
   const [calls, setCalls] = useState<Calls>({});
   const syncCallsRef = useRef<Calls>({});
   syncCallsRef.current = { ...calls };
@@ -113,6 +119,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
   const ready = useWsClient<TryingStuct>({
     wsServerUrl,
     onMessage,
+    filters,
   });
 
   useEffect(() => {
@@ -152,6 +159,12 @@ const useRealtimeCalls = (): [boolean, Calls] => {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (!ready) {
+      setCalls({});
+    }
+  }, [ready]);
 
   return [ready, calls];
 };

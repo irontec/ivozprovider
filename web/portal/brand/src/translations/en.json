@@ -324,7 +324,6 @@
   "Limit max daily usage.": "Limit max daily usage.",
   "Limits external incoming and outgoing calls to this value (0 for unlimited).": "Limits external incoming and outgoing calls to this value (0 for unlimited).",
   "Limits received calls when already handling this number of calls. Set 0 for unlimited.": "Limits received calls when already handling this number of calls. Set 0 for unlimited.",
-  "Loading": "Loading",
   "Local address used in SIP signalling with this DDI Provider.": "Local address used in SIP signalling with this DDI Provider.",
   "Local address used in SIP signalling with this carrier.": "Local address used in SIP signalling with this carrier.",
   "Local legislation may enforce to announce the call recording to both parties, act responsibly": "Local legislation may enforce to announce the call recording to both parties, act responsibly",

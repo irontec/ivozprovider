@@ -369,7 +369,6 @@
   "Limit max daily usage.": "Limita l'ús màxim diari.",
   "Limits external incoming and outgoing calls to this value (0 for unlimited).": "Limita les trucades entrants i sortints a aquest valor (0 per il·limitades).",
   "Limits received calls when already handling this number of calls. Set 0 for unlimited.": "Limita el número de trucades entrants quan se superi. Introdueix 0 per infinit.",
-  "Loading": "Carregant",
   "Local address used in SIP signalling with this DDI Provider.": "IP local utilizada en la señalización SIP con este proveedor de DDIs.",
   "Local address used in SIP signalling with this carrier.": "IP local utilizada en la señalización SIP con este operador.",
   "Local legislation may enforce to announce the call recording to both parties, act responsibly": "La legislació aposta per anunciar l'enregistrament de la trucada per totes parts, actuant responsablement",

@@ -369,7 +369,6 @@
   "Limit max daily usage.": "Limitare il consumo giornaliero",
   "Limits external incoming and outgoing calls to this value (0 for unlimited).": "Limita le chiamate esterne entranti e uscenti a questo valore (0 per illimitate).",
   "Limits received calls when already handling this number of calls. Set 0 for unlimited.": "Limita chiamate ricevute quando raggiunto questo numero di chiamate. 0 per illimitate.",
-  "Loading": "Caricamento",
   "Local address used in SIP signalling with this DDI Provider.": "Indirizzo locale usato nella segnalazione SIP con questo DDI Provider.",
   "Local address used in SIP signalling with this carrier.": "Indirizzo locale usato nella segnalazione SIP con questo Carrier.",
   "Local legislation may enforce to announce the call recording to both parties, act responsibly": "La legislazione locale può imporre l'obbligo di annunciare la registrazione delle chiamate a entrambe le parti, agire in modo responsabile",
