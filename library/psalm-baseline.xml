@@ -1974,11 +1974,13 @@
     </UnnecessaryVarAnnotation>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyAbstract.php">
-    <MixedArgument occurrences="34">
+    <MixedArgument occurrences="36">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($country)</code>
       <code>$fkTransformer-&gt;transform($country)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getAccessCredentialNotificationTemplate())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getAccessCredentialNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServer())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServer())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCallCsvNotificationTemplate())</code>
