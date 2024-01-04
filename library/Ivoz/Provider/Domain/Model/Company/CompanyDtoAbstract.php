@@ -245,6 +245,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $maxDailyUsageNotificationTemplate = null;
 
     /**
+     * @var NotificationTemplateDto | null
+     */
+    private $accessCredentialNotificationTemplate = null;
+
+    /**
      * @var CorporationDto | null
      */
     private $corporation = null;
@@ -377,6 +382,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'invoiceNotificationTemplateId' => 'invoiceNotificationTemplate',
             'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate',
             'maxDailyUsageNotificationTemplateId' => 'maxDailyUsageNotificationTemplate',
+            'accessCredentialNotificationTemplateId' => 'accessCredentialNotificationTemplate',
             'corporationId' => 'corporation'
         ];
     }
@@ -430,6 +436,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'invoiceNotificationTemplate' => $this->getInvoiceNotificationTemplate(),
             'callCsvNotificationTemplate' => $this->getCallCsvNotificationTemplate(),
             'maxDailyUsageNotificationTemplate' => $this->getMaxDailyUsageNotificationTemplate(),
+            'accessCredentialNotificationTemplate' => $this->getAccessCredentialNotificationTemplate(),
             'corporation' => $this->getCorporation(),
             'extensions' => $this->getExtensions(),
             'ddis' => $this->getDdis(),
@@ -1238,6 +1245,36 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getMaxDailyUsageNotificationTemplateId(): ?int
     {
         if ($dto = $this->getMaxDailyUsageNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setAccessCredentialNotificationTemplate(?NotificationTemplateDto $accessCredentialNotificationTemplate): static
+    {
+        $this->accessCredentialNotificationTemplate = $accessCredentialNotificationTemplate;
+
+        return $this;
+    }
+
+    public function getAccessCredentialNotificationTemplate(): ?NotificationTemplateDto
+    {
+        return $this->accessCredentialNotificationTemplate;
+    }
+
+    public function setAccessCredentialNotificationTemplateId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new NotificationTemplateDto($id)
+            : null;
+
+        return $this->setAccessCredentialNotificationTemplate($value);
+    }
+
+    public function getAccessCredentialNotificationTemplateId(): ?int
+    {
+        if ($dto = $this->getAccessCredentialNotificationTemplate()) {
             return $dto->getId();
         }
 
