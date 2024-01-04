@@ -62,6 +62,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
+            $this->setAccessCredentialNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate5'));
             $this->setCorporation($fixture->getReference('_reference_Corporation1'));
         })->call($item1);
 
