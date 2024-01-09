@@ -54,6 +54,12 @@ function getActions(): ActionsSpec {
           paths: ['/active_calls'],
           parameters: [
             {
+              name: 'Brand',
+              in: 'query',
+              required: false,
+              type: 'string',
+            },
+            {
               name: 'Company',
               in: 'query',
               required: false,
@@ -79,19 +85,22 @@ function getActions(): ActionsSpec {
             },
           ],
           properties: {
-            // Company: {
-            //   type: 'integer',
-            // },
-            // Carrier: {
-            //   type: 'integer',
-            // },
-            // Direction: {
-            //   enum: ['Inbound', 'Outbound'],
-            //   type: 'string',
-            // },
-            // DdiProvider: {
-            //   type: 'integer',
-            // },
+            Brand: {
+              type: 'integer',
+            },
+            Company: {
+              type: 'integer',
+            },
+            Carrier: {
+              type: 'integer',
+            },
+            Direction: {
+              enum: ['Inbound', 'Outbound'],
+              type: 'string',
+            },
+            DdiProvider: {
+              type: 'integer',
+            },
           },
           required: [],
           type: 'object',
