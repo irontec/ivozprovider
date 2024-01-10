@@ -23,7 +23,9 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const enableSipDomainFeatures = (
     (fkChoices.features as DropdownArrayChoices) || []
-  ).filter((row) => ['residential', 'retail'].includes(row.label as string));
+  ).filter((row) =>
+    ['residential', 'retail'].includes(row.extraData?.iden as string)
+  );
 
   const enableSipDomainFeaturesIds = enableSipDomainFeatures.map(
     (row) => row.id
