@@ -23,7 +23,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const readOnlyProperties = {
     name: edit || false,
-    email: edit || false,
+    email: row?.user !== null && edit,
   };
 
   const groups: Array<FieldsetGroups> = [
@@ -33,11 +33,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Notification configuration'),
-      fields: [
-        'sendMail',
-        aboutMe?.vpbx && 'email',
-        aboutMe?.vpbx && 'attachSound',
-      ],
+      fields: ['sendMail', 'email', 'attachSound'],
     },
     {
       legend: _('Customization'),
