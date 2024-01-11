@@ -23,27 +23,8 @@ export default function App(): JSX.Element {
   });
   const authStore = useStoreActions((actions) => actions.auth);
   const token = useStoreState((actions) => actions.auth.token);
-  const theme = useStoreActions((actions) => actions.theme);
-  const apiGet = useStoreActions((actions) => actions.api.get);
 
   useTranslation();
-
-  useEffect(() => {
-    theme.setLogo('empty.svg');
-    apiGet({
-      path: `/my/theme`,
-      params: {},
-      successCallback: async (value) => {
-        theme.setName(value.name);
-        theme.setTheme(value.theme);
-        theme.setLogo(value.logo);
-      },
-      handleErrors: false,
-    }).catch((error) => {
-      console.error('Unable to resolve my theme', error);
-      theme.setLogo('logo.svg');
-    });
-  }, [apiGet, theme]);
 
   useEffect(() => {
     setLanguages(languagesList);
