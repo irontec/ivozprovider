@@ -19,21 +19,24 @@ Feature: Retrieve voicemails
               "name": "Voicemail For User1",
               "email": "alice@democompany.com",
               "id": 1,
-              "user": 1
+              "user": 1,
+              "residentialDevice": null
           },
           {
               "enabled": true,
               "name": "Voicemail Generic 1",
               "email": "generic@voicemail.com",
               "id": 3,
-              "user": null
+              "user": null,
+              "residentialDevice": null
           },
           {
               "enabled": true,
               "name": "Voicemail For User2",
               "email": "bob@voicemail.com",
               "id": 4,
-              "user": 2
+              "user": 2,
+              "residentialDevice": null
           }
       ]
       """
@@ -53,7 +56,8 @@ Feature: Retrieve voicemails
               "name": "Voicemail For Residential 1",
               "email": "",
               "id": 2,
-              "user": null
+              "user": null,
+              "residentialDevice": 1
           }
       ]
       """
