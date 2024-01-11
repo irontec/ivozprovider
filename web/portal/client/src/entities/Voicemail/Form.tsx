@@ -10,7 +10,7 @@ import { useStoreState } from '../../store';
 import { foreignKeyGetter } from '../Queue/ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match, edit } = props;
+  const { entityService, row, match } = props;
 
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -20,10 +20,15 @@ const Form = (props: EntityFormProps): JSX.Element => {
   });
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const isUserVoicemail = Boolean(row && row?.user !== null);
+  const isResidentialVoicemail = Boolean(
+    row && row?.residentialDevice !== null
+  );
+  const isGenericVoicemail = !isUserVoicemail && !isResidentialVoicemail;
 
   const readOnlyProperties = {
-    name: edit || false,
-    email: row?.user !== null && edit,
+    name: !isGenericVoicemail,
+    email: isUserVoicemail,
   };
 
   const groups: Array<FieldsetGroups> = [

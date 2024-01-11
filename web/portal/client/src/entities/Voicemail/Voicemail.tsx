@@ -71,7 +71,8 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
     routeMapItem.entity.iden === Voicemail.iden
   ) {
     const isDeletePath = routeMapItem.route === `${Voicemail.path}/:id`;
-    const allowDelete = row.user === null && row.residential === null;
+    const allowDelete = row.user === null && row.residentialDevice === null;
+
     if (isDeletePath && !allowDelete) {
       return null;
     }
