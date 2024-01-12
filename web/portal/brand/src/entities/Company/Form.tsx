@@ -137,6 +137,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
         hasInvoicesFeature && 'invoiceNotificationTemplate',
         'callCsvNotificationTemplate',
         hasBillingFeature && 'maxDailyUsageNotificationTemplate',
+        'accessCredentialNotificationTemplate',
       ],
     },
     hasBillingFeature &&

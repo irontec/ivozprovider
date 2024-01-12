@@ -223,6 +223,11 @@ Feature: Retrieve companies
               "type": "callCsv",
               "id": 2
           },
+          "accessCredentialNotificationTemplate": {
+              "name": "Access Credentials",
+              "type": "accessCredentials",
+              "id": 5
+          },
           "corporation": {
               "name": "Irontec Test Corporation",
               "description": "Irontec Test Desc Corporation",

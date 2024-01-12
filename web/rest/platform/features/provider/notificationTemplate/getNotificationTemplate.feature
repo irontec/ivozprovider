@@ -15,6 +15,11 @@ Feature: Retrieve notification templates
       """
       [
           {
+              "name": "Access Credentials",
+              "type": "accessCredentials",
+              "id": 5
+          },
+          {
               "name": "CallCsv notification",
               "type": "callCsv",
               "id": 2

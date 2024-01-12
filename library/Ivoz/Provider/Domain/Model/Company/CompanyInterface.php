@@ -295,6 +295,8 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface;
 
+    public function getAccessCredentialNotificationTemplate(): ?NotificationTemplateInterface;
+
     public function getCorporation(): ?CorporationInterface;
 
     public function addExtension(ExtensionInterface $extension): CompanyInterface;

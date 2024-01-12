@@ -49,6 +49,7 @@ export type CompanyPropertyList<T> = {
   faxNotificationTemplate?: T;
   invoiceNotificationTemplate?: T;
   callCsvNotificationTemplate?: T;
+  accessCredentialNotificationTemplate?: T;
   maxDailyUsageNotificationTemplate?: T;
   featureIds?: T;
   geoIpAllowedCountries?: T;

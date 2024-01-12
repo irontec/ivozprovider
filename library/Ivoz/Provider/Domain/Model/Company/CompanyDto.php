@@ -373,6 +373,7 @@ class CompanyDto extends CompanyDtoAbstract
             'faxNotificationTemplateId',
             'invoiceNotificationTemplateId',
             'callCsvNotificationTemplateId',
+            'accessCredentialNotificationTemplateId',
             'featureIds',
             'geoIpAllowedCountries',
             'routingTagIds',

@@ -45,6 +45,7 @@ Feature: Update company
           "outgoingDdiRule": null,
           "voicemailNotificationTemplate": 1,
           "faxNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": 5,
           "featureIds": [
               3
           ],
@@ -95,6 +96,7 @@ Feature: Update company
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": 2,
+          "accessCredentialNotificationTemplate": 5,
           "corporation": 1,
           "featureIds": [
               3

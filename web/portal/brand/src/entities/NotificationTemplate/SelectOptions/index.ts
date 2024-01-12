@@ -1,3 +1,4 @@
+import AccessCredentialSelectOptions from './AccessCredentialSelectOptions';
 import CallCsvSelectOptions from './CallCsvSelectOptions';
 import FaxSelectOptions from './FaxSelectOptions';
 import InvoiceSelectOptions from './InvoiceSelectOptions';
@@ -9,6 +10,7 @@ import VoicemailSelectOptions from './VoicemailSelectOptions';
 export default SelectOptions;
 
 export {
+  AccessCredentialSelectOptions,
   CallCsvSelectOptions,
   FaxSelectOptions,
   InvoiceSelectOptions,
