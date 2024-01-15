@@ -24,7 +24,7 @@ interface UsersCdrInterface extends LoggableEntityInterface
 
     public const DISPOSITION_MISSED = 'missed';
 
-    public const DISPOSITION_BUSSY = 'bussy';
+    public const DISPOSITION_BUSY = 'busy';
 
     /**
      * @codeCoverageIgnore
