@@ -12,7 +12,6 @@ export type WebPortalPropertyList<T> = {
   logo?: T;
   urlType?: T;
   userTheme?: T;
-  newUI?: T;
   brand?: T;
 };
 
