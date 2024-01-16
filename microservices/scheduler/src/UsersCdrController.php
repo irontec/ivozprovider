@@ -1,18 +1,18 @@
 <?php
 
-use Symfony\Component\HttpFoundation\Response;
-use Ivoz\Provider\Application\Service\BillableCall\MigrateFromUnparsedTrunksCdr as BillableCallFromTrunksCdr;
-use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Domain\RequestId;
 use Ivoz\Core\Domain\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Provider\Application\Service\UsersCdr\MigrateFromUnparsedKamUsersCdr;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\Response;
 
-class BillableCallController
+class UsersCdrController
 {
     use RegisterCommandTrait;
 
     public function __construct(
-        private BillableCallFromTrunksCdr $billableCallFromTrunksCdr,
+        private MigrateFromUnparsedKamUsersCdr $migrateUnparsedKamUsersCdrs,
         private LoggerInterface $logger,
         DomainEventPublisher $eventPublisher,
         RequestId $requestId
@@ -24,8 +24,8 @@ class BillableCallController
     public function indexAction(): Response
     {
         try {
-            $this->registerCommand('Scheduler', 'billableCall');
-            $this->billableCallFromTrunksCdr->execute();
+            $this->registerCommand('Scheduler', 'usersCdr');
+            $this->migrateUnparsedKamUsersCdrs->execute();
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());
             return new Response(
@@ -34,6 +34,6 @@ class BillableCallController
             );
         }
 
-        return new Response("BillableCall migration done!\n", 200);
+        return new Response("UsersCDR migration done!\n", 200);
     }
 }

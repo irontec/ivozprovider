@@ -4854,15 +4854,6 @@
       <code>$trunksCdrDto-&gt;getDuration()</code>
     </PossiblyNullArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/BillableCall/MigrateFromUnparsedTrunksCdr.php">
-    <MixedArgument occurrences="2">
-      <code>$trunkCdr</code>
-      <code>$trunks</code>
-    </MixedArgument>
-    <UndefinedClass occurrences="1">
-      <code>Commandlog</code>
-    </UndefinedClass>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/BillableCall/UpdateDtoByDefaultRunTpCdr.php">
     <MixedArgument occurrences="2">
       <code>$destinationName</code>

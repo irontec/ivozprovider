@@ -95,6 +95,11 @@ abstract class UsersCdrAbstract
     protected $responseCode = '200';
 
     /**
+     * @var ?bool
+     */
+    protected $parsed = false;
+
+    /**
      * @var ?BrandInterface
      */
     protected $brand = null;
@@ -216,6 +221,7 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
+            ->setParsed($dto->getParsed())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
@@ -259,6 +265,7 @@ abstract class UsersCdrAbstract
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
             ->setResponseCode($responseCode)
+            ->setParsed($dto->getParsed())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
@@ -286,6 +293,7 @@ abstract class UsersCdrAbstract
             ->setCallidHash(self::getCallidHash())
             ->setXcallid(self::getXcallid())
             ->setResponseCode(self::getResponseCode())
+            ->setParsed(self::getParsed())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setUser(User::entityToDto(self::getUser(), $depth))
@@ -311,6 +319,7 @@ abstract class UsersCdrAbstract
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
             'responseCode' => self::getResponseCode(),
+            'parsed' => self::getParsed(),
             'brandId' => self::getBrand()?->getId(),
             'companyId' => self::getCompany()?->getId(),
             'userId' => self::getUser()?->getId(),
@@ -528,6 +537,18 @@ abstract class UsersCdrAbstract
     public function getResponseCode(): string
     {
         return $this->responseCode;
+    }
+
+    protected function setParsed(?bool $parsed = null): static
+    {
+        $this->parsed = $parsed;
+
+        return $this;
+    }
+
+    public function getParsed(): ?bool
+    {
+        return $this->parsed;
     }
 
     protected function setBrand(?BrandInterface $brand = null): static

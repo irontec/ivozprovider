@@ -716,11 +716,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrRepository\\:\\:getUnparsedCallsGeneratorWithoutOffset\\(\\) return type has no value type specified in iterable type Generator\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrRepository\\:\\:resetParsed\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrRepository.php
@@ -1122,11 +1117,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TrunksCdrDoctrineRepository\\:\\:getUnparsedCallsGeneratorWithoutOffset\\(\\) has parameter \\$order with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/TrunksCdrDoctrineRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TrunksCdrDoctrineRepository\\:\\:getUnparsedCallsGeneratorWithoutOffset\\(\\) return type has no value type specified in iterable type Generator\\.$#"
 			count: 1
 			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/TrunksCdrDoctrineRepository.php
 
@@ -3754,11 +3744,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BillableCall\\\\CsvExporter\\:\\:addEndpointType\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BillableCall/CsvExporter.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\Commandlog not found\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BillableCall/MigrateFromUnparsedTrunksCdr.php
 
 		-
 			message: "#^Cannot call method getLanguageCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"

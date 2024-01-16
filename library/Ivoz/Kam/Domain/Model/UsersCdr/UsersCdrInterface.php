@@ -81,6 +81,8 @@ interface UsersCdrInterface extends EntityInterface
 
     public function getResponseCode(): string;
 
+    public function getParsed(): ?bool;
+
     public function getBrand(): ?BrandInterface;
 
     public function getCompany(): ?CompanyInterface;

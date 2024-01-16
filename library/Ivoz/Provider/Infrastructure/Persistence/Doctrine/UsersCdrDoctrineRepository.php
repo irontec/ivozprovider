@@ -6,8 +6,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Repository\DoctrineRepository;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
-use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrDto;
 
 /**
@@ -29,5 +29,12 @@ class UsersCdrDoctrineRepository extends DoctrineRepository implements UsersCdrR
             UsersCdr::class,
             $entityPersisterInterface
         );
+    }
+
+    public function findByKamUsersCdrId(int $id): ?UsersCdrInterface
+    {
+        return $this->findOneBy([
+            'kamUsersCdr' => $id,
+        ]);
     }
 }

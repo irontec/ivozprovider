@@ -71,7 +71,7 @@ abstract class UsersCdrAbstract
 
     /**
      * @var ?string
-     * comment: enum:answered|missed|bussy
+     * comment: enum:answered|missed|busy
      */
     protected $disposition = 'answered';
 
@@ -424,7 +424,7 @@ abstract class UsersCdrAbstract
                 [
                     UsersCdrInterface::DISPOSITION_ANSWERED,
                     UsersCdrInterface::DISPOSITION_MISSED,
-                    UsersCdrInterface::DISPOSITION_BUSSY,
+                    UsersCdrInterface::DISPOSITION_BUSY,
                 ],
                 'dispositionvalue "%s" is not an element of the valid values: %s'
             );

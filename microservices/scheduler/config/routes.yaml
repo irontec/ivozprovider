@@ -2,6 +2,10 @@ invoice-scheduler:
     path: /
     controller: InvoiceSchedulerController:indexAction
 
+users-cdrs:
+  path: /users-cdrs
+  controller: UsersCdrController:indexAction
+
 billable-calls:
   path: /billable-calls
   controller: BillableCallController:indexAction

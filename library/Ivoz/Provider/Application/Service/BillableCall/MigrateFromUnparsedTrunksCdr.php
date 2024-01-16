@@ -1,10 +1,11 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\BillableCall;
+namespace Ivoz\Provider\Application\Service\BillableCall;
 
+use Ivoz\Core\Domain\Model\Commandlog\Commandlog;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
-use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
+use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr;
 use Psr\Log\LoggerInterface;
 
 class MigrateFromUnparsedTrunksCdr

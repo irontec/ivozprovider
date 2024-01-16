@@ -83,6 +83,11 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     private $responseCode = '200';
 
     /**
+     * @var bool|null
+     */
+    private $parsed = false;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -135,6 +140,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callidHash' => 'callidHash',
             'xcallid' => 'xcallid',
             'responseCode' => 'responseCode',
+            'parsed' => 'parsed',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -162,6 +168,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callidHash' => $this->getCallidHash(),
             'xcallid' => $this->getXcallid(),
             'responseCode' => $this->getResponseCode(),
+            'parsed' => $this->getParsed(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
@@ -337,6 +344,18 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     public function getResponseCode(): ?string
     {
         return $this->responseCode;
+    }
+
+    public function setParsed(?bool $parsed): static
+    {
+        $this->parsed = $parsed;
+
+        return $this;
+    }
+
+    public function getParsed(): ?bool
+    {
+        return $this->parsed;
     }
 
     /**
