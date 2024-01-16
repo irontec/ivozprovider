@@ -1,0 +1,7 @@
+[Unit]
+Description=Ivozprovider Users CDR mixer
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/opt/irontec/ivozprovider/microservices/scheduler/bin/run-users-cdrs
