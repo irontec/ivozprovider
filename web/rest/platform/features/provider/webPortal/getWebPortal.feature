@@ -63,7 +63,6 @@ Feature: Retrieve web portals
           "url": "https://platform-ivozprovider.irontec.com",
           "klearTheme": "redmond",
           "urlType": "god",
-          "newUI": true,
           "name": "Platform Administration Portal",
           "userTheme": "default",
           "color": "#000000",

@@ -52,7 +52,6 @@ Feature: Retrieve web portals
           "url": "https://client-ivozprovider.irontec.com",
           "klearTheme": "irontec-red",
           "urlType": "admin",
-          "newUI": true,
           "name": "Irontec Ivozprovider Client Admin Portal",
           "userTheme": "default",
           "id": 3,

@@ -149,7 +149,6 @@
   "Media Relay_one": "Media relay",
   "Media Relay_other": "Media relays",
   "Name": "Nome",
-  "New Interface": "New Interface",
   "No": "No",
   "Notification Template Content_many": "Contenuti del modello di notifica",
   "Notification Template Content_one": "Contenuto del modello di notifica",
@@ -240,6 +239,5 @@
   "Weight": "Peso",
   "Welcome to <br /> Ivoz Provider global administrator portal": "Welcome to <br /> Ivoz Provider global administrator portal",
   "Will be shown on page footer": "Verrà mostrato a piè di pagina",
-  "Yes": "Sì",
-  "You can always access classic interface adding /classic to URL": "You can always access classic interface adding /classic to URL"
+  "Yes": "Sì"
 }

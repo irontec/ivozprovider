@@ -71,12 +71,6 @@ const properties: WebPortalProperties = {
     label: _('Logo'),
     type: 'file',
   },
-  newUI: {
-    label: _('New Interface'),
-    helpText: _(
-      `You can always access classic interface adding /classic to URL`
-    ),
-  },
 };
 
 const WebPortal: EntityInterface = {
