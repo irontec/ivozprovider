@@ -21,6 +21,11 @@ const Carrier: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Carriers',
   },
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default Carrier;
