@@ -1,5 +1,6 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
+  ChildDecoratorType,
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
@@ -54,6 +55,10 @@ const columns = [
   'disposition',
 ];
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  return null;
+};
+
 const usersCdr: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ChatBubbleOutlineIcon,
@@ -72,6 +77,7 @@ const usersCdr: EntityInterface = {
     delete: false,
     iden: 'provider_users_cdrs',
   },
+  ChildDecorator,
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
   foreignKeyResolver: async () => {
