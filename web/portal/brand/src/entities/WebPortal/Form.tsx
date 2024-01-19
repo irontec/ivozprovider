@@ -23,7 +23,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: '',
-      fields: ['klearTheme', 'logo'],
+      fields: ['color', 'logo'],
     },
   ];
 
