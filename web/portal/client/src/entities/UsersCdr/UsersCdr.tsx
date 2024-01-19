@@ -55,7 +55,7 @@ const columns = [
   'disposition',
 ];
 
-export const ChildDecorator: ChildDecoratorType = (props) => {
+export const ChildDecorator: ChildDecoratorType = () => {
   return null;
 };
 

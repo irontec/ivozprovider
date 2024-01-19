@@ -24,6 +24,7 @@ const properties: FriendProperties = {
   },
   domain: {
     label: _('SIP Domain', { count: 1 }),
+    $ref: '#/definitions/Domain',
   },
   description: {
     label: _('Description'),
