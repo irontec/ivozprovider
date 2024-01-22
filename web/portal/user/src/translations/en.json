@@ -1,6 +1,7 @@
 {
   "Active call_one": "Active Call",
   "Active call_other": "Active Calls",
+  "Answered": "Answered",
   "Boss / Assistant": "Boss / Assistant",
   "Both": "Both",
   "Busy": "Busy",
@@ -43,6 +44,7 @@
   "Last Name": "Last Name",
   "Main": "Main",
   "Max Calls": "Max Calls",
+  "Missed": "Missed",
   "My Account": "My Account",
   "My Preferences": "My Preferences",
   "Name": "Name",
