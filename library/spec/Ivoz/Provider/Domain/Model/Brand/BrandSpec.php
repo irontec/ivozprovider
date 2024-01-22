@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyDto;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface;
@@ -99,7 +100,8 @@ class BrandSpec extends ObjectBehavior
             ->setInvoiceRegistryData('')
             ->setDefaultTimezone($timezoneDto)
             ->setLanguage($languageDto)
-            ->setCurrency($currencyDto);
+            ->setCurrency($currencyDto)
+            ->setRelFeatures([]);
 
         $this->transformer->appendFixedTransforms([
             [$timezoneDto, $this->timezone->reveal()],
@@ -218,15 +220,31 @@ class BrandSpec extends ObjectBehavior
         $updateDto = clone $this->dto;
 
         $feature = $this->getTestDouble(
+            Feature::class
+        );
+        $this->getterProphecy(
+            $feature,
+            [
+                'getIden' => Feature::BILLING_IDEN,
+            ],
+            false
+        );
+
+        $relFeature = $this->getTestDouble(
             FeaturesRelBrandInterface::class
         );
-        $feature
-            ->getId()
-            ->willreturn(1);
+        $this->getterProphecy(
+            $relFeature,
+            [
+                'getId' => 1,
+                'getFeature' => $feature,
+            ],
+            false
+        );
 
         $this
             ->dto
-            ->setRelFeatures([$feature->reveal()]);
+            ->setRelFeatures([$relFeature->reveal()]);
 
         $updateDto
             ->setRelFeatures(null);
@@ -238,25 +256,36 @@ class BrandSpec extends ObjectBehavior
 
         $this
             ->getRelFeatures()
-            ->shouldReturn([$feature]);
+            ->shouldReturn([$relFeature]);
     }
 
     function it_applies_empty_array_replationship_values()
     {
         $updateDto = clone $this->dto;
 
-        $feature = $this->getInstance(
+        $feature = $this->getTestDouble(
+            Feature::class
+        );
+        $this->getterProphecy(
+            $feature,
+            [
+                'getIden' => Feature::BILLING_IDEN,
+            ],
+            false
+        );
+
+        $relFeature = $this->getInstance(
             FeaturesRelBrand::class,
             [
                 'id' => 1,
-                'feature' => $this->getTestDouble(FeatureInterface::class)->reveal(),
+                'feature' => $feature->reveal(),
                 'brand' => $this->getTestDouble(BrandInterface::class)->reveal(),
             ]
         );
 
         $this
             ->dto
-            ->setRelFeatures([$feature]);
+            ->setRelFeatures([$relFeature]);
 
         $updateDto
             ->setRelFeatures([]);
