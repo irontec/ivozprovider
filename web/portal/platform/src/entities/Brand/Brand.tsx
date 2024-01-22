@@ -10,6 +10,7 @@ import { BrandProperties, BrandPropertyList } from './BrandProperties';
 const properties: BrandProperties = {
   domainUsers: {
     label: _('SIP domain', { count: 1 }),
+    required: true,
   },
   defaultTimezone: {
     label: _('Default Timezone'),
