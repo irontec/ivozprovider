@@ -254,13 +254,15 @@ class CompanyDoctrineRepository extends DoctrineRepository implements CompanyRep
         $company = $admin->getCompany();
 
         if (is_null($company)) {
-            throw new \DomainException('Company cannot be null');
+            // Company cannot be null
+            return [];
         }
 
         $corporation = $company->getCorporation();
 
         if (is_null($corporation)) {
-            throw new \DomainException('Corporation cannot be null');
+            // Corporation cannot be null
+            return [];
         }
 
         $qb = $this->createQueryBuilder('self');
