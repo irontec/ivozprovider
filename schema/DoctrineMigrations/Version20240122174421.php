@@ -14,7 +14,7 @@ final class Version20240122174421 extends LoggableMigration
 {
     public function getDescription(): string
     {
-        return 'Make domains accesible on client API';
+        return 'Make domains accessible on client API for restricted admins';
     }
 
     public function up(Schema $schema): void
