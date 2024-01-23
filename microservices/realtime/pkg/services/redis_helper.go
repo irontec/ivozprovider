@@ -40,6 +40,7 @@ var SIGNIFICANT_CALL_EVENTS = [...]string{CALL_SETUP, RINGING, IN_CALL, HANG_UP,
 func InitRedisControlClients() {
 	redisClient := CreateFailOverClient()
 
+	logger.Info("Initializing generic channel subscriber")
 	channelPatterns := []string{"trunks:*", "users:*"}
 	pubsub := redisClient.PSubscribe(context.Background(), channelPatterns...)
 	defer pubsub.Close()
@@ -76,13 +77,13 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 
 	event := eventData.Event
 	if event == HANG_UP {
-		logger.Info("[DEL] " + channel)
+		logger.Debug("[DEL] " + channel)
 		redisClient.Del(context.Background(), channel)
 		return
 	}
 
 	if event == CALL_SETUP {
-		logger.Info("[SETEX] " + channel + "\n" + payload)
+		logger.Debug("[SETEX] " + channel + "\n" + payload)
 		redisClient.SetEx(
 			context.Background(),
 			channel,

@@ -28,10 +28,10 @@ var upgrader = websocket.Upgrader{
 var redisPool sync.Map
 
 func OnWorkerStart() {
-	logger.Info("Init Redis Pool")
 
 	http.HandleFunc("/", handler)
 	listen := config.GetWsListenAddress()
+	logger.Infof("Initializing websocket server on %s...", listen)
 	logger.Fatal(http.ListenAndServe(listen, nil))
 }
 
@@ -44,14 +44,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer onClose(conn)
 
-	logger.Info("Connection open")
+	logger.Infof("Connection received from %s", conn.RemoteAddr().String())
 	conn.WriteMessage(websocket.TextMessage, []byte("Challenge"))
 
 	onMessage(conn)
 }
 
 func onClose(conn *websocket.Conn) {
-	logger.Info("Connection closed")
+	logger.Infof("Connection closed from %s", conn.RemoteAddr().String())
 
 	storedClient, ok := redisPool.Load(conn)
 	if !ok {
@@ -81,7 +81,7 @@ func onMessage(conn *websocket.Conn) {
 		}
 
 		if messageType == websocket.TextMessage {
-			logger.Infof("<< Received message: %s", string(p))
+			logger.Debugf("<< Received message: %s", string(p))
 
 			data := utils.GetPayload(string(p))
 			token, err := utils.GetToken(data.Auth)
@@ -148,7 +148,7 @@ func sendCurrentState(redisClient *redis.Client, mask string, conn *websocket.Co
 
 	currentState, err := redisClient.MGet(context.Background(), keys...).Result()
 	if err != nil {
-		logger.Error("No call info found on redis")
+		logger.Info("No call info found on redis")
 		return
 	}
 
@@ -236,7 +236,6 @@ func getRedisClientByConnection(conn *websocket.Conn) (*redis.Client, error) {
 
 	storedClient, ok := redisPool.Load(conn)
 	if !ok {
-		logger.Warning("Could not find Redis client for the WebSocket connection.")
 		client := services.CreateFailOverClient()
 		redisPool.Store(conn, client)
 		return client, nil
