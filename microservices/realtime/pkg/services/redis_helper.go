@@ -122,7 +122,14 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 		logInfo = event
 	}
 
-	logger.Infof("[SETEX] %s", channel+" "+logInfo)
+	logger.Debugf("[SETEX] %s", channel+" "+logInfo)
+
+	// Convert again to string to store in redis
+	dataBytes, err := json.Marshal(data)
+	if err != nil {
+		logger.Errorf("Failed to convert Event data to json: %s", data)
+		return
+	}
 
 	ttl := func() time.Duration {
 		if event == "IN_CALL" {
@@ -134,7 +141,7 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 	redisClient.SetEx(
 		context.Background(),
 		channel,
-		dataStr,
+		string(dataBytes),
 		ttl,
 	)
 
