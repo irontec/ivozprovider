@@ -116,26 +116,24 @@ func onMessage(conn *websocket.Conn) {
 func sendCurrentStateAndUpdate(conn *websocket.Conn, registerChannel string) {
 	conn.WriteMessage(websocket.TextMessage, []byte("Subscribing"))
 
-	go func(server *websocket.Conn, mask string) {
-		redisClient, err := getRedisClientByConnection(server)
+	redisClient, err := getRedisClientByConnection(conn)
 
-		if err != nil {
-			logger.Error("Unable to create redis client")
-			return
-		}
+	if err != nil {
+		logger.Error("Unable to create redis client")
+		return
+	}
 
-		sendCurrentState(
-			redisClient,
-			mask,
-			server,
-		)
+	sendCurrentState(
+		redisClient,
+		registerChannel,
+		conn,
+	)
 
-		forwardStateUpdates(
-			redisClient,
-			mask,
-			server,
-		)
-	}(conn, registerChannel)
+	go forwardStateUpdates(
+		redisClient,
+		registerChannel,
+		conn,
+	)
 }
 
 func sendCurrentState(redisClient *redis.Client, mask string, conn *websocket.Conn) {
@@ -193,43 +191,32 @@ func sendCurrentState(redisClient *redis.Client, mask string, conn *websocket.Co
 func forwardStateUpdates(redisClient *redis.Client, mask string, conn *websocket.Conn) {
 	pubsub := redisClient.PSubscribe(context.Background(), mask)
 
-	go func() {
-		for {
-			msg, err := pubsub.Receive(context.Background())
-			if subscription, ok := msg.(*redis.Subscription); ok {
-
-				if subscription.Kind == "unsubscribe" {
-					logger.Info("Unsubscribe")
-					break
-				}
-			} else if message, ok := msg.(*redis.Message); ok {
-				go func(conn *websocket.Conn, message *redis.Message) {
-					payload := message.Payload
-					var eventData services.EventData
-
-					err := json.Unmarshal([]byte(payload), &eventData)
-					if err != nil {
-						logger.Errorf("Error: %v", err)
-						return
-					}
-
-					forward := utils.InArray(eventData.Event, services.SIGNIFICANT_CALL_EVENTS[:])
-					if !forward {
-						logger.Errorf("Cannot forward message: %v", payload)
-						return
-					}
-					conn.WriteMessage(websocket.TextMessage, []byte(payload))
-
-				}(conn, message)
+	for {
+		msg, err := pubsub.Receive(context.Background())
+		if subscription, ok := msg.(*redis.Subscription); ok {
+			if subscription.Kind == "unsubscribe" {
+				logger.Info("Unsubscribe")
+				break
 			}
+		} else if message, ok := msg.(*redis.Message); ok {
+			payload := message.Payload
+			var eventData services.EventData
 
+			err := json.Unmarshal([]byte(payload), &eventData)
 			if err != nil {
-				logger.Errorf("Error receiving message from Redis: %v", err)
+				logger.Errorf("Error: %v", err)
 				return
 			}
 
+			conn.WriteMessage(websocket.TextMessage, []byte(payload))
 		}
-	}()
+
+		if err != nil {
+			logger.Errorf("Error receiving message from Redis: %v", err)
+			return
+		}
+
+	}
 }
 
 func getRedisClientByConnection(conn *websocket.Conn) (*redis.Client, error) {

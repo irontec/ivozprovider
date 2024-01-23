@@ -39,8 +39,6 @@ const (
 	UPDATE_CLID = "UpdateCLID"
 )
 
-var SIGNIFICANT_CALL_EVENTS = [...]string{CALL_SETUP, RINGING, IN_CALL, HANG_UP, UPDATE_CLID}
-
 func InitRedisControlClients() {
 	redisClient := CreateFailOverClient()
 
