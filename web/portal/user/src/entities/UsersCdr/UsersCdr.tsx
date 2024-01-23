@@ -33,6 +33,11 @@ const properties: UsersCdrProperties = {
   },
   disposition: {
     label: _('Disposition'),
+    enum: {
+      answered: _('Answered'),
+      missed: _('Missed'),
+      busy: _('Busy'),
+    },
     readOnly: true,
   },
   id: {
