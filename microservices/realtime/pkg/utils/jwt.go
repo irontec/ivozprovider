@@ -16,7 +16,7 @@ type TokenPayload struct {
 }
 
 type Trunks struct {
-	B  int    `json:"b"`
+	B  string `json:"b"`
 	C  string `json:"c"`
 	Dp string `json:"dp"`
 	Cr string `json:"cr"`
