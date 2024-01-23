@@ -12,15 +12,19 @@ import (
 )
 
 type EventData struct {
-	Event     string `json:"Event"`
-	Time      int64  `json:"Time"`
-	ID        string `json:"ID"`
-	CallID    string `json:"Call-ID"`
-	Party     string `json:"Party"`
-	Brand     string `json:"Brand"`
-	Company   string `json:"Company"`
-	Direction string `json:"Direction"`
-	Owner     string `json:"Owner"`
+	Event       string `json:"Event"`
+	Time        int64  `json:"Time"`
+	ID          string `json:"ID"`
+	CallID      string `json:"Call-ID"`
+	Brand       string `json:"Brand"`
+	Company     string `json:"Company"`
+	Direction   string `json:"Direction"`
+	Party       string `json:"Party,omitempty"`
+	Owner       string `json:"Owner,omitempty"`
+	Caller      string `json:"Caller,omitempty"`
+	Callee      string `json:"Callee,omitempty"`
+	Carrier     string `json:"Carrier,omitempty"`
+	DdiProvider string `json:"DdiProvider,omitempty"`
 }
 
 const REDIS_KEYS_IN_CALL_TTL = 3*time.Hour + 30*time.Minute
