@@ -237,7 +237,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Voicemail,
-          isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.residential,
+          isAccessible: (aboutMe) => aboutMe.vpbx,
           aclOverride: (aboutMe) => {
             return {
               iden: entities.Voicemail.acl.iden,

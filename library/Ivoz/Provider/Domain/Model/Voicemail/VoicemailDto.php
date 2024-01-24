@@ -17,6 +17,7 @@ class VoicemailDto extends VoicemailDtoAbstract
                 'name' => 'name',
                 'email' => 'email',
                 'userId' => 'user',
+                'residentialDeviceId' => 'residentialDevice',
             ];
         }
 
