@@ -19,24 +19,24 @@ sub printListeners() {
     my $mysql_table = $PROXY eq "users" ? "ProxyUsers" : "ProxyTrunks";
 
     my $dbh = DBI->connect($data_source, undef, undef) or die "$!";
-    my $sql = "SELECT name, ip FROM $mysql_table WHERE id > 1 ORDER BY id ASC";
+    my $sql = "SELECT id, name, ip, advertisedIp FROM $mysql_table ORDER BY id ASC";
     my $sth = $dbh->prepare($sql);
     $sth->execute();
 
     unlink $LISTENERS_FILE;
 
-    if ($PROXY eq 'trunks' && $sth->rows > 0) {
-        open my $FILE, ">>", $LISTENERS_FILE;
-        say $FILE "#!define WITH_MULTISOCKET\n";
-        close $FILE;
-    }
-
-    &printListener('main', $PROXY);
-
     while (my @socket = $sth->fetchrow_array) {
-        my $name = $socket[0];
-        my $ip = $socket[1];
-        &printListener($socket[0], $socket[1]);
+        my $id = $socket[0];
+        my $name = $socket[1];
+        my $ip = $socket[2];
+        my $advertised = $socket[3];
+
+        if ($advertised && $id != 1) {
+            &printPublicListener($id, $name, $ip, $advertised);
+        } else {
+            &printListener($id, $name, $ip);
+        }
+
     }
 
     $sth->finish();
@@ -46,22 +46,46 @@ sub printListeners() {
 }
 
 sub printListener() {
-    my ($name, $ip) = @_;
+    my ($id, $name, $ip) = @_;
+
+    $ip = $PROXY if $id == 1;
 
     open my $FILE, ">>", $LISTENERS_FILE;
 
-    say $FILE "# $name";
+    say $FILE "# $name (id: $id)";
     say $FILE "listen=udp:$ip:SIP_PORT";
     say $FILE "listen=tcp:$ip:SIP_PORT";
     say $FILE "listen=tls:$ip:SIPS_PORT";
-    say $FILE "listen=tcp:$ip:RPC_PORT";
+
     if ($PROXY eq "users") {
         say $FILE "listen=tcp:$ip:WS_PORT";
-        say $FILE "listen=tls:$ip:WSS_PORT\n";
+        say $FILE "listen=tls:$ip:WSS_PORT";
     } else {
-        say $FILE "listen=tcp:$ip:XMLRPC_PORT\n";
+        say $FILE "listen=tcp:$ip:XMLRPC_PORT" if $id == 1;
     }
 
+    say $FILE "listen=tcp:$ip:RPC_PORT" if $id == 1;
+    say $FILE "";
+
+    close $FILE;
+}
+
+sub printPublicListener() {
+    my ($id, $name, $ip, $advertised) = @_;
+
+    open my $FILE, ">>", $LISTENERS_FILE;
+
+    say $FILE "# $name (id: $id)";
+    say $FILE "listen=udp:$ip:SIP_PORT advertise $advertised:SIP_PORT";
+    say $FILE "listen=tcp:$ip:SIP_PORT advertise $advertised:SIP_PORT";
+    say $FILE "listen=tls:$ip:SIPS_PORT advertise $advertised:SIPS_PORT";
+
+    if ($PROXY eq "users") {
+        say $FILE "listen=tcp:$ip:WS_PORT advertise $advertised:WS_PORT";
+        say $FILE "listen=tls:$ip:WSS_PORT advertise $advertised:WSS_PORT";
+    }
+
+    say $FILE "";
     close $FILE;
 }
 
