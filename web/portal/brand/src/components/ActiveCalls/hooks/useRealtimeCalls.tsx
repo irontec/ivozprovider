@@ -30,45 +30,31 @@ const useRealtimeCalls = (props: UseRealtimeCallsProps): [boolean, Calls] => {
       ...syncCallsRef.current,
     };
 
-    if (event === 'UpdateCLID') {
-      // Update event or party
+    newValue[callId] = {
+      ...newValue[callId],
+      event,
+    };
+
+    if (event === 'Confirmed') {
       setCalls(() => {
         newValue[callId] = {
           ...newValue[callId],
-          party: data.Party,
+          time: data.Time,
         };
 
         syncCallsRef.current = newValue;
 
         return newValue;
       });
-    } else {
-      newValue[callId] = {
-        ...newValue[callId],
-        event,
-      };
+    } else if (event === 'Terminated') {
+      // _hideRow
+      setCalls(() => {
+        delete newValue[callId];
 
-      if (event === 'Confirmed') {
-        setCalls(() => {
-          newValue[callId] = {
-            ...newValue[callId],
-            time: data.Time,
-          };
+        syncCallsRef.current = newValue;
 
-          syncCallsRef.current = newValue;
-
-          return newValue;
-        });
-      } else if (event === 'Terminated') {
-        // _hideRow
-        setCalls(() => {
-          delete newValue[callId];
-
-          syncCallsRef.current = newValue;
-
-          return newValue;
-        });
-      }
+        return newValue;
+      });
     }
   };
 
