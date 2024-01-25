@@ -4374,7 +4374,7 @@ CREATE TABLE `ast_ps_endpoints` (
 
 LOCK TABLES `ast_ps_endpoints` WRITE;
 /*!40000 ALTER TABLE `ast_ps_endpoints` DISABLE KEYS */;
-INSERT INTO `ast_ps_endpoints` VALUES (1,'b1c1t1_alice',NULL,1,NULL,NULL,NULL,'b1c1t1_alice','Alice  <101>','users','all','alaw',NULL,'invite','101@company1','','yes','yes','no',NULL,NULL,'no','redundancy',1440,'no'),(2,'b1c1t2_bob',NULL,2,NULL,NULL,NULL,'b1c1t2_bob','Bob  <102>','users','all','alaw',NULL,'invite','102@company1','','yes','yes','no',NULL,NULL,'no','redundancy',1440,'no');
+INSERT INTO `ast_ps_endpoints` VALUES (1,'b1c1t1_alice',NULL,1,NULL,NULL,NULL,'b1c1t1_alice','Alice  <101>','users','all','alaw',NULL,'invite','101@company1','','yes','yes','no','sip:users.ivozprovider.local^3Blr',NULL,'no','redundancy',1440,'no'),(2,'b1c1t2_bob',NULL,2,NULL,NULL,NULL,'b1c1t2_bob','Bob  <102>','users','all','alaw',NULL,'invite','102@company1','','yes','yes','no','sip:users.ivozprovider.local^3Blr',NULL,'no','redundancy',1440,'no');
 /*!40000 ALTER TABLE `ast_ps_endpoints` ENABLE KEYS */;
 UNLOCK TABLES;
 
