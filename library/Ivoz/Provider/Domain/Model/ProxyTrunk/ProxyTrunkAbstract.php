@@ -29,6 +29,11 @@ abstract class ProxyTrunkAbstract
     protected $ip;
 
     /**
+     * @var ?string
+     */
+    protected $advertisedIp = null;
+
+    /**
      * Constructor
      */
     protected function __construct(
@@ -106,7 +111,8 @@ abstract class ProxyTrunkAbstract
         );
 
         $self
-            ->setName($dto->getName());
+            ->setName($dto->getName())
+            ->setAdvertisedIp($dto->getAdvertisedIp());
 
         $self->initChangelog();
 
@@ -128,7 +134,8 @@ abstract class ProxyTrunkAbstract
 
         $this
             ->setName($dto->getName())
-            ->setIp($ip);
+            ->setIp($ip)
+            ->setAdvertisedIp($dto->getAdvertisedIp());
 
         return $this;
     }
@@ -140,7 +147,8 @@ abstract class ProxyTrunkAbstract
     {
         return self::createDto()
             ->setName(self::getName())
-            ->setIp(self::getIp());
+            ->setIp(self::getIp())
+            ->setAdvertisedIp(self::getAdvertisedIp());
     }
 
     /**
@@ -150,7 +158,8 @@ abstract class ProxyTrunkAbstract
     {
         return [
             'name' => self::getName(),
-            'ip' => self::getIp()
+            'ip' => self::getIp(),
+            'advertisedIp' => self::getAdvertisedIp()
         ];
     }
 
@@ -182,5 +191,21 @@ abstract class ProxyTrunkAbstract
     public function getIp(): string
     {
         return $this->ip;
+    }
+
+    protected function setAdvertisedIp(?string $advertisedIp = null): static
+    {
+        if (!is_null($advertisedIp)) {
+            Assertion::maxLength($advertisedIp, 50, 'advertisedIp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->advertisedIp = $advertisedIp;
+
+        return $this;
+    }
+
+    public function getAdvertisedIp(): ?string
+    {
+        return $this->advertisedIp;
     }
 }
