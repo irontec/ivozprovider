@@ -11,13 +11,20 @@ class DdiProviderDto extends DdiProviderDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
-            $response = [
-                'id' => 'id',
-                'name' => 'name',
-                'description' => 'description',
-                'transformationRuleSetId' => 'transformationRuleSet',
-                'proxyTrunkId' => 'proxyTrunk',
-            ];
+            if ($role === 'ROLE_SUPER_ADMIN') {
+                $response = [
+                    'id' => 'id',
+                    'name' => 'name',
+                ];
+            } else {
+                $response = [
+                    'id' => 'id',
+                    'name' => 'name',
+                    'description' => 'description',
+                    'transformationRuleSetId' => 'transformationRuleSet',
+                    'proxyTrunkId' => 'proxyTrunk',
+                ];
+            }
         } else {
             $response = parent::getPropertyMap(...func_get_args());
         }

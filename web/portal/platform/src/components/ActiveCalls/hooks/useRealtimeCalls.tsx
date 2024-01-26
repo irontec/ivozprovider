@@ -64,6 +64,7 @@ const useRealtimeCalls = (props: UseRealtimeCallsProps): [boolean, Calls] => {
     const newRow: OutputStuct = {
       id: data.ID,
       callId: callId,
+      brand: data.Brand,
       direction: data.Direction,
       event: data.Event,
       time: data.Time,
