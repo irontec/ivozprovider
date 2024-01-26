@@ -14,6 +14,7 @@ class ProxyUserDto extends ProxyUserDtoAbstract
             return [
                 'name' => 'name',
                 'ip' => 'ip',
+                'advertisedIp' => 'advertisedIp',
                 'id' => 'id'
             ];
         }
