@@ -12,7 +12,8 @@ Feature: Create proxy trunks
       """
       {
           "name": "proxyTrunkPlatform1",
-          "ip": "0.0.0.0"
+          "ip": "0.0.0.0",
+          "advertisedIp": "127.1.2.3"
       }
       """
      Then the response status code should be 201
@@ -23,6 +24,7 @@ Feature: Create proxy trunks
       {
         "name": "proxyTrunkPlatform1",
         "ip": "0.0.0.0",
+        "advertisedIp": "127.1.2.3",
         "id": 4
       }
       """
@@ -37,8 +39,9 @@ Feature: Create proxy trunks
       And the JSON should be equal to:
       """
       {
-        "name": "proxyTrunkPlatform1",
-        "ip": "0.0.0.0",
-        "id": 4
+          "name": "proxyTrunkPlatform1",
+          "ip": "0.0.0.0",
+          "advertisedIp": "127.1.2.3",
+          "id": 4
       }
       """

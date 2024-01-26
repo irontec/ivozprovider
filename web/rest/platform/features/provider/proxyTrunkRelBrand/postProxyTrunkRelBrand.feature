@@ -69,6 +69,7 @@ Feature: Create proxy trunks rel brands
           "proxyTrunk": {
               "name": "ExtraIP",
               "ip": "127.0.0.3",
+              "advertisedIp": "138.0.0.3",
               "id": 2
           }
       }
