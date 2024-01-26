@@ -26,6 +26,8 @@ interface UsersCdrInterface extends LoggableEntityInterface
 
     public const DISPOSITION_BUSY = 'busy';
 
+    public const DISPOSITION_ERROR = 'error';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>

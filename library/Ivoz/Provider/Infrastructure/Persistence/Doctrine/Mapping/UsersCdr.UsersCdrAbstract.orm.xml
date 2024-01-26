@@ -53,7 +53,7 @@
     <field name="disposition" type="string" column="disposition" length="8" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">[enum:answered|missed|busy]</option>
+        <option name="comment">[enum:answered|missed|busy|error]</option>
         <option name="default">answered</option>
       </options>
     </field>

@@ -45,6 +45,7 @@ const properties: UsersCdrProperties = {
       answered: _('Answered'),
       missed: _('Missed'),
       busy: _('Busy'),
+      error: _('Error'),
     },
     readOnly: true,
   },

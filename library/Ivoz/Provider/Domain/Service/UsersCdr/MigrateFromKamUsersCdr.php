@@ -92,6 +92,7 @@ class MigrateFromKamUsersCdr
         return match ($kamUsersCdr->getResponseCode()) {
             '200' => UsersCdrInterface::DISPOSITION_ANSWERED,
             '480', '486' => UsersCdrInterface::DISPOSITION_BUSY,
+            '500' => UsersCdrInterface::DISPOSITION_ERROR,
             default => UsersCdrInterface::DISPOSITION_MISSED,
         };
     }
