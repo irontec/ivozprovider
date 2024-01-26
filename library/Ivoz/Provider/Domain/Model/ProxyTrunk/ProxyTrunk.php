@@ -49,4 +49,13 @@ class ProxyTrunk extends ProxyTrunkAbstract implements ProxyTrunkInterface
 
         return parent::setIp($ip);
     }
+
+    protected function setAdvertisedIp(?string $advertisedIp = null): static
+    {
+        if (!is_null($advertisedIp)) {
+            Assertion::ip($advertisedIp);
+        }
+
+        return parent::setAdvertisedIp($advertisedIp);
+    }
 }
