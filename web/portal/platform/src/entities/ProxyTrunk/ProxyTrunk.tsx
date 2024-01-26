@@ -20,6 +20,9 @@ const properties: ProxyTrunkProperties = {
   ip: {
     label: _('IP Address'),
   },
+  advertisedIp: {
+    label: _('Advertised IP Address'),
+  },
   id: {
     label: _('Id'),
   },
@@ -55,7 +58,7 @@ const ProxyTrunk: EntityInterface = {
   path: '/proxy_trunks',
   toStr: (row: ProxyTrunkPropertyList<EntityValue>) =>
     `${row.name} (${row.ip})`,
-  columns: ['name', 'ip'],
+  columns: ['name', 'ip', 'advertisedIp'],
   properties,
   ChildDecorator,
   selectOptions: async () => {

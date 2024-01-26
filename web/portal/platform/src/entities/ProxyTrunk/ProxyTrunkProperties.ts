@@ -8,6 +8,7 @@ export type ProxyTrunkPropertyList<T> = {
   name?: T;
   ip?: T;
   id?: T;
+  advertisedIp?: T;
 };
 
 export type ProxyTrunkProperties = ProxyTrunkPropertyList<
