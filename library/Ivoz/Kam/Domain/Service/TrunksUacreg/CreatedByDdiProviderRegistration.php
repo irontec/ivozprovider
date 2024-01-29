@@ -63,9 +63,12 @@ class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecyc
         }
 
         $trunksIp  = $trunks->getIp();
+        $contactAddr  = $trunks->getAdvertisedIp()
+            ? $trunks->getAdvertisedIp()
+            : $trunks->getIp();
 
         $socket = 'udp:' . $trunksIp . ':5060';
-        $contactAddr = $trunksIp . ':5060';
+        $contactAddr .= ':5060';
 
         $trunksUacregDto
             ->setSocket($socket)
