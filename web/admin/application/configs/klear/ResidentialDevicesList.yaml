@@ -78,7 +78,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Residential Device', 'Residential Devices', 1), "[format| (%parent%)]")
       scripts:
-        module: default
+        module: classic/default
         name: jquery.passwordgennew.js
       plugin: passwordgennew
       forcedValues:
@@ -165,7 +165,7 @@ production:
       labelOnPostAction: _("Edit %s %2s", ngettext('Residential Device', 'Residential Devices', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Residential Device', 'Residential Devices', 1), "[format| (%item%)]")
       scripts:
-        module: default
+        module: classic/default
         name: jquery.passwordgenedit.js
       plugin: passwordgen
       fields:
