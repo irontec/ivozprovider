@@ -23,6 +23,7 @@ Feature: Update proxy trunks
       {
           "name": "updated proxytrunks",
           "ip": "127.0.0.2",
+          "advertisedIp": "138.0.0.1",
           "id": 1
       }
       """

@@ -24,6 +24,7 @@ class ProviderProxyTrunk extends Fixture
         (function () use ($fixture) {
             $this->setName("proxytrunks");
             $this->setIp("127.0.0.1");
+            $this->setAdvertisedIp("138.0.0.1");
         })->call($item1);
 
         $this->addReference('_reference_ProviderProxyTrunk1', $item1);
@@ -34,6 +35,7 @@ class ProviderProxyTrunk extends Fixture
         (function () use ($fixture) {
             $this->setName("ExtraIP");
             $this->setIp("127.0.0.3");
+            $this->setAdvertisedIp("138.0.0.3");
         })->call($item2);
 
         $this->addReference('_reference_ProviderProxyTrunk2', $item2);
@@ -44,6 +46,7 @@ class ProviderProxyTrunk extends Fixture
         (function () use ($fixture) {
             $this->setName("ip_for_delete_process");
             $this->setIp("10.50.23.146");
+            $this->setAdvertisedIp(null);
         })->call($item3);
 
         $this->addReference('_reference_ProviderProxyTrunk3', $item3);
