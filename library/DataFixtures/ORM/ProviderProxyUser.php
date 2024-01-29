@@ -31,8 +31,16 @@ class ProviderProxyUser extends Fixture
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        $item2 = $this->createEntityInstance(ProxyUser::class);
+        (function () use ($fixture) {
+            $this->setName("another pu");
+            $this->setIp("127.0.1.2");
+            $this->setAdvertisedIp("138.0.1.2");
+        })->call($item2);
 
-
+        $this->addReference('_reference_ProviderProxyUserProxyUser2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
 
         $manager->flush();
     }
