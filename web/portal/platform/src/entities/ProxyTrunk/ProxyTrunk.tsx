@@ -1,6 +1,7 @@
 import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
+  marshaller as defaultMarshaller,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
@@ -12,6 +13,15 @@ import {
   ProxyTrunkProperties,
   ProxyTrunkPropertyList,
 } from './ProxyTrunkProperties';
+
+type marshallerType = typeof defaultMarshaller;
+const marshaller: marshallerType = (row, properties, whitelist) => {
+  if (row.advertisedIp === '') {
+    row.advertisedIp = null;
+  }
+
+  return defaultMarshaller(row, properties, whitelist);
+};
 
 const properties: ProxyTrunkProperties = {
   name: {
@@ -71,6 +81,7 @@ const ProxyTrunk: EntityInterface = {
 
     return module.default;
   },
+  marshaller,
 };
 
 export default ProxyTrunk;

@@ -1,6 +1,11 @@
-import { EntityValue } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+  marshaller as defaultMarshaller,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import SchemaIcon from '@mui/icons-material/Schema';
 
@@ -9,10 +14,18 @@ import {
   ProxyUserPropertyList,
 } from './ProxyUserProperties';
 
+type marshallerType = typeof defaultMarshaller;
+const marshaller: marshallerType = (row, properties, whitelist) => {
+  if (row.advertisedIp === '') {
+    row.advertisedIp = null;
+  }
+
+  return defaultMarshaller(row, properties, whitelist);
+};
+
 const properties: ProxyUserProperties = {
   name: {
     label: _('Name'),
-    readOnly: true,
   },
   ip: {
     label: _('IP Address'),
@@ -20,6 +33,23 @@ const properties: ProxyUserProperties = {
   advertisedIp: {
     label: _('Advertised IP Address'),
   },
+};
+
+const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === ProxyUser.iden
+  ) {
+    const isDeletePath = routeMapItem.route === `${ProxyUser.path}/:id`;
+    const allowDelete = row.id !== 1;
+    if (isDeletePath && !allowDelete) {
+      return null;
+    }
+  }
+
+  return DefaultChildDecorator(props);
 };
 
 const ProxyUser: EntityInterface = {
@@ -36,6 +66,7 @@ const ProxyUser: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'ProxyUsers',
   },
+  ChildDecorator,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
@@ -46,6 +77,7 @@ const ProxyUser: EntityInterface = {
 
     return module.default;
   },
+  marshaller,
 };
 
 export default ProxyUser;
