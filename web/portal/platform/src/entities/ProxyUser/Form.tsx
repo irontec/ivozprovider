@@ -12,7 +12,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: '',
-      fields: ['ip'],
+      fields: ['ip', 'advertisedIp'],
     },
   ];
 

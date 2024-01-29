@@ -12,7 +12,8 @@ Feature: Update proxy users
       """
       {
           "name": "updated proxyuser",
-          "ip": "127.0.0.2"
+          "ip": "127.0.0.2",
+          "advertisedIp": "138.0.0.2"
       }
       """
      Then the response status code should be 200
@@ -23,6 +24,7 @@ Feature: Update proxy users
       {
           "name": "updated proxyuser",
           "ip": "127.0.0.2",
+          "advertisedIp": "138.0.0.2",
           "id": 1
       }
       """

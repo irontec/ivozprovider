@@ -24,15 +24,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Ast/Domain/Model/PsIdentify/PsIdentify.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setMatchHeader(self::MATCH_HEADER . $matchHeader)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>PsIdentify</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyAbstract.php">
     <MixedArgument occurrences="8">
@@ -262,17 +256,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpRate/TpRate.php">
-    <LessSpecificReturnStatement occurrences="2">
-      <code>parent::setGroupIntervalStart($groupIntervalStart)</code>
-      <code>parent::setRateIncrement($rateIncrement)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>TpRate</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpRate/TpRateAbstract.php">
     <MixedArgument occurrences="2">
@@ -642,14 +628,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/Rtpengine/Rtpengine.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setMediaRelaySet($mediaRelaySet)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/Rtpengine/RtpengineAbstract.php">
     <MixedArgument occurrences="2">
       <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySet())</code>
@@ -815,17 +793,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacreg.php">
-    <LessSpecificReturnStatement occurrences="2">
-      <code>parent::setAuthProxy($authProxy)</code>
-      <code>parent::setLUuid($lUuid)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>TrunksUacreg</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregAbstract.php">
     <MixedArgument occurrences="4">
@@ -842,12 +812,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Kam/Domain/Model/Trusted/Trusted.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setSrcIp($srcIp)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$srcIp</code>
     </PossiblyNullArgument>
@@ -868,14 +832,6 @@
     <InvalidScalarArgument occurrences="1">
       <code>$mask</code>
     </InvalidScalarArgument>
-    <LessSpecificReturnStatement occurrences="2">
-      <code>parent::setIpAddr($ipAddr)</code>
-      <code>parent::setMask($mask)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressAbstract.php">
     <MixedArgument occurrences="2">
@@ -1324,12 +1280,6 @@
     </MissingParamType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Administrator/Administrator.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setPass($cryptPass)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$pass</code>
     </PossiblyNullArgument>
@@ -1527,15 +1477,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Brand/Brand.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setDomainUsers(trim($domainUsers))</code>
-    </LessSpecificReturnStatement>
     <MissingReturnType occurrences="1">
       <code>getRecordingsDiskUsage</code>
     </MissingReturnType>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$domainUsers</code>
     </PossiblyNullArgument>
@@ -1579,15 +1523,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/BrandService/BrandService.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setCode($code)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>BrandService</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/BrandService/BrandServiceAbstract.php">
     <MixedArgument occurrences="4">
@@ -1747,14 +1685,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvScheduler.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setLastExecutionError($lastExecutionError)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerAbstract.php">
     <MixedArgument occurrences="22">
       <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
@@ -1811,15 +1741,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSetting.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setNumberValue($numberValue)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>CallForwardSetting</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingAbstract.php">
     <MixedArgument occurrences="18">
@@ -1850,14 +1774,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Carrier/Carrier.php">
-    <LessSpecificReturnStatement occurrences="2">
-      <code>parent::setBalance($balance)</code>
-      <code>parent::setProxyTrunk($proxyTrunks)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <ParamNameMismatch occurrences="1">
       <code>$proxyTrunks</code>
     </ParamNameMismatch>
@@ -1897,19 +1813,9 @@
     <InvalidScalarArgument occurrences="1">
       <code>$port</code>
     </InvalidScalarArgument>
-    <LessSpecificReturnStatement occurrences="3">
-      <code>parent::setAuthPassword($authPassword)</code>
-      <code>parent::setIp($ip)</code>
-      <code>parent::setSipProxy($sipProxy)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>CarrierServer</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="2">
       <code>$this-&gt;getOutboundProxy()</code>
       <code>$this-&gt;getSipProxy()</code>
@@ -1943,12 +1849,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/Company.php">
-    <LessSpecificReturnStatement occurrences="4">
-      <code>parent::setBalance($balance)</code>
-      <code>parent::setDomainUsers($domainUsers)</code>
-      <code>parent::setName(trim($name))</code>
-      <code>parent::setOnDemandRecordCode($onDemandRecordCode)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>Company</code>
     </MethodSignatureMismatch>
@@ -1958,12 +1858,6 @@
     <MixedArgument occurrences="1">
       <code>$exten</code>
     </MixedArgument>
-    <MoreSpecificReturnType occurrences="4">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$balance</code>
     </PossiblyNullArgument>
@@ -2092,15 +1986,9 @@
     </TooManyArguments>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyService/CompanyService.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setCode($code)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>CompanyService</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceAbstract.php">
     <MixedArgument occurrences="4">
@@ -2400,15 +2288,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Ddi/Ddi.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setDdi($ddi)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>Ddi</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Ddi/DdiAbstract.php">
     <MixedArgument occurrences="30">
@@ -2456,12 +2338,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProvider/DdiProvider.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setProxyTrunk($proxyTrunks)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
     <ParamNameMismatch occurrences="1">
       <code>$proxyTrunks</code>
     </ParamNameMismatch>
@@ -2490,15 +2366,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProviderAddress/DdiProviderAddress.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setIp($ip)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>DdiProviderAddress</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$ip</code>
     </PossiblyNullArgument>
@@ -2523,15 +2393,9 @@
     </TooManyArguments>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistration.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setAuthPassword($authPassword)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>DdiProviderRegistration</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationAbstract.php">
     <MixedArgument occurrences="2">
@@ -2550,14 +2414,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Destination/Destination.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setPrefix($prefix)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Destination/DestinationAbstract.php">
     <MixedArgument occurrences="2">
@@ -2582,21 +2438,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DestinationRate/DestinationRate.php">
-    <LessSpecificReturnStatement occurrences="4">
-      <code>parent::setConnectFee($connectFee)</code>
-      <code>parent::setCost($cost)</code>
-      <code>parent::setGroupIntervalStart($groupIntervalStart)</code>
-      <code>parent::setRateIncrement($rateIncrement)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>DestinationRate</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="4">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateAbstract.php">
     <MixedArgument occurrences="4">
@@ -2621,14 +2465,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroup.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setLastExecutionError($lastExecutionError)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupAbstract.php">
     <MixedArgument occurrences="4">
@@ -2666,19 +2502,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Extension/Extension.php">
-    <LessSpecificReturnStatement occurrences="3">
-      <code>parent::setNumber($number)</code>
-      <code>parent::setNumberValue($numberValue)</code>
-      <code>parent::setUser($user)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>Extension</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <UnnecessaryVarAnnotation occurrences="1">
       <code>\Ivoz\Provider\Domain\Model\User\UserInterface[]</code>
     </UnnecessaryVarAnnotation>
@@ -2875,14 +2701,6 @@
       <code>parent::__construct(...func_get_args())</code>
     </TooManyArguments>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Fax/Fax.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>$response</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Fax/FaxAbstract.php">
     <MixedArgument occurrences="4">
       <code>$fkTransformer-&gt;transform($company)</code>
@@ -2903,12 +2721,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOut.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setDst($dst)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$dst</code>
     </PossiblyNullArgument>
@@ -2997,14 +2809,6 @@
       <code>parent::__construct(...func_get_args())</code>
     </TooManyArguments>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/FixedCost/FixedCost.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setCost($cost)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCost/FixedCostAbstract.php">
     <MixedArgument occurrences="2">
       <code>$fkTransformer-&gt;transform($brand)</code>
@@ -3079,21 +2883,9 @@
     <ImplicitToStringCast occurrences="1">
       <code>$this-&gt;getDomain()</code>
     </ImplicitToStringCast>
-    <LessSpecificReturnStatement occurrences="4">
-      <code>parent::setIp($ip)</code>
-      <code>parent::setName($name)</code>
-      <code>parent::setPassword($password)</code>
-      <code>parent::setPort($port)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>Friend</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="4">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$this-&gt;getDomain()</code>
     </PossiblyNullArgument>
@@ -3238,22 +3030,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Invoice/Invoice.php">
-    <LessSpecificReturnStatement occurrences="5">
-      <code>parent::setInDate($inDate)</code>
-      <code>parent::setNumber($number)</code>
-      <code>parent::setOutDate($outDate)</code>
-      <code>parent::setStatusMsg($statusMsg)</code>
-      <code>parent::setTaxRate($taxRate)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="5">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Invoice/InvoiceAbstract.php">
     <MixedArgument occurrences="10">
       <code>$fkTransformer-&gt;transform($brand)</code>
@@ -3292,36 +3068,14 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDto.php">
-    <LessSpecificReturnStatement occurrences="3">
-      <code>parent::setIteration($iteration)</code>
-      <code>parent::setLatestValue($latestValue)</code>
-      <code>parent::setVersion($version)</code>
-    </LessSpecificReturnStatement>
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-    <MoreSpecificReturnType occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceScheduler.php">
-    <LessSpecificReturnStatement occurrences="3">
-      <code>parent::setEmail($email)</code>
-      <code>parent::setFrequency($frequency)</code>
-      <code>parent::setLastExecutionError($lastExecutionError)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerAbstract.php">
     <MixedArgument occurrences="8">
@@ -3355,15 +3109,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplate.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setTemplate(...func_get_args())</code>
-    </LessSpecificReturnStatement>
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateAbstract.php">
     <MixedArgument occurrences="2">
@@ -3705,15 +3453,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPattern.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setPrefix($prefix)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>OutgoingDdiRulesPattern</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternAbstract.php">
     <MixedArgument occurrences="6">
@@ -3737,18 +3479,12 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRouting.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setWeight($weight)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>OutgoingRouting</code>
     </MethodSignatureMismatch>
     <MixedMethodCall occurrences="1">
       <code>getId</code>
     </MixedMethodCall>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingAbstract.php">
     <MixedArgument occurrences="14">
@@ -3838,14 +3574,6 @@
       <code>parent::__construct(...func_get_args())</code>
     </TooManyArguments>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ProxyTrunk/ProxyTrunk.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setIp($ip)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ProxyTrunk/ProxyTrunkAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -3909,16 +3637,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Queue/Queue.php">
-    <LessSpecificReturnStatement occurrences="3">
-      <code>parent::setMaxWaitTime($maxWaitTime)</code>
-      <code>parent::setMaxlen($maxlen)</code>
-      <code>parent::setName($name)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$this-&gt;getName()</code>
     </PossiblyNullArgument>
@@ -4036,17 +3754,9 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDto.php">
-    <LessSpecificReturnStatement occurrences="2">
-      <code>parent::setTimeIn($timeIn)</code>
-      <code>parent::setTimingType($timingType)</code>
-    </LessSpecificReturnStatement>
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-    <MoreSpecificReturnType occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanTrait.php">
     <MixedArgument occurrences="1">
@@ -4131,25 +3841,12 @@
     <ImplicitToStringCast occurrences="1">
       <code>$this-&gt;getDomain()</code>
     </ImplicitToStringCast>
-    <LessSpecificReturnStatement occurrences="5">
-      <code>parent::setIp($ip)</code>
-      <code>parent::setName($name)</code>
-      <code>parent::setPassword($password)</code>
-      <code>parent::setPassword(null)</code>
-      <code>parent::setPort($port)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>ResidentialDevice</code>
     </MethodSignatureMismatch>
     <MissingParamType occurrences="1">
       <code>$ddieE164</code>
     </MissingParamType>
-    <MoreSpecificReturnType occurrences="4">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$this-&gt;getDomain()</code>
     </PossiblyNullArgument>
@@ -4187,22 +3884,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RetailAccount/RetailAccount.php">
-    <LessSpecificReturnStatement occurrences="5">
-      <code>parent::setIp($ip)</code>
-      <code>parent::setName($name)</code>
-      <code>parent::setPassword($password)</code>
-      <code>parent::setPassword(null)</code>
-      <code>parent::setPort($port)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>RetailAccount</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="4">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountAbstract.php">
     <MixedArgument occurrences="10">
@@ -4242,12 +3926,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPattern.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setPrefix($prefix)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
       <code>$prefix</code>
     </PossiblyNullArgument>
@@ -4270,12 +3948,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroup.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setName($name)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
     <UnnecessaryVarAnnotation occurrences="1">
       <code>RoutingPatternGroupsRelPatternInterface</code>
     </UnnecessaryVarAnnotation>
@@ -4323,14 +3995,6 @@
       <code>parent::__construct(...func_get_args())</code>
     </TooManyArguments>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/RoutingTag/RoutingTag.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setTag($tag)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagAbstract.php">
     <MixedArgument occurrences="2">
       <code>$fkTransformer-&gt;transform($brand)</code>
@@ -4368,14 +4032,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Service/Service.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setDefaultCode($defaultCode)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Service/ServiceAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
@@ -4416,11 +4072,6 @@
     <InvalidArrayOffset occurrences="1">
       <code>$symbols[random_int(0, strlen($symbols) - 1)]</code>
     </InvalidArrayOffset>
-    <LessSpecificReturnStatement occurrences="3">
-      <code>parent::setMac($mac)</code>
-      <code>parent::setName($name)</code>
-      <code>parent::setPassword($password)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>Terminal</code>
     </MethodSignatureMismatch>
@@ -4430,11 +4081,6 @@
     <MixedOperand occurrences="1">
       <code>$symbols[random_int(0, strlen($symbols) - 1)]</code>
     </MixedOperand>
-    <MoreSpecificReturnType occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="2">
       <code>$name</code>
       <code>$this-&gt;getDomain()</code>
@@ -4480,14 +4126,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/TerminalModel/TerminalModel.php">
-    <LessSpecificReturnStatement occurrences="3">
-      <code>parent::setIden($iden)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="2">
       <code>$genericTemplate</code>
       <code>$specificTemplate</code>
@@ -4528,15 +4166,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/TransformationRule/TransformationRule.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setMatchExpr($matchExpr)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>TransformationRule</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleAbstract.php">
     <MixedArgument occurrences="2">
@@ -4554,16 +4186,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSet.php">
-    <LessSpecificReturnStatement occurrences="2">
-      <code>parent::setInternationalCode($internationalCode)</code>
-      <code>parent::setTrunkPrefix($trunkPrefix)</code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetAbstract.php">
     <MixedArgument occurrences="4">
@@ -4585,20 +4207,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/User/User.php">
-    <LessSpecificReturnStatement occurrences="4">
-      <code>parent::setEmail($email)</code>
-      <code>parent::setOutgoingDdi($outgoingDdi)</code>
-      <code>parent::setPass($cryptPass)</code>
-      <code>parent::setPass(null)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>User</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </MoreSpecificReturnType>
     <UnnecessaryVarAnnotation occurrences="2">
       <code>PickUpRelUserInterface[]</code>
       <code>PickUpRelUserInterface[]</code>
@@ -4741,15 +4352,9 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortal.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setUrl($url)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>WebPortal</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortalAbstract.php">
     <MixedArgument occurrences="2">

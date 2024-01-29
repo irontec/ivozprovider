@@ -25,6 +25,8 @@
         <MixedArrayAccess errorLevel="suppress" />
         <MixedAssignment errorLevel="suppress" />
         <DeprecatedConstant errorLevel="info" />
+        <MoreSpecificReturnType errorLevel="suppress" />
+        <LessSpecificReturnStatement errorLevel="suppress" />
     </issueHandlers>
     <projectFiles>
         <directory name="Ivoz" />

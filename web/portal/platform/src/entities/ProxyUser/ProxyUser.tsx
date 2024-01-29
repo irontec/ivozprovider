@@ -17,6 +17,9 @@ const properties: ProxyUserProperties = {
   ip: {
     label: _('IP Address'),
   },
+  advertisedIp: {
+    label: _('Advertised IP Address'),
+  },
 };
 
 const ProxyUser: EntityInterface = {
@@ -28,7 +31,7 @@ const ProxyUser: EntityInterface = {
   path: '/proxy_users',
   toStr: (row: ProxyUserPropertyList<EntityValue>) => row.name as string,
   properties,
-  columns: ['name', 'ip'],
+  columns: ['name', 'ip', 'advertisedIp'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ProxyUsers',
