@@ -20,6 +20,7 @@ const properties: RatingPlanGroupProperties = {
     label: _('Description'),
     maxLength: 255,
     multilang: true,
+    required: false,
   },
   currency: {
     label: _('Currency', { count: 1 }),
