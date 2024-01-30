@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a88ced8380a4f713f11b77c5cb62b95",
+    "content-hash": "a9316108b59670a6e2b19d3eb86a97f3",
     "packages": [
         {
             "name": "api-platform/core",
@@ -426,30 +426,34 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "1.13.2",
+            "version": "1.14.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "5b668aef16090008790395c02c893b1ba13f7e08"
+                "reference": "fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/5b668aef16090008790395c02c893b1ba13f7e08",
-                "reference": "5b668aef16090008790395c02c893b1ba13f7e08",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af",
+                "reference": "fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af",
                 "shasum": ""
             },
             "require": {
-                "doctrine/lexer": "1.*",
+                "doctrine/lexer": "^1 || ^2",
                 "ext-tokenizer": "*",
                 "php": "^7.1 || ^8.0",
                 "psr/cache": "^1 || ^2 || ^3"
             },
             "require-dev": {
                 "doctrine/cache": "^1.11 || ^2.0",
-                "doctrine/coding-standard": "^6.0 || ^8.1",
-                "phpstan/phpstan": "^0.12.20",
-                "phpunit/phpunit": "^7.5 || ^8.0 || ^9.1.5",
-                "symfony/cache": "^4.4 || ^5.2"
+                "doctrine/coding-standard": "^9 || ^10",
+                "phpstan/phpstan": "~1.4.10 || ^1.8.0",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "symfony/cache": "^4.4 || ^5.4 || ^6",
+                "vimeo/psalm": "^4.10"
+            },
+            "suggest": {
+                "php": "PHP 8.0 or higher comes with attributes, a native replacement for annotations"
             },
             "type": "library",
             "autoload": {
@@ -492,9 +496,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.13.2"
+                "source": "https://github.com/doctrine/annotations/tree/1.14.3"
             },
-            "time": "2021-08-05T19:00:23+00:00"
+            "time": "2023-02-01T09:20:38+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -2473,37 +2477,40 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.10.3",
+            "version": "4.10.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api.git",
-                "reference": "b2df4cfc27a93284cb500a39a295d06a0c8b47e1"
+                "reference": "901f8e747ffbf2285ded98cdc4d1d294556a38a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/b2df4cfc27a93284cb500a39a295d06a0c8b47e1",
-                "reference": "b2df4cfc27a93284cb500a39a295d06a0c8b47e1",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/901f8e747ffbf2285ded98cdc4d1d294556a38a5",
+                "reference": "901f8e747ffbf2285ded98cdc4d1d294556a38a5",
                 "shasum": ""
             },
             "require": {
                 "api-platform/core": "2.6.*",
+                "doctrine/annotations": "^1.14.3",
                 "graze/guzzle-jsonrpc": "3.2.*",
-                "guzzlehttp/guzzle": "^6.3",
+                "guzzlehttp/guzzle": "^6.5.6",
+                "guzzlehttp/psr7": "^1.9.1",
                 "irontec/ivoz-core": "^4.16",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=7.4",
-                "symfony/doctrine-bridge": "^5.4",
+                "symfony/doctrine-bridge": "^5.4.21",
                 "symfony/expression-language": "^5.4",
                 "symfony/finder": "^5.4",
                 "symfony/http-foundation": "^5.4",
                 "symfony/property-info": "^5.4",
                 "symfony/routing": "^5.4",
                 "symfony/serializer": "^5.4",
-                "twig/twig": "^3.3"
+                "symfony/twig-bridge": "^5.4.31",
+                "twig/twig": "^3.8.0"
             },
             "require-dev": {
                 "behat/behat": "^3.8.1",
-                "behat/mink-browserkit-driver": "^1.3",
+                "behat/mink-browserkit-driver": "^2.0.0",
                 "behatch/contexts": "^3.3",
                 "friends-of-behat/mink-extension": "^2.5",
                 "phpstan/phpstan": "^1.0",
@@ -2536,27 +2543,27 @@
             "description": "Api library built on api-platform for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api/issues",
-                "source": "https://github.com/irontec/ivoz-api/tree/4.10.3"
+                "source": "https://github.com/irontec/ivoz-api/tree/4.10.5"
             },
-            "time": "2023-09-07T11:58:33+00:00"
+            "time": "2024-01-30T10:11:15+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.8.2",
+            "version": "4.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api-bundle.git",
-                "reference": "ea9257ab6844d7ac6b9ae73871473a797eb38f1a"
+                "reference": "36a6963625d37435b2c005990ace1f90ad497351"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/ea9257ab6844d7ac6b9ae73871473a797eb38f1a",
-                "reference": "ea9257ab6844d7ac6b9ae73871473a797eb38f1a",
+                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/36a6963625d37435b2c005990ace1f90ad497351",
+                "reference": "36a6963625d37435b2c005990ace1f90ad497351",
                 "shasum": ""
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.12",
-                "irontec/ivoz-api": "^4.10.0",
+                "irontec/ivoz-api": "^4.10.5",
                 "irontec/ivoz-core-bundle": "^4.7",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",
@@ -2596,9 +2603,9 @@
             "description": "Symfony bridge for ivoz-api",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api-bundle/issues",
-                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.8.1"
+                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.8.3"
             },
-            "time": "2023-11-21T10:43:00+00:00"
+            "time": "2024-01-30T10:13:32+00:00"
         },
         {
             "name": "irontec/ivoz-core",
@@ -5563,21 +5570,21 @@
         },
         {
             "name": "symfony/doctrine-bridge",
-            "version": "v5.4.7",
+            "version": "v5.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/doctrine-bridge.git",
-                "reference": "8293adcd47c2a3195cfa5f511feebb12832c47b4"
+                "reference": "1eeb02bcad51cb99ab3b73bc83adf80f9b1a75cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/doctrine-bridge/zipball/8293adcd47c2a3195cfa5f511feebb12832c47b4",
-                "reference": "8293adcd47c2a3195cfa5f511feebb12832c47b4",
+                "url": "https://api.github.com/repos/symfony/doctrine-bridge/zipball/1eeb02bcad51cb99ab3b73bc83adf80f9b1a75cf",
+                "reference": "1eeb02bcad51cb99ab3b73bc83adf80f9b1a75cf",
                 "shasum": ""
             },
             "require": {
                 "doctrine/event-manager": "~1.0",
-                "doctrine/persistence": "^2",
+                "doctrine/persistence": "^2|^3",
                 "php": ">=7.2.5",
                 "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-ctype": "~1.8",
@@ -5589,10 +5596,9 @@
                 "doctrine/dbal": "<2.13.1",
                 "doctrine/lexer": "<1.1",
                 "doctrine/orm": "<2.7.4",
-                "phpunit/phpunit": "<5.4.3",
                 "symfony/cache": "<5.4",
                 "symfony/dependency-injection": "<4.4",
-                "symfony/form": "<5.1",
+                "symfony/form": "<5.4.21|>=6,<6.2.7",
                 "symfony/http-kernel": "<5",
                 "symfony/messenger": "<4.4",
                 "symfony/property-info": "<5",
@@ -5602,8 +5608,8 @@
                 "symfony/validator": "<5.2"
             },
             "require-dev": {
-                "doctrine/annotations": "^1.10.4",
-                "doctrine/collections": "~1.0",
+                "doctrine/annotations": "^1.10.4|^2",
+                "doctrine/collections": "^1.0|^2.0",
                 "doctrine/data-fixtures": "^1.1",
                 "doctrine/dbal": "^2.13.1|^3.0",
                 "doctrine/orm": "^2.7.4",
@@ -5613,7 +5619,7 @@
                 "symfony/dependency-injection": "^4.4|^5.0|^6.0",
                 "symfony/doctrine-messenger": "^5.1|^6.0",
                 "symfony/expression-language": "^4.4|^5.0|^6.0",
-                "symfony/form": "^5.1.3|^6.0",
+                "symfony/form": "^5.4.21|^6.2.7",
                 "symfony/http-kernel": "^5.0|^6.0",
                 "symfony/messenger": "^4.4|^5.0|^6.0",
                 "symfony/property-access": "^4.4|^5.0|^6.0",
@@ -5660,7 +5666,7 @@
             "description": "Provides integration for Doctrine with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/doctrine-bridge/tree/v5.4.7"
+                "source": "https://github.com/symfony/doctrine-bridge/tree/v5.4.24"
             },
             "funding": [
                 {
@@ -5676,7 +5682,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-01T08:40:14+00:00"
+            "time": "2023-05-25T13:05:00+00:00"
         },
         {
             "name": "symfony/dotenv",
@@ -6241,16 +6247,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v5.4.7",
+            "version": "v5.4.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "75267931833e98f82bc39fb20f54251b7516680b"
+                "reference": "9c13bf53e728d3f75ce7a36046ffc2cd0e7d25ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/75267931833e98f82bc39fb20f54251b7516680b",
-                "reference": "75267931833e98f82bc39fb20f54251b7516680b",
+                "url": "https://api.github.com/repos/symfony/form/zipball/9c13bf53e728d3f75ce7a36046ffc2cd0e7d25ec",
+                "reference": "9c13bf53e728d3f75ce7a36046ffc2cd0e7d25ec",
                 "shasum": ""
             },
             "require": {
@@ -6267,19 +6273,18 @@
                 "symfony/service-contracts": "^1.1|^2|^3"
             },
             "conflict": {
-                "phpunit/phpunit": "<5.4.3",
                 "symfony/console": "<4.4",
                 "symfony/dependency-injection": "<4.4",
-                "symfony/doctrine-bridge": "<4.4",
+                "symfony/doctrine-bridge": "<5.4.21|>=6,<6.2.7",
                 "symfony/error-handler": "<4.4.5",
                 "symfony/framework-bundle": "<4.4",
                 "symfony/http-kernel": "<4.4",
                 "symfony/translation": "<4.4",
                 "symfony/translation-contracts": "<1.1.7",
-                "symfony/twig-bridge": "<4.4"
+                "symfony/twig-bridge": "<5.4.21|>=6,<6.2.7"
             },
             "require-dev": {
-                "doctrine/collections": "~1.0",
+                "doctrine/collections": "^1.0|^2.0",
                 "symfony/config": "^4.4|^5.0|^6.0",
                 "symfony/console": "^5.4|^6.0",
                 "symfony/dependency-injection": "^4.4|^5.0|^6.0",
@@ -6324,7 +6329,7 @@
             "description": "Allows to easily create, process and reuse HTML forms",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/form/tree/v5.4.7"
+                "source": "https://github.com/symfony/form/tree/v5.4.33"
             },
             "funding": [
                 {
@@ -6340,7 +6345,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-13T20:07:29+00:00"
+            "time": "2023-11-30T10:45:54+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -9521,16 +9526,16 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v5.4.7",
+            "version": "v5.4.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bridge.git",
-                "reference": "b43e9bdb57a39ffffb4c44a7ef0a47d338e9f1da"
+                "reference": "4ced0e91705d689b77763678367bd522d79f9f9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/b43e9bdb57a39ffffb4c44a7ef0a47d338e9f1da",
-                "reference": "b43e9bdb57a39ffffb4c44a7ef0a47d338e9f1da",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/4ced0e91705d689b77763678367bd522d79f9f9a",
+                "reference": "4ced0e91705d689b77763678367bd522d79f9f9a",
                 "shasum": ""
             },
             "require": {
@@ -9543,22 +9548,22 @@
                 "phpdocumentor/reflection-docblock": "<3.2.2",
                 "phpdocumentor/type-resolver": "<1.4.0",
                 "symfony/console": "<5.3",
-                "symfony/form": "<5.3",
+                "symfony/form": "<5.4.21|>=6,<6.2.7",
                 "symfony/http-foundation": "<5.3",
                 "symfony/http-kernel": "<4.4",
                 "symfony/translation": "<5.2",
                 "symfony/workflow": "<5.2"
             },
             "require-dev": {
-                "doctrine/annotations": "^1.12",
-                "egulias/email-validator": "^2.1.10|^3",
+                "doctrine/annotations": "^1.12|^2",
+                "egulias/email-validator": "^2.1.10|^3|^4",
                 "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
                 "symfony/asset": "^4.4|^5.0|^6.0",
                 "symfony/console": "^5.3|^6.0",
                 "symfony/dependency-injection": "^4.4|^5.0|^6.0",
                 "symfony/expression-language": "^4.4|^5.0|^6.0",
                 "symfony/finder": "^4.4|^5.0|^6.0",
-                "symfony/form": "^5.3|^6.0",
+                "symfony/form": "^5.4.21|^6.2.7",
                 "symfony/http-foundation": "^5.3|^6.0",
                 "symfony/http-kernel": "^4.4|^5.0|^6.0",
                 "symfony/intl": "^4.4|^5.0|^6.0",
@@ -9622,7 +9627,7 @@
             "description": "Provides integration for Twig with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/twig-bridge/tree/v5.4.7"
+                "source": "https://github.com/symfony/twig-bridge/tree/v5.4.34"
             },
             "funding": [
                 {
@@ -9638,7 +9643,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-01T06:09:41+00:00"
+            "time": "2023-12-15T11:59:38+00:00"
         },
         {
             "name": "symfony/twig-bundle",
@@ -10168,33 +10173,29 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.4.3",
+            "version": "v3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "c38fd6b0b7f370c198db91ffd02e23b517426b58"
+                "reference": "9d15f0ac07f44dc4217883ec6ae02fd555c6f71d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c38fd6b0b7f370c198db91ffd02e23b517426b58",
-                "reference": "c38fd6b0b7f370c198db91ffd02e23b517426b58",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9d15f0ac07f44dc4217883ec6ae02fd555c6f71d",
+                "reference": "9d15f0ac07f44dc4217883ec6ae02fd555c6f71d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
                 "symfony/polyfill-ctype": "^1.8",
-                "symfony/polyfill-mbstring": "^1.3"
+                "symfony/polyfill-mbstring": "^1.3",
+                "symfony/polyfill-php80": "^1.22"
             },
             "require-dev": {
-                "psr/container": "^1.0",
-                "symfony/phpunit-bridge": "^4.4.9|^5.0.9|^6.0"
+                "psr/container": "^1.0|^2.0",
+                "symfony/phpunit-bridge": "^5.4.9|^6.3|^7.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Twig\\": "src/"
@@ -10228,7 +10229,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.4.3"
+                "source": "https://github.com/twigphp/Twig/tree/v3.8.0"
             },
             "funding": [
                 {
@@ -10240,7 +10241,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-28T08:42:51+00:00"
+            "time": "2023-11-21T18:54:41+00:00"
         },
         {
             "name": "webmozart/assert",
