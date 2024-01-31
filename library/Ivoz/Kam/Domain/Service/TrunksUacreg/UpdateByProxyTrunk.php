@@ -14,7 +14,7 @@ class UpdateByProxyTrunk implements ProxyTrunkLifecycleEventHandlerInterface
     public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        private UpdateByDdiProvider $updateByDdiProvider,
+        private SyncValuesByDdiProvider $syncValuesByDdiProvider,
         private DdiProviderRepository $ddiProviderRepository
     ) {
     }
@@ -49,7 +49,7 @@ class UpdateByProxyTrunk implements ProxyTrunkLifecycleEventHandlerInterface
         }
 
         foreach ($ddiProviders as $ddiProvider) {
-            $this->updateByDdiProvider->execute($ddiProvider);
+            $this->syncValuesByDdiProvider->execute($ddiProvider);
         }
     }
 }
