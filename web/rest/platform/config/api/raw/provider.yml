@@ -336,6 +336,9 @@ Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
       name: ASC
+    write_access_control:
+      ROLE_SUPER_ADMIN:
+        raw: 'this.hasChanged("name") == false || this.getId() != 1'
     delete_access_control:
       ROLE_SUPER_ADMIN:
         id:
