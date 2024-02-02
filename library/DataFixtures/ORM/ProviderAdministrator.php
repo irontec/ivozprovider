@@ -114,6 +114,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
             $this->setName("RestrictedAdmin");
             $this->setLastname("Lastname");
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
         })->call($item6);
 
         $this->addReference('_reference_ProviderAdministrator6', $item6);
