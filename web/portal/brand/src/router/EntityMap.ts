@@ -68,6 +68,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.Administrator,
               filterBy: 'company',
               children: [
+                ...Object.values(entities.Administrator.customActions),
                 {
                   entity: entities.AdministratorRelPublicEntity,
                   filterBy: 'administrator',
@@ -103,6 +104,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.Administrator,
               filterBy: 'company',
               children: [
+                ...Object.values(entities.Administrator.customActions),
                 {
                   entity: entities.AdministratorRelPublicEntity,
                   filterBy: 'administrator',
@@ -135,6 +137,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.Administrator,
               filterBy: 'company',
               children: [
+                ...Object.values(entities.Administrator.customActions),
                 {
                   entity: entities.AdministratorRelPublicEntity,
                   filterBy: 'administrator',
@@ -170,6 +173,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.Administrator,
               filterBy: 'company',
               children: [
+                ...Object.values(entities.Administrator.customActions),
                 {
                   entity: entities.AdministratorRelPublicEntity,
                   filterBy: 'administrator',
