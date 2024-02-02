@@ -35,6 +35,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           },
           filterBy: 'brand',
           children: [
+            ...Object.values(entities.Administrator.customActions),
             {
               entity: entities.AdministratorRelPublicEntity,
               filterBy: 'administrator',
