@@ -7,11 +7,12 @@ import { useStoreActions, useStoreState } from 'store';
 interface LoginProps {
   validator?: EntityValidator;
   target?: string;
+  username?: string;
   token?: string;
 }
 
 export default function Login(props: LoginProps): JSX.Element | null {
-  const { validator, target, token } = props;
+  const { validator, target, username, token } = props;
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -28,11 +29,18 @@ export default function Login(props: LoginProps): JSX.Element | null {
   );
 
   useEffect(() => {
-    if (target && token) {
-      exchangeToken({
-        clientId: target,
-        token,
-      })
+    if ((target || username) && token) {
+      const payload: Record<string, string> = { token };
+
+      if (target) {
+        payload.clientId = target;
+      }
+
+      if (username) {
+        payload.username = username;
+      }
+
+      exchangeToken(payload)
         .then((success: boolean) => {
           if (!success) {
             // eslint-disable-next-line no-console
@@ -53,7 +61,7 @@ export default function Login(props: LoginProps): JSX.Element | null {
 
       return;
     }
-  }, [target, token, exchangeToken, navigate, location.pathname]);
+  }, [target, username, token, exchangeToken, navigate, location.pathname]);
 
   useEffect(() => {
     if (target && token) {
