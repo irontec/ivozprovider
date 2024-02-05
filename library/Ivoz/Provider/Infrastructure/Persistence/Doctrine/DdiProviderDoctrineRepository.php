@@ -72,10 +72,9 @@ class DdiProviderDoctrineRepository extends ServiceEntityRepository implements D
     }
 
     /**
-     * @param ProxyTrunkInterface $proxyTrunks
-     * @return array
+     * @return DdiProviderInterface[]
      */
-    public function findByProxyTrunks(ProxyTrunkInterface $proxyTrunks)
+    public function findByProxyTrunks(ProxyTrunkInterface $proxyTrunks): array
     {
         /** @var DdiProviderInterface[] $response */
         $response = $this->findBy([

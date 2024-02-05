@@ -5121,11 +5121,6 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DdiProviderDoctrineRepository\\:\\:findByProxyTrunks\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationDoctrineRepository\\:\\:getPrefixArrayByBrandId\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationDoctrineRepository.php

@@ -17,6 +17,10 @@ class DdiProviderLifecycleServiceCollection implements LifecycleServiceCollectio
 
     /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Kam\Domain\Service\TrunksUacreg\UpdateByDdiProvider::class => 200,
+        ],
         "on_commit" =>
         [
             \Ivoz\Provider\Domain\Service\DdiProvider\SendTrunksAddressPermissionsReloadRequest::class => 200,

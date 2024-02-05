@@ -57,6 +57,11 @@ class DeleteProtectionSpec extends ObjectBehavior
             ->willReturn([$carrier]);
 
         $this
+            ->ddiProviderRepository
+            ->findByProxyTrunks($proxyTrunk)
+            ->willReturn([]);
+
+        $this
             ->shouldThrow(\DomainException::class)
             ->duringExecute($proxyTrunk);
     }
