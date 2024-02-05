@@ -23,10 +23,9 @@ interface DdiProviderRepository extends ObjectRepository, Selectable
     public function findByBrandAndProxyTrunks(BrandInterface $brand, ProxyTrunkInterface $proxyTrunks);
 
     /**
-     * @param ProxyTrunkInterface $proxyTrunks
-     * @return mixed
+     * @return DdiProviderInterface[]
      */
-    public function findByProxyTrunks(ProxyTrunkInterface $proxyTrunks);
+    public function findByProxyTrunks(ProxyTrunkInterface $proxyTrunks): array;
 
     /**
      * @param int $brandId | null
