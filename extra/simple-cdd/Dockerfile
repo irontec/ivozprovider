@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 MAINTAINER Irontec IvozProvider Team <ivozprovider@irontec.com>
 
