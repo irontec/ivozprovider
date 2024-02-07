@@ -1,140 +1,152 @@
+Fri, 09 Feb 2024 13:19:03 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * Ivozprovider 3.4.1 released
+
+    * Portals
+        - Added missing email and attach sound fields for Residential voicemails #2468
+        - Added missing domain for Brands when Residential or Retail features are enabled #2482
+
+    * Core
+        - Fixed a bug that prevented friends creation for vPBX without a Corporation #2478
+        - Fixed balance operations for carriers #2452
+
 Tue, 28 Nov 2023 13:33:23 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
-* Ivozprovider 3.4.0 released
+    * IvozProvider 3.4.0 released
 
-* New Portals
-    - Fixed prepaid balances operations
-    - Fixed voicemail message counter on dashboards
-    - Fixed labels in platform portal feature selectors
-    - Fixed audio players
-* Application Server
-    - Configurable setting to announce how many participants are already present when joining a conference room.
-    - Pause and unpause services for queues
-* Other
-    - Brand new realtime active calls microservice written in go that replaces the old one written in openswoole
+    * New Portals
+        - Fixed prepaid balances operations
+        - Fixed voicemail message counter on dashboards
+        - Fixed labels in platform portal feature selectors
+        - Fixed audio players
+    * Application Server
+        - Configurable setting to announce how many participants are already present when joining a conference room.
+        - Pause and unpause services for queues
+    * Other
+        - Brand new realtime active calls microservice written in go that replaces the old one written in openswoole
 
-Tue, 03 Oct 2023 09:39:40 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+    Tue, 03 Oct 2023 09:39:40 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
-* Ivozprovider 3.3.0 released
+    * Ivozprovider 3.3.0 released
 
-* New Portals
-    - New portals are now loaded by default unless explicit configuration
-    - Old portals are still available adding /classic to URL path
-    - Portals header images are now properly load
-    - Added missing actions to simulate calls
-    - Added missing actions to preview invoices templates
-    - Added missing actions to test and restore terminal provisioning templates
-    - Improved Terminal provisioning template parser security
-    - Added missing importer for Holiday dates
-    - Added missing exporter for Call registry
-* Other
-    - Fixed a bug in Recordings encoder that stopped the process on first error
-    - Added new router microservice to determine the portal associated to each domain
+    * New Portals
+        - New portals are now loaded by default unless explicit configuration
+        - Old portals are still available adding /classic to URL path
+        - Portals header images are now properly load
+        - Added missing actions to simulate calls
+        - Added missing actions to preview invoices templates
+        - Added missing actions to test and restore terminal provisioning templates
+        - Improved Terminal provisioning template parser security
+        - Added missing importer for Holiday dates
+        - Added missing exporter for Call registry
+    * Other
+        - Fixed a bug in Recordings encoder that stopped the process on first error
+        - Added new router microservice to determine the portal associated to each domain
 
 
 Tue, 18 Jul 2023 11:21:55 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
-* Ivozprovider 3.2.0 released
+    * IvozProvider 3.2.0 released
 
-* New React based web portals
-    - Added impersonation between portals using internal administrators
-    - Added translations to officially supported languages
-    - Added dashboards to all portals
-    - Added support for Web portal customizable Logo
-    - Added a Web Portal based configuration option to load react portals by default
-    - New portals always accessible adding /platform, /brand, /client and /user to URL path
-    - Classic portal always accessible adding /classic to URL path
-    - Added missing action to regenerate invoices
-    - Added missing action to unban brute force attacks
-    - Added missing action to re-rate external calls
-    - Added missing actions to modify pre-paid balances
-    - Added documentation links to all screens
-    - Fixed a bug while adding client services not enabled by brand
-    - Lots of fixes in platform, brand, client and users portals screens
+    * New React based web portals
+        - Added impersonation between portals using internal administrators
+        - Added translations to officially supported languages
+        - Added dashboards to all portals
+        - Added support for Web portal customizable Logo
+        - Added a Web Portal based configuration option to load react portals by default
+        - New portals always accessible adding /platform, /brand, /client and /user to URL path
+        - Classic portal always accessible adding /classic to URL path
+        - Added missing action to regenerate invoices
+        - Added missing action to unban brute force attacks
+        - Added missing action to re-rate external calls
+        - Added missing actions to modify pre-paid balances
+        - Added documentation links to all screens
+        - Fixed a bug while adding client services not enabled by brand
+        - Lots of fixes in platform, brand, client and users portals screens
 
-* Proxies
-    - Fixed a bug with unsolicited MWI NOTIFY messages
+    * Proxies
+        - Fixed a bug with unsolicited MWI NOTIFY messages
 
-* Application Server
-    - Updated Queue members table to support future dynamic join and leave functionalities
-    - Fixed a bug identifying Terminals when their name had been changed
-    - Added click2dial contexts
+    * Application Server
+        - Updated Queue members table to support future dynamic join and leave functionalities
+        - Fixed a bug identifying Terminals when their name had been changed
+        - Added click2dial contexts
 
-* Core
-    - Added Corporation entity to group vPBX that can share Inter-vPBX Friends (internal calls between vPBX clients)
-    - Improved changelog entries to reflect Administrators impersonation chains
+    * Core
+        - Added Corporation entity to group vPBX that can share Inter-vPBX Friends (internal calls between vPBX clients)
+        - Improved changelog entries to reflect Administrators impersonation chains
 
 
 Fri, 10 Mar 2023 10:22:06 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
-* Ivozprovider 3.1.0 released
+    * IvozProvider 3.1.0 released
 
-* Initial version of new portals for all tenants
-    - Using React 18.2 framework
-    - CRUD operations supported
-    - Still a work in progress, not ready for production usage
+    * Initial version of new portals for all tenants
+        - Using React 18.2 framework
+        - CRUD operations supported
+        - Still a work in progress, not ready for production usage
 
-* Initial React User portal implementation
-    - Added Calls list section
-    - Added My Account section for changing user's basic information
-    - Added Preferences section for changing call specific settings
-    - Added Call Forward Settings to configure forwarding options
-    - Accessible adding /user/ to existing portal path
-    - Requires user email and password to login
+    * Initial React User portal implementation
+        - Added Calls list section
+        - Added My Account section for changing user's basic information
+        - Added Preferences section for changing call specific settings
+        - Added Call Forward Settings to configure forwarding options
+        - Accessible adding /user/ to existing portal path
+        - Requires user email and password to login
 
-* Initial React Client portal implementation
-    - Added sections for vPBX, Residential, Retail and Wholesale
-    - General section to manage Users, Terminals, Extensions, DDIs, Faxes, Services and Contacts
-    - Routing endpoint section to manage IVRs, Hunt Groups, Queues, Conditional Routes, Friends, Conference Rooms and Voicemails
-    - Routing tools section to manage External Filters, Calendars, Schedules Match Lists and Route Locks
-    - User configuration section to manage Outgoing DDI Rules, Pickup Groups, Call ACLS and Locations
-    - Multimedia section to manage Locutions and Music on Hold
-    - Calls section to manage Call registries, Active Calls, External Calls, Calls CSV Schedules and Recordings
-    - Accessible adding /client/ to existing portal path
-    - Requires Client Administrator credentials to login (or impersonation from Brand portal)
+    * Initial React Client portal implementation
+        - Added sections for vPBX, Residential, Retail and Wholesale
+        - General section to manage Users, Terminals, Extensions, DDIs, Faxes, Services and Contacts
+        - Routing endpoint section to manage IVRs, Hunt Groups, Queues, Conditional Routes, Friends, Conference Rooms and Voicemails
+        - Routing tools section to manage External Filters, Calendars, Schedules Match Lists and Route Locks
+        - User configuration section to manage Outgoing DDI Rules, Pickup Groups, Call ACLS and Locations
+        - Multimedia section to manage Locutions and Music on Hold
+        - Calls section to manage Call registries, Active Calls, External Calls, Calls CSV Schedules and Recordings
+        - Accessible adding /client/ to existing portal path
+        - Requires Client Administrator credentials to login (or impersonation from Brand portal)
 
-* Initial React Brand portal implementation
-    - Added Clients section to manage Virtual PBX, Residential, Retail and Wholesale clients
-    - Added Providers section to manage Carrier, DDI Providers and DDIs
-    - Added Routing section to manage Outgoing Routing, Routing Patterns, Routing Pattern groups and Routing Tags
-    - Added Billing section to manage Rating Plans, Destinations, Rates, Prepaid Balances and Daily usages
-    - Added Invoice section to manage Invoice, Invoice Schedulers, Fixed costs and Invoice Templates
-    - Added Calls section to manage Active brand Calls, External calls and Call CSV Schedulers
-    - Added Settings section to manage Company Portals, Special Numbers, Numeric Transformation, Notification Templates, Music on Hold, Brand Service and Match Lists
-    - Added View section to display lists of Retail Accounts, Residential Devices, Users, and Banned IP addresses
-    - Added support to impersonate a Client Administrator to access Client portal without credentials
-    - Accessible adding /brand/ to existing portal path
-    - Requires Brand Administrator credentials to login (or impersonation from Platform portal)
+    * Initial React Brand portal implementation
+        - Added Clients section to manage Virtual PBX, Residential, Retail and Wholesale clients
+        - Added Providers section to manage Carrier, DDI Providers and DDIs
+        - Added Routing section to manage Outgoing Routing, Routing Patterns, Routing Pattern groups and Routing Tags
+        - Added Billing section to manage Rating Plans, Destinations, Rates, Prepaid Balances and Daily usages
+        - Added Invoice section to manage Invoice, Invoice Schedulers, Fixed costs and Invoice Templates
+        - Added Calls section to manage Active brand Calls, External calls and Call CSV Schedulers
+        - Added Settings section to manage Company Portals, Special Numbers, Numeric Transformation, Notification Templates, Music on Hold, Brand Service and Match Lists
+        - Added View section to display lists of Retail Accounts, Residential Devices, Users, and Banned IP addresses
+        - Added support to impersonate a Client Administrator to access Client portal without credentials
+        - Accessible adding /brand/ to existing portal path
+        - Requires Brand Administrator credentials to login (or impersonation from Platform portal)
 
-* Initial React Platform portal implementation
-    - Added Brand, Main Operators, Anti-flood Banned IPs, Terminal Manufacturers and Services management screens
-    - Added Currencies, Notification templates, Invoice templates, Special numbers, Platform portals management screens
-    - Added realtime Active calls and External calls views
-    - Added Infrastructure section to manage Proxy Users, Proxy Trunks, Media relays and Application Servers
-    - Accessible adding /platform/ to existing portal path
-    - Requires Platform Administrator credentials to login
+    * Initial React Platform portal implementation
+        - Added Brand, Main Operators, Anti-flood Banned IPs, Terminal Manufacturers and Services management screens
+        - Added Currencies, Notification templates, Invoice templates, Special numbers, Platform portals management screens
+        - Added realtime Active calls and External calls views
+        - Added Infrastructure section to manage Proxy Users, Proxy Trunks, Media relays and Application Servers
+        - Accessible adding /platform/ to existing portal path
+        - Requires Platform Administrator credentials to login
 
-* API
-    - Lots of changes in Rest API to fulfill new portals requirements. See specific API Changelogs for details.
-    - Main breaking changes
-        * Replaced Company nif, postalAddress, town, province and countryName properties with new Invoice model
-        * Removed externallyRated property from Carrier
-        * Removed billInboundCalls property from DDIs
+    * API
+        - Lots of changes in Rest API to fulfill new portals requirements. See specific API Changelogs for details.
+        - Main breaking changes
+            * Replaced Company nif, postalAddress, town, province and countryName properties with new Invoice model
+            * Removed externallyRated property from Carrier
+            * Removed billInboundCalls property from DDIs
 
-* Other Features and Fixed
-    - Upgraded Kamailio to 3.6.2
-    - Upgraded RTPengine to 10.5.3
-    - Added configurable Announce Position locutions to Queues
-    - Added Display name in Queues to override default Caller name in Queue members calls
-    - Added Address Book section to store External numbers (not yet used)
-    - Added Description field in DDIs
-    - Added support to use DDIs only for outbound presentation (DDI types)
-    - Changed rtpengine control port to 2223
-    - FastAGI server address is now configurable
-    - Added APIBAN optional configuration for Proxies
-    - Fixed Media Relay selection logic when specific set was configured
-    - Fixed Media management in parallel-forking scenarios
-    - Added RTP timeout settings for vPBX and Residential calls
+    * Other Features and Fixed
+        - Upgraded Kamailio to 3.6.2
+        - Upgraded RTPengine to 10.5.3
+        - Added configurable Announce Position locutions to Queues
+        - Added Display name in Queues to override default Caller name in Queue members calls
+        - Added Address Book section to store External numbers (not yet used)
+        - Added Description field in DDIs
+        - Added support to use DDIs only for outbound presentation (DDI types)
+        - Changed rtpengine control port to 2223
+        - FastAGI server address is now configurable
+        - Added APIBAN optional configuration for Proxies
+        - Fixed Media Relay selection logic when specific set was configured
+        - Fixed Media management in parallel-forking scenarios
+        - Added RTP timeout settings for vPBX and Residential calls
 
 
 Thu, 23 Jun 2022 13:06:47 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
