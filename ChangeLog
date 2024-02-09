@@ -1,3 +1,15 @@
+Fri, 09 Feb 2024 13:19:03 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+* Ivozprovider 3.4.1 released
+
+    * Portals
+        - Added missing email and attach sound fields for Residential voicemails #2468
+        - Added missing domain for Brands when Residential or Retail features are enabled #2482
+
+    * Core
+        - Fixed a bug that prevented friends creation for vPBX without a Corporation #2478
+        - Fixed balance operations for carriers #2452
+
 Tue, 28 Nov 2023 13:33:23 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
 * Ivozprovider 3.4.0 released
