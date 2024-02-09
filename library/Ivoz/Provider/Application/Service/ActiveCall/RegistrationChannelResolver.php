@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Application\Service\ActiveCall;
 
-use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Service\ActiveCall\AssertAccessGranted;
 
@@ -25,37 +24,29 @@ class RegistrationChannelResolver
      */
     public function execute(?array $filters, array $tokenPayload): string
     {
-        $defaultCriteria = $this->getDefaultCriteria($tokenPayload);
-
-        $role = $tokenPayload['roles'][0];
-
-        $trunksRoles = [
-            Administrator::ROLE_BRAND_ADMIN,
-            Administrator::ROLE_SUPER_ADMIN
-        ];
-
-        if (in_array($role, $trunksRoles)) {
-            $direction = $filters['direction'] ?? null;
-            $cr = $filters['cr'] ?? null;
-            $dp = $filters['dp'] ?? null;
-
-            if ($direction === INBOUND && is_null($cr)) {
-                $cr = '*';
-            }
-
-            if ($direction === OUTBOUND && is_null($cr)) {
-                $dp = '*';
-            }
-
-            $defaultCriteria['trunks']['b'] = $filters['b'] ?? null;
-            $defaultCriteria['trunks']['c'] = $filters['c'] ?? null;
-            $defaultCriteria['trunks']['cr'] = $cr;
-            $defaultCriteria['trunks']['dp'] = $dp;
+        if (!$this->filtersMakeSense($filters)) {
+            return "trunks:-1";
         }
 
-        return $this->criteriaToString(
+        $criteria = $defaultCriteria = $this->getDefaultCriteria(
+            $tokenPayload
+        );
+        $filteringTrunks = isset($defaultCriteria['trunks']);
+
+        if ($filteringTrunks) {
+            $criteria = $this->getTrunksCriteria(
+                $filters,
+                $defaultCriteria
+            );
+        }
+
+        $this->assertAccessGranted->execute(
             $tokenPayload,
-            $defaultCriteria
+            $criteria
+        );
+
+        return $this->toString(
+            $criteria
         );
     }
 
@@ -126,26 +117,60 @@ class RegistrationChannelResolver
     }
 
     /**
-     * @param array{username?: string, roles: array<int, string>} $tokenPayload
-     * @param array<'trunks' |'users', array<'b'|'c'|'dp'|'cr', int|string|null>> $registerCriteria
-     * @return string
+     * @param array<'b'|'c'|'cr'|'dp'|'direction', int|string|null>|null $filters
      */
-    private function criteriaToString(
-        array $tokenPayload,
-        array $registerCriteria
-    ): string {
-        $this->assertAccessGranted->execute(
-            $tokenPayload,
-            $registerCriteria
-        );
+    private function filtersMakeSense(?array $filters): bool
+    {
+        $direction = $filters['direction'] ?? null;
+        $cr = $filters['cr'] ?? null;
+        $dp = $filters['dp'] ?? null;
 
-        return $this->toString(
-            $registerCriteria
-        );
+        $notAbleCarrierAndProvider = $cr && $dp;
+        $notAbleInboundWithCarrier = $direction === 'inbound' && $cr;
+        $notAbleOutboundWithDdiProvider = $direction === 'outbound' && $dp;
+
+        if ($notAbleCarrierAndProvider || $notAbleInboundWithCarrier || $notAbleOutboundWithDdiProvider) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
-     * @param array<'trunks' |'users', array<'b'|'c'|'dp'|'cr', int|string|null>> $registerCriteria
+     * @param array<'b'|'c'|'cr'|'dp'|'direction', int|string|null>|null $filters
+     * @param array<'trunks'|'users', array<'b'|'c', int>> $defaultCriteria
+     * @return array<'trunks', array<'b'|'c'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>>
+     */
+    private function getTrunksCriteria(?array $filters, array $defaultCriteria): array
+    {
+        /** @var array<'trunks', array<'b'|'c'|'dp'|'cr', int|string|null>> $criteria */
+        $criteria = array_merge($defaultCriteria);
+
+        /** @var 'inbound' | 'outbound' | null $direction */
+        $direction = $filters['direction'] ?? null;
+        $cr = $filters['cr'] ?? null;
+        $dp = $filters['dp'] ?? null;
+
+        $criteria['trunks']['b'] = $filters['b'] ?? '*';
+        $criteria['trunks']['c'] = $filters['c'] ?? '*';
+
+        if ($direction === 'inbound' || $dp) {
+            $criteria['trunks']['dp'] = $dp
+                ? $dp
+                : '*';
+        } elseif ($direction === 'outbound' || $cr) {
+            $criteria['trunks']['cr'] = $cr
+                ? $cr
+                : '*';
+        } else {
+            $criteria['trunks']['crOrDpPositionKeeper'] = '*';
+        }
+
+        return $criteria;
+    }
+
+    /**
+     * @param array<'trunks' |'users', array<'b'|'c'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>> $registerCriteria
      */
     private function toString(
         array $registerCriteria
@@ -160,17 +185,18 @@ class RegistrationChannelResolver
         }
 
         foreach ($criteria as $key => $value) {
-            if (is_null($value) || $value == "*") {
-                $response[] = '*';
-                continue;
+            $carrierOrDdiProvider = in_array($key, ['cr', 'dp'], true);
+
+            $keepKey = $value !== '*' || $carrierOrDdiProvider;
+            if ($keepKey) {
+                $value = $key . $value;
             }
 
-            $response[] = $key . $value;
+            $response[] = $value;
         }
 
-        if (end($response) !== '*') {
-            $response[] = "*";
-        }
+        // callid *
+        $response[] = "*";
 
         return implode(
             ':',
