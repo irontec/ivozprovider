@@ -1,4 +1,35 @@
 # Changelog
+## 4.0.0
+* Endpoints
+    - /carriers:
+      - Added [GET] endpoint
+    - /companies:
+      - Added accessCredentialNotificationTemplate, accessCredentialNotificationTemplate[] and accessCredentialNotificationTemplate[exists] filter parameters
+    - /ddi_providers:
+      - Added [GET] endpoint
+    - /proxy_trunks
+      - Added advertisedIp[end|exact|neq|partial|start] filter parameters
+    - /proxy_users
+      - Added advertisedIp[end|exact|neq|partial|start] filter parameters
+* Models:
+    - Carrier:
+      - Added model
+    - Carrier-collection:
+      - Added model
+    - Company:
+      - Added accessCredentialNotificationTemplate property
+    - DdiProvider:
+      - Added model
+    - DdiProvider-collection:
+      - Added model
+    - ProxyTrunks:
+      - Added advertisedIp property
+    - ProxyUsers:
+      - Added advertisedIp property
+    - WebPortal:
+      - Added color property
+        - Removed newUI property
+
 ## 3.3.0
 * Endpoints:
     - /invoice_templates/{id}/preview:
