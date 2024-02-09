@@ -1,3 +1,27 @@
+Wed, 07 Feb 2024 12:59:02 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.0.0 released
+
+    * Software Version Upgrade
+        - Debian base system upgraded from 11 (bullseye) to 12 (bookworm)
+        - Kamailio upgraded from 5.6.0 to 5.7.3
+        - rtpengine upgraded from 9.5.4 to 11.5.1
+        - Asterisk upgraded from 18.2.2 to 20.5.0
+        - PHP upgraded from 8.0.13 to 8.2.7
+        - MySQL (Percona Server) upgraded from 8.0.25 to 8.0.34
+
+    * Proxies
+        - Added CDR entries for users missed calls #2423
+        - Added behind NAT experimental support #2495
+
+    * Portals
+        - Removed classic klear portal access #2470
+        - Added support to configure main portal color #2458
+        - Added new filter options for Active Calls pages #2457
+        - Added missing email and attach sound fields for Residential voicemails #2468
+        - Added missing domain for Brands when Residential or Retail features are enabled #2482
+        - Fixed some realtime logics for platform and brand Active Calls #2483
+
 Fri, 09 Feb 2024 13:19:03 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * Ivozprovider 3.4.1 released
