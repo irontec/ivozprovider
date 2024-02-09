@@ -21,6 +21,16 @@ class UsersCdrDto extends UsersCdrDtoAbstract
             $response = parent::getPropertyMap(...func_get_args());
         }
 
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            unset($response['brandId']);
+        } elseif ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['brandId']);
+            unset($response['companyId']);
+        } elseif ($role === 'ROLE_COMPANY_USER') {
+            unset($response['brandId']);
+            unset($response['companyId']);
+        }
+
         return $response;
     }
 }
