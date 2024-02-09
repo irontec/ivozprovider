@@ -64,26 +64,8 @@ Feature: Retrieve users
           "callee": "+34676896561",
           "owner": null,
           "callid": "9297bdde-309cd48f@10.10.1.123",
-          "brandId": 1,
           "disposition": "answered",
           "id": 1,
-          "company": {
-              "type": "vpbx",
-              "name": "DemoCompany",
-              "domainUsers": "127.0.0.1",
-              "onDemandRecordCode": "",
-              "balance": 1.2,
-              "id": 1,
-              "invoicing": {
-                  "nif": "12345678A"
-              },
-              "language": 1,
-              "defaultTimezone": 145,
-              "country": 68,
-              "transformationRuleSet": 1,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null
-          },
           "user": {
               "name": "Alice",
               "lastname": "Allison",
