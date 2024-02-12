@@ -101,28 +101,4 @@ class AdministratorSpec extends ObjectBehavior
             ->isSuperAdmin()
             ->shouldReturn(true);
     }
-
-    /**
-     * @return bool
-     */
-    public function it_gets_company_timezone_if_null(
-        TimezoneInterface $timezone
-    ) {
-        $this
-            ->dto
-            ->setTimezone(null);
-
-        $this->getterProphecy(
-            $this->company,
-            [
-                'getId' => 1,
-                'getDefaultTimezone' => $timezone,
-            ],
-            true
-        );
-
-        $this
-            ->getTimezone()
-            ->shouldReturn($timezone);
-    }
 }

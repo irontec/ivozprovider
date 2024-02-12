@@ -15,13 +15,17 @@ export default function AppRoutesGuard(props: AppRoutesGuardProps) {
   const {
     target,
     token,
+    username,
   }: {
     target?: string;
     token?: string;
+    username?: string;
   } = qsArgs;
 
-  if (!loggedIn || (target && token)) {
-    return <Login target={target} token={token} />;
+  const impersonate = (target || username) && token;
+
+  if (!loggedIn || impersonate) {
+    return <Login target={target} username={username} token={token} />;
   }
 
   return <AppRoutes {...props} />;

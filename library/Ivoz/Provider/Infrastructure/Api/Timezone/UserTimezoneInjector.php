@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Api\Timezone;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -72,28 +73,56 @@ class UserTimezoneInjector
             return null;
         }
 
-        $timeZone = $user->getTimezone();
-
-        $timezoneOverride =
+        $internalAdmin =
             $user instanceof AdministratorInterface
-            && $user->getInternal()
-            && $user->getOnBehalfOf();
+            && $user->getInternal();
 
-        if ($timezoneOverride) {
-            $adminChain = explode(',', $user->getOnBehalfOf() ?? '');
-            $originalAdminUsername = $adminChain[0];
-
-            $originalAdmin = $this
-                ->administratorRepository
-                ->findAdminByUsername($originalAdminUsername);
-
-            if ($originalAdmin) {
-                $timeZone = $originalAdmin->getTimezone();
-            }
+        $parentTz = null;
+        if ($internalAdmin) {
+            $parentTz = $this->getParentTz($user);
         }
+
+        $timeZone = $parentTz
+            ? $parentTz
+            : $user->getTimezone();
 
         return $timeZone
             ? $timeZone->getTz()
             : self::FALLBACK_TZ;
+    }
+
+    public function getParentTz(AdministratorInterface $admin): ?TimezoneInterface
+    {
+        $adminChain = array_reverse(
+            explode(
+                ' > ',
+                $admin->getOnBehalfOf() ?? ''
+            )
+        );
+
+        foreach ($adminChain as $parentAdmin) {
+            $matched = preg_match(
+                '/#([0-9]+)\]$/',
+                $parentAdmin,
+                $matches
+            );
+
+            $adminId = $matched
+                ? (int)$matches['1']
+                : -1;
+
+            /** @var ?AdministratorInterface $originalAdmin */
+            $originalAdmin = $this
+                ->administratorRepository
+                ->find($adminId);
+
+            if (!$originalAdmin || $originalAdmin->getInternal()) {
+                continue;
+            }
+
+            return $originalAdmin->getTimezone();
+        }
+
+        return null;
     }
 }

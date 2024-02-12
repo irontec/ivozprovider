@@ -7,11 +7,12 @@ import { useStoreActions, useStoreState } from 'store';
 interface LoginProps {
   validator?: EntityValidator;
   target?: string;
+  username?: string;
   token?: string;
 }
 
 export default function Login(props: LoginProps): JSX.Element | null {
-  const { validator, target, token } = props;
+  const { validator, target, username, token } = props;
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -28,11 +29,18 @@ export default function Login(props: LoginProps): JSX.Element | null {
   );
 
   useEffect(() => {
-    if (target && token) {
-      exchangeToken({
-        brandId: target,
-        token,
-      })
+    if ((target || username) && token) {
+      const payload: Record<string, string> = { token };
+
+      if (target) {
+        payload.brandId = target;
+      }
+
+      if (username) {
+        payload.username = username;
+      }
+
+      exchangeToken(payload)
         .then((success: boolean) => {
           if (!success) {
             console.error('Unable to exchange token');
