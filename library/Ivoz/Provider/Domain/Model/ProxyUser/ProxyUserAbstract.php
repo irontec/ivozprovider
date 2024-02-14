@@ -29,6 +29,11 @@ abstract class ProxyUserAbstract
     protected $ip = null;
 
     /**
+     * @var ?string
+     */
+    protected $advertisedIp = null;
+
+    /**
      * Constructor
      */
     protected function __construct()
@@ -53,7 +58,10 @@ abstract class ProxyUserAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ProxyUserDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ProxyUserDto
     {
         return new ProxyUserDto($id);
     }
@@ -98,7 +106,8 @@ abstract class ProxyUserAbstract
 
         $self
             ->setName($dto->getName())
-            ->setIp($dto->getIp());
+            ->setIp($dto->getIp())
+            ->setAdvertisedIp($dto->getAdvertisedIp());
 
         $self->initChangelog();
 
@@ -117,7 +126,8 @@ abstract class ProxyUserAbstract
 
         $this
             ->setName($dto->getName())
-            ->setIp($dto->getIp());
+            ->setIp($dto->getIp())
+            ->setAdvertisedIp($dto->getAdvertisedIp());
 
         return $this;
     }
@@ -129,7 +139,8 @@ abstract class ProxyUserAbstract
     {
         return self::createDto()
             ->setName(self::getName())
-            ->setIp(self::getIp());
+            ->setIp(self::getIp())
+            ->setAdvertisedIp(self::getAdvertisedIp());
     }
 
     /**
@@ -139,7 +150,8 @@ abstract class ProxyUserAbstract
     {
         return [
             'name' => self::getName(),
-            'ip' => self::getIp()
+            'ip' => self::getIp(),
+            'advertisedIp' => self::getAdvertisedIp()
         ];
     }
 
@@ -173,5 +185,21 @@ abstract class ProxyUserAbstract
     public function getIp(): ?string
     {
         return $this->ip;
+    }
+
+    protected function setAdvertisedIp(?string $advertisedIp = null): static
+    {
+        if (!is_null($advertisedIp)) {
+            Assertion::maxLength($advertisedIp, 50, 'advertisedIp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->advertisedIp = $advertisedIp;
+
+        return $this;
+    }
+
+    public function getAdvertisedIp(): ?string
+    {
+        return $this->advertisedIp;
     }
 }

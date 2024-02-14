@@ -55,7 +55,10 @@ abstract class MediaRelaySetAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): MediaRelaySetDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): MediaRelaySetDto
     {
         return new MediaRelaySetDto($id);
     }

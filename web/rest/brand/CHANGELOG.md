@@ -1,4 +1,23 @@
 # Changelog
+## 4.0.0
+* Endpoints
+  - /companies:
+    - Added accessCredentialNotificationTemplate, accessCredentialNotificationTemplate[] and accessCredentialNotificationTemplate[exists] filter parameters
+  - /proxy_trunks
+    - Added advertisedIp[end|exact|neq|partial|start] filter parameters
+  - /proxy_users
+    - Added advertisedIp[end|exact|neq|partial|start] filter parameters
+* Models:
+  - Company:
+    - Added accessCredentialNotificationTemplate property
+  - ProxyTrunks:
+    - Added advertisedIp property
+  - ProxyUsers:
+    - Added advertisedIp property
+  - WebPortal:
+    - Added color property
+    - Removed newUI property
+
 ## 3.3.0
 * Endpoints:
   - /invoice_templates/{id}/preview:

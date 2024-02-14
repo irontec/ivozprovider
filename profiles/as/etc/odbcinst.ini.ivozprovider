@@ -1,5 +1,6 @@
 [MYSQL]
-Description = ODBC for MySQL
-Driver = /usr/lib/x86_64-linux-gnu/odbc/libmyodbc.so
-Setup = /usr/lib/x86_64-linux-gnu/odbc/libodbcmyS.so
+Driver=libmaodbc.so
+Description=MariaDB Connector/ODBC(Unicode)
+Threading=0
+UsageCount=1
 

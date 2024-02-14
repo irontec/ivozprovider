@@ -65,7 +65,10 @@ abstract class MatchListAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): MatchListDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): MatchListDto
     {
         return new MatchListDto($id);
     }

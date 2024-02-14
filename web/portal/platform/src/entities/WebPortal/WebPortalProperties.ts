@@ -7,12 +7,12 @@ import {
 export type WebPortalPropertyList<T> = {
   url?: T;
   klearTheme?: T;
+  color?: T;
   name?: T;
   id?: T;
   logo?: T;
   urlType?: T;
   userTheme?: T;
-  newUI?: T;
   brand?: T;
 };
 

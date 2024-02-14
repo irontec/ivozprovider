@@ -34,7 +34,10 @@ interface TrunksCdrInterface extends EntityInterface
 
     public function isOutboundCall(): bool;
 
-    public static function createDto(string|int|null $id = null): TrunksCdrDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksCdrDto;
 
     /**
      * @internal use EntityTools instead

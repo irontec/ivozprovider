@@ -26,7 +26,10 @@ interface FixedCostInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): FixedCostDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FixedCostDto;
 
     /**
      * @internal use EntityTools instead

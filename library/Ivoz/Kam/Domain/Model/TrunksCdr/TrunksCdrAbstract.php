@@ -195,7 +195,10 @@ abstract class TrunksCdrAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TrunksCdrDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksCdrDto
     {
         return new TrunksCdrDto($id);
     }

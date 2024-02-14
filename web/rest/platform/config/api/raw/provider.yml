@@ -49,7 +49,8 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
 
 Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
   itemOperations: []
-  collectionOperations: []
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
@@ -237,7 +238,8 @@ Ivoz\Provider\Domain\Model\WebPortal\Logo: ~
 
 Ivoz\Provider\Domain\Model\Carrier\Carrier:
   itemOperations: []
-  collectionOperations: []
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
@@ -334,6 +336,9 @@ Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
       name: ASC
+    write_access_control:
+      ROLE_SUPER_ADMIN:
+        raw: 'this.hasChanged("name") == false || this.getId() != 1'
     delete_access_control:
       ROLE_SUPER_ADMIN:
         id:
@@ -353,15 +358,19 @@ Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 
 Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
-  itemOperations:
-    get: ~
-    put: ~
-  collectionOperations:
-    get: ~
+  itemOperations: ~
+  collectionOperations: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
       name: ASC
+    write_access_control:
+      ROLE_SUPER_ADMIN:
+        raw: 'this.hasChanged("name") == false || this.getId() != 1'
+    delete_access_control:
+      ROLE_SUPER_ADMIN:
+        id:
+          neq: 1
 
 Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity:
   itemOperations:

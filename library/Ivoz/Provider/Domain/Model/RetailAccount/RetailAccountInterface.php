@@ -88,7 +88,10 @@ interface RetailAccountInterface extends LoggableEntityInterface
      */
     public function getDdi($ddieE164);
 
-    public static function createDto(string|int|null $id = null): RetailAccountDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RetailAccountDto;
 
     /**
      * @internal use EntityTools instead

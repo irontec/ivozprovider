@@ -3,6 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\OrderBy;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
@@ -98,5 +100,53 @@ class UsersCdrDoctrineRepository extends ServiceEntityRepository implements User
             ->setParameter('time', $dateTime)
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    /**
+     * This method expects results to be marked as parsed as soon as they're used:
+     * a.k.a it does not apply any query offset, just a limit
+     *
+     * @inheritdoc
+     * @see UsersCdrRepository::getUnparsedCallsGeneratorWithoutOffset
+     */
+    public function getUnparsedCallsGeneratorWithoutOffset(int $batchSize, array $order = null): \Generator
+    {
+        $dateFrom = new \DateTime(
+            '10 seconds ago',
+            new \DateTimeZone('UTC')
+        );
+
+        $qb = $this->createQueryBuilder('self');
+        $qb->addCriteria(CriteriaHelper::fromArray([
+            'or' => [
+                ['parsed', 'eq', '0'],
+                ['parsed', 'isNull'],
+            ],
+            ['endTime', 'lte', $dateFrom->format('Y-m-d H:i:s')],
+        ]));
+        $qb->setMaxResults($batchSize);
+
+        if ($order) {
+            foreach ($order as $k => $val) {
+                if ($val instanceof OrderBy) {
+                    $qb->orderBy($val);
+                } else {
+                    $qb->orderBy(
+                        (string) $k,
+                        $val
+                    );
+                }
+            }
+        }
+
+        $continue =  true;
+        while ($continue) {
+            $query = $qb->getQuery();
+            /** @var UsersCdrInterface[] $results */
+            $results = $query->getResult();
+            $continue = count($results) === $batchSize;
+
+            yield $results;
+        }
     }
 }

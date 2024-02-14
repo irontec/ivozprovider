@@ -24,14 +24,16 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
     private $ip = null;
 
     /**
+     * @var string|null
+     */
+    private $advertisedIp = null;
+
+    /**
      * @var int|null
      */
     private $id = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -48,6 +50,7 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
         return [
             'name' => 'name',
             'ip' => 'ip',
+            'advertisedIp' => 'advertisedIp',
             'id' => 'id'
         ];
     }
@@ -60,6 +63,7 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
         $response = [
             'name' => $this->getName(),
             'ip' => $this->getIp(),
+            'advertisedIp' => $this->getAdvertisedIp(),
             'id' => $this->getId()
         ];
 
@@ -101,6 +105,21 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
         return $this->ip;
     }
 
+    public function setAdvertisedIp(?string $advertisedIp): static
+    {
+        $this->advertisedIp = $advertisedIp;
+
+        return $this;
+    }
+
+    public function getAdvertisedIp(): ?string
+    {
+        return $this->advertisedIp;
+    }
+
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;

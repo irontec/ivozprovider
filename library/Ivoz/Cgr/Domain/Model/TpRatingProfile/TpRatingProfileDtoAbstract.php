@@ -85,10 +85,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     private $outgoingRoutingRelCarrier = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -288,6 +285,9 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->createdAt;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -312,7 +312,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->ratingProfile;
     }
 
-    public function setRatingProfileId($id): static
+    public function setRatingProfileId(?int $id): static
     {
         $value = !is_null($id)
             ? new RatingProfileDto($id)
@@ -342,7 +342,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingRoutingRelCarrier;
     }
 
-    public function setOutgoingRoutingRelCarrierId($id): static
+    public function setOutgoingRoutingRelCarrierId(?int $id): static
     {
         $value = !is_null($id)
             ? new OutgoingRoutingRelCarrierDto($id)

@@ -41,10 +41,7 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
      */
     private $patterns = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -105,6 +102,9 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -129,7 +129,7 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -159,7 +159,7 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -177,6 +177,9 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param MatchListPatternDto[] | null $patterns
+     */
     public function setPatterns(?array $patterns): static
     {
         $this->patterns = $patterns;

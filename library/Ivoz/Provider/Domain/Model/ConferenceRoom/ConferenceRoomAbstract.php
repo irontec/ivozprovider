@@ -84,7 +84,10 @@ abstract class ConferenceRoomAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ConferenceRoomDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConferenceRoomDto
     {
         return new ConferenceRoomDto($id);
     }

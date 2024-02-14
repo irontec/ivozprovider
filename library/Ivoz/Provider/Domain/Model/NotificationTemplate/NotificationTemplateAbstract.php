@@ -27,7 +27,7 @@ abstract class NotificationTemplateAbstract
 
     /**
      * @var string
-     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage
+     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage|accessCredentials
      */
     protected $type;
 
@@ -65,7 +65,10 @@ abstract class NotificationTemplateAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): NotificationTemplateDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): NotificationTemplateDto
     {
         return new NotificationTemplateDto($id);
     }
@@ -196,6 +199,7 @@ abstract class NotificationTemplateAbstract
                 NotificationTemplateInterface::TYPE_INVOICE,
                 NotificationTemplateInterface::TYPE_CALLCSV,
                 NotificationTemplateInterface::TYPE_MAXDAILYUSAGE,
+                NotificationTemplateInterface::TYPE_ACCESSCREDENTIALS,
             ],
             'typevalue "%s" is not an element of the valid values: %s'
         );

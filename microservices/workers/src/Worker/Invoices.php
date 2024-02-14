@@ -53,7 +53,7 @@ class Invoices
             /** @var InvoiceInterface | null $invoice */
             $invoice = $this->invoiceRepository->find($id);
             if (!$invoice) {
-                $this->logger->error("Invoice #${id} was not found!");
+                $this->logger->error("Invoice #{$id} was not found!");
                 return null;
             }
 

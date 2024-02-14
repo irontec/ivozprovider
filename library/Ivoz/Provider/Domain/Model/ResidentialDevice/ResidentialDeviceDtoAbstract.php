@@ -173,10 +173,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
      */
     private $callForwardSettings = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -490,6 +487,9 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->multiContact;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -514,7 +514,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -544,7 +544,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->domain;
     }
 
-    public function setDomainId($id): static
+    public function setDomainId(?int $id): static
     {
         $value = !is_null($id)
             ? new DomainDto($id)
@@ -574,7 +574,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -604,7 +604,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->transformationRuleSet;
     }
 
-    public function setTransformationRuleSetId($id): static
+    public function setTransformationRuleSetId(?int $id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -634,7 +634,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->outgoingDdi;
     }
 
-    public function setOutgoingDdiId($id): static
+    public function setOutgoingDdiId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -664,7 +664,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->language;
     }
 
-    public function setLanguageId($id): static
+    public function setLanguageId(?int $id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -694,7 +694,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->voicemail;
     }
 
-    public function setVoicemailId($id): static
+    public function setVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -724,7 +724,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->psEndpoint;
     }
 
-    public function setPsEndpointId($id): static
+    public function setPsEndpointId(?int $id): static
     {
         $value = !is_null($id)
             ? new PsEndpointDto($id)
@@ -754,7 +754,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->psIdentify;
     }
 
-    public function setPsIdentifyId($id): static
+    public function setPsIdentifyId(?int $id): static
     {
         $value = !is_null($id)
             ? new PsIdentifyDto($id)
@@ -772,6 +772,9 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return null;
     }
 
+    /**
+     * @param DdiDto[] | null $ddis
+     */
     public function setDdis(?array $ddis): static
     {
         $this->ddis = $ddis;
@@ -787,6 +790,9 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->ddis;
     }
 
+    /**
+     * @param CallForwardSettingDto[] | null $callForwardSettings
+     */
     public function setCallForwardSettings(?array $callForwardSettings): static
     {
         $this->callForwardSettings = $callForwardSettings;

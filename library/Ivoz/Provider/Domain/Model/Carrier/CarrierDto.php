@@ -23,16 +23,23 @@ class CarrierDto extends CarrierDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
-            $response = [
-                'id' => 'id',
-                'description' => 'description',
-                'name' => 'name',
-                'calculateCost' => 'calculateCost',
-                'transformationRuleSetId' => 'transformationRuleSet',
-                'balance' => 'balance',
-                'proxyTrunkId' => 'proxyTrunk',
-                'status' => ['registered']
-            ];
+            if ($role === 'ROLE_SUPER_ADMIN') {
+                $response = [
+                    'id' => 'id',
+                    'name' => 'name',
+                ];
+            } else {
+                $response = [
+                    'id' => 'id',
+                    'description' => 'description',
+                    'name' => 'name',
+                    'calculateCost' => 'calculateCost',
+                    'transformationRuleSetId' => 'transformationRuleSet',
+                    'balance' => 'balance',
+                    'proxyTrunkId' => 'proxyTrunk',
+                    'status' => ['registered']
+                ];
+            }
         } else {
             $response = parent::getPropertyMap(...func_get_args());
         }

@@ -53,7 +53,10 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
      */
     public function getDstE164();
 
-    public static function createDto(string|int|null $id = null): FaxesInOutDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FaxesInOutDto;
 
     /**
      * @internal use EntityTools instead

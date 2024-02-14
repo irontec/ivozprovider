@@ -28,10 +28,10 @@ var upgrader = websocket.Upgrader{
 var redisPool sync.Map
 
 func OnWorkerStart() {
-	logger.Info("Init Redis Pool")
 
 	http.HandleFunc("/", handler)
 	listen := config.GetWsListenAddress()
+	logger.Infof("Initializing websocket server on %s...", listen)
 	logger.Fatal(http.ListenAndServe(listen, nil))
 }
 
@@ -44,14 +44,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer onClose(conn)
 
-	logger.Info("Connection open")
+	logger.Infof("Connection received from %s", conn.RemoteAddr().String())
 	conn.WriteMessage(websocket.TextMessage, []byte("Challenge"))
 
 	onMessage(conn)
 }
 
 func onClose(conn *websocket.Conn) {
-	logger.Info("Connection closed")
+	logger.Infof("Connection closed from %s", conn.RemoteAddr().String())
 
 	storedClient, ok := redisPool.Load(conn)
 	if !ok {
@@ -81,7 +81,7 @@ func onMessage(conn *websocket.Conn) {
 		}
 
 		if messageType == websocket.TextMessage {
-			logger.Infof("<< Received message: %s", string(p))
+			logger.Debugf("<< Received message: %s", string(p))
 
 			data := utils.GetPayload(string(p))
 			token, err := utils.GetToken(data.Auth)
@@ -101,7 +101,7 @@ func onMessage(conn *websocket.Conn) {
 			}
 
 			role := tokenPayload.Roles[0]
-			registerChannel, err := services.GetActiveCallsFilter(data.Auth, role)
+			registerChannel, err := services.GetActiveCallsFilter(data.Auth, role, data.Register)
 
 			if err != nil {
 				conn.WriteMessage(websocket.TextMessage, []byte("Challenge"))
@@ -116,26 +116,24 @@ func onMessage(conn *websocket.Conn) {
 func sendCurrentStateAndUpdate(conn *websocket.Conn, registerChannel string) {
 	conn.WriteMessage(websocket.TextMessage, []byte("Subscribing"))
 
-	go func(server *websocket.Conn, mask string) {
-		redisClient, err := getRedisClientByConnection(server)
+	redisClient, err := getRedisClientByConnection(conn)
 
-		if err != nil {
-			logger.Error("Unable to create redis client")
-			return
-		}
+	if err != nil {
+		logger.Error("Unable to create redis client")
+		return
+	}
 
-		sendCurrentState(
-			redisClient,
-			mask,
-			server,
-		)
+	sendCurrentState(
+		redisClient,
+		registerChannel,
+		conn,
+	)
 
-		forwardStateUpdates(
-			redisClient,
-			mask,
-			server,
-		)
-	}(conn, registerChannel)
+	go forwardStateUpdates(
+		redisClient,
+		registerChannel,
+		conn,
+	)
 }
 
 func sendCurrentState(redisClient *redis.Client, mask string, conn *websocket.Conn) {
@@ -148,7 +146,7 @@ func sendCurrentState(redisClient *redis.Client, mask string, conn *websocket.Co
 
 	currentState, err := redisClient.MGet(context.Background(), keys...).Result()
 	if err != nil {
-		logger.Error("No call info found on redis")
+		logger.Info("No call info found on redis")
 		return
 	}
 
@@ -193,50 +191,38 @@ func sendCurrentState(redisClient *redis.Client, mask string, conn *websocket.Co
 func forwardStateUpdates(redisClient *redis.Client, mask string, conn *websocket.Conn) {
 	pubsub := redisClient.PSubscribe(context.Background(), mask)
 
-	go func() {
-		for {
-			msg, err := pubsub.Receive(context.Background())
-			if subscription, ok := msg.(*redis.Subscription); ok {
-
-				if subscription.Kind == "unsubscribe" {
-					logger.Info("Unsubscribe")
-					break
-				}
-			} else if message, ok := msg.(*redis.Message); ok {
-				go func(conn *websocket.Conn, message *redis.Message) {
-					payload := message.Payload
-					var eventData services.EventData
-
-					err := json.Unmarshal([]byte(payload), &eventData)
-					if err != nil {
-						logger.Errorf("Error: %v", err)
-						return
-					}
-
-					forward := utils.InArray(eventData.Event, services.SIGNIFICANT_CALL_EVENTS[:])
-					if !forward {
-						logger.Errorf("Cannot forward message: %v", payload)
-						return
-					}
-					conn.WriteMessage(websocket.TextMessage, []byte(payload))
-
-				}(conn, message)
+	for {
+		msg, err := pubsub.Receive(context.Background())
+		if subscription, ok := msg.(*redis.Subscription); ok {
+			if subscription.Kind == "unsubscribe" {
+				logger.Info("Unsubscribe")
+				break
 			}
+		} else if message, ok := msg.(*redis.Message); ok {
+			payload := message.Payload
+			var eventData services.EventData
 
+			err := json.Unmarshal([]byte(payload), &eventData)
 			if err != nil {
-				logger.Errorf("Error receiving message from Redis: %v", err)
+				logger.Errorf("Error: %v", err)
 				return
 			}
 
+			conn.WriteMessage(websocket.TextMessage, []byte(payload))
 		}
-	}()
+
+		if err != nil {
+			logger.Errorf("Error receiving message from Redis: %v", err)
+			return
+		}
+
+	}
 }
 
 func getRedisClientByConnection(conn *websocket.Conn) (*redis.Client, error) {
 
 	storedClient, ok := redisPool.Load(conn)
 	if !ok {
-		logger.Warning("Could not find Redis client for the WebSocket connection.")
 		client := services.CreateFailOverClient()
 		redisPool.Store(conn, client)
 		return client, nil

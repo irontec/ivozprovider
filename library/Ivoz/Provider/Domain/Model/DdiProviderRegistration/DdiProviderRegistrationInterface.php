@@ -27,7 +27,10 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): DdiProviderRegistrationDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DdiProviderRegistrationDto;
 
     /**
      * @internal use EntityTools instead

@@ -8,13 +8,14 @@ import {
 import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import useParentRow from '@irontec/ivoz-ui/hooks/useParentRow';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useStoreState } from 'store';
 
 import huntGroup from '../HuntGroup/HuntGroup';
 import { HuntGroupPropertyList } from '../HuntGroup/HuntGroupProperties';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element | null => {
-  const { entityService, row, match } = props;
+  const { entityService, row, match, initialValues } = props;
 
   const formik = useFormHandler(props);
   const values = formik.values;
@@ -27,6 +28,12 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     row,
     match,
   });
+
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+
+  if (create) {
+    initialValues.numberCountry = aboutMe?.defaultCountryId ?? null;
+  }
 
   const readOnlyProperties = {
     routeType: edit,

@@ -61,7 +61,10 @@ abstract class DdiProviderAddressAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): DdiProviderAddressDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DdiProviderAddressDto
     {
         return new DdiProviderAddressDto($id);
     }

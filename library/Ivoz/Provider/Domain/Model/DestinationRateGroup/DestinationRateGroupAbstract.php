@@ -99,7 +99,10 @@ abstract class DestinationRateGroupAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): DestinationRateGroupDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DestinationRateGroupDto
     {
         return new DestinationRateGroupDto($id);
     }

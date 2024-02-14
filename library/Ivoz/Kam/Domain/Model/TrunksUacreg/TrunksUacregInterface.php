@@ -37,7 +37,10 @@ interface TrunksUacregInterface extends LoggableEntityInterface
      */
     public function setLUuid(string $lUuid): static;
 
-    public static function createDto(string|int|null $id = null): TrunksUacregDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksUacregDto;
 
     /**
      * @internal use EntityTools instead

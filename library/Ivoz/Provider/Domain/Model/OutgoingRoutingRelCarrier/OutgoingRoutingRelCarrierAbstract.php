@@ -59,7 +59,10 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): OutgoingRoutingRelCarrierDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): OutgoingRoutingRelCarrierDto
     {
         return new OutgoingRoutingRelCarrierDto($id);
     }

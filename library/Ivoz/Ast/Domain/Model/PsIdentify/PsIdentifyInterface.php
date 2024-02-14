@@ -31,7 +31,10 @@ interface PsIdentifyInterface extends LoggableEntityInterface
 
     public function setMatchHeader(?string $matchHeader = null): static;
 
-    public static function createDto(string|int|null $id = null): PsIdentifyDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): PsIdentifyDto;
 
     /**
      * @internal use EntityTools instead

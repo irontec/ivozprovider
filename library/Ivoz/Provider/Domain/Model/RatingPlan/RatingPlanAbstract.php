@@ -116,7 +116,10 @@ abstract class RatingPlanAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): RatingPlanDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RatingPlanDto
     {
         return new RatingPlanDto($id);
     }

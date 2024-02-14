@@ -32,6 +32,7 @@ pushd /opt/irontec/ivozprovider/schema
     if [ $INCORRECT_MIGRATIONS -gt 0 ]; then
         echo "Following migrations does not extend from LoggableMigration:"
         grep -R "final class Version" DoctrineMigrations | grep -v LoggableMigration | cut -d":" -f1
+        exit 1
     fi
 popd
 

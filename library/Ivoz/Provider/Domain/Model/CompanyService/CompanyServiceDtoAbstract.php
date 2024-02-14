@@ -35,10 +35,7 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
      */
     private $service = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -98,6 +95,9 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
         return $this->code;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -122,7 +122,7 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -152,7 +152,7 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
         return $this->service;
     }
 
-    public function setServiceId($id): static
+    public function setServiceId(?int $id): static
     {
         $value = !is_null($id)
             ? new ServiceDto($id)

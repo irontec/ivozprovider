@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Regenerate composer.lock for all apps
+/opt/irontec/ivozprovider/library/bin/composer-install -n
+
+# Check if any composer.lock file has been updated
+if [ -n "$(git status -s | grep composer.lock)" ]; then
+    echo "There are application without updated dependencies."
+    git status -s | grep composer.lock
+    exit 1
+fi

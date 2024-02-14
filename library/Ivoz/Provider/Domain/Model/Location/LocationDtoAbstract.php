@@ -40,10 +40,7 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
      */
     private $users = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -116,6 +113,9 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -140,7 +140,7 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -158,6 +158,9 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param UserDto[] | null $users
+     */
     public function setUsers(?array $users): static
     {
         $this->users = $users;

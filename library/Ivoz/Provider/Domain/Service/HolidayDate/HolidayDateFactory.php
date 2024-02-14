@@ -28,7 +28,7 @@ class HolidayDateFactory
         $holidayDateDto
             ->setName($eventName)
             ->setEventDate($eventDate)
-            ->setCalendarId($calendarId);
+            ->setCalendarId((int) $calendarId);
 
         /** @var HolidayDateInterface $holidayDate */
         $holidayDate = $this

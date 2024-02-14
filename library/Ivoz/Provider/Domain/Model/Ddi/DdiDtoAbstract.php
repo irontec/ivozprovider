@@ -148,10 +148,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
      */
     private $retailAccount = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -335,6 +332,9 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->type;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -359,7 +359,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -389,7 +389,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -419,7 +419,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->conferenceRoom;
     }
 
-    public function setConferenceRoomId($id): static
+    public function setConferenceRoomId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConferenceRoomDto($id)
@@ -449,7 +449,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->language;
     }
 
-    public function setLanguageId($id): static
+    public function setLanguageId(?int $id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -479,7 +479,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->queue;
     }
 
-    public function setQueueId($id): static
+    public function setQueueId(?int $id): static
     {
         $value = !is_null($id)
             ? new QueueDto($id)
@@ -509,7 +509,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->externalCallFilter;
     }
 
-    public function setExternalCallFilterId($id): static
+    public function setExternalCallFilterId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExternalCallFilterDto($id)
@@ -539,7 +539,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -569,7 +569,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->ivr;
     }
 
-    public function setIvrId($id): static
+    public function setIvrId(?int $id): static
     {
         $value = !is_null($id)
             ? new IvrDto($id)
@@ -599,7 +599,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->huntGroup;
     }
 
-    public function setHuntGroupId($id): static
+    public function setHuntGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new HuntGroupDto($id)
@@ -629,7 +629,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->fax;
     }
 
-    public function setFaxId($id): static
+    public function setFaxId(?int $id): static
     {
         $value = !is_null($id)
             ? new FaxDto($id)
@@ -659,7 +659,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->ddiProvider;
     }
 
-    public function setDdiProviderId($id): static
+    public function setDdiProviderId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)
@@ -689,7 +689,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->country;
     }
 
-    public function setCountryId($id): static
+    public function setCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -719,7 +719,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->residentialDevice;
     }
 
-    public function setResidentialDeviceId($id): static
+    public function setResidentialDeviceId(?int $id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -749,7 +749,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->conditionalRoute;
     }
 
-    public function setConditionalRouteId($id): static
+    public function setConditionalRouteId(?int $id): static
     {
         $value = !is_null($id)
             ? new ConditionalRouteDto($id)
@@ -779,7 +779,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->retailAccount;
     }
 
-    public function setRetailAccountId($id): static
+    public function setRetailAccountId(?int $id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)

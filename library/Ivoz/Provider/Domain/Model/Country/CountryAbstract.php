@@ -71,7 +71,10 @@ abstract class CountryAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CountryDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CountryDto
     {
         return new CountryDto($id);
     }

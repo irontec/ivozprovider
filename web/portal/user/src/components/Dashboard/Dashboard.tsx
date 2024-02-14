@@ -5,8 +5,6 @@ import {
 import { LightButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
 import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
 import {
   Paper,
   styled,
@@ -21,6 +19,9 @@ import {
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStoreActions } from 'store';
+
+import ChatBubbleIcon from './ChatBubbleIcon';
+import PhoneForwardedIcon from './PhoneForwardedIcon';
 
 export interface DashboardProps {
   className?: string;

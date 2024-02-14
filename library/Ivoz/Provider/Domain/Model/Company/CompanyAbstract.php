@@ -228,6 +228,11 @@ abstract class CompanyAbstract
     protected $maxDailyUsageNotificationTemplate = null;
 
     /**
+     * @var ?NotificationTemplateInterface
+     */
+    protected $accessCredentialNotificationTemplate = null;
+
+    /**
      * @var ?CorporationInterface
      */
     protected $corporation = null;
@@ -273,7 +278,10 @@ abstract class CompanyAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CompanyDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CompanyDto
     {
         return new CompanyDto($id);
     }
@@ -392,6 +400,7 @@ abstract class CompanyAbstract
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
             ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()))
+            ->setAccessCredentialNotificationTemplate($fkTransformer->transform($dto->getAccessCredentialNotificationTemplate()))
             ->setCorporation($fkTransformer->transform($dto->getCorporation()));
 
         $self->initChangelog();
@@ -485,6 +494,7 @@ abstract class CompanyAbstract
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
             ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()))
+            ->setAccessCredentialNotificationTemplate($fkTransformer->transform($dto->getAccessCredentialNotificationTemplate()))
             ->setCorporation($fkTransformer->transform($dto->getCorporation()));
 
         return $this;
@@ -536,6 +546,7 @@ abstract class CompanyAbstract
             ->setInvoiceNotificationTemplate(NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
             ->setCallCsvNotificationTemplate(NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth))
             ->setMaxDailyUsageNotificationTemplate(NotificationTemplate::entityToDto(self::getMaxDailyUsageNotificationTemplate(), $depth))
+            ->setAccessCredentialNotificationTemplate(NotificationTemplate::entityToDto(self::getAccessCredentialNotificationTemplate(), $depth))
             ->setCorporation(Corporation::entityToDto(self::getCorporation(), $depth));
     }
 
@@ -585,6 +596,7 @@ abstract class CompanyAbstract
             'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate()?->getId(),
             'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
             'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate()?->getId(),
+            'accessCredentialNotificationTemplateId' => self::getAccessCredentialNotificationTemplate()?->getId(),
             'corporationId' => self::getCorporation()?->getId()
         ];
     }
@@ -1080,6 +1092,18 @@ abstract class CompanyAbstract
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->maxDailyUsageNotificationTemplate;
+    }
+
+    protected function setAccessCredentialNotificationTemplate(?NotificationTemplateInterface $accessCredentialNotificationTemplate = null): static
+    {
+        $this->accessCredentialNotificationTemplate = $accessCredentialNotificationTemplate;
+
+        return $this;
+    }
+
+    public function getAccessCredentialNotificationTemplate(): ?NotificationTemplateInterface
+    {
+        return $this->accessCredentialNotificationTemplate;
     }
 
     protected function setCorporation(?CorporationInterface $corporation = null): static

@@ -8,10 +8,16 @@ import {
   OutputStuct,
   TryingStuct,
   UpdateStuct,
-} from './types';
+  WsFilters,
+} from '../types';
 import useWsClient from './useWsClient';
 
-const useRealtimeCalls = (): [boolean, Calls] => {
+interface UseRealtimeCallsProps {
+  filters?: WsFilters;
+}
+
+const useRealtimeCalls = (props: UseRealtimeCallsProps): [boolean, Calls] => {
+  const { filters } = props;
   const [calls, setCalls] = useState<Calls>({});
   const syncCallsRef = useRef<Calls>({});
   syncCallsRef.current = { ...calls };
@@ -24,45 +30,31 @@ const useRealtimeCalls = (): [boolean, Calls] => {
       ...syncCallsRef.current,
     };
 
-    if (event === 'UpdateCLID') {
-      // Update event or party
+    newValue[callId] = {
+      ...newValue[callId],
+      event,
+    };
+
+    if (event === 'Confirmed') {
       setCalls(() => {
         newValue[callId] = {
           ...newValue[callId],
-          party: data.Party,
+          time: data.Time,
         };
 
         syncCallsRef.current = newValue;
 
         return newValue;
       });
-    } else {
-      newValue[callId] = {
-        ...newValue[callId],
-        event,
-      };
+    } else if (event === 'Terminated') {
+      // _hideRow
+      setCalls(() => {
+        delete newValue[callId];
 
-      if (event === 'Confirmed') {
-        setCalls(() => {
-          newValue[callId] = {
-            ...newValue[callId],
-            time: data.Time,
-          };
+        syncCallsRef.current = newValue;
 
-          syncCallsRef.current = newValue;
-
-          return newValue;
-        });
-      } else if (event === 'Terminated') {
-        // _hideRow
-        setCalls(() => {
-          delete newValue[callId];
-
-          syncCallsRef.current = newValue;
-
-          return newValue;
-        });
-      }
+        return newValue;
+      });
     }
   };
 
@@ -72,6 +64,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
     const newRow: OutputStuct = {
       id: data.ID,
       callId: callId,
+      brand: data.Brand,
       direction: data.Direction,
       event: data.Event,
       time: data.Time,
@@ -113,6 +106,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
   const ready = useWsClient<TryingStuct>({
     wsServerUrl,
     onMessage,
+    filters,
   });
 
   useEffect(() => {
@@ -152,6 +146,12 @@ const useRealtimeCalls = (): [boolean, Calls] => {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (!ready) {
+      setCalls({});
+    }
+  }, [ready]);
 
   return [ready, calls];
 };

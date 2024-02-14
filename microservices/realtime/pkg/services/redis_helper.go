@@ -12,15 +12,19 @@ import (
 )
 
 type EventData struct {
-	Event     string `json:"Event"`
-	Time      int64  `json:"Time"`
-	ID        string `json:"ID"`
-	CallID    string `json:"Call-ID"`
-	Party     string `json:"Party"`
-	Brand     string `json:"Brand"`
-	Company   string `json:"Company"`
-	Direction string `json:"Direction"`
-	Owner     string `json:"Owner"`
+	Event       string `json:"Event"`
+	Time        int64  `json:"Time"`
+	ID          string `json:"ID"`
+	CallID      string `json:"Call-ID"`
+	Brand       string `json:"Brand"`
+	Company     string `json:"Company"`
+	Direction   string `json:"Direction"`
+	Party       string `json:"Party,omitempty"`
+	Owner       string `json:"Owner,omitempty"`
+	Caller      string `json:"Caller,omitempty"`
+	Callee      string `json:"Callee,omitempty"`
+	Carrier     string `json:"Carrier,omitempty"`
+	DdiProvider string `json:"DdiProvider,omitempty"`
 }
 
 const REDIS_KEYS_IN_CALL_TTL = 3*time.Hour + 30*time.Minute
@@ -35,11 +39,10 @@ const (
 	UPDATE_CLID = "UpdateCLID"
 )
 
-var SIGNIFICANT_CALL_EVENTS = [...]string{CALL_SETUP, RINGING, IN_CALL, HANG_UP, UPDATE_CLID}
-
 func InitRedisControlClients() {
 	redisClient := CreateFailOverClient()
 
+	logger.Info("Initializing generic channel subscriber")
 	channelPatterns := []string{"trunks:*", "users:*"}
 	pubsub := redisClient.PSubscribe(context.Background(), channelPatterns...)
 	defer pubsub.Close()
@@ -76,13 +79,13 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 
 	event := eventData.Event
 	if event == HANG_UP {
-		logger.Info("[DEL] " + channel)
+		logger.Debug("[DEL] " + channel)
 		redisClient.Del(context.Background(), channel)
 		return
 	}
 
 	if event == CALL_SETUP {
-		logger.Info("[SETEX] " + channel + "\n" + payload)
+		logger.Debug("[SETEX] " + channel + "\n" + payload)
 		redisClient.SetEx(
 			context.Background(),
 			channel,
@@ -117,7 +120,14 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 		logInfo = event
 	}
 
-	logger.Infof("[SETEX] %s", channel+" "+logInfo)
+	logger.Debugf("[SETEX] %s", channel+" "+logInfo)
+
+	// Convert again to string to store in redis
+	dataBytes, err := json.Marshal(data)
+	if err != nil {
+		logger.Errorf("Failed to convert Event data to json: %s", data)
+		return
+	}
 
 	ttl := func() time.Duration {
 		if event == "IN_CALL" {
@@ -129,7 +139,7 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 	redisClient.SetEx(
 		context.Background(),
 		channel,
-		dataStr,
+		string(dataBytes),
 		ttl,
 	)
 

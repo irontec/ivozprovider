@@ -88,10 +88,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
      */
     private $relFixedCosts = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -254,6 +251,9 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->taxRate;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -278,7 +278,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->invoiceTemplate;
     }
 
-    public function setInvoiceTemplateId($id): static
+    public function setInvoiceTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new InvoiceTemplateDto($id)
@@ -308,7 +308,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -338,7 +338,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -368,7 +368,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->numberSequence;
     }
 
-    public function setNumberSequenceId($id): static
+    public function setNumberSequenceId(?int $id): static
     {
         $value = !is_null($id)
             ? new InvoiceNumberSequenceDto($id)
@@ -386,6 +386,9 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
+    /**
+     * @param FixedCostsRelInvoiceSchedulerDto[] | null $relFixedCosts
+     */
     public function setRelFixedCosts(?array $relFixedCosts): static
     {
         $this->relFixedCosts = $relFixedCosts;

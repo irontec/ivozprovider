@@ -53,6 +53,11 @@ abstract class WebPortalAbstract
     protected $userTheme = '';
 
     /**
+     * @var string
+     */
+    protected $color = '#000000';
+
+    /**
      * @var Logo
      */
     protected $logo;
@@ -70,11 +75,13 @@ abstract class WebPortalAbstract
         string $url,
         string $urlType,
         bool $newUI,
+        string $color,
         Logo $logo
     ) {
         $this->setUrl($url);
         $this->setUrlType($urlType);
         $this->setNewUI($newUI);
+        $this->setColor($color);
         $this->logo = $logo;
     }
 
@@ -96,7 +103,10 @@ abstract class WebPortalAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): WebPortalDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): WebPortalDto
     {
         return new WebPortalDto($id);
     }
@@ -142,6 +152,8 @@ abstract class WebPortalAbstract
         Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
         $newUI = $dto->getNewUI();
         Assertion::notNull($newUI, 'getNewUI value is null, but non null value was expected.');
+        $color = $dto->getColor();
+        Assertion::notNull($color, 'getColor value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -153,6 +165,7 @@ abstract class WebPortalAbstract
             $url,
             $urlType,
             $newUI,
+            $color,
             $logo
         );
 
@@ -183,6 +196,8 @@ abstract class WebPortalAbstract
         Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
         $newUI = $dto->getNewUI();
         Assertion::notNull($newUI, 'getNewUI value is null, but non null value was expected.');
+        $color = $dto->getColor();
+        Assertion::notNull($color, 'getColor value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -197,6 +212,7 @@ abstract class WebPortalAbstract
             ->setNewUI($newUI)
             ->setName($dto->getName())
             ->setUserTheme($dto->getUserTheme())
+            ->setColor($color)
             ->setLogo($logo)
             ->setBrand($fkTransformer->transform($dto->getBrand()));
 
@@ -215,6 +231,7 @@ abstract class WebPortalAbstract
             ->setNewUI(self::getNewUI())
             ->setName(self::getName())
             ->setUserTheme(self::getUserTheme())
+            ->setColor(self::getColor())
             ->setLogoFileSize(self::getLogo()->getFileSize())
             ->setLogoMimeType(self::getLogo()->getMimeType())
             ->setLogoBaseName(self::getLogo()->getBaseName())
@@ -233,6 +250,7 @@ abstract class WebPortalAbstract
             'newUI' => self::getNewUI(),
             'name' => self::getName(),
             'userTheme' => self::getUserTheme(),
+            'color' => self::getColor(),
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),
@@ -336,6 +354,20 @@ abstract class WebPortalAbstract
     public function getUserTheme(): ?string
     {
         return $this->userTheme;
+    }
+
+    protected function setColor(string $color): static
+    {
+        Assertion::maxLength($color, 10, 'color value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getColor(): string
+    {
+        return $this->color;
     }
 
     public function getLogo(): Logo

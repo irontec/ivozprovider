@@ -118,7 +118,10 @@ abstract class TrunksLcrGatewayAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TrunksLcrGatewayDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksLcrGatewayDto
     {
         return new TrunksLcrGatewayDto($id);
     }

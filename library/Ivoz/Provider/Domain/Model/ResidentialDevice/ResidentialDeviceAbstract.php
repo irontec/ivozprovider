@@ -214,7 +214,10 @@ abstract class ResidentialDeviceAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ResidentialDeviceDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ResidentialDeviceDto
     {
         return new ResidentialDeviceDto($id);
     }

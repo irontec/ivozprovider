@@ -10,9 +10,16 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class User extends \Klear_Model_UserAdvanced
 {
+    public $id;
+    public $_name;
+
     public $isMainOperator = false;
     public $isBrandOperator = false;
     public $isCompanyAdmin = false;
+    public $isNotCompanyOperator = false;
+    public $isCompanyOperator = false;
+    public $isNotBrandOperator = false;
+    public $isNotMainOperator = false;
 
     public $canSeeMain = false;
     public $canSeeBrand = false;

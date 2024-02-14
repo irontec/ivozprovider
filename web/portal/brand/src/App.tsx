@@ -33,27 +33,8 @@ export default function App(): JSX.Element {
   const loadProfile = useStoreActions(
     (actions) => actions.clientSession.aboutMe.load
   );
-  const theme = useStoreActions((actions) => actions.theme);
-  const apiGet = useStoreActions((actions) => actions.api.get);
 
   useTranslation();
-
-  useEffect(() => {
-    theme.setLogo('empty.svg');
-    apiGet({
-      path: `/my/theme`,
-      params: {},
-      successCallback: async (value) => {
-        theme.setName(value.name);
-        theme.setTheme(value.theme);
-        theme.setLogo(value.logo);
-      },
-      handleErrors: false,
-    }).catch((error) => {
-      console.error('Unable to resolve my theme', error);
-      theme.setLogo('logo.svg');
-    });
-  }, [apiGet, theme]);
 
   useEffect(() => {
     if (loggedIn && token && !aboutMe) {

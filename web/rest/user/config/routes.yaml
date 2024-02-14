@@ -165,7 +165,7 @@ get_my_call_history:
   methods: ['GET']
   defaults:
     _controller: Controller\My\CallHistoryAction
-    _api_resource_class: 'Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr'
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr'
     _api_collection_operation_name: 'get_my_call_history'
     _api_receive: false
 

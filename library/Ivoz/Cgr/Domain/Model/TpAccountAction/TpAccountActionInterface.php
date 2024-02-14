@@ -27,7 +27,10 @@ interface TpAccountActionInterface extends LoggableEntityInterface
      */
     public function getChangeSet(): array;
 
-    public static function createDto(string|int|null $id = null): TpAccountActionDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpAccountActionDto;
 
     /**
      * @internal use EntityTools instead

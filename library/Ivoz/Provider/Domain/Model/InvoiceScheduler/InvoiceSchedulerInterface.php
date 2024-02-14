@@ -56,7 +56,10 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      */
     public function getInterval(): \DateInterval;
 
-    public static function createDto(string|int|null $id = null): InvoiceSchedulerDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): InvoiceSchedulerDto;
 
     /**
      * @internal use EntityTools instead

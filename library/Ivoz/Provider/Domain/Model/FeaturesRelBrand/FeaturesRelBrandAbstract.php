@@ -58,7 +58,10 @@ abstract class FeaturesRelBrandAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): FeaturesRelBrandDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FeaturesRelBrandDto
     {
         return new FeaturesRelBrandDto($id);
     }

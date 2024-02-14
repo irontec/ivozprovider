@@ -142,7 +142,10 @@ abstract class TpLcrRuleAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TpLcrRuleDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpLcrRuleDto
     {
         return new TpLcrRuleDto($id);
     }

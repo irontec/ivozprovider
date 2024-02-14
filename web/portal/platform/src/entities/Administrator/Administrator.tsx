@@ -1,4 +1,5 @@
 import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
   marshaller as defaultMarshaller,
@@ -10,6 +11,7 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 import AdministratorRelPublicEntity from '../AdministratorRelPublicEntity/AdministratorRelPublicEntity';
+import Actions from './Action';
 import { AdministratorProperties } from './AdministratorProperties';
 
 type marshallerType = typeof defaultMarshaller;
@@ -67,14 +69,24 @@ const properties: AdministratorProperties = {
 };
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, row } = props;
+  const { routeMapItem, row, variant } = props;
 
   if (
     isEntityItem(routeMapItem) &&
     routeMapItem.entity.iden === AdministratorRelPublicEntity.iden
   ) {
     if (!row.restricted) {
-      return null;
+      if (variant === 'text') {
+        return <a className='disabled'>{AdministratorRelPublicEntity.title}</a>;
+      }
+
+      return (
+        <ChildEntityLink
+          routeMapItem={routeMapItem}
+          row={row}
+          disabled={true}
+        />
+      );
     }
   }
 
@@ -96,6 +108,7 @@ const Administrator: EntityInterface = {
   },
   columns: ['username', 'active', 'restricted'],
   ChildDecorator,
+  customActions: Actions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

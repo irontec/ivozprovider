@@ -124,10 +124,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
      */
     private $relCarriers = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -300,6 +297,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->clid;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -324,7 +324,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -354,7 +354,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -384,7 +384,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->carrier;
     }
 
-    public function setCarrierId($id): static
+    public function setCarrierId(?int $id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -414,7 +414,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->routingPattern;
     }
 
-    public function setRoutingPatternId($id): static
+    public function setRoutingPatternId(?int $id): static
     {
         $value = !is_null($id)
             ? new RoutingPatternDto($id)
@@ -444,7 +444,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->routingPatternGroup;
     }
 
-    public function setRoutingPatternGroupId($id): static
+    public function setRoutingPatternGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new RoutingPatternGroupDto($id)
@@ -474,7 +474,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->routingTag;
     }
 
-    public function setRoutingTagId($id): static
+    public function setRoutingTagId(?int $id): static
     {
         $value = !is_null($id)
             ? new RoutingTagDto($id)
@@ -504,7 +504,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->clidCountry;
     }
 
-    public function setClidCountryId($id): static
+    public function setClidCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -534,7 +534,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->tpLcrRule;
     }
 
-    public function setTpLcrRuleId($id): static
+    public function setTpLcrRuleId(?int $id): static
     {
         $value = !is_null($id)
             ? new TpLcrRuleDto($id)
@@ -552,6 +552,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param TrunksLcrRuleDto[] | null $lcrRules
+     */
     public function setLcrRules(?array $lcrRules): static
     {
         $this->lcrRules = $lcrRules;
@@ -567,6 +570,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->lcrRules;
     }
 
+    /**
+     * @param TrunksLcrRuleTargetDto[] | null $lcrRuleTargets
+     */
     public function setLcrRuleTargets(?array $lcrRuleTargets): static
     {
         $this->lcrRuleTargets = $lcrRuleTargets;
@@ -582,6 +588,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->lcrRuleTargets;
     }
 
+    /**
+     * @param OutgoingRoutingRelCarrierDto[] | null $relCarriers
+     */
     public function setRelCarriers(?array $relCarriers): static
     {
         $this->relCarriers = $relCarriers;

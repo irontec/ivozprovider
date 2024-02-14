@@ -23,6 +23,7 @@ const properties: NotificationTemplateProperties = {
       invoice: _('Invoice', { count: 1 }),
       callCsv: _('Call CSV'),
       maxDailyUsage: _('Max Daily Usage'),
+      accessCredentials: _('Access Credentials'),
     },
   },
   id: {

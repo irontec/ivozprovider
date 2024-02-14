@@ -56,10 +56,7 @@ abstract class HuntGroupMemberDtoAbstract implements DataTransferObjectInterface
      */
     private $numberCountry = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -163,6 +160,9 @@ abstract class HuntGroupMemberDtoAbstract implements DataTransferObjectInterface
         return $this->numberValue;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -187,7 +187,7 @@ abstract class HuntGroupMemberDtoAbstract implements DataTransferObjectInterface
         return $this->huntGroup;
     }
 
-    public function setHuntGroupId($id): static
+    public function setHuntGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new HuntGroupDto($id)
@@ -217,7 +217,7 @@ abstract class HuntGroupMemberDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -247,7 +247,7 @@ abstract class HuntGroupMemberDtoAbstract implements DataTransferObjectInterface
         return $this->numberCountry;
     }
 
-    public function setNumberCountryId($id): static
+    public function setNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)

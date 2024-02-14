@@ -87,10 +87,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
      */
     private $lcrRules = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -175,6 +172,9 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this->prefix;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -295,7 +295,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -313,6 +313,9 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param OutgoingRoutingDto[] | null $outgoingRoutings
+     */
     public function setOutgoingRoutings(?array $outgoingRoutings): static
     {
         $this->outgoingRoutings = $outgoingRoutings;
@@ -328,6 +331,9 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingRoutings;
     }
 
+    /**
+     * @param RoutingPatternGroupsRelPatternDto[] | null $relPatternGroups
+     */
     public function setRelPatternGroups(?array $relPatternGroups): static
     {
         $this->relPatternGroups = $relPatternGroups;
@@ -343,6 +349,9 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this->relPatternGroups;
     }
 
+    /**
+     * @param TrunksLcrRuleDto[] | null $lcrRules
+     */
     public function setLcrRules(?array $lcrRules): static
     {
         $this->lcrRules = $lcrRules;

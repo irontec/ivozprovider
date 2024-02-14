@@ -27,7 +27,7 @@ interface AgentInterface
     public function getType();
 
     /**
-     * @return string
+     * @return int|null
      */
     public function getId();
 

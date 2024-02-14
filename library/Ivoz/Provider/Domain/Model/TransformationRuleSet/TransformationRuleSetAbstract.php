@@ -95,7 +95,10 @@ abstract class TransformationRuleSetAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TransformationRuleSetDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TransformationRuleSetDto
     {
         return new TransformationRuleSetDto($id);
     }

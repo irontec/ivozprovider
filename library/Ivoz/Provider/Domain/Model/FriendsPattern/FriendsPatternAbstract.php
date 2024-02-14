@@ -65,7 +65,10 @@ abstract class FriendsPatternAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): FriendsPatternDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): FriendsPatternDto
     {
         return new FriendsPatternDto($id);
     }

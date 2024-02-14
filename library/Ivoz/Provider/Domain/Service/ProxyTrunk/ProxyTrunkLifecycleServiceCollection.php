@@ -17,6 +17,10 @@ class ProxyTrunkLifecycleServiceCollection implements LifecycleServiceCollection
 
     /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Kam\Domain\Service\TrunksUacreg\UpdateByProxyTrunk::class => 200,
+        ],
         "pre_remove" =>
         [
             \Ivoz\Provider\Domain\Service\ProxyTrunk\DeleteProtection::class => 200,

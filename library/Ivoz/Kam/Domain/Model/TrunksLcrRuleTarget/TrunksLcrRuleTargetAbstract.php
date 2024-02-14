@@ -87,7 +87,10 @@ abstract class TrunksLcrRuleTargetAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TrunksLcrRuleTargetDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksLcrRuleTargetDto
     {
         return new TrunksLcrRuleTargetDto($id);
     }

@@ -179,10 +179,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
      */
     private $callForwardSettings = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -423,6 +420,9 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->gsQRCode;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -447,7 +447,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -477,7 +477,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->callAcl;
     }
 
-    public function setCallAclId($id): static
+    public function setCallAclId(?int $id): static
     {
         $value = !is_null($id)
             ? new CallAclDto($id)
@@ -507,7 +507,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->bossAssistant;
     }
 
-    public function setBossAssistantId($id): static
+    public function setBossAssistantId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -537,7 +537,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->bossAssistantWhiteList;
     }
 
-    public function setBossAssistantWhiteListId($id): static
+    public function setBossAssistantWhiteListId(?int $id): static
     {
         $value = !is_null($id)
             ? new MatchListDto($id)
@@ -567,7 +567,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->transformationRuleSet;
     }
 
-    public function setTransformationRuleSetId($id): static
+    public function setTransformationRuleSetId(?int $id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -597,7 +597,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->language;
     }
 
-    public function setLanguageId($id): static
+    public function setLanguageId(?int $id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -627,7 +627,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->terminal;
     }
 
-    public function setTerminalId($id): static
+    public function setTerminalId(?int $id): static
     {
         $value = !is_null($id)
             ? new TerminalDto($id)
@@ -657,7 +657,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->extension;
     }
 
-    public function setExtensionId($id): static
+    public function setExtensionId(?int $id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -687,7 +687,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->timezone;
     }
 
-    public function setTimezoneId($id): static
+    public function setTimezoneId(?int $id): static
     {
         $value = !is_null($id)
             ? new TimezoneDto($id)
@@ -717,7 +717,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingDdi;
     }
 
-    public function setOutgoingDdiId($id): static
+    public function setOutgoingDdiId(?int $id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -747,7 +747,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingDdiRule;
     }
 
-    public function setOutgoingDdiRuleId($id): static
+    public function setOutgoingDdiRuleId(?int $id): static
     {
         $value = !is_null($id)
             ? new OutgoingDdiRuleDto($id)
@@ -777,7 +777,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->location;
     }
 
-    public function setLocationId($id): static
+    public function setLocationId(?int $id): static
     {
         $value = !is_null($id)
             ? new LocationDto($id)
@@ -807,7 +807,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->voicemail;
     }
 
-    public function setVoicemailId($id): static
+    public function setVoicemailId(?int $id): static
     {
         $value = !is_null($id)
             ? new VoicemailDto($id)
@@ -837,7 +837,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->contact;
     }
 
-    public function setContactId($id): static
+    public function setContactId(?int $id): static
     {
         $value = !is_null($id)
             ? new ContactDto($id)
@@ -855,6 +855,9 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param PickUpRelUserDto[] | null $pickUpRelUsers
+     */
     public function setPickUpRelUsers(?array $pickUpRelUsers): static
     {
         $this->pickUpRelUsers = $pickUpRelUsers;
@@ -870,6 +873,9 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->pickUpRelUsers;
     }
 
+    /**
+     * @param QueueMemberDto[] | null $queueMembers
+     */
     public function setQueueMembers(?array $queueMembers): static
     {
         $this->queueMembers = $queueMembers;
@@ -885,6 +891,9 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->queueMembers;
     }
 
+    /**
+     * @param CallForwardSettingDto[] | null $callForwardSettings
+     */
     public function setCallForwardSettings(?array $callForwardSettings): static
     {
         $this->callForwardSettings = $callForwardSettings;

@@ -27,7 +27,10 @@ interface IvrExcludedExtensionInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): IvrExcludedExtensionDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): IvrExcludedExtensionDto;
 
     /**
      * @internal use EntityTools instead

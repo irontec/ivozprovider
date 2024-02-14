@@ -45,6 +45,11 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     private $userTheme = '';
 
     /**
+     * @var string|null
+     */
+    private $color = '#000000';
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -69,10 +74,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
      */
     private $brand = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -93,6 +95,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
             'newUI' => 'newUI',
             'name' => 'name',
             'userTheme' => 'userTheme',
+            'color' => 'color',
             'id' => 'id',
             'logo' => [
                 'fileSize',
@@ -115,6 +118,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
             'newUI' => $this->getNewUI(),
             'name' => $this->getName(),
             'userTheme' => $this->getUserTheme(),
+            'color' => $this->getColor(),
             'id' => $this->getId(),
             'logo' => [
                 'fileSize' => $this->getLogoFileSize(),
@@ -210,6 +214,21 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $this->userTheme;
     }
 
+    public function setColor(string $color): static
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -270,7 +289,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)

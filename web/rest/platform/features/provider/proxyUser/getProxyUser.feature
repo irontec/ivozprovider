@@ -14,11 +14,18 @@ Feature: Retrieve proxy users
       And the JSON should be equal to:
       """
       [
-        {
-          "name": "proxyusers",
-          "ip": "127.0.0.1",
-          "id": 1
-        }
+          {
+              "name": "another pu",
+              "ip": "127.0.1.2",
+              "advertisedIp": "138.0.1.2",
+              "id": 2
+          },
+          {
+              "name": "proxyusers",
+              "ip": "127.0.0.1",
+              "advertisedIp": "138.0.0.1",
+              "id": 1
+          }
       ]
       """
 
@@ -34,6 +41,7 @@ Feature: Retrieve proxy users
       {
           "name": "proxyusers",
           "ip": "127.0.0.1",
+          "advertisedIp": "138.0.0.1",
           "id": 1
       }
       """

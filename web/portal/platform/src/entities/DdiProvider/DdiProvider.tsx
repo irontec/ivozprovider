@@ -43,6 +43,11 @@ const DdiProvider: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'DDIProviders',
   },
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default DdiProvider;

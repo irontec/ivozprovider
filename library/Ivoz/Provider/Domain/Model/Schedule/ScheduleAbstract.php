@@ -107,7 +107,10 @@ abstract class ScheduleAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ScheduleDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ScheduleDto
     {
         return new ScheduleDto($id);
     }

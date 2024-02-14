@@ -43,10 +43,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
      */
     private $id = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -158,6 +155,9 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
         return $this->lastModified;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;

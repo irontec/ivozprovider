@@ -7,6 +7,7 @@
       <index name="usersCdr_companyId_startTime" columns="companyId,start_time"/>
       <index name="usersCdr_userId" columns="userId"/>
       <index name="usersCdr_friendId" columns="friendId"/>
+      <index name="userCdr_parsed" columns="parsed"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="usersCdr_callid_direction" columns="callid,direction"/>
@@ -69,6 +70,16 @@
     <field name="xcallid" type="string" column="xcallid" length="255" nullable="true">
       <options>
         <option name="fixed"/>
+      </options>
+    </field>
+    <field name="responseCode" type="string" column="responseCode" length="64" nullable="false">
+      <options>
+        <option name="default">200</option>
+      </options>
+    </field>
+    <field name="parsed" type="boolean" column="parsed" nullable="true">
+      <options>
+        <option name="default">0</option>
       </options>
     </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">

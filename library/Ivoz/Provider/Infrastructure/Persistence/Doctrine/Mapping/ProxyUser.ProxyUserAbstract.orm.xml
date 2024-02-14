@@ -14,5 +14,10 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="advertisedIp" type="string" column="advertisedIp" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </mapped-superclass>
 </doctrine-mapping>

@@ -26,7 +26,10 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): TpLcrRuleDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpLcrRuleDto;
 
     /**
      * @internal use EntityTools instead

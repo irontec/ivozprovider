@@ -27,7 +27,10 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): CompanyRelRoutingTagDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CompanyRelRoutingTagDto;
 
     /**
      * @internal use EntityTools instead

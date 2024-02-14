@@ -107,7 +107,10 @@ abstract class VoicemailAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): VoicemailDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): VoicemailDto
     {
         return new VoicemailDto($id);
     }

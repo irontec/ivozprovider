@@ -139,7 +139,10 @@ abstract class ConditionalRouteAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): ConditionalRouteDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConditionalRouteDto
     {
         return new ConditionalRouteDto($id);
     }

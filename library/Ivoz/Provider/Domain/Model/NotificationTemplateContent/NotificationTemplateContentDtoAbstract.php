@@ -55,10 +55,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
      */
     private $language = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -174,6 +171,9 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->bodyType;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -198,7 +198,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->notificationTemplate;
     }
 
-    public function setNotificationTemplateId($id): static
+    public function setNotificationTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -228,7 +228,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->language;
     }
 
-    public function setLanguageId($id): static
+    public function setLanguageId(?int $id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)

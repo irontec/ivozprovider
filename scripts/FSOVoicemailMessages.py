@@ -21,7 +21,7 @@ import configparser
 import glob
 import os
 
-import mysql.connector
+import pymysql
 
 # Configuration
 storage_path = "/opt/irontec/ivozprovider/storage"
@@ -32,7 +32,7 @@ config = configparser.ConfigParser()
 
 try:
     # MySQL access configuration
-    cnx = mysql.connector.connect(user='root', password='changeme',
+    cnx = pymysql.connect(user='root', password='changeme',
                                   host='data.ivozprovider.local',
                                   database='ivozprovider')
 

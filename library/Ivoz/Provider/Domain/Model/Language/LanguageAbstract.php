@@ -58,7 +58,10 @@ abstract class LanguageAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): LanguageDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): LanguageDto
     {
         return new LanguageDto($id);
     }

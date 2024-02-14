@@ -78,6 +78,16 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     private $xcallid = null;
 
     /**
+     * @var string|null
+     */
+    private $responseCode = '200';
+
+    /**
+     * @var bool|null
+     */
+    private $parsed = false;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -102,10 +112,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
      */
     private $friend = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -132,6 +139,8 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callid' => 'callid',
             'callidHash' => 'callidHash',
             'xcallid' => 'xcallid',
+            'responseCode' => 'responseCode',
+            'parsed' => 'parsed',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -158,6 +167,8 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callid' => $this->getCallid(),
             'callidHash' => $this->getCallidHash(),
             'xcallid' => $this->getXcallid(),
+            'responseCode' => $this->getResponseCode(),
+            'parsed' => $this->getParsed(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
@@ -323,6 +334,33 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->xcallid;
     }
 
+    public function setResponseCode(string $responseCode): static
+    {
+        $this->responseCode = $responseCode;
+
+        return $this;
+    }
+
+    public function getResponseCode(): ?string
+    {
+        return $this->responseCode;
+    }
+
+    public function setParsed(?bool $parsed): static
+    {
+        $this->parsed = $parsed;
+
+        return $this;
+    }
+
+    public function getParsed(): ?bool
+    {
+        return $this->parsed;
+    }
+
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -347,7 +385,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -377,7 +415,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -407,7 +445,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-    public function setUserId($id): static
+    public function setUserId(?int $id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -437,7 +475,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->friend;
     }
 
-    public function setFriendId($id): static
+    public function setFriendId(?int $id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)

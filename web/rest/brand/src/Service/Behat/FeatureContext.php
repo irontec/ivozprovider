@@ -26,8 +26,6 @@ class FeatureContext extends BaseFeatureContext
 
     /**
      * @Given I add Brand Authorization header
-     *
-     * @return void
      */
     public function setBrandAuthorizationHeader(): void
     {
@@ -36,8 +34,6 @@ class FeatureContext extends BaseFeatureContext
 
     /**
      * @Given I exchange Brand Authorization header
-     *
-     * @return void
      */
     public function setBrandAuthorizationHeaderByExchange(): void
     {
@@ -46,12 +42,18 @@ class FeatureContext extends BaseFeatureContext
 
     /**
      * @Given I exchange internal Brand Authorization header
-     *
-     * @return void
      */
     public function setInternalBrandAuthorizationHeaderByExchange(): void
     {
         $this->exchangeAuthorizationHeader('admin', '__b1_internal');
+    }
+
+    /**
+     * @Given I exchange :username platform token for :username2 brand token
+     */
+    public function exchangeAuthorizationTokens(string $username, string $username2): void
+    {
+        $this->exchangeAuthorizationHeader($username, $username2);
     }
 
     /**

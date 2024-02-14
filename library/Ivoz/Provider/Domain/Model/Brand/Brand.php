@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 
 /**
  * Brand
@@ -47,6 +48,33 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    protected function sanitizeValues(): void
+    {
+        $relFeatues = $this->getRelFeatures();
+        $featuesThatRequireDomainUser = array_filter(
+            $relFeatues,
+            function ($relFeatue) {
+
+                $targetFeatues = [
+                    Feature::RESIDENTIAL_IDEN,
+                    Feature::RETAIL_IDEN
+                ];
+
+                return in_array(
+                    $relFeatue->getFeature()->getIden(),
+                    $targetFeatues,
+                    true
+                );
+            }
+        );
+
+        $domainUsers = $this->getDomainUsers();
+
+        if (count($featuesThatRequireDomainUser) && !$domainUsers) {
+            throw new \DomainException('SIP domain is required');
+        }
     }
 
     /**

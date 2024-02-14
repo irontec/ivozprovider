@@ -18,7 +18,10 @@ interface TrunksHtableInterface extends EntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): TrunksHtableDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TrunksHtableDto;
 
     /**
      * @internal use EntityTools instead

@@ -56,6 +56,9 @@ export interface OutputStuct {
   caller: string;
   callee: string;
   operator: string;
+  party?: string;
 }
 
 export type Calls = { [key: string]: OutputStuct };
+
+export type WsFilters = Record<string, Record<string, string | number>> | null;

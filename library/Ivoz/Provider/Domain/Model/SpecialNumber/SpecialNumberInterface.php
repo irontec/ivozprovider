@@ -27,7 +27,10 @@ interface SpecialNumberInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): SpecialNumberDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): SpecialNumberDto;
 
     /**
      * @internal use EntityTools instead

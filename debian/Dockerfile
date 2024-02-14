@@ -1,13 +1,11 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 MAINTAINER Mikel Madariaga <mikel@irontec.com>
 MAINTAINER Ivan Alonso <kaian@irontec.com>
 
 RUN apt-get update && apt-get -y install gnupg wget
 
-RUN echo deb http://packages.irontec.com/debian halliday main extra >> \
-    /etc/apt/sources.list
-RUN echo deb http://ftp.debian.org/debian bullseye-backports main contrib non-free >> \
+RUN echo deb http://packages.irontec.com/debian tempest main extra >> \
     /etc/apt/sources.list
 
 RUN wget http://packages.irontec.com/public.key -q -O - | apt-key add -
@@ -20,29 +18,27 @@ RUN apt-get update && apt-get install -y \
     debhelper \
     gettext \
     git \
+    golang \
     libjs-sphinxdoc \
     libjs-jquery \
     make \
+    npm \
     nodejs \
     openssh-client \
-    php8.0 \
-    php8.0-cli \
-    php8.0-common \
-    php8.0-mbstring \
-    php8.0-xml \
-    php8.0-zip \
-    php8.0-mailparse \
-    php8.0-readline \
-    php8.0-gearman \
-    python \
+    php8.2 \
+    php8.2-cli \
+    php8.2-common \
+    php8.2-mbstring \
+    php8.2-xml \
+    php8.2-zip \
+    php8.2-mailparse \
+    php8.2-readline \
+    php8.2-gearman \
+    python3 \
     python3-sphinx-rtd-theme \
     ruby-dev \
     sphinx-common \
     yarn
-
-# Packages from backports
-RUN apt-get install -y -t bullseye-backports \
-    golang
 
 # Create jenkins user (configurable)
 ARG UNAME=jenkins

@@ -36,7 +36,10 @@ interface RoutingPatternInterface extends LoggableEntityInterface
      */
     public function setPrefix(?string $prefix = null): static;
 
-    public static function createDto(string|int|null $id = null): RoutingPatternDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RoutingPatternDto;
 
     /**
      * @internal use EntityTools instead

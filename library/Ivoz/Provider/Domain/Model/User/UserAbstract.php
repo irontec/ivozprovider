@@ -212,7 +212,10 @@ abstract class UserAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): UserDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): UserDto
     {
         return new UserDto($id);
     }

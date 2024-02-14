@@ -28,7 +28,10 @@ interface RtpengineInterface extends LoggableEntityInterface
 
     public function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): static;
 
-    public static function createDto(string|int|null $id = null): RtpengineDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RtpengineDto;
 
     /**
      * @internal use EntityTools instead

@@ -14,9 +14,9 @@ Feature: Update web portals
           "url": "https://updated-example.com",
           "klearTheme": "redmond",
           "urlType": "god",
-          "newUI": true,
           "name": "Updated Portal",
           "userTheme": "default",
+          "color": "#000000",
           "id": 1,
           "logo": {
               "fileSize": null,
@@ -34,9 +34,9 @@ Feature: Update web portals
           "url": "https://updated-example.com",
           "klearTheme": "redmond",
           "urlType": "god",
-          "newUI": true,
           "name": "Updated Portal",
           "userTheme": "default",
+          "color": "#000000",
           "id": 2,
           "logo": {
               "fileSize": null,
@@ -76,6 +76,7 @@ This is updated file content
     """
       {
           "name": "Updated Portal",
+          "color": "#000000",
           "logo": {
               "fileSize": 28,
               "mimeType": "text/plain; charset=us-ascii",

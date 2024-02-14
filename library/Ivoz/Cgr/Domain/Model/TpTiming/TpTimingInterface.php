@@ -19,7 +19,10 @@ interface TpTimingInterface extends EntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): TpTimingDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpTimingDto;
 
     /**
      * @internal use EntityTools instead

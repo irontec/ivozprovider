@@ -26,7 +26,10 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): TpRatingPlanDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpRatingPlanDto;
 
     /**
      * @internal use EntityTools instead

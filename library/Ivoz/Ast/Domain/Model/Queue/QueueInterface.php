@@ -51,7 +51,10 @@ interface QueueInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): QueueDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): QueueDto;
 
     /**
      * @internal use EntityTools instead

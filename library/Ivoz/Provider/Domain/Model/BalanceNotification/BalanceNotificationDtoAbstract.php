@@ -51,10 +51,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
      */
     private $notificationTemplate = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -144,6 +141,9 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return $this->lastSent;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -168,7 +168,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -198,7 +198,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return $this->carrier;
     }
 
-    public function setCarrierId($id): static
+    public function setCarrierId(?int $id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -228,7 +228,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return $this->notificationTemplate;
     }
 
-    public function setNotificationTemplateId($id): static
+    public function setNotificationTemplateId(?int $id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)

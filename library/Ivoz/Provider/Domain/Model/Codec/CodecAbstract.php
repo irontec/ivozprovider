@@ -65,7 +65,10 @@ abstract class CodecAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CodecDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CodecDto
     {
         return new CodecDto($id);
     }

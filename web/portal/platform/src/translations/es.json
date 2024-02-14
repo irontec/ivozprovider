@@ -1,5 +1,6 @@
 {
   "'https://' URLs valid only (without trailing '/')": "Solo se permiten URLS 'https://' (sin '/' al final)",
+  "Access Credentials": "Credenciales de Acceso",
   "Access privileges": "Control de acceso",
   "Active": "Activo",
   "Active call_many": "Llamadas en curso",
@@ -10,6 +11,7 @@
   "Administrator access privilege_many": "Controles de acceso de administrador",
   "Administrator access privilege_one": "Control de acceso de administrador",
   "Administrator access privilege_other": "Controles de acceso de administrador",
+  "Advertised IP Address": "Dirección IP anunciada",
   "Antiflood banned IP_many": "IPs bloqueadas antiflood",
   "Antiflood banned IP_one": "IP bloqueada antiflood",
   "Antiflood banned IP_other": "IPs bloqueadas antiflood",
@@ -44,6 +46,7 @@
   "Client_other": "Clientes",
   "Close": "Cerrar",
   "Code": "Código",
+  "Color": "Color",
   "Contents configuration": "Configuración de contenido",
   "Cost": "Coste",
   "Country code": "Código de País",
@@ -60,7 +63,6 @@
   "DDI_many": "DDIs",
   "DDI_one": "DDI",
   "DDI_other": "DDIs",
-  "Default": "Por defecto",
   "Default Invoice template_many": "Plantillas de facturas por defecto",
   "Default Invoice template_one": "Plantilla de factura por defecto",
   "Default Invoice template_other": "Plantillas de facturas por defecto",
@@ -148,7 +150,6 @@
   "Media Relay_one": "Servidor de media",
   "Media Relay_other": "Servidores de media",
   "Name": "Nombre",
-  "New Interface": "Nueva interfaz",
   "No": "No",
   "Notification Template Content_many": "Contenidos de notificaciones",
   "Notification Template Content_one": "Contenido de notificación",
@@ -217,7 +218,6 @@
   "Terminal Model_one": "Modelo de Terminales",
   "Terminal Model_other": "Modelos de Terminales",
   "Test template": "Probar la plantilla",
-  "Theme": "Tema",
   "There are not associated elements": "No hay elementos asociados",
   "This template is going to be tested": "La siguiente plantilla será probada",
   "Timezone_many": "Zonas Horarias",
@@ -239,6 +239,5 @@
   "Weight": "Peso",
   "Welcome to <br /> Ivoz Provider global administrator portal": "Bienvenido al portal de <br />administración global de Ivoz Provider",
   "Will be shown on page footer": "Se mostrará en el pie de página",
-  "Yes": "Si",
-  "You can always access classic interface adding /classic to URL": "Siempre podrás acceder a la interfaz clásica añadiendo /classic a la URL"
+  "Yes": "Si"
 }

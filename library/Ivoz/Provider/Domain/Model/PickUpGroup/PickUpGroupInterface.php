@@ -29,7 +29,10 @@ interface PickUpGroupInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): PickUpGroupDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): PickUpGroupDto;
 
     /**
      * @internal use EntityTools instead

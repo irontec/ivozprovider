@@ -26,7 +26,10 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): TpDerivedChargerDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpDerivedChargerDto;
 
     /**
      * @internal use EntityTools instead

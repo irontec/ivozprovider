@@ -117,7 +117,10 @@ abstract class AdministratorAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): AdministratorDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): AdministratorDto
     {
         return new AdministratorDto($id);
     }

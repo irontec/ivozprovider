@@ -27,7 +27,10 @@ interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterfac
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): RoutingPatternGroupsRelPatternDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RoutingPatternGroupsRelPatternDto;
 
     /**
      * @internal use EntityTools instead

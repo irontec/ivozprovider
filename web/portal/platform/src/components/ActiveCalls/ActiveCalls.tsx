@@ -1,19 +1,41 @@
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { Skeleton } from '@mui/material';
 import { useDeferredValue } from 'react';
+import { useStoreState } from 'store';
 
+import { queryStringCriteriaToFilters } from './ActiveCalls.helpers';
+import { StyledListContent } from './ActiveCalls.styles';
 import ActiveCallsTable from './ActiveCallsTable';
-import useRealtimeCalls from './useRealtimeCalls';
+import FilterComponent from './FilterComponent';
+import useRealtimeCalls from './hooks/useRealtimeCalls';
 
 export default function ActiveCalls(): JSX.Element | null {
-  const [ready, calls] = useRealtimeCalls();
+  const queryStringCriteria = useStoreState(
+    (state) => state.route.queryStringCriteria
+  );
+  const filters = queryStringCriteriaToFilters(queryStringCriteria);
 
+  const [ready, calls] = useRealtimeCalls({
+    filters,
+  });
   const deferredCalls = useDeferredValue(calls);
 
   return (
-    <div>
-      <h3>{_('Active call', { count: 2 })}</h3>
-      {!ready && <div>Loading</div>}
-      {ready && <ActiveCallsTable calls={deferredCalls} />}
-    </div>
+    <StyledListContent>
+      <div className='card'>
+        {!ready && (
+          <Skeleton
+            style={{ marginBottom: 20 }}
+            variant='rectangular'
+            height={42}
+          />
+        )}
+        {ready && (
+          <>
+            <FilterComponent />
+            <ActiveCallsTable calls={deferredCalls} />
+          </>
+        )}
+      </div>
+    </StyledListContent>
   );
 }

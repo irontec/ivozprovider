@@ -24,12 +24,23 @@ class ProviderProxyUser extends Fixture
         (function () use ($fixture) {
             $this->setName("proxyusers");
             $this->setIp("127.0.0.1");
+            $this->setAdvertisedIp("138.0.0.1");
         })->call($item1);
 
         $this->addReference('_reference_ProviderProxyUserProxyUser1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        $item2 = $this->createEntityInstance(ProxyUser::class);
+        (function () use ($fixture) {
+            $this->setName("another pu");
+            $this->setIp("127.0.1.2");
+            $this->setAdvertisedIp("138.0.1.2");
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderProxyUserProxyUser2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
 
         $manager->flush();
     }

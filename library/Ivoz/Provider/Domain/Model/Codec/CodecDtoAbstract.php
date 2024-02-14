@@ -33,10 +33,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
      */
     private $id = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -120,6 +117,9 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;

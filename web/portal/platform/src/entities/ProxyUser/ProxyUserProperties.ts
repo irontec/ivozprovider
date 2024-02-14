@@ -8,6 +8,7 @@ export type ProxyUserPropertyList<T> = {
   name?: T;
   id?: T;
   ip?: T;
+  advertisedIp?: T;
 };
 
 export type ProxyUserProperties = ProxyUserPropertyList<Partial<PropertySpec>>;

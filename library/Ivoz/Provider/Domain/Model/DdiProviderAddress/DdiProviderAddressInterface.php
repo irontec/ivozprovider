@@ -32,7 +32,10 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
      */
     public function setIp(?string $ip = null): static;
 
-    public static function createDto(string|int|null $id = null): DdiProviderAddressDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): DdiProviderAddressDto;
 
     /**
      * @internal use EntityTools instead

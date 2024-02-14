@@ -30,10 +30,7 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
      */
     private $codec = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -79,6 +76,9 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -103,7 +103,7 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -133,7 +133,7 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return $this->codec;
     }
 
-    public function setCodecId($id): static
+    public function setCodecId(?int $id): static
     {
         $value = !is_null($id)
             ? new CodecDto($id)

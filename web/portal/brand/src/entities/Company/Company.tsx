@@ -334,6 +334,11 @@ const properties: CompanyProperties = {
     null: _('Use generic template'),
     default: '__null__',
   },
+  accessCredentialNotificationTemplate: {
+    label: _('Access Credential Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
   geoIpAllowedCountries: {
     label: _('GeoIP allowed countries'),
     helpText: _(

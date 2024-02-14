@@ -121,7 +121,10 @@ abstract class TpAccountActionAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): TpAccountActionDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): TpAccountActionDto
     {
         return new TpAccountActionDto($id);
     }

@@ -64,10 +64,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
      */
     private $ddiProviderAddresses = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -147,6 +144,9 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -171,7 +171,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setBrandId($id): static
+    public function setBrandId(?int $id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -201,7 +201,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->transformationRuleSet;
     }
 
-    public function setTransformationRuleSetId($id): static
+    public function setTransformationRuleSetId(?int $id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -231,7 +231,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->proxyTrunk;
     }
 
-    public function setProxyTrunkId($id): static
+    public function setProxyTrunkId(?int $id): static
     {
         $value = !is_null($id)
             ? new ProxyTrunkDto($id)
@@ -261,7 +261,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->mediaRelaySets;
     }
 
-    public function setMediaRelaySetsId($id): static
+    public function setMediaRelaySetsId(?int $id): static
     {
         $value = !is_null($id)
             ? new MediaRelaySetDto($id)
@@ -279,6 +279,9 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param DdiProviderRegistrationDto[] | null $ddiProviderRegistrations
+     */
     public function setDdiProviderRegistrations(?array $ddiProviderRegistrations): static
     {
         $this->ddiProviderRegistrations = $ddiProviderRegistrations;
@@ -294,6 +297,9 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->ddiProviderRegistrations;
     }
 
+    /**
+     * @param DdiProviderAddressDto[] | null $ddiProviderAddresses
+     */
     public function setDdiProviderAddresses(?array $ddiProviderAddresses): static
     {
         $this->ddiProviderAddresses = $ddiProviderAddresses;

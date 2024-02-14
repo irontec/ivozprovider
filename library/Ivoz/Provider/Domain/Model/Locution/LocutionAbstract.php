@@ -79,7 +79,10 @@ abstract class LocutionAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): LocutionDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): LocutionDto
     {
         return new LocutionDto($id);
     }

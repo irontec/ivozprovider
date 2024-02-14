@@ -130,7 +130,10 @@ abstract class HuntGroupAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): HuntGroupDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): HuntGroupDto
     {
         return new HuntGroupDto($id);
     }

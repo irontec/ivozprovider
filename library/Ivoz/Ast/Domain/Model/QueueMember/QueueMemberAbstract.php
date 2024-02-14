@@ -100,7 +100,10 @@ abstract class QueueMemberAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): QueueMemberDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): QueueMemberDto
     {
         return new QueueMemberDto($id);
     }

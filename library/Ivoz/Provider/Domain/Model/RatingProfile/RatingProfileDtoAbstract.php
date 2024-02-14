@@ -53,10 +53,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     private $tpRatingProfiles = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -121,6 +118,9 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->activationTime;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -145,7 +145,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-    public function setCompanyId($id): static
+    public function setCompanyId(?int $id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -175,7 +175,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->carrier;
     }
 
-    public function setCarrierId($id): static
+    public function setCarrierId(?int $id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -205,7 +205,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->ratingPlanGroup;
     }
 
-    public function setRatingPlanGroupId($id): static
+    public function setRatingPlanGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new RatingPlanGroupDto($id)
@@ -235,7 +235,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->routingTag;
     }
 
-    public function setRoutingTagId($id): static
+    public function setRoutingTagId(?int $id): static
     {
         $value = !is_null($id)
             ? new RoutingTagDto($id)
@@ -253,6 +253,9 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param TpRatingProfileDto[] | null $tpRatingProfiles
+     */
     public function setTpRatingProfiles(?array $tpRatingProfiles): static
     {
         $this->tpRatingProfiles = $tpRatingProfiles;

@@ -7,12 +7,12 @@ import {
 export type WebPortalPropertyList<T> = {
   url?: T;
   klearTheme?: T;
+  color?: T;
   urlType?: T;
   name?: T;
   userTheme?: T;
   id?: T;
   logo?: T;
-  newUI?: T;
 };
 
 export type WebPortalProperties = WebPortalPropertyList<Partial<PropertySpec>>;

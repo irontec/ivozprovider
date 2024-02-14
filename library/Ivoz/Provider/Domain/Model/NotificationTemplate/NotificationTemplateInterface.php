@@ -31,6 +31,8 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
 
     public const TYPE_MAXDAILYUSAGE = 'maxDailyUsage';
 
+    public const TYPE_ACCESSCREDENTIALS = 'accessCredentials';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
@@ -52,7 +54,10 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      */
     public function getContentsByLanguage(LanguageInterface $language);
 
-    public static function createDto(string|int|null $id = null): NotificationTemplateDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): NotificationTemplateDto;
 
     /**
      * @internal use EntityTools instead

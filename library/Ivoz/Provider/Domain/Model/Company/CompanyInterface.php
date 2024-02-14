@@ -202,7 +202,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function isWholesale(): bool;
 
-    public static function createDto(string|int|null $id = null): CompanyDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CompanyDto;
 
     /**
      * @internal use EntityTools instead
@@ -291,6 +294,8 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCallCsvNotificationTemplate(): ?NotificationTemplateInterface;
 
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface;
+
+    public function getAccessCredentialNotificationTemplate(): ?NotificationTemplateInterface;
 
     public function getCorporation(): ?CorporationInterface;
 

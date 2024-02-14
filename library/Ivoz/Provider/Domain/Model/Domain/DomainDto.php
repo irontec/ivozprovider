@@ -14,6 +14,13 @@ class DomainDto extends DomainDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
+            if ($role === 'ROLE_COMPANY_ADMIN') {
+                return [
+                    'id' => 'id',
+                    'domain' => 'domain',
+                ];
+            }
+
             return [
                 'id' => 'id',
                 'domain' => 'domain',

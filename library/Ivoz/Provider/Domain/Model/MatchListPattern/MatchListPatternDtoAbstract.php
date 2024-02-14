@@ -50,10 +50,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
      */
     private $numberCountry = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -155,6 +152,9 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->numbervalue;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -179,7 +179,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->matchList;
     }
 
-    public function setMatchListId($id): static
+    public function setMatchListId(?int $id): static
     {
         $value = !is_null($id)
             ? new MatchListDto($id)
@@ -209,7 +209,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->numberCountry;
     }
 
-    public function setNumberCountryId($id): static
+    public function setNumberCountryId(?int $id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)

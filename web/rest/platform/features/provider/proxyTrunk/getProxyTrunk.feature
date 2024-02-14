@@ -17,16 +17,19 @@ Feature: Retrieve proxy trunks
           {
               "name": "ExtraIP",
               "ip": "127.0.0.3",
+              "advertisedIp": "138.0.0.3",
               "id": 2
           },
           {
               "name": "ip_for_delete_process",
               "ip": "10.50.23.146",
+              "advertisedIp": null,
               "id": 3
           },
           {
               "name": "proxytrunks",
               "ip": "127.0.0.1",
+              "advertisedIp": "138.0.0.1",
               "id": 1
           }
       ]
@@ -44,6 +47,7 @@ Feature: Retrieve proxy trunks
       {
           "name": "proxytrunks",
           "ip": "127.0.0.1",
+          "advertisedIp": "138.0.0.1",
           "id": 1
       }
       """

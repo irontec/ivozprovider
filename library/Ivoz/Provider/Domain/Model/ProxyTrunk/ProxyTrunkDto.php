@@ -15,6 +15,7 @@ class ProxyTrunkDto extends ProxyTrunkDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'ip' => 'ip',
+                'advertisedIp' => 'advertisedIp',
             ];
         }
 

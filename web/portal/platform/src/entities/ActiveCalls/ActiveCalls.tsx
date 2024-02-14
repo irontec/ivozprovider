@@ -5,11 +5,36 @@ import CellTowerIcon from '@mui/icons-material/CellTower';
 
 import { ActiveCallProperties } from './ActiveCallsProperties';
 
-const properties: ActiveCallProperties = {};
+const properties: ActiveCallProperties = {
+  Brand: {
+    label: _('Brand', { count: 1 }),
+    $ref: '#/definitions/Brand',
+  },
+  Company: {
+    label: _('Client', { count: 1 }),
+    $ref: '#/definitions/Company',
+  },
+  Carrier: {
+    label: _('Carrier', { count: 1 }),
+    $ref: '#/definitions/Carrier',
+  },
+  Direction: {
+    label: _('Direction'),
+    enum: {
+      inbound: _('Inbound'),
+      outbound: _('Outbound'),
+    },
+  },
+  DdiProvider: {
+    label: _('DDI Provider', { count: 1 }),
+    $ref: '#/definitions/DdiProvider',
+  },
+};
 
 const activeCalls: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: CellTowerIcon,
+  columns: ['Brand', 'Company', 'Direction', 'Carrier', 'DdiProvider'],
   link: '/doc/en/administration_portal/platform/active_calls.html',
   iden: 'ActiveCalls',
   title: _('Active call', { count: 2 }),

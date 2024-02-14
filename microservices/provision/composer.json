@@ -48,6 +48,9 @@
         },
         "platform": {
             "php": "8.0.9"
+        },
+        "allow-plugins": {
+            "symfony/flex": true
         }
     },
     "require": {

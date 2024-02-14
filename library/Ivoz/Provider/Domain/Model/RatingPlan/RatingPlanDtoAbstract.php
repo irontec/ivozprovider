@@ -92,10 +92,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
      */
     private $tpRatingPlan = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -285,6 +282,9 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->sunday;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -309,7 +309,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->ratingPlanGroup;
     }
 
-    public function setRatingPlanGroupId($id): static
+    public function setRatingPlanGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new RatingPlanGroupDto($id)
@@ -339,7 +339,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->destinationRateGroup;
     }
 
-    public function setDestinationRateGroupId($id): static
+    public function setDestinationRateGroupId(?int $id): static
     {
         $value = !is_null($id)
             ? new DestinationRateGroupDto($id)
@@ -369,7 +369,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->tpTiming;
     }
 
-    public function setTpTimingId($id): static
+    public function setTpTimingId(?int $id): static
     {
         $value = !is_null($id)
             ? new TpTimingDto($id)
@@ -399,7 +399,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->tpRatingPlan;
     }
 
-    public function setTpRatingPlanId($id): static
+    public function setTpRatingPlanId(?int $id): static
     {
         $value = !is_null($id)
             ? new TpRatingPlanDto($id)

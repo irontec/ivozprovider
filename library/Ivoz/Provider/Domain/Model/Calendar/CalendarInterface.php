@@ -47,7 +47,10 @@ interface CalendarInterface extends LoggableEntityInterface
      */
     public function getHolidayDate(DateTimeInterface $dateTime);
 
-    public static function createDto(string|int|null $id = null): CalendarDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CalendarDto;
 
     /**
      * @internal use EntityTools instead

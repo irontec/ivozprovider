@@ -145,7 +145,10 @@ abstract class OutgoingRoutingAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): OutgoingRoutingDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): OutgoingRoutingDto
     {
         return new OutgoingRoutingDto($id);
     }

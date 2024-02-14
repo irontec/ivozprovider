@@ -25,7 +25,10 @@ interface ProxyUserInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): ProxyUserDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ProxyUserDto;
 
     /**
      * @internal use EntityTools instead
@@ -48,4 +51,6 @@ interface ProxyUserInterface extends LoggableEntityInterface
     public function getName(): ?string;
 
     public function getIp(): ?string;
+
+    public function getAdvertisedIp(): ?string;
 }

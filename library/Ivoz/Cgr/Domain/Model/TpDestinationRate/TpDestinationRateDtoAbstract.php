@@ -69,10 +69,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
      */
     private $destinationRate = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -242,6 +239,9 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->createdAt;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -266,7 +266,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->destinationRate;
     }
 
-    public function setDestinationRateId($id): static
+    public function setDestinationRateId(?int $id): static
     {
         $value = !is_null($id)
             ? new DestinationRateDto($id)

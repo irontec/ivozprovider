@@ -73,7 +73,10 @@ abstract class MaxUsageNotificationAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): MaxUsageNotificationDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): MaxUsageNotificationDto
     {
         return new MaxUsageNotificationDto($id);
     }

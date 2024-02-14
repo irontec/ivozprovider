@@ -671,9 +671,19 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
 
 Ivoz\Provider\Domain\Model\Domain\Domain:
   itemOperations: []
-  collectionOperations: []
+  collectionOperations:
+    get: ~
   attributes:
-    access_control: 'FALSE'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      domain: ASC
+    read_access_control:
+      id:
+        eq: 'user.getCompany().getDomain() ? user.getCompany().getDomain().getId() : null'
+    write_access_control:
+      raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Extension\Extension:
   itemOperations:
@@ -2234,3 +2244,24 @@ Ivoz\Provider\Domain\Model\WebPortal\WebTheme:
         tags:
           - My
   collectionOperations: []
+
+Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr:
+  attributes:
+    pagination_client_enabled: true
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get:
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        - 'text/csv'

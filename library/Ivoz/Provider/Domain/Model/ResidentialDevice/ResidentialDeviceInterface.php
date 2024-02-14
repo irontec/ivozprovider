@@ -123,7 +123,10 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      */
     public function getDdi($ddieE164);
 
-    public static function createDto(string|int|null $id = null): ResidentialDeviceDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ResidentialDeviceDto;
 
     /**
      * @internal use EntityTools instead

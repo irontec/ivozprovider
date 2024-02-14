@@ -35,7 +35,10 @@ interface VoicemailMessageInterface extends LoggableEntityInterface
 
     public function getMetadataFileName(): string;
 
-    public static function createDto(string|int|null $id = null): VoicemailMessageDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): VoicemailMessageDto;
 
     /**
      * @internal use EntityTools instead

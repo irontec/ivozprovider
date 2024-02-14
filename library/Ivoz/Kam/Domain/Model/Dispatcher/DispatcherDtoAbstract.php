@@ -54,10 +54,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
      */
     private $applicationServer = null;
 
-    /**
-     * @param string|int|null $id
-     */
-    public function __construct($id = null)
+    public function __construct(?int $id = null)
     {
         $this->setId($id);
     }
@@ -185,6 +182,9 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
+    /**
+     * @param int|null $id
+     */
     public function setId($id): static
     {
         $this->id = $id;
@@ -209,7 +209,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->applicationServer;
     }
 
-    public function setApplicationServerId($id): static
+    public function setApplicationServerId(?int $id): static
     {
         $value = !is_null($id)
             ? new ApplicationServerDto($id)

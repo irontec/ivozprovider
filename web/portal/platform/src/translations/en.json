@@ -1,5 +1,6 @@
 {
   "'https://' URLs valid only (without trailing '/')": "'https://' URLs valid only (without trailing '/')",
+  "Access Credentials": "Access Credentials",
   "Access privileges": "Access privileges",
   "Active": "Active",
   "Active call_one": "Active call",
@@ -8,6 +9,7 @@
   "Administrator": "Administrator",
   "Administrator access privilege_one": "Administrator access privilege",
   "Administrator access privilege_other": "Administrator access privileges",
+  "Advertised IP Address": "Advertised IP Address",
   "Antiflood banned IP_one": "Antiflood banned IP",
   "Antiflood banned IP_other": "Antiflood banned IPs",
   "Application Server_one": "Application Server",
@@ -35,6 +37,7 @@
   "Client_other": "Clients",
   "Close": "Close",
   "Code": "Code",
+  "Color": "Color",
   "Contents configuration": "Contents configuration",
   "Cost": "Cost",
   "Country code": "Country code",
@@ -47,7 +50,6 @@
   "DDI Provider_other": "DDI Providers",
   "DDI_one": "DDI",
   "DDI_other": "DDIs",
-  "Default": "Default",
   "Default Invoice template_one": "Default Invoice template",
   "Default Invoice template_other": "Default Invoice templates",
   "Default Notification template_one": "Default Notification template",
@@ -121,7 +123,6 @@
   "Media Relay_one": "Media Relay",
   "Media Relay_other": "Media Relays",
   "Name": "Name",
-  "New Interface": "New Interface",
   "No": "No",
   "Notification Template Content_one": "Notification Template Content",
   "Notification Template Content_other": "Notification Template Contents",
@@ -178,7 +179,6 @@
   "Terminal Model_one": "Terminal Model",
   "Terminal Model_other": "Terminal Models",
   "Test template": "Test template",
-  "Theme": "Theme",
   "There are not associated elements": "There are not associated elements",
   "This template is going to be tested": "This template is going to be tested",
   "Timezone_one": "Timezone",
@@ -197,6 +197,5 @@
   "Weight": "Weight",
   "Welcome to <br /> Ivoz Provider global administrator portal": "Welcome to <br /> Ivoz Provider global administrator portal",
   "Will be shown on page footer": "Will be shown on page footer",
-  "Yes": "Yes",
-  "You can always access classic interface adding /classic to URL": "You can always access classic interface adding /classic to URL"
+  "Yes": "Yes"
 }

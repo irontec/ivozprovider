@@ -9,7 +9,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@irontec/ivoz-ui": "^1.1.18",
+    "@irontec/ivoz-ui": "^1.1.21",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",
     "@mui/styles": "^5.12.0",
@@ -22,7 +22,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "typescript": "^4.1.2",
-    "vite": "^3.2.7",
+    "vite": "^3.2.8",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {

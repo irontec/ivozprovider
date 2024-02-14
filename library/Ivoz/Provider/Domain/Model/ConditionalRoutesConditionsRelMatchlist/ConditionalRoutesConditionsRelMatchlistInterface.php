@@ -27,7 +27,10 @@ interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntit
      */
     public function getId(): ?int;
 
-    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionsRelMatchlistDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): ConditionalRoutesConditionsRelMatchlistDto;
 
     /**
      * @internal use EntityTools instead

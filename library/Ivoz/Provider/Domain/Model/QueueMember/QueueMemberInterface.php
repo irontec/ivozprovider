@@ -29,7 +29,10 @@ interface QueueMemberInterface extends LoggableEntityInterface
 
     public function getAstQueueMemberName(): string;
 
-    public static function createDto(string|int|null $id = null): QueueMemberDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): QueueMemberDto;
 
     /**
      * @internal use EntityTools instead

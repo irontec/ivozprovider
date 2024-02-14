@@ -73,7 +73,10 @@ abstract class RoutingPatternAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): RoutingPatternDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): RoutingPatternDto
     {
         return new RoutingPatternDto($id);
     }

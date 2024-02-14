@@ -92,7 +92,10 @@ abstract class UsersLocationAttrAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): UsersLocationAttrDto
+    /**
+     * @param string | null $id
+     */
+    public static function createDto($id = null): UsersLocationAttrDto
     {
         return new UsersLocationAttrDto($id);
     }

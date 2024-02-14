@@ -122,7 +122,10 @@ abstract class HolidayDateAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): HolidayDateDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): HolidayDateDto
     {
         return new HolidayDateDto($id);
     }

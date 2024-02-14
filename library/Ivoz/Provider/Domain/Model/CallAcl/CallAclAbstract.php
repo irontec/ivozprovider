@@ -65,7 +65,10 @@ abstract class CallAclAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): CallAclDto
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CallAclDto
     {
         return new CallAclDto($id);
     }

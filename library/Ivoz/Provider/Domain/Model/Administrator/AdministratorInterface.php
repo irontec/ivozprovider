@@ -66,7 +66,10 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function unserialize($serialized);
 
-    public static function createDto(string|int|null $id = null): AdministratorDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): AdministratorDto;
 
     /**
      * @internal use EntityTools instead

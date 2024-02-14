@@ -48,7 +48,10 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
 
     public function isOutOfSchedule(): bool;
 
-    public static function createDto(string|int|null $id = null): CalendarPeriodDto;
+    /**
+     * @param int | null $id
+     */
+    public static function createDto($id = null): CalendarPeriodDto;
 
     /**
      * @internal use EntityTools instead

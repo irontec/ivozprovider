@@ -4,16 +4,24 @@ import {
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 
 import { foreignKeyGetter } from './ForeignKeyGetter';
+import useDefaultCountryId from './hooks/useDefaultCountryId';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match, edit } = props;
+  const { entityService, row, match, create, edit } = props;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
     row,
     match,
+  });
+
+  const formik = useFormHandler(props);
+  useDefaultCountryId({
+    create,
+    formik,
   });
 
   const readOnlyProperties = {
@@ -24,12 +32,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
     {
       legend: 'Number data',
       fields: [
+        'company',
         'country',
         'ddi',
         'type',
         'ddiProvider',
         'description',
-        'company',
       ],
     },
   ];
@@ -40,6 +48,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
       readOnlyProperties={readOnlyProperties}
       fkChoices={fkChoices}
       groups={groups}
+      formik={formik}
     />
   );
 };

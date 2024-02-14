@@ -1,18 +1,17 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
-MAINTAINER Mikel Madariaga <mikel@irontec.com>
+MAINTAINER Mikel Madariaga <mmadariaga@irontec.com>
+MAINTAINER Ivan Alonso <kaian@irontec.com>
 
-RUN echo 'deb [trusted=yes] http://packages.irontec.com/debian halliday main extra' >> /etc/apt/sources.list
-RUN echo deb http://ftp.debian.org/debian bullseye-backports main contrib non-free >> /etc/apt/sources.list
-
-RUN apt-get update
+RUN echo 'deb [trusted=yes] http://packages.irontec.com/debian tempest main extra' >> /etc/apt/sources.list
 
 # Packages from standard repository
-RUN apt-get install --assume-yes --force-yes \
+RUN apt-get update && apt-get install --assume-yes --force-yes \
         gettext \
         composer \
         make \
         git \
+        golang \
         unzip \
         curl \
         wget \
@@ -20,30 +19,28 @@ RUN apt-get install --assume-yes --force-yes \
         sqlite3 \
         sphinx-intl \
         nodejs \
+        npm \
         mysql-client \
         python3-pip \
-        php8.0 \
-        php8.0-cli \
-        php8.0-mysql \
-        php8.0-xml \
-        php8.0-gd \
-        php8.0-mbstring \
-        php8.0-sqlite3 \
-        php8.0-redis \
-        php8.0-igbinary \
-        php8.0-curl \
-        php8.0-yaml \
-        php8.0-mailparse \
-        php8.0-imagick \
-        php8.0-xdebug \
-        php8.0-zip \
+        php \
+        php-cli \
+        php-mysql \
+        php-xml \
+        php-gd \
+        php-mbstring \
+        php-sqlite3 \
+        php-redis \
+        php-igbinary \
+        php-curl \
+        php-yaml \
+        php-mailparse \
+        php-imagick \
+        php-xdebug \
+        php-zip \
         yarn \
         jq \
-        libxrender1
-
-# Packages from backports
-RUN apt-get install -y -t bullseye-backports \
-    golang
+        libxrender1 \
+        libssl1.1
 
 RUN apt-get clean
 
@@ -53,13 +50,13 @@ ARG UID=108
 ARG GID=117
 RUN groupadd -g $GID $UNAME
 RUN useradd -m -u $UID -g $GID -s /bin/bash $UNAME
-RUN chown jenkins.jenkins /opt/
+RUN chown jenkins:jenkins /opt/
 
 # Install node tools for testing
 RUN npm install -g swagger-cli
 
 # Install gherking fromatter
-RUN pip install reformat-gherkin
+RUN pip install --break-system-packages reformat-gherkin
 
 # Base project
 USER $UNAME
