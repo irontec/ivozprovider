@@ -17,6 +17,9 @@ to route any existing client extension.
 
 IVRs have the following fields:
 
+*******************
+Basic configuration
+*******************
     Name
         Descriptive name of the IVR that will be used in other sections.
 
@@ -34,6 +37,9 @@ IVRs have the following fields:
         exists in the client (and allow extensions is enabled), this locution
         will be played (usually something like 'Connecting, please wait...').
 
+******************
+Dialing extensions
+******************
     Allow dialing extensions
         When this setting is enabled, the caller can directly press the extension
         that must previously know (or the welcome locution suggests) and the system
@@ -43,16 +49,36 @@ IVRs have the following fields:
         When Allow extensions is enabled, you can exclude some extensions to be
         directly dialed adding them to the exclusion list.
 
-    No input process
-        If the caller does not input any digit in the timeout value, the
-        no input process will trigger, playing the configured locution and
-        redirecting the call to another number, extension or voicemail.
+**********************
+No input configuration
+**********************
 
-    Error process
-        If the dialed extension does not match any IVR entry, any client extensions
-        (when allow extensions is enabled), or it matches one of the extensions in the
-        excluded Extensions list, the error process will trigger, playing the configured
-        locution and redirecting the call to another number, extension or voicemail.
+    If the caller does not input any digit in the timeout value, the
+    no input process will trigger, playing the configured locution and
+    redirecting to another number, extension or voicemail.
+
+    No input locution
+        Locution that will be played.
+
+    No input target
+        Number, extension or voicemail to redirect to after the locution is played.
+        Additional fields are required depending on the selected value.
+
+*******************
+Error configuration
+*******************
+
+    If the dialed extension does not match any IVR entry, any client extensions
+    (when allow extensions is enabled), or it matches one of the extensions in the
+    excluded Extensions list, the error process will trigger, playing the configured
+    locution and redirecting the call to another number, extension or voicemail.
+
+    Locution
+        Locution that will be played in case of error.
+
+    No input target
+        Number, extension or voicemail to redirect to after the locution is played.
+        Additional fields are required depending on the selected value.
 
 ***********
 IVR Entries
@@ -81,8 +107,26 @@ an error and will trigger the **Error process**):
 
 .. rubric:: Entries are regular expressions
 
+*****************
+Entry information
+*****************
 You can specify IVR entries as Regular Expressions. If entry is just
 a numeric value, it will be handled as a sequence of digits, otherwise it
-will be handled a regular expression. This can be handy if you have the
+will be handled as a regular expression. This can be handy if you have the
 same behaviour for a group of dialed numbers.
 
+    Entry
+        Sequence of digits or regular expression.
+
+    Success locution
+        Locution to be played in case of success.
+
+    Display name
+        Visible name for the IVR entry
+
+*********************
+Routing configuration
+*********************
+
+    Target type
+        Depending on the type chosen, additional parameters may be required.
