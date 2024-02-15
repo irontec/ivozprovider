@@ -24,36 +24,59 @@ Queue configuration
 
 This are the settings related to a queue:
 
-  Name
-    Use to reference this queue
+*******************
+Basic configuration
+*******************
+    Name
+        Use to reference this queue. Allowed characters: a-z, A-Z, 0-9, underscore and '-'.
 
-  Weight
-    Prioritizes calls to an agent that attends calls in two (or more) calls. The
-    higher, the more prioritized.
+    Weight
+        Prioritizes calls to an agent that attends calls in two (or more) calls. The
+        higher, the more prioritized.
 
-  Strategy
-    How will the queue deliver the calls? Calling to all agents, calling to a
-    random one?
+    Strategy
+        How will the queue deliver the calls? Calling to all agents, calling to a
+        random one?
 
-  Member call seconds
-    Defines how long will a call to an agent last.
+    Display name
+        This value will be displayed in the called terminals
 
-  Member rest seconds
-    Seconds between calls for an agent.
+*********************
+Members configuration
+*********************
+    Member call seconds
+        Defines how long will a call to an agent last.
 
-  Prevent missed calls
-    When 'Yes', calls will never generate a missed call. When 'No', missed calls will be prevented only for RingAll
-    queues if someone answers.
+    Member rest seconds
+        Seconds between calls for an agent.
 
-  Announce
+    Prevent missed calls
+        When 'Yes', calls will never generate a missed call. When 'No', missed calls will be prevented only for RingAll
+        queues if someone answers.
+
+********
+Announce
+********
     Select a locution and its frequency. Caller waiting in the call will listen
     to this locution.
 
-  Announce Position
-    Announce position when a caller enters a queue and after a fixed frequency.
+    Periodic Announce Locution
+        Locution periodically played to calls that are queued.
 
-  Timeout configuration
+    Announce Position
+        Announce queue position to waiting users when they enter the queue and after
+        defined frequency.
+
+*********************
+Timeout configuration
+*********************
     Limits the time that a call can wait in a queue and the following behaviour.
+
+  Max wait time
+    If no queue member answers before time this seconds, the timeout queue logic
+    will be activated. Leave empty to disable.
+
+  Locution
 
   Full Queue configuration
     Limits the amount of people waiting in a call and the behaviour when this limit
