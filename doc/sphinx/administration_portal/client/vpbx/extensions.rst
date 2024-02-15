@@ -37,8 +37,12 @@ Route options
     IVR
         Selected :ref:`IVR <IVRs>` logic will be called.
 
-    Huntgroup
+    Hunt Group
         Selected :ref:`huntgroup <huntgroups>` will be called.
+
+    Number
+        Calling to this extension will generate an external outbound call
+        to introduced number.
 
     Friend
         Calls to this extension will evaluate :ref:`friends <Friends>` logic.
@@ -49,9 +53,8 @@ Route options
     Conditional route
         Call will be delivered to selected :ref:`conditional route <Conditional Routes>`.
 
-    Number
-        Calling to this extension will generate an external outbound call
-        to introduced number.
+    Voicemail
+        Calls will be delivered to selected :ref:`voicemails <Voicemails>`.
 
 .. note:: Any internal user can generate an external outbound call via an **Extension
           routed to Number** even if its *Call permissions* does not allow to
