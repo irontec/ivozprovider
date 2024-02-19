@@ -53,7 +53,7 @@ const properties: AdministratorProperties = {
       '1': _('Yes'),
     },
     helpText: _(
-      'Restricted administrators have read-only permissions by default. This privileges can be fine-tuned in <i>List of Administrator access privileges</i> subsection. <br><br><b>Global/Brand</b> restricted administrators have no web access and can only be used for API integrations. <br><br><b>Client</b> restricted administrators can be used both for API integrations and limited web access.'
+      'Restricted administrators have read-only permissions by default. This privileges can be fine-tuned in <i>List of Administrator access privileges</i> subsection. <br><br><strong>Global/Brand</strong> restricted administrators can be used both for API integrations and limited web access.'
     ),
   },
   name: {
