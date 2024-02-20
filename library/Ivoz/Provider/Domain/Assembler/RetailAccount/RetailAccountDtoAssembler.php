@@ -35,9 +35,15 @@ class RetailAccountDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        $dto->setDomainName(
-            $domain->getDomain()
-        );
+        $statusContexts = [
+            RetailAccountDto::CONTEXT_STATUS,
+            RetailAccountDto::CONTEXT_STATUS_ITEM
+        ];
+        if (in_array($context, $statusContexts, true)) {
+            $dto->setDomainName(
+                $domain->getDomain()
+            );
+        }
 
         $userLocations = $this
             ->usersLocationRepository

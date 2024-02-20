@@ -75,7 +75,6 @@ class TerminalDto extends TerminalDtoAbstract
                 'lastProvisionDate' => 'lastProvisionDate',
                 'domainId' => 'domain',
                 'terminalModelId' => 'terminalModel',
-                'domainName' => 'domainName',
                 'status' => [[
                     'contact',
                     'received',

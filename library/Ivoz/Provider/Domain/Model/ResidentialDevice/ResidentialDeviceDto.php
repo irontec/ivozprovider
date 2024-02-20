@@ -82,15 +82,13 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
                 $baseAttributes['companyId'] = 'company';
             }
 
-            return $baseAttributes;
-        }
-
-        if ($context === self::CONTEXT_COLLECTION) {
+            $response = $baseAttributes;
+        } elseif ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
                 'name' => 'name',
                 'description' => 'description',
-                'domainName' => 'domainName',
+                'domainId' => 'domain',
                 'directConnectivity' => 'directConnectivity',
                 'status' => [[
                     'contact',
@@ -108,9 +106,6 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             }
         } else {
             $response = parent::getPropertyMap(...func_get_args());
-        }
-
-        if (array_key_exists('domainId', $response)) {
             unset($response['domainId']);
         }
 
@@ -169,6 +164,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'multiContact',
             'domainName',
             'status',
+            'domainId',
         ];
 
         return array_filter(
@@ -207,6 +203,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'rtpEncryption',
             'domainName',
             'status',
+            'domainId',
         ];
 
         return array_filter(
