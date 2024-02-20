@@ -141,8 +141,9 @@ const properties: ResidentialDeviceProperties = {
     label: _('Language', { count: 1 }),
     null: _(`Client's default`),
   },
-  domainName: {
-    label: _('Domain Name'),
+  domain: {
+    label: _('Domain'),
+    $ref: '#/definitions/Domain',
   },
   status: {
     label: _('Status'),
@@ -218,7 +219,7 @@ const ResidentialDevice: EntityInterface = {
   path: '/residential_devices',
   toStr: (row: ResidentialDevicePropertyList<EntityValues>) => `${row.id}`,
   properties,
-  columns: ['company', 'name', 'domainName', 'description', 'statusIcon'],
+  columns: ['company', 'name', 'domain', 'description', 'statusIcon'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ResidentialDevices',
