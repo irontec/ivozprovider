@@ -33,7 +33,9 @@ class DomainTest extends KernelTestCase
 
         $this->assertEquals(
             $accessControl,
-            []
+            [
+                ['id', 'in', 'companyRepository.findDomainIdsByBrandId(user.getBrand().getId())']
+            ]
         );
     }
 
@@ -50,7 +52,7 @@ class DomainTest extends KernelTestCase
 
         $this->assertEquals(
             $accessControl,
-            []
+            ["FALSE"]
         );
     }
 }

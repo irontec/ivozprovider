@@ -21,8 +21,8 @@ Feature: Retrieve retail accounts
               "rtpEncryption": false,
               "multiContact": true,
               "id": 2,
+              "domain": 6,
               "company": 1,
-              "domainName": "retail.irontec.com",
               "status": []
           },
           {
@@ -32,8 +32,8 @@ Feature: Retrieve retail accounts
               "rtpEncryption": false,
               "multiContact": true,
               "id": 3,
+              "domain": 6,
               "company": 1,
-              "domainName": "retail.irontec.com",
               "status": []
           },
           {
@@ -43,8 +43,8 @@ Feature: Retrieve retail accounts
               "rtpEncryption": false,
               "multiContact": true,
               "id": 4,
+              "domain": 6,
               "company": 1,
-              "domainName": "retail.irontec.com",
               "status": []
           },
           {
@@ -54,8 +54,8 @@ Feature: Retrieve retail accounts
               "rtpEncryption": false,
               "multiContact": true,
               "id": 5,
+              "domain": 6,
               "company": 1,
-              "domainName": "retail.irontec.com",
               "status": []
           },
           {
@@ -65,8 +65,8 @@ Feature: Retrieve retail accounts
               "rtpEncryption": false,
               "multiContact": true,
               "id": 1,
+              "domain": 6,
               "company": 3,
-              "domainName": "retail.irontec.com",
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.109:5060",
@@ -101,9 +101,21 @@ Feature: Retrieve retail accounts
           "directConnectivity": "no",
           "ddiIn": "yes",
           "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
           "id": 1,
           "company": "~",
           "transformationRuleSet": null,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "status": [
+              {
+                  "contact": "sip:yealinktest@10.10.1.109:5060",
+                  "publicContact": false,
+                  "received": "sip:212.64.172.26:5060",
+                  "publicReceived": true,
+                  "expires": "2031-01-01 00:59:59",
+                  "userAgent": "Yealink SIP-T23G 44.80.0.130"
+              }
+          ]
       }
       """
