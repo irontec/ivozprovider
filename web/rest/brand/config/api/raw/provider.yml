@@ -481,9 +481,19 @@ Ivoz\Provider\Domain\Model\Country\Country:
 
 Ivoz\Provider\Domain\Model\Domain\Domain:
   itemOperations: []
-  collectionOperations: []
+  collectionOperations:
+    get: ~
   attributes:
-    access_control: 'FALSE'
+    access_control: >-
+      "ROLE_BRAND_ADMIN" in roles
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      domain: ASC
+    read_access_control:
+      id:
+        in: 'companyRepository.findDomainIdsByBrandId(user.getBrand().getId())'
+    write_access_control:
+      raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
   attributes:
@@ -1340,7 +1350,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
       operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto::CONTEXT_STATUS
       normalization_context:
         groups: [
-          !php/const Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto::CONTEXT_STATUS
+          !php/const Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto::CONTEXT_STATUS_ITEM
         ]
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:

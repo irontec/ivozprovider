@@ -60,6 +60,32 @@ class CompanyDoctrineRepository extends DoctrineRepository implements CompanyRep
     }
 
     /**
+     * @inheritdoc
+     */
+    public function findDomainIdsByBrandId(int $id): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('IDENTITY(self.domain) as domain')
+            ->where(
+                $expression->eq('self.brand', $id)
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        return array_map(
+            function ($row): int {
+                return (int) $row['domain'];
+            },
+            $result
+        );
+    }
+
+    /**
      * Used by brand API access controls
      * @inheritdoc
      * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getSupervisedCompanyIdsByAdmin
