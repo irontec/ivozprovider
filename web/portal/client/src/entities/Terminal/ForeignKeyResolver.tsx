@@ -1,3 +1,4 @@
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import store from 'store';
@@ -7,10 +8,20 @@ import { TerminalPropertiesList } from './TerminalProperties';
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
   cancelToken,
+  entityService,
 }): Promise<TerminalPropertiesList> {
   const promises = [];
   const entities = store.getState().entities.entities;
   const { TerminalModel } = entities;
+
+  promises.push(
+    autoForeignKeyResolver({
+      data,
+      cancelToken,
+      entityService,
+      skip: ['terminalModel'],
+    })
+  );
 
   promises.push(
     genericForeignKeyResolver({

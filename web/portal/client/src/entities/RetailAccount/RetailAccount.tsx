@@ -24,9 +24,7 @@ const properties: RetailAccountProperties = {
   },
   domain: {
     label: _('SIP Domain', { count: 1 }),
-  },
-  domainName: {
-    label: _('SIP Domain', { count: 1 }),
+    $ref: '#/definitions/Domain',
   },
   description: {
     label: _('Description'),
@@ -152,7 +150,7 @@ const retailAccount: EntityInterface = {
   title: _('Retail Account', { count: 2 }),
   path: '/retail_accounts',
   properties,
-  columns: ['name', 'domainName', 'description', 'statusIcon'],
+  columns: ['name', 'domain', 'description', 'statusIcon'],
   toStr: (row: RetailAccountPropertyList<string>) => `${row.name}`,
   acl: {
     ...defaultEntityBehavior.acl,
