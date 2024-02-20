@@ -36,7 +36,7 @@ final class Version20231218161807 extends LoggableMigration
                                             \'Credenciales de acceso IvozProvider\', 
                                             \'A continuación se le indican las credenciales de acceso para el portal de administración de Ivoz Provider:\n\n\n Usuario: ${USER}\n Contraseña: ${PASSWORD} \n\nAtentamente,\nIvozProvider\n\',  
                                             (SELECT id FROM NotificationTemplates WHERE type=\'accessCredentials\'),
-                                            1, 
+                                            (SELECT id FROM Languages WHERE iden = \'es\'),
                                             \'text/plain\'
                                         )'
         );
@@ -55,7 +55,7 @@ final class Version20231218161807 extends LoggableMigration
                                             \'IvozProvider Access Credentials\', 
                                               \'Below are the access credentials for the administration portal of Ivoz Provider:\n\n\n User: ${USER}\n Password: ${PASSWORD} \n\nBest Regards,\nIvozProvider\n\', 
                                             (SELECT id FROM NotificationTemplates WHERE type=\'accessCredentials\'),
-                                            2, 
+                                            (SELECT id FROM Languages WHERE iden = \'en\'),
                                             \'text/plain\'
                                         )'
         );
@@ -74,7 +74,7 @@ final class Version20231218161807 extends LoggableMigration
                                             \'Credenciales de acceso IvozProvider\', 
                                             \'A continuación se le indican las credenciales de acceso para el portal de administración de Ivoz Provider:\n\n\n Usuario: ${USER}\n Contraseña: ${PASSWORD} \n\nAtentamente,\nIvozProvider\n\', 
                                             (SELECT id FROM NotificationTemplates WHERE type=\'accessCredentials\'),
-                                            3, 
+                                            (SELECT id FROM Languages WHERE iden = \'ca\'),
                                             \'text/plain\'
                                         )'
         );
@@ -93,7 +93,7 @@ final class Version20231218161807 extends LoggableMigration
                                             \'IvozProvider Access Credentials\', 
                                             \'Below are the access credentials for the administration portal of Ivoz Provider:\n\n\n User: ${USER}\n Password: ${PASSWORD} \n\nBest Regards,\nIvozProvider\n\', 
                                             (SELECT id FROM NotificationTemplates WHERE type=\'accessCredentials\'),
-                                            4, 
+                                            (SELECT id FROM Languages WHERE iden = \'it\'),
                                             \'text/plain\'
                                         )'
         );
