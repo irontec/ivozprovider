@@ -39,6 +39,9 @@ Residential Devices Configuration
 
 These are the configurable settings of *Residential devices*:
 
+*******************
+Basic configuration
+*******************
     Name
         Name of the **residential device**. This name must be unique in the whole brand so 
         it's recommended to use some kind of sequential identifier. This will also be used
@@ -56,16 +59,30 @@ These are the configurable settings of *Residential devices*:
         If you choose 'Yes' here, you'll have to fill the protocol, address and
         port where this *residential device* can be contacted.
 
+    Multi Contact
+        Same SIP credentials can be configured in multiple SIP devices. In that case, all devices ring
+        simultaneously when receiving a call. Setting this toggle to 'No' limits this behaviour so that
+        only latest registered SIP device rings.
+
+************************
+Geographic configuration
+************************
     Language
         Locutions will be played in this language
 
     Numeric transformation
         Numeric transformation set that will be applied when communicating with this device.
 
+**********************
+Outgoing configuration
+**********************
     Fallback Outgoing DDI
         External calls from this *residential device* will be presented with this DDI, **unless
         the source presented matches a DDI belonging to the residential client**.
 
+**********************
+Advanced configuration
+**********************
     Allowed codec
         Like vPBX terminals, *residential devices* will talk only the selected codec.
 
@@ -78,21 +95,16 @@ These are the configurable settings of *Residential devices*:
         used in Contact header of registration will be used, as specified in SIP RFC (residential device name will be used
         for endpoints with direct connectivity). Defaults to 'No'.
 
-    Call waiting
-        Limits received calls when already handling this number of calls. Set 0 for unlimited.
-
     Enable T.38 passthrough
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
         will act as a T.38 gateway, bridging fax-calls of a T.38 capable carrier and a T.38 capable device.
 
+    Call waiting
+        Limits received calls when already handling this number of calls. Set 0 for unlimited.
+
     RTP Encryption
         If set to 'yes', call won't be established unless it's possible to encryption its audio. If set to 'no',
         audio won't be encrypted.
-
-    Multi Contact
-        Same SIP credentials can be configured in multiple SIP devices. In that case, all devices ring
-        simultaneously when receiving a call. Setting this toggle to 'No' limits this behaviour so that
-        only latest registered SIP device rings.
 
 .. tip:: Residential device can be contacted due to calls to several DDIs. *DDI In* setting allows remote SIP endpoint to
          know which number caused each call, setting that number as destination (R-URI and To headers). This way, residential
