@@ -13,8 +13,9 @@ const properties: ResidentialDeviceProperties = {
     label: _('Name'),
     pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
   },
-  domainName: {
+  domain: {
     label: _('SIP Domain', { count: 1 }),
+    $ref: '#/definitions/Domain',
   },
   description: {
     label: _('Description'),
@@ -255,7 +256,7 @@ const residentialDevice: EntityInterface = {
   title: _('Residential Device', { count: 2 }),
   path: '/residential_devices',
   properties,
-  columns: ['name', 'domainName', 'description', 'statusIcon'],
+  columns: ['name', 'domain', 'description', 'statusIcon'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ResidentialDevices',

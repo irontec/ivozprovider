@@ -19,7 +19,7 @@ Feature: Retrieve retail accounts
               "description": "",
               "directConnectivity": "no",
               "id": 1,
-              "domainName": "retail.irontec.com",
+              "domain": 6,
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.109:5060",
@@ -41,15 +41,30 @@ Feature: Retrieve retail accounts
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
+      And the JSON should be equal to:
       """
       {
           "name": "testRetailAccount",
           "description": "",
           "transport": "udp",
+          "ip": "1.2.3.4",
+          "port": 1024,
           "password": "9rv6G3TVc-",
+          "fromDomain": null,
+          "directConnectivity": "no",
+          "multiContact": true,
           "id": 1,
           "transformationRuleSet": null,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "status": [
+              {
+                  "contact": "sip:yealinktest@10.10.1.109:5060",
+                  "publicContact": false,
+                  "received": "sip:212.64.172.26:5060",
+                  "publicReceived": true,
+                  "expires": "2031-01-01 00:59:59",
+                  "userAgent": "Yealink SIP-T23G 44.80.0.130"
+              }
+          ]
       }
       """

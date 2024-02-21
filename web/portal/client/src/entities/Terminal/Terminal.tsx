@@ -85,9 +85,7 @@ const properties: TerminalProperties = {
   },
   domain: {
     label: _('SIP Domain', { count: 1 }),
-  },
-  domainName: {
-    label: _('SIP Domain', { count: 1 }),
+    $ref: '#/definitions/Domain',
   },
   statusIcon: {
     label: _('Status'),
@@ -108,7 +106,7 @@ const terminal: EntityInterface = {
   path: '/terminals',
   toStr: (row: TerminalPropertyList<string>) => `${row.name}`,
   properties,
-  columns: ['name', 'domainName', 'terminalModel', 'mac', 'statusIcon'],
+  columns: ['name', 'domain', 'terminalModel', 'mac', 'statusIcon'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Terminals',

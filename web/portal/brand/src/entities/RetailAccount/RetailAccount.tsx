@@ -24,6 +24,7 @@ const properties: RetailAccountProperties = {
   },
   domain: {
     label: _('Domain'),
+    $ref: '#/definitions/Domain',
   },
   domainName: {
     label: _('Domain'),
@@ -149,7 +150,7 @@ const RetailAccount: EntityInterface = {
   path: '/retail_accounts',
   toStr: (row: RetailAccountPropertyList<EntityValues>) => `${row.id}`,
   properties,
-  columns: ['company', 'name', 'domainName', 'description', 'statusIcon'],
+  columns: ['company', 'name', 'domain', 'description', 'statusIcon'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RetailAccounts',

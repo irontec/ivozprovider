@@ -21,7 +21,6 @@ Feature: Retrieve terminals
               "id": 1,
               "domain": 3,
               "terminalModel": 1,
-              "domainName": "127.0.0.1",
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.106:5060",
@@ -39,7 +38,6 @@ Feature: Retrieve terminals
               "id": 2,
               "domain": 3,
               "terminalModel": 1,
-              "domainName": "127.0.0.1",
               "status": []
           },
           {
@@ -49,7 +47,6 @@ Feature: Retrieve terminals
               "id": 3,
               "domain": 3,
               "terminalModel": 1,
-              "domainName": "127.0.0.1",
               "status": []
           },
           {
@@ -59,7 +56,6 @@ Feature: Retrieve terminals
               "id": 4,
               "domain": 3,
               "terminalModel": 2,
-              "domainName": "127.0.0.1",
               "status": []
           }
       ]

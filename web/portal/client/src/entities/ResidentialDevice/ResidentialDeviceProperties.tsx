@@ -6,7 +6,7 @@ import {
 
 export type ResidentialDevicePropertyList<T> = {
   name: T;
-  domainName: T;
+  domain: T;
   description: T;
   transport: T;
   ip: T;

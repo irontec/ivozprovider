@@ -8,7 +8,6 @@ export type RetailAccountPropertyList<T> = {
   company?: T;
   name?: T;
   domain?: T;
-  domainName?: T;
   description?: T;
   transport?: T;
   ip?: T;
