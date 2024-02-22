@@ -123,8 +123,6 @@ const properties: ExternalCallFilterProperties = {
           'scheduleIds',
           'outOfScheduleTargetType',
           'outOfScheduleLocution',
-          'outOfScheduleNumberCountry',
-          'outOfScheduleNumberValue',
         ],
       },
       '1': {
@@ -132,8 +130,6 @@ const properties: ExternalCallFilterProperties = {
           'scheduleIds',
           'outOfScheduleTargetType',
           'outOfScheduleLocution',
-          'outOfScheduleNumberCountry',
-          'outOfScheduleNumberValue',
         ],
         hide: [],
       },
