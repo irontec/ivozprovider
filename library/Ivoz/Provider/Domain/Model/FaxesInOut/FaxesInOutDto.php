@@ -27,6 +27,20 @@ class FaxesInOutDto extends FaxesInOutDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 
+    public function denormalize(array $data, string $context, string $role = ''): void
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+
+        if ($context === self::CONTEXT_SIMPLE) {
+            $contextProperties['file'][] = 'path';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
+    }
+
     /**
      * @return string[]
      *
