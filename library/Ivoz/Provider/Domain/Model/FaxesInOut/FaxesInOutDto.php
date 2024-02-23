@@ -20,7 +20,12 @@ class FaxesInOutDto extends FaxesInOutDtoAbstract
                 'src' => 'src',
                 'dst' => 'dst',
                 'type' => 'type',
-                'status' => 'status'
+                'status' => 'status',
+                'file' => [
+                    'fileSize',
+                    'mimeType',
+                    'baseName',
+                ],
             ];
         }
 
