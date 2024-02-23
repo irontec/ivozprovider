@@ -3,11 +3,11 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 import FaxesInOut from '../FaxesInOut/FaxesInOut';
 
-const FaxesIn: EntityInterface = {
+const FaxesOut: EntityInterface = {
   ...FaxesInOut,
   localPath: '/faxes_out',
   title: _('Outgoing faxfile', { count: 2 }),
-  columns: ['calldate', 'dst', 'status', 'type', 'pages'],
+  columns: ['calldate', 'dst', 'status', 'file'],
   Form: async () => {
     const module = await import('./Form');
 
@@ -15,4 +15,4 @@ const FaxesIn: EntityInterface = {
   },
 };
 
-export default FaxesIn;
+export default FaxesOut;
