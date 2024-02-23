@@ -37,11 +37,11 @@ This is file content
           "dst": "34688888881",
           "type": "Out",
           "pages": null,
-          "status": null,
+          "status": "pending",
           "id": 2,
           "file": {
               "fileSize": 20,
-              "mimeType": "text/plain",
+              "mimeType": "text/plain; charset=us-ascii",
               "baseName": "uploadable"
           },
           "fax": 1,
@@ -63,11 +63,11 @@ This is file content
           "dst": "34688888881",
           "type": "Out",
           "pages": null,
-          "status": null,
+          "status": "pending",
           "id": 2,
           "file": {
               "fileSize": 20,
-              "mimeType": "text/plain",
+              "mimeType": "text/plain; charset=us-ascii",
               "baseName": "uploadable"
           },
           "fax": {
