@@ -17,9 +17,9 @@ class FaxesInOutLifecycleServiceCollection implements LifecycleServiceCollection
 
     /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
-        "post_persist" =>
+        "on_commit" =>
         [
-            \Ivoz\Provider\Domain\Service\FaxesInOut\SendFaxFile::class => 10,
+            \Ivoz\Provider\Domain\Service\FaxesInOut\SendFaxFile::class => 200,
         ],
     ];
 
