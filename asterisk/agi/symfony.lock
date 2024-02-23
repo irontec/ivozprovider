@@ -347,6 +347,9 @@
     "symfony/polyfill-php81": {
         "version": "1.23-dev"
     },
+    "symfony/process": {
+        "version": "v5.4.28"
+    },
     "symfony/property-access": {
         "version": "v3.4.44"
     },
