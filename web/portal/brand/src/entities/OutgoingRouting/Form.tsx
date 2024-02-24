@@ -10,7 +10,7 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match, properties } = props;
+  const { entityService, row, match, properties, initialValues } = props;
   const edit = props.edit || false;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -28,6 +28,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     entityService.replaceProperties(newProperties as PropertyList);
   }
+
+  if ('object' === typeof initialValues.carrier) {
+    initialValues.carrier = initialValues.carrier.id;
+  }
+
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: '',
