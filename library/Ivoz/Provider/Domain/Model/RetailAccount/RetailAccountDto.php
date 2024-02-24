@@ -212,6 +212,9 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'fromDomain',
             'status',
             'domainName',
+            't38Passthrough',
+            'rtpEncryption',
+            'ddiIn'
         ];
 
         return array_filter(
