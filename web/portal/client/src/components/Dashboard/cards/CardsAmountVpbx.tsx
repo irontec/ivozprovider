@@ -5,7 +5,6 @@ import DialpadIcon from '../DialpadIcon';
 import HashIcon from '../HashIcon';
 import UsersIcon from '../UsersIcon';
 
-
 export const CardsAmountVpbx = (props: DashboardData): JSX.Element => {
   const { userNum, extensionNum, ddiNum } = props;
 

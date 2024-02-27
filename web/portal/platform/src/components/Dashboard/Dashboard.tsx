@@ -152,7 +152,7 @@ const Dashboard = (props: DashboardProps) => {
       </div>
       <div className='card amount'>
         <div className='img-container'>
-          <BrandIcon/>
+          <BrandIcon />
         </div>
 
         <div className='number'>{data.brandNumber}</div>
@@ -166,7 +166,7 @@ const Dashboard = (props: DashboardProps) => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <SuiteCaseIcon/>
+          <SuiteCaseIcon />
         </div>
 
         <div className='number'>{data.clientNumber}</div>
