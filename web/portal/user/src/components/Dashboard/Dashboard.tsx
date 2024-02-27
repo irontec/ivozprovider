@@ -20,8 +20,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStoreActions } from 'store';
 
-import ChatBubbleIcon from './ChatBubbleIcon';
-import PhoneForwardedIcon from './PhoneForwardedIcon';
+import ForwardingCallIcon from './ForwardingIconCall';
+import IncomingCallIcon from './IncomingCallIcon';
+import OutgoingCallIcon from './OutgoingCallIcon';
 
 export interface DashboardProps {
   className?: string;
@@ -170,7 +171,7 @@ const Dashboard = (props: DashboardProps) => {
       </div>
       <div className='card amount'>
         <div className='img-container'>
-          <PhoneForwardedIcon />
+          <ForwardingCallIcon />
         </div>
 
         <div className='number'>{callForward}</div>
@@ -184,7 +185,7 @@ const Dashboard = (props: DashboardProps) => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <ChatBubbleIcon />
+          <IncomingCallIcon />
         </div>
 
         <div className='number'>{lastMonthCalls.inbound}</div>
@@ -198,7 +199,7 @@ const Dashboard = (props: DashboardProps) => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <ChatBubbleIcon />
+          <OutgoingCallIcon />
         </div>
 
         <div className='number'>{lastMonthCalls.outbound}</div>
