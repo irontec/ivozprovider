@@ -20,9 +20,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStoreActions } from 'store';
 
-import IconClientsDashboard from './IconClients';
-import IconPlatformsDashboard from './IconPlatforms';
+import DialpadIcon from './DialpadIcon';
 import IconUsersDashboard from './IconUsers';
+import SuiteCaseIcon from './SuitCaseIcon';
 
 export interface DashboardProps {
   className?: string;
@@ -154,7 +154,7 @@ const Dashboard = (props: DashboardProps) => {
       </div>
       <div className='card amount'>
         <div className='img-container'>
-          <IconPlatformsDashboard />
+          <SuiteCaseIcon />
         </div>
 
         <div className='number'>{data.clientNum}</div>
@@ -164,7 +164,7 @@ const Dashboard = (props: DashboardProps) => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <IconClientsDashboard />
+          <DialpadIcon />
         </div>
 
         <div className='number'>{data.ddiNum}</div>
