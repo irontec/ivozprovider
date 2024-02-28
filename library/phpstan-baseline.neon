@@ -2476,6 +2476,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOut.php
 
 		-
+			message: "#^Cannot assign new offset to array\\<array\\<int, string\\>\\|string\\>\\|string\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutDto.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutInterface\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutInterface.php
