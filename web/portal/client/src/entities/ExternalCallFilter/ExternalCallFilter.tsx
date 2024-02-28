@@ -12,6 +12,7 @@ import {
   ExternalCallFilterProperties,
   ExternalCallFilterPropertyList,
 } from './ExternalCallFilterProperties';
+import OutOfScheduleEnabled from './Field/OutOfScheduleEnabled';
 
 const holidayFields = [
   'holidayNumberCountry',
@@ -111,6 +112,7 @@ const properties: ExternalCallFilterProperties = {
   },
   outOfScheduleEnabled: {
     label: _('Out of schedule enabled'),
+    component: OutOfScheduleEnabled,
     enum: {
       '0': _('No'),
       '1': _('Yes'),
@@ -123,8 +125,6 @@ const properties: ExternalCallFilterProperties = {
           'scheduleIds',
           'outOfScheduleTargetType',
           'outOfScheduleLocution',
-          'outOfScheduleNumberCountry',
-          'outOfScheduleNumberValue',
         ],
       },
       '1': {
@@ -132,8 +132,6 @@ const properties: ExternalCallFilterProperties = {
           'scheduleIds',
           'outOfScheduleTargetType',
           'outOfScheduleLocution',
-          'outOfScheduleNumberCountry',
-          'outOfScheduleNumberValue',
         ],
         hide: [],
       },

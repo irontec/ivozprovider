@@ -147,8 +147,7 @@ services:
 
     Agi\Action\FaxReceiveStatusAction:
         lazy: true
-        arguments:
-            $mailer: '@mailer'
+        arguments: ~
 
     Agi\Action\FriendCallAction:
         lazy: true
