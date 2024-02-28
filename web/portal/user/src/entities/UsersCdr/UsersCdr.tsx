@@ -24,6 +24,10 @@ const properties: UsersCdrProperties = {
   },
   direction: {
     label: _('Direction'),
+    enum: {
+      inbound: _('Inbound'),
+      outbound: _('Outbound'),
+    },
   },
   caller: {
     label: _('Caller'),
