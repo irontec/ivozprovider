@@ -1,4 +1,30 @@
 # Changelog
+## 4.0.1
+* Endpoints:
+   - /faxes_in_outs:
+     - Added file.baseName[end|exact|neq|partial|start] and exists[file.baseName] filter parameters
+     - Added file.fileSize[exists|qt|qte|lt|lte|between|neq] and exists[file.fileSize] filter parameters
+     - Added file.mimeType[end|exact|neq|partial|start] and exists[file.mimeType] filter parameters
+   - /terminals:
+     - Removed domainName parameter
+* Models:
+    - ResidentialDevice-collection:
+      - Added domain property
+      - Removed domainName property
+    - RetailAccount-collection:
+      - Added domain property
+      - Removed domainName property
+    - Retail:
+      - Added ddiIn property
+      - Added t38Passthrough property
+      - Added rtpEncryption property
+    - RetailAccount-detailed:
+      - Added ddiIn property
+      - Added t38Passthrough property
+      - Added rtpEncryption property
+    - Terminal-collection:
+      - Removed domainName property
+
 ## 4.0.0
 * Endpoints
     - /domains:
