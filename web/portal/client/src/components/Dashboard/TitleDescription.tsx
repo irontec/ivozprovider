@@ -60,7 +60,7 @@ export const TitleDescription = (): JSX.Element => {
           'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add users, extensions, huntgroups and much more.'
         )}
       </p>
-      <a href='/doc/en/administration_portal/client/vPBX/index.html'>
+      <a href='/doc/en/administration_portal/client/vpbx/index.html'>
         <LightButton>{_('Get started')}</LightButton>
       </a>
     </div>

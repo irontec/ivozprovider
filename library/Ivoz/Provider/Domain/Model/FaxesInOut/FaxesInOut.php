@@ -24,6 +24,16 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
     }
 
     /**
+     * {@inheritDoc}
+     */
+    protected function sanitizeValues(): void
+    {
+        if (!$this->getStatus()) {
+            $this->setStatus(self::STATUS_PENDING);
+        }
+    }
+
+    /**
      * @return array
      */
     public function getFileObjects(int $filter = null): array

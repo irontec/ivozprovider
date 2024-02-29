@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e44f72d71950fbe11a6cdf8ef01a99e8",
+    "content-hash": "3d1b1321c87d82c6b60263cc8d64e7e8",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -5436,6 +5436,47 @@
                 "portable",
                 "shim"
             ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "symfony/process",
+            "version": "v5.4.28",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/symfony/process",
+                "reference": "45261e1fccad1b5447a8d7a8e67aa7b4a9798b7b"
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-php80": "^1.16"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Executes commands in sub-processes",
+            "homepage": "https://symfony.com",
             "transport-options": {
                 "symlink": true,
                 "relative": true

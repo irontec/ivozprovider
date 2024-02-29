@@ -22,7 +22,7 @@ class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 10
+            self::EVENT_ON_COMMIT => self::PRIORITY_NORMAL
         ];
     }
 

@@ -44,9 +44,11 @@ class ResidentialDeviceDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        $dto->setDomainName(
-            $domain->getDomain()
-        );
+        if ($context === ResidentialDeviceDto::CONTEXT_STATUS) {
+            $dto->setDomainName(
+                $domain->getDomain()
+            );
+        }
 
         $userLocations = $this
             ->usersLocationRepository

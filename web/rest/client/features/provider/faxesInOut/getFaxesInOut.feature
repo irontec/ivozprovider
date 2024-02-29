@@ -20,7 +20,13 @@ Feature: Retrieve faxes in outs
               "dst": "34688888881",
               "type": "In",
               "status": "error",
-              "id": 1
+              "id": 1,
+              "file": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              }
+
           }
       ]
       """

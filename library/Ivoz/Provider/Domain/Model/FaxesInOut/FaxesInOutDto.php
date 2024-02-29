@@ -20,11 +20,30 @@ class FaxesInOutDto extends FaxesInOutDtoAbstract
                 'src' => 'src',
                 'dst' => 'dst',
                 'type' => 'type',
-                'status' => 'status'
+                'status' => 'status',
+                'file' => [
+                    'fileSize',
+                    'mimeType',
+                    'baseName',
+                ],
             ];
         }
 
         return parent::getPropertyMap(...func_get_args());
+    }
+
+    public function denormalize(array $data, string $context, string $role = ''): void
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+
+        if ($context === self::CONTEXT_SIMPLE) {
+            $contextProperties['file'][] = 'path';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 
     /**

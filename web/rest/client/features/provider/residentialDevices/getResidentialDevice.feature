@@ -19,7 +19,7 @@ Feature: Retrieve residential devices
               "description": "",
               "directConnectivity": "no",
               "id": 1,
-              "domainName": "retail.irontec.com",
+              "domain": 6,
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.108:5060",

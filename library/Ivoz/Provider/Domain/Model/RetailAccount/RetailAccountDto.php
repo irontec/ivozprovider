@@ -4,10 +4,12 @@ namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
+use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 
 class RetailAccountDto extends RetailAccountDtoAbstract
 {
     public const CONTEXT_STATUS = 'status';
+    public const CONTEXT_STATUS_ITEM = 'statusItem';
 
     /**
      * @var RegistrationStatus[]
@@ -64,6 +66,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             $context,
             [
                 RetailAccountDto::CONTEXT_STATUS,
+                RetailAccountDto::CONTEXT_STATUS_ITEM,
                 RetailAccountDto::CONTEXT_COLLECTION,
             ]
         );
@@ -72,7 +75,6 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             $baseAttributes = [
                 'id' => 'id',
                 'name' => 'name',
-                'domainName' => 'domainName',
                 'directConnectivity' => 'directConnectivity',
                 'description' => 'description',
                 'status' => [[
@@ -84,6 +86,20 @@ class RetailAccountDto extends RetailAccountDtoAbstract
                     'userAgent'
                 ]]
             ];
+
+            $showDomainId = in_array(
+                $context,
+                [
+                    RetailAccountDto::CONTEXT_COLLECTION,
+                ],
+                true
+            );
+
+            if ($showDomainId) {
+                $baseAttributes['domainId'] = 'domain';
+            } else {
+                $baseAttributes['domainName'] = 'domainName';
+            }
 
             if ($role === 'ROLE_BRAND_ADMIN') {
                 $baseAttributes['companyId'] = 'company';
@@ -195,6 +211,10 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'multiContact',
             'fromDomain',
             'status',
+            'domainName',
+            't38Passthrough',
+            'rtpEncryption',
+            'ddiIn'
         ];
 
         return array_filter(

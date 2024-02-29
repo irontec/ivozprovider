@@ -17,6 +17,11 @@ interface CompanyRepository extends RepositoryInterface
     public function findIdsByBrandId($id);
 
     /**
+     * @return array<array-key, int>
+     */
+    public function findDomainIdsByBrandId(int $id): array;
+
+    /**
      * Used by brand API access controls
      * @inheritdoc
      * @return array<array-key, int>

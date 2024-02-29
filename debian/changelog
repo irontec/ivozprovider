@@ -1,4 +1,10 @@
-ivozprovider (4.0~4.0.0) UNRELEASED; urgency=medium
+ivozprovider (4.0~4.0.1) UNRELEASED; urgency=medium
+
+  * Version bump to 4.0.1
+
+ -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Wed, 28 Feb 2024 15:30:53 +0100
+
+ivozprovider (4.0~4.0.0) unstable; urgency=medium
 
   * Version bump to 4.0.0
 

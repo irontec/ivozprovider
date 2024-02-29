@@ -1,4 +1,22 @@
 # Changelog
+## 4.0.1
+* Endpoints
+  - /domains:
+    - Added [GET] endpoint
+  - /terminals:
+    - Removed domainName parameter
+* Models:
+  - Domain-collection:
+    - Added model
+  - ResidentialDevice-collection:
+    - Added domain property
+    - Removed domainName property
+  - RetailAccount-collection:
+    - Added domain property
+    - Removed domainName property
+  - Terminal-collection:
+    - Removed domainName property
+
 ## 4.0.0
 * Endpoints
   - /companies:

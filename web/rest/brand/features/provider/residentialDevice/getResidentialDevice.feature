@@ -21,8 +21,8 @@ Feature: Retrieve residential devices
               "rtpEncryption": false,
               "multiContact": true,
               "id": 2,
+              "domain": 6,
               "company": 1,
-              "domainName": "retail.irontec.com",
               "status": []
           },
           {
@@ -32,8 +32,8 @@ Feature: Retrieve residential devices
               "rtpEncryption": false,
               "multiContact": true,
               "id": 3,
+              "domain": 6,
               "company": 1,
-              "domainName": "retail.irontec.com",
               "status": []
           },
           {
@@ -43,8 +43,8 @@ Feature: Retrieve residential devices
               "rtpEncryption": false,
               "multiContact": true,
               "id": 4,
+              "domain": 6,
               "company": 1,
-              "domainName": "retail.irontec.com",
               "status": []
           },
           {
@@ -54,8 +54,8 @@ Feature: Retrieve residential devices
               "rtpEncryption": false,
               "multiContact": true,
               "id": 5,
+              "domain": 6,
               "company": 1,
-              "domainName": "retail.irontec.com",
               "status": []
           },
           {
@@ -65,8 +65,8 @@ Feature: Retrieve residential devices
               "rtpEncryption": false,
               "multiContact": true,
               "id": 1,
+              "domain": 6,
               "company": 4,
-              "domainName": "retail.irontec.com",
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.108:5060",

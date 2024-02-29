@@ -1,3 +1,23 @@
+Wed, 28 Feb 2024 14:21:59 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.0.1 released
+
+    * Portals
+        - Fixed tooltips displaying obsolete information
+        - Fixed some Retail Account fields not being displayed in edit screen
+        - Fixed External Call Filters Out of schedule number fields display issues
+        - Fixed Outgoing Routing Carrier field that prevented saving existing routes
+        - Added download button to incoming faxes PDF files
+
+    * Proxies
+        - Fixed endpoint identification issues on Retail Call forwards
+
+    * Application Server
+        - Fixed send and receive faxes not being properly converted from/to PDF
+
+    * Other
+        - Added missing Users CDR mixer systemd service
+
 Wed, 07 Feb 2024 12:59:02 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.0.0 released

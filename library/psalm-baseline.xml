@@ -858,11 +858,6 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDto.php">
-    <MixedArgument occurrences="1">
-      <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -2738,6 +2733,9 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
+    <MixedArrayAssignment occurrences="1">
+      <code>$contextProperties['file'][]</code>
+    </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutTrait.php">
     <MixedArgument occurrences="1">

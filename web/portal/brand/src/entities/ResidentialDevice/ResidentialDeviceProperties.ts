@@ -24,6 +24,7 @@ export type ResidentialDevicePropertyList<T> = {
   transformationRuleSet?: T;
   outgoingDdi?: T;
   language?: T;
+  domain?: T;
   domainName?: T;
   status?: T;
   statusIcon?: T;
