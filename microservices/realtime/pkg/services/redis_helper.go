@@ -27,8 +27,7 @@ type EventData struct {
 	DdiProvider string `json:"DdiProvider,omitempty"`
 }
 
-const REDIS_KEYS_IN_CALL_TTL = 3*time.Hour + 30*time.Minute
-const REDIS_KEYS_TTL = 2 * time.Minute
+const REDIS_KEYS_TTL = 3 * time.Hour
 
 // Constants
 const (
@@ -129,18 +128,11 @@ func updateCurrentCallsStatus(msg *redis.Message, redisClient *redis.Client) {
 		return
 	}
 
-	ttl := func() time.Duration {
-		if event == "IN_CALL" {
-			return REDIS_KEYS_IN_CALL_TTL
-		}
-		return REDIS_KEYS_TTL
-	}()
-
 	redisClient.SetEx(
 		context.Background(),
 		channel,
 		string(dataBytes),
-		ttl,
+		REDIS_KEYS_TTL,
 	)
 
 }
