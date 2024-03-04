@@ -61,6 +61,28 @@ Login Info
         If enabled, a QR code for Grandstream Wave softphone configuration 
         will be shown.
 
+**************
+Boss-Assistant
+**************
+
+This feature will turn the user into a boss that can only be directly call by:
+
+- The selected assistant.
+
+- Any origin that matches the white list.
+
+The rest of the calls to *a boss* will be redirected to the assistant.
+
+    Is boss
+        Determines if this user is a boss.
+
+    Assistant
+        Who will receive the redirected calls of this boss.
+
+    Whitelist
+        :ref:`match_lists` with origins that are allowed to call directly to
+        the boss.
+
 *******************
 Basic Configuration
 *******************
@@ -113,32 +135,6 @@ Basic Configuration
         current device for 480/486. Choose whether you want to force one behaviour or another no
         matter which response code your SIP device sends on call rejection.
 
-**************
-Boss-Assistant
-**************
-
-This feature will turn the user into a boss that can only be directly call by:
-
-- The selected assistant.
-
-- Any origin that matches the white list.
-
-The rest of the calls to *a boss* will be redirected to the assistant.
-
-    Is boss
-        Determines if this user is a boss.
-
-    Assistant
-        Who will receive the redirected calls of this boss.
-
-    Whitelist
-        :ref:`match_lists` with origins that are allowed to call directly to
-        the boss.
-
-With the setup in the image, every call to *Alice* will be redirected to *Bob*, 
-except the ones placed by *Bob* itself and those coming from any origin that matches
-*Alice's friends* matchlist.
-
 *******************
 Group Configuration
 *******************
@@ -159,6 +155,9 @@ User Call Forward
 The user's call forward can be configured with the **List of call forward settings**  button.
 
 These are the fields and available values:
+
+    Active
+        Allows enabling or disabling this call forward.
 
     Call Type
         Determines if the forward must be applied to external, internal or any 

@@ -25,6 +25,12 @@ The following image shows the process of creating a new conference room:
         Maximum number of participants in the conference. When this limit is 
         reached, join requests will be rejected.
 
+    Announce user count
+        First member or always.
+        Play a locution when joining a conference telling how many users there
+        are already participating. Options are: only to the first member of the
+        conference or anybody joining.
+
     Pin protected
         Conference rooms can be pin protected. The pin will be requested before
         entering and must be numeric. 
