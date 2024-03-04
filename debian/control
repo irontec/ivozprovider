@@ -106,6 +106,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-doc (=${binary:Version}),
     ivozprovider-async-workers (=${binary:Version}),
     ivozprovider-scheduler (=${binary:Version}),
+    ivozprovider-provision (=${binary:Version}),
     ivozprovider-realtime (=${binary:Version}),
     ivozprovider-router (=${binary:Version}),
     apache2,
@@ -303,6 +304,14 @@ Priority: optional
 Depends: ivozprovider-common-library (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Scheduled tasks runner - Symfony microservice
+ .
+
+Package: ivozprovider-provision
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version})
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Terminal provisioning - Symfony microservice
  .
 
 Package: ivozprovider-balances
