@@ -4,11 +4,21 @@
 DDIs
 ####
 
+***********
+Number data
+***********
     Country
         The country of the new created DDI. Used for E164 standardization.
 
     DDI
         The number, without country code.
+
+    Display name
+        This value will be shown in the called terminals.
+
+    Language
+
+    Description
 
     Type
         Choose 'Inbound & outbound' for a normal DDI that can be used both as outgoing DDI and as incoming DDI
@@ -19,15 +29,24 @@ DDIs
         The :ref:`DDI Provider <DDI Providers>` that provides this number. This relation has no functional purpose, it
         is just for DDI Provider <-> DDI navigation in some brand level sections.
 
+*************
+ Filters data
+*************
     External Call Filter
         Allows configuration based on Calendars and Schedulers as shown in
         :ref:`External Call Filters`. Leave empty if you don't need to apply any
         kind of filter.
 
-    Route
+*********************
+Routing configuration
+*********************
+    Route type
         A DDI can have different :ref:`treatments <routing_logics>`. For our
         current goal, set route to user and select *Alice*.
 
+**************
+Recording data
+**************
     Record calls
         Can be used to record external calls (see :ref:`call_recordings`).
 

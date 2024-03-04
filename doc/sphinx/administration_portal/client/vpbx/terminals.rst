@@ -11,6 +11,9 @@ calls from IvozProvider.
 The best way to understand this section is creating a new item and see the 
 fields that must be filled.
 
+*****************
+Login information
+*****************
     Name
         Username that will use the terminal during the SIP authentication phase
         with IvozProvider.
@@ -20,6 +23,9 @@ fields that must be filled.
         challenge. You can use the automatic password generator to fulfill the
         secure password requirements.
 
+************************
+Connection configuration
+************************
     Allowed/Disallowed codecs
         Determines what audio and video codecs will be used with the terminal.
 
@@ -29,6 +35,17 @@ fields that must be filled.
         guide to configure different terminal manufacturers. Use *INVITE* in 
         case of doubt.
 
+    Enable T.38 passthrough
+        If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
+        will act as a T.38 gateway, bridging fax-calls of a T.38 capable carrier and a T.38 capable device.
+
+    RTP Encryption
+        If set to 'yes', call won't be established unless it's possible to encryption its audio. If set to 'no',
+        audio won't be encrypted.
+
+************
+Provisioning
+************
     Terminal model
         Determines the provisioning type that will receive this terminal.
         The section :ref:`terminal provisioning <provisioning>` will explain
@@ -41,13 +58,6 @@ fields that must be filled.
         address <https://wikipedia.org/wiki/MAC_Address>`_ of the network 
         adapter of the SIP device.
 
-    Enable T.38 passthrough
-        If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
-        will act as a T.38 gateway, bridging fax-calls of a T.38 capable carrier and a T.38 capable device.
-
-    RTP Encryption
-        If set to 'yes', call won't be established unless it's possible to encryption its audio. If set to 'no',
-        audio won't be encrypted.
 
 .. note:: For **most of devices** that doesn't require provisioning just
    filling **username** and **password** will be enough.

@@ -22,11 +22,11 @@ associated with Residential clients included in IvozProvider:
     :titlesonly:
 
     residential_devices
-    ddis
-    external_call_filters
     residential_voicemails
     faxes
+    ddis
     rating_profiles
+    external_call_filters
     calls/index
 
 .. tip:: Check :ref:`Differences between retail and residential clients` to understand the difference between these two

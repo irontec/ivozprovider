@@ -4,10 +4,14 @@
 Hunt groups
 ###########
 
-The hunt groups allows configuring more complex *ringing* process that the
+The hunt groups allows configuring more complex *ringing* process than the
 traditional **call to a user**.
 
 These are the fields shown for new hunt groups:
+
+*******************
+Basic configuration
+*******************
 
     Name
         Used to reference this hunt group
@@ -28,8 +32,11 @@ These are the fields shown for new hunt groups:
     Allow Call Forwards
         When 'No', user's call forward settings (including DND and boss/assistant) and 3XX responses will be ignored. Otherwise, they will be followed.
 
-    No answer configuration
+***********************
+No answer configuration
+***********************
         Policy when hunt group members do not answer the call after defined timeouts.
+        A locution and a target can be set up.
 
 .. tip:: When configuring a hunt group, you can prevent missed calls on called members with **Prevent missed calls** setting:
 
