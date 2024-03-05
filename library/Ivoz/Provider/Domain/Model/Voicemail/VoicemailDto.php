@@ -4,8 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Voicemail;
 
 class VoicemailDto extends VoicemailDtoAbstract
 {
-    public const CONTEXT_MY_VOICEMAILS = "myVoicemails";
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore
