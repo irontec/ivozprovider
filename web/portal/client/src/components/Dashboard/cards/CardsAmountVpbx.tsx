@@ -1,6 +1,7 @@
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { Link } from 'react-router-dom';
 
+import { DashboardData } from '../@types';
 import DialpadIcon from '../DialpadIcon';
 import HashIcon from '../HashIcon';
 import UsersIcon from '../UsersIcon';
