@@ -45,6 +45,35 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
         return $query->getResult();
     }
 
+    public function getVoicemailsByUser(UserInterface $user): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $query = $qb
+            ->where(
+                $expression->eq('self.id', $user->getId())
+            )->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * @param UserInterface $user
+     * @return array<int|null>
+     */
+    public function getVoicemailsIdsByUser(UserInterface $user): array
+    {
+        $voicemails = $this->getVoicemailsByUser($user);
+
+        return array_map(
+            function (VoicemailInterface $voicemail) {
+                return $voicemail->getId();
+            },
+            $voicemails
+        );
+    }
+
     public function count(array $criteria): int
     {
         return parent::count($criteria);
