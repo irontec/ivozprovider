@@ -65,7 +65,7 @@ deb http://ftp.debian.org/debian bookworm-backports main contrib non-free
 deb http://security.debian.org/debian-security bookworm-security main
 ```
 
-## Prepare APT sources for IvozProvider Halliday
+## Prepare APT sources for IvozProvider Tempest
 
 Add following contents into /etc/apt/sources.list.d/ivozprovider.list
 
