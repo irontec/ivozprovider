@@ -16,6 +16,10 @@ ALLBRANDS=-1
 FLUSHALL=0
 RELOADDESTINATIONS=0
 
+# Database access settings
+export MYSQL_HOST="data.ivozprovider.local"
+export MYSQL_PWD="changeme"
+
 while getopts ":Fdb:" opt; do
   case $opt in
     F)
