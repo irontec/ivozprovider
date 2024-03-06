@@ -26,34 +26,28 @@ const useRealtimeCalls = (props: UseRealtimeCallsProps): [boolean, Calls] => {
     const callId = data['Call-ID'];
     const event = data.Event;
 
-    const newValue = {
-      ...syncCallsRef.current,
-    };
+    const syncCalls = syncCallsRef.current;
 
-    newValue[callId] = {
-      ...newValue[callId],
+    syncCalls[callId] = {
+      ...syncCalls[callId],
       event,
     };
 
     if (event === 'Confirmed') {
       setCalls(() => {
-        newValue[callId] = {
-          ...newValue[callId],
+        syncCalls[callId] = {
+          ...syncCalls[callId],
           time: data.Time,
         };
 
-        syncCallsRef.current = newValue;
-
-        return newValue;
+        return { ...syncCalls };
       });
     } else if (event === 'Terminated') {
-      // _hideRow
+      // hide row
       setCalls(() => {
-        delete newValue[callId];
+        delete syncCalls[callId];
 
-        syncCallsRef.current = newValue;
-
-        return newValue;
+        return { ...syncCalls };
       });
     }
   };
@@ -75,14 +69,9 @@ const useRealtimeCalls = (props: UseRealtimeCallsProps): [boolean, Calls] => {
     };
 
     setCalls(() => {
-      const newValue = {
-        ...syncCallsRef.current,
-        [callId]: newRow,
-      };
+      syncCallsRef.current[callId] = newRow;
 
-      syncCallsRef.current = newValue;
-
-      return newValue;
+      return { ...syncCallsRef.current };
     });
   };
 
@@ -110,24 +99,21 @@ const useRealtimeCalls = (props: UseRealtimeCallsProps): [boolean, Calls] => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (Object.keys(syncCallsRef.current).length === 0) {
+      const syncCalls = syncCallsRef.current;
+      if (Object.keys(syncCalls).length === 0) {
         return;
       }
 
-      const newValue = {
-        ...syncCallsRef.current,
-      };
-
       const now = Math.round(new Date().getTime() / 1000);
 
-      for (const idx in newValue) {
-        let seconds = Math.max(now - newValue[idx].time, 0);
+      for (const idx in syncCalls) {
+        let seconds = Math.max(now - syncCalls[idx].time, 0);
 
         let minutes = Math.floor(seconds / 60);
 
         const hours = Math.floor(seconds / 60 / 60);
         if (hours >= 3) {
-          delete newValue[idx];
+          delete syncCalls[idx];
           continue;
         }
 
@@ -137,10 +123,10 @@ const useRealtimeCalls = (props: UseRealtimeCallsProps): [boolean, Calls] => {
         const hoursStr = hours > 0 ? `${hours}h ` : '';
         const minutesStr = minutes > 0 ? `${minutes}m ` : '';
 
-        newValue[idx].duration = `${hoursStr + minutesStr + seconds}s`;
+        syncCalls[idx].duration = `${hoursStr + minutesStr + seconds}s`;
       }
 
-      setCalls(newValue);
+      setCalls({ ...syncCalls });
     }, 1000);
 
     return () => clearInterval(interval);
