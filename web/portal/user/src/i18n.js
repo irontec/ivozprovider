@@ -4,6 +4,8 @@ import sprintf from 'i18next-sprintf-postprocessor';
 import { initReactI18next } from 'react-i18next';
 import translations from 'translations/index';
 
+const fallbackLng = 'en-US';
+
 i18n
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
@@ -16,13 +18,24 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     debug: false,
-    fallbackLng: 'en',
+    fallbackLng,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
     overloadTranslationOptionHandler: sprintf.overloadTranslationOptionHandler,
     resources: {
       ...translations,
+    },
+    detection: {
+      convertDetectedLanguage: (lng) => {
+        const availableLangKeys = Object.keys(translations);
+        const currentLangKey = lng.substring(0, 2).toLocaleLowerCase();
+        if (!availableLangKeys.includes(currentLangKey)) {
+          return fallbackLng;
+        }
+
+        return lng;
+      },
     },
   });
 
