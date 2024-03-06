@@ -2,9 +2,9 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { Link } from 'react-router-dom';
 
 import { ActiveCalls } from '../@types';
-import IconClientsDashboard from '../IconClients';
-import IconPlatformsDashboard from '../IconPlatforms';
-import IconUsersDashboard from '../IconUsers';
+import ActiveCallIcon from '../ActiveCallIcon';
+import IncomingCallIcon from '../IncomingCallIcon';
+import OutgoingCallIcon from '../OutgoingCallIcon';
 
 export const CardsAmountWholesale = (props: {
   activeCalls?: ActiveCalls;
@@ -13,7 +13,7 @@ export const CardsAmountWholesale = (props: {
     <>
       <div className='card amount'>
         <div className='img-container'>
-          <IconPlatformsDashboard />
+          <ActiveCallIcon />
         </div>
 
         <div className='number'>{props.activeCalls?.total}</div>
@@ -26,7 +26,7 @@ export const CardsAmountWholesale = (props: {
 
       <div className='card amount'>
         <div className='img-container'>
-          <IconClientsDashboard />
+          <IncomingCallIcon />
         </div>
 
         <div className='number'>{props.activeCalls?.inbound}</div>
@@ -40,7 +40,7 @@ export const CardsAmountWholesale = (props: {
 
       <div className='card amount'>
         <div className='img-container'>
-          <IconUsersDashboard />
+          <OutgoingCallIcon />
         </div>
 
         <div className='number'>{props.activeCalls?.outbound}</div>

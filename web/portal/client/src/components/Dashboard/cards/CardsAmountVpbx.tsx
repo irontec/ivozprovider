@@ -2,9 +2,9 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { Link } from 'react-router-dom';
 
 import { DashboardData } from '../@types';
-import IconClientsDashboard from '../IconClients';
-import IconPlatformsDashboard from '../IconPlatforms';
-import IconUsersDashboard from '../IconUsers';
+import DialpadIcon from '../DialpadIcon';
+import HashIcon from '../HashIcon';
+import UsersIcon from '../UsersIcon';
 
 export const CardsAmountVpbx = (props: DashboardData): JSX.Element => {
   const { userNum, extensionNum, ddiNum } = props;
@@ -13,7 +13,7 @@ export const CardsAmountVpbx = (props: DashboardData): JSX.Element => {
     <>
       <div className='card amount'>
         <div className='img-container'>
-          <IconPlatformsDashboard />
+          <UsersIcon />
         </div>
 
         <div className='number'>{userNum}</div>
@@ -27,7 +27,7 @@ export const CardsAmountVpbx = (props: DashboardData): JSX.Element => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <IconClientsDashboard />
+          <HashIcon />
         </div>
 
         <div className='number'>{extensionNum}</div>
@@ -41,7 +41,7 @@ export const CardsAmountVpbx = (props: DashboardData): JSX.Element => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <IconUsersDashboard />
+          <DialpadIcon />
         </div>
 
         <div className='number'>{ddiNum}</div>
