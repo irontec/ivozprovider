@@ -268,6 +268,7 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
             ->where('self.company=:company')
             ->orderBy('self.id', 'DESC')
             ->setParameter('company', $companyId)
+            ->setMaxResults(5)
             ->getQuery()
             ->getResult();
         return $result;
