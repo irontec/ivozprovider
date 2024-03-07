@@ -127,6 +127,11 @@ const BillableCall: EntityInterface = {
 
     return module.default;
   },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
+  },
   View: async () => {
     const module = await import('./View');
 
