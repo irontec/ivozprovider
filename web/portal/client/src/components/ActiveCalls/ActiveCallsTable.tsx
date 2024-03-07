@@ -42,6 +42,11 @@ export default function ActiveCallsTable(
 
   const copyTextToClipboard = (text: string): void => {
     if (!navigator.clipboard) {
+      // eslint-disable-next-line no-console
+      console.log(
+        "Clipboard is disabled, make sure you're using https protocol or localhost"
+      );
+
       return;
     }
     navigator.clipboard.writeText(text).then(
