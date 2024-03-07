@@ -4965,6 +4965,9 @@
       <code>!$templateModel</code>
       <code>$templateModel</code>
     </DocblockTypeContradiction>
+    <DuplicateArrayKey occurrences="1">
+      <code>$companyArray</code>
+    </DuplicateArrayKey>
     <InvalidOperand occurrences="2">
       <code>$this-&gt;roundAndFormat($subTotal)</code>
       <code>$value</code>
