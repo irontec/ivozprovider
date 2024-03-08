@@ -1,5 +1,6 @@
 import { DropdownArrayChoices, EntityValues } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 type CompanySelectOptionsArgs = {
@@ -14,8 +15,6 @@ const UnassignedCompanySelectOptions: SelectOptionsType<
     _properties: ['id', 'name'],
   };
 
-  const getAction = store.getActions().api.get;
-
   const entities = store.getState().entities.entities;
   const Company = entities.Company;
 
@@ -24,10 +23,10 @@ const UnassignedCompanySelectOptions: SelectOptionsType<
     params._includeId = _includeId;
   }
 
-  return getAction({
-    path: `${Company.path}/corporate/unassigned`,
+  return fetchAllPages({
+    endpoint: `${Company.path}/corporate/unassigned`,
     params,
-    successCallback: async (data) => {
+    setter: async (data) => {
       const options: DropdownArrayChoices = [];
       for (const item of data as Record<string, string>[]) {
         options.push({ id: item.id, label: item.name });

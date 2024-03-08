@@ -1,5 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 import { TerminalPropertyList } from '../TerminalProperties';
@@ -20,15 +21,13 @@ const UnassignedTerminalSelectOptions: SelectOptionsType<CustomPropsType> = (
     params._includeId = _includeId;
   }
 
-  const getAction = store.getActions().api.get;
-
   const entities = store.getState().entities.entities;
   const Terminal = entities.Terminal;
 
-  return getAction({
-    path: `${Terminal.path}/unassigned`,
+  return fetchAllPages({
+    endpoint: `${Terminal.path}/unassigned`,
     params,
-    successCallback: async (data) => {
+    setter: async (data) => {
       const options: DropdownChoices = {};
       for (const item of data as TerminalPropertyList<string>[]) {
         const key = item.id as string;
