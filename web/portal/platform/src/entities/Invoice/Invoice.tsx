@@ -21,6 +21,11 @@ const Invoice: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Invoices',
   },
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default Invoice;

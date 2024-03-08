@@ -21,6 +21,11 @@ const Ddi: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'DDIs',
   },
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default Ddi;
