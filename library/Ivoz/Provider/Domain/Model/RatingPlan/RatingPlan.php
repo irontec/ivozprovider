@@ -3,13 +3,22 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
+use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
 
 /**
  * RatingPlan
  */
 class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
 {
-    use RatingPlanTrait;
+    /**
+     * @var ?TpTimingInterface
+     * mappedBy ratingPlan
+     */
+    protected $tpTiming;
+
+    use RatingPlanTrait {
+        RatingPlanTrait::setTpTiming as private __setTpTiming;
+    }
 
     /**
      * Get id
@@ -101,5 +110,12 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
             (int) $this->getRatingPlanGroup()->getBrand()->getId(),
             (int) $this->getId()
         );
+    }
+
+    public function setTpTiming(?TpTimingInterface $tpTiming = null): static
+    {
+        $this->tpTiming = $tpTiming;
+
+        return $this;
     }
 }
