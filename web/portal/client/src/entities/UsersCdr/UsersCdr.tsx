@@ -81,7 +81,7 @@ const usersCdr: EntityInterface = {
     read: true,
     detail: false,
     delete: false,
-    iden: 'provider_users_cdrs',
+    iden: 'UsersCdrs',
   },
   ChildDecorator,
   defaultOrderBy: 'startTime',
