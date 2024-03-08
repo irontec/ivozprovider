@@ -64,6 +64,14 @@ class DeletedByRatingPlanSpec extends ObjectBehavior
         $this->prepareExecution();
 
         $this
+            ->ratingPlan
+            ->setTpTiming(null)
+            ->shouldBeCalled()
+            ->willReturn(
+                $this->ratingPlan
+            );
+
+        $this
             ->entityTools
             ->remove($this->tpTiming)
             ->shouldBeCalled();
