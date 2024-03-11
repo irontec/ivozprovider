@@ -1,6 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 const AccessCredentialSelectOptions: SelectOptionsType = ({
@@ -10,10 +10,12 @@ const AccessCredentialSelectOptions: SelectOptionsType = ({
   const entities = store.getState().entities.entities;
   const NotificationTemplate = entities.NotificationTemplate;
 
-  return defaultEntityBehavior.fetchFks(
-    `${NotificationTemplate.path}?type=accessCredentials`,
-    ['id', 'name'],
-    (data) => {
+  return fetchAllPages({
+    endpoint: `${NotificationTemplate.path}?type=accessCredentials`,
+    params: {
+      _properties: ['id', 'name'],
+    },
+    setter: async (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({
@@ -24,8 +26,8 @@ const AccessCredentialSelectOptions: SelectOptionsType = ({
 
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default AccessCredentialSelectOptions;

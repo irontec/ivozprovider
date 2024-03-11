@@ -1,6 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import { getI18n } from 'react-i18next';
 import store from 'store';
 
@@ -24,10 +24,12 @@ const UnassignedServiceSelectOptions: SelectOptionsType<
     path += `?_includeId=${includeId}`;
   }
 
-  return defaultEntityBehavior.fetchFks(
-    path,
-    ['id', 'name'],
-    (data) => {
+  return fetchAllPages({
+    endpoint: path,
+    params: {
+      _properties: ['id', 'name'],
+    },
+    setter: async (data) => {
       const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = item.name[language];
@@ -35,8 +37,8 @@ const UnassignedServiceSelectOptions: SelectOptionsType<
 
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default UnassignedServiceSelectOptions;

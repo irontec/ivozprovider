@@ -1,6 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 const VpbxSelectOptions: SelectOptionsType = ({
@@ -10,10 +10,12 @@ const VpbxSelectOptions: SelectOptionsType = ({
   const entities = store.getState().entities.entities;
   const Company = entities.Company;
 
-  return defaultEntityBehavior.fetchFks(
-    `${Company.path}?type=vpbx&_order[name]=ASC`,
-    ['id', 'name', 'company'],
-    (data) => {
+  return fetchAllPages({
+    endpoint: `${Company.path}?type=vpbx&_order[name]=ASC`,
+    params: {
+      _properties: ['id', 'name', 'company'],
+    },
+    setter: async (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({
@@ -24,8 +26,8 @@ const VpbxSelectOptions: SelectOptionsType = ({
 
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default VpbxSelectOptions;

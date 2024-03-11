@@ -1,6 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 const CountryNameSelectOptions: SelectOptionsType = ({
@@ -10,10 +10,12 @@ const CountryNameSelectOptions: SelectOptionsType = ({
   const entities = store.getState().entities.entities;
   const Country = entities.Country;
 
-  return defaultEntityBehavior.fetchFks(
-    Country.path,
-    ['id', 'name'],
-    (data) => {
+  return fetchAllPages({
+    endpoint: Country.path,
+    params: {
+      _properties: ['id', 'name'],
+    },
+    setter: async (data) => {
       const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = `${Country.toStr(item)}`;
@@ -21,8 +23,8 @@ const CountryNameSelectOptions: SelectOptionsType = ({
 
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default CountryNameSelectOptions;
