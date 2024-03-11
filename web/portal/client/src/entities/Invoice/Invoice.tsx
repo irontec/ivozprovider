@@ -1,5 +1,7 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  OrderDirection,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ReceiptIcon from '@mui/icons-material/Receipt';
@@ -36,6 +38,8 @@ const Invoice: EntityInterface = {
   title: _('Invoice', { count: 2 }),
   path: '/invoices',
   properties,
+  defaultOrderBy: 'inDate',
+  defaultOrderDirection: OrderDirection.desc,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Invoices',

@@ -84,6 +84,7 @@ const Contact: EntityInterface = {
   iden: 'Contact',
   title: _('Contact', { count: 2 }),
   path: '/contacts',
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Contacts',

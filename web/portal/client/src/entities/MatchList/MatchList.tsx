@@ -56,6 +56,7 @@ const MatchList: EntityInterface = {
   title: _('Match List', { count: 2 }),
   path: '/match_lists',
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'MatchLists',

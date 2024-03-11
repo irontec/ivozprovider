@@ -234,6 +234,7 @@ const queue: EntityInterface = {
   toStr: (row: QueuePropertyList<string>) => `${row.name}`,
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Queues',

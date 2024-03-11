@@ -56,6 +56,7 @@ const routeLock: EntityInterface = {
   path: '/route_locks',
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RouteLocks',

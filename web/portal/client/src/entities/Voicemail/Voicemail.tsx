@@ -95,6 +95,7 @@ const Voicemail: EntityInterface = {
   toStr: (row: EntityValues) => (row.name as string) || '',
   properties,
   columns,
+  defaultOrderBy: '',
   selectOptions: async () => {
     const module = await import('./EnabledVoicemailSelectOptions');
 

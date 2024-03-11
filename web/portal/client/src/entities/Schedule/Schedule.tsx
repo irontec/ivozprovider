@@ -60,6 +60,7 @@ const schedule: EntityInterface = {
   toStr: (row: EntityValues) => (row.name as string) || '',
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Schedules',
