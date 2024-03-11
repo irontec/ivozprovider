@@ -28,6 +28,8 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
 
 Ivoz\Provider\Domain\Model\Calendar\Calendar:
   attributes:
+    order:
+      name: ASC
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
@@ -1390,6 +1392,8 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
 
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
+    order:
+      name: ASC
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && (user.isVpbxAdmin() || user.isResidentialAdmin())
@@ -2163,7 +2167,7 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
       && (user.isVpbxAdmin() || user.isResidentialAdmin())
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     order:
-      enabled: ASC
+      name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
