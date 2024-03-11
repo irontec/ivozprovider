@@ -499,7 +499,7 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      country: ASC
+      ddie164: ASC
     read_access_control:
       brand:
         eq: "user.getBrand().getId()"
@@ -633,6 +633,8 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
   collectionOperations:
     get: ~
   attributes:
+    order:
+      number: ASC
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_BRAND_ADMIN:
@@ -972,6 +974,8 @@ Ivoz\Provider\Domain\Model\Location\Location:
 
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
+    order:
+      name: ASC
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_BRAND_ADMIN:
@@ -992,6 +996,8 @@ Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
 
 Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
   attributes:
+    order:
+      name: ASC
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_BRAND_ADMIN:
@@ -1146,7 +1152,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      company: ASC
+      priority: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
