@@ -121,6 +121,7 @@ const Carrier: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Carriers',
   },
+  defaultOrderBy: '',
   ChildDecorator,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

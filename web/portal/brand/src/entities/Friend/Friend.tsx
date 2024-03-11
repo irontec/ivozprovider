@@ -101,6 +101,7 @@ const Friend: EntityInterface = {
   path: '/friends',
   toStr: (row: FriendPropertyList<EntityValues>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Friends',

@@ -32,6 +32,7 @@ const RoutingTag: EntityInterface = {
   toStr: (row: RoutingTagPropertyList<EntityValues>) =>
     `${row.name} (${row.tag})`,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RoutingTags',

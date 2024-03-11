@@ -37,6 +37,7 @@ const NotificationTemplate: EntityInterface = {
   path: '/notification_templates',
   toStr: (row: NotificationTemplatePropertyList<EntityValues>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'NotificationTemplates',

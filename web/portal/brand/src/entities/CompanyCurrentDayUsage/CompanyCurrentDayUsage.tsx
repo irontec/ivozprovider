@@ -66,6 +66,7 @@ const CompanyCurrentDayUsage = {
   link: '/doc/en/administration_portal/brand/billing/current_day_usages.html',
   title: _('Current Day Usage', { count: 2 }),
   localPath: '/current_day_usage',
+  defaultOrderBy: '',
   columns: [
     'typeIcon',
     'name',

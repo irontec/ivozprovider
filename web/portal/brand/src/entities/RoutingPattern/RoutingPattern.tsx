@@ -38,6 +38,7 @@ const RoutingPattern: EntityInterface = {
   toStr: (row: RoutingPatternPropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
   columns: ['name', 'description', 'prefix'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RoutingPatterns',

@@ -27,6 +27,7 @@ const MatchList: EntityInterface = {
   path: '/match_lists',
   toStr: (row: MatchListPropertyList<EntityValues>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   columns: ['name'],
   acl: {
     ...defaultEntityBehavior.acl,
