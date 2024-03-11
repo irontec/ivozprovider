@@ -15,6 +15,15 @@ Feature: Retrieve ddis
       """
       [
           {
+              "ddi": "121",
+              "ddie164": "+34121",
+              "description": null,
+              "id": 3,
+              "company": 3,
+              "ddiProvider": 1,
+              "country": 68
+          },
+          {
               "ddi": "123",
               "ddie164": "+34123",
               "description": "Description for DDI 123",
@@ -29,15 +38,6 @@ Feature: Retrieve ddis
               "description": null,
               "id": 2,
               "company": 4,
-              "ddiProvider": 1,
-              "country": 68
-          },
-          {
-              "ddi": "121",
-              "ddie164": "+34121",
-              "description": null,
-              "id": 3,
-              "company": 3,
               "ddiProvider": 1,
               "country": 68
           }

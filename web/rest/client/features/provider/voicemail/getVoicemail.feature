@@ -24,18 +24,18 @@ Feature: Retrieve voicemails
           },
           {
               "enabled": true,
-              "name": "Voicemail Generic 1",
-              "email": "generic@voicemail.com",
-              "id": 3,
-              "user": null,
-              "residentialDevice": null
-          },
-          {
-              "enabled": true,
               "name": "Voicemail For User2",
               "email": "bob@voicemail.com",
               "id": 4,
               "user": 2,
+              "residentialDevice": null
+          },
+          {
+              "enabled": true,
+              "name": "Voicemail Generic 1",
+              "email": "generic@voicemail.com",
+              "id": 3,
+              "user": null,
               "residentialDevice": null
           }
       ]
