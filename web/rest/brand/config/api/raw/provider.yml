@@ -943,8 +943,11 @@ Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
           - 'application/pdf'
         tags:
           - Provider
-
-
+        responses:
+          200:
+            description: InvoiceTemplate pdf
+          404:
+            description: Resource not found
 Ivoz\Provider\Domain\Model\Language\Name:
 Ivoz\Provider\Domain\Model\Language\Language:
   itemOperations:

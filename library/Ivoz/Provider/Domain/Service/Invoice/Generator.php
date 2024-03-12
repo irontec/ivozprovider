@@ -102,9 +102,15 @@ class Generator
         $brandArray = $brandDto->toArray();
         $brandArray['logoPath'] = $brandLogoPath;
 
+        $companyArray = $companyDto->toArray();
+        $companyArray = [
+            ...$companyArray,
+            ...$companyArray['invoicing']
+        ];
+
         $variables = array(
             'invoice' => $invoiceArray,
-            'company' => $companyDto->toArray(),
+            'company' => $companyArray,
             'brand' => $brandArray,
             'callData' => $callData,
             'fixedCosts' => $this->fixedCosts,
