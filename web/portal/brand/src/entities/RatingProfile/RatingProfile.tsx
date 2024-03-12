@@ -14,6 +14,7 @@ const properties: RatingProfileProperties = {
   activationTime: {
     label: _('Activation time'),
     format: 'date-time',
+    default: undefined,
   },
   company: {
     label: _('Client'),
