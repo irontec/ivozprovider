@@ -21,6 +21,7 @@ import { Link } from 'react-router-dom';
 import { useStoreActions } from 'store';
 
 import DialpadIcon from './DialpadIcon';
+import GithubIcon from './GithubIcon';
 import IconUsersDashboard from './IconUsers';
 import SuiteCaseIcon from './SuitCaseIcon';
 
@@ -110,20 +111,32 @@ const Dashboard = (props: DashboardProps) => {
       <div className='card welcome'>
         <div className='card-container'>
           <div>
-            <h3>
-              {_('Welcome to <br />Ivoz Provider brand administrator portal')}
-            </h3>
+            <h3>{_('Welcome to the Ivoz Provider administrator portal')}</h3>
             <p>
               {_(
-                'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add clients, carriers and much more.'
+                'This is the top access level of the platform, and from here you will be able to manage all the parameters of the platform, at all levels.'
               )}
             </p>
-            <a href='/doc/en/administration_portal/brand/index.html'>
+            <p>
+              {_(
+                'In the following link, you can access the Github portal with all the information and user manuals.'
+              )}
+            </p>
+            <a
+              href='https://github.com/irontec/ivozprovider'
+              target='_blank'
+              style={{ marginRight: '10px' }}
+              rel='noreferrer'
+            >
+              <LightButton>{_('Github')} <GithubIcon/></LightButton>
+            </a>
+            <a
+              href='/doc/en/administration_portal/brand/index.html'
+              target='_blank'
+            >
               <LightButton>{_('Get started')}</LightButton>
             </a>
           </div>
-
-          <img src='assets/img/dashboard-welcome.svg' />
         </div>
       </div>
       <div className='card activity'>

@@ -113,19 +113,17 @@ const Dashboard = (props: DashboardProps) => {
         <div className='card-container'>
           <div>
             <h3>
-              {_('Welcome to <br /> Ivoz Provider global administrator portal')}
+              {_('Welcome to the IVOZ Provider client portal')}
             </h3>
             <p>
               {_(
-                'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add brands, brand operators, portals URL and much more.'
+                'This level of access will allow you to perform all management and operations on your own company. For related queries and doubts, you can contact the global administrator of your system or your service provider.'
               )}
             </p>
             <a href='/doc/en/administration_portal/platform/index.html '>
               <LightButton>{_('Get started')}</LightButton>
             </a>
           </div>
-
-          <img src='assets/img/dashboard-welcome.svg' />
         </div>
       </div>
       <div className='card activity'>
