@@ -3,12 +3,12 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
-use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 
 /**
@@ -53,6 +53,8 @@ interface RatingPlanInterface extends LoggableEntityInterface
      * @return string
      */
     public function getCgrTimingTag();
+
+    public function setTpTiming(?TpTimingInterface $tpTiming = null): static;
 
     /**
      * @param int | null $id
@@ -102,8 +104,6 @@ interface RatingPlanInterface extends LoggableEntityInterface
     public function getRatingPlanGroup(): RatingPlanGroupInterface;
 
     public function getDestinationRateGroup(): DestinationRateGroupInterface;
-
-    public function setTpTiming(TpTimingInterface $tpTiming): static;
 
     public function getTpTiming(): ?TpTimingInterface;
 
