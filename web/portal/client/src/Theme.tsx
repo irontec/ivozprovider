@@ -13,6 +13,14 @@ interface ThemeProps {
   children: JSX.Element;
 }
 
+interface WebTheme {
+  name: string;
+  theme: string;
+  logo: string;
+  color: string;
+  title: string;
+}
+
 export default function Theme(props: ThemeProps): JSX.Element {
   const { children } = props;
 
@@ -35,18 +43,15 @@ export default function Theme(props: ThemeProps): JSX.Element {
       path: `/my/theme`,
       params: {},
       successCallback: async (value) => {
-        const response = value as {
-          name: string;
-          theme: string;
-          logo: string;
-          color: string;
-        };
+        const response = value as WebTheme;
 
         setThemeColor(response.color);
 
         themeActions.setName(response.name);
         themeActions.setTheme(response.theme);
         themeActions.setLogo(response.logo as string);
+
+        document.title = response.title;
       },
       handleErrors: false,
     })
