@@ -1,6 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 type CompanyDdiSelectOptionsProps = {
@@ -14,10 +14,12 @@ const CompanyDdiSelectOptions: SelectOptionsType<
   const Ddi = entities.Ddi;
   const companyId = customProps?.companyId;
 
-  return defaultEntityBehavior.fetchFks(
-    `${Ddi.path}?company[]=${companyId}`,
-    ['id', 'ddie164'],
-    (data) => {
+  return fetchAllPages({
+    endpoint: `${Ddi.path}?company[]=${companyId}`,
+    params: {
+      _properties: ['id', 'ddie164'],
+    },
+    setter: async (data) => {
       const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = Ddi.toStr(item);
@@ -25,8 +27,8 @@ const CompanyDdiSelectOptions: SelectOptionsType<
 
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default CompanyDdiSelectOptions;

@@ -1,6 +1,6 @@
-import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 const FaxSelectOptions: SelectOptionsType = ({
@@ -10,10 +10,12 @@ const FaxSelectOptions: SelectOptionsType = ({
   const entities = store.getState().entities.entities;
   const NotificationTemplate = entities.NotificationTemplate;
 
-  return defaultEntityBehavior.fetchFks(
-    `${NotificationTemplate.path}?type=fax`,
-    ['id', 'name'],
-    (data: Array<EntityValues>) => {
+  return fetchAllPages({
+    endpoint: `${NotificationTemplate.path}?type=fax`,
+    params: {
+      _properties: ['id', 'name'],
+    },
+    setter: async (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({ id: item.id as number, label: item.name as string });
@@ -21,8 +23,8 @@ const FaxSelectOptions: SelectOptionsType = ({
 
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default FaxSelectOptions;
