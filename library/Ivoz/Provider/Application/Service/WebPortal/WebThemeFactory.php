@@ -69,7 +69,8 @@ class WebThemeFactory
             $webPortal->getName() ?? '',
             $theme ?? '',
             $publicLogoUrl,
-            $webPortal->getColor()
+            $webPortal->getColor(),
+            $webPortal->getName() ?? '',
         );
     }
 }
