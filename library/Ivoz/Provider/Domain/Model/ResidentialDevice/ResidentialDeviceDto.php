@@ -106,6 +106,17 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             }
         } else {
             $response = parent::getPropertyMap(...func_get_args());
+
+            if ($context === self::CONTEXT_DETAILED) {
+                $response['status'] = [[
+                        'contact',
+                        'received',
+                        'publicReceived',
+                        'expires',
+                        'userAgent'
+                ]];
+            }
+
             unset($response['domainId']);
         }
 
