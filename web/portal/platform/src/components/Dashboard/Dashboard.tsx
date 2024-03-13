@@ -117,7 +117,7 @@ const Dashboard = (props: DashboardProps) => {
             </h3>
             <p>
               {_(
-                'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add brands, brand operators, portals URL and much more.'
+                'In this portal you can add brands, brand operators, portals URL and much more.'
               )}
             </p>
             <a href='/doc/en/administration_portal/platform/index.html '>
