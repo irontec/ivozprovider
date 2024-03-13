@@ -336,7 +336,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _('Invoice', { count: 1 }),
+      label: _('Invoicing'),
       icon: DescriptionIcon,
       children: [
         {
