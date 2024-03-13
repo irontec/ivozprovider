@@ -10,7 +10,7 @@ export const TitleDescription = (): JSX.Element => {
         <h3>{_('Welcome to </br> Ivoz Provider wholesale client portal')}</h3>
         <p>
           {_(
-            'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add wholesale accounts, manage Rating Profiles and much more.'
+            'In this portal you can add wholesale accounts, manage Rating Profiles and much more.'
           )}
         </p>
         <a href='/doc/en/administration_portal/client/wholesale/index.html'>
@@ -26,7 +26,7 @@ export const TitleDescription = (): JSX.Element => {
         <h3>{_('Welcome to </br> Ivoz Provider retail client portal')}</h3>
         <p>
           {_(
-            'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add retail accounts, manage DDIs and much more.'
+            'In this portal you can add retail accounts, manage DDIs and much more.'
           )}
         </p>
         <a href='/doc/en/administration_portal/client/retail/index.html'>
@@ -42,7 +42,7 @@ export const TitleDescription = (): JSX.Element => {
         <h3>{_('Welcome to </br> Ivoz Provider residential client portal')}</h3>
         <p>
           {_(
-            'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add residential accounts, manage DDis and much more.'
+            'In this portal you can add residential accounts, manage DDis and much more.'
           )}
         </p>
         <a href='/doc/en/administration_portal/client/residential/index.html'>
@@ -57,7 +57,7 @@ export const TitleDescription = (): JSX.Element => {
       <h3>{_('Welcome to </br> Ivoz Provider vPBX client portal')}</h3>
       <p>
         {_(
-          'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add users, extensions, huntgroups and much more.'
+          'In this portal you can add users, extensions, huntgroups and much more.'
         )}
       </p>
       <a href='/doc/en/administration_portal/client/vpbx/index.html'>
