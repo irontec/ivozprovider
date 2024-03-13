@@ -42,6 +42,11 @@ days will be holidays using the buttons in its row:
 .. hint:: Holidays without special routing will apply the external call filter
    holiday routing.
 
+.. hint:: In addition, once a date has been created, there is the possibility of
+   importing more dates from a file. This option is found in the date list menu and
+   is called *Import from CSV*.
+   Also a range of dates may be added with *Add Holiday date range* menu option.
+
 .. _calendar periods:
 
 Calendar Periods

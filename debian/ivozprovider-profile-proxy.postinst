@@ -37,6 +37,7 @@ function setup_mysql_access()
 
     # Replace password in configuration files
     sed -i -r "s#(password *= *).*#\1$MYSQL_PWD#" /etc/mysql/conf.d/kamailio.cnf
+    sed -i -r "s#(MYSQL_PWD *= *).*#\1\"$MYSQL_PWD\"#" /usr/bin/cgrates-reload
     sed -i -r "s#(\"db_password\": *)\".+\"#\1\"$MYSQL_PWD\"#" /etc/cgrates/cgrates.json
 }
 

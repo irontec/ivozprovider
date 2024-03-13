@@ -1,4 +1,15 @@
 # Changelog
+## 4.0.2
+* Endpoints:
+  - /invoice_schedulers:
+    - Added lastExecutionError[end|exact|neq|partial|start] filter parameters
+    - Added _order[lastExecutionError] querystring argument
+* Models:
+  - InvoiceScheduler-collection:
+    - Added lastExecutionError property
+  - ResidentialDevice-detailed:
+    - Added status property
+
 ## 4.0.1
 * Endpoints
   - /domains:

@@ -23,6 +23,7 @@ const musicOnHold: EntityInterface = {
   title: _('Music on hold', { count: 2 }),
   path: '/music_on_holds',
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'MusicOnHold',

@@ -20,6 +20,7 @@ const Location: EntityInterface = {
   path: '/locations',
   toStr: (row: LocationPropertyList<EntityValues>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Locations',

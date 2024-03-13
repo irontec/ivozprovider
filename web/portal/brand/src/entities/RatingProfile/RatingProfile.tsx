@@ -14,6 +14,7 @@ const properties: RatingProfileProperties = {
   activationTime: {
     label: _('Activation time'),
     format: 'date-time',
+    default: undefined,
   },
   company: {
     label: _('Client'),
@@ -41,6 +42,7 @@ const RatingProfile: EntityInterface = {
   toStr: (row: RatingProfilePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['activationTime', 'ratingPlanGroup'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RatingProfiles',

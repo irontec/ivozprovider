@@ -25,6 +25,7 @@ const pickUpGroup: EntityInterface = {
   title: _('Pickup group', { count: 2 }),
   path: '/pick_up_groups',
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'PickUpGroups',

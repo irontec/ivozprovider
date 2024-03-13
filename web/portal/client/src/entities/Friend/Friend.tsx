@@ -318,6 +318,7 @@ const Friend: EntityInterface = {
   path: '/friends',
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Friends',

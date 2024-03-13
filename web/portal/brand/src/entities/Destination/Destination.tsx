@@ -35,6 +35,7 @@ const Destination: EntityInterface = {
   toStr: (row: DestinationPropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
   columns: ['name', 'prefix'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Destinations',

@@ -1,6 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 const VoicemailSelectOptions: SelectOptionsType = ({
@@ -10,10 +10,12 @@ const VoicemailSelectOptions: SelectOptionsType = ({
   const entities = store.getState().entities.entities;
   const NotificationTemplate = entities.NotificationTemplate;
 
-  return defaultEntityBehavior.fetchFks(
-    `${NotificationTemplate.path}?type=voicemail`,
-    ['id', 'name'],
-    (data) => {
+  return fetchAllPages({
+    endpoint: `${NotificationTemplate.path}?type=voicemail`,
+    params: {
+      _properties: ['id', 'name'],
+    },
+    setter: async (data) => {
       const options: DropdownChoices = {};
       for (const item of data) {
         options[item.id] = NotificationTemplate.toStr(item);
@@ -21,8 +23,8 @@ const VoicemailSelectOptions: SelectOptionsType = ({
 
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default VoicemailSelectOptions;

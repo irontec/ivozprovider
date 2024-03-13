@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 
+import LastExecution from './Field/LastExecution';
 import {
   InvoiceSchedulerProperties,
   InvoiceSchedulerPropertyList,
@@ -35,7 +36,7 @@ const properties: InvoiceSchedulerProperties = {
   lastExecution: {
     label: _('Last execution'),
     readOnly: true,
-    //@TODO IvozProvider_Klear_Ghost_SchedulerSuccess::getInvoiceSchedulerLastExecutionReport
+    component: LastExecution,
   },
   lastExecutionError: {
     label: _('Last execution error'),
@@ -79,6 +80,7 @@ const InvoiceScheduler: EntityInterface = {
     'lastExecution',
     'nextExecution',
   ],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'InvoiceSchedulers',

@@ -28,6 +28,7 @@ const companyService: EntityInterface = {
   path: '/company_services',
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'CompanyServices',

@@ -1,5 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 import { VoicemailPropertiesList } from './VoicemailProperties';
@@ -16,12 +17,10 @@ const EnabledVoicemailSelectOptions: SelectOptionsType = ({
   const entities = store.getState().entities.entities;
   const Voicemail = entities.Voicemail;
 
-  const getAction = store.getActions().api.get;
-
-  return getAction({
-    path: Voicemail.path,
+  return fetchAllPages({
+    endpoint: Voicemail.path,
     params,
-    successCallback: async (data) => {
+    setter: async (data) => {
       const options: DropdownChoices = {};
       for (const item of data as VoicemailPropertiesList) {
         options[item.id as number] = `${item.name}`;

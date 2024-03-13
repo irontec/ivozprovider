@@ -1,5 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import { PathMatch } from 'react-router-dom';
 import store from 'store';
@@ -30,14 +31,13 @@ const HuntGroupAvailableSelectOptions: SelectOptionsType<CustomArgs> = (
     params._includeId = includeId;
   }
 
-  const getAction = store.getActions().api.get;
   const entities = store.getState().entities.entities;
   const HuntGroup = entities.HuntGroup;
 
-  return getAction({
-    path: `${HuntGroup.path}/${id}/users_available`,
+  return fetchAllPages({
+    endpoint: `${HuntGroup.path}/${id}/users_available`,
     params,
-    successCallback: async (data) => {
+    setter: async (data) => {
       const options: DropdownChoices = {};
       for (const item of data as UserPropertyList<string>[]) {
         options[item.id as string] = `${item.name} ${item.lastname}`;

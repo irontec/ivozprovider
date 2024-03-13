@@ -47,6 +47,7 @@ const MusicOnHold: EntityInterface = {
   path: '/music_on_holds',
   toStr: (row: MusicOnHoldPropertyList<EntityValues>) => `${row.id}`,
   properties,
+  defaultOrderBy: '',
   columns: ['name', 'originalFile'],
   acl: {
     ...defaultEntityBehavior.acl,

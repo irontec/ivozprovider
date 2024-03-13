@@ -372,6 +372,7 @@ const Company: EntityInterface = {
   title: _('Client', { count: 2 }),
   path: '/companies',
   deleteDoubleCheck: true,
+  defaultOrderBy: '',
   toStr: (row: CompanyPropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: [

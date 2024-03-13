@@ -23,9 +23,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStoreActions } from 'store';
 
-import IconClientsDashboard from './IconClients';
-import IconPlatformsDashboard from './IconPlatforms';
-import IconUsersDashboard from './IconUsers';
+import BrandIcon from './BrandIcon';
+import SuiteCaseIcon from './SuitCaseIcon';
+import UsersIcon from './UsersIcon';
 
 export interface DashboardProps {
   className?: string;
@@ -102,8 +102,8 @@ const Dashboard = (props: DashboardProps) => {
 
   const circleProps: CircleProps = {
     data: [
-      { key: 'inbound', color: '#e54560', percentage: inbound },
-      { key: 'outbound', color: '#f8c14a', percentage: outbound },
+      { key: 'inbound', color: '#89b58a', percentage: inbound },
+      { key: 'outbound', color: '#dad9bb', percentage: outbound },
     ],
   };
 
@@ -117,7 +117,7 @@ const Dashboard = (props: DashboardProps) => {
             </h3>
             <p>
               {_(
-                'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add brands, brand operators, portals URL and much more.'
+                'In this portal you can add brands, brand operators, portals URL and much more.'
               )}
             </p>
             <a href='/doc/en/administration_portal/platform/index.html '>
@@ -152,7 +152,7 @@ const Dashboard = (props: DashboardProps) => {
       </div>
       <div className='card amount'>
         <div className='img-container'>
-          <IconPlatformsDashboard />
+          <BrandIcon />
         </div>
 
         <div className='number'>{data.brandNumber}</div>
@@ -166,7 +166,7 @@ const Dashboard = (props: DashboardProps) => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <IconClientsDashboard />
+          <SuiteCaseIcon />
         </div>
 
         <div className='number'>{data.clientNumber}</div>
@@ -176,7 +176,7 @@ const Dashboard = (props: DashboardProps) => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <IconUsersDashboard />
+          <UsersIcon />
         </div>
 
         <div className='number'>{data.userNumber}</div>
@@ -202,7 +202,10 @@ const Dashboard = (props: DashboardProps) => {
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color orange'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#dad9bb' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Outbound')}</div>
           </div>
@@ -213,7 +216,10 @@ const Dashboard = (props: DashboardProps) => {
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color red'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#89b58a' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Inbound')}</div>
           </div>

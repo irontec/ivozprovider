@@ -15,6 +15,7 @@ class InvoiceSchedulerDto extends InvoiceSchedulerDtoAbstract
                 'unit' => 'unit',
                 'frequency' => 'frequency',
                 'lastExecution' => 'lastExecution',
+                'lastExecutionError' => 'lastExecutionError',
                 'nextExecution' => 'nextExecution',
                 'id' => 'id',
                 'brandId' => 'brand',

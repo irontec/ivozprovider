@@ -39,6 +39,7 @@ const calendar: EntityInterface = {
   title: _('Calendar', { count: 2 }),
   path: '/calendars',
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Calendars',

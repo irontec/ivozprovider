@@ -13,12 +13,13 @@ Feature: Retrieve invoice scheduler
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
       """
-      [
+       [
           {
               "name": "SchedulerName",
               "unit": "week",
               "frequency": 1,
               "lastExecution": "2018-12-01 09:00:00",
+              "lastExecutionError": "",
               "nextExecution": "2018-12-02 09:00:00",
               "id": 1,
               "brand": 1,

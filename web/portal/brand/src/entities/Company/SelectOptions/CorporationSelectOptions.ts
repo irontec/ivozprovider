@@ -1,8 +1,9 @@
 import { DropdownArrayChoices } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { CorporationPropertiesList } from 'entities/Corporation/CorporationProperties';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
+
+import { CorporationPropertiesList } from '../../Corporation/CorporationProperties';
 
 const CorporationSelectOptions: SelectOptionsType = ({
   callback,
@@ -11,22 +12,24 @@ const CorporationSelectOptions: SelectOptionsType = ({
   const entities = store.getState().entities.entities;
   const Corporation = entities.Corporation;
 
-  return defaultEntityBehavior.fetchFks(
-    Corporation.path,
-    ['id', 'name'],
-    (data: CorporationPropertiesList) => {
+  return fetchAllPages({
+    endpoint: Corporation.path,
+    params: {
+      _properties: ['id', 'name'],
+    },
+    setter: async (data: CorporationPropertiesList) => {
       const options: DropdownArrayChoices = [];
       for (const item of data) {
         options.push({
-          id: item.id,
-          label: item.name,
+          id: item.id as number,
+          label: item.name as string,
         });
       }
 
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default CorporationSelectOptions;

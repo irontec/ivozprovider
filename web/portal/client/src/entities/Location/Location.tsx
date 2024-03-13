@@ -26,6 +26,7 @@ const location: EntityInterface = {
   toStr: (row: LocationPropertyList<string>) => row?.name || '',
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Locations',

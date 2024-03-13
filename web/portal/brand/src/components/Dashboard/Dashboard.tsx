@@ -20,9 +20,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStoreActions } from 'store';
 
-import IconClientsDashboard from './IconClients';
-import IconPlatformsDashboard from './IconPlatforms';
+import DialpadIcon from './DialpadIcon';
 import IconUsersDashboard from './IconUsers';
+import SuiteCaseIcon from './SuitCaseIcon';
 
 export interface DashboardProps {
   className?: string;
@@ -100,8 +100,8 @@ const Dashboard = (props: DashboardProps) => {
 
   const circleProps: CircleProps = {
     data: [
-      { key: 'inbound', color: '#e54560', percentage: inbound },
-      { key: 'outbound', color: '#f8c14a', percentage: outbound },
+      { key: 'inbound', color: '#89b58a', percentage: inbound },
+      { key: 'outbound', color: '#dad9bb', percentage: outbound },
     ],
   };
 
@@ -114,9 +114,7 @@ const Dashboard = (props: DashboardProps) => {
               {_('Welcome to <br />Ivoz Provider brand administrator portal')}
             </h3>
             <p>
-              {_(
-                'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add clients, carriers and much more.'
-              )}
+              {_('In this portal you can add clients, carriers and much more.')}
             </p>
             <a href='/doc/en/administration_portal/brand/index.html'>
               <LightButton>{_('Get started')}</LightButton>
@@ -154,7 +152,7 @@ const Dashboard = (props: DashboardProps) => {
       </div>
       <div className='card amount'>
         <div className='img-container'>
-          <IconPlatformsDashboard />
+          <SuiteCaseIcon />
         </div>
 
         <div className='number'>{data.clientNum}</div>
@@ -164,7 +162,7 @@ const Dashboard = (props: DashboardProps) => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <IconClientsDashboard />
+          <DialpadIcon />
         </div>
 
         <div className='number'>{data.ddiNum}</div>
@@ -208,7 +206,10 @@ const Dashboard = (props: DashboardProps) => {
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color orange'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#dad9bb' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Outbound')}</div>
           </div>
@@ -219,7 +220,10 @@ const Dashboard = (props: DashboardProps) => {
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color red'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#89b58a' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Inbound')}</div>
           </div>

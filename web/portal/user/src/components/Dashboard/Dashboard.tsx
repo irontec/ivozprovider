@@ -20,8 +20,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStoreActions } from 'store';
 
-import ChatBubbleIcon from './ChatBubbleIcon';
-import PhoneForwardedIcon from './PhoneForwardedIcon';
+import ForwardingCallIcon from './ForwardingIconCall';
+import IncomingCallIcon from './IncomingCallIcon';
+import OutgoingCallIcon from './OutgoingCallIcon';
 
 export interface DashboardProps {
   className?: string;
@@ -116,8 +117,8 @@ const Dashboard = (props: DashboardProps) => {
 
   const circleProps: CircleProps = {
     data: [
-      { key: 'inbound', color: '#e54560', percentage: inbound },
-      { key: 'outbound', color: '#f8c14a', percentage: outbound },
+      { key: 'inbound', color: '#89b58a', percentage: inbound },
+      { key: 'outbound', color: '#dad9bb', percentage: outbound },
     ],
   };
 
@@ -129,7 +130,7 @@ const Dashboard = (props: DashboardProps) => {
             <h3>{_('Welcome to <br />Ivoz Provider vPBX user portal')}</h3>
             <p>
               {_(
-                'Ivoz Provider is an Open Source solution by Irontec. In this portal you can see and modify your configuration, list your calls and much more.'
+                'In this portal you can see and modify your configuration, list your calls and much more.'
               )}
             </p>
             <a href='/doc/en/user_portal/index.html'>
@@ -170,7 +171,7 @@ const Dashboard = (props: DashboardProps) => {
       </div>
       <div className='card amount'>
         <div className='img-container'>
-          <PhoneForwardedIcon />
+          <ForwardingCallIcon />
         </div>
 
         <div className='number'>{callForward}</div>
@@ -184,7 +185,7 @@ const Dashboard = (props: DashboardProps) => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <ChatBubbleIcon />
+          <IncomingCallIcon />
         </div>
 
         <div className='number'>{lastMonthCalls.inbound}</div>
@@ -198,7 +199,7 @@ const Dashboard = (props: DashboardProps) => {
 
       <div className='card amount'>
         <div className='img-container'>
-          <ChatBubbleIcon />
+          <OutgoingCallIcon />
         </div>
 
         <div className='number'>{lastMonthCalls.outbound}</div>
@@ -228,18 +229,23 @@ const Dashboard = (props: DashboardProps) => {
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color orange'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#dad9bb' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Outbound')}</div>
           </div>
-
           <div className='label'>
             <Tooltip
               title={`${lastMonthCalls.inbound} inbound(s)`}
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color red'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#89b58a' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Inbound')}</div>
           </div>

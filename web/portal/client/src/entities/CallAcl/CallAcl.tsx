@@ -27,6 +27,7 @@ const CallAcl: EntityInterface = {
   title: _('Call ACL', { count: 2 }),
   path: '/call_acls',
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'CallACL',

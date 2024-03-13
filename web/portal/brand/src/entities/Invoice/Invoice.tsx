@@ -127,8 +127,6 @@ const Invoice: EntityInterface = {
     'number',
     'inDate',
     'outDate',
-    'total',
-    'taxRate',
     'totalWithTax',
     'status',
     'invoiceTemplate',

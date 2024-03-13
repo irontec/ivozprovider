@@ -52,6 +52,7 @@ build_microservices: build_library
 	cd microservices/recordings; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 	cd microservices/workers; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 	cd microservices/scheduler; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd microservices/provision; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 	cd microservices/realtime; go mod download && go mod verify
 	cd microservices/realtime; go build -v -o server irontec.com/realtime/cmd/server
 	cd microservices/router; composer --no-interaction --no-dev --no-progress --optimize-autoloader install

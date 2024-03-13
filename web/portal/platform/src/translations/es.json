@@ -118,13 +118,13 @@
   "Id": "Id",
   "Iden": "Iden",
   "Impersonate": "Impersonar",
+  "In this portal you can add brands, brand operators, portals URL and much more.": "En este portal puede agregar marcas, operadores de marca, URL de portales y mucho más.",
   "Inbound": "Entrante",
   "Infrastructure": "Infraestructura",
   "Invoice Data": "Datos Facturación",
   "Invoice_many": "Facturas",
   "Invoice_one": "Factura",
   "Invoice_other": "Facturas",
-  "Ivoz Provider is an Open Source solution by Irontec. In this portal you can add brands, brand operators, portals URL and much more.": "Ivoz Provider es una solución Open Source de Irontec. En este portal puede agregar marcas, operadores de marca, URL de portales y mucho más.",
   "Language_many": "Idioma",
   "Language_one": "Idioma",
   "Language_other": "Idioma",
@@ -239,5 +239,5 @@
   "Weight": "Peso",
   "Welcome to <br /> Ivoz Provider global administrator portal": "Bienvenido al portal de <br />administración global de Ivoz Provider",
   "Will be shown on page footer": "Se mostrará en el pie de página",
-  "Yes": "Si"
+  "Yes": "Sí"
 }

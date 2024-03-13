@@ -36,6 +36,7 @@ const FixedCost: EntityInterface = {
     `${row.name} - ${row.cost}`,
   properties,
   columns: ['name', 'cost', 'description'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'FixedCosts',

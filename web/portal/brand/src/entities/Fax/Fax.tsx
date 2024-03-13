@@ -35,6 +35,7 @@ const Fax: EntityInterface = {
   path: '/faxes',
   toStr: (row: FaxPropertyList<EntityValues>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Faxes',

@@ -1,5 +1,6 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 import { UserPropertyList } from '../UserProperties';
@@ -22,14 +23,13 @@ const BossAssistantSelectOptions: SelectOptionsType<CustomPropsType> = (
     params['id[neq]'] = _excludeId;
   }
 
-  const getAction = store.getActions().api.get;
   const entities = store.getState().entities.entities;
   const User = entities.User;
 
-  return getAction({
-    path: User.path,
+  return fetchAllPages({
+    endpoint: User.path,
     params,
-    successCallback: async (data) => {
+    setter: async (data) => {
       const options: DropdownChoices = {};
       for (const item of data as UserPropertyList<string>[]) {
         options[item.id as string] = `${item.name} ${item.lastname}`;

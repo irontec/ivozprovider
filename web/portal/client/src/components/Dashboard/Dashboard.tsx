@@ -58,8 +58,8 @@ const Dashboard = (props: DashboardProps) => {
 
   const circleProps: CircleProps = {
     data: [
-      { key: 'inbound', color: '#e54560', percentage: inbound },
-      { key: 'outbound', color: '#f8c14a', percentage: outbound },
+      { key: 'inbound', color: '#89b58a', percentage: inbound },
+      { key: 'outbound', color: '#dad9bb', percentage: outbound },
     ],
   };
 
@@ -117,7 +117,10 @@ const Dashboard = (props: DashboardProps) => {
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color orange'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#dad9bb' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Outbound')}</div>
           </div>
@@ -128,7 +131,10 @@ const Dashboard = (props: DashboardProps) => {
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color red'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#89b58a' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Inbound')}</div>
           </div>

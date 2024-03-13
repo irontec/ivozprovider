@@ -376,6 +376,7 @@ const CallCsvScheduler: EntityInterface = {
     'lastExecution',
     'nextExecution',
   ],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'CallCsvSchedulers',

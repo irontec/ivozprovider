@@ -43,6 +43,7 @@ const locution: EntityInterface = {
   path: '/locutions',
   properties,
   columns: ['name', 'originalFile', 'recordingExtension', 'status'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Locutions',

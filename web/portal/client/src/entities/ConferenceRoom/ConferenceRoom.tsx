@@ -57,6 +57,7 @@ const conferenceRoom: EntityInterface = {
   toStr: (row: ConferenceRoomPropertyList<string>) => `${row.name}`,
   properties,
   columns: ['name', 'maxMembers', 'pinProtected', 'pinCode'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ConferenceRooms',
