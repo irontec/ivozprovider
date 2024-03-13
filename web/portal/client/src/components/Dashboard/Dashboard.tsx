@@ -117,7 +117,10 @@ const Dashboard = (props: DashboardProps) => {
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color orange'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#dad9bb' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Outbound')}</div>
           </div>
@@ -128,7 +131,10 @@ const Dashboard = (props: DashboardProps) => {
               placement='bottom-start'
               enterTouchDelay={0}
             >
-              <div className='color red'></div>
+              <div
+                className='color'
+                style={{ backgroundColor: '#89b58a' }}
+              ></div>
             </Tooltip>
             <div className='text'>{_('Inbound')}</div>
           </div>
