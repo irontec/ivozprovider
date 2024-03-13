@@ -114,9 +114,7 @@ const Dashboard = (props: DashboardProps) => {
               {_('Welcome to <br />Ivoz Provider brand administrator portal')}
             </h3>
             <p>
-              {_(
-                'Ivoz Provider is an Open Source solution by Irontec. In this portal you can add clients, carriers and much more.'
-              )}
+              {_('In this portal you can add clients, carriers and much more.')}
             </p>
             <a href='/doc/en/administration_portal/brand/index.html'>
               <LightButton>{_('Get started')}</LightButton>
