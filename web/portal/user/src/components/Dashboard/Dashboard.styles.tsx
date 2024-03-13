@@ -34,6 +34,8 @@ const StyledDashboard = styled(Dashboard)(({ theme }: { theme: Theme }) => {
       '& .card-container': {
         display: 'flex',
         gap: 'var(--spacing-xl)',
+        justifyContent: 'space-between',
+        flexGrow: 1,
       },
       '& h3': {
         fontSize: '21px',
