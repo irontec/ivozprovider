@@ -1,4 +1,9 @@
 # Changelog
+## 4.0.2
+* Models:
+  - ResidentialDevice-detailed:
+    - Added status property
+
 ## 4.0.1
 * Endpoints:
    - /faxes_in_outs:
