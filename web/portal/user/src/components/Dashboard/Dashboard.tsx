@@ -130,7 +130,7 @@ const Dashboard = (props: DashboardProps) => {
             <h3>{_('Welcome to <br />Ivoz Provider vPBX user portal')}</h3>
             <p>
               {_(
-                'Ivoz Provider is an Open Source solution by Irontec. In this portal you can see and modify your configuration, list your calls and much more.'
+                'In this portal you can see and modify your configuration, list your calls and much more.'
               )}
             </p>
             <a href='/doc/en/user_portal/index.html'>
