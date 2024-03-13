@@ -156,6 +156,7 @@ const CallCsvScheduler: EntityInterface = {
   path: '/call_csv_schedulers',
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'CallCsvSchedulers',

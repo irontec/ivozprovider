@@ -171,6 +171,7 @@ const OutgoingRouting: EntityInterface = {
   title: _('Outgoing Routing', { count: 2 }),
   path: '/outgoing_routings',
   toStr: (row: OutgoingRoutingPropertyList<EntityValues>) => `${row.id}`,
+  defaultOrderBy: '',
   properties,
   columns: [
     'company',

@@ -72,6 +72,7 @@ const InvoiceTemplate: EntityInterface = {
   properties,
   columns: ['name', 'description'],
   customActions: Actions,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'InvoiceTemplates',

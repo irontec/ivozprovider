@@ -173,6 +173,7 @@ const ddi: EntityInterface = {
   toStr: (row: DdiPropertyList<string>) => `${row.ddie164}`,
   columns,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'DDIs',

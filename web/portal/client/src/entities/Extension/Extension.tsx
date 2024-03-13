@@ -143,6 +143,7 @@ const extension: EntityInterface = {
   title: _('Extension', { count: 2 }),
   path: '/extensions',
   toStr: (row: ExtensionPropertyList<string>) => `${row.number}`,
+  defaultOrderBy: '',
   columns,
   properties,
   acl: {

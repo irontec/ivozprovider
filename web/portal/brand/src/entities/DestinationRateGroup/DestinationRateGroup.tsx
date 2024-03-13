@@ -70,6 +70,7 @@ const DestinationRateGroup: EntityInterface = {
     `${row.name?.en}`,
   properties,
   columns: ['name', 'description', 'currency', 'file', 'status'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'DestinationRateGroups',

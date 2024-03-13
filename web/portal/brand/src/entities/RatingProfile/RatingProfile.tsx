@@ -42,6 +42,7 @@ const RatingProfile: EntityInterface = {
   toStr: (row: RatingProfilePropertyList<EntityValues>) => `${row.id}`,
   properties,
   columns: ['activationTime', 'ratingPlanGroup'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RatingProfiles',

@@ -138,6 +138,7 @@ const huntGroup: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'HuntGroups',
   },
+  defaultOrderBy: '',
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

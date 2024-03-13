@@ -36,6 +36,7 @@ const OutgoingDdiRule: EntityInterface = {
   path: '/outgoing_ddi_rules',
   toStr: (row: OutgoingDdiRulePropertyList<EntityValues>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'OutgoingDdiRules',

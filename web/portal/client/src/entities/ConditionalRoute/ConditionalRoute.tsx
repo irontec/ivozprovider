@@ -148,6 +148,7 @@ const ConditionalRoute: EntityInterface = {
   toStr: (row: ConditionalRoutePropertyList<string>) => `${row.name}`,
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ConditionalRoutes',

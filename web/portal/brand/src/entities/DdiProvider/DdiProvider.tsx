@@ -41,6 +41,7 @@ const DdiProvider: EntityInterface = {
   path: '/ddi_providers',
   toStr: (row: DdiProviderPropertyList<EntityValues>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   columns: [
     'name',
     'description',

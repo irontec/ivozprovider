@@ -50,6 +50,7 @@ const recording: EntityInterface = {
   path: '/recordings',
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Recordings',

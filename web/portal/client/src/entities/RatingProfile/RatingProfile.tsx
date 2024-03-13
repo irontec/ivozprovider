@@ -38,6 +38,7 @@ const ratingProfile: EntityInterface = {
 
     return columns;
   },
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RatingProfiles',

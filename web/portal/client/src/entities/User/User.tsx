@@ -201,6 +201,7 @@ const user: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Users',
   },
+  defaultOrderBy: '',
   toStr: (row: UserPropertyList<string>) => `${row.name} ${row.lastname}`,
   properties,
   columns,

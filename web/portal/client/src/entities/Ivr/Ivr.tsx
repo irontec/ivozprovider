@@ -195,6 +195,7 @@ const ivr: EntityInterface = {
   toStr: (row: IvrPropertyList<string>) => `${row.name}`,
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'IVRs',

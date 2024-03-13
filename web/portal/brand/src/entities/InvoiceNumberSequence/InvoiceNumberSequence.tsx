@@ -52,6 +52,7 @@ const InvoiceNumberSequence: EntityInterface = {
   path: '/invoice_number_sequences',
   toStr: (row: InvoiceNumberSequencePropertyList<EntityValues>) => `${row.id}`,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'InvoiceNumberSequences',

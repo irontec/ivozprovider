@@ -106,6 +106,7 @@ const terminal: EntityInterface = {
   path: '/terminals',
   toStr: (row: TerminalPropertyList<string>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   columns: ['name', 'domain', 'terminalModel', 'mac', 'statusIcon'],
   acl: {
     ...defaultEntityBehavior.acl,

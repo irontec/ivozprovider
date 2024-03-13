@@ -38,6 +38,7 @@ const RatingPlanGroup: EntityInterface = {
   path: '/rating_plan_groups',
   toStr: (row: RatingPlanGroupPropertyList<EntityValues>) => `${row.name?.en}`,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RatingPlanGroups',

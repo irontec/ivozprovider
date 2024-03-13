@@ -66,6 +66,7 @@ const WebPortal: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'WebPortals',
   },
+  defaultOrderBy: '',
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

@@ -43,6 +43,7 @@ const outgoingDdiRule: EntityInterface = {
   path: '/outgoing_ddi_rules',
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'OutgoingDDIRules',

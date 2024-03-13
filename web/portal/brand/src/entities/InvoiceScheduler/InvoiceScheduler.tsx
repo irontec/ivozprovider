@@ -80,6 +80,7 @@ const InvoiceScheduler: EntityInterface = {
     'lastExecution',
     'nextExecution',
   ],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'InvoiceSchedulers',

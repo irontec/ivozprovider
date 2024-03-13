@@ -239,6 +239,7 @@ const externalCallFilter: EntityInterface = {
   path: '/external_call_filters',
   toStr: (row: ExternalCallFilterPropertyList<string>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   columns,
   acl: {
     ...defaultEntityBehavior.acl,

@@ -187,6 +187,7 @@ const ddi: EntityInterface = {
   path: '/ddis',
   toStr: (row: DdiPropertyList<EntityValues>) => `${row.ddie164}`,
   properties,
+  defaultOrderBy: '',
   columns: ['country', 'ddi', 'company', 'ddiProvider', 'description'],
   acl: {
     ...defaultEntityBehavior.acl,
