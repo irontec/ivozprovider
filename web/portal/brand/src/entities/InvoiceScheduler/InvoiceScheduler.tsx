@@ -32,6 +32,7 @@ const properties: InvoiceSchedulerProperties = {
   email: {
     label: _('Email'),
     maxLength: 140,
+    required: false,
   },
   lastExecution: {
     label: _('Last execution'),
@@ -59,6 +60,7 @@ const properties: InvoiceSchedulerProperties = {
   },
   numberSequence: {
     label: _('Invoice number sequence', { count: 1 }),
+    required: true,
     //@TODO visualToggle
   },
 };
