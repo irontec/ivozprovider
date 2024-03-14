@@ -34,6 +34,7 @@ const RunTemplate = (props: PropsType): JSX.Element => {
   const handleClose = () => {
     setOpen(false);
     setErrorMsg('');
+    setResult('');
   };
 
   const onChange = (event: ChangeEvent<{ value: string }>) => {
