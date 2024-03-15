@@ -1,4 +1,6 @@
 import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
+import EditRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/EditRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -47,14 +49,32 @@ const properties: InvoiceTemplateProperties = {
 };
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, row } = props;
+  const { routeMapItem, row, entityService } = props;
 
   if (
     isEntityItem(routeMapItem) &&
     routeMapItem.entity.iden === InvoiceTemplate.iden
   ) {
-    if (row.global) {
-      return null;
+    if (!row.global) {
+      return DefaultChildDecorator(props);
+    }
+
+    const isDeletePath = routeMapItem.route === `${InvoiceTemplate.path}/:id`;
+    const isUpdatePath =
+      routeMapItem.route === `${InvoiceTemplate.path}/:id/update`;
+
+    if (isDeletePath) {
+      return (
+        <DeleteRowButton
+          disabled={true}
+          row={row}
+          entityService={entityService}
+        />
+      );
+    }
+
+    if (isUpdatePath) {
+      return <EditRowButton disabled={true} row={row} path={''} />;
     }
   }
 
