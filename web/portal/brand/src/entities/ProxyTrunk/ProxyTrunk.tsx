@@ -27,7 +27,13 @@ const ProxyTrunk: EntityInterface = {
   iden: 'ProxyTrunk',
   title: _('Proxy Trunks', { count: 2 }),
   path: '/proxy_trunks',
-  toStr: (row: ProxyTrunkPropertyList<EntityValues>) => `${row.ip}`,
+  toStr: (row: ProxyTrunkPropertyList<EntityValues>) => {
+    const ip = row.advertisedIp ? row.advertisedIp : row.ip;
+
+    const label = `${row.name} (${ip})`;
+
+    return label;
+  },
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
