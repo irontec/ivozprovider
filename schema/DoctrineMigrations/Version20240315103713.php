@@ -22,7 +22,7 @@ final class Version20240315103713 extends LoggableMigration
     {
         $this->addSql(
             'INSERT INTO PublicEntities(`iden`, `fqdn`, `client`, `name_en`, `name_es`, `name_ca`, `name_it`)'
-                .'VALUES("HolidayDateRange", "Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDateRange", 1,'
+                .'VALUES("HolidayDateRange", "Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateRange", 1,'
                         .'"Holiday date ranges", "Rango de festivos", "Rang de festius", "Intervalli festivi")'
         );
 
