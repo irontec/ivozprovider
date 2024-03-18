@@ -1,7 +1,7 @@
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import CallEndIcon from '@mui/icons-material/CallEnd';
+import CallMadeIcon from '@mui/icons-material/CallMade';
+import CallReceivedIcon from '@mui/icons-material/CallReceived';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DialpadIcon from '@mui/icons-material/Dialpad';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
@@ -82,10 +82,13 @@ export default function ActiveCallsTable(
             <TableRow key={`${call.id}#${call.callId}`}>
               <TableCell>
                 {call.direction === 'outbound' && (
-                  <ArrowLeftIcon titleAccess='outbound' sx={directionStyles} />
+                  <CallMadeIcon titleAccess='outbound' sx={directionStyles} />
                 )}
                 {call.direction === 'inbound' && (
-                  <ArrowRightIcon titleAccess='inbound' sx={directionStyles} />
+                  <CallReceivedIcon
+                    titleAccess='inbound'
+                    sx={directionStyles}
+                  />
                 )}
                 &nbsp;
                 {call.event === 'Trying' && (
