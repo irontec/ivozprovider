@@ -113,6 +113,10 @@ const HolidayDateRange: EntityInterface = {
   toStr: () => {
     return '';
   },
+  acl: {
+    ...defaultEntityBehavior,
+    iden: 'HolidayDateRange'
+  },
   properties,
   foreignKeyGetter: async () => {
     const module = await import('./ForeignKeyGetter');
