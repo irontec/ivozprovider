@@ -17,6 +17,7 @@ const properties: InvoiceNumberSequenceProperties = {
   prefix: {
     label: _('Prefix'),
     maxLength: 20,
+    required: false,
   },
   sequenceLength: {
     label: _('Sequence length'),
