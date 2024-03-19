@@ -126,9 +126,9 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function getType(): string;
 
-    public function setCompany(CompanyInterface $company): static;
+    public function setCompany(?CompanyInterface $company = null): static;
 
-    public function getCompany(): CompanyInterface;
+    public function getCompany(): ?CompanyInterface;
 
     public function getBrand(): BrandInterface;
 
