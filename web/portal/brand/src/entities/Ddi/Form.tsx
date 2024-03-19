@@ -24,8 +24,9 @@ const Form = (props: EntityFormProps): JSX.Element => {
     formik,
   });
 
+  const hasCompany = edit && row.company !== null;
   const readOnlyProperties = {
-    company: edit || false,
+    company: hasCompany,
   };
 
   const groups: Array<FieldsetGroups | false> = [

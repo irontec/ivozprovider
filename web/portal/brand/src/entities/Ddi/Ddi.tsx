@@ -157,6 +157,7 @@ const properties: DdiProperties = {
   },
   company: {
     label: _('Client'),
+    required: false,
   },
   type: {
     label: _('Type'),
