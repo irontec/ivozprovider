@@ -5,7 +5,6 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
  * Ddi
@@ -49,20 +48,20 @@ class Ddi extends DdiAbstract implements DdiInterface
 
     protected function sanitizeValues(): void
     {
-        $isNew = $this->isNew();
         $changedClient = $this->hasChanged('companyId');
+        $initialClient = $this->getInitialValue('companyId');
 
-        if (!$isNew && $changedClient) {
+        if ($changedClient && $initialClient !== null) {
             throw new \DomainException(
                 'Forbidden ddi client update',
                 403
             );
         }
 
-
-        if (! $this->getCountry()) {
+        $company = $this->getCompany();
+        if (! $this->getCountry() && $company) {
             $this->setCountry(
-                $this->getCompany()->getCountry()
+                $company->getCountry()
             );
         }
         $country = $this->getCountry();
@@ -89,6 +88,11 @@ class Ddi extends DdiAbstract implements DdiInterface
     public function getDomain(): ?DomainInterface
     {
         $company = $this->getCompany();
+
+        if (!$company) {
+            return null;
+        }
+
         $brand = $company->getBrand();
 
         return $brand->getDomain();
@@ -97,10 +101,13 @@ class Ddi extends DdiAbstract implements DdiInterface
     public function getLanguageCode(): string
     {
         $language = $this->getLanguage();
+
         if (!$language) {
             $company = $this->getCompany();
 
-            return $company->getLanguageCode();
+            return $company
+                ? $company->getLanguageCode()
+                : $this->getBrand()->getLanguage()->getIden();
         }
 
         return $language->getIden();
