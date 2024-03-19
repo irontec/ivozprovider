@@ -501,14 +501,17 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
     order:
       ddie164: ASC
     read_access_control:
-      brand:
-        eq: "user.getBrand().getId()"
-      company:
-        in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+      - and:
+        - brand:
+            eq: "user.getBrand().getId()"
+      - or:
+        - company:
+            in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+        - company:
+            isNull: ~
     swagger_context:
       required:
       - brand
-      - company
   properties:
     ddie164:
       attributes:
