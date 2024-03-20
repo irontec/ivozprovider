@@ -42,7 +42,21 @@ pipeline {
                 }
             }
         }
-
+        // --------------------------------------------------------------------
+        // Generic Project pipeline tests
+        // --------------------------------------------------------------------
+        stage('Generic') {
+            agent {
+                docker {
+                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
+                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh "/opt/irontec/ivozprovider/library/bin/test-commit-tags origin/${env.CHANGE_TARGET}"
+            }
+        }
         // --------------------------------------------------------------------
         // Backend Testing stage
         // --------------------------------------------------------------------
