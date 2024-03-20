@@ -7,27 +7,9 @@ Preferably the commit message will have a descriptive first line with a prefix
 that will reference the most changed section by the commit. This line must not
 be larger than 60 chars, as recommendation.
 
-While this prefixs are not fixed, it is recommended to use the already existing
-ones in the git log history.
+For a list of valid commit tags check doc/dev/AcceptedCommitTagsList.txt
 
-    - doc: Changes in documentation (no source code changed)
-    - web/admin: Changes for web, portals klears, and so on
-    - web/rest: Changes in API entities and endpoints
-    - web/user: Changes in user angular based portal
-    - kamtrunks: Changes in proxys working with trunks
-    - kamusers: Changes in proxys working with users
-    - agis: Changes that affect logic of PBX
-    - schema: Changes that only affect database tables structures
-    - core: Changes in data entities (almost everything under libray dir)
-    - i18n: Internalization or translation changes
-    - pkg: Changes related to debian package system
-    - tests: Changes affecting how CI test behave
-    - ...
-
-Tags can be as especific as required and could reference some services like
-fax:, provisioning: or invoicer:
-
-Commit messages have optionaly a long description from second line onwards. This
+Commit messages have optionally a long description from second line onwards. This
 description can contain a mantis or gitlab issue code.
 
 
