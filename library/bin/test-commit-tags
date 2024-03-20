@@ -12,7 +12,7 @@ COMMITS=$(git --no-pager log --format=%B ${BASE_BRANCH}..HEAD | grep -v ^$)
 # Check we have at least some commits
 if [ -z "$COMMITS" ]; then
     echo "No commits between current branch and $BASE_BRANCH"
-    exit 2
+    exit 0
 fi
 
 # Get each commit tag

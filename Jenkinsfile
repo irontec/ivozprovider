@@ -26,6 +26,7 @@ pipeline {
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
         SYMFONY_PHPUNIT_VERSION = "9.5.3"
         DOCKER_IMAGE_TAG = getDockerImageTag()
+        BASE_BRANCH = getBaseBranch()
         JIRA_TICKET = getJiraTicket()
     }
 
@@ -54,7 +55,7 @@ pipeline {
                 }
             }
             steps {
-                sh "/opt/irontec/ivozprovider/library/bin/test-commit-tags origin/${env.CHANGE_TARGET}"
+                sh "/opt/irontec/ivozprovider/library/bin/test-commit-tags origin/${env.BASE_BRANCH}"
             }
         }
         // --------------------------------------------------------------------
@@ -563,6 +564,10 @@ boolean hasCommitTag(String module) {
     returnStatus: true,
     script: "git log --oneline origin/${env.CHANGE_TARGET}...${env.GIT_COMMIT} | grep ${module}"
   ) == 0
+}
+
+void getBaseBranch() {
+    return env.CHANGE_TARGET ?: env.GIT_BRANCH
 }
 
 void getDockerImageTag() {
