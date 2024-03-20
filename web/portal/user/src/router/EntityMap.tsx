@@ -28,6 +28,9 @@ const getEntityMap = (): RouteMap => {
       },
       divider: true,
     },
+    {
+      entity: entities.VoicemailMessage,
+    },
   ];
 
   return routeMapParser(map);
