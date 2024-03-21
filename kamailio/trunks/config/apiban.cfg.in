@@ -8,7 +8,7 @@ modparam("rtimer", "timer", "name=apiban;interval=300;mode=1;")
 modparam("rtimer", "exec", "timer=apiban;route=APIBAN")
 
 route[APIBAN] {
-    # replace MYAPIKEY with your apiban.org API key.
+    # replace with your apiban.org API key.
     $var(apikey) = "MYAPIKEY";
 
     if($sht(apibanctl=>ID) == 0) {
