@@ -69,7 +69,7 @@ class DdiFactory
                 (int) $country->getId()
             );
 
-        if ($ddi) {
+        if ($ddi && $ddi->getCompany() !== null) {
             if ($ddi->getCompany()->getId() !== $company->getId()) {
                 throw new \DomainException(
                     'DDI already exists in another company'

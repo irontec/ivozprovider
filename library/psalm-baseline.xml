@@ -2291,8 +2291,8 @@
     <MixedArgument occurrences="30">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
-      <code>$fkTransformer-&gt;transform($company)</code>
-      <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getConditionalRoute())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getConditionalRoute())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getConferenceRoom())</code>
