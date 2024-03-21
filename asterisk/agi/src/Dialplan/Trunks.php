@@ -8,6 +8,7 @@ use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Assert\Assertion;
 use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use RouteHandlerAbstract;
 
@@ -87,6 +88,7 @@ class Trunks extends RouteHandlerAbstract
         $this->agi->setVariable("__CALL_ID", $this->agi->getCallId());
 
         // Get company MusicClass: company, Generic or default
+        /** @var CompanyInterface $company */
         $company = $ddi->getCompany();
         $this->agi->setVariable("__COMPANYID", $company->getId());
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());

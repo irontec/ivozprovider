@@ -3,6 +3,7 @@
 namespace Agi\Agents;
 
 use Agi\Wrapper;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 class DdiAgent implements AgentInterface
@@ -41,7 +42,10 @@ class DdiAgent implements AgentInterface
 
     public function getCompany()
     {
-        return $this->ddi->getCompany();
+        /** @var CompanyInterface $company */
+        $company = $this->ddi->getCompany();
+
+        return $company;
     }
 
     public function getLanguageCode()
@@ -55,7 +59,10 @@ class DdiAgent implements AgentInterface
         $ddi = $this->ddi;
 
         // If user has OutgoingDDI rules, check if we have to override current DDI
-        $outgoingDDIRule = $this->getCompany()->getOutgoingDDIRule();
+        /** @var CompanyInterface $company */
+        $company = $this->getCompany();
+
+        $outgoingDDIRule = $company->getOutgoingDDIRule();
         if ($outgoingDDIRule) {
             $this->agi->verbose("Checking %s for destination %s", $outgoingDDIRule, $destination);
             // Check if outgoing DDI rule matches for given destination
