@@ -66,8 +66,13 @@ const ProxyTrunk: EntityInterface = {
   iden: 'ProxyTrunk',
   title: _('Proxy Trunk', { count: 2 }),
   path: '/proxy_trunks',
-  toStr: (row: ProxyTrunkPropertyList<EntityValue>) =>
-    `${row.name} (${row.ip})`,
+  toStr: (row: ProxyTrunkPropertyList<EntityValue>) => {
+    const ip = row.advertisedIp ? row.advertisedIp : row.ip;
+
+    const label = `${row.name} (${ip})`;
+
+    return label;
+  },
   columns: ['name', 'ip', 'advertisedIp'],
   properties,
   ChildDecorator,
