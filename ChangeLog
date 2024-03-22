@@ -1,3 +1,22 @@
+Thu, 21 Mar 2024 08:50:54 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.0.3 released
+
+    * Portals
+        - Fixed a bug while displaying terminal provisioning template test dialog
+        - Fixed a bug while displaying Domain filtering options
+        - Added missing ACL entries for Holiday Date ranges
+        - Invoice Numbers prefix is now optional
+        - Increased inactivity timeout in Active Calls to one hour
+        - Updated Active calls call direction icons
+
+    * Provisioning
+        - Fixed a bug that prevented running PHP code in terminal provisioning templates
+
+    * Proxies
+        - Fixed a bug with Cisco Phones BLF Subscriptions
+        - Fixed behind-nat and proxied UAC SUBSCRIBE routing
+
 Tue, 12 Mar 2024 11:33:49 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.0.2 released

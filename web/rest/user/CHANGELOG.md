@@ -1,4 +1,33 @@
 # Changelog
+## 4.0.3
+* Endpoints
+    - /my/voicemails:
+        - Added [GET] endpoint
+    - /voicemail_messages
+        - Added [GET] endpoint
+    - /voicemails/{id}
+        - Added [GET] and [PUT] endpoints
+    - /voicemail_messages/{id}
+        - Added [GET] and [DELETE] endpoints
+    - /voicemail_messages/{id}/metadatafile
+        - Added [GET] endpoint
+    - /voicemail_messages/{id}/recordingfile
+        - Added [GET] endpoint
+* Models
+    - MetadataFile:
+        - Added Model
+    - RecordingFile:
+        - Added Model
+    - Voicemail:
+        - Set name as readonly property
+        - Set email as readonly property
+    - Voicemail-detailed:
+        - Added Model
+    - VoicemailMessage-collection:
+        - Added Model
+    - VoicemailMessage-detailed:
+        - Added Model
+
 ## 4.0.0
 * Endpoints
     - /domains:
