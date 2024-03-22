@@ -58,10 +58,14 @@
             "type": "git"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Ivoz\\": "Ivoz"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
-            "spec\\": "spec/",
-            "Ivoz\\": "Ivoz"
+            "spec\\": "spec/"
         }
     },
     "config": {

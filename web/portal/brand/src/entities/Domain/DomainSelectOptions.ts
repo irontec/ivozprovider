@@ -3,22 +3,25 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-import { ProxyTrunkPropertiesList } from './ProxyTrunkProperties';
+import { DomainPropertiesList } from './DomainProperties';
 
-const ProxyTrunkSelectOptions: SelectOptionsType = ({
+const DomainSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const ProxyTrunk = entities.ProxyTrunk;
+  const Domain = entities.Domain;
 
   return defaultEntityBehavior.fetchFks(
-    `${ProxyTrunk.path}?_order[ip]=ASC`,
-    ['id', 'name', 'ip', 'advertisedIp'],
-    (data: ProxyTrunkPropertiesList) => {
+    Domain.path,
+    ['id', 'domain'],
+    (data: DomainPropertiesList) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id as number, label: ProxyTrunk.toStr(item) });
+        options.push({
+          id: item.id as number,
+          label: `${item.domain}` as string,
+        });
       }
 
       callback(options);
@@ -27,4 +30,4 @@ const ProxyTrunkSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default ProxyTrunkSelectOptions;
+export default DomainSelectOptions;

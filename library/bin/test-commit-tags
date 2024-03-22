@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Move to project base dir
+cd $(dirname $(realpath $0))/../../
+
+# Base Branch of current feature branch
+BASE_BRANCH=${1:-origin/bleeding}
+
+# Get the list of commits
+COMMITS=$(git --no-pager log --format=%B ${BASE_BRANCH}..HEAD | grep -v ^$)
+
+# Check we have at least some commits
+if [ -z "$COMMITS" ]; then
+    echo "No commits between current branch and $BASE_BRANCH"
+    exit 0
+fi
+
+# Get each commit tag
+ERROR=0
+IFS=$'\n'
+for COMMIT in $COMMITS; do
+    TAG=$(echo $COMMIT | cut -d":" -f1)
+    if [ -z "$TAG" ]; then
+        echo "ERROR: No valid tag found in commit: $COMMIT"
+        ERROR=1
+        continue
+    fi
+    grep -E -q "${TAG}$" doc/dev/AcceptedCommitTagsList.txt
+    if [ $? -ne 0 ]; then
+        echo "ERROR: $TAG is not a valid commit tag"
+        ERROR=1
+    fi
+done
+
+if [ $ERROR -ne 0 ]; then
+    echo
+    echo "Check https://github.com/irontec/ivozprovider/tree/bleeding/doc/dev/AcceptedCommitTagsList.txt for a complete accepted tag list"
+else
+    echo "All commit tags are valid"
+fi
+
+
+exit $ERROR

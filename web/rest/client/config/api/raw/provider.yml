@@ -1086,6 +1086,8 @@ Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
       - friend
 
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRange:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
   itemOperations: []
   collectionOperations:
     post_holiday_dates_range:

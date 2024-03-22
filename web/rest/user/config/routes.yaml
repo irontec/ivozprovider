@@ -186,3 +186,12 @@ get_my_active_calls:
     _api_resource_class: 'Model\ActiveCalls'
     _api_item_operation_name: 'get_my_active_calls'
     _api_receive: false
+
+get_my_voicemails:
+  path: '/my/voicemails'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\VoicemailsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+    _api_collection_operation_name: 'get_my_voicemails'
+    _api_receive: false

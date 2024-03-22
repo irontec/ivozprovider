@@ -96,7 +96,9 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       - company
 
 Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
-  itemOperations: []
+  itemOperations:
+    get:
+    put:
   collectionOperations:
     get_my_company_voicemails:
       method: 'GET'
@@ -111,11 +113,47 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
         tags:
         - My
         parameters: []
+    get_my_voicemails:
+      method: 'GET'
+      path: '/my/voicemails'
+      route_name: 'get_my_voicemails'
+      swagger_context:
+        produces:
+        - 'application/json'
+        tags:
+        - My
+        parameters: []
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          readOnly: true
+    email:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
     access_control: '"ROLE_COMPANY_USER" in roles'
+    read_access_control:
+      ROLE_COMPANY_USER:
+        user:
+          eq: "user.getId()"
     swagger_context:
       required:
       - company
+
+Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+    read_access_control:
+      ROLE_COMPANY_USER:
+        voicemail:
+          in: "voicemailRepository.getVoicemailsIdsByUser(user)"
 
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations: []

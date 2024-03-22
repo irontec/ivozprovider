@@ -26,6 +26,7 @@ pipeline {
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
         SYMFONY_PHPUNIT_VERSION = "9.5.3"
         DOCKER_IMAGE_TAG = getDockerImageTag()
+        BASE_BRANCH = getBaseBranch()
         JIRA_TICKET = getJiraTicket()
     }
 
@@ -42,7 +43,21 @@ pipeline {
                 }
             }
         }
-
+        // --------------------------------------------------------------------
+        // Generic Project pipeline tests
+        // --------------------------------------------------------------------
+        stage('Generic') {
+            agent {
+                docker {
+                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
+                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh "/opt/irontec/ivozprovider/library/bin/test-commit-tags origin/${env.BASE_BRANCH}"
+            }
+        }
         // --------------------------------------------------------------------
         // Backend Testing stage
         // --------------------------------------------------------------------
@@ -56,7 +71,7 @@ pipeline {
                     expression { hasCommitTag("microservice:") }
                     expression { hasCommitTag("rest") }
                     branch "bleeding"
-                    branch "halliday"
+                    branch "tempest"
                 }
             }
             stages {
@@ -302,7 +317,7 @@ pipeline {
                                     expression { hasLabel("ci-force-tests-back") }
                                     expression { hasCommitTag("schema:") }
                                     branch "bleeding"
-                                    branch "halliday"
+                                    branch "tempest"
                                 }
                             }
                             steps {
@@ -340,7 +355,7 @@ pipeline {
                     expression { hasLabel("ci-force-tests") }
                     expression { hasCommitTag("portal") }
                     branch "bleeding"
-                    branch "halliday"
+                    branch "tempest"
                 }
             }
             stages {
@@ -366,7 +381,7 @@ pipeline {
                                     expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/platform:") }
                                     branch "bleeding"
-                                    branch "halliday"
+                                    branch "tempest"
                                 }
                             }
                             agent {
@@ -394,7 +409,7 @@ pipeline {
                                     expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/brand:") }
                                     branch "bleeding"
-                                    branch "halliday"
+                                    branch "tempest"
                                 }
                             }
                             agent {
@@ -422,7 +437,7 @@ pipeline {
                                     expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/client:") }
                                     branch "bleeding"
-                                    branch "halliday"
+                                    branch "tempest"
                                 }
                             }
                             agent {
@@ -450,7 +465,7 @@ pipeline {
                                     expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/user:") }
                                     branch "bleeding"
-                                    branch "halliday"
+                                    branch "tempest"
                                 }
                             }
                             agent {
@@ -551,6 +566,10 @@ boolean hasCommitTag(String module) {
   ) == 0
 }
 
+void getBaseBranch() {
+    return env.CHANGE_TARGET ?: env.GIT_BRANCH
+}
+
 void getDockerImageTag() {
     return env.CHANGE_TARGET ?: env.GIT_BRANCH
 }
@@ -580,7 +599,7 @@ void notifyUnstableGithub() {
 }
 
 void notifyFailureMattermost() {
-    if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'halliday') {
+    if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'tempest') {
         mattermostSend([
             channel: "#comms-provider",
             color: "#FF0000",
@@ -590,7 +609,7 @@ void notifyFailureMattermost() {
 }
 
 void notifyFixedMattermost() {
-    if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'halliday') {
+    if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'tempest') {
         mattermostSend([
             channel: "#comms-provider",
             color: "#008000",

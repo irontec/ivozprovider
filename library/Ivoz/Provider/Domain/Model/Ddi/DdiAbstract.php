@@ -94,10 +94,10 @@ abstract class DdiAbstract
     protected $type = 'inout';
 
     /**
-     * @var CompanyInterface
+     * @var ?CompanyInterface
      * inversedBy ddis
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var BrandInterface
@@ -251,8 +251,6 @@ abstract class DdiAbstract
         Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
         $type = $dto->getType();
         Assertion::notNull($type, 'getType value is null, but non null value was expected.');
-        $company = $dto->getCompany();
-        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
@@ -268,7 +266,7 @@ abstract class DdiAbstract
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($company))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
@@ -305,8 +303,6 @@ abstract class DdiAbstract
         Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
         $type = $dto->getType();
         Assertion::notNull($type, 'getType value is null, but non null value was expected.');
-        $company = $dto->getCompany();
-        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
@@ -319,7 +315,7 @@ abstract class DdiAbstract
             ->setRouteType($dto->getRouteType())
             ->setFriendValue($dto->getFriendValue())
             ->setType($type)
-            ->setCompany($fkTransformer->transform($company))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
@@ -383,7 +379,7 @@ abstract class DdiAbstract
             'routeType' => self::getRouteType(),
             'friendValue' => self::getFriendValue(),
             'type' => self::getType(),
-            'companyId' => self::getCompany()->getId(),
+            'companyId' => self::getCompany()?->getId(),
             'brandId' => self::getBrand()->getId(),
             'conferenceRoomId' => self::getConferenceRoom()?->getId(),
             'languageId' => self::getLanguage()?->getId(),
@@ -557,14 +553,14 @@ abstract class DdiAbstract
         return $this->type;
     }
 
-    public function setCompany(CompanyInterface $company): static
+    public function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    public function getCompany(): CompanyInterface
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }

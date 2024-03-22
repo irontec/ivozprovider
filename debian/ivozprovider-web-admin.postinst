@@ -10,7 +10,7 @@ chmod 777 /opt/irontec/ivozprovider/web/admin/application/cache
 rm -fr /opt/irontec/ivozprovider/web/admin/application/cache/*
 
 # Change invoice-template-tester dir owner
-chown www-data.www-data /opt/irontec/ivozprovider/web/admin/public/invoice-template-tester
+chown www-data:www-data /opt/irontec/ivozprovider/web/admin/public/invoice-template-tester
 
 # Setup portal language
 db_get ivozprovider/language

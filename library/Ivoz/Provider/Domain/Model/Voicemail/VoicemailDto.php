@@ -11,7 +11,7 @@ class VoicemailDto extends VoicemailDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
-            return [
+            $properties = [
                 'id' => 'id',
                 'enabled' => 'enabled',
                 'name' => 'name',
@@ -19,9 +19,15 @@ class VoicemailDto extends VoicemailDtoAbstract
                 'userId' => 'user',
                 'residentialDeviceId' => 'residentialDevice',
             ];
+        } else {
+            $properties = parent::getPropertyMap(...func_get_args());
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        if ($role === 'ROLE_COMPANY_USER') {
+            unset($properties['userId']);
+        }
+
+        return $properties;
     }
 
     /**

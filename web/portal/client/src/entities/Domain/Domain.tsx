@@ -17,6 +17,11 @@ const Domain: EntityInterface = {
   toStr: (row: DomainPropertyList<EntityValue>) => row.domain as string,
   properties,
   columns: [],
+  selectOptions: async () => {
+    const module = await import('./DomainSelectOptions');
+
+    return module.default;
+  },
 };
 
 export default Domain;

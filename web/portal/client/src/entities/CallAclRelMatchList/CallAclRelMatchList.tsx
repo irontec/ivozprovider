@@ -29,6 +29,10 @@ const CallAclRelMatchList: EntityInterface = {
   icon: AccountTreeIcon,
   iden: 'CallAclRelMatchList',
   title: _('Call ACL MatchList', { count: 2 }),
+  acl: {
+    ...defaultEntityBehavior,
+    iden: 'CallAclRelMatchList',
+  },
   path: '/call_acl_rel_match_lists',
   properties,
   Form: async () => {

@@ -85,7 +85,7 @@ class CallCsvSchedulerTest extends KernelTestCase
                         [
                             'ddi',
                             'in',
-                            'DdiRepository([["brand","eq","user.getBrand().getId()"],["company","IN",["companyRepository.getSupervisedCompanyIdsByAdmin(user)"]]])'
+                            'DdiRepository({"and":[["brand","eq","user.getBrand().getId()"]],"or":[["company","IN",["companyRepository.getSupervisedCompanyIdsByAdmin(user)"]],["company","eq",null]]})'
                         ],
                         [
                             'ddi',

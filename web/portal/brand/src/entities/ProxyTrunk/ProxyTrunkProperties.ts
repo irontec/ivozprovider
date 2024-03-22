@@ -7,6 +7,7 @@ import {
 export type ProxyTrunkPropertyList<T> = {
   name?: T;
   ip?: T;
+  advertisedIp?: T;
   id?: T;
 };
 

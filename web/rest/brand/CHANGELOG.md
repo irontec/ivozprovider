@@ -1,4 +1,16 @@
 # Changelog
+## 4.0.3
+* Endpoints
+  - /ddis:
+    - Added company[exists] filter parameter
+* Models
+  - DDI:
+    - company property is no longer required
+  - DDI-collection:
+    - company property is no longer required
+  - DDI-detailed:
+    - company property is no longer required
+
 ## 4.0.2
 * Endpoints:
   - /invoice_schedulers:

@@ -4,6 +4,7 @@ namespace Agi\Action;
 
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
@@ -117,10 +118,13 @@ class ExternalFilterAction
         // Play holiday louction
         $this->agi->playbackLocution($locution);
 
+        /** @var CompanyInterface $company */
+        $company = $ddi->getCompany();
+
         // Set Diversion information
         $count = $this->agi->getRedirecting('count');
         $this->agi->setRedirecting('count,i', ++$count);
-        $this->agi->setRedirecting('from-name,i', $ddi->getCompany()->getName());
+        $this->agi->setRedirecting('from-name,i', $company->getName());
         $this->agi->setRedirecting('from-num,i', $ddi->getDDIE164());
         $this->agi->setRedirecting('reason', 'time_of_day');
 
@@ -168,10 +172,13 @@ class ExternalFilterAction
         // Play holiday locution
         $this->agi->playbackLocution($locution);
 
+        /** @var CompanyInterface $company */
+        $company = $ddi->getCompany();
+
         // Set Diversion information
         $count = $this->agi->getRedirecting('count');
         $this->agi->setRedirecting('count,i', ++$count);
-        $this->agi->setRedirecting('from-name,i', $ddi->getCompany()->getName());
+        $this->agi->setRedirecting('from-name,i', $company->getName());
         $this->agi->setRedirecting('from-num,i', $ddi->getDDIE164());
         $this->agi->setRedirecting('reason', 'time_of_day');
 

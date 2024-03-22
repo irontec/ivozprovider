@@ -14,14 +14,11 @@ const ProxyTrunkSelectOptions: SelectOptionsType = ({
 
   return defaultEntityBehavior.fetchFks(
     `${ProxyTrunk.path}?_order[name]=ASC`,
-    ['id', 'ip', 'name'],
+    ['id', 'ip', 'name', 'advertisedIp'],
     (data: ProxyTrunkPropertiesList) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({
-          id: item.id as number,
-          label: `${item.name} (${item.ip})`,
-        });
+        options.push({ id: item.id as number, label: ProxyTrunk.toStr(item) });
       }
 
       callback(options);
