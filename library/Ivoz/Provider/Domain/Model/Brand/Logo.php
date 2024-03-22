@@ -100,6 +100,14 @@ final class Logo
 
     public function getBaseName(): ?string
     {
-        return $this->baseName;
+        if ($this->baseName === null) {
+            return null;
+        }
+
+        return str_replace(
+            ' ',
+            '_',
+            $this->baseName
+        );
     }
 }
