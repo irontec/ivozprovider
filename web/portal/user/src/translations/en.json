@@ -3,6 +3,7 @@
   "Active call_other": "Active Calls",
   "Answered": "Answered",
   "Basic Information": "Basic Information",
+  "Basic Configuration": "Basic Configuration",
   "Boss / Assistant": "Boss / Assistant",
   "Both": "Both",
   "Busy": "Busy",
@@ -18,6 +19,7 @@
   "Change Password": "Change Password",
   "Country_one": "Country",
   "Country_other": "Countries",
+  "Customization": "Customization",
   "Date": "Date",
   "Direction": "Direction",
   "Disposition": "Disposition",
@@ -50,8 +52,10 @@
   "My Account": "My Account",
   "My Preferences": "My Preferences",
   "Name": "Name",
+  "No": "No",
   "No answer": "No answer",
   "No answer timeout": "No answer timeout",
+  "Notification configuration": "Notification configuration",
   "Number": "Number",
   "Number country": "Number country",
   "Number value": "Number value",
@@ -82,7 +86,10 @@
   "User not registered": "User not registered",
   "Voicemail Message_one": "Voicemail Message",
   "Voicemail Message_other": "Voicemail Messages",
+  "Voicemail attach sound": "Voicemail attach sound",
+  "Voicemail send mail": "Voicemail send mail",
   "Voicemail_one": "Voicemail",
   "Voicemail_other": "Voicemails",
-  "Welcome to <br />Ivoz Provider vPBX user portal": "Bienvenido al <br />Portal de usuario de IvozProvider"
+  "Welcome to <br />Ivoz Provider vPBX user portal": "Bienvenido al <br />Portal de usuario de IvozProvider",
+  "Yes": "Yes"
 }
