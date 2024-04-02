@@ -278,6 +278,12 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.RoutingTag,
+          isAccessible: (aboutMe) => {
+            return (
+              aboutMe.features.includes('wholesale') ||
+              aboutMe.features.includes('retail')
+            );
+          },
         },
       ],
     },
