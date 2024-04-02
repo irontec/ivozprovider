@@ -38,7 +38,7 @@ This is file content
           "type": "Out",
           "pages": null,
           "status": "pending",
-          "id": 2,
+          "id": 4,
           "file": {
               "fileSize": 20,
               "mimeType": "text/plain; charset=us-ascii",
@@ -52,7 +52,7 @@ This is file content
   Scenario: Retrieve created fax out
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "faxes_in_outs/2"
+      And I send a "GET" request to "faxes_in_outs/4"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -64,7 +64,7 @@ This is file content
           "type": "Out",
           "pages": null,
           "status": "pending",
-          "id": 2,
+          "id": 4,
           "file": {
               "fileSize": 20,
               "mimeType": "text/plain; charset=us-ascii",
