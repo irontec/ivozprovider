@@ -188,4 +188,11 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
             $this->active
             ) = unserialize($serialized);
     }
+
+    public function sanitizeValues(): void
+    {
+        if ($this->getRestricted() === false) {
+            $this->setCanImpersonate(true);
+        }
+    }
 }
