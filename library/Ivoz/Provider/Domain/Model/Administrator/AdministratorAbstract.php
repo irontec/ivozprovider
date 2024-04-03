@@ -66,6 +66,11 @@ abstract class AdministratorAbstract
     protected $lastname = null;
 
     /**
+     * @var bool
+     */
+    protected $canImpersonate = false;
+
+    /**
      * @var ?BrandInterface
      */
     protected $brand = null;
@@ -89,7 +94,8 @@ abstract class AdministratorAbstract
         string $email,
         bool $active,
         bool $internal,
-        bool $restricted
+        bool $restricted,
+        bool $canImpersonate
     ) {
         $this->setUsername($username);
         $this->setPass($pass);
@@ -97,6 +103,7 @@ abstract class AdministratorAbstract
         $this->setActive($active);
         $this->setInternal($internal);
         $this->setRestricted($restricted);
+        $this->setCanImpersonate($canImpersonate);
     }
 
     abstract public function getId(): null|string|int;
@@ -172,6 +179,8 @@ abstract class AdministratorAbstract
         Assertion::notNull($internal, 'getInternal value is null, but non null value was expected.');
         $restricted = $dto->getRestricted();
         Assertion::notNull($restricted, 'getRestricted value is null, but non null value was expected.');
+        $canImpersonate = $dto->getCanImpersonate();
+        Assertion::notNull($canImpersonate, 'getCanImpersonate value is null, but non null value was expected.');
 
         $self = new static(
             $username,
@@ -179,7 +188,8 @@ abstract class AdministratorAbstract
             $email,
             $active,
             $internal,
-            $restricted
+            $restricted,
+            $canImpersonate
         );
 
         $self
@@ -216,6 +226,8 @@ abstract class AdministratorAbstract
         Assertion::notNull($internal, 'getInternal value is null, but non null value was expected.');
         $restricted = $dto->getRestricted();
         Assertion::notNull($restricted, 'getRestricted value is null, but non null value was expected.');
+        $canImpersonate = $dto->getCanImpersonate();
+        Assertion::notNull($canImpersonate, 'getCanImpersonate value is null, but non null value was expected.');
 
         $this
             ->setUsername($username)
@@ -226,6 +238,7 @@ abstract class AdministratorAbstract
             ->setRestricted($restricted)
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
+            ->setCanImpersonate($canImpersonate)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setTimezone($fkTransformer->transform($dto->getTimezone()));
@@ -247,6 +260,7 @@ abstract class AdministratorAbstract
             ->setRestricted(self::getRestricted())
             ->setName(self::getName())
             ->setLastname(self::getLastname())
+            ->setCanImpersonate(self::getCanImpersonate())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setTimezone(Timezone::entityToDto(self::getTimezone(), $depth));
@@ -266,6 +280,7 @@ abstract class AdministratorAbstract
             'restricted' => self::getRestricted(),
             'name' => self::getName(),
             'lastname' => self::getLastname(),
+            'canImpersonate' => self::getCanImpersonate(),
             'brandId' => self::getBrand()?->getId(),
             'companyId' => self::getCompany()?->getId(),
             'timezoneId' => self::getTimezone()?->getId()
@@ -380,6 +395,18 @@ abstract class AdministratorAbstract
     public function getLastname(): ?string
     {
         return $this->lastname;
+    }
+
+    protected function setCanImpersonate(bool $canImpersonate): static
+    {
+        $this->canImpersonate = $canImpersonate;
+
+        return $this;
+    }
+
+    public function getCanImpersonate(): bool
+    {
+        return $this->canImpersonate;
     }
 
     protected function setBrand(?BrandInterface $brand = null): static

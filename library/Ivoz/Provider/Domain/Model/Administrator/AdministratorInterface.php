@@ -66,6 +66,8 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function unserialize($serialized);
 
+    public function sanitizeValues(): void;
+
     /**
      * @param int | null $id
      */
@@ -104,6 +106,8 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getName(): ?string;
 
     public function getLastname(): ?string;
+
+    public function getCanImpersonate(): bool;
 
     public function getBrand(): ?BrandInterface;
 
