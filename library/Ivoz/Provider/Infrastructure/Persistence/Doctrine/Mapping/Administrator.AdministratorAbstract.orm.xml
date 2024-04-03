@@ -61,5 +61,10 @@
         <join-column name="timezoneId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
+    <field name="canImpersonate" type="boolean" column="canImpersonate" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
   </mapped-superclass>
 </doctrine-mapping>
