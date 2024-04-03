@@ -105,6 +105,8 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function getLastname(): ?string;
 
+    public function getCanImpersonate(): bool;
+
     public function getBrand(): ?BrandInterface;
 
     public function getCompany(): ?CompanyInterface;
