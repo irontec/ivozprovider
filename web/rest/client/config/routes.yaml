@@ -224,3 +224,11 @@ post_holidays_dates_mass_import:
     _api_item_operation_name: 'post_holidays_dates_mass_import'
     _api_collection_operation_name: 'post_holidays_dates_mass_import'
     _api_receive: false
+
+post_fax_resend:
+  path: '/faxes_in_outs/{id}/resend'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\PostFaxResendAction
+    _api_receive: false
+
