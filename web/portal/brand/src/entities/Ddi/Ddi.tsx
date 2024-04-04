@@ -24,6 +24,9 @@ const properties: DdiProperties = {
   ddi: {
     label: _('DDI', { count: 1 }),
   },
+  ddie164: {
+    label: _('DDI', { count: 1 }),
+  },
   description: {
     label: _('Description'),
   },
@@ -157,7 +160,6 @@ const properties: DdiProperties = {
   },
   company: {
     label: _('Client'),
-    required: false,
   },
   type: {
     label: _('Type'),
@@ -189,7 +191,7 @@ const ddi: EntityInterface = {
   toStr: (row: DdiPropertyList<EntityValues>) => `${row.ddie164}`,
   properties,
   defaultOrderBy: '',
-  columns: ['country', 'ddi', 'company', 'ddiProvider', 'description'],
+  columns: ['ddie164', 'company', 'ddiProvider', 'description'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'DDIs',
