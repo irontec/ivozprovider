@@ -270,6 +270,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               filterValues: {
                 'type[exact]': 'Out',
               },
+              children: [...Object.values(entities.FaxesOut.customActions)],
             },
             {
               entity: entities.FaxesIn,
