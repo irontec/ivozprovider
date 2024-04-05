@@ -21,12 +21,12 @@ portal
 portal/brand
 portal/client
 portal/platform
-portal/users
+portal/user
 proxy
 rest/brand
 rest/client
 rest/platform
-rest/users
+rest/user
 schema
 systemd
 tests
