@@ -1,25 +1,80 @@
-import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import MailIcon from '@mui/icons-material/Mail';
 
-const VoiceMail: EntityInterface = {
+import {
+  VoicemailProperties,
+  VoicemailPropertyList,
+} from './VoicemailProperties';
+
+const properties: VoicemailProperties = {
+  enabled: {
+    label: _('Enabled'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '1',
+  },
+  name: {
+    label: _('Name'),
+    required: true,
+  },
+  sendMail: {
+    label: _('Voicemail send mail'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '1',
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['attachSound', 'email'],
+      },
+      '1': {
+        show: ['attachSound', 'email'],
+        hide: [],
+      },
+    },
+  },
+  email: {
+    label: _('Email'),
+    required: true,
+  },
+  attachSound: {
+    label: _('Voicemail attach sound'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '1',
+  },
+};
+
+const columns = ['enabled', 'name', 'email'];
+
+const voicemail: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: MailIcon,
   iden: 'Voicemail',
   title: _('Voicemail', { count: 2 }),
-  path: '/my/company_voicemails',
+  path: '/my/voicemails',
+
   acl: {
     ...defaultEntityBehavior.acl,
-    iden: 'Voicemail',
+    iden: 'Voicemails',
   },
-  selectOptions: async () => {
-    const module = await import('./SelectOptions');
+  toStr: (row: VoicemailPropertyList<string>) => `${row.name as string}`,
+  properties,
+  columns,
+  defaultOrderBy: '',
+  Form: async () => {
+    const module = await import('./Form');
 
     return module.default;
   },
-  toStr: (row: EntityValues) => row.name as string,
 };
 
-export default VoiceMail;
+export default voicemail;

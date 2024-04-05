@@ -155,6 +155,8 @@ Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
         voicemail:
           in: "voicemailRepository.getVoicemailsIdsByUser(user)"
 
+Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile: ~
+
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations: []
   collectionOperations:

@@ -19,6 +19,16 @@ const getEntityMap = (): RouteMap => {
       entity: entities.CallForwardSetting,
     },
     {
+      entity: entities.Voicemail,
+      children: [
+        {
+          entity: entities.VoicemailMessage,
+          filterBy: 'voicemail',
+        },
+      ],
+      divider: true,
+    },
+    {
       entity: {
         ...entities.UsersCdr,
         acl: {
@@ -26,7 +36,6 @@ const getEntityMap = (): RouteMap => {
           detail: false,
         },
       },
-      divider: true,
     },
   ];
 
