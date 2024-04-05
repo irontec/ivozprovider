@@ -17,6 +17,12 @@ class Profile
     private $restricted;
 
     /**
+     * @var bool
+     * @AttributeDefinition(type="bool")
+     */
+    private $canImpersonate;
+
+    /**
      * @var ProfileAcl[]
      * @AttributeDefinition(
      *     type="array",
@@ -30,9 +36,11 @@ class Profile
      */
     public function __construct(
         bool $restricted,
+        bool $canImpersonate,
         array $adminRelPublicEntities,
     ) {
         $this->restricted = $restricted;
+        $this->canImpersonate = $canImpersonate;
 
         foreach ($adminRelPublicEntities as $adminRelPublicEntity) {
             $this->addAcl(
@@ -51,6 +59,11 @@ class Profile
     public function isRestricted(): bool
     {
         return $this->restricted;
+    }
+
+    public function isCanImpersonate(): bool
+    {
+        return $this->canImpersonate;
     }
 
     /**
