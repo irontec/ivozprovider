@@ -95,6 +95,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
             $this->setEmail("utc@irontec.com");
             $this->setActive(true);
             $this->setRestricted(true);
+            $this->setCanImpersonate(true);
             $this->setName("Admin in UTC timezone");
             $this->setLastname("Admin Lastname");
             $this->setTimezone(null);
@@ -111,6 +112,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
             $this->setEmail("restrictedAdmin@irontec.com");
             $this->setActive(true);
             $this->setRestricted(true);
+            $this->setCanImpersonate(true);
             $this->setName("RestrictedAdmin");
             $this->setLastname("Lastname");
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
@@ -214,6 +216,41 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $this->addReference('_reference_ProviderAdministrator12', $item12);
         $this->sanitizeEntityValues($item12);
         $manager->persist($item12);
+
+        $item13 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("restrictedPlatformAdministrator");
+            $this->setPass("changeme");
+            $this->setEmail("utc@irontec.com");
+            $this->setActive(true);
+            $this->setRestricted(true);
+            $this->setCanImpersonate(false);
+            $this->setName("Admin in UTC timezone");
+            $this->setLastname("Admin Lastname");
+            $this->setTimezone(null);
+        })->call($item13);
+
+        $this->addReference('_reference_ProviderAdministrator13', $item13);
+        $this->sanitizeEntityValues($item13);
+        $manager->persist($item13);
+
+        $item14 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("restrictedBrandOnlyAdmin");
+            $this->setPass("changeme");
+            $this->setEmail("restrictedAdmin@irontec.com");
+            $this->setActive(true);
+            $this->setRestricted(true);
+            $this->setCanImpersonate(false);
+            $this->setName("RestrictedAdmin");
+            $this->setLastname("Lastname");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+        })->call($item14);
+
+        $this->addReference('_reference_ProviderAdministrator14', $item14);
+        $this->sanitizeEntityValues($item14);
+        $manager->persist($item14);
 
         $manager->flush();
     }

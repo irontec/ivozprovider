@@ -12,6 +12,7 @@ Feature: Retrieve active calls
       """
       {
           "restricted": false,
+          "canImpersonate": true,
           "acls": []
       }
       """
@@ -27,6 +28,7 @@ Feature: Retrieve active calls
       """
       {
           "restricted": true,
+          "canImpersonate": true,
           "acls": [
               {
                   "iden": "BillableCalls",

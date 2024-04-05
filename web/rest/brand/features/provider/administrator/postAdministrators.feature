@@ -36,7 +36,8 @@ Feature: Create administrators
           "restricted": false,
           "name": "post",
           "lastname": "test",
-          "id": 13,
+          "canImpersonate": true,
+          "id": 15,
           "company": 1,
           "timezone": 145
       }
@@ -45,7 +46,7 @@ Feature: Create administrators
   Scenario: Retrieve created administrator
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "administrators/13"
+      And I send a "GET" request to "administrators/15"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -59,7 +60,8 @@ Feature: Create administrators
           "restricted": false,
           "name": "post",
           "lastname": "test",
-          "id": 13,
+          "id": 15,
+          "canImpersonate": true,
           "company": "~",
           "timezone": {
               "tz": "Europe/Madrid",
