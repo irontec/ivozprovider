@@ -36,6 +36,7 @@ Feature: Create administrators
           "restricted": false,
           "name": "post",
           "lastname": "test",
+          "canImpersonate": true,
           "id": 13,
           "company": 1,
           "timezone": 145

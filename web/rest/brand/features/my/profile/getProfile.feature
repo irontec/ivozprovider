@@ -12,6 +12,7 @@ Feature: Retrieve active calls
       """
       {
           "restricted": false,
+          "canImpersonate": true,
           "acls": [],
           "features": [
               "queues",
@@ -36,6 +37,7 @@ Feature: Retrieve active calls
       """
       {
           "restricted": true,
+          "canImpersonate": true,
           "acls": [
               {
                   "iden": "BillableCalls",

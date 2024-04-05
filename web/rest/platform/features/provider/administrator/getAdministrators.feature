@@ -79,6 +79,7 @@ Feature: Retrieve administrators
           "restricted": false,
           "name": "admin",
           "lastname": "ivozprovider",
+          "canImpersonate": true,
           "id": 1,
           "brand": null,
           "company": null,

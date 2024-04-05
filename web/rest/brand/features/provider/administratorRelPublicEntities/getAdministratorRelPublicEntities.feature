@@ -28,6 +28,7 @@ Feature: Manage administrator rel public entities
                   "restricted": true,
                   "name": "Admin Name",
                   "lastname": "Admin Lastname",
+                  "canImpersonate": false,
                   "id": 7,
                   "company": 1,
                   "timezone": 145
@@ -61,6 +62,7 @@ Feature: Manage administrator rel public entities
                   "restricted": true,
                   "name": "Admin Name",
                   "lastname": "Admin Lastname",
+                  "canImpersonate": false,
                   "id": 7,
                   "company": 1,
                   "timezone": 145
@@ -94,6 +96,7 @@ Feature: Manage administrator rel public entities
                   "restricted": true,
                   "name": "Admin Name",
                   "lastname": "Admin Lastname",
+                  "canImpersonate": false,
                   "id": 7,
                   "company": 1,
                   "timezone": 145
@@ -139,6 +142,7 @@ Feature: Manage administrator rel public entities
               "restricted": true,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
+              "canImpersonate": false,
               "id": 7,
               "company": 1,
               "timezone": 145

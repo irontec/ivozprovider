@@ -95,6 +95,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
             $this->setEmail("utc@irontec.com");
             $this->setActive(true);
             $this->setRestricted(true);
+            $this->setCanImpersonate(true);
             $this->setName("Admin in UTC timezone");
             $this->setLastname("Admin Lastname");
             $this->setTimezone(null);
@@ -111,6 +112,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
             $this->setEmail("restrictedAdmin@irontec.com");
             $this->setActive(true);
             $this->setRestricted(true);
+            $this->setCanImpersonate(true);
             $this->setName("RestrictedAdmin");
             $this->setLastname("Lastname");
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
