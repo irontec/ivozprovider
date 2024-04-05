@@ -588,6 +588,10 @@ Feature: Retrieve billable calls
               "id": 6
           },
           {
+              "username": "restrictedBrandOnlyAdmin",
+              "id": 14
+          },
+          {
               "username": "test_brand_admin",
               "id": 2
           }

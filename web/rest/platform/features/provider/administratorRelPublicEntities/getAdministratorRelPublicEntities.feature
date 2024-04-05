@@ -19,7 +19,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": false,
               "delete": false,
-              "id": 123,
+              "id": 179,
               "administrator": {
                   "username": "utcAdmin",
                   "pass": "*****",
@@ -28,6 +28,7 @@ Feature: Manage administrator rel public entities
                   "restricted": true,
                   "name": "Admin in UTC timezone",
                   "lastname": "Admin Lastname",
+                  "canImpersonate": true,
                   "id": 5,
                   "brand": null,
                   "company": null,
@@ -62,6 +63,7 @@ Feature: Manage administrator rel public entities
                   "restricted": true,
                   "name": "RestrictedAdmin",
                   "lastname": "Lastname",
+                  "canImpersonate": true,
                   "id": 6,
                   "brand": 1,
                   "company": null,
@@ -87,32 +89,33 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": false,
               "delete": false,
-              "id": 124,
+              "id": 205,
               "administrator": {
-                  "username": "utcAdmin",
+                  "username": "restrictedPlatformAdministrator",
                   "pass": "*****",
                   "email": "utc@irontec.com",
                   "active": true,
                   "restricted": true,
                   "name": "Admin in UTC timezone",
                   "lastname": "Admin Lastname",
-                  "id": 5,
+                  "canImpersonate": false,
+                  "id": 13,
                   "brand": null,
                   "company": null,
                   "timezone": null
               },
               "publicEntity": {
-                  "iden": "Companies",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Company\\Company",
+                  "iden": "BillableCalls",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall",
                   "platform": true,
                   "brand": true,
                   "client": true,
-                  "id": 11,
+                  "id": 2,
                   "name": {
-                      "en": "Companies",
-                      "es": "Companies",
-                      "ca": "Companies",
-                      "it": "Companies"
+                      "en": "BillableCalls",
+                      "es": "BillableCalls",
+                      "ca": "BillableCalls",
+                      "it": "BillableCalls"
                   }
               }
           }
@@ -135,17 +138,18 @@ Feature: Manage administrator rel public entities
         "delete": false,
         "id": 123,
         "administrator": {
-            "username": "utcAdmin",
+            "username": "restrictedBrandOnlyAdmin",
             "pass": "*****",
-            "email": "utc@irontec.com",
+            "email": "restrictedAdmin@irontec.com",
             "active": true,
             "restricted": true,
-            "name": "Admin in UTC timezone",
-            "lastname": "Admin Lastname",
-            "id": 5,
-            "brand": null,
+            "name": "RestrictedAdmin",
+            "lastname": "Lastname",
+            "canImpersonate": false,
+            "id": 14,
+            "brand": 1,
             "company": null,
-            "timezone": null
+            "timezone": 145
         },
         "publicEntity": {
             "iden": "BillableCalls",

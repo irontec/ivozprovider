@@ -35,6 +35,7 @@ Feature: Update administrators
           "restricted": true,
           "name": "Updated admin name",
           "lastname": "a lastname",
+          "canImpersonate": true,
           "id": 4,
           "company": 1,
           "timezone": 158

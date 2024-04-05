@@ -18,6 +18,7 @@ Feature: Update administrators
           "restricted": true,
           "name": "Updated admin name",
           "lastname": "a lastname",
+          "canImpersonate": false,
           "brand": null,
           "company": null,
           "timezone": 158
@@ -36,6 +37,7 @@ Feature: Update administrators
           "restricted": true,
           "name": "Updated admin name",
           "lastname": "a lastname",
+          "canImpersonate": false,
           "id": 1,
           "brand": null,
           "company": null,

@@ -42,6 +42,24 @@ Feature: Retrieve administrators
               "id": 6
           },
           {
+              "username": "restrictedBrandOnlyAdmin",
+              "email": "restrictedAdmin@irontec.com",
+              "active": true,
+              "restricted": true,
+              "name": "RestrictedAdmin",
+              "lastname": "Lastname",
+              "id": 14
+          },
+          {
+              "username": "restrictedPlatformAdministrator",
+              "email": "utc@irontec.com",
+              "active": true,
+              "restricted": true,
+              "name": "Admin in UTC timezone",
+              "lastname": "Admin Lastname",
+              "id": 13
+          },
+          {
               "username": "test_brand_admin",
               "email": "nightwatch@irontec.com",
               "active": true,
@@ -79,6 +97,7 @@ Feature: Retrieve administrators
           "restricted": false,
           "name": "admin",
           "lastname": "ivozprovider",
+          "canImpersonate": true,
           "id": 1,
           "brand": null,
           "company": null,
