@@ -23,6 +23,9 @@ const properties: DdiProperties = {
   ddi: {
     label: _('DDI', { count: 1 }),
   },
+  ddie164: {
+    label: _('DDI', { count: 1 }),
+  },
   description: {
     label: _('Description'),
   },
@@ -155,8 +158,7 @@ const properties: DdiProperties = {
 };
 
 const columns = [
-  'country',
-  'ddi',
+  'ddie164',
   'externalCallFilter',
   'routeType',
   'target',
