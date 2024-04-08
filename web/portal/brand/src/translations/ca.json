@@ -162,7 +162,7 @@
   "Contact Username": "Nom d'usuari del contacte",
   "Contents configuration": "Configuració dels continguts",
   "Continue": "Continuar",
-  "Controls whether this restricted administrator can impersonate lower level administrators.": "",
+  "Controls whether this restricted administrator can impersonate lower level administrators.": "Controla si aquest administrador restringit es pot fer passar per administradors de nivell inferior.",
   "Corporation_many": "Corporació",
   "Corporation_one": "Corporació",
   "Corporation_other": "Corporació",

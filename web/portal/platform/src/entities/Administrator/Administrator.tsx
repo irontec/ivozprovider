@@ -52,8 +52,29 @@ const properties: AdministratorProperties = {
       '0': _('No'),
       '1': _('Yes'),
     },
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['canImpersonate'],
+      },
+      '1': {
+        show: ['canImpersonate'],
+        hide: [],
+      },
+    },
     helpText: _(
       'Restricted administrators have read-only permissions by default. This privileges can be fine-tuned in <i>List of Administrator access privileges</i> subsection. <br><br><strong>Global/Brand</strong> restricted administrators can be used both for API integrations and limited web access.'
+    ),
+  },
+  canImpersonate: {
+    label: _('Can impersonate'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    helpText: _(
+      'Controls whether this restricted administrator can impersonate lower level administrators.'
     ),
   },
   name: {
