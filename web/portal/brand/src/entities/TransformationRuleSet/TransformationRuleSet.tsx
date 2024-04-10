@@ -1,4 +1,5 @@
 import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import EditRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/EditRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -67,7 +68,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
   ) {
     const allowEdit = row.editable === true;
     if (!allowEdit) {
-      return null;
+      return <EditRowButton disabled={true} row={row} path={''} />;
     }
   }
 
