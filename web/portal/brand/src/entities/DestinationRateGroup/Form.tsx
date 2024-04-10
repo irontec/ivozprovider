@@ -19,7 +19,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const groups: Array<FieldsetGroups | false> = [
     edit && {
       legend: '',
-      fields: [edit && 'status', edit && 'lastExecutionError'],
+      fields: [edit && 'file', edit && 'status', edit && 'lastExecutionError'],
     },
     {
       legend: '',
