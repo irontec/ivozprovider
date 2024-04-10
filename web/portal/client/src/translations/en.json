@@ -406,6 +406,9 @@
   "Registered until: {{date}}": "Registered until: {{date}}",
   "Regular Expression": "Regular Expression",
   "Regular NAT detected": "Regular NAT detected",
+  "Resend": "Resend",
+  "Resend fax": "Resend fax",
+  "Resend fax?": "Resend fax?",
   "Residential": "Residential",
   "Residential Device_one": "Residential Device",
   "Residential Device_other": "Residential Devices",
@@ -518,6 +521,7 @@
   "Wholesale": "Wholesale",
   "Work Phone": "Work Phone",
   "Yes": "Yes",
+  "You are about to resend this fax": "You are about to resend this fax.",
   "You can call this extension from any company terminal to record this locution": "You can call this extension from any company terminal to record this locution",
   "You can use regular expressions to define values this entry will match.": "You can use regular expressions to define values this entry will match.",
   "e.g. 8.8.8.8": "e.g. 8.8.8.8"

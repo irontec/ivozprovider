@@ -456,6 +456,9 @@
   "Registered until: {{date}}": "Registrado hasta: {{date}}",
   "Regular Expression": "Expresión regular",
   "Regular NAT detected": "NAT normal detectado",
+  "Resend": "Reenviar",
+  "Resend fax": "Reenviar fax",
+  "Resend fax?": "¿Reenviar fax?",
   "Residential": "Residencial",
   "Residential Device_many": "Dispositivos residenciales",
   "Residential Device_one": "Dispositivo residencial",
@@ -583,6 +586,7 @@
   "Wholesale": "Wholesale",
   "Work Phone": "Teléfono Trabajo",
   "Yes": "Sí",
+  "You are about to resend this fax": "Está a punto de reenviar este fax.",
   "You can call this extension from any company terminal to record this locution": "Puede llamar a esta extensión para grabar está locución desde cualquier terminal de la compañía",
   "You can use regular expressions to define values this entry will match.": "Puedes utilizar expresiones regulares para definir qué valores aplicarán.",
   "e.g. 8.8.8.8": "por. ej. 8.8.8.8"
