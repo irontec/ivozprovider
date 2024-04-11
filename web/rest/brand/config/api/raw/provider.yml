@@ -144,7 +144,7 @@ Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      company: ASC
+      lastTimeBanned: DESC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
