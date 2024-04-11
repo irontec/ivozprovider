@@ -1,6 +1,7 @@
 agi
 as
 asterisk
+build(deps)
 ci
 core
 data
