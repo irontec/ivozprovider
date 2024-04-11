@@ -88,7 +88,7 @@ const RunTemplate = (props: PropsType): JSX.Element => {
                         width: '500px',
                         height: '250px',
                       }}
-                      defaultValue={formik?.initialValues.genericTemplate}
+                      defaultValue={formik?.initialValues.specificTemplate}
                       readOnly={true}
                     />
                     <br />
