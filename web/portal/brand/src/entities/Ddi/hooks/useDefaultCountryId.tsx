@@ -40,7 +40,7 @@ const useDefaultCountryId = (props: useDefaultCountryIdProps): void => {
         formik.setFieldValue('country', countryId);
       },
     });
-  }, [create, companyId, formik, apiGet]);
+  }, [create, companyId, apiGet]);
 };
 
 export default useDefaultCountryId;
