@@ -1,4 +1,9 @@
 # Changelog
+## 4.0.4
+* Endpoints:
+   - /faxes_in_outs/{id}/resend:
+     - Added [POST] endpoint
+
 ## 4.0.2
 * Models:
   - ResidentialDevice-detailed:

@@ -40,6 +40,43 @@ class ProviderFaxesInOut extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        /** @var FaxesInOut $item2 */
+        $item2 = $this->createEntityInstance(FaxesInOut::class);
+        (function () use ($fixture) {
+            $this->calldate = new \DateTime('2018-01-02', new \DateTimeZone('UTC'));
+            $this->setSrc('34688888888');
+            $this->setDst('34688888881');
+            $this->setType('In');
+            $this->setStatus('completed');
+            $this->setFax(
+                $fixture->getReference('_reference_ProviderFax1')
+            );
+            $this->file = new File(null, null, null);
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderFaxesInOut2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
+
+        /** @var FaxesInOut $item3 */
+        $item3 = $this->createEntityInstance(FaxesInOut::class);
+        (function () use ($fixture) {
+            $this->calldate = new \DateTime('2018-01-02', new \DateTimeZone('UTC'));
+            $this->setSrc('34688888888');
+            $this->setDst('34688888881');
+            $this->setType('Out');
+            $this->setStatus('error');
+            $this->setFax(
+                $fixture->getReference('_reference_ProviderFax1')
+            );
+            $this->file = new File(null, null, null);
+        })->call($item3);
+
+        $this->addReference('_reference_ProviderFaxesInOut3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
+
+
         $manager->flush();
     }
 

@@ -30,7 +30,7 @@ const CallAclRelMatchList: EntityInterface = {
   iden: 'CallAclRelMatchList',
   title: _('Call ACL MatchList', { count: 2 }),
   acl: {
-    ...defaultEntityBehavior,
+    ...defaultEntityBehavior.acl,
     iden: 'CallAclRelMatchList',
   },
   path: '/call_acl_rel_match_lists',

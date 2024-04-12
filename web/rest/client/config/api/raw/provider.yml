@@ -928,6 +928,29 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
   collectionOperations:
     get: ~
     post: ~
+    post_fax_resend:
+      method: 'POST'
+      path: '/faxes_in_outs/{id}/resend'
+      requirements:
+        id: '\d+'
+      route_name: 'post_fax_resend'
+      swagger_context:
+        summary: 'Resend failed fax'
+        tags:
+          - Provider
+        parameters:
+          - name: id
+            in: path
+            type: integer
+            required: true
+          - in: body
+        responses:
+          200:
+            description: "Fax successfully resent"
+          404:
+            description: "Entity not found"
+          400:
+            description: "Bad request"
   properties:
     calldate:
       attributes:

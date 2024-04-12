@@ -62,7 +62,7 @@ const Restore = (props: PropsType): JSX.Element => {
       </StyledTemplateAction>
       {open && (
         <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle>{_('Restore default template')}</DialogTitle>
+          <DialogTitle>{_('Restore default template?')}</DialogTitle>
           <DialogContent sx={{ textAlign: 'left!important' }}>
             {!errorMsg && (
               <Box
@@ -73,13 +73,6 @@ const Restore = (props: PropsType): JSX.Element => {
                 }}
               >
                 {restoring && <CircularProgress />}
-                {!restoring && (
-                  <span>
-                    {_('Restore default template?')}
-                    <br />
-                    (templates/provisioning/YealinkT21P_E2/generic.cfg)
-                  </span>
-                )}
               </Box>
             )}
             {errorMsg && (

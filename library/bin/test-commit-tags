@@ -7,7 +7,7 @@ cd $(dirname $(realpath $0))/../../
 BASE_BRANCH=${1:-origin/bleeding}
 
 # Get the list of commits
-COMMITS=$(git --no-pager log --format=%B ${BASE_BRANCH}..HEAD | grep -v ^$)
+COMMITS=$(git --no-pager log --format=%s ${BASE_BRANCH}..HEAD | grep -v ^$)
 
 # Check we have at least some commits
 if [ -z "$COMMITS" ]; then
@@ -25,7 +25,7 @@ for COMMIT in $COMMITS; do
         ERROR=1
         continue
     fi
-    grep -E -q "${TAG}$" doc/dev/AcceptedCommitTagsList.txt
+    grep -q "${TAG}$" doc/dev/AcceptedCommitTagsList.txt
     if [ $? -ne 0 ]; then
         echo "ERROR: $TAG is not a valid commit tag"
         ERROR=1

@@ -4,10 +4,12 @@ import defaultEntityBehavior, {
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
+  EntityColumnsFuncType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import SwapCallsIcon from '@mui/icons-material/SwapCalls';
 
+import { AppStore } from '../../store';
 import BalanceMovement from '../BalanceMovement/BalanceMovement';
 import BalanceNotification from '../BalanceNotification/BalanceNotification';
 import StatusIcon from '../CarrierServer/Field/StatusIcon';
@@ -100,6 +102,23 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
   return DefaultChildDecorator(props);
 };
 
+const columnsFunc: EntityColumnsFuncType<AppStore> = (state) => {
+  const { features } = state.clientSession.aboutMe.profile || {};
+
+  const hasBillingFeature = features?.includes('billing');
+
+  const columns = [
+    'name',
+    'description',
+    'transformationRuleSet',
+    hasBillingFeature && 'balance',
+    'proxyTrunk',
+    'statusIcon',
+  ];
+
+  return columns.filter((row) => row) as Array<string>;
+};
+
 const Carrier: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SwapCallsIcon,
@@ -109,14 +128,7 @@ const Carrier: EntityInterface = {
   path: '/carriers',
   toStr: (row: CarrierPropertyList<EntityValues>) => `${row.name}`,
   properties,
-  columns: [
-    'name',
-    'description',
-    'transformationRuleSet',
-    'balance',
-    'proxyTrunk',
-    'statusIcon',
-  ],
+  columns: columnsFunc,
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Carriers',

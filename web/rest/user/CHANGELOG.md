@@ -1,4 +1,12 @@
 # Changelog
+## 4.0.4
+* Models
+    - RecordingFile:
+      - Added model
+    - VoicemailMessage-detailed:
+      - Updated recordingFile property
+    - VoicemailMessage_RecordingFile:
+      - Added model
 ## 4.0.3
 * Endpoints
     - /my/voicemails:

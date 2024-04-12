@@ -85,7 +85,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
         "doctrine/persistence": "^2.1",
-        "irontec/ivoz-api-bundle": "^4.8.3",
+        "irontec/ivoz-api-bundle": "^4.8.4",
         "irontec/ivoz-core": "^4.18.0",
         "irontec/ivoz-dev-tools": "^5.12.1",
         "irontec/ivoz-provider-bundle": "^2.6.7",
