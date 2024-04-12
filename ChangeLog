@@ -1,3 +1,27 @@
+Fri, 12 Apr 2024 08:37:49 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.0.4 released
+
+    * Portals
+        - Fixed a bug displaying Routing Tags for brands without Retail or Wholesale features
+        - Fixed a bug displaying Balance fields for brands without Billing feature
+        - Fixed a bug displaying Holiday range actions for Administrators without permission on Holiday dates
+        - Fixed a bug displaying Terminal provisioning templates preview dialogs
+        - Fixed a crash on Call ACL permissions screens
+        - Added missing action to resend failed outgoing faxes
+        - Added new section Voicemails in user portal
+        - DDI numbers are now displayed in E.164 format
+        - Imported destination rates files can now be downloaded
+
+    * Proxies
+        - Added support to DDIs without client assigned
+        - Fixed a bug while routing SUBSCRIBE and PUBLISH messages to wrong application server
+        - Subscribed extensions are now validated before relaying to application servers
+        - Increased min subscribe expire to 1800 seconds
+
+    * Application Server
+        - Disable initial MWI notification during asterisk startup
+
 Thu, 21 Mar 2024 08:50:54 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.0.3 released
