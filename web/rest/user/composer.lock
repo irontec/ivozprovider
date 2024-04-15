@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34a8a7b92ec0db8451669883f949fba2",
+    "content-hash": "ed972d135a07e1dc54fec469d8b9cd49",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2154,11 +2154,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.10.6",
+            "version": "4.10.7",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "b754427c4d6935a2e48de0494e8d574bfc851d1b"
+                "reference": "7c390992fb0f56c87ab701959cf6f93a50b4bfd5"
             },
             "require": {
                 "api-platform/core": "2.6.*",
@@ -2218,15 +2218,15 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.8.4",
+            "version": "4.8.5",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "9189207a8910a3d4d5c50ec8cb38e8d528e5bafe"
+                "reference": "f6939a927e198c7984b055f24156bd474190b691"
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.12",
-                "irontec/ivoz-api": "^4.10.6",
+                "irontec/ivoz-api": "^4.10.7",
                 "irontec/ivoz-core-bundle": "^4.7",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",
