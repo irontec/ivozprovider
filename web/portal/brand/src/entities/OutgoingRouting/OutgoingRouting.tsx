@@ -1,5 +1,7 @@
 import { EntityValues } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  unmarshaller as defaultUnmarshaller,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
@@ -163,6 +165,15 @@ const properties: OutgoingRoutingProperties = {
   },
 };
 
+type UnmarshallerType = typeof defaultUnmarshaller;
+const unmarshaller: UnmarshallerType = (row, properties) => {
+  if (row.carrier?.id) {
+    row.carrier = row.carrier.id;
+  }
+
+  return defaultUnmarshaller(row, properties);
+};
+
 const OutgoingRouting: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CallSplitIcon,
@@ -208,6 +219,7 @@ const OutgoingRouting: EntityInterface = {
 
     return module.default;
   },
+  unmarshaller,
 };
 
 export default OutgoingRouting;
