@@ -10,18 +10,15 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   cancelToken,
   entityService,
 }): Promise<TerminalPropertiesList> {
-  const promises = [];
   const entities = store.getState().entities.entities;
   const { TerminalModel } = entities;
 
-  promises.push(
-    autoForeignKeyResolver({
-      data,
-      cancelToken,
-      entityService,
-      skip: ['terminalModel'],
-    })
-  );
+  const promises = autoForeignKeyResolver({
+    data,
+    cancelToken,
+    entityService,
+    skip: ['terminalModel'],
+  });
 
   promises.push(
     genericForeignKeyResolver({
