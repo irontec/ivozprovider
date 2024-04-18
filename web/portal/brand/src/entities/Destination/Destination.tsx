@@ -3,6 +3,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import LanguageIcon from '@mui/icons-material/Language';
+import { getI18n } from 'react-i18next';
 
 import {
   DestinationProperties,
@@ -32,7 +33,11 @@ const Destination: EntityInterface = {
   iden: 'Destination',
   title: _('Destination', { count: 2 }),
   path: '/destinations',
-  toStr: (row: DestinationPropertyList<EntityValues>) => `${row.name?.en}`,
+  toStr: (row: DestinationPropertyList<EntityValues>) => {
+    const language = getI18n().language.substring(0, 2);
+
+    return `${row.name?.[language]}`;
+  },
   properties,
   columns: ['name', 'prefix'],
   defaultOrderBy: '',

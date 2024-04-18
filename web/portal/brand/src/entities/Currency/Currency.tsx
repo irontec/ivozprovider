@@ -3,6 +3,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { getI18n } from 'react-i18next';
 
 import { CurrencyProperties, CurrencyPropertyList } from './CurrencyProperties';
 
@@ -27,8 +28,11 @@ const Currency: EntityInterface = {
   iden: 'Currency',
   title: _('Currency', { count: 2 }),
   path: '/currencies',
-  toStr: (row: CurrencyPropertyList<EntityValues>) =>
-    `${row.name?.en} (${row.symbol})`,
+  toStr: (row: CurrencyPropertyList<EntityValues>) => {
+    const language = getI18n().language.substring(0, 2);
+
+    return `${row.name?.[language]} (${row.symbol})`;
+  },
   properties,
   acl: {
     ...defaultEntityBehavior.acl,

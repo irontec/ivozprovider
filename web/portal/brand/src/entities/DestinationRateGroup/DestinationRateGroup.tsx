@@ -3,6 +3,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
+import { getI18n } from 'react-i18next';
 
 import Actions from './Action';
 import {
@@ -41,6 +42,7 @@ const properties: DestinationRateGroupProperties = {
     label: _('Name'),
     maxLength: 55,
     multilang: true,
+    required: true,
   },
   description: {
     label: _('Description'),
@@ -66,8 +68,11 @@ const DestinationRateGroup: EntityInterface = {
   iden: 'DestinationRateGroup',
   title: _('Destination rate', { count: 2 }),
   path: '/destination_rate_groups',
-  toStr: (row: DestinationRateGroupPropertyList<EntityValues>) =>
-    `${row.name?.en}`,
+  toStr: (row: DestinationRateGroupPropertyList<EntityValues>) => {
+    const language = getI18n().language.substring(0, 2);
+
+    return `${row.name?.[language]}`;
+  },
   properties,
   columns: ['name', 'description', 'currency', 'file', 'status'],
   defaultOrderBy: '',
