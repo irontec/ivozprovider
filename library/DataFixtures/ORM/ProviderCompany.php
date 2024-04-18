@@ -151,6 +151,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
             $this->invoicing = $invoicing;
+            $this->setApplicationServer($fixture->getReference('_reference_ProviderApplicationServer1'));
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
