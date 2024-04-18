@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb558dbc7496082b606c9f0e150d0f97",
+    "content-hash": "8f5fcadd3bb3ea8c903fbb39a6f2ccbc",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2745,16 +2745,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.12.1",
+            "version": "5.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "6c89cc256f14ae80ed5b40c5e4c84916c5f5f8a6"
+                "reference": "9a9f237a4645f9d5878a2df1e3a6c12464c4b71f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/6c89cc256f14ae80ed5b40c5e4c84916c5f5f8a6",
-                "reference": "6c89cc256f14ae80ed5b40c5e4c84916c5f5f8a6",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/9a9f237a4645f9d5878a2df1e3a6c12464c4b71f",
+                "reference": "9a9f237a4645f9d5878a2df1e3a6c12464c4b71f",
                 "shasum": ""
             },
             "require": {
@@ -2795,9 +2795,9 @@
             "description": "DevTools for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-dev-tools/issues",
-                "source": "https://github.com/irontec/ivoz-dev-tools/tree/5.12.1"
+                "source": "https://github.com/irontec/ivoz-dev-tools/tree/5.13.0"
             },
-            "time": "2024-01-23T12:25:26+00:00"
+            "time": "2024-04-18T10:39:00+00:00"
         },
         {
             "name": "irontec/ivoz-provider-bundle",
