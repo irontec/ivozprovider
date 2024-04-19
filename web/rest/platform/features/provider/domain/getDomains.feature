@@ -18,7 +18,7 @@ Feature: Retrieve domains
               "domain": "127.0.0.1",
               "pointsTo": "proxyusers",
               "id": 3,
-              "brandName": "",
+              "brandName": "DemoBrand",
               "companyName": "DemoCompany"
           },
           {
@@ -39,7 +39,7 @@ Feature: Retrieve domains
               "domain": "test.irontec.com",
               "pointsTo": "proxyusers",
               "id": 5,
-              "brandName": "",
+              "brandName": "DemoBrand",
               "companyName": "Irontec Test Company"
           }
       ]
