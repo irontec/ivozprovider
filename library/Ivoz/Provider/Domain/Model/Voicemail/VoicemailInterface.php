@@ -11,6 +11,9 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserInterface;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 
 /**
 * VoicemailInterface
@@ -105,4 +108,18 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function setAstVoicemail(\Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface $astVoicemail): static;
 
     public function getAstVoicemail(): ?\Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
+
+    public function addVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
+
+    public function removeVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
+
+    /**
+     * @param Collection<array-key, VoicemailRelUserInterface> $voicemailRelUsers
+     */
+    public function replaceVoicemailRelUsers(Collection $voicemailRelUsers): \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
+
+    /**
+     * @return array<array-key, VoicemailRelUserInterface>
+     */
+    public function getVoicemailRelUsers(?Criteria $criteria = null): array;
 }

@@ -18,10 +18,11 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Location\LocationInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
-use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
-use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
+use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
@@ -230,6 +231,20 @@ interface UserInterface extends LoggableEntityInterface
     public function setVoicemail(VoicemailInterface $voicemail): static;
 
     public function getVoicemail(): ?VoicemailInterface;
+
+    public function addVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): UserInterface;
+
+    public function removeVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): UserInterface;
+
+    /**
+     * @param Collection<array-key, VoicemailRelUserInterface> $voicemailRelUsers
+     */
+    public function replaceVoicemailRelUsers(Collection $voicemailRelUsers): UserInterface;
+
+    /**
+     * @return array<array-key, VoicemailRelUserInterface>
+     */
+    public function getVoicemailRelUsers(?Criteria $criteria = null): array;
 
     public function setContact(ContactInterface $contact): static;
 
