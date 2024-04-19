@@ -320,6 +320,8 @@ doctrine:
         Ivoz\Cgr\Domain\Model\TpTiming\TpTiming
       Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface:
         Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStat
+      Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserInterface:
+        Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUser
 
       Ivoz\Core\Domain\Model\Changelog\ChangelogInterface:
         Ivoz\Core\Domain\Model\Changelog\Changelog
