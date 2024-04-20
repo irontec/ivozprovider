@@ -7,7 +7,6 @@ use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserDto;
 
 class VoicemailDto extends VoicemailDtoAbstract
 {
-
     public const CONTEXT_WITH_REL_USERS = 'withRelUsers';
 
     public const CONTEXTS_WITH_REL_USERS = [
@@ -24,6 +23,21 @@ class VoicemailDto extends VoicemailDtoAbstract
      * )
      */
     private $relUserIds = [];
+
+    /**
+     * @return array<array-key, mixed>
+     */
+    public function normalize(string $context, string $role = ''): array
+    {
+
+        $response = parent::normalize($context, $role);
+
+        if (in_array($context, self::CONTEXTS_WITH_REL_USERS, true)) {
+            $response['relUserIds'] = $this->relUserIds;
+        }
+
+        return $response;
+    }
 
     /**
      * @inheritdoc
@@ -44,27 +58,16 @@ class VoicemailDto extends VoicemailDtoAbstract
             $properties = parent::getPropertyMap(...func_get_args());
         }
 
-        if ($role === 'ROLE_COMPANY_USER') {
-            unset($properties['userId']);
-        }
-
         if (in_array($context, self::CONTEXTS_WITH_REL_USERS, true)) {
             $properties['relUserIds'] = 'relUserIds';
         }
 
-        return $properties;
-    }
-
-    public function normalize(string $context, string $role = ''): array
-    {
-
-        $response = parent::normalize($context, $role);
-
-        if (in_array($context, self::CONTEXTS_WITH_REL_USERS, true)) {
-            $response['relUserIds'] = $this->relUserIds;
+        if ($role === 'ROLE_COMPANY_USER') {
+            unset($properties['userId']);
+            unset($properties['relUserIds']);
         }
 
-        return $response;
+        return $properties;
     }
 
     /**
