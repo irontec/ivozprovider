@@ -2177,6 +2177,16 @@ Ivoz\Provider\Domain\Model\User\User:
       - company
 
 Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
+  itemOperations:
+    get:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto::CONTEXT_DETAILED
+    put:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto::CONTEXT_WITH_REL_USERS
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto::CONTEXT_WITH_REL_USERS
   properties:
     user:
       attributes:
@@ -2193,6 +2203,10 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     order:
       name: ASC
+    normalization_context:
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto::CONTEXT_WITH_REL_USERS
+      ]
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -2236,6 +2250,16 @@ Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
     write_access_control:
       inherited:
         voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+
+Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUser:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    post: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 
 Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile: ~
 
