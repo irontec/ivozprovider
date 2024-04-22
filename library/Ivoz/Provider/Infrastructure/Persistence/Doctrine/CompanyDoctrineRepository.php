@@ -357,4 +357,16 @@ class CompanyDoctrineRepository extends DoctrineRepository implements CompanyRep
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @return CompanyInterface[]
+     */
+    public function findByApplicationServerId(int $applicationServerId): array
+    {
+        return $this->findBy(
+            [
+                'applicationServer' => $applicationServerId
+            ]
+        );
+    }
 }

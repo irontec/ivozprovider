@@ -219,4 +219,23 @@ class CompanyRepositoryTest extends KernelTestCase
             $clients[0]
         );
     }
+
+    public function it_finds_by_application_server()
+    {
+        $repository = $this
+            ->em
+            ->getRepository(Company::class);
+
+        $clients = $repository->findByApplicationServerId(1);
+
+        $this->assertInstanceOf(
+            Company::class,
+            $clients[0]
+        );
+
+        $this->assertEquals(
+            1,
+            $clients
+        );
+    }
 }
