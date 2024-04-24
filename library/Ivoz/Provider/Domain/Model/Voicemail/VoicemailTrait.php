@@ -147,14 +147,14 @@ trait VoicemailTrait
         return $this->astVoicemail;
     }
 
-    public function addVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): VoicemailInterface
+    public function addVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): static
     {
         $this->voicemailRelUsers->add($voicemailRelUser);
 
         return $this;
     }
 
-    public function removeVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): VoicemailInterface
+    public function removeVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): static
     {
         $this->voicemailRelUsers->removeElement($voicemailRelUser);
 
@@ -164,7 +164,7 @@ trait VoicemailTrait
     /**
      * @param Collection<array-key, VoicemailRelUserInterface> $voicemailRelUsers
      */
-    public function replaceVoicemailRelUsers(Collection $voicemailRelUsers): VoicemailInterface
+    public function replaceVoicemailRelUsers(Collection $voicemailRelUsers): static
     {
         foreach ($voicemailRelUsers as $entity) {
             $entity->setVoicemail($this);

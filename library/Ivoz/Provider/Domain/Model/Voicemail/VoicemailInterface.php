@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Voicemail;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\SelfManagedInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
@@ -18,7 +19,7 @@ use Doctrine\Common\Collections\Criteria;
 /**
 * VoicemailInterface
 */
-interface VoicemailInterface extends LoggableEntityInterface
+interface VoicemailInterface extends LoggableEntityInterface, SelfManagedInterface
 {
     /**
      * @codeCoverageIgnore
@@ -109,14 +110,14 @@ interface VoicemailInterface extends LoggableEntityInterface
 
     public function getAstVoicemail(): ?\Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
 
-    public function addVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
+    public function addVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): static;
 
-    public function removeVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
+    public function removeVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): static;
 
     /**
      * @param Collection<array-key, VoicemailRelUserInterface> $voicemailRelUsers
      */
-    public function replaceVoicemailRelUsers(Collection $voicemailRelUsers): \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
+    public function replaceVoicemailRelUsers(Collection $voicemailRelUsers): static;
 
     /**
      * @return array<array-key, VoicemailRelUserInterface>
