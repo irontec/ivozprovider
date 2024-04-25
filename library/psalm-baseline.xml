@@ -4349,6 +4349,27 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailRelUser/VoicemailRelUser.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>VoicemailRelUser</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailRelUser/VoicemailRelUserAbstract.php">
+    <MixedArgument occurrences="4">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($user)</code>
+      <code>$fkTransformer-&gt;transform($user)</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1">
+      <code>new static()</code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailRelUser/VoicemailRelUserTrait.php">
+    <TooManyArguments occurrences="1">
+      <code>parent::__construct(...func_get_args())</code>
+    </TooManyArguments>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortal.php">
     <MethodSignatureMismatch occurrences="1">
       <code>WebPortal</code>
@@ -5407,6 +5428,11 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
+  <file src="Ivoz/Provider/Domain/Service/VoicemailRelUser/VoicemailRelUserLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Provider/Domain/Traits/RoutableTrait.php">
     <MixedArgument occurrences="3">
       <code>$routeType</code>
@@ -5612,5 +5638,12 @@
     <UndefinedMethod occurrences="1">
       <code>fetchAll</code>
     </UndefinedMethod>
+  </file>
+  <file src="Ivoz/Provider/Infrastructure/Persistence/Doctrine/VoicemailRelUserDoctrineRepository.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$dispatchInmediately</code>
+      <code>$voicemailRelUser</code>
+      <code>$voicemailRelUser</code>
+    </ParamNameMismatch>
   </file>
 </files>
