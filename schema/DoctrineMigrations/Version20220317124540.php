@@ -29,8 +29,12 @@ final class Version20220317124540 extends LoggableMigration
             INNER JOIN Terminals T ON T.id = APE.terminalId
             INNER JOIN Users U ON U.terminalId = T.id
             INNER JOIN Extensions E ON E.id = U.extensionId
-            SET APE.hint_extension = E.number,
-            APE.subscribe_context = CONCAT("company", T.companyID)
+            SET APE.hint_extension = E.number
+        ');
+
+        $this->addSql('UPDATE ast_ps_endpoints APE
+            INNER JOIN Terminals T ON T.id = APE.terminalId
+            SET APE.subscribe_context = CONCAT("company", T.companyID)
         ');
     }
 
