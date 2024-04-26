@@ -159,5 +159,6 @@
         <join-column name="interCompanyId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
+    <field name="ruriDomain" type="string" column="ruri_domain" length="190" nullable="true"/>
   </mapped-superclass>
 </doctrine-mapping>
