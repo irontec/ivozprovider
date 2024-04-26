@@ -34,10 +34,21 @@ function setup_fastagi_server()
     sed -i -r "s/(FASTAGI_SERVER *= *).*/\1$FASTAGI_SERVER/"  /etc/asterisk/extensions.conf
 }
 
+function setup_default_dial_opts()
+{
+    # Get default dial options
+    db_get ivozprovider/dial_default_opts            || true
+    DIAL_DEF_OPTS=$RET
+
+    # Configure default dial options
+    sed -i -r "s/(DIAL_DEF_OPTS *= *).*/\1$DIAL_DEF_OPTS/"  /etc/asterisk/extensions.conf
+}
+
 #######################################################################################################################
 #######################################################################################################################
 setup_php
 setup_mysql_access
 setup_fastagi_server
+setup_default_dial_opts
 
 :
