@@ -124,6 +124,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $multiContact = true;
 
     /**
+     * @var string|null
+     */
+    private $ruriDomain = null;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -218,6 +223,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'alwaysApplyTransformations' => 'alwaysApplyTransformations',
             'rtpEncryption' => 'rtpEncryption',
             'multiContact' => 'multiContact',
+            'ruriDomain' => 'ruriDomain',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -257,6 +263,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'alwaysApplyTransformations' => $this->getAlwaysApplyTransformations(),
             'rtpEncryption' => $this->getRtpEncryption(),
             'multiContact' => $this->getMultiContact(),
+            'ruriDomain' => $this->getRuriDomain(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -523,6 +530,18 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getMultiContact(): ?bool
     {
         return $this->multiContact;
+    }
+
+    public function setRuriDomain(?string $ruriDomain): static
+    {
+        $this->ruriDomain = $ruriDomain;
+
+        return $this;
+    }
+
+    public function getRuriDomain(): ?string
+    {
+        return $this->ruriDomain;
     }
 
     /**
