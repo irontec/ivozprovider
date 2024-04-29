@@ -175,6 +175,7 @@ class FriendDto extends FriendDtoAbstract
             'callAclId',
             'outgoingDdiId',
             'languageId',
+            'ruriDomain',
         ];
 
         return array_filter(

@@ -160,7 +160,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'id',
             'transformationRuleSetId',
             'outgoingDdiId',
-            'password',
+            'password'
         ];
 
         return array_filter(

@@ -51,16 +51,27 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     protected function sanitizeValues()
     {
-        if ($this->isDirectConnectivity() && !$this->getTransport()) {
-            throw new \DomainException('Invalid empty transport');
+        if ($this->isDirectConnectivity()) {
+            if (!$this->getTransport()) {
+                throw new \DomainException('Invalid empty transport');
+            }
+
+            $hasIpPort = $this->getIp() && $this->getPort();
+            if (!$this->getRuriDomain() && !$hasIpPort) {
+                throw new \DomainException('R-URI or IP + port must be provided');
+            }
+        } else {
+            $this->setRuriDomain(null);
+            $this->setIp(null);
+            $this->setPort(null);
         }
 
-        if ($this->isDirectConnectivity() && !$this->getIp()) {
-            throw new \DomainException('Invalid empty IP');
-        }
-
-        if ($this->isDirectConnectivity() && !$this->getPort()) {
+        if ($this->getIp() && !$this->getPort()) {
             throw new \DomainException('Invalid empty port');
+        }
+
+        if ($this->getPort() && !$this->getIp()) {
+            throw new \DomainException('Invalid empty IP');
         }
 
         if ($this->isRegisterConnectivity() && !$this->getPassword()) {
@@ -148,7 +159,10 @@ class Friend extends FriendAbstract implements FriendInterface
     {
         if (!empty($ip)) {
             Assertion::ip($ip);
+        } else {
+            $ip = null;
         }
+
         return parent::setIp($ip);
     }
 
@@ -162,7 +176,10 @@ class Friend extends FriendAbstract implements FriendInterface
         if (!empty($port)) {
             Assertion::regex((string) $port, '/^[0-9]+$/');
             Assertion::lessThan($port, pow(2, 16), 'Friend.port provided "%s" is not lower than "%s".');
+        } else {
+            $port = null;
         }
+
         return parent::setPort($port);
     }
 
@@ -185,6 +202,20 @@ class Friend extends FriendAbstract implements FriendInterface
         }
 
         return parent::setPassword($password);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRuriDomain($ruriDomain = null)
+    {
+        if (empty($ruriDomain)) {
+            $ruriDomain = null;
+        } else {
+            Assertion::regex($ruriDomain, '/^[^\s]*$/');
+        }
+
+        return parent::setRuriDomain($ruriDomain);
     }
 
     /**
