@@ -58,6 +58,11 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     private $lastname = null;
 
     /**
+     * @var bool|null
+     */
+    private $canImpersonate = false;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -105,6 +110,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
             'restricted' => 'restricted',
             'name' => 'name',
             'lastname' => 'lastname',
+            'canImpersonate' => 'canImpersonate',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -126,6 +132,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
             'restricted' => $this->getRestricted(),
             'name' => $this->getName(),
             'lastname' => $this->getLastname(),
+            'canImpersonate' => $this->getCanImpersonate(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
@@ -241,6 +248,18 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     public function getLastname(): ?string
     {
         return $this->lastname;
+    }
+
+    public function setCanImpersonate(bool $canImpersonate): static
+    {
+        $this->canImpersonate = $canImpersonate;
+
+        return $this;
+    }
+
+    public function getCanImpersonate(): ?bool
+    {
+        return $this->canImpersonate;
     }
 
     /**

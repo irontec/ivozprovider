@@ -27,19 +27,6 @@ class DomainDtoAssembler implements CustomDtoAssemblerInterface
         Assertion::isInstanceOf($entity, DomainInterface::class);
         $dto = $entity->toDto($depth);
 
-        $brand = $this
-            ->brandRepository
-            ->findOneByDomain(
-                (string) $dto->getDomain()
-            );
-
-        if (!is_null($brand)) {
-            $dto
-                ->setBrandName(
-                    $brand->getName()
-                );
-        }
-
         $company = $this
             ->companyRepository
             ->findOneByDomain(
@@ -50,6 +37,23 @@ class DomainDtoAssembler implements CustomDtoAssemblerInterface
             $dto
                 ->setCompanyName(
                     $company->getName()
+                );
+        }
+
+        if (!is_null($company)) {
+            $brand = $company->getBrand();
+        } else {
+            $brand = $this
+                ->brandRepository
+                ->findOneByDomain(
+                    (string)$dto->getDomain()
+                );
+        }
+
+        if (!is_null($brand)) {
+            $dto
+                ->setBrandName(
+                    $brand->getName()
                 );
         }
 

@@ -91,6 +91,14 @@ class FeatureContext extends BaseFeatureContext
     }
 
     /**
+     * @Given I exchange :username platform token for :username2 brand token
+     */
+    public function exchangeAuthorizationTokens(string $username, string $username2): void
+    {
+        $this->exchangeAuthorizationHeader($username, $username2);
+    }
+
+    /**
      * @Given storage file exists :filename
      */
     public function setFileExists(string $filename): void

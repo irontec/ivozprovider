@@ -9,20 +9,20 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@irontec/ivoz-ui": "^1.3.2",
+    "@irontec/ivoz-ui": "^1.3.5",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",
     "@mui/styles": "^5.12.0",
     "@mui/x-date-pickers": "^6.2.0",
     "@vitejs/plugin-react": "^2.0.0",
-    "axios": "^1.6.0",
+    "axios": "^1.6.1",
     "easy-peasy": "^5.2.0",
     "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "typescript": "^4.1.2",
-    "vite": "^3.2.8",
+    "vite": "^3.2.10",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {

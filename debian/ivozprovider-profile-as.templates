@@ -24,3 +24,9 @@ Type: string
 Default: 127.0.0.1:4573
 Description: Fastagi Server address.
 Description-es.UTF-8: Direccion IP del servidor fastagi.
+
+Template: ivozprovider/dial_default_opts
+Type: string
+Default:
+Description: Default dial options
+Description-es.UTF-8: Opciones por defecto de dial

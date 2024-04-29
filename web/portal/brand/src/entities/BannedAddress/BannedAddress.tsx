@@ -44,6 +44,7 @@ const BannedAddress: EntityInterface = {
   title: _('Banned IP address', { count: 2 }),
   path: '/banned_addresses',
   toStr: (row: BannedAddressPropertyList<EntityValues>) => `${row.id}`,
+  defaultOrderBy: '',
   acl: {
     create: false,
     read: true,

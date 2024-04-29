@@ -14,4 +14,5 @@ return [
     IvozDevTools\CommandlogBundle\CommandlogBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['all' => true],
     IvozDevTools\EntityGeneratorBundle\EntityGeneratorBundle::class => ['all' => true],
+    IvozDevTools\MigrationsBundle\MigrationsBundle::class => ['all' => true],
 ];

@@ -1,3 +1,37 @@
+Mon, 29 Apr 2024 09:07:23 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.0.5 released
+
+    * Portals
+        - Banned address order #2621
+        - Restricted admins impersonation permission #2604
+        - Fixed search by special characters #2626
+        - Get Migration bundle back #2631
+        - Fixed terminals foreign key resolver race condition #2627
+        - Brand not shown on sip domains #2629
+        - Fixed multilanguage issues #2630
+        - Outgoing routing form rework #2625
+        - Avoid delete referenced application server #2628
+
+    * Schema
+        - Fix endpoints hints migration #2634
+
+    * Proxies
+        - kamtrunks: reject calls to retail DDI linked to no retail account #2623
+        - kamusers: avoid routing within dialog SUBSCRIBE to wrong AS #2624
+        - kamusers: stop using attributes per contact (ulattrs) #2637
+        - kamusers: SUBSCRIBE Event dialog only #2638
+
+    * Application Server
+        - Asterisk default Dial options #2636
+        - Enabled sorcery caches for endpoints, aors and identifies #2635
+        - Limited max hint watchers to 50 subscriptions
+
+    * Security
+        - build(deps): bump axios from 1.6.0 to 1.6.1 in /web/portal #2620
+        - build(deps): bump express from 4.18.2 to 4.19.2 in /web/portal #2594
+        - build(deps): bump vite from 3.2.8 to 3.2.10 in /web/portal #2599
+
 Fri, 12 Apr 2024 08:37:49 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.0.4 released

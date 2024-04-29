@@ -73,7 +73,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
         $applicationServerRepository = $this->em
             ->getRepository(ApplicationServer::class);
 
-        $applicationServer = $applicationServerRepository->find(1);
+        $applicationServer = $applicationServerRepository->find(2);
 
         $this
             ->entityTools
@@ -271,7 +271,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
         );
 
         $applicationServerRepository = $this->em->getRepository(ApplicationServer::class);
-        $as = $applicationServerRepository->find(1);
+        $as = $applicationServerRepository->find(2);
         $this->entityTools->remove($as);
     }
 }

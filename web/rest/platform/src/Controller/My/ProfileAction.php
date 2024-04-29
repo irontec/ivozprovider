@@ -43,6 +43,7 @@ class ProfileAction
 
         return new Profile(
             $restricted,
+            $user->getCanImpersonate(),
             $adminRelPublicEntities,
         );
     }

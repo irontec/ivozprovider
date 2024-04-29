@@ -3,6 +3,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import FlagIcon from '@mui/icons-material/Flag';
+import { getI18n } from 'react-i18next';
 
 import {
   RoutingPatternProperties,
@@ -20,6 +21,7 @@ const properties: RoutingPatternProperties = {
     label: _('Name'),
     maxLength: 55,
     multilang: true,
+    required: true,
   },
   description: {
     label: _('Description'),
@@ -35,7 +37,11 @@ const RoutingPattern: EntityInterface = {
   iden: 'RoutingPattern',
   title: _('Routing Pattern', { count: 2 }),
   path: '/routing_patterns',
-  toStr: (row: RoutingPatternPropertyList<EntityValues>) => `${row.name?.en}`,
+  toStr: (row: RoutingPatternPropertyList<EntityValues>) => {
+    const language = getI18n().language.substring(0, 2);
+
+    return `${row.name?.[language]}`;
+  },
   properties,
   columns: ['name', 'description', 'prefix'],
   defaultOrderBy: '',

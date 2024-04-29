@@ -84,4 +84,9 @@ interface CompanyRepository extends RepositoryInterface
      * @return CompanyInterface[]
      */
     public function getLatestByBrandId(int $brandId, int $intemNum = 5): array;
+
+    /**
+     * @return CompanyInterface[]
+     */
+    public function findByApplicationServerId(int $applicationServerId): array;
 }

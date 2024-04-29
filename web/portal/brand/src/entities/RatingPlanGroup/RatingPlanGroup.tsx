@@ -3,6 +3,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { getI18n } from 'react-i18next';
 
 import Actions from './Action';
 import {
@@ -15,6 +16,7 @@ const properties: RatingPlanGroupProperties = {
     label: _('Name'),
     maxLength: 55,
     multilang: true,
+    required: true,
   },
   description: {
     label: _('Description'),
@@ -36,7 +38,11 @@ const RatingPlanGroup: EntityInterface = {
   iden: 'RatingPlanGroup',
   title: _('Rating Plan Group', { count: 2 }),
   path: '/rating_plan_groups',
-  toStr: (row: RatingPlanGroupPropertyList<EntityValues>) => `${row.name?.en}`,
+  toStr: (row: RatingPlanGroupPropertyList<EntityValues>) => {
+    const language = getI18n().language.substring(0, 2);
+
+    return `${row.name?.[language]}`;
+  },
   properties,
   defaultOrderBy: '',
   acl: {
