@@ -78,11 +78,11 @@ const properties: RetailAccountProperties = {
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport'],
+        show: ['ip', 'port', 'transport', 'ruriDomain'],
         hide: ['multiContact'],
       },
       no: {
-        hide: ['ip', 'port', 'transport'],
+        hide: ['ip', 'port', 'transport', 'ruriDomain'],
         show: ['multiContact'],
       },
     },
@@ -139,6 +139,9 @@ const properties: RetailAccountProperties = {
     helpText: _(
       "Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring."
     ),
+  },
+  ruriDomain: {
+    label: _('R-URI domain'),
   },
 };
 

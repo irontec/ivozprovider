@@ -23,6 +23,7 @@ export type RetailAccountPropertyList<T> = {
   t38Passthrough?: T;
   rtpEncryption?: T;
   multiContact?: T;
+  ruriDomain?: T;
 };
 
 export type RetailAccountStatus = {
