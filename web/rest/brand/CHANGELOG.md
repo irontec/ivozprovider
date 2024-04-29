@@ -1,4 +1,13 @@
 # Changelog
+## 4.0.5
+* Models
+  - Administrator:
+    - Added canImpersonate property
+  - Administrator-collection:
+    - Added canImpersonate property
+  - Profile:
+    - Added canImpersonate property
+
 ## 4.0.3
 * Endpoints
   - /ddis:
