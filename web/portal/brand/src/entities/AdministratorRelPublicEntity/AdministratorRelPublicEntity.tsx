@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import KeyIcon from '@mui/icons-material/Key';
 
+import Actions from './Action';
 import {
   AdministratorRelPublicEntityProperties,
   AdministratorRelPublicEntityPropertyList,
@@ -61,6 +62,7 @@ const AdministratorRelPublicEntity: EntityInterface = {
   toStr: (row: AdministratorRelPublicEntityPropertyList<EntityValues>) =>
     `${row.id}`,
   properties,
+  customActions: Actions,
   columns: ['publicEntity', 'create', 'read', 'update', 'delete'],
   selectOptions: async () => {
     const module = await import('./SelectOptions');
