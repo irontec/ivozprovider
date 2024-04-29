@@ -1,4 +1,13 @@
 # Changelog
+## 4.0.5
+* Models
+    - Administrator:
+      - Added canImpersonate property
+    - Administrator-detailed:
+      - Added canImpersonate property
+    - Profile:
+      - Added canImpersonate property
+
 ## 4.0.0
 * Endpoints
     - /carriers:
