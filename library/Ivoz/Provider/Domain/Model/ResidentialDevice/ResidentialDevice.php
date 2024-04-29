@@ -47,20 +47,31 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
                 ->getDomain()
         );
 
-        if ($this->isDirectConnectivity() && !$this->getTransport()) {
-            throw new \DomainException('Invalid empty transport');
+        if ($this->isDirectConnectivity()) {
+            if (!$this->getTransport()) {
+                throw new \DomainException('Invalid empty transport');
+            }
+
+            $hasIpPort = $this->getIp() && $this->getPort();
+            if (!$this->getRuriDomain() && !$hasIpPort) {
+                throw new \DomainException('R-URI or IP + port must be provided');
+            }
+        } else {
+            if (!$this->getPassword()) {
+                throw new \DomainException('Password cannot be empty for residential devices with no direct connectivity');
+            }
+
+            $this->setRuriDomain(null);
+            $this->setIp(null);
+            $this->setPort(null);
         }
 
-        if ($this->isDirectConnectivity() && !$this->getIp()) {
-            throw new \DomainException('Invalid empty IP');
-        }
-
-        if ($this->isDirectConnectivity() && !$this->getPort()) {
+        if ($this->getIp() && !$this->getPort()) {
             throw new \DomainException('Invalid empty port');
         }
 
-        if (!$this->isDirectConnectivity() && !$this->getPassword()) {
-            throw new \DomainException('Password cannot be empty for residential devices with no direct connectivity');
+        if ($this->getPort() && !$this->getIp()) {
+            throw new \DomainException('Invalid empty IP');
         }
     }
 
@@ -88,7 +99,10 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     {
         if (!empty($ip)) {
             Assertion::ip($ip);
+        } else {
+            $ip = null;
         }
+
         return parent::setIp($ip);
     }
 
@@ -117,9 +131,25 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     {
         if (!empty($port)) {
             Assertion::lessThan($port, pow(2, 16), 'port provided "%s" is not lower than "%s".');
+        } else {
+            $port = null;
         }
 
         return parent::setPort($port);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRuriDomain(?string $ruriDomain = null): static
+    {
+        if (empty($ruriDomain)) {
+            $ruriDomain = null;
+        } else {
+            Assertion::notContains($ruriDomain, ' ');
+        }
+
+        return parent::setRuriDomain($ruriDomain);
     }
 
     /**

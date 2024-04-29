@@ -215,6 +215,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'domainName',
             'status',
             'domainId',
+            'ruriDomain'
         ];
 
         return array_filter(
