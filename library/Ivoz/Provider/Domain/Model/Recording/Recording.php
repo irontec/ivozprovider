@@ -14,15 +14,6 @@ class Recording extends RecordingAbstract implements FileContainerInterface, Rec
     use TempFileContainnerTrait;
 
     /**
-     * @codeCoverageIgnore
-     * @return array<string, mixed>
-     */
-    public function getChangeSet(): array
-    {
-        return parent::getChangeSet();
-    }
-
-    /**
      * @return array
      */
     public function getFileObjects(int $filter = null): array
