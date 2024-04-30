@@ -1,4 +1,5 @@
 import { isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -59,12 +60,17 @@ const properties: VoicemailProperties = {
     null: _('Unassigned'),
     default: '__null__',
   },
+  relUserIds: {
+    label: _('Users'),
+    type: 'array',
+    $ref: '#/definitions/User',
+  },
 };
 
 const columns = ['enabled', 'name', 'email'];
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, row } = props;
+  const { routeMapItem, entityService, row } = props;
 
   if (
     isEntityItem(routeMapItem) &&
@@ -74,7 +80,13 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
     const allowDelete = row.user === null && row.residentialDevice === null;
 
     if (isDeletePath && !allowDelete) {
-      return null;
+      return (
+        <DeleteRowButton
+          disabled={true}
+          row={row}
+          entityService={entityService}
+        />
+      );
     }
   }
 
@@ -105,6 +117,16 @@ const Voicemail: EntityInterface = {
     const module = await import('./Form');
 
     return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
   },
   ChildDecorator,
 };

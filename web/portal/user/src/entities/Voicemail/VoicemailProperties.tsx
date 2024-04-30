@@ -13,6 +13,7 @@ export type VoicemailPropertyList<T> = {
   sendMail?: T;
   attachSound?: T;
   voicemail?: T;
+  relUserIds?: T;
 };
 
 export type VoicemailProperties = VoicemailPropertyList<Partial<PropertySpec>>;

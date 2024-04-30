@@ -13,5 +13,11 @@
       </options>
     </id>
     <one-to-one field="astVoicemail" target-entity="Ivoz\Ast\Domain\Model\Voicemail\Voicemail" mapped-by="voicemail" fetch="LAZY"/>
+    <one-to-many field="voicemailRelUsers" target-entity="Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUser" mapped-by="voicemail" orphan-removal="true" fetch="LAZY">
+      <cascade>
+        <cascade-remove/>
+        <cascade-persist/>
+      </cascade>
+    </one-to-many>
   </entity>
 </doctrine-mapping>

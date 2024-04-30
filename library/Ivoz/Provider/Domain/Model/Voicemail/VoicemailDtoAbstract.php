@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailDto;
+use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserDto;
 
 /**
 * VoicemailDtoAbstract
@@ -73,6 +74,11 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
      */
     private $astVoicemail = null;
 
+    /**
+     * @var VoicemailRelUserDto[] | null
+     */
+    private $voicemailRelUsers = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -118,7 +124,8 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
             'residentialDevice' => $this->getResidentialDevice(),
             'company' => $this->getCompany(),
             'locution' => $this->getLocution(),
-            'astVoicemail' => $this->getAstVoicemail()
+            'astVoicemail' => $this->getAstVoicemail(),
+            'voicemailRelUsers' => $this->getVoicemailRelUsers()
         ];
 
         if (!$hideSensitiveData) {
@@ -358,5 +365,23 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
+    }
+
+    /**
+     * @param VoicemailRelUserDto[] | null $voicemailRelUsers
+     */
+    public function setVoicemailRelUsers(?array $voicemailRelUsers): static
+    {
+        $this->voicemailRelUsers = $voicemailRelUsers;
+
+        return $this;
+    }
+
+    /**
+    * @return VoicemailRelUserDto[] | null
+    */
+    public function getVoicemailRelUsers(): ?array
+    {
+        return $this->voicemailRelUsers;
     }
 }
