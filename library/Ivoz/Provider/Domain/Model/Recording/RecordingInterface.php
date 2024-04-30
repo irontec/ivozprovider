@@ -2,28 +2,21 @@
 
 namespace Ivoz\Provider\Domain\Model\Recording;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 
 /**
 * RecordingInterface
 */
-interface RecordingInterface extends LoggableEntityInterface, FileContainerInterface
+interface RecordingInterface extends EntityInterface, FileContainerInterface
 {
     public const TYPE_ONDEMAND = 'ondemand';
 
     public const TYPE_DDI = 'ddi';
-
-    /**
-     * @codeCoverageIgnore
-     * @return array<string, mixed>
-     */
-    public function getChangeSet(): array;
 
     /**
      * @return array
