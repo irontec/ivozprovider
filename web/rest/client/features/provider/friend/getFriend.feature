@@ -51,6 +51,7 @@ Feature: Retrieve friends
           "alwaysApplyTransformations": false,
           "rtpEncryption": false,
           "multiContact": true,
+          "ruriDomain": null,
           "id": 1,
           "transformationRuleSet": null,
           "callAcl": null,
