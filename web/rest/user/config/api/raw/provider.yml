@@ -152,8 +152,11 @@ Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
     access_control: '"ROLE_COMPANY_USER" in roles'
     read_access_control:
       ROLE_COMPANY_USER:
-        voicemail:
-          in: "voicemailRepository.getVoicemailsIdsByUser(user)"
+        - or:
+          - voicemail:
+              in: "voicemailRepository.getVoicemailsIdsByUser(user)"
+          - voicemail:
+              in: "voicemailRelUserRepository.getVoicemailIdsByUser(user)"
 
 Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile: ~
 
