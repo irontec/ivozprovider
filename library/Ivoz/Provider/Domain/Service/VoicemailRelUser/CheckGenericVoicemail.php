@@ -25,10 +25,6 @@ class CheckGenericVoicemail implements VoicemailRelUserLifecycleEventHandlerInte
     {
         $voicemail = $voicemailRelUser->getVoicemail();
 
-        if ($voicemail === null) {
-            return;
-        }
-
         if ($voicemail->getUser() === null) {
             return;
         }

@@ -36,6 +36,10 @@ class VoicemailDto extends VoicemailDtoAbstract
             $response['relUserIds'] = $this->relUserIds;
         }
 
+        if ($role === 'ROLE_COMPANY_USER') {
+            $response['generic'] = $this->getUserId() === null;
+        }
+
         return $response;
     }
 
@@ -65,6 +69,7 @@ class VoicemailDto extends VoicemailDtoAbstract
         if ($role === 'ROLE_COMPANY_USER') {
             unset($properties['userId']);
             unset($properties['relUserIds']);
+            $properties['generic'] = 'generic';
         }
 
         return $properties;

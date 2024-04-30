@@ -5,6 +5,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Repository\DoctrineRepository;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUser;
 use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserRepository;
 use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserInterface;
@@ -39,5 +42,27 @@ class VoicemailRelUserDoctrineRepository extends DoctrineRepository implements V
     public function persist(\Ivoz\Core\Domain\Model\EntityInterface $voicemailRelUser, bool $dispatchInmediately = false): void
     {
         parent::persist($voicemailRelUser);
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getVoicemailIdsByUser(UserInterface $user): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $qb->select('IDENTITY(self.voicemail) as voicemailId')
+            ->where(
+                'self.user = :id'
+            )
+            ->setParameter(':id', $user->getId());
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_map(
+            function ($row): int {
+                return (int) $row['voicemailId'];
+            },
+            $result
+        );
     }
 }
