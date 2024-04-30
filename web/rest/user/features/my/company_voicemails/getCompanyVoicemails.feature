@@ -18,19 +18,22 @@ Feature: Retrieve company voicemails
               "enabled": true,
               "name": "Voicemail For User1",
               "email": "alice@democompany.com",
-              "id": 1
+              "id": 1,
+              "generic": false
           },
           {
               "enabled": true,
               "name": "Voicemail Generic 1",
               "email": "generic@voicemail.com",
-              "id": 3
+              "id": 3,
+              "generic": true
           },
           {
               "enabled": true,
               "name": "Voicemail For User2",
               "email": "bob@voicemail.com",
-              "id": 4
+              "id": 4,
+              "generic": false
           }
       ]
       """
