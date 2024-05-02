@@ -3,11 +3,11 @@
 namespace Ivoz\Provider\Domain\Model\VoicemailRelUser;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 
 /**
 * VoicemailRelUserInterface
@@ -26,6 +26,8 @@ interface VoicemailRelUserInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getId(): ?int;
+
+    public function getVoicemail(): VoicemailInterface;
 
     /**
      * @param int | null $id
@@ -55,6 +57,4 @@ interface VoicemailRelUserInterface extends LoggableEntityInterface
     public function getUser(): UserInterface;
 
     public function setVoicemail(?VoicemailInterface $voicemail = null): static;
-
-    public function getVoicemail(): ?VoicemailInterface;
 }
