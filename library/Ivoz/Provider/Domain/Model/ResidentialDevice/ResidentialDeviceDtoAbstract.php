@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserDto;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
@@ -154,6 +155,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $language = null;
 
     /**
+     * @var ProxyUserDto | null
+     */
+    private $proxyUser = null;
+
+    /**
      * @var VoicemailDto | null
      */
     private $voicemail = null;
@@ -219,6 +225,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transformationRuleSetId' => 'transformationRuleSet',
             'outgoingDdiId' => 'outgoingDdi',
             'languageId' => 'language',
+            'proxyUserId' => 'proxyUser',
             'voicemailId' => 'voicemail',
             'psEndpointId' => 'psEndpoint',
             'psIdentifyId' => 'psIdentify'
@@ -257,6 +264,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
+            'proxyUser' => $this->getProxyUser(),
             'voicemail' => $this->getVoicemail(),
             'psEndpoint' => $this->getPsEndpoint(),
             'psIdentify' => $this->getPsIdentify(),
@@ -695,6 +703,36 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getLanguageId(): ?int
     {
         if ($dto = $this->getLanguage()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setProxyUser(?ProxyUserDto $proxyUser): static
+    {
+        $this->proxyUser = $proxyUser;
+
+        return $this;
+    }
+
+    public function getProxyUser(): ?ProxyUserDto
+    {
+        return $this->proxyUser;
+    }
+
+    public function setProxyUserId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new ProxyUserDto($id)
+            : null;
+
+        return $this->setProxyUser($value);
+    }
+
+    public function getProxyUserId(): ?int
+    {
+        if ($dto = $this->getProxyUser()) {
             return $dto->getId();
         }
 

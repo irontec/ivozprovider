@@ -14,11 +14,13 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
 
 /**
 * RetailAccountAbstract
@@ -124,6 +126,11 @@ abstract class RetailAccountAbstract
      * @var ?DdiInterface
      */
     protected $outgoingDdi = null;
+
+    /**
+     * @var ?ProxyUserInterface
+     */
+    protected $proxyUser = null;
 
     /**
      * Constructor
@@ -247,7 +254,8 @@ abstract class RetailAccountAbstract
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
-            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         $self->initChangelog();
 
@@ -301,7 +309,8 @@ abstract class RetailAccountAbstract
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
-            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         return $this;
     }
@@ -329,7 +338,8 @@ abstract class RetailAccountAbstract
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
-            ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth));
+            ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
+            ->setProxyUser(ProxyUser::entityToDto(self::getProxyUser(), $depth));
     }
 
     /**
@@ -355,7 +365,8 @@ abstract class RetailAccountAbstract
             'domainId' => self::getDomain()?->getId(),
             'companyId' => self::getCompany()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
-            'outgoingDdiId' => self::getOutgoingDdi()?->getId()
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
+            'proxyUserId' => self::getProxyUser()?->getId()
         ];
     }
 
@@ -637,5 +648,17 @@ abstract class RetailAccountAbstract
     public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;
+    }
+
+    protected function setProxyUser(?ProxyUserInterface $proxyUser = null): static
+    {
+        $this->proxyUser = $proxyUser;
+
+        return $this;
+    }
+
+    public function getProxyUser(): ?ProxyUserInterface
+    {
+        return $this->proxyUser;
     }
 }
