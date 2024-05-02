@@ -183,6 +183,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'rtpEncryption',
             'multiContact',
             'ruriDomain',
+            'proxyUserId'
         ];
 
         return array_filter(

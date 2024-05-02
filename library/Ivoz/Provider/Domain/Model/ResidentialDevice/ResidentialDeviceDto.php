@@ -179,6 +179,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'status',
             'domainId',
             'ruriDomain',
+            'proxyUserId'
         ];
 
         return array_filter(
