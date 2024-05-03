@@ -23,7 +23,8 @@ Feature: Update ddi
           "t38Passthrough": "no",
           "company": 1,
           "transformationRuleSet": null,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "proxyUser": 1
       }
       """
      Then the response status code should be 200
@@ -49,6 +50,7 @@ Feature: Update ddi
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
+          "proxyUser": null,
           "status": []
       }
       """

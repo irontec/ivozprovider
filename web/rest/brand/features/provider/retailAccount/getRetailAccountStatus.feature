@@ -14,7 +14,7 @@ Feature: Retrieve retail accounts status
       And the JSON should be equal to:
       """
       [
-          {
+           {
               "name": "testRetailAccount2",
               "description": "",
               "directConnectivity": "no",

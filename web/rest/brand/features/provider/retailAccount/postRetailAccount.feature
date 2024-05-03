@@ -23,7 +23,8 @@ Feature: Create retail accounts
           "t38Passthrough": "no",
           "company": 1,
           "transformationRuleSet": null,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "proxyUser": 1
       }
       """
      Then the response status code should be 201
@@ -48,7 +49,8 @@ Feature: Create retail accounts
           "id": 7,
           "company": 1,
           "transformationRuleSet": null,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "proxyUser": 1
       }
       """
 
