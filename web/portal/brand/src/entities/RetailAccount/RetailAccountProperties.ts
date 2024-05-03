@@ -26,6 +26,7 @@ export type RetailAccountPropertyList<T> = {
   status?: T;
   statusIcon?: T;
   ruriDomain?: T;
+  proxyUser?: T;
 };
 
 export type RetailAccountStatus = {
