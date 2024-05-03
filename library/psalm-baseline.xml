@@ -3854,7 +3854,7 @@
     </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceAbstract.php">
-    <MixedArgument occurrences="12">
+    <MixedArgument occurrences="14">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
@@ -3865,6 +3865,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
     </MixedArgument>
@@ -3891,7 +3893,7 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountAbstract.php">
-    <MixedArgument occurrences="10">
+    <MixedArgument occurrences="12">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
@@ -3900,6 +3902,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getDomain())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
     </MixedArgument>
