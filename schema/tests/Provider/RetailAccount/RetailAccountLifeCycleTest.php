@@ -57,7 +57,8 @@ class RetailAccountLifeCycleTest extends KernelTestCase
         $retailAccountDto = $this->entityTools->entityToDto($retailAccount);
 
         $retailAccountDto
-            ->setDirectConnectivity('yes');
+            ->setDirectConnectivity('yes')
+            ->setRuriDomain('ruri.example.com');
 
         return $this
             ->entityTools
