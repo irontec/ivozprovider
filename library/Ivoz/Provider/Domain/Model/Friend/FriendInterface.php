@@ -87,6 +87,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function setPassword($password = null);
 
     /**
+     * {@inheritDoc}
+     */
+    public function setRuriDomain($ruriDomain = null);
+
+    /**
      * @return string
      */
     public function getContact();
@@ -262,6 +267,13 @@ interface FriendInterface extends LoggableEntityInterface
      * @return boolean
      */
     public function getMultiContact(): bool;
+
+    /**
+     * Get ruriDomain
+     *
+     * @return string | null
+     */
+    public function getRuriDomain();
 
     /**
      * Set company

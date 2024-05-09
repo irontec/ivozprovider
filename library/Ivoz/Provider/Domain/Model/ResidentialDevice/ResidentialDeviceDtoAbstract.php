@@ -101,6 +101,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $multiContact = true;
 
     /**
+     * @var string
+     */
+    private $ruriDomain;
+
+    /**
      * @var integer
      */
     private $id;
@@ -186,6 +191,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             't38Passthrough' => 't38Passthrough',
             'rtpEncryption' => 'rtpEncryption',
             'multiContact' => 'multiContact',
+            'ruriDomain' => 'ruriDomain',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -220,6 +226,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             't38Passthrough' => $this->getT38Passthrough(),
             'rtpEncryption' => $this->getRtpEncryption(),
             'multiContact' => $this->getMultiContact(),
+            'ruriDomain' => $this->getRuriDomain(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -604,6 +611,26 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getMultiContact()
     {
         return $this->multiContact;
+    }
+
+    /**
+     * @param string $ruriDomain
+     *
+     * @return static
+     */
+    public function setRuriDomain($ruriDomain = null)
+    {
+        $this->ruriDomain = $ruriDomain;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getRuriDomain()
+    {
+        return $this->ruriDomain;
     }
 
     /**

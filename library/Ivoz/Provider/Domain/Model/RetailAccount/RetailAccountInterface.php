@@ -58,6 +58,8 @@ interface RetailAccountInterface extends LoggableEntityInterface
      */
     public function getAstPsEndpoint();
 
+    public function setRuriDomain($ruriDomain = null);
+
     /**
      * @return string
      */
@@ -154,6 +156,13 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * @return boolean
      */
     public function getMultiContact(): bool;
+
+    /**
+     * Get ruriDomain
+     *
+     * @return string | null
+     */
+    public function getRuriDomain();
 
     /**
      * Set brand
