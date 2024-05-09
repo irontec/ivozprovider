@@ -44,7 +44,8 @@ Feature: Create retail accounts
           "t38Passthrough": "no",
           "rtpEncryption": false,
           "multiContact": true,
-          "id": 6,
+          "ruriDomain": null,
+          "id": 7,
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null
@@ -54,7 +55,7 @@ Feature: Create retail accounts
   Scenario: Retrieve created retail account
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "retail_accounts/6"
+      And I send a "GET" request to "retail_accounts/7"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -71,7 +72,7 @@ Feature: Create retail accounts
           "directConnectivity": "yes",
           "ddiIn": "yes",
           "t38Passthrough": "no",
-          "id": 6,
+          "id": 7,
           "company": "~",
           "transformationRuleSet": null,
           "outgoingDdi": null
