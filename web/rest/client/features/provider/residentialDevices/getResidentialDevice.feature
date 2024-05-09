@@ -53,8 +53,8 @@ Feature: Retrieve residential devices
           "name": "residentialDevice",
           "description": "",
           "transport": "udp",
-          "ip": "1.2.3.4",
-          "port": 1024,
+          "ip": null,
+          "port": null,
           "password": "+rA778LidL",
           "allow": "alaw",
           "fromDomain": null,
@@ -64,6 +64,7 @@ Feature: Retrieve residential devices
           "t38Passthrough": "no",
           "rtpEncryption": false,
           "multiContact": true,
+          "ruriDomain": null,
           "id": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
@@ -84,5 +85,6 @@ Feature: Retrieve residential devices
                   "userAgent": "Yealink SIP-T23G 44.80.0.130"
               }
           ]
+
       }
       """

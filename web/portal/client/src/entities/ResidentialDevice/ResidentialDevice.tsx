@@ -176,7 +176,7 @@ const properties: ResidentialDeviceProperties = {
       },
       no: {
         show: ['multiContact'],
-        hide: ['ip', 'port', 'transport', 'auth_needed'],
+        hide: ['ip', 'port', 'transport', 'auth_needed', 'ruriDomain'],
       },
     },
   },
@@ -245,6 +245,10 @@ const properties: ResidentialDeviceProperties = {
     helpText: _(
       "Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring."
     ),
+  },
+  ruriDomain: {
+    label: _('R-URI domain'),
+    type: 'string',
   },
 };
 

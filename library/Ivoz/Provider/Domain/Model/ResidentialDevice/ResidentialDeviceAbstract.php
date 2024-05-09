@@ -132,6 +132,12 @@ abstract class ResidentialDeviceAbstract
     protected $multiContact = true;
 
     /**
+     * @var ?string
+     * column: ruri_domain
+     */
+    protected $ruriDomain = null;
+
+    /**
      * @var BrandInterface
      * inversedBy residentialDevices
      */
@@ -310,6 +316,7 @@ abstract class ResidentialDeviceAbstract
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
+            ->setRuriDomain($dto->getRuriDomain())
             ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($company))
@@ -382,6 +389,7 @@ abstract class ResidentialDeviceAbstract
             ->setT38Passthrough($t38Passthrough)
             ->setRtpEncryption($rtpEncryption)
             ->setMultiContact($multiContact)
+            ->setRuriDomain($dto->getRuriDomain())
             ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($company))
@@ -416,6 +424,7 @@ abstract class ResidentialDeviceAbstract
             ->setT38Passthrough(self::getT38Passthrough())
             ->setRtpEncryption(self::getRtpEncryption())
             ->setMultiContact(self::getMultiContact())
+            ->setRuriDomain(self::getRuriDomain())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -448,6 +457,7 @@ abstract class ResidentialDeviceAbstract
             't38Passthrough' => self::getT38Passthrough(),
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
+            'ruri_domain' => self::getRuriDomain(),
             'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain()?->getId(),
             'companyId' => self::getCompany()->getId(),
@@ -764,6 +774,22 @@ abstract class ResidentialDeviceAbstract
     public function getMultiContact(): bool
     {
         return $this->multiContact;
+    }
+
+    protected function setRuriDomain(?string $ruriDomain = null): static
+    {
+        if (!is_null($ruriDomain)) {
+            Assertion::maxLength($ruriDomain, 190, 'ruriDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->ruriDomain = $ruriDomain;
+
+        return $this;
+    }
+
+    public function getRuriDomain(): ?string
+    {
+        return $this->ruriDomain;
     }
 
     public function setBrand(BrandInterface $brand): static

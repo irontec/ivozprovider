@@ -28,7 +28,8 @@ Feature: Create friends
           "outgoingDdi": null,
           "language": null,
           "interCompany": 1,
-          "company": 1
+          "company": 1,
+          "ruriDomain": "test.example.com"
       }
       """
      Then the response status code should be 201
@@ -40,8 +41,8 @@ Feature: Create friends
           "name": "InterCompany1_1",
           "description": "something",
           "transport": "tls",
-          "ip": "129.1.2.3",
-          "port": 5060,
+          "ip": null,
+          "port": null,
           "password": null,
           "priority": 2,
           "allow": "alaw",
@@ -53,6 +54,7 @@ Feature: Create friends
           "alwaysApplyTransformations": false,
           "rtpEncryption": false,
           "multiContact": true,
+          "ruriDomain": null,
           "id": 3,
           "transformationRuleSet": null,
           "callAcl": null,
@@ -75,8 +77,8 @@ Feature: Create friends
           "name": "InterCompany1_1",
           "description": "something",
           "transport": "tls",
-          "ip": "129.1.2.3",
-          "port": 5060,
+          "ip": null,
+          "port": null,
           "password": null,
           "priority": 2,
           "allow": "alaw",
@@ -88,6 +90,7 @@ Feature: Create friends
           "alwaysApplyTransformations": false,
           "rtpEncryption": false,
           "multiContact": true,
+          "ruriDomain": null,
           "id": 3,
           "transformationRuleSet": null,
           "callAcl": null,

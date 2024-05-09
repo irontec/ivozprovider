@@ -94,5 +94,6 @@
         <join-column name="outgoingDdiId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
+    <field name="ruriDomain" type="string" column="ruri_domain" length="190" nullable="true"/>
   </mapped-superclass>
 </doctrine-mapping>

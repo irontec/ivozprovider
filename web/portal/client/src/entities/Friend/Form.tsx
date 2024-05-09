@@ -40,6 +40,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'transport',
         'ip',
         'port',
+        'ruriDomain',
         'alwaysApplyTransformations',
         'interCompany',
       ],

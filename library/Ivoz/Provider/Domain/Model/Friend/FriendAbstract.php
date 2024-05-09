@@ -143,6 +143,12 @@ abstract class FriendAbstract
     protected $multiContact = true;
 
     /**
+     * @var ?string
+     * column: ruri_domain
+     */
+    protected $ruriDomain = null;
+
+    /**
      * @var CompanyInterface
      * inversedBy friends
      */
@@ -330,6 +336,7 @@ abstract class FriendAbstract
             ->setPassword($dto->getPassword())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
+            ->setRuriDomain($dto->getRuriDomain())
             ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -405,6 +412,7 @@ abstract class FriendAbstract
             ->setAlwaysApplyTransformations($alwaysApplyTransformations)
             ->setRtpEncryption($rtpEncryption)
             ->setMultiContact($multiContact)
+            ->setRuriDomain($dto->getRuriDomain())
             ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -442,6 +450,7 @@ abstract class FriendAbstract
             ->setAlwaysApplyTransformations(self::getAlwaysApplyTransformations())
             ->setRtpEncryption(self::getRtpEncryption())
             ->setMultiContact(self::getMultiContact())
+            ->setRuriDomain(self::getRuriDomain())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
@@ -477,6 +486,7 @@ abstract class FriendAbstract
             'alwaysApplyTransformations' => self::getAlwaysApplyTransformations(),
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
+            'ruri_domain' => self::getRuriDomain(),
             'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain()?->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
@@ -825,6 +835,22 @@ abstract class FriendAbstract
     public function getMultiContact(): bool
     {
         return $this->multiContact;
+    }
+
+    protected function setRuriDomain(?string $ruriDomain = null): static
+    {
+        if (!is_null($ruriDomain)) {
+            Assertion::maxLength($ruriDomain, 190, 'ruriDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->ruriDomain = $ruriDomain;
+
+        return $this;
+    }
+
+    public function getRuriDomain(): ?string
+    {
+        return $this->ruriDomain;
     }
 
     public function setCompany(CompanyInterface $company): static

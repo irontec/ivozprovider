@@ -76,6 +76,11 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function setPort(?int $port = null): static;
 
     /**
+     * {@inheritDoc}
+     */
+    public function setRuriDomain(?string $ruriDomain = null): static;
+
+    /**
      * @return string
      */
     public function getSorcery(): string;
@@ -134,6 +139,8 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getRtpEncryption(): bool;
 
     public function getMultiContact(): bool;
+
+    public function getRuriDomain(): ?string;
 
     public function setBrand(BrandInterface $brand): static;
 

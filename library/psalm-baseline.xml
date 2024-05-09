@@ -2875,6 +2875,10 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Friend/Friend.php">
+    <DeprecatedMethod occurrences="2">
+      <code>setIp</code>
+      <code>setPort</code>
+    </DeprecatedMethod>
     <DocblockTypeContradiction occurrences="1">
       <code>empty($callAcl)</code>
     </DocblockTypeContradiction>
