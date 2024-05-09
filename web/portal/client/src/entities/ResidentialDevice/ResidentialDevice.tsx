@@ -164,6 +164,7 @@ const properties: ResidentialDeviceProperties = {
   },
   directConnectivity: {
     label: _('Direct connectivity'),
+    readOnly: true,
     default: 'no',
     enum: {
       yes: _('Yes'),
