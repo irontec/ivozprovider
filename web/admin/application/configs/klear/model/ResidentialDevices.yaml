@@ -62,7 +62,6 @@ production:
     ip:
       title: _('Destination IP address')
       type: text
-      required: true
       pattern: "^[.0-9]+$"
       trim: both
       info:
@@ -74,9 +73,14 @@ production:
     port:
       title: _('Port')
       type: text
-      required: true
       pattern: "^[0-9]+$"
       defaultValue: 5060
+    ruriDomain:
+      title: _('R-URI domain')
+      type: text
+      trim: both
+      pattern: "^[^\\s]+$"
+      maxLength: 190
     password:
       title: _('Password')
       type: text
@@ -186,12 +190,12 @@ production:
           'yes':
             title: _('Yes')
             visualFilter:
-              show: ["ip", "port", "transport", "auth_needed"]
+              show: ["ip", "port", "ruriDomain", "transport", "auth_needed"]
               hide: ["multiContact"]
           'no':
             title: _('No')
             visualFilter:
-              hide: ["ip", "port", "transport", "auth_needed"]
+              hide: ["ip", "port", "ruriDomain", "transport", "auth_needed"]
               show: ["multiContact"]
     ddiIn:
       title: _('DDI In')

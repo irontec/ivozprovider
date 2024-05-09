@@ -38,6 +38,7 @@ production:
           directConnectivity: true
           ip: true
           port: true
+          ruriDomain: true
           transformationRuleSet: true
           language: true
           status: true
@@ -116,6 +117,7 @@ production:
           transport: true
           ip: true
           port: true
+          ruriDomain: true
           language: true
           callACL: true
           outgoingDdi: true
@@ -140,9 +142,10 @@ production:
             name: 6
             password: 6
             interCompany: 10
-            transport: 4
+            transport: 8
             ip: 5
             port: 3
+            ruriDomain: 4
             alwaysApplyTransformations: 8
         group1:
           label: _("Geographic Configuration")
