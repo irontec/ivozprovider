@@ -138,6 +138,13 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceAbstract:
         default: '1'
         unsigned: true
       column: multiContact
+    ruriDomain:
+      type: string
+      nullable: true
+      length: 190
+      options:
+        fixed: false
+      column: ruri_domain
   manyToOne:
     brand:
       targetEntity: Ivoz\Provider\Domain\Model\Brand\BrandInterface
