@@ -9,7 +9,7 @@ import { BillableCallProperties } from './ActiveCallsProperties';
 
 const properties: BillableCallProperties = {
   startTime: {
-    label: 'Start time',
+    label: _('Start time'),
   },
 };
 

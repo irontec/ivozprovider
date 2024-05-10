@@ -14,7 +14,7 @@ import { CalendarProperties } from './CalendarProperties';
 
 const properties: CalendarProperties = {
   name: {
-    label: 'Name',
+    label: _('Name'),
   },
 };
 

@@ -11,56 +11,56 @@ import { BillableCallProperties } from './BillableCallProperties';
 
 const properties: BillableCallProperties = {
   startTime: {
-    label: 'Start time',
+    label: _('Start time'),
   },
   callid: {
-    label: 'Call ID',
+    label: _('Call ID'),
   },
   caller: {
-    label: 'Caller',
+    label: _('Caller'),
   },
   callee: {
-    label: 'Callee',
+    label: _('Callee'),
   },
   destinationName: {
-    label: 'Destination',
+    label: _('Destination'),
   },
   direction: {
-    label: 'Direction',
+    label: _('Direction'),
     enum: {
       inbound: _('Inbound'),
       outbound: _('Outbound'),
     },
   },
   invoice: {
-    label: 'Invoice',
+    label: _('Invoice', { count: 1 }),
   },
   price: {
-    label: 'Price',
+    label: _('Price'),
   },
   duration: {
-    label: 'Duration',
+    label: _('Duration'),
   },
   cost: {
-    label: 'Cost',
+    label: _('Cost'),
   },
   carrierName: {
-    label: 'Carrier',
+    label: _('Carrier'),
   },
   ratingPlanName: {
-    label: 'Rating plan',
+    label: _('Rating plan', { count: 1 }),
   },
   endpointType: {
-    label: 'Endpoint type',
+    label: _('Endpoint type'),
   },
   endpointId: {
-    label: 'Endpoint id',
+    label: _('Endpoint id'),
   },
   endpointName: {
-    label: 'Endpoint name',
+    label: _('Endpoint name'),
   },
   ddiProvider: {
-    label: 'DDI Provider',
+    label: _('DDI Provider'),
   },
 };
 
