@@ -5,3 +5,4 @@ User=root
 Group=root
 StandardInput=socket
 StandardOutput=socket
+RuntimeMaxSec=300
