@@ -66,6 +66,11 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function setPort($port = null);
 
     /**
+     * {@inheritDoc}
+     */
+    public function setRuriDomain($ruriDomain = null);
+
+    /**
      * @return string
      */
     public function getContact();
@@ -244,6 +249,13 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      * @return boolean
      */
     public function getMultiContact(): bool;
+
+    /**
+     * Get ruriDomain
+     *
+     * @return string | null
+     */
+    public function getRuriDomain();
 
     /**
      * Set brand

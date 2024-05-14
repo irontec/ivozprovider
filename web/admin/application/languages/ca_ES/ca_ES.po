@@ -2400,6 +2400,9 @@ msgid_plural "Queue Members"
 msgstr[0] "Membre de la cua"
 msgstr[1] "Membres de la cua"
 
+msgid "R-URI domain"
+msgstr "Domini R-URI"
+
 msgid "R-URI pattern"
 msgstr "Patró R-URI"
 

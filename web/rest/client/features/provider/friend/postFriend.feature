@@ -27,7 +27,8 @@ Feature: Create friends
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "ruriDomain": "test.example.com"
       }
     """
     Then the response status code should be 201
@@ -52,6 +53,7 @@ Feature: Create friends
           "alwaysApplyTransformations": false,
           "rtpEncryption": false,
           "multiContact": true,
+          "ruriDomain": "test.example.com",
           "id": 2,
           "transformationRuleSet": null,
           "callAcl": null,
@@ -78,7 +80,7 @@ Feature: Create friends
           "password": "ZEF7t5n+b4",
           "priority": 2,
           "allow": "alaw",
-                "fromUser": null,
+          "fromUser": null,
           "fromDomain": "",
           "directConnectivity": "yes",
           "ddiIn": "yes",
@@ -86,6 +88,7 @@ Feature: Create friends
           "alwaysApplyTransformations": false,
           "rtpEncryption": false,
           "multiContact": true,
+          "ruriDomain": "test.example.com",
           "id": 2,
           "transformationRuleSet": null,
           "callAcl": null,

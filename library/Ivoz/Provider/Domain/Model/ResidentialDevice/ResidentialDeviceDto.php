@@ -168,7 +168,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'outgoingDdiId',
             'languageId',
             'transport',
-            'password',
+            'password'
         ];
 
         return array_filter(

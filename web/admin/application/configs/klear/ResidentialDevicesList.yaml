@@ -41,6 +41,7 @@ production:
           transformationRuleSet: true
           ip: true
           port: true
+          ruriDomain: true
           language: true
           status: true
           ddiIn: true
@@ -112,6 +113,7 @@ production:
           transport: true
           ip: true
           port: true
+          ruriDomain: true
           language: true
           outgoingDdi: true
           allow: true
@@ -131,10 +133,10 @@ production:
             priority: 2
             password: 5
             directConnectivity: 3
-            __empty1: 4
             transport: 4
             ip: 5
             port: 3
+            ruriDomain: 4
             multiContact: 6
         group1:
           label: _("Geographic Configuration")
