@@ -524,23 +524,26 @@ pipeline {
                     def status = issue.data.fields.status
                     println "Issue Status: ${status.name} (${status.id})"
 
-                    // For Issues with Functional reviewer and not validated
-                    if (issue.data.fields.customfield_10105 && status.id != "10325") {
-                        // Ensure the PR is not already marked as changed requested
-                        def lastFuncReviewStatus
-                        for (review in pullRequest.reviews) {
-                            if (review.user == "ironArt3mis") {
-                                lastFuncReviewStatus = review.state
+                    // For Issues with Functional reviewer
+                    if (issue.data.fields.customfield_10105) {
+                        // Not validated
+                        if (status.id != "10325") {
+                            // Ensure the PR is not already marked as changed requested
+                            def lastFuncReviewStatus
+                            for (review in pullRequest.reviews) {
+                                if (review.user == "ironArt3mis") {
+                                    lastFuncReviewStatus = review.state
+                                }
                             }
+                            // PR already marked as review requested
+                            if (lastFuncReviewStatus == "CHANGES_REQUESTED") {
+                                echo "This PR is already marked as functional review required"
+                                return
+                            }
+                            pullRequest.review('REQUEST_CHANGES', 'Functional review required')
+                        } else {
+                            pullRequest.review('APPROVE')
                         }
-                        // PR already marked as review requested
-                        if (lastFuncReviewStatus == "CHANGES_REQUESTED") {
-                            echo "This PR is already marked as functional review required"
-                            return
-                        }
-                        pullRequest.review('REQUEST_CHANGES', 'Functional review required')
-                    } else {
-                        pullRequest.review('APPROVE')
                     }
                 }
             }
