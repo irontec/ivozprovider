@@ -64,7 +64,7 @@ Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      ip: ASC
+      lastTimeBanned: DESC
     read_access_control:
       ROLE_SUPER_ADMIN:
         brand:
