@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserAbstract">
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" inversed-by="faxesRelUsers" fetch="LAZY">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fax" target-entity="Ivoz\Provider\Domain\Model\Fax\FaxInterface" inversed-by="faxesRelUsers" fetch="LAZY">
+      <join-columns>
+        <join-column name="faxId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>
