@@ -25,6 +25,7 @@ use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface;
 
 /**
 * UserInterface
@@ -291,6 +292,20 @@ interface UserInterface extends LoggableEntityInterface
      * @return array<array-key, CallForwardSettingInterface>
      */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
+
+    public function addFaxesRelUser(FaxesRelUserInterface $faxesRelUser): UserInterface;
+
+    public function removeFaxesRelUser(FaxesRelUserInterface $faxesRelUser): UserInterface;
+
+    /**
+     * @param Collection<array-key, FaxesRelUserInterface> $faxesRelUsers
+     */
+    public function replaceFaxesRelUsers(Collection $faxesRelUsers): UserInterface;
+
+    /**
+     * @return array<array-key, FaxesRelUserInterface>
+     */
+    public function getFaxesRelUsers(?Criteria $criteria = null): array;
 
     /**
      * @see UserInterface::getRoles()

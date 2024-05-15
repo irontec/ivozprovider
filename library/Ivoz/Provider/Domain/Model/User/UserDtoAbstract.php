@@ -21,6 +21,7 @@ use Ivoz\Provider\Domain\Model\Contact\ContactDto;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserDto;
 
 /**
 * UserDtoAbstract
@@ -185,6 +186,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
      */
     private $callForwardSettings = null;
 
+    /**
+     * @var FaxesRelUserDto[] | null
+     */
+    private $faxesRelUsers = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -266,7 +272,8 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'contact' => $this->getContact(),
             'pickUpRelUsers' => $this->getPickUpRelUsers(),
             'queueMembers' => $this->getQueueMembers(),
-            'callForwardSettings' => $this->getCallForwardSettings()
+            'callForwardSettings' => $this->getCallForwardSettings(),
+            'faxesRelUsers' => $this->getFaxesRelUsers()
         ];
 
         if (!$hideSensitiveData) {
@@ -932,5 +939,23 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getCallForwardSettings(): ?array
     {
         return $this->callForwardSettings;
+    }
+
+    /**
+     * @param FaxesRelUserDto[] | null $faxesRelUsers
+     */
+    public function setFaxesRelUsers(?array $faxesRelUsers): static
+    {
+        $this->faxesRelUsers = $faxesRelUsers;
+
+        return $this;
+    }
+
+    /**
+    * @return FaxesRelUserDto[] | null
+    */
+    public function getFaxesRelUsers(): ?array
+    {
+        return $this->faxesRelUsers;
     }
 }
