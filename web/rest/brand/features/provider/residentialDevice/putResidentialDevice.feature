@@ -27,7 +27,8 @@ Feature: Update residential device
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "proxyUser": 1
       }
       """
      Then the response status code should be 200
@@ -55,6 +56,7 @@ Feature: Update residential device
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "proxyUser": 1
       }
       """

@@ -75,6 +75,9 @@ class ProviderRetailAccount extends Fixture implements DependentFixtureInterface
             $this->setPort(1024);
             $this->setDirectConnectivity('yes');
             $this->setPassword('9rv6G3TVc-');
+            $this->setProxyUser(
+                $fixture->getReference('_reference_ProviderProxyUserProxyUser1')
+            );
             $this->setBrand(
                 $fixture->getReference('_reference_ProviderBrand1')
             );

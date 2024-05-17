@@ -32,6 +32,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
             ->setCalleridUpdateHeader('pai')
             ->setUpdateCallerid('yes')
             ->setDirectConnectivity('yes')
+            ->setProxyUserId(1)
             ->setBrandId(1)
             ->setCompanyId(1);
 

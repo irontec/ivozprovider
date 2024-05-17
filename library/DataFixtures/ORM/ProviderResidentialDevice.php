@@ -97,6 +97,9 @@ class ProviderResidentialDevice extends Fixture implements DependentFixtureInter
             $this->setUpdateCallerid('yes');
             $this->setDirectConnectivity('yes');
             $this->setRtpEncryption(false);
+            $this->setProxyUser(
+                $fixture->getReference('_reference_ProviderProxyUserProxyUser1')
+            );
             $this->setBrand(
                 $fixture->getReference('_reference_ProviderBrand1')
             );

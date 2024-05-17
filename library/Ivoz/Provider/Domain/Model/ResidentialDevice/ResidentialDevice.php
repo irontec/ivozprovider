@@ -56,6 +56,10 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
             if (!$this->getRuriDomain() && !$hasIpPort) {
                 throw new \DomainException('R-URI or IP + port must be provided');
             }
+
+            if (!$this->getProxyUser()) {
+                throw new \DomainException('Invalid empty proxy_user');
+            }
         } else {
             if (!$this->getPassword()) {
                 throw new \DomainException('Password cannot be empty for residential devices with no direct connectivity');
@@ -64,6 +68,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
             $this->setRuriDomain(null);
             $this->setIp(null);
             $this->setPort(null);
+            $this->setProxyUser(null);
         }
 
         if ($this->getIp() && !$this->getPort()) {

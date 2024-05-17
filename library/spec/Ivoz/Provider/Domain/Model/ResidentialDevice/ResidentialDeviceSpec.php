@@ -7,6 +7,8 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserDto;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use PhpSpec\ObjectBehavior;
@@ -29,13 +31,15 @@ class ResidentialDeviceSpec extends ObjectBehavior
 
     function let(
         CompanyInterface $company,
-        BrandInterface $brand
+        BrandInterface $brand,
+        ProxyUserInterface $proxyUser,
     ) {
         $this->dto = $dto = new ResidentialDeviceDto();
         $this->brand = $brand;
 
         $companyDto = new CompanyDto();
         $brandDto = new BrandDto();
+        $proxyUserDto = new ProxyUserDto();
 
         $dto->setName('Name')
             ->setDescription('Desc')
@@ -48,6 +52,7 @@ class ResidentialDeviceSpec extends ObjectBehavior
             ->setDirectConnectivity('yes')
             ->setIp('1.2.3.4')
             ->setPort('1234')
+            ->setProxyUser($proxyUserDto)
             ->setCompany($companyDto)
             ->setBrand($brandDto);
 
@@ -59,9 +64,14 @@ class ResidentialDeviceSpec extends ObjectBehavior
             ->getBrand()
             ->willReturn($brand);
 
+        $proxyUser
+            ->getId()
+            ->willReturn(1);
+
         $transformer = new \spec\DtoToEntityFakeTransformer([
             [$companyDto, $company->getWrappedObject()],
             [$brandDto, $brand->getWrappedObject()],
+            [$proxyUserDto, $proxyUser->getWrappedObject()]
         ]);
 
         $this->beConstructedThrough(

@@ -1636,6 +1636,20 @@ Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
       ROLE_BRAND_ADMIN:
         raw: 'FALSE'
 
+Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
+    read_access_control: ~
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
+
 Ivoz\Provider\Domain\Model\WebPortal\WebTheme:
   itemOperations:
     get_my_theme:

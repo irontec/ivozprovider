@@ -28,7 +28,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'ip',
         'port',
         'ruriDomain',
-        'multiContact',
       ],
     },
     {
@@ -48,6 +47,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         't38Passthrough',
         'maxCalls',
         'rtpEncryption',
+        'multiContact',
       ],
     },
     {

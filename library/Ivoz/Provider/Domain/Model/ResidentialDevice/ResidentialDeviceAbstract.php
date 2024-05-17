@@ -15,12 +15,14 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Language\Language;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
 
 /**
 * ResidentialDeviceAbstract
@@ -168,6 +170,11 @@ abstract class ResidentialDeviceAbstract
      * @var ?LanguageInterface
      */
     protected $language = null;
+
+    /**
+     * @var ?ProxyUserInterface
+     */
+    protected $proxyUser = null;
 
     /**
      * Constructor
@@ -322,7 +329,8 @@ abstract class ResidentialDeviceAbstract
             ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()));
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         $self->initChangelog();
 
@@ -395,7 +403,8 @@ abstract class ResidentialDeviceAbstract
             ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()));
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         return $this;
     }
@@ -430,7 +439,8 @@ abstract class ResidentialDeviceAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
-            ->setLanguage(Language::entityToDto(self::getLanguage(), $depth));
+            ->setLanguage(Language::entityToDto(self::getLanguage(), $depth))
+            ->setProxyUser(ProxyUser::entityToDto(self::getProxyUser(), $depth));
     }
 
     /**
@@ -463,7 +473,8 @@ abstract class ResidentialDeviceAbstract
             'companyId' => self::getCompany()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
             'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
-            'languageId' => self::getLanguage()?->getId()
+            'languageId' => self::getLanguage()?->getId(),
+            'proxyUserId' => self::getProxyUser()?->getId()
         ];
     }
 
@@ -862,5 +873,17 @@ abstract class ResidentialDeviceAbstract
     public function getLanguage(): ?LanguageInterface
     {
         return $this->language;
+    }
+
+    protected function setProxyUser(?ProxyUserInterface $proxyUser = null): static
+    {
+        $this->proxyUser = $proxyUser;
+
+        return $this;
+    }
+
+    public function getProxyUser(): ?ProxyUserInterface
+    {
+        return $this->proxyUser;
     }
 }

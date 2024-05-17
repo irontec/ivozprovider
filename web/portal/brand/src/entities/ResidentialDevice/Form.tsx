@@ -25,10 +25,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'description',
         'password',
         'directConnectivity',
+        'transport',
         'ip',
         'port',
-        'transport',
         'ruriDomain',
+        'proxyUser',
       ],
     },
   ];

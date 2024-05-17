@@ -33,6 +33,7 @@ export type ResidentialDevicePropertyList<T> = {
   calleridUpdateHeader?: T;
   updateCallerid?: T;
   ruriDomain?: T;
+  proxyUser?: T;
 };
 
 export type ResidentialDeviceProperties = ResidentialDevicePropertyList<

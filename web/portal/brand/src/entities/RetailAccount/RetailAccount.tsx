@@ -21,6 +21,7 @@ const properties: RetailAccountProperties = {
     pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
     maxLength: 100,
     helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
+    required: true,
   },
   domain: {
     label: _('Domain'),
@@ -46,13 +47,11 @@ const properties: RetailAccountProperties = {
     label: _('Destination IP address'),
     pattern: new RegExp('^[.0-9]+$'),
     helpText: _('e.g. 8.8.8.8'),
-    required: true,
   },
   port: {
     label: _('Port'),
     pattern: new RegExp('^[0-9]+$'),
     default: 5060,
-    required: true,
   },
   password: {
     label: _('Password'),
@@ -84,11 +83,11 @@ const properties: RetailAccountProperties = {
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport', 'ruriDomain'],
+        show: ['ip', 'port', 'transport', 'ruriDomain', 'proxyUser'],
         hide: ['multiContact'],
       },
       no: {
-        hide: ['ip', 'port', 'transport', 'ruriDomain'],
+        hide: ['ip', 'port', 'transport', 'ruriDomain', 'proxyUser'],
         show: ['multiContact'],
       },
     },
@@ -145,7 +144,11 @@ const properties: RetailAccountProperties = {
   ruriDomain: {
     label: _('R-URI domain'),
     type: 'string',
+  },
+  proxyUser: {
+    label: _('Local Address'),
     required: true,
+    default: '__null__',
   },
 };
 

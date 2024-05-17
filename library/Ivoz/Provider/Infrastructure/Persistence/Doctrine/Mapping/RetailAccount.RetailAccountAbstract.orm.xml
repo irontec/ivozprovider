@@ -69,6 +69,7 @@
         <option name="unsigned">1</option>
       </options>
     </field>
+    <field name="ruriDomain" type="string" column="ruri_domain" length="190" nullable="true"/>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="residentialDevices" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
@@ -94,6 +95,10 @@
         <join-column name="outgoingDdiId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <field name="ruriDomain" type="string" column="ruri_domain" length="190" nullable="true"/>
+    <many-to-one field="proxyUser" target-entity="Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="proxyUserId" referenced-column-name="id" on-delete="SET NULL" on-update="RESTRICT" nullable="1"/>
+      </join-columns>
+    </many-to-one>
   </mapped-superclass>
 </doctrine-mapping>

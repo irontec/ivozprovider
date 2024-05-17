@@ -17,6 +17,7 @@ const properties: ResidentialDeviceProperties = {
     pattern: new RegExp(`^[a-zA-Z0-9_*]+$`),
     maxLength: 100,
     helpText: _(`Allowed characters: a-z, A-Z, 0-9, underscore and '*'`),
+    required: true,
   },
   description: {
     label: _('Description'),
@@ -36,13 +37,11 @@ const properties: ResidentialDeviceProperties = {
     label: _('IP address'),
     pattern: new RegExp(`^[.0-9]+$`),
     helpText: _(`e.g. 8.8.8.8`),
-    required: true,
   },
   port: {
     label: _('Port'),
     pattern: new RegExp(`^[0-9]+$`),
     default: 5060,
-    required: true,
   },
   password: {
     label: _('Password'),
@@ -67,12 +66,12 @@ const properties: ResidentialDeviceProperties = {
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport', 'ruriDomain'],
+        show: ['ip', 'port', 'transport', 'ruriDomain', 'proxyUser'],
         hide: ['multiContact'],
       },
       no: {
         show: ['multiContact'],
-        hide: ['ip', 'port', 'transport', 'ruriDomain'],
+        hide: ['ip', 'port', 'transport', 'ruriDomain', 'proxyUser'],
       },
     },
   },
@@ -214,6 +213,10 @@ const properties: ResidentialDeviceProperties = {
   ruriDomain: {
     label: _('R-URI domain'),
     type: 'string',
+  },
+  proxyUser: {
+    label: _('Local Address'),
+    default: '__null__',
     required: true,
   },
 };

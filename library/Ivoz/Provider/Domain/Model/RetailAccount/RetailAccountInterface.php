@@ -11,6 +11,7 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Doctrine\Common\Collections\Collection;
@@ -155,6 +156,8 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
     public function getOutgoingDdi(): ?DdiInterface;
+
+    public function getProxyUser(): ?ProxyUserInterface;
 
     public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
 
