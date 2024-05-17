@@ -2742,6 +2742,27 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/FaxesRelUser/FaxesRelUser.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>FaxesRelUser</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/FaxesRelUser/FaxesRelUserAbstract.php">
+    <MixedArgument occurrences="4">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFax())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFax())</code>
+      <code>$fkTransformer-&gt;transform($user)</code>
+      <code>$fkTransformer-&gt;transform($user)</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1">
+      <code>new static()</code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/FaxesRelUser/FaxesRelUserTrait.php">
+    <TooManyArguments occurrences="1">
+      <code>parent::__construct(...func_get_args())</code>
+    </TooManyArguments>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/Feature/FeatureAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
   </file>
