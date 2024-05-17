@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\VoicemailRelUser;
 
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+
 /**
  * VoicemailRelUser
  */
@@ -26,5 +28,12 @@ class VoicemailRelUser extends VoicemailRelUserAbstract implements VoicemailRelU
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getVoicemail(): VoicemailInterface
+    {
+        /** @var VoicemailInterface $voicemail */
+        $voicemail =  parent::getVoicemail();
+        return $voicemail;
     }
 }

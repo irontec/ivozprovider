@@ -45,6 +45,7 @@ services:
         calls:
             - [ addRepository, ['matchListRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList")']]
             - [ addRepository, ['voicemailRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Voicemail\\Voicemail")']]
+            - [ addRepository, ['voicemailRelUserRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\VoicemailRelUser\\VoicemailRelUser")']]
 
     #######################################
     ## Controllers
