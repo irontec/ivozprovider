@@ -35,6 +35,13 @@ Feature: Retrieve residential devices status
                       "userAgent": "Yealink SIP-T23G 44.80.0.130"
                   }
               ]
+          },
+          {
+              "name": "residentialDevice6",
+              "directConnectivity": "yes",
+              "id": 6,
+              "domainName": "retail.irontec.com",
+              "status": []
           }
       ]
       """

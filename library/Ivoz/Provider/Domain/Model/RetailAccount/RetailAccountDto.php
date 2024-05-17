@@ -146,8 +146,10 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
+            unset($contextProperties['multiContact']);
         } elseif ($role === 'ROLE_COMPANY_ADMIN') {
             $contextProperties['companyId'] = 'company';
+            unset($contextProperties['directConnectivity']);
         }
 
         $this->setByContext(
@@ -180,6 +182,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'status',
             'rtpEncryption',
             'multiContact',
+            'ruriDomain',
         ];
 
         return array_filter(

@@ -66,6 +66,27 @@ class ProviderRetailAccount extends Fixture implements DependentFixtureInterface
             $manager->persist($item);
         }
 
+        /** @var RetailAccount $item6 */
+        $item6 = $this->createEntityInstance(RetailAccount::class);
+        (function () use ($fixture) {
+            $this->setName('testRetailAccount6');
+            $this->setTransport('udp');
+            $this->setIp('1.2.3.4');
+            $this->setPort(1024);
+            $this->setDirectConnectivity('yes');
+            $this->setPassword('9rv6G3TVc-');
+            $this->setBrand(
+                $fixture->getReference('_reference_ProviderBrand1')
+            );
+            $this->setCompany(
+                $fixture->getReference('_reference_ProviderCompany3')
+            );
+        })->call($item6);
+
+        $this->addReference('_reference_ProviderRetailAccount6', $item6);
+        $this->sanitizeEntityValues($item6);
+        $manager->persist($item6);
+
         $manager->flush();
     }
 

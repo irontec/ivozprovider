@@ -77,6 +77,17 @@ Feature: Retrieve retail accounts status
                       "userAgent": "Yealink SIP-T23G 44.80.0.130"
                   }
               ]
+          },
+          {
+              "name": "testRetailAccount6",
+              "description": "",
+              "directConnectivity": "yes",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 6,
+              "company": 3,
+              "domainName": "retail.irontec.com",
+              "status": []
           }
       ]
       """

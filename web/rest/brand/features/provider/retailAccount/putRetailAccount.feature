@@ -44,6 +44,7 @@ Feature: Update ddi
           "t38Passthrough": "no",
           "rtpEncryption": false,
           "multiContact": true,
+          "ruriDomain": null,
           "id": 1,
           "company": 1,
           "transformationRuleSet": null,

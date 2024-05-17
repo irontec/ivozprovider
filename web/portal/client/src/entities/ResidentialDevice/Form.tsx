@@ -24,7 +24,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'name',
         'description',
         'password',
-        'directConnectivity',
         'transport',
         'ip',
         'port',

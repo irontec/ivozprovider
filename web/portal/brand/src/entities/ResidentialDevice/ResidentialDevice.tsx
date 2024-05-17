@@ -30,16 +30,19 @@ const properties: ResidentialDeviceProperties = {
       tcp: 'TCP',
       tls: 'TLS',
     },
+    required: true,
   },
   ip: {
     label: _('IP address'),
     pattern: new RegExp(`^[.0-9]+$`),
     helpText: _(`e.g. 8.8.8.8`),
+    required: true,
   },
   port: {
     label: _('Port'),
     pattern: new RegExp(`^[0-9]+$`),
     default: 5060,
+    required: true,
   },
   password: {
     label: _('Password'),
@@ -64,12 +67,12 @@ const properties: ResidentialDeviceProperties = {
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport'],
+        show: ['ip', 'port', 'transport', 'ruriDomain'],
         hide: ['multiContact'],
       },
       no: {
         show: ['multiContact'],
-        hide: ['ip', 'port', 'transport'],
+        hide: ['ip', 'port', 'transport', 'ruriDomain'],
       },
     },
   },
@@ -207,6 +210,11 @@ const properties: ResidentialDeviceProperties = {
         hide: ['direct_media_method', 'callerid_update_header'],
       },
     },
+  },
+  ruriDomain: {
+    label: _('R-URI domain'),
+    type: 'string',
+    required: true,
   },
 };
 

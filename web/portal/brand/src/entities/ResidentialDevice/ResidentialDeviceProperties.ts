@@ -32,6 +32,7 @@ export type ResidentialDevicePropertyList<T> = {
   directMediaMethod?: T;
   calleridUpdateHeader?: T;
   updateCallerid?: T;
+  ruriDomain?: T;
 };
 
 export type ResidentialDeviceProperties = ResidentialDevicePropertyList<

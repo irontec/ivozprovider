@@ -136,8 +136,10 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
+            unset($contextProperties['multiContact']);
         } elseif ($role === 'ROLE_COMPANY_ADMIN') {
             $contextProperties['companyId'] = 'company';
+            unset($contextProperties['directConnectivity']);
         }
 
         $this->setByContext(
@@ -176,6 +178,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'domainName',
             'status',
             'domainId',
+            'ruriDomain',
         ];
 
         return array_filter(

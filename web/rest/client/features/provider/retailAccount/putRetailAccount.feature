@@ -38,7 +38,7 @@ Feature: Update retail accounts
     Given I add Retail Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/retail_accounts/1" with body:
+      And I send a "PUT" request to "/retail_accounts/6" with body:
       """
       {
         "directConnectivity": "yes",
@@ -53,7 +53,7 @@ Feature: Update retail accounts
       And the JSON should be like:
       """
       {
-        "id": 1,
+        "id": 6,
         "directConnectivity": "yes",
         "ip": "10.10.10.10",
         "port": 1010,
@@ -66,7 +66,7 @@ Feature: Update retail accounts
     Given I add Retail Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/retail_accounts/1" with body:
+      And I send a "PUT" request to "/retail_accounts/6" with body:
       """
       {
         "directConnectivity": "yes",
@@ -82,7 +82,7 @@ Feature: Update retail accounts
       And the JSON should be like:
       """
       {
-        "id": 1,
+        "id": 6,
         "directConnectivity": "yes",
         "ip": null,
         "port": null,
@@ -95,7 +95,7 @@ Feature: Update retail accounts
     Given I add Retail Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/retail_accounts/1" with body:
+      And I send a "PUT" request to "/retail_accounts/6" with body:
       """
       {
         "directConnectivity": "yes",
