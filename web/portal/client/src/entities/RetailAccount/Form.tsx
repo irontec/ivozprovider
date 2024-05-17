@@ -41,7 +41,13 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Advanced Configuration'),
-      fields: ['fromDomain', 'ddiIn', 't38Passthrough', 'rtpEncryption'],
+      fields: [
+        'fromDomain',
+        'ddiIn',
+        't38Passthrough',
+        'rtpEncryption',
+        'multiContact',
+      ],
     },
     {
       legend: _('Status'),
