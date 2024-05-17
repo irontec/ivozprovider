@@ -985,6 +985,15 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
 Ivoz\Provider\Domain\Model\FaxesInOut\File: ~
 
 Ivoz\Provider\Domain\Model\Fax\Fax:
+  itemOperations:
+    get: ~
+    put:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Fax\FaxDto::CONTEXT_WITH_REL_USERS
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Fax\FaxDto::CONTEXT_WITH_REL_USERS
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
