@@ -50,6 +50,11 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     private $paused = 0;
 
     /**
+     * @var string|null
+     */
+    private $reasonPaused = null;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -81,6 +86,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
             'stateInterface' => 'stateInterface',
             'penalty' => 'penalty',
             'paused' => 'paused',
+            'reasonPaused' => 'reasonPaused',
             'id' => 'id',
             'queueMemberId' => 'queueMember'
         ];
@@ -99,6 +105,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
             'stateInterface' => $this->getStateInterface(),
             'penalty' => $this->getPenalty(),
             'paused' => $this->getPaused(),
+            'reasonPaused' => $this->getReasonPaused(),
             'id' => $this->getId(),
             'queueMember' => $this->getQueueMember()
         ];
@@ -199,6 +206,18 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     public function getPaused(): ?int
     {
         return $this->paused;
+    }
+
+    public function setReasonPaused(?string $reasonPaused): static
+    {
+        $this->reasonPaused = $reasonPaused;
+
+        return $this;
+    }
+
+    public function getReasonPaused(): ?string
+    {
+        return $this->reasonPaused;
     }
 
     /**

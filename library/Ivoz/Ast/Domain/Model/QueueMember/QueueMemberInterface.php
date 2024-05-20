@@ -61,5 +61,7 @@ interface QueueMemberInterface extends LoggableEntityInterface
 
     public function getPaused(): int;
 
+    public function getReasonPaused(): ?string;
+
     public function getQueueMember(): ?\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 }

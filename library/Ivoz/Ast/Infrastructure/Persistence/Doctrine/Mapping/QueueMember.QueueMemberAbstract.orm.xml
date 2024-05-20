@@ -42,6 +42,11 @@
                 <option name="default">0</option>
             </options>
         </field>
+        <field name="reasonPaused" type="string" column="reason_paused" length="80" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
         <many-to-one field="queueMember" target-entity="Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface" fetch="LAZY">
             <join-columns>
                 <join-column name="queueMemberId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
