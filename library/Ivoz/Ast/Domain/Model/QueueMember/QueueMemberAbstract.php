@@ -57,6 +57,12 @@ abstract class QueueMemberAbstract
     protected $paused = 0;
 
     /**
+     * @var ?string
+     * column: reason_paused
+     */
+    protected $reasonPaused = null;
+
+    /**
      * @var ?\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface
      */
     protected $queueMember = null;
@@ -169,6 +175,7 @@ abstract class QueueMemberAbstract
         );
 
         $self
+            ->setReasonPaused($dto->getReasonPaused())
             ->setQueueMember($fkTransformer->transform($dto->getQueueMember()));
 
         $self->initChangelog();
@@ -209,6 +216,7 @@ abstract class QueueMemberAbstract
             ->setStateInterface($stateInterface)
             ->setPenalty($penalty)
             ->setPaused($paused)
+            ->setReasonPaused($dto->getReasonPaused())
             ->setQueueMember($fkTransformer->transform($dto->getQueueMember()));
 
         return $this;
@@ -227,6 +235,7 @@ abstract class QueueMemberAbstract
             ->setStateInterface(self::getStateInterface())
             ->setPenalty(self::getPenalty())
             ->setPaused(self::getPaused())
+            ->setReasonPaused(self::getReasonPaused())
             ->setQueueMember(QueueMember::entityToDto(self::getQueueMember(), $depth));
     }
 
@@ -243,6 +252,7 @@ abstract class QueueMemberAbstract
             'state_interface' => self::getStateInterface(),
             'penalty' => self::getPenalty(),
             'paused' => self::getPaused(),
+            'reason_paused' => self::getReasonPaused(),
             'queueMemberId' => self::getQueueMember()?->getId()
         ];
     }
@@ -339,6 +349,22 @@ abstract class QueueMemberAbstract
     public function getPaused(): int
     {
         return $this->paused;
+    }
+
+    protected function setReasonPaused(?string $reasonPaused = null): static
+    {
+        if (!is_null($reasonPaused)) {
+            Assertion::maxLength($reasonPaused, 80, 'reasonPaused value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->reasonPaused = $reasonPaused;
+
+        return $this;
+    }
+
+    public function getReasonPaused(): ?string
+    {
+        return $this->reasonPaused;
     }
 
     protected function setQueueMember(?\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember = null): static
