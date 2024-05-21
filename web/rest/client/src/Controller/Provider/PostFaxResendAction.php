@@ -4,7 +4,7 @@ namespace Controller\Provider;
 
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutRepository;
-use Service\Domain\FaxesInOut\ResendFax;
+use Ivoz\Provider\Domain\Service\FaxesInOut\ResendFax;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
