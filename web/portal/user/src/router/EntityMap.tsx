@@ -29,6 +29,26 @@ const getEntityMap = (): RouteMap => {
       divider: true,
     },
     {
+      entity: entities.Fax,
+      children: [
+        {
+          entity: entities.FaxesOut,
+          filterBy: 'fax',
+          filterValues: {
+            'type[exact]': 'Out',
+          },
+          children: [...Object.values(entities.FaxesOut.customActions)],
+        },
+        {
+          entity: entities.FaxesIn,
+          filterBy: 'fax',
+          filterValues: {
+            'type[exact]': 'In',
+          },
+        },
+      ],
+    },
+    {
       entity: {
         ...entities.UsersCdr,
         acl: {
