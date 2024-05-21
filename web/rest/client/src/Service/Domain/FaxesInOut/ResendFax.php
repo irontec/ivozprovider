@@ -1,6 +1,6 @@
 <?php
 
-namespace Service\Domain\FaxesInOut;
+namespace Ivoz\Provider\Domain\Service\FaxesInOut;
 
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
