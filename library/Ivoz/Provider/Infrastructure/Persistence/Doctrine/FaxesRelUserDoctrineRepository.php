@@ -5,10 +5,12 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Repository\DoctrineRepository;
+use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUser;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserRepository;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserDto;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
  * FaxesRelUserDoctrineRepository
@@ -28,6 +30,25 @@ class FaxesRelUserDoctrineRepository extends DoctrineRepository implements Faxes
             $registry,
             FaxesRelUser::class,
             $entityPersisterInterface
+        );
+    }
+
+    public function getFaxesIdsByUser(UserInterface $user): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $qb->select('IDENTITY(self.fax) as faxId')
+            ->where(
+                'self.user = :id'
+            )
+            ->setParameter(':id', $user->getId());
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_map(
+            function ($row): int {
+                return (int) $row['faxId'];
+            },
+            $result
         );
     }
 }
