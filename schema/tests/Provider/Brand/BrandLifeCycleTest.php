@@ -6,6 +6,7 @@ use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Core\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
 use Ivoz\Provider\Domain\Model\Country\Country;
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUser;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup;
@@ -85,6 +86,7 @@ class BrandLifeCycleTest extends KernelTestCase
             Recording::class,
             FaxesInOut::class,
             Fax::class,
+            FaxesRelUser::class,
             TpRatingProfile::class,
             RatingProfile::class,
             TpAccountAction::class,
