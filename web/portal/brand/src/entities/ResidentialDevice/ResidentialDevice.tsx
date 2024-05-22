@@ -228,7 +228,7 @@ const ResidentialDevice: EntityInterface = {
   iden: 'ResidentialDevice',
   title: _('Residential Device', { count: 2 }),
   path: '/residential_devices',
-  toStr: (row: ResidentialDevicePropertyList<EntityValues>) => `${row.id}`,
+  toStr: (row: ResidentialDevicePropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: ['company', 'name', 'domain', 'description', 'statusIcon'],
   acl: {

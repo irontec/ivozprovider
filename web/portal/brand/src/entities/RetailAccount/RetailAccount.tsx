@@ -159,7 +159,7 @@ const RetailAccount: EntityInterface = {
   iden: 'RetailAccount',
   title: _('Retail Account', { count: 2 }),
   path: '/retail_accounts',
-  toStr: (row: RetailAccountPropertyList<EntityValues>) => `${row.id}`,
+  toStr: (row: RetailAccountPropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: ['company', 'name', 'domain', 'description', 'statusIcon'],
   acl: {
