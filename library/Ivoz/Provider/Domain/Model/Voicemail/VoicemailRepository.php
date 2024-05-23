@@ -4,7 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Voicemail;
 
 use Doctrine\Common\Collections\Selectable;
 use Doctrine\Persistence\ObjectRepository;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageInterface;
 
 interface VoicemailRepository extends ObjectRepository, Selectable
 {
@@ -28,4 +30,9 @@ interface VoicemailRepository extends ObjectRepository, Selectable
      * @param array<string, mixed> $criteria
      */
     public function count(array $criteria): int;
+
+    /**
+     * @return   int[]
+     */
+    public function getGenericVoicemailIds(): array;
 }
