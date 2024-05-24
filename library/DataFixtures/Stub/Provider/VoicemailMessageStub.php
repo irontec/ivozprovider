@@ -64,5 +64,21 @@ class VoicemailMessageStub
                 3
             );
         $this->append($dto);
+
+        $dto = (new VoicemailMessageDto(4))
+            ->setCalldate(new \DateTime('2022-04-01 12:31:52', new \DateTimeZone('UTC')))
+            ->setCaller("Alice <101>")
+            ->setFolder("INBOX")
+            ->setDuration(21)
+            ->setRecordingFileFileSize(182011)
+            ->setRecordingFileMimeType('audio/x-wav; charset=binary')
+            ->setRecordingFileBaseName('Voicemail Recording - Generic - 2022-04-01 12:31:52.wav')
+            ->setVoicemailId(
+                3
+            )
+            ->setAstVoicemailMessageId(
+                3
+            );
+        $this->append($dto);
     }
 }

@@ -15,45 +15,57 @@ Feature: Retrieve voicemail messages
       """
       [
           {
-              "calldate": "2022-03-31 14:08:43",
+              "calldate": "2022-04-01 14:31:52",
               "folder": "INBOX",
               "caller": "Alice <101>",
-              "duration": 4,
-              "id": 1
+              "duration": 21,
+              "id": 4
           }
       ]
       """
 
-  Scenario: Retrieve certain voicemail message json
+  Scenario: Retrieve certain generic voicemail message json
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "voicemail_messages/1"
+      And I send a "GET" request to "voicemail_messages/4"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
       {
-          "calldate": "2022-03-31 14:08:43",
+          "calldate": "2022-04-01 14:31:52",
+          "folder": "INBOX",
           "caller": "Alice <101>",
-          "duration": 4,
-          "id": 1,
+          "duration": 21,
+          "id": 4,
           "recordingFile": {
-              "fileSize": 65324,
+              "fileSize": 182011,
               "mimeType": "audio/x-wav; charset=binary",
-              "baseName": "Voicemail Recording - Alice Allison - 2022-03-31 12:08:43.wav"
+              "baseName": "Voicemail Recording - Generic - 2022-04-01 12:31:52.wav"
+          },
+          "metadataFile": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
           },
           "voicemail": {
               "enabled": true,
-              "name": "Voicemail For User1",
-              "email": "alice@democompany.com",
+              "name": "Voicemail Generic 1",
+              "email": "generic@voicemail.com",
               "sendMail": true,
-              "attachSound": true,
-              "id": 1,
-              "user": 1,
+              "attachSound": false,
+              "id": 3,
+              "user": null,
               "residentialDevice": null,
               "company": 1,
-              "locution": 1
+              "locution": null
           }
       }
       """
+
+  Scenario: Retrieve certain users voicemail message json
+    Given I add Company Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "voicemail_messages/1"
+     Then the response status code should be 404

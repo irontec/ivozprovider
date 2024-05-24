@@ -2245,8 +2245,11 @@ Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
-      inherited:
-        voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+      - and:
+        - inherited:
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+        - voicemail:
+            in: 'voicemailRepository.getGenericVoicemailIds(user)'
     write_access_control:
       inherited:
         voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'

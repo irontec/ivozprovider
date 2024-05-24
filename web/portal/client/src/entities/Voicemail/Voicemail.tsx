@@ -1,5 +1,6 @@
 import { isEntityItem } from '@irontec/ivoz-ui';
 import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -10,6 +11,7 @@ import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import MailIcon from '@mui/icons-material/Mail';
 
+import VoicemailMessage from '../VoicemailMessage/VoicemailMessage';
 import { VoicemailProperties } from './VoicemailProperties';
 
 const properties: VoicemailProperties = {
@@ -74,9 +76,25 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 
   if (
     isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === VoicemailMessage.iden
+  ) {
+    if (row.user !== null) {
+      return (
+        <ChildEntityLink
+          row={row}
+          routeMapItem={routeMapItem}
+          disabled={true}
+        />
+      );
+    }
+  }
+
+  if (
+    isEntityItem(routeMapItem) &&
     routeMapItem.entity.iden === Voicemail.iden
   ) {
     const isDeletePath = routeMapItem.route === `${Voicemail.path}/:id`;
+
     const allowDelete = row.user === null && row.residentialDevice === null;
 
     if (isDeletePath && !allowDelete) {

@@ -3,11 +3,13 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageInterface;
 
 /**
  * VoicemailDoctrineRepository
@@ -77,5 +79,28 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
     public function count(array $criteria): int
     {
         return parent::count($criteria);
+    }
+
+    public function getGenericVoicemailIds(): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $query = $qb
+            ->where(
+                $expression->isNull('self.user')
+            )->getQuery();
+
+        /** @var VoicemailInterface[] $voicemails */
+        $voicemails = $query->getResult();
+
+        $result = array_map(
+            function (VoicemailInterface $voicemail): int {
+                return $voicemail->getId() ?? -1;
+            },
+            $voicemails
+        );
+
+        return $result;
     }
 }
