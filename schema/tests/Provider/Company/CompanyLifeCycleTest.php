@@ -12,6 +12,7 @@ use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Fax\Fax;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUser;
 use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
@@ -146,6 +147,7 @@ class CompanyLifeCycleTest extends KernelTestCase
             Recording::class,
             FaxesInOut::class,
             Fax::class,
+            FaxesRelUser::class,
             TpRatingProfile::class,
             RatingProfile::class,
             TpAccountAction::class,

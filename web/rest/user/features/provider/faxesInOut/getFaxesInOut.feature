@@ -1,11 +1,11 @@
 Feature: Retrieve faxes in outs
   In order to manage faxes in out
-  As a client admin
+  As a user
   I need to be able to retrieve them through the API.
 
   @createSchema
   Scenario: Retrieve the faxes in out json list
-    Given I add Company Authorization header
+    Given I add User Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "faxes_in_outs"
      Then the response status code should be 200
@@ -52,25 +52,12 @@ Feature: Retrieve faxes in outs
                   "mimeType": null,
                   "baseName": null
               }
-          },
-          {
-              "calldate": "2018-01-02 01:00:00",
-              "src": "34688888888",
-              "dst": "34688888881",
-              "type": "Out",
-              "status": "error",
-              "id": 4,
-              "file": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              }
           }
       ]
       """
 
   Scenario: Retrieve certain faxes in out json
-    Given I add Company Authorization header
+    Given I add User Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "faxes_in_outs/1"
      Then the response status code should be 200
@@ -95,8 +82,7 @@ Feature: Retrieve faxes in outs
               "name": "Test Fax",
               "email": null,
               "sendByEmail": false,
-              "id": 1,
-              "outgoingDdi": null
+              "id": 1
           },
           "dstCountry": null
       }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Controller\Provider;
+namespace Controller\My;
 
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutRepository;

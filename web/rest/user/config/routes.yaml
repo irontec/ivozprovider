@@ -195,3 +195,11 @@ get_my_voicemails:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     _api_collection_operation_name: 'get_my_voicemails'
     _api_receive: false
+
+post_fax_resend:
+  path: '/faxes_in_outs/{id}/resend'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\My\PostFaxResendAction
+    _api_item_operation_name: 'post_fax_resend'
+    _api_receive: false

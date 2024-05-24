@@ -103,7 +103,7 @@ class CompanySoftDeleteTest extends KernelTestCase
             Fax::class
         );
 
-        $this->assertCount(1, $changelog);
+        $this->assertCount(2, $changelog);
 
         $this->assertEquals(
             $changelog[0]->getData(),

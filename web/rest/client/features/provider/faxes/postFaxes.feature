@@ -27,7 +27,7 @@ Feature: Create faxes
           "name": "New Fax",
           "email": "something@irontec.com",
           "sendByEmail": true,
-          "id": 2,
+          "id": 3,
           "outgoingDdi": null,
           "relUserIds": [
               1,
@@ -39,7 +39,7 @@ Feature: Create faxes
   Scenario: Retrieve created fax
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "faxes/2"
+      And I send a "GET" request to "faxes/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -49,7 +49,7 @@ Feature: Create faxes
           "name": "New Fax",
           "email": "something@irontec.com",
           "sendByEmail": true,
-          "id": 2,
+          "id": 3,
           "outgoingDdi": null,
           "relUserIds": [
               1,
