@@ -327,3 +327,5 @@ doctrine:
         Ivoz\Core\Domain\Model\Changelog\Changelog
       Ivoz\Core\Domain\Model\Commandlog\CommandlogInterface:
         Ivoz\Core\Domain\Model\Commandlog\Commandlog
+      Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface:
+        Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUser

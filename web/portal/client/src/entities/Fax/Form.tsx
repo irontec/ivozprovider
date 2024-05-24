@@ -7,6 +7,8 @@ import {
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 
+import { useStoreState } from '../../store';
+
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
   const fkChoices = useFkChoices({
@@ -16,10 +18,16 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+
   const groups: Array<FieldsetGroups> = [
     {
+      legend: _('Basic configuration'),
+      fields: ['name', aboutMe?.vpbx && 'relUserIds'],
+    },
+    {
       legend: _('Outbound configuration'),
-      fields: ['name', 'outgoingDdi'],
+      fields: ['outgoingDdi'],
     },
     {
       legend: _('Inbound configuration'),

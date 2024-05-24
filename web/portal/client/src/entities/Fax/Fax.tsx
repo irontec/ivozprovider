@@ -35,6 +35,12 @@ const properties: FaxProperties = {
     label: _('Outgoing DDI'),
     null: _("Client's default"),
   },
+  relUserIds: {
+    label: _('Users'),
+    type: 'array',
+    $ref: '#/definitions/User',
+    helpText: _('Selected users will find this fax in their user portal.'),
+  },
 };
 
 const columns = ['name', 'outgoingDdi', 'sendByEmail', 'email'];

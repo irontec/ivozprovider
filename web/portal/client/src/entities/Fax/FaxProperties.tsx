@@ -9,6 +9,7 @@ export type FaxPropertyList<T> = {
   email?: T;
   sendByEmail?: T;
   outgoingDdi?: T;
+  relUserIds?: T;
 };
 
 export type FaxProperties = FaxPropertyList<Partial<PropertySpec>>;

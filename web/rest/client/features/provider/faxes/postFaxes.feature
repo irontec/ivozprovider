@@ -14,7 +14,8 @@ Feature: Create faxes
           "name": "New Fax",
           "email": "something@irontec.com",
           "sendByEmail": true,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "relUserIds": ["1","2"]
       }
       """
      Then the response status code should be 201
@@ -27,7 +28,11 @@ Feature: Create faxes
           "email": "something@irontec.com",
           "sendByEmail": true,
           "id": 2,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "relUserIds": [
+              1,
+              2
+          ]
       }
       """
 
@@ -45,6 +50,10 @@ Feature: Create faxes
           "email": "something@irontec.com",
           "sendByEmail": true,
           "id": 2,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "relUserIds": [
+              1,
+              2
+          ]
       }
       """
