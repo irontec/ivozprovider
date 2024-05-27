@@ -238,7 +238,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.ConferenceRoom,
-          isAccessible: (aboutMe) =>
+          isAccessible: (aboutMe) =>  
             aboutMe.vpbx &&
             aboutMe.features.includes(ClientFeatures.conferences),
         },
