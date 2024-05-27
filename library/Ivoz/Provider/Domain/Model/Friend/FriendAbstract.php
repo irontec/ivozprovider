@@ -15,12 +15,14 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Language\Language;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
 
 /**
 * FriendAbstract
@@ -186,6 +188,11 @@ abstract class FriendAbstract
     protected $interCompany = null;
 
     /**
+     * @var ?ProxyUserInterface
+     */
+    protected $proxyUser = null;
+
+    /**
      * Constructor
      */
     protected function __construct(
@@ -343,7 +350,8 @@ abstract class FriendAbstract
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()));
+            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         $self->initChangelog();
 
@@ -419,7 +427,8 @@ abstract class FriendAbstract
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()));
+            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         return $this;
     }
@@ -457,7 +466,8 @@ abstract class FriendAbstract
             ->setCallAcl(CallAcl::entityToDto(self::getCallAcl(), $depth))
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
             ->setLanguage(Language::entityToDto(self::getLanguage(), $depth))
-            ->setInterCompany(Company::entityToDto(self::getInterCompany(), $depth));
+            ->setInterCompany(Company::entityToDto(self::getInterCompany(), $depth))
+            ->setProxyUser(ProxyUser::entityToDto(self::getProxyUser(), $depth));
     }
 
     /**
@@ -493,7 +503,8 @@ abstract class FriendAbstract
             'callAclId' => self::getCallAcl()?->getId(),
             'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
             'languageId' => self::getLanguage()?->getId(),
-            'interCompanyId' => self::getInterCompany()?->getId()
+            'interCompanyId' => self::getInterCompany()?->getId(),
+            'proxyUserId' => self::getProxyUser()?->getId()
         ];
     }
 
@@ -935,5 +946,17 @@ abstract class FriendAbstract
     public function getInterCompany(): ?CompanyInterface
     {
         return $this->interCompany;
+    }
+
+    protected function setProxyUser(?ProxyUserInterface $proxyUser = null): static
+    {
+        $this->proxyUser = $proxyUser;
+
+        return $this;
+    }
+
+    public function getProxyUser(): ?ProxyUserInterface
+    {
+        return $this->proxyUser;
     }
 }
