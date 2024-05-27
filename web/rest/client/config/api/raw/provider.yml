@@ -1060,8 +1060,7 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
           eq: "user.getCompany().getId()"
     delete_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
+        raw: 'FALSE'
     write_access_control:
     - and:
       - company:
@@ -1094,7 +1093,6 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
           !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
         ]
     put: ~
-    delete: ~
   collectionOperations:
     get: ~
     get_status_collection:
@@ -1105,7 +1103,6 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
         groups: [
           !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
         ]
-    post: ~
 
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
   attributes:
