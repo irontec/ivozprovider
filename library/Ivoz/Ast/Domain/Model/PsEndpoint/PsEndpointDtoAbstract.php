@@ -138,6 +138,11 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     private $rtpTimeoutHold = 600;
 
     /**
+     * @var string|null
+     */
+    private $extension = null;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -201,6 +206,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             't38UdptlNat' => 't38UdptlNat',
             'rtpTimeout' => 'rtpTimeout',
             'rtpTimeoutHold' => 'rtpTimeoutHold',
+            'extension' => 'extension',
             'id' => 'id',
             'terminalId' => 'terminal',
             'friendId' => 'friend',
@@ -239,6 +245,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             't38UdptlNat' => $this->getT38UdptlNat(),
             'rtpTimeout' => $this->getRtpTimeout(),
             'rtpTimeoutHold' => $this->getRtpTimeoutHold(),
+            'extension' => $this->getExtension(),
             'id' => $this->getId(),
             'terminal' => $this->getTerminal(),
             'friend' => $this->getFriend(),
@@ -546,6 +553,18 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     public function getRtpTimeoutHold(): ?int
     {
         return $this->rtpTimeoutHold;
+    }
+
+    public function setExtension(?string $extension): static
+    {
+        $this->extension = $extension;
+
+        return $this;
+    }
+
+    public function getExtension(): ?string
+    {
+        return $this->extension;
     }
 
     /**

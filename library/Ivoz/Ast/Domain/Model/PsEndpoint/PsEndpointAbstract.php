@@ -174,6 +174,12 @@ abstract class PsEndpointAbstract
     protected $rtpTimeoutHold = 600;
 
     /**
+     * @var ?string
+     * column: @extension
+     */
+    protected $extension = null;
+
+    /**
      * @var ?TerminalInterface
      * inversedBy psEndpoint
      */
@@ -338,6 +344,7 @@ abstract class PsEndpointAbstract
             ->setSendPai($dto->getSendPai())
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setTrustIdInbound($dto->getTrustIdInbound())
+            ->setExtension($dto->getExtension())
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
@@ -406,6 +413,7 @@ abstract class PsEndpointAbstract
             ->setT38UdptlNat($t38UdptlNat)
             ->setRtpTimeout($rtpTimeout)
             ->setRtpTimeoutHold($rtpTimeoutHold)
+            ->setExtension($dto->getExtension())
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
@@ -444,6 +452,7 @@ abstract class PsEndpointAbstract
             ->setT38UdptlNat(self::getT38UdptlNat())
             ->setRtpTimeout(self::getRtpTimeout())
             ->setRtpTimeoutHold(self::getRtpTimeoutHold())
+            ->setExtension(self::getExtension())
             ->setTerminal(Terminal::entityToDto(self::getTerminal(), $depth))
             ->setFriend(Friend::entityToDto(self::getFriend(), $depth))
             ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
@@ -480,6 +489,7 @@ abstract class PsEndpointAbstract
             't38_udptl_nat' => self::getT38UdptlNat(),
             'rtp_timeout' => self::getRtpTimeout(),
             'rtp_timeout_hold' => self::getRtpTimeoutHold(),
+            '@extension' => self::getExtension(),
             'terminalId' => self::getTerminal()?->getId(),
             'friendId' => self::getFriend()?->getId(),
             'residentialDeviceId' => self::getResidentialDevice()?->getId(),
@@ -918,6 +928,22 @@ abstract class PsEndpointAbstract
     public function getRtpTimeoutHold(): int
     {
         return $this->rtpTimeoutHold;
+    }
+
+    protected function setExtension(?string $extension = null): static
+    {
+        if (!is_null($extension)) {
+            Assertion::maxLength($extension, 25, 'extension value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->extension = $extension;
+
+        return $this;
+    }
+
+    public function getExtension(): ?string
+    {
+        return $this->extension;
     }
 
     public function setTerminal(?TerminalInterface $terminal = null): static
