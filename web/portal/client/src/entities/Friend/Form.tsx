@@ -32,7 +32,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
     {
       legend: _('Basic Configuration'),
       fields: [
-        'directConnectivity',
         'priority',
         'description',
         !isInterVpbx && 'name',
@@ -41,7 +40,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'ip',
         'port',
         'ruriDomain',
-        'alwaysApplyTransformations',
         'interCompany',
       ],
     },
@@ -65,6 +63,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         edit && 't38Passthrough',
         edit && 'rtpEncryption',
         'multiContact',
+        'alwaysApplyTransformations',
       ],
     },
     {

@@ -216,6 +216,13 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Friend,
+          aclOverride: () => {
+            return {
+              ...entities.Friend.acl,
+              create: false,
+              delete: false,
+            };
+          },
           isAccessible: (aboutMe) =>
             aboutMe.vpbx && aboutMe.features.includes(ClientFeatures.friends),
           children: [
