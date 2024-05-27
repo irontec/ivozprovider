@@ -27,7 +27,8 @@ Feature: Create friends
           "callAcl": null,
           "outgoingDdi": null,
           "language": null,
-          "company": 1
+          "company": 1,
+          "proxyUser": 1
       }
       """
      Then the response status code should be 201
@@ -46,7 +47,8 @@ Feature: Create friends
           "directConnectivity": "yes",
           "id": 3,
           "company": 1,
-          "interCompany": null
+          "interCompany": null,
+          "proxyUser": 1
       }
       """
 
@@ -119,6 +121,7 @@ Feature: Create friends
           "directConnectivity": "intervpbx",
           "id": 3,
           "company": 1,
-          "interCompany": 1
+          "interCompany": 1,
+          "proxyUser": null
       }
       """

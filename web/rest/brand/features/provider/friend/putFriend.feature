@@ -48,7 +48,8 @@ Feature: Update friends
           "directConnectivity": "yes",
           "id": 1,
           "company": 1,
-          "interCompany": null
+          "interCompany": null,
+          "proxyUser": 1
       }
       """
 
