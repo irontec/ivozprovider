@@ -156,7 +156,11 @@ class Users extends RouteHandlerAbstract
 
         // Set Company/Brand/Generic Music class
         $company = $caller->getCompany();
+        $brand = $company->getBrand();
         $this->agi->setVariable("__COMPANYID", $company->getId());
+        $this->agi->setVariable("__COMPANYTYPE", $company->getType());
+        $this->agi->setVariable("__BRANDID", $brand->getId());
+        $this->agi->setVariable("__ONDEMANDCODE", $company->getOnDemandRecordCode());
 
         // Mark this call as generated from user
         $this->agi->setVariable("__CALL_TYPE", "internal");

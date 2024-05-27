@@ -87,6 +87,8 @@ class Residentials extends RouteHandlerAbstract
         $company = $residential->getCompany();
         $brand = $company->getBrand();
         $this->agi->setVariable("__COMPANYID", $company->getId());
+        $this->agi->setVariable("__COMPANYTYPE", $company->getType());
+        $this->agi->setVariable("__BRANDID", $brand->getId());
         $this->agi->setVariable("CHANNEL(language)", $company->getLanguageCode());
 
         // Get call destination
