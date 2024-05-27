@@ -64,6 +64,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         edit && 'rtpEncryption',
         'multiContact',
         'alwaysApplyTransformations',
+        'trustSDP',
       ],
     },
     {

@@ -159,6 +159,7 @@ const properties: FriendProperties = {
           'transformationRuleSet',
           'callACL',
           'rtpEncryption',
+          'trustSDP',
         ],
         hide: ['multiContact', 'interCompany'],
       },
@@ -176,7 +177,14 @@ const properties: FriendProperties = {
           'rtpEncryption',
           'multiContact',
         ],
-        hide: ['ip', 'port', 'transport', 'interCompany', 'ruriDomain'],
+        hide: [
+          'ip',
+          'port',
+          'transport',
+          'interCompany',
+          'ruriDomain',
+          'trustSDP',
+        ],
       },
       intervpbx: {
         show: [],
@@ -198,6 +206,7 @@ const properties: FriendProperties = {
           'multiContact',
           'outgoingDdi',
           'alwaysApplyTransformations',
+          'trustSDP',
         ],
       },
     },
@@ -272,6 +281,14 @@ const properties: FriendProperties = {
   ruriDomain: {
     label: _('R-URI domain'),
     type: 'string',
+  },
+  trustSDP: {
+    label: _('Trust SDP'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '0',
   },
 };
 

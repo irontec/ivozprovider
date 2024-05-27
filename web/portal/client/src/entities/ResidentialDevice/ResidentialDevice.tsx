@@ -172,12 +172,19 @@ const properties: ResidentialDeviceProperties = {
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport', 'auth_needed'],
+        show: ['ip', 'port', 'transport', 'auth_needed', 'trustSDP'],
         hide: ['multiContact'],
       },
       no: {
         show: ['multiContact'],
-        hide: ['ip', 'port', 'transport', 'auth_needed', 'ruriDomain'],
+        hide: [
+          'ip',
+          'port',
+          'transport',
+          'auth_needed',
+          'ruriDomain',
+          'trustSDP',
+        ],
       },
     },
   },
@@ -250,6 +257,14 @@ const properties: ResidentialDeviceProperties = {
   ruriDomain: {
     label: _('R-URI domain'),
     type: 'string',
+  },
+  trustSDP: {
+    label: _('Trust SDP'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '0',
   },
 };
 
