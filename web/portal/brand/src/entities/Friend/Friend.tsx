@@ -156,6 +156,11 @@ const properties: FriendProperties = {
     label: _('R-URI domain'),
     type: 'string',
   },
+  proxyUser: {
+    label: _('Local Address'),
+    default: '__null__',
+    required: true,
+  },
 };
 
 const Friend: EntityInterface = {
