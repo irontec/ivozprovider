@@ -62,10 +62,15 @@ class Friend extends FriendAbstract implements FriendInterface
             if (!$this->getRuriDomain() && !$hasIpPort) {
                 throw new \DomainException('R-URI or IP + port must be provided');
             }
+
+            if (!$this->getProxyUser()) {
+                throw new \DomainException('Invalid empty proxy_user');
+            }
         } else {
             $this->setRuriDomain(null);
             $this->setIp(null);
             $this->setPort(null);
+            $this->setProxyUser(null);
         }
 
         if ($this->getIp() && !$this->getPort()) {
