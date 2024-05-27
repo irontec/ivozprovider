@@ -74,7 +74,8 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         // Set new callerid with updated extension number
         $endpointDto
             ->setCallerid($callerId)
-            ->setHintExtension($extension->getNumber());
+            ->setHintExtension($extension->getNumber())
+            ->setExtension($extension->getNumber());
 
         // Update user voicemail
         $voicemail = $user->getVoicemail();
