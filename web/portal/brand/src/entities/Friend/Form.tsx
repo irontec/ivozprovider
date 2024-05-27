@@ -9,7 +9,7 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
+  const { entityService, row, match, edit } = props;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -21,33 +21,33 @@ const Form = (props: EntityFormProps): JSX.Element => {
     {
       legend: _('Main'),
       fields: [
+        'company',
         'name',
         'description',
+        'priority',
+        'password',
+        'directConnectivity',
         'transport',
         'ip',
         'port',
-        'password',
-        'priority',
-        'allow',
-        'fromUser',
-        'fromDomain',
-        'directConnectivity',
-        'ddiIn',
-        't38Passthrough',
-        'id',
-        'company',
-        'transformationRuleSet',
-        'outgoingDdi',
-        'language',
+        'ruriDomain',
         'interCompany',
-        'domain',
-        'domainName',
-        'status',
       ],
     },
   ];
 
-  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+  const readOnlyProperties = {
+    company: edit,
+  };
+
+  return (
+    <DefaultEntityForm
+      {...props}
+      fkChoices={fkChoices}
+      groups={groups}
+      readOnlyProperties={readOnlyProperties}
+    />
+  );
 };
 
 export default Form;

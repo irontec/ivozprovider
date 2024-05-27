@@ -487,6 +487,9 @@ const getEntityMap = (): ExtendedRouteMap => {
             aboutMe.features.includes(ClientTypes.retail),
         },
         {
+          entity: entities.Friend,
+        },
+        {
           entity: entities.Corporation,
         },
       ],
