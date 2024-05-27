@@ -67,6 +67,7 @@ class Friend extends FriendAbstract implements FriendInterface
                 throw new \DomainException('Invalid empty proxy_user');
             }
         } else {
+            $this->setTrustSDP(false);
             $this->setRuriDomain(null);
             $this->setIp(null);
             $this->setPort(null);

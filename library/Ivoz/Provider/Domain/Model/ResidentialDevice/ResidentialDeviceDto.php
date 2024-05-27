@@ -219,7 +219,8 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'domainName',
             'status',
             'domainId',
-            'ruriDomain'
+            'ruriDomain',
+            'trustSDP'
         ];
 
         return array_filter(

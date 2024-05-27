@@ -65,6 +65,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
                 throw new \DomainException('Password cannot be empty for residential devices with no direct connectivity');
             }
 
+            $this->setTrustSDP(false);
             $this->setRuriDomain(null);
             $this->setIp(null);
             $this->setPort(null);

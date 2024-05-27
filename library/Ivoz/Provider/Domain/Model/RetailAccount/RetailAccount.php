@@ -58,6 +58,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
                 throw new \DomainException('Password cannot be empty for retail accounts with no direct connectivity');
             }
 
+            $this->setTrustSDP(false);
             $this->setRuriDomain(null);
             $this->setIp(null);
             $this->setPort(null);
