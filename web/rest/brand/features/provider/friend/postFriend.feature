@@ -27,7 +27,8 @@ Feature: Create friends
           "callAcl": null,
           "outgoingDdi": null,
           "language": null,
-          "company": 1
+          "company": 1,
+          "proxyUser": 1
       }
       """
      Then the response status code should be 201
@@ -43,7 +44,8 @@ Feature: Create friends
           "id": 4,
           "company": 1,
           "domain": 3,
-          "interCompany": null
+          "interCompany": null,
+          "proxyUser": 1
       }
       """
 
@@ -113,7 +115,8 @@ Feature: Create friends
           "id": 5,
           "company": 3,
           "domain": 6,
-          "interCompany": 2
+          "interCompany": 2,
+          "proxyUser": null
       }
       """
 
@@ -136,7 +139,8 @@ Feature: Create friends
               "id": 3,
               "company": 1,
               "domain": 3,
-              "interCompany": 3
+              "interCompany": 3,
+              "proxyUser": null
           },
           {
               "name": "InterCompany2_3",
@@ -146,7 +150,8 @@ Feature: Create friends
               "id": 4,
               "company": 2,
               "domain": 5,
-              "interCompany": 3
+              "interCompany": 3,
+              "proxyUser": null
           },
           {
               "name": "InterCompany1_3",
@@ -156,7 +161,8 @@ Feature: Create friends
               "id": 2,
               "company": 3,
               "domain": 6,
-              "interCompany": 1
+              "interCompany": 1,
+              "proxyUser": null
           }
       ]
       """
