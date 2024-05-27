@@ -134,7 +134,9 @@ class FriendDto extends FriendDtoAbstract
             'directConnectivity',
             'id',
             'companyId',
-            'interCompanyId'
+            'interCompanyId',
+            'proxyUserId',
+            'ruri_domain',
         ];
 
         return array_filter(
@@ -171,7 +173,8 @@ class FriendDto extends FriendDtoAbstract
             'outgoingDdiId',
             'languageId',
             'interCompanyId',
-            'ruriDomain'
+            'ruriDomain',
+            'proxyuserId',
         ];
 
         return array_filter(
