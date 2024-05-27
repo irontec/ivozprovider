@@ -28,6 +28,9 @@ class ProviderFriend extends Fixture implements DependentFixtureInterface
             $this->setTransport("udp");
             $this->setIp("1.2.3.4");
             $this->setPort('5060');
+            $this->setProxyUser(
+                $fixture->getReference('_reference_ProviderProxyUserProxyUser1')
+            );
             $this->setPassword("SDG3qd2j6+");
             $this->setPriority(1);
             $this->setFromDomain("");
