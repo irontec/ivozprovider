@@ -12,6 +12,7 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
@@ -228,6 +229,8 @@ interface FriendInterface extends LoggableEntityInterface
     public function getLanguage(): ?LanguageInterface;
 
     public function getInterCompany(): ?CompanyInterface;
+
+    public function getProxyUser(): ?ProxyUserInterface;
 
     public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
 
