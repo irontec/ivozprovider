@@ -43,17 +43,9 @@ Feature: Create friends
           "port": 5060,
           "password": "ZEF7t5n+b4",
           "priority": 2,
-          "allow": "alaw",
-          "fromUser": null,
-          "fromDomain": "",
           "directConnectivity": "yes",
-          "ddiIn": "yes",
-          "t38Passthrough": "no",
           "id": 3,
           "company": 1,
-          "transformationRuleSet": null,
-          "outgoingDdi": null,
-          "language": null,
           "interCompany": null
       }
       """
@@ -75,17 +67,58 @@ Feature: Create friends
           "port": 5060,
           "password": "ZEF7t5n+b4",
           "priority": 2,
-          "allow": "alaw",
-          "fromUser": null,
-          "fromDomain": "",
           "directConnectivity": "yes",
-          "ddiIn": "yes",
-          "t38Passthrough": "no",
           "id": 3,
           "company": "~",
+          "interCompany": null
+      }
+      """
+
+  @createSchema
+  Scenario: Create a friend with intervpbx connectivity
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/friends" with body:
+      """
+      {
+          "name": "beWatterMyFriend",
+          "description": "something",
+          "transport": "tls",
+          "ip": "129.1.2.3",
+          "port": 5060,
+          "password": "",
+          "priority": 2,
+          "allow": "alaw",
+          "fromDomain": "",
+          "directConnectivity": "intervpbx",
+          "ddiIn": "yes",
+          "t38Passthrough": "no",
           "transformationRuleSet": null,
+          "callAcl": null,
           "outgoingDdi": null,
           "language": null,
-          "interCompany": null
+          "interCompany": 1,
+          "company": 1,
+          "ruriDomain": "test.example.com"
+      }
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+          "name": "InterCompany1_1",
+          "description": "something",
+          "transport": "tls",
+          "ip": null,
+          "port": null,
+          "password": null,
+          "priority": 2,
+          "directConnectivity": "intervpbx",
+          "id": 3,
+          "company": 1,
+          "interCompany": 1
       }
       """
