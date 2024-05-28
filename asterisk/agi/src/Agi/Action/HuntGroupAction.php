@@ -50,7 +50,13 @@ class HuntGroupAction
             return;
         }
 
-        $this->agi->notice("Processing %s HuntGroup %s", $huntGroup->getStrategy(), $huntGroup);
+        $huntGroupIsSimple = $huntGroup->isSimple();
+        $this->agi->notice(
+            "Processing %s HuntGroup %s (simple: %s)",
+            $huntGroup->getStrategy(),
+            $huntGroup,
+            $huntGroupIsSimple
+        );
 
         /** @var HuntGroupMemberInterface[] $huntGroupMembers */
         $huntGroupMembers = $huntGroup->getHuntGroupMembers(
@@ -67,7 +73,19 @@ class HuntGroupAction
         $huntGroupTimeouts = array();
 
         foreach ($huntGroupMembers as $entry) {
-            array_push($huntGroupEndpoints, 'Local/' . $entry->getId() . '@call-huntgroup-member');
+            if ($huntGroupIsSimple) {
+                $user = $entry->getUser();
+                if (!$user) {
+                    continue;
+                }
+                $terminal = $user->getTerminal();
+                $userIsAvailable = $user->getDoNotDisturb() == false;
+                if ($terminal && $userIsAvailable) {
+                    array_push($huntGroupEndpoints, 'PJSIP/' .  $terminal->getSorcery());
+                }
+            } else {
+                array_push($huntGroupEndpoints, 'Local/' . $entry->getId() . '@call-huntgroup-member');
+            }
             array_push($huntGroupTimeouts, $entry->getTimeoutTime());
         }
 
@@ -83,6 +101,10 @@ class HuntGroupAction
         }
 
         // Start calling the first user
-        $this->agi->redirect('call-huntgroup');
+        if ($huntGroupIsSimple) {
+            $this->agi->redirect('call-huntgroup-simple');
+        } else {
+            $this->agi->redirect('call-huntgroup');
+        }
     }
 }
