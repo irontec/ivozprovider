@@ -31,4 +31,6 @@ interface FriendRepository extends ObjectRepository, Selectable
      * @return FriendInterface[]
      */
     public function findByCompanyAndInterCompany(int $company, int $interCompany): array;
+
+    public function getMaxPriorityForCompany(int $companyId): int;
 }
