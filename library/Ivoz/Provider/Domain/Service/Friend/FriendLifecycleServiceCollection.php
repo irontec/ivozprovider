@@ -26,6 +26,10 @@ class FriendLifecycleServiceCollection implements LifecycleServiceCollectionInte
             \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByFriend::class => 10,
             \Ivoz\Ast\Domain\Service\PsIdentify\UpdateByFriend::class => 200,
         ],
+        "post_remove" =>
+        [
+            \Ivoz\Provider\Domain\Service\Friend\DeleteInterVpbx::class => 200,
+        ],
         "error_handler" =>
         [
             \Ivoz\Provider\Domain\Service\Friend\PersistErrorHandler::class => 200,
