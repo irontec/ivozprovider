@@ -12,7 +12,6 @@ Feature: Update web portals
     """
       {
           "url": "https://updated-example.com",
-          "klearTheme": "redmond",
           "urlType": "god",
           "name": "Updated Portal",
           "color": "#000000",
@@ -31,7 +30,6 @@ Feature: Update web portals
     """
       {
           "url": "https://updated-example.com",
-          "klearTheme": "redmond",
           "urlType": "god",
           "name": "Updated Portal",
           "color": "#000000",

@@ -12,7 +12,6 @@ Feature: Create web portals
     """
       {
           "url": "https://post-example.com",
-          "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
           "brand": 1
@@ -25,7 +24,6 @@ Feature: Create web portals
     """
       {
           "url": "https://post-example.com",
-          "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
           "color": "#000000",
@@ -50,7 +48,6 @@ Feature: Create web portals
     """
       {
           "url": "https://post-example.com",
-          "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
           "color": "#000000",
@@ -76,7 +73,6 @@ Content-Disposition: form-data; name="brand"
 
       {
           "url": "https://post-example.com",
-          "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
           "brand": 1
@@ -96,7 +92,6 @@ This is file content
     """
       {
           "url": "https://post-example.com",
-          "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
           "color": "#000000",

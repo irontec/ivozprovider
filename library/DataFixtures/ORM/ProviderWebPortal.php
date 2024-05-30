@@ -25,7 +25,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(WebPortal::class);
         (function () use ($fixture) {
             $this->setUrl("https://platform-ivozprovider.irontec.com");
-            $this->setKlearTheme("redmond");
             $this->setUrlType("god");
             $this->setName("Platform Administration Portal");
             $this->logo = new Logo(10, 'image/jpeg', 'logo.jpeg');
@@ -38,7 +37,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
         $item2 = $this->createEntityInstance(WebPortal::class);
         (function () use ($fixture) {
             $this->setUrl("https://brand-ivozprovider.irontec.com");
-            $this->setKlearTheme("irontec-red");
             $this->setUrlType("brand");
             $this->setName("Irontec Ivozprovider Brand Admin Portal");
             $this->logo = new Logo(10, 'image/jpeg', 'brand-logo.jpeg');
@@ -53,7 +51,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
         $item3 = $this->createEntityInstance(WebPortal::class);
         (function () use ($fixture) {
             $this->setUrl("https://client-ivozprovider.irontec.com");
-            $this->setKlearTheme("irontec-red");
             $this->setUrlType("admin");
             $this->setName("Irontec Ivozprovider Client Admin Portal");
             $this->logo = new Logo(10, 'image/jpeg', 'client-logo.jpeg');
@@ -67,7 +64,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
         $item4 = $this->createEntityInstance(WebPortal::class);
         (function () use ($fixture) {
             $this->setUrl("https://users-ivozprovider.irontec.com");
-            $this->setKlearTheme("redmond");
             $this->setUrlType("user");
             $this->setName("Irontec Ivozprovider User Admin Portal");
             $this->logo = new Logo(10, 'image/jpeg', 'user-logo.jpeg');
@@ -82,7 +78,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
         $item5 = $this->createEntityInstance(WebPortal::class);
         (function () use ($fixture) {
             $this->setUrl("https://nologo-platform-ivozprovider.irontec.com");
-            $this->setKlearTheme("redmond");
             $this->setUrlType("god");
             $this->setName("No logo");
             $this->logo = new Logo(null, null, null);

@@ -12,7 +12,6 @@ Feature: Update web portals
       """
       {
           "url": "https://updated-example.com",
-          "klearTheme": "redmond",
           "urlType": "user",
           "name": "Updated Portal",
           "logo": {
@@ -29,7 +28,6 @@ Feature: Update web portals
       """
       {
           "url": "https://updated-example.com",
-          "klearTheme": "redmond",
           "urlType": "user",
           "name": "Updated Portal",
           "id": 3,
@@ -67,7 +65,6 @@ This is file content
     """
     {
         "url": "https://client-ivozprovider.irontec.com",
-        "klearTheme": "irontec-red",
         "urlType": "admin",
         "name": "Irontec Ivozprovider Client Admin Portal",
         "color": "#000000",

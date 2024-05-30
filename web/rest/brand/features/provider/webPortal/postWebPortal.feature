@@ -12,7 +12,6 @@ Feature: Create web portals
       """
       {
           "url": "https://post-example.com",
-          "klearTheme": "redmond",
           "urlType": "user",
           "name": "Platform user Portal",
           "id": 1,
@@ -30,7 +29,6 @@ Feature: Create web portals
       """
       {
           "url": "https://post-example.com",
-          "klearTheme": "redmond",
           "urlType": "user",
           "name": "Platform user Portal",
           "color": "#000000",
@@ -54,7 +52,6 @@ Feature: Create web portals
       """
       {
           "url": "https://post-example.com",
-          "klearTheme": "redmond",
           "urlType": "user",
           "name": "Platform user Portal",
           "id": 6,
@@ -74,7 +71,6 @@ Feature: Create web portals
       """
       {
           "url": "https://post-god-example.com",
-          "klearTheme": "redmond",
           "urlType": "god",
           "name": "Platform god Portal",
           "id": 1,

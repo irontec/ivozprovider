@@ -50,7 +50,6 @@ Feature: Retrieve web portals
       """
       {
           "url": "https://client-ivozprovider.irontec.com",
-          "klearTheme": "irontec-red",
           "urlType": "admin",
           "name": "Irontec Ivozprovider Client Admin Portal",
           "id": 3,
