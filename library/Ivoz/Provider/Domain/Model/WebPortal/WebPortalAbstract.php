@@ -27,20 +27,10 @@ abstract class WebPortalAbstract
     protected $url;
 
     /**
-     * @var ?string
-     */
-    protected $klearTheme = '';
-
-    /**
      * @var string
      * comment: enum:god|brand|admin|user
      */
     protected $urlType;
-
-    /**
-     * @var bool
-     */
-    protected $newUI = true;
 
     /**
      * @var ?string
@@ -69,13 +59,11 @@ abstract class WebPortalAbstract
     protected function __construct(
         string $url,
         string $urlType,
-        bool $newUI,
         string $color,
         Logo $logo
     ) {
         $this->setUrl($url);
         $this->setUrlType($urlType);
-        $this->setNewUI($newUI);
         $this->setColor($color);
         $this->logo = $logo;
     }
@@ -145,8 +133,6 @@ abstract class WebPortalAbstract
         Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
         $urlType = $dto->getUrlType();
         Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
-        $newUI = $dto->getNewUI();
-        Assertion::notNull($newUI, 'getNewUI value is null, but non null value was expected.');
         $color = $dto->getColor();
         Assertion::notNull($color, 'getColor value is null, but non null value was expected.');
 
@@ -159,13 +145,11 @@ abstract class WebPortalAbstract
         $self = new static(
             $url,
             $urlType,
-            $newUI,
             $color,
             $logo
         );
 
         $self
-            ->setKlearTheme($dto->getKlearTheme())
             ->setName($dto->getName())
             ->setBrand($fkTransformer->transform($dto->getBrand()));
 
@@ -188,8 +172,6 @@ abstract class WebPortalAbstract
         Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
         $urlType = $dto->getUrlType();
         Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
-        $newUI = $dto->getNewUI();
-        Assertion::notNull($newUI, 'getNewUI value is null, but non null value was expected.');
         $color = $dto->getColor();
         Assertion::notNull($color, 'getColor value is null, but non null value was expected.');
 
@@ -201,9 +183,7 @@ abstract class WebPortalAbstract
 
         $this
             ->setUrl($url)
-            ->setKlearTheme($dto->getKlearTheme())
             ->setUrlType($urlType)
-            ->setNewUI($newUI)
             ->setName($dto->getName())
             ->setColor($color)
             ->setLogo($logo)
@@ -219,9 +199,7 @@ abstract class WebPortalAbstract
     {
         return self::createDto()
             ->setUrl(self::getUrl())
-            ->setKlearTheme(self::getKlearTheme())
             ->setUrlType(self::getUrlType())
-            ->setNewUI(self::getNewUI())
             ->setName(self::getName())
             ->setColor(self::getColor())
             ->setLogoFileSize(self::getLogo()->getFileSize())
@@ -237,9 +215,7 @@ abstract class WebPortalAbstract
     {
         return [
             'url' => self::getUrl(),
-            'klearTheme' => self::getKlearTheme(),
             'urlType' => self::getUrlType(),
-            'newUI' => self::getNewUI(),
             'name' => self::getName(),
             'color' => self::getColor(),
             'logoFileSize' => self::getLogo()->getFileSize(),
@@ -261,22 +237,6 @@ abstract class WebPortalAbstract
     public function getUrl(): string
     {
         return $this->url;
-    }
-
-    protected function setKlearTheme(?string $klearTheme = null): static
-    {
-        if (!is_null($klearTheme)) {
-            Assertion::maxLength($klearTheme, 200, 'klearTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->klearTheme = $klearTheme;
-
-        return $this;
-    }
-
-    public function getKlearTheme(): ?string
-    {
-        return $this->klearTheme;
     }
 
     protected function setUrlType(string $urlType): static
@@ -301,18 +261,6 @@ abstract class WebPortalAbstract
     public function getUrlType(): string
     {
         return $this->urlType;
-    }
-
-    protected function setNewUI(bool $newUI): static
-    {
-        $this->newUI = $newUI;
-
-        return $this;
-    }
-
-    public function getNewUI(): bool
-    {
-        return $this->newUI;
     }
 
     protected function setName(?string $name = null): static
