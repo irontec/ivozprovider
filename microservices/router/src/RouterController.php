@@ -18,10 +18,6 @@ class RouterController
             $request->server->get('SERVER_NAME')
         );
 
-        if ($webPortal && !$webPortal->getNewUI()) {
-            return new RedirectResponse('/classic');
-        }
-
         $targetUrl = match ($webPortal?->getUrlType()) {
             WebPortalInterface::URLTYPE_USER => '/user',
             WebPortalInterface::URLTYPE_ADMIN => '/client',
