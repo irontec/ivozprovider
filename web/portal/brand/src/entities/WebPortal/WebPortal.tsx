@@ -27,16 +27,6 @@ const properties: WebPortalProperties = {
       admin: _('Client'),
       user: _('User', { count: 1 }),
     },
-    visualToggle: {
-      god: {
-        show: ['klearTheme'],
-        hide: [],
-      },
-      brand: {
-        show: ['klearTheme'],
-        hide: [],
-      },
-    },
   },
   name: {
     label: _('Name'),
