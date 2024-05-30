@@ -21,12 +21,6 @@ class WebTheme
      * @var string
      * @AttributeDefinition(type="string")
      */
-    protected $theme;
-
-    /**
-     * @var string
-     * @AttributeDefinition(type="string")
-     */
     protected $logo;
 
     /**
@@ -43,13 +37,11 @@ class WebTheme
 
     public function __construct(
         string $brandName,
-        string $theme,
         string $logo,
         string $color,
         string $title,
     ) {
         $this->name = $brandName;
-        $this->theme = $theme;
         $this->logo = $logo;
         $this->color = $color;
         $this->title = $title;
@@ -67,19 +59,6 @@ class WebTheme
     public function setName(string $name): WebTheme
     {
         $this->name = $name;
-        return $this;
-    }
-    public function getTheme(): ?string
-    {
-        return $this->theme;
-    }
-
-    /**
-     * @return WebTheme
-     */
-    public function setTheme(string $theme): WebTheme
-    {
-        $this->theme = $theme;
         return $this;
     }
 

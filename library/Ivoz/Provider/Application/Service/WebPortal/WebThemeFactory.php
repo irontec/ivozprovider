@@ -61,13 +61,8 @@ class WebThemeFactory
                 );
         }
 
-        $theme = $urlType === WebPortalInterface::URLTYPE_USER
-            ? "default"
-            : $webPortal->getKlearTheme();
-
         return new WebTheme(
             $webPortal->getName() ?? '',
-            $theme ?? '',
             $publicLogoUrl,
             $webPortal->getColor(),
             $webPortal->getName() ?? '',

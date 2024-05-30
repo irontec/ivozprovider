@@ -14,11 +14,6 @@ mount-storage.sh
 **.phplint-cache
 **.phpunit.result.cache
 **/.nvmrc
-web/admin/storage
-web/admin/application/cache/*
-web/admin/public/img/
-web/admin/public/styles/
-web/admin/public/fonts/
 
 web/portal/client/.history
 

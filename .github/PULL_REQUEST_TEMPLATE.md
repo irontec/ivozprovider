@@ -10,7 +10,7 @@
 
 #### Checklist:
 - [ ] Commits are named and have tag following [commit rules](https://github.com/irontec/ivozprovider/blob/bleeding/doc/dev/en/commits.md)
-- [ ] Commits are split per component (schema, web/admin, kamusers, agis, ..)
+- [ ] Commits are split per component (schema, portal/platform, kamusers, agis, ..)
 - [ ] Changes have been tested locally
 - [ ] Fixes an existing issue (Fixes #XXXX) <!-- Replace XXXX with issue id -->
 - [ ] Upport from existing Pull request #XXXX
