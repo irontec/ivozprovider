@@ -62,7 +62,7 @@ class WebThemeFactory
         }
 
         $theme = $urlType === WebPortalInterface::URLTYPE_USER
-            ? $webPortal->getUserTheme()
+            ? "default"
             : $webPortal->getKlearTheme();
 
         return new WebTheme(
