@@ -34,12 +34,6 @@
         <option name="default"/>
       </options>
     </field>
-    <field name="userTheme" type="string" column="userTheme" length="200" nullable="true">
-      <options>
-        <option name="fixed"/>
-        <option name="default"/>
-      </options>
-    </field>
     <field name="color" type="string" column="color" length="10" nullable="false">
       <options>
         <option name="fixed"/>
