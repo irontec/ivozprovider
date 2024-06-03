@@ -1,0 +1,40 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to huntgroup round robin
+    type: simple
+    timeout: 30
+    sessions:
+      - alice:
+          - wait: 5
+          - call:
+              dest: 703             # Hunt group extension
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+      - bob:
+          - wait: 1
+          - register:
+              <<: *bob_cred
+          - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD     # Do not answer on first loop
+          - waitfor: INCOMING
+          - answer
+          - wait: 3
+          - hangup:
+          - waitfor: DISCONNCTD
+      - charlie:
+          - wait: 2
+          - register:
+              <<: *charlie_cred
+          - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD
+      - dave:
+          - wait: 3
+          - register:
+              <<: *dave_cred
+          - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD

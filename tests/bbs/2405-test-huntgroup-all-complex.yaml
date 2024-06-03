@@ -1,0 +1,35 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to huntgroup ring all
+    type: simple
+    timeout: 20
+    sessions:
+      - alice:
+          - call:
+              dest: 702             # Hunt group extension
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+      - bob:
+          - register:
+              <<: *bob_cred
+          - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD
+      - charlie:
+          - register:
+              <<: *charlie_cred
+          - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD
+      - dave:
+          - register:
+              <<: *dave_cred
+          - waitfor: INCOMING
+          - ringing
+          - wait: 3
+          - answer
+          - wait: 3
+          - hangup
+          - waitfor: DISCONNCTD

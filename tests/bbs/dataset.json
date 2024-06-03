@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "05153f64-76a6-4b04-932b-f948d9961dd0",
-		"name": "IvozProvider - BBS Dataset (halliday)",
+		"_postman_id": "a8d57f1a-c5d4-4636-824e-077eb6835fb0",
+		"name": "IvozProvider - BBS Dataset (tempest)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "628603"
+		"_exporter_id": "32302603"
 	},
 	"item": [
 		{
@@ -160,7 +160,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"brand-bbs.ivozprovider.local\",\n  \"language\": 2,\n  \"currency\": 1,\n  \"defaultTimezone\": 145,\n  \"transformationRuleSet\": 70,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
+							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"brand-bbs.ivozprovider.local\",\n  \"language\": 2,\n  \"currency\": 1,\n  \"defaultTimezone\": 145,\n  \"transformationRuleSet\": 70,\n  \"maxCalls\": 10,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
 						},
 						"url": {
 							"raw": "{{platform_api_url}}/brands",
@@ -1741,6 +1741,56 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create Corporation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"corporationId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"BBS Corporation\",\n  \"brand\": {{brandId}}\n}\n"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/corporations",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"corporations"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1783,7 +1833,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"countryName\": \"Company country\",\n  \"ipfilter\": false,\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}},\n  \"country\": 70,\n  \"currency\": 1\n}"
+							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"countryName\": \"Company country\",\n  \"ipfilter\": false,\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"maxCalls\": 10,\n  \"brand\": {{brandId}},\n  \"corporation\": {{corporationId}},\n  \"country\": 70,\n  \"currency\": 1\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/companies",
@@ -1973,6 +2023,7 @@
 									"jsonData.country = jsonData.country.id;",
 									"jsonData.currency = jsonData.currency.id;",
 									"jsonData.transformationRuleSet = jsonData.transformationRuleSet.id;",
+									"jsonData.corporation = jsonData.corporation.id;",
 									"delete jsonData.featureIds;",
 									"",
 									"postman.setGlobalVariable(\"companyData\", JSON.stringify(jsonData));",
@@ -4005,7 +4056,7 @@
 								"exec": [
 									"var companyData = JSON.parse(postman.getGlobalVariable(\"companyData\"));",
 									"",
-									"companyData.outgoingDdi = postman.getGlobalVariable(\"aliceDDIId\");",
+									"companyData.outgoingDdi = parseInt(postman.getGlobalVariable(\"aliceDDIId\"));",
 									"",
 									"postman.setGlobalVariable(\"companyData\", JSON.stringify(companyData));",
 									"",
@@ -5374,6 +5425,402 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create HungGroup RingAll Complex",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"huntGroupRingAllComplexId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"BBS RingAll HuntGroup (complex)\",\n  \"description\": \"BBS RingAll HuntGroup (complex)\",\n  \"strategy\": \"ringAll\",\n  \"ringAllTimeout\": 10,\n  \"company\": {{companyId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/hunt_groups",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"hunt_groups"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Create HungGroup RingAll Complex Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"number\": \"702\",\n  \"routeType\": \"huntGroup\",\n  \"company\": {{companyId}},\n  \"huntGroup\": {{huntGroupRingAllComplexId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/extensions",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"extensions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RingAll Complex User Alice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 1,\n  \"huntGroup\": {{huntGroupRingAllComplexId}},\n  \"routeType\": \"user\",\n  \"user\": {{aliceUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/hunt_group_members",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"hunt_group_members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RingAll Complex Number Bob",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 2,\n  \"huntGroup\": {{huntGroupRingAllComplexId}},\n  \"routeType\": \"number\",\n  \"numberValue\": \"999661002\",\n  \"numberCountry\": 70\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/hunt_group_members",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"hunt_group_members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HungGroup RR Complex",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"huntGroupRRComplexId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"BBS RR HuntGroup (complex)\",\n  \"description\": \"BBS RR HuntGroup (complex)\",\n  \"strategy\": \"roundRobin\"\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/hunt_groups",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"hunt_groups"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Create HungGroup RR Complex Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"number\": \"703\",\n  \"routeType\": \"huntGroup\",\n  \"company\": {{companyId}},\n  \"huntGroup\": {{huntGroupRRComplexId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/extensions",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"extensions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RR Complex User Alice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 1,\n  \"huntGroup\": {{huntGroupRRComplexId}},\n  \"routeType\": \"user\",\n  \"user\": {{aliceUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/hunt_group_members",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"hunt_group_members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RR Complex Number Bob",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 2,\n  \"huntGroup\": {{huntGroupRRComplexId}},\n  \"routeType\": \"number\",\n  \"numberValue\": \"999661002\",\n  \"numberCountry\": 70\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/hunt_group_members",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"hunt_group_members"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -5998,7 +6445,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"residential\",\n  \"name\": \"BBS - Residential for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Residential address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Residential town\",\n  \"province\": \"Residential province\",\n  \"countryName\": \"Residential country\",\n  \"defaultTimezone\": 1,\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
+							"raw": "{\n  \"type\": \"residential\",\n  \"name\": \"BBS - Residential for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Residential address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Residential town\",\n  \"province\": \"Residential province\",\n  \"countryName\": \"Residential country\",\n  \"defaultTimezone\": 1,\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"maxCalls\": 10,\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/companies",
@@ -6628,7 +7075,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
+							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"maxCalls\": 10,  \n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/companies",
