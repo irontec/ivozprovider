@@ -94,7 +94,10 @@ class Friends extends RouteHandlerAbstract
 
         // Set Company/Brand/Generic Music class
         $company = $friend->getCompany();
+        $brand = $company->getBrand();
         $this->agi->setVariable("__COMPANYID", $company->getId());
+        $this->agi->setVariable("__COMPANYTYPE", $company->getType());
+        $this->agi->setVariable("__BRANDID", $brand->getId());
 
         // Check User's permission to does this call
         $exten = $this->agi->getExtension();
