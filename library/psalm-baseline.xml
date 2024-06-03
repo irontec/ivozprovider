@@ -2904,7 +2904,7 @@
     </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Friend/FriendAbstract.php">
-    <MixedArgument occurrences="14">
+    <MixedArgument occurrences="16">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCallAcl())</code>
@@ -2917,6 +2917,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
     </MixedArgument>
