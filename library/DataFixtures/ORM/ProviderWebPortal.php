@@ -28,7 +28,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setKlearTheme("redmond");
             $this->setUrlType("god");
             $this->setName("Platform Administration Portal");
-            $this->setUserTheme("default");
             $this->logo = new Logo(10, 'image/jpeg', 'logo.jpeg');
         })->call($item1);
 
@@ -42,7 +41,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setKlearTheme("irontec-red");
             $this->setUrlType("brand");
             $this->setName("Irontec Ivozprovider Brand Admin Portal");
-            $this->setUserTheme("default");
             $this->logo = new Logo(10, 'image/jpeg', 'brand-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
         })->call($item2);
@@ -58,7 +56,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setKlearTheme("irontec-red");
             $this->setUrlType("admin");
             $this->setName("Irontec Ivozprovider Client Admin Portal");
-            $this->setUserTheme("default");
             $this->logo = new Logo(10, 'image/jpeg', 'client-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
         })->call($item3);
@@ -73,7 +70,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setKlearTheme("redmond");
             $this->setUrlType("user");
             $this->setName("Irontec Ivozprovider User Admin Portal");
-            $this->setUserTheme("default");
             $this->logo = new Logo(10, 'image/jpeg', 'user-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
         })->call($item4);
@@ -89,7 +85,6 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setKlearTheme("redmond");
             $this->setUrlType("god");
             $this->setName("No logo");
-            $this->setUserTheme("default");
             $this->logo = new Logo(null, null, null);
         })->call($item5);
 

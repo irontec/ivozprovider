@@ -15,7 +15,6 @@ Feature: Create web portals
           "klearTheme": "redmond",
           "urlType": "user",
           "name": "Platform user Portal",
-          "userTheme": "default",
           "id": 1,
           "logo": {
               "fileSize": null,
@@ -34,7 +33,6 @@ Feature: Create web portals
           "klearTheme": "redmond",
           "urlType": "user",
           "name": "Platform user Portal",
-          "userTheme": "default",
           "color": "#000000",
           "id": 6,
           "logo": {
@@ -59,7 +57,6 @@ Feature: Create web portals
           "klearTheme": "redmond",
           "urlType": "user",
           "name": "Platform user Portal",
-          "userTheme": "default",
           "id": 6,
           "logo": {
               "fileSize": null,
@@ -80,7 +77,6 @@ Feature: Create web portals
           "klearTheme": "redmond",
           "urlType": "god",
           "name": "Platform god Portal",
-          "userTheme": "default",
           "id": 1,
           "logo": {
               "fileSize": null,

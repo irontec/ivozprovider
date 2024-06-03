@@ -15,7 +15,6 @@ Feature: Create web portals
           "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
-          "userTheme": "default",
           "brand": 1
       }
     """
@@ -29,7 +28,6 @@ Feature: Create web portals
           "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
-          "userTheme": "default",
           "color": "#000000",
           "id": 6,
           "logo": {
@@ -55,7 +53,6 @@ Feature: Create web portals
           "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
-          "userTheme": "default",
           "color": "#000000",
           "id": 6,
           "logo": {
@@ -82,7 +79,6 @@ Content-Disposition: form-data; name="brand"
           "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
-          "userTheme": "default",
           "brand": 1
       }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
@@ -103,7 +99,6 @@ This is file content
           "klearTheme": "redmond",
           "urlType": "brand",
           "name": "Platform brand Portal",
-          "userTheme": "default",
           "color": "#000000",
           "id": 6,
           "logo": {
