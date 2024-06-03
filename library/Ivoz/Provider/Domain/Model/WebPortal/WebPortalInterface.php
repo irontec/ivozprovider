@@ -79,8 +79,6 @@ interface WebPortalInterface extends LoggableEntityInterface, FileContainerInter
 
     public function getName(): ?string;
 
-    public function getUserTheme(): ?string;
-
     public function getColor(): string;
 
     public function getLogo(): Logo;

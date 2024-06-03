@@ -48,11 +48,6 @@ abstract class WebPortalAbstract
     protected $name = '';
 
     /**
-     * @var ?string
-     */
-    protected $userTheme = '';
-
-    /**
      * @var string
      */
     protected $color = '#000000';
@@ -172,7 +167,6 @@ abstract class WebPortalAbstract
         $self
             ->setKlearTheme($dto->getKlearTheme())
             ->setName($dto->getName())
-            ->setUserTheme($dto->getUserTheme())
             ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         $self->initChangelog();
@@ -211,7 +205,6 @@ abstract class WebPortalAbstract
             ->setUrlType($urlType)
             ->setNewUI($newUI)
             ->setName($dto->getName())
-            ->setUserTheme($dto->getUserTheme())
             ->setColor($color)
             ->setLogo($logo)
             ->setBrand($fkTransformer->transform($dto->getBrand()));
@@ -230,7 +223,6 @@ abstract class WebPortalAbstract
             ->setUrlType(self::getUrlType())
             ->setNewUI(self::getNewUI())
             ->setName(self::getName())
-            ->setUserTheme(self::getUserTheme())
             ->setColor(self::getColor())
             ->setLogoFileSize(self::getLogo()->getFileSize())
             ->setLogoMimeType(self::getLogo()->getMimeType())
@@ -249,7 +241,6 @@ abstract class WebPortalAbstract
             'urlType' => self::getUrlType(),
             'newUI' => self::getNewUI(),
             'name' => self::getName(),
-            'userTheme' => self::getUserTheme(),
             'color' => self::getColor(),
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
@@ -338,22 +329,6 @@ abstract class WebPortalAbstract
     public function getName(): ?string
     {
         return $this->name;
-    }
-
-    protected function setUserTheme(?string $userTheme = null): static
-    {
-        if (!is_null($userTheme)) {
-            Assertion::maxLength($userTheme, 200, 'userTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->userTheme = $userTheme;
-
-        return $this;
-    }
-
-    public function getUserTheme(): ?string
-    {
-        return $this->userTheme;
     }
 
     protected function setColor(string $color): static
