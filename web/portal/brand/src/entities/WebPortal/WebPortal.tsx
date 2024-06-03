@@ -30,11 +30,11 @@ const properties: WebPortalProperties = {
     visualToggle: {
       god: {
         show: ['klearTheme'],
-        hide: ['userTheme'],
+        hide: [],
       },
       brand: {
         show: ['klearTheme'],
-        hide: ['userTheme'],
+        hide: [],
       },
     },
   },
@@ -42,9 +42,6 @@ const properties: WebPortalProperties = {
     label: _('Name'),
     maxLength: 200,
     helpText: _(`Will be shown on page footer`),
-  },
-  userTheme: {
-    label: _('User Theme'),
   },
   logo: {
     label: _('Logo'),
