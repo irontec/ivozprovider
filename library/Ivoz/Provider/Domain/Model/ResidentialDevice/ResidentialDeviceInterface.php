@@ -190,6 +190,8 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
 
     public function getRuriDomain(): ?string;
 
+    public function getTrustSDP(): bool;
+
     public function setBrand(BrandInterface $brand): static;
 
     public function getBrand(): BrandInterface;

@@ -140,6 +140,11 @@ abstract class ResidentialDeviceAbstract
     protected $ruriDomain = null;
 
     /**
+     * @var bool
+     */
+    protected $trustSDP = false;
+
+    /**
      * @var BrandInterface
      * inversedBy residentialDevices
      */
@@ -192,7 +197,8 @@ abstract class ResidentialDeviceAbstract
         int $maxCalls,
         string $t38Passthrough,
         bool $rtpEncryption,
-        bool $multiContact
+        bool $multiContact,
+        bool $trustSDP
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -207,6 +213,7 @@ abstract class ResidentialDeviceAbstract
         $this->setT38Passthrough($t38Passthrough);
         $this->setRtpEncryption($rtpEncryption);
         $this->setMultiContact($multiContact);
+        $this->setTrustSDP($trustSDP);
     }
 
     abstract public function getId(): null|string|int;
@@ -296,6 +303,8 @@ abstract class ResidentialDeviceAbstract
         Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $trustSDP = $dto->getTrustSDP();
+        Assertion::notNull($trustSDP, 'getTrustSDP value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $company = $dto->getCompany();
@@ -314,7 +323,8 @@ abstract class ResidentialDeviceAbstract
             $maxCalls,
             $t38Passthrough,
             $rtpEncryption,
-            $multiContact
+            $multiContact,
+            $trustSDP
         );
 
         $self
@@ -373,6 +383,8 @@ abstract class ResidentialDeviceAbstract
         Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $trustSDP = $dto->getTrustSDP();
+        Assertion::notNull($trustSDP, 'getTrustSDP value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $company = $dto->getCompany();
@@ -398,6 +410,7 @@ abstract class ResidentialDeviceAbstract
             ->setRtpEncryption($rtpEncryption)
             ->setMultiContact($multiContact)
             ->setRuriDomain($dto->getRuriDomain())
+            ->setTrustSDP($trustSDP)
             ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($company))
@@ -434,6 +447,7 @@ abstract class ResidentialDeviceAbstract
             ->setRtpEncryption(self::getRtpEncryption())
             ->setMultiContact(self::getMultiContact())
             ->setRuriDomain(self::getRuriDomain())
+            ->setTrustSDP(self::getTrustSDP())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -468,6 +482,7 @@ abstract class ResidentialDeviceAbstract
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
             'ruri_domain' => self::getRuriDomain(),
+            'trustSDP' => self::getTrustSDP(),
             'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain()?->getId(),
             'companyId' => self::getCompany()->getId(),
@@ -801,6 +816,18 @@ abstract class ResidentialDeviceAbstract
     public function getRuriDomain(): ?string
     {
         return $this->ruriDomain;
+    }
+
+    protected function setTrustSDP(bool $trustSDP): static
+    {
+        $this->trustSDP = $trustSDP;
+
+        return $this;
+    }
+
+    public function getTrustSDP(): bool
+    {
+        return $this->trustSDP;
     }
 
     public function setBrand(BrandInterface $brand): static
