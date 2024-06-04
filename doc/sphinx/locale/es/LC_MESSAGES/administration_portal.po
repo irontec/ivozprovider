@@ -458,7 +458,7 @@ msgstr ""
 msgid ""
 "You can find a sample CSV for importing `here "
 "<https://raw.githubusercontent.com/ "
-"irontec/ivozprovider/artemis/web/admin/samples/pricesSample.csv>`_."
+"irontec/ivozprovider/bleeding/web/portal/brand/samples/billing/pricesSample.csv>`_."
 msgstr ""
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:155
