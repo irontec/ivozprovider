@@ -10,7 +10,6 @@ export type WebPortalPropertyList<T> = {
   color?: T;
   urlType?: T;
   name?: T;
-  userTheme?: T;
   id?: T;
   logo?: T;
 };

@@ -64,7 +64,6 @@ Feature: Retrieve web portals
           "klearTheme": "redmond",
           "urlType": "god",
           "name": "Platform Administration Portal",
-          "userTheme": "default",
           "color": "#000000",
           "id": 1,
           "logo": {

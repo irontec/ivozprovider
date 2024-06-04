@@ -15,7 +15,6 @@ Feature: Update web portals
           "klearTheme": "redmond",
           "urlType": "god",
           "name": "Updated Portal",
-          "userTheme": "default",
           "color": "#000000",
           "id": 1,
           "logo": {
@@ -35,7 +34,6 @@ Feature: Update web portals
           "klearTheme": "redmond",
           "urlType": "god",
           "name": "Updated Portal",
-          "userTheme": "default",
           "color": "#000000",
           "id": 2,
           "logo": {

@@ -15,7 +15,6 @@ Feature: Update web portals
           "klearTheme": "redmond",
           "urlType": "user",
           "name": "Updated Portal",
-          "userTheme": "default",
           "logo": {
               "fileSize": null,
               "mimeType": null,
@@ -33,7 +32,6 @@ Feature: Update web portals
           "klearTheme": "redmond",
           "urlType": "user",
           "name": "Updated Portal",
-          "userTheme": "default",
           "id": 3,
           "logo": {
               "fileSize": null,
@@ -72,7 +70,6 @@ This is file content
         "klearTheme": "irontec-red",
         "urlType": "admin",
         "name": "Irontec Ivozprovider Client Admin Portal",
-        "userTheme": "default",
         "color": "#000000",
         "id": 3,
         "logo": {

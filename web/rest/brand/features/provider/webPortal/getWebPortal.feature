@@ -53,7 +53,6 @@ Feature: Retrieve web portals
           "klearTheme": "irontec-red",
           "urlType": "admin",
           "name": "Irontec Ivozprovider Client Admin Portal",
-          "userTheme": "default",
           "id": 3,
           "logo": {
               "fileSize": 10,

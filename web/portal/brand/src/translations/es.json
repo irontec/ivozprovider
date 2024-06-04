@@ -660,7 +660,6 @@
   "Use this instead in From header username": "Se empleará este en lugar del usuario de la cabecera From",
   "Used as voicemail reception and user portal credential": "Empleado en buzón de voz y acceso al portal de usuario",
   "Used to notify if max daily usage has been reached. Leave empty to avoid notification.": "Empleado para notificar cuando se alcanza el máximo consumo diario. Dejar vacío para desactivar notificación.",
-  "User Theme": "Tema de usuario",
   "User_many": "Usuarios",
   "User_one": "Usuario",
   "User_other": "Usuarios",
