@@ -84,23 +84,11 @@ function setup_php()
     /bin/sed -i 's/;*date.timezone =.*/date.timezone = UTC/g'                   /etc/php/8.2/fpm/php.ini
 }
 
-function setup_klear()
-{
-    # Get default language from debconf
-    db_get ivozprovider/language            || true
-    LANGUAGE=$RET
-    db_stop
-
-    # Setup portals default language
-    sed -i -r "s/(lang*: *).*/\1$LANGUAGE/" /opt/irontec/ivozprovider/web/admin/application/configs/klear/klear.yaml
-}
-
 #######################################################################################################################
 #######################################################################################################################
 remove_diverted_files
 setup_apache_certificates
 setup_apache_config
 setup_php
-setup_klear
 
 :
