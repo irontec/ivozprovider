@@ -87,7 +87,7 @@ class FriendRepositoryTest extends KernelTestCase
             ->getRepository(Friend::class);
 
         $friends = $repository->findByCompanyAndInterCompany(
-            2,
+            3,
             1
         );
 
