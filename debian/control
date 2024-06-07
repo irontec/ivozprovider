@@ -215,17 +215,6 @@ Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .
 
-Package: ivozprovider-web-admin
-Architecture: all
-Section: php
-Priority: optional
-Conflicts: ivozprovider-portals
-Depends: klear, ivozprovider-common-library (=${binary:Version}), ivozprovider-web-rest (=${binary:Version}), zendframework, libxrender1
-Homepage: http://www.irontec.com
-Description: IVOZ Provider - Admin Web - Klear based web interface
- Portals using klear and zendframework 1
- .
-
 Package: ivozprovider-web-portals
 Architecture: all
 Section: php
@@ -248,7 +237,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php8.2-cli, php8.2-mysql, php8.2-mbstring, php8.2-xml, acl, klear-library, php8.2-mailparse, php8.2-intl, php8.2-redis
+Depends: php8.2-cli, php8.2-mysql, php8.2-mbstring, php8.2-xml, acl, php8.2-mailparse, php8.2-intl, php8.2-redis
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional

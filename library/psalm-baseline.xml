@@ -1708,22 +1708,12 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDto.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getResidentialId</code>
-      <code>getRetailId</code>
-      <code>getVpbxId</code>
-    </MissingReturnType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
+    <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
+    <UnusedProperty occurrences="1">
+      <code>$type</code>
+    </UnusedProperty>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerRepository.php">
     <MissingParamType occurrences="1">

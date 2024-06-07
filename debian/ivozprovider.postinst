@@ -110,13 +110,6 @@ function setup_proxies()
     fi
 }
 
-function setup_portals
-{
-    db_get ivozprovider/language
-    PORTAL_LANG=$RET
-    sed -i -r "s/(lang: ).*/\1 $PORTAL_LANG/" /opt/irontec/ivozprovider/web/admin/application/configs/klear/klear.yaml
-}
-
 function setup_pbx()
 {
     # Set asterisk bind address to localhost
@@ -182,8 +175,6 @@ if [ -z "$2" ] || [ "$1" == "configure" ]; then
     setup_bind
     # Setup proxy addresses
     setup_proxies
-    # Setup portals language
-    setup_portals
     # Setup pbx system
     setup_pbx
     # Setup media relays

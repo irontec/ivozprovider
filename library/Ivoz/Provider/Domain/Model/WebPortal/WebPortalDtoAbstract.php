@@ -22,17 +22,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $klearTheme = '';
-
-    /**
-     * @var string|null
-     */
     private $urlType = null;
-
-    /**
-     * @var bool|null
-     */
-    private $newUI = true;
 
     /**
      * @var string|null
@@ -85,9 +75,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
 
         return [
             'url' => 'url',
-            'klearTheme' => 'klearTheme',
             'urlType' => 'urlType',
-            'newUI' => 'newUI',
             'name' => 'name',
             'color' => 'color',
             'id' => 'id',
@@ -107,9 +95,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     {
         $response = [
             'url' => $this->getUrl(),
-            'klearTheme' => $this->getKlearTheme(),
             'urlType' => $this->getUrlType(),
-            'newUI' => $this->getNewUI(),
             'name' => $this->getName(),
             'color' => $this->getColor(),
             'id' => $this->getId(),
@@ -147,18 +133,6 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $this->url;
     }
 
-    public function setKlearTheme(?string $klearTheme): static
-    {
-        $this->klearTheme = $klearTheme;
-
-        return $this;
-    }
-
-    public function getKlearTheme(): ?string
-    {
-        return $this->klearTheme;
-    }
-
     public function setUrlType(string $urlType): static
     {
         $this->urlType = $urlType;
@@ -169,18 +143,6 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     public function getUrlType(): ?string
     {
         return $this->urlType;
-    }
-
-    public function setNewUI(bool $newUI): static
-    {
-        $this->newUI = $newUI;
-
-        return $this;
-    }
-
-    public function getNewUI(): ?bool
-    {
-        return $this->newUI;
     }
 
     public function setName(?string $name): static

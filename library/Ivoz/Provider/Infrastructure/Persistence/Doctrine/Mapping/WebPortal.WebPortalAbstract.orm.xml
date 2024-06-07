@@ -10,22 +10,10 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="klearTheme" type="string" column="klearTheme" length="200" nullable="true">
-      <options>
-        <option name="fixed"/>
-        <option name="default"/>
-      </options>
-    </field>
     <field name="urlType" type="string" column="urlType" length="25" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:god|brand|admin|user]</option>
-      </options>
-    </field>
-    <field name="newUI" type="boolean" column="newUI" nullable="false">
-      <options>
-        <option name="default">1</option>
-        <option name="unsigned">1</option>
       </options>
     </field>
     <field name="name" type="string" column="name" length="200" nullable="true">

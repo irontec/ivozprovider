@@ -19,14 +19,10 @@ repositories.
 APT Repository configuration
 ****************************
 
-Right now, two different repositories are used for the latest IvozProvider
-release (called tempest) and it's frontend Klear release (called tayler).
-
 .. code-block:: console
 
     cd /etc/apt/sources.list.d
     echo deb http://packages.irontec.com/debian tempest main extra > ivozprovider.list
-    echo deb http://packages.irontec.com/debian tayler main > klear.list
 
 Optionally, we can add the repository key to check signed packages:
 
