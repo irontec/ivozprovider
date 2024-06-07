@@ -45,7 +45,6 @@ ivozprovider-rtpengine
 ivozprovider-rtpengine-dbgsym
 ivozprovider-scheduler
 ivozprovider-schema
-ivozprovider-web-admin
 ivozprovider-web-portals
 ivozprovider-web-rest
 ivozprovider-web-user
