@@ -12,10 +12,10 @@ const CompanyFriendSelectOptions: SelectOptionsType<
 > = ({ callback, cancelToken }, customProps): Promise<unknown> => {
   const entities = store.getState().entities.entities;
   const Friend = entities.Friend;
-  const companyId = customProps?.companyId;
+  const _companyId = customProps?.companyId;
 
   return fetchAllPages({
-    endpoint: `${Friend.path}?company[]=${companyId}`,
+    endpoint: `${Friend.path}?company[]=${_companyId}`,
     params: {
       _properties: ['id', 'name', 'lastname'],
     },

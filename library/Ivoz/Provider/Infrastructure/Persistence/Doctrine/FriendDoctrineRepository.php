@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM\Query;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
@@ -88,5 +89,19 @@ class FriendDoctrineRepository extends ServiceEntityRepository implements Friend
             'interCompany' => $interCompany,
 
         ]);
+    }
+
+    public function getMaxPriorityForCompany(int $companyId): int
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb->select('MAX(self.priority)')
+            ->where(
+                $expression->eq('self.company', $companyId)
+            );
+
+        $result = $qb->getQuery()->getSingleScalarResult();
+        return (int) $result;
     }
 }

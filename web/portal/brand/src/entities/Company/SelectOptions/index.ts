@@ -8,6 +8,7 @@ import WholesaleSelectOptions from './WholesaleSelectOptions';
 export default CompanySelectOptions;
 
 export {
+  CompanySelectOptions,
   CorporationSelectOptions,
   ResidentialSelectOptions,
   RetailSelectOptions,

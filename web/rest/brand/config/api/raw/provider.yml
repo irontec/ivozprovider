@@ -414,11 +414,27 @@ Ivoz\Provider\Domain\Model\Company\Company:
   collectionOperations:
     get: ~
     post: ~
-  properties:
-    balance:
-      attributes:
-        swagger_context:
-          readOnly: true
+    get_companies_corporate_unassigned:
+      method: 'GET'
+      path: '/companies/corporate/unassigned'
+      route_name: 'get_companies_corporate_unassigned'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: _includeId
+            in: query
+            type: integer
+            required: false
+            description: 'Ensure certain company id is included'
+      properties:
+        balance:
+          attributes:
+            swagger_context:
+              readOnly: true
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
@@ -758,6 +774,7 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     pagination_client_enabled: true
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
+      company: ASC
       name: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
@@ -769,7 +786,15 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     delete: ~
   collectionOperations:
     get: ~
-    post: ~
+    post_friend:
+      method: 'POST'
+      path: '/friends'
+      route_name: 'post_friend'
+      swagger_context:
+        produces:
+          - 'application/json'
+        consumes:
+          - 'application/json'
     get_status_collection:
       method: 'GET'
       path: 'friends/status'

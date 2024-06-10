@@ -14,7 +14,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     entityService,
     cancelToken,
     response,
-    skip: [],
+    skip: ['interCompany'],
   });
 
   await Promise.all(promises);

@@ -38,25 +38,29 @@ Feature: Update friends
       And the JSON should be like:
       """
       {
-          "name": "InterCompany1_1",
+          "name": "updatedTestFriend",
           "description": "",
           "transport": "udp",
-          "ip": null,
-          "port": null,
+          "ip": "1.2.3.4",
+          "port": 5061,
           "password": null,
           "priority": 1,
           "allow": "alaw",
           "fromUser": null,
-          "fromDomain": "127.0.0.1",
-          "directConnectivity": "intervpbx",
+          "fromDomain": "",
+          "directConnectivity": "yes",
           "ddiIn": "yes",
           "t38Passthrough": "no",
+          "alwaysApplyTransformations": false,
+          "rtpEncryption": false,
+          "multiContact": true,
+          "ruriDomain": null,
           "id": 1,
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null,
-          "interCompany": 1
+          "interCompany": null
       }
       """
 

@@ -27,6 +27,9 @@ export type FriendPropertyList<T> = {
   domain?: T;
   domainName?: T;
   status?: T;
+  statusIcon?: T;
+  alwaysApplyTransformations?: T;
+  ruriDomain?: T;
 };
 
 export type FriendProperties = FriendPropertyList<Partial<PropertySpec>>;

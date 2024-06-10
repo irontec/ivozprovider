@@ -20,8 +20,19 @@ Feature: Retrieve friends
               "priority": 1,
               "directConnectivity": "yes",
               "id": 1,
+              "company": 1,
               "domain": 3,
               "interCompany": null
+          },
+          {
+              "name": "InterCompany1_3",
+              "description": "",
+              "priority": 2,
+              "directConnectivity": "intervpbx",
+              "id": 3,
+              "company": 1,
+              "domain": 3,
+              "interCompany": 3
           }
       ]
       """

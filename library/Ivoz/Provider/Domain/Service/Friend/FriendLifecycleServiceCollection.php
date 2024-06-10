@@ -20,11 +20,16 @@ class FriendLifecycleServiceCollection implements LifecycleServiceCollectionInte
         "pre_persist" =>
         [
             \Ivoz\Provider\Domain\Service\Friend\CheckUniqueness::class => 200,
+            \Ivoz\Provider\Domain\Service\Friend\SanitizeInterVpbxPriority::class => 200,
         ],
         "post_persist" =>
         [
             \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByFriend::class => 10,
             \Ivoz\Ast\Domain\Service\PsIdentify\UpdateByFriend::class => 200,
+        ],
+        "post_remove" =>
+        [
+            \Ivoz\Provider\Domain\Service\Friend\DeleteInterVpbx::class => 200,
         ],
         "error_handler" =>
         [

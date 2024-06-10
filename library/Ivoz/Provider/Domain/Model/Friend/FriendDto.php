@@ -85,6 +85,7 @@ class FriendDto extends FriendDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
+                'companyId' => 'company',
                 'name' => 'name',
                 'domainId' => 'domain',
                 'description' => 'description',
@@ -111,7 +112,7 @@ class FriendDto extends FriendDtoAbstract
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
-            $contextProperties['companyId'] = 'company';
+            unset($contextProperties['directConnectivity']);
         }
 
         $this->setByContext(
@@ -130,19 +131,11 @@ class FriendDto extends FriendDtoAbstract
             'port',
             'password',
             'priority',
-            'allow',
-            'fromUser',
-            'fromDomain',
             'directConnectivity',
-            'ddiIn',
-            't38Passthrough',
             'id',
             'companyId',
-            'transformationRuleSetId',
-            'callAclId',
-            'outgoingDdiId',
-            'languageId',
-            'interCompanyId'
+            'interCompanyId',
+            'ruriDomain',
         ];
 
         return array_filter(
