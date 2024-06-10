@@ -73,6 +73,7 @@ Feature: Retrieve residential devices
           "rtpEncryption": false,
           "multiContact": true,
           "ruriDomain": null,
+          "trustSDP": false,
           "id": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
@@ -93,6 +94,5 @@ Feature: Retrieve residential devices
                   "userAgent": "Yealink SIP-T23G 44.80.0.130"
               }
           ]
-
       }
       """

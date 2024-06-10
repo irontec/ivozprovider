@@ -49,6 +49,7 @@ Feature: Update residential devices
           "rtpEncryption": false,
           "multiContact": true,
           "ruriDomain": null,
+          "trustSDP": false,
           "id": 1,
           "transformationRuleSet": null,
           "outgoingDdi": 2,
@@ -89,11 +90,11 @@ Feature: Update residential devices
           "rtpEncryption": false,
           "multiContact": true,
           "ruriDomain": null,
+          "trustSDP": false,
           "id": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
-
       }
       """
 

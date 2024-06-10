@@ -64,6 +64,7 @@ Feature: Retrieve friends
           "rtpEncryption": false,
           "multiContact": true,
           "ruriDomain": null,
+          "trustSDP": false,
           "id": 1,
           "transformationRuleSet": null,
           "callAcl": null,
