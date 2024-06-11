@@ -26,6 +26,7 @@ Build-Depends: debhelper (>=9.2),
     ruby-dev,
     sphinx-common (>=1.4.6),
     yarn,
+    nodejs,
     golang
 Standards-Version: 3.9.6
 Maintainer: Irontec IvozProvider Team <ivozprovider@irontec.com>
