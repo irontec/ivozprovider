@@ -3,51 +3,32 @@ FROM debian:bookworm
 MAINTAINER Mikel Madariaga <mikel@irontec.com>
 MAINTAINER Ivan Alonso <kaian@irontec.com>
 
-RUN apt-get update && apt-get -y install gnupg wget
+# Image environment configuration
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN echo deb http://packages.irontec.com/debian tempest main extra >> \
-    /etc/apt/sources.list
+# User data for workspace permissions
+ARG UNAME=user
+ARG UID=1000
+ARG GID=1000
 
-RUN wget http://packages.irontec.com/public.key -q -O - | apt-key add -
+RUN apt-get update \
+  && apt-get install --no-install-recommends -y gnupg wget fakeroot dpkg-dev build-essential debconf pbuilder aptitude \
+  && apt-get clean
 
-# Packages from standard repository
-RUN apt-get update && apt-get install -y \
-    composer \
-    curl \
-    dpkg-dev \
-    debhelper \
-    gettext \
-    git \
-    golang \
-    libjs-sphinxdoc \
-    libjs-jquery \
-    make \
-    npm \
-    nodejs \
-    openssh-client \
-    php8.2 \
-    php8.2-cli \
-    php8.2-common \
-    php8.2-mbstring \
-    php8.2-xml \
-    php8.2-zip \
-    php8.2-mailparse \
-    php8.2-readline \
-    php8.2-gearman \
-    python3 \
-    python3-sphinx-rtd-theme \
-    ruby-dev \
-    sphinx-common \
-    yarn
+# Custom sources list
+RUN echo deb http://packages.irontec.com/debian tempest main extra >> /etc/apt/sources.list \
+  && wget http://packages.irontec.com/public.key -q -O /etc/apt/trusted.gpg.d/irontec-debian-repository.asc
 
-# Create jenkins user (configurable)
-ARG UNAME=jenkins
-ARG UID=108
-ARG GID=117
-RUN groupadd -g $GID $UNAME
-RUN useradd -m -u $UID -g $GID -s /bin/bash $UNAME
-RUN mkdir -p /build/source
-RUN chown -R jenkins.jenkins /build/
+# Install build dependencies
+COPY debian debian
+RUN apt-get update \
+  && /usr/lib/pbuilder/pbuilder-satisfydepends-experimental \
+  && apt-get clean
+
+# Create user (configurable)
+RUN groupadd -g $GID $UNAME \
+  && useradd -m -u $UID -g $GID -s /bin/bash $UNAME \
+  && mkdir -p /build/source \
+  && chown -R $UID:$GID /build/
 
 WORKDIR /build/source
-
