@@ -176,6 +176,11 @@ const properties: FriendProperties = {
     label: _('Status'),
     component: StatusIcon,
   },
+  proxyUser: {
+    label: _('Local Address'),
+    default: '__null__',
+    required: true,
+  },
 };
 
 const Friend: EntityInterface = {

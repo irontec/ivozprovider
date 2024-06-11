@@ -42,6 +42,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'ip',
         'port',
         'ruriDomain',
+        'proxyUser',
         'interCompany',
         'description',
       ],

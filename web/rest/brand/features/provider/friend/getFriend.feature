@@ -14,7 +14,7 @@ Feature: Retrieve friends status
       And the JSON should be equal to:
       """
       [
-           {
+          {
               "name": "InterCompany1_3",
               "description": "",
               "priority": 2,
@@ -22,7 +22,8 @@ Feature: Retrieve friends status
               "id": 3,
               "company": 1,
               "domain": 3,
-              "interCompany": 3
+              "interCompany": 3,
+              "proxyUser": null
           },
           {
               "name": "testFriend",
@@ -32,7 +33,8 @@ Feature: Retrieve friends status
               "id": 1,
               "company": 1,
               "domain": 3,
-              "interCompany": null
+              "interCompany": null,
+              "proxyUser": 1
           },
           {
               "name": "InterCompany1_3",
@@ -42,7 +44,8 @@ Feature: Retrieve friends status
               "id": 2,
               "company": 3,
               "domain": 6,
-              "interCompany": 1
+              "interCompany": 1,
+              "proxyUser": null
           }
       ]
       """

@@ -30,6 +30,7 @@ export type FriendPropertyList<T> = {
   statusIcon?: T;
   alwaysApplyTransformations?: T;
   ruriDomain?: T;
+  proxyUser?: T;
 };
 
 export type FriendProperties = FriendPropertyList<Partial<PropertySpec>>;
