@@ -19,6 +19,7 @@ class ResidentialDeviceLifecycleServiceCollection implements LifecycleServiceCol
     public static $bindedBaseServices = [
         "pre_persist" =>
         [
+            \Ivoz\Provider\Domain\Service\ResidentialDevice\AvoidUpdateCompany::class => 200,
             \Ivoz\Provider\Domain\Service\ResidentialDevice\CheckUniqueness::class => 200,
         ],
         "post_persist" =>
