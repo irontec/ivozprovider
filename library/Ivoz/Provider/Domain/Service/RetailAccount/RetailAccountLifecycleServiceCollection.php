@@ -19,6 +19,7 @@ class RetailAccountLifecycleServiceCollection implements LifecycleServiceCollect
     public static $bindedBaseServices = [
         "pre_persist" =>
         [
+            \Ivoz\Provider\Domain\Service\RetailAccount\AvoidUpdateCompany::class => 200,
             \Ivoz\Provider\Domain\Service\RetailAccount\CheckUniqueness::class => 200,
         ],
         "post_persist" =>

@@ -19,6 +19,7 @@ class FriendLifecycleServiceCollection implements LifecycleServiceCollectionInte
     public static $bindedBaseServices = [
         "pre_persist" =>
         [
+            \Ivoz\Provider\Domain\Service\Friend\AvoidUpdateCompany::class => 200,
             \Ivoz\Provider\Domain\Service\Friend\CheckUniqueness::class => 200,
             \Ivoz\Provider\Domain\Service\Friend\SanitizeInterVpbxPriority::class => 200,
         ],
