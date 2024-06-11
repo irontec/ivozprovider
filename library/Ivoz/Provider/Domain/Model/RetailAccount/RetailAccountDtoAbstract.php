@@ -88,6 +88,11 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     private $ruriDomain = null;
 
     /**
+     * @var bool|null
+     */
+    private $trustSDP = false;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -170,6 +175,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'rtpEncryption' => 'rtpEncryption',
             'multiContact' => 'multiContact',
             'ruriDomain' => 'ruriDomain',
+            'trustSDP' => 'trustSDP',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -201,6 +207,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'rtpEncryption' => $this->getRtpEncryption(),
             'multiContact' => $this->getMultiContact(),
             'ruriDomain' => $this->getRuriDomain(),
+            'trustSDP' => $this->getTrustSDP(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -382,6 +389,18 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     public function getRuriDomain(): ?string
     {
         return $this->ruriDomain;
+    }
+
+    public function setTrustSDP(bool $trustSDP): static
+    {
+        $this->trustSDP = $trustSDP;
+
+        return $this;
+    }
+
+    public function getTrustSDP(): ?bool
+    {
+        return $this->trustSDP;
     }
 
     /**

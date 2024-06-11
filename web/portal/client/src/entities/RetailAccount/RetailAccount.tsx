@@ -78,11 +78,11 @@ const properties: RetailAccountProperties = {
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport', 'ruriDomain'],
+        show: ['ip', 'port', 'transport', 'ruriDomain', 'trustSDP'],
         hide: ['multiContact'],
       },
       no: {
-        hide: ['ip', 'port', 'transport', 'ruriDomain'],
+        hide: ['ip', 'port', 'transport', 'ruriDomain', 'trustSDP'],
         show: ['multiContact'],
       },
     },
@@ -142,6 +142,14 @@ const properties: RetailAccountProperties = {
   },
   ruriDomain: {
     label: _('R-URI domain'),
+  },
+  trustSDP: {
+    label: _('Trust SDP'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '0',
   },
 };
 

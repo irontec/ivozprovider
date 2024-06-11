@@ -219,7 +219,8 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             't38Passthrough',
             'rtpEncryption',
             'ddiIn',
-            'ruriDomain'
+            'ruriDomain',
+            'trustSDP'
         ];
 
         return array_filter(

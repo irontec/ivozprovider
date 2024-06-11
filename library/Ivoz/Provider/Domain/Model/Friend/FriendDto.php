@@ -176,6 +176,7 @@ class FriendDto extends FriendDtoAbstract
             'interCompanyId',
             'ruriDomain',
             'proxyuserId',
+            'trustSDP'
         ];
 
         return array_filter(

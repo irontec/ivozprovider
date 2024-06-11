@@ -151,6 +151,11 @@ abstract class FriendAbstract
     protected $ruriDomain = null;
 
     /**
+     * @var bool
+     */
+    protected $trustSDP = false;
+
+    /**
      * @var CompanyInterface
      * inversedBy friends
      */
@@ -209,7 +214,8 @@ abstract class FriendAbstract
         string $t38Passthrough,
         bool $alwaysApplyTransformations,
         bool $rtpEncryption,
-        bool $multiContact
+        bool $multiContact,
+        bool $trustSDP
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -225,6 +231,7 @@ abstract class FriendAbstract
         $this->setAlwaysApplyTransformations($alwaysApplyTransformations);
         $this->setRtpEncryption($rtpEncryption);
         $this->setMultiContact($multiContact);
+        $this->setTrustSDP($trustSDP);
     }
 
     abstract public function getId(): null|string|int;
@@ -316,6 +323,8 @@ abstract class FriendAbstract
         Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $trustSDP = $dto->getTrustSDP();
+        Assertion::notNull($trustSDP, 'getTrustSDP value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
@@ -333,7 +342,8 @@ abstract class FriendAbstract
             $t38Passthrough,
             $alwaysApplyTransformations,
             $rtpEncryption,
-            $multiContact
+            $multiContact,
+            $trustSDP
         );
 
         $self
@@ -396,6 +406,8 @@ abstract class FriendAbstract
         Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $trustSDP = $dto->getTrustSDP();
+        Assertion::notNull($trustSDP, 'getTrustSDP value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
@@ -421,6 +433,7 @@ abstract class FriendAbstract
             ->setRtpEncryption($rtpEncryption)
             ->setMultiContact($multiContact)
             ->setRuriDomain($dto->getRuriDomain())
+            ->setTrustSDP($trustSDP)
             ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -460,6 +473,7 @@ abstract class FriendAbstract
             ->setRtpEncryption(self::getRtpEncryption())
             ->setMultiContact(self::getMultiContact())
             ->setRuriDomain(self::getRuriDomain())
+            ->setTrustSDP(self::getTrustSDP())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
@@ -497,6 +511,7 @@ abstract class FriendAbstract
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
             'ruri_domain' => self::getRuriDomain(),
+            'trustSDP' => self::getTrustSDP(),
             'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain()?->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
@@ -862,6 +877,18 @@ abstract class FriendAbstract
     public function getRuriDomain(): ?string
     {
         return $this->ruriDomain;
+    }
+
+    protected function setTrustSDP(bool $trustSDP): static
+    {
+        $this->trustSDP = $trustSDP;
+
+        return $this;
+    }
+
+    public function getTrustSDP(): bool
+    {
+        return $this->trustSDP;
     }
 
     public function setCompany(CompanyInterface $company): static

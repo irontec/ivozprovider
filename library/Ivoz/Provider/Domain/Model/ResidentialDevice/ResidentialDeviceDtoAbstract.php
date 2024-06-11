@@ -120,6 +120,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $ruriDomain = null;
 
     /**
+     * @var bool|null
+     */
+    private $trustSDP = false;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -218,6 +223,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'rtpEncryption' => 'rtpEncryption',
             'multiContact' => 'multiContact',
             'ruriDomain' => 'ruriDomain',
+            'trustSDP' => 'trustSDP',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -257,6 +263,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'rtpEncryption' => $this->getRtpEncryption(),
             'multiContact' => $this->getMultiContact(),
             'ruriDomain' => $this->getRuriDomain(),
+            'trustSDP' => $this->getTrustSDP(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -512,6 +519,18 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getRuriDomain(): ?string
     {
         return $this->ruriDomain;
+    }
+
+    public function setTrustSDP(bool $trustSDP): static
+    {
+        $this->trustSDP = $trustSDP;
+
+        return $this;
+    }
+
+    public function getTrustSDP(): ?bool
+    {
+        return $this->trustSDP;
     }
 
     /**

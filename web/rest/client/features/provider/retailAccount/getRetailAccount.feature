@@ -66,6 +66,7 @@ Feature: Retrieve retail accounts
           "rtpEncryption": false,
           "multiContact": true,
           "ruriDomain": null,
+          "trustSDP": false,
           "id": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,

@@ -24,6 +24,7 @@ export type RetailAccountPropertyList<T> = {
   rtpEncryption?: T;
   multiContact?: T;
   ruriDomain?: T;
+  trustSDP?: T;
 };
 
 export type RetailAccountStatus = {

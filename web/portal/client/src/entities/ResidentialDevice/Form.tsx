@@ -48,6 +48,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'maxCalls',
         'rtpEncryption',
         'multiContact',
+        'trustSDP',
       ],
     },
     {

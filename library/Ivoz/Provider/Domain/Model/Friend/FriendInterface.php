@@ -214,6 +214,8 @@ interface FriendInterface extends LoggableEntityInterface
 
     public function getRuriDomain(): ?string;
 
+    public function getTrustSDP(): bool;
+
     public function setCompany(CompanyInterface $company): static;
 
     public function getCompany(): CompanyInterface;
