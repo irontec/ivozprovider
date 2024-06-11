@@ -21,7 +21,6 @@ Feature: Update ddi
           "directConnectivity": "no",
           "ddiIn": "yes",
           "t38Passthrough": "no",
-          "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "proxyUser": 1
@@ -47,10 +46,23 @@ Feature: Update ddi
           "multiContact": true,
           "ruriDomain": null,
           "id": 1,
-          "company": 1,
+          "company": 3,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "proxyUser": null,
           "status": []
       }
       """
+
+  @createSchema
+  Scenario: Update a retail account company must fail
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/retail_accounts/1" with body:
+      """
+      {
+        "company": 1
+      }
+      """
+     Then the response status code should be 400

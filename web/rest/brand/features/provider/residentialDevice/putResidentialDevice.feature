@@ -24,7 +24,6 @@ Feature: Update residential device
           "maxCalls": 1,
           "t38Passthrough": "no",
           "id": 1,
-          "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null,
@@ -53,10 +52,23 @@ Feature: Update residential device
           "multiContact": true,
           "ruriDomain": null,
           "id": 1,
-          "company": 1,
+          "company": 4,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null,
           "proxyUser": 1
       }
       """
+
+  @createSchema
+  Scenario: Update a ddi company must fail
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/residential_devices/1" with body:
+      """
+      {
+        "company": 1,
+      }
+      """
+     Then the response status code should be 400
