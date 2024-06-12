@@ -20,7 +20,7 @@ RUN echo deb http://packages.irontec.com/debian tempest main extra >> /etc/apt/s
   && wget http://packages.irontec.com/public.key -q -O /etc/apt/trusted.gpg.d/irontec-debian-repository.asc
 
 # Install build dependencies
-COPY debian debian
+COPY . debian
 RUN apt-get update \
   && /usr/lib/pbuilder/pbuilder-satisfydepends-experimental \
   && apt-get clean
