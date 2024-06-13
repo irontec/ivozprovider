@@ -1,32 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useStoreActions } from 'store';
+import { useStoreState } from 'store';
 
-interface SharedAttr {
-  companyDomain: string;
-  companyName: string;
-  extensionNumber: string;
-  gsQRCode: boolean;
-  ipRegistered: string;
-  language: string;
-  terminalName: string;
-  terminalPassword: string;
-  userAgent: string;
-  userName: string;
-  voiceMail: string;
-}
-
-export interface Status extends SharedAttr {
-  registered: boolean | null;
-}
-
-interface ApiResponse extends SharedAttr {
-  statusTerminal: boolean | null;
-}
+import { Status } from '../../store/userStatus/status';
 
 const useTerminalStatus = (): Status => {
-  const apiGet = useStoreActions((store) => store.api.get);
+  const profile = useStoreState((state) => state.userStatus.status.profile);
 
-  const [status, setStatus] = useState<Status>({
+  const defaultValues = {
     companyDomain: '',
     companyName: '',
     extensionNumber: '',
@@ -39,36 +18,14 @@ const useTerminalStatus = (): Status => {
     userName: '',
     voiceMail: '',
     registered: false,
-  });
+    features: [],
+  } as Status;
 
-  useEffect(() => {
-    const statusReq = () => {
-      apiGet({
-        path: '/my/status',
-        params: {},
-        successCallback: async (data) => {
-          const input = data as ApiResponse;
+  if (profile) {
+    return profile;
+  }
 
-          const response: Status = {
-            ...input,
-            registered: input.statusTerminal,
-          };
-
-          setStatus(response);
-        },
-      });
-    };
-
-    statusReq();
-
-    const interval = setInterval(statusReq, 60000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [apiGet]);
-
-  return status;
+  return defaultValues;
 };
 
 export default useTerminalStatus;
