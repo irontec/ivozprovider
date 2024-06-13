@@ -2,6 +2,7 @@
 
 namespace Model;
 
+use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
@@ -90,6 +91,12 @@ class UserStatus
      * @AttributeDefinition(type="int")
      */
     protected $extensionNumber;
+
+    /**
+     * @var string[]
+     * @AttributeDefinition(type="array")
+     */
+     protected $features = [];
 
     /**
      * @return mixed
@@ -304,5 +311,26 @@ class UserStatus
     {
         $this->extensionNumber = $extensionNumber;
         return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getFeatures(): array
+    {
+        return $this->features;
+    }
+
+    /**
+     * @param FeatureInterface[] $features
+     */
+    public function setFeatures(array $features): void
+    {
+        $this->features = array_map(
+            function (FeatureInterface $feature) {
+                return $feature->getIden();
+            },
+            $features
+        );
     }
 }
