@@ -25,6 +25,13 @@ Feature: Retrieve status
           "statusTerminal": true,
           "terminalName": "alice",
           "terminalPassword": "AUfVkn498_",
-          "extensionNumber": null
+          "extensionNumber": null,
+          "features": [
+              "queues",
+              "recordings",
+              "faxes",
+              "friends",
+              "conferences"
+          ]
       }
       """
