@@ -1,4 +1,5 @@
 import { StoreContainer } from '@irontec/ivoz-ui';
+import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
 import { CssBaseline, LinearProgress } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -24,6 +25,12 @@ export default function App(): JSX.Element {
   const authStore = useStoreActions((actions) => actions.auth);
   const token = useStoreState((actions) => actions.auth.token);
 
+  const loadStatus = useStoreActions(
+    (actions) => actions.userStatus.status.load
+  );
+
+  const [, cancelToken] = useCancelToken();
+
   useTranslation();
 
   useEffect(() => {
@@ -37,6 +44,10 @@ export default function App(): JSX.Element {
     authStore.setSessionStoragePrefix('IP-user-');
     authStore.init();
   }, [apiSpecStore, authStore, token, setLanguages, setLoginProps]);
+
+  useEffect(() => {
+    loadStatus(cancelToken);
+  }, []);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
 

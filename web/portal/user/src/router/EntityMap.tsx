@@ -1,13 +1,20 @@
 import routeMapParser, {
   RouteMap,
+  RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 
 import entities from '../entities/index';
+import { Status } from '../store/userStatus/status';
 
-export type ExtendedRouteMap = RouteMap;
+type isAccessibleType = (status: Status) => boolean;
+export type ExtendedRouteMapItem = RouteMapItem & {
+  isAccessible?: isAccessibleType;
+};
 
-const getEntityMap = (): RouteMap => {
-  const map: RouteMap = [
+export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
+
+const getEntityMap = (): ExtendedRouteMap => {
+  const map: ExtendedRouteMap = [
     {
       entity: entities.Account,
       divider: true,
@@ -30,6 +37,7 @@ const getEntityMap = (): RouteMap => {
     },
     {
       entity: entities.Fax,
+      isAccessible: (status) => status.features.includes('faxes'),
       children: [
         {
           entity: entities.FaxesOut,
