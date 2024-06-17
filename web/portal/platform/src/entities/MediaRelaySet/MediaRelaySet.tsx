@@ -1,11 +1,11 @@
-import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
+import { EntityValue, isEntityItem } from '@irontec-voip/ivoz-ui';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
-} from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import PlayLessonIcon from '@mui/icons-material/PlayLesson';
 
 import {
