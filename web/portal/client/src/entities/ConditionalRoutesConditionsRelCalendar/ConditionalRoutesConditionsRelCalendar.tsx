@@ -1,6 +1,6 @@
-import { EntityValues } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec-voip/ivoz-ui';
+import defaultEntityBehavior from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec-voip/ivoz-ui/entities/EntityInterface';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 
 const ConditionalRoutesCondition: EntityInterface = {

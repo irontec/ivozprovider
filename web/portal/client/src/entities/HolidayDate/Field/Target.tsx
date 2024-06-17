@@ -1,7 +1,7 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
 
 import { HolidayDatePropertyList } from '../HolidayDateProperties';
 

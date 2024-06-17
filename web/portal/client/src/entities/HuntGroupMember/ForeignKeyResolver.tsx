@@ -1,4 +1,4 @@
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { foreignKeyResolverType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
 import { HuntGroupMemberPropertiesList } from './HuntGroupMemberProperties';

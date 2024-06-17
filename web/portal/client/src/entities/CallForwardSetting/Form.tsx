@@ -1,10 +1,10 @@
-import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import useFkChoices from '@irontec-voip/ivoz-ui/entities/data/useFkChoices';
 import {
   EntityFormProps,
   FieldsetGroups,
   Form as DefaultEntityForm,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { PropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import { PropertyList } from '@irontec-voip/ivoz-ui/services/api/ParsedApiSpecInterface';
 import { useStoreState } from 'store';
 
 import Friend from '../Friend/Friend';

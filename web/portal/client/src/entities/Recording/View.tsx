@@ -1,8 +1,8 @@
 import {
   FieldsetGroups,
   View as DefaultEntityView,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { ViewProps } from '@irontec/ivoz-ui/entities/EntityInterface';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import { ViewProps } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
 
 const View = (props: ViewProps): JSX.Element | null => {
   const groups: Array<FieldsetGroups | false> = [

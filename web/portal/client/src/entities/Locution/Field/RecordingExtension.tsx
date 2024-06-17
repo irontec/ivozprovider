@@ -2,7 +2,7 @@ import withCustomComponentWrapper, {
   CustomFunctionComponentContext,
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { styled } from '@mui/material';
 import { CancelTokenSource } from 'axios';
 import { useEffect, useState } from 'react';

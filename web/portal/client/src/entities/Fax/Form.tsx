@@ -1,11 +1,11 @@
-import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import useFkChoices from '@irontec-voip/ivoz-ui/entities/data/useFkChoices';
 import {
   EntityFormProps,
   FieldsetGroups,
   foreignKeyGetter,
   Form as DefaultEntityForm,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 
 import { useStoreState } from '../../store';
 

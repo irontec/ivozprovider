@@ -1,6 +1,6 @@
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import { autoSelectOptions } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec-voip/ivoz-ui/services/entity/EntityService';
 
 import {
   UnassignedExtensionSelectOptions,

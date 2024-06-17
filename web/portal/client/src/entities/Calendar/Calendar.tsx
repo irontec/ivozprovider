@@ -1,12 +1,12 @@
-import { isEntityItem } from '@irontec/ivoz-ui';
+import { isEntityItem } from '@irontec-voip/ivoz-ui';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
-} from '@irontec/ivoz-ui/entities/EntityInterface';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec-voip/ivoz-ui/services/entity/EntityService';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 import HolidayDateRange from '../HolidayDateRange/HolidayDateRange';

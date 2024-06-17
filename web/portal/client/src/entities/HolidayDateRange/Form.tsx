@@ -1,12 +1,12 @@
-import { EntityValues } from '@irontec/ivoz-ui';
-import { getMarshallerWhiteList } from '@irontec/ivoz-ui/components/form.helper';
-import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import { EntityValues } from '@irontec-voip/ivoz-ui';
+import { getMarshallerWhiteList } from '@irontec-voip/ivoz-ui/components/form.helper';
+import useFkChoices from '@irontec-voip/ivoz-ui/entities/data/useFkChoices';
 import {
   EntityFormProps,
   FieldsetGroups,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
-import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Form';
+import useCancelToken from '@irontec-voip/ivoz-ui/hooks/useCancelToken';
 import { useNavigate } from 'react-router-dom';
 
 import { useStoreActions } from '../../store';

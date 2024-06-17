@@ -1,5 +1,5 @@
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import { foreignKeyResolverType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import genericForeignKeyResolver from '@irontec-voip/ivoz-ui/services/api/genericForeigKeyResolver';
 import store from 'store';
 
 import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';

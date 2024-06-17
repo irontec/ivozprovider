@@ -1,6 +1,6 @@
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import { foreignKeyResolverType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import genericForeignKeyResolver from '@irontec-voip/ivoz-ui/services/api/genericForeigKeyResolver';
+import { EntityValues } from '@irontec-voip/ivoz-ui/services/entity/EntityService';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
 import store from 'store';
 
