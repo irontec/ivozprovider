@@ -1,8 +1,8 @@
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { Tooltip } from '@mui/material';
 import { styled } from '@mui/styles';

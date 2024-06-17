@@ -1,16 +1,15 @@
-import { ApiError } from '@irontec/ivoz-ui';
-import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
-import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
+import { MoreMenuItem } from '@irontec-voip/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
+import { StyledTableRowCustomCta } from '@irontec-voip/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import {
   OutlinedButton,
   SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+} from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
 import {
   ActionFunctionComponent,
   isSingleRowAction,
   MultiSelectActionItemProps,
-} from '@irontec/ivoz-ui/router/routeMapParser';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/router/routeMapParser';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import {
   Dialog,
@@ -29,7 +28,6 @@ const GrantAll: ActionFunctionComponent = (
 
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string>();
 
   const administrators = useStoreState(
     (state) => state.entities.entities.Administrator
@@ -89,11 +87,7 @@ const GrantAll: ActionFunctionComponent = (
           });
         }
       })
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .catch((error: ApiError) => {
-        const errorMsg =
-          error?.data?.detail ?? `${error?.statusText} (${error?.status})`;
-        setErrorMsg(errorMsg);
+      .catch(() => {
         setError(true);
       });
   };

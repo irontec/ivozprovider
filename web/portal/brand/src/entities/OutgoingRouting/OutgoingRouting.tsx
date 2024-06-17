@@ -1,9 +1,9 @@
-import { EntityValues } from '@irontec/ivoz-ui';
+import { EntityValues } from '@irontec-voip/ivoz-ui';
 import defaultEntityBehavior, {
   unmarshaller as defaultUnmarshaller,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
 
 import Operator from './Field/Operator';

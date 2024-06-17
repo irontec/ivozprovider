@@ -1,7 +1,7 @@
-import { FieldsetGroups } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import DefaultView from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/View';
-import { ViewProps } from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { FieldsetGroups } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import DefaultView from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/View';
+import { ViewProps } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 
 const View = (props: ViewProps): JSX.Element | null => {
   const groups: Array<FieldsetGroups | false> = [

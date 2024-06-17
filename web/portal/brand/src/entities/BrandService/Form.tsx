@@ -1,9 +1,9 @@
-import { PropertyList } from '@irontec/ivoz-ui';
+import { PropertyList } from '@irontec-voip/ivoz-ui';
 import {
   EntityFormProps,
   FieldsetGroups,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Form';
 
 import useFkChoices from './ForeignKeyGetter';
 

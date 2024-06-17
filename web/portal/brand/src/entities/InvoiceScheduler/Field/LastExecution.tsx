@@ -1,9 +1,9 @@
-import { ScalarProperty } from '@irontec/ivoz-ui';
+import { ScalarProperty } from '@irontec-voip/ivoz-ui';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import DoneIcon from '@mui/icons-material/Done';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { Tooltip } from '@mui/material';

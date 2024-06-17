@@ -1,14 +1,14 @@
-import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
-import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
+import { MoreMenuItem } from '@irontec-voip/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
+import { StyledTableRowCustomCta } from '@irontec-voip/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import {
   OutlinedButton,
   SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+} from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
 import {
   ActionFunctionComponent,
   ActionItemProps,
-} from '@irontec/ivoz-ui/router/routeMapParser';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/router/routeMapParser';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import ReplayIcon from '@mui/icons-material/Replay';
 import {
   Dialog,

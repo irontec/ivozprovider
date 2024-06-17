@@ -1,17 +1,20 @@
-import { EmbeddableProperty, EntityValidatorResponse } from '@irontec/ivoz-ui';
-import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
-import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
+import {
+  EmbeddableProperty,
+  EntityValidatorResponse,
+} from '@irontec-voip/ivoz-ui';
+import { MoreMenuItem } from '@irontec-voip/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
+import { StyledTableRowCustomCta } from '@irontec-voip/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import {
   OutlinedButton,
   SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
-import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
+} from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
+import { useFormHandler } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import {
   ActionFunctionComponent,
   ActionItemProps,
-} from '@irontec/ivoz-ui/router/routeMapParser';
-import { FileUploadFactory } from '@irontec/ivoz-ui/services/form/FormFieldFactory/Factory/FileUploadFactory';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/router/routeMapParser';
+import { FileUploadFactory } from '@irontec-voip/ivoz-ui/services/form/FormFieldFactory/Factory/FileUploadFactory';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import {
   Box,

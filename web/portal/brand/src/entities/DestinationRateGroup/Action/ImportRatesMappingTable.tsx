@@ -1,7 +1,7 @@
-import { DropdownChoices } from '@irontec/ivoz-ui';
-import { StyledTable } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import { StyledDropdown } from '@irontec/ivoz-ui/services/form/Field/Dropdown/Dropdown.styles';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { DropdownChoices } from '@irontec-voip/ivoz-ui';
+import { StyledTable } from '@irontec-voip/ivoz-ui/components/List/Content/Table/ContentTable.styles';
+import { StyledDropdown } from '@irontec-voip/ivoz-ui/services/form/Field/Dropdown/Dropdown.styles';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import {
   Checkbox,
   SelectChangeEvent,

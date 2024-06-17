@@ -1,9 +1,9 @@
-import ApiClient from '@irontec/ivoz-ui/services/api/ApiClient';
+import ApiClient from '@irontec-voip/ivoz-ui/services/api/ApiClient';
 import {
   IvozStore,
   StoreContainer,
   storeModel as ivozStoreModel,
-} from '@irontec/ivoz-ui/store';
+} from '@irontec-voip/ivoz-ui/store';
 import { createStore, createTypedHooks } from 'easy-peasy';
 
 import config from '../config';

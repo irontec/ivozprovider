@@ -1,8 +1,8 @@
-import { EntityValues, StoreContainer } from '@irontec/ivoz-ui';
+import { EntityValues, StoreContainer } from '@irontec-voip/ivoz-ui';
 import {
   entityObject2ListLink,
   GenericForeignKeyResolverProps,
-} from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+} from '@irontec-voip/ivoz-ui/services/api/genericForeigKeyResolver';
 import store from 'store';
 
 import { DdiPropertiesList } from '../Ddi/DdiProperties';

@@ -1,6 +1,6 @@
-import { DropdownChoices } from '@irontec/ivoz-ui';
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { DropdownChoices } from '@irontec-voip/ivoz-ui';
+import { autoSelectOptions } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
 
 import { ResidentialSelectOptions } from '../Company/SelectOptions';
 import { ResidentialDevicePropertyList } from './ResidentialDeviceProperties';

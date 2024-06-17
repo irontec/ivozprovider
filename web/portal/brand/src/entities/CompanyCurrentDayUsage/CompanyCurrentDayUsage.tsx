@@ -1,8 +1,8 @@
 import {
   ListDecorator as DefaultListDecorator,
   ListDecoratorType,
-} from '@irontec/ivoz-ui';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import DoneIcon from '@mui/icons-material/Done';
 import ErrorIcon from '@mui/icons-material/Error';
 import SavingsIcon from '@mui/icons-material/Savings';

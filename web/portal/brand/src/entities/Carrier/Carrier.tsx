@@ -1,12 +1,12 @@
-import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import { EntityValues, isEntityItem } from '@irontec-voip/ivoz-ui';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
   EntityColumnsFuncType,
-} from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import SwapCallsIcon from '@mui/icons-material/SwapCalls';
 
 import { AppStore } from '../../store';

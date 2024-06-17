@@ -1,8 +1,8 @@
-import { EntityValues } from '@irontec/ivoz-ui';
+import { EntityValues } from '@irontec-voip/ivoz-ui';
 import defaultEntityBehavior, {
   PropertyFkChoices,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
 import { ClientTypes } from '../../Company/ClientFeatures';

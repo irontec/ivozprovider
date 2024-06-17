@@ -1,7 +1,7 @@
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
 
 import { InvoicePropertyList } from '../InvoiceProperties';
 
