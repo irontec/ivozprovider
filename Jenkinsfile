@@ -489,6 +489,46 @@ pipeline {
                 }
             }
         }
+
+        // --------------------------------------------------------------------
+        // Packaging Testing stage
+        // --------------------------------------------------------------------
+        stage ('package') {
+            when {
+                anyOf {
+                    expression { hasLabel("packaging") }
+                    expression { hasCommitTag("pkg:") }
+                }
+            }
+            stages {
+                stage ('package-image') {
+                    steps {
+                        dir ('debian') {
+                            script {
+                                docker.build("ivozprovider-package-testing:${env.CHANGE_ID}")
+                            }
+                        }
+                    }
+                }
+                stage ('package-build') {
+                    agent {
+                        docker {
+                            image "ivozprovider-package-testing:${env.CHANGE_ID}"
+                            args "--entrypoint= --volume ${WORKSPACE}:/build/source"
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh "cd /build/source && dpkg-buildpackage -b"
+                    }
+                }
+            }
+            post {
+                success { notifySuccessGithub() }
+                failure { notifyFailureGithub() }
+            }
+        }
+        //
         // --------------------------------------------------------------------
         // Functional Testing stage
         // --------------------------------------------------------------------
@@ -583,7 +623,7 @@ boolean hasLabel(String label) {
 }
 
 boolean hasCommitTag(String module) {
-  return !env.CHANGE_TARGET || sh(
+  return env.CHANGE_TARGET && sh(
     returnStatus: true,
     script: "git log --oneline origin/${env.CHANGE_TARGET}...${env.GIT_COMMIT} | grep ${module}"
   ) == 0
