@@ -1,7 +1,7 @@
-import Breadcrumbs from '@irontec/ivoz-ui/components/layout/Header/Breadcrumbs';
-import Settings from '@irontec/ivoz-ui/components/layout/Header/Settings/Settings';
-import { LightButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
-import { RouteMap } from '@irontec/ivoz-ui/router/routeMapParser';
+import Breadcrumbs from '@irontec-voip/ivoz-ui/components/layout/Header/Breadcrumbs';
+import Settings from '@irontec-voip/ivoz-ui/components/layout/Header/Settings/Settings';
+import { LightButton } from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
+import { RouteMap } from '@irontec-voip/ivoz-ui/router/routeMapParser';
 import MenuIcon from '@mui/icons-material/Menu';
 import {
   Box,
