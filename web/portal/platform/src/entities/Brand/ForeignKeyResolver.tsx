@@ -1,7 +1,7 @@
-import { EntityValues } from '@irontec/ivoz-ui';
-import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import { EntityValues } from '@irontec-voip/ivoz-ui';
+import { autoForeignKeyResolver } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import genericForeignKeyResolver from '@irontec-voip/ivoz-ui/services/api/genericForeigKeyResolver';
 import { getI18n } from 'react-i18next';
 import store from 'store';
 

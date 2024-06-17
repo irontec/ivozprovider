@@ -1,13 +1,13 @@
-import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
+import { MoreMenuItem } from '@irontec-voip/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import {
   StyledTableRowChildEntityLink,
   StyledTableRowCustomCta,
-} from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
+} from '@irontec-voip/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import {
   ActionFunctionComponent,
   ActionItemProps,
-} from '@irontec/ivoz-ui/router/routeMapParser';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/router/routeMapParser';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { Tooltip } from '@mui/material';
 import { useStoreState } from 'store';

@@ -1,6 +1,6 @@
-import { OutlinedButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
-import useCurrentPathMatch from '@irontec/ivoz-ui/hooks/useCurrentPathMatch';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { OutlinedButton } from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
+import useCurrentPathMatch from '@irontec-voip/ivoz-ui/hooks/useCurrentPathMatch';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import ErrorIcon from '@mui/icons-material/Error';
 import RestorePageIcon from '@mui/icons-material/RestorePage';
 import {

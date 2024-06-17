@@ -1,8 +1,8 @@
 import {
   criteriaToArray,
   queryStringToCriteria,
-} from '@irontec/ivoz-ui/components/List/List.helpers';
-import useQueryStringParams from '@irontec/ivoz-ui/components/List/useQueryStringParams';
+} from '@irontec-voip/ivoz-ui/components/List/List.helpers';
+import useQueryStringParams from '@irontec-voip/ivoz-ui/components/List/useQueryStringParams';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'store';

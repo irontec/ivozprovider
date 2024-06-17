@@ -1,7 +1,7 @@
-import { EntityValue } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { EntityValue } from '@irontec-voip/ivoz-ui';
+import defaultEntityBehavior from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import CallIcon from '@mui/icons-material/Call';
 
 import GenericTemplate from './Field/GenericTemplate/GenericTemplate';

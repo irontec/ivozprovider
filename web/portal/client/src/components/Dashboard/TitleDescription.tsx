@@ -1,5 +1,5 @@
-import { LightButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { LightButton } from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
 export const TitleDescription = (): JSX.Element => {

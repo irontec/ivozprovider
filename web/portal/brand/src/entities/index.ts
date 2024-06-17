@@ -1,4 +1,4 @@
-import { EntityList } from '@irontec/ivoz-ui/router/parseRoutes';
+import { EntityList } from '@irontec-voip/ivoz-ui/router/parseRoutes';
 import store from 'store';
 
 const modules = import.meta.glob(

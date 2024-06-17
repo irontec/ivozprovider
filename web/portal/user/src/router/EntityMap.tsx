@@ -1,7 +1,7 @@
 import routeMapParser, {
   RouteMap,
   RouteMapItem,
-} from '@irontec/ivoz-ui/router/routeMapParser';
+} from '@irontec-voip/ivoz-ui/router/routeMapParser';
 
 import entities from '../entities/index';
 import { Status } from '../store/userStatus/status';

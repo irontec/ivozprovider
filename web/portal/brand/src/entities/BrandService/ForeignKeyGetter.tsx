@@ -1,9 +1,9 @@
 import {
   autoSelectOptions,
   FkChoices,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { ForeignKeyGetterTypeArgs } from '@irontec/ivoz-ui/entities/EntityInterface';
-import EntityService from '@irontec/ivoz-ui/services/entity/EntityService';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterTypeArgs } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import EntityService from '@irontec-voip/ivoz-ui/services/entity/EntityService';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { PathMatch } from 'react-router-dom';

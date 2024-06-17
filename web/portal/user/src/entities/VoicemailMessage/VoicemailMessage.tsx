@@ -1,8 +1,8 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   OrderDirection,
-} from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 import Status from '../VoicemailMessage/Field/Status';

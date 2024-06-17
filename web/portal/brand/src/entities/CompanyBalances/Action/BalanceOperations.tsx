@@ -1,18 +1,18 @@
-import { EntityValues } from '@irontec/ivoz-ui';
-import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
-import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
+import { EntityValues } from '@irontec-voip/ivoz-ui';
+import { MoreMenuItem } from '@irontec-voip/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
+import { StyledTableRowCustomCta } from '@irontec-voip/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import {
   OutlinedButton,
   SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
-import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
+} from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
+import useCancelToken from '@irontec-voip/ivoz-ui/hooks/useCancelToken';
 import {
   ActionFunctionComponent,
   ActionItemProps,
-} from '@irontec/ivoz-ui/router/routeMapParser';
-import { StyledDropdown } from '@irontec/ivoz-ui/services/form/Field/Dropdown/Dropdown.styles';
-import { StyledTextField } from '@irontec/ivoz-ui/services/form/Field/TextField/TextField.styles';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/router/routeMapParser';
+import { StyledDropdown } from '@irontec-voip/ivoz-ui/services/form/Field/Dropdown/Dropdown.styles';
+import { StyledTextField } from '@irontec-voip/ivoz-ui/services/form/Field/TextField/TextField.styles';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import ReplayIcon from '@mui/icons-material/Replay';
 import {
   Box,

@@ -1,9 +1,9 @@
-import { ListDecorator, ScalarProperty } from '@irontec/ivoz-ui';
+import { ListDecorator, ScalarProperty } from '@irontec-voip/ivoz-ui';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 
 import { OutgoingRoutingPropertyList } from '../OutgoingRoutingProperties';
 

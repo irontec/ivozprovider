@@ -1,9 +1,9 @@
-import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import useFkChoices from '@irontec-voip/ivoz-ui/entities/data/useFkChoices';
 import {
   EntityFormProps,
   FieldsetGroups,
   Form as DefaultEntityForm,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
 import { useStoreState } from 'store';
 
 import { foreignKeyGetter } from './ForeignKeyGetter';

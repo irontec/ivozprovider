@@ -1,5 +1,5 @@
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+import EntityInterface from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import OutboundIcon from '@mui/icons-material/Outbound';
 
 import FaxesInOut from '../FaxesInOut/FaxesInOut';

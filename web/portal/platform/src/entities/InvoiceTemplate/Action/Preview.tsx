@@ -1,14 +1,14 @@
-import DialogContentBody from '@irontec/ivoz-ui/components/Dialog/DialogContentBody';
-import ErrorMessageComponent from '@irontec/ivoz-ui/components/ErrorMessageComponent';
-import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
-import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import { OutlinedButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import DialogContentBody from '@irontec-voip/ivoz-ui/components/Dialog/DialogContentBody';
+import ErrorMessageComponent from '@irontec-voip/ivoz-ui/components/ErrorMessageComponent';
+import { MoreMenuItem } from '@irontec-voip/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
+import { StyledTableRowCustomCta } from '@irontec-voip/ivoz-ui/components/List/Content/Table/ContentTable.styles';
+import { OutlinedButton } from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
 import {
   ActionFunctionComponent,
   ActionItemProps,
   isSingleRowAction,
-} from '@irontec/ivoz-ui/router/routeMapParser';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/router/routeMapParser';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import PreviewIcon from '@mui/icons-material/Preview';
 import {
   Dialog,

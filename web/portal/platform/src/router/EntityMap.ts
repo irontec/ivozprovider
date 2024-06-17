@@ -2,8 +2,8 @@ import routeMapParser, {
   ActionItem,
   EntityItem,
   RouteMap,
-} from '@irontec/ivoz-ui/router/routeMapParser';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/router/routeMapParser';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import DialpadIcon from '@mui/icons-material/Dialpad';
 import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
 import SwapCallsIcon from '@mui/icons-material/SwapCalls';

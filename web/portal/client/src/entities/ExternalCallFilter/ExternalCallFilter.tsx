@@ -1,10 +1,10 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
 import DefaultMarshaller, {
   MarshallerValues,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Marshaller';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Marshaller';
+import EntityInterface from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { PartialPropertyList } from '@irontec-voip/ivoz-ui/services/api/ParsedApiSpecInterface';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { IvozStoreState } from 'store';
 

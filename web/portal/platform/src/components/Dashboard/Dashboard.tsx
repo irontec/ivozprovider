@@ -1,13 +1,13 @@
 import {
   CircleChart,
   CircleProps,
-} from '@irontec/ivoz-ui/components/Dashboard/CircleChart';
+} from '@irontec-voip/ivoz-ui/components/Dashboard/CircleChart';
 import {
   LightButton,
   SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
-import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
+import useCancelToken from '@irontec-voip/ivoz-ui/hooks/useCancelToken';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import {
   Paper,
   styled,

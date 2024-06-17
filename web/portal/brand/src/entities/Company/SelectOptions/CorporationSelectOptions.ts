@@ -1,6 +1,6 @@
-import { DropdownArrayChoices } from '@irontec/ivoz-ui';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
+import { DropdownArrayChoices } from '@irontec-voip/ivoz-ui';
+import { SelectOptionsType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec-voip/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 import { CorporationPropertiesList } from '../../Corporation/CorporationProperties';

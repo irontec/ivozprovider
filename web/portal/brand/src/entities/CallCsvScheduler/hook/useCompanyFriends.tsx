@@ -1,4 +1,4 @@
-import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
+import useCancelToken from '@irontec-voip/ivoz-ui/hooks/useCancelToken';
 import { useEffect, useState } from 'react';
 
 import CompanyFriendSelectOptions from '../..//Friend/SelectOptions/CompanyFriendSelectOptions';

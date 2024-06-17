@@ -1,9 +1,9 @@
 import {
   CircleChart,
   CircleProps,
-} from '@irontec/ivoz-ui/components/Dashboard/CircleChart';
-import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
+} from '@irontec-voip/ivoz-ui/components/Dashboard/CircleChart';
+import useCancelToken from '@irontec-voip/ivoz-ui/hooks/useCancelToken';
+import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
 import { styled, Tooltip } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useStoreActions } from 'store';
