@@ -388,6 +388,29 @@ Feature: Retrieve billable calls
       ]
       """
 
+  Scenario: Retrieve billable call by startTime start with partial dateTime
+    Given I add Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "billable_calls?startTime[start]=2019-01-01 09&_itemsPerPage=2"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
+      [
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
+              "startTime": "2019-01-01 09:01:44",
+              "id": 105
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
+              "startTime": "2019-01-01 09:01:43",
+              "id": 104
+          }
+      ]
+      """
+
   Scenario: Retrieve billable call by startTime start array
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
