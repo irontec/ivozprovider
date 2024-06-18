@@ -28,13 +28,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'conditionalRoute',
         'conferenceRoom',
         'queue',
-        'fax',
       ]
     );
   }
 
   if (!aboutMe?.vpbx && !aboutMe?.residential) {
-    skip.push(...['externalCallFilter']);
+    skip.push(...['externalCallFilter', 'fax']);
   }
 
   if (!aboutMe?.residential) {
