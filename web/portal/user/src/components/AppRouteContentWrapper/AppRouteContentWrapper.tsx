@@ -1,7 +1,7 @@
-import { Menu } from '@irontec-voip/ivoz-ui/components/layout';
-import Loading from '@irontec-voip/ivoz-ui/components/layout/Loading/Loading';
-import { StyledCloseIcon } from '@irontec-voip/ivoz-ui/components/shared/Message.styles';
-import { RouteMap } from '@irontec-voip/ivoz-ui/router/routeMapParser';
+import { Menu } from '@irontec/ivoz-ui/components/layout';
+import Loading from '@irontec/ivoz-ui/components/layout/Loading/Loading';
+import { StyledCloseIcon } from '@irontec/ivoz-ui/components/shared/Message.styles';
+import { RouteMap } from '@irontec/ivoz-ui/router/routeMapParser';
 import { Box, IconButton } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { useStoreActions, useStoreState } from 'store';

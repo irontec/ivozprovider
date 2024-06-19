@@ -1,5 +1,5 @@
-import Avatar from '@irontec-voip/ivoz-ui/components/layout/Header/Avatar';
-import { AvatarProps } from '@irontec-voip/ivoz-ui/components/layout/Header/Avatar/Avatar';
+import Avatar from '@irontec/ivoz-ui/components/layout/Header/Avatar';
+import { AvatarProps } from '@irontec/ivoz-ui/components/layout/Header/Avatar/Avatar';
 
 import CustomMenuItems from '../MenuItems/MenuItems';
 import useTerminalStatus from '../useTerminalStatus';

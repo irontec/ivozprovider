@@ -1,5 +1,5 @@
-import { Login as DefaultLogin } from '@irontec-voip/ivoz-ui/components';
-import { EntityValidator } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { Login as DefaultLogin } from '@irontec/ivoz-ui/components';
+import { EntityValidator } from '@irontec/ivoz-ui/entities/EntityInterface';
 import queryString from 'query-string';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';

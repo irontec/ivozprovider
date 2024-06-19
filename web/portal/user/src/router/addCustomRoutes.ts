@@ -1,4 +1,4 @@
-import { Edit, RouteSpec } from '@irontec-voip/ivoz-ui';
+import { Edit, RouteSpec } from '@irontec/ivoz-ui';
 
 const addCustomRoutes = (routes: Array<RouteSpec>): Array<RouteSpec> => {
   if (routes.length === 0) {

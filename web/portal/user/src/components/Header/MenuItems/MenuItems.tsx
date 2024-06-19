@@ -1,4 +1,4 @@
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { ListItemIcon, MenuItem, Typography } from '@mui/material';
 import { useStoreActions } from 'store';

@@ -1,5 +1,5 @@
-import { StoreContainer } from '@irontec-voip/ivoz-ui';
-import useCancelToken from '@irontec-voip/ivoz-ui/hooks/useCancelToken';
+import { StoreContainer } from '@irontec/ivoz-ui';
+import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
 import { CssBaseline, LinearProgress } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
