@@ -1,4 +1,4 @@
-import { Languages } from '@irontec-voip/ivoz-ui/components/layout/LanguageSelector/LanguageSelector';
+import { Languages } from '@irontec/ivoz-ui/components/layout/LanguageSelector/LanguageSelector';
 
 export const languagesList: Languages = [
   {

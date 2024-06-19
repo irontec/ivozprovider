@@ -1,4 +1,4 @@
-import { EntityItem, isEntityItem, RouteMapItem } from '@irontec-voip/ivoz-ui';
+import { EntityItem, isEntityItem, RouteMapItem } from '@irontec/ivoz-ui';
 import { useEffect, useState } from 'react';
 
 import { AboutMe, EntityAcl } from '../store/clientSession/aboutMe';

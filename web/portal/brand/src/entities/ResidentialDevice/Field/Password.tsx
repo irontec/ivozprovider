@@ -1,10 +1,10 @@
-import { isPropertyScalar } from '@irontec-voip/ivoz-ui/services/api/ParsedApiSpecInterface';
+import { isPropertyScalar } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import {
   CustomFunctionComponentContext,
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import { StyledTextField } from '@irontec-voip/ivoz-ui/services/form/Field/TextField/TextField.styles';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { StyledTextField } from '@irontec/ivoz-ui/services/form/Field/TextField/TextField.styles';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { InputAdornment, Tooltip } from '@mui/material';
 import { styled } from '@mui/styles';

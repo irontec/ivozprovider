@@ -1,5 +1,5 @@
-import { autoForeignKeyResolver } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
-import { foreignKeyResolverType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 import { NotificationTemplateContentPropertiesList } from './NotificationTemplateContentProperties';
 

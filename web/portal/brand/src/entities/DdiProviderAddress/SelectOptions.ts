@@ -1,6 +1,6 @@
-import { DropdownChoices } from '@irontec-voip/ivoz-ui';
-import defaultEntityBehavior from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { DropdownChoices } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
 const DdiProviderAddressSelectOptions: SelectOptionsType = ({

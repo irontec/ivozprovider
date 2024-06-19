@@ -1,6 +1,6 @@
-import { DropdownChoices } from '@irontec-voip/ivoz-ui';
-import { SelectOptionsType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
-import { fetchAllPages } from '@irontec-voip/ivoz-ui/helpers/fechAllPages';
+import { DropdownChoices } from '@irontec/ivoz-ui';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 const FaxSelectOptions: SelectOptionsType = ({

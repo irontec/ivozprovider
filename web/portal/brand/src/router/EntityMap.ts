@@ -1,9 +1,9 @@
-import { EntityAclType } from '@irontec-voip/ivoz-ui';
+import { EntityAclType } from '@irontec/ivoz-ui';
 import routeMapParser, {
   RouteMap,
   RouteMapItem,
-} from '@irontec-voip/ivoz-ui/router/routeMapParser';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+} from '@irontec/ivoz-ui/router/routeMapParser';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import DescriptionIcon from '@mui/icons-material/Description';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import EngineeringIcon from '@mui/icons-material/Engineering';

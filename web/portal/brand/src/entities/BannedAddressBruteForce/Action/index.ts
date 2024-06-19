@@ -1,4 +1,4 @@
-import { CustomActionsType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { CustomActionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 import Unban from './Unban';
 
