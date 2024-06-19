@@ -1,4 +1,4 @@
-import { CriteriaFilterValues } from '@irontec-voip/ivoz-ui/components/List/Filter/ContentFilterDialog';
+import { CriteriaFilterValues } from '@irontec/ivoz-ui/components/List/Filter/ContentFilterDialog';
 
 import { WsFilters } from './types';
 

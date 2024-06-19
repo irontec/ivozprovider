@@ -1,4 +1,4 @@
-import { StoreContainer } from '@irontec-voip/ivoz-ui';
+import { StoreContainer } from '@irontec/ivoz-ui';
 import { CssBaseline, LinearProgress } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';

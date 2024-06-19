@@ -1,4 +1,4 @@
-import ParsedApiSpecInterface from '@irontec-voip/ivoz-ui/services/api/ParsedApiSpecInterface';
+import ParsedApiSpecInterface from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import { useStoreState } from 'store';
 
 import Login from '../components/Login';

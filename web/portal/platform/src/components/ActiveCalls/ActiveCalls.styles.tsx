@@ -1,4 +1,4 @@
-import { ListContentStyler } from '@irontec-voip/ivoz-ui/components/List/Content/ListContent.styles';
+import { ListContentStyler } from '@irontec/ivoz-ui/components/List/Content/ListContent.styles';
 import { styled } from '@mui/material';
 
 export const StyledListContent = styled('div')((props) => {
