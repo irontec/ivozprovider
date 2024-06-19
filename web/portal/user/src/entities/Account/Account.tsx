@@ -1,8 +1,8 @@
-import { MarshallerValues, PartialPropertyList } from '@irontec-voip/ivoz-ui';
+import { MarshallerValues, PartialPropertyList } from '@irontec/ivoz-ui';
 import EntityInterface, {
   EntityValidator,
-} from '@irontec-voip/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import User from '../User/User';

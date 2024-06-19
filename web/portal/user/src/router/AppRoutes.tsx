@@ -1,8 +1,6 @@
-import parseRoutes, {
-  RouteSpec,
-} from '@irontec-voip/ivoz-ui/router/parseRoutes';
-import RouteContent from '@irontec-voip/ivoz-ui/router/RouteContent';
-import ParsedApiSpecInterface from '@irontec-voip/ivoz-ui/services/api/ParsedApiSpecInterface';
+import parseRoutes, { RouteSpec } from '@irontec/ivoz-ui/router/parseRoutes';
+import RouteContent from '@irontec/ivoz-ui/router/RouteContent';
+import ParsedApiSpecInterface from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import { useEffect, useMemo } from 'react';
 import { RouteObject, useRoutes } from 'react-router-dom';
 import { useStoreActions } from 'store';
