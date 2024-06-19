@@ -1,5 +1,5 @@
-import { autoSelectOptions } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
-import { ForeignKeyGetterType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 import CountryNameSelectOptions from '../Country/CountryNameSelectOptions';
 import CompanyDdiSelectOptions from '../Ddi/SelectOptions/CompanyDdiSelectOptions';

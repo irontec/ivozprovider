@@ -1,11 +1,11 @@
-import useFkChoices from '@irontec-voip/ivoz-ui/entities/data/useFkChoices';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import {
   EntityFormProps,
   FieldsetGroups,
-} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
-import { Form as DefaultEntityForm } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Form';
-import { useFormHandler } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { useIntercompanyId } from './hooks/useIntercompanyId';

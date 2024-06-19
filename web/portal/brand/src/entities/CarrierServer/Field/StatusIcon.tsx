@@ -1,8 +1,8 @@
-import { EntityValues } from '@irontec-voip/ivoz-ui';
+import { EntityValues } from '@irontec/ivoz-ui';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import DoneIcon from '@mui/icons-material/Done';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { styled } from '@mui/styles';

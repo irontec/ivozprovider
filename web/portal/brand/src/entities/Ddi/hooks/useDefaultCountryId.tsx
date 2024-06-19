@@ -1,4 +1,4 @@
-import { useFormikType } from '@irontec-voip/ivoz-ui';
+import { useFormikType } from '@irontec/ivoz-ui';
 import { CompanyPropertyList } from 'entities/Company/CompanyProperties';
 import { useEffect } from 'react';
 import { useStoreActions } from 'store';

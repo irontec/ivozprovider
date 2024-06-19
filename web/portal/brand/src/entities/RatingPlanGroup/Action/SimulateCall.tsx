@@ -1,20 +1,20 @@
-import ErrorMessageComponent from '@irontec-voip/ivoz-ui/components/ErrorMessageComponent';
-import { MoreMenuItem } from '@irontec-voip/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
+import ErrorMessageComponent from '@irontec/ivoz-ui/components/ErrorMessageComponent';
+import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import {
   StyledTable,
   StyledTableRowCustomCta,
-} from '@irontec-voip/ivoz-ui/components/List/Content/Table/ContentTable.styles';
+} from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import {
   OutlinedButton,
   SolidButton,
-} from '@irontec-voip/ivoz-ui/components/shared/Button/Button.styles';
+} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
 import {
   ActionFunctionComponent,
   GlobalActionItemProps,
   isSingleRowAction,
-} from '@irontec-voip/ivoz-ui/router/routeMapParser';
-import { StyledTextField } from '@irontec-voip/ivoz-ui/services/form/Field/TextField/TextField.styles';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+} from '@irontec/ivoz-ui/router/routeMapParser';
+import { StyledTextField } from '@irontec/ivoz-ui/services/form/Field/TextField/TextField.styles';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import {
   Box,

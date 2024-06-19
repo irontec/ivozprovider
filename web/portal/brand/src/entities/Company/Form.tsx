@@ -1,13 +1,13 @@
-import { DropdownArrayChoices, EntityValues } from '@irontec-voip/ivoz-ui';
-import useFkChoices from '@irontec-voip/ivoz-ui/entities/data/useFkChoices';
+import { DropdownArrayChoices, EntityValues } from '@irontec/ivoz-ui';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import {
   EntityFormProps,
   FieldsetGroups,
   PropertyFkChoices,
-} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
-import { Form as DefaultEntityForm } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Form';
-import { useFormHandler } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
 import { ClientFeatures, ClientTypes } from './ClientFeatures';

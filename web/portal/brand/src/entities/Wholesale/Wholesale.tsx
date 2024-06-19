@@ -1,4 +1,4 @@
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import Company from '../Company/Company';

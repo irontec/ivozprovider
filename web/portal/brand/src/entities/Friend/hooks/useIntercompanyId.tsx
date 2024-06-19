@@ -1,5 +1,5 @@
-import { useFormikType } from '@irontec-voip/ivoz-ui';
-import useCancelToken from '@irontec-voip/ivoz-ui/hooks/useCancelToken';
+import { useFormikType } from '@irontec/ivoz-ui';
+import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
 import { useEffect, useState } from 'react';
 
 import UnassignedCompanySelectOptions from '../../Company/SelectOptions/CompanyUnassignedSelectOptions';

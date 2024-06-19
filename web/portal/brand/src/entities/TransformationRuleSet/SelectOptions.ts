@@ -1,5 +1,5 @@
-import { DropdownChoices } from '@irontec-voip/ivoz-ui';
-import { SelectOptionsType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
+import { DropdownChoices } from '@irontec/ivoz-ui';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { getI18n } from 'react-i18next';
 import store from 'store';
 
