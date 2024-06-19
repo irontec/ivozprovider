@@ -2,7 +2,7 @@ import {
   StyledFileNameContainer,
   StyledFileUploaderContainer,
   StyledUploadButtonLabel,
-} from '@irontec-voip/ivoz-ui/services/form/Field/FileUploader/FileUploader.styles';
+} from '@irontec/ivoz-ui/services/form/Field/FileUploader/FileUploader.styles';
 import BackupIcon from '@mui/icons-material/Backup';
 import { Button } from '@mui/material';
 import { styled } from '@mui/styles';

@@ -1,7 +1,7 @@
-import { DropdownChoices } from '@irontec-voip/ivoz-ui';
-import { SelectOptionsType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
-import { fetchAllPages } from '@irontec-voip/ivoz-ui/helpers/fechAllPages';
-import { EntityValues } from '@irontec-voip/ivoz-ui/services/entity/EntityService';
+import { DropdownChoices } from '@irontec/ivoz-ui';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import { PathMatch } from 'react-router-dom';
 import store from 'store';
 

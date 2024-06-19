@@ -1,9 +1,9 @@
-import { autoForeignKeyResolver } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
-import { foreignKeyResolverType } from '@irontec-voip/ivoz-ui/entities/EntityInterface';
-import { EntityList } from '@irontec-voip/ivoz-ui/router/parseRoutes';
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityList } from '@irontec/ivoz-ui/router/parseRoutes';
 import genericForeignKeyResolver, {
   remapFk,
-} from '@irontec-voip/ivoz-ui/services/api/genericForeigKeyResolver';
+} from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import store from 'store';
 
 import { CountryPropertyList } from '../Country/CountryProperties';

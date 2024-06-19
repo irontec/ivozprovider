@@ -1,6 +1,6 @@
-import defaultEntityBehavior from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec-voip/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import Groups3Icon from '@mui/icons-material/Groups3';
 
 import Type from './Field/Target';

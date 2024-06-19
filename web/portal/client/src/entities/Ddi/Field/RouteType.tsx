@@ -1,8 +1,8 @@
-import { ListDecorator, ScalarProperty } from '@irontec-voip/ivoz-ui';
+import { ListDecorator, ScalarProperty } from '@irontec/ivoz-ui';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { useStoreState } from 'store';
 
 import { DdiPropertyList } from '../DdiProperties';

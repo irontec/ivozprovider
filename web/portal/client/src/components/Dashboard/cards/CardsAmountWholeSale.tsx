@@ -1,4 +1,4 @@
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { Link } from 'react-router-dom';
 
 import { ActiveCalls } from '../@types';

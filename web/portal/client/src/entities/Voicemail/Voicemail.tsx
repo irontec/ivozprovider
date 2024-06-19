@@ -1,14 +1,14 @@
-import { isEntityItem } from '@irontec-voip/ivoz-ui';
-import DeleteRowButton from '@irontec-voip/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
-import ChildEntityLink from '@irontec-voip/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
-} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
-} from '@irontec-voip/ivoz-ui/entities/EntityInterface';
-import { EntityValues } from '@irontec-voip/ivoz-ui/services/entity/EntityService';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import MailIcon from '@mui/icons-material/Mail';
 
 import VoicemailMessage from '../VoicemailMessage/VoicemailMessage';

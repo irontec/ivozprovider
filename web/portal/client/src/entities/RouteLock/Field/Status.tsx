@@ -1,7 +1,7 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
