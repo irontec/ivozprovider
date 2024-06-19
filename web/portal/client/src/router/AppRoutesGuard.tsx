@@ -1,4 +1,4 @@
-import ParsedApiSpecInterface from '@irontec-voip/ivoz-ui/services/api/ParsedApiSpecInterface';
+import ParsedApiSpecInterface from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import queryString from 'query-string';
 import { useStoreState } from 'store';
 

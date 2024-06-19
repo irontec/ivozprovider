@@ -1,13 +1,13 @@
-import { isEntityItem } from '@irontec-voip/ivoz-ui';
-import DeleteRowButton from '@irontec-voip/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
-import EditRowButton from '@irontec-voip/ivoz-ui/components/List/Content/CTA/EditRowButton';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
+import EditRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/EditRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
-} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
-} from '@irontec-voip/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 import { MatchListProperties } from './MatchListProperties';

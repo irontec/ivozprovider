@@ -1,9 +1,9 @@
-import { EntityValues } from '@irontec-voip/ivoz-ui';
+import { EntityValues } from '@irontec/ivoz-ui';
 import withCustomComponentWrapper, {
   CustomFunctionComponentContext,
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 
 import { CountryPropertyList } from '../../Country/CountryProperties';
 import User from '../../User/User';

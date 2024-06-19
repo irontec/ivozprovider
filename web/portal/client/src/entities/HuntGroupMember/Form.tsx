@@ -1,13 +1,13 @@
-import { EntityValue } from '@irontec-voip/ivoz-ui';
-import useFkChoices from '@irontec-voip/ivoz-ui/entities/data/useFkChoices';
+import { EntityValue } from '@irontec/ivoz-ui';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import {
   EntityFormProps,
   FieldsetGroups,
   Form as DefaultEntityForm,
-} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
-import { useFormHandler } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
-import useParentRow from '@irontec-voip/ivoz-ui/hooks/useParentRow';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
+import useParentRow from '@irontec/ivoz-ui/hooks/useParentRow';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
 import huntGroup from '../HuntGroup/HuntGroup';

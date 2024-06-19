@@ -1,14 +1,14 @@
-import { EntityValue, isEntityItem } from '@irontec-voip/ivoz-ui';
-import ChildEntityLink from '@irontec-voip/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
+import { EntityValue, isEntityItem } from '@irontec/ivoz-ui';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
   MarshallerValues,
-} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
-} from '@irontec-voip/ivoz-ui/entities/EntityInterface';
-import { PartialPropertyList } from '@irontec-voip/ivoz-ui/services/api/ParsedApiSpecInterface';
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import FriendsPattern from '../FriendsPattern/FriendsPattern';

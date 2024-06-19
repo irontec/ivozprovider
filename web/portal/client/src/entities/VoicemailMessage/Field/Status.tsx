@@ -1,7 +1,7 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec-voip/ivoz-ui/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import EmailIcon from '@mui/icons-material/Email';
 import { Tooltip } from '@mui/material';
