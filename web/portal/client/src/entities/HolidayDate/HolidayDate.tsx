@@ -4,7 +4,6 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 
 import CustomActions from './Action';
-import Calendar from './Field/Calendar';
 import Target from './Field/Target';
 import { HolidayDateProperties } from './HolidayDateProperties';
 
@@ -18,8 +17,6 @@ const routableFields = [
 const properties: HolidayDateProperties = {
   calendar: {
     label: _('Calendar', { count: 1 }),
-    component: Calendar,
-    readOnly: true,
   },
   name: {
     label: _('Name'),
