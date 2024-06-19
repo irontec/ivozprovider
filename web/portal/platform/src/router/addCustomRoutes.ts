@@ -1,4 +1,4 @@
-import { RouteSpec } from '@irontec-voip/ivoz-ui';
+import { RouteSpec } from '@irontec/ivoz-ui';
 
 import ActiveCallsComponent from '../components/ActiveCalls';
 

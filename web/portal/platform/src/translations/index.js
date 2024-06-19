@@ -1,7 +1,7 @@
-import IvozUiCa from '@irontec-voip/ivoz-ui/translations/ca';
-import IvozUiEn from '@irontec-voip/ivoz-ui/translations/en';
-import IvozUiEs from '@irontec-voip/ivoz-ui/translations/es';
-import IvozUiIt from '@irontec-voip/ivoz-ui/translations/it';
+import IvozUiCa from '@irontec/ivoz-ui/translations/ca';
+import IvozUiEn from '@irontec/ivoz-ui/translations/en';
+import IvozUiEs from '@irontec/ivoz-ui/translations/es';
+import IvozUiIt from '@irontec/ivoz-ui/translations/it';
 
 import ca from './ca';
 import en from './en';

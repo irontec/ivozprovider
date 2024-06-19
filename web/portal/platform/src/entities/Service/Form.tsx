@@ -1,8 +1,8 @@
 import {
   EntityFormProps,
   FieldsetGroups,
-} from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior';
-import { Form as DefaultEntityForm } from '@irontec-voip/ivoz-ui/entities/DefaultEntityBehavior/Form';
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form';
 
 const Form = (props: EntityFormProps): JSX.Element | null => {
   const edit = props.edit || false;

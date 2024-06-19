@@ -1,4 +1,4 @@
-import _ from '@irontec-voip/ivoz-ui/services/translations/translate';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CallEndIcon from '@mui/icons-material/CallEnd';
 import CallMadeIcon from '@mui/icons-material/CallMade';
 import CallReceivedIcon from '@mui/icons-material/CallReceived';

@@ -1,8 +1,8 @@
-import { ActionsSpec, PropertyList } from '@irontec-voip/ivoz-ui';
-import ListContentHeader from '@irontec-voip/ivoz-ui/components/List/Content/ListContentHeader';
-import useCancelToken from '@irontec-voip/ivoz-ui/hooks/useCancelToken';
-import useCurrentPathMatch from '@irontec-voip/ivoz-ui/hooks/useCurrentPathMatch';
-import EntityService from '@irontec-voip/ivoz-ui/services/entity/EntityService';
+import { ActionsSpec, PropertyList } from '@irontec/ivoz-ui';
+import ListContentHeader from '@irontec/ivoz-ui/components/List/Content/ListContentHeader';
+import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
+import useCurrentPathMatch from '@irontec/ivoz-ui/hooks/useCurrentPathMatch';
+import EntityService from '@irontec/ivoz-ui/services/entity/EntityService';
 import { useTheme } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { memo, useMemo } from 'react';
