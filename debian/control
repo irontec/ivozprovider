@@ -219,6 +219,7 @@ Package: ivozprovider-web-portals
 Architecture: all
 Section: php
 Priority: optional
+Depends: ivozprovider-web-rest (=${binary:Version})
 Conflicts: ivozprovider-web-client
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Client Web - React based client web interface
