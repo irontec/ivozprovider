@@ -28,7 +28,7 @@ class ProvisionController
     {
         $isHttps = $request->getScheme() === 'https';
         if ($isHttps && $request->getPort() == 443) {
-            throw new \DomainException('No generic provisioning over 443', 403);
+            throw new \Exception('No generic provisioning over 443', 403);
         }
 
         /** @var array{params: string} $routeParams */
