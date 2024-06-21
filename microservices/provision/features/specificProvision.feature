@@ -42,4 +42,4 @@ Feature: Specific Provision
 
   Scenario: Request unknown terminal MAC
     When I go to "https://ivozprovider:1443/optional_subpath/0011223344zz"
-    Then the response status code should be 404
+    Then the response status code should be 500

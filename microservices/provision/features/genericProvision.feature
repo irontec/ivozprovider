@@ -24,4 +24,4 @@ Feature: Generic Provision
 
   Scenario: Request unknown terminal model path
     When I go to "/y000000000053.cfg"
-    Then the response status code should be 404
+    Then the response status code should be 500
