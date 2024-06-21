@@ -28,7 +28,7 @@ class ProvisionSpecific
 
         $terminal = $this->getTerminalByUrl($mac);
         if (!$terminal) {
-            throw new \DomainException('Terminal not found with mac ' . $mac, 404);
+            throw new \Exception('Terminal not found with mac ' . $mac, 404);
         }
 
         $user = $this
@@ -38,12 +38,12 @@ class ProvisionSpecific
             );
 
         if (!$user) {
-            throw new \DomainException('User not found', 404);
+            throw new \Exception('User not found', 404);
         }
 
         $extension = $user->getExtension();
         if (!$extension) {
-            throw new \DomainException('Extension not found', 404);
+            throw new \Exception('Extension not found', 404);
         }
 
         $language = $user->getLanguage();
@@ -53,7 +53,7 @@ class ProvisionSpecific
         $terminalModel = $terminal->getTerminalModel();
 
         if ($expectedTerminalModel && $expectedTerminalModel !== $terminalModel) {
-            throw new \DomainException('Terminal model missmatch');
+            throw new \Exception('Terminal model missmatch');
         }
 
         /** @var array<string, EntityInterface> $args */

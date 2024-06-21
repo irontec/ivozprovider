@@ -25,7 +25,7 @@ class Provision
         if ($terminalModel) {
             // Generic Template requests must be served over HTTP
             if ($isHttps) {
-                throw new \DomainException('No generic provisioning over https', 403);
+                throw new \Exception('No generic provisioning over https', 403);
             }
 
             return $this
@@ -35,7 +35,7 @@ class Provision
 
         if (! $isHttps) {
             // Specific Template requests must be served over HTTPS
-            throw new \DomainException('Terminal model not found', 404);
+            throw new \Exception('Terminal model not found', 404);
         }
 
         $routeSegments = explode('/', $route);
