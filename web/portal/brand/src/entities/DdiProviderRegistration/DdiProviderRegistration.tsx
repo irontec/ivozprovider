@@ -86,7 +86,7 @@ const DdiProviderRegistration: EntityInterface = {
   title: _('DDI Provider Registration', { count: 2 }),
   path: '/ddi_provider_registrations',
   toStr: (row: DdiProviderRegistrationPropertyList<EntityValues>) =>
-    `${row.id}`,
+    `${row.username}`,
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
