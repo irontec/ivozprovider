@@ -6,6 +6,7 @@ import {
 } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
 import {
   ActionFunctionComponent,
+  isSingleRowAction,
   MultiSelectActionItemProps,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
@@ -82,6 +83,10 @@ const Import: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
   };
 
   if (!isVpbx) {
+    return <span className='display-none'></span>;
+  }
+
+  if (isSingleRowAction(props)) {
     return <span className='display-none'></span>;
   }
 
