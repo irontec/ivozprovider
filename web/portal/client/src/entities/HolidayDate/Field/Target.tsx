@@ -12,8 +12,13 @@ type TargetGhostType = PropertyCustomFunctionComponent<
 
 const Type: TargetGhostType = (props): JSX.Element => {
   const { values } = props;
+  let target = values.target as React.ReactNode;
 
-  return <span>{values.target as React.ReactNode}</span>;
+  if (values.routeType === 'number') {
+    target = values.targetTypeValue as React.ReactNode;
+  }
+
+  return <span>{target}</span>;
 };
 
 export default withCustomComponentWrapper<HolidayDateValues>(Type);
