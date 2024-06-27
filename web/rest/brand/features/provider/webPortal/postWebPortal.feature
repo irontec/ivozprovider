@@ -19,7 +19,8 @@ Feature: Create web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          }
+          },
+          "company": 2
       }
       """
      Then the response status code should be 201
@@ -37,7 +38,8 @@ Feature: Create web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          }
+          },
+          "company": 2
       }
       """
 
@@ -59,6 +61,9 @@ Feature: Create web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
+          },
+          "company": {
+            "id": 2
           }
       }
       """

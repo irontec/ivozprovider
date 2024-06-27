@@ -18,7 +18,8 @@ Feature: Update web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          }
+          },
+          "company": 1
       }
       """
      Then the response status code should be 200
@@ -35,7 +36,8 @@ Feature: Update web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          }
+          },
+          "company": 1
       }
       """
 
@@ -73,7 +75,8 @@ This is file content
             "fileSize": 20,
             "mimeType": "text/plain; charset=us-ascii",
             "baseName": "uploadable"
-        }
+        },
+        "company": null
     }
     """
 
