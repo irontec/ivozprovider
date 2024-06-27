@@ -11,7 +11,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\Logo;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
 * WebPortalAbstract
@@ -52,6 +54,11 @@ abstract class WebPortalAbstract
      * inversedBy urls
      */
     protected $brand = null;
+
+    /**
+     * @var ?CompanyInterface
+     */
+    protected $company = null;
 
     /**
      * Constructor
@@ -151,7 +158,8 @@ abstract class WebPortalAbstract
 
         $self
             ->setName($dto->getName())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -187,7 +195,8 @@ abstract class WebPortalAbstract
             ->setName($dto->getName())
             ->setColor($color)
             ->setLogo($logo)
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         return $this;
     }
@@ -205,7 +214,8 @@ abstract class WebPortalAbstract
             ->setLogoFileSize(self::getLogo()->getFileSize())
             ->setLogoMimeType(self::getLogo()->getMimeType())
             ->setLogoBaseName(self::getLogo()->getBaseName())
-            ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -221,7 +231,8 @@ abstract class WebPortalAbstract
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),
-            'brandId' => self::getBrand()?->getId()
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 
@@ -319,5 +330,17 @@ abstract class WebPortalAbstract
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
+    }
+
+    protected function setCompany(?CompanyInterface $company = null): static
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    public function getCompany(): ?CompanyInterface
+    {
+        return $this->company;
     }
 }
