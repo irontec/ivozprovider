@@ -33,7 +33,8 @@ Feature: Create web portals
               "mimeType": null,
               "baseName": null
           },
-          "brand": 1
+          "brand": 1,
+          "company": null
       }
     """
 
@@ -101,6 +102,7 @@ This is file content
               "mimeType": "text/plain; charset=us-ascii",
               "baseName": "uploadable"
           },
-          "brand": 1
+          "brand": 1,
+          "company": null
       }
     """

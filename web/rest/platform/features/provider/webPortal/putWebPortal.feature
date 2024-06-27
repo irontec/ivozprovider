@@ -39,7 +39,8 @@ Feature: Update web portals
               "mimeType": null,
               "baseName": null
           },
-          "brand": null
+          "brand": null,
+          "company": null
       }
     """
 
