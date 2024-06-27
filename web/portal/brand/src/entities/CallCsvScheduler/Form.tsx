@@ -103,7 +103,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     retailAccount,
     residentialDevice,
   };
-
+  debugger;
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Basic Information'),
