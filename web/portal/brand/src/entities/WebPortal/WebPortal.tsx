@@ -37,6 +37,12 @@ const properties: WebPortalProperties = {
     label: _('Logo'),
     type: 'file',
   },
+  company: {
+    label: _('Client'),
+    default: '__null__',
+    required: false,
+    null: _('Generic'),
+  },
 };
 
 const WebPortal: EntityInterface = {
