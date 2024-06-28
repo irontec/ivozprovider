@@ -1,4 +1,40 @@
 # Changelog
+## 4.1.0
+* Endpoints
+  - /faxes/{id}:
+    - Added [GET] endpoint
+  - /faxes_in_outs:
+    - Added [GET] and [POST] endpoints
+  - /faxes_in_outs/{id}:
+    - Added [GET] and [DELETE] endpoints
+  - /faxes_in_outs/{id}/file:
+    - Added [GET] endpoint
+  - /faxes_in_outs/{id}/resend:
+    - Added [POST] endpoint
+  - /my/faxes:
+    - Added [GET] endpoint
+* Models:
+  - Fax:
+    - Added model
+  - Fax-collection:
+    - Added model
+  - Fax-detailed:
+    - Added model
+  - FaxesInOut-detailed:
+    - Added model
+  - FaxesInOut-collection:
+    - Added model
+  - FaxesInOut-detailed:
+    - Added model
+  - FaxesInOut_File:
+    - Added model
+  - UserStatus:
+    - Added features property
+  - Voicemail-detailed:
+    - Added relUserIds property
+  - WebTheme:
+    - Removed theme property
+
 ## 4.0.4
 * Models
     - RecordingFile:

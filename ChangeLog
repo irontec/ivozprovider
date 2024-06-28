@@ -1,3 +1,41 @@
+Thu, 27 Jun 2024 13:00:34 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.1.0 released
+
+    * Proxies:
+        - kamusers: fixed media-relay interface for AoRs with just one contact #2642
+        - kamusers: used new ruri_domain for static location #2640
+        - kamusers: avoid fast media liberation delayer for non-SDP INVITE/UPDATEs #2691
+        - kamtrunks: use carrier server from_domain in Diversion (if any) #2658
+        - kamtrunks: remove fast media liberation delayer #2691
+        - kamailio: make acc cdr inserts async #2660
+
+    * Portals
+        - Removed Zendframework based administration portal (klear)  #2670
+        - Removed AngularJS based user portal #2669
+        - Generic voicemail can now be binded to multiple users #2633
+        - User voicemails are now displayed in user portal #2643
+        - Client administators no longer can access users voicemails #2663
+        - Faxes can now be binded to multiple users #2655
+        - Faxes are now displayed in user portal #2661
+        - Added actions to mass edit Administation ACL permissions #2632
+        - Fixed missing translations in client portal #2651
+        - Fixed a bug that prevented Holiday dates edition #2685
+        - Friends can not be managed in Brand administration portal #2666
+        - Fixed Billable calls historic rotator microservice #2690
+        - Improved Date selectors in filtering forms #2664
+        - Fixed timezone conversion while filtering by Date #2678
+        - Manage direct connectivity retail accounts / residential devices / friends at brand level #2650
+        - Add R-URI domain and outbound proxy parameters to direct connectivity retail accounts / residential devices / friends #2641
+        - Add KamUsers socket to direct connectivity retail accounts / residential devices / friends #2671
+        - Add trust SDP addresses toggle to direct connectivity retail accounts / residential devices / friends #2674
+
+    * Application Servers
+        - Decrease sorcery cache lifetime to 120 #2648
+        - Limit fastagi service duration to 300 seconds #2652
+        - Removed specific AGI for setting outbound calls X-Info headers #2665
+        - Implemented a simple version of Huntgroups when all members are users #2668
+
 Mon, 29 Apr 2024 09:07:23 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.0.5 released

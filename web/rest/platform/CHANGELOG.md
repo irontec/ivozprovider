@@ -1,4 +1,13 @@
 # Changelog
+## 4.1.0
+* Models:
+  - WebPortal:
+    - Removed klearTheme and userTheme properties
+  - WebPortal-detailed:
+    - Removed klearTheme and userTheme properties
+  - Webtheme:
+    - Removed theme property
+
 ## 4.0.5
 * Models
     - Administrator:
