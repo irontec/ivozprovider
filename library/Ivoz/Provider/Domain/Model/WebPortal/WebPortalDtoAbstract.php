@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\WebPortal;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 /**
 * WebPortalDtoAbstract
@@ -59,6 +60,11 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
      */
     private $brand = null;
 
+    /**
+     * @var CompanyDto | null
+     */
+    private $company = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -84,7 +90,8 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
                 'mimeType',
                 'baseName',
             ],
-            'brandId' => 'brand'
+            'brandId' => 'brand',
+            'companyId' => 'company'
         ];
     }
 
@@ -104,7 +111,8 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
                 'mimeType' => $this->getLogoMimeType(),
                 'baseName' => $this->getLogoBaseName(),
             ],
-            'brand' => $this->getBrand()
+            'brand' => $this->getBrand(),
+            'company' => $this->getCompany()
         ];
 
         if (!$hideSensitiveData) {
@@ -244,6 +252,36 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     public function getBrandId(): ?int
     {
         if ($dto = $this->getBrand()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setCompany(?CompanyDto $company): static
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    public function getCompany(): ?CompanyDto
+    {
+        return $this->company;
+    }
+
+    public function setCompanyId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new CompanyDto($id)
+            : null;
+
+        return $this->setCompany($value);
+    }
+
+    public function getCompanyId(): ?int
+    {
+        if ($dto = $this->getCompany()) {
             return $dto->getId();
         }
 

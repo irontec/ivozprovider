@@ -8,6 +8,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 
 /**
@@ -82,6 +83,8 @@ interface WebPortalInterface extends LoggableEntityInterface, FileContainerInter
     public function setBrand(?BrandInterface $brand = null): static;
 
     public function getBrand(): ?BrandInterface;
+
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * @return void

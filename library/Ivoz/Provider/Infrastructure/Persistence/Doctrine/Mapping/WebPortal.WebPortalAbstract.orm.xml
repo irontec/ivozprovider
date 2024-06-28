@@ -4,7 +4,7 @@
     <unique-constraints>
       <unique-constraint name="webportal_url" columns="url"/>
     </unique-constraints>
-    <embedded name="logo" class="Ivoz\Provider\Domain\Model\WebPortal\Logo" use-column-prefix="false" />
+    <embedded name="logo" class="Ivoz\Provider\Domain\Model\WebPortal\Logo" use-column-prefix="false"/>
     <field name="url" type="string" column="url" length="255" nullable="false">
       <options>
         <option name="fixed"/>
@@ -31,6 +31,11 @@
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="urls" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

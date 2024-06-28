@@ -4397,9 +4397,11 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortalAbstract.php">
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="4">
       <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
