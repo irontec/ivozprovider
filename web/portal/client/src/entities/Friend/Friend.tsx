@@ -41,13 +41,11 @@ const properties: FriendProperties = {
   ip: {
     label: _('Destination IP address'),
     helpText: _('e.g. 8.8.8.8'),
-    required: true,
   },
   port: {
     label: _('Port'),
     pattern: new RegExp('^[0-9]+$'),
     default: 5060,
-    required: true,
   },
   password: {
     label: _('Password'),
@@ -151,6 +149,7 @@ const properties: FriendProperties = {
           'password',
           'ip',
           'port',
+          'ruriDomain',
           'transport',
           'ddiIn',
           'allow',
@@ -160,6 +159,7 @@ const properties: FriendProperties = {
           'transformationRuleSet',
           'callACL',
           'rtpEncryption',
+          'trustSDP',
         ],
         hide: ['multiContact', 'interCompany'],
       },
@@ -177,13 +177,21 @@ const properties: FriendProperties = {
           'rtpEncryption',
           'multiContact',
         ],
-        hide: ['ip', 'port', 'transport', 'interCompany'],
+        hide: [
+          'ip',
+          'port',
+          'transport',
+          'interCompany',
+          'ruriDomain',
+          'trustSDP',
+        ],
       },
       intervpbx: {
         show: [],
         hide: [
           'ip',
           'port',
+          'ruriDomain',
           'transport',
           'password',
           'ddiIn',
@@ -198,6 +206,7 @@ const properties: FriendProperties = {
           'multiContact',
           'outgoingDdi',
           'alwaysApplyTransformations',
+          'trustSDP',
         ],
       },
     },
@@ -268,6 +277,18 @@ const properties: FriendProperties = {
     required: true,
     null: _('Not configured'),
     default: '__null__',
+  },
+  ruriDomain: {
+    label: _('R-URI domain'),
+    type: 'string',
+  },
+  trustSDP: {
+    label: _('Trust SDP'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '0',
   },
 };
 

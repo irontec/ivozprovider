@@ -52,6 +52,19 @@ Feature: Retrieve faxes in outs
                   "mimeType": null,
                   "baseName": null
               }
+          },
+          {
+              "calldate": "2018-01-02 01:00:00",
+              "src": "34688888888",
+              "dst": "34688888881",
+              "type": "Out",
+              "status": "error",
+              "id": 4,
+              "file": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              }
           }
       ]
       """

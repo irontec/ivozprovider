@@ -60,6 +60,11 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getNoAnswerNumberValueE164();
 
     /**
+     * Determine if the Hunt group can be considered 'simple'
+     */
+    public function isSimple(): bool;
+
+    /**
      * @param int | null $id
      */
     public static function createDto($id = null): HuntGroupDto;

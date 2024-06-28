@@ -14,11 +14,13 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
 
 /**
 * RetailAccountAbstract
@@ -93,6 +95,17 @@ abstract class RetailAccountAbstract
     protected $multiContact = true;
 
     /**
+     * @var ?string
+     * column: ruri_domain
+     */
+    protected $ruriDomain = null;
+
+    /**
+     * @var bool
+     */
+    protected $trustSDP = false;
+
+    /**
      * @var BrandInterface
      * inversedBy residentialDevices
      */
@@ -120,6 +133,11 @@ abstract class RetailAccountAbstract
     protected $outgoingDdi = null;
 
     /**
+     * @var ?ProxyUserInterface
+     */
+    protected $proxyUser = null;
+
+    /**
      * Constructor
      */
     protected function __construct(
@@ -129,7 +147,8 @@ abstract class RetailAccountAbstract
         string $ddiIn,
         string $t38Passthrough,
         bool $rtpEncryption,
-        bool $multiContact
+        bool $multiContact,
+        bool $trustSDP
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -138,6 +157,7 @@ abstract class RetailAccountAbstract
         $this->setT38Passthrough($t38Passthrough);
         $this->setRtpEncryption($rtpEncryption);
         $this->setMultiContact($multiContact);
+        $this->setTrustSDP($trustSDP);
     }
 
     abstract public function getId(): null|string|int;
@@ -215,6 +235,8 @@ abstract class RetailAccountAbstract
         Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $trustSDP = $dto->getTrustSDP();
+        Assertion::notNull($trustSDP, 'getTrustSDP value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $company = $dto->getCompany();
@@ -227,7 +249,8 @@ abstract class RetailAccountAbstract
             $ddiIn,
             $t38Passthrough,
             $rtpEncryption,
-            $multiContact
+            $multiContact,
+            $trustSDP
         );
 
         $self
@@ -236,11 +259,13 @@ abstract class RetailAccountAbstract
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
+            ->setRuriDomain($dto->getRuriDomain())
             ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
-            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         $self->initChangelog();
 
@@ -271,6 +296,8 @@ abstract class RetailAccountAbstract
         Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $trustSDP = $dto->getTrustSDP();
+        Assertion::notNull($trustSDP, 'getTrustSDP value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $company = $dto->getCompany();
@@ -289,11 +316,14 @@ abstract class RetailAccountAbstract
             ->setT38Passthrough($t38Passthrough)
             ->setRtpEncryption($rtpEncryption)
             ->setMultiContact($multiContact)
+            ->setRuriDomain($dto->getRuriDomain())
+            ->setTrustSDP($trustSDP)
             ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
-            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         return $this;
     }
@@ -316,11 +346,14 @@ abstract class RetailAccountAbstract
             ->setT38Passthrough(self::getT38Passthrough())
             ->setRtpEncryption(self::getRtpEncryption())
             ->setMultiContact(self::getMultiContact())
+            ->setRuriDomain(self::getRuriDomain())
+            ->setTrustSDP(self::getTrustSDP())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
-            ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth));
+            ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
+            ->setProxyUser(ProxyUser::entityToDto(self::getProxyUser(), $depth));
     }
 
     /**
@@ -341,11 +374,14 @@ abstract class RetailAccountAbstract
             't38Passthrough' => self::getT38Passthrough(),
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
+            'ruri_domain' => self::getRuriDomain(),
+            'trustSDP' => self::getTrustSDP(),
             'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain()?->getId(),
             'companyId' => self::getCompany()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
-            'outgoingDdiId' => self::getOutgoingDdi()?->getId()
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
+            'proxyUserId' => self::getProxyUser()?->getId()
         ];
     }
 
@@ -553,6 +589,34 @@ abstract class RetailAccountAbstract
         return $this->multiContact;
     }
 
+    protected function setRuriDomain(?string $ruriDomain = null): static
+    {
+        if (!is_null($ruriDomain)) {
+            Assertion::maxLength($ruriDomain, 190, 'ruriDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->ruriDomain = $ruriDomain;
+
+        return $this;
+    }
+
+    public function getRuriDomain(): ?string
+    {
+        return $this->ruriDomain;
+    }
+
+    protected function setTrustSDP(bool $trustSDP): static
+    {
+        $this->trustSDP = $trustSDP;
+
+        return $this;
+    }
+
+    public function getTrustSDP(): bool
+    {
+        return $this->trustSDP;
+    }
+
     public function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
@@ -611,5 +675,17 @@ abstract class RetailAccountAbstract
     public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;
+    }
+
+    protected function setProxyUser(?ProxyUserInterface $proxyUser = null): static
+    {
+        $this->proxyUser = $proxyUser;
+
+        return $this;
+    }
+
+    public function getProxyUser(): ?ProxyUserInterface
+    {
+        return $this->proxyUser;
     }
 }

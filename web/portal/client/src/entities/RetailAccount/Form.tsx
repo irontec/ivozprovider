@@ -24,10 +24,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'name',
         'description',
         'password',
-        'directConnectivity',
         'transport',
         'ip',
         'port',
+        'ruriDomain',
         'multiContact',
       ],
     },
@@ -41,7 +41,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Advanced Configuration'),
-      fields: ['fromDomain', 'ddiIn', 't38Passthrough', 'rtpEncryption'],
+      fields: [
+        'fromDomain',
+        'ddiIn',
+        't38Passthrough',
+        'rtpEncryption',
+        'multiContact',
+        'trustSDP',
+      ],
     },
     {
       legend: _('Status'),

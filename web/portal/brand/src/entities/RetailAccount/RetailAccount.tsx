@@ -21,6 +21,7 @@ const properties: RetailAccountProperties = {
     pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
     maxLength: 100,
     helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
+    required: true,
   },
   domain: {
     label: _('Domain'),
@@ -39,6 +40,7 @@ const properties: RetailAccountProperties = {
       udp: 'UDP',
       tcp: 'TCP',
       tls: 'TLS',
+      required: true,
     },
   },
   ip: {
@@ -81,11 +83,11 @@ const properties: RetailAccountProperties = {
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport'],
+        show: ['ip', 'port', 'transport', 'ruriDomain', 'proxyUser'],
         hide: ['multiContact'],
       },
       no: {
-        hide: ['ip', 'port', 'transport'],
+        hide: ['ip', 'port', 'transport', 'ruriDomain', 'proxyUser'],
         show: ['multiContact'],
       },
     },
@@ -139,6 +141,15 @@ const properties: RetailAccountProperties = {
       "Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring."
     ),
   },
+  ruriDomain: {
+    label: _('R-URI domain'),
+    type: 'string',
+  },
+  proxyUser: {
+    label: _('Local Address'),
+    required: true,
+    default: '__null__',
+  },
 };
 
 const RetailAccount: EntityInterface = {
@@ -148,7 +159,7 @@ const RetailAccount: EntityInterface = {
   iden: 'RetailAccount',
   title: _('Retail Account', { count: 2 }),
   path: '/retail_accounts',
-  toStr: (row: RetailAccountPropertyList<EntityValues>) => `${row.id}`,
+  toStr: (row: RetailAccountPropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: ['company', 'name', 'domain', 'description', 'statusIcon'],
   acl: {

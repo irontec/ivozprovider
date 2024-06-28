@@ -29,6 +29,8 @@ export type ResidentialDevicePropertyList<T> = {
   status: T;
   statusIcon: T;
   directConnectivity: T;
+  ruriDomain: T;
+  trustSDP: T;
 };
 
 export type ResidentialDeviceStatus = {

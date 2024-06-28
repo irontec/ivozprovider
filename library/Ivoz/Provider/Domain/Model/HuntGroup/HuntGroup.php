@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
@@ -65,5 +66,26 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
         return
             $this->getNoAnswerNumberCountry()->getCountryCode() .
             $this->getNoAnswerNumberValue();
+    }
+
+    /**
+     * Determine if the Hunt group can be considered 'simple'
+     */
+    public function isSimple(): bool
+    {
+        $allowCallForwards = $this->getAllowCallForwards();
+        if ($allowCallForwards) {
+            return false;
+        }
+
+        $huntGroupMembers = $this->getHuntGroupMembers();
+        foreach ($huntGroupMembers as $huntGroupMember) {
+            $huntGroupMemberRouteType = $huntGroupMember->getRouteType();
+            if ($huntGroupMemberRouteType == HuntGroupMember::ROUTETYPE_NUMBER) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

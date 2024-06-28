@@ -489,6 +489,46 @@ pipeline {
                 }
             }
         }
+
+        // --------------------------------------------------------------------
+        // Packaging Testing stage
+        // --------------------------------------------------------------------
+        stage ('package') {
+            when {
+                anyOf {
+                    expression { hasLabel("packaging") }
+                    expression { hasCommitTag("pkg:") }
+                }
+            }
+            stages {
+                stage ('package-image') {
+                    steps {
+                        dir ('debian') {
+                            script {
+                                docker.build("ivozprovider-package-testing:${env.CHANGE_ID}")
+                            }
+                        }
+                    }
+                }
+                stage ('package-build') {
+                    agent {
+                        docker {
+                            image "ivozprovider-package-testing:${env.CHANGE_ID}"
+                            args "--entrypoint= --volume ${WORKSPACE}:/build/source"
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh "cd /build/source && dpkg-buildpackage -b"
+                    }
+                }
+            }
+            post {
+                success { notifySuccessGithub() }
+                failure { notifyFailureGithub() }
+            }
+        }
+        //
         // --------------------------------------------------------------------
         // Functional Testing stage
         // --------------------------------------------------------------------
@@ -500,11 +540,17 @@ pipeline {
                         return
                     }
 
+                    if (!env.CHANGE_ID) {
+                        echo "Not a Pull request."
+                        return
+                    }
+
                     def issue = jiraGetIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET
 
                     // Functional Reviewer - 10105
                     if (issue.data.fields.customfield_10105) {
                         println "Functional Reviewer: ${issue.data.fields.customfield_10105.displayName}"
+                        pullRequest.addLabel('functional-review')
                     } else {
                         println "No functional reviewer assigned."
                     }
@@ -518,9 +564,26 @@ pipeline {
                     def status = issue.data.fields.status
                     println "Issue Status: ${status.name} (${status.id})"
 
-                    // For Issues with Functional reviewer and not validated
-                    if (issue.data.fields.customfield_10105 && status.id != "10325") {
-                        unstable "Functional approval required."
+                    // For Issues with Functional reviewer
+                    if (issue.data.fields.customfield_10105) {
+                        // Not validated
+                        if (status.id != "10325") {
+                            // Ensure the PR is not already marked as changed requested
+                            def lastFuncReviewStatus
+                            for (review in pullRequest.reviews) {
+                                if (review.user == "ironArt3mis") {
+                                    lastFuncReviewStatus = review.state
+                                }
+                            }
+                            // PR already marked as review requested
+                            if (lastFuncReviewStatus == "CHANGES_REQUESTED") {
+                                echo "This PR is already marked as functional review required"
+                                return
+                            }
+                            pullRequest.review('REQUEST_CHANGES', 'Functional review required')
+                        } else {
+                            pullRequest.review('APPROVE')
+                        }
                     }
                 }
             }
@@ -560,7 +623,7 @@ boolean hasLabel(String label) {
 }
 
 boolean hasCommitTag(String module) {
-  return !env.CHANGE_TARGET || sh(
+  return env.CHANGE_TARGET && sh(
     returnStatus: true,
     script: "git log --oneline origin/${env.CHANGE_TARGET}...${env.GIT_COMMIT} | grep ${module}"
   ) == 0

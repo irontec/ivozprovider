@@ -76,7 +76,10 @@ class Retails extends RouteHandlerAbstract
 
         // Set Company/Brand/Generic Music class
         $company = $retailAccount->getCompany();
+        $brand = $company->getBrand();
         $this->agi->setVariable("__COMPANYID", $company->getId());
+        $this->agi->setVariable("__COMPANYTYPE", $company->getType());
+        $this->agi->setVariable("__BRANDID", $brand->getId());
         $this->agi->setVariable("CHANNEL(language)", $company->getLanguageCode());
 
         // Get call destination

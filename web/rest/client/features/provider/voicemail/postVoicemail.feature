@@ -32,7 +32,8 @@ Feature: Create voicemails
           "user": null,
           "residentialDevice": null,
           "company": 1,
-          "locution": null
+          "locution": null,
+          "relUserIds": []
       }
       """
 
@@ -71,7 +72,45 @@ Feature: Create voicemails
               "outgoingDdi": null,
               "outgoingDdiRule": null
           },
-          "locution": null
+          "locution": null,
+          "relUserIds": []
+      }
+      """
+
+  Scenario: Create a generic voicemail with rel users
+    Given I add Company Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/voicemails" with body:
+      """
+      {
+          "enabled":true,
+          "sendMail":"0",
+          "locution":null,
+          "relUserIds":["1","2"],
+          "name":"newGenericVoicemail2"
+      }
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+          "enabled": true,
+          "name": "newGenericVoicemail2",
+          "email": null,
+          "sendMail": false,
+          "attachSound": true,
+          "id": 7,
+          "user": null,
+          "residentialDevice": null,
+          "company": 1,
+          "locution": null,
+          "relUserIds": [
+              1,
+              2
+          ]
       }
       """
 

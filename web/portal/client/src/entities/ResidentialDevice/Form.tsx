@@ -24,11 +24,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'name',
         'description',
         'password',
-        'directConnectivity',
         'transport',
         'ip',
         'port',
-        'multiContact',
+        'ruriDomain',
       ],
     },
     {
@@ -48,6 +47,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
         't38Passthrough',
         'maxCalls',
         'rtpEncryption',
+        'multiContact',
+        'trustSDP',
       ],
     },
     {

@@ -72,6 +72,9 @@ const getEntityMap = (): ExtendedRouteMap => {
                 {
                   entity: entities.AdministratorRelPublicEntity,
                   filterBy: 'administrator',
+                  ...Object.values(
+                    entities.AdministratorRelPublicEntity.customActions
+                  ),
                 },
               ],
             },
@@ -482,6 +485,9 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: entities.RetailAccount,
           isAccessible: (aboutMe) =>
             aboutMe.features.includes(ClientTypes.retail),
+        },
+        {
+          entity: entities.Friend,
         },
         {
           entity: entities.Corporation,

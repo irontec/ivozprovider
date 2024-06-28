@@ -9,8 +9,6 @@ Build-Depends: debhelper (>=9.2),
     libjs-jquery (>=1.11.3),
     libjs-sphinxdoc (>=1.4.6),
     make,
-    nodejs,
-    npm,
     openssh-client,
     php8.2,
     php8.2-cli,
@@ -28,6 +26,7 @@ Build-Depends: debhelper (>=9.2),
     ruby-dev,
     sphinx-common (>=1.4.6),
     yarn,
+    nodejs,
     golang
 Standards-Version: 3.9.6
 Maintainer: Irontec IvozProvider Team <ivozprovider@irontec.com>
@@ -122,8 +121,6 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     php8.2-yaml,
     php8.2-gd,
     php8.2-zip,
-    ivozprovider-web-admin (=${binary:Version}),
-    ivozprovider-web-user (=${binary:Version}),
     ivozprovider-web-portals (=${binary:Version}),
     supervisor,
     ffmpeg,
@@ -218,37 +215,15 @@ Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .
 
-Package: ivozprovider-web-admin
-Architecture: all
-Section: php
-Priority: optional
-Conflicts: ivozprovider-portals
-Depends: klear, ivozprovider-common-library (=${binary:Version}), ivozprovider-web-rest (=${binary:Version}), zendframework, libxrender1
-Homepage: http://www.irontec.com
-Description: IVOZ Provider - Admin Web - Klear based web interface
- Portals using klear and zendframework 1
- .
-
 Package: ivozprovider-web-portals
 Architecture: all
 Section: php
 Priority: optional
+Depends: ivozprovider-web-rest (=${binary:Version})
 Conflicts: ivozprovider-web-client
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Client Web - React based client web interface
  Client webapp using React and Bootstrap
- .
-
-
-Package: ivozprovider-web-user
-Architecture: all
-Section: php
-Priority: optional
-Conflicts: ivozprovider-userweb
-Depends: ivozprovider-web-admin (=${binary:Version})
-Homepage: http://www.irontec.com
-Description: IVOZ Provider - User Web - Angular based user web interface
- User webapp using Angular and Bootstrap
  .
 
 Package: ivozprovider-web-rest
@@ -263,7 +238,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php8.2-cli, php8.2-mysql, php8.2-mbstring, php8.2-xml, acl, klear-library, php8.2-mailparse, php8.2-intl, php8.2-redis
+Depends: php8.2-cli, php8.2-mysql, php8.2-mbstring, php8.2-xml, acl, php8.2-mailparse, php8.2-intl, php8.2-redis
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional

@@ -6,6 +6,7 @@ use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserDto;
 
 /**
 * FaxDtoAbstract
@@ -45,6 +46,11 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
      */
     private $outgoingDdi = null;
 
+    /**
+     * @var FaxesRelUserDto[] | null
+     */
+    private $faxesRelUsers = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -80,7 +86,8 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
             'sendByEmail' => $this->getSendByEmail(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
-            'outgoingDdi' => $this->getOutgoingDdi()
+            'outgoingDdi' => $this->getOutgoingDdi(),
+            'faxesRelUsers' => $this->getFaxesRelUsers()
         ];
 
         if (!$hideSensitiveData) {
@@ -206,5 +213,23 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
+    }
+
+    /**
+     * @param FaxesRelUserDto[] | null $faxesRelUsers
+     */
+    public function setFaxesRelUsers(?array $faxesRelUsers): static
+    {
+        $this->faxesRelUsers = $faxesRelUsers;
+
+        return $this;
+    }
+
+    /**
+    * @return FaxesRelUserDto[] | null
+    */
+    public function getFaxesRelUsers(): ?array
+    {
+        return $this->faxesRelUsers;
     }
 }

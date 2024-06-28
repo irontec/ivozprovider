@@ -32,6 +32,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
             ->setCalleridUpdateHeader('pai')
             ->setUpdateCallerid('yes')
             ->setDirectConnectivity('yes')
+            ->setProxyUserId(1)
             ->setBrandId(1)
             ->setCompanyId(1);
 
@@ -90,12 +91,12 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         $residentialDevice = $this->em
             ->getRepository(ResidentialDevice::class);
         $fixtureResidentialDevices = $residentialDevice->findAll();
-        $this->assertCount(5, $fixtureResidentialDevices);
+        $this->assertCount(6, $fixtureResidentialDevices);
 
         $this->addResidentialDevice();
 
         $residentialDevices = $residentialDevice->findAll();
-        $this->assertCount(6, $residentialDevices);
+        $this->assertCount(7, $residentialDevices);
 
         /////////////////////////////////
         ///
@@ -129,13 +130,13 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         $this->assertEquals(
             $changelog->getData(),
             [
-                'sorcery_id' => 'b1c1r6_testResidentialDevice',
+                'sorcery_id' => 'b1c1r7_testResidentialDevice',
                 'from_domain' => 'retail.irontec.com',
-                'aors' => 'b1c1r6_testResidentialDevice',
+                'aors' => 'b1c1r7_testResidentialDevice',
                 'context' => 'residential',
                 'disallow' => 'all' ,
                 'allow' => 'alaw',
-                'mailboxes' => 'residential6@company1',
+                'mailboxes' => 'residential7@company1',
                 'direct_media' => 'yes',
                 'direct_media_method' => 'invite',
                 'send_diversion' => 'yes',
@@ -149,7 +150,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
                 't38_udptl_nat' => 'no',
                 'rtp_timeout' => 60,
                 'rtp_timeout_hold' => 600,
-                'residentialDeviceId' => 6,
+                'residentialDeviceId' => 7,
                 'id' => 6
             ]
         );

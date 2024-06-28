@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternDto;
@@ -124,6 +125,16 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $multiContact = true;
 
     /**
+     * @var string|null
+     */
+    private $ruriDomain = null;
+
+    /**
+     * @var bool|null
+     */
+    private $trustSDP = false;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -162,6 +173,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
      * @var CompanyDto | null
      */
     private $interCompany = null;
+
+    /**
+     * @var ProxyUserDto | null
+     */
+    private $proxyUser = null;
 
     /**
      * @var PsEndpointDto | null
@@ -218,6 +234,8 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'alwaysApplyTransformations' => 'alwaysApplyTransformations',
             'rtpEncryption' => 'rtpEncryption',
             'multiContact' => 'multiContact',
+            'ruriDomain' => 'ruriDomain',
+            'trustSDP' => 'trustSDP',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -226,6 +244,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'outgoingDdiId' => 'outgoingDdi',
             'languageId' => 'language',
             'interCompanyId' => 'interCompany',
+            'proxyUserId' => 'proxyUser',
             'psEndpointId' => 'psEndpoint',
             'psIdentifyId' => 'psIdentify'
         ];
@@ -257,6 +276,8 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'alwaysApplyTransformations' => $this->getAlwaysApplyTransformations(),
             'rtpEncryption' => $this->getRtpEncryption(),
             'multiContact' => $this->getMultiContact(),
+            'ruriDomain' => $this->getRuriDomain(),
+            'trustSDP' => $this->getTrustSDP(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -265,6 +286,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
             'interCompany' => $this->getInterCompany(),
+            'proxyUser' => $this->getProxyUser(),
             'psEndpoint' => $this->getPsEndpoint(),
             'psIdentify' => $this->getPsIdentify(),
             'patterns' => $this->getPatterns(),
@@ -525,6 +547,30 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->multiContact;
     }
 
+    public function setRuriDomain(?string $ruriDomain): static
+    {
+        $this->ruriDomain = $ruriDomain;
+
+        return $this;
+    }
+
+    public function getRuriDomain(): ?string
+    {
+        return $this->ruriDomain;
+    }
+
+    public function setTrustSDP(bool $trustSDP): static
+    {
+        $this->trustSDP = $trustSDP;
+
+        return $this;
+    }
+
+    public function getTrustSDP(): ?bool
+    {
+        return $this->trustSDP;
+    }
+
     /**
      * @param int|null $id
      */
@@ -744,6 +790,36 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getInterCompanyId(): ?int
     {
         if ($dto = $this->getInterCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setProxyUser(?ProxyUserDto $proxyUser): static
+    {
+        $this->proxyUser = $proxyUser;
+
+        return $this;
+    }
+
+    public function getProxyUser(): ?ProxyUserDto
+    {
+        return $this->proxyUser;
+    }
+
+    public function setProxyUserId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new ProxyUserDto($id)
+            : null;
+
+        return $this->setProxyUser($value);
+    }
+
+    public function getProxyUserId(): ?int
+    {
+        if ($dto = $this->getProxyUser()) {
             return $dto->getId();
         }
 

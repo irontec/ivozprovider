@@ -29,13 +29,16 @@ Voicemail most notable fields are:
         Send or not send an email to the configured user address when a new voicemail is received. For user voicemails this value
         is configured in User edit screen.
 
-    Voicemail attach sounds:
+    Voicemail attach sounds
         Choose whether to attach the audio message to the sent email. Only displayed when *Voicemail send mail* is set to *Yes*
 
     Locution
         If set, this locution is played as voicemail welcome message when a voicemail
         for this voicemail is going to be recorded. This only applies for call forwards
         to voicemail.
+
+    Users
+        Allows assigning the voicemail to specific users. Only available for generic mailboxes.
 
 .. note:: If voicemail locution is not assigned, default locution will be used as long as
           the owner has not recorded a custom message through the voicemail menu (calling to

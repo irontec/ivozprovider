@@ -442,17 +442,6 @@ msgstr ""
 msgid "APT Repository configuration"
 msgstr "Configurar repositorios APT"
 
-#: ../../basic_concepts/installation/debian_install.rst:22
-#, fuzzy
-msgid ""
-"Right now, two different repositories are used for the latest "
-"IvozProvider release (called halliday) and it's frontend Klear release "
-"(called tayler)."
-msgstr ""
-"Actualmente se emplean dos repositorios diferentes tanto para la última "
-"release de IvozProvider (llamada artemis) como para la de Klear (llamada "
-"tayler)"
-
 #: ../../basic_concepts/installation/debian_install.rst:31
 msgid "Optionally, we can add the repository key to check signed packages:"
 msgstr "Opcionalmente, añadimos la clave publica del repositorio:"

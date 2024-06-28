@@ -7,7 +7,7 @@ import { CalendarPeriodsRelScheduleProperties } from './CalendarPeriodsRelSchedu
 
 const properties: CalendarPeriodsRelScheduleProperties = {
   condition: {
-    label: 'Condition',
+    label: _('Condition', { count: 1 }),
   },
   schedule: {
     label: _('Schedule', { count: 1 }),

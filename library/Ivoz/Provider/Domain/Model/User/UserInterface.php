@@ -18,12 +18,14 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Location\LocationInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
-use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
-use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
+use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface;
 
 /**
 * UserInterface
@@ -231,6 +233,20 @@ interface UserInterface extends LoggableEntityInterface
 
     public function getVoicemail(): ?VoicemailInterface;
 
+    public function addVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): UserInterface;
+
+    public function removeVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): UserInterface;
+
+    /**
+     * @param Collection<array-key, VoicemailRelUserInterface> $voicemailRelUsers
+     */
+    public function replaceVoicemailRelUsers(Collection $voicemailRelUsers): UserInterface;
+
+    /**
+     * @return array<array-key, VoicemailRelUserInterface>
+     */
+    public function getVoicemailRelUsers(?Criteria $criteria = null): array;
+
     public function setContact(ContactInterface $contact): static;
 
     public function getContact(): ?ContactInterface;
@@ -276,6 +292,20 @@ interface UserInterface extends LoggableEntityInterface
      * @return array<array-key, CallForwardSettingInterface>
      */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
+
+    public function addFaxesRelUser(FaxesRelUserInterface $faxesRelUser): UserInterface;
+
+    public function removeFaxesRelUser(FaxesRelUserInterface $faxesRelUser): UserInterface;
+
+    /**
+     * @param Collection<array-key, FaxesRelUserInterface> $faxesRelUsers
+     */
+    public function replaceFaxesRelUsers(Collection $faxesRelUsers): UserInterface;
+
+    /**
+     * @return array<array-key, FaxesRelUserInterface>
+     */
+    public function getFaxesRelUsers(?Criteria $criteria = null): array;
 
     /**
      * @see UserInterface::getRoles()

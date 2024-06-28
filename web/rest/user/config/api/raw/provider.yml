@@ -152,8 +152,11 @@ Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
     access_control: '"ROLE_COMPANY_USER" in roles'
     read_access_control:
       ROLE_COMPANY_USER:
-        voicemail:
-          in: "voicemailRepository.getVoicemailsIdsByUser(user)"
+        - or:
+          - voicemail:
+              in: "voicemailRepository.getVoicemailsIdsByUser(user)"
+          - voicemail:
+              in: "voicemailRelUserRepository.getVoicemailIdsByUser(user)"
 
 Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile: ~
 
@@ -302,3 +305,84 @@ Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr:
         - 'text/csv'
         tags:
         - My
+
+Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    post: ~
+    post_fax_resend:
+      method: 'POST'
+      path: '/faxes_in_outs/{id}/resend'
+      requirements:
+        id: '\d+'
+      route_name: 'post_fax_resend'
+      swagger_context:
+        summary: 'Resend failed fax'
+        tags:
+          - Provider
+        parameters:
+          - name: id
+            in: path
+            type: integer
+            required: true
+          - in: body
+        responses:
+          200:
+            description: "Fax successfully resent"
+          404:
+            description: "Entity not found"
+          400:
+            description: "Bad request"
+  properties:
+    calldate:
+      attributes:
+        swagger_context:
+          readOnly: true
+    status:
+      attributes:
+        swagger_context:
+          readOnly: true
+    src:
+      attributes:
+        swagger_context:
+          readOnly: true
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+    order:
+      calldate: ASC
+    read_access_control:
+      inherited:
+        fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+    write_access_control:
+      inherited:
+        fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+      type:
+        eq: '"Out"'
+    delete_access_control: ~
+    swagger_context:
+      required:
+        - fax
+Ivoz\Provider\Domain\Model\FaxesInOut\File: ~
+
+Ivoz\Provider\Domain\Model\Fax\Fax:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get:
+      path: '/my/faxes'
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+    order:
+      name: ASC
+    read_access_control:
+      ROLE_COMPANY_USER:
+        company:
+          eq: "user.getCompany().getId()"
+        id:
+          in: "faxesRelUserRepository.getFaxesIdsByUser(user)"
+    swagger_context:
+      required:
+        - company

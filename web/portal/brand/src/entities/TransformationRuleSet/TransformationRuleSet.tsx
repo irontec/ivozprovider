@@ -1,11 +1,6 @@
-import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
-import EditRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/EditRowButton';
-import defaultEntityBehavior, {
-  ChildDecorator as DefaultChildDecorator,
-} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface, {
-  ChildDecoratorType,
-} from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec/ivoz-ui';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import TransformIcon from '@mui/icons-material/Transform';
 
@@ -59,22 +54,6 @@ const properties: TransformationRuleSetProperties = {
   },
 };
 
-export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, row } = props;
-
-  if (
-    isEntityItem(routeMapItem) &&
-    routeMapItem.entity.iden === TransformationRuleSet.iden
-  ) {
-    const allowEdit = row.editable === true;
-    if (!allowEdit) {
-      return <EditRowButton disabled={true} row={row} path={''} />;
-    }
-  }
-
-  return DefaultChildDecorator(props);
-};
-
 const TransformationRuleSet: EntityInterface = {
   ...defaultEntityBehavior,
   icon: TransformIcon,
@@ -91,7 +70,6 @@ const TransformationRuleSet: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'TransformationRuleSets',
   },
-  ChildDecorator,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

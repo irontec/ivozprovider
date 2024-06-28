@@ -1,4 +1,46 @@
 # Changelog
+## 4.1.0
+* Endpoints
+  - /friends:
+    - Added [GET] endpoint
+    - Removed [POST] endpoint
+    - Added company filter parameter
+  - /friends/{id}:
+    - Removed [DELETE] endpoint
+  - /voicemail_rel_users:
+    - Added [GET] and [POST] endpoints
+  - /voicemail_rel_users/{id}:
+    - Added [GET] and [DELETE] endpoints
+* Models:
+  - Friend:
+    - Added ruriDomain property
+    - Added trustSDP required property
+  - Friend-collection:
+    - Added company property
+  - Friend-detailed:
+    - Added ruriDomain property
+    - Added trustSDP required property
+  - ResidentialDevice:
+    - Added ruriDomain property
+    - Added trustSDP required property
+  - ResidentialDevice-detailed:
+    - Added ruriDomain property
+    - Added trustSDP required property
+  - RetailAccount:
+    - Added ruriDomain property
+    - Added trustSDP required property
+  - RetailAccount-detailed:
+    - Added ruriDomain property
+    - Added trustSDP required property
+  - VoicemailRelUser:
+    - Added model
+  - VoicemailRelUser-collection:
+    - Added model
+  - VoicemailRelUser-detailed:
+    - Added model
+  - Webtheme:
+    - Removed theme property
+
 ## 4.0.4
 * Endpoints:
    - /faxes_in_outs/{id}/resend:

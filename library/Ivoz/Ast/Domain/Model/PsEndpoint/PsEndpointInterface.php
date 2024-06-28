@@ -142,6 +142,8 @@ interface PsEndpointInterface extends LoggableEntityInterface
 
     public function getRtpTimeoutHold(): int;
 
+    public function getExtension(): ?string;
+
     public function setTerminal(?TerminalInterface $terminal = null): static;
 
     public function getTerminal(): ?TerminalInterface;

@@ -89,7 +89,12 @@ class FaxDial extends RouteHandlerAbstract
         }
 
         // Set Company information
-        $this->agi->setVariable("__COMPANYID", $faxOut->getFax()->getCompany()->getId());
+        $fax = $faxOut->getFax();
+        $company = $fax->getCompany();
+        $brand = $company->getBrand();
+        $this->agi->setVariable("__COMPANYID", $company->getId());
+        $this->agi->setVariable("__COMPANYTYPE", $company->getType());
+        $this->agi->setVariable("__BRANDID", $brand->getId());
 
         // Convert fax file from PDF to TIFF
         $pdfFile = $this->faxStoragePathResolver->getFilePath($faxOut);

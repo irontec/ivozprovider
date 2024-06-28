@@ -12,6 +12,7 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
@@ -112,6 +113,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function setPassword(?string $password = null): static;
 
     /**
+     * {@inheritDoc}
+     */
+    public function setRuriDomain(?string $ruriDomain = null): static;
+
+    /**
      * @return string
      */
     public function getContact(): string;
@@ -206,6 +212,10 @@ interface FriendInterface extends LoggableEntityInterface
 
     public function getMultiContact(): bool;
 
+    public function getRuriDomain(): ?string;
+
+    public function getTrustSDP(): bool;
+
     public function setCompany(CompanyInterface $company): static;
 
     public function getCompany(): CompanyInterface;
@@ -221,6 +231,8 @@ interface FriendInterface extends LoggableEntityInterface
     public function getLanguage(): ?LanguageInterface;
 
     public function getInterCompany(): ?CompanyInterface;
+
+    public function getProxyUser(): ?ProxyUserInterface;
 
     public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
 

@@ -985,6 +985,15 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
 Ivoz\Provider\Domain\Model\FaxesInOut\File: ~
 
 Ivoz\Provider\Domain\Model\Fax\Fax:
+  itemOperations:
+    get: ~
+    put:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Fax\FaxDto::CONTEXT_WITH_REL_USERS
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Fax\FaxDto::CONTEXT_WITH_REL_USERS
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
@@ -1044,6 +1053,7 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
       && user.companyHasFeature('friends')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     order:
+      priority: ASC
       name: ASC
     read_access_control:
       ROLE_COMPANY_ADMIN:
@@ -1051,8 +1061,7 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
           eq: "user.getCompany().getId()"
     delete_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
+        raw: 'FALSE'
     write_access_control:
     - and:
       - company:
@@ -1085,7 +1094,6 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
           !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
         ]
     put: ~
-    delete: ~
   collectionOperations:
     get: ~
     get_status_collection:
@@ -1096,7 +1104,6 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
         groups: [
           !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
         ]
-    post: ~
 
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
   attributes:
@@ -2177,6 +2184,16 @@ Ivoz\Provider\Domain\Model\User\User:
       - company
 
 Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
+  itemOperations:
+    get:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto::CONTEXT_DETAILED
+    put:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto::CONTEXT_WITH_REL_USERS
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto::CONTEXT_WITH_REL_USERS
   properties:
     user:
       attributes:
@@ -2193,6 +2210,10 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     order:
       name: ASC
+    normalization_context:
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto::CONTEXT_WITH_REL_USERS
+      ]
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -2231,11 +2252,24 @@ Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
-      inherited:
-        voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+      - and:
+        - inherited:
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+        - voicemail:
+            in: 'voicemailRepository.getGenericVoicemailIds(user)'
     write_access_control:
       inherited:
         voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+
+Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUser:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    post: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 
 Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile: ~
 

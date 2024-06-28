@@ -7,13 +7,17 @@ import {
 import { createStore, createTypedHooks } from 'easy-peasy';
 
 import config from '../config';
+import userStatus, { UserStatusStore } from './userStatus';
 
 ApiClient.API_URL = config.API_URL;
 
-export type AppStore = IvozStore;
+export interface AppStore extends IvozStore {
+  userStatus: UserStatusStore;
+}
 
 const storeModel: AppStore = {
   ...ivozStoreModel,
+  userStatus,
 };
 
 const store = createStore<AppStore>(storeModel);

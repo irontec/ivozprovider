@@ -21,6 +21,7 @@ class FriendLifeCycleTest extends KernelTestCase
             ->setTransport('udp')
             ->setIp('1.2.3.4')
             ->setDirectConnectivity('yes')
+            ->setProxyUserId(1)
             ->setPort('5060')
             ->setPassword('SAG0qd2j6+')
             ->setPriority(2)

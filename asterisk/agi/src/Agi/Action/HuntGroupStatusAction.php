@@ -62,6 +62,9 @@ class HuntGroupStatusAction
             return;
         }
 
+        // Check if this is an only user hunt-group
+        $huntGroupIsSimple = $huntGroup->isSimple();
+
         // Check pending calls
         $huntGroupEndpoints = explode(';', $this->agi->getVariable("HG_ENDPOINTLIST"));
         $huntGroupTimeouts   = explode(';', $this->agi->getVariable("HG_TIMEOUTLIST"));
@@ -103,6 +106,10 @@ class HuntGroupStatusAction
         $this->agi->setVariable("HG_TIMEOUTLIST", join(';', $huntGroupTimeouts));
 
         // Call next!
-        $this->agi->redirect('call-huntgroup');
+        if ($huntGroupIsSimple) {
+            $this->agi->redirect('call-huntgroup-simple');
+        } else {
+            $this->agi->redirect('call-huntgroup');
+        }
     }
 }

@@ -1,6 +1,10 @@
 import { Edit, RouteSpec } from '@irontec/ivoz-ui';
 
 const addCustomRoutes = (routes: Array<RouteSpec>): Array<RouteSpec> => {
+  if (routes.length === 0) {
+    return routes;
+  }
+
   const preferencesRoute = routes.find((route) => {
     return route.path === '/my/preferences';
   }) as RouteSpec;

@@ -26,6 +26,7 @@ class RetailAccountLifeCycleTest extends KernelTestCase
             ->setIp('1.2.3.4')
             ->setPort(1024)
             ->setDirectConnectivity('yes')
+            ->setProxyUserId(1)
             ->setBrandId(1)
             ->setCompanyId(1);
 
@@ -58,7 +59,9 @@ class RetailAccountLifeCycleTest extends KernelTestCase
         $retailAccountDto = $this->entityTools->entityToDto($retailAccount);
 
         $retailAccountDto
-            ->setDirectConnectivity('yes');
+            ->setDirectConnectivity('yes')
+            ->setRuriDomain('ruri.example.com')
+            ->setProxyUserId(1);
 
         return $this
             ->entityTools

@@ -126,6 +126,11 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->willReturn($psEndpointDto)
             ->shouldBeCalled();
 
+        $psEndpointDto
+            ->setExtension('ExtensionNumber')
+            ->willReturn($psEndpointDto)
+            ->shouldBeCalled();
+
         $user
             ->getVoicemail()
             ->willReturn($voicemail)

@@ -156,6 +156,11 @@
         <option name="default">600</option>
       </options>
     </field>
+    <field name="extension" type="string" length="25" column="`@extension`" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <one-to-one field="terminal" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" inversed-by="psEndpoint" fetch="LAZY">
       <join-columns>
         <join-column name="terminalId" referenced-column-name="id" on-delete="CASCADE"/>

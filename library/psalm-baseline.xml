@@ -1708,22 +1708,12 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDto.php">
-    <MissingParamType occurrences="3">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-    <MissingReturnType occurrences="3">
-      <code>getResidentialId</code>
-      <code>getRetailId</code>
-      <code>getVpbxId</code>
-    </MissingReturnType>
-    <MixedArgument occurrences="4">
-      <code>$id</code>
-      <code>$id</code>
-      <code>$id</code>
+    <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
+    <UnusedProperty occurrences="1">
+      <code>$type</code>
+    </UnusedProperty>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerRepository.php">
     <MissingParamType occurrences="1">
@@ -2742,6 +2732,27 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/FaxesRelUser/FaxesRelUser.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>FaxesRelUser</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/FaxesRelUser/FaxesRelUserAbstract.php">
+    <MixedArgument occurrences="4">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFax())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFax())</code>
+      <code>$fkTransformer-&gt;transform($user)</code>
+      <code>$fkTransformer-&gt;transform($user)</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1">
+      <code>new static()</code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/FaxesRelUser/FaxesRelUserTrait.php">
+    <TooManyArguments occurrences="1">
+      <code>parent::__construct(...func_get_args())</code>
+    </TooManyArguments>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/Feature/FeatureAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -2875,6 +2886,10 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Friend/Friend.php">
+    <DeprecatedMethod occurrences="2">
+      <code>setIp</code>
+      <code>setPort</code>
+    </DeprecatedMethod>
     <DocblockTypeContradiction occurrences="1">
       <code>empty($callAcl)</code>
     </DocblockTypeContradiction>
@@ -2889,7 +2904,7 @@
     </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Friend/FriendAbstract.php">
-    <MixedArgument occurrences="14">
+    <MixedArgument occurrences="16">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCallAcl())</code>
@@ -2902,6 +2917,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
     </MixedArgument>
@@ -3850,7 +3867,7 @@
     </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceAbstract.php">
-    <MixedArgument occurrences="12">
+    <MixedArgument occurrences="14">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
@@ -3861,6 +3878,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
     </MixedArgument>
@@ -3887,7 +3906,7 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountAbstract.php">
-    <MixedArgument occurrences="10">
+    <MixedArgument occurrences="12">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
@@ -3896,6 +3915,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getDomain())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getProxyUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
     </MixedArgument>
@@ -4348,6 +4369,27 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailRelUser/VoicemailRelUser.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>VoicemailRelUser</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailRelUser/VoicemailRelUserAbstract.php">
+    <MixedArgument occurrences="4">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($user)</code>
+      <code>$fkTransformer-&gt;transform($user)</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1">
+      <code>new static()</code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailRelUser/VoicemailRelUserTrait.php">
+    <TooManyArguments occurrences="1">
+      <code>parent::__construct(...func_get_args())</code>
+    </TooManyArguments>
   </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortal.php">
     <MethodSignatureMismatch occurrences="1">
@@ -5407,6 +5449,11 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
+  <file src="Ivoz/Provider/Domain/Service/VoicemailRelUser/VoicemailRelUserLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Provider/Domain/Traits/RoutableTrait.php">
     <MixedArgument occurrences="3">
       <code>$routeType</code>
@@ -5612,5 +5659,12 @@
     <UndefinedMethod occurrences="1">
       <code>fetchAll</code>
     </UndefinedMethod>
+  </file>
+  <file src="Ivoz/Provider/Infrastructure/Persistence/Doctrine/VoicemailRelUserDoctrineRepository.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$dispatchInmediately</code>
+      <code>$voicemailRelUser</code>
+      <code>$voicemailRelUser</code>
+    </ParamNameMismatch>
   </file>
 </files>

@@ -164,6 +164,7 @@ const properties: ResidentialDeviceProperties = {
   },
   directConnectivity: {
     label: _('Direct connectivity'),
+    readOnly: true,
     default: 'no',
     enum: {
       yes: _('Yes'),
@@ -171,12 +172,19 @@ const properties: ResidentialDeviceProperties = {
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport', 'auth_needed'],
+        show: ['ip', 'port', 'transport', 'auth_needed', 'trustSDP'],
         hide: ['multiContact'],
       },
       no: {
         show: ['multiContact'],
-        hide: ['ip', 'port', 'transport', 'auth_needed'],
+        hide: [
+          'ip',
+          'port',
+          'transport',
+          'auth_needed',
+          'ruriDomain',
+          'trustSDP',
+        ],
       },
     },
   },
@@ -245,6 +253,18 @@ const properties: ResidentialDeviceProperties = {
     helpText: _(
       "Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring."
     ),
+  },
+  ruriDomain: {
+    label: _('R-URI domain'),
+    type: 'string',
+  },
+  trustSDP: {
+    label: _('Trust SDP'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '0',
   },
 };
 

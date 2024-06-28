@@ -1,4 +1,6 @@
 import { isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -9,6 +11,7 @@ import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import MailIcon from '@mui/icons-material/Mail';
 
+import VoicemailMessage from '../VoicemailMessage/VoicemailMessage';
 import { VoicemailProperties } from './VoicemailProperties';
 
 const properties: VoicemailProperties = {
@@ -59,22 +62,49 @@ const properties: VoicemailProperties = {
     null: _('Unassigned'),
     default: '__null__',
   },
+  relUserIds: {
+    label: _('Users'),
+    type: 'array',
+    $ref: '#/definitions/User',
+  },
 };
 
 const columns = ['enabled', 'name', 'email'];
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, row } = props;
+  const { routeMapItem, entityService, row } = props;
+
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === VoicemailMessage.iden
+  ) {
+    if (row.user !== null) {
+      return (
+        <ChildEntityLink
+          row={row}
+          routeMapItem={routeMapItem}
+          disabled={true}
+        />
+      );
+    }
+  }
 
   if (
     isEntityItem(routeMapItem) &&
     routeMapItem.entity.iden === Voicemail.iden
   ) {
     const isDeletePath = routeMapItem.route === `${Voicemail.path}/:id`;
+
     const allowDelete = row.user === null && row.residentialDevice === null;
 
     if (isDeletePath && !allowDelete) {
-      return null;
+      return (
+        <DeleteRowButton
+          disabled={true}
+          row={row}
+          entityService={entityService}
+        />
+      );
     }
   }
 
@@ -105,6 +135,16 @@ const Voicemail: EntityInterface = {
     const module = await import('./Form');
 
     return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
+
+    return module.default;
+  },
+  foreignKeyGetter: async () => {
+    const module = await import('./ForeignKeyGetter');
+
+    return module.foreignKeyGetter;
   },
   ChildDecorator,
 };

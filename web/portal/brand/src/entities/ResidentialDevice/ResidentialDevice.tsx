@@ -17,6 +17,7 @@ const properties: ResidentialDeviceProperties = {
     pattern: new RegExp(`^[a-zA-Z0-9_*]+$`),
     maxLength: 100,
     helpText: _(`Allowed characters: a-z, A-Z, 0-9, underscore and '*'`),
+    required: true,
   },
   description: {
     label: _('Description'),
@@ -30,6 +31,7 @@ const properties: ResidentialDeviceProperties = {
       tcp: 'TCP',
       tls: 'TLS',
     },
+    required: true,
   },
   ip: {
     label: _('IP address'),
@@ -64,12 +66,12 @@ const properties: ResidentialDeviceProperties = {
     },
     visualToggle: {
       yes: {
-        show: ['ip', 'port', 'transport'],
+        show: ['ip', 'port', 'transport', 'ruriDomain', 'proxyUser'],
         hide: ['multiContact'],
       },
       no: {
         show: ['multiContact'],
-        hide: ['ip', 'port', 'transport'],
+        hide: ['ip', 'port', 'transport', 'ruriDomain', 'proxyUser'],
       },
     },
   },
@@ -208,6 +210,15 @@ const properties: ResidentialDeviceProperties = {
       },
     },
   },
+  ruriDomain: {
+    label: _('R-URI domain'),
+    type: 'string',
+  },
+  proxyUser: {
+    label: _('Local Address'),
+    default: '__null__',
+    required: true,
+  },
 };
 
 const ResidentialDevice: EntityInterface = {
@@ -217,7 +228,7 @@ const ResidentialDevice: EntityInterface = {
   iden: 'ResidentialDevice',
   title: _('Residential Device', { count: 2 }),
   path: '/residential_devices',
-  toStr: (row: ResidentialDevicePropertyList<EntityValues>) => `${row.id}`,
+  toStr: (row: ResidentialDevicePropertyList<EntityValues>) => `${row.name}`,
   properties,
   columns: ['company', 'name', 'domain', 'description', 'statusIcon'],
   acl: {

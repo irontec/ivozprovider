@@ -76,6 +76,23 @@ class ProviderFaxesInOut extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
+        /** @var FaxesInOut $item3 */
+        $item4 = $this->createEntityInstance(FaxesInOut::class);
+        (function () use ($fixture) {
+            $this->calldate = new \DateTime('2018-01-02', new \DateTimeZone('UTC'));
+            $this->setSrc('34688888888');
+            $this->setDst('34688888881');
+            $this->setType('Out');
+            $this->setStatus('error');
+            $this->setFax(
+                $fixture->getReference('_reference_ProviderFax2')
+            );
+            $this->file = new File(null, null, null);
+        })->call($item4);
+
+        $this->addReference('_reference_ProviderFaxesInOut4', $item4);
+        $this->sanitizeEntityValues($item4);
+        $manager->persist($item4);
 
         $manager->flush();
     }

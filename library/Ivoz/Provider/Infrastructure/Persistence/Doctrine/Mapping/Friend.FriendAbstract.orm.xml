@@ -124,6 +124,12 @@
         <option name="unsigned">1</option>
       </options>
     </field>
+    <field name="ruriDomain" type="string" column="ruri_domain" length="190" nullable="true"/>
+    <field name="trustSDP" type="boolean" column="trustSDP" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="friends" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
@@ -157,6 +163,11 @@
     <many-to-one field="interCompany" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="interCompanyId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="proxyUser" target-entity="Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="proxyUserId" referenced-column-name="id" on-delete="SET NULL" on-update="RESTRICT" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

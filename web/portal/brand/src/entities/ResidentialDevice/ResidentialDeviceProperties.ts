@@ -32,6 +32,8 @@ export type ResidentialDevicePropertyList<T> = {
   directMediaMethod?: T;
   calleridUpdateHeader?: T;
   updateCallerid?: T;
+  ruriDomain?: T;
+  proxyUser?: T;
 };
 
 export type ResidentialDeviceProperties = ResidentialDevicePropertyList<

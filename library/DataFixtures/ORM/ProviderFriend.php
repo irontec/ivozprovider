@@ -28,6 +28,9 @@ class ProviderFriend extends Fixture implements DependentFixtureInterface
             $this->setTransport("udp");
             $this->setIp("1.2.3.4");
             $this->setPort('5060');
+            $this->setProxyUser(
+                $fixture->getReference('_reference_ProviderProxyUserProxyUser1')
+            );
             $this->setPassword("SDG3qd2j6+");
             $this->setPriority(1);
             $this->setFromDomain("");
@@ -43,13 +46,26 @@ class ProviderFriend extends Fixture implements DependentFixtureInterface
             $this->setName("testFriend2");
             $this->setDirectConnectivity("intervpbx");
             $this->setPriority(2);
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany2'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany3'));
             $this->setInterCompany($fixture->getReference('_reference_ProviderCompany1'));
         })->call($item2);
 
         $this->addReference('_reference_ProviderFriend2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
+
+        $item3 = $this->createEntityInstance(Friend::class);
+        (function () use ($fixture) {
+            $this->setName("testFriend3");
+            $this->setDirectConnectivity("intervpbx");
+            $this->setPriority(2);
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setInterCompany($fixture->getReference('_reference_ProviderCompany3'));
+        })->call($item3);
+
+        $this->addReference('_reference_ProviderFriend3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
 
         $manager->flush();
     }

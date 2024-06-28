@@ -50,16 +50,14 @@ const properties: TransformationRuleProperties = {
 };
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { row } = props;
   const parent = useStoreState(
     (state) =>
       state.list.parentRow as TransformationRuleSetPropertyList<
         string | number | boolean
       >
   );
-
-  if (parent?.editable !== true) {
-    return null;
-  }
+  row.editable = parent?.editable;
 
   return DefaultChildDecorator(props);
 };

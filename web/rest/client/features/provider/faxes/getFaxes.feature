@@ -20,6 +20,13 @@ Feature: Retrieve faxes
               "sendByEmail": false,
               "id": 1,
               "outgoingDdi": null
+          },
+          {
+              "name": "Test Fax 2",
+              "email": null,
+              "sendByEmail": false,
+              "id": 2,
+              "outgoingDdi": null
           }
       ]
       """

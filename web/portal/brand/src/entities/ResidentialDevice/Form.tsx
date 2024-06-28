@@ -8,7 +8,7 @@ import { Form as DefaultEntityForm } from '@irontec/ivoz-ui/entities/DefaultEnti
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
+  const { entityService, row, match, edit } = props;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -25,14 +25,27 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'description',
         'password',
         'directConnectivity',
+        'transport',
         'ip',
         'port',
-        'transport',
+        'ruriDomain',
+        'proxyUser',
       ],
     },
   ];
 
-  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+  const readOnlyProperties = {
+    company: edit,
+  };
+
+  return (
+    <DefaultEntityForm
+      {...props}
+      fkChoices={fkChoices}
+      groups={groups}
+      readOnlyProperties={readOnlyProperties}
+    />
+  );
 };
 
 export default Form;

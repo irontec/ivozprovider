@@ -1,4 +1,44 @@
 # Changelog
+## 4.1.0
+* Endpoints
+  - /companies/corporate/unassigned:
+    - Added [GET] endpoint
+  - /friends:
+    - Added proxyUser, proxyUser[] and proxyUser[exists] filter parameters
+  - /proxy_users:
+    - Added [GET] endpoint
+  - /proxy_users/{id}:
+    - Added [GET] endpoint
+  - /residential_devices:
+    - Added proxyUser, proxyUser[] and proxyUser[exists] filter parameters
+  - /residential_devices/status:
+    - Added proxyUser, proxyUser[] and proxyUser[exists] filter parameters
+  - /retail_accounts:
+    - Added proxyUser, proxyUser[] and proxyUser[exists] filter parameters
+  - /retail_accounts/status:
+    - Added proxyUser, proxyUser[] and proxyUser[exists] filter parameters
+* Models:
+  - Friend-detailed:
+    - Removed allow, ddiIn and t38Passthrough properties
+  - ProxyUser:
+    - Added model
+  - ProxyUser-detailed:
+    - Added model
+  - ResidentialDevice:
+    - Added ruri_domain and proxyUser properties
+  - ResidentialDevice-detailed:
+    - Added ruri_domain and proxyUser properties
+  - RetailAccount:
+    - Added ruri_domain and proxyUser properties
+  - RetailAccount-detailed:
+    - Added ruri_domain and proxyUser properties
+  - WebPortal:
+    - Removed klearTheme and userTheme properties
+  - WebPortal-detailed:
+    - Removed klearTheme and userTheme properties
+  - Webtheme:
+    - Removed theme property
+
 ## 4.0.5
 * Models
   - Administrator:

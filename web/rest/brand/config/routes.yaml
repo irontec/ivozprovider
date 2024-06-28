@@ -231,3 +231,21 @@ invoice_post_regenerate:
     _controller: Controller\Provider\Invoice\RegenerateAction
     _api_item_operation_name: 'invoice_post_regenerate'
     _api_receive: false
+
+get_companies_corporate_unassigned:
+  path: '/companies/corporate/unassigned'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\CompaniesByCorporateUnassignedAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Company\Company'
+    _api_collection_operation_name: 'get_companies_corporate_unassigned'
+    _api_receive: false
+
+post_friend:
+  path: '/friends'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Friend\PostFriend
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Friend\Friend'
+    _api_collection_operation_name: 'post_friend'
+    _api_receive: false

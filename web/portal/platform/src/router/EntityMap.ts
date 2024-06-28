@@ -39,6 +39,9 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.AdministratorRelPublicEntity,
               filterBy: 'administrator',
+              ...Object.values(
+                entities.AdministratorRelPublicEntity.customActions
+              ),
             },
           ],
         },

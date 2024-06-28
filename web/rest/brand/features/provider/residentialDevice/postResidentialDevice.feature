@@ -26,7 +26,8 @@ Feature: Create residential devices
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "proxyUser": 1
       }
       """
      Then the response status code should be 201
@@ -49,18 +50,20 @@ Feature: Create residential devices
           "t38Passthrough": "no",
           "rtpEncryption": false,
           "multiContact": true,
-          "id": 6,
+          "ruriDomain": null,
+          "id": 7,
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "proxyUser": 1
       }
       """
 
-  Scenario: Retrieve created ddi
+  Scenario: Retrieve created residential device
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "residential_devices/6"
+      And I send a "GET" request to "residential_devices/7"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -79,7 +82,7 @@ Feature: Create residential devices
           "ddiIn": "yes",
           "maxCalls": 1,
           "t38Passthrough": "no",
-          "id": 6,
+          "id": 7,
           "company": "~",
           "transformationRuleSet": null,
           "outgoingDdi": null,

@@ -58,6 +58,7 @@ services:
             - [ addRepository, ['companyRelRoutingTagRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag")']]
             - [ addRepository, ['brandServiceRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService")']]
             - [ addRepository, ['companyRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")']]
+            - [ addRepository, ['voicemailRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Voicemail\\Voicemail")']]
 
     #######################################
     ## Controllers

@@ -24,24 +24,23 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const interVpbxEdition = edit && isInterVpbx;
   const readOnlyProperties = {
     directConnectivity: interVpbxEdition,
-    priority: interVpbxEdition,
     name: interVpbxEdition,
+    interCompany: true,
   };
 
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Basic Configuration'),
       fields: [
-        'directConnectivity',
-        'priority',
-        'description',
-        !isInterVpbx && 'name',
+        'name',
         'password',
+        'priority',
+        'interCompany',
         'transport',
         'ip',
         'port',
-        'alwaysApplyTransformations',
-        'interCompany',
+        'ruriDomain',
+        'description',
       ],
     },
     edit &&
@@ -64,6 +63,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
         edit && 't38Passthrough',
         edit && 'rtpEncryption',
         'multiContact',
+        'alwaysApplyTransformations',
+        'trustSDP',
       ],
     },
     {

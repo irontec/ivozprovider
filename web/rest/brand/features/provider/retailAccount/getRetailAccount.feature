@@ -77,6 +77,17 @@ Feature: Retrieve retail accounts
                       "userAgent": "Yealink SIP-T23G 44.80.0.130"
                   }
               ]
+          },
+          {
+              "name": "testRetailAccount6",
+              "description": "",
+              "directConnectivity": "yes",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 6,
+              "domain": 6,
+              "company": 3,
+              "status": []
           }
       ]
       """
@@ -94,8 +105,8 @@ Feature: Retrieve retail accounts
           "name": "testRetailAccount",
           "description": "",
           "transport": "udp",
-          "ip": "1.2.3.4",
-          "port": 1024,
+          "ip": null,
+          "port": null,
           "password": "9rv6G3TVc-",
           "fromDomain": null,
           "directConnectivity": "no",

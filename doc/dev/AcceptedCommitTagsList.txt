@@ -31,5 +31,3 @@ rest/user
 schema
 systemd
 tests
-web/admin
-web/user

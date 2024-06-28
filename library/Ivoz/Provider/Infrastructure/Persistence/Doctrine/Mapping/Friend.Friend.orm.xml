@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity
-          repository-class="Ivoz\Provider\Infrastructure\Persistence\Doctrine\FriendDoctrineRepository"
-          name="Ivoz\Provider\Domain\Model\Friend\Friend"
-          table="Friends"
-          change-tracking-policy="DEFERRED_EXPLICIT"
-  >
+  <entity repository-class="Ivoz\Provider\Infrastructure\Persistence\Doctrine\FriendDoctrineRepository" name="Ivoz\Provider\Domain\Model\Friend\Friend" table="Friends" change-tracking-policy="DEFERRED_EXPLICIT">
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
       <options>

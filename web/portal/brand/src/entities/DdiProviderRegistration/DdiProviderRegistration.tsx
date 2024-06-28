@@ -8,6 +8,7 @@ import {
   DdiProviderRegistrationProperties,
   DdiProviderRegistrationPropertyList,
 } from './DdiProviderRegistrationProperties';
+import StatusIcon from './Field/StatusIcon';
 
 const properties: DdiProviderRegistrationProperties = {
   username: {
@@ -74,7 +75,7 @@ const properties: DdiProviderRegistrationProperties = {
   },
   statusIcon: {
     label: _('Status'),
-    //@TODO IvozProvider_Klear_Ghost_RegisterStatus::getDdiProviderStatusIcon
+    component: StatusIcon,
   },
 };
 
@@ -86,7 +87,7 @@ const DdiProviderRegistration: EntityInterface = {
   title: _('DDI Provider Registration', { count: 2 }),
   path: '/ddi_provider_registrations',
   toStr: (row: DdiProviderRegistrationPropertyList<EntityValues>) =>
-    `${row.id}`,
+    `${row.username}`,
   properties,
   acl: {
     ...defaultEntityBehavior.acl,

@@ -1,6 +1,0 @@
-web/admin/application     /opt/irontec/ivozprovider/web/admin/
-web/admin/docs            /opt/irontec/ivozprovider/web/admin/
-web/admin/public          /opt/irontec/ivozprovider/web/admin/
-web/admin/tests           /opt/irontec/ivozprovider/web/admin/
-web/admin/templates       /opt/irontec/ivozprovider/web/admin/
-web/admin/samples         /opt/irontec/ivozprovider/web/admin/

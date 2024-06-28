@@ -41,6 +41,14 @@
       <code>$code</code>
     </InvalidScalarArgument>
   </file>
+  <file src="src/Controller/Provider/Friend/PostFriend.php">
+    <MixedAssignment occurrences="1">
+      <code>$data</code>
+    </MixedAssignment>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>decode</code>
+    </UndefinedInterfaceMethod>
+  </file>
   <file src="src/Controller/Provider/PostUsersMassImportAction.php">
     <InvalidScalarArgument occurrences="1">
       <code>$rowsFailed</code>

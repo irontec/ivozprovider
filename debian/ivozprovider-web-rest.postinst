@@ -7,17 +7,22 @@ set -e
 # Set current environment
 export APP_ENV=prod
 
-cd /opt/irontec/ivozprovider/web/rest/platform
-
-# Set proper var permissions
-setfacl -dR -m u:www-data:rwX -m u:root:rwX var
-setfacl  -R -m u:www-data:rwX -m u:root:rwX var
-
-# Create project cache
-bin/console cache:clear --no-warmup -q -n
-
 # Create jwt certificates
 [ ! -e /opt/irontec/ivozprovider/storage/jwt/private.pem ] && bin/generate-keys --initial
+
+if [ -d /opt/irontec/ivozprovider/web/rest/platform/ ]; then
+    pushd /opt/irontec/ivozprovider/web/rest/platform/
+        # Set proper var permissions
+        setfacl -dR -m u:www-data:rwX -m u:root:rwX var
+        setfacl  -R -m u:www-data:rwX -m u:root:rwX var
+
+        # Create project cache
+        echo "Generating platform API rest cache...."
+        bin/console cache:clear --no-warmup -q -n
+        bin/console api:swagger:export -q
+    popd
+fi
+
 
 if [ -d /opt/irontec/ivozprovider/web/rest/brand/ ]; then
     pushd /opt/irontec/ivozprovider/web/rest/brand/
@@ -26,7 +31,9 @@ if [ -d /opt/irontec/ivozprovider/web/rest/brand/ ]; then
         setfacl  -R -m u:www-data:rwX -m u:root:rwX var
 
         # Create project cache
+        echo "Generating brand API rest cache...."
         bin/console cache:clear --no-warmup -q -n
+        bin/console api:swagger:export -q
     popd
 fi
 
@@ -37,7 +44,9 @@ if [ -d /opt/irontec/ivozprovider/web/rest/client/ ]; then
         setfacl  -R -m u:www-data:rwX -m u:root:rwX var
 
         # Create project cache
+        echo "Generating client API rest cache...."
         bin/console cache:clear --no-warmup -q -n
+        bin/console api:swagger:export -q
     popd
 fi
 
@@ -49,7 +58,9 @@ if [ -d /opt/irontec/ivozprovider/web/rest/user/ ]; then
         setfacl  -R -m u:www-data:rwX -m u:root:rwX var
 
         # Create project cache
+        echo "Generating user API rest cache...."
         bin/console cache:clear --no-warmup -q -n
+        bin/console api:swagger:export -q
     popd
 fi
 

@@ -27,24 +27,11 @@ const properties: WebPortalProperties = {
       admin: _('Client'),
       user: _('User', { count: 1 }),
     },
-    visualToggle: {
-      god: {
-        show: ['klearTheme'],
-        hide: ['userTheme'],
-      },
-      brand: {
-        show: ['klearTheme'],
-        hide: ['userTheme'],
-      },
-    },
   },
   name: {
     label: _('Name'),
     maxLength: 200,
     helpText: _(`Will be shown on page footer`),
-  },
-  userTheme: {
-    label: _('User Theme'),
   },
   logo: {
     label: _('Logo'),

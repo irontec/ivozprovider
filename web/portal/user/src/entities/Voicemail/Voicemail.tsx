@@ -1,5 +1,10 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EditRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/EditRowButton';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import MailIcon from '@mui/icons-material/Mail';
 
@@ -53,6 +58,18 @@ const properties: VoicemailProperties = {
   },
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  const isUpdatePath = routeMapItem.route === `${voicemail.path}/:id/update`;
+
+  if (row.generic && isUpdatePath) {
+    return <EditRowButton disabled={true} row={row} />;
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const columns = ['enabled', 'name', 'email'];
 
 const voicemail: EntityInterface = {
@@ -68,6 +85,7 @@ const voicemail: EntityInterface = {
   },
   toStr: (row: VoicemailPropertyList<string>) => `${row.name as string}`,
   properties,
+  ChildDecorator,
   columns,
   defaultOrderBy: '',
   Form: async () => {

@@ -7,7 +7,7 @@ import {
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 import { useStoreState } from '../../store';
-import { foreignKeyGetter } from '../Queue/ForeignKeyGetter';
+import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
@@ -34,7 +34,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const groups: Array<FieldsetGroups> = [
     {
       legend: _('Basic configuration'),
-      fields: ['enabled', 'name'],
+      fields: ['enabled', 'name', isGenericVoicemail && 'relUserIds'],
     },
     {
       legend: _('Notification configuration'),

@@ -12,6 +12,7 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
@@ -88,6 +89,11 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function setPassword(?string $password = null): static;
 
     public function setPort(?int $port = null): static;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRuriDomain(?string $ruriDomain = null): static;
 
     /**
      * @return string
@@ -182,6 +188,10 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
 
     public function getMultiContact(): bool;
 
+    public function getRuriDomain(): ?string;
+
+    public function getTrustSDP(): bool;
+
     public function setBrand(BrandInterface $brand): static;
 
     public function getBrand(): BrandInterface;
@@ -195,6 +205,8 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
     public function getLanguage(): ?LanguageInterface;
+
+    public function getProxyUser(): ?ProxyUserInterface;
 
     public function setVoicemail(VoicemailInterface $voicemail): static;
 

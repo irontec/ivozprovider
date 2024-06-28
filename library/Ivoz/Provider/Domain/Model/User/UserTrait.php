@@ -7,14 +7,16 @@ namespace Ivoz\Provider\Domain\Model\User;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
-use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
-use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
+use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface;
 
 /**
 * @codeCoverageIgnore
@@ -31,6 +33,12 @@ trait UserTrait
      * mappedBy user
      */
     protected $voicemail;
+
+    /**
+     * @var Collection<array-key, VoicemailRelUserInterface> & Selectable<array-key, VoicemailRelUserInterface>
+     * VoicemailRelUserInterface mappedBy user
+     */
+    protected $voicemailRelUsers;
 
     /**
      * @var ContactInterface
@@ -58,14 +66,22 @@ trait UserTrait
     protected $callForwardSettings;
 
     /**
+     * @var Collection<array-key, FaxesRelUserInterface> & Selectable<array-key, FaxesRelUserInterface>
+     * FaxesRelUserInterface mappedBy user
+     */
+    protected $faxesRelUsers;
+
+    /**
      * Constructor
      */
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+        $this->voicemailRelUsers = new ArrayCollection();
         $this->pickUpRelUsers = new ArrayCollection();
         $this->queueMembers = new ArrayCollection();
         $this->callForwardSettings = new ArrayCollection();
+        $this->faxesRelUsers = new ArrayCollection();
     }
 
     abstract protected function sanitizeValues(): void;
@@ -87,6 +103,16 @@ trait UserTrait
                 $dto->getVoicemail()
             );
             $self->setVoicemail($entity);
+        }
+
+        $voicemailRelUsers = $dto->getVoicemailRelUsers();
+        if (!is_null($voicemailRelUsers)) {
+
+            /** @var Collection<array-key, VoicemailRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $voicemailRelUsers
+            );
+            $self->replaceVoicemailRelUsers($replacement);
         }
 
         if (!is_null($dto->getContact())) {
@@ -127,6 +153,16 @@ trait UserTrait
             $self->replaceCallForwardSettings($replacement);
         }
 
+        $faxesRelUsers = $dto->getFaxesRelUsers();
+        if (!is_null($faxesRelUsers)) {
+
+            /** @var Collection<array-key, FaxesRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $faxesRelUsers
+            );
+            $self->replaceFaxesRelUsers($replacement);
+        }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -151,6 +187,16 @@ trait UserTrait
                 $dto->getVoicemail()
             );
             $this->setVoicemail($entity);
+        }
+
+        $voicemailRelUsers = $dto->getVoicemailRelUsers();
+        if (!is_null($voicemailRelUsers)) {
+
+            /** @var Collection<array-key, VoicemailRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $voicemailRelUsers
+            );
+            $this->replaceVoicemailRelUsers($replacement);
         }
 
         if (!is_null($dto->getContact())) {
@@ -190,6 +236,16 @@ trait UserTrait
             );
             $this->replaceCallForwardSettings($replacement);
         }
+
+        $faxesRelUsers = $dto->getFaxesRelUsers();
+        if (!is_null($faxesRelUsers)) {
+
+            /** @var Collection<array-key, FaxesRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $faxesRelUsers
+            );
+            $this->replaceFaxesRelUsers($replacement);
+        }
         $this->sanitizeValues();
 
         return $this;
@@ -225,6 +281,90 @@ trait UserTrait
     public function getVoicemail(): ?VoicemailInterface
     {
         return $this->voicemail;
+    }
+
+    public function addVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): UserInterface
+    {
+        $this->voicemailRelUsers->add($voicemailRelUser);
+
+        return $this;
+    }
+
+    public function removeVoicemailRelUser(VoicemailRelUserInterface $voicemailRelUser): UserInterface
+    {
+        $this->voicemailRelUsers->removeElement($voicemailRelUser);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, VoicemailRelUserInterface> $voicemailRelUsers
+     */
+    public function replaceVoicemailRelUsers(Collection $voicemailRelUsers): UserInterface
+    {
+        foreach ($voicemailRelUsers as $entity) {
+            $entity->setUser($this);
+        }
+
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
+        foreach ($this->voicemailRelUsers as $key => $entity) {
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($voicemailRelUsers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($voicemailRelUsers[$newKey]);
+                    $match = true;
+                    break;
+                }
+            }
+
+            if (!$match) {
+                $this->voicemailRelUsers->remove($key);
+            }
+        }
+
+        foreach ($voicemailRelUsers as $entity) {
+            $this->addVoicemailRelUser($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array<array-key, VoicemailRelUserInterface>
+     */
+    public function getVoicemailRelUsers(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->voicemailRelUsers->matching($criteria)->toArray();
+        }
+
+        return $this->voicemailRelUsers->toArray();
     }
 
     public function setContact(ContactInterface $contact): static
@@ -489,5 +629,89 @@ trait UserTrait
         }
 
         return $this->callForwardSettings->toArray();
+    }
+
+    public function addFaxesRelUser(FaxesRelUserInterface $faxesRelUser): UserInterface
+    {
+        $this->faxesRelUsers->add($faxesRelUser);
+
+        return $this;
+    }
+
+    public function removeFaxesRelUser(FaxesRelUserInterface $faxesRelUser): UserInterface
+    {
+        $this->faxesRelUsers->removeElement($faxesRelUser);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, FaxesRelUserInterface> $faxesRelUsers
+     */
+    public function replaceFaxesRelUsers(Collection $faxesRelUsers): UserInterface
+    {
+        foreach ($faxesRelUsers as $entity) {
+            $entity->setUser($this);
+        }
+
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
+        foreach ($this->faxesRelUsers as $key => $entity) {
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($faxesRelUsers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($faxesRelUsers[$newKey]);
+                    $match = true;
+                    break;
+                }
+            }
+
+            if (!$match) {
+                $this->faxesRelUsers->remove($key);
+            }
+        }
+
+        foreach ($faxesRelUsers as $entity) {
+            $this->addFaxesRelUser($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array<array-key, FaxesRelUserInterface>
+     */
+    public function getFaxesRelUsers(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->faxesRelUsers->matching($criteria)->toArray();
+        }
+
+        return $this->faxesRelUsers->toArray();
     }
 }

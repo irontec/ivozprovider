@@ -85,12 +85,14 @@ class FriendDto extends FriendDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
+                'companyId' => 'company',
                 'name' => 'name',
                 'domainId' => 'domain',
                 'description' => 'description',
                 'priority' => 'priority',
                 'directConnectivity' => 'directConnectivity',
-                'interCompanyId' => 'interCompany'
+                'interCompanyId' => 'interCompany',
+                'proxyUserId' => 'proxyUser',
             ];
         }
 
@@ -111,7 +113,7 @@ class FriendDto extends FriendDtoAbstract
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
-            $contextProperties['companyId'] = 'company';
+            unset($contextProperties['directConnectivity']);
         }
 
         $this->setByContext(
@@ -130,19 +132,12 @@ class FriendDto extends FriendDtoAbstract
             'port',
             'password',
             'priority',
-            'allow',
-            'fromUser',
-            'fromDomain',
             'directConnectivity',
-            'ddiIn',
-            't38Passthrough',
             'id',
             'companyId',
-            'transformationRuleSetId',
-            'callAclId',
-            'outgoingDdiId',
-            'languageId',
-            'interCompanyId'
+            'interCompanyId',
+            'ruriDomain',
+            'proxyUserId',
         ];
 
         return array_filter(
@@ -178,7 +173,10 @@ class FriendDto extends FriendDtoAbstract
             'callAclId',
             'outgoingDdiId',
             'languageId',
-            'interCompanyId'
+            'interCompanyId',
+            'ruriDomain',
+            'proxyuserId',
+            'trustSDP'
         ];
 
         return array_filter(

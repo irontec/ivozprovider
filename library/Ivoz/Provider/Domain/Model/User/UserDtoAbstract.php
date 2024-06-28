@@ -16,10 +16,12 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
 use Ivoz\Provider\Domain\Model\Location\LocationDto;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
+use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserDto;
 use Ivoz\Provider\Domain\Model\Contact\ContactDto;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserDto;
 
 /**
 * UserDtoAbstract
@@ -160,6 +162,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $voicemail = null;
 
     /**
+     * @var VoicemailRelUserDto[] | null
+     */
+    private $voicemailRelUsers = null;
+
+    /**
      * @var ContactDto | null
      */
     private $contact = null;
@@ -178,6 +185,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
      * @var CallForwardSettingDto[] | null
      */
     private $callForwardSettings = null;
+
+    /**
+     * @var FaxesRelUserDto[] | null
+     */
+    private $faxesRelUsers = null;
 
     public function __construct(?int $id = null)
     {
@@ -256,10 +268,12 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'outgoingDdiRule' => $this->getOutgoingDdiRule(),
             'location' => $this->getLocation(),
             'voicemail' => $this->getVoicemail(),
+            'voicemailRelUsers' => $this->getVoicemailRelUsers(),
             'contact' => $this->getContact(),
             'pickUpRelUsers' => $this->getPickUpRelUsers(),
             'queueMembers' => $this->getQueueMembers(),
-            'callForwardSettings' => $this->getCallForwardSettings()
+            'callForwardSettings' => $this->getCallForwardSettings(),
+            'faxesRelUsers' => $this->getFaxesRelUsers()
         ];
 
         if (!$hideSensitiveData) {
@@ -825,6 +839,24 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    /**
+     * @param VoicemailRelUserDto[] | null $voicemailRelUsers
+     */
+    public function setVoicemailRelUsers(?array $voicemailRelUsers): static
+    {
+        $this->voicemailRelUsers = $voicemailRelUsers;
+
+        return $this;
+    }
+
+    /**
+    * @return VoicemailRelUserDto[] | null
+    */
+    public function getVoicemailRelUsers(): ?array
+    {
+        return $this->voicemailRelUsers;
+    }
+
     public function setContact(?ContactDto $contact): static
     {
         $this->contact = $contact;
@@ -907,5 +939,23 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getCallForwardSettings(): ?array
     {
         return $this->callForwardSettings;
+    }
+
+    /**
+     * @param FaxesRelUserDto[] | null $faxesRelUsers
+     */
+    public function setFaxesRelUsers(?array $faxesRelUsers): static
+    {
+        $this->faxesRelUsers = $faxesRelUsers;
+
+        return $this;
+    }
+
+    /**
+    * @return FaxesRelUserDto[] | null
+    */
+    public function getFaxesRelUsers(): ?array
+    {
+        return $this->faxesRelUsers;
     }
 }

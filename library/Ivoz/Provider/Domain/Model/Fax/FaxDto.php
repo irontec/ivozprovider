@@ -2,8 +2,27 @@
 
 namespace Ivoz\Provider\Domain\Model\Fax;
 
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserDto;
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 class FaxDto extends FaxDtoAbstract
 {
+    const CONTEXT_WITH_REL_USERS = 'withRelUsers';
+
+    public const CONTEXTS_WITH_REL_USERS = [
+        self::CONTEXT_WITH_REL_USERS,
+        self::CONTEXT_DETAILED
+    ];
+
+   /** @var int[]
+    * @AttributeDefinition  (
+    *     type="array",
+    *     collectionValueType="int",
+    *     description="Fax rel users"
+    * )
+    */
+    private $relUserIds = [];
+
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -26,6 +45,10 @@ class FaxDto extends FaxDtoAbstract
             unset($response['companyId']);
         }
 
+        if (in_array($context, self::CONTEXTS_WITH_REL_USERS, true)) {
+            $response['relUserIds'] = 'relUserIds';
+        }
+
         return $response;
     }
 
@@ -40,5 +63,37 @@ class FaxDto extends FaxDtoAbstract
             $contextProperties,
             $data
         );
+    }
+
+    /**
+     * @return array<array-key, mixed>
+     */
+    public function normalize(string $context, string $role = ''): array
+    {
+        $response = parent::normalize($context, $role);
+
+        if (in_array($context, self::CONTEXTS_WITH_REL_USERS, true)) {
+            $response['relUserIds'] = $this->relUserIds;
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param int[] $userIds
+     */
+    public function setRelUserIds(array $userIds): void
+    {
+        $this->relUserIds = $userIds;
+
+        $faxesRelUsers = [];
+        foreach ($userIds as $userId) {
+            $dto = new FaxesRelUserDto();
+            $dto->setUserId($userId);
+            $dto->setFaxId($this->getId());
+            $faxesRelUsers[] = $dto;
+        }
+
+        $this->setFaxesRelUsers($faxesRelUsers);
     }
 }

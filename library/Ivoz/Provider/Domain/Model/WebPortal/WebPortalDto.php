@@ -33,8 +33,6 @@ class WebPortalDto extends WebPortalDtoAbstract
             unset($response['brandId']);
         }
 
-        unset($response['newUI']);
-
         return $response;
     }
 

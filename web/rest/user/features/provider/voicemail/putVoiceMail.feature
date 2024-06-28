@@ -29,7 +29,8 @@ Feature: Update voicemails
           "email": "alice@democompany.com",
           "sendMail": false,
           "attachSound": false,
-          "id": 1
+          "id": 1,
+          "generic": false
       }
       """
 

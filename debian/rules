@@ -1,8 +1,6 @@
 #!/usr/bin/make -f
 
 export APP_ENV=prod
-export GEM_PATH = $(PWD)/web/user/gems/
-export PATH := $(GEM_PATH)/bin/:$(PATH)
 export TEMP=/tmp
 
 build_doc:
@@ -25,27 +23,12 @@ build_webrest: build_library
 	cd web/rest/client ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 	cd web/rest/user ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
-build_webadmin: build_library
-	cd web/admin ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
-	cd web/admin ; msgfmt -o application/languages/en_US/en_US.mo application/languages/en_US/en_US.po
-	cd web/admin ; msgfmt -o application/languages/ca_ES/ca_ES.mo application/languages/ca_ES/ca_ES.po
-	cd web/admin ; msgfmt -o application/languages/it_IT/it_IT.mo application/languages/it_IT/it_IT.po
-
 build_webportals:
 	cd web/portal ; yarnpkg install
 	cd web/portal/platform; yarnpkg build
 	cd web/portal/brand; yarnpkg build
 	cd web/portal/client ; yarnpkg build
 	cd web/portal/user; yarnpkg build
-
-build_webuser: build_library build_webadmin
-	cd web/user ; gem install --install-dir $(GEM_PATH) compass
-	cd web/user ; npm_config_yes=true npm install
-	cd web/user ; npm install bower grunt-cli karma grunt-karma
-	cd web/user ; node_modules/bower/bin/bower install --allow-root
-	cd web/user ; node_modules/grunt-cli/bin/grunt build
-	cd web/user ; rm -f dist/.htaccess
-	cd web/user ; mv dist/index.html ./index.phtml
 
 build_microservices: build_library
 	cd microservices/balances; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
@@ -60,7 +43,7 @@ build_microservices: build_library
 build_schema: build_library
 	cd schema ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
-override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_schema build_webportals build_webuser
+override_dh_auto_build: build_doc build_agis build_webrest build_microservices build_schema build_webportals
 
 override_dh_install:
 	dh_install

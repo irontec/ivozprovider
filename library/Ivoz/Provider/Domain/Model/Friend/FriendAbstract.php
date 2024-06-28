@@ -15,12 +15,14 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Language\Language;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
 
 /**
 * FriendAbstract
@@ -143,6 +145,17 @@ abstract class FriendAbstract
     protected $multiContact = true;
 
     /**
+     * @var ?string
+     * column: ruri_domain
+     */
+    protected $ruriDomain = null;
+
+    /**
+     * @var bool
+     */
+    protected $trustSDP = false;
+
+    /**
      * @var CompanyInterface
      * inversedBy friends
      */
@@ -180,6 +193,11 @@ abstract class FriendAbstract
     protected $interCompany = null;
 
     /**
+     * @var ?ProxyUserInterface
+     */
+    protected $proxyUser = null;
+
+    /**
      * Constructor
      */
     protected function __construct(
@@ -196,7 +214,8 @@ abstract class FriendAbstract
         string $t38Passthrough,
         bool $alwaysApplyTransformations,
         bool $rtpEncryption,
-        bool $multiContact
+        bool $multiContact,
+        bool $trustSDP
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -212,6 +231,7 @@ abstract class FriendAbstract
         $this->setAlwaysApplyTransformations($alwaysApplyTransformations);
         $this->setRtpEncryption($rtpEncryption);
         $this->setMultiContact($multiContact);
+        $this->setTrustSDP($trustSDP);
     }
 
     abstract public function getId(): null|string|int;
@@ -303,6 +323,8 @@ abstract class FriendAbstract
         Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $trustSDP = $dto->getTrustSDP();
+        Assertion::notNull($trustSDP, 'getTrustSDP value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
@@ -320,7 +342,8 @@ abstract class FriendAbstract
             $t38Passthrough,
             $alwaysApplyTransformations,
             $rtpEncryption,
-            $multiContact
+            $multiContact,
+            $trustSDP
         );
 
         $self
@@ -330,13 +353,15 @@ abstract class FriendAbstract
             ->setPassword($dto->getPassword())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
+            ->setRuriDomain($dto->getRuriDomain())
             ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()));
+            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         $self->initChangelog();
 
@@ -381,6 +406,8 @@ abstract class FriendAbstract
         Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $trustSDP = $dto->getTrustSDP();
+        Assertion::notNull($trustSDP, 'getTrustSDP value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
@@ -405,13 +432,16 @@ abstract class FriendAbstract
             ->setAlwaysApplyTransformations($alwaysApplyTransformations)
             ->setRtpEncryption($rtpEncryption)
             ->setMultiContact($multiContact)
+            ->setRuriDomain($dto->getRuriDomain())
+            ->setTrustSDP($trustSDP)
             ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()));
+            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()))
+            ->setProxyUser($fkTransformer->transform($dto->getProxyUser()));
 
         return $this;
     }
@@ -442,13 +472,16 @@ abstract class FriendAbstract
             ->setAlwaysApplyTransformations(self::getAlwaysApplyTransformations())
             ->setRtpEncryption(self::getRtpEncryption())
             ->setMultiContact(self::getMultiContact())
+            ->setRuriDomain(self::getRuriDomain())
+            ->setTrustSDP(self::getTrustSDP())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setCallAcl(CallAcl::entityToDto(self::getCallAcl(), $depth))
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
             ->setLanguage(Language::entityToDto(self::getLanguage(), $depth))
-            ->setInterCompany(Company::entityToDto(self::getInterCompany(), $depth));
+            ->setInterCompany(Company::entityToDto(self::getInterCompany(), $depth))
+            ->setProxyUser(ProxyUser::entityToDto(self::getProxyUser(), $depth));
     }
 
     /**
@@ -477,13 +510,16 @@ abstract class FriendAbstract
             'alwaysApplyTransformations' => self::getAlwaysApplyTransformations(),
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
+            'ruri_domain' => self::getRuriDomain(),
+            'trustSDP' => self::getTrustSDP(),
             'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain()?->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
             'callAclId' => self::getCallAcl()?->getId(),
             'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
             'languageId' => self::getLanguage()?->getId(),
-            'interCompanyId' => self::getInterCompany()?->getId()
+            'interCompanyId' => self::getInterCompany()?->getId(),
+            'proxyUserId' => self::getProxyUser()?->getId()
         ];
     }
 
@@ -827,6 +863,34 @@ abstract class FriendAbstract
         return $this->multiContact;
     }
 
+    protected function setRuriDomain(?string $ruriDomain = null): static
+    {
+        if (!is_null($ruriDomain)) {
+            Assertion::maxLength($ruriDomain, 190, 'ruriDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->ruriDomain = $ruriDomain;
+
+        return $this;
+    }
+
+    public function getRuriDomain(): ?string
+    {
+        return $this->ruriDomain;
+    }
+
+    protected function setTrustSDP(bool $trustSDP): static
+    {
+        $this->trustSDP = $trustSDP;
+
+        return $this;
+    }
+
+    public function getTrustSDP(): bool
+    {
+        return $this->trustSDP;
+    }
+
     public function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
@@ -909,5 +973,17 @@ abstract class FriendAbstract
     public function getInterCompany(): ?CompanyInterface
     {
         return $this->interCompany;
+    }
+
+    protected function setProxyUser(?ProxyUserInterface $proxyUser = null): static
+    {
+        $this->proxyUser = $proxyUser;
+
+        return $this;
+    }
+
+    public function getProxyUser(): ?ProxyUserInterface
+    {
+        return $this->proxyUser;
     }
 }

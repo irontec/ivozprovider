@@ -20,8 +20,19 @@ Feature: Retrieve friends
               "priority": 1,
               "directConnectivity": "yes",
               "id": 1,
+              "company": 1,
               "domain": 3,
               "interCompany": null
+          },
+          {
+              "name": "InterCompany1_3",
+              "description": "",
+              "priority": 2,
+              "directConnectivity": "intervpbx",
+              "id": 3,
+              "company": 1,
+              "domain": 3,
+              "interCompany": 3
           }
       ]
       """
@@ -52,6 +63,8 @@ Feature: Retrieve friends
           "alwaysApplyTransformations": false,
           "rtpEncryption": false,
           "multiContact": true,
+          "ruriDomain": null,
+          "trustSDP": false,
           "id": 1,
           "transformationRuleSet": null,
           "callAcl": null,

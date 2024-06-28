@@ -8,6 +8,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 
 /**
 * FaxInterface
@@ -64,4 +67,18 @@ interface FaxInterface extends LoggableEntityInterface
     public function getSendByEmail(): bool;
 
     public function getCompany(): CompanyInterface;
+
+    public function addFaxesRelUser(FaxesRelUserInterface $faxesRelUser): FaxInterface;
+
+    public function removeFaxesRelUser(FaxesRelUserInterface $faxesRelUser): FaxInterface;
+
+    /**
+     * @param Collection<array-key, FaxesRelUserInterface> $faxesRelUsers
+     */
+    public function replaceFaxesRelUsers(Collection $faxesRelUsers): FaxInterface;
+
+    /**
+     * @return array<array-key, FaxesRelUserInterface>
+     */
+    public function getFaxesRelUsers(?Criteria $criteria = null): array;
 }

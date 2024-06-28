@@ -10,6 +10,8 @@ use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -47,6 +49,14 @@ class FriendSpec extends ObjectBehavior
             ]
         );
 
+        $proxyUserDto = new ProxyUserDto();
+        $proxyUser = $this->getterProphecy(
+            $this->getTestDouble(ProxyUser::class),
+            [
+                'getId' => 1,
+            ]
+        );
+
         $this->dto = $dto = new FriendDto();
         $dto->setName('Name')
             ->setDescription('Desc')
@@ -60,10 +70,12 @@ class FriendSpec extends ObjectBehavior
             ->setCalleridUpdateHeader('rpid')
             ->setUpdateCallerid('yes')
             ->setDirectConnectivity('yes')
+            ->setProxyUser($proxyUserDto)
             ->setCompany($companyDto);
 
         $this->transformer = new DtoToEntityFakeTransformer([
             [$companyDto, $company->reveal()],
+            [$proxyUserDto, $proxyUser->reveal()],
         ]);
 
         $this->beConstructedThrough(

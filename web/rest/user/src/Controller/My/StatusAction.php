@@ -69,6 +69,12 @@ class StatusAction
             $company
         );
 
+        $userStatus->setFeatures(
+            $company->getFeatures()
+        );
+
+
+
         return $userStatus;
     }
 

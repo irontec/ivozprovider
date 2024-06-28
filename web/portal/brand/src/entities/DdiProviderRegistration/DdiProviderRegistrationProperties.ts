@@ -20,6 +20,11 @@ export type DdiProviderRegistrationPropertyList<T> = {
   statusIcon?: T;
 };
 
+export type DdiProviderRegistrationStatus = {
+  inProgress: boolean;
+  registered: boolean;
+};
+
 export type DdiProviderRegistrationProperties =
   DdiProviderRegistrationPropertyList<Partial<PropertySpec>>;
 export type DdiProviderRegistrationPropertiesList = Array<

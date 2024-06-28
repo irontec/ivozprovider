@@ -33,6 +33,7 @@ const BannedAddress: EntityInterface = {
   toStr: (row: BannedAddressPropertyList<EntityValue>) => row.ip as string,
   properties,
   columns: ['ip', 'lastTimeBanned'],
+  defaultOrderBy: '',
 };
 
 export default BannedAddress;

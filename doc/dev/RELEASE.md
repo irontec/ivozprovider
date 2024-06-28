@@ -49,6 +49,6 @@ cherry-pick it to other maintained branches.
     The filenames for ISOs can be browsed at http://packages.irontec.com/isos/
 
 - If the stable minor version has changed, update the README header with a new badget
-    Cool badgets can be generated at https://shields.io/ and must be saved at _web/admin/public/images/_
+    Cool badgets can be generated at https://shields.io/ and must be saved at _doc/images/_
 
 If all this changes and new files are added/modified in the same commit it should be safe for all branches.

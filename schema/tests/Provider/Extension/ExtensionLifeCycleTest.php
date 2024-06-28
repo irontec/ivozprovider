@@ -211,6 +211,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
                 'callerid' => 'Bob Bobson <104>',
                 'mailboxes' => 'user2@company1',
                 'hint_extension' => '104',
+                '@extension' => '104',
             ]
         );
     }
@@ -268,6 +269,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
                     'mailboxes' => 'user1@company1',
                     'named_pickup_group' => '1',
                     'hint_extension' => '104',
+                    '@extension' => '104',
                 ]
             );
         }
