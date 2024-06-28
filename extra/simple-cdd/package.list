@@ -38,6 +38,7 @@ ivozprovider-profile-common
 ivozprovider-profile-data
 ivozprovider-profile-portal
 ivozprovider-profile-proxy
+ivozprovider-provision
 ivozprovider-realtime
 ivozprovider-recordings
 ivozprovider-router
@@ -47,7 +48,6 @@ ivozprovider-scheduler
 ivozprovider-schema
 ivozprovider-web-portals
 ivozprovider-web-rest
-ivozprovider-web-user
 libbcg729-0
 libbcg729-dev
 libgd3
