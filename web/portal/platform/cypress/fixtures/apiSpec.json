@@ -13521,6 +13521,24 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[logo.baseName]",
                         "in": "query",
                         "required": false,
@@ -13569,6 +13587,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "logo.baseName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "logo.baseName[start]",
                         "in": "query",
                         "required": false,
@@ -13591,12 +13615,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "logo.baseName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "logo.fileSize",
@@ -13779,12 +13797,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "url[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "url[start]",
                         "in": "query",
                         "required": false,
@@ -13798,6 +13810,12 @@
                     },
                     {
                         "name": "url[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "url[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -18369,6 +18387,10 @@
                 "brand": {
                     "description": "",
                     "type": "integer"
+                },
+                "company": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -18460,6 +18482,9 @@
                 },
                 "brand": {
                     "$ref": "#/definitions/Brand"
+                },
+                "company": {
+                    "$ref": "#/definitions/Company"
                 }
             }
         },
@@ -18487,10 +18512,6 @@
             "type": "object",
             "properties": {
                 "name": {
-                    "description": "",
-                    "type": "string"
-                },
-                "theme": {
                     "description": "",
                     "type": "string"
                 },
