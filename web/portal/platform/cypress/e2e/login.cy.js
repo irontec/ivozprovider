@@ -19,7 +19,7 @@ describe('platform', () => {
       'wrongUserLogin'
     );
 
-    cy.get('h2').should('contain', 'Login');
+    cy.get('h2').should('contain', 'Welcome back!');
 
     cy.get('input[name=username]')
       .first()
@@ -45,7 +45,7 @@ describe('platform', () => {
       'userLogin'
     );
 
-    cy.get('h2').should('contain', 'Login');
+    cy.get('h2').should('contain', 'Welcome back!');
 
     cy.get('input[name=username]').first().type(user.request.body.username);
     cy.get('input[name=password]').last().type(user.request.body.password);
