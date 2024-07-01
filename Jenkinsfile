@@ -41,6 +41,12 @@ pipeline {
                         docker.build("ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}")
                     }
                 }
+                dir('tests/httpd/'){
+                    script{
+                        docker.build("ivozprovider-testing-httpd")
+                    }
+                }
+
             }
         }
         // --------------------------------------------------------------------
@@ -56,6 +62,7 @@ pipeline {
             }
             steps {
                 sh "/opt/irontec/ivozprovider/library/bin/test-commit-tags origin/${env.BASE_BRANCH}"
+                sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps'
             }
         }
         // --------------------------------------------------------------------
@@ -84,7 +91,6 @@ pipeline {
                         }
                     }
                     steps {
-                        sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps'
                         sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-fixtures'
                         sh '/opt/irontec/ivozprovider/web/rest/platform/bin/generate-keys --test'
                     }
@@ -384,21 +390,43 @@ pipeline {
                                     branch "tempest"
                                 }
                             }
-                            agent {
-                                docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
-                                    reuseNode true
+                            stages {
+                                stage('web-platform-build') {
+                                    agent {
+                                        docker {
+                                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
+                                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                            reuseNode true
+                                        }
+                                    }
+                                    steps {
+                                        sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-lint'
+                                        sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-i18n'
+                                        sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-build'
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                    }
                                 }
-                            }
-                            steps {
-                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-lint'
-                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-i18n'
-                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-build'
-                            }
-                            post {
-                                success { notifySuccessGithub() }
-                                failure { notifyFailureGithub() }
+                                stage('web-platform-cypress') {
+                                    steps {
+                                        script {
+                                            docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
+                                                docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}")
+                                                    .inside("--env CYPRESS_APP_DOMAIN='http://server/platform/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
+                                                    sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-sync-api-spec platform'
+                                                    sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-pact'
+                                                }
+                                            }
+                                        }
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                        always { archiveArtifacts artifacts: "web/portal/platform/cypress/screenshots/**/*.png", allowEmptyArchive: true }
+                                    }
+                                }
                             }
                         }
                         stage('web-brand') {
