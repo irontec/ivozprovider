@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Exit failure on first error
+set -e
+
+SCRIPT_DIR=$(dirname "$(realpath -se "$0")")
+
+pushd "${SCRIPT_DIR}"/../
+    # Install required dependencies
+    yarn install --force
+
+    # Run linter
+    yarn run cy:run
+
+    for filename in ./cypress/pacts/*.json; do
+        [ -e "$filename" ] || continue
+        filenameMinified="$filename.minified";
+        cat $filename > $filenameMinified
+        jq . $filenameMinified > $filename
+        rm $filenameMinified
+    done
+
+    if [ -n "$(git status -s ./cypress/pacts)" ]; then
+        echo "Pacts are not up to date."
+        git status -s ./cypress/pacts
+        exit 1
+    fi
+popd
