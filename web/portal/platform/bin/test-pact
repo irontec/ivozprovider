@@ -17,7 +17,7 @@ pushd "${SCRIPT_DIR}"/../
         filenameMinified="$filename.minified";
         cat $filename > $filenameMinified
         jq . $filenameMinified > $filename
-        rm $filenameMinified
+        rm -f $filenameMinified
     done
 
     if [ -n "$(git status -s ./cypress/pacts)" ]; then

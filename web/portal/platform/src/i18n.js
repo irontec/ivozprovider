@@ -26,6 +26,7 @@ i18n
     resources: {
       ...translations,
     },
+    lng: fallbackLng,
     detection: {
       convertDetectedLanguage: (lng) => {
         const availableLangKeys = Object.keys(translations);
