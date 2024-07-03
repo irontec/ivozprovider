@@ -1,0 +1,12 @@
+{
+    "body": {
+        "name": "No logo",
+        "logo": "https://nologo-platform-ivozprovider.irontec.com/platform/logo.svg",
+        "color": "#000000",
+        "title": "No logo"
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

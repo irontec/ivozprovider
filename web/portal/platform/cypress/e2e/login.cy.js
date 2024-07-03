@@ -1,7 +1,7 @@
 import user from '../fixtures/Users/userLogin.json';
 import wrongUser from '../fixtures/Users/userWrongLogin.json';
 
-describe('platform', () => {
+describe('login', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('login');
 

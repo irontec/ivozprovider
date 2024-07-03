@@ -1,23 +1,33 @@
 {
   "request": {
+    "username": "post-test",
+    "pass": "changeme",
+    "email": "post-test@example.com",
     "active": true,
-    "email": "admin@example.com",
-    "lastname": "ivozprovider",
-    "name": "admin",
     "restricted": false,
-    "username": "admin",
-    "pass": "****"
+    "name": "post",
+    "lastname": "test",
+    "canImpersonate": false,
+    "id": 1,
+    "brand": null,
+    "company": null,
+    "timezone": 1
+    
   },
   "response": {
     "body": {
-      "id": 2,
+      "username": "post-test",
+      "pass": "*****",
+      "email": "post-test@example.com",
       "active": true,
-      "email": "admin@example.com",
-      "lastname": "ivozprovider",
-      "name": "admin",
       "restricted": false,
-      "username": "admin",
-      "pass": "****"
+      "name": "post",
+      "lastname": "test",
+      "canImpersonate": true,
+      "id": 15,
+      "brand": null,
+      "company": null,
+      "timezone": 1
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

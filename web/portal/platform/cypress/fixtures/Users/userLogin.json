@@ -1,8 +1,8 @@
 {
   "request": {
     "body": {
-      "username": "irontec",
-      "password": "ee4aeVie7AiH"
+      "username": "exampleUsername",
+      "password": "examplePassword"
     },
     "headers": {
       "Authorization": "Bearer stuff"
