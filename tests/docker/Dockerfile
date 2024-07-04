@@ -39,10 +39,21 @@ RUN apt-get update && apt-get install --assume-yes --force-yes \
         php-zip \
         yarn \
         jq \
+        xvfb \
+        libnss3 \
+        libatk3.0-cil \
+        libatk-bridge2.0-0 \
+        libcups2 \
+        libgtk3.0-cil \
+        libgbm1 \
+        libasound2 \
         libxrender1 \
         libssl1.1
 
 RUN apt-get clean
+
+# Custom cypress download URL
+ENV CYPRESS_INSTALL_BINARY=https://packages.irontec.com/misc/cypress-10.11.0-linux-amd64.zip
 
 # Create jenkins user (configurable)
 ARG UNAME=jenkins

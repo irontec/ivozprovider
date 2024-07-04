@@ -1,8 +1,8 @@
 {
   "request": {
     "body": {
-      "username": "irontec",
-      "password": "ee4aeVie7AiH"
+      "username": "exampleUsername",
+      "password": "examplePassword"
     },
     "headers": {
       "Authorization": "Bearer stuff"
@@ -10,7 +10,7 @@
   },
   "response": {
     "body": {
-      "token": "token_token_token",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MTk0MTc5NTEsImV4cCI6MTcxOTQyMTU1MSwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIiwiaWQiOjUsImlkZW4iOiJicmFuZCBbQWRtaW5pc3RyYXRvciM1XSJ9.jPsOn3hfZfqs_QbJuSI4HXzZXBPi4uduX95HWgIiDFA-xWz6enDLa6P3YS2aTsX4i9hkHZcYdf2FFv_TGvbkRpHkujifM6YQKXebpXlcmbmzotI-rEUvR_XsL9cZwlAYbdqz-YRTeBUQ3fbCy54WYWbrHB522Uluul7z7sqbE0lDz4Ui4xMvmCBS8CJDQxePM4lF00sh7NJP8TXderZj5kN_N046ThU_RAJPd7YpuxvWKg2bUzA4cwjsFIxJx-FadZVJJn-zQpK6b36iuohRym-BZrkTB-JhWZMT3uyeh5ZZPjHYYZaBe4S_1v_Vma2jTpWl4ZlAMHB-xy_ML4h_cZp2BceG0DDFZuKCE9JO0DCNnTzZY2naoJ4Sam-E00X3QPtoVoIcMCF1rs87UkgVVmrYubgAgHYl189UK0D4sy4sWRub5LGz_iyPi52jITCXWEzByP9DkoKHuYYihcBRq75AjVyNXXM0IJLxi1synOKf8yt5PR1CiyDVe4KlkDuABfVS3ejnk3eNUsKrrO7TM7j5bLeDN2m9yplr82WLaIHCN5eELDYyJgJFBhKdhNNNga0BTPeSr_LES1TyWES0l2R9Uo4du1Mb2qrBavVlg9LJUieoL-4JL4eBBIawt0CwRvjr7yEDMNG7o5-YE1O5wzqKYSqnzjtsuKVoSfjrawU",
       "refresh_token": "refresh_token"
     },
     "headers": {

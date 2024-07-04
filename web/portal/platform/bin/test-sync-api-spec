@@ -1,0 +1,17 @@
+#!/bin/bash
+SCRIPT_DIR=$(dirname "$(realpath -se "$0")")
+
+API_TYPE=$1
+if [ -z "$API_TYPE" ]; then
+    echo "Usage: $0 [platform|brand|client|user]"
+    exit 1
+fi
+
+pushd "${SCRIPT_DIR}"/../
+    /opt/irontec/ivozprovider/web/rest/$API_TYPE/bin/console api:swagger:export > ./cypress/fixtures/apiSpec.json
+    if [ -n "$(git status -s ./cypress/fixtures)" ]; then
+        echo "API spec is not up to date."
+        git status -s ./cypress/fixtures
+        exit 1
+    fi
+popd

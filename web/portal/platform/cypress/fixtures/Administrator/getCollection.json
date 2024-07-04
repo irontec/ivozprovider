@@ -1,15 +1,69 @@
 {
   "body": [
     {
-      "id": 1,
-      "active": true,
-      "email": "admin@example.com",
-      "lastname": "ivozprovider",
-      "name": "admin",
-      "restricted": false,
-      "username": "admin"
+        "username": "admin",
+        "email": "admin@example.com",
+        "active": true,
+        "restricted": false,
+        "name": "admin",
+        "lastname": "ivozprovider",
+        "id": 1
+    },
+    {
+        "username": "irontec",
+        "email": "vozip@irontec.com",
+        "active": true,
+        "restricted": false,
+        "name": "irontec",
+        "lastname": "ivozprovider",
+        "id": 3
+    },
+    {
+        "username": "restrictedBrandAdmin",
+        "email": "restrictedAdmin@irontec.com",
+        "active": true,
+        "restricted": true,
+        "name": "RestrictedAdmin",
+        "lastname": "Lastname",
+        "id": 6
+    },
+    {
+        "username": "restrictedBrandOnlyAdmin",
+        "email": "restrictedAdmin@irontec.com",
+        "active": true,
+        "restricted": true,
+        "name": "RestrictedAdmin",
+        "lastname": "Lastname",
+        "id": 14
+    },
+    {
+        "username": "restrictedPlatformAdministrator",
+        "email": "utc@irontec.com",
+        "active": true,
+        "restricted": true,
+        "name": "Admin in UTC timezone",
+        "lastname": "Admin Lastname",
+        "id": 13
+    },
+    {
+        "username": "test_brand_admin",
+        "email": "nightwatch@irontec.com",
+        "active": true,
+        "restricted": false,
+        "name": "night",
+        "lastname": "watch",
+        "id": 2
+    },
+    {
+        "username": "utcAdmin",
+        "email": "utc@irontec.com",
+        "active": true,
+        "restricted": true,
+        "name": "Admin in UTC timezone",
+        "lastname": "Admin Lastname",
+        "id": 5
     }
-  ],
+],
   "headers": {
     "x-first-page": "/api/platform/administrators?_page=1",
     "x-last-page": "/api/platform/administrators?_page=1",
