@@ -490,21 +490,43 @@ pipeline {
                                     branch "tempest"
                                 }
                             }
-                            agent {
-                                docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
-                                    reuseNode true
+                            stages {
+                                stage('web-client-build') {
+                                    agent {
+                                        docker {
+                                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
+                                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                            reuseNode true
+                                        }
+                                    }
+                                    steps {
+                                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-lint'
+                                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-i18n'
+                                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-build'
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                    }
                                 }
-                            }
-                            steps {
-                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-lint'
-                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-i18n'
-                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-build'
-                            }
-                            post {
-                                success { notifySuccessGithub() }
-                                failure { notifyFailureGithub() }
+                                stage('web-client-cypress') {
+                                    steps {
+                                        script {
+                                            docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
+                                                docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}")
+                                                    .inside("--env CYPRESS_APP_DOMAIN='http://server/client/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
+                                                    sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-sync-api-spec client'
+                                                    sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-pact'
+                                                }
+                                            }
+                                        }
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                        always { archiveArtifacts artifacts: "web/portal/client/cypress/screenshots/**/*.png", allowEmptyArchive: true }
+                                    }
+                                }
                             }
                         }
                         stage('web-user') {
