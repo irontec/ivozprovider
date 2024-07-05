@@ -1,0 +1,25 @@
+{
+    "body": {
+        "restricted": false,
+        "canImpersonate": true,
+        "acls": [],
+        "features": [
+            "billing",
+            "progress",
+            "residential",
+            "vpbx",
+            "friends",
+            "queues",
+            "faxes",
+            "recordings",
+            "conferences",
+            "invoices",
+            "wholesale",
+            "retail"
+        ]
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

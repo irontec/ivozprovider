@@ -1,0 +1,603 @@
+{
+  "consumer": {
+    "name": "brand-consumer-VirtualPbxs"
+  },
+  "provider": {
+    "name": "brand-provider-VirtualPbxs"
+  },
+  "interactions": [
+    {
+      "description": "add Residential Companies",
+      "providerState": "",
+      "request": {
+        "method": "POST",
+        "path": "/api/brand/companies",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
+          "content-length": "305",
+          "content-type": "application/json"
+        },
+        "body": {
+          "type": "residential",
+          "maxCalls": 0,
+          "maxDailyUsage": 1000000,
+          "ipfilter": "1",
+          "billingMethod": "postpaid",
+          "language": 2,
+          "defaultTimezone": "1",
+          "country": 4,
+          "currency": null,
+          "outgoingDdi": null,
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
+          "name": "Residential Company",
+          "maxDailyUsageEmail": "",
+          "transformationRuleSet": 1
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "type": "residential",
+          "name": "Residential Company",
+          "domainUsers": null,
+          "maxCalls": 0,
+          "maxDailyUsage": 1000000,
+          "currentDayUsage": 0,
+          "maxDailyUsageEmail": null,
+          "ipfilter": true,
+          "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
+          "onDemandRecordCode": "",
+          "externallyextraopts": null,
+          "billingMethod": "postpaid",
+          "balance": 0,
+          "showInvoices": false,
+          "id": 4,
+          "invoicing": {
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+          },
+          "language": 2,
+          "defaultTimezone": 1,
+          "country": 4,
+          "currency": null,
+          "transformationRuleSet": 1,
+          "outgoingDdi": null,
+          "outgoingDdiRule": null,
+          "voicemailNotificationTemplate": 1,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "corporation": null,
+          "domainName": "retail.irontec.com",
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
+          "routingTagIds": [],
+          "codecIds": []
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "edit Residential Companies",
+      "providerState": "",
+      "request": {
+        "method": "PUT",
+        "path": "/api/brand/companies/4",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
+          "content-length": "649",
+          "content-type": "application/json"
+        },
+        "body": {
+          "type": "residential",
+          "maxCalls": 0,
+          "maxDailyUsage": 1000000,
+          "ipfilter": "1",
+          "billingMethod": "postpaid",
+          "showInvoices": "0",
+          "language": 2,
+          "defaultTimezone": "1",
+          "country": 8,
+          "currency": null,
+          "outgoingDdi": null,
+          "voicemailNotificationTemplate": "1",
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
+          "invoicing": {
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+          },
+          "name": "Residential Company",
+          "maxDailyUsageEmail": "",
+          "externallyextraopts": "",
+          "transformationRuleSet": 3
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "type": "residential",
+          "name": "Residential Company",
+          "domainUsers": null,
+          "maxCalls": 0,
+          "maxDailyUsage": 1000000,
+          "currentDayUsage": 0,
+          "maxDailyUsageEmail": null,
+          "ipfilter": true,
+          "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
+          "onDemandRecordCode": "",
+          "externallyextraopts": null,
+          "billingMethod": "postpaid",
+          "balance": 0,
+          "showInvoices": false,
+          "id": 4,
+          "invoicing": {
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+          },
+          "language": 2,
+          "defaultTimezone": 1,
+          "country": 8,
+          "currency": null,
+          "transformationRuleSet": 3,
+          "outgoingDdi": null,
+          "outgoingDdiRule": null,
+          "voicemailNotificationTemplate": 1,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "corporation": null,
+          "domainName": "retail.irontec.com",
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
+          "routingTagIds": [],
+          "codecIds": []
+        }
+      }
+    },
+    {
+      "description": "add Retail Companies",
+      "providerState": "",
+      "request": {
+        "method": "POST",
+        "path": "/api/brand/companies",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
+          "content-length": "333",
+          "content-type": "application/json"
+        },
+        "body": {
+          "type": "retail",
+          "maxCalls": 0,
+          "maxDailyUsage": 1000000,
+          "ipfilter": "1",
+          "billingMethod": "postpaid",
+          "language": 2,
+          "defaultTimezone": "8",
+          "country": 6,
+          "currency": null,
+          "outgoingDdi": null,
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
+          "routingTagIds": [],
+          "domainUsers": null,
+          "name": "Retail Company",
+          "maxDailyUsageEmail": "",
+          "transformationRuleSet": 1
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "type": "retail",
+          "name": "Retail Company",
+          "domainUsers": null,
+          "maxCalls": 0,
+          "maxDailyUsage": 1000000,
+          "currentDayUsage": 0,
+          "maxDailyUsageEmail": null,
+          "ipfilter": true,
+          "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
+          "onDemandRecordCode": "",
+          "externallyextraopts": null,
+          "billingMethod": "postpaid",
+          "balance": 0,
+          "showInvoices": true,
+          "id": 3,
+          "invoicing": {
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+          },
+          "language": 2,
+          "defaultTimezone": 8,
+          "country": 6,
+          "currency": null,
+          "transformationRuleSet": 1,
+          "outgoingDdi": null,
+          "outgoingDdiRule": null,
+          "voicemailNotificationTemplate": 1,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "corporation": null,
+          "domainName": "retail.irontec.com",
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
+          "routingTagIds": [
+            1
+          ],
+          "codecIds": []
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "edit Retail Companies",
+      "providerState": "",
+      "request": {
+        "method": "PUT",
+        "path": "/api/brand/companies/3",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
+          "content-length": "656",
+          "content-type": "application/json"
+        },
+        "body": {
+          "type": "retail",
+          "maxCalls": 0,
+          "maxDailyUsage": 1000000,
+          "ipfilter": "1",
+          "billingMethod": "postpaid",
+          "showInvoices": "1",
+          "language": 2,
+          "defaultTimezone": "8",
+          "country": 6,
+          "currency": null,
+          "outgoingDdi": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
+          "routingTagIds": [
+            1
+          ],
+          "codecIds": [],
+          "invoicing": {
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+          },
+          "name": "Retail Company",
+          "domainUsers": null,
+          "maxDailyUsageEmail": "",
+          "externallyextraopts": "",
+          "transformationRuleSet": 3
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "type": "retail",
+          "name": "Retail Company",
+          "domainUsers": null,
+          "maxCalls": 0,
+          "maxDailyUsage": 1000000,
+          "currentDayUsage": 0,
+          "maxDailyUsageEmail": null,
+          "ipfilter": true,
+          "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
+          "onDemandRecordCode": "",
+          "externallyextraopts": null,
+          "billingMethod": "postpaid",
+          "balance": 0,
+          "showInvoices": true,
+          "id": 3,
+          "invoicing": {
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+          },
+          "language": 2,
+          "defaultTimezone": 8,
+          "country": 6,
+          "currency": null,
+          "transformationRuleSet": 3,
+          "outgoingDdi": null,
+          "outgoingDdiRule": null,
+          "voicemailNotificationTemplate": 1,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "corporation": null,
+          "domainName": "retail.irontec.com",
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
+          "routingTagIds": [
+            1
+          ],
+          "codecIds": []
+        }
+      }
+    },
+    {
+      "description": "add Virtual Pbx Companies",
+      "providerState": "",
+      "request": {
+        "method": "POST",
+        "path": "/api/brand/companies",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
+          "content-length": "318",
+          "content-type": "application/json"
+        },
+        "body": {
+          "type": "vpbx",
+          "maxCalls": 0,
+          "maxDailyUsage": 100,
+          "ipfilter": "1",
+          "billingMethod": "postpaid",
+          "language": 2,
+          "defaultTimezone": "1",
+          "country": 1,
+          "currency": null,
+          "corporation": null,
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
+          "name": "API company",
+          "domainUsers": "api.irontec.com",
+          "maxDailyUsageEmail": "",
+          "transformationRuleSet": 1
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "type": "vpbx",
+          "name": "API company",
+          "domainUsers": "api.irontec.com",
+          "invoicing": {
+            "nif": "1234",
+            "postalAddress": "abc",
+            "postalCode": "4848",
+            "town": "Usansolocity",
+            "province": "some",
+            "countryName": "country"
+          },
+          "maxCalls": 0,
+          "maxDailyUsage": 100,
+          "currentDayUsage": 0,
+          "maxDailyUsageEmail": null,
+          "ipfilter": true,
+          "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
+          "onDemandRecordCode": "",
+          "externallyextraopts": "",
+          "billingMethod": "postpaid",
+          "balance": 0,
+          "showInvoices": false,
+          "id": 6,
+          "language": 1,
+          "defaultTimezone": 1,
+          "country": 1,
+          "currency": null,
+          "transformationRuleSet": 1,
+          "outgoingDdi": 1,
+          "outgoingDdiRule": 1,
+          "voicemailNotificationTemplate": 1,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "featureIds": [
+            1
+          ],
+          "geoIpAllowedCountries": [
+            1
+          ],
+          "routingTagIds": [],
+          "codecIds": []
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "edit Virtual Pbx Companies",
+      "providerState": "",
+      "request": {
+        "method": "PUT",
+        "path": "/api/brand/companies/1",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
+          "content-length": "841",
+          "content-type": "application/json"
+        },
+        "body": {
+          "type": "vpbx",
+          "maxCalls": 0,
+          "maxDailyUsage": 100,
+          "ipfilter": "0",
+          "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
+          "billingMethod": "prepaid",
+          "showInvoices": true,
+          "language": 2,
+          "defaultTimezone": "1",
+          "country": 30,
+          "currency": null,
+          "outgoingDdi": null,
+          "outgoingDdiRule": null,
+          "voicemailNotificationTemplate": "1",
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": 2,
+          "accessCredentialNotificationTemplate": 1,
+          "corporation": 1,
+          "featureIds": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "invoicing": {
+            "nif": "12345678A",
+            "postalAddress": "Company Address",
+            "postalCode": "54321",
+            "town": "Company Town",
+            "province": "Company Province",
+            "countryName": "Company Country"
+          },
+          "name": "DemoCompany",
+          "domainUsers": "127.0.0.1",
+          "maxDailyUsageEmail": "no-replay-updated@domain.net",
+          "externallyextraopts": "",
+          "transformationRuleSet": 3
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "type": "vpbx",
+          "name": "DemoCompany",
+          "domainUsers": "127.0.0.1",
+          "maxCalls": 0,
+          "maxDailyUsage": 100,
+          "currentDayUsage": 1,
+          "maxDailyUsageEmail": "no-replay-updated@domain.net",
+          "ipfilter": false,
+          "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
+          "onDemandRecordCode": "",
+          "externallyextraopts": "",
+          "billingMethod": "postpaid",
+          "balance": 1.2,
+          "showInvoices": false,
+          "id": 1,
+          "invoicing": {
+            "nif": "12345678B",
+            "postalAddress": "Company Address",
+            "postalCode": "54321",
+            "town": "Company Town",
+            "province": "Company Province",
+            "countryName": "Company Country"
+          },
+          "language": 2,
+          "defaultTimezone": 1,
+          "country": 30,
+          "currency": null,
+          "transformationRuleSet": 3,
+          "outgoingDdi": null,
+          "outgoingDdiRule": null,
+          "voicemailNotificationTemplate": 1,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": 2,
+          "accessCredentialNotificationTemplate": 1,
+          "corporation": 1,
+          "featureIds": [
+            3
+          ],
+          "geoIpAllowedCountries": [
+            1
+          ],
+          "routingTagIds": [],
+          "codecIds": []
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    },
+    "client": {
+      "name": "pact-cypress-adapter",
+      "version": "1.3.0"
+    }
+  }
+}

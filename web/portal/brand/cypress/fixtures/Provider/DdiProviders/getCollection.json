@@ -1,0 +1,19 @@
+{
+    "body": [
+        {
+            "description": "DDIProviderDescription",
+            "name": "DDIProviderName",
+            "id": 1,
+            "transformationRuleSet": 1,
+            "proxyTrunk": 1
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/brand/ddi_providers?_page=1",
+        "x-last-page": "/api/brand/ddi_providers?_page=1",
+        "x-next-page": "/api/brand/ddi_providers?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}
