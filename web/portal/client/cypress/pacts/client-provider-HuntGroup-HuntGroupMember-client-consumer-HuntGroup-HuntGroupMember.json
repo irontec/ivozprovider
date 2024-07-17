@@ -1,27 +1,26 @@
 {
   "consumer": {
-    "name": "client-consumer-ConditionalRoute"
+    "name": "client-consumer-HuntGroup-HuntGroupMember"
   },
   "provider": {
-    "name": "client-provider-ConditionalRoute"
+    "name": "client-provider-HuntGroup-HuntGroupMember"
   },
   "interactions": [
     {
-      "description": "add ConditionalRoute",
+      "description": "add HuntGroupMember",
       "providerState": "",
       "request": {
         "method": "POST",
-        "path": "/api/client/conditional_routes",
+        "path": "/api/client/hunt_group_members",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk",
-          "content-length": "65",
+          "content-length": "45",
           "content-type": "application/json"
         },
         "body": {
-          "routetype": "user",
-          "locution": null,
-          "name": "testPost",
+          "routeType": "user",
+          "huntGroup": 1,
           "user": "2"
         },
         "query": ""
@@ -32,19 +31,13 @@
           "content-type": "application/json; charset=utf-8"
         },
         "body": {
-          "name": "testPost",
-          "routetype": "user",
-          "numbervalue": null,
-          "friendvalue": null,
+          "timeoutTime": 1,
+          "priority": 3,
+          "routeType": "user",
           "id": 3,
-          "ivr": null,
-          "huntGroup": null,
-          "voicemail": null,
-          "user": 2,
-          "queue": null,
-          "locution": null,
-          "conferenceRoom": null,
-          "extension": null,
+          "numberValue": null,
+          "huntGroup": "~",
+          "user": "~",
           "numberCountry": null
         },
         "matchingRules": {
@@ -55,55 +48,11 @@
       }
     },
     {
-      "description": "edit ConditionalRoute",
-      "providerState": "",
-      "request": {
-        "method": "PUT",
-        "path": "/api/client/conditional_routes/1",
-        "headers": {
-          "accept": "application/json, text/plain, */*",
-          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk",
-          "content-length": "104",
-          "content-type": "application/json"
-        },
-        "body": {
-          "routetype": "number",
-          "locution": null,
-          "name": "testUpdate",
-          "numbervalue": "946002021",
-          "numberCountry": "2"
-        },
-        "query": ""
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "content-type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "name": "testUpdate",
-          "routetype": "number",
-          "numbervalue": "946002021",
-          "friendvalue": null,
-          "id": 1,
-          "ivr": null,
-          "huntGroup": null,
-          "voicemail": null,
-          "user": null,
-          "queue": null,
-          "locution": null,
-          "conferenceRoom": null,
-          "extension": null,
-          "numberCountry": 2
-        }
-      }
-    },
-    {
-      "description": "delete ConditionalRoute",
+      "description": "delete HuntGroupMember",
       "providerState": "",
       "request": {
         "method": "DELETE",
-        "path": "/api/client/conditional_routes/1",
+        "path": "/api/client/hunt_group_members/1",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk"
