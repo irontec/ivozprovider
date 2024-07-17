@@ -1,0 +1,31 @@
+{
+  "request": {
+    "timeoutTime": 1,
+    "priority": 3,
+    "id": 1,
+    "huntGroup": 1,
+    "routeType": "user",
+    "user": 2
+  },
+  "response": {
+    "body": {
+      "timeoutTime": 1,
+      "priority": 3,
+      "routeType": "user",
+      "id": 3,
+      "numberValue": null,
+      "huntGroup": "~",
+      "user": "~",
+      "numberCountry": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

@@ -13,15 +13,15 @@ export const postHuntGroupMember = () => {
     'createHuntGroupMember'
   );
 
-  cy.get('[aria-label=Add]').click();
+  cy.intercept('GET', '**/api/client/hunt_groups/1/users_available?*', {
+    ...UsersCollection,
+  }).as('getHuntGroupsUsersAvailable-1');
 
   cy.intercept('GET', '**/api/client/hunt_groups/1*', {
     ...HuntGroupItem,
   }).as('getHountGroup-1');
 
-  cy.intercept('GET', '**/api/client/hunt_groups/1/users_available?*', {
-    ...UsersCollection,
-  }).as('getHuntGroupsUsersAvailable-1');
+  cy.get('[aria-label=Add]').click();
 
   const { routeType, user } = newHuntGroupMembers.request;
   cy.fillTheForm({

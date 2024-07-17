@@ -1,0 +1,21 @@
+{
+    "body": [
+        {
+            "type": "vpbx",
+            "name": "Irontec Test Company",
+            "id": 2,
+            "invoicing": {
+                "nif": "12345678-Z"
+            },
+            "domainName": "test.irontec.com"
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/client/corporate/unassigned?_page=1",
+        "x-last-page": "/api/client/corporate/unassigned?_page=1",
+        "x-next-page": "/api/client/corporate/unassigned?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}

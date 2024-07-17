@@ -1,0 +1,28 @@
+{
+  "body": {
+    "timeoutTime": 1,
+    "priority": 1,
+    "routeType": "user",
+    "numberValue": null,
+    "id": 1,
+    "huntGroup": {
+        "name": "testHuntGroup",
+        "description": "desc",
+        "strategy": "ringAll",
+        "ringAllTimeout": 10,
+        "noAnswerTargetType": null,
+        "noAnswerNumberValue": null,
+        "preventMissedCalls": 1,
+        "id": 1,
+        "noAnswerLocution": null,
+        "noAnswerExtension": null,
+        "noAnswerVoicemail": null,
+        "noAnswerNumberCountry": null
+    },
+    "numberCountry": null
+},
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

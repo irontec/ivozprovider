@@ -1,27 +1,44 @@
 {
   "body": [
     {
-      "timeoutTime": 1,
+      "timeoutTime": null,
       "priority": 1,
+      "routeType": "number",
+      "numberValue": "620",
       "id": 1,
       "huntGroup": {
-        "name": "testHuntGroup",
-        "description": "desc",
+        "name": "Vance Luettgen",
+        "description": "Beatae dolorum illum perferendis voluptas animi veniam.",
         "strategy": "ringAll",
-        "ringAllTimeout": 10,
+        "ringAllTimeout": 422,
         "noAnswerTargetType": null,
         "noAnswerNumberValue": null,
         "preventMissedCalls": 1,
+        "allowCallForwards": 0,
         "id": 1,
         "noAnswerLocution": null,
         "noAnswerExtension": null,
         "noAnswerVoicemail": null,
         "noAnswerNumberCountry": null
       },
-      "user": {
-        "name": "testHuntGroup"
-      },
-      "routeType": "user"
+      "user": null,
+      "numberCountry": {
+        "code": "AD",
+        "countryCode": "+376",
+        "id": 1,
+        "name": {
+          "en": "Andorra",
+          "es": "Andorra",
+          "ca": "Andorra",
+          "it": "Andorra"
+        },
+        "zone": {
+          "en": "Europe",
+          "es": "Europa",
+          "ca": "Europa",
+          "it": "Europe"
+        }
+      }
     }
   ],
   "headers": {
