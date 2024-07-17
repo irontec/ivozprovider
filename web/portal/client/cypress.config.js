@@ -1,5 +1,5 @@
-import { defineConfig } from 'cypress';
 import pactCypressPlugin from '@pactflow/pact-cypress-adapter/dist/plugin';
+import { defineConfig } from 'cypress';
 import fs from 'fs';
 
 export default defineConfig({
