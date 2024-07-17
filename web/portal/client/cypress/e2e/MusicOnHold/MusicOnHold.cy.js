@@ -1,16 +1,17 @@
 import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json';
-import newMusicOnHold from '../../fixtures/MusicOnHold/post.json';
 import MusicOnHoldItem from '../../fixtures/MusicOnHold/getItem.json';
+import newMusicOnHold from '../../fixtures/MusicOnHold/post.json';
 import editMusicOnHold from '../../fixtures/MusicOnHold/put.json';
 
-describe('in MusicOnHold', () => {
+describe('MusicOnHold', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('MusicOnHold');
     cy.before();
 
-    cy.contains('Music on hold').click();
+    cy.contains('Multimedia').click();
+    cy.contains('Musics on hold').click();
 
-    cy.get('h3').should('contain', 'List of Music on hold');
+    cy.get('header').should('contain', 'Musics on hold');
 
     cy.get('table').should('contain', MusicOnHoldCollection.body[0].name);
   });
@@ -34,7 +35,7 @@ describe('in MusicOnHold', () => {
     const { name } = newMusicOnHold.request;
     cy.fillTheForm({ name });
 
-    cy.get('h3').should('contain', 'List of Music on hold');
+    cy.get('header').should('contain', 'Musics on hold');
 
     cy.usePactWait('createMusicOnHold')
       .its('response.statusCode')
@@ -63,7 +64,7 @@ describe('in MusicOnHold', () => {
     const { name } = editMusicOnHold.request;
     cy.fillTheForm({ name });
 
-    cy.contains('List of Music on hold');
+    cy.contains('Musics on hold');
 
     cy.usePactWait(['editMusicOnHold'])
       .its('response.statusCode')
@@ -78,15 +79,15 @@ describe('in MusicOnHold', () => {
       statusCode: 204,
     }).as('deleteMusicOnHold');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Music on hold');
+    cy.get('header').should('contain', 'Musics on hold');
 
     cy.usePactWait(['deleteMusicOnHold'])
       .its('response.statusCode')

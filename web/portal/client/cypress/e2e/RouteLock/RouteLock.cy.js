@@ -1,16 +1,17 @@
 import RouteLockCollection from '../../fixtures/RouteLock/getCollection.json';
-import newRouteLock from '../../fixtures/RouteLock/post.json';
 import RouteLockItem from '../../fixtures/RouteLock/getItem.json';
+import newRouteLock from '../../fixtures/RouteLock/post.json';
 import editRouteLock from '../../fixtures/RouteLock/put.json';
 
-describe('in RouteLock', () => {
+describe('RouteLock', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('RouteLock');
     cy.before();
 
-    cy.contains('Candados').click();
+    cy.contains('Routing tools').click();
+    cy.contains('Route Lock').click();
 
-    cy.get('h3').should('contain', 'List of Candados');
+    cy.get('header').should('contain', 'Route Lock');
 
     cy.get('table').should('contain', RouteLockCollection.body[0].name);
   });
@@ -37,7 +38,7 @@ describe('in RouteLock', () => {
       description,
     });
 
-    cy.get('h3').should('contain', 'List of Candados');
+    cy.get('header').should('contain', 'Route Lock');
 
     cy.usePactWait('createRouteLock')
       .its('response.statusCode')
@@ -70,7 +71,7 @@ describe('in RouteLock', () => {
       open,
     });
 
-    cy.contains('List of Candados');
+    cy.contains('Route Lock');
 
     cy.usePactWait(['editRouteLock'])
       .its('response.statusCode')
@@ -85,15 +86,15 @@ describe('in RouteLock', () => {
       statusCode: 204,
     }).as('deleteRouteLock');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Candados');
+    cy.get('header').should('contain', 'Route Lock');
 
     cy.usePactWait(['deleteRouteLock'])
       .its('response.statusCode')

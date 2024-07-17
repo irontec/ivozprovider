@@ -3,14 +3,14 @@ import newUser from '../../fixtures/Users/post.json';
 import UserItem from '../../fixtures/Users/getItem.json';
 import editUser from '../../fixtures/Users/put.json';
 
-describe('in User', () => {
+describe('User', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('User');
     cy.before();
 
-    cy.contains('Usuarios').click();
+    cy.contains('Users').click();
 
-    cy.get('h3').should('contain', 'List of Usuarios');
+    cy.get('header').should('contain', 'Users');
 
     cy.get('table').should('contain', UserCollection.body[0].name);
   });
@@ -31,8 +31,8 @@ describe('in User', () => {
 
     cy.get('[aria-label=Add]').click();
 
-    const { name, lastname, email, extension, outgoingDdi, outgoingDdiRule } =
-      newUser.request;
+    const { name, lastname, email, extension, outgoingDdi, outgoingDdiRule } = newUser.request;
+
     cy.fillTheForm({
       name,
       lastname,
@@ -42,10 +42,13 @@ describe('in User', () => {
       outgoingDdiRule,
     });
 
-    cy.get('h3').should('contain', 'List of Usuarios');
+    cy.get('header').should('contain', 'Users');
 
-    cy.usePactWait('createUser').its('response.statusCode').should('eq', 201);
+    cy.usePactWait('createUser')
+      .its('response.statusCode')
+      .should('eq', 201);
   });
+
 
   ///////////////////////////////
   // PUT
@@ -113,9 +116,11 @@ describe('in User', () => {
       rejectCallMethod,
     });
 
-    cy.contains('List of Usuarios');
+    cy.contains('Users');
 
-    cy.usePactWait(['editUser']).its('response.statusCode').should('eq', 200);
+    cy.usePactWait(['editUser'])
+      .its('response.statusCode')
+      .should('eq', 200);
   });
 
   ///////////////////////
@@ -126,16 +131,21 @@ describe('in User', () => {
       statusCode: 204,
     }).as('deleteUser');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
-
-    cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
-      .filter(':visible')
-      .contains('Delete')
+    cy.get('td > div.actions-cell > span > button:has(svg[data-testid="DeleteIcon"])')
+      .first()
       .click();
 
-    cy.get('h3').should('contain', 'List of Usuarios');
+    cy.contains('Remove element');
 
-    cy.usePactWait(['deleteUser']).its('response.statusCode').should('eq', 204);
+    cy.get('div[role=dialog] button')
+      .should('be.visible')
+      .contains('Yes, delete it')
+      .click({ force: true });
+
+    cy.get('header').should('contain', 'Users');
+
+    cy.usePactWait(['deleteUser'])
+      .its('response.statusCode')
+      .should('eq', 204);
   });
 });

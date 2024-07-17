@@ -1,16 +1,17 @@
 import IvrCollection from '../../fixtures/Ivr/getCollection.json';
-import newIvr from '../../fixtures/Ivr/post.json';
 import IvrItem from '../../fixtures/Ivr/getItem.json';
+import newIvr from '../../fixtures/Ivr/post.json';
 import editIvr from '../../fixtures/Ivr/put.json';
 
-describe('in Ivr', () => {
+describe('Ivr', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Ivr');
     cy.before();
 
+    cy.contains('Routing endpoints').click();
     cy.contains('IVRs').click();
 
-    cy.get('h3').should('contain', 'List of IVRs');
+    cy.get('header').should('contain', 'IVRs');
 
     cy.get('table').should('contain', IvrCollection.body[0].name);
   });
@@ -72,7 +73,7 @@ describe('in Ivr', () => {
       errorVoicemail,
     });
 
-    cy.get('h3').should('contain', 'List of IVRs');
+    cy.get('header').should('contain', 'IVRs');
 
     cy.usePactWait('createIvr').its('response.statusCode').should('eq', 201);
   });
@@ -137,7 +138,7 @@ describe('in Ivr', () => {
       errorVoicemail,
     });
 
-    cy.contains('List of IVRs');
+    cy.contains('IVRs');
 
     cy.usePactWait(['editIvr']).its('response.statusCode').should('eq', 200);
   });
@@ -150,15 +151,15 @@ describe('in Ivr', () => {
       statusCode: 204,
     }).as('deleteIvr');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of IVRs');
+    cy.get('header').should('contain', 'IVRs');
 
     cy.usePactWait(['deleteIvr']).its('response.statusCode').should('eq', 204);
   });

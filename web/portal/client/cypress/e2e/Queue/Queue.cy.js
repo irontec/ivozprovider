@@ -1,16 +1,17 @@
 import QueueCollection from '../../fixtures/Queue/getCollection.json';
-import newQueue from '../../fixtures/Queue/post.json';
 import QueueItem from '../../fixtures/Queue/getItem.json';
+import newQueue from '../../fixtures/Queue/post.json';
 import editQueue from '../../fixtures/Queue/put.json';
 
-describe('in Queue', () => {
+describe('Queue', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Queue');
     cy.before();
 
-    cy.contains('Colas').click();
+    cy.contains('Routing endpoints').click();
+    cy.contains('Queues').click();
 
-    cy.get('h3').should('contain', 'List of Colas');
+    cy.get('header').should('contain', 'Queues');
 
     cy.get('table').should('contain', QueueCollection.body[0].name);
   });
@@ -86,7 +87,7 @@ describe('in Queue', () => {
       fullNumberValue,
     });
 
-    cy.get('h3').should('contain', 'List of Colas');
+    cy.get('header').should('contain', 'Queues');
 
     cy.usePactWait('createQueue').its('response.statusCode').should('eq', 201);
   });
@@ -165,7 +166,7 @@ describe('in Queue', () => {
       fullNumberValue,
     });
 
-    cy.contains('List of Colas');
+    cy.contains('Queues');
 
     cy.usePactWait(['editQueue']).its('response.statusCode').should('eq', 200);
   });
@@ -178,15 +179,15 @@ describe('in Queue', () => {
       statusCode: 204,
     }).as('deleteQueue');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Colas');
+    cy.get('header').should('contain', 'Queues');
 
     cy.usePactWait(['deleteQueue'])
       .its('response.statusCode')

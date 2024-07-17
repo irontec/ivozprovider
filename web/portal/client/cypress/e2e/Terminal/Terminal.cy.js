@@ -1,16 +1,16 @@
 import TerminalCollection from '../../fixtures/Terminal/getCollection.json';
-import newTerminal from '../../fixtures/Terminal/post.json';
 import TerminalItem from '../../fixtures/Terminal/getItem.json';
+import newTerminal from '../../fixtures/Terminal/post.json';
 import editTerminal from '../../fixtures/Terminal/put.json';
 
-describe('in Terminal', () => {
+describe('Terminal', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Terminal');
     cy.before();
 
-    cy.contains('Terminal').click();
+    cy.contains('Terminals').click();
 
-    cy.get('h3').should('contain', 'List of Terminales');
+    cy.get('header').should('contain', 'Terminals');
 
     cy.get('table').should('contain', TerminalCollection.body[0].name);
   });
@@ -39,7 +39,7 @@ describe('in Terminal', () => {
       mac,
     });
 
-    cy.get('h3').should('contain', 'List of Terminales');
+    cy.get('header').should('contain', 'Terminals');
 
     cy.usePactWait('createTerminal')
       .its('response.statusCode')
@@ -90,7 +90,7 @@ describe('in Terminal', () => {
       lastProvisionDate,
     });
 
-    cy.contains('List of Terminales');
+    cy.contains('Terminals');
 
     cy.usePactWait(['editTerminal'])
       .its('response.statusCode')
@@ -105,15 +105,20 @@ describe('in Terminal', () => {
       statusCode: 204,
     }).as('deleteTerminal');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
-
-    cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
-      .filter(':visible')
-      .contains('Delete')
+    cy.get(
+      'td > div.actions-cell > span > button:has(svg[data-testid="DeleteIcon"])'
+    )
+      .first()
       .click();
 
-    cy.get('h3').should('contain', 'List of Terminales');
+    cy.contains('Remove element');
+
+    cy.get('div[role=dialog] button')
+      .should('be.visible')
+      .contains('Yes, delete it')
+      .click({ force: true });
+
+    cy.get('header').should('contain', 'Terminals');
 
     cy.usePactWait(['deleteTerminal'])
       .its('response.statusCode')

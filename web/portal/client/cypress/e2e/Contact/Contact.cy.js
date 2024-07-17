@@ -1,16 +1,16 @@
 import ContactCollection from '../../fixtures/Contact/getCollection.json';
-import newContact from '../../fixtures/Contact/post.json';
 import ContactItem from '../../fixtures/Contact/getItem.json';
+import newContact from '../../fixtures/Contact/post.json';
 import editContact from '../../fixtures/Contact/put.json';
 
-describe('in Contact', () => {
+describe('Contact', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Contact');
     cy.before();
 
-    cy.contains('Contact').click();
+    cy.contains('Address Book').click();
 
-    cy.get('h3').should('contain', 'List of Contact');
+    cy.get('header').should('contain', 'Address Book');
 
     cy.get('table').should('contain', ContactCollection.body[0].name);
   });
@@ -52,7 +52,7 @@ describe('in Contact', () => {
       otherPhone,
     });
 
-    cy.get('h3').should('contain', 'List of Contact');
+    cy.get('header').should('contain', 'Address Book');
 
     cy.usePactWait('createContact')
       .its('response.statusCode')
@@ -78,28 +78,16 @@ describe('in Contact', () => {
 
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
-    const {
-      name,
-      lastname,
-      email,
-      workPhoneCountry,
-      workPhone,
-      mobilePhoneCountry,
-      mobilePhone,
-      otherPhone,
-    } = editContact.request;
+    const { workPhoneCountry, workPhone, mobilePhoneCountry, mobilePhone } =
+      editContact.request;
     cy.fillTheForm({
-      name,
-      lastname,
-      email,
       workPhoneCountry,
       workPhone,
       mobilePhoneCountry,
       mobilePhone,
-      otherPhone,
     });
 
-    cy.contains('List of Contact');
+    cy.contains('Address Book');
 
     cy.usePactWait(['editContact'])
       .its('response.statusCode')
@@ -114,15 +102,15 @@ describe('in Contact', () => {
       statusCode: 204,
     }).as('deleteContact');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Contact');
+    cy.get('header').should('contain', 'Address Book');
 
     cy.usePactWait(['deleteContact'])
       .its('response.statusCode')

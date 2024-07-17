@@ -1,16 +1,17 @@
 import LocationCollection from '../../fixtures/Location/getCollection.json';
-import newLocation from '../../fixtures/Location/post.json';
 import LocationItem from '../../fixtures/Location/getItem.json';
+import newLocation from '../../fixtures/Location/post.json';
 import editLocation from '../../fixtures/Location/put.json';
 
-describe('in Location', () => {
+describe('Location', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Location');
     cy.before();
 
-    cy.contains('Location').click();
+    cy.contains('User configuration').click();
+    cy.contains('Locations').click();
 
-    cy.get('h3').should('contain', 'List of Location');
+    cy.get('header').should('contain', 'Locations');
 
     cy.get('table').should('contain', LocationCollection.body[0].name);
   });
@@ -37,7 +38,7 @@ describe('in Location', () => {
       description,
     });
 
-    cy.get('h3').should('contain', 'List of Location');
+    cy.get('header').should('contain', 'Locations');
 
     cy.usePactWait('createLocation')
       .its('response.statusCode')
@@ -69,7 +70,7 @@ describe('in Location', () => {
       description,
     });
 
-    cy.contains('List of Location');
+    cy.contains('Locations');
 
     cy.usePactWait(['editLocation'])
       .its('response.statusCode')
@@ -84,15 +85,15 @@ describe('in Location', () => {
       statusCode: 204,
     }).as('deleteLocation');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Location');
+    cy.get('header').should('contain', 'Locations');
 
     cy.usePactWait(['deleteLocation'])
       .its('response.statusCode')
