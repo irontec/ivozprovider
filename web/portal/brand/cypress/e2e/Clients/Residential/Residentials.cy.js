@@ -3,7 +3,7 @@ import { deleteCompany, postCompany, putCompany } from './Residentials.tests';
 
 describe('in Residential Companies', () => {
   beforeEach(() => {
-    cy.prepareGenericPactInterceptors('VirtualPbxs');
+    cy.prepareGenericPactInterceptors('Residentials');
     cy.before();
 
     cy.get('svg[data-testid="MapsHomeWorkIcon"]').first().click();
