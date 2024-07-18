@@ -1,0 +1,36 @@
+{
+    "body": [
+        {
+            "description": "Another carrier description",
+            "name": "AnotherCarrierName",
+            "balance": 0,
+            "calculateCost": false,
+            "id": 2,
+            "transformationRuleSet": 1,
+            "proxyTrunk": 2,
+            "status": {
+                "registered": false
+            }
+        },
+        {
+            "description": "CarrierDescription",
+            "name": "CarrierName",
+            "balance": 0,
+            "calculateCost": true,
+            "id": 1,
+            "transformationRuleSet": 1,
+            "proxyTrunk": 1,
+            "status": {
+                "registered": false
+            }
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/brand/carriers?_page=1",
+        "x-last-page": "/api/brand/carriers?_page=1",
+        "x-next-page": "/api/brand/carriers?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}

@@ -1,0 +1,104 @@
+{
+    "request": {
+        "type": "vpbx",
+        "name": "DemoCompany",
+        "domainUsers": "127.0.0.1",
+        "invoicing": {
+            "nif": "12345678B",
+            "postalAddress": "Company Address",
+            "postalCode": "54321",
+            "town": "Company Town",
+            "province": "Company Province",
+            "countryName": "Company Country"
+        },
+        "distributeMethod": "hash",
+        "maxCalls": 0,
+        "maxDailyUsage": 100,
+        "maxDailyUsageEmail": "no-replay-updated@domain.net",
+        "ipfilter": false,
+        "onDemandRecord": 0,
+        "onDemandRecordCode": "",
+        "externallyextraopts": "",
+        "recordingsLimitMB": null,
+        "recordingsLimitEmail": "",
+        "billingMethod": "postpaid",
+        "balance": 0,
+        "showInvoices": false,
+        "language": 2,
+        "mediaRelaySets": 1,
+        "defaultTimezone": 1,
+        "applicationServer": null,
+        "country": 30,
+        "transformationRuleSet": 3,
+        "outgoingDdi": null,
+        "outgoingDdiRule": null,
+        "voicemailNotificationTemplate": 1,
+        "faxNotificationTemplate": null,
+        "accessCredentialNotificationTemplate": 1,
+        "featureIds": [
+            3
+        ],
+        "geoIpAllowedCountries": [
+            1
+        ]
+    },
+    "response": {
+        "body": {
+            "type": "vpbx",
+            "name": "DemoCompany",
+            "domainUsers": "127.0.0.1",
+            "maxCalls": 0,
+            "maxDailyUsage": 100,
+            "currentDayUsage": 1,
+            "maxDailyUsageEmail": "no-replay-updated@domain.net",
+            "ipfilter": false,
+            "onDemandRecord": 0,
+            "allowRecordingRemoval": true,
+            "onDemandRecordCode": "",
+            "externallyextraopts": "",
+            "billingMethod": "postpaid",
+            "balance": 1.2,
+            "showInvoices": false,
+            "id": 1,
+            "invoicing": {
+                "nif": "12345678B",
+                "postalAddress": "Company Address",
+                "postalCode": "54321",
+                "town": "Company Town",
+                "province": "Company Province",
+                "countryName": "Company Country"
+            },
+            "language": 2,
+            "defaultTimezone": 1,
+            "country": 30,
+            "currency": null,
+            "transformationRuleSet": 3,
+            "outgoingDdi": null,
+            "outgoingDdiRule": null,
+            "voicemailNotificationTemplate": 1,
+            "faxNotificationTemplate": null,
+            "invoiceNotificationTemplate": null,
+            "callCsvNotificationTemplate": null,
+            "maxDailyUsageNotificationTemplate": 2,
+            "accessCredentialNotificationTemplate": 1,
+            "corporation": 1,
+            "featureIds": [
+                3
+            ],
+            "geoIpAllowedCountries": [
+                1
+            ],
+            "routingTagIds": [],
+            "codecIds": []
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

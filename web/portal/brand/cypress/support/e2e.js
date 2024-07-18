@@ -17,7 +17,6 @@
 import './commands/before';
 import './commands/prepareGenericPactInterceptors';
 import './commands/fillTheForm';
-
 // Import Cypress-Adapter plugin
 import '@pactflow/pact-cypress-adapter';
 

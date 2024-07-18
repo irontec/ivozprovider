@@ -1,0 +1,22 @@
+{
+  "body": [
+    {
+      "name": "Irontec Test Corporation",
+      "description": "Irontec Test Desc Corporation",
+      "id": 1
+    },
+    {
+      "name": "Irontec Test Corporation2",
+      "description": "Irontec Test Desc Corporation",
+      "id": 2
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/corporations?_page=1",
+    "x-last-page": "/api/brand/corporations?_page=1",
+    "x-next-page": "/api/brand/corporations?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

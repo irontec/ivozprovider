@@ -8477,6 +8477,55 @@
                 ]
             }
         },
+        "/companies/corporate/unassigned": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "parameters": [
+                    {
+                        "name": "_includeId",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Ensure certain company id is included"
+                    }
+                ],
+                "operationId": "get_companies_corporate_unassignedCompanyCollection",
+                "summary": "Retrieves the collection of Company resources.",
+                "responses": {
+                    "200": {
+                        "description": "Company collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Company"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/companies/{id}": {
             "get": {
                 "produces": [
@@ -16607,12 +16656,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[start]",
                         "in": "query",
                         "required": false,
@@ -16631,6 +16674,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "directConnectivity",
                         "in": "query",
                         "required": false,
@@ -16638,18 +16687,6 @@
                     },
                     {
                         "name": "directConnectivity[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "directConnectivity[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "directConnectivity[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16667,6 +16704,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "directConnectivity[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "directConnectivity[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "domain",
                         "in": "query",
                         "required": false,
@@ -16674,6 +16723,12 @@
                     },
                     {
                         "name": "exists[interCompany]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[proxyUser]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -16709,24 +16764,6 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "language",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "language[]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "language[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -16734,18 +16771,6 @@
                     },
                     {
                         "name": "name[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16763,22 +16788,16 @@
                         "type": "string"
                     },
                     {
-                        "name": "outgoingDdi",
+                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "outgoingDdi[]",
+                        "name": "name[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "outgoingDdi[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "priority",
@@ -16823,19 +16842,19 @@
                         "type": "string"
                     },
                     {
-                        "name": "transformationRuleSet",
+                        "name": "proxyUser",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "transformationRuleSet[]",
+                        "name": "proxyUser[]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "transformationRuleSet[exists]",
+                        "name": "proxyUser[exists]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -16925,18 +16944,16 @@
                 ]
             },
             "post": {
-                "consumes": [
-                    "application/json",
-                    "application/ld+json"
-                ],
                 "produces": [
-                    "application/json",
-                    "application/ld+json"
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
                 ],
                 "tags": [
                     "Provider"
                 ],
-                "operationId": "postFriendCollection",
+                "operationId": "post_friendFriendCollection",
                 "summary": "Creates a Friend resource.",
                 "responses": {
                     "201": {
@@ -17271,24 +17288,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "language",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "language[]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "language[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -17296,12 +17295,6 @@
                     },
                     {
                         "name": "name[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -17325,37 +17318,25 @@
                         "type": "string"
                     },
                     {
-                        "name": "outgoingDdi",
+                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "outgoingDdi[]",
+                        "name": "proxyUser",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "outgoingDdi[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "transformationRuleSet",
+                        "name": "proxyUser[]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "transformationRuleSet[]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "transformationRuleSet[exists]",
+                        "name": "proxyUser[exists]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -34724,6 +34705,24 @@
                 },
                 "parameters": [
                     {
+                        "name": "company",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[logo.baseName]",
                         "in": "query",
                         "required": false,
@@ -34862,6 +34861,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "logo.mimeType[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "logo.mimeType[start]",
                         "in": "query",
                         "required": false,
@@ -34884,12 +34889,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "logo.mimeType[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "name",
@@ -34952,6 +34951,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "urlType[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "urlType[start]",
                         "in": "query",
                         "required": false,
@@ -34970,19 +34975,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "urlType[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "url[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "url[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35001,6 +34994,12 @@
                     },
                     {
                         "name": "url[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "url[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -37625,7 +37624,6 @@
                     "type": "string"
                 },
                 "balance": {
-                    "readOnly": true,
                     "default": 0,
                     "format": "float",
                     "description": "",
@@ -37800,7 +37798,6 @@
                     "type": "string"
                 },
                 "balance": {
-                    "readOnly": true,
                     "default": 0,
                     "format": "float",
                     "description": "",
@@ -37966,7 +37963,6 @@
                     "type": "string"
                 },
                 "balance": {
-                    "readOnly": true,
                     "default": 0,
                     "format": "float",
                     "description": "",
@@ -40442,10 +40438,7 @@
                 "name",
                 "description",
                 "priority",
-                "allow",
                 "directConnectivity",
-                "ddiIn",
-                "t38Passthrough",
                 "company"
             ],
             "properties": {
@@ -40492,23 +40485,6 @@
                     "example": "1",
                     "type": "integer"
                 },
-                "allow": {
-                    "default": "alaw",
-                    "maxLength": 200,
-                    "description": "",
-                    "example": "alaw",
-                    "type": "string"
-                },
-                "fromUser": {
-                    "maxLength": 190,
-                    "description": "",
-                    "type": "string"
-                },
-                "fromDomain": {
-                    "maxLength": 190,
-                    "description": "",
-                    "type": "string"
-                },
                 "directConnectivity": {
                     "default": "yes",
                     "enum": [
@@ -40521,24 +40497,9 @@
                     "example": "yes",
                     "type": "string"
                 },
-                "ddiIn": {
-                    "default": "yes",
-                    "enum": [
-                        "yes",
-                        "no"
-                    ],
+                "ruriDomain": {
+                    "maxLength": 190,
                     "description": "",
-                    "example": "yes",
-                    "type": "string"
-                },
-                "t38Passthrough": {
-                    "default": "no",
-                    "enum": [
-                        "yes",
-                        "no"
-                    ],
-                    "description": "",
-                    "example": "no",
                     "type": "string"
                 },
                 "id": {
@@ -40550,19 +40511,11 @@
                     "description": "",
                     "type": "integer"
                 },
-                "transformationRuleSet": {
-                    "description": "",
-                    "type": "integer"
-                },
-                "outgoingDdi": {
-                    "description": "",
-                    "type": "integer"
-                },
-                "language": {
-                    "description": "",
-                    "type": "integer"
-                },
                 "interCompany": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "proxyUser": {
                     "description": "",
                     "type": "integer"
                 }
@@ -40571,6 +40524,7 @@
         "Friend-collection": {
             "type": "object",
             "required": [
+                "company",
                 "name",
                 "description",
                 "priority",
@@ -40581,6 +40535,10 @@
                     "description": "",
                     "type": "integer",
                     "readOnly": true
+                },
+                "company": {
+                    "description": "",
+                    "type": "integer"
                 },
                 "name": {
                     "maxLength": 65,
@@ -40619,6 +40577,10 @@
                 "interCompany": {
                     "description": "",
                     "type": "integer"
+                },
+                "proxyUser": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -40628,10 +40590,7 @@
                 "name",
                 "description",
                 "priority",
-                "allow",
                 "directConnectivity",
-                "ddiIn",
-                "t38Passthrough",
                 "company"
             ],
             "properties": {
@@ -40678,23 +40637,6 @@
                     "example": "1",
                     "type": "integer"
                 },
-                "allow": {
-                    "default": "alaw",
-                    "maxLength": 200,
-                    "description": "",
-                    "example": "alaw",
-                    "type": "string"
-                },
-                "fromUser": {
-                    "maxLength": 190,
-                    "description": "",
-                    "type": "string"
-                },
-                "fromDomain": {
-                    "maxLength": 190,
-                    "description": "",
-                    "type": "string"
-                },
                 "directConnectivity": {
                     "default": "yes",
                     "enum": [
@@ -40707,24 +40649,9 @@
                     "example": "yes",
                     "type": "string"
                 },
-                "ddiIn": {
-                    "default": "yes",
-                    "enum": [
-                        "yes",
-                        "no"
-                    ],
+                "ruriDomain": {
+                    "maxLength": 190,
                     "description": "",
-                    "example": "yes",
-                    "type": "string"
-                },
-                "t38Passthrough": {
-                    "default": "no",
-                    "enum": [
-                        "yes",
-                        "no"
-                    ],
-                    "description": "",
-                    "example": "no",
                     "type": "string"
                 },
                 "id": {
@@ -40735,17 +40662,11 @@
                 "company": {
                     "$ref": "#/definitions/Company"
                 },
-                "transformationRuleSet": {
-                    "$ref": "#/definitions/TransformationRuleSet"
-                },
-                "outgoingDdi": {
-                    "$ref": "#/definitions/Ddi"
-                },
-                "language": {
-                    "$ref": "#/definitions/Language"
-                },
                 "interCompany": {
                     "$ref": "#/definitions/Company"
+                },
+                "proxyUser": {
+                    "$ref": "#/definitions/ProxyUser"
                 }
             }
         },
@@ -46152,6 +46073,10 @@
                 },
                 "logo": {
                     "$ref": "#/definitions/WebPortal_Logo"
+                },
+                "company": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -46240,6 +46165,9 @@
                 },
                 "logo": {
                     "$ref": "#/definitions/WebPortal_Logo"
+                },
+                "company": {
+                    "$ref": "#/definitions/Company"
                 }
             }
         },
@@ -46267,10 +46195,6 @@
             "type": "object",
             "properties": {
                 "name": {
-                    "description": "",
-                    "type": "string"
-                },
-                "theme": {
                     "description": "",
                     "type": "string"
                 },

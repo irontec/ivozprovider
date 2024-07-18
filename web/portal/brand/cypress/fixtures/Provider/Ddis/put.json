@@ -1,0 +1,30 @@
+{
+    "request": {
+        "ddi": "128",
+        "id": 1,
+        "company": 1,
+        "ddiProvider": 1,
+        "country": 1
+    },
+    "response": {
+        "body": {
+            "ddi": "128",
+            "ddie164": "+34128",
+            "description": "Description for DDI 123",
+            "type": "inout",
+            "id": 1,
+            "company": 1,
+            "ddiProvider": 1,
+            "country": 1
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}
