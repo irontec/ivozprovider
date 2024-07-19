@@ -45,15 +45,17 @@ const StatusMenuItem = styled(MenuItem)(() => {
 
 const Logo = styled('div')(() => {
   return {
-    border: '3px solid #fff',
-    width: '120px',
-    height: '120px',
-    overflow: 'hidden',
-    backgroundColor: '#fff',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    borderRadius: '50%',
+    '& img': {
+      border: '3px solid #fff',
+      width: '120px',
+      height: '120px',
+      overflow: 'hidden',
+      backgroundColor: '#fff',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      borderRadius: '50%',
+    },
   };
 });
 export {

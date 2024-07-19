@@ -18,7 +18,7 @@ const useWebTheme = (): WebTheme => {
 
   useEffect(() => {
     apiGet({
-      path: '/my/web_theme',
+      path: '/my/theme',
       params: {},
       successCallback: async (data) => {
         const response = data as WebTheme;
