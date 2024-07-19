@@ -5,7 +5,7 @@ import { Status } from '../../store/userStatus/status';
 const useTerminalStatus = (): Status => {
   const profile = useStoreState((state) => state.userStatus.status.profile);
 
-  const defaultValues = {
+  const defaultValues: Status = {
     companyDomain: '',
     companyName: '',
     extensionNumber: '',
@@ -19,7 +19,7 @@ const useTerminalStatus = (): Status => {
     voiceMail: '',
     registered: false,
     features: [],
-  } as Status;
+  };
 
   if (profile) {
     return profile;

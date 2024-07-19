@@ -8,7 +8,7 @@ import {
 
 debugger;
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match, initialValues, create } = props;
+  const { entityService, row, match } = props;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
