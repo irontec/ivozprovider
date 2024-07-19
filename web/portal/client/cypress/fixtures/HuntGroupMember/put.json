@@ -1,0 +1,26 @@
+{
+  "request": {
+    "timeoutTime": 2,
+    "priority": 10,
+    "routeType": "user",
+    "id": 1,
+    "huntGroup": 1,
+    "user": 1
+  },
+  "response": {
+    "body": {
+      "timeoutTime": 2,
+      "priority": 10,
+      "routeType": "user",
+      "numberValue": null,
+      "id": 1,
+      "huntGroup": 1,
+      "user": 1,
+      "numberCountry": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

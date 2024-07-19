@@ -1,16 +1,17 @@
 import FaxCollection from '../../fixtures/Fax/getCollection.json';
-import newFax from '../../fixtures/Fax/post.json';
 import FaxItem from '../../fixtures/Fax/getItem.json';
+import newFax from '../../fixtures/Fax/post.json';
 import editFax from '../../fixtures/Fax/put.json';
 
-describe('in Fax', () => {
+describe('Fax', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Fax');
     cy.before();
 
-    cy.contains('Fax').click();
+    cy.contains('Routing endpoints').click();
+    cy.contains('Faxes').click();
 
-    cy.get('h3').should('contain', 'List of Faxes');
+    cy.get('header').should('contain', 'Faxes');
 
     cy.get('table').should('contain', FaxCollection.body[0].name);
   });
@@ -39,7 +40,7 @@ describe('in Fax', () => {
       email,
     });
 
-    cy.get('h3').should('contain', 'List of Faxes');
+    cy.get('header').should('contain', 'Faxes');
 
     cy.usePactWait('createFax').its('response.statusCode').should('eq', 201);
   });
@@ -71,7 +72,7 @@ describe('in Fax', () => {
       email,
     });
 
-    cy.contains('List of Faxes');
+    cy.contains('Faxes');
 
     cy.usePactWait(['editFax']).its('response.statusCode').should('eq', 200);
   });
@@ -84,15 +85,15 @@ describe('in Fax', () => {
       statusCode: 204,
     }).as('deleteFax');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Faxes');
+    cy.get('header').should('contain', 'Faxes');
 
     cy.usePactWait(['deleteFax']).its('response.statusCode').should('eq', 204);
   });

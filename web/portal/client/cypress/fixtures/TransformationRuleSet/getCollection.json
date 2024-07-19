@@ -1,0 +1,42 @@
+{
+  "body": [
+    {
+      "description": "Brand 1 transformation for Spain",
+      "internationalCode": "00",
+      "trunkPrefix": "",
+      "areaCode": "",
+      "nationalLen": 9,
+      "id": 1,
+      "name": {
+        "en": "Brand 1 transformation for Spain",
+        "es": "Marca 1 tansformacion para España",
+        "ca": "Marca 1 tansformacion para España",
+        "it": "Brand 1 transformation for Spain"
+      },
+      "editable": true
+    },
+    {
+      "description": "Generic transformation for Spain",
+      "internationalCode": "00",
+      "trunkPrefix": "",
+      "areaCode": "",
+      "nationalLen": 9,
+      "id": 3,
+      "name": {
+        "en": "Generic transformation for Spain",
+        "es": "Generic tansformacion para España",
+        "ca": "Generic tansformacion para España",
+        "it": "Generic transformation for Spain"
+      },
+      "editable": false
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/transformation_rule_sets?_page=1",
+    "x-last-page": "/api/client/transformation_rule_sets?_page=1",
+    "x-next-page": "/api/client/transformation_rule_sets?_page=1",
+    "x-total-items": "4",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

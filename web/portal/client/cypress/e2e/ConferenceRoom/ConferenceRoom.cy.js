@@ -1,16 +1,17 @@
 import ConferenceRoomCollection from '../../fixtures/ConferenceRoom/getCollection.json';
-import newConferenceRoom from '../../fixtures/ConferenceRoom/post.json';
 import ConferenceRoomItem from '../../fixtures/ConferenceRoom/getItem.json';
+import newConferenceRoom from '../../fixtures/ConferenceRoom/post.json';
 import editConferenceRoom from '../../fixtures/ConferenceRoom/put.json';
 
-describe('in ConferenceRoom', () => {
+describe('ConferenceRoom', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('ConferenceRoom');
     cy.before();
 
-    cy.contains('Salas de conferencias').click();
+    cy.contains('Routing endpoints').click();
+    cy.contains('Conference rooms').click();
 
-    cy.get('h3').should('contain', 'List of Salas de conferencias');
+    cy.get('header').should('contain', 'Conference rooms');
 
     cy.get('table').should('contain', ConferenceRoomCollection.body[0].name);
   });
@@ -40,7 +41,7 @@ describe('in ConferenceRoom', () => {
       pinCode,
     });
 
-    cy.get('h3').should('contain', 'List of Salas de conferencias');
+    cy.get('header').should('contain', 'Conference rooms');
 
     cy.usePactWait('createConferenceRoom')
       .its('response.statusCode')
@@ -75,7 +76,7 @@ describe('in ConferenceRoom', () => {
       pinCode,
     });
 
-    cy.contains('List of Salas de conferencias');
+    cy.contains('Conference rooms');
 
     cy.usePactWait(['editConferenceRoom'])
       .its('response.statusCode')
@@ -90,15 +91,15 @@ describe('in ConferenceRoom', () => {
       statusCode: 204,
     }).as('deleteConferenceRoom');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Salas de conferencias');
+    cy.get('header').should('contain', 'Conference rooms');
 
     cy.usePactWait(['deleteConferenceRoom'])
       .its('response.statusCode')

@@ -1,16 +1,17 @@
 import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
-import newHuntGroup from '../../fixtures/HuntGroup/post.json';
 import HuntGroupItem from '../../fixtures/HuntGroup/getItem.json';
+import newHuntGroup from '../../fixtures/HuntGroup/post.json';
 import editHuntGroup from '../../fixtures/HuntGroup/put.json';
 
-describe('in HuntGroup', () => {
+describe('HuntGroup', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('HuntGroup');
     cy.before();
 
-    cy.contains('Grupos de salto').click();
+    cy.contains('Routing endpoints').click();
+    cy.contains('Hunt Groups').click();
 
-    cy.get('h3').should('contain', 'List of Grupos de salto');
+    cy.get('header').should('contain', 'Hunt Groups');
 
     cy.get('table').should('contain', HuntGroupCollection.body[0].name);
   });
@@ -60,7 +61,7 @@ describe('in HuntGroup', () => {
       noAnswerVoicemail,
     });
 
-    cy.get('h3').should('contain', 'List of Grupos de salto');
+    cy.get('header').should('contain', 'Hunt Groups');
 
     cy.usePactWait('createHuntGroup')
       .its('response.statusCode')
@@ -115,7 +116,7 @@ describe('in HuntGroup', () => {
       noAnswerVoicemail,
     });
 
-    cy.contains('List of Grupos de salto');
+    cy.contains('Hunt Groups');
 
     cy.usePactWait(['editHuntGroup'])
       .its('response.statusCode')
@@ -130,15 +131,15 @@ describe('in HuntGroup', () => {
       statusCode: 204,
     }).as('deleteHuntGroup');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Grupos de salto');
+    cy.get('header').should('contain', 'Hunt Groups');
 
     cy.usePactWait(['deleteHuntGroup'])
       .its('response.statusCode')

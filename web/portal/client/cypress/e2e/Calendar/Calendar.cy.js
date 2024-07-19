@@ -1,16 +1,17 @@
 import CalendarCollection from '../../fixtures/Calendar/getCollection.json';
-import newCalendar from '../../fixtures/Calendar/post.json';
 import CalendarItem from '../../fixtures/Calendar/getItem.json';
+import newCalendar from '../../fixtures/Calendar/post.json';
 import editCalendar from '../../fixtures/Calendar/put.json';
 
-describe('in Calendar', () => {
+describe('Calendar', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Calendar');
     cy.before();
 
-    cy.contains('Calendarios').click();
+    cy.contains('Routing tools').click();
+    cy.contains('Calendars').click();
 
-    cy.get('h3').should('contain', 'List of Calendarios');
+    cy.get('header').should('contain', 'Calendars');
 
     cy.get('table').should('contain', CalendarCollection.body[0].name);
   });
@@ -33,7 +34,7 @@ describe('in Calendar', () => {
 
     cy.fillTheForm(newCalendar.request);
 
-    cy.get('h3').should('contain', 'List of Calendarios');
+    cy.get('header').should('contain', 'Calendars');
 
     cy.usePactWait('createCalendar')
       .its('response.statusCode')
@@ -61,7 +62,7 @@ describe('in Calendar', () => {
 
     cy.fillTheForm(editCalendar.request);
 
-    cy.contains('List of Calendarios');
+    cy.contains('Calendars');
 
     cy.usePactWait(['editCalendar'])
       .its('response.statusCode')
@@ -76,15 +77,16 @@ describe('in Calendar', () => {
       statusCode: 204,
     }).as('deleteCalendar');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.get('li.MuiMenuItem-root').contains('Delete').click();
 
     cy.contains('Remove element');
     cy.get('div[role=dialog] button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Calendarios');
+    cy.get('header').should('contain', 'Calendars');
 
     cy.usePactWait(['deleteCalendar'])
       .its('response.statusCode')

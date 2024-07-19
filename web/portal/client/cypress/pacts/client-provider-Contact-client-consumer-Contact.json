@@ -1,1 +1,131 @@
-{"consumer":{"name":"client-consumer-Contact"},"provider":{"name":"client-provider-Contact"},"interactions":[{"description":"add Contact","providerState":"","request":{"method":"POST","path":"/api/client/contacts","headers":{"accept":"application/json, text/plain, */*","authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzgyOTU3NDYsImV4cCI6MTY3ODI5OTM0Niwicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.J2jOhxpO9dCOwIfnm8s3uNMbF0PG0UrDCjgllpXtBfPFitbiBZ-wfNg0x8tXKxCwNcf5BMK-0aJpVXBNPvBFf6BPAwMHG_WGGMYQwwo-DclGFBEz56-8uvThbq4iTVyWe5rN5p6ip__F5p8DFsmnk1mcGb5jaT-lkEgSpN5DBk1iWqfT_41oSVGDgiU0jZM2Ti-70ENxBUCQkUgXvspGpn1WErpWsQhzSHTzo2lpoC_sJgZZ0J8199qQXWCCHC7_UggBDYKaWW_fOj4lIDoA_H0VDLJcGvokv1cBxzXvz0DDzjlAKSC2ek6GlG68X3T6Qzp-0hgyl4sClrCe-FbhTdapmSV-XyXC6spA1iazZIxIbkCADEKRfRLaclP_MN56s3QNLLK9Mig5XE9VuvntJifeGr2XvdI8Oumqt2s6X-cBuFpVZku-AbZ0GAZbpgxNIHtrNE_dzxKBJ-v8XqIx7vm-Z0uDyQb621jsMJLHdFIpeJduoV7ASQwaL0ZdIGSKJIBXjL0YKF4xCsN8I8j0TW_YLo5ywCI0AS5t_fkVgJl8Ozq8lcaEGgGkK8_f2vsi-hKTt92GLMsTs34OG8tRkAaz0aHGwinVRgEB0pdUhci4aNGWYLBPMfEA6FFenimdyI-sA_tMnz1Jp4S7VXt0wSA1px795w2JMfa9OtS4q7Y","content-length":"194","content-type":"application/json"},"body":{"name":"New","lastname":"Contact","email":"newcontact@example.com","workPhoneCountry":"1","workPhone":"111222333","mobilePhoneCountry":"1","mobilePhone":"333222111","otherPhone":"+34123456789"},"query":""},"response":{"status":201,"headers":{"content-type":"application/json; charset=utf-8"},"body":{"id":4,"name":"New","lastname":"Contact","email":"newcontact@example.com","workPhone":"111222333","mobilePhone":"333222111","otherPhone":"+34123456789","user":null,"workPhoneCountry":1,"mobilePhoneCountry":1},"matchingRules":{"$.body.id":{"match":"type"}}}},{"description":"edit Contact","providerState":"","request":{"method":"PUT","path":"/api/client/contacts/1","headers":{"accept":"application/json, text/plain, */*","authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzgyOTU3NTUsImV4cCI6MTY3ODI5OTM1NSwicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.kJGrv_nhjlDK55fYrQNOuCZnWm4XLXAPbN2HJDzvuLW75Pk1xxjBjKN9CZ_AWiN_iMWSUzxD3yLHoUS73P5D8RfM_V1ep9gprzAflpn0QeyC3zY6ycYSYq288tNSy4BIeCggaj2uFjvgFUvKDbBZH8goZSkXj-oFtw_AWvCynssUkXB0dmp8lWjF32mT0r2vOnVpHae471kKV8jBjPrXsSI-fHlGPl6X9x56BUhFPxxlEnwy6NQ_hdkLCWT_yQcRfcLRWTENtegwRHIuCCrSdaCdp3JtxM2rbtQY7Ok6iEDzJH1e4UVhA_OtTxggJ6YlbXOlwnaL7JDmLXcGDqhl7_bKckQao3ZdrAmNHWXIQOvgmgg4etWOXSOUrVt6uL2GWp-7lT9ZwvB6DNjB_03CKwNGH1uXklZ5nr_Ta_xiK13TCDpouSCNf0mnIp7QcT71dD82kxUfdAmeT2DKT8yVKtgUBYn_t6zH1EeqHPsQyj1OFC5oYA7XbsdkWtKEdy5d-sVlpQQoKR9qw2aK8D6Vuwso_CqF7l51YXxuPFtn1SsGWak4qX5jDtfei15qUHPRw6pU0Vl4XYwoxCTZy_KPoO1MWJKNTsZsW3k2m7yYQv_O7Rtco2QOv09y8I_TtbI38sCjY5z4ashTyPRluJcgjtdFwmRoJNXV_XggM4yhJCg","content-length":"191","content-type":"application/json"},"body":{"name":"Updated","lastname":"Contact","email":"testcontact@email.com","workPhone":"222333444","mobilePhone":"444333222","otherPhone":"1004","workPhoneCountry":"65","mobilePhoneCountry":"65"},"query":""},"response":{"status":200,"headers":{"content-type":"application/json; charset=utf-8"},"body":{"name":"Updated","lastname":"Contact","email":"testcontact@email.com","workPhone":"222333444","workPhoneE164":"+20222333444","mobilePhone":"444333222","mobilePhoneE164":"+20444333222","otherPhone":"1004","id":1,"user":null,"workPhoneCountry":65,"mobilePhoneCountry":65}}},{"description":"delete Contact","providerState":"","request":{"method":"DELETE","path":"/api/client/contacts/1","headers":{"accept":"application/json, text/plain, */*","authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzgyOTU3NjMsImV4cCI6MTY3ODI5OTM2Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.BooOCziVWsQ94w0YBGpE72tGhP3MLcrK0yw36SsJgy6UalhUpxG67Vibu7PGi84Ty3zetkDJmRpI1DWZnTf2KloSqPvpcbQwj164uDyeBF9QMkPjUI6za-3Q0DjPvwTs3ZUvIdFX3vuyEee7EocSh-MtWlL10KJADt1Q9IWsxVC4HpGnBXFxv95HUZTWPzg2DvZbm6lKQyxwk9wqSWYT_YK-VkPJ5H_nYwVkC6kCpf3lhIaMNQnYKkybKzAuzv2Lo5ZOl3aYq4FSAD1HNkYlIatxoAIO9EckMTeEal37E2CSq7nu4BVXODPFiTlME_qqshTHTVt9Szfo3u1Ex6fB-F9xcuz_TYLNBerxcHXwJS5jm_9c5AZbLNC2ZUf_tMIzlIC7Yj-sgOktdlw5yIKvEhRbZBMWUh8ulF3Zk1rvPTWYaUxBHP_hWTqBMNF6ejp8IekKsSWefW02c6uxULYYk0FhsKmWKyMs6G6yO79mQ8-g7vrWkZfqeN7cecvr-Y82eW0FTaGUVQhR1E2VPGyleDSAZPPqelxRhxawfslOtWsP8VT0-dFk5FWJh9YduerCSj9P_je7dKobVfqHEloM1kua1tSncqkwxI-XW-ZNREipMo6Amf4q6Rn-4V8d-SVhEh5b2JtaoIHGnxNlwUq-KY9zq3znCBGpDMXOUFV0r5c"},"body":"","query":""},"response":{"status":204,"headers":{},"body":""}}],"metadata":{"pactSpecification":{"version":"2.0.0"},"client":{"name":"pact-cypress-adapter","version":"1.3.0"}}}
+{
+  "consumer": {
+    "name": "client-consumer-Contact"
+  },
+  "provider": {
+    "name": "client-provider-Contact"
+  },
+  "interactions": [
+    {
+      "description": "add Contact",
+      "providerState": "",
+      "request": {
+        "method": "POST",
+        "path": "/api/client/contacts",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk",
+          "content-length": "194",
+          "content-type": "application/json"
+        },
+        "body": {
+          "name": "New",
+          "lastname": "Contact",
+          "email": "newcontact@example.com",
+          "workPhoneCountry": "1",
+          "workPhone": "111222333",
+          "mobilePhoneCountry": "1",
+          "mobilePhone": "333222111",
+          "otherPhone": "+34123456789"
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": 4,
+          "name": "New",
+          "lastname": "Contact",
+          "email": "newcontact@example.com",
+          "workPhone": "111222333",
+          "mobilePhone": "333222111",
+          "otherPhone": "+34123456789",
+          "user": null,
+          "workPhoneCountry": 1,
+          "mobilePhoneCountry": 1
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "edit Contact",
+      "providerState": "",
+      "request": {
+        "method": "PUT",
+        "path": "/api/client/contacts/1",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk",
+          "content-length": "213",
+          "content-type": "application/json"
+        },
+        "body": {
+          "name": "Test Contact name",
+          "lastname": "Test Contact Lastname",
+          "email": "testcontact@email.com",
+          "workPhone": "222333444",
+          "mobilePhone": "444333222",
+          "otherPhone": "4001",
+          "workPhoneCountry": "8",
+          "mobilePhoneCountry": "9"
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "name": "Updated",
+          "lastname": "Contact",
+          "email": "testcontact@email.com",
+          "workPhone": "222333444",
+          "workPhoneE164": "+20222333444",
+          "mobilePhone": "444333222",
+          "mobilePhoneE164": "+20444333222",
+          "otherPhone": "1004",
+          "id": 1,
+          "user": null,
+          "workPhoneCountry": 8,
+          "mobilePhoneCountry": 9
+        }
+      }
+    },
+    {
+      "description": "delete Contact",
+      "providerState": "",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/client/contacts/1",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk"
+        },
+        "body": "",
+        "query": ""
+      },
+      "response": {
+        "status": 204,
+        "headers": {},
+        "body": ""
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    },
+    "client": {
+      "name": "pact-cypress-adapter",
+      "version": "1.3.0"
+    }
+  }
+}

@@ -1,16 +1,17 @@
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
-import newVoicemail from '../../fixtures/Voicemail/post.json';
 import VoicemailItem from '../../fixtures/Voicemail/getItem.json';
+import newVoicemail from '../../fixtures/Voicemail/post.json';
 import editVoicemail from '../../fixtures/Voicemail/put.json';
 
-describe('in Voicemail', () => {
+describe('Voicemail', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Voicemail');
     cy.before();
 
-    cy.contains('Buzones de voz').click();
+    cy.contains('Routing endpoints').click();
+    cy.contains('Voicemails').click();
 
-    cy.get('h3').should('contain', 'List of Buzones de voz');
+    cy.get('header').should('contain', 'Voicemails');
 
     cy.get('table').should('contain', VoicemailCollection.body[0].name);
   });
@@ -42,7 +43,7 @@ describe('in Voicemail', () => {
       locution,
     });
 
-    cy.get('h3').should('contain', 'List of Buzones de voz');
+    cy.get('header').should('contain', 'Voicemails');
 
     cy.usePactWait('createVoicemail')
       .its('response.statusCode')
@@ -76,7 +77,7 @@ describe('in Voicemail', () => {
       locution,
     });
 
-    cy.contains('List of Buzones de voz');
+    cy.contains('Voicemails');
 
     cy.usePactWait(['editVoicemail'])
       .its('response.statusCode')

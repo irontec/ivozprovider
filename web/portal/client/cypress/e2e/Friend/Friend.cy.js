@@ -1,62 +1,18 @@
 import FriendCollection from '../../fixtures/Friend/getCollection.json';
-import newFriend from '../../fixtures/Friend/post.json';
 import FriendItem from '../../fixtures/Friend/getItem.json';
 import editFriend from '../../fixtures/Friend/put.json';
 
-describe('in Friend', () => {
+describe('Friend', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Friend');
     cy.before();
 
-    cy.contains('Friend').click();
+    cy.contains('Routing endpoints').click();
+    cy.contains('Friends').click();
 
-    cy.get('h3').should('contain', 'List of Friends');
+    cy.get('header').should('contain', 'Friends');
 
     cy.get('table').should('contain', FriendCollection.body[0].name);
-  });
-
-  ///////////////////////
-  // POST
-  ///////////////////////
-  it('add Friend', () => {
-    cy.usePactIntercept(
-      {
-        method: 'POST',
-        url: '**/api/client/friends*',
-        response: newFriend.response,
-        matchingRules: newFriend.matchingRules,
-      },
-      'createFriend'
-    );
-
-    cy.get('[aria-label=Add]').click();
-
-    const {
-      directConnectivity,
-      priority,
-      description,
-      name,
-      password,
-      transport,
-      ip,
-      port,
-      alwaysApplyTransformations,
-    } = newFriend.request;
-    cy.fillTheForm({
-      directConnectivity,
-      priority,
-      description,
-      name,
-      password,
-      transport,
-      ip,
-      port,
-      alwaysApplyTransformations,
-    });
-
-    cy.get('h3').should('contain', 'List of Friends');
-
-    cy.usePactWait('createFriend').its('response.statusCode').should('eq', 201);
   });
 
   ///////////////////////////////
@@ -79,7 +35,6 @@ describe('in Friend', () => {
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
     const {
-      directConnectivity,
       priority,
       description,
       name,
@@ -99,8 +54,8 @@ describe('in Friend', () => {
       t38Passthrough,
       rtpEncryption,
     } = editFriend.request;
+
     cy.fillTheForm({
-      directConnectivity,
       priority,
       description,
       name,
@@ -121,7 +76,7 @@ describe('in Friend', () => {
       rtpEncryption,
     });
 
-    cy.contains('List of Friends');
+    cy.get('header').contains('Friends');
 
     cy.usePactWait(['editFriend']).its('response.statusCode').should('eq', 200);
   });
@@ -129,23 +84,11 @@ describe('in Friend', () => {
   ///////////////////////
   // DELETE
   ///////////////////////
-  it('delete Friend', () => {
-    cy.intercept('DELETE', '**/api/client/friends/*', {
-      statusCode: 204,
-    }).as('deleteFriend');
-
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
-
-    cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
-      .filter(':visible')
-      .contains('Delete')
-      .click();
-
-    cy.get('h3').should('contain', 'List of Friends');
-
-    cy.usePactWait(['deleteFriend'])
-      .its('response.statusCode')
-      .should('eq', 204);
+  it('it cannot delete Friend', () => {
+    cy.get(
+      'td > div.actions-cell > span > button:has(svg[data-testid="DeleteIcon"])'
+    )
+      .first()
+      .should('be.disabled');
   });
 });

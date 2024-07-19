@@ -1,17 +1,17 @@
 import CompanyServiceCollection from '../../fixtures/CompanyService/getCollection.json';
-import newCompanyService from '../../fixtures/CompanyService/post.json';
 import CompanyServiceItem from '../../fixtures/CompanyService/getItem.json';
+import newCompanyService from '../../fixtures/CompanyService/post.json';
 import editCompanyService from '../../fixtures/CompanyService/put.json';
 
-describe('in CompanyService', () => {
+describe('CompanyService', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('CompanyService');
     cy.prepareGenericPactInterceptors('Service');
     cy.before();
 
-    cy.contains('Servicios').click();
+    cy.contains('Services').click();
 
-    cy.get('h3').should('contain', 'List of Servicios');
+    cy.get('header').should('contain', 'Services');
 
     cy.get('table').should('contain', CompanyServiceCollection.body[0].code);
   });
@@ -38,7 +38,7 @@ describe('in CompanyService', () => {
       code,
     });
 
-    cy.get('h3').should('contain', 'List of Servicios');
+    cy.get('header').should('contain', 'Services');
 
     cy.usePactWait('createCompanyService')
       .its('response.statusCode')
@@ -69,7 +69,7 @@ describe('in CompanyService', () => {
       code,
     });
 
-    cy.contains('List of Servicios');
+    cy.get('header').contains('Services');
 
     cy.usePactWait(['editCompanyService'])
       .its('response.statusCode')
@@ -84,15 +84,15 @@ describe('in CompanyService', () => {
       statusCode: 204,
     }).as('deleteCompanyService');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Servicios');
+    cy.get('header').should('contain', 'Services');
 
     cy.usePactWait(['deleteCompanyService'])
       .its('response.statusCode')

@@ -17,8 +17,8 @@
     "errorExtension": null,
     "noInputVoicemail": null,
     "errorVoicemail": null,
-    "noInputNumberCountry": 65,
-    "errorNumberCountry": 68,
+    "noInputNumberCountry": 8,
+    "errorNumberCountry": 8,
     "excludedExtensionIds": [2]
   },
   "response": {
@@ -40,8 +40,8 @@
       "errorExtension": null,
       "noInputVoicemail": null,
       "errorVoicemail": null,
-      "noInputNumberCountry": 65,
-      "errorNumberCountry": 68,
+      "noInputNumberCountry": 8,
+      "errorNumberCountry": 8,
       "excludedExtensionIds": [2]
     },
     "headers": {

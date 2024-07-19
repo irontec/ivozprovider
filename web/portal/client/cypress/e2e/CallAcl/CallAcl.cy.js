@@ -1,16 +1,17 @@
 import CallAclCollection from '../../fixtures/CallAcl/getCollection.json';
-import newCallAcl from '../../fixtures/CallAcl/post.json';
 import CallAclItem from '../../fixtures/CallAcl/getItem.json';
+import newCallAcl from '../../fixtures/CallAcl/post.json';
 import editCallAcl from '../../fixtures/CallAcl/put.json';
 
-describe('in CallAcl', () => {
+describe('CallAcl', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('CallAcl');
     cy.before();
 
+    cy.contains('User configuration').click();
     cy.contains('Call ACLs').click();
 
-    cy.get('h3').should('contain', 'List of Call ACLs');
+    cy.get('header').should('contain', 'Call ACLs');
 
     cy.get('table').should('contain', CallAclCollection.body[0].name);
   });
@@ -37,7 +38,7 @@ describe('in CallAcl', () => {
       defaultPolicy,
     });
 
-    cy.get('h3').should('contain', 'List of Call ACLs');
+    cy.get('header').should('contain', 'Call ACLs');
 
     cy.usePactWait('createCallAcl')
       .its('response.statusCode')
@@ -69,7 +70,7 @@ describe('in CallAcl', () => {
       defaultPolicy,
     });
 
-    cy.contains('List of Call ACLs');
+    cy.contains('Call ACLs');
 
     cy.usePactWait(['editCallAcl'])
       .its('response.statusCode')
@@ -84,15 +85,15 @@ describe('in CallAcl', () => {
       statusCode: 204,
     }).as('deleteCallAcl');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Call ACLs');
+    cy.get('header').should('contain', 'Call ACLs');
 
     cy.usePactWait(['deleteCallAcl'])
       .its('response.statusCode')

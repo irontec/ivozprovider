@@ -45,6 +45,9 @@ Cypress.Commands.add('fillTheForm', (values) => {
       }
 
       if (role === 'combobox') {
+        if (value.length) {
+          return;
+        }
         cy.get(`input[name="${idx}"]`).click().clear().type('{downArrow}');
 
         cy.get(`li[data-value=${value}]`).click();

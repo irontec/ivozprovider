@@ -23,6 +23,7 @@ pushd "${SCRIPT_DIR}"/../
     if [ -n "$(git status -s ./cypress/pacts)" ]; then
         echo "Pacts are not up to date."
         git status -s ./cypress/pacts
+        git diff ./cypress/pacts
         exit 1
     fi
 popd

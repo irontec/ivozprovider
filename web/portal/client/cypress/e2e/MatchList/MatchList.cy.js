@@ -1,16 +1,17 @@
 import MatchListCollection from '../../fixtures/MatchList/getCollection.json';
-import newMatchList from '../../fixtures/MatchList/post.json';
 import MatchListItem from '../../fixtures/MatchList/getItem.json';
+import newMatchList from '../../fixtures/MatchList/post.json';
 import editMatchList from '../../fixtures/MatchList/put.json';
 
-describe('in MatchList', () => {
+describe('MatchList', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('MatchList');
     cy.before();
 
-    cy.contains('Listas de coincidencia').click();
+    cy.contains('Routing tools').click();
+    cy.contains('Match Lists').click();
 
-    cy.get('h3').should('contain', 'List of Listas de coincidencia');
+    cy.get('header').should('contain', 'Match Lists');
 
     cy.get('table').should('contain', MatchListCollection.body[0].name);
   });
@@ -33,7 +34,7 @@ describe('in MatchList', () => {
 
     cy.fillTheForm(newMatchList.request);
 
-    cy.get('h3').should('contain', 'List of Listas de coincidencia');
+    cy.get('header').should('contain', 'Match Lists');
 
     cy.usePactWait('createMatchList')
       .its('response.statusCode')
@@ -61,7 +62,7 @@ describe('in MatchList', () => {
 
     cy.fillTheForm(editMatchList.request);
 
-    cy.contains('List of Listas de coincidencia');
+    cy.contains('Match Lists');
 
     cy.usePactWait(['editMatchList'])
       .its('response.statusCode')
@@ -76,15 +77,15 @@ describe('in MatchList', () => {
       statusCode: 204,
     }).as('deleteMatchList');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Listas de coincidencia');
+    cy.get('header').should('contain', 'Match Lists');
 
     cy.usePactWait(['deleteMatchList'])
       .its('response.statusCode')

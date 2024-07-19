@@ -1,16 +1,17 @@
 import ScheduleCollection from '../../fixtures/Schedule/getCollection.json';
-import newSchedule from '../../fixtures/Schedule/post.json';
 import ScheduleItem from '../../fixtures/Schedule/getItem.json';
+import newSchedule from '../../fixtures/Schedule/post.json';
 import editSchedule from '../../fixtures/Schedule/put.json';
 
-describe('in Schedule', () => {
+describe('Schedule', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Schedule');
     cy.before();
 
-    cy.contains('Horarios').click();
+    cy.contains('Routing tools').click();
+    cy.contains('Schedules').click();
 
-    cy.get('h3').should('contain', 'List of Horarios');
+    cy.get('header').should('contain', 'Schedules');
 
     cy.get('table').should('contain', ScheduleCollection.body[0].name);
   });
@@ -56,7 +57,7 @@ describe('in Schedule', () => {
       sunday,
     });
 
-    cy.get('h3').should('contain', 'List of Horarios');
+    cy.get('header').should('contain', 'Schedules');
 
     cy.usePactWait('createSchedule')
       .its('response.statusCode')
@@ -107,7 +108,7 @@ describe('in Schedule', () => {
       sunday,
     });
 
-    cy.contains('List of Horarios');
+    cy.contains('Schedules');
 
     cy.usePactWait(['editSchedule'])
       .its('response.statusCode')
@@ -122,15 +123,15 @@ describe('in Schedule', () => {
       statusCode: 204,
     }).as('deleteSchedule');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Horarios');
+    cy.get('header').should('contain', 'Schedules');
 
     cy.usePactWait(['deleteSchedule'])
       .its('response.statusCode')
