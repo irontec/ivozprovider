@@ -15,6 +15,7 @@ export interface Status {
   userAgent: string;
   userName: string;
   voiceMail: string;
+  registered?: boolean;
   features: Array<
     | 'queues'
     | 'recordings'

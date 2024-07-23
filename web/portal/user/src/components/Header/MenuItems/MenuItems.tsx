@@ -3,8 +3,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { ListItemIcon, MenuItem, Typography } from '@mui/material';
 import { useStoreActions } from 'store';
 
+import { Status } from '../../../store/userStatus/status';
 import StyledBadge from '../Avatar/StyledBadge';
-import { Status } from '../useTerminalStatus';
+import { QrCode } from '../QrCode/QrCode';
 import useWebTheme from '../useWebTheme';
 import {
   ContainerStatus,
@@ -33,7 +34,14 @@ const CustomMenuItems = (props: { status: Status }): JSX.Element => {
       </MenuItem>
       <StatusMenuItem key='status'>
         <ContainerStatus>
-          <Logo style={{ backgroundImage: webTheme.logo }} />
+          {status.gsQRCode ? (
+            <QrCode {...status} />
+          ) : (
+            <Logo>
+              <img src={webTheme.logo} alt='' />
+            </Logo>
+          )}
+
           <p>{status.userName}</p>
           <StyledCompanyName>{status.companyName}</StyledCompanyName>
           <StyledHorizontalLine />
