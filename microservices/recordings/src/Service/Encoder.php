@@ -129,7 +129,7 @@ class Encoder
 
             // Set recording filenames
             $convertWav = $this->rawRecordingsDir . $filename;
-            $convertMp3 = $this->rawRecordingsDir . $callid . ".mp3";
+            $convertMp3 = $this->rawRecordingsDir . $hashid . ".mp3";
             $metadata = 'artist="' . $callid . '"';
 
             foreach ($kamAccCdrs as $kamAccCdr) {
