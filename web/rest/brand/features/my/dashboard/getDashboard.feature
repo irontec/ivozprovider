@@ -21,6 +21,12 @@ Feature: Retrieve dashboard
           },
           "recentActivity": [
               {
+                  "name": "Wholesale Company",
+                  "type": "wholesale",
+                  "domainUsers": "wholesale.irontec.com",
+                  "maxCalls": 0
+              },
+              {
                   "name": "Residential Company",
                   "type": "residential",
                   "domainUsers": "",
@@ -45,7 +51,7 @@ Feature: Retrieve dashboard
                   "maxCalls": 0
               }
           ],
-          "clientNum": 4,
+          "clientNum": 5,
           "ddiNum": 3,
           "carrierNum": 2
       }
