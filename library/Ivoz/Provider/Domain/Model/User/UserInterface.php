@@ -26,6 +26,7 @@ use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface;
+use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 
 /**
 * UserInterface
@@ -306,6 +307,20 @@ interface UserInterface extends LoggableEntityInterface
      * @return array<array-key, FaxesRelUserInterface>
      */
     public function getFaxesRelUsers(?Criteria $criteria = null): array;
+
+    public function addRecording(RecordingInterface $recording): UserInterface;
+
+    public function removeRecording(RecordingInterface $recording): UserInterface;
+
+    /**
+     * @param Collection<array-key, RecordingInterface> $recordings
+     */
+    public function replaceRecordings(Collection $recordings): UserInterface;
+
+    /**
+     * @return array<array-key, RecordingInterface>
+     */
+    public function getRecordings(?Criteria $criteria = null): array;
 
     /**
      * @see UserInterface::getRoles()

@@ -17,6 +17,7 @@ use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface;
+use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 
 /**
 * @codeCoverageIgnore
@@ -72,6 +73,12 @@ trait UserTrait
     protected $faxesRelUsers;
 
     /**
+     * @var Collection<array-key, RecordingInterface> & Selectable<array-key, RecordingInterface>
+     * RecordingInterface mappedBy user
+     */
+    protected $recordings;
+
+    /**
      * Constructor
      */
     protected function __construct()
@@ -82,6 +89,7 @@ trait UserTrait
         $this->queueMembers = new ArrayCollection();
         $this->callForwardSettings = new ArrayCollection();
         $this->faxesRelUsers = new ArrayCollection();
+        $this->recordings = new ArrayCollection();
     }
 
     abstract protected function sanitizeValues(): void;
@@ -161,6 +169,16 @@ trait UserTrait
                 $faxesRelUsers
             );
             $self->replaceFaxesRelUsers($replacement);
+        }
+
+        $recordings = $dto->getRecordings();
+        if (!is_null($recordings)) {
+
+            /** @var Collection<array-key, RecordingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $recordings
+            );
+            $self->replaceRecordings($replacement);
         }
 
         $self->sanitizeValues();
@@ -245,6 +263,16 @@ trait UserTrait
                 $faxesRelUsers
             );
             $this->replaceFaxesRelUsers($replacement);
+        }
+
+        $recordings = $dto->getRecordings();
+        if (!is_null($recordings)) {
+
+            /** @var Collection<array-key, RecordingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $recordings
+            );
+            $this->replaceRecordings($replacement);
         }
         $this->sanitizeValues();
 
@@ -713,5 +741,89 @@ trait UserTrait
         }
 
         return $this->faxesRelUsers->toArray();
+    }
+
+    public function addRecording(RecordingInterface $recording): UserInterface
+    {
+        $this->recordings->add($recording);
+
+        return $this;
+    }
+
+    public function removeRecording(RecordingInterface $recording): UserInterface
+    {
+        $this->recordings->removeElement($recording);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, RecordingInterface> $recordings
+     */
+    public function replaceRecordings(Collection $recordings): UserInterface
+    {
+        foreach ($recordings as $entity) {
+            $entity->setUser($this);
+        }
+
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
+        foreach ($this->recordings as $key => $entity) {
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($recordings as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($recordings[$newKey]);
+                    $match = true;
+                    break;
+                }
+            }
+
+            if (!$match) {
+                $this->recordings->remove($key);
+            }
+        }
+
+        foreach ($recordings as $entity) {
+            $this->addRecording($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array<array-key, RecordingInterface>
+     */
+    public function getRecordings(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->recordings->matching($criteria)->toArray();
+        }
+
+        return $this->recordings->toArray();
     }
 }

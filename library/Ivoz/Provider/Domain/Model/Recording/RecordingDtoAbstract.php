@@ -5,6 +5,8 @@ namespace Ivoz\Provider\Domain\Model\Recording;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 
 /**
 * RecordingDtoAbstract
@@ -74,6 +76,16 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
      */
     private $company = null;
 
+    /**
+     * @var DdiDto | null
+     */
+    private $ddi = null;
+
+    /**
+     * @var UserDto | null
+     */
+    private $user = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -102,7 +114,9 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
                 'mimeType',
                 'baseName',
             ],
-            'companyId' => 'company'
+            'companyId' => 'company',
+            'ddiId' => 'ddi',
+            'userId' => 'user'
         ];
     }
 
@@ -125,7 +139,9 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
                 'mimeType' => $this->getRecordedFileMimeType(),
                 'baseName' => $this->getRecordedFileBaseName(),
             ],
-            'company' => $this->getCompany()
+            'company' => $this->getCompany(),
+            'ddi' => $this->getDdi(),
+            'user' => $this->getUser()
         ];
 
         if (!$hideSensitiveData) {
@@ -301,6 +317,66 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setDdi(?DdiDto $ddi): static
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    public function getDdi(): ?DdiDto
+    {
+        return $this->ddi;
+    }
+
+    public function setDdiId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new DdiDto($id)
+            : null;
+
+        return $this->setDdi($value);
+    }
+
+    public function getDdiId(): ?int
+    {
+        if ($dto = $this->getDdi()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setUser(?UserDto $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUser(): ?UserDto
+    {
+        return $this->user;
+    }
+
+    public function setUserId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new UserDto($id)
+            : null;
+
+        return $this->setUser($value);
+    }
+
+    public function getUserId(): ?int
+    {
+        if ($dto = $this->getUser()) {
             return $dto->getId();
         }
 

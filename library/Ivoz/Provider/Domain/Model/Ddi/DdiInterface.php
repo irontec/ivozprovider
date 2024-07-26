@@ -22,6 +22,9 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 
 /**
 * DdiInterface
@@ -161,6 +164,20 @@ interface DdiInterface extends LoggableEntityInterface
     public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
     public function getRetailAccount(): ?RetailAccountInterface;
+
+    public function addRecording(RecordingInterface $recording): DdiInterface;
+
+    public function removeRecording(RecordingInterface $recording): DdiInterface;
+
+    /**
+     * @param Collection<array-key, RecordingInterface> $recordings
+     */
+    public function replaceRecordings(Collection $recordings): DdiInterface;
+
+    /**
+     * @return array<array-key, RecordingInterface>
+     */
+    public function getRecordings(?Criteria $criteria = null): array;
 
     /**
      * @param string $prefix
