@@ -3836,9 +3836,13 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Recording/RecordingAbstract.php">
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="6">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
