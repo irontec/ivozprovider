@@ -35,7 +35,7 @@ class CompanySoftDeleteTest extends KernelTestCase
             ->getRepository(Company::class);
 
         $fixtureCompanies = $companyRepository->findAll();
-        $count = 5;
+        $count = 6;
         $this->assertCount($count, $fixtureCompanies);
 
         $this->removeCompany(1);
