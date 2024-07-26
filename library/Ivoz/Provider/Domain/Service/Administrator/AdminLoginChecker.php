@@ -2,14 +2,20 @@
 
 namespace Ivoz\Provider\Domain\Service\Administrator;
 
-use Ivoz\Provider\Domain\HostnameGetter;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Service\HostnameGetter;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAccountStatusException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 
 class AdminLoginChecker implements UserCheckerInterface
 {
+    public function __construct(
+        private HostnameGetter $hostnameGetter,
+        private AssertWebPortalAccessible $assertWebPortalAccesible
+    ) {
+    }
+
     /**
      * @return void
      */
