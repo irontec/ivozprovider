@@ -47,15 +47,15 @@ days will be holidays using the buttons in its row:
    is called *Import from CSV*.
    Also a range of dates may be added with *Add Holiday date range* menu option.
 
-.. _calendar periods:
+.. _special schedules:
 
-Calendar Periods
-----------------
+Special schedules
+-----------------
 
 Calendars can also be used to override some time periods with a different schedule.
 This can be handy if vPBX has a summer schedule or other types of schedule based events.
 
-Calendar periods can define a custom Scheduler and override External Call filters configurations:
+Special schedules can define a custom Scheduler and override External Call filters configurations:
 
     Start Date
         Since when the schedules will override the filters configuration
@@ -73,8 +73,8 @@ Calendar periods can define a custom Scheduler and override External Call filter
     Route options
         Override default external call filter Out of schedule options
 
-Difference between non-whole day event and calendar period
-----------------------------------------------------------
+Difference between non-whole day event and special schedules
+------------------------------------------------------------
 
 In order to understand the difference between these two features it is important to know the order of call filter logic:
 
@@ -88,10 +88,10 @@ This is where non-whole day event applies, making the answer to the question abo
 
 **2. Is current time marked as out-of-schedule?**
 
-This is where calendar period applies, overriding schedules of External Call Filter with the one defined in calendar
+This is where special schedules applies, overriding schedules of External Call Filter with the one defined in calendar
 period.
 
-    - Yes: apply out-of-schedule logic defined in the calendar period or in External Call Filter.
+    - Yes: apply out-of-schedule logic defined in the special schedules or in External Call Filter.
 
     - No: proceed with standard logic.
 
@@ -101,11 +101,11 @@ Configuration of a given day:
 
     - Non-whole day event: 8:00-15:00
 
-    - Calendar period: 13:00-17:00
+    - Special schedule: 13:00-17:00
 
 Cases:
 
-    - Call at 7:00: out of schedule due to calendar period.
+    - Call at 7:00: out of schedule due to special schedule.
 
     - Call at 9:00: holiday logic due to non-whole day event.
 
@@ -113,5 +113,5 @@ Cases:
 
     - Call at 16:00: normal logic.
 
-    - Call at 18:00: out of schedule due to calendar period.
+    - Call at 18:00: out of schedule due to special schedule.
 
