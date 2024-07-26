@@ -23,7 +23,8 @@ Feature: Retrieve web portals
                   "fileSize": 10,
                   "mimeType": "image/jpeg",
                   "baseName": "client-logo.jpeg"
-              }
+              },
+              "company": null
           },
           {
               "url": "https://users-ivozprovider.irontec.com",
@@ -34,7 +35,20 @@ Feature: Retrieve web portals
                   "fileSize": 10,
                   "mimeType": "image/jpeg",
                   "baseName": "user-logo.jpeg"
-              }
+              },
+              "company": null
+          },
+          {
+              "url": "https://users2-ivozprovider.irontec.com",
+              "urlType": "user",
+              "name": "Irontec Ivozprovider User Admin Portal",
+              "id": 6,
+              "logo": {
+                  "fileSize": 10,
+                  "mimeType": "image/jpeg",
+                  "baseName": "user-logo.jpeg"
+              },
+              "company": 1
           }
       ]
       """
@@ -57,6 +71,7 @@ Feature: Retrieve web portals
               "fileSize": 10,
               "mimeType": "image/jpeg",
               "baseName": "client-logo.jpeg"
-          }
+          },
+          "company": null
       }
       """
