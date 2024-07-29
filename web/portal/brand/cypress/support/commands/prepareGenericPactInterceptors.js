@@ -21,6 +21,7 @@ import RoutingTagsCollection from '../../fixtures/Provider/RoutingTags/getCollec
 import TimezonesCollection from '../../fixtures/Provider/Timezones/getCollection.json';
 import TransformationRuleSetsCollection from '../../fixtures/Provider/TransformationRuleSets/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
+import WebPortalCollection from '../../fixtures/Provider/WebPortals/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.setupPact(
@@ -119,4 +120,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/brand/my/active_calls', {
     ...ActiveCallsItem,
   }).as('getMyActiveCalls');
+
+  cy.intercept('GET', '**/api/brand/web_portals?*', {
+    ...WebPortalCollection
+  }).as('getWebPortals');
 });

@@ -1,5 +1,5 @@
 import CompaniesCollection from '../../../fixtures/Provider/Companies/getCollection.json';
-import { deleteCompany, postCompany, putCompany } from './VirtualPbxs.tests';
+import {deleteCompany, postCompany, postWebPortal, putCompany} from './VirtualPbxs.tests';
 
 describe('in Companies', () => {
   beforeEach(() => {
@@ -28,4 +28,9 @@ describe('in Companies', () => {
   // DELETE
   ///////////////////////
   it('delete Virtual Pbx Companies', deleteCompany);
+
+  ///////////////////////
+  // POST
+  ///////////////////////
+  it('post Web Portal', postWebPortal);
 });

@@ -68,3 +68,13 @@ export const deleteCompany = () => {
 
   cy.get('header').should('contain', 'Residentials');
 };
+
+export const postWebPortal = () => {
+  cy.contains('Residentials').click();
+
+  cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
+  cy.get('li.MuiMenuItem-root').contains('Administration Portals').click();
+  cy.get('svg[data-testId="AddIcon"]').first().click();
+
+  cy.get('input[name="urlType"]').should('be.disabled');
+};
