@@ -19,6 +19,7 @@ use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
+use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 
 /**
 * DdiDtoAbstract
@@ -148,6 +149,11 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
      */
     private $retailAccount = null;
 
+    /**
+     * @var RecordingDto[] | null
+     */
+    private $recordings = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -219,7 +225,8 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'country' => $this->getCountry(),
             'residentialDevice' => $this->getResidentialDevice(),
             'conditionalRoute' => $this->getConditionalRoute(),
-            'retailAccount' => $this->getRetailAccount()
+            'retailAccount' => $this->getRetailAccount(),
+            'recordings' => $this->getRecordings()
         ];
 
         if (!$hideSensitiveData) {
@@ -795,5 +802,23 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
+    }
+
+    /**
+     * @param RecordingDto[] | null $recordings
+     */
+    public function setRecordings(?array $recordings): static
+    {
+        $this->recordings = $recordings;
+
+        return $this;
+    }
+
+    /**
+    * @return RecordingDto[] | null
+    */
+    public function getRecordings(): ?array
+    {
+        return $this->recordings;
     }
 }

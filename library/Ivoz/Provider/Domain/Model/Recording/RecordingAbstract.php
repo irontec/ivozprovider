@@ -12,7 +12,11 @@ use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Recording\RecordedFile;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\User\User;
 
 /**
 * RecordingAbstract
@@ -68,6 +72,18 @@ abstract class RecordingAbstract
      * inversedBy recordings
      */
     protected $company;
+
+    /**
+     * @var ?DdiInterface
+     * inversedBy recordings
+     */
+    protected $ddi = null;
+
+    /**
+     * @var ?UserInterface
+     * inversedBy recordings
+     */
+    protected $user = null;
 
     /**
      * Constructor
@@ -172,7 +188,9 @@ abstract class RecordingAbstract
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
-            ->setCompany($fkTransformer->transform($company));
+            ->setCompany($fkTransformer->transform($company))
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
+            ->setUser($fkTransformer->transform($dto->getUser()));
 
         $self->initChangelog();
 
@@ -213,7 +231,9 @@ abstract class RecordingAbstract
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
             ->setRecordedFile($recordedFile)
-            ->setCompany($fkTransformer->transform($company));
+            ->setCompany($fkTransformer->transform($company))
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
+            ->setUser($fkTransformer->transform($dto->getUser()));
 
         return $this;
     }
@@ -234,7 +254,9 @@ abstract class RecordingAbstract
             ->setRecordedFileFileSize(self::getRecordedFile()->getFileSize())
             ->setRecordedFileMimeType(self::getRecordedFile()->getMimeType())
             ->setRecordedFileBaseName(self::getRecordedFile()->getBaseName())
-            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setDdi(Ddi::entityToDto(self::getDdi(), $depth))
+            ->setUser(User::entityToDto(self::getUser(), $depth));
     }
 
     /**
@@ -253,7 +275,9 @@ abstract class RecordingAbstract
             'recordedFileFileSize' => self::getRecordedFile()->getFileSize(),
             'recordedFileMimeType' => self::getRecordedFile()->getMimeType(),
             'recordedFileBaseName' => self::getRecordedFile()->getBaseName(),
-            'companyId' => self::getCompany()->getId()
+            'companyId' => self::getCompany()->getId(),
+            'ddiId' => self::getDdi()?->getId(),
+            'userId' => self::getUser()?->getId()
         ];
     }
 
@@ -404,5 +428,29 @@ abstract class RecordingAbstract
     public function getCompany(): CompanyInterface
     {
         return $this->company;
+    }
+
+    public function setDdi(?DdiInterface $ddi = null): static
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    public function getDdi(): ?DdiInterface
+    {
+        return $this->ddi;
+    }
+
+    public function setUser(?UserInterface $user = null): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUser(): ?UserInterface
+    {
+        return $this->user;
     }
 }
