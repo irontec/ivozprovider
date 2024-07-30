@@ -417,12 +417,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "email[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "email[start]",
                         "in": "query",
                         "required": false,
@@ -439,6 +433,18 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "email[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exists[company]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "exists[lastname]",
@@ -477,6 +483,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "lastname[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "lastname[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "lastname[neq]",
                         "in": "query",
                         "required": false,
@@ -493,18 +511,6 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "lastname[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "lastname[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "name",
@@ -525,12 +531,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -544,6 +544,12 @@
                     },
                     {
                         "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -34693,6 +34699,12 @@
                 },
                 "parameters": [
                     {
+                        "name": "brand",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company",
                         "in": "query",
                         "required": false,
@@ -34765,12 +34777,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "logo.baseName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "logo.baseName[start]",
                         "in": "query",
                         "required": false,
@@ -34793,6 +34799,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "logo.baseName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "logo.fileSize",
@@ -34855,18 +34867,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "logo.mimeType[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "logo.mimeType[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "logo.mimeType[end]",
                         "in": "query",
                         "required": false,
@@ -34880,6 +34880,18 @@
                     },
                     {
                         "name": "logo.mimeType[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "logo.mimeType[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "logo.mimeType[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35410,7 +35422,8 @@
                 "active",
                 "restricted",
                 "username",
-                "email"
+                "email",
+                "company"
             ],
             "properties": {
                 "id": {
@@ -35451,6 +35464,10 @@
                     "description": "",
                     "example": "",
                     "type": "string"
+                },
+                "company": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -46089,7 +46106,8 @@
             "type": "object",
             "required": [
                 "url",
-                "urlType"
+                "urlType",
+                "brand"
             ],
             "properties": {
                 "id": {
@@ -46122,6 +46140,10 @@
                 },
                 "logo": {
                     "$ref": "#/definitions/WebPortal_Logo"
+                },
+                "brand": {
+                    "description": "",
+                    "type": "integer"
                 },
                 "company": {
                     "description": "",
