@@ -27493,6 +27493,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "callee[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "callee[start]",
                         "in": "query",
                         "required": false,
@@ -27517,12 +27523,6 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "callee[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "caller",
                         "in": "query",
                         "required": false,
@@ -27530,6 +27530,18 @@
                     },
                     {
                         "name": "caller[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "caller[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "caller[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -27548,18 +27560,6 @@
                     },
                     {
                         "name": "caller[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "caller[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "caller[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -27605,6 +27605,24 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "ddi",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ddi[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ddi[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "duration",
@@ -27697,6 +27715,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "recorder[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "recorder[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "recorder[start]",
                         "in": "query",
                         "required": false,
@@ -27709,22 +27739,10 @@
                         "type": "string"
                     },
                     {
-                        "name": "recorder[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "recorder[exists]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "recorder[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "type",
@@ -27734,6 +27752,12 @@
                     },
                     {
                         "name": "type[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -27757,10 +27781,22 @@
                         "type": "string"
                     },
                     {
-                        "name": "type[end]",
+                        "name": "user",
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "user[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "enum": [
@@ -43860,6 +43896,14 @@
                 },
                 "recordedFile": {
                     "$ref": "#/definitions/Recording_RecordedFile"
+                },
+                "ddi": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "user": {
+                    "description": "",
+                    "type": "integer"
                 }
             },
             "required": [
@@ -43983,6 +44027,12 @@
                 },
                 "recordedFile": {
                     "$ref": "#/definitions/Recording_RecordedFile"
+                },
+                "ddi": {
+                    "$ref": "#/definitions/Ddi"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
                 }
             },
             "required": [
