@@ -9,6 +9,7 @@ use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
+use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Process\Process;
 
@@ -134,7 +135,7 @@ class Encoder
 
             foreach ($kamAccCdrs as $kamAccCdr) {
                 if ($kamAccCdr instanceof TrunksCdrInterface) {
-                    $type = 'ddi';
+                    $type = RecordingInterface::TYPE_DDI;
                     $direction = $kamAccCdr->getDirection();
 
                     if ($direction == 'outbound') {
@@ -168,7 +169,7 @@ class Encoder
                         continue;
                     }
                 } elseif ($kamAccCdr instanceof UsersCdrInterface) {
-                    $type = 'ondemand';
+                    $type = RecordingInterface::TYPE_ONDEMAND;
                     if ($kamAccCdr->getXcallid()) {
                         // If call second leg, callee is who activated the recording
                         $recorder = $kamAccCdr->getCallee();
@@ -176,6 +177,8 @@ class Encoder
                         // If call first leg, caller is who activated the recording
                         $recorder = $kamAccCdr->getCaller();
                     }
+
+                    $user = $kamAccCdr->getUser();
                 } else {
                     // This should not even be possible
                     $this->logger->error(sprintf("[Recordings][ERROR] Invalid CDR entries for %s\n", $callid));
@@ -266,6 +269,20 @@ class Encoder
                     ->setCallee($kamAccCdr->getCallee())
                     ->setRecordedFileBaseName($baseName)
                     ->setRecordedFilePath($convertMp3);
+
+
+                $isDdi = $type === RecordingInterface::TYPE_DDI && is_object($ddi);
+                $isUser = $type === RecordingInterface::TYPE_ONDEMAND && is_object($user);
+
+                if ($isDdi) {
+                    $recordingDto->setDdiId(
+                        $ddi->getId()
+                    );
+                } elseif ($isUser) {
+                    $recordingDto->setUserId(
+                        $user->getId()
+                    );
+                }
 
                 // Store this Recording
                 $recording = $this->entityTools->persistDto($recordingDto, null, true);
