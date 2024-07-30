@@ -89,7 +89,7 @@ class CompanySoftDeleteTest extends KernelTestCase
             Recording::class
         );
 
-        $this->assertCount(1, $changelog);
+        $this->assertCount(3, $changelog);
 
         $this->assertEquals(
             $changelog[0]->getData(),
