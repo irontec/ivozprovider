@@ -31,6 +31,7 @@ class WebPortalDto extends WebPortalDtoAbstract
 
         if ($role === 'ROLE_BRAND_ADMIN') {
             unset($response['brandId']);
+            $response['companyId'] = 'company';
         }
 
         return $response;

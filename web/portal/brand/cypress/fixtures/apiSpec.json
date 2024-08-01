@@ -34723,6 +34723,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "exists[company]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[logo.baseName]",
                         "in": "query",
                         "required": false,
@@ -34771,6 +34777,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "logo.baseName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "logo.baseName[start]",
                         "in": "query",
                         "required": false,
@@ -34793,12 +34805,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "logo.baseName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "logo.fileSize",
@@ -34861,12 +34867,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "logo.mimeType[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "logo.mimeType[start]",
                         "in": "query",
                         "required": false,
@@ -34891,6 +34891,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "logo.mimeType[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -34898,6 +34904,12 @@
                     },
                     {
                         "name": "name[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -34927,12 +34939,6 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "url",
                         "in": "query",
                         "required": false,
@@ -34951,6 +34957,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "urlType[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "urlType[neq]",
                         "in": "query",
                         "required": false,
@@ -34964,12 +34976,6 @@
                     },
                     {
                         "name": "urlType[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "urlType[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -46117,6 +46123,10 @@
                 },
                 "logo": {
                     "$ref": "#/definitions/WebPortal_Logo"
+                },
+                "company": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
