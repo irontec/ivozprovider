@@ -90,6 +90,10 @@ class Encoder
 
         // Check each recording file
         foreach ($files as $filename) {
+            // FIXME This mutes a phpstan error until this microservice refactor
+            $ddi = null;
+            $user = null;
+
             // Store valid files
             if (preg_match("/\w+-\w+-(.*)-\w+-mix.wav/", $filename, $matches)) {
                 $file = $matches[0];
