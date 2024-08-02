@@ -7,11 +7,11 @@ set -e
 # Set current environment
 export APP_ENV=prod
 
-# Create jwt certificates
-[ ! -e /opt/irontec/ivozprovider/storage/jwt/private.pem ] && bin/generate-keys --initial
-
 if [ -d /opt/irontec/ivozprovider/web/rest/platform/ ]; then
     pushd /opt/irontec/ivozprovider/web/rest/platform/
+        # Create jwt certificates
+        [ ! -e /opt/irontec/ivozprovider/storage/jwt/private.pem ] && bin/generate-keys --initial
+
         # Set proper var permissions
         setfacl -dR -m u:www-data:rwX -m u:root:rwX var
         setfacl  -R -m u:www-data:rwX -m u:root:rwX var
