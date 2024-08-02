@@ -1,0 +1,42 @@
+{
+    "body": [
+        {
+            "startTime": "2018-11-22 17:54:49",
+            "duration": 3600,
+            "direction": "outbound",
+            "caller": "102",
+            "callee": "+34676896561",
+            "owner": null,
+            "disposition": "answered",
+            "id": 1
+        },
+        {
+            "startTime": "2018-11-22 17:54:49",
+            "duration": 3600,
+            "direction": "outbound",
+            "caller": "102",
+            "callee": "+34676896561",
+            "owner": null,
+            "disposition": "answered",
+            "id": 2
+        },
+        {
+            "startTime": "match:regexp(/\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}/)",
+            "duration": 3600,
+            "direction": "outbound",
+            "caller": "103",
+            "callee": "+34676896564",
+            "owner": null,
+            "disposition": "answered",
+            "id": 3
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/user/my/call_history?_page=1",
+        "x-last-page": "/api/user/my/call_history?_page=1",
+        "x-next-page": "/api/user/my/call_history?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}

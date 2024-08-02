@@ -1,0 +1,14 @@
+{
+    "body": {
+        "userName": "Alice",
+        "userLastName": "Allison",
+        "extension": "",
+        "terminal": "alice",
+        "email": "alice@democompany.com",
+        "outgoingDdi": "121"
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

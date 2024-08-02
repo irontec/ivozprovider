@@ -1,0 +1,53 @@
+{
+  "body": {
+    "callTypeFilter": "internal",
+    "callForwardType": "inconditional",
+    "targetType": "number",
+    "numberValue": "946002053",
+    "noAnswerTimeout": 0,
+    "enabled": true,
+    "id": 1,
+    "user": {
+      "name": "Alice",
+      "lastname": "Allison",
+      "email": "alice@democompany.com",
+      "pass": "*****",
+      "doNotDisturb": false,
+      "isBoss": false,
+      "active": true,
+      "maxCalls": 1,
+      "externalIpCalls": "0",
+      "rejectCallMethod": "rfc",
+      "multiContact": true,
+      "gsQRCode": false,
+      "id": 1,
+      "bossAssistant": null,
+      "extension": null,
+      "timezone": 145,
+      "voicemail": null
+    },
+    "extension": null,
+    "voicemail": null,
+    "numberCountry": {
+      "code": "ES",
+      "countryCode": "+34",
+      "id": 68,
+      "name": {
+        "en": "Spain",
+        "es": "España",
+        "ca": "España",
+        "it": "Spagna"
+      },
+      "zone": {
+        "en": "Europe",
+        "es": "Europa",
+        "ca": "Europa",
+        "it": "Europe"
+      }
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

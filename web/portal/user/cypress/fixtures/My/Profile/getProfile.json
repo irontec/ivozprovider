@@ -1,0 +1,17 @@
+{
+    "body": {
+        "name": "Alice",
+        "lastname": "Allison",
+        "email": "alice@democompany.com",
+        "doNotDisturb": false,
+        "isBoss": false,
+        "maxCalls": 1,
+        "id": 1,
+        "bossAssistant": null,
+        "timezone": "~"
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}
