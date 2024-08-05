@@ -72,7 +72,7 @@ pipeline {
                     expression { hasLabel("ci-force-tests") }
                     expression { hasCommitTag("core:") }
                     expression { hasCommitTag("schema:") }
-                    expression { hasCommitTag("microservice:") }
+                    expression { hasCommitTag("microservices/") }
                     expression { hasCommitTag("rest") }
                     branch "bleeding"
                     branch "tempest"
