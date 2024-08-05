@@ -1,8 +1,17 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import DialpadIcon from '@mui/icons-material/Dialpad';
+import { useStoreState } from 'store';
 
+import { ClientFeatures } from '../../store/clientSession/aboutMe';
+import Recording from '../Recording/Recording';
 import { DdiProperties, DdiPropertyList } from './DdiProperties';
 import RouteType from './Field/RouteType';
 
@@ -18,6 +27,33 @@ const allRoutableFields = [
   'conditionalRoute',
   'retailAccount',
 ];
+
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, entityService, row } = props;
+
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === Recording.iden
+  ) {
+    const hasRecordingsFeature = aboutMe?.features.includes(
+      ClientFeatures.recordings
+    );
+
+    if (!hasRecordingsFeature) {
+      return (
+        <ChildEntityLink
+          row={row}
+          routeMapItem={routeMapItem}
+          disabled={true}
+        />
+      );
+    }
+  }
+
+  return DefaultChildDecorator(props);
+};
 
 const properties: DdiProperties = {
   ddi: {
@@ -200,6 +236,7 @@ const ddi: EntityInterface = {
 
     return module.default;
   },
+  ChildDecorator,
 };
 
 export default ddi;
