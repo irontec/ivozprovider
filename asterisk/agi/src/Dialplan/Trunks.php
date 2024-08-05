@@ -94,6 +94,7 @@ class Trunks extends RouteHandlerAbstract
         $this->agi->setVariable("__COMPANYID", $company->getId());
         $this->agi->setVariable("__COMPANYTYPE", $company->getType());
         $this->agi->setVariable("__BRANDID", $brand->getId());
+        $this->agi->setVariable("__ONDEMANDCODE", $company->getOnDemandRecordCode());
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
         $this->agi->setVariable("CHANNEL(language)", $ddi->getLanguageCode());
 
