@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Move to webapp dir
+cd $(dirname "$(realpath -se "$0")")/..
+
+# Run linter
+yarn lint
+
+CHANGED_FILES=$(git diff --name-only .)
+if [ -n "$CHANGED_FILES" ]; then
+    echo "Please fix following files format"
+    git status --short
+    exit 1
+fi
+
+echo "No files were changed in these commits."
+exit 0
