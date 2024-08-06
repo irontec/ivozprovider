@@ -31,6 +31,7 @@ import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
 import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json';
 import QueueCollection from '../../fixtures/Queue/getCollection.json';
+import RecordingCollection from '../../fixtures/Recording/getCollection.json';
 import ResidentialDeviceCollection from '../../fixtures/ResidentialDevice/getCollection.json';
 import RetailAccountCollection from '../../fixtures/RetailAccount/getCollection.json';
 import RouteLockCollection from '../../fixtures/RouteLock/getCollection.json';
@@ -237,4 +238,9 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/countries?*', {
     ...CountryCollection,
   }).as('getCountry');
+
+  cy.intercept('GET', '**/api/client/recordings?*', {
+    ...RecordingCollection,
+  }).as('getRecording');
+
 });
