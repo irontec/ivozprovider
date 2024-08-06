@@ -12,6 +12,10 @@ services:
   Ivoz\Core\Domain\Service\ApiClientInterface:
     '@Ivoz\Provider\Infrastructure\Api\Client\Client'
 
+  Ivoz\Provider\Infrastructure\Hostname\GetHostname: ~
+  Ivoz\Provider\Domain\Service\HostnameGetter:
+    '@Ivoz\Provider\Infrastructure\Hostname\GetHostname'
+
   ################################################
   ## Listeners
   ################################################

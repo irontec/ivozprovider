@@ -3,10 +3,11 @@
 namespace Ivoz\Provider\Domain\Service\User;
 
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\HostnameGetter;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAccountStatusException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class UserLoginChecker implements UserCheckerInterface
 {
@@ -29,6 +30,12 @@ class UserLoginChecker implements UserCheckerInterface
                 'Your user account was disabled.'
             );
         }
+
+        $hostName = $this->hostnameGetter->__invoke() ?? '';
+        $this->assertWebPortalAccesible->execute(
+            $admin,
+            $hostName
+        );
     }
 
     /**
