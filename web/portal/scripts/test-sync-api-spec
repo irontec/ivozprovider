@@ -1,0 +1,21 @@
+#!/bin/bash
+
+API_TYPE=$1
+if [ -z "$API_TYPE" ]; then
+    echo "Usage: $0 [platform|brand|client|user]"
+    exit 1
+fi
+
+# Move to webapp dir
+cd $(dirname "$(realpath -se "$0")")/..
+
+# Generate requested API spec
+/opt/irontec/ivozprovider/web/rest/$API_TYPE/bin/console api:swagger:export > ./cypress/fixtures/apiSpec.json
+if [ -n "$(git status --short ./cypress/fixtures)" ]; then
+    echo "API spec is not up to date."
+    git status --short ./cypress/fixtures
+    exit 1
+fi
+
+echo "No changes found in API spec file"
+exit 0

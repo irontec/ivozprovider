@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Move to webapp dir
+cd $(dirname "$(realpath -se "$0")")/..
+
+# Install required dependencies
+yarn install
+
+# Run linter
+LANG=en_US.UTF-8 yarn run cy:run
+
+# Verify packts are in sync
+for PACT in ./cypress/pacts/*.json; do
+    [ -e "$PACT" ] || continue
+    jq . $PACT > $PACT.minified && mv $PACT.minified $PACT
+done
+
+PACTS_CHANGED=$(git status --short ./cypress/pacts)
+if [ -n "$PACTS_CHANGED" ]; then
+    echo "============ Pacts are not up to date. ==============="
+    git status --short ./cypress/pacts
+    echo "======================================================"
+    git diff ./cypress/pacts
+    echo "======================================================"
+    exit 1
+fi
+
+echo "All pact files are updated."
+exit 0
