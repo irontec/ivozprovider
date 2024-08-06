@@ -1,0 +1,161 @@
+{
+    "consumer": {
+      "name": "client-consumer-Queues-QueueMembers"
+    },
+    "provider": {
+      "name": "client-provider-Queues-QueueMembers"
+    },
+    "interactions": [
+      {
+        "description": "add QueuesMember",
+        "providerState": "",
+        "request": {
+          "method": "POST",
+          "path": "/api/client/queue_members",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk",
+            "content-length": "34",
+            "content-type": "application/json"
+          },
+          "body": {
+            "queue": 1,
+            "user": "2",
+            "penalty": 1
+          },
+          "query": ""
+        },
+        "response": {
+          "status": 201,
+          "headers": {
+            "content-type": "application/json; charset=utf-8"
+          },
+          "body": {
+            "penalty": 1,
+            "id": 2,
+            "queue": {
+              "name": "testQueue",
+              "displayName": "testQueue DisplayName",
+              "maxWaitTime": 20,
+              "timeoutTargetType": "number",
+              "timeoutNumberValue": "946002020",
+              "maxlen": 5,
+              "fullTargetType": "number",
+              "fullNumberValue": "946002021",
+              "periodicAnnounceFrequency": 7,
+              "announcePosition": "yes",
+              "announceFrequency": 10,
+              "memberCallRest": 0,
+              "memberCallTimeout": 1,
+              "strategy": "rrmemory",
+              "weight": 5,
+              "preventMissedCalls": 1,
+              "id": 1,
+              "periodicAnnounceLocution": 1,
+              "timeoutLocution": 1,
+              "timeoutExtension": null,
+              "timeoutVoicemail": null,
+              "fullLocution": 1,
+              "fullExtension": null,
+              "fullVoicemail": null,
+              "timeoutNumberCountry": 68,
+              "fullNumberCountry": 68
+            },
+            "user": {
+              "name": "Bob",
+              "lastname": "Bobson",
+              "email": "bob@democompany.com",
+              "pass": "*****",
+              "doNotDisturb": false,
+              "isBoss": true,
+              "active": true,
+              "maxCalls": 1,
+              "externalIpCalls": "0",
+              "rejectCallMethod": "rfc",
+              "multiContact": true,
+              "gsQRCode": false,
+              "id": 2,
+              "callAcl": null,
+              "bossAssistant": 1,
+              "bossAssistantWhiteList": null,
+              "transformationRuleSet": 1,
+              "language": null,
+              "terminal": 2,
+              "extension": null,
+              "timezone": 145,
+              "outgoingDdi": null,
+              "outgoingDdiRule": null,
+              "location": 1,
+              "voicemail": null,
+              "contact": null
+            }
+          },
+          "matchingRules": {
+            "$.body.id": {
+              "match": "type"
+            }
+          }
+        }
+      },
+      {
+        "description": "edit QueueMember",
+        "providerState": "",
+        "request": {
+          "method": "PUT",
+          "path": "/api/client/queue_members/1",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk",
+            "content-length": "34",
+            "content-type": "application/json"
+          },
+          "body": {
+            "queue": 1,
+            "user": "2",
+            "penalty": 2
+          },
+          "query": ""
+        },
+        "response": {
+          "status": 200,
+          "headers": {
+            "content-type": "application/json; charset=utf-8"
+          },
+          "body": {
+            "penalty": 2,
+            "id": 1,
+            "queue": 1,
+            "user": 2
+          }
+        }
+      },
+      {
+        "description": "delete QueueMember",
+        "providerState": "",
+        "request": {
+          "method": "DELETE",
+          "path": "/api/client/queue_members/1",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk"
+          },
+          "body": "",
+          "query": ""
+        },
+        "response": {
+          "status": 204,
+          "headers": {},
+          "body": ""
+        }
+      }
+    ],
+    "metadata": {
+      "pactSpecification": {
+        "version": "2.0.0"
+      },
+      "client": {
+        "name": "pact-cypress-adapter",
+        "version": "1.3.0"
+      }
+    }
+  }

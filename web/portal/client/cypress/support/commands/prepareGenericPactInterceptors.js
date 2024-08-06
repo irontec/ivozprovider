@@ -37,6 +37,7 @@ import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollect
 import OutgoingDdiRulePatternCollection from '../../fixtures/OutgoingDdiRulePatterns/getCollection.json';
 import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json';
 import QueueCollection from '../../fixtures/Queue/getCollection.json';
+import QueueMemberCollection from '../../fixtures/QueueMember/getCollection.json';
 import RecordingCollection from '../../fixtures/Recording/getCollection.json';
 import ResidentialDeviceCollection from '../../fixtures/ResidentialDevice/getCollection.json';
 import RetailAccountCollection from '../../fixtures/RetailAccount/getCollection.json';
@@ -117,6 +118,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/queues?*', {
     ...QueueCollection,
   }).as('getQueue');
+
+  cy.intercept('GET', '**/api/client/queue_members?*', {
+    ...QueueMemberCollection,
+  }).as('getQueueMember');
 
   cy.intercept('GET', '**/api/client/ivrs?*', {
     ...IvrCollection,
