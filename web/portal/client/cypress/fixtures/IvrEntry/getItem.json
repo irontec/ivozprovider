@@ -1,0 +1,19 @@
+{
+  "body":{
+    "entry": "test",
+    "displayName": "Entry display name",
+    "routeType": "number",
+    "numberValue": "946002050",
+    "id": 1,
+    "ivr": 1,
+    "welcomeLocution": 1,
+    "extension": null,
+    "voicemail": null,
+    "conditionalRoute": null,
+    "numberCountry": 68
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

@@ -1,0 +1,25 @@
+{
+  "body": [
+    {
+      "entry": "test",
+      "displayName": "Entry display name",
+      "routeType": "number",
+      "numberValue": "946002050",
+      "id": 1,
+      "ivr": 1,
+      "welcomeLocution": 1,
+      "extension": null,
+      "voicemail": null,
+      "conditionalRoute": null,
+      "numberCountry": 68
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/ivrs_entries?_page=1",
+    "x-last-page": "/api/client/ivrs_entries?_page=1",
+    "x-next-page": "/api/client/ivrs_entries?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

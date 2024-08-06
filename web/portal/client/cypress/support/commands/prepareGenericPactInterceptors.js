@@ -22,6 +22,7 @@ import HolidayDateCollection from '../../fixtures/HolidayDate/getCollection.json
 import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
 import HuntGroupMemberByHuntGroupCollection from '../../fixtures/HuntGroupMember/getCollection.json';
 import IvrCollection from '../../fixtures/Ivr/getCollection.json';
+import IvrEntryCollection from '../../fixtures/IvrEntry/getCollection.json';
 import LanguageCollection from '../../fixtures/Language/getCollection.json';
 import LocationCollection from '../../fixtures/Location/getCollection.json';
 import LocutionCollection from '../../fixtures/Locution/getCollection.json';
@@ -120,6 +121,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/ivrs?*', {
     ...IvrCollection,
   }).as('getIvr');
+
+  cy.intercept('GET', '**/api/client/ivr_entries?*', {
+    ...IvrEntryCollection,
+  }).as('getIvrEntry');
 
   cy.intercept('GET', '**/api/client/voicemails?*', {
     ...VoicemailCollection,
