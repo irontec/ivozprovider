@@ -5,7 +5,7 @@
       "name": "Voicemail For User1",
       "email": "alice@democompany.com",
       "id": 1,
-      "user": 1
+      "user": null
     },
     {
       "enabled": true,

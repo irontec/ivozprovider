@@ -55,6 +55,7 @@ import TransformationRuleSetCollection from '../../fixtures/TransformationRuleSe
 import UserCollection from '../../fixtures/Users/getCollection.json';
 import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMemebersCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
+import VoicemailMessageCollection from '../../fixtures/VoicemailMessage/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.setupPact(
@@ -140,6 +141,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/voicemails?*', {
     ...VoicemailCollection,
   }).as('getVoicemail');
+
+  cy.intercept('GET', '**/api/client/voicemail_messages?*', {
+    ...VoicemailMessageCollection,
+  }).as('getVoicemailMessage');
 
   cy.intercept('GET', '**/api/client/friends?*', {
     ...FriendCollection,
