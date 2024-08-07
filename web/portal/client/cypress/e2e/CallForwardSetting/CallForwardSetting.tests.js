@@ -15,13 +15,27 @@ export const postCallForwardSetting = () => {
 
   cy.get('[aria-label=Add]').click();
 
-  const { enabled, callTypeFilter, ddi, callForwardType } =
-    newCallForwardSetting.request;
-  cy.fillTheForm({
-    enabled,
+  const {
     callTypeFilter,
-    ddi,
     callForwardType,
+    targetType,
+    numberValue,
+    friend,
+    extension,
+    voicemail,
+    enabled,
+    ddi,
+  } = newCallForwardSetting.request;
+  cy.fillTheForm({
+    callTypeFilter,
+    callForwardType,
+    targetType,
+    numberValue,
+    friend,
+    extension,
+    voicemail,
+    enabled,
+    ddi,
   });
 
   cy.get('header').should('contain', 'Call forward settings');
