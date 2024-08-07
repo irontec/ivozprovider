@@ -18,6 +18,7 @@ import ExtensionCollection from '../../fixtures/Extension/getCollection.json';
 import ExtensionUnassignedCollection from '../../fixtures/Extension/getUnassignedCollection.json';
 import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getCollection.json';
 import FaxCollection from '../../fixtures/Fax/getCollection.json';
+import FaxInOutCollection from '../../fixtures/FaxInOut/getCollection.json';
 import FriendCollection from '../../fixtures/Friend/getCollection.json';
 import FriendPatternsCollection from '../../fixtures/FriendPattern/getCollection.json';
 import HolidayDateCollection from '../../fixtures/HolidayDate/getCollection.json';
@@ -109,6 +110,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/faxes?*', {
     ...FaxCollection,
   }).as('getFax');
+
+  cy.intercept('GET', '**/api/client/faxes_in_outs?*', {
+    ...FaxInOutCollection,
+  }).as('getFaxesInOut');
 
   cy.intercept('GET', '**/api/client/contacts?*', {
     ...ContactCollection,

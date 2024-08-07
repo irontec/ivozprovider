@@ -1,0 +1,28 @@
+{
+  "body": {
+      "calldate": "2018-01-01 01:00:00",
+      "src": "34688888888",
+      "dst": "34688888881",
+      "type": "In",
+      "pages": null,
+      "status": "error",
+      "id": 1,
+      "file": {
+          "fileSize": null,
+          "mimeType": null,
+          "baseName": null
+      },
+      "fax": {
+          "name": "Test Fax",
+          "email": null,
+          "sendByEmail": false,
+          "id": 1,
+          "outgoingDdi": null
+      },
+      "dstCountry": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}
