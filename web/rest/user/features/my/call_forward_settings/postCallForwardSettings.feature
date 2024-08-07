@@ -10,17 +10,15 @@ Feature: Retrieve call forward settings
       And I send a "POST" request to "my/call_forward_settings" with body:
       """
       {
-              "callTypeFilter": "external",
-              "callForwardType": "inconditional",
-              "targetType": "number",
-              "numberValue": "946002054",
-              "noAnswerTimeout": 0,
-              "enabled": false,
-              "user": 1,
-              "extension": null,
-              "voiceMailUser": null,
-              "numberCountry": 68
-          }
+          "callTypeFilter": "external",
+          "callForwardType": "inconditional",
+          "targetType": "number",
+          "numberValue": "946002054",
+          "noAnswerTimeout": 0,
+          "enabled": false,
+          "user": 1,
+          "numberCountry": 68
+      }
       """
      Then the response status code should be 201
       And the response should be in JSON

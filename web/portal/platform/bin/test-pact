@@ -9,6 +9,7 @@ pushd "${SCRIPT_DIR}"/../
     # Install required dependencies
     yarn install
 
+    export LANG=en_US.UTF-8
     # Run linter
     yarn run cy:run
 
