@@ -7,6 +7,7 @@ import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getColle
 import CallForwardSettingCollection from '../../fixtures/CallForwardSetting/getCollection.json';
 import CompanyServiceCollection from '../../fixtures/CompanyService/getCollection.json';
 import ConditionalRouteCollection from '../../fixtures/ConditionalRoute/getCollection.json';
+import ConditionalRoutesConditionCollection from '../../fixtures/ConditionalRoutesCondition/getCollection.json';
 import ConferenceRoomCollection from '../../fixtures/ConferenceRoom/getCollection.json';
 import ContactCollection from '../../fixtures/Contact/getCollection.json';
 import CorporateUnassignedCollection from '../../fixtures/Corporate/getUnassignedCollection.json';
@@ -114,6 +115,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/conditional_routes?*', {
     ...ConditionalRouteCollection,
   }).as('getConditionalRoute');
+
+  cy.intercept('GET', '**/api/client/conditional_routes_conditions?*', {
+    ...ConditionalRoutesConditionCollection,
+  }).as('getConditionalRoutesCondition');
 
   cy.intercept('GET', '**/api/client/queues?*', {
     ...QueueCollection,
