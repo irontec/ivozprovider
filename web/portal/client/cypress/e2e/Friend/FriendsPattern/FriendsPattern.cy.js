@@ -5,7 +5,7 @@ import editFriendPatternsItem from '../../../fixtures/FriendPattern/put.json';
 
 describe('Friend Patterns', () => {
   beforeEach(() => {
-    cy.prepareGenericPactInterceptors('Friends-Friend Patterns');
+    cy.prepareGenericPactInterceptors('Friends-FriendPatterns');
     cy.before();
 
     cy.contains('Routing endpoints').click();
@@ -31,12 +31,12 @@ describe('Friend Patterns', () => {
       'createFriendPatterns'
     );
 
-    cy.get('[aria-label=Add]').click();
+    cy.get('[aria-label=Add]').click({ force: true });
 
     const { name, regExp } = NewFriendPatterns.request;
     cy.fillTheForm({
-      regExp,
       name,
+      regExp,
     });
 
     cy.get('header').should('contain', 'Friend Patterns');
