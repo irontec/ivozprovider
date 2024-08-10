@@ -17,7 +17,8 @@ import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getC
 import FaxCollection from '../../fixtures/Fax/getCollection.json';
 import FriendCollection from '../../fixtures/Friend/getCollection.json';
 import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
-import HuntGroupMemberCollection from '../../fixtures/HuntGroupMember/getCollection.json';
+import HuntGroupMemberByHuntGroupCollection from '../../fixtures/HuntGroupMember/getCollection.json';
+import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMemebersCollection.json'
 import IvrCollection from '../../fixtures/Ivr/getCollection.json';
 import LanguageCollection from '../../fixtures/Language/getCollection.json';
 import LocationCollection from '../../fixtures/Location/getCollection.json';
@@ -183,9 +184,13 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...CallForwardSettingCollection,
   }).as('getCallForwardSetting');
 
-  cy.intercept('GET', '**/api/client/hunt_group_members?*', {
-    ...HuntGroupMemberCollection,
-  }).as('getHuntGroupMember');
+  cy.intercept('GET', '**/api/client/hunt_group_members?huntGroup*', {
+    ...HuntGroupMemberByHuntGroupCollection,
+  }).as('getHuntGroupMemberByHuntGroup');
+
+  cy.intercept('GET', '**/api/client/hunt_group_members?user*', {
+    ...HuntGroupMemberByUserCollection,
+  }).as('getHuntGroupMemberByUser');
 
   cy.intercept('GET', '**/api/client/company_services?*', {
     ...CompanyServiceCollection,
