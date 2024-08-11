@@ -1,0 +1,22 @@
+{
+  "body": {
+    "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
+    "startTime": "2019-01-01 09:00:00",
+    "duration": 0,
+    "caller": "+34633646464",
+    "callee": "+34633656565",
+    "price": 1,
+    "destinationName": null,
+    "ratingPlanName": null,
+    "endpointType": null,
+    "endpointId": null,
+    "endpointName": null,
+    "direction": "outbound",
+    "id": 1,
+    "ddi": 1
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

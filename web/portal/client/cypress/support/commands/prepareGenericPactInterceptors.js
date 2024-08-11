@@ -1,4 +1,5 @@
 import apiSpec from '../../fixtures/apiSpec.json';
+import BillableCallCollection from '../../fixtures/BillableCall/getCollection.json';
 import CalendarCollection from '../../fixtures/Calendar/getCollection.json';
 import CallAclCollection from '../../fixtures/CallAcl/getCollection.json';
 import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getCollection.json';
@@ -243,6 +244,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/countries?*', {
     ...CountryCollection,
   }).as('getCountry');
+
+  cy.intercept('GET', '**/api/client/billable_calls?*', {
+    ...BillableCallCollection,
+  }).as('getBillableCalls');
 
   cy.intercept('GET', '**/api/client/recordings?*', {
     ...RecordingCollection,

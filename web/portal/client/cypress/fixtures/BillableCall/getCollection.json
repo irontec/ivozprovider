@@ -1,0 +1,74 @@
+{
+  "body": [
+    {
+      "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
+      "startTime": "2019-01-01 09:00:00",
+      "duration": 0,
+      "caller": "+34633646464",
+      "callee": "+34633656565",
+      "price": 1,
+      "endpointType": null,
+      "endpointId": null,
+      "endpointName": null,
+      "direction": "outbound",
+      "id": 1,
+      "ddi": 1
+    },
+    {
+      "callid": "017cc7c8-eb38-4bbd-9318-524a274f7001",
+      "startTime": "2019-01-01 09:00:01",
+      "duration": 0,
+      "caller": "+34633646464",
+      "callee": "+34633656565",
+      "price": 1,
+      "endpointType": null,
+      "endpointId": null,
+      "endpointName": null,
+      "direction": "outbound",
+      "id": 2,
+      "ddi": 1
+    },
+    {
+      "callid": "017cc7c8-eb38-4bbd-9318-524a274f7002",
+      "startTime": "2019-01-01 09:00:02",
+      "duration": 0,
+      "caller": "+34633646464",
+      "callee": "+34633656565",
+      "price": 1,
+      "endpointType": null,
+      "endpointId": null,
+      "endpointName": null,
+      "direction": "outbound",
+      "id": 3,
+      "ddi": 1
+    },
+    {
+      "callid": "017cc7c8-eb38-4bbd-9318-524a274f7003",
+      "startTime": "2019-01-01 09:00:03",
+      "duration": 0,
+      "caller": "+34633646464",
+      "callee": "+34633656565",
+      "price": 1,
+      "endpointType": null,
+      "endpointId": null,
+      "endpointName": null,
+      "direction": "outbound",
+      "id": 4,
+      "ddi": 1
+    },
+    {
+      "callid": "017cc7c8-eb38-4bbd-9318-524a274f7004",
+      "startTime": "2019-01-01 09:00:04",
+      "duration": 0,
+      "caller": "+34633646464",
+      "callee": "+34633656565",
+      "price": 1,
+      "endpointType": null,
+      "endpointId": null,
+      "endpointName": null,
+      "direction": "outbound",
+      "id": 5,
+      "ddi": 1
+    }
+  ]
+}
