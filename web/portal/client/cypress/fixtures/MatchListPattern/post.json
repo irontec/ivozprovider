@@ -1,0 +1,30 @@
+{
+  "request": {
+    "description": "new match list pattern",
+    "type": "number",
+    "regexp": null,
+    "numbervalue": "946002051",
+    "matchList": 2,
+    "numberCountry": 77
+  },
+  "response": {
+    "body": {
+      "description": "new match list pattern",
+      "type": "number",
+      "regexp": null,
+      "numbervalue": "946002051",
+      "id": 3,
+      "matchList": 2,
+      "numberCountry": 77
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

@@ -5,7 +5,8 @@
   "response": {
     "body": {
       "name": "newMatchlist",
-      "id": 4
+      "id": 4,
+      "generic": false
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"
