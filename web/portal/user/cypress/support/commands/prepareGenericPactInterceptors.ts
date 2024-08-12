@@ -8,6 +8,7 @@ import MyDashboard from '../../fixtures/My/Dashboard/getDashboard.json';
 import MyProfile from '../../fixtures/My/Profile/getProfile.json';
 import MyStatus from '../../fixtures/My/Status/getStatus.json';
 import MyTheme from '../../fixtures/My/Theme/getTheme.json';
+import RecordingCollection from '../../fixtures/Recording/getCollection.json';
 import Timezones from '../../fixtures/Timezones/getCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
 
@@ -67,4 +68,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/user/my/company_extensions?*', {
     ...CompanyExtensionsCollection,
   }).as('getCompanyExtensions');
+
+  cy.intercept('GET', '**/api/user/recordings*', {
+    ...RecordingCollection,
+  }).as('getRecording');
 });
