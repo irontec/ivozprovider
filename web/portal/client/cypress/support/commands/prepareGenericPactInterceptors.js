@@ -17,6 +17,7 @@ import ExtensionUnassignedCollection from '../../fixtures/Extension/getUnassigne
 import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getCollection.json';
 import FaxCollection from '../../fixtures/Fax/getCollection.json';
 import FriendCollection from '../../fixtures/Friend/getCollection.json';
+import HolidayDateCollection from '../../fixtures/HolidayDate/getCollection.json';
 import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
 import HuntGroupMemberByHuntGroupCollection from '../../fixtures/HuntGroupMember/getCollection.json';
 import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMemebersCollection.json'
@@ -253,4 +254,7 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...RecordingCollection,
   }).as('getRecording');
 
+  cy.intercept('GET', '**/api/client/holiday_dates?*', {
+    ...HolidayDateCollection,
+  }).as('getHolidayDate');
 });

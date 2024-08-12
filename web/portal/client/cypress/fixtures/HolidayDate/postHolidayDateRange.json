@@ -1,0 +1,40 @@
+{
+  "request": {
+    "name": "Mervin Schultz",
+    "startDate": "2023-02-01",
+    "endDate": "2023-02-10",
+    "calendar": 1,
+    "wholeDayEvent": false,
+    "timeIn": "02:00:00",
+    "timeOut": "03:00:00",
+    "locution": null,
+    "routeType": "extension",
+    "extension": 1
+  },
+  "response": {
+    "body": {
+        "name": "Mervin Schultz",
+        "eventDate": "2023-02-01",
+        "wholeDayEvent": false,
+        "timeIn": "02:00:00",
+        "timeOut": "03:00:00",
+        "routeType": "extension",
+        "numberValue": null,
+        "id": 3,
+        "calendar": 1,
+        "locution": null,
+        "extension": 1,
+        "voicemail": null,
+        "numberCountry": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
