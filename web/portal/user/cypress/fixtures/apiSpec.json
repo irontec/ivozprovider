@@ -3468,6 +3468,667 @@
                 }
             }
         },
+        "/recordings": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getRecordingCollection",
+                "summary": "Retrieves the collection of Recording resources.",
+                "responses": {
+                    "200": {
+                        "description": "Recording collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Recording-collection"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "calldate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "calldate[after]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "calldate[before]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "calldate[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "calldate[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "calldate[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "calldate[strictly_after]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "calldate[strictly_before]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callee",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callee[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callee[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callee[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callee[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callee[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callee[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "caller",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "caller[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "caller[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "caller[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "caller[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "caller[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "caller[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "callid",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callid[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callid[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callid[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callid[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callid[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callid[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "duration",
+                        "in": "query",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "duration[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "duration[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "duration[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "duration[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "duration[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "duration[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exists[callee]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[caller]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[callid]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[recorder]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "recorder",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "recorder[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "recorder[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "recorder[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "recorder[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "recorder[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "recorder[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[calldate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[callee]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[caller]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[callid]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[duration]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[recorder]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[type]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_itemsPerPage",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of items per page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "_page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: _properties[]={propertyName}&_properties[]={anotherPropertyName}&_properties[{nestedPropertyParent}][]={nestedProperty}",
+                        "name": "_properties[]",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false,
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "_timezone",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Use a time zone of choice instead of the token user one (Applies to both input and output)"
+                    }
+                ]
+            }
+        },
+        "/recordings/recorded_files_zip": {
+            "get": {
+                "produces": [
+                    "application/octet-stream"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "parameters": [
+                    {
+                        "name": "_recordingIds",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Ensure download of multiple recording files"
+                    },
+                    {
+                        "name": "_timezone",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Use a time zone of choice instead of the token user one (Applies to both input and output)"
+                    }
+                ],
+                "operationId": "get_multiple_recorderded_filesRecordingCollection",
+                "summary": "Retrieves the collection of Recording resources.",
+                "responses": {
+                    "200": {
+                        "description": "Recording collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Recording"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/recordings/{id}": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getRecordingItem",
+                "summary": "Retrieves a Recording resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_timezone",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Use a time zone of choice instead of the token user one (Applies to both input and output)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Recording resource response",
+                        "schema": {
+                            "$ref": "#/definitions/Recording-detailed"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "deleteRecordingItem",
+                "summary": "Removes the Recording resource.",
+                "responses": {
+                    "204": {
+                        "description": "Recording resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_rmAlso[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/recordings/{id}/recordedfile": {
+            "get": {
+                "produces": [
+                    "application/octet-stream"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "#/definitions/Recording_RecordedFile",
+                        "schema": {
+                            "type": "file"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "/recording_recordedfileRecordingItem",
+                "summary": "Retrieves a Recording resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
         "/timezones": {
             "get": {
                 "produces": [
@@ -5649,6 +6310,219 @@
             }
         },
         "MetadataFile": {
+            "type": "object",
+            "properties": {
+                "fileSize": {
+                    "minimum": 0,
+                    "description": "",
+                    "type": "integer"
+                },
+                "mimeType": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "baseName": {
+                    "maxLength": 255,
+                    "description": "",
+                    "type": "string"
+                }
+            }
+        },
+        "Recording": {
+            "type": "object",
+            "properties": {
+                "callid": {
+                    "maxLength": 255,
+                    "description": "",
+                    "type": "string"
+                },
+                "calldate": {
+                    "default": "CURRENT_TIMESTAMP",
+                    "format": "date-time",
+                    "description": "",
+                    "example": "CURRENT_TIMESTAMP",
+                    "type": "string"
+                },
+                "type": {
+                    "default": "ddi",
+                    "enum": [
+                        "ondemand",
+                        "ddi"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "ddi",
+                    "type": "string"
+                },
+                "duration": {
+                    "default": 0,
+                    "format": "float",
+                    "description": "",
+                    "example": "0",
+                    "type": "number"
+                },
+                "caller": {
+                    "maxLength": 128,
+                    "description": "",
+                    "type": "string"
+                },
+                "callee": {
+                    "maxLength": 128,
+                    "description": "",
+                    "type": "string"
+                },
+                "recorder": {
+                    "maxLength": 128,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "recordedFile": {
+                    "$ref": "#/definitions/Recording_RecordedFile"
+                },
+                "user": {
+                    "description": "",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "calldate",
+                "type",
+                "duration"
+            ]
+        },
+        "Recording-collection": {
+            "type": "object",
+            "properties": {
+                "callid": {
+                    "maxLength": 255,
+                    "description": "",
+                    "type": "string"
+                },
+                "calldate": {
+                    "default": "CURRENT_TIMESTAMP",
+                    "format": "date-time",
+                    "description": "",
+                    "example": "CURRENT_TIMESTAMP",
+                    "type": "string"
+                },
+                "type": {
+                    "default": "ddi",
+                    "enum": [
+                        "ondemand",
+                        "ddi"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "ddi",
+                    "type": "string"
+                },
+                "duration": {
+                    "default": 0,
+                    "format": "float",
+                    "description": "",
+                    "example": "0",
+                    "type": "number"
+                },
+                "caller": {
+                    "maxLength": 128,
+                    "description": "",
+                    "type": "string"
+                },
+                "callee": {
+                    "maxLength": 128,
+                    "description": "",
+                    "type": "string"
+                },
+                "recorder": {
+                    "maxLength": 128,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                }
+            },
+            "required": [
+                "calldate",
+                "type",
+                "duration"
+            ]
+        },
+        "Recording-detailed": {
+            "type": "object",
+            "properties": {
+                "callid": {
+                    "maxLength": 255,
+                    "description": "",
+                    "type": "string"
+                },
+                "calldate": {
+                    "default": "CURRENT_TIMESTAMP",
+                    "format": "date-time",
+                    "description": "",
+                    "example": "CURRENT_TIMESTAMP",
+                    "type": "string"
+                },
+                "type": {
+                    "default": "ddi",
+                    "enum": [
+                        "ondemand",
+                        "ddi"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "ddi",
+                    "type": "string"
+                },
+                "duration": {
+                    "default": 0,
+                    "format": "float",
+                    "description": "",
+                    "example": "0",
+                    "type": "number"
+                },
+                "caller": {
+                    "maxLength": 128,
+                    "description": "",
+                    "type": "string"
+                },
+                "callee": {
+                    "maxLength": 128,
+                    "description": "",
+                    "type": "string"
+                },
+                "recorder": {
+                    "maxLength": 128,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "recordedFile": {
+                    "$ref": "#/definitions/Recording_RecordedFile"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
+                }
+            },
+            "required": [
+                "calldate",
+                "type",
+                "duration"
+            ]
+        },
+        "Recording_RecordedFile": {
             "type": "object",
             "properties": {
                 "fileSize": {
