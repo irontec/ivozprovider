@@ -6,6 +6,7 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Provider\Application\Service\HolidayDate\SyncFromCsv;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarRepository;
 use Model\HolidaysMassImport;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -17,6 +18,7 @@ class PostHolidaysMassImportAction
     public function __construct(
         private DenormalizerInterface $denormalizer,
         private TokenStorageInterface $tokenStorage,
+        private CalendarRepository $calendarRepository,
         private SyncFromCsv $syncFromCsv
     ) {
     }
@@ -42,27 +44,37 @@ class PostHolidaysMassImportAction
         }
 
         $calendarId = $request->request->get('calendar');
+        $companyId = $company->getId() ?? -1;
+
+        $calendar = $this->calendarRepository->findCompanyCalendar($companyId, (int)$calendarId);
+        if (is_null($calendar)) {
+            throw new NotFoundHttpException('Calendar not found');
+        }
+
+        $importerArguments = $request->request->get('importerArguments');
         $csv = file_get_contents(
             (string) $request->files->get('csv')
         );
 
-        $errorMsg = '';
-        $rowsFailed = 0;
-        try {
-            $this->syncFromCsv->execute(
-                (string) $calendarId,
-                (string) $csv
-            );
-        } catch (\Exception $e) {
-            $errorMsg = $e->getMessage();
-            $rowsFailed = $e->getCode();
-        }
+        $this->syncFromCsv->execute(
+            (string) $calendarId,
+            (string) $csv,
+            (string) $importerArguments
+        );
 
+        $errors = $this->syncFromCsv->getErrors();
+        $jsonErrors = json_encode($errors);
+        $rowsFailed = count($errors);
         $success = $rowsFailed === 0;
+
+        $errorMsg = $jsonErrors === false
+            ? ''
+            : $jsonErrors;
+
         $response = new HolidaysMassImport(
             $success,
             $errorMsg,
-            (int) $rowsFailed
+            $rowsFailed
         );
 
         return $this->denormalizer->denormalize(
