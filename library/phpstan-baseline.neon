@@ -3701,7 +3701,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php
 
 		-
-			message: "#^Parameter \\#1 \\$num of function round expects float\\|int, float\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$num of function ceil expects float\\|int, float\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php
 
