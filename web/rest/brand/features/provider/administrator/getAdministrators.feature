@@ -49,6 +49,15 @@ Feature: Retrieve administrators
               "name": "Admin Name",
               "lastname": "Admin Lastname",
               "id": 9
+          },
+          {
+              "username": "test_wholesale_admin",
+              "email": "test@irontec.com",
+              "active": true,
+              "restricted": false,
+              "name": "Admin Name",
+              "lastname": "Admin Lastname",
+              "id": 12
           }
       ]
       """

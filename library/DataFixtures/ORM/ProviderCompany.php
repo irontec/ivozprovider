@@ -183,7 +183,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
-            $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
@@ -192,6 +192,36 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $this->addReference('_reference_ProviderCompany5', $item5);
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
+
+        $manager->flush();
+
+        $item6 = $this->createEntityInstance(Company::class);
+        (function () use ($fixture) {
+
+            $invoicing = new Invoicing(
+                nif: '12345699-Z',
+            );
+
+            $this->setName("Wholesale Argentina");
+            $this->setType("wholesale");
+            $this->setDomainUsers("argentina.irontec.com");
+            $this->setMaxCalls(0);
+            $this->setIpfilter(false);
+            $this->setOnDemandRecord(0);
+            $this->setOnDemandRecordCode("");
+            $this->invoicing = $invoicing;
+            $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
+            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
+            $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone18'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry10'));
+            $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
+            $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate4'));
+        })->call($item6);
+
+        $this->addReference('_reference_ProviderCompany6', $item6);
+        $this->sanitizeEntityValues($item6);
+        $manager->persist($item6);
 
         $manager->flush();
     }

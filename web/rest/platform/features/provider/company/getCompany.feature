@@ -73,7 +73,19 @@ Feature: Manage companies
                   "nif": "12345689-Z"
               },
               "domainName": null
-          }
+          },
+          {
+                "type": "wholesale",
+                "name": "Wholesale Argentina",
+                "maxDailyUsage": 1000000,
+                "currentDayUsage": -1,
+                "billingMethod": "postpaid",
+                "id": 6,
+                "invoicing": {
+                    "nif": "12345699-Z"
+                },
+                "domainName": null
+            }
       ]
       """
 

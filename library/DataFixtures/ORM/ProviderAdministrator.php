@@ -209,7 +209,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
             $this->setActive(true);
             $this->setName("Admin Name");
             $this->setLastname("Admin Lastname");
-            $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCompany($fixture->getReference('_reference_ProviderCompany5'));
             $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
         })->call($item12);

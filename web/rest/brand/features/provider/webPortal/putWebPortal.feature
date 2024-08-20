@@ -124,7 +124,7 @@ This is file content
     And I send a "PUT" request to "/web_portals/3" with body:
       """
       {
-          "company": 5
+          "company": 6
       }
       """
     Then the response status code should be 400
