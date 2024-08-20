@@ -63,6 +63,7 @@ const properties: InvoiceProperties = {
     label: _('PDF file'),
     type: 'file',
     readOnly: true,
+    downloadable: true,
     //@TODO file preview
   },
   invoiceTemplate: {
