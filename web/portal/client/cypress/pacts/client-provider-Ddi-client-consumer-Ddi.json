@@ -56,6 +56,42 @@
           "retailAccount": null
         }
       }
+    },
+    {
+      "description": "View details",
+      "providerState": "",
+      "request": {
+        "method": "GET",
+        "path": "/api/client/billable_calls/1",
+        "headers": {
+          "accept": "application/json",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk"
+        },
+        "body": "",
+        "query": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
+          "startTime": "2019-01-01 09:00:00",
+          "duration": 0,
+          "caller": "+34633646464",
+          "callee": "+34633656565",
+          "price": 1,
+          "destinationName": null,
+          "ratingPlanName": null,
+          "endpointType": null,
+          "endpointId": null,
+          "endpointName": null,
+          "direction": "outbound",
+          "id": 1,
+          "ddi": 1
+        }
+      }
     }
   ],
   "metadata": {
