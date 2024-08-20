@@ -50,7 +50,7 @@ class MigrateFromKamUsersCdr
             ->setStartTime(
                 $kamUsersCdr->getStartTime()
             )->setDuration(
-                $kamUsersCdr->getDuration()
+                ceil($kamUsersCdr->getDuration())
             )->setDirection(
                 $kamUsersCdr->getDirection()
             )->setCaller(
