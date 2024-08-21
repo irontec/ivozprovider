@@ -1,0 +1,18 @@
+{
+  "body": {
+    "url": "https://client-ivozprovider.irontec.com",
+    "urlType": "admin",
+    "name": "Irontec Ivozprovider Client Admin Portal",
+    "id": 3,
+    "logo": {
+      "fileSize": 10,
+      "mimeType": "image/jpeg",
+      "baseName": "client-logo.jpeg"
+    },
+    "company": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

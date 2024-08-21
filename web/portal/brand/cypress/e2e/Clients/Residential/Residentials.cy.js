@@ -1,5 +1,5 @@
 import CompaniesCollection from '../../../fixtures/Provider/Companies/getCollection.json';
-import { deleteCompany, postCompany, putCompany } from './Residentials.tests';
+import {deleteCompany, postCompany, postWebPortal, putCompany} from './Residentials.tests';
 
 describe('in Residential Companies', () => {
   beforeEach(() => {
@@ -32,4 +32,9 @@ describe('in Residential Companies', () => {
   // DELETE
   ///////////////////////
   it('delete Residential Companies', deleteCompany);
+
+  ///////////////////////
+  // POST
+  ///////////////////////
+  it('post Web Portal', postWebPortal);
 });

@@ -1,0 +1,48 @@
+{
+  "body": [
+    {
+      "url": "https://client-ivozprovider.irontec.com",
+      "urlType": "admin",
+      "name": "Irontec Ivozprovider Client Admin Portal",
+      "id": 3,
+      "logo": {
+        "fileSize": 10,
+        "mimeType": "image/jpeg",
+        "baseName": "client-logo.jpeg"
+      },
+      "company": null
+    },
+    {
+      "url": "https://users-ivozprovider.irontec.com",
+      "urlType": "user",
+      "name": "Irontec Ivozprovider User Admin Portal",
+      "id": 4,
+      "logo": {
+        "fileSize": 10,
+        "mimeType": "image/jpeg",
+        "baseName": "user-logo.jpeg"
+      },
+      "company": null
+    },
+    {
+      "url": "https://users2-ivozprovider.irontec.com",
+      "urlType": "user",
+      "name": "Irontec Ivozprovider User Admin Portal",
+      "id": 6,
+      "logo": {
+        "fileSize": 10,
+        "mimeType": "image/jpeg",
+        "baseName": "user-logo.jpeg"
+      },
+      "company": 1
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/web_portals?_page=1",
+    "x-last-page": "/api/brand/web_portals?_page=1",
+    "x-next-page": "/api/brand/web_portals?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
