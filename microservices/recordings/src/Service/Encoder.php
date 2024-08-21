@@ -268,7 +268,7 @@ class Encoder
                     ->setType($type)
                     ->setRecorder($recorder)
                     ->setCallid($kamAccCdr->getCallid())
-                    ->setDuration($duration)
+                    ->setDuration(ceil($duration))
                     ->setCaller($kamAccCdr->getCaller())
                     ->setCallee($kamAccCdr->getCallee())
                     ->setRecordedFileBaseName($baseName)

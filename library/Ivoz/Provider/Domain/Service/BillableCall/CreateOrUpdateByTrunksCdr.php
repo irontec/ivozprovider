@@ -95,7 +95,7 @@ class CreateOrUpdateByTrunksCdr
 
         $isNew = is_null($billableCall);
         if ($isNew) {
-            $durantion = round(
+            $durantion = ceil(
                 $trunksCdrDto->getDuration()
             );
 
