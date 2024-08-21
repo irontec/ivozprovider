@@ -1,45 +1,28 @@
 {
   "body": [
     {
-      "timeoutTime": null,
+      "timeoutTime": 1,
       "priority": 1,
-      "routeType": "number",
-      "numberValue": "620",
+      "routeType": "user",
+      "numberValue": null,
       "id": 1,
       "huntGroup": {
-        "name": "Vance Luettgen",
-        "description": "Beatae dolorum illum perferendis voluptas animi veniam.",
-        "strategy": "ringAll",
-        "ringAllTimeout": 422,
-        "noAnswerTargetType": null,
-        "noAnswerNumberValue": null,
-        "preventMissedCalls": 1,
-        "allowCallForwards": 0,
-        "id": 1,
-        "noAnswerLocution": null,
-        "noAnswerExtension": null,
-        "noAnswerVoicemail": null,
-        "noAnswerNumberCountry": null
+          "name": "testHuntGroup",
+          "description": "desc",
+          "strategy": "ringAll",
+          "ringAllTimeout": 10,
+          "noAnswerTargetType": null,
+          "noAnswerNumberValue": null,
+          "preventMissedCalls": 1,
+          "id": 1,
+          "noAnswerLocution": null,
+          "noAnswerExtension": null,
+          "noAnswerVoicemail": null,
+          "noAnswerNumberCountry": null
       },
-      "user": null,
-      "numberCountry": {
-        "code": "AD",
-        "countryCode": "+376",
-        "id": 1,
-        "name": {
-          "en": "Andorra",
-          "es": "Andorra",
-          "ca": "Andorra",
-          "it": "Andorra"
-        },
-        "zone": {
-          "en": "Europe",
-          "es": "Europa",
-          "ca": "Europa",
-          "it": "Europe"
-        }
-      }
-    }
+      "user": "~",
+      "numberCountry": null
+  }
   ],
   "headers": {
     "x-first-page": "/api/client/hunt_group_members?_page=1",
