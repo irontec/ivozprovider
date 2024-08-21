@@ -17,6 +17,7 @@ import ExtensionUnassignedCollection from '../../fixtures/Extension/getUnassigne
 import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getCollection.json';
 import FaxCollection from '../../fixtures/Fax/getCollection.json';
 import FriendCollection from '../../fixtures/Friend/getCollection.json';
+import HolidayDateCollection from '../../fixtures/HolidayDate/getCollection.json';
 import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
 import HuntGroupMemberByHuntGroupCollection from '../../fixtures/HuntGroupMember/getCollection.json';
 import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMemebersCollection.json'
@@ -25,6 +26,7 @@ import LanguageCollection from '../../fixtures/Language/getCollection.json';
 import LocationCollection from '../../fixtures/Location/getCollection.json';
 import LocutionCollection from '../../fixtures/Locution/getCollection.json';
 import MatchListCollection from '../../fixtures/MatchList/getCollection.json';
+import MatchListPatternCollection from '../../fixtures/MatchListPattern/getCollection.json';
 import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json';
 import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
@@ -145,6 +147,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...MatchListCollection,
   }).as('getMatchList');
 
+  cy.intercept('GET', '**/api/client/match_list_patterns?*', {
+    ...MatchListPatternCollection,
+  }).as('getMatchListPattern');
+
   cy.intercept('GET', '**/api/client/route_locks?*', {
     ...RouteLockCollection,
   }).as('getRouteLock');
@@ -253,4 +259,7 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...RecordingCollection,
   }).as('getRecording');
 
+  cy.intercept('GET', '**/api/client/holiday_dates?*', {
+    ...HolidayDateCollection,
+  }).as('getHolidayDate');
 });

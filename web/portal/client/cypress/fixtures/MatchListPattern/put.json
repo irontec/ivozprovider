@@ -1,0 +1,25 @@
+{
+  "request": {
+    "description": "test desc updated",
+    "type": "number",
+    "regexp": null,
+    "numbervalue": "946002052",
+    "matchList": 1,
+    "numberCountry": 77
+  },
+  "response": {
+    "body": {
+      "description": "test desc updated",
+      "type": "number",
+      "regexp": null,
+      "numbervalue": "946002052",
+      "id": 1,
+      "matchList": 1,
+      "numberCountry": 77
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
