@@ -33,7 +33,26 @@
         "duration": 0
       }
     ],
-    "latestUsers": [],
+    "latestUsers": [
+      {
+        "name": "Joe",
+        "lastName": "Doe",
+        "extension": "102",
+        "outgoingDdi": ""
+      },
+      {
+        "name": "Bob",
+        "lastName": "Bobson",
+        "extension": "",
+        "outgoingDdi": ""
+      },
+      {
+        "name": "Alice",
+        "lastName": "Allison",
+        "extension": "",
+        "outgoingDdi": "121"
+      }
+    ],
     "latestResidentialDevices": [],
     "latestRetailAccounts": [],
     "userNum": null,
