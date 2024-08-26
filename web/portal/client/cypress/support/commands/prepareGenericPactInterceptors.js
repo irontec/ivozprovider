@@ -20,7 +20,6 @@ import FriendCollection from '../../fixtures/Friend/getCollection.json';
 import HolidayDateCollection from '../../fixtures/HolidayDate/getCollection.json';
 import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
 import HuntGroupMemberByHuntGroupCollection from '../../fixtures/HuntGroupMember/getCollection.json';
-import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMemebersCollection.json'
 import IvrCollection from '../../fixtures/Ivr/getCollection.json';
 import LanguageCollection from '../../fixtures/Language/getCollection.json';
 import LocationCollection from '../../fixtures/Location/getCollection.json';
@@ -48,6 +47,7 @@ import TerminalModelCollection from '../../fixtures/TerminalModel/getCollection.
 import TimezoneCollection from '../../fixtures/TimeZone/getCollection.json';
 import TransformationRuleSetCollection from '../../fixtures/TransformationRuleSet/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
+import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMemebersCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
