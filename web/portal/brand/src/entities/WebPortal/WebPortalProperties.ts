@@ -12,6 +12,7 @@ export type WebPortalPropertyList<T> = {
   id?: T;
   logo?: T;
   company?: T;
+  brand?: T;
 };
 
 export type WebPortalProperties = WebPortalPropertyList<Partial<PropertySpec>>;

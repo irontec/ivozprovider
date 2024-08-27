@@ -18,6 +18,7 @@ import {
   AdministratorProperties,
   AdministratorPropertyList,
 } from './AdministratorProperties';
+import List from './List';
 
 type marshallerType = typeof defaultMarshaller;
 const marshaller: marshallerType = (row, properties, whitelist) => {
@@ -163,13 +164,9 @@ const Administrator: EntityInterface = {
   },
   ChildDecorator,
   customActions: Actions,
+  List: List,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
-
-    return module.default;
-  },
-  foreignKeyResolver: async () => {
-    const module = await import('./ForeignKeyResolver');
 
     return module.default;
   },
