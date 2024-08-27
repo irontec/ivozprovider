@@ -219,6 +219,10 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
             ->willReturn(null)
             ->shouldBeCalled();
 
+        $trunksCdrDto
+            ->getStartTime()
+            ->willReturn(new \DateTime('2000-01-01 00:00:00'));
+
         $billableCallDto
             ->setEndpointId(Argument::any())
             ->shouldNotBeCalled();
@@ -283,7 +287,10 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
         );
 
         $this->billableCall = $this->getInstance(
-            BillableCall::class
+            BillableCall::class,
+            [
+                'startTime' => new \DateTime('2000-01-01 00:00:00'),
+            ]
         );
 
         $this
