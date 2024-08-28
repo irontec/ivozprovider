@@ -411,6 +411,7 @@
   "Page": "Pagine",
   "Party": "Party",
   "Password": "Password",
+  "Password cannot be empty in an active user": "La password non può essere vuota in un utente attivo",
   "Penalty": "Penalità",
   "Pending": "In sospeso",
   "Periodic Annouce Locution": "Messaggio Annuncio periodico",

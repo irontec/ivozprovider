@@ -411,6 +411,7 @@
   "Page": "Pagines",
   "Party": "Interlocutor",
   "Password": "Contrasenya",
+  "Password cannot be empty in an active user": "La contrasenya no pot estar buida en un usuari actiu",
   "Penalty": "Penalització",
   "Pending": "Pendent",
   "Periodic Annouce Locution": "Locució d'anunci periòdica",
