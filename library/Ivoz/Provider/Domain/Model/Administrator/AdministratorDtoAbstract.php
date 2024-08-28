@@ -25,7 +25,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $pass = null;
+    private $pass = '';
 
     /**
      * @var string|null
@@ -166,7 +166,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->username;
     }
 
-    public function setPass(string $pass): static
+    public function setPass(?string $pass): static
     {
         $this->pass = $pass;
 
