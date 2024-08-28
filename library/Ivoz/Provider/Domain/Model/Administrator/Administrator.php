@@ -8,7 +8,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Administrator
  */
-class Administrator extends AdministratorAbstract implements AdministratorInterface, UserInterface, LegacyPasswordAuthenticatedUserInterface, \Serializable
+class Administrator extends AdministratorAbstract implements
+    AdministratorInterface,
+    UserInterface,
+    LegacyPasswordAuthenticatedUserInterface,
+    \Serializable
 {
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
     const ROLE_BRAND_ADMIN = 'ROLE_BRAND_ADMIN';
@@ -75,7 +79,11 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
             return $this;
         }
 
-        $salt = substr(md5((string) random_int(0, mt_getrandmax()), false), 0, 22);
+        if (empty($pass)) {
+            return parent::setPass(null);
+        }
+
+        $salt = substr(md5((string)random_int(0, mt_getrandmax()), false), 0, 22);
         $cryptPass = crypt(
             $pass,
             '$2a$08$' . $salt . '$' . $salt . '$'
@@ -169,30 +177,85 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
 
     public function serialize(): string
     {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->pass,
-            $this->email,
-            $this->active
-        ));
+        return serialize($this->__serialize());
     }
 
     public function unserialize($serialized)
     {
-        list (
-            $this->id,
-            $this->username,
-            $this->pass,
-            $this->email,
-            $this->active
-            ) = unserialize($serialized);
+        /** @var array{
+         * id: int|null,
+         * username: string,
+         * pass: string|null,
+         * email: string,
+         * active: bool
+         * } $data */
+        $data = unserialize($serialized);
+
+        $this->__unserialize($data);
+    }
+
+    /**
+     * @return array{
+     *     id: int|null,
+     *     username: string,
+     *     pass: string|null,
+     *     email: string,
+     *     active: bool
+     * }
+     */
+
+    public function __serialize(): array
+    {
+        return [
+            "id" => $this->id,
+            "username" => $this->username,
+            "pass" => $this->pass,
+            "email" => $this->email,
+            "active" => $this->active
+        ];
+    }
+
+    /**
+     * @param array{
+     *      id: int|null,
+     *      username: string,
+     *      pass: string|null,
+     *      email: string,
+     *      active: bool
+     *  } $data
+     * @return void
+     */
+    public function __unserialize(array $data): void
+    {
+        $this->id = $data['id'];
+        $this->username = $data["username"];
+        $this->pass = $data['pass'];
+        $this->email = $data['email'];
+        $this->active = $data['active'];
     }
 
     protected function sanitizeValues(): void
     {
         if ($this->getRestricted() === false) {
             $this->setCanImpersonate(true);
+        }
+
+        $this->sanitizePassword();
+    }
+
+    protected function sanitizePassword(): void
+    {
+        $isNew = $this->isNew();
+        $emptyPass = empty($this->getPass());
+
+        if ($isNew && $emptyPass) {
+            $this->setActive(false);
+            return;
+        }
+
+        $isActive = $this->getActive();
+        if ($emptyPass && $isActive) {
+            throw new \DomainException('Password cannot be empty for an active user');
         }
     }
 }
