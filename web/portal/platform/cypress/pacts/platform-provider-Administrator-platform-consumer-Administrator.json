@@ -19,11 +19,11 @@
           "content-type": "application/json"
         },
         "body": {
+          "pass": "changeme",
           "email": "post-test@example.com",
           "restricted": "0",
           "timezone": 1,
           "username": "post-test",
-          "pass": "changeme",
           "name": "post",
           "lastname": "test",
           "brand": null
@@ -69,12 +69,12 @@
           "content-type": "application/json"
         },
         "body": {
+          "pass": "1234",
           "email": "modified@example.com",
           "active": "0",
           "restricted": "1",
           "timezone": 2,
           "username": "newUserName",
-          "pass": "1234",
           "name": "Updated admin name",
           "lastname": "a lastname",
           "brand": null
