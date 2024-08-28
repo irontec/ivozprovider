@@ -9,10 +9,11 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="pass" type="string" column="pass" length="80" nullable="false">
+    <field name="pass" type="string" column="pass" length="80" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="comment">[password]</option>
+        <option name="default"/>
       </options>
     </field>
     <field name="email" type="string" column="email" length="100" nullable="false">
