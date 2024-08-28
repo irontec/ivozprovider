@@ -24,6 +24,10 @@ class AdministratorDto extends AdministratorDtoAbstract
                 'lastname' => 'lastname',
                 'email' => 'email'
             ];
+
+            if ($role === 'ROLE_BRAND_ADMIN') {
+                $response['company'] = 'company';
+            }
         } else {
             $response = parent::getPropertyMap(...func_get_args());
             unset($response['internal']);
