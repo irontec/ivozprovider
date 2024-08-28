@@ -1274,11 +1274,6 @@
       <code>$id</code>
     </MissingParamType>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Administrator/Administrator.php">
-    <PossiblyNullArgument occurrences="1">
-      <code>$pass</code>
-    </PossiblyNullArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Administrator/AdministratorAbstract.php">
     <MixedArgument occurrences="6">
       <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>

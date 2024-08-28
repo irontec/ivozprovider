@@ -1266,11 +1266,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Job/RecoderJobInterface.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function crypt expects string, string\\|null given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/Administrator.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorInterface\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorInterface.php
