@@ -1,10 +1,10 @@
 import CompaniesCollection from '../../../fixtures/Provider/Companies/getCollection.json';
+import { postWebPortal } from '../Residential/Residentials.tests';
 import { deleteCompany, postCompany, putCompany } from './Retails.tests';
-import {postWebPortal} from "../Residential/Residentials.tests";
 
 describe('in Residential Companies', () => {
   beforeEach(() => {
-    cy.prepareGenericPactInterceptors('Retails');
+    cy.prepareGenericPactInterceptors('retail');
     cy.before();
 
     cy.get('svg[data-testid="MapsHomeWorkIcon"]').first().click();

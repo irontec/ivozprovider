@@ -1,9 +1,14 @@
 import CompaniesCollection from '../../../fixtures/Provider/Companies/getCollection.json';
-import {deleteCompany, postCompany, postWebPortal, putCompany} from './VirtualPbxs.tests';
+import {
+  deleteCompany,
+  postCompany,
+  postWebPortal,
+  putCompany,
+} from './VirtualPbxs.tests';
 
 describe('in Companies', () => {
   beforeEach(() => {
-    cy.prepareGenericPactInterceptors('VirtualPbxs');
+    cy.prepareGenericPactInterceptors('vpbx');
     cy.before();
 
     cy.get('svg[data-testid="MapsHomeWorkIcon"]').first().click();

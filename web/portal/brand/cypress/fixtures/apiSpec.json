@@ -35347,7 +35347,6 @@
             "type": "object",
             "required": [
                 "username",
-                "pass",
                 "email",
                 "active",
                 "restricted",
@@ -35361,8 +35360,10 @@
                     "type": "string"
                 },
                 "pass": {
+                    "default": "",
                     "maxLength": 80,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "email": {
@@ -35469,7 +35470,6 @@
             "type": "object",
             "required": [
                 "username",
-                "pass",
                 "email",
                 "active",
                 "restricted",
@@ -35483,8 +35483,10 @@
                     "type": "string"
                 },
                 "pass": {
+                    "default": "",
                     "maxLength": 80,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "email": {

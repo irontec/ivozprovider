@@ -1,13 +1,13 @@
 {
   "consumer": {
-    "name": "brand-consumer-VirtualPbxs"
+    "name": "brand-consumer-residential"
   },
   "provider": {
-    "name": "brand-provider-VirtualPbxs"
+    "name": "brand-provider-residential"
   },
   "interactions": [
     {
-      "description": "add Virtual Pbx Companies",
+      "description": "add Residential Companies",
       "providerState": "",
       "request": {
         "method": "POST",
@@ -15,24 +15,23 @@
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
-          "content-length": "318",
+          "content-length": "305",
           "content-type": "application/json"
         },
         "body": {
-          "type": "vpbx",
+          "type": "residential",
           "maxCalls": 0,
-          "maxDailyUsage": 100,
+          "maxDailyUsage": 1000000,
           "ipfilter": "1",
           "billingMethod": "postpaid",
           "language": 2,
           "defaultTimezone": "1",
-          "country": 1,
+          "country": 4,
           "currency": null,
-          "corporation": null,
+          "outgoingDdi": null,
           "featureIds": [],
           "geoIpAllowedCountries": [],
-          "name": "API company",
-          "domainUsers": "api.irontec.com",
+          "name": "Residential Company",
           "maxDailyUsageEmail": "",
           "transformationRuleSet": 1
         },
@@ -44,48 +43,47 @@
           "content-type": "application/json; charset=utf-8"
         },
         "body": {
-          "type": "vpbx",
-          "name": "API company",
-          "domainUsers": "api.irontec.com",
-          "invoicing": {
-            "nif": "1234",
-            "postalAddress": "abc",
-            "postalCode": "4848",
-            "town": "Usansolocity",
-            "province": "some",
-            "countryName": "country"
-          },
+          "type": "residential",
+          "name": "Residential Company",
+          "domainUsers": null,
           "maxCalls": 0,
-          "maxDailyUsage": 100,
+          "maxDailyUsage": 1000000,
           "currentDayUsage": 0,
           "maxDailyUsageEmail": null,
           "ipfilter": true,
           "onDemandRecord": 0,
           "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
-          "externallyextraopts": "",
+          "externallyextraopts": null,
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
-          "id": 6,
-          "language": 1,
+          "id": 4,
+          "invoicing": {
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+          },
+          "language": 2,
           "defaultTimezone": 1,
-          "country": 1,
+          "country": 4,
           "currency": null,
           "transformationRuleSet": 1,
-          "outgoingDdi": 1,
-          "outgoingDdiRule": 1,
+          "outgoingDdi": null,
+          "outgoingDdiRule": null,
           "voicemailNotificationTemplate": 1,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
-          "featureIds": [
-            1
-          ],
-          "geoIpAllowedCountries": [
-            1
-          ],
+          "accessCredentialNotificationTemplate": null,
+          "corporation": null,
+          "domainName": "retail.irontec.com",
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
           "routingTagIds": [],
           "codecIds": []
         },
@@ -97,57 +95,46 @@
       }
     },
     {
-      "description": "edit Virtual Pbx Companies",
+      "description": "edit Residential Companies",
       "providerState": "",
       "request": {
         "method": "PUT",
-        "path": "/api/brand/companies/1",
+        "path": "/api/brand/companies/4",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
-          "content-length": "841",
+          "content-length": "649",
           "content-type": "application/json"
         },
         "body": {
-          "type": "vpbx",
+          "type": "residential",
           "maxCalls": 0,
-          "maxDailyUsage": 100,
-          "ipfilter": "0",
-          "onDemandRecord": 0,
-          "allowRecordingRemoval": true,
-          "billingMethod": "prepaid",
-          "showInvoices": true,
+          "maxDailyUsage": 1000000,
+          "ipfilter": "1",
+          "billingMethod": "postpaid",
+          "showInvoices": "0",
           "language": 2,
           "defaultTimezone": "1",
-          "country": 30,
+          "country": 8,
           "currency": null,
           "outgoingDdi": null,
-          "outgoingDdiRule": null,
           "voicemailNotificationTemplate": "1",
-          "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
-          "maxDailyUsageNotificationTemplate": 2,
-          "accessCredentialNotificationTemplate": 1,
-          "corporation": 1,
-          "featureIds": [
-            1,
-            2,
-            3,
-            4,
-            5
-          ],
+          "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
           "invoicing": {
-            "nif": "12345678A",
-            "postalAddress": "Company Address",
-            "postalCode": "54321",
-            "town": "Company Town",
-            "province": "Company Province",
-            "countryName": "Company Country"
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
           },
-          "name": "DemoCompany",
-          "domainUsers": "127.0.0.1",
-          "maxDailyUsageEmail": "no-replay-updated@domain.net",
+          "name": "Residential Company",
+          "maxDailyUsageEmail": "",
           "externallyextraopts": "",
           "transformationRuleSet": 3
         },
@@ -159,33 +146,33 @@
           "content-type": "application/json; charset=utf-8"
         },
         "body": {
-          "type": "vpbx",
-          "name": "DemoCompany",
-          "domainUsers": "127.0.0.1",
+          "type": "residential",
+          "name": "Residential Company",
+          "domainUsers": null,
           "maxCalls": 0,
-          "maxDailyUsage": 100,
-          "currentDayUsage": 1,
-          "maxDailyUsageEmail": "no-replay-updated@domain.net",
-          "ipfilter": false,
+          "maxDailyUsage": 1000000,
+          "currentDayUsage": 0,
+          "maxDailyUsageEmail": null,
+          "ipfilter": true,
           "onDemandRecord": 0,
           "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
-          "externallyextraopts": "",
+          "externallyextraopts": null,
           "billingMethod": "postpaid",
-          "balance": 1.2,
+          "balance": 0,
           "showInvoices": false,
-          "id": 1,
+          "id": 4,
           "invoicing": {
-            "nif": "12345678B",
-            "postalAddress": "Company Address",
-            "postalCode": "54321",
-            "town": "Company Town",
-            "province": "Company Province",
-            "countryName": "Company Country"
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
           },
           "language": 2,
           "defaultTimezone": 1,
-          "country": 30,
+          "country": 8,
           "currency": null,
           "transformationRuleSet": 3,
           "outgoingDdi": null,
@@ -194,15 +181,12 @@
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
-          "maxDailyUsageNotificationTemplate": 2,
-          "accessCredentialNotificationTemplate": 1,
-          "corporation": 1,
-          "featureIds": [
-            3
-          ],
-          "geoIpAllowedCountries": [
-            1
-          ],
+          "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "corporation": null,
+          "domainName": "retail.irontec.com",
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
           "routingTagIds": [],
           "codecIds": []
         }

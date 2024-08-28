@@ -3,6 +3,7 @@ import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
+import AdministratorCollection from '../../fixtures/Provider/Administrator/getCollection.json';
 import BillableCallsCollection from '../../fixtures/Provider/BillableCalls/getCollection.json';
 import CarriersCollection from '../../fixtures/Provider/Carriers/getCollection.json';
 import CodecsCollection from '../../fixtures/Provider/Codecs/getCollection.json';
@@ -136,5 +137,9 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/web_portals?*', {
       ...WebPortalCollection,
     }).as('getWebPortals');
+
+    cy.intercept('GET', '**/api/brand/administrators?*', {
+      ...AdministratorCollection,
+    }).as('getAdministrator');
   }
 );

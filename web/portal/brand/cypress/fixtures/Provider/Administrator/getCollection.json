@@ -1,0 +1,57 @@
+{
+    "body": [
+        {
+            "username": "restrictedCompanyAdmin",
+            "email": "test@irontec.com",
+            "active": true,
+            "restricted": true,
+            "name": "Admin Name",
+            "lastname": "Admin Lastname",
+            "id": 7
+        },
+        {
+            "username": "test_company_admin",
+            "email": "test@irontec.com",
+            "active": true,
+            "restricted": false,
+            "name": "Admin Name",
+            "lastname": "Admin Lastname",
+            "id": 4
+        },
+        {
+            "username": "test_residential_admin",
+            "email": "test@irontec.com",
+            "active": true,
+            "restricted": false,
+            "name": "Admin Name",
+            "lastname": "Admin Lastname",
+            "id": 8
+        },
+        {
+            "username": "test_retail_admin",
+            "email": "test@irontec.com",
+            "active": true,
+            "restricted": false,
+            "name": "Admin Name",
+            "lastname": "Admin Lastname",
+            "id": 9
+        },
+        {
+            "username": "test_wholesale_admin",
+            "email": "test@irontec.com",
+            "active": true,
+            "restricted": false,
+            "name": "Admin Name",
+            "lastname": "Admin Lastname",
+            "id": 12
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/brand/administrators?_page=1",
+        "x-last-page": "/api/brand/administrators?_page=1",
+        "x-next-page": "/api/brand/administrators?_page=1",
+        "x-total-items": "5",
+        "x-total-pages": "5"
+    },
+    "statusCode": 200
+}
