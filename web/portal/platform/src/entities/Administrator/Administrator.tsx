@@ -6,6 +6,8 @@ import defaultEntityBehavior, {
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
+  EntityValidator,
+  EntityValidatorResponse,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
@@ -19,8 +21,35 @@ const marshaller: marshallerType = (row, properties, whitelist) => {
   if (row.brand === false) {
     row.brand = null;
   }
+  const pass = row.pass?.trim();
+  if (pass === '') {
+    row.pass = null;
+  }
 
   return defaultMarshaller(row, properties, whitelist);
+};
+
+const validator: EntityValidator = (values, properties, visualToggle) => {
+  const response: EntityValidatorResponse = defaultEntityBehavior.validator(
+    values,
+    properties,
+    visualToggle
+  );
+  const id = values?.id;
+
+  if (!id) {
+    return response;
+  }
+
+  const pass = (values?.pass as string).trim();
+  const active = values?.active;
+  const isActive = active === '1' || active === true;
+
+  if (pass === '' && isActive) {
+    response['pass'] = _('Password cannot be empty in an active user');
+  }
+
+  return response;
 };
 
 const properties: AdministratorProperties = {
@@ -130,6 +159,7 @@ const Administrator: EntityInterface = {
     return module.default;
   },
   marshaller,
+  validator,
 };
 
 export default Administrator;

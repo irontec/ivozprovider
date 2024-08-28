@@ -140,6 +140,7 @@
   "Options": "Options",
   "Outbound": "Outbound",
   "Password": "Password",
+  "Password cannot be empty in an active user": "Password cannot be empty in an active user",
   "Personal data": "Personal data",
   "Platform": "Platform",
   "Platform Portal_one": "Platform portal",

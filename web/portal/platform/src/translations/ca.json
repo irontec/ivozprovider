@@ -169,6 +169,7 @@
   "Options": "Opcions",
   "Outbound": "Sortida",
   "Password": "Contrasenya",
+  "Password cannot be empty in an active user": "La contrasenya no pot estar buida en un usuari actiu",
   "Personal data": "Dades personals",
   "Platform": "Plataforma",
   "Platform Portal_many": "Portals de platforma",
