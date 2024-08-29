@@ -21,7 +21,8 @@ Feature: Retrieve administrators
               "restricted": true,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
-              "id": 7
+              "id": 7,
+              "company": 1
           },
           {
               "username": "test_company_admin",
@@ -30,7 +31,8 @@ Feature: Retrieve administrators
               "restricted": false,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
-              "id": 4
+              "id": 4,
+              "company": 1
           },
           {
               "username": "test_residential_admin",
@@ -39,7 +41,8 @@ Feature: Retrieve administrators
               "restricted": false,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
-              "id": 8
+              "id": 8,
+              "company": 4
           },
           {
               "username": "test_retail_admin",
@@ -48,7 +51,8 @@ Feature: Retrieve administrators
               "restricted": false,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
-              "id": 9
+              "id": 9,
+              "company": 3
           },
           {
               "username": "test_wholesale_admin",
@@ -57,7 +61,8 @@ Feature: Retrieve administrators
               "restricted": false,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
-              "id": 12
+              "id": 12,
+              "company": 5
           }
       ]
       """
