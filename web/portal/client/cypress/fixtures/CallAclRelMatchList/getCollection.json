@@ -1,0 +1,19 @@
+{
+  "body": [
+    {
+        "priority": 1,
+        "policy": "allow",
+        "id": 1,
+        "callAcl": 1,
+        "matchList": 1
+    }
+],
+  "headers": {
+    "x-first-page": "/api/client/call_acl_rel_match_lists?_page=1",
+    "x-last-page": "/api/client/call_acl_rel_match_lists?_page=1",
+    "x-next-page": "/api/client/call_acl_rel_match_lists?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

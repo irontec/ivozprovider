@@ -1,0 +1,22 @@
+{
+    "body": [
+        {
+            "type": "Destination",
+            "prefix": null,
+            "action": "keep",
+            "priority": 1,
+            "id": 1,
+            "outgoingDdiRule": 1,
+            "matchList": 1,
+            "forcedDdi": null
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/client/outgoing_ddi_rules_patterns?_page=1",
+        "x-last-page": "/api/client/outgoing_ddi_rules_patterns?_page=1",
+        "x-next-page": "/api/client/outgoing_ddi_rules_patterns?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}
