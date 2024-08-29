@@ -15,6 +15,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AdministratorRelPublicEntity from '../AdministratorRelPublicEntity/AdministratorRelPublicEntity';
 import Actions from './Action';
 import { AdministratorProperties } from './AdministratorProperties';
+import List from './List';
 
 type marshallerType = typeof defaultMarshaller;
 const marshaller: marshallerType = (row, properties, whitelist) => {
@@ -164,16 +165,12 @@ const Administrator: EntityInterface = {
 
     return module.default;
   },
-  foreignKeyResolver: async () => {
-    const module = await import('./ForeignKeyResolver');
-
-    return module.default;
-  },
   foreignKeyGetter: async () => {
     const module = await import('./ForeignKeyGetter');
 
     return module.foreignKeyGetter;
   },
+  List: List,
   Form: async () => {
     const module = await import('./Form');
 
