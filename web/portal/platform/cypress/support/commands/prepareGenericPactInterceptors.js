@@ -8,6 +8,7 @@ import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import TerminalManufacturerCollection from '../../fixtures/TerminalManufacturer/getCollection.json';
 import TimezonesItem from '../../fixtures/Timezones/getTimezones.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
+import WebPortal from '../../fixtures/WebPortal/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.setupPact(
@@ -53,4 +54,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/platform/my/active_calls', {
     ...ActiveCallsItem,
   }).as('getMyActiveCalls');
+
+  cy.intercept('GET', '**/api/platform/web_portals*', {
+    ...WebPortal,
+  }).as('getWebPortals');
 });
