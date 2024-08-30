@@ -1,0 +1,40 @@
+{
+  "request": {
+    "type": "destination",
+    "action": "force",
+    "priority": 2,
+    "outgoingDdiRule": 1,
+    "matchList": 2,
+    "forcedDdi": 1
+  },
+  "response": {
+    "body": {
+      "type": "destination",
+      "prefix": null,
+      "action": "force",
+      "priority": 2,
+      "id": 2,
+      "outgoingDdiRule": {
+        "name": "testRule",
+        "defaultAction": "keep",
+        "id": 1,
+        "forcedDdi": null
+      },
+      "matchList": {
+        "name": "testMatchlist2",
+        "id": 2,
+        "generic": false
+      },
+      "forcedDdi": "~"
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

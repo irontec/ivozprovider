@@ -1,0 +1,21 @@
+{
+  "body": {
+    "priority": 1,
+    "policy": "allow",
+    "id": 1,
+    "callAcl": {
+      "name": "testACL",
+      "defaultPolicy": "allow",
+      "id": 1
+    },
+    "matchList": {
+      "name": "testMatchlist",
+      "id": 1,
+      "generic": false
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

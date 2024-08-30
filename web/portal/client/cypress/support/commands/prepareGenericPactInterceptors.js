@@ -2,6 +2,7 @@ import apiSpec from '../../fixtures/apiSpec.json';
 import BillableCallCollection from '../../fixtures/BillableCall/getCollection.json';
 import CalendarCollection from '../../fixtures/Calendar/getCollection.json';
 import CallAclCollection from '../../fixtures/CallAcl/getCollection.json';
+import CallAclRelMatchListCollection from '../../fixtures/CallAclRelMatchList/getCollection.json';
 import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getCollection.json';
 import CallForwardSettingCollection from '../../fixtures/CallForwardSetting/getCollection.json';
 import CompanyServiceCollection from '../../fixtures/CompanyService/getCollection.json';
@@ -32,6 +33,7 @@ import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
+import OutgoingDdiRulePatternCollection from '../../fixtures/OutgoingDdiRulePatterns/getCollection.json';
 import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json';
 import QueueCollection from '../../fixtures/Queue/getCollection.json';
 import RecordingCollection from '../../fixtures/Recording/getCollection.json';
@@ -262,4 +264,12 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/holiday_dates?*', {
     ...HolidayDateCollection,
   }).as('getHolidayDate');
+
+  cy.intercept('GET', '**/api/client/outgoing_ddi_rules_patterns?*', {
+    ...OutgoingDdiRulePatternCollection,
+  }).as('getOutgoingDdiRulePatterns');
+
+  cy.intercept('GET', '**/api/client/call_acl_rel_match_lists?*', {
+    ...CallAclRelMatchListCollection,
+  }).as('getCallAclRelMatchList');
 });
