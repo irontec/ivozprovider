@@ -3,6 +3,7 @@
 use v5.10;
 use strict;
 use DBI;
+use File::Copy;
 
 my $MYSQL_FILE = "/etc/mysql/conf.d/kamailio.cnf";
 my $database = 'ivozprovider';
@@ -12,6 +13,7 @@ my $data_source = "dbi:mysql:$database" .
 
 my $PROXY;
 my $LISTENERS_FILE;
+my $PORTS_FILE;
 
 sub printListeners() {
     my %listeners;
@@ -43,6 +45,34 @@ sub printListeners() {
     $dbh->disconnect();
 
     return \%listeners;
+}
+
+sub printPorts() {
+    unlink $PORTS_FILE;
+
+    open my $FILE, ">>", $PORTS_FILE;
+
+    say $FILE '#!define TRUNKS_DMQ_SERVER "sip:trunks.ivozprovider.local:5060"';
+    say $FILE '#!define USERS_DMQ_SERVER "sip:users.ivozprovider.local:5060"';
+    if ($PROXY eq "users") {
+        say $FILE '#!define TRUNKS_SIP_PORT 5060';
+    }
+
+    say $FILE "";
+    say $FILE "#!define SIP_PORT 5060";
+    say $FILE "#!define SIPS_PORT 5061";
+
+    if ($PROXY eq "users") {
+        say $FILE "#!define RPC_PORT 8000";
+        say $FILE "#!define WS_PORT 10080";
+        say $FILE "#!define WSS_PORT 10081";
+    } else {
+        say $FILE "#!define RPC_PORT 8001";
+        say $FILE "#!define XMLRPC_PORT 8002";
+    }
+
+    say $FILE "";
+    close $FILE;
 }
 
 sub printListener() {
@@ -95,7 +125,14 @@ if (@ARGV != 1 || ($ARGV[0] ne "users" && $ARGV[0] ne "trunks")) {
 }
 
 $PROXY = shift @ARGV;
+$PORTS_FILE = "/etc/kamailio/proxy$PROXY/ports.cfg";
 $LISTENERS_FILE = "/etc/kamailio/proxy$PROXY/listeners.cfg";
+
+if (-f "$PORTS_FILE.dev") {
+    copy "$PORTS_FILE.dev", $PORTS_FILE;
+} else {
+    &printPorts();
+}
 
 &printListeners();
 
