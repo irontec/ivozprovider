@@ -150,7 +150,12 @@ describe('HolidayDate', () => {
     cy.contains('Import CSV').click();
     cy.get('h2').should('contain', 'Import Holiday Dates');
 
-    cy.uploadFile('HolidayDate/massImport.csv', 'input[type="file"]');
+    cy.uploadFile(
+      'cypress/assets/massImport.csv',
+      'input[type="file"]',
+      'text/csv',
+      'binary'
+    );
 
     cy.contains('Send').click();
 

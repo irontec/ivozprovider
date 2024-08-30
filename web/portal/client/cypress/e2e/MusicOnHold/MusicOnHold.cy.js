@@ -62,6 +62,12 @@ describe('MusicOnHold', () => {
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
     const { name } = editMusicOnHold.request;
+    cy.uploadFile(
+      'cypress/assets/locution_example.mp3',
+      '#originalFile-file-upload',
+      'audio/mpeg',
+      'binary'
+    );
     cy.fillTheForm({ name });
 
     cy.contains('Musics on hold');
