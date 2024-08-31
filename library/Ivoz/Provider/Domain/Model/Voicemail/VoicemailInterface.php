@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Voicemail;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Core\Domain\Model\SelfManagedInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
@@ -19,7 +18,7 @@ use Doctrine\Common\Collections\Criteria;
 /**
 * VoicemailInterface
 */
-interface VoicemailInterface extends LoggableEntityInterface, SelfManagedInterface
+interface VoicemailInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
