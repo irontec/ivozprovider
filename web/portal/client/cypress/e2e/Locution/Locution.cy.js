@@ -64,6 +64,12 @@ describe('Locution', () => {
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
     const { name, status } = editLocution.request;
+    cy.uploadFile(
+      'cypress/assets/locution_example.mp3',
+      '#originalFile-file-upload',
+      'audio/mpeg',
+      'binary'
+    );
     cy.fillTheForm({
       name,
       status,
