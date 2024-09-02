@@ -1,4 +1,6 @@
 import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
+import EditRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/EditRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -36,14 +38,35 @@ const properties: SpecialNumberProperties = {
 };
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, row } = props;
+  const { routeMapItem, row, entityService } = props;
 
   if (
     isEntityItem(routeMapItem) &&
     routeMapItem.entity.iden === SpecialNumber.iden
   ) {
-    if (row.global) {
-      return null;
+    const isUpdatePath =
+      routeMapItem.route === `${SpecialNumber.path}/:id/update`;
+    const isDeletePath = routeMapItem.route === `${SpecialNumber.path}/:id`;
+    const isRestricted = row.global;
+
+    if (isRestricted && isUpdatePath) {
+      return (
+        <EditRowButton
+          row={row}
+          disabled={true}
+          path={routeMapItem.route ?? ''}
+        />
+      );
+    }
+
+    if (isRestricted && isDeletePath) {
+      return (
+        <DeleteRowButton
+          row={row}
+          entityService={entityService}
+          disabled={true}
+        />
+      );
     }
   }
 
