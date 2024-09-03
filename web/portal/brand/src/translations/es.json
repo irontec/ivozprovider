@@ -470,6 +470,7 @@
   "Outgoing route": "Enrutado saliente",
   "PDF file": "Fichero PDF",
   "Password": "Contraseña",
+  "Password cannot be empty in an active user": "La contraseña no puede estar vacía para un usuario activo",
   "Pattern": "Patrón",
   "Pending": "Pendiente",
   "Per minute charge*: Per minute charge": "Coste por minuto*: Coste por minuto",

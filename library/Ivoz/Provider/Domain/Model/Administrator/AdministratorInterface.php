@@ -67,6 +67,29 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function unserialize($serialized);
 
     /**
+     * @return array{
+     *     id: int|null,
+     *     username: string,
+     *     pass: string|null,
+     *     email: string,
+     *     active: bool
+     * }
+     */
+    public function __serialize(): array;
+
+    /**
+     * @param array{
+     *      id: int|null,
+     *      username: string,
+     *      pass: string|null,
+     *      email: string,
+     *      active: bool
+     *  } $data
+     * @return void
+     */
+    public function __unserialize(array $data): void;
+
+    /**
      * @param int | null $id
      */
     public static function createDto($id = null): AdministratorDto;
@@ -91,7 +114,7 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function getUsername(): string;
 
-    public function getPass(): string;
+    public function getPass(): ?string;
 
     public function getEmail(): string;
 

@@ -1,6 +1,6 @@
 import UserCollection from '../../fixtures/Users/getCollection.json';
-import newUser from '../../fixtures/Users/post.json';
 import UserItem from '../../fixtures/Users/getItem.json';
+import newUser from '../../fixtures/Users/post.json';
 import editUser from '../../fixtures/Users/put.json';
 
 describe('User', () => {
@@ -31,7 +31,8 @@ describe('User', () => {
 
     cy.get('[aria-label=Add]').click();
 
-    const { name, lastname, email, extension, outgoingDdi, outgoingDdiRule } = newUser.request;
+    const { name, lastname, email, extension, outgoingDdi, outgoingDdiRule } =
+      newUser.request;
 
     cy.fillTheForm({
       name,
@@ -44,11 +45,8 @@ describe('User', () => {
 
     cy.get('header').should('contain', 'Users');
 
-    cy.usePactWait('createUser')
-      .its('response.statusCode')
-      .should('eq', 201);
+    cy.usePactWait('createUser').its('response.statusCode').should('eq', 201);
   });
-
 
   ///////////////////////////////
   // PUT
@@ -118,9 +116,7 @@ describe('User', () => {
 
     cy.contains('Users');
 
-    cy.usePactWait(['editUser'])
-      .its('response.statusCode')
-      .should('eq', 200);
+    cy.usePactWait(['editUser']).its('response.statusCode').should('eq', 200);
   });
 
   ///////////////////////
@@ -131,7 +127,9 @@ describe('User', () => {
       statusCode: 204,
     }).as('deleteUser');
 
-    cy.get('td > div.actions-cell > span > button:has(svg[data-testid="DeleteIcon"])')
+    cy.get(
+      'td > div.actions-cell > span > button:has(svg[data-testid="DeleteIcon"])'
+    )
       .first()
       .click();
 
@@ -144,8 +142,6 @@ describe('User', () => {
 
     cy.get('header').should('contain', 'Users');
 
-    cy.usePactWait(['deleteUser'])
-      .its('response.statusCode')
-      .should('eq', 204);
+    cy.usePactWait(['deleteUser']).its('response.statusCode').should('eq', 204);
   });
 });

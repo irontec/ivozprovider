@@ -411,6 +411,7 @@
   "Page": "Páginas",
   "Party": "Interlocutor",
   "Password": "Contraseña",
+  "Password cannot be empty in an active user": "La contraseña no puede estar vacía para un usuario activo",
   "Penalty": "Prioridad",
   "Pending": "Pendiente",
   "Periodic Annouce Locution": "Locución periódica",

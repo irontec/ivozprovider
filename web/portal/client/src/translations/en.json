@@ -367,6 +367,7 @@
   "Page": "Pages",
   "Party": "Party",
   "Password": "Password",
+  "Password cannot be empty in an active user": "Password cannot be empty in an active user",
   "Penalty": "Penalty",
   "Pending": "Pending",
   "Periodic Annouce Locution": "Periodic Annouce Locution",

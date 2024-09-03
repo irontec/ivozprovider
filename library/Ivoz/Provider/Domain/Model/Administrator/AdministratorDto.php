@@ -48,4 +48,24 @@ class AdministratorDto extends AdministratorDtoAbstract
             $data
         );
     }
+
+    /**
+     * @throws \Exception
+     */
+    public function toArray(bool $hideSensitiveData = false): array
+    {
+        if (is_null($this->getPass())) {
+            if (is_array($this->sensitiveFields)) {
+                /** @var array<array-key, string> $filteredSensitiveFields */
+                $filteredSensitiveFields = array_diff(
+                    $this->sensitiveFields,
+                    ["pass"]
+                );
+
+                $this->sensitiveFields = $filteredSensitiveFields;
+            }
+        }
+
+        return parent::toArray($hideSensitiveData);
+    }
 }

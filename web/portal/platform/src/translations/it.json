@@ -169,6 +169,7 @@
   "Options": "Opzioni",
   "Outbound": "In uscita",
   "Password": "Password",
+  "Password cannot be empty in an active user": "La password non può essere vuota in un utente attivo",
   "Personal data": "Dati personali",
   "Platform": "Piattaforma",
   "Platform Portal_many": "Portali Piattaforma",
