@@ -20,16 +20,15 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: '',
-      fields: [
-        !edit && 'numberSequence',
-        !row?.numberSequence && 'number',
-        'company',
-        'invoiceTemplate',
-      ],
+      fields: ['company', 'inDate', 'outDate'],
     },
     {
       legend: '',
-      fields: ['inDate', 'outDate'],
+      fields: [
+        'invoiceTemplate',
+        !edit && 'numberSequence',
+        !row?.numberSequence && 'number',
+      ],
     },
     {
       legend: '',
