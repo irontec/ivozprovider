@@ -12,7 +12,7 @@ describe('HuntGroupMember', () => {
     cy.contains('Routing endpoints').click();
     cy.contains('Hunt Groups').click();
 
-    cy.get('header').should('contain', 'Hunt Groups');    
+    cy.get('header').should('contain', 'Hunt Groups');
 
     cy.get('svg[data-testid="Groups3Icon"]').first().click();
 

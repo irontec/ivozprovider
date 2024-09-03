@@ -1,128 +1,128 @@
 {
-    "body": [
-        {
-            "tz": "Europe/Andorra",
-            "id": 1
-        },
-        {
-            "tz": "Asia/Dubai",
-            "id": 2
-        },
-        {
-            "tz": "Asia/Kabul",
-            "id": 3
-        },
-        {
-            "tz": "America/Antigua",
-            "id": 4
-        },
-        {
-            "tz": "America/Anguilla",
-            "id": 5
-        },
-        {
-            "tz": "Europe/Tirane",
-            "id": 6
-        },
-        {
-            "tz": "Asia/Yerevan",
-            "id": 7
-        },
-        {
-            "tz": "Africa/Luanda",
-            "id": 8
-        },
-        {
-            "tz": "Antarctica/McMurdo",
-            "id": 9
-        },
-        {
-            "tz": "Antarctica/Rothera",
-            "id": 10
-        },
-        {
-            "tz": "Antarctica/Palmer",
-            "id": 11
-        },
-        {
-            "tz": "Antarctica/Mawson",
-            "id": 12
-        },
-        {
-            "tz": "Antarctica/Davis",
-            "id": 13
-        },
-        {
-            "tz": "Antarctica/Casey",
-            "id": 14
-        },
-        {
-            "tz": "Antarctica/Vostok",
-            "id": 15
-        },
-        {
-            "tz": "Antarctica/DumontDUrville",
-            "id": 16
-        },
-        {
-            "tz": "Antarctica/Syowa",
-            "id": 17
-        },
-        {
-            "tz": "Antarctica/Troll",
-            "id": 18
-        },
-        {
-            "tz": "America/Argentina/Buenos_Aires",
-            "id": 19
-        },
-        {
-            "tz": "America/Argentina/Cordoba",
-            "id": 20
-        },
-        {
-            "tz": "America/Argentina/Salta",
-            "id": 21
-        },
-        {
-            "tz": "America/Argentina/Jujuy",
-            "id": 22
-        },
-        {
-            "tz": "America/Argentina/Tucuman",
-            "id": 23
-        },
-        {
-            "tz": "America/Argentina/Catamarca",
-            "id": 24
-        },
-        {
-            "tz": "America/Argentina/La_Rioja",
-            "id": 25
-        },
-        {
-            "tz": "America/Argentina/San_Juan",
-            "id": 26
-        },
-        {
-            "tz": "America/Argentina/Mendoza",
-            "id": 27
-        },
-        {
-            "tz": "America/Argentina/San_Luis",
-            "id": 28
-        },
-        {
-            "tz": "America/Argentina/Rio_Gallegos",
-            "id": 29
-        },
-        {
-            "tz": "America/Argentina/Ushuaia",
-            "id": 30
-        }
-    ],
-    "headers": {
-        "content-type": "application/json; charset=utf-8"
+  "body": [
+    {
+      "tz": "Europe/Andorra",
+      "id": 1
     },
-    "statusCode": 200
+    {
+      "tz": "Asia/Dubai",
+      "id": 2
+    },
+    {
+      "tz": "Asia/Kabul",
+      "id": 3
+    },
+    {
+      "tz": "America/Antigua",
+      "id": 4
+    },
+    {
+      "tz": "America/Anguilla",
+      "id": 5
+    },
+    {
+      "tz": "Europe/Tirane",
+      "id": 6
+    },
+    {
+      "tz": "Asia/Yerevan",
+      "id": 7
+    },
+    {
+      "tz": "Africa/Luanda",
+      "id": 8
+    },
+    {
+      "tz": "Antarctica/McMurdo",
+      "id": 9
+    },
+    {
+      "tz": "Antarctica/Rothera",
+      "id": 10
+    },
+    {
+      "tz": "Antarctica/Palmer",
+      "id": 11
+    },
+    {
+      "tz": "Antarctica/Mawson",
+      "id": 12
+    },
+    {
+      "tz": "Antarctica/Davis",
+      "id": 13
+    },
+    {
+      "tz": "Antarctica/Casey",
+      "id": 14
+    },
+    {
+      "tz": "Antarctica/Vostok",
+      "id": 15
+    },
+    {
+      "tz": "Antarctica/DumontDUrville",
+      "id": 16
+    },
+    {
+      "tz": "Antarctica/Syowa",
+      "id": 17
+    },
+    {
+      "tz": "Antarctica/Troll",
+      "id": 18
+    },
+    {
+      "tz": "America/Argentina/Buenos_Aires",
+      "id": 19
+    },
+    {
+      "tz": "America/Argentina/Cordoba",
+      "id": 20
+    },
+    {
+      "tz": "America/Argentina/Salta",
+      "id": 21
+    },
+    {
+      "tz": "America/Argentina/Jujuy",
+      "id": 22
+    },
+    {
+      "tz": "America/Argentina/Tucuman",
+      "id": 23
+    },
+    {
+      "tz": "America/Argentina/Catamarca",
+      "id": 24
+    },
+    {
+      "tz": "America/Argentina/La_Rioja",
+      "id": 25
+    },
+    {
+      "tz": "America/Argentina/San_Juan",
+      "id": 26
+    },
+    {
+      "tz": "America/Argentina/Mendoza",
+      "id": 27
+    },
+    {
+      "tz": "America/Argentina/San_Luis",
+      "id": 28
+    },
+    {
+      "tz": "America/Argentina/Rio_Gallegos",
+      "id": 29
+    },
+    {
+      "tz": "America/Argentina/Ushuaia",
+      "id": 30
+    }
+  ],
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
 }

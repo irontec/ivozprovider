@@ -16,10 +16,18 @@
     "outOfScheduleVoicemail": null,
     "holidayNumberCountry": 2,
     "outOfScheduleNumberCountry": 3,
-    "scheduleIds": [2],
-    "calendarIds": [2],
-    "whiteListIds": [2],
-    "blackListIds": [2]
+    "scheduleIds": [
+      2
+    ],
+    "calendarIds": [
+      2
+    ],
+    "whiteListIds": [
+      2
+    ],
+    "blackListIds": [
+      2
+    ]
   },
   "response": {
     "body": {
@@ -40,10 +48,18 @@
       "outOfScheduleVoicemail": null,
       "holidayNumberCountry": 2,
       "outOfScheduleNumberCountry": 3,
-      "scheduleIds": [2],
-      "calendarIds": [2],
-      "whiteListIds": [2],
-      "blackListIds": [2]
+      "scheduleIds": [
+        2
+      ],
+      "calendarIds": [
+        2
+      ],
+      "whiteListIds": [
+        2
+      ],
+      "blackListIds": [
+        2
+      ]
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

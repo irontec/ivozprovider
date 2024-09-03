@@ -3,14 +3,14 @@
     "penalty": 2,
     "queue": 1,
     "user": 2
-},
+  },
   "response": {
-    "body":{
+    "body": {
       "penalty": 2,
       "id": 1,
       "queue": 1,
       "user": 2
-  },
+    },
     "headers": {
       "content-type": "application/json; charset=utf-8"
     },

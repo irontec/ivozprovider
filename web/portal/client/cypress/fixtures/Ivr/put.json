@@ -19,7 +19,9 @@
     "errorVoicemail": null,
     "noInputNumberCountry": 8,
     "errorNumberCountry": 8,
-    "excludedExtensionIds": [2]
+    "excludedExtensionIds": [
+      2
+    ]
   },
   "response": {
     "body": {
@@ -42,7 +44,9 @@
       "errorVoicemail": null,
       "noInputNumberCountry": 8,
       "errorNumberCountry": 8,
-      "excludedExtensionIds": [2]
+      "excludedExtensionIds": [
+        2
+      ]
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

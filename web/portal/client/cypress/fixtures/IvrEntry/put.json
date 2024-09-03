@@ -1,5 +1,5 @@
 {
-  "request":  {
+  "request": {
     "entry": "test",
     "displayName": "New display name",
     "routeType": "voicemail",

@@ -1,25 +1,25 @@
 {
   "request": {
-      "name": "New",
-      "eventDate": "2017-12-21",
-      "calendar": 1,
-      "locution": 1
+    "name": "New",
+    "eventDate": "2017-12-21",
+    "calendar": 1,
+    "locution": 1
   },
   "response": {
     "body": {
-        "name": "New",
-        "eventDate": "2017-12-21",
-        "wholeDayEvent": true,
-        "timeIn": null,
-        "timeOut": null,
-        "routeType": null,
-        "numberValue": null,
-        "id": 3,
-        "calendar": 1,
-        "locution": 1,
-        "extension": null,
-        "voicemail": null,
-        "numberCountry": null
+      "name": "New",
+      "eventDate": "2017-12-21",
+      "wholeDayEvent": true,
+      "timeIn": null,
+      "timeOut": null,
+      "routeType": null,
+      "numberValue": null,
+      "id": 3,
+      "calendar": 1,
+      "locution": 1,
+      "extension": null,
+      "voicemail": null,
+      "numberCountry": null
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

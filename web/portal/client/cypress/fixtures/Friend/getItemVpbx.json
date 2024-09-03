@@ -1,11 +1,11 @@
 {
   "body": {
-      "name": "InterCompany1_3",
-      "description": "",
-      "priority": 1,
-      "directConnectivity": "intervpbx",
-      "id": 3,
-      "interCompany": 3
+    "name": "InterCompany1_3",
+    "description": "",
+    "priority": 1,
+    "directConnectivity": "intervpbx",
+    "id": 3,
+    "interCompany": 3
   },
   "headers": {
     "content-type": "application/json; charset=utf-8"

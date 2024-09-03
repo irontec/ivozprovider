@@ -6,10 +6,25 @@ cd $(dirname "$(realpath -se "$0")")/..
 # Install required dependencies
 yarn install
 
+# Verify fixtures are properly formatted
+for FIXTURE in ./cypress/fixtures/*/*.json; do
+    jq . $FIXTURE > $FIXTURE.jq && mv $FIXTURE.jq $FIXTURE
+done
+
+FIXTURES_CHANGED=$(git status --short ./cypress/fixtures)
+if [ -n "$FIXTURES_CHANGED" ]; then
+    echo "============ Following fixtures are not properly formatted ==============="
+    git status --short ./cypress/fixtures
+    echo "=========================================================================="
+    git diff ./cypress/fixtures
+    echo "=========================================================================="
+    exit 1
+fi
+
 # Run linter
 LANG=en_US.UTF-8 yarn run cy:run
 
-# Verify packts are in sync
+# Verify pacts are in sync
 for PACT in ./cypress/pacts/*.json; do
     [ -e "$PACT" ] || continue
     jq . $PACT > $PACT.minified && mv $PACT.minified $PACT

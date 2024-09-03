@@ -7,22 +7,22 @@
       "numberValue": null,
       "id": 1,
       "huntGroup": {
-          "name": "testHuntGroup",
-          "description": "desc",
-          "strategy": "ringAll",
-          "ringAllTimeout": 10,
-          "noAnswerTargetType": null,
-          "noAnswerNumberValue": null,
-          "preventMissedCalls": 1,
-          "id": 1,
-          "noAnswerLocution": null,
-          "noAnswerExtension": null,
-          "noAnswerVoicemail": null,
-          "noAnswerNumberCountry": null
+        "name": "testHuntGroup",
+        "description": "desc",
+        "strategy": "ringAll",
+        "ringAllTimeout": 10,
+        "noAnswerTargetType": null,
+        "noAnswerNumberValue": null,
+        "preventMissedCalls": 1,
+        "id": 1,
+        "noAnswerLocution": null,
+        "noAnswerExtension": null,
+        "noAnswerVoicemail": null,
+        "noAnswerNumberCountry": null
       },
       "user": "~",
       "numberCountry": null
-  }
+    }
   ],
   "headers": {
     "x-first-page": "/api/client/hunt_group_members?_page=1",

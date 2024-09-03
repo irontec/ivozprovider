@@ -1,5 +1,9 @@
 import WebPortalsCollection from '../../fixtures/Provider/WebPortals/getCollection.json';
-import { postWebPortal, putWebPortal, deleteWebPortal } from './WebPortals.tests';
+import {
+  deleteWebPortal,
+  postWebPortal,
+  putWebPortal,
+} from './WebPortals.tests';
 
 describe('in WebPortals', () => {
   beforeEach(() => {
@@ -12,7 +16,6 @@ describe('in WebPortals', () => {
     cy.get('header').should('contain', 'Administration Portals');
 
     cy.get('table').should('contain', WebPortalsCollection.body[0].name);
-
   });
 
   ///////////////////////

@@ -1,6 +1,6 @@
 import ExtensionCollection from '../../fixtures/Extension/getCollection.json';
-import newExtension from '../../fixtures/Extension/post.json';
 import ExtensionItem from '../../fixtures/Extension/getItem.json';
+import newExtension from '../../fixtures/Extension/post.json';
 import editExtension from '../../fixtures/Extension/put.json';
 
 describe('Extension', () => {
@@ -13,7 +13,6 @@ describe('Extension', () => {
     cy.get('header').should('contain', 'Extensions');
 
     cy.get('table').should('contain', ExtensionCollection.body[0].name);
-
   });
 
   ///////////////////////
@@ -86,7 +85,9 @@ describe('Extension', () => {
       statusCode: 204,
     }).as('deleteExtension');
 
-    cy.get('td > div.actions-cell > span > button:has(svg[data-testid="DeleteIcon"])')
+    cy.get(
+      'td > div.actions-cell > span > button:has(svg[data-testid="DeleteIcon"])'
+    )
       .first()
       .click();
 
