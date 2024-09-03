@@ -1,4 +1,13 @@
+*.crt
+*.key
+apiban.cfg
 custom-defines.cfg
 custom-global-params.cfg
-*.key
-*.crt
+custom_settings.cfg
+geoip.cfg
+listeners.cfg
+multisocket.cfg
+ports.cfg
+ports.cfg.dev
+pushservers.cfg
+siptrace.cfg
