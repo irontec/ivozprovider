@@ -1,0 +1,66 @@
+{
+    "request": {
+        "priority": 1,
+        "routeType": "ivr",
+        "numberValue": null,
+        "friendValue": "",
+        "conditionalRoute": 1,
+        "id": 1,
+        "ivr": 1,
+        "huntGroup": null,
+        "voicemail": null,
+        "user": null,
+        "queue": null,
+        "locution": null,
+        "conferenceRoom": null,
+        "extension": null,
+        "numberCountry": null,
+        "matchListIds": [
+          2
+        ],
+        "scheduleIds": [
+          2
+        ],
+        "calendarIds": [
+          2
+        ],
+        "routeLockIds": [
+          2
+        ]
+    },
+  "response": {
+    "body" : {
+      "priority": 1,
+      "routeType": "ivr",
+      "numberValue": null,
+      "friendValue": null,
+      "id": 1,
+      "conditionalRoute": 1,
+      "ivr": 1,
+      "huntGroup": null,
+      "voicemail": null,
+      "user": null,
+      "queue": null,
+      "locution": null,
+      "conferenceRoom": null,
+      "extension": null,
+      "numberCountry": null,
+      "matchListIds": [
+        2
+      ],
+      "scheduleIds": [
+        2
+      ],
+      "calendarIds": [
+        2
+      ],
+      "routeLockIds": [
+        2
+      ]
+  }
+  },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }

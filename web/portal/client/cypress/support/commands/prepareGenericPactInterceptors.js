@@ -7,6 +7,7 @@ import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getColle
 import CallForwardSettingCollection from '../../fixtures/CallForwardSetting/getCollection.json';
 import CompanyServiceCollection from '../../fixtures/CompanyService/getCollection.json';
 import ConditionalRouteCollection from '../../fixtures/ConditionalRoute/getCollection.json';
+import ConditionalRoutesConditionCollection from '../../fixtures/ConditionalRoutesCondition/getCollection.json';
 import ConferenceRoomCollection from '../../fixtures/ConferenceRoom/getCollection.json';
 import ContactCollection from '../../fixtures/Contact/getCollection.json';
 import CorporateUnassignedCollection from '../../fixtures/Corporate/getUnassignedCollection.json';
@@ -17,11 +18,14 @@ import ExtensionCollection from '../../fixtures/Extension/getCollection.json';
 import ExtensionUnassignedCollection from '../../fixtures/Extension/getUnassignedCollection.json';
 import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getCollection.json';
 import FaxCollection from '../../fixtures/Fax/getCollection.json';
+import FaxInOutCollection from '../../fixtures/FaxInOut/getCollection.json';
 import FriendCollection from '../../fixtures/Friend/getCollection.json';
+import FriendPatternsCollection from '../../fixtures/FriendPattern/getCollection.json';
 import HolidayDateCollection from '../../fixtures/HolidayDate/getCollection.json';
 import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
 import HuntGroupMemberByHuntGroupCollection from '../../fixtures/HuntGroupMember/getCollection.json';
 import IvrCollection from '../../fixtures/Ivr/getCollection.json';
+import IvrEntryCollection from '../../fixtures/IvrEntry/getCollection.json';
 import LanguageCollection from '../../fixtures/Language/getCollection.json';
 import LocationCollection from '../../fixtures/Location/getCollection.json';
 import LocutionCollection from '../../fixtures/Locution/getCollection.json';
@@ -36,6 +40,7 @@ import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollect
 import OutgoingDdiRulePatternCollection from '../../fixtures/OutgoingDdiRulePatterns/getCollection.json';
 import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json';
 import QueueCollection from '../../fixtures/Queue/getCollection.json';
+import QueueMemberCollection from '../../fixtures/QueueMember/getCollection.json';
 import RecordingCollection from '../../fixtures/Recording/getCollection.json';
 import ResidentialDeviceCollection from '../../fixtures/ResidentialDevice/getCollection.json';
 import RetailAccountCollection from '../../fixtures/RetailAccount/getCollection.json';
@@ -51,6 +56,7 @@ import TransformationRuleSetCollection from '../../fixtures/TransformationRuleSe
 import UserCollection from '../../fixtures/Users/getCollection.json';
 import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMemebersCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
+import VoicemailMessageCollection from '../../fixtures/VoicemailMessage/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.setupPact(
@@ -105,6 +111,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...FaxCollection,
   }).as('getFax');
 
+  cy.intercept('GET', '**/api/client/faxes_in_outs?*', {
+    ...FaxInOutCollection,
+  }).as('getFaxesInOut');
+
   cy.intercept('GET', '**/api/client/contacts?*', {
     ...ContactCollection,
   }).as('getContact');
@@ -113,21 +123,41 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...ConditionalRouteCollection,
   }).as('getConditionalRoute');
 
+  cy.intercept('GET', '**/api/client/conditional_routes_conditions?*', {
+    ...ConditionalRoutesConditionCollection,
+  }).as('getConditionalRoutesCondition');
+
   cy.intercept('GET', '**/api/client/queues?*', {
     ...QueueCollection,
   }).as('getQueue');
+
+  cy.intercept('GET', '**/api/client/queue_members?*', {
+    ...QueueMemberCollection,
+  }).as('getQueueMember');
 
   cy.intercept('GET', '**/api/client/ivrs?*', {
     ...IvrCollection,
   }).as('getIvr');
 
+  cy.intercept('GET', '**/api/client/ivr_entries?*', {
+    ...IvrEntryCollection,
+  }).as('getIvrEntry');
+
   cy.intercept('GET', '**/api/client/voicemails?*', {
     ...VoicemailCollection,
   }).as('getVoicemail');
 
+  cy.intercept('GET', '**/api/client/voicemail_messages?*', {
+    ...VoicemailMessageCollection,
+  }).as('getVoicemailMessage');
+
   cy.intercept('GET', '**/api/client/friends?*', {
     ...FriendCollection,
   }).as('getFriend');
+
+  cy.intercept('GET', '**/api/client/friends_patterns?*', {
+    ...FriendPatternsCollection,
+  }).as('getFriendsPattern');
 
   cy.intercept('GET', '**/api/client/conference_rooms?*', {
     ...ConferenceRoomCollection,

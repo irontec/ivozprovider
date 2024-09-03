@@ -1,31 +1,33 @@
 {
   "consumer": {
-    "name": "client-consumer-User-CallForwardSetting"
+    "name": "client-consumer-ConditionalRoutes-Conditions"
   },
   "provider": {
-    "name": "client-provider-User-CallForwardSetting"
+    "name": "client-provider-ConditionalRoutes-Conditions"
   },
   "interactions": [
     {
-      "description": "add CallForwardSetting",
+      "description": "add ConditionalRoutesCondition",
       "providerState": "",
       "request": {
         "method": "POST",
-        "path": "/api/client/call_forward_settings",
+        "path": "/api/client/conditional_routes_conditions",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk",
-          "content-length": "153",
+          "content-length": "161",
           "content-type": "application/json"
         },
         "body": {
-          "callTypeFilter": "internal",
-          "callForwardType": "inconditional",
-          "targetType": "number",
-          "enabled": "1",
-          "user": 1,
-          "numberCountry": 68,
-          "numberValue": "946002020"
+          "priority": 2,
+          "routeType": "extension",
+          "locution": null,
+          "extension": "1",
+          "matchListIds": [],
+          "scheduleIds": [],
+          "calendarIds": [],
+          "routeLockIds": [],
+          "conditionalRoute": 1
         },
         "query": ""
       },
@@ -35,22 +37,47 @@
           "content-type": "application/json; charset=utf-8"
         },
         "body": {
-          "callTypeFilter": "internal",
-          "callForwardType": "inconditional",
-          "targetType": "number",
-          "numberValue": "946002020",
-          "noAnswerTimeout": 0,
-          "enabled": true,
-          "id": 5,
-          "user": 2,
-          "friend": null,
-          "extension": null,
+          "priority": 2,
+          "routeType": "extension",
+          "numberValue": null,
+          "friendValue": null,
+          "id": 2,
+          "conditionalRoute": "~",
+          "ivr": null,
+          "huntGroup": null,
           "voicemail": null,
-          "numberCountry": 68,
-          "residentialDevice": null,
-          "retailAccount": null,
-          "cfwToRetailAccount": null,
-          "ddi": null
+          "user": null,
+          "queue": null,
+          "locution": null,
+          "conferenceRoom": null,
+          "extension": {
+            "number": "101",
+            "routeType": "user",
+            "numberValue": null,
+            "friendValue": null,
+            "id": 1,
+            "ivr": null,
+            "huntGroup": null,
+            "conferenceRoom": null,
+            "user": 1,
+            "queue": null,
+            "conditionalRoute": null,
+            "numberCountry": null,
+            "voicemail": null
+          },
+          "numberCountry": null,
+          "matchListIds": [
+            2
+          ],
+          "scheduleIds": [
+            1
+          ],
+          "calendarIds": [
+            2
+          ],
+          "routeLockIds": [
+            1
+          ]
         },
         "matchingRules": {
           "$.body.id": {
@@ -60,59 +87,80 @@
       }
     },
     {
-      "description": "edit CallForwardSetting",
+      "description": "edit ConditionalRoutesCondition",
       "providerState": "",
       "request": {
         "method": "PUT",
-        "path": "/api/client/call_forward_settings/1",
+        "path": "/api/client/conditional_routes_conditions/1",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk",
-          "content-length": "153",
+          "content-length": "165",
           "content-type": "application/json"
         },
         "body": {
-          "callTypeFilter": "internal",
-          "callForwardType": "inconditional",
-          "targetType": "number",
-          "enabled": "1",
-          "numberValue": "946002053",
-          "user": 1,
-          "numberCountry": 68
+          "priority": 2,
+          "routeType": "extension",
+          "locution": null,
+          "extension": "1",
+          "matchListIds": [
+            1
+          ],
+          "scheduleIds": [
+            1
+          ],
+          "calendarIds": [
+            1
+          ],
+          "routeLockIds": [
+            1
+          ],
+          "conditionalRoute": 1
         },
         "query": ""
       },
       "response": {
         "status": 200,
         "headers": {
-          "content-type": "application/json; charset=utf-8"
+          "content-type": "application/json"
         },
         "body": {
-          "callTypeFilter": "internal",
-          "callForwardType": "inconditional",
-          "targetType": "number",
-          "numberValue": "946002021",
-          "noAnswerTimeout": 0,
-          "enabled": true,
+          "priority": 1,
+          "routeType": "ivr",
+          "numberValue": null,
+          "friendValue": null,
           "id": 1,
-          "user": 1,
-          "friend": null,
-          "extension": null,
+          "conditionalRoute": 1,
+          "ivr": 1,
+          "huntGroup": null,
           "voicemail": null,
-          "numberCountry": 1,
-          "residentialDevice": null,
-          "retailAccount": null,
-          "cfwToRetailAccount": null,
-          "ddi": null
+          "user": null,
+          "queue": null,
+          "locution": null,
+          "conferenceRoom": null,
+          "extension": null,
+          "numberCountry": null,
+          "matchListIds": [
+            2
+          ],
+          "scheduleIds": [
+            2
+          ],
+          "calendarIds": [
+            2
+          ],
+          "routeLockIds": [
+            2
+          ]
         }
       }
     },
     {
-      "description": "delete CallForwardSetting",
+      "description": "delete ConditionalRoutesCondition",
       "providerState": "",
       "request": {
         "method": "DELETE",
-        "path": "/api/client/call_forward_settings/1",
+        "path": "/api/client/conditional_routes_conditions/1",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzc4MzY2OTMsImV4cCI6MTY3Nzg0MDI5Mywicm9sZXMiOlsiUk9MRV9DT01QQU5ZX0FETUlOIl0sInVzZXJuYW1lIjoiY2xpZW50In0.eUZuqUVipx3O6OE9pd-TfjCdCIq3t0w8vZxky_eclCDng3GNf2dJjjdVcTv16BDswy355tixdqHhTx_X3sK6bMJoqD52eDshPL821sNHm2b38zbZl3bnf9MRRqY82eT88MZ_cWiJQ5_fm6PxMickC4FtJzXqAP-SBV7XswA-zB57TMKhdNYFsz41GI0szfmqRpm_-CYv3AfORKozFxWHtKJNd71r-Re1-BmSR0neatx9fr2eJOjAKoNGJkQmmx8c6nMcaeZBDIiglQJkDXk-A7eq6q1iF6vrqLq2ov27mFn4YmuLQkNCloZEoQDJNFR1CNZJRNqod4jC0N-y1FXFSBmbMH7_-F0XyUrbUx7DRzP-4ZK9LDxNTGZRvylDHXcTmJgmMEmPZ64DuTW4SozUjVxeVFv4OgveeLtexbLbmJ9qLoh0d8dtQSMvDOyr-t4zGw2zOUOdudXUp-t0S1oqDcEfEM-3dx2EW6SL11QoXWgVkIaN6eARiKMVnAWmUDAn7uT6TbKAZ4F8rEo5MmZMjDT_YuOF57DcGeDbC6035Kyd8SFgTcS6i3UqGf1Fp6U9nT1Snux8ATrt6cLJ644ZF2nkFb39EXlHHF03kzvVsw05nHHerLSVvdLgoSRVJSQufIF8JMK0MNMFGlBcUs3q4drqVGKiFcWQ-qXVV97IFpk"

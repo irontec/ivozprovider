@@ -1,6 +1,8 @@
 import FriendCollection from '../../fixtures/Friend/getCollection.json';
 import FriendItem from '../../fixtures/Friend/getItem.json';
+import FriendItemVpbx from '../../fixtures/Friend/getItemVpbx.json';
 import editFriend from '../../fixtures/Friend/put.json';
+import editFriendVpbx from '../../fixtures/Friend/putVpbx.json';
 
 describe('Friend', () => {
   beforeEach(() => {
@@ -33,7 +35,6 @@ describe('Friend', () => {
     );
 
     cy.get('svg[data-testid="EditIcon"]').first().click();
-
     const {
       priority,
       description,
@@ -79,6 +80,38 @@ describe('Friend', () => {
     cy.get('header').contains('Friends');
 
     cy.usePactWait(['editFriend']).its('response.statusCode').should('eq', 200);
+  });
+
+  ///////////////////////////////
+  // PUT
+  ///////////////////////////////
+  it('edit Friend Vpbx', () => {
+    cy.intercept('GET', '**/api/client/friends/3', {
+      ...FriendItemVpbx,
+    }).as('getFriend-3');
+
+    cy.usePactIntercept(
+      {
+        method: 'PUT',
+        url: `**/api/client/friends/${editFriendVpbx.response.body.id}`,
+        response: editFriendVpbx.response,
+      },
+      'editFriend-3'
+    );
+
+    cy.get('svg[data-testid="EditIcon"]').eq(1).click();
+    const { description, priority } = editFriendVpbx.request;
+
+    cy.fillTheForm({
+      description,
+      priority,
+    });
+
+    cy.get('header').contains('Friends');
+
+    cy.usePactWait(['editFriend-3'])
+      .its('response.statusCode')
+      .should('eq', 200);
   });
 
   ///////////////////////
