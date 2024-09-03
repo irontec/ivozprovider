@@ -18,9 +18,15 @@
     "holidayNumberCountry": 2,
     "outOfScheduleNumberCountry": 3,
     "scheduleIds": [],
-    "calendarIds": [1],
-    "whiteListIds": [2],
-    "blackListIds": [3]
+    "calendarIds": [
+      1
+    ],
+    "whiteListIds": [
+      2
+    ],
+    "blackListIds": [
+      3
+    ]
   },
   "response": {
     "body": {
@@ -42,9 +48,15 @@
       "holidayNumberCountry": 2,
       "outOfScheduleNumberCountry": 3,
       "scheduleIds": [],
-      "calendarIds": [1],
-      "whiteListIds": [2],
-      "blackListIds": [3]
+      "calendarIds": [
+        1
+      ],
+      "whiteListIds": [
+        2
+      ],
+      "blackListIds": [
+        3
+      ]
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

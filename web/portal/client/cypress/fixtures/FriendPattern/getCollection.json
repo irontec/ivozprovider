@@ -1,9 +1,9 @@
 {
   "body": [
     {
-        "name": "Spain",
-        "regExp": "+34",
-        "id": 1
+      "name": "Spain",
+      "regExp": "+34",
+      "id": 1
     }
   ],
   "headers": {

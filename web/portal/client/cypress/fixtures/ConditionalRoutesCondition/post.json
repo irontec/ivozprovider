@@ -1,11 +1,41 @@
 {
   "request": {
+    "priority": 2,
+    "routeType": "extension",
+    "numberValue": null,
+    "friendValue": "",
+    "id": 1,
+    "conditionalRoute": 1,
+    "ivr": null,
+    "huntGroup": null,
+    "voicemail": null,
+    "user": null,
+    "queue": null,
+    "locution": null,
+    "conferenceRoom": null,
+    "extension": 1,
+    "numberCountry": null,
+    "matchListIds": [
+      2
+    ],
+    "scheduleIds": [
+      1
+    ],
+    "calendarIds": [
+      2
+    ],
+    "routeLockIds": [
+      1
+    ]
+  },
+  "response": {
+    "body": {
       "priority": 2,
       "routeType": "extension",
       "numberValue": null,
-      "friendValue": "",
-      "id": 1,
-      "conditionalRoute": 1,
+      "friendValue": null,
+      "id": 2,
+      "conditionalRoute": "~",
       "ivr": null,
       "huntGroup": null,
       "voicemail": null,
@@ -13,7 +43,21 @@
       "queue": null,
       "locution": null,
       "conferenceRoom": null,
-      "extension": 1,
+      "extension": {
+        "number": "101",
+        "routeType": "user",
+        "numberValue": null,
+        "friendValue": null,
+        "id": 1,
+        "ivr": null,
+        "huntGroup": null,
+        "conferenceRoom": null,
+        "user": 1,
+        "queue": null,
+        "conditionalRoute": null,
+        "numberCountry": null,
+        "voicemail": null
+      },
       "numberCountry": null,
       "matchListIds": [
         2
@@ -27,50 +71,6 @@
       "routeLockIds": [
         1
       ]
-  },
-  "response": {
-    "body": {
-        "priority": 2,
-        "routeType": "extension",
-        "numberValue": null,
-        "friendValue": null,
-        "id": 2,
-        "conditionalRoute": "~",
-        "ivr": null,
-        "huntGroup": null,
-        "voicemail": null,
-        "user": null,
-        "queue": null,
-        "locution": null,
-        "conferenceRoom": null,
-        "extension": {
-            "number": "101",
-            "routeType": "user",
-            "numberValue": null,
-            "friendValue": null,
-            "id": 1,
-            "ivr": null,
-            "huntGroup": null,
-            "conferenceRoom": null,
-            "user": 1,
-            "queue": null,
-            "conditionalRoute": null,
-            "numberCountry": null,
-            "voicemail": null
-        },
-        "numberCountry": null,
-        "matchListIds": [
-            2
-        ],
-        "scheduleIds": [
-            1
-        ],
-        "calendarIds": [
-            2
-        ],
-        "routeLockIds": [
-            1
-        ]
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

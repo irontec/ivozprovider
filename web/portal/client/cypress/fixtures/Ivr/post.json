@@ -18,7 +18,10 @@
     "errorVoicemail": null,
     "noInputNumberCountry": 2,
     "errorNumberCountry": 3,
-    "excludedExtensionIds": [1, 2]
+    "excludedExtensionIds": [
+      1,
+      2
+    ]
   },
   "response": {
     "body": {
@@ -41,7 +44,10 @@
       "errorVoicemail": null,
       "noInputNumberCountry": 2,
       "errorNumberCountry": 3,
-      "excludedExtensionIds": [1, 2]
+      "excludedExtensionIds": [
+        1,
+        2
+      ]
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

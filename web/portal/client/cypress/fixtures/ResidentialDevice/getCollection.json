@@ -1,43 +1,43 @@
 {
-    "body": [
+  "body": [
+    {
+      "name": "residentialDevice",
+      "description": "",
+      "directConnectivity": "no",
+      "id": 1,
+      "domain": 6,
+      "status": [
         {
-            "name": "residentialDevice",
-            "description": "",
-            "directConnectivity": "no",
-            "id": 1,
-            "domain": 6,
-            "status": [
-                {
-                    "contact": "sip:yealinktest@10.10.1.108:5060",
-                    "received": "sip:212.64.172.25:5060",
-                    "publicReceived": true,
-                    "expires": "2031-01-01 00:59:59",
-                    "userAgent": "Yealink SIP-T23G 44.80.0.130"
-                },
-                {
-                    "contact": "sip:yealinktest@10.10.1.110:5060",
-                    "received": "",
-                    "publicReceived": false,
-                    "expires": "2031-01-01 00:59:59",
-                    "userAgent": "Yealink SIP-T23G 44.80.0.130"
-                }
-            ]
+          "contact": "sip:yealinktest@10.10.1.108:5060",
+          "received": "sip:212.64.172.25:5060",
+          "publicReceived": true,
+          "expires": "2031-01-01 00:59:59",
+          "userAgent": "Yealink SIP-T23G 44.80.0.130"
         },
         {
-            "name": "residentialDevice6",
-            "description": "",
-            "directConnectivity": "yes",
-            "id": 6,
-            "domain": 6,
-            "status": []
+          "contact": "sip:yealinktest@10.10.1.110:5060",
+          "received": "",
+          "publicReceived": false,
+          "expires": "2031-01-01 00:59:59",
+          "userAgent": "Yealink SIP-T23G 44.80.0.130"
         }
-    ],
-    "headers": {
-        "x-first-page": "/api/client/residential_devices?_page=1",
-        "x-last-page": "/api/client/residential_devices?_page=1",
-        "x-next-page": "/api/client/residential_devices?_page=1",
-        "x-total-items": "2",
-        "x-total-pages": "1"
+      ]
     },
-    "statusCode": 200
+    {
+      "name": "residentialDevice6",
+      "description": "",
+      "directConnectivity": "yes",
+      "id": 6,
+      "domain": 6,
+      "status": []
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/residential_devices?_page=1",
+    "x-last-page": "/api/client/residential_devices?_page=1",
+    "x-next-page": "/api/client/residential_devices?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
 }

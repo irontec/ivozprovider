@@ -1,5 +1,5 @@
 {
-  "body":{
+  "body": {
     "entry": "test",
     "displayName": "Entry display name",
     "routeType": "number",

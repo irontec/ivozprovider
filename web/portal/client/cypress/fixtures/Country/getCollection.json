@@ -159,10 +159,10 @@
       "countryCode": "+358",
       "id": 15,
       "name": {
-        "en": "\u00c5land Islands",
-        "es": "Islas de \u00c5land",
-        "ca": "Islas de \u00c5land",
-        "it": "\u00c5land Islands"
+        "en": "Åland Islands",
+        "es": "Islas de Åland",
+        "ca": "Islas de Åland",
+        "it": "Åland Islands"
       }
     },
     {
@@ -171,8 +171,8 @@
       "id": 16,
       "name": {
         "en": "Azerbaijan",
-        "es": "Azerbay\u00e1n",
-        "ca": "Azerbay\u00e1n",
+        "es": "Azerbayán",
+        "ca": "Azerbayán",
         "it": "Azerbaijan"
       }
     },
@@ -215,8 +215,8 @@
       "id": 20,
       "name": {
         "en": "Belgium",
-        "es": "B\u00e9lgica",
-        "ca": "B\u00e9lgica",
+        "es": "Bélgica",
+        "ca": "Bélgica",
         "it": "Belgium"
       }
     },
@@ -270,8 +270,8 @@
       "id": 25,
       "name": {
         "en": "Benin",
-        "es": "Ben\u00edn",
-        "ca": "Ben\u00edn",
+        "es": "Benín",
+        "ca": "Benín",
         "it": "Benin"
       }
     },
@@ -280,10 +280,10 @@
       "countryCode": "+590",
       "id": 26,
       "name": {
-        "en": "Saint Barth\u00e9lemy",
-        "es": "San Bartolom\u00e9",
-        "ca": "San Bartolom\u00e9",
-        "it": "Saint Barth\u00e9lemy"
+        "en": "Saint Barthélemy",
+        "es": "San Bartolomé",
+        "ca": "San Bartolomé",
+        "it": "Saint Barthélemy"
       }
     },
     {
@@ -303,8 +303,8 @@
       "id": 28,
       "name": {
         "en": "Brunei",
-        "es": "Brun\u00e9i",
-        "ca": "Brun\u00e9i",
+        "es": "Brunéi",
+        "ca": "Brunéi",
         "it": "Brunei"
       }
     },
