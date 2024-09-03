@@ -1,5 +1,5 @@
 {
-  "request":       {
+  "request": {
     "name": "Updated Invoice",
     "description": "Updated Invoice Description",
     "template": "Updated Template",
@@ -7,7 +7,7 @@
     "templateFooter": "Updated Template Footer"
   },
   "response": {
-    "body":       {
+    "body": {
       "name": "Updated Invoice",
       "description": "Updated Invoice Description",
       "template": "Updated Template",
@@ -15,7 +15,7 @@
       "templateFooter": "Updated Template Footer",
       "id": 1,
       "brand": null
-  },
+    },
     "headers": {
       "content-type": "application/json; charset=utf-8"
     },
