@@ -20,108 +20,121 @@ import OutgoingDdiRulesCollection from '../../fixtures/Provider/OutgoingDdiRules
 import RoutingTagsCollection from '../../fixtures/Provider/RoutingTags/getCollection.json';
 import TimezonesCollection from '../../fixtures/Provider/Timezones/getCollection.json';
 import TransformationRuleSetsCollection from '../../fixtures/Provider/TransformationRuleSets/getCollection.json';
-import UserCollection from '../../fixtures/Users/getCollection.json';
 import WebPortalCollection from '../../fixtures/Provider/WebPortals/getCollection.json';
+import UserCollection from '../../fixtures/Users/getCollection.json';
 
-Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
-  cy.setupPact(
-    `brand-consumer-${pactContextName}`,
-    `brand-provider-${pactContextName}`
-  );
+Cypress.Commands.add(
+  'prepareGenericPactInterceptors',
+  (pactContextName, dropProfileFeatures) => {
+    cy.setupPact(
+      `brand-consumer-${pactContextName}`,
+      `brand-provider-${pactContextName}`
+    );
 
-  cy.intercept('GET', '**/api/brand/docs.json', {
-    body: apiSpec,
-    headers: {
-      'content-type': 'application/json; charset=utf-8',
-    },
-  }).as('getApiSpec');
+    cy.intercept('GET', '**/api/brand/docs.json', {
+      body: apiSpec,
+      headers: {
+        'content-type': 'application/json; charset=utf-8',
+      },
+    }).as('getApiSpec');
 
-  cy.intercept('GET', '**/api/brand/users?*', {
-    ...UserCollection,
-  }).as('getUsers');
+    cy.intercept('GET', '**/api/brand/users?*', {
+      ...UserCollection,
+    }).as('getUsers');
 
-  cy.intercept('GET', '**/api/brand/companies?*', {
-    ...CompaniesCollection,
-  }).as('getCompanies');
+    cy.intercept('GET', '**/api/brand/companies?*', {
+      ...CompaniesCollection,
+    }).as('getCompanies');
 
-  cy.intercept('GET', '**/api/brand/billable_calls?*', {
-    ...BillableCallsCollection,
-  }).as('getBillableCalls');
+    cy.intercept('GET', '**/api/brand/billable_calls?*', {
+      ...BillableCallsCollection,
+    }).as('getBillableCalls');
 
-  cy.intercept('GET', '**/api/brand/carriers?*', {
-    ...CarriersCollection,
-  }).as('getCarriers');
+    cy.intercept('GET', '**/api/brand/carriers?*', {
+      ...CarriersCollection,
+    }).as('getCarriers');
 
-  cy.intercept('GET', '**/api/brand/ddi_providers?*', {
-    ...DdiProvidersCollection,
-  }).as('getDdiProviders');
+    cy.intercept('GET', '**/api/brand/ddi_providers?*', {
+      ...DdiProvidersCollection,
+    }).as('getDdiProviders');
 
-  cy.intercept('GET', '**/api/brand/ddis?*', {
-    ...DdisCollection,
-  }).as('getDdis');
+    cy.intercept('GET', '**/api/brand/ddis?*', {
+      ...DdisCollection,
+    }).as('getDdis');
 
-  cy.intercept('GET', '**/api/brand/codecs?*', {
-    ...CodecsCollection,
-  }).as('getCodecs');
+    cy.intercept('GET', '**/api/brand/codecs?*', {
+      ...CodecsCollection,
+    }).as('getCodecs');
 
-  cy.intercept('GET', '**/api/brand/corporations?*', {
-    ...CorporationsCollection,
-  }).as('getCorporations');
+    cy.intercept('GET', '**/api/brand/corporations?*', {
+      ...CorporationsCollection,
+    }).as('getCorporations');
 
-  cy.intercept('GET', '**/api/brand/countries?*', {
-    ...CountriesCollection,
-  }).as('getCountries');
+    cy.intercept('GET', '**/api/brand/countries?*', {
+      ...CountriesCollection,
+    }).as('getCountries');
 
-  cy.intercept('GET', '**/api/brand/currencies?*', {
-    ...CurrenciesCollection,
-  }).as('getCurrencies');
+    cy.intercept('GET', '**/api/brand/currencies?*', {
+      ...CurrenciesCollection,
+    }).as('getCurrencies');
 
-  cy.intercept('GET', '**/api/brand/features?*', {
-    ...FeaturesCollection,
-  }).as('getFeatures');
+    cy.intercept('GET', '**/api/brand/features?*', {
+      ...FeaturesCollection,
+    }).as('getFeatures');
 
-  cy.intercept('GET', '**/api/brand/languages?*', {
-    ...LanguagesCollection,
-  }).as('getLanguages');
+    cy.intercept('GET', '**/api/brand/languages?*', {
+      ...LanguagesCollection,
+    }).as('getLanguages');
 
-  cy.intercept('GET', '**/api/brand/notification_template_contents?*', {
-    ...NotificationTemplateContentsCollection,
-  }).as('getNotificationTemplateContents');
+    cy.intercept('GET', '**/api/brand/notification_template_contents?*', {
+      ...NotificationTemplateContentsCollection,
+    }).as('getNotificationTemplateContents');
 
-  cy.intercept('GET', '**/api/brand/notification_templates?*', {
-    ...NotificationTemplatesCollection,
-  }).as('getNotificationTemplates');
+    cy.intercept('GET', '**/api/brand/notification_templates?*', {
+      ...NotificationTemplatesCollection,
+    }).as('getNotificationTemplates');
 
-  cy.intercept('GET', '**/api/brand/outgoing_ddi_rules?*', {
-    ...OutgoingDdiRulesCollection,
-  }).as('getOutgoingDdiRules');
+    cy.intercept('GET', '**/api/brand/outgoing_ddi_rules?*', {
+      ...OutgoingDdiRulesCollection,
+    }).as('getOutgoingDdiRules');
 
-  cy.intercept('GET', '**/api/brand/routing_tags?*', {
-    ...RoutingTagsCollection,
-  }).as('getRoutingTags');
+    cy.intercept('GET', '**/api/brand/routing_tags?*', {
+      ...RoutingTagsCollection,
+    }).as('getRoutingTags');
 
-  cy.intercept('GET', '**/api/brand/timezones?*', {
-    ...TimezonesCollection,
-  }).as('getTimezones');
+    cy.intercept('GET', '**/api/brand/timezones?*', {
+      ...TimezonesCollection,
+    }).as('getTimezones');
 
-  cy.intercept('GET', '**/api/brand/transformation_rule_sets?*', {
-    ...TransformationRuleSetsCollection,
-  }).as('getTransformationRuleSets');
+    cy.intercept('GET', '**/api/brand/transformation_rule_sets?*', {
+      ...TransformationRuleSetsCollection,
+    }).as('getTransformationRuleSets');
 
-  cy.intercept('GET', '**/api/brand/my/theme', {
-    ...ThemeItem,
-  }).as('getMyTheme');
-  cy.intercept('GET', '**/api/brand/my/profile', { ...ProfileItem }).as(
-    'getMyProfile'
-  );
-  cy.intercept('GET', '**/api/brand/my/dashboard', { ...DashboardItem }).as(
-    'getMyDashboard'
-  );
-  cy.intercept('GET', '**/api/brand/my/active_calls', {
-    ...ActiveCallsItem,
-  }).as('getMyActiveCalls');
+    cy.intercept('GET', '**/api/brand/my/theme', {
+      ...ThemeItem,
+    }).as('getMyTheme');
 
-  cy.intercept('GET', '**/api/brand/web_portals?*', {
-    ...WebPortalCollection
-  }).as('getWebPortals');
-});
+    if (dropProfileFeatures && dropProfileFeatures.length > 0) {
+      ProfileItem.body.features = [
+        ...ProfileItem.body.features.filter(
+          (feature) => !dropProfileFeatures.includes(feature)
+        ),
+      ];
+    }
+
+    cy.intercept('GET', '**/api/brand/my/profile', { ...ProfileItem }).as(
+      'getMyProfile'
+    );
+
+    cy.intercept('GET', '**/api/brand/my/dashboard', { ...DashboardItem }).as(
+      'getMyDashboard'
+    );
+    cy.intercept('GET', '**/api/brand/my/active_calls', {
+      ...ActiveCallsItem,
+    }).as('getMyActiveCalls');
+
+    cy.intercept('GET', '**/api/brand/web_portals?*', {
+      ...WebPortalCollection,
+    }).as('getWebPortals');
+  }
+);

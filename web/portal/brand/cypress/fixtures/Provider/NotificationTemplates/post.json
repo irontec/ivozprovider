@@ -1,0 +1,22 @@
+{
+  "request": {
+    "name": "New fax notification",
+    "type": "fax"
+  },
+  "response": {
+    "body": {
+      "name": "New fax notification",
+      "type": "fax",
+      "id": 6
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
