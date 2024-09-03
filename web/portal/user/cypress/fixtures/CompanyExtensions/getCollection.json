@@ -1,20 +1,20 @@
 {
-    "body": [
-        {
-            "number": "101",
-            "id": 1
-        },
-        {
-            "number": "102",
-            "id": 2
-        }
-    ],
-    "headers": {
-        "x-first-page": "/api/user/company_extensions?_page=1",
-        "x-last-page": "/api/user/company_extensions?_page=1",
-        "x-next-page": "/api/user/company_extensions?_page=1",
-        "x-total-items": "4",
-        "x-total-pages": "1"
+  "body": [
+    {
+      "number": "101",
+      "id": 1
     },
-    "statusCode": 200
+    {
+      "number": "102",
+      "id": 2
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/user/company_extensions?_page=1",
+    "x-last-page": "/api/user/company_extensions?_page=1",
+    "x-next-page": "/api/user/company_extensions?_page=1",
+    "x-total-items": "4",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
 }

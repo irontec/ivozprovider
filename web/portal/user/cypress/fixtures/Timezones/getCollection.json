@@ -1,1676 +1,1676 @@
 {
-    "body": [
-        {
-            "tz": "Europe\/Andorra",
-            "id": 1
-        },
-        {
-            "tz": "Asia\/Dubai",
-            "id": 2
-        },
-        {
-            "tz": "Asia\/Kabul",
-            "id": 3
-        },
-        {
-            "tz": "America\/Antigua",
-            "id": 4
-        },
-        {
-            "tz": "America\/Anguilla",
-            "id": 5
-        },
-        {
-            "tz": "Europe\/Tirane",
-            "id": 6
-        },
-        {
-            "tz": "Asia\/Yerevan",
-            "id": 7
-        },
-        {
-            "tz": "Africa\/Luanda",
-            "id": 8
-        },
-        {
-            "tz": "Antarctica\/McMurdo",
-            "id": 9
-        },
-        {
-            "tz": "Antarctica\/Rothera",
-            "id": 10
-        },
-        {
-            "tz": "Antarctica\/Palmer",
-            "id": 11
-        },
-        {
-            "tz": "Antarctica\/Mawson",
-            "id": 12
-        },
-        {
-            "tz": "Antarctica\/Davis",
-            "id": 13
-        },
-        {
-            "tz": "Antarctica\/Casey",
-            "id": 14
-        },
-        {
-            "tz": "Antarctica\/Vostok",
-            "id": 15
-        },
-        {
-            "tz": "Antarctica\/DumontDUrville",
-            "id": 16
-        },
-        {
-            "tz": "Antarctica\/Syowa",
-            "id": 17
-        },
-        {
-            "tz": "Antarctica\/Troll",
-            "id": 18
-        },
-        {
-            "tz": "America\/Argentina\/Buenos_Aires",
-            "id": 19
-        },
-        {
-            "tz": "America\/Argentina\/Cordoba",
-            "id": 20
-        },
-        {
-            "tz": "America\/Argentina\/Salta",
-            "id": 21
-        },
-        {
-            "tz": "America\/Argentina\/Jujuy",
-            "id": 22
-        },
-        {
-            "tz": "America\/Argentina\/Tucuman",
-            "id": 23
-        },
-        {
-            "tz": "America\/Argentina\/Catamarca",
-            "id": 24
-        },
-        {
-            "tz": "America\/Argentina\/La_Rioja",
-            "id": 25
-        },
-        {
-            "tz": "America\/Argentina\/San_Juan",
-            "id": 26
-        },
-        {
-            "tz": "America\/Argentina\/Mendoza",
-            "id": 27
-        },
-        {
-            "tz": "America\/Argentina\/San_Luis",
-            "id": 28
-        },
-        {
-            "tz": "America\/Argentina\/Rio_Gallegos",
-            "id": 29
-        },
-        {
-            "tz": "America\/Argentina\/Ushuaia",
-            "id": 30
-        },
-        {
-            "tz": "Pacific\/Pago_Pago",
-            "id": 31
-        },
-        {
-            "tz": "Europe\/Vienna",
-            "id": 32
-        },
-        {
-            "tz": "Australia\/Lord_Howe",
-            "id": 33
-        },
-        {
-            "tz": "Antarctica\/Macquarie",
-            "id": 34
-        },
-        {
-            "tz": "Australia\/Hobart",
-            "id": 35
-        },
-        {
-            "tz": "Australia\/Currie",
-            "id": 36
-        },
-        {
-            "tz": "Australia\/Melbourne",
-            "id": 37
-        },
-        {
-            "tz": "Australia\/Sydney",
-            "id": 38
-        },
-        {
-            "tz": "Australia\/Broken_Hill",
-            "id": 39
-        },
-        {
-            "tz": "Australia\/Brisbane",
-            "id": 40
-        },
-        {
-            "tz": "Australia\/Lindeman",
-            "id": 41
-        },
-        {
-            "tz": "Australia\/Adelaide",
-            "id": 42
-        },
-        {
-            "tz": "Australia\/Darwin",
-            "id": 43
-        },
-        {
-            "tz": "Australia\/Perth",
-            "id": 44
-        },
-        {
-            "tz": "Australia\/Eucla",
-            "id": 45
-        },
-        {
-            "tz": "America\/Aruba",
-            "id": 46
-        },
-        {
-            "tz": "Europe\/Mariehamn",
-            "id": 47
-        },
-        {
-            "tz": "Asia\/Baku",
-            "id": 48
-        },
-        {
-            "tz": "Europe\/Sarajevo",
-            "id": 49
-        },
-        {
-            "tz": "America\/Barbados",
-            "id": 50
-        },
-        {
-            "tz": "Asia\/Dhaka",
-            "id": 51
-        },
-        {
-            "tz": "Europe\/Brussels",
-            "id": 52
-        },
-        {
-            "tz": "Africa\/Ouagadougou",
-            "id": 53
-        },
-        {
-            "tz": "Europe\/Sofia",
-            "id": 54
-        },
-        {
-            "tz": "Asia\/Bahrain",
-            "id": 55
-        },
-        {
-            "tz": "Africa\/Bujumbura",
-            "id": 56
-        },
-        {
-            "tz": "Africa\/Porto-Novo",
-            "id": 57
-        },
-        {
-            "tz": "America\/St_Barthelemy",
-            "id": 58
-        },
-        {
-            "tz": "Atlantic\/Bermuda",
-            "id": 59
-        },
-        {
-            "tz": "Asia\/Brunei",
-            "id": 60
-        },
-        {
-            "tz": "America\/La_Paz",
-            "id": 61
-        },
-        {
-            "tz": "America\/Kralendijk",
-            "id": 62
-        },
-        {
-            "tz": "America\/Noronha",
-            "id": 63
-        },
-        {
-            "tz": "America\/Belem",
-            "id": 64
-        },
-        {
-            "tz": "America\/Fortaleza",
-            "id": 65
-        },
-        {
-            "tz": "America\/Recife",
-            "id": 66
-        },
-        {
-            "tz": "America\/Araguaina",
-            "id": 67
-        },
-        {
-            "tz": "America\/Maceio",
-            "id": 68
-        },
-        {
-            "tz": "America\/Bahia",
-            "id": 69
-        },
-        {
-            "tz": "America\/Sao_Paulo",
-            "id": 70
-        },
-        {
-            "tz": "America\/Campo_Grande",
-            "id": 71
-        },
-        {
-            "tz": "America\/Cuiaba",
-            "id": 72
-        },
-        {
-            "tz": "America\/Santarem",
-            "id": 73
-        },
-        {
-            "tz": "America\/Porto_Velho",
-            "id": 74
-        },
-        {
-            "tz": "America\/Boa_Vista",
-            "id": 75
-        },
-        {
-            "tz": "America\/Manaus",
-            "id": 76
-        },
-        {
-            "tz": "America\/Eirunepe",
-            "id": 77
-        },
-        {
-            "tz": "America\/Rio_Branco",
-            "id": 78
-        },
-        {
-            "tz": "America\/Nassau",
-            "id": 79
-        },
-        {
-            "tz": "Asia\/Thimphu",
-            "id": 80
-        },
-        {
-            "tz": "Africa\/Gaborone",
-            "id": 81
-        },
-        {
-            "tz": "Europe\/Minsk",
-            "id": 82
-        },
-        {
-            "tz": "America\/Belize",
-            "id": 83
-        },
-        {
-            "tz": "America\/St_Johns",
-            "id": 84
-        },
-        {
-            "tz": "America\/Halifax",
-            "id": 85
-        },
-        {
-            "tz": "America\/Glace_Bay",
-            "id": 86
-        },
-        {
-            "tz": "America\/Moncton",
-            "id": 87
-        },
-        {
-            "tz": "America\/Goose_Bay",
-            "id": 88
-        },
-        {
-            "tz": "America\/Blanc-Sablon",
-            "id": 89
-        },
-        {
-            "tz": "America\/Toronto",
-            "id": 90
-        },
-        {
-            "tz": "America\/Nipigon",
-            "id": 91
-        },
-        {
-            "tz": "America\/Thunder_Bay",
-            "id": 92
-        },
-        {
-            "tz": "America\/Iqaluit",
-            "id": 93
-        },
-        {
-            "tz": "America\/Pangnirtung",
-            "id": 94
-        },
-        {
-            "tz": "America\/Resolute",
-            "id": 95
-        },
-        {
-            "tz": "America\/Atikokan",
-            "id": 96
-        },
-        {
-            "tz": "America\/Rankin_Inlet",
-            "id": 97
-        },
-        {
-            "tz": "America\/Winnipeg",
-            "id": 98
-        },
-        {
-            "tz": "America\/Rainy_River",
-            "id": 99
-        },
-        {
-            "tz": "America\/Regina",
-            "id": 100
-        },
-        {
-            "tz": "America\/Swift_Current",
-            "id": 101
-        },
-        {
-            "tz": "America\/Edmonton",
-            "id": 102
-        },
-        {
-            "tz": "America\/Cambridge_Bay",
-            "id": 103
-        },
-        {
-            "tz": "America\/Yellowknife",
-            "id": 104
-        },
-        {
-            "tz": "America\/Inuvik",
-            "id": 105
-        },
-        {
-            "tz": "America\/Creston",
-            "id": 106
-        },
-        {
-            "tz": "America\/Dawson_Creek",
-            "id": 107
-        },
-        {
-            "tz": "America\/Vancouver",
-            "id": 108
-        },
-        {
-            "tz": "America\/Whitehorse",
-            "id": 109
-        },
-        {
-            "tz": "America\/Dawson",
-            "id": 110
-        },
-        {
-            "tz": "Indian\/Cocos",
-            "id": 111
-        },
-        {
-            "tz": "Africa\/Kinshasa",
-            "id": 112
-        },
-        {
-            "tz": "Africa\/Lubumbashi",
-            "id": 113
-        },
-        {
-            "tz": "Africa\/Bangui",
-            "id": 114
-        },
-        {
-            "tz": "Africa\/Brazzaville",
-            "id": 115
-        },
-        {
-            "tz": "Europe\/Zurich",
-            "id": 116
-        },
-        {
-            "tz": "Africa\/Abidjan",
-            "id": 117
-        },
-        {
-            "tz": "Pacific\/Rarotonga",
-            "id": 118
-        },
-        {
-            "tz": "America\/Santiago",
-            "id": 119
-        },
-        {
-            "tz": "Pacific\/Easter",
-            "id": 120
-        },
-        {
-            "tz": "Africa\/Douala",
-            "id": 121
-        },
-        {
-            "tz": "Asia\/Shanghai",
-            "id": 122
-        },
-        {
-            "tz": "Asia\/Urumqi",
-            "id": 123
-        },
-        {
-            "tz": "America\/Bogota",
-            "id": 124
-        },
-        {
-            "tz": "America\/Costa_Rica",
-            "id": 125
-        },
-        {
-            "tz": "America\/Havana",
-            "id": 126
-        },
-        {
-            "tz": "Atlantic\/Cape_Verde",
-            "id": 127
-        },
-        {
-            "tz": "America\/Curacao",
-            "id": 128
-        },
-        {
-            "tz": "Indian\/Christmas",
-            "id": 129
-        },
-        {
-            "tz": "Asia\/Nicosia",
-            "id": 130
-        },
-        {
-            "tz": "Europe\/Prague",
-            "id": 131
-        },
-        {
-            "tz": "Europe\/Berlin",
-            "id": 132
-        },
-        {
-            "tz": "Europe\/Busingen",
-            "id": 133
-        },
-        {
-            "tz": "Africa\/Djibouti",
-            "id": 134
-        },
-        {
-            "tz": "Europe\/Copenhagen",
-            "id": 135
-        },
-        {
-            "tz": "America\/Dominica",
-            "id": 136
-        },
-        {
-            "tz": "America\/Santo_Domingo",
-            "id": 137
-        },
-        {
-            "tz": "Africa\/Algiers",
-            "id": 138
-        },
-        {
-            "tz": "America\/Guayaquil",
-            "id": 139
-        },
-        {
-            "tz": "Pacific\/Galapagos",
-            "id": 140
-        },
-        {
-            "tz": "Europe\/Tallinn",
-            "id": 141
-        },
-        {
-            "tz": "Africa\/Cairo",
-            "id": 142
-        },
-        {
-            "tz": "Africa\/El_Aaiun",
-            "id": 143
-        },
-        {
-            "tz": "Africa\/Asmara",
-            "id": 144
-        },
-        {
-            "tz": "Europe\/Madrid",
-            "id": 145
-        },
-        {
-            "tz": "Africa\/Ceuta",
-            "id": 146
-        },
-        {
-            "tz": "Atlantic\/Canary",
-            "id": 147
-        },
-        {
-            "tz": "Africa\/Addis_Ababa",
-            "id": 148
-        },
-        {
-            "tz": "Europe\/Helsinki",
-            "id": 149
-        },
-        {
-            "tz": "Pacific\/Fiji",
-            "id": 150
-        },
-        {
-            "tz": "Atlantic\/Stanley",
-            "id": 151
-        },
-        {
-            "tz": "Pacific\/Chuuk",
-            "id": 152
-        },
-        {
-            "tz": "Pacific\/Pohnpei",
-            "id": 153
-        },
-        {
-            "tz": "Pacific\/Kosrae",
-            "id": 154
-        },
-        {
-            "tz": "Atlantic\/Faroe",
-            "id": 155
-        },
-        {
-            "tz": "Europe\/Paris",
-            "id": 156
-        },
-        {
-            "tz": "Africa\/Libreville",
-            "id": 157
-        },
-        {
-            "tz": "Europe\/London",
-            "id": 158
-        },
-        {
-            "tz": "America\/Grenada",
-            "id": 159
-        },
-        {
-            "tz": "Asia\/Tbilisi",
-            "id": 160
-        },
-        {
-            "tz": "America\/Cayenne",
-            "id": 161
-        },
-        {
-            "tz": "Europe\/Guernsey",
-            "id": 162
-        },
-        {
-            "tz": "Africa\/Accra",
-            "id": 163
-        },
-        {
-            "tz": "Europe\/Gibraltar",
-            "id": 164
-        },
-        {
-            "tz": "America\/Godthab",
-            "id": 165
-        },
-        {
-            "tz": "America\/Danmarkshavn",
-            "id": 166
-        },
-        {
-            "tz": "America\/Scoresbysund",
-            "id": 167
-        },
-        {
-            "tz": "America\/Thule",
-            "id": 168
-        },
-        {
-            "tz": "Africa\/Banjul",
-            "id": 169
-        },
-        {
-            "tz": "Africa\/Conakry",
-            "id": 170
-        },
-        {
-            "tz": "America\/Guadeloupe",
-            "id": 171
-        },
-        {
-            "tz": "Africa\/Malabo",
-            "id": 172
-        },
-        {
-            "tz": "Europe\/Athens",
-            "id": 173
-        },
-        {
-            "tz": "Atlantic\/South_Georgia",
-            "id": 174
-        },
-        {
-            "tz": "America\/Guatemala",
-            "id": 175
-        },
-        {
-            "tz": "Pacific\/Guam",
-            "id": 176
-        },
-        {
-            "tz": "Africa\/Bissau",
-            "id": 177
-        },
-        {
-            "tz": "America\/Guyana",
-            "id": 178
-        },
-        {
-            "tz": "Asia\/Hong_Kong",
-            "id": 179
-        },
-        {
-            "tz": "America\/Tegucigalpa",
-            "id": 180
-        },
-        {
-            "tz": "Europe\/Zagreb",
-            "id": 181
-        },
-        {
-            "tz": "America\/Port-au-Prince",
-            "id": 182
-        },
-        {
-            "tz": "Europe\/Budapest",
-            "id": 183
-        },
-        {
-            "tz": "Asia\/Jakarta",
-            "id": 184
-        },
-        {
-            "tz": "Asia\/Pontianak",
-            "id": 185
-        },
-        {
-            "tz": "Asia\/Makassar",
-            "id": 186
-        },
-        {
-            "tz": "Asia\/Jayapura",
-            "id": 187
-        },
-        {
-            "tz": "Europe\/Dublin",
-            "id": 188
-        },
-        {
-            "tz": "Asia\/Jerusalem",
-            "id": 189
-        },
-        {
-            "tz": "Europe\/Isle_of_Man",
-            "id": 190
-        },
-        {
-            "tz": "Asia\/Kolkata",
-            "id": 191
-        },
-        {
-            "tz": "Indian\/Chagos",
-            "id": 192
-        },
-        {
-            "tz": "Asia\/Baghdad",
-            "id": 193
-        },
-        {
-            "tz": "Asia\/Tehran",
-            "id": 194
-        },
-        {
-            "tz": "Atlantic\/Reykjavik",
-            "id": 195
-        },
-        {
-            "tz": "Europe\/Rome",
-            "id": 196
-        },
-        {
-            "tz": "Europe\/Jersey",
-            "id": 197
-        },
-        {
-            "tz": "America\/Jamaica",
-            "id": 198
-        },
-        {
-            "tz": "Asia\/Amman",
-            "id": 199
-        },
-        {
-            "tz": "Asia\/Tokyo",
-            "id": 200
-        },
-        {
-            "tz": "Africa\/Nairobi",
-            "id": 201
-        },
-        {
-            "tz": "Asia\/Bishkek",
-            "id": 202
-        },
-        {
-            "tz": "Asia\/Phnom_Penh",
-            "id": 203
-        },
-        {
-            "tz": "Pacific\/Tarawa",
-            "id": 204
-        },
-        {
-            "tz": "Pacific\/Enderbury",
-            "id": 205
-        },
-        {
-            "tz": "Pacific\/Kiritimati",
-            "id": 206
-        },
-        {
-            "tz": "Indian\/Comoro",
-            "id": 207
-        },
-        {
-            "tz": "America\/St_Kitts",
-            "id": 208
-        },
-        {
-            "tz": "Asia\/Pyongyang",
-            "id": 209
-        },
-        {
-            "tz": "Asia\/Seoul",
-            "id": 210
-        },
-        {
-            "tz": "Asia\/Kuwait",
-            "id": 211
-        },
-        {
-            "tz": "America\/Cayman",
-            "id": 212
-        },
-        {
-            "tz": "Asia\/Almaty",
-            "id": 213
-        },
-        {
-            "tz": "Asia\/Qyzylorda",
-            "id": 214
-        },
-        {
-            "tz": "Asia\/Aqtobe",
-            "id": 215
-        },
-        {
-            "tz": "Asia\/Aqtau",
-            "id": 216
-        },
-        {
-            "tz": "Asia\/Oral",
-            "id": 217
-        },
-        {
-            "tz": "Asia\/Vientiane",
-            "id": 218
-        },
-        {
-            "tz": "Asia\/Beirut",
-            "id": 219
-        },
-        {
-            "tz": "America\/St_Lucia",
-            "id": 220
-        },
-        {
-            "tz": "Europe\/Vaduz",
-            "id": 221
-        },
-        {
-            "tz": "Asia\/Colombo",
-            "id": 222
-        },
-        {
-            "tz": "Africa\/Monrovia",
-            "id": 223
-        },
-        {
-            "tz": "Africa\/Maseru",
-            "id": 224
-        },
-        {
-            "tz": "Europe\/Vilnius",
-            "id": 225
-        },
-        {
-            "tz": "Europe\/Luxembourg",
-            "id": 226
-        },
-        {
-            "tz": "Europe\/Riga",
-            "id": 227
-        },
-        {
-            "tz": "Africa\/Tripoli",
-            "id": 228
-        },
-        {
-            "tz": "Africa\/Casablanca",
-            "id": 229
-        },
-        {
-            "tz": "Europe\/Monaco",
-            "id": 230
-        },
-        {
-            "tz": "Europe\/Chisinau",
-            "id": 231
-        },
-        {
-            "tz": "Europe\/Podgorica",
-            "id": 232
-        },
-        {
-            "tz": "America\/Marigot",
-            "id": 233
-        },
-        {
-            "tz": "Indian\/Antananarivo",
-            "id": 234
-        },
-        {
-            "tz": "Pacific\/Majuro",
-            "id": 235
-        },
-        {
-            "tz": "Pacific\/Kwajalein",
-            "id": 236
-        },
-        {
-            "tz": "Europe\/Skopje",
-            "id": 237
-        },
-        {
-            "tz": "Africa\/Bamako",
-            "id": 238
-        },
-        {
-            "tz": "Asia\/Rangoon",
-            "id": 239
-        },
-        {
-            "tz": "Asia\/Ulaanbaatar",
-            "id": 240
-        },
-        {
-            "tz": "Asia\/Hovd",
-            "id": 241
-        },
-        {
-            "tz": "Asia\/Choibalsan",
-            "id": 242
-        },
-        {
-            "tz": "Asia\/Macau",
-            "id": 243
-        },
-        {
-            "tz": "Pacific\/Saipan",
-            "id": 244
-        },
-        {
-            "tz": "America\/Martinique",
-            "id": 245
-        },
-        {
-            "tz": "Africa\/Nouakchott",
-            "id": 246
-        },
-        {
-            "tz": "America\/Montserrat",
-            "id": 247
-        },
-        {
-            "tz": "Europe\/Malta",
-            "id": 248
-        },
-        {
-            "tz": "Indian\/Mauritius",
-            "id": 249
-        },
-        {
-            "tz": "Indian\/Maldives",
-            "id": 250
-        },
-        {
-            "tz": "Africa\/Blantyre",
-            "id": 251
-        },
-        {
-            "tz": "America\/Mexico_City",
-            "id": 252
-        },
-        {
-            "tz": "America\/Cancun",
-            "id": 253
-        },
-        {
-            "tz": "America\/Merida",
-            "id": 254
-        },
-        {
-            "tz": "America\/Monterrey",
-            "id": 255
-        },
-        {
-            "tz": "America\/Matamoros",
-            "id": 256
-        },
-        {
-            "tz": "America\/Mazatlan",
-            "id": 257
-        },
-        {
-            "tz": "America\/Chihuahua",
-            "id": 258
-        },
-        {
-            "tz": "America\/Ojinaga",
-            "id": 259
-        },
-        {
-            "tz": "America\/Hermosillo",
-            "id": 260
-        },
-        {
-            "tz": "America\/Tijuana",
-            "id": 261
-        },
-        {
-            "tz": "America\/Santa_Isabel",
-            "id": 262
-        },
-        {
-            "tz": "America\/Bahia_Banderas",
-            "id": 263
-        },
-        {
-            "tz": "Asia\/Kuala_Lumpur",
-            "id": 264
-        },
-        {
-            "tz": "Asia\/Kuching",
-            "id": 265
-        },
-        {
-            "tz": "Africa\/Maputo",
-            "id": 266
-        },
-        {
-            "tz": "Africa\/Windhoek",
-            "id": 267
-        },
-        {
-            "tz": "Pacific\/Noumea",
-            "id": 268
-        },
-        {
-            "tz": "Africa\/Niamey",
-            "id": 269
-        },
-        {
-            "tz": "Pacific\/Norfolk",
-            "id": 270
-        },
-        {
-            "tz": "Africa\/Lagos",
-            "id": 271
-        },
-        {
-            "tz": "America\/Managua",
-            "id": 272
-        },
-        {
-            "tz": "Europe\/Amsterdam",
-            "id": 273
-        },
-        {
-            "tz": "Europe\/Oslo",
-            "id": 274
-        },
-        {
-            "tz": "Asia\/Kathmandu",
-            "id": 275
-        },
-        {
-            "tz": "Pacific\/Nauru",
-            "id": 276
-        },
-        {
-            "tz": "Pacific\/Niue",
-            "id": 277
-        },
-        {
-            "tz": "Pacific\/Auckland",
-            "id": 278
-        },
-        {
-            "tz": "Pacific\/Chatham",
-            "id": 279
-        },
-        {
-            "tz": "Asia\/Muscat",
-            "id": 280
-        },
-        {
-            "tz": "America\/Panama",
-            "id": 281
-        },
-        {
-            "tz": "America\/Lima",
-            "id": 282
-        },
-        {
-            "tz": "Pacific\/Tahiti",
-            "id": 283
-        },
-        {
-            "tz": "Pacific\/Marquesas",
-            "id": 284
-        },
-        {
-            "tz": "Pacific\/Gambier",
-            "id": 285
-        },
-        {
-            "tz": "Pacific\/Port_Moresby",
-            "id": 286
-        },
-        {
-            "tz": "Pacific\/Bougainville",
-            "id": 287
-        },
-        {
-            "tz": "Asia\/Manila",
-            "id": 288
-        },
-        {
-            "tz": "Asia\/Karachi",
-            "id": 289
-        },
-        {
-            "tz": "Europe\/Warsaw",
-            "id": 290
-        },
-        {
-            "tz": "America\/Miquelon",
-            "id": 291
-        },
-        {
-            "tz": "Pacific\/Pitcairn",
-            "id": 292
-        },
-        {
-            "tz": "America\/Puerto_Rico",
-            "id": 293
-        },
-        {
-            "tz": "Asia\/Gaza",
-            "id": 294
-        },
-        {
-            "tz": "Asia\/Hebron",
-            "id": 295
-        },
-        {
-            "tz": "Europe\/Lisbon",
-            "id": 296
-        },
-        {
-            "tz": "Atlantic\/Madeira",
-            "id": 297
-        },
-        {
-            "tz": "Atlantic\/Azores",
-            "id": 298
-        },
-        {
-            "tz": "Pacific\/Palau",
-            "id": 299
-        },
-        {
-            "tz": "America\/Asuncion",
-            "id": 300
-        },
-        {
-            "tz": "Asia\/Qatar",
-            "id": 301
-        },
-        {
-            "tz": "Indian\/Reunion",
-            "id": 302
-        },
-        {
-            "tz": "Europe\/Bucharest",
-            "id": 303
-        },
-        {
-            "tz": "Europe\/Belgrade",
-            "id": 304
-        },
-        {
-            "tz": "Europe\/Kaliningrad",
-            "id": 305
-        },
-        {
-            "tz": "Europe\/Moscow",
-            "id": 306
-        },
-        {
-            "tz": "Europe\/Simferopol",
-            "id": 307
-        },
-        {
-            "tz": "Europe\/Volgograd",
-            "id": 308
-        },
-        {
-            "tz": "Europe\/Samara",
-            "id": 309
-        },
-        {
-            "tz": "Asia\/Yekaterinburg",
-            "id": 310
-        },
-        {
-            "tz": "Asia\/Omsk",
-            "id": 311
-        },
-        {
-            "tz": "Asia\/Novosibirsk",
-            "id": 312
-        },
-        {
-            "tz": "Asia\/Novokuznetsk",
-            "id": 313
-        },
-        {
-            "tz": "Asia\/Krasnoyarsk",
-            "id": 314
-        },
-        {
-            "tz": "Asia\/Irkutsk",
-            "id": 315
-        },
-        {
-            "tz": "Asia\/Chita",
-            "id": 316
-        },
-        {
-            "tz": "Asia\/Yakutsk",
-            "id": 317
-        },
-        {
-            "tz": "Asia\/Khandyga",
-            "id": 318
-        },
-        {
-            "tz": "Asia\/Vladivostok",
-            "id": 319
-        },
-        {
-            "tz": "Asia\/Sakhalin",
-            "id": 320
-        },
-        {
-            "tz": "Asia\/Ust-Nera",
-            "id": 321
-        },
-        {
-            "tz": "Asia\/Magadan",
-            "id": 322
-        },
-        {
-            "tz": "Asia\/Srednekolymsk",
-            "id": 323
-        },
-        {
-            "tz": "Asia\/Kamchatka",
-            "id": 324
-        },
-        {
-            "tz": "Asia\/Anadyr",
-            "id": 325
-        },
-        {
-            "tz": "Africa\/Kigali",
-            "id": 326
-        },
-        {
-            "tz": "Asia\/Riyadh",
-            "id": 327
-        },
-        {
-            "tz": "Pacific\/Guadalcanal",
-            "id": 328
-        },
-        {
-            "tz": "Indian\/Mahe",
-            "id": 329
-        },
-        {
-            "tz": "Africa\/Khartoum",
-            "id": 330
-        },
-        {
-            "tz": "Europe\/Stockholm",
-            "id": 331
-        },
-        {
-            "tz": "Asia\/Singapore",
-            "id": 332
-        },
-        {
-            "tz": "Atlantic\/St_Helena",
-            "id": 333
-        },
-        {
-            "tz": "Europe\/Ljubljana",
-            "id": 334
-        },
-        {
-            "tz": "Arctic\/Longyearbyen",
-            "id": 335
-        },
-        {
-            "tz": "Europe\/Bratislava",
-            "id": 336
-        },
-        {
-            "tz": "Africa\/Freetown",
-            "id": 337
-        },
-        {
-            "tz": "Europe\/San_Marino",
-            "id": 338
-        },
-        {
-            "tz": "Africa\/Dakar",
-            "id": 339
-        },
-        {
-            "tz": "Africa\/Mogadishu",
-            "id": 340
-        },
-        {
-            "tz": "America\/Paramaribo",
-            "id": 341
-        },
-        {
-            "tz": "Africa\/Juba",
-            "id": 342
-        },
-        {
-            "tz": "Africa\/Sao_Tome",
-            "id": 343
-        },
-        {
-            "tz": "America\/El_Salvador",
-            "id": 344
-        },
-        {
-            "tz": "America\/Lower_Princes",
-            "id": 345
-        },
-        {
-            "tz": "Asia\/Damascus",
-            "id": 346
-        },
-        {
-            "tz": "Africa\/Mbabane",
-            "id": 347
-        },
-        {
-            "tz": "America\/Grand_Turk",
-            "id": 348
-        },
-        {
-            "tz": "Africa\/Ndjamena",
-            "id": 349
-        },
-        {
-            "tz": "Indian\/Kerguelen",
-            "id": 350
-        },
-        {
-            "tz": "Africa\/Lome",
-            "id": 351
-        },
-        {
-            "tz": "Asia\/Bangkok",
-            "id": 352
-        },
-        {
-            "tz": "Asia\/Dushanbe",
-            "id": 353
-        },
-        {
-            "tz": "Pacific\/Fakaofo",
-            "id": 354
-        },
-        {
-            "tz": "Asia\/Dili",
-            "id": 355
-        },
-        {
-            "tz": "Asia\/Ashgabat",
-            "id": 356
-        },
-        {
-            "tz": "Africa\/Tunis",
-            "id": 357
-        },
-        {
-            "tz": "Pacific\/Tongatapu",
-            "id": 358
-        },
-        {
-            "tz": "Europe\/Istanbul",
-            "id": 359
-        },
-        {
-            "tz": "America\/Port_of_Spain",
-            "id": 360
-        },
-        {
-            "tz": "Pacific\/Funafuti",
-            "id": 361
-        },
-        {
-            "tz": "Asia\/Taipei",
-            "id": 362
-        },
-        {
-            "tz": "Africa\/Dar_es_Salaam",
-            "id": 363
-        },
-        {
-            "tz": "Europe\/Kiev",
-            "id": 364
-        },
-        {
-            "tz": "Europe\/Uzhgorod",
-            "id": 365
-        },
-        {
-            "tz": "Europe\/Zaporozhye",
-            "id": 366
-        },
-        {
-            "tz": "Africa\/Kampala",
-            "id": 367
-        },
-        {
-            "tz": "Pacific\/Johnston",
-            "id": 368
-        },
-        {
-            "tz": "Pacific\/Midway",
-            "id": 369
-        },
-        {
-            "tz": "Pacific\/Wake",
-            "id": 370
-        },
-        {
-            "tz": "America\/New_York",
-            "id": 371
-        },
-        {
-            "tz": "America\/Detroit",
-            "id": 372
-        },
-        {
-            "tz": "America\/Kentucky\/Louisville",
-            "id": 373
-        },
-        {
-            "tz": "America\/Kentucky\/Monticello",
-            "id": 374
-        },
-        {
-            "tz": "America\/Indiana\/Indianapolis",
-            "id": 375
-        },
-        {
-            "tz": "America\/Indiana\/Vincennes",
-            "id": 376
-        },
-        {
-            "tz": "America\/Indiana\/Winamac",
-            "id": 377
-        },
-        {
-            "tz": "America\/Indiana\/Marengo",
-            "id": 378
-        },
-        {
-            "tz": "America\/Indiana\/Petersburg",
-            "id": 379
-        },
-        {
-            "tz": "America\/Indiana\/Vevay",
-            "id": 380
-        },
-        {
-            "tz": "America\/Chicago",
-            "id": 381
-        },
-        {
-            "tz": "America\/Indiana\/Tell_City",
-            "id": 382
-        },
-        {
-            "tz": "America\/Indiana\/Knox",
-            "id": 383
-        },
-        {
-            "tz": "America\/Menominee",
-            "id": 384
-        },
-        {
-            "tz": "America\/North_Dakota\/Center",
-            "id": 385
-        },
-        {
-            "tz": "America\/North_Dakota\/New_Salem",
-            "id": 386
-        },
-        {
-            "tz": "America\/North_Dakota\/Beulah",
-            "id": 387
-        },
-        {
-            "tz": "America\/Denver",
-            "id": 388
-        },
-        {
-            "tz": "America\/Boise",
-            "id": 389
-        },
-        {
-            "tz": "America\/Phoenix",
-            "id": 390
-        },
-        {
-            "tz": "America\/Los_Angeles",
-            "id": 391
-        },
-        {
-            "tz": "America\/Metlakatla",
-            "id": 392
-        },
-        {
-            "tz": "America\/Anchorage",
-            "id": 393
-        },
-        {
-            "tz": "America\/Juneau",
-            "id": 394
-        },
-        {
-            "tz": "America\/Sitka",
-            "id": 395
-        },
-        {
-            "tz": "America\/Yakutat",
-            "id": 396
-        },
-        {
-            "tz": "America\/Nome",
-            "id": 397
-        },
-        {
-            "tz": "America\/Adak",
-            "id": 398
-        },
-        {
-            "tz": "Pacific\/Honolulu",
-            "id": 399
-        },
-        {
-            "tz": "America\/Montevideo",
-            "id": 400
-        },
-        {
-            "tz": "Asia\/Samarkand",
-            "id": 401
-        },
-        {
-            "tz": "Asia\/Tashkent",
-            "id": 402
-        },
-        {
-            "tz": "Europe\/Vatican",
-            "id": 403
-        },
-        {
-            "tz": "America\/St_Vincent",
-            "id": 404
-        },
-        {
-            "tz": "America\/Caracas",
-            "id": 405
-        },
-        {
-            "tz": "America\/Tortola",
-            "id": 406
-        },
-        {
-            "tz": "America\/St_Thomas",
-            "id": 407
-        },
-        {
-            "tz": "Asia\/Ho_Chi_Minh",
-            "id": 408
-        },
-        {
-            "tz": "Pacific\/Efate",
-            "id": 409
-        },
-        {
-            "tz": "Pacific\/Wallis",
-            "id": 410
-        },
-        {
-            "tz": "Pacific\/Apia",
-            "id": 411
-        },
-        {
-            "tz": "Asia\/Aden",
-            "id": 412
-        },
-        {
-            "tz": "Indian\/Mayotte",
-            "id": 413
-        },
-        {
-            "tz": "Africa\/Johannesburg",
-            "id": 414
-        },
-        {
-            "tz": "Africa\/Lusaka",
-            "id": 415
-        },
-        {
-            "tz": "Africa\/Harare",
-            "id": 416
-        }
-    ],
-    "headers": {
-        "x-first-page": "/api/user/timezones?_page=1",
-        "x-last-page": "/api/user/timezones?_page=1",
-        "x-next-page": "/api/user/timezones?_page=1",
-        "x-total-items": "1",
-        "x-total-pages": "1"
+  "body": [
+    {
+      "tz": "Europe/Andorra",
+      "id": 1
     },
-    "statusCode": 200
+    {
+      "tz": "Asia/Dubai",
+      "id": 2
+    },
+    {
+      "tz": "Asia/Kabul",
+      "id": 3
+    },
+    {
+      "tz": "America/Antigua",
+      "id": 4
+    },
+    {
+      "tz": "America/Anguilla",
+      "id": 5
+    },
+    {
+      "tz": "Europe/Tirane",
+      "id": 6
+    },
+    {
+      "tz": "Asia/Yerevan",
+      "id": 7
+    },
+    {
+      "tz": "Africa/Luanda",
+      "id": 8
+    },
+    {
+      "tz": "Antarctica/McMurdo",
+      "id": 9
+    },
+    {
+      "tz": "Antarctica/Rothera",
+      "id": 10
+    },
+    {
+      "tz": "Antarctica/Palmer",
+      "id": 11
+    },
+    {
+      "tz": "Antarctica/Mawson",
+      "id": 12
+    },
+    {
+      "tz": "Antarctica/Davis",
+      "id": 13
+    },
+    {
+      "tz": "Antarctica/Casey",
+      "id": 14
+    },
+    {
+      "tz": "Antarctica/Vostok",
+      "id": 15
+    },
+    {
+      "tz": "Antarctica/DumontDUrville",
+      "id": 16
+    },
+    {
+      "tz": "Antarctica/Syowa",
+      "id": 17
+    },
+    {
+      "tz": "Antarctica/Troll",
+      "id": 18
+    },
+    {
+      "tz": "America/Argentina/Buenos_Aires",
+      "id": 19
+    },
+    {
+      "tz": "America/Argentina/Cordoba",
+      "id": 20
+    },
+    {
+      "tz": "America/Argentina/Salta",
+      "id": 21
+    },
+    {
+      "tz": "America/Argentina/Jujuy",
+      "id": 22
+    },
+    {
+      "tz": "America/Argentina/Tucuman",
+      "id": 23
+    },
+    {
+      "tz": "America/Argentina/Catamarca",
+      "id": 24
+    },
+    {
+      "tz": "America/Argentina/La_Rioja",
+      "id": 25
+    },
+    {
+      "tz": "America/Argentina/San_Juan",
+      "id": 26
+    },
+    {
+      "tz": "America/Argentina/Mendoza",
+      "id": 27
+    },
+    {
+      "tz": "America/Argentina/San_Luis",
+      "id": 28
+    },
+    {
+      "tz": "America/Argentina/Rio_Gallegos",
+      "id": 29
+    },
+    {
+      "tz": "America/Argentina/Ushuaia",
+      "id": 30
+    },
+    {
+      "tz": "Pacific/Pago_Pago",
+      "id": 31
+    },
+    {
+      "tz": "Europe/Vienna",
+      "id": 32
+    },
+    {
+      "tz": "Australia/Lord_Howe",
+      "id": 33
+    },
+    {
+      "tz": "Antarctica/Macquarie",
+      "id": 34
+    },
+    {
+      "tz": "Australia/Hobart",
+      "id": 35
+    },
+    {
+      "tz": "Australia/Currie",
+      "id": 36
+    },
+    {
+      "tz": "Australia/Melbourne",
+      "id": 37
+    },
+    {
+      "tz": "Australia/Sydney",
+      "id": 38
+    },
+    {
+      "tz": "Australia/Broken_Hill",
+      "id": 39
+    },
+    {
+      "tz": "Australia/Brisbane",
+      "id": 40
+    },
+    {
+      "tz": "Australia/Lindeman",
+      "id": 41
+    },
+    {
+      "tz": "Australia/Adelaide",
+      "id": 42
+    },
+    {
+      "tz": "Australia/Darwin",
+      "id": 43
+    },
+    {
+      "tz": "Australia/Perth",
+      "id": 44
+    },
+    {
+      "tz": "Australia/Eucla",
+      "id": 45
+    },
+    {
+      "tz": "America/Aruba",
+      "id": 46
+    },
+    {
+      "tz": "Europe/Mariehamn",
+      "id": 47
+    },
+    {
+      "tz": "Asia/Baku",
+      "id": 48
+    },
+    {
+      "tz": "Europe/Sarajevo",
+      "id": 49
+    },
+    {
+      "tz": "America/Barbados",
+      "id": 50
+    },
+    {
+      "tz": "Asia/Dhaka",
+      "id": 51
+    },
+    {
+      "tz": "Europe/Brussels",
+      "id": 52
+    },
+    {
+      "tz": "Africa/Ouagadougou",
+      "id": 53
+    },
+    {
+      "tz": "Europe/Sofia",
+      "id": 54
+    },
+    {
+      "tz": "Asia/Bahrain",
+      "id": 55
+    },
+    {
+      "tz": "Africa/Bujumbura",
+      "id": 56
+    },
+    {
+      "tz": "Africa/Porto-Novo",
+      "id": 57
+    },
+    {
+      "tz": "America/St_Barthelemy",
+      "id": 58
+    },
+    {
+      "tz": "Atlantic/Bermuda",
+      "id": 59
+    },
+    {
+      "tz": "Asia/Brunei",
+      "id": 60
+    },
+    {
+      "tz": "America/La_Paz",
+      "id": 61
+    },
+    {
+      "tz": "America/Kralendijk",
+      "id": 62
+    },
+    {
+      "tz": "America/Noronha",
+      "id": 63
+    },
+    {
+      "tz": "America/Belem",
+      "id": 64
+    },
+    {
+      "tz": "America/Fortaleza",
+      "id": 65
+    },
+    {
+      "tz": "America/Recife",
+      "id": 66
+    },
+    {
+      "tz": "America/Araguaina",
+      "id": 67
+    },
+    {
+      "tz": "America/Maceio",
+      "id": 68
+    },
+    {
+      "tz": "America/Bahia",
+      "id": 69
+    },
+    {
+      "tz": "America/Sao_Paulo",
+      "id": 70
+    },
+    {
+      "tz": "America/Campo_Grande",
+      "id": 71
+    },
+    {
+      "tz": "America/Cuiaba",
+      "id": 72
+    },
+    {
+      "tz": "America/Santarem",
+      "id": 73
+    },
+    {
+      "tz": "America/Porto_Velho",
+      "id": 74
+    },
+    {
+      "tz": "America/Boa_Vista",
+      "id": 75
+    },
+    {
+      "tz": "America/Manaus",
+      "id": 76
+    },
+    {
+      "tz": "America/Eirunepe",
+      "id": 77
+    },
+    {
+      "tz": "America/Rio_Branco",
+      "id": 78
+    },
+    {
+      "tz": "America/Nassau",
+      "id": 79
+    },
+    {
+      "tz": "Asia/Thimphu",
+      "id": 80
+    },
+    {
+      "tz": "Africa/Gaborone",
+      "id": 81
+    },
+    {
+      "tz": "Europe/Minsk",
+      "id": 82
+    },
+    {
+      "tz": "America/Belize",
+      "id": 83
+    },
+    {
+      "tz": "America/St_Johns",
+      "id": 84
+    },
+    {
+      "tz": "America/Halifax",
+      "id": 85
+    },
+    {
+      "tz": "America/Glace_Bay",
+      "id": 86
+    },
+    {
+      "tz": "America/Moncton",
+      "id": 87
+    },
+    {
+      "tz": "America/Goose_Bay",
+      "id": 88
+    },
+    {
+      "tz": "America/Blanc-Sablon",
+      "id": 89
+    },
+    {
+      "tz": "America/Toronto",
+      "id": 90
+    },
+    {
+      "tz": "America/Nipigon",
+      "id": 91
+    },
+    {
+      "tz": "America/Thunder_Bay",
+      "id": 92
+    },
+    {
+      "tz": "America/Iqaluit",
+      "id": 93
+    },
+    {
+      "tz": "America/Pangnirtung",
+      "id": 94
+    },
+    {
+      "tz": "America/Resolute",
+      "id": 95
+    },
+    {
+      "tz": "America/Atikokan",
+      "id": 96
+    },
+    {
+      "tz": "America/Rankin_Inlet",
+      "id": 97
+    },
+    {
+      "tz": "America/Winnipeg",
+      "id": 98
+    },
+    {
+      "tz": "America/Rainy_River",
+      "id": 99
+    },
+    {
+      "tz": "America/Regina",
+      "id": 100
+    },
+    {
+      "tz": "America/Swift_Current",
+      "id": 101
+    },
+    {
+      "tz": "America/Edmonton",
+      "id": 102
+    },
+    {
+      "tz": "America/Cambridge_Bay",
+      "id": 103
+    },
+    {
+      "tz": "America/Yellowknife",
+      "id": 104
+    },
+    {
+      "tz": "America/Inuvik",
+      "id": 105
+    },
+    {
+      "tz": "America/Creston",
+      "id": 106
+    },
+    {
+      "tz": "America/Dawson_Creek",
+      "id": 107
+    },
+    {
+      "tz": "America/Vancouver",
+      "id": 108
+    },
+    {
+      "tz": "America/Whitehorse",
+      "id": 109
+    },
+    {
+      "tz": "America/Dawson",
+      "id": 110
+    },
+    {
+      "tz": "Indian/Cocos",
+      "id": 111
+    },
+    {
+      "tz": "Africa/Kinshasa",
+      "id": 112
+    },
+    {
+      "tz": "Africa/Lubumbashi",
+      "id": 113
+    },
+    {
+      "tz": "Africa/Bangui",
+      "id": 114
+    },
+    {
+      "tz": "Africa/Brazzaville",
+      "id": 115
+    },
+    {
+      "tz": "Europe/Zurich",
+      "id": 116
+    },
+    {
+      "tz": "Africa/Abidjan",
+      "id": 117
+    },
+    {
+      "tz": "Pacific/Rarotonga",
+      "id": 118
+    },
+    {
+      "tz": "America/Santiago",
+      "id": 119
+    },
+    {
+      "tz": "Pacific/Easter",
+      "id": 120
+    },
+    {
+      "tz": "Africa/Douala",
+      "id": 121
+    },
+    {
+      "tz": "Asia/Shanghai",
+      "id": 122
+    },
+    {
+      "tz": "Asia/Urumqi",
+      "id": 123
+    },
+    {
+      "tz": "America/Bogota",
+      "id": 124
+    },
+    {
+      "tz": "America/Costa_Rica",
+      "id": 125
+    },
+    {
+      "tz": "America/Havana",
+      "id": 126
+    },
+    {
+      "tz": "Atlantic/Cape_Verde",
+      "id": 127
+    },
+    {
+      "tz": "America/Curacao",
+      "id": 128
+    },
+    {
+      "tz": "Indian/Christmas",
+      "id": 129
+    },
+    {
+      "tz": "Asia/Nicosia",
+      "id": 130
+    },
+    {
+      "tz": "Europe/Prague",
+      "id": 131
+    },
+    {
+      "tz": "Europe/Berlin",
+      "id": 132
+    },
+    {
+      "tz": "Europe/Busingen",
+      "id": 133
+    },
+    {
+      "tz": "Africa/Djibouti",
+      "id": 134
+    },
+    {
+      "tz": "Europe/Copenhagen",
+      "id": 135
+    },
+    {
+      "tz": "America/Dominica",
+      "id": 136
+    },
+    {
+      "tz": "America/Santo_Domingo",
+      "id": 137
+    },
+    {
+      "tz": "Africa/Algiers",
+      "id": 138
+    },
+    {
+      "tz": "America/Guayaquil",
+      "id": 139
+    },
+    {
+      "tz": "Pacific/Galapagos",
+      "id": 140
+    },
+    {
+      "tz": "Europe/Tallinn",
+      "id": 141
+    },
+    {
+      "tz": "Africa/Cairo",
+      "id": 142
+    },
+    {
+      "tz": "Africa/El_Aaiun",
+      "id": 143
+    },
+    {
+      "tz": "Africa/Asmara",
+      "id": 144
+    },
+    {
+      "tz": "Europe/Madrid",
+      "id": 145
+    },
+    {
+      "tz": "Africa/Ceuta",
+      "id": 146
+    },
+    {
+      "tz": "Atlantic/Canary",
+      "id": 147
+    },
+    {
+      "tz": "Africa/Addis_Ababa",
+      "id": 148
+    },
+    {
+      "tz": "Europe/Helsinki",
+      "id": 149
+    },
+    {
+      "tz": "Pacific/Fiji",
+      "id": 150
+    },
+    {
+      "tz": "Atlantic/Stanley",
+      "id": 151
+    },
+    {
+      "tz": "Pacific/Chuuk",
+      "id": 152
+    },
+    {
+      "tz": "Pacific/Pohnpei",
+      "id": 153
+    },
+    {
+      "tz": "Pacific/Kosrae",
+      "id": 154
+    },
+    {
+      "tz": "Atlantic/Faroe",
+      "id": 155
+    },
+    {
+      "tz": "Europe/Paris",
+      "id": 156
+    },
+    {
+      "tz": "Africa/Libreville",
+      "id": 157
+    },
+    {
+      "tz": "Europe/London",
+      "id": 158
+    },
+    {
+      "tz": "America/Grenada",
+      "id": 159
+    },
+    {
+      "tz": "Asia/Tbilisi",
+      "id": 160
+    },
+    {
+      "tz": "America/Cayenne",
+      "id": 161
+    },
+    {
+      "tz": "Europe/Guernsey",
+      "id": 162
+    },
+    {
+      "tz": "Africa/Accra",
+      "id": 163
+    },
+    {
+      "tz": "Europe/Gibraltar",
+      "id": 164
+    },
+    {
+      "tz": "America/Godthab",
+      "id": 165
+    },
+    {
+      "tz": "America/Danmarkshavn",
+      "id": 166
+    },
+    {
+      "tz": "America/Scoresbysund",
+      "id": 167
+    },
+    {
+      "tz": "America/Thule",
+      "id": 168
+    },
+    {
+      "tz": "Africa/Banjul",
+      "id": 169
+    },
+    {
+      "tz": "Africa/Conakry",
+      "id": 170
+    },
+    {
+      "tz": "America/Guadeloupe",
+      "id": 171
+    },
+    {
+      "tz": "Africa/Malabo",
+      "id": 172
+    },
+    {
+      "tz": "Europe/Athens",
+      "id": 173
+    },
+    {
+      "tz": "Atlantic/South_Georgia",
+      "id": 174
+    },
+    {
+      "tz": "America/Guatemala",
+      "id": 175
+    },
+    {
+      "tz": "Pacific/Guam",
+      "id": 176
+    },
+    {
+      "tz": "Africa/Bissau",
+      "id": 177
+    },
+    {
+      "tz": "America/Guyana",
+      "id": 178
+    },
+    {
+      "tz": "Asia/Hong_Kong",
+      "id": 179
+    },
+    {
+      "tz": "America/Tegucigalpa",
+      "id": 180
+    },
+    {
+      "tz": "Europe/Zagreb",
+      "id": 181
+    },
+    {
+      "tz": "America/Port-au-Prince",
+      "id": 182
+    },
+    {
+      "tz": "Europe/Budapest",
+      "id": 183
+    },
+    {
+      "tz": "Asia/Jakarta",
+      "id": 184
+    },
+    {
+      "tz": "Asia/Pontianak",
+      "id": 185
+    },
+    {
+      "tz": "Asia/Makassar",
+      "id": 186
+    },
+    {
+      "tz": "Asia/Jayapura",
+      "id": 187
+    },
+    {
+      "tz": "Europe/Dublin",
+      "id": 188
+    },
+    {
+      "tz": "Asia/Jerusalem",
+      "id": 189
+    },
+    {
+      "tz": "Europe/Isle_of_Man",
+      "id": 190
+    },
+    {
+      "tz": "Asia/Kolkata",
+      "id": 191
+    },
+    {
+      "tz": "Indian/Chagos",
+      "id": 192
+    },
+    {
+      "tz": "Asia/Baghdad",
+      "id": 193
+    },
+    {
+      "tz": "Asia/Tehran",
+      "id": 194
+    },
+    {
+      "tz": "Atlantic/Reykjavik",
+      "id": 195
+    },
+    {
+      "tz": "Europe/Rome",
+      "id": 196
+    },
+    {
+      "tz": "Europe/Jersey",
+      "id": 197
+    },
+    {
+      "tz": "America/Jamaica",
+      "id": 198
+    },
+    {
+      "tz": "Asia/Amman",
+      "id": 199
+    },
+    {
+      "tz": "Asia/Tokyo",
+      "id": 200
+    },
+    {
+      "tz": "Africa/Nairobi",
+      "id": 201
+    },
+    {
+      "tz": "Asia/Bishkek",
+      "id": 202
+    },
+    {
+      "tz": "Asia/Phnom_Penh",
+      "id": 203
+    },
+    {
+      "tz": "Pacific/Tarawa",
+      "id": 204
+    },
+    {
+      "tz": "Pacific/Enderbury",
+      "id": 205
+    },
+    {
+      "tz": "Pacific/Kiritimati",
+      "id": 206
+    },
+    {
+      "tz": "Indian/Comoro",
+      "id": 207
+    },
+    {
+      "tz": "America/St_Kitts",
+      "id": 208
+    },
+    {
+      "tz": "Asia/Pyongyang",
+      "id": 209
+    },
+    {
+      "tz": "Asia/Seoul",
+      "id": 210
+    },
+    {
+      "tz": "Asia/Kuwait",
+      "id": 211
+    },
+    {
+      "tz": "America/Cayman",
+      "id": 212
+    },
+    {
+      "tz": "Asia/Almaty",
+      "id": 213
+    },
+    {
+      "tz": "Asia/Qyzylorda",
+      "id": 214
+    },
+    {
+      "tz": "Asia/Aqtobe",
+      "id": 215
+    },
+    {
+      "tz": "Asia/Aqtau",
+      "id": 216
+    },
+    {
+      "tz": "Asia/Oral",
+      "id": 217
+    },
+    {
+      "tz": "Asia/Vientiane",
+      "id": 218
+    },
+    {
+      "tz": "Asia/Beirut",
+      "id": 219
+    },
+    {
+      "tz": "America/St_Lucia",
+      "id": 220
+    },
+    {
+      "tz": "Europe/Vaduz",
+      "id": 221
+    },
+    {
+      "tz": "Asia/Colombo",
+      "id": 222
+    },
+    {
+      "tz": "Africa/Monrovia",
+      "id": 223
+    },
+    {
+      "tz": "Africa/Maseru",
+      "id": 224
+    },
+    {
+      "tz": "Europe/Vilnius",
+      "id": 225
+    },
+    {
+      "tz": "Europe/Luxembourg",
+      "id": 226
+    },
+    {
+      "tz": "Europe/Riga",
+      "id": 227
+    },
+    {
+      "tz": "Africa/Tripoli",
+      "id": 228
+    },
+    {
+      "tz": "Africa/Casablanca",
+      "id": 229
+    },
+    {
+      "tz": "Europe/Monaco",
+      "id": 230
+    },
+    {
+      "tz": "Europe/Chisinau",
+      "id": 231
+    },
+    {
+      "tz": "Europe/Podgorica",
+      "id": 232
+    },
+    {
+      "tz": "America/Marigot",
+      "id": 233
+    },
+    {
+      "tz": "Indian/Antananarivo",
+      "id": 234
+    },
+    {
+      "tz": "Pacific/Majuro",
+      "id": 235
+    },
+    {
+      "tz": "Pacific/Kwajalein",
+      "id": 236
+    },
+    {
+      "tz": "Europe/Skopje",
+      "id": 237
+    },
+    {
+      "tz": "Africa/Bamako",
+      "id": 238
+    },
+    {
+      "tz": "Asia/Rangoon",
+      "id": 239
+    },
+    {
+      "tz": "Asia/Ulaanbaatar",
+      "id": 240
+    },
+    {
+      "tz": "Asia/Hovd",
+      "id": 241
+    },
+    {
+      "tz": "Asia/Choibalsan",
+      "id": 242
+    },
+    {
+      "tz": "Asia/Macau",
+      "id": 243
+    },
+    {
+      "tz": "Pacific/Saipan",
+      "id": 244
+    },
+    {
+      "tz": "America/Martinique",
+      "id": 245
+    },
+    {
+      "tz": "Africa/Nouakchott",
+      "id": 246
+    },
+    {
+      "tz": "America/Montserrat",
+      "id": 247
+    },
+    {
+      "tz": "Europe/Malta",
+      "id": 248
+    },
+    {
+      "tz": "Indian/Mauritius",
+      "id": 249
+    },
+    {
+      "tz": "Indian/Maldives",
+      "id": 250
+    },
+    {
+      "tz": "Africa/Blantyre",
+      "id": 251
+    },
+    {
+      "tz": "America/Mexico_City",
+      "id": 252
+    },
+    {
+      "tz": "America/Cancun",
+      "id": 253
+    },
+    {
+      "tz": "America/Merida",
+      "id": 254
+    },
+    {
+      "tz": "America/Monterrey",
+      "id": 255
+    },
+    {
+      "tz": "America/Matamoros",
+      "id": 256
+    },
+    {
+      "tz": "America/Mazatlan",
+      "id": 257
+    },
+    {
+      "tz": "America/Chihuahua",
+      "id": 258
+    },
+    {
+      "tz": "America/Ojinaga",
+      "id": 259
+    },
+    {
+      "tz": "America/Hermosillo",
+      "id": 260
+    },
+    {
+      "tz": "America/Tijuana",
+      "id": 261
+    },
+    {
+      "tz": "America/Santa_Isabel",
+      "id": 262
+    },
+    {
+      "tz": "America/Bahia_Banderas",
+      "id": 263
+    },
+    {
+      "tz": "Asia/Kuala_Lumpur",
+      "id": 264
+    },
+    {
+      "tz": "Asia/Kuching",
+      "id": 265
+    },
+    {
+      "tz": "Africa/Maputo",
+      "id": 266
+    },
+    {
+      "tz": "Africa/Windhoek",
+      "id": 267
+    },
+    {
+      "tz": "Pacific/Noumea",
+      "id": 268
+    },
+    {
+      "tz": "Africa/Niamey",
+      "id": 269
+    },
+    {
+      "tz": "Pacific/Norfolk",
+      "id": 270
+    },
+    {
+      "tz": "Africa/Lagos",
+      "id": 271
+    },
+    {
+      "tz": "America/Managua",
+      "id": 272
+    },
+    {
+      "tz": "Europe/Amsterdam",
+      "id": 273
+    },
+    {
+      "tz": "Europe/Oslo",
+      "id": 274
+    },
+    {
+      "tz": "Asia/Kathmandu",
+      "id": 275
+    },
+    {
+      "tz": "Pacific/Nauru",
+      "id": 276
+    },
+    {
+      "tz": "Pacific/Niue",
+      "id": 277
+    },
+    {
+      "tz": "Pacific/Auckland",
+      "id": 278
+    },
+    {
+      "tz": "Pacific/Chatham",
+      "id": 279
+    },
+    {
+      "tz": "Asia/Muscat",
+      "id": 280
+    },
+    {
+      "tz": "America/Panama",
+      "id": 281
+    },
+    {
+      "tz": "America/Lima",
+      "id": 282
+    },
+    {
+      "tz": "Pacific/Tahiti",
+      "id": 283
+    },
+    {
+      "tz": "Pacific/Marquesas",
+      "id": 284
+    },
+    {
+      "tz": "Pacific/Gambier",
+      "id": 285
+    },
+    {
+      "tz": "Pacific/Port_Moresby",
+      "id": 286
+    },
+    {
+      "tz": "Pacific/Bougainville",
+      "id": 287
+    },
+    {
+      "tz": "Asia/Manila",
+      "id": 288
+    },
+    {
+      "tz": "Asia/Karachi",
+      "id": 289
+    },
+    {
+      "tz": "Europe/Warsaw",
+      "id": 290
+    },
+    {
+      "tz": "America/Miquelon",
+      "id": 291
+    },
+    {
+      "tz": "Pacific/Pitcairn",
+      "id": 292
+    },
+    {
+      "tz": "America/Puerto_Rico",
+      "id": 293
+    },
+    {
+      "tz": "Asia/Gaza",
+      "id": 294
+    },
+    {
+      "tz": "Asia/Hebron",
+      "id": 295
+    },
+    {
+      "tz": "Europe/Lisbon",
+      "id": 296
+    },
+    {
+      "tz": "Atlantic/Madeira",
+      "id": 297
+    },
+    {
+      "tz": "Atlantic/Azores",
+      "id": 298
+    },
+    {
+      "tz": "Pacific/Palau",
+      "id": 299
+    },
+    {
+      "tz": "America/Asuncion",
+      "id": 300
+    },
+    {
+      "tz": "Asia/Qatar",
+      "id": 301
+    },
+    {
+      "tz": "Indian/Reunion",
+      "id": 302
+    },
+    {
+      "tz": "Europe/Bucharest",
+      "id": 303
+    },
+    {
+      "tz": "Europe/Belgrade",
+      "id": 304
+    },
+    {
+      "tz": "Europe/Kaliningrad",
+      "id": 305
+    },
+    {
+      "tz": "Europe/Moscow",
+      "id": 306
+    },
+    {
+      "tz": "Europe/Simferopol",
+      "id": 307
+    },
+    {
+      "tz": "Europe/Volgograd",
+      "id": 308
+    },
+    {
+      "tz": "Europe/Samara",
+      "id": 309
+    },
+    {
+      "tz": "Asia/Yekaterinburg",
+      "id": 310
+    },
+    {
+      "tz": "Asia/Omsk",
+      "id": 311
+    },
+    {
+      "tz": "Asia/Novosibirsk",
+      "id": 312
+    },
+    {
+      "tz": "Asia/Novokuznetsk",
+      "id": 313
+    },
+    {
+      "tz": "Asia/Krasnoyarsk",
+      "id": 314
+    },
+    {
+      "tz": "Asia/Irkutsk",
+      "id": 315
+    },
+    {
+      "tz": "Asia/Chita",
+      "id": 316
+    },
+    {
+      "tz": "Asia/Yakutsk",
+      "id": 317
+    },
+    {
+      "tz": "Asia/Khandyga",
+      "id": 318
+    },
+    {
+      "tz": "Asia/Vladivostok",
+      "id": 319
+    },
+    {
+      "tz": "Asia/Sakhalin",
+      "id": 320
+    },
+    {
+      "tz": "Asia/Ust-Nera",
+      "id": 321
+    },
+    {
+      "tz": "Asia/Magadan",
+      "id": 322
+    },
+    {
+      "tz": "Asia/Srednekolymsk",
+      "id": 323
+    },
+    {
+      "tz": "Asia/Kamchatka",
+      "id": 324
+    },
+    {
+      "tz": "Asia/Anadyr",
+      "id": 325
+    },
+    {
+      "tz": "Africa/Kigali",
+      "id": 326
+    },
+    {
+      "tz": "Asia/Riyadh",
+      "id": 327
+    },
+    {
+      "tz": "Pacific/Guadalcanal",
+      "id": 328
+    },
+    {
+      "tz": "Indian/Mahe",
+      "id": 329
+    },
+    {
+      "tz": "Africa/Khartoum",
+      "id": 330
+    },
+    {
+      "tz": "Europe/Stockholm",
+      "id": 331
+    },
+    {
+      "tz": "Asia/Singapore",
+      "id": 332
+    },
+    {
+      "tz": "Atlantic/St_Helena",
+      "id": 333
+    },
+    {
+      "tz": "Europe/Ljubljana",
+      "id": 334
+    },
+    {
+      "tz": "Arctic/Longyearbyen",
+      "id": 335
+    },
+    {
+      "tz": "Europe/Bratislava",
+      "id": 336
+    },
+    {
+      "tz": "Africa/Freetown",
+      "id": 337
+    },
+    {
+      "tz": "Europe/San_Marino",
+      "id": 338
+    },
+    {
+      "tz": "Africa/Dakar",
+      "id": 339
+    },
+    {
+      "tz": "Africa/Mogadishu",
+      "id": 340
+    },
+    {
+      "tz": "America/Paramaribo",
+      "id": 341
+    },
+    {
+      "tz": "Africa/Juba",
+      "id": 342
+    },
+    {
+      "tz": "Africa/Sao_Tome",
+      "id": 343
+    },
+    {
+      "tz": "America/El_Salvador",
+      "id": 344
+    },
+    {
+      "tz": "America/Lower_Princes",
+      "id": 345
+    },
+    {
+      "tz": "Asia/Damascus",
+      "id": 346
+    },
+    {
+      "tz": "Africa/Mbabane",
+      "id": 347
+    },
+    {
+      "tz": "America/Grand_Turk",
+      "id": 348
+    },
+    {
+      "tz": "Africa/Ndjamena",
+      "id": 349
+    },
+    {
+      "tz": "Indian/Kerguelen",
+      "id": 350
+    },
+    {
+      "tz": "Africa/Lome",
+      "id": 351
+    },
+    {
+      "tz": "Asia/Bangkok",
+      "id": 352
+    },
+    {
+      "tz": "Asia/Dushanbe",
+      "id": 353
+    },
+    {
+      "tz": "Pacific/Fakaofo",
+      "id": 354
+    },
+    {
+      "tz": "Asia/Dili",
+      "id": 355
+    },
+    {
+      "tz": "Asia/Ashgabat",
+      "id": 356
+    },
+    {
+      "tz": "Africa/Tunis",
+      "id": 357
+    },
+    {
+      "tz": "Pacific/Tongatapu",
+      "id": 358
+    },
+    {
+      "tz": "Europe/Istanbul",
+      "id": 359
+    },
+    {
+      "tz": "America/Port_of_Spain",
+      "id": 360
+    },
+    {
+      "tz": "Pacific/Funafuti",
+      "id": 361
+    },
+    {
+      "tz": "Asia/Taipei",
+      "id": 362
+    },
+    {
+      "tz": "Africa/Dar_es_Salaam",
+      "id": 363
+    },
+    {
+      "tz": "Europe/Kiev",
+      "id": 364
+    },
+    {
+      "tz": "Europe/Uzhgorod",
+      "id": 365
+    },
+    {
+      "tz": "Europe/Zaporozhye",
+      "id": 366
+    },
+    {
+      "tz": "Africa/Kampala",
+      "id": 367
+    },
+    {
+      "tz": "Pacific/Johnston",
+      "id": 368
+    },
+    {
+      "tz": "Pacific/Midway",
+      "id": 369
+    },
+    {
+      "tz": "Pacific/Wake",
+      "id": 370
+    },
+    {
+      "tz": "America/New_York",
+      "id": 371
+    },
+    {
+      "tz": "America/Detroit",
+      "id": 372
+    },
+    {
+      "tz": "America/Kentucky/Louisville",
+      "id": 373
+    },
+    {
+      "tz": "America/Kentucky/Monticello",
+      "id": 374
+    },
+    {
+      "tz": "America/Indiana/Indianapolis",
+      "id": 375
+    },
+    {
+      "tz": "America/Indiana/Vincennes",
+      "id": 376
+    },
+    {
+      "tz": "America/Indiana/Winamac",
+      "id": 377
+    },
+    {
+      "tz": "America/Indiana/Marengo",
+      "id": 378
+    },
+    {
+      "tz": "America/Indiana/Petersburg",
+      "id": 379
+    },
+    {
+      "tz": "America/Indiana/Vevay",
+      "id": 380
+    },
+    {
+      "tz": "America/Chicago",
+      "id": 381
+    },
+    {
+      "tz": "America/Indiana/Tell_City",
+      "id": 382
+    },
+    {
+      "tz": "America/Indiana/Knox",
+      "id": 383
+    },
+    {
+      "tz": "America/Menominee",
+      "id": 384
+    },
+    {
+      "tz": "America/North_Dakota/Center",
+      "id": 385
+    },
+    {
+      "tz": "America/North_Dakota/New_Salem",
+      "id": 386
+    },
+    {
+      "tz": "America/North_Dakota/Beulah",
+      "id": 387
+    },
+    {
+      "tz": "America/Denver",
+      "id": 388
+    },
+    {
+      "tz": "America/Boise",
+      "id": 389
+    },
+    {
+      "tz": "America/Phoenix",
+      "id": 390
+    },
+    {
+      "tz": "America/Los_Angeles",
+      "id": 391
+    },
+    {
+      "tz": "America/Metlakatla",
+      "id": 392
+    },
+    {
+      "tz": "America/Anchorage",
+      "id": 393
+    },
+    {
+      "tz": "America/Juneau",
+      "id": 394
+    },
+    {
+      "tz": "America/Sitka",
+      "id": 395
+    },
+    {
+      "tz": "America/Yakutat",
+      "id": 396
+    },
+    {
+      "tz": "America/Nome",
+      "id": 397
+    },
+    {
+      "tz": "America/Adak",
+      "id": 398
+    },
+    {
+      "tz": "Pacific/Honolulu",
+      "id": 399
+    },
+    {
+      "tz": "America/Montevideo",
+      "id": 400
+    },
+    {
+      "tz": "Asia/Samarkand",
+      "id": 401
+    },
+    {
+      "tz": "Asia/Tashkent",
+      "id": 402
+    },
+    {
+      "tz": "Europe/Vatican",
+      "id": 403
+    },
+    {
+      "tz": "America/St_Vincent",
+      "id": 404
+    },
+    {
+      "tz": "America/Caracas",
+      "id": 405
+    },
+    {
+      "tz": "America/Tortola",
+      "id": 406
+    },
+    {
+      "tz": "America/St_Thomas",
+      "id": 407
+    },
+    {
+      "tz": "Asia/Ho_Chi_Minh",
+      "id": 408
+    },
+    {
+      "tz": "Pacific/Efate",
+      "id": 409
+    },
+    {
+      "tz": "Pacific/Wallis",
+      "id": 410
+    },
+    {
+      "tz": "Pacific/Apia",
+      "id": 411
+    },
+    {
+      "tz": "Asia/Aden",
+      "id": 412
+    },
+    {
+      "tz": "Indian/Mayotte",
+      "id": 413
+    },
+    {
+      "tz": "Africa/Johannesburg",
+      "id": 414
+    },
+    {
+      "tz": "Africa/Lusaka",
+      "id": 415
+    },
+    {
+      "tz": "Africa/Harare",
+      "id": 416
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/user/timezones?_page=1",
+    "x-last-page": "/api/user/timezones?_page=1",
+    "x-next-page": "/api/user/timezones?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
 }
