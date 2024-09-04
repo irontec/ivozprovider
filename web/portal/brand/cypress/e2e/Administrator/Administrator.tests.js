@@ -98,7 +98,8 @@ export const deleteAdministrator = () => {
     statusCode: 204,
   }).as('deleteAdministrator');
 
-  cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
+  cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
+  cy.get('li.MuiMenuItem-root').contains('Delete').click();
 
   cy.contains('Remove element');
   cy.get('div.MuiDialog-container button')

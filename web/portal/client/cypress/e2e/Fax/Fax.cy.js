@@ -85,7 +85,8 @@ describe('Fax', () => {
       statusCode: 204,
     }).as('deleteFax');
 
-    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.contains('Delete').click();
 
     cy.contains('Remove element');
     cy.get('div.MuiDialog-container button')

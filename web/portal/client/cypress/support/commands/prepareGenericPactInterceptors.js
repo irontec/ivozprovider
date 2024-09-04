@@ -5,6 +5,7 @@ import CallAclCollection from '../../fixtures/CallAcl/getCollection.json';
 import CallAclRelMatchListCollection from '../../fixtures/CallAclRelMatchList/getCollection.json';
 import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getCollection.json';
 import CallForwardSettingCollection from '../../fixtures/CallForwardSetting/getCollection.json';
+import CompanyCollection from '../../fixtures/Company/getCollection.json';
 import CompanyServiceCollection from '../../fixtures/CompanyService/getCollection.json';
 import ConditionalRouteCollection from '../../fixtures/ConditionalRoute/getCollection.json';
 import ConditionalRoutesConditionCollection from '../../fixtures/ConditionalRoutesCondition/getCollection.json';
@@ -158,6 +159,14 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/friends_patterns?*', {
     ...FriendPatternsCollection,
   }).as('getFriendsPattern');
+
+  cy.intercept('GET', '**/api/client/friends/1/friends_patterns', {
+    ...FriendPatternsCollection,
+  }).as('getFriendFriendsPattern');
+
+  cy.intercept('GET', '**/api/client/companies?*', {
+    ...CompanyCollection,
+  }).as('getCompanies');
 
   cy.intercept('GET', '**/api/client/conference_rooms?*', {
     ...ConferenceRoomCollection,

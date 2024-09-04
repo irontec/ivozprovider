@@ -11,7 +11,8 @@ describe('Recording', () => {
 
     cy.get('header').should('contain', 'DDIs');
 
-    cy.get('svg[data-testid="SettingsVoiceIcon"]').first().click();
+    cy.get('svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.contains('Recordings').click();
 
     cy.get('header').should('contain', 'Recordings');
 

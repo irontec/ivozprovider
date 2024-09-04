@@ -76,11 +76,8 @@ describe('Ddi', () => {
   // DELETE
   ///////////////////////
   it('cannot delete DDIs', () => {
-    cy.get(
-      'td > div.actions-cell > span > button:has(svg[data-testid="DeleteIcon"])'
-    )
-      .first()
-      .should('be.disabled');
+    cy.get('svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.contains('Delete').should('have.class', 'disabled');
 
     cy.get('header').should('contain', 'DDIs');
   });
