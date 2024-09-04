@@ -11,7 +11,7 @@ describe('Fax In', () => {
 
     cy.get('header').should('contain', 'Faxes');
 
-    cy.get('svg[data-testid="OutboundIcon"]').eq(1).click();
+    cy.get('svg[data-testid="OutboundIcon"]').first().click();
 
     cy.get('table').should('contain', FaxInOutCollection.body[0].id);
   });
