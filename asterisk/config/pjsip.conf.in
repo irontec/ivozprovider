@@ -4,7 +4,7 @@
 [global]
 type=global
 user_agent=Irontec IvozProvider v4.1
-endpoint_identifier_order=ip,header,username,anonymous
+endpoint_identifier_order=header,ip
 mwi_disable_initial_unsolicited=yes
 
 ;;
