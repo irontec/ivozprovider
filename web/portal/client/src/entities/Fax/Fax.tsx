@@ -19,7 +19,7 @@ const properties: FaxProperties = {
       '0': _('No'),
       '1': _('Yes'),
     },
-    default: '1',
+    default: '0',
     visualToggle: {
       '0': {
         show: [],
