@@ -160,7 +160,7 @@ class Users extends RouteHandlerAbstract
         $this->agi->setVariable("__COMPANYID", $company->getId());
         $this->agi->setVariable("__COMPANYTYPE", $company->getType());
         $this->agi->setVariable("__BRANDID", $brand->getId());
-        $this->agi->setVariable("__ONDEMANDCODE", $company->getOnDemandRecordCode());
+        $this->agi->setVariable("__ONDEMANDCODE", $company->getOnDemandRecordDTMFs());
 
         // Mark this call as generated from user
         $this->agi->setVariable("__CALL_TYPE", "internal");
