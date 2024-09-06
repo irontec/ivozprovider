@@ -1,1 +1,5 @@
+#!/usr/bin/dh-exec
+
 asterisk/config/* /etc/asterisk/
+
+asterisk/config/pjsip.conf.in => /etc/asterisk/pjsip.conf
