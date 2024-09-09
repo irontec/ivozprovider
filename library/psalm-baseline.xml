@@ -4496,8 +4496,9 @@
     </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php">
-    <PossiblyNullArgument occurrences="1">
+    <PossiblyNullArgument occurrences="2">
       <code>$trunksCdrDto-&gt;getDuration()</code>
+      <code>$trunksCdrDto-&gt;getStartTime()</code>
     </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Service/BillableCall/UpdateDtoByDefaultRunTpCdr.php">
@@ -4505,6 +4506,9 @@
       <code>$destinationName</code>
       <code>$ratingPlanGroupName</code>
     </MixedArgument>
+    <PossiblyNullArgument occurrences="1">
+      <code>$startTime</code>
+    </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Service/BillableCallHistoric/ImportFromBillableCalls.php">
     <TypeDoesNotContainNull occurrences="1">

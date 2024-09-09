@@ -64,7 +64,7 @@ interface UsersCdrInterface extends LoggableEntityInterface
      */
     public function toDto(int $depth = 0): UsersCdrDto;
 
-    public function getStartTime(): ?\DateTime;
+    public function getStartTime(): \DateTime;
 
     public function getDuration(): float;
 

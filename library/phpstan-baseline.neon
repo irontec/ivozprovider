@@ -3701,6 +3701,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php
 
 		-
+			message: "#^Parameter \\#1 \\$startTime of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:setStartTime\\(\\) expects DateTimeInterface\\|string, DateTimeInterface\\|string\\|null given\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php
+
+		-
 			message: "#^Cannot call method getTz\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\|null\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Service/BillableCall/CsvExporter.php
@@ -3717,6 +3722,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method getLanguageCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/BillableCall/UpdateDtoByDefaultRunTpCdr.php
+
+		-
+			message: "#^Parameter \\#1 \\$startTime of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:setStartTime\\(\\) expects DateTimeInterface\\|string, DateTimeInterface\\|string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BillableCall/UpdateDtoByDefaultRunTpCdr.php
 
@@ -4397,7 +4407,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method setTimezone\\(\\) on DateTime\\|null\\.$#"
-			count: 3
+			count: 2
 			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
 
 		-

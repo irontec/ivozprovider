@@ -286,6 +286,7 @@ class UpdateByTpCdrSpec extends ObjectBehavior
                 'carrier' => $this->carrier,
                 'direction' => BillableCallInterface::DIRECTION_OUTBOUND,
                 'company' => $this->company,
+                'startTime' => new \DateTime(),
             ]
         );
 

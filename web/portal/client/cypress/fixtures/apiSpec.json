@@ -406,19 +406,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "endpointName[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "endpointName[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "endpointName[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -431,6 +419,18 @@
                     },
                     {
                         "name": "endpointName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "endpointName[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "endpointName[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -526,12 +526,6 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "exists[startTime]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "id[exact]",
                         "in": "query",
                         "required": false,
@@ -616,19 +610,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "startTime[start]",
+                        "name": "startTime[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "startTime[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "startTime[neq]",
+                        "name": "startTime[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33745,18 +33733,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "callee[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "callee[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "callee[neq]",
                         "in": "query",
                         "required": false,
@@ -33773,6 +33749,18 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "callee[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callee[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "caller",
@@ -33871,18 +33859,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "disposition[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "disposition[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "disposition[neq]",
                         "in": "query",
                         "required": false,
@@ -33895,10 +33871,22 @@
                         "type": "string"
                     },
                     {
+                        "name": "disposition[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "disposition[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "disposition[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "duration",
@@ -33968,12 +33956,6 @@
                     },
                     {
                         "name": "exists[owner]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "exists[startTime]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -34093,19 +34075,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "startTime[start]",
+                        "name": "startTime[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "startTime[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "startTime[neq]",
+                        "name": "startTime[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35426,10 +35402,17 @@
         },
         "BillableCall-collection": {
             "type": "object",
+            "required": [
+                "startTime",
+                "direction",
+                "duration"
+            ],
             "properties": {
                 "startTime": {
+                    "default": "2000-01-01 00:00:00",
                     "format": "date-time",
                     "description": "",
+                    "example": "2000-01-01 00:00:00",
                     "type": "string"
                 },
                 "direction": {
@@ -35500,11 +35483,7 @@
                     "description": "",
                     "type": "integer"
                 }
-            },
-            "required": [
-                "direction",
-                "duration"
-            ]
+            }
         },
         "BillableCall-detailed": {
             "type": "object",
@@ -35515,8 +35494,10 @@
                     "type": "string"
                 },
                 "startTime": {
+                    "default": "2000-01-01 00:00:00",
                     "format": "date-time",
                     "description": "",
+                    "example": "2000-01-01 00:00:00",
                     "type": "string"
                 },
                 "duration": {
@@ -35593,6 +35574,7 @@
                 }
             },
             "required": [
+                "startTime",
                 "duration",
                 "direction"
             ]
@@ -46630,10 +46612,16 @@
         },
         "UsersCdr-collection": {
             "type": "object",
+            "required": [
+                "startTime",
+                "duration"
+            ],
             "properties": {
                 "startTime": {
+                    "default": "2000-01-01 00:00:00",
                     "format": "date-time",
                     "description": "",
+                    "example": "2000-01-01 00:00:00",
                     "type": "string"
                 },
                 "owner": {
@@ -46687,17 +46675,20 @@
                     "type": "integer",
                     "readOnly": true
                 }
-            },
-            "required": [
-                "duration"
-            ]
+            }
         },
         "UsersCdr-detailed": {
             "type": "object",
+            "required": [
+                "startTime",
+                "duration"
+            ],
             "properties": {
                 "startTime": {
+                    "default": "2000-01-01 00:00:00",
                     "format": "date-time",
                     "description": "",
+                    "example": "2000-01-01 00:00:00",
                     "type": "string"
                 },
                 "duration": {
@@ -46765,10 +46756,7 @@
                 "extension": {
                     "$ref": "#/definitions/Extension"
                 }
-            },
-            "required": [
-                "duration"
-            ]
+            }
         },
         "Voicemail": {
             "type": "object",

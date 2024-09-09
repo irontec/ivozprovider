@@ -10,7 +10,11 @@
       <index name="provider_usersCdr_userId" columns="userId"/>
       <index name="provider_usersCdr_friendId" columns="friendId"/>
     </indexes>
-    <field name="startTime" type="datetime" column="startTime" nullable="true"/>
+    <field name="startTime" type="datetime" column="startTime">
+      <options>
+        <option name="default">2000-01-01 00:00:00</option>
+      </options>
+    </field>
     <field name="duration" type="float" column="duration" precision="10" scale="3" nullable="false">
       <options>
         <option name="default">0</option>
