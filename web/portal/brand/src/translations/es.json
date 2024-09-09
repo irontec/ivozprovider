@@ -540,6 +540,7 @@
   "Registrar Server URI": "URI Servidor de registro",
   "Regular Expression": "Expresión regular",
   "Replace expr": "Expr. Reemplazar",
+  "Required value": "Valor requerido",
   "Rerate calls_many": "Retarificar llamadas",
   "Rerate calls_one": "Retarificar llamada",
   "Rerate calls_other": "Retarificar llamadas",
