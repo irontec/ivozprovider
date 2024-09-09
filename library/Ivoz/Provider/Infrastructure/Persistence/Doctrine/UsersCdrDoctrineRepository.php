@@ -37,4 +37,17 @@ class UsersCdrDoctrineRepository extends DoctrineRepository implements UsersCdrR
             'kamUsersCdr' => $id,
         ]);
     }
+
+    /**
+     * @return UsersCdr[]
+     */
+    public function findByCallid(string $callid)
+    {
+        /** @var UsersCdr[] $response */
+        $response = $this->findBy([
+            'callid' => $callid
+        ]);
+
+        return $response;
+    }
 }

@@ -3,13 +3,13 @@
 namespace Service;
 
 use Ivoz\Core\Domain\Service\EntityTools;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
-use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
-use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
-use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrRepository;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Process\Process;
 
@@ -26,9 +26,8 @@ class Encoder
     const RECORDING_AGE_MIN = 10;
 
     public function __construct(
-        private TrunksCdrRepository $trunksCdrRepository,
+        private BillableCallRepository $billableCallRepository,
         private UsersCdrRepository $usersCdrRepository,
-        private DdiRepository $ddiRepository,
         private EntityTools $entityTools,
         private string $rawRecordingsDir,
         private Logger $logger
@@ -113,8 +112,9 @@ class Encoder
             $kamAccCdrs = [];
             $kamAccCdrs = array_merge(
                 $kamAccCdrs,
-                $this->trunksCdrRepository->findByCallid($callid)
+                $this->billableCallRepository->findByCallid($callid)
             );
+
             if (empty($kamAccCdrs)) {
                 $kamAccCdrs = array_merge(
                     $kamAccCdrs,
@@ -138,7 +138,7 @@ class Encoder
             $metadata = 'artist="' . $callid . '"';
 
             foreach ($kamAccCdrs as $kamAccCdr) {
-                if ($kamAccCdr instanceof TrunksCdrInterface) {
+                if ($kamAccCdr instanceof BillableCallInterface) {
                     $type = RecordingInterface::TYPE_DDI;
                     $direction = $kamAccCdr->getDirection();
 
@@ -151,8 +151,8 @@ class Encoder
                     }
 
                     // Check this ddi has recording enabled
-                    $ddi = $this->ddiRepository->findOneByDdiE164($recorder);
-                    if (!$ddi) {
+                    $ddi = $kamAccCdr->getDdi();
+                    if (is_null($ddi)) {
                         $stats['error']++;
                         $this->logger->error(
                             sprintf("[Recordings][%s] Unable to find DDI for %s\n", $hashid, $recorder)
@@ -174,15 +174,17 @@ class Encoder
                     }
                 } elseif ($kamAccCdr instanceof UsersCdrInterface) {
                     $type = RecordingInterface::TYPE_ONDEMAND;
-                    if ($kamAccCdr->getXcallid()) {
-                        // If call second leg, callee is who activated the recording
-                        $recorder = $kamAccCdr->getCallee();
-                    } else {
-                        // If call first leg, caller is who activated the recording
-                        $recorder = $kamAccCdr->getCaller();
-                    }
 
                     $user = $kamAccCdr->getUser();
+                    if (is_null($user)) {
+                        $stats['skipped']++;
+                        $this->logger->info(
+                            sprintf("[Recordings][%s] Unable to find user. Skipping.\n", $hashid)
+                        );
+                        continue;
+                    }
+
+                    $recorder = $user->getExtensionNumber();
                 } else {
                     // This should not even be possible
                     $this->logger->error(sprintf("[Recordings][ERROR] Invalid CDR entries for %s\n", $callid));

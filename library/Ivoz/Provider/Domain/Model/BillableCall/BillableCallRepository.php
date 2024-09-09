@@ -16,6 +16,11 @@ interface BillableCallRepository extends ObjectRepository, Selectable
     public function findOutboundByCallid(string $callid, int $brandId = null);
 
     /**
+     * @return BillableCallInterface[]
+     */
+    public function findByCallid(string $callid);
+
+    /**
      * @param int $id
      * @return BillableCallInterface
      */

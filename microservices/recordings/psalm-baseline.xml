@@ -39,9 +39,10 @@
     <ImplicitToStringCast occurrences="1">
       <code>$ddi</code>
     </ImplicitToStringCast>
-    <PossiblyNullArgument occurrences="4">
+    <PossiblyNullArgument occurrences="5">
       <code>$callee</code>
       <code>$caller</code>
+      <code>$recorder</code>
       <code>$recorder</code>
       <code>$recorder</code>
     </PossiblyNullArgument>
