@@ -127,11 +127,8 @@ describe('User', () => {
       statusCode: 204,
     }).as('deleteUser');
 
-    cy.get(
-      'td > div.actions-cell > span > button:has(svg[data-testid="DeleteIcon"])'
-    )
-      .first()
-      .click();
+    cy.get('svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.contains('Delete').click();
 
     cy.contains('Remove element');
 

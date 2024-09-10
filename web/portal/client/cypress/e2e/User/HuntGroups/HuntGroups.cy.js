@@ -11,11 +11,8 @@ describe('HuntGroup', () => {
 
     cy.get('table').should('contain', UserCollection.body[0].name);
 
-    cy.usePactWait(['getTerminal'])
-      .its('response.statusCode')
-      .should('eq', 200);
-
-    cy.get('svg[data-testid="Groups3Icon"]').first().click();
+    cy.get('svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.contains('Hunt Group members').click();
 
     cy.usePactWait(['getHuntGroupMemberByUser'])
       .its('response.statusCode')

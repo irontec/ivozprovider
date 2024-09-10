@@ -15,7 +15,8 @@ describe('CallForwardSetting', () => {
 
     cy.get('header').should('contain', 'Friends');
 
-    cy.get('svg[data-testid="PhoneForwardedIcon"]').first().click();
+    cy.get('svg[data-testid="MoreHorizIcon"       ]').first().click();
+    cy.contains('Call forward settings').click();
 
     cy.get('table').should(
       'contain',
