@@ -14,6 +14,7 @@ export interface EntityAcl {
 export interface AboutMe {
   restricted: boolean;
   acls: Array<EntityAcl>;
+  canImpersonate: boolean;
 }
 
 export type AboutMeState = {
