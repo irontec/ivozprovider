@@ -24,7 +24,13 @@ class HolidayDateFactory
 
         $holidayDateDto =  new HolidayDateDto();
 
-        $eventDate = new \DateTime($eventDate);
+        try {
+            $eventDate = new \DateTime($eventDate);
+        } catch (\Exception $e) {
+            throw new \DomainException(
+                $e->getMessage(),
+            );
+        }
         $holidayDateDto
             ->setName($eventName)
             ->setEventDate($eventDate)

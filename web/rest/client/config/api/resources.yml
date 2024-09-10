@@ -193,6 +193,12 @@ Model\HolidaysMassImport:
             type: integer
             required: false
             description: 'Ensure certain calendar id is included'
+          - name: importerParams
+            in: formData
+            type: string
+            required: false
+            description: 'json serialized arguments for importer'
+
 
 Model\ExtensionsMassImport:
   itemOperations: []
