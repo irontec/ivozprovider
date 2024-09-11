@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Voicemail;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 
 /**
@@ -104,5 +105,14 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
         }
 
         return $this->getCompany()->getLanguage();
+    }
+
+    protected function setEmail(?string $email = null): static
+    {
+        if (!empty($email)) {
+            Assertion::email($email, 'email is not a valid email address');
+        }
+
+        return parent::setEmail($email);
     }
 }
