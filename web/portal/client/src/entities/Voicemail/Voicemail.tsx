@@ -47,6 +47,7 @@ const properties: VoicemailProperties = {
   },
   email: {
     label: _('Email'),
+    helpText: _('Hint: only one email address is supported'),
     required: true,
   },
   attachSound: {
