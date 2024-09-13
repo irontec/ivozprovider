@@ -1,6 +1,7 @@
 import CompaniesItem from '../../../fixtures/Provider/Companies/VirtualPbxs/getItem.json';
 import newCompanies from '../../../fixtures/Provider/Companies/VirtualPbxs/post.json';
 import editCompanies from '../../../fixtures/Provider/Companies/VirtualPbxs/put.json';
+import webPortals from '../../../fixtures/Provider/WebPortals/getCollection.json';
 import { MODE, testPbx } from '../utils/PbxsValidator';
 
 export const postCompany = () => {
@@ -77,4 +78,24 @@ export const postWebPortal = () => {
   cy.get('svg[data-testId="AddIcon"]').first().click();
 
   cy.get('input[name="urlType"]').should('be.enabled');
+};
+
+export const checkImpersonationURL = () => {
+  cy.contains('Virtual PBXs').click();
+
+  const impersonationURLs = webPortals.body.map((wp) => wp.url);
+
+  cy.get('div.actions-cell a[target="_impersonate-client"]').as(
+    'impersonation-links'
+  );
+
+  cy.get('a[target="_impersonate-client"]')
+    .eq(0)
+    .should('have.attr', 'href')
+    .should('match', new RegExp(`${impersonationURLs[2]}.*`));
+
+  cy.get('@impersonation-links')
+    .eq(1)
+    .should('have.attr', 'href')
+    .should('match', new RegExp(`${impersonationURLs[0]}.*`));
 };

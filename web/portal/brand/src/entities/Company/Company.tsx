@@ -7,6 +7,7 @@ import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import Actions from './Action';
 import { CompanyProperties, CompanyPropertyList } from './CompanyProperties';
 import TypeIcon from './Field/TypeIcon';
+import List from './List';
 
 const properties: CompanyProperties = {
   type: {
@@ -375,6 +376,7 @@ const Company: EntityInterface = {
   defaultOrderBy: '',
   toStr: (row: CompanyPropertyList<EntityValues>) => `${row.name}`,
   properties,
+
   columns: [
     'name',
     'invoicing.nif',
@@ -388,6 +390,7 @@ const Company: EntityInterface = {
     iden: 'Companies',
   },
   customActions: Actions,
+  List: List,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

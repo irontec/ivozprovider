@@ -24,6 +24,7 @@ Feature: Retrieve web portals
                   "mimeType": "image/jpeg",
                   "baseName": "client-logo.jpeg"
               },
+              "brand": 1,
               "company": null
           },
           {
@@ -36,6 +37,7 @@ Feature: Retrieve web portals
                   "mimeType": "image/jpeg",
                   "baseName": "user-logo.jpeg"
               },
+              "brand": 1,
               "company": null
           },
           {
@@ -48,6 +50,7 @@ Feature: Retrieve web portals
                   "mimeType": "image/jpeg",
                   "baseName": "user-logo.jpeg"
               },
+              "brand": 1,
               "company": 1
           }
       ]

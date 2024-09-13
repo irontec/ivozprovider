@@ -23,6 +23,7 @@ export type BrandPropertyList<T> = {
   defaultTimezone?: T;
   maxCalls?: T;
   currency?: T;
+  impersonationUrl?: T;
 };
 
 export type BrandProperties = BrandPropertyList<Partial<PropertySpec>>;

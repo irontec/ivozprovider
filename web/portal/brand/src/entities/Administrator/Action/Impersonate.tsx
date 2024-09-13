@@ -10,22 +10,50 @@ import {
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { Tooltip } from '@mui/material';
+import { WebPortalPropertiesList } from 'entities/WebPortal/WebPortalProperties';
 import { useStoreState } from 'store';
 
 const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
   const { row, entityService, variant = 'icon' } = props;
   const token = useStoreState((state) => state.auth.token);
+  const customData = useStoreState((state) => state.list.customData);
 
   if (!row) {
     return null;
   }
+
+  if (customData === undefined) {
+    return (
+      <>
+        {variant === 'text' && (
+          <MoreMenuItem disabled={true}>{_('Impersonate')}</MoreMenuItem>
+        )}
+        {variant === 'icon' && (
+          <StyledTableRowCustomCta disabled={true}>
+            <AdminPanelSettingsIcon />
+          </StyledTableRowCustomCta>
+        )}
+      </>
+    );
+  }
+
+  const companyUrl = customData.find(
+    (data: WebPortalPropertiesList) => data.company === row.companyId
+  )?.url;
+
+  const brandUrl = customData.find(
+    (data: WebPortalPropertiesList) => data.company === null
+  )?.url;
+
+  const impersonationUrl = companyUrl ? companyUrl : brandUrl;
+  const url = impersonationUrl ?? '';
 
   const { username } = row;
   const queryString = `username=${username}&token=${token}`;
 
   return (
     <StyledTableRowChildEntityLink
-      to={`/client/?${queryString}`}
+      to={`${url}/client/?${queryString}`}
       parentEntity={entityService.getEntity()}
       parentRow={row}
       target='_impersonate-client'
