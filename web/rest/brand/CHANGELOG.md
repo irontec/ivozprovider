@@ -1,4 +1,29 @@
 # Changelog
+## 4.2.0
+* Endpoints
+  - /web_portals
+    - Added company, company[] and company[exists] filter parameters
+* Models:
+  - Administrator:
+    - Set password as optional
+  - Administrator-collection:
+    - Added company property
+  - Administrator-detailed:
+    - Set password as optional
+  - BillableCall:
+    - Set startTime as required
+  - BillableCall-collection:
+    - Set startTime as required
+  - BillableCall-detailed:
+    - Set startTime as required
+  - WebPortal:
+    - Added company property
+  - WebPortal-collection:
+    - Added required brand property
+    - Added company property
+  - WebPortal-detailed:
+    - Added company property
+
 ## 4.1.0
 * Endpoints
   - /companies/corporate/unassigned:
