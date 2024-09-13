@@ -22,7 +22,10 @@ const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
     return null;
   }
 
-  if (customData === undefined) {
+  const { username, active } = row;
+  const isActionDisabled = customData === undefined || !active;
+
+  if (isActionDisabled) {
     return (
       <>
         {variant === 'text' && (
@@ -48,7 +51,6 @@ const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
   const impersonationUrl = companyUrl ? companyUrl : brandUrl;
   const url = impersonationUrl ?? '';
 
-  const { username } = row;
   const queryString = `username=${username}&token=${token}`;
 
   return (
