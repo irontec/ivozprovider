@@ -15,6 +15,16 @@ Feature: Retrieve administrators
       """
       [
           {
+              "username": "disabledCompanyAdmin",
+              "email": "disabledCompanyAdmin@irontec.com",
+              "active": false,
+              "restricted": true,
+              "name": "DisabledCompanyAdmin",
+              "lastname": "Lastname",
+              "id": 15,
+              "company": 1
+          },
+          {
               "username": "restrictedCompanyAdmin",
               "email": "test@irontec.com",
               "active": true,

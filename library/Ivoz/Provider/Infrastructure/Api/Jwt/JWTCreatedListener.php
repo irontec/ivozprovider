@@ -32,6 +32,10 @@ class JWTCreatedListener
 
         $this
             ->administratorImpersonationChecker
-            ->execute(end($onBehalfOfIds));
+            ->execute(
+                end($onBehalfOfIds),
+                $user->getId() ?? -1
+            )
+        ;
     }
 }
