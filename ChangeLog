@@ -1,3 +1,42 @@
+Fri, 13 Sep 2024 09:17:20 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.2.0 released
+
+    * Portals:
+        - Fixed a bug that forced portal language to english #2706
+        - Fixed a bug that prevented image preview in edit screens #2744
+        - Fixed a bug while filtering dates with zero seconds  #2757
+        - Inactive administrators can now have empty password #2741
+        - Client: Calendar Periods are now known as Special Schedules #2705
+        - Client: fixed Holiday dates importer for Calendars #2729
+        - User: fixed gs wave QR code not being displayed #2703
+        - User: added a new section to display on-demand user recordings #2725
+
+    * Microservices:
+        - Recordings: fixed a bug that prevented recordings on call-ids with special characters #2708
+        - Recorgings: added DDI or User that caused the recording to start #2713
+
+    * Proxies:
+        - kamailio: restore support for standalone installs with one single IP address #2748
+
+    * Application Server:
+        - Fixed a bug that prevented on-demand recordings on incoming external calls #2716
+        - Fixed a bug that prevented on-demand recordings on simple huntgroups #2759
+        - Fixed a bug while processing outgoing faxes #2723
+        - Fixed a bug generating BLF hints with unused terminals data #2755
+        - Reorder how endpoints are identified to support single IP address environments #2756
+
+    * Schema:
+        - CDRs: StartTime fields are now mandatory for UserCdrs and BillableCalls #2739
+
+    * Other:
+        - Added Cypress tests in platform, brand, client and user portals
+
+    * Security:
+        - build(deps): bump braces from 3.0.2 to 3.0.3 in /web/portal #2682
+        - build(deps): bump axios from 0.21.4 to 0.28.0 in /web/portal #2734
+        - build(deps): bump micromatch from 4.0.5 to 4.0.8 in /web/portal #2737
+
 Thu, 27 Jun 2024 13:00:34 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.1.0 released
