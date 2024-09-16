@@ -1,0 +1,180 @@
+services:
+  data:
+    build:
+      context: .
+      dockerfile: docker/mariadb/Dockerfile
+    entrypoint: docker-entrypoint.sh
+    command: mariadbd
+    container_name: ivozprovider-data
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_DATABASE: ivozprovider
+      MYSQL_USER: regular
+      MYSQL_PASSWORD: changeme
+    networks:
+      network:
+        ipv4_address: 10.189.4.10
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u regular -pchangeme"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
+
+  redis:
+    hostname: ivozprovier-redis
+    container_name: ivozprovider-redis
+    image: ivozprovider-redis:local
+    build:
+      context: .
+      dockerfile: docker/redis/Dockerfile
+    networks:
+      network:
+        ipv4_address: 10.189.4.11
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "26379", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  backend:
+    hostname: ivozprovier-backend
+    command: /bin/bash /var/run/start.sh
+    container_name: ivozprovider-backend
+    image: ivozprovider-backend:local
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+      args:
+        NAME: ivozprovider
+        XDEBUG: true
+        UID: "${UID:-1000}"
+        GID: "${GID:-1000}"
+    volumes:
+      - .:/opt/irontec/ivozprovider
+      - ~/.cache/composer:/home/docker/.cache/composer
+    depends_on:
+      data:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    links:
+      - data:data.ivozprovider.local
+      - redis:cache.ivozprovider.local
+    extra_hosts:
+      xdebug: 10.189.4.1
+    networks:
+      network:
+        ipv4_address: 10.189.4.20
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+
+  portal-platform:
+    hostname: ivozprovider-portal-platform
+    command: /bin/bash /var/run/start.sh platform
+    container_name: ivozprovider-portal-platform
+    image: ivozprovider-portal:local
+    build:
+      context: .
+      dockerfile: docker/portal/Dockerfile
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/opt/irontec/ivozprovider
+      - ../ivoz-ui/:/opt/ivoz-ui
+    depends_on:
+      backend:
+        condition: service_healthy
+    links:
+      - backend:backend.ivozprovider.local
+    networks:
+      network:
+        ipv4_address: 10.189.4.30
+
+  portal-brand:
+    hostname: ivozprovider-portal-brand
+    command: /bin/bash /var/run/start.sh brand
+    container_name: ivozprovider-portal-brand
+    image: ivozprovider-portal:local
+    build:
+      context: .
+      dockerfile: docker/portal/Dockerfile
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/opt/irontec/ivozprovider
+      - ../ivoz-ui/:/opt/ivoz-ui
+    depends_on:
+      backend:
+        condition: service_healthy
+    links:
+      - backend:backend.ivozprovider.local
+    networks:
+      network:
+        ipv4_address: 10.189.4.31
+
+  portal-client:
+    hostname: ivozprovider-portal-client
+    command: /bin/bash /var/run/start.sh client
+    container_name: ivozprovider-portal-client
+    image: ivozprovider-portal:local
+    build:
+      context: .
+      dockerfile: docker/portal/Dockerfile
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/opt/irontec/ivozprovider
+      - ../ivoz-ui/:/opt/ivoz-ui
+    depends_on:
+      backend:
+        condition: service_healthy
+    links:
+      - backend:backend.ivozprovider.local
+    networks:
+      network:
+        ipv4_address: 10.189.4.32
+
+  portal-user:
+    hostname: ivozprovider-portal-user
+    command: /bin/bash /var/run/start.sh user
+    container_name: ivozprovider-portal-user
+    image: ivozprovider-portal:local
+    build:
+      context: .
+      dockerfile: docker/portal/Dockerfile
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/opt/irontec/ivozprovider
+      - ../ivoz-ui/:/opt/ivoz-ui
+    depends_on:
+      backend:
+        condition: service_healthy
+    links:
+      - backend:backend.ivozprovider.local
+    networks:
+      network:
+        ipv4_address: 10.189.4.33
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.189.4.0/24
+
+volumes:
+  dbdata:
