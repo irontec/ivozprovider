@@ -1,4 +1,23 @@
 # Changelog
+## 4.2.0
+* Models:
+  - Administrator:
+    - Set password as optional
+  - Administrator-detailed:
+    - Set password as optional
+  - BillableCall:
+    - Set startTime as required
+  - BillableCall-collection:
+    - Set startTime as required
+  - BillableCall-detailed:
+    - Set startTime as required
+  - WebPortal:
+    - Added company property
+  - WebPortal-collection:
+    - Added brand property
+  - WebPortal-detailed:
+    - Added company property
+
 ## 4.1.0
 * Models:
   - WebPortal:

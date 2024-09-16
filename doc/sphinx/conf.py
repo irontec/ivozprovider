@@ -73,7 +73,7 @@ author = 'Irontec'
 # built documents.
 #
 # The short X.Y version.
-version = "4.1"
+version = "4.2"
 
 # The full version, including alpha/beta/rc tags.
 release = 'tempest'
@@ -277,7 +277,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'IvozProvider.tex', 'IvozProvider 4.1 Documentation',
+    (master_doc, 'IvozProvider.tex', 'IvozProvider 4.2 Documentation',
      'Irontec', 'manual'),
 ]
 

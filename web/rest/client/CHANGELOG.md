@@ -1,4 +1,28 @@
 # Changelog
+## 4.2.0
+* Endpoints
+  - /holiday_dates/mass_import:
+    - Added importerParams parameter
+  - /my/active_calls/realtime_filter:
+    - Added c, dp, cr and diretion parameters
+  - /recordings:
+    - Added ddi, ddi[] and ddi[exists] filter parameters
+* Models:
+  - BillableCall-collection:
+    - Set startTime as required
+  - BillableCall-detailed:
+    - Set startTime as required
+  - Recording:
+    - Added ddi property
+    - Added user property
+  - Recording-detailed:
+    - Added ddi property
+    - Added user property
+  - UsersCdr-collection:
+    - Set startTime as required
+  - UsersCdr-detailed:
+    - Set startTime as required
+
 ## 4.1.0
 * Endpoints
   - /friends:

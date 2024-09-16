@@ -52,7 +52,7 @@ sed -i "s/IvozProvider [0-9\.]\+ Documentation/IvozProvider $MAJOR.$MINOR Docume
 
 
 # Update Application User Agent
-sed -i "s/\(user_agent=Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR/" asterisk/config/pjsip.conf
+sed -i "s/\(user_agent=Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR/" asterisk/config/pjsip.conf.in
 
 # Update Kamailio User Agent and Server
 sed -i "s/\(server_header=\"Server: Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR\"/" kamailio/trunks/config/kamailio.cfg
