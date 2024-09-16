@@ -1,16 +1,17 @@
 import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getCollection.json';
-import newExternalCallFilter from '../../fixtures/ExternalCallFilter/post.json';
 import ExternalCallFilterItem from '../../fixtures/ExternalCallFilter/getItem.json';
+import newExternalCallFilter from '../../fixtures/ExternalCallFilter/post.json';
 import editExternalCallFilter from '../../fixtures/ExternalCallFilter/put.json';
 
-describe('in ExternalCallFilter', () => {
+describe('ExternalCallFilter', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('ExternalCallFilter');
     cy.before();
 
-    cy.contains('Filtros de entrada externo').click();
+    cy.contains('Routing tools').click();
+    cy.contains('External call filters').click();
 
-    cy.get('h3').should('contain', 'List of Filtros de entrada externo');
+    cy.get('header').should('contain', 'External call filters');
 
     cy.get('table').should(
       'contain',
@@ -71,7 +72,7 @@ describe('in ExternalCallFilter', () => {
       outOfScheduleVoicemail,
     });
 
-    cy.get('h3').should('contain', 'List of Filtros de entrada externo');
+    cy.get('header').should('contain', 'External call filters');
 
     cy.usePactWait('createExternalCallFilter')
       .its('response.statusCode')
@@ -134,7 +135,7 @@ describe('in ExternalCallFilter', () => {
       outOfScheduleVoicemail,
     });
 
-    cy.contains('List of Filtros de entrada externo');
+    cy.contains('External call filters');
 
     cy.usePactWait(['editExternalCallFilter'])
       .its('response.statusCode')
@@ -149,15 +150,15 @@ describe('in ExternalCallFilter', () => {
       statusCode: 204,
     }).as('deleteExternalCallFilter');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Filtros de entrada externo');
+    cy.get('header').should('contain', 'External call filters');
 
     cy.usePactWait(['deleteExternalCallFilter'])
       .its('response.statusCode')

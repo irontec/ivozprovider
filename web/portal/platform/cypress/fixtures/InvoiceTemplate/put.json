@@ -1,20 +1,20 @@
 {
   "request": {
-    "id": 1,
-    "name": "nameedited",
-    "description": "descriptionedited",
-    "template": "<!DOCTYPE HTML> template </html>\n",
-    "templateFooter": "<!DOCTYPE HTML> templateFooter </html>\n",
-    "templateHeader": "<!DOCTYPE HTML> templateHeader </html>\n"
+    "name": "Updated Invoice",
+    "description": "Updated Invoice Description",
+    "template": "Updated Template",
+    "templateHeader": "Updated Template Header",
+    "templateFooter": "Updated Template Footer"
   },
   "response": {
     "body": {
+      "name": "Updated Invoice",
+      "description": "Updated Invoice Description",
+      "template": "Updated Template",
+      "templateHeader": "Updated Template Header",
+      "templateFooter": "Updated Template Footer",
       "id": 1,
-      "name": "nameedited",
-      "description": "descriptionedited",
-      "template": "<!DOCTYPE HTML> template </html>\n",
-      "templateFooter": "<!DOCTYPE HTML> templateFooter </html>\n",
-      "templateHeader": "<!DOCTYPE HTML> templateHeader </html>\n"
+      "brand": null
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

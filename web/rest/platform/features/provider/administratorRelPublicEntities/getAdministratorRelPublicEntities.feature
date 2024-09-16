@@ -19,7 +19,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": false,
               "delete": false,
-              "id": 179,
+              "id": 245,
               "administrator": {
                   "username": "utcAdmin",
                   "pass": "*****",
@@ -54,7 +54,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": false,
               "delete": false,
-              "id": 67,
+              "id": 133,
               "administrator": {
                   "username": "restrictedBrandAdmin",
                   "pass": "*****",
@@ -89,7 +89,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": false,
               "delete": false,
-              "id": 205,
+              "id": 271,
               "administrator": {
                   "username": "restrictedPlatformAdministrator",
                   "pass": "*****",
@@ -125,7 +125,7 @@ Feature: Manage administrator rel public entities
   Scenario: Retrieve certain administrator rel public entities json
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "administrator_rel_public_entities/123"
+      And I send a "GET" request to "administrator_rel_public_entities/189"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -136,7 +136,7 @@ Feature: Manage administrator rel public entities
         "read": true,
         "update": false,
         "delete": false,
-        "id": 123,
+        "id": 189,
         "administrator": {
             "username": "restrictedBrandOnlyAdmin",
             "pass": "*****",

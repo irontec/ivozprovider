@@ -1,0 +1,56 @@
+{
+  "body": [
+    {
+      "iden": "PCMA",
+      "id": 1
+    },
+    {
+      "iden": "PCMU",
+      "id": 2
+    },
+    {
+      "iden": "GSM",
+      "id": 3
+    },
+    {
+      "iden": "G729",
+      "id": 4
+    },
+    {
+      "iden": "opus",
+      "id": 5
+    },
+    {
+      "iden": "G723",
+      "id": 6
+    },
+    {
+      "iden": "G722",
+      "id": 7
+    },
+    {
+      "iden": "speex",
+      "id": 8
+    },
+    {
+      "iden": "iLBC",
+      "id": 9
+    },
+    {
+      "iden": "AMR",
+      "id": 10
+    },
+    {
+      "iden": "AMR-WB",
+      "id": 11
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/codecs?_page=1",
+    "x-last-page": "/api/brand/codecs?_page=1",
+    "x-next-page": "/api/brand/codecs?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

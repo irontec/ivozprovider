@@ -1775,7 +1775,7 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
       && user.companyHasFeature('recordings')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     order:
-      calldate: ASC
+      calldate: DESC
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:

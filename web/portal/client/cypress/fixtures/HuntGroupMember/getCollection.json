@@ -3,6 +3,8 @@
     {
       "timeoutTime": 1,
       "priority": 1,
+      "routeType": "user",
+      "numberValue": null,
       "id": 1,
       "huntGroup": {
         "name": "testHuntGroup",
@@ -18,10 +20,8 @@
         "noAnswerVoicemail": null,
         "noAnswerNumberCountry": null
       },
-      "user": {
-        "name": "testHuntGroup"
-      },
-      "routeType": "user"
+      "user": "~",
+      "numberCountry": null
     }
   ],
   "headers": {

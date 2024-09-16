@@ -1,0 +1,26 @@
+{
+  "request": {
+    "type": "prefix",
+    "action": "force",
+    "priority": 1,
+    "forcedDdi": null,
+    "prefix": "666*",
+    "outgoingDdiRule": 1
+  },
+  "response": {
+    "body": {
+      "type": "prefix",
+      "prefix": "666*",
+      "action": "force",
+      "priority": 1,
+      "id": 1,
+      "outgoingDdiRule": 1,
+      "matchList": null,
+      "forcedDdi": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

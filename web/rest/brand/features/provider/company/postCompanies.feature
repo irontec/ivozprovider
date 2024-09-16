@@ -76,7 +76,7 @@ Feature: Create companies
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
-          "id": 6,
+          "id": 7,
           "language": 1,
           "defaultTimezone": 1,
           "country": 1,
@@ -103,7 +103,7 @@ Feature: Create companies
   Scenario: Retrieve created company
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "companies/6"
+      And I send a "GET" request to "companies/7"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -129,7 +129,7 @@ Feature: Create companies
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
-          "id": 6,
+          "id": 7,
           "language": {
               "iden": "es",
               "id": 1,
@@ -275,7 +275,7 @@ Feature: Create companies
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
-          "id": 6,
+          "id": 7,
           "language": 1,
           "defaultTimezone": 1,
           "country": 1,

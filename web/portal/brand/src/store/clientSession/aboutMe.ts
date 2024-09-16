@@ -28,6 +28,7 @@ export interface AboutMe {
     | 'retail'
     | 'vpbx'
   >;
+  canImpersonate: boolean;
 }
 
 export type AboutMeState = {

@@ -1,0 +1,28 @@
+{
+  "body": [
+    {
+      "priority": 1,
+      "routeType": null,
+      "numberValue": null,
+      "friendValue": null,
+      "id": 1,
+      "ivr": null,
+      "huntGroup": null,
+      "voicemail": null,
+      "user": null,
+      "queue": null,
+      "locution": null,
+      "conferenceRoom": null,
+      "extension": null,
+      "numberCountry": null
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/conditional_routes_conditions?_page=1",
+    "x-last-page": "/api/client/conditional_routes_conditions?_page=1",
+    "x-next-page": "/api/client/conditional_routes_conditions?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

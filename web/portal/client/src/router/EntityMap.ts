@@ -139,6 +139,10 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: entities.BillableCall,
           filterBy: 'ddi',
         },
+        {
+          entity: entities.Recording,
+          filterBy: 'ddi',
+        },
       ],
     },
     {
@@ -147,6 +151,10 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         {
           entity: entities.BillableCall,
+          filterBy: 'ddi',
+        },
+        {
+          entity: entities.Recording,
           filterBy: 'ddi',
         },
       ],

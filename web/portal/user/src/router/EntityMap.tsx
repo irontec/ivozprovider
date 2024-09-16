@@ -65,6 +65,16 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
       },
     },
+    {
+      entity: {
+        ...entities.Recording,
+        acl: {
+          ...entities.Recording.acl,
+          update: false,
+          detail: true,
+        },
+      },
+    },
   ];
 
   return routeMapParser(map);

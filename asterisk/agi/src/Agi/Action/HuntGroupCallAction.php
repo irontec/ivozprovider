@@ -64,6 +64,11 @@ class HuntGroupCallAction
             $options .= "c";
         }
 
+        // For record asterisk builtin feature code (FIXME Dont use both X's)
+        if ($huntGroup->getCompany()->getOnDemandRecord() == 2) {
+            $options .= "xX";
+        }
+
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_DST", $endpointName);
         $this->agi->setVariable("DIAL_TIMEOUT", $timeout);

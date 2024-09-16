@@ -1,0 +1,60 @@
+{
+  "body": [
+    {
+      "huntGroup": {
+        "name": "testHuntGroup",
+        "description": "desc",
+        "strategy": "ringAll",
+        "ringAllTimeout": 10,
+        "noAnswerTargetType": null,
+        "noAnswerNumberValue": null,
+        "preventMissedCalls": 1,
+        "id": 1,
+        "noAnswerLocution": null,
+        "noAnswerExtension": null,
+        "noAnswerVoicemail": null,
+        "noAnswerNumberCountry": null
+      },
+      "timeoutTime": 1,
+      "priority": 1,
+      "id": 1,
+      "routeType": "user",
+      "user": {
+        "name": "Alice",
+        "lastname": "Allison",
+        "email": "alice@democompany.com",
+        "pass": "*****",
+        "doNotDisturb": true,
+        "isBoss": false,
+        "active": true,
+        "maxCalls": 2,
+        "externalIpCalls": "0",
+        "rejectCallMethod": "rfc",
+        "multiContact": true,
+        "gsQRCode": true,
+        "id": 1,
+        "callAcl": null,
+        "bossAssistant": null,
+        "bossAssistantWhiteList": null,
+        "transformationRuleSet": 70,
+        "language": null,
+        "terminal": 1,
+        "extension": 1,
+        "timezone": 1,
+        "outgoingDdi": 1,
+        "outgoingDdiRule": 1,
+        "location": 1,
+        "voicemail": null,
+        "contact": null
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/hunt_group_members?_page=1",
+    "x-last-page": "/api/client/hunt_group_members?_page=1",
+    "x-next-page": "/api/client/hunt_group_members?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

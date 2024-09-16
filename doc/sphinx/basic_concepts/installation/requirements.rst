@@ -29,6 +29,6 @@ For a StandAlone installation, we recommend at least:
 
 If you're not using a :ref:`Automatic ISO CD image` you will also need:
 
-    * Debian Bullseye 11.0 base install
+    * Debian Bookworm 12.0 base install
     * Internet access
 

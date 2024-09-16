@@ -1,16 +1,17 @@
 import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getCollection.json';
-import newCallCsvScheduler from '../../fixtures/CallCsvScheduler/post.json';
 import CallCsvSchedulerItem from '../../fixtures/CallCsvScheduler/getItem.json';
+import newCallCsvScheduler from '../../fixtures/CallCsvScheduler/post.json';
 import editCallCsvScheduler from '../../fixtures/CallCsvScheduler/put.json';
 
-describe('in CallCsvScheduler', () => {
+describe('CallCsvScheduler', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('CallCsvScheduler');
     cy.before();
 
-    cy.contains('Call csv scheduler').click();
+    cy.contains('Calls').click();
+    cy.contains('Call CSV schedulers').click();
 
-    cy.get('h3').should('contain', 'List of Call csv scheduler');
+    cy.get('header').should('contain', 'Call CSV schedulers');
 
     cy.get('table').should('contain', CallCsvSchedulerCollection.body[0].name);
   });
@@ -41,7 +42,7 @@ describe('in CallCsvScheduler', () => {
       callDirection,
     });
 
-    cy.get('h3').should('contain', 'List of Call csv scheduler');
+    cy.get('header').should('contain', 'Call CSV schedulers');
 
     cy.usePactWait('createCallCsvScheduler')
       .its('response.statusCode')
@@ -92,7 +93,7 @@ describe('in CallCsvScheduler', () => {
       friend,
     });
 
-    cy.contains('List of Call csv scheduler');
+    cy.contains('Call CSV schedulers');
 
     cy.usePactWait(['editCallCsvScheduler'])
       .its('response.statusCode')
@@ -107,15 +108,15 @@ describe('in CallCsvScheduler', () => {
       statusCode: 204,
     }).as('deleteCallCsvScheduler');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Call csv scheduler');
+    cy.get('header').should('contain', 'Call CSV schedulers');
 
     cy.usePactWait(['deleteCallCsvScheduler'])
       .its('response.statusCode')

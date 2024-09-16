@@ -82,7 +82,7 @@ This is how each criteria is evaluated:
     Lock criteria
         If one of selected route locks is open, this criteria is considered fulfilled.
 
-.. warning:: :ref:`Calendar Periods` linked to selected calendars are not taken into account.
+.. warning:: :ref:`Special Schedules` linked to selected calendars are not taken into account.
 
 DDI routed to a conditional route
 =================================

@@ -68,3 +68,61 @@ Feature: Retrieve call forward settings
           }
       ]
       """
+
+  Scenario: Retrieve call forward settings item
+    Given I add User Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "call_forward_settings/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+        "callTypeFilter": "internal",
+        "callForwardType": "inconditional",
+        "targetType": "number",
+        "numberValue": "946002053",
+        "noAnswerTimeout": 0,
+        "enabled": true,
+        "id": 1,
+        "user": {
+            "name": "Alice",
+            "lastname": "Allison",
+            "email": "alice@democompany.com",
+            "pass": "*****",
+            "doNotDisturb": false,
+            "isBoss": false,
+            "active": true,
+            "maxCalls": 1,
+            "externalIpCalls": "0",
+            "rejectCallMethod": "rfc",
+            "multiContact": true,
+            "gsQRCode": false,
+            "id": 1,
+            "bossAssistant": null,
+            "extension": null,
+            "timezone": 145,
+            "voicemail": null
+        },
+        "extension": null,
+        "voicemail": null,
+        "numberCountry": {
+            "code": "ES",
+            "countryCode": "+34",
+            "id": 68,
+            "name": {
+                "en": "Spain",
+                "es": "España",
+                "ca": "España",
+                "it": "Spagna"
+            },
+            "zone": {
+                "en": "Europe",
+                "es": "Europa",
+                "ca": "Europa",
+                "it": "Europe"
+            }
+        }
+      }
+      """

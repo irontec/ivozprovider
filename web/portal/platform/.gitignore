@@ -2,7 +2,7 @@
 
 # editors
 .history
-
+**/cypress/screenshots
 # dependencies
 /node_modules
 /.pnp

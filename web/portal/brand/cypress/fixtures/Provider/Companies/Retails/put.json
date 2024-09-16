@@ -1,0 +1,107 @@
+{
+    "request": {
+        "type": "retail",
+        "name": "Retail Company",
+        "domainUsers": null,
+        "maxCalls": 0,
+        "maxDailyUsage": 1000000,
+        "currentDayUsage": 0,
+        "maxDailyUsageEmail": null,
+        "ipfilter": true,
+        "onDemandRecord": 0,
+        "allowRecordingRemoval": true,
+        "onDemandRecordCode": "",
+        "externallyextraopts": null,
+        "billingMethod": "postpaid",
+        "balance": 0,
+        "showInvoices": true,
+        "id": 3,
+        "invoicing": {
+            "nif": "12345679-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+        },
+        "language": 2,
+        "defaultTimezone": 8,
+        "country": 6,
+        "currency": null,
+        "transformationRuleSet": 3,
+        "outgoingDdi": null,
+        "outgoingDdiRule": null,
+        "voicemailNotificationTemplate": 1,
+        "faxNotificationTemplate": null,
+        "invoiceNotificationTemplate": null,
+        "callCsvNotificationTemplate": null,
+        "maxDailyUsageNotificationTemplate": null,
+        "accessCredentialNotificationTemplate": null,
+        "corporation": null,
+        "domainName": "retail.irontec.com",
+        "featureIds": [],
+        "geoIpAllowedCountries": [],
+        "routingTagIds": [
+            1
+        ],
+        "codecIds": []
+    },
+    "response": {
+        "body": {
+            "type": "retail",
+            "name": "Retail Company",
+            "domainUsers": null,
+            "maxCalls": 0,
+            "maxDailyUsage": 1000000,
+            "currentDayUsage": 0,
+            "maxDailyUsageEmail": null,
+            "ipfilter": true,
+            "onDemandRecord": 0,
+            "allowRecordingRemoval": true,
+            "onDemandRecordCode": "",
+            "externallyextraopts": null,
+            "billingMethod": "postpaid",
+            "balance": 0,
+            "showInvoices": true,
+            "id": 3,
+            "invoicing": {
+                "nif": "12345679-Z",
+                "postalAddress": "",
+                "postalCode": "",
+                "town": "",
+                "province": "",
+                "countryName": ""
+            },
+            "language": 2,
+            "defaultTimezone": 8,
+            "country": 6,
+            "currency": null,
+            "transformationRuleSet": 3,
+            "outgoingDdi": null,
+            "outgoingDdiRule": null,
+            "voicemailNotificationTemplate": 1,
+            "faxNotificationTemplate": null,
+            "invoiceNotificationTemplate": null,
+            "callCsvNotificationTemplate": null,
+            "maxDailyUsageNotificationTemplate": null,
+            "accessCredentialNotificationTemplate": null,
+            "corporation": null,
+            "domainName": "retail.irontec.com",
+            "featureIds": [],
+            "geoIpAllowedCountries": [],
+            "routingTagIds": [
+                1
+            ],
+            "codecIds": []
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

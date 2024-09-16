@@ -1,0 +1,27 @@
+{
+  "body": {
+    "callid": "fb504426-4e3c-11ef-af02-fc5cee56dc74",
+    "calldate": "2017-01-05 01:15:15",
+    "type": "ondemand",
+    "duration": 5,
+    "caller": "34946002020",
+    "callee": "34946002021",
+    "recorder": null,
+    "id": 2,
+    "recordedFile": {
+      "fileSize": 3276,
+      "mimeType": "audio/mpeg; charset=binary",
+      "baseName": "fb504426-4e3c-11ef-af02-fc5cee56dc74.0.mp3"
+    },
+    "user": {
+      "name": "Alice",
+      "lastname": "Allison",
+      "email": "alice@democompany.com",
+      "id": 1
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

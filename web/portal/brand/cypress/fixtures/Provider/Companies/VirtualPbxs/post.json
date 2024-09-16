@@ -1,0 +1,97 @@
+{
+    "request": {
+        "type": "vpbx",
+        "name": "API company",
+        "domainUsers": "api.irontec.com",
+        "invoicing": {
+            "nif": "1234",
+            "postalAddress": "abc",
+            "postalCode": "4848",
+            "town": "Usansolocity",
+            "province": "some",
+            "countryName": "country"
+        },
+        "distributeMethod": "hash",
+        "maxCalls": 0,
+        "maxDailyUsage": 100,
+        "ipfilter": true,
+        "onDemandRecord": 0,
+        "onDemandRecordCode": "",
+        "externallyextraopts": "",
+        "recordingsLimitMB": 0,
+        "recordingsLimitEmail": "",
+        "language": 2,
+        "mediaRelaySets": 1,
+        "defaultTimezone": 1,
+        "applicationServer": 1,
+        "country": 1,
+        "transformationRuleSet": 1,
+        "outgoingDdi": 1,
+        "outgoingDdiRule": 1,
+        "voicemailNotificationTemplate": 1,
+        "faxNotificationTemplate": null,
+        "featureIds": [
+            1
+        ],
+        "geoIpAllowedCountries": [
+            1
+        ]
+    },
+    "response": {
+        "body": {
+            "type": "vpbx",
+            "name": "API company",
+            "domainUsers": "api.irontec.com",
+            "invoicing": {
+                "nif": "1234",
+                "postalAddress": "abc",
+                "postalCode": "4848",
+                "town": "Usansolocity",
+                "province": "some",
+                "countryName": "country"
+            },
+            "maxCalls": 0,
+            "maxDailyUsage": 100,
+            "currentDayUsage": 0,
+            "maxDailyUsageEmail": null,
+            "ipfilter": true,
+            "onDemandRecord": 0,
+            "allowRecordingRemoval": true,
+            "onDemandRecordCode": "",
+            "externallyextraopts": "",
+            "billingMethod": "postpaid",
+            "balance": 0,
+            "showInvoices": false,
+            "id": 6,
+            "language": 1,
+            "defaultTimezone": 1,
+            "country": 1,
+            "currency": null,
+            "transformationRuleSet": 1,
+            "outgoingDdi": 1,
+            "outgoingDdiRule": 1,
+            "voicemailNotificationTemplate": 1,
+            "faxNotificationTemplate": null,
+            "invoiceNotificationTemplate": null,
+            "callCsvNotificationTemplate": null,
+            "maxDailyUsageNotificationTemplate": null,
+            "featureIds": [
+                1
+            ],
+            "geoIpAllowedCountries": [
+                1
+            ],
+            "routingTagIds": [],
+            "codecIds": []
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 201
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

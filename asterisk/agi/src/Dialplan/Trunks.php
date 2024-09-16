@@ -94,13 +94,9 @@ class Trunks extends RouteHandlerAbstract
         $this->agi->setVariable("__COMPANYID", $company->getId());
         $this->agi->setVariable("__COMPANYTYPE", $company->getType());
         $this->agi->setVariable("__BRANDID", $brand->getId());
+        $this->agi->setVariable("__ONDEMANDCODE", $company->getOnDemandRecordDTMFs());
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
         $this->agi->setVariable("CHANNEL(language)", $ddi->getLanguageCode());
-
-        // Check company On demand record code
-        if ($company->getOnDemandRecord()) {
-            $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordDTMFs());
-        }
 
         // Set DDI as the caller
         $this->channelInfo->setChannelCaller(new DdiAgent($this->agi, $ddi));

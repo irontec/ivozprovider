@@ -30,7 +30,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $startTime = null;
+    private $startTime = '2000-01-01 00:00:00';
 
     /**
      * @var float|null
@@ -249,7 +249,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->callid;
     }
 
-    public function setStartTime(null|\DateTimeInterface|string $startTime): static
+    public function setStartTime(\DateTimeInterface|string $startTime): static
     {
         $this->startTime = $startTime;
 

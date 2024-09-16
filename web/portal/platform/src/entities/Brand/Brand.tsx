@@ -6,6 +6,7 @@ import AlbumIcon from '@mui/icons-material/Album';
 
 import Actions from './Action';
 import { BrandProperties, BrandPropertyList } from './BrandProperties';
+import List from './List';
 
 const properties: BrandProperties = {
   domainUsers: {
@@ -111,6 +112,7 @@ const Brand: EntityInterface = {
     iden: 'Brands',
   },
   customActions: Actions,
+  List: List,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

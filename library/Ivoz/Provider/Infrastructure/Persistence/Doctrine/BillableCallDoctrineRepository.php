@@ -60,6 +60,19 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
+     * @return BillableCall[]
+     */
+    public function findByCallid(string $callid)
+    {
+        /** @var BillableCall[] $response */
+        $response = $this->findBy([
+            'callid' => $callid
+        ]);
+
+        return $response;
+    }
+
+    /**
      * @param int $id
      * @return BillableCallInterface
      */

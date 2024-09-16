@@ -56,6 +56,7 @@ export type CompanyPropertyList<T> = {
   routingTagIds?: T;
   codecIds?: T;
   corporation?: T;
+  impersonationUrl?: T;
 };
 
 export type CompanyProperties = CompanyPropertyList<Partial<PropertySpec>>;

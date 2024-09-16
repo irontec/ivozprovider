@@ -209,7 +209,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
             $this->setActive(true);
             $this->setName("Admin Name");
             $this->setLastname("Admin Lastname");
-            $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCompany($fixture->getReference('_reference_ProviderCompany5'));
             $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
         })->call($item12);
@@ -251,6 +251,25 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $this->addReference('_reference_ProviderAdministrator14', $item14);
         $this->sanitizeEntityValues($item14);
         $manager->persist($item14);
+
+        $item15 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("disabledCompanyAdmin");
+            $this->setPass("changeme");
+            $this->setEmail("disabledCompanyAdmin@irontec.com");
+            $this->setActive(false);
+            $this->setRestricted(true);
+            $this->setCanImpersonate(true);
+            $this->setName("DisabledCompanyAdmin");
+            $this->setLastname("Lastname");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+        })->call($item15);
+
+        $this->addReference('_reference_ProviderAdministrator15', $item15);
+        $this->sanitizeEntityValues($item15);
+        $manager->persist($item15);
 
         $manager->flush();
     }

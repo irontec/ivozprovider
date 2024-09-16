@@ -37,6 +37,12 @@ const properties: WebPortalProperties = {
     label: _('Logo'),
     type: 'file',
   },
+  company: {
+    label: _('Client'),
+    default: '__null__',
+    required: false,
+    null: _('Generic'),
+  },
 };
 
 const WebPortal: EntityInterface = {
@@ -48,7 +54,7 @@ const WebPortal: EntityInterface = {
   path: '/web_portals',
   toStr: (row: WebPortalPropertyList<EntityValue>) => `${row.id}`,
   properties,
-  columns: ['name', 'urlType', 'url', 'logo'],
+  columns: ['name', 'urlType', 'company', 'url', 'logo'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'WebPortals',

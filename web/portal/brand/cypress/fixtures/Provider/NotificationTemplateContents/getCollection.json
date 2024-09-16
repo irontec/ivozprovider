@@ -1,0 +1,18 @@
+{
+  "body": [
+    {
+        "fromName": "IvozProvider Notification",
+        "fromAddress": "no-reply@ivozprovider.com",
+        "id": 1,
+        "language": 1
+    }
+],
+  "headers": {
+    "x-first-page": "/api/brand/notification_template_contents?_page=1",
+    "x-last-page": "/api/brand/notification_template_contents?_page=1",
+    "x-next-page": "/api/brand/notification_template_contents?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

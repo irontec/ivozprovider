@@ -1,7 +1,7 @@
 import user from '../fixtures/Users/userLogin.json';
 import wrongUser from '../fixtures/Users/userWrongLogin.json';
 
-describe('client', () => {
+describe('Auth', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('login');
 
@@ -19,7 +19,7 @@ describe('client', () => {
       'wrongUserLogin'
     );
 
-    cy.get('h2').should('contain', 'Login');
+    cy.get('h2').should('contain', 'Welcome back!');
 
     cy.get('input[name=username]')
       .first()
@@ -45,7 +45,7 @@ describe('client', () => {
       'userLogin'
     );
 
-    cy.get('h2').should('contain', 'Login');
+    cy.get('h2').should('contain', 'Welcome back!');
 
     cy.get('input[name=username]').first().type(user.request.body.username);
     cy.get('input[name=password]').last().type(user.request.body.password);

@@ -19,5 +19,6 @@
     <one-to-one field="voicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\Voicemail" mapped-by="user" fetch="LAZY"/>
     <one-to-many field="voicemailRelUsers" target-entity="Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUser" mapped-by="user" fetch="LAZY"/>
     <one-to-many field="faxesRelUsers" target-entity="Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface" mapped-by="user" fetch="LAZY"/>
+    <one-to-many field="recordings" target-entity="Ivoz\Provider\Domain\Model\Recording\RecordingInterface" mapped-by="user" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

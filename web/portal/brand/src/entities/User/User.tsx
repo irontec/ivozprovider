@@ -1,11 +1,48 @@
 import { EntityValues } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import defaultEntityBehavior, {
+  marshaller as defaultMarshaller,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface, {
+  EntityValidator,
+  EntityValidatorResponse,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PersonIcon from '@mui/icons-material/Person';
 
 import StatusIcon from './Field/StatusIcon';
 import { UserProperties, UserPropertyList } from './UserProperties';
+
+type marshallerType = typeof defaultMarshaller;
+const marshaller: marshallerType = (row, properties, whitelist) => {
+  const pass = row.pass?.trim();
+  if (pass === '') {
+    row.pass = null;
+  }
+
+  return defaultMarshaller(row, properties, whitelist);
+};
+
+const validator: EntityValidator = (values, properties, visualToggle) => {
+  const response: EntityValidatorResponse = defaultEntityBehavior.validator(
+    values,
+    properties,
+    visualToggle
+  );
+  const pass = (values?.pass as string).trim();
+  const active = values?.active;
+  const isActive = active === '1' || active === true;
+  const id = values?.id;
+
+  if (!id) {
+    return response;
+  }
+
+  if (pass === '' && isActive) {
+    response['pass'] = _('Password cannot be empty in an active user');
+  }
+
+  return response;
+};
 
 const properties: UserProperties = {
   name: {
@@ -222,6 +259,8 @@ const User: EntityInterface = {
 
     return module.default;
   },
+  validator,
+  marshaller,
 };
 
 export default User;

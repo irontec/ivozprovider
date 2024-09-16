@@ -3,12 +3,13 @@
 namespace Service;
 
 use Ivoz\Core\Domain\Service\EntityTools;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
-use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
-use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
-use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
+use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrRepository;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Process\Process;
 
@@ -25,9 +26,8 @@ class Encoder
     const RECORDING_AGE_MIN = 10;
 
     public function __construct(
-        private TrunksCdrRepository $trunksCdrRepository,
+        private BillableCallRepository $billableCallRepository,
         private UsersCdrRepository $usersCdrRepository,
-        private DdiRepository $ddiRepository,
         private EntityTools $entityTools,
         private string $rawRecordingsDir,
         private Logger $logger
@@ -89,6 +89,10 @@ class Encoder
 
         // Check each recording file
         foreach ($files as $filename) {
+            // FIXME This mutes a phpstan error until this microservice refactor
+            $ddi = null;
+            $user = null;
+
             // Store valid files
             if (preg_match("/\w+-\w+-(.*)-\w+-mix.wav/", $filename, $matches)) {
                 $file = $matches[0];
@@ -108,8 +112,9 @@ class Encoder
             $kamAccCdrs = [];
             $kamAccCdrs = array_merge(
                 $kamAccCdrs,
-                $this->trunksCdrRepository->findByCallid($callid)
+                $this->billableCallRepository->findByCallid($callid)
             );
+
             if (empty($kamAccCdrs)) {
                 $kamAccCdrs = array_merge(
                     $kamAccCdrs,
@@ -129,12 +134,12 @@ class Encoder
 
             // Set recording filenames
             $convertWav = $this->rawRecordingsDir . $filename;
-            $convertMp3 = $this->rawRecordingsDir . $callid . ".mp3";
+            $convertMp3 = $this->rawRecordingsDir . $hashid . ".mp3";
             $metadata = 'artist="' . $callid . '"';
 
             foreach ($kamAccCdrs as $kamAccCdr) {
-                if ($kamAccCdr instanceof TrunksCdrInterface) {
-                    $type = 'ddi';
+                if ($kamAccCdr instanceof BillableCallInterface) {
+                    $type = RecordingInterface::TYPE_DDI;
                     $direction = $kamAccCdr->getDirection();
 
                     if ($direction == 'outbound') {
@@ -146,8 +151,8 @@ class Encoder
                     }
 
                     // Check this ddi has recording enabled
-                    $ddi = $this->ddiRepository->findOneByDdiE164($recorder);
-                    if (!$ddi) {
+                    $ddi = $kamAccCdr->getDdi();
+                    if (is_null($ddi)) {
                         $stats['error']++;
                         $this->logger->error(
                             sprintf("[Recordings][%s] Unable to find DDI for %s\n", $hashid, $recorder)
@@ -168,14 +173,18 @@ class Encoder
                         continue;
                     }
                 } elseif ($kamAccCdr instanceof UsersCdrInterface) {
-                    $type = 'ondemand';
-                    if ($kamAccCdr->getXcallid()) {
-                        // If call second leg, callee is who activated the recording
-                        $recorder = $kamAccCdr->getCallee();
-                    } else {
-                        // If call first leg, caller is who activated the recording
-                        $recorder = $kamAccCdr->getCaller();
+                    $type = RecordingInterface::TYPE_ONDEMAND;
+
+                    $user = $kamAccCdr->getUser();
+                    if (is_null($user)) {
+                        $stats['skipped']++;
+                        $this->logger->info(
+                            sprintf("[Recordings][%s] Unable to find user. Skipping.\n", $hashid)
+                        );
+                        continue;
                     }
+
+                    $recorder = $user->getExtensionNumber();
                 } else {
                     // This should not even be possible
                     $this->logger->error(sprintf("[Recordings][ERROR] Invalid CDR entries for %s\n", $callid));
@@ -261,11 +270,25 @@ class Encoder
                     ->setType($type)
                     ->setRecorder($recorder)
                     ->setCallid($kamAccCdr->getCallid())
-                    ->setDuration($duration)
+                    ->setDuration(ceil($duration))
                     ->setCaller($kamAccCdr->getCaller())
                     ->setCallee($kamAccCdr->getCallee())
                     ->setRecordedFileBaseName($baseName)
                     ->setRecordedFilePath($convertMp3);
+
+
+                $isDdi = $type === RecordingInterface::TYPE_DDI && is_object($ddi);
+                $isUser = $type === RecordingInterface::TYPE_ONDEMAND && is_object($user);
+
+                if ($isDdi) {
+                    $recordingDto->setDdiId(
+                        $ddi->getId()
+                    );
+                } elseif ($isUser) {
+                    $recordingDto->setUserId(
+                        $user->getId()
+                    );
+                }
 
                 // Store this Recording
                 $recording = $this->entityTools->persistDto($recordingDto, null, true);

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "bin/start",
     "lint:check": "prettier --check src/**/*.tsx src/**/*.ts src/**/*.js",
-    "lint": "eslint --fix src --ext .js,.ts,.tsx",
+    "lint": "eslint --fix src cypress --ext .js,.ts,.tsx",
     "build": "bin/build",
     "i18n": "i18next src/**/*.{jsx,tsx,ts} -c i18next-parser.config.mjs",
     "test": "react-scripts test",

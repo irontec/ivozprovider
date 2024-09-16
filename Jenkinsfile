@@ -25,7 +25,7 @@ pipeline {
     environment {
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
         SYMFONY_PHPUNIT_VERSION = "9.5.3"
-        DOCKER_IMAGE_TAG = getDockerImageTag()
+        DOCKER_TAG = getDockerTag()
         BASE_BRANCH = getBaseBranch()
         JIRA_TICKET = getJiraTicket()
     }
@@ -36,9 +36,12 @@ pipeline {
         // --------------------------------------------------------------------
         stage('Image') {
             steps {
-                dir('tests/docker/'){
+                script{
+                    docker.build("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}", "-f tests/docker/Dockerfile .")
+                }
+                dir('tests/httpd/'){
                     script{
-                        docker.build("ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}")
+                        docker.build("ivozprovider-testing-httpd")
                     }
                 }
             }
@@ -49,13 +52,14 @@ pipeline {
         stage('Generic') {
             agent {
                 docker {
-                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                     reuseNode true
                 }
             }
             steps {
                 sh "/opt/irontec/ivozprovider/library/bin/test-commit-tags origin/${env.BASE_BRANCH}"
+                sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps'
             }
         }
         // --------------------------------------------------------------------
@@ -68,8 +72,8 @@ pipeline {
                     expression { hasLabel("ci-force-tests") }
                     expression { hasCommitTag("core:") }
                     expression { hasCommitTag("schema:") }
-                    expression { hasCommitTag("microservice:") }
-                    expression { hasCommitTag("rest") }
+                    expression { hasCommitTag("microservices/") }
+                    expression { hasCommitTag("rest/") }
                     branch "bleeding"
                     branch "tempest"
                 }
@@ -78,13 +82,12 @@ pipeline {
                 stage('prepare-backend') {
                     agent {
                         docker {
-                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                            args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
                     steps {
-                        sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps'
                         sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-fixtures'
                         sh '/opt/irontec/ivozprovider/web/rest/platform/bin/generate-keys --test'
                     }
@@ -94,8 +97,8 @@ pipeline {
                         stage('app-generic') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -111,8 +114,8 @@ pipeline {
                         stage('static analysis') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -129,8 +132,8 @@ pipeline {
                         stage('codestyle') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -146,8 +149,8 @@ pipeline {
                         stage('i18n') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -162,8 +165,8 @@ pipeline {
                         stage('phpspec') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -178,8 +181,8 @@ pipeline {
                         stage('api-platform') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -195,8 +198,8 @@ pipeline {
                         stage('api-brand') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -212,8 +215,8 @@ pipeline {
                         stage('api-client') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -229,8 +232,8 @@ pipeline {
                         stage('api-user') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -246,8 +249,8 @@ pipeline {
                         stage('microservice-provision') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -262,8 +265,8 @@ pipeline {
                         stage ('microservice-realtime') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -280,8 +283,8 @@ pipeline {
                         stage('orm') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                     reuseNode true
                                 }
                             }
@@ -296,8 +299,8 @@ pipeline {
                         stage('generators') {
                             agent {
                                 docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                                 }
                             }
                             steps {
@@ -327,7 +330,7 @@ pipeline {
                                             // Wait until mysql service is up
                                             sh 'while ! mysqladmin ping -hdata.ivozprovider.local --silent; do sleep 1; done'
                                         }
-                                        docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}")
+                                        docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}")
                                               .inside("--env MYSQL_PWD=changeme --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
                                             sh '/opt/irontec/ivozprovider/schema/bin/test-schema'
                                             sh '/opt/irontec/ivozprovider/schema/bin/test-duplicate-keys'
@@ -354,6 +357,7 @@ pipeline {
                     expression { hasLabel("ci-force-tests-front") }
                     expression { hasLabel("ci-force-tests") }
                     expression { hasCommitTag("portal") }
+                    expression { hasCommitTag("rest/") }
                     branch "bleeding"
                     branch "tempest"
                 }
@@ -362,8 +366,8 @@ pipeline {
                 stage('prepare-frontend') {
                     agent {
                         docker {
-                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                            args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -380,25 +384,48 @@ pipeline {
                                     expression { hasLabel("ci-force-tests") }
                                     expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/platform:") }
+                                    expression { hasCommitTag("rest/platform:") }
                                     branch "bleeding"
                                     branch "tempest"
                                 }
                             }
-                            agent {
-                                docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
-                                    reuseNode true
+                            stages {
+                                stage('web-platform-build') {
+                                    agent {
+                                        docker {
+                                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                            args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                            reuseNode true
+                                        }
+                                    }
+                                    steps {
+                                        sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-lint'
+                                        sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-i18n'
+                                        sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-build'
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                    }
                                 }
-                            }
-                            steps {
-                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-lint'
-                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-i18n'
-                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-build'
-                            }
-                            post {
-                                success { notifySuccessGithub() }
-                                failure { notifyFailureGithub() }
+                                stage('web-platform-cypress') {
+                                    steps {
+                                        script {
+                                            docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
+                                                docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}")
+                                                    .inside("--env CYPRESS_APP_DOMAIN='http://server/platform/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
+                                                    sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-sync-api-spec platform'
+                                                    sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-pact'
+                                                }
+                                            }
+                                        }
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                        always { archiveArtifacts artifacts: "web/portal/platform/cypress/screenshots/**/*.png", allowEmptyArchive: true }
+                                    }
+                                }
                             }
                         }
                         stage('web-brand') {
@@ -408,25 +435,48 @@ pipeline {
                                     expression { hasLabel("ci-force-tests") }
                                     expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/brand:") }
+                                    expression { hasCommitTag("rest/brand:") }
                                     branch "bleeding"
                                     branch "tempest"
                                 }
                             }
-                            agent {
-                                docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
-                                    reuseNode true
+                            stages {
+                                stage('web-brand-build') {
+                                    agent {
+                                        docker {
+                                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                            args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                            reuseNode true
+                                        }
+                                    }
+                                    steps {
+                                        sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-lint'
+                                        sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-i18n'
+                                        sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-build'
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                    }
                                 }
-                            }
-                            steps {
-                                sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-lint'
-                                sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-i18n'
-                                sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-build'
-                            }
-                            post {
-                                success { notifySuccessGithub() }
-                                failure { notifyFailureGithub() }
+                                stage('web-brand-cypress') {
+                                    steps {
+                                        script {
+                                            docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
+                                                docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}")
+                                                    .inside("--env CYPRESS_APP_DOMAIN='http://server/brand/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
+                                                    sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-sync-api-spec brand'
+                                                    sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-pact'
+                                                }
+                                            }
+                                        }
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                        always { archiveArtifacts artifacts: "web/portal/brand/cypress/screenshots/**/*.png", allowEmptyArchive: true }
+                                    }
+                                }
                             }
                         }
                         stage('web-client') {
@@ -436,25 +486,48 @@ pipeline {
                                     expression { hasLabel("ci-force-tests") }
                                     expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/client:") }
+                                    expression { hasCommitTag("rest/client:") }
                                     branch "bleeding"
                                     branch "tempest"
                                 }
                             }
-                            agent {
-                                docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
-                                    reuseNode true
+                            stages {
+                                stage('web-client-build') {
+                                    agent {
+                                        docker {
+                                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                            args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                            reuseNode true
+                                        }
+                                    }
+                                    steps {
+                                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-lint'
+                                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-i18n'
+                                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-build'
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                    }
                                 }
-                            }
-                            steps {
-                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-lint'
-                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-i18n'
-                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-build'
-                            }
-                            post {
-                                success { notifySuccessGithub() }
-                                failure { notifyFailureGithub() }
+                                stage('web-client-cypress') {
+                                    steps {
+                                        script {
+                                            docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
+                                                docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}")
+                                                    .inside("--env CYPRESS_APP_DOMAIN='http://server/client/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
+                                                    sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-sync-api-spec client'
+                                                    sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-pact'
+                                                }
+                                            }
+                                        }
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                        always { archiveArtifacts artifacts: "web/portal/client/cypress/screenshots/**/*.png", allowEmptyArchive: true }
+                                    }
+                                }
                             }
                         }
                         stage('web-user') {
@@ -464,25 +537,48 @@ pipeline {
                                     expression { hasLabel("ci-force-tests") }
                                     expression { hasCommitTag("portal:") }
                                     expression { hasCommitTag("portal/user:") }
+                                    expression { hasCommitTag("rest/user:") }
                                     branch "bleeding"
                                     branch "tempest"
                                 }
                             }
-                            agent {
-                                docker {
-                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
-                                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
-                                    reuseNode true
+                            stages {
+                                stage('web-user-build') {
+                                    agent {
+                                        docker {
+                                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                            args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                            reuseNode true
+                                        }
+                                    }
+                                    steps {
+                                        sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-lint'
+                                        sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-i18n'
+                                        sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-build'
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                    }
                                 }
-                            }
-                            steps {
-                                sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-lint'
-                                sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-i18n'
-                                sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-build'
-                            }
-                            post {
-                                success { notifySuccessGithub() }
-                                failure { notifyFailureGithub() }
+                                stage('web-user-cypress') {
+                                    steps {
+                                        script {
+                                            docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
+                                                docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}")
+                                                    .inside("--env CYPRESS_APP_DOMAIN='http://server/user/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
+                                                    sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-sync-api-spec user'
+                                                    sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-pact'
+                                                }
+                                            }
+                                        }
+                                    }
+                                    post {
+                                        success { notifySuccessGithub() }
+                                        failure { notifyFailureGithub() }
+                                        always { archiveArtifacts artifacts: "web/portal/user/cypress/screenshots/**/*.png", allowEmptyArchive: true }
+                                    }
+                                }
                             }
                         }
                     }
@@ -602,7 +698,7 @@ pipeline {
         failure { notifyFailureMattermost() }
         fixed { notifyFixedMattermost() }
         unstable { script { currentBuild.result = 'ABORTED' } }
-        cleanup { cleanWs() }
+        always { cleanWs() }
     }
 }
 
@@ -633,8 +729,8 @@ void getBaseBranch() {
     return env.CHANGE_TARGET ?: env.GIT_BRANCH
 }
 
-void getDockerImageTag() {
-    return env.CHANGE_TARGET ?: env.GIT_BRANCH
+void getDockerTag() {
+    return env.CHANGE_ID ?: env.GIT_BRANCH
 }
 
 void notifySuccessGithub() {

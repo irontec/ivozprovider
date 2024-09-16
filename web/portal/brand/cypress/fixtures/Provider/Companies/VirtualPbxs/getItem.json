@@ -1,0 +1,125 @@
+{
+    "body": {
+        "type": "vpbx",
+        "name": "DemoCompany",
+        "domainUsers": "127.0.0.1",
+        "maxCalls": 0,
+        "maxDailyUsage": 2,
+        "currentDayUsage": 1,
+        "maxDailyUsageEmail": "no-replay@domain.net",
+        "ipfilter": false,
+        "onDemandRecord": 0,
+        "allowRecordingRemoval": true,
+        "onDemandRecordCode": "",
+        "externallyextraopts": "",
+        "billingMethod": "prepaid",
+        "balance": 1.2,
+        "showInvoices": true,
+        "id": 1,
+        "invoicing": {
+            "nif": "12345678A",
+            "postalAddress": "Company Address",
+            "postalCode": "54321",
+            "town": "Company Town",
+            "province": "Company Province",
+            "countryName": "Company Country"
+        },
+        "language": {
+            "iden": "es",
+            "id": 1,
+            "name": {
+                "en": "es",
+                "es": "es",
+                "ca": "es",
+                "it": "es"
+            }
+        },
+        "defaultTimezone": {
+            "tz": "Europe/Madrid",
+            "comment": "mainland",
+            "id": 145,
+            "label": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            },
+            "country": 68
+        },
+        "country": {
+            "code": "ES",
+            "countryCode": "+34",
+            "id": 68,
+            "name": {
+                "en": "Spain",
+                "es": "España",
+                "ca": "España",
+                "it": "Spagna"
+            },
+            "zone": {
+                "en": "Europe",
+                "es": "Europa",
+                "ca": "Europa",
+                "it": "Europe"
+            }
+        },
+        "currency": null,
+        "transformationRuleSet": {
+            "description": "Brand 1 transformation for Spain",
+            "internationalCode": "00",
+            "trunkPrefix": "",
+            "areaCode": "",
+            "nationalLen": 9,
+            "generateRules": false,
+            "id": 1,
+            "name": {
+                "en": "Brand 1 transformation for Spain",
+                "es": "Marca 1 tansformacion para España",
+                "ca": "Marca 1 tansformacion para España",
+                "it": "Brand 1 transformation for Spain"
+            },
+            "country": 68,
+            "editable": true
+        },
+        "outgoingDdi": null,
+        "outgoingDdiRule": null,
+        "voicemailNotificationTemplate": {
+            "name": "Voicemail notification",
+            "type": "voicemail",
+            "id": 1
+        },
+        "faxNotificationTemplate": null,
+        "invoiceNotificationTemplate": null,
+        "callCsvNotificationTemplate": null,
+        "maxDailyUsageNotificationTemplate": {
+            "name": "CallCsv notification",
+            "type": "callCsv",
+            "id": 2
+        },
+        "accessCredentialNotificationTemplate": {
+            "name": "Access Credentials",
+            "type": "accessCredentials",
+            "id": 5
+        },
+        "corporation": {
+            "name": "Irontec Test Corporation",
+            "description": "Irontec Test Desc Corporation",
+            "id": 1
+        },
+        "domainName": "127.0.0.1",
+        "featureIds": [
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "geoIpAllowedCountries": [],
+        "routingTagIds": [],
+        "codecIds": []
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

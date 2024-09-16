@@ -1,4 +1,30 @@
 # Changelog
+## 4.2.0
+* Endpoints
+ - /recordings:
+    - Added [GET] endpoint
+ - /recordings/recorded_files_zip:
+    - Added [GET] endpoint
+ - /recordings/{id}:
+    - Added [GET] and [DELETE] endpoints
+ - /recordings/{id}/recordedfile:
+    - Added [GET] endpoint
+* Models
+  - Recording:
+    - Added model
+  - Recording-collection:
+    - Added model
+  - Recording-detailed:
+    - Added model
+  - Recording_RecordedFile:
+    - Added model
+  - UsersCdr:
+    - Set startTime as required
+  - UsersCdr-collection:
+    - Set startTime as required
+  - UsersCdr-detailed:
+    - Set startTime as required
+
 ## 4.1.0
 * Endpoints
   - /faxes/{id}:

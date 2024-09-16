@@ -32,6 +32,7 @@ trait VoicemailTrait
     /**
      * @var Collection<array-key, VoicemailRelUserInterface> & Selectable<array-key, VoicemailRelUserInterface>
      * VoicemailRelUserInterface mappedBy voicemail
+     * orphanRemoval
      */
     protected $voicemailRelUsers;
 

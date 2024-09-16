@@ -6,6 +6,8 @@ import defaultEntityBehavior, {
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
+  EntityValidator,
+  EntityValidatorResponse,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
@@ -13,14 +15,42 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AdministratorRelPublicEntity from '../AdministratorRelPublicEntity/AdministratorRelPublicEntity';
 import Actions from './Action';
 import { AdministratorProperties } from './AdministratorProperties';
+import List from './List';
 
 type marshallerType = typeof defaultMarshaller;
 const marshaller: marshallerType = (row, properties, whitelist) => {
   if (row.brand === false) {
     row.brand = null;
   }
+  const pass = row.pass?.trim();
+  if (pass === '') {
+    row.pass = null;
+  }
 
   return defaultMarshaller(row, properties, whitelist);
+};
+
+const validator: EntityValidator = (values, properties, visualToggle) => {
+  const response: EntityValidatorResponse = defaultEntityBehavior.validator(
+    values,
+    properties,
+    visualToggle
+  );
+  const id = values?.id;
+
+  if (!id) {
+    return response;
+  }
+
+  const pass = (values?.pass as string).trim();
+  const active = values?.active;
+  const isActive = active === '1' || active === true;
+
+  if (pass === '' && isActive) {
+    response['pass'] = _('Password cannot be empty in an active user');
+  }
+
+  return response;
 };
 
 const properties: AdministratorProperties = {
@@ -52,8 +82,29 @@ const properties: AdministratorProperties = {
       '0': _('No'),
       '1': _('Yes'),
     },
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['canImpersonate'],
+      },
+      '1': {
+        show: ['canImpersonate'],
+        hide: [],
+      },
+    },
     helpText: _(
       'Restricted administrators have read-only permissions by default. This privileges can be fine-tuned in <i>List of Administrator access privileges</i> subsection. <br><br><strong>Global/Brand</strong> restricted administrators can be used both for API integrations and limited web access.'
+    ),
+  },
+  canImpersonate: {
+    label: _('Can impersonate'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    helpText: _(
+      'Controls whether this restricted administrator can impersonate lower level administrators.'
     ),
   },
   name: {
@@ -114,22 +165,19 @@ const Administrator: EntityInterface = {
 
     return module.default;
   },
-  foreignKeyResolver: async () => {
-    const module = await import('./ForeignKeyResolver');
-
-    return module.default;
-  },
   foreignKeyGetter: async () => {
     const module = await import('./ForeignKeyGetter');
 
     return module.foreignKeyGetter;
   },
+  List: List,
   Form: async () => {
     const module = await import('./Form');
 
     return module.default;
   },
   marshaller,
+  validator,
 };
 
 export default Administrator;

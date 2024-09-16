@@ -1,0 +1,25 @@
+{
+  "body": {
+    "type": "destination",
+    "prefix": null,
+    "action": "keep",
+    "priority": 1,
+    "id": 1,
+    "outgoingDdiRule": {
+      "name": "testRule",
+      "defaultAction": "keep",
+      "id": 1,
+      "forcedDdi": null
+    },
+    "matchList": {
+      "name": "testMatchlist",
+      "id": 1,
+      "generic": false
+    },
+    "forcedDdi": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

@@ -1,4 +1,4 @@
-import { EntityValues } from '@irontec/ivoz-ui';
+import { EntityValidator, EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior, {
   marshaller as defaultMarshaller,
   unmarshaller as defaultUnmarshaller,
@@ -32,8 +32,8 @@ const properties: CallCsvSchedulerProperties = {
   callDirection: {
     label: _('Direction'),
     default: '__null__',
+    null: _('Both'),
     enum: {
-      __null__: _('Both'),
       inbound: _('Inbound'),
       outbound: _('Outbound'),
     },
@@ -331,13 +331,23 @@ const properties: CallCsvSchedulerProperties = {
 
 type MarshallerType = typeof defaultMarshaller;
 const marshaller: MarshallerType = (values, properties) => {
-  values.company = values[values.companyType];
+  const isCompanyTypeAll = values.companyType === '__null__';
+  if (isCompanyTypeAll) {
+    values.company = null;
+  } else {
+    values.company = values[values.companyType];
+  }
 
   return defaultMarshaller(values, properties);
 };
 
 type UnmarshallerType = typeof defaultUnmarshaller;
 const unmarshaller: UnmarshallerType = (row, properties) => {
+  const isCreate = row.name === '';
+  if (isCreate) {
+    return defaultUnmarshaller(row, properties);
+  }
+
   row.companyType = row.company?.type;
   row[row.companyType] = row.company?.id;
   if (row.user) {
@@ -355,6 +365,25 @@ const unmarshaller: UnmarshallerType = (row, properties) => {
   }
 
   return defaultUnmarshaller(row, properties);
+};
+
+const validator: EntityValidator = (values, properties, visualToggles) => {
+  const response = defaultEntityBehavior.validator(
+    values,
+    properties,
+    visualToggles
+  );
+
+  const companyType = (values.companyType ?? '__null__').toString();
+  const isCompanyRequired = values.companyType !== '__null__';
+  const hasCompany =
+    values[companyType] !== '' && values[companyType] !== '__null__';
+
+  if (isCompanyRequired && !hasCompany) {
+    response[companyType] = _('Required value');
+  }
+
+  return response;
 };
 
 const CallCsvScheduler: EntityInterface = {
@@ -381,6 +410,7 @@ const CallCsvScheduler: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'CallCsvSchedulers',
   },
+  validator,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

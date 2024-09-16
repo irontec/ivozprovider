@@ -1,0 +1,33 @@
+{
+    "body": {
+        "admin": {
+            "username": "admin",
+            "name": "admin",
+            "lastname": "match:type('some lastname')",
+            "email": "match:regexp(/\\w+@\\w+\\.\\w+/)"
+        },
+        "recentActivity": [
+            {
+                "id": "match:type(0)",
+                "name": "Irontec_e2e",
+                "nif": "",
+                "sipDomain": "sip.irontec.com",
+                "maxCalls": 0
+            },
+            {
+                "id": "match:type(1)",
+                "name": "DemoBrand",
+                "nif": "",
+                "sipDomain": "",
+                "maxCalls": 0
+            }
+        ],
+        "brandNumber": "match:type(2)",
+        "clientNumber": "match:type(5)",
+        "userNumber": "match:type(1)"
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

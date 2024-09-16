@@ -1,0 +1,64 @@
+{
+  "body": [
+    {
+      "calldate": "2018-01-01 01:00:00",
+      "src": "34688888888",
+      "dst": "34688888881",
+      "type": "In",
+      "status": "error",
+      "id": 1,
+      "file": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      }
+    },
+    {
+      "calldate": "2018-01-02 01:00:00",
+      "src": "34688888888",
+      "dst": "34688888881",
+      "type": "In",
+      "status": "completed",
+      "id": 2,
+      "file": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      }
+    },
+    {
+      "calldate": "2018-01-02 01:00:00",
+      "src": "34688888888",
+      "dst": "34688888881",
+      "type": "Out",
+      "status": "error",
+      "id": 3,
+      "file": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      }
+    },
+    {
+      "calldate": "2018-01-02 01:00:00",
+      "src": "34688888888",
+      "dst": "34688888881",
+      "type": "Out",
+      "status": "error",
+      "id": 4,
+      "file": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/faxes_in_outs?_page=1",
+    "x-last-page": "/api/client/faxes_in_outs?_page=1",
+    "x-next-page": "/api/client/faxes_in_outs?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

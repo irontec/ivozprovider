@@ -1,0 +1,42 @@
+{
+  "body": [
+    {
+      "callid": "7602fd7f-4153-4475-9100-d89ff70cdf76",
+      "calldate": "2017-01-05 01:15:15",
+      "type": "ondemand",
+      "duration": 3,
+      "caller": "34946002020",
+      "callee": "34946002021",
+      "recorder": null,
+      "id": 1
+    },
+    {
+      "callid": "fb504426-4e3c-11ef-af02-fc5cee56dc74",
+      "calldate": "2017-01-05 01:15:15",
+      "type": "ondemand",
+      "duration": 5,
+      "caller": "34946002020",
+      "callee": "34946002021",
+      "recorder": null,
+      "id": 2
+    },
+    {
+      "callid": "032f4836-4e3d-11ef-951b-fc5cee56dc74",
+      "calldate": "2017-01-05 01:15:15",
+      "type": "ddi",
+      "duration": 2,
+      "caller": "34946002020",
+      "callee": "34946002021",
+      "recorder": null,
+      "id": 3
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/recordings?_page=1",
+    "x-last-page": "/api/client/recordings?_page=1",
+    "x-next-page": "/api/client/recordings?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

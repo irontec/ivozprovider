@@ -24,9 +24,9 @@ trait AdministratorSecurityTrait
     abstract public function getEmail(): string;
 
     /**
-     * @return string
+     * @return string | null
      */
-    abstract public function getPass(): string;
+    abstract public function getPass(): ?string;
 
     /**
      * @return boolean
@@ -134,7 +134,7 @@ trait AdministratorSecurityTrait
      */
     public function getPassword(): string
     {
-        return $this->getPass();
+        return $this->getPass() ?? '';
     }
 
     public function isEnabled(): bool

@@ -1,0 +1,29 @@
+{
+  "request": {
+    "name": "UpdatedName",
+    "eventDate": "2021-12-22",
+    "calendar": 2,
+    "locution": 1
+  },
+  "response": {
+    "body": {
+      "name": "UpdatedName",
+      "eventDate": "2021-12-22",
+      "wholeDayEvent": true,
+      "timeIn": null,
+      "timeOut": null,
+      "routeType": null,
+      "numberValue": null,
+      "id": 1,
+      "calendar": 2,
+      "locution": 1,
+      "extension": null,
+      "voicemail": null,
+      "numberCountry": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

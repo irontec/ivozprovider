@@ -1,0 +1,21 @@
+{
+  "request": {
+    "policy": "allow",
+    "priority": 538,
+    "callAcl": 1,
+    "matchList": 2
+  },
+  "response": {
+    "body": {
+      "priority": 538,
+      "policy": "allow",
+      "id": 1,
+      "callAcl": 1,
+      "matchList": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

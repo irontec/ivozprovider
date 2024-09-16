@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Move to webapp dir
+cd $(dirname "$(realpath -se "$0")")/..
+
+# Build portal
+yarn build

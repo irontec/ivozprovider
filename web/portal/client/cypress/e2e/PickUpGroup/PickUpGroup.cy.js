@@ -1,16 +1,17 @@
 import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json';
-import newPickUpGroup from '../../fixtures/PickUpGroup/post.json';
 import PickUpGroupItem from '../../fixtures/PickUpGroup/getItem.json';
+import newPickUpGroup from '../../fixtures/PickUpGroup/post.json';
 import editPickUpGroup from '../../fixtures/PickUpGroup/put.json';
 
-describe('in PickUpGroup', () => {
+describe('PickUpGroup', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('PickUpGroup');
     cy.before();
 
-    cy.contains('Grupos de captura').click();
+    cy.contains('User configuration').click();
+    cy.contains('Pickup group').click();
 
-    cy.get('h3').should('contain', 'List of Grupos de captura');
+    cy.get('header').should('contain', 'Pickup group');
 
     cy.get('table').should('contain', PickUpGroupCollection.body[0].name);
   });
@@ -36,7 +37,7 @@ describe('in PickUpGroup', () => {
       name,
     });
 
-    cy.get('h3').should('contain', 'List of Grupos de captura');
+    cy.get('header').should('contain', 'Pickup group');
 
     cy.usePactWait('createPickUpGroup')
       .its('response.statusCode')
@@ -68,7 +69,7 @@ describe('in PickUpGroup', () => {
       userIds,
     });
 
-    cy.contains('List of Grupos de captura');
+    cy.contains('Pickup group');
 
     cy.usePactWait(['editPickUpGroup'])
       .its('response.statusCode')
@@ -83,15 +84,15 @@ describe('in PickUpGroup', () => {
       statusCode: 204,
     }).as('deletePickUpGroup');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Grupos de captura');
+    cy.get('header').should('contain', 'Pickup group');
 
     cy.usePactWait(['deletePickUpGroup'])
       .its('response.statusCode')

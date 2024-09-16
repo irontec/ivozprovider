@@ -1,0 +1,45 @@
+{
+  "body": [
+    {
+      "url": "https://brand-ivozprovider.irontec.com",
+      "urlType": "brand",
+      "name": "Irontec Ivozprovider Brand Admin Portal",
+      "id": 2,
+      "logo": {
+        "fileSize": 10,
+        "mimeType": "image/jpeg",
+        "baseName": "brand-logo.jpeg"
+      }
+    },
+    {
+      "url": "https://nologo-platform-ivozprovider.irontec.com",
+      "urlType": "god",
+      "name": "No logo",
+      "id": 5,
+      "logo": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      }
+    },
+    {
+      "url": "https://platform-ivozprovider.irontec.com",
+      "urlType": "god",
+      "name": "Platform Administration Portal",
+      "id": 1,
+      "logo": {
+        "fileSize": 10,
+        "mimeType": "image/jpeg",
+        "baseName": "logo.jpeg"
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/web_portals?_page=1",
+    "x-last-page": "/api/brand/web_portals?_page=1",
+    "x-next-page": "/api/brand/web_portals?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

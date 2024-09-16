@@ -1,4 +1,4 @@
-import { PropertyList, ScalarProperty } from '@irontec/ivoz-ui';
+import { ScalarProperty } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import {
   EntityFormProps,
@@ -10,6 +10,7 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
 import { ClientFeatures, ClientTypes } from '../Company/ClientFeatures';
+import { CallCsvSchedulerPropertyList } from './CallCsvSchedulerProperties';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { useCompanyDdis } from './hook/useCompanyDdis';
 import { useCompanyFaxes } from './hook/useCompanyFaxes';
@@ -31,32 +32,39 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
   });
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
-  const newProperties: PropertyList = { ...properties };
+  const newProperties: CallCsvSchedulerPropertyList<ScalarProperty> = {
+    ...properties,
+  };
 
   const companyType = {
     ...properties.companyType,
     enum: { ...properties.companyType.enum },
   } as ScalarProperty;
+
+  if (properties.companyType.enum) {
+    companyType.enum = properties.companyType.enum;
+  }
+
   const hasResidentialFeature = aboutMe?.features.includes(
     ClientTypes.residential
   );
   if (!hasResidentialFeature) {
-    delete companyType.enum.residential;
+    delete companyType.enum?.residential;
   }
 
   const hasWholesaleFeature = aboutMe?.features.includes(ClientTypes.wholesale);
   if (!hasWholesaleFeature) {
-    delete companyType.enum.wholesale;
+    delete companyType.enum?.wholesale;
   }
 
   const hasRetailFeature = aboutMe?.features.includes(ClientTypes.retail);
   if (!hasRetailFeature) {
-    delete companyType.enum.retail;
+    delete companyType.enum?.retail;
   }
 
   const hasVpbxFeature = aboutMe?.features.includes(ClientTypes.vpbx);
   if (!hasVpbxFeature) {
-    delete companyType.enum.vpbx;
+    delete companyType.enum?.vpbx;
   }
   newProperties.companyType = companyType;
 
@@ -66,11 +74,11 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
   } as ScalarProperty;
   const hasFaxesFeature = aboutMe?.features.includes(ClientFeatures.faxes);
   if (!hasFaxesFeature) {
-    delete endpointType.enum.fax;
+    delete endpointType.enum?.fax;
   }
   const hasFriendsFeature = aboutMe?.features.includes(ClientFeatures.friends);
   if (!hasFriendsFeature) {
-    delete endpointType.enum.friend;
+    delete endpointType.enum?.friend;
   }
   newProperties.endpointType = endpointType;
 
@@ -103,7 +111,6 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     retailAccount,
     residentialDevice,
   };
-
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Basic Information'),

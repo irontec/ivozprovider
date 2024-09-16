@@ -1,0 +1,78 @@
+{
+  "request": {
+    "penalty": 1,
+    "queue": 1,
+    "user": 2
+  },
+  "response": {
+    "body": {
+      "penalty": 1,
+      "id": 2,
+      "queue": {
+        "name": "testQueue",
+        "displayName": "testQueue DisplayName",
+        "maxWaitTime": 20,
+        "timeoutTargetType": "number",
+        "timeoutNumberValue": "946002020",
+        "maxlen": 5,
+        "fullTargetType": "number",
+        "fullNumberValue": "946002021",
+        "periodicAnnounceFrequency": 7,
+        "announcePosition": "yes",
+        "announceFrequency": 10,
+        "memberCallRest": 0,
+        "memberCallTimeout": 1,
+        "strategy": "rrmemory",
+        "weight": 5,
+        "preventMissedCalls": 1,
+        "id": 1,
+        "periodicAnnounceLocution": 1,
+        "timeoutLocution": 1,
+        "timeoutExtension": null,
+        "timeoutVoicemail": null,
+        "fullLocution": 1,
+        "fullExtension": null,
+        "fullVoicemail": null,
+        "timeoutNumberCountry": 68,
+        "fullNumberCountry": 68
+      },
+      "user": {
+        "name": "Bob",
+        "lastname": "Bobson",
+        "email": "bob@democompany.com",
+        "pass": "*****",
+        "doNotDisturb": false,
+        "isBoss": true,
+        "active": true,
+        "maxCalls": 1,
+        "externalIpCalls": "0",
+        "rejectCallMethod": "rfc",
+        "multiContact": true,
+        "gsQRCode": false,
+        "id": 2,
+        "callAcl": null,
+        "bossAssistant": 1,
+        "bossAssistantWhiteList": null,
+        "transformationRuleSet": 1,
+        "language": null,
+        "terminal": 2,
+        "extension": null,
+        "timezone": 145,
+        "outgoingDdi": null,
+        "outgoingDdiRule": null,
+        "location": 1,
+        "voicemail": null,
+        "contact": null
+      }
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

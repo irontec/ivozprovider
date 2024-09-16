@@ -1,0 +1,30 @@
+{
+  "body": [
+    {
+      "iden": "CloseLock",
+      "defaultCode": "30",
+      "extraArgs": true,
+      "id": 5,
+      "name": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/services/unassigned?_page=1",
+    "x-last-page": "/api/client/services/unassigned?_page=1",
+    "x-next-page": "/api/client/services/unassigned?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

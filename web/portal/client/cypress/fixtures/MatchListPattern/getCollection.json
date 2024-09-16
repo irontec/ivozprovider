@@ -1,0 +1,30 @@
+{
+  "body": [
+    {
+      "description": "test desc",
+      "type": "number",
+      "regexp": null,
+      "numbervalue": "946002050",
+      "id": 1,
+      "matchList": 1,
+      "numberCountry": 68
+    },
+    {
+      "description": "brand test desc",
+      "type": "number",
+      "regexp": null,
+      "numbervalue": "946002055",
+      "id": 2,
+      "matchList": 3,
+      "numberCountry": 68
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/match_list_patterns?_page=1",
+    "x-last-page": "/api/client/match_list_patterns?_page=1",
+    "x-next-page": "/api/client/match_list_patterns?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

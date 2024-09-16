@@ -24,24 +24,32 @@ export default {
 
   // see below for more details
   lexers: {
-    js: [{
-      lexer: 'JavascriptLexer',
-      functions: ['translate', '_'], // Array of functions to match
-    }],
-    jsx: [{
-      lexer: 'JsxLexer',
-      functions: ['translate', '_'],
-      namespaceFunctions: ['useTranslation', 'withTranslation'],
-    }],
-    ts: [{
-      lexer: 'JavascriptLexer',
-      functions: ['translate', '_'],
-    }],
-    tsx: [{
-      lexer: 'JsxLexer',
-      functions: ['translate', '_'],
-      namespaceFunctions: ['useTranslation', 'withTranslation'],
-    }],
+    js: [
+      {
+        lexer: 'JavascriptLexer',
+        functions: ['translate', '_'], // Array of functions to match
+      },
+    ],
+    jsx: [
+      {
+        lexer: 'JsxLexer',
+        functions: ['translate', '_'],
+        namespaceFunctions: ['useTranslation', 'withTranslation'],
+      },
+    ],
+    ts: [
+      {
+        lexer: 'JavascriptLexer',
+        functions: ['translate', '_'],
+      },
+    ],
+    tsx: [
+      {
+        lexer: 'JsxLexer',
+        functions: ['translate', '_'],
+        namespaceFunctions: ['useTranslation', 'withTranslation'],
+      },
+    ],
     default: ['JsxLexer'],
   },
 
@@ -109,4 +117,4 @@ export default {
   // {
   //   lineWidth: -1,
   // }
-}
+};

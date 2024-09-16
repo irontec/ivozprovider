@@ -1,0 +1,20 @@
+{
+  "request": {
+    "name": "Spain modified",
+    "regExp": "+34[6|7|9]",
+    "id": 1,
+    "friend": 1
+  },
+  "response": {
+    "body": {
+      "name": "Spain modified",
+      "regExp": "+34[6|7|9]",
+      "id": 1,
+      "friend": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

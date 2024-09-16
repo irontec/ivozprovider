@@ -1,0 +1,38 @@
+{
+  "request": {
+    "username": "post-test",
+    "pass": "changeme",
+    "email": "post-test@example.com",
+    "active": true,
+    "restricted": false,
+    "name": "post",
+    "lastname": "test",
+    "id": 1,
+    "company": 1,
+    "timezone": 8
+  },
+  "response": {
+    "body": {
+      "username": "post-test",
+      "pass": "*****",
+      "email": "post-test@example.com",
+      "active": true,
+      "restricted": false,
+      "name": "post",
+      "lastname": "test",
+      "canImpersonate": true,
+      "id": 15,
+      "company": 1,
+      "timezone": 8
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

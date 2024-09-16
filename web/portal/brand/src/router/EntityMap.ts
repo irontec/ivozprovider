@@ -88,6 +88,10 @@ const getEntityMap = (): ExtendedRouteMap => {
                 ...Object.values(entities.RatingProfile.customActions),
               ],
             },
+            {
+              entity: entities.WebPortal,
+              filterBy: 'company',
+            },
           ],
         },
         {
@@ -116,6 +120,10 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
             {
               entity: entities.RatingProfile,
+              filterBy: 'company',
+            },
+            {
+              entity: entities.WebPortal,
               filterBy: 'company',
             },
           ],
@@ -154,6 +162,10 @@ const getEntityMap = (): ExtendedRouteMap => {
               },
               filterBy: 'company',
             },
+            {
+              entity: entities.WebPortal,
+              filterBy: 'company',
+            },
           ],
         },
         {
@@ -188,6 +200,10 @@ const getEntityMap = (): ExtendedRouteMap => {
                 ...entities.RatingProfile,
                 columns: ['activationTime', 'routingTag', 'ratingPlanGroup'],
               },
+              filterBy: 'company',
+            },
+            {
+              entity: entities.WebPortal,
               filterBy: 'company',
             },
           ],

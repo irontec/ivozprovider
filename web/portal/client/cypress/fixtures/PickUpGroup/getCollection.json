@@ -3,7 +3,9 @@
     {
       "name": "pick up group",
       "id": 1,
-      "userIds": [1]
+      "userIds": [
+        1
+      ]
     }
   ],
   "headers": {

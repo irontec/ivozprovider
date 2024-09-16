@@ -43,9 +43,9 @@ abstract class BillableCallAbstract
     protected $callid = null;
 
     /**
-     * @var ?\DateTime
+     * @var \DateTime
      */
-    protected $startTime = null;
+    protected $startTime;
 
     /**
      * @var float
@@ -163,9 +163,11 @@ abstract class BillableCallAbstract
      * Constructor
      */
     protected function __construct(
+        \DateTimeInterface|string $startTime,
         float $duration,
         string $direction
     ) {
+        $this->setStartTime($startTime);
         $this->setDuration($duration);
         $this->setDirection($direction);
     }
@@ -231,19 +233,21 @@ abstract class BillableCallAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, BillableCallDto::class);
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
         $direction = $dto->getDirection();
         Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
 
         $self = new static(
+            $startTime,
             $duration,
             $direction
         );
 
         $self
             ->setCallid($dto->getCallid())
-            ->setStartTime($dto->getStartTime())
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setCost($dto->getCost())
@@ -280,6 +284,8 @@ abstract class BillableCallAbstract
     ): static {
         Assertion::isInstanceOf($dto, BillableCallDto::class);
 
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
         $direction = $dto->getDirection();
@@ -287,7 +293,7 @@ abstract class BillableCallAbstract
 
         $this
             ->setCallid($dto->getCallid())
-            ->setStartTime($dto->getStartTime())
+            ->setStartTime($startTime)
             ->setDuration($duration)
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
@@ -395,19 +401,17 @@ abstract class BillableCallAbstract
         return $this->callid;
     }
 
-    protected function setStartTime(string|\DateTimeInterface|null $startTime = null): static
+    protected function setStartTime(string|\DateTimeInterface $startTime): static
     {
-        if (!is_null($startTime)) {
 
-            /** @var ?\DateTime */
-            $startTime = DateTimeHelper::createOrFix(
-                $startTime,
-                null
-            );
+        /** @var \DateTime */
+        $startTime = DateTimeHelper::createOrFix(
+            $startTime,
+            '2000-01-01 00:00:00'
+        );
 
-            if ($this->isInitialized() && $this->startTime == $startTime) {
-                return $this;
-            }
+        if ($this->isInitialized() && $this->startTime == $startTime) {
+            return $this;
         }
 
         $this->startTime = $startTime;
@@ -415,9 +419,9 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    public function getStartTime(): ?\DateTime
+    public function getStartTime(): \DateTime
     {
-        return !is_null($this->startTime) ? clone $this->startTime : null;
+        return clone $this->startTime;
     }
 
     protected function setDuration(float $duration): static

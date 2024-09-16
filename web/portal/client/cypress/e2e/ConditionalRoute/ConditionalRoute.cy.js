@@ -1,16 +1,17 @@
 import ConditionalRouteCollection from '../../fixtures/ConditionalRoute/getCollection.json';
-import newConditionalRoute from '../../fixtures/ConditionalRoute/post.json';
 import ConditionalRouteItem from '../../fixtures/ConditionalRoute/getItem.json';
+import newConditionalRoute from '../../fixtures/ConditionalRoute/post.json';
 import editConditionalRoute from '../../fixtures/ConditionalRoute/put.json';
 
-describe('in ConditionalRoute', () => {
+describe('ConditionalRoute', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('ConditionalRoute');
     cy.before();
 
-    cy.contains('Rutas condicionales').click();
+    cy.contains('Routing endpoints').click();
+    cy.contains('Conditional Routes').click();
 
-    cy.get('h3').should('contain', 'List of Rutas condicionales');
+    cy.get('header').should('contain', 'Conditional Routes');
 
     cy.get('table').should('contain', ConditionalRouteCollection.body[0].name);
   });
@@ -62,7 +63,7 @@ describe('in ConditionalRoute', () => {
       extension,
     });
 
-    cy.get('h3').should('contain', 'List of Rutas condicionales');
+    cy.get('header').should('contain', 'Conditional Routes');
 
     cy.usePactWait('createConditionalRoute')
       .its('response.statusCode')
@@ -119,7 +120,7 @@ describe('in ConditionalRoute', () => {
       extension,
     });
 
-    cy.contains('List of Rutas condicionales');
+    cy.get('header').contains('Conditional Routes');
 
     cy.usePactWait(['editConditionalRoute'])
       .its('response.statusCode')
@@ -134,15 +135,15 @@ describe('in ConditionalRoute', () => {
       statusCode: 204,
     }).as('deleteConditionalRoute');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Rutas condicionales');
+    cy.get('header').should('contain', 'Conditional Routes');
 
     cy.usePactWait(['deleteConditionalRoute'])
       .its('response.statusCode')

@@ -14,16 +14,36 @@ Feature: Retrieve recordings
       And the JSON should be equal to:
       """
       [
-          {
-              "callid": "7602fd7f-4153-4475-9100-d89ff70cdf76",
-              "calldate": "2017-01-05 01:15:15",
-              "type": "ondemand",
-              "duration": 3,
-              "caller": "34946002020",
-              "callee": "34946002021",
-              "recorder": null,
-              "id": 1
-          }
+            {
+                "callid": "7602fd7f-4153-4475-9100-d89ff70cdf76",
+                "calldate": "2017-01-05 01:15:15",
+                "type": "ondemand",
+                "duration": 3,
+                "caller": "34946002020",
+                "callee": "34946002021",
+                "recorder": null,
+                "id": 1
+            },
+            {
+                "callid": "fb504426-4e3c-11ef-af02-fc5cee56dc74",
+                "calldate": "2017-01-05 01:15:15",
+                "type": "ondemand",
+                "duration": 5,
+                "caller": "34946002020",
+                "callee": "34946002021",
+                "recorder": null,
+                "id": 2
+            },
+            {
+                "callid": "032f4836-4e3d-11ef-951b-fc5cee56dc74",
+                "calldate": "2017-01-05 01:15:15",
+                "type": "ddi",
+                "duration": 2,
+                "caller": "34946002020",
+                "callee": "34946002021",
+                "recorder": null,
+                "id": 3
+            }
       ]
       """
 
@@ -49,6 +69,8 @@ Feature: Retrieve recordings
               "fileSize": 4280,
               "mimeType": "audio/mpeg; charset=binary",
               "baseName": "7602fd7f-4153-4475-9100-d89ff70cdf76.0.mp3"
-          }
+          },
+          "ddi": null,
+          "user": null
       }
       """

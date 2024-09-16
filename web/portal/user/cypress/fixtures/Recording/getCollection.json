@@ -1,0 +1,22 @@
+{
+  "body": [
+    {
+      "callid": "fb504426-4e3c-11ef-af02-fc5cee56dc74",
+      "calldate": "2017-01-05 01:15:15",
+      "type": "ondemand",
+      "duration": 5,
+      "caller": "34946002020",
+      "callee": "34946002021",
+      "recorder": null,
+      "id": 2
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/user/recordings?_page=1",
+    "x-last-page": "/api/user/recordings?_page=1",
+    "x-next-page": "/api/user/recordings?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

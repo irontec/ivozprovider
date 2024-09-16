@@ -52,7 +52,7 @@ class BrandSoftDeleteTest extends KernelTestCase
             WebPortal::class
         );
 
-        $this->assertCount(3, $changelog);
+        $this->assertCount(4, $changelog);
 
         for ($i = 0; $i < 3; $i++) {
             $this->assertEquals(
@@ -98,7 +98,7 @@ class BrandSoftDeleteTest extends KernelTestCase
             Company::class
         );
 
-        $this->assertCount(4, $changelog);
+        $this->assertCount(5, $changelog);
 
         for ($i = 0; $i < 3; $i++) {
             $this->assertEquals(

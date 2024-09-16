@@ -1,0 +1,16 @@
+{
+  "body": [
+    {
+      "domain": "127.0.0.1",
+      "id": 3
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/domains?_page=1",
+    "x-last-page": "/api/client/domains?_page=1",
+    "x-next-page": "/api/client/domains?_page=1",
+    "x-total-items": "4",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

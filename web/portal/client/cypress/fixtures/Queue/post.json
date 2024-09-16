@@ -23,8 +23,8 @@
     "fullLocution": null,
     "fullExtension": null,
     "fullVoicemail": null,
-    "timeoutNumberCountry": 68,
-    "fullNumberCountry": 68
+    "timeoutNumberCountry": 8,
+    "fullNumberCountry": 8
   },
   "response": {
     "body": {
@@ -52,8 +52,8 @@
       "fullLocution": null,
       "fullExtension": null,
       "fullVoicemail": null,
-      "timeoutNumberCountry": 68,
-      "fullNumberCountry": 68
+      "timeoutNumberCountry": 8,
+      "fullNumberCountry": 8
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

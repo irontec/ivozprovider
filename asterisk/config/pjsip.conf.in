@@ -1,0 +1,50 @@
+;;
+;; Global PJSIP configuration
+;;
+[global]
+type=global
+user_agent=Irontec IvozProvider v4.2
+endpoint_identifier_order=header,ip
+mwi_disable_initial_unsolicited=yes
+
+;;
+;; Enabled SIP Transports
+;;
+[transport-udp]
+type=transport
+protocol=udp
+bind=0.0.0.0:6060
+
+;;
+;; Proxy Trunks static information
+;; This improves a lot realtime performance
+;;
+[proxytrunks]
+type=endpoint
+aors=proxytrunks
+context=trunks
+disallow=all
+allow=alaw,ulaw,g729
+direct_media=no
+direct_media_method=invite
+dtmf_mode=rfc4733
+send_pai=no
+100rel=no
+trust_id_inbound=yes
+t38_udptl=yes
+t38_udptl_ec=redundancy
+t38_udptl_maxdatagram=1440
+t38_udptl_nat=no
+allow_transfer=no
+allow_subscribe=no
+
+[proxytrunks]
+type=aor
+contact=sip:trunks.ivozprovider.local
+
+[proxytrunks]
+type=identify
+endpoint=proxytrunks
+match=trunks.ivozprovider.local
+
+

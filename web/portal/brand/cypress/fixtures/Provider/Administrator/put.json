@@ -1,0 +1,32 @@
+{
+  "request": {
+    "username": "newUserName",
+    "pass": "1234",
+    "email": "modified@example.com",
+    "active": false,
+    "restricted": true,
+    "name": "Updated admin name",
+    "lastname": "a lastname",
+    "company": 1,
+    "timezone": 8
+  },
+  "response": {
+    "body": {
+      "username": "newUserName",
+      "pass": "*****",
+      "email": "modified@example.com",
+      "active": false,
+      "restricted": true,
+      "name": "Updated admin name",
+      "lastname": "a lastname",
+      "canImpersonate": true,
+      "id": 7,
+      "company": 1,
+      "timezone": 8
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

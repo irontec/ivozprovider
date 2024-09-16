@@ -18,7 +18,8 @@ Feature: Update web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          }
+          },
+          "company": 1
       }
       """
      Then the response status code should be 200
@@ -35,7 +36,8 @@ Feature: Update web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          }
+          },
+          "company": 1
       }
       """
 
@@ -73,7 +75,8 @@ This is file content
             "fileSize": 20,
             "mimeType": "text/plain; charset=us-ascii",
             "baseName": "uploadable"
-        }
+        },
+        "company": null
     }
     """
 
@@ -83,3 +86,45 @@ This is file content
       And I send a "GET" request to "/web_portals/3/logo"
      Then the response status code should be 200
       And the header "Content-Type" should be equal to "text/plain; charset=us-ascii"
+
+
+  @createSchema
+  Scenario: Update a web portals with incompatible company type and urlType
+    Given I add Brand Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" request to "/web_portals/3" with body:
+      """
+      {
+          "urlType": "user",
+          "company": 3
+      }
+      """
+    Then the response status code should be 400
+
+  @createSchema
+  Scenario: Update a web portals with incompatible company type and urlType
+    Given I add Brand Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" request to "/web_portals/3" with body:
+      """
+      {
+          "urlType": "user",
+          "company": 3
+      }
+      """
+    Then the response status code should be 400
+
+  @createSchema
+  Scenario: Update a web portals with mismatching company brand
+    Given I add Brand Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" request to "/web_portals/3" with body:
+      """
+      {
+          "company": 6
+      }
+      """
+    Then the response status code should be 400

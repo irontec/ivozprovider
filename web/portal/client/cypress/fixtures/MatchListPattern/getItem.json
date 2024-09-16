@@ -1,0 +1,18 @@
+{
+  "body": {
+    "description": "test desc",
+    "type": "number",
+    "regexp": null,
+    "numbervalue": "946002050",
+    "id": 1,
+    "matchList": {
+      "name": "testMatchlist",
+      "id": 1
+    },
+    "numberCountry": "~"
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

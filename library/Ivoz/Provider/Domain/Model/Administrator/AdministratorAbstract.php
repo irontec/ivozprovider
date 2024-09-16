@@ -30,10 +30,10 @@ abstract class AdministratorAbstract
     protected $username;
 
     /**
-     * @var string
+     * @var ?string
      * comment: password
      */
-    protected $pass;
+    protected $pass = '';
 
     /**
      * @var string
@@ -90,7 +90,6 @@ abstract class AdministratorAbstract
      */
     protected function __construct(
         string $username,
-        string $pass,
         string $email,
         bool $active,
         bool $internal,
@@ -98,7 +97,6 @@ abstract class AdministratorAbstract
         bool $canImpersonate
     ) {
         $this->setUsername($username);
-        $this->setPass($pass);
         $this->setEmail($email);
         $this->setActive($active);
         $this->setInternal($internal);
@@ -169,8 +167,6 @@ abstract class AdministratorAbstract
         Assertion::isInstanceOf($dto, AdministratorDto::class);
         $username = $dto->getUsername();
         Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
-        $pass = $dto->getPass();
-        Assertion::notNull($pass, 'getPass value is null, but non null value was expected.');
         $email = $dto->getEmail();
         Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
         $active = $dto->getActive();
@@ -184,7 +180,6 @@ abstract class AdministratorAbstract
 
         $self = new static(
             $username,
-            $pass,
             $email,
             $active,
             $internal,
@@ -193,6 +188,7 @@ abstract class AdministratorAbstract
         );
 
         $self
+            ->setPass($dto->getPass())
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -216,8 +212,6 @@ abstract class AdministratorAbstract
 
         $username = $dto->getUsername();
         Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
-        $pass = $dto->getPass();
-        Assertion::notNull($pass, 'getPass value is null, but non null value was expected.');
         $email = $dto->getEmail();
         Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
         $active = $dto->getActive();
@@ -231,7 +225,7 @@ abstract class AdministratorAbstract
 
         $this
             ->setUsername($username)
-            ->setPass($pass)
+            ->setPass($dto->getPass())
             ->setEmail($email)
             ->setActive($active)
             ->setInternal($internal)
@@ -301,16 +295,18 @@ abstract class AdministratorAbstract
         return $this->username;
     }
 
-    protected function setPass(string $pass): static
+    protected function setPass(?string $pass = null): static
     {
-        Assertion::maxLength($pass, 80, 'pass value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        if (!is_null($pass)) {
+            Assertion::maxLength($pass, 80, 'pass value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
 
         $this->pass = $pass;
 
         return $this;
     }
 
-    public function getPass(): string
+    public function getPass(): ?string
     {
         return $this->pass;
     }

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Move to webapp dir
+cd $(dirname "$(realpath -se "$0")")/..
+
+# Install required dependencies
+yarn install
+
+# Verify fixtures are properly formatted
+for FIXTURE in ./cypress/fixtures/*/*.json; do
+    jq . $FIXTURE > $FIXTURE.jq && mv $FIXTURE.jq $FIXTURE
+done
+
+FIXTURES_CHANGED=$(git status --short ./cypress/fixtures)
+if [ -n "$FIXTURES_CHANGED" ]; then
+    echo "============ Following fixtures are not properly formatted ==============="
+    git status --short ./cypress/fixtures
+    echo "=========================================================================="
+    git diff ./cypress/fixtures
+    echo "=========================================================================="
+    exit 1
+fi
+
+# Run linter
+LANG=en_US.UTF-8 yarn run cy:run
+
+# Verify pacts are in sync
+for PACT in ./cypress/pacts/*.json; do
+    [ -e "$PACT" ] || continue
+    jq . $PACT > $PACT.minified && mv $PACT.minified $PACT
+done
+
+PACTS_CHANGED=$(git status --short ./cypress/pacts)
+if [ -n "$PACTS_CHANGED" ]; then
+    echo "============ Pacts are not up to date. ==============="
+    git status --short ./cypress/pacts
+    echo "======================================================"
+    git diff ./cypress/pacts
+    echo "======================================================"
+    exit 1
+fi
+
+echo "All pact files are updated."
+exit 0

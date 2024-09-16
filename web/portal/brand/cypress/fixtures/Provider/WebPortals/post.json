@@ -1,0 +1,33 @@
+{
+  "request": {
+      "url": "https://post-example.com",
+      "urlType": "user",
+      "name": "Platform user Portal",
+      "company": 2
+    },
+  "response": {
+    "body": {
+        "url": "https://post-example.com",
+        "urlType": "user",
+        "name": "Platform user Portal",
+        "id": 7,
+        "logo": {
+          "fileSize": null,
+          "mimeType": null,
+          "baseName": null
+        },
+        "company": {
+          "id": 2
+        }
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

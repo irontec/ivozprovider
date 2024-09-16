@@ -29,9 +29,9 @@ abstract class UsersCdrAbstract
     use ChangelogTrait;
 
     /**
-     * @var ?\DateTime
+     * @var \DateTime
      */
-    protected $startTime = null;
+    protected $startTime;
 
     /**
      * @var float
@@ -104,8 +104,10 @@ abstract class UsersCdrAbstract
      * Constructor
      */
     protected function __construct(
+        \DateTimeInterface|string $startTime,
         float $duration
     ) {
+        $this->setStartTime($startTime);
         $this->setDuration($duration);
     }
 
@@ -170,15 +172,17 @@ abstract class UsersCdrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersCdrDto::class);
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
 
         $self = new static(
+            $startTime,
             $duration
         );
 
         $self
-            ->setStartTime($dto->getStartTime())
             ->setDirection($dto->getDirection())
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
@@ -207,11 +211,13 @@ abstract class UsersCdrAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersCdrDto::class);
 
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
 
         $this
-            ->setStartTime($dto->getStartTime())
+            ->setStartTime($startTime)
             ->setDuration($duration)
             ->setDirection($dto->getDirection())
             ->setCaller($dto->getCaller())
@@ -274,19 +280,17 @@ abstract class UsersCdrAbstract
         ];
     }
 
-    protected function setStartTime(string|\DateTimeInterface|null $startTime = null): static
+    protected function setStartTime(string|\DateTimeInterface $startTime): static
     {
-        if (!is_null($startTime)) {
 
-            /** @var ?\DateTime */
-            $startTime = DateTimeHelper::createOrFix(
-                $startTime,
-                null
-            );
+        /** @var \DateTime */
+        $startTime = DateTimeHelper::createOrFix(
+            $startTime,
+            '2000-01-01 00:00:00'
+        );
 
-            if ($this->isInitialized() && $this->startTime == $startTime) {
-                return $this;
-            }
+        if ($this->isInitialized() && $this->startTime == $startTime) {
+            return $this;
         }
 
         $this->startTime = $startTime;
@@ -294,9 +298,9 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    public function getStartTime(): ?\DateTime
+    public function getStartTime(): \DateTime
     {
-        return !is_null($this->startTime) ? clone $this->startTime : null;
+        return clone $this->startTime;
     }
 
     protected function setDuration(float $duration): static

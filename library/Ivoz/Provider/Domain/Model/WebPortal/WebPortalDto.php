@@ -25,12 +25,17 @@ class WebPortalDto extends WebPortalDtoAbstract
                     'baseName',
                 ],
             ];
+
+            if ($role === 'ROLE_BRAND_ADMIN' || $role === 'ROLE_SUPER_ADMIN') {
+                $response['brand'] = 'brand';
+            }
         } else {
             $response = parent::getPropertyMap(...func_get_args());
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
             unset($response['brandId']);
+            $response['companyId'] = 'company';
         }
 
         return $response;

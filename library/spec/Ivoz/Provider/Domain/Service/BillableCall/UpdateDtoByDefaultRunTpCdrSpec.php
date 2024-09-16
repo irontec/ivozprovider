@@ -146,6 +146,10 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
             BillableCallDto::class
         );
 
+//        $this->billableCallDto
+//            ->getStartTime()
+//            ->willReturn(new \DateTime('2000-01-01 00:00:00'));
+
         $this->brand = $this->getTestDouble(
             BrandInterface::class
         );
@@ -176,7 +180,8 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
                 'getDuration' => 1,
                 'getRatingPlanTag' => 'tag',
                 'getMatchedDestinationTag' => 'destTag',
-                'getDestination' => 'Lisbon'
+                'getDestination' => 'Lisbon',
+                'getStartTime' => new \DateTime(),
             ],
             false
         );

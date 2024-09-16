@@ -1,0 +1,21 @@
+{
+  "body": [
+    {
+      "name": "testTerminal",
+      "mac": "0011223344aa",
+      "lastProvisionDate": null,
+      "id": 3,
+      "domain": 3,
+      "terminalModel": 1,
+      "status": []
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/terminals/unassigned?_page=1",
+    "x-last-page": "/api/client/terminals/unassigned?_page=1",
+    "x-next-page": "/api/client/terminals/unassigned?_page=1",
+    "x-total-items": "4",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

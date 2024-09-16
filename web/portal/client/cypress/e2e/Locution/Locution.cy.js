@@ -1,16 +1,17 @@
 import LocutionCollection from '../../fixtures/Locution/getCollection.json';
-import newLocution from '../../fixtures/Locution/post.json';
 import LocutionItem from '../../fixtures/Locution/getItem.json';
+import newLocution from '../../fixtures/Locution/post.json';
 import editLocution from '../../fixtures/Locution/put.json';
 
-describe('in Locution', () => {
+describe('Locution', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Locution');
     cy.before();
 
-    cy.contains('Locuciones').click();
+    cy.contains('Multimedia').click();
+    cy.contains('Locutions').click();
 
-    cy.get('h3').should('contain', 'List of Locuciones');
+    cy.get('header').should('contain', 'Locutions');
 
     cy.get('table').should('contain', LocutionCollection.body[0].name);
   });
@@ -36,7 +37,7 @@ describe('in Locution', () => {
       name,
     });
 
-    cy.get('h3').should('contain', 'List of Locuciones');
+    cy.get('header').should('contain', 'Locutions');
 
     cy.usePactWait('createLocution')
       .its('response.statusCode')
@@ -63,12 +64,18 @@ describe('in Locution', () => {
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
     const { name, status } = editLocution.request;
+    cy.uploadFile(
+      'cypress/assets/locution_example.mp3',
+      '#originalFile-file-upload',
+      'audio/mpeg',
+      'binary'
+    );
     cy.fillTheForm({
       name,
       status,
     });
 
-    cy.contains('List of Locuciones');
+    cy.contains('Locutions');
 
     cy.usePactWait(['editLocution'])
       .its('response.statusCode')
@@ -83,15 +90,15 @@ describe('in Locution', () => {
       statusCode: 204,
     }).as('deleteLocution');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Locuciones');
+    cy.get('header').should('contain', 'Locutions');
 
     cy.usePactWait(['deleteLocution'])
       .its('response.statusCode')

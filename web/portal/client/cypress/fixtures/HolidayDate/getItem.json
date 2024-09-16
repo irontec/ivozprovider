@@ -1,0 +1,24 @@
+{
+  "body": {
+    "name": "Name",
+    "eventDate": "2021-12-21",
+    "wholeDayEvent": true,
+    "timeIn": null,
+    "timeOut": null,
+    "routeType": null,
+    "numberValue": null,
+    "id": 1,
+    "calendar": {
+      "name": "testCalendar",
+      "id": 1
+    },
+    "locution": null,
+    "extension": null,
+    "voicemail": null,
+    "numberCountry": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

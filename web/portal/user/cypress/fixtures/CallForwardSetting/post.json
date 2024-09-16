@@ -1,0 +1,72 @@
+{
+  "request": {
+    "callTypeFilter": "external",
+    "callForwardType": "inconditional",
+    "targetType": "number",
+    "numberValue": "946002054",
+    "noAnswerTimeout": 0,
+    "enabled": false,
+    "user": 1,
+    "extension": null,
+    "voiceMailUser": null,
+    "numberCountry": 24
+  },
+  "response": {
+    "body": {
+      "callTypeFilter": "external",
+      "callForwardType": "inconditional",
+      "targetType": "number",
+      "numberValue": "946002054",
+      "noAnswerTimeout": 0,
+      "enabled": false,
+      "id": 5,
+      "user": {
+        "name": "Alice",
+        "lastname": "Allison",
+        "email": "alice@democompany.com",
+        "pass": "*****",
+        "doNotDisturb": false,
+        "isBoss": false,
+        "active": true,
+        "maxCalls": 1,
+        "externalIpCalls": "0",
+        "rejectCallMethod": "rfc",
+        "multiContact": true,
+        "gsQRCode": false,
+        "id": 1,
+        "bossAssistant": null,
+        "extension": null,
+        "timezone": 145,
+        "voicemail": null
+      },
+      "extension": null,
+      "voicemail": null,
+      "numberCountry": {
+        "code": "ES",
+        "countryCode": "+34",
+        "id": 68,
+        "name": {
+          "en": "Spain",
+          "es": "España",
+          "ca": "España",
+          "it": "Spagna"
+        },
+        "zone": {
+          "en": "Europe",
+          "es": "Europa",
+          "ca": "Europa",
+          "it": "Europe"
+        }
+      }
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

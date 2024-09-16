@@ -1,0 +1,27 @@
+{
+    "body": {
+        "userName": "Alice Allison",
+        "companyName": "DemoCompany",
+        "companyDomain": "127.0.0.1",
+        "language": "es",
+        "voiceMail": "93",
+        "gsQRCode": false,
+        "userAgent": "Yealink SIP-T23G 44.80.0.130",
+        "ipRegistered": "sip:yealinktest@10.10.1.106:5060",
+        "statusTerminal": true,
+        "terminalName": "alice",
+        "terminalPassword": "AUfVkn498_",
+        "extensionNumber": null,
+        "features": [
+            "queues",
+            "recordings",
+            "faxes",
+            "friends",
+            "conferences"
+        ]
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

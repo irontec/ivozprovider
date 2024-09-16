@@ -1266,11 +1266,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Job/RecoderJobInterface.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function crypt expects string, string\\|null given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/Administrator.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorInterface\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorInterface.php
@@ -3701,7 +3696,12 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php
 
 		-
-			message: "#^Parameter \\#1 \\$num of function round expects float\\|int, float\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$num of function ceil expects float\\|int, float\\|null given\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php
+
+		-
+			message: "#^Parameter \\#1 \\$startTime of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:setStartTime\\(\\) expects DateTimeInterface\\|string, DateTimeInterface\\|string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php
 
@@ -3722,6 +3722,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method getLanguageCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/BillableCall/UpdateDtoByDefaultRunTpCdr.php
+
+		-
+			message: "#^Parameter \\#1 \\$startTime of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:setStartTime\\(\\) expects DateTimeInterface\\|string, DateTimeInterface\\|string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BillableCall/UpdateDtoByDefaultRunTpCdr.php
 
@@ -4402,7 +4407,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method setTimezone\\(\\) on DateTime\\|null\\.$#"
-			count: 3
+			count: 2
 			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
 
 		-

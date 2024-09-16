@@ -12,10 +12,16 @@ class AssertAdministratorCanImpersonation
     ) {
     }
 
-    public function execute(int $id): void
+    public function execute(int $originatorAdminId, int $targetAdminId): void
+    {
+        $this->validateOriginatorAdmin($originatorAdminId);
+        $this->validateTargetAdmin($targetAdminId);
+    }
+
+    private function validateTargetAdmin(int $targetAdminId): void
     {
         /** @var AdministratorInterface|null $administrator */
-        $administrator = $this->administratorRepository->find($id);
+        $administrator = $this->administratorRepository->find($targetAdminId);
 
         if ($administrator === null) {
             throw new \DomainException(
@@ -23,6 +29,33 @@ class AssertAdministratorCanImpersonation
                 404
             );
         }
+
+        if ($administrator->getInternal()) {
+            return;
+        }
+
+        if ($administrator->isEnabled()) {
+            return;
+        }
+
+        throw new \DomainException(
+            'Admin cannot be impersonated',
+            401
+        );
+    }
+
+    public function validateOriginatorAdmin(int $originatorAdminId): void
+    {
+        /** @var AdministratorInterface|null $administrator */
+        $administrator = $this->administratorRepository->find($originatorAdminId);
+
+        if ($administrator === null) {
+            throw new \DomainException(
+                'Admin not found',
+                404
+            );
+        }
+
         if (!$administrator->getRestricted()) {
             return;
         }

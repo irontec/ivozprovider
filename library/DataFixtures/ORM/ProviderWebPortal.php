@@ -87,13 +87,28 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
 
+        $item6 = $this->createEntityInstance(WebPortal::class);
+        (function () use ($fixture) {
+            $this->setUrl("https://users2-ivozprovider.irontec.com");
+            $this->setUrlType("user");
+            $this->setName("Irontec Ivozprovider User Admin Portal");
+            $this->logo = new Logo(10, 'image/jpeg', 'user-logo.jpeg');
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+        })->call($item6);
+
+        $this->addReference('_reference_ProviderWebPortal6', $item6);
+        $this->sanitizeEntityValues($item6);
+        $manager->persist($item6);
+
         $manager->flush();
     }
 
     public function getDependencies()
     {
         return array(
-            ProviderBrand::class
+            ProviderBrand::class,
+            ProviderCompany::class
         );
     }
 }

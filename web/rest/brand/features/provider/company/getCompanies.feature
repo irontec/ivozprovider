@@ -13,7 +13,7 @@ Feature: Retrieve companies
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
       """
-      [
+         [
           {
               "type": "vpbx",
               "name": "DemoCompany",
@@ -112,6 +112,29 @@ Feature: Retrieve companies
               "routingTagIds": [
                   1
               ],
+              "codecIds": []
+          },
+          {
+              "type": "wholesale",
+              "name": "Wholesale Company",
+              "domainUsers": "wholesale.irontec.com",
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": -1,
+              "billingMethod": "postpaid",
+              "balance": 0,
+              "id": 5,
+              "invoicing": {
+                  "nif": "12345689-Z"
+              },
+              "outgoingDdi": null,
+              "corporation": null,
+              "domainName": null,
+              "currencySymbol": "€",
+              "currentDayMaxUsage": "Unavailable",
+              "accountStatus": "Unavailable",
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
               "codecIds": []
           }
       ]

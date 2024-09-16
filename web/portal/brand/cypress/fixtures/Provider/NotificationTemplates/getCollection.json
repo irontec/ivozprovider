@@ -1,0 +1,17 @@
+{
+  "body": [
+    {
+        "name": "Voicemail notification",
+        "type": "voicemail",
+        "id": 1
+    }
+],
+  "headers": {
+    "x-first-page": "/api/brand/notification_templates?_page=1",
+    "x-last-page": "/api/brand/notification_templates?_page=1",
+    "x-next-page": "/api/brand/notification_templates?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

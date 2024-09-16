@@ -14,12 +14,20 @@
     "outOfScheduleExtension": null,
     "holidayVoicemail": null,
     "outOfScheduleVoicemail": null,
-    "holidayNumberCountry": 77,
-    "outOfScheduleNumberCountry": 77,
-    "scheduleIds": [2],
-    "calendarIds": [2],
-    "whiteListIds": [2],
-    "blackListIds": [2]
+    "holidayNumberCountry": 2,
+    "outOfScheduleNumberCountry": 3,
+    "scheduleIds": [
+      2
+    ],
+    "calendarIds": [
+      2
+    ],
+    "whiteListIds": [
+      2
+    ],
+    "blackListIds": [
+      2
+    ]
   },
   "response": {
     "body": {
@@ -38,12 +46,20 @@
       "outOfScheduleExtension": null,
       "holidayVoicemail": null,
       "outOfScheduleVoicemail": null,
-      "holidayNumberCountry": 77,
-      "outOfScheduleNumberCountry": 77,
-      "scheduleIds": [2],
-      "calendarIds": [2],
-      "whiteListIds": [2],
-      "blackListIds": [2]
+      "holidayNumberCountry": 2,
+      "outOfScheduleNumberCountry": 3,
+      "scheduleIds": [
+        2
+      ],
+      "calendarIds": [
+        2
+      ],
+      "whiteListIds": [
+        2
+      ],
+      "blackListIds": [
+        2
+      ]
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

@@ -22,6 +22,7 @@ use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserDto;
+use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 
 /**
 * UserDtoAbstract
@@ -191,6 +192,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
      */
     private $faxesRelUsers = null;
 
+    /**
+     * @var RecordingDto[] | null
+     */
+    private $recordings = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -273,7 +279,8 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'pickUpRelUsers' => $this->getPickUpRelUsers(),
             'queueMembers' => $this->getQueueMembers(),
             'callForwardSettings' => $this->getCallForwardSettings(),
-            'faxesRelUsers' => $this->getFaxesRelUsers()
+            'faxesRelUsers' => $this->getFaxesRelUsers(),
+            'recordings' => $this->getRecordings()
         ];
 
         if (!$hideSensitiveData) {
@@ -957,5 +964,23 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getFaxesRelUsers(): ?array
     {
         return $this->faxesRelUsers;
+    }
+
+    /**
+     * @param RecordingDto[] | null $recordings
+     */
+    public function setRecordings(?array $recordings): static
+    {
+        $this->recordings = $recordings;
+
+        return $this;
+    }
+
+    /**
+    * @return RecordingDto[] | null
+    */
+    public function getRecordings(): ?array
+    {
+        return $this->recordings;
     }
 }

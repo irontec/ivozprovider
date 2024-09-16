@@ -75,7 +75,7 @@ interface BillableCallInterface extends LoggableEntityInterface
 
     public function getCallid(): ?string;
 
-    public function getStartTime(): ?\DateTime;
+    public function getStartTime(): \DateTime;
 
     public function getDuration(): float;
 

@@ -1,0 +1,13 @@
+{
+    "body": {
+        "name": "Irontec Ivozprovider User Admin Portal",
+        "logo": "https://users-ivozprovider.irontec.com/api/user/my/logo/4/user-logo.jpeg",
+        "color": "#000000",
+        "title": "Irontec Ivozprovider User Admin Portal"
+    }
+    ,
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

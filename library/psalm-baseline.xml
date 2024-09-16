@@ -1274,11 +1274,6 @@
       <code>$id</code>
     </MissingParamType>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Administrator/Administrator.php">
-    <PossiblyNullArgument occurrences="1">
-      <code>$pass</code>
-    </PossiblyNullArgument>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Administrator/AdministratorAbstract.php">
     <MixedArgument occurrences="6">
       <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
@@ -3836,9 +3831,13 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Recording/RecordingAbstract.php">
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="6">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -4397,9 +4396,11 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortalAbstract.php">
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="4">
       <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -4495,8 +4496,9 @@
     </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/BillableCall/CreateOrUpdateByTrunksCdr.php">
-    <PossiblyNullArgument occurrences="1">
+    <PossiblyNullArgument occurrences="2">
       <code>$trunksCdrDto-&gt;getDuration()</code>
+      <code>$trunksCdrDto-&gt;getStartTime()</code>
     </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Service/BillableCall/UpdateDtoByDefaultRunTpCdr.php">
@@ -4504,6 +4506,9 @@
       <code>$destinationName</code>
       <code>$ratingPlanGroupName</code>
     </MixedArgument>
+    <PossiblyNullArgument occurrences="1">
+      <code>$startTime</code>
+    </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Service/BillableCallHistoric/ImportFromBillableCalls.php">
     <TypeDoesNotContainNull occurrences="1">

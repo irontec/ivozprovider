@@ -112,6 +112,39 @@ Model\ActiveCalls:
           - 'application/json'
         tags:
           - My
+        parameters:
+          - name: c
+            in: query
+            type: string
+            required: false
+            description: 'Company Id'
+          - name: dp
+            in: query
+            type: string
+            required: false
+            description: 'DdiProvider Id'
+          - name: cr
+            in: query
+            type: string
+            required: false
+            description: 'CarrierRegistration Id'
+          - name: direction
+            in: query
+            required: false
+            description: 'Direction'
+            type: string
+            enum:
+              - inbound
+              - outbound
+        responses:
+          200:
+            description: 'Criteria response'
+            schema:
+              type: object
+              properties:
+                criteria:
+                  description: 'Criteria'
+                  type: string
   collectionOperations: []
 
 Model\ProfileAcl:
@@ -160,6 +193,12 @@ Model\HolidaysMassImport:
             type: integer
             required: false
             description: 'Ensure certain calendar id is included'
+          - name: importerParams
+            in: formData
+            type: string
+            required: false
+            description: 'json serialized arguments for importer'
+
 
 Model\ExtensionsMassImport:
   itemOperations: []

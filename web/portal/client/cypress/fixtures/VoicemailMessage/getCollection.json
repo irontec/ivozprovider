@@ -1,0 +1,19 @@
+{
+  "body": [
+    {
+      "calldate": "2022-04-01 14:31:52",
+      "folder": "INBOX",
+      "caller": "Alice <101>",
+      "duration": 21,
+      "id": 2
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/voicemail_messages?_page=1",
+    "x-last-page": "/api/client/voicemail_messages?_page=1",
+    "x-next-page": "/api/client/voicemail_messages?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

@@ -1876,12 +1876,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "caller[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "caller[neq]",
                         "in": "query",
                         "required": false,
@@ -1906,6 +1900,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "caller[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "callid",
                         "in": "query",
                         "required": false,
@@ -1918,25 +1918,25 @@
                         "type": "string"
                     },
                     {
-                        "name": "callid[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "callid[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "callid[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
+                        "name": "callid[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "callid[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callid[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -2080,18 +2080,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "direction[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "direction[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "direction[end]",
                         "in": "query",
                         "required": false,
@@ -2099,6 +2087,18 @@
                     },
                     {
                         "name": "direction[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "direction[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "direction[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -2206,19 +2206,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "endpointName[start]",
+                        "name": "endpointName[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "endpointName[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "endpointName[neq]",
+                        "name": "endpointName[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -2236,6 +2230,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "endpointName[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "endpointType",
                         "in": "query",
                         "required": false,
@@ -2243,6 +2243,12 @@
                     },
                     {
                         "name": "endpointType[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "endpointType[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -2270,12 +2276,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "endpointType[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "exists[brand]",
@@ -2357,12 +2357,6 @@
                     },
                     {
                         "name": "exists[price]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "exists[startTime]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -2468,12 +2462,6 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "startTime[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "startTime[neq]",
@@ -13521,6 +13509,30 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[brand]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[logo.baseName]",
                         "in": "query",
                         "required": false,
@@ -13659,6 +13671,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "logo.mimeType[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "logo.mimeType[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "logo.mimeType[neq]",
                         "in": "query",
                         "required": false,
@@ -13675,18 +13699,6 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "logo.mimeType[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "logo.mimeType[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "name",
@@ -14128,7 +14140,6 @@
             "type": "object",
             "required": [
                 "username",
-                "pass",
                 "email",
                 "active",
                 "restricted",
@@ -14141,8 +14152,10 @@
                     "type": "string"
                 },
                 "pass": {
+                    "default": "",
                     "maxLength": 80,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "email": {
@@ -14253,7 +14266,6 @@
             "type": "object",
             "required": [
                 "username",
-                "pass",
                 "email",
                 "active",
                 "restricted",
@@ -14266,8 +14278,10 @@
                     "type": "string"
                 },
                 "pass": {
+                    "default": "",
                     "maxLength": 80,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "email": {
@@ -14625,8 +14639,10 @@
                     "type": "string"
                 },
                 "startTime": {
+                    "default": "2000-01-01 00:00:00",
                     "format": "date-time",
                     "description": "",
+                    "example": "2000-01-01 00:00:00",
                     "type": "string"
                 },
                 "duration": {
@@ -14741,16 +14757,24 @@
                 }
             },
             "required": [
+                "startTime",
                 "duration",
                 "direction"
             ]
         },
         "BillableCall-collection": {
             "type": "object",
+            "required": [
+                "startTime",
+                "direction",
+                "duration"
+            ],
             "properties": {
                 "startTime": {
+                    "default": "2000-01-01 00:00:00",
                     "format": "date-time",
                     "description": "",
+                    "example": "2000-01-01 00:00:00",
                     "type": "string"
                 },
                 "direction": {
@@ -14846,11 +14870,7 @@
                     "description": "",
                     "type": "integer"
                 }
-            },
-            "required": [
-                "direction",
-                "duration"
-            ]
+            }
         },
         "BillableCall-detailed": {
             "type": "object",
@@ -14861,8 +14881,10 @@
                     "type": "string"
                 },
                 "startTime": {
+                    "default": "2000-01-01 00:00:00",
                     "format": "date-time",
                     "description": "",
+                    "example": "2000-01-01 00:00:00",
                     "type": "string"
                 },
                 "duration": {
@@ -14971,6 +14993,7 @@
                 }
             },
             "required": [
+                "startTime",
                 "duration",
                 "direction"
             ]
@@ -18369,6 +18392,10 @@
                 "brand": {
                     "description": "",
                     "type": "integer"
+                },
+                "company": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -18409,6 +18436,10 @@
                 },
                 "logo": {
                     "$ref": "#/definitions/WebPortal_Logo"
+                },
+                "brand": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -18460,6 +18491,9 @@
                 },
                 "brand": {
                     "$ref": "#/definitions/Brand"
+                },
+                "company": {
+                    "$ref": "#/definitions/Company"
                 }
             }
         },
@@ -18487,10 +18521,6 @@
             "type": "object",
             "properties": {
                 "name": {
-                    "description": "",
-                    "type": "string"
-                },
-                "theme": {
                     "description": "",
                     "type": "string"
                 },

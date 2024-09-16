@@ -14,7 +14,7 @@ Feature: Retrieve web portals
       And the JSON should be equal to:
       """
       [
-          {
+         {
               "url": "https://brand-ivozprovider.irontec.com",
               "urlType": "brand",
               "name": "Irontec Ivozprovider Brand Admin Portal",
@@ -23,7 +23,8 @@ Feature: Retrieve web portals
                   "fileSize": 10,
                   "mimeType": "image/jpeg",
                   "baseName": "brand-logo.jpeg"
-              }
+              },
+              "brand": 1
           },
           {
               "url": "https://nologo-platform-ivozprovider.irontec.com",
@@ -34,7 +35,8 @@ Feature: Retrieve web portals
                   "fileSize": null,
                   "mimeType": null,
                   "baseName": null
-              }
+              },
+              "brand": null
           },
           {
               "url": "https://platform-ivozprovider.irontec.com",
@@ -45,7 +47,8 @@ Feature: Retrieve web portals
                   "fileSize": 10,
                   "mimeType": "image/jpeg",
                   "baseName": "logo.jpeg"
-              }
+              },
+              "brand": null
           }
       ]
       """

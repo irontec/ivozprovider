@@ -1,0 +1,32 @@
+{
+  "body": [
+    {
+      "ddi": "123",
+      "ddie164": "+34123",
+      "description": "Description for DDI 123",
+      "routeType": null,
+      "friendValue": "",
+      "id": 1,
+      "conferenceRoom": null,
+      "language": null,
+      "queue": null,
+      "externalCallFilter": null,
+      "user": null,
+      "ivr": null,
+      "huntGroup": null,
+      "fax": null,
+      "country": 68,
+      "residentialDevice": null,
+      "conditionalRoute": null,
+      "retailAccount": null
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/ddis?_page=1",
+    "x-last-page": "/api/client/ddis?_page=1",
+    "x-next-page": "/api/client/ddis?_page=1",
+    "x-total-items": "4",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

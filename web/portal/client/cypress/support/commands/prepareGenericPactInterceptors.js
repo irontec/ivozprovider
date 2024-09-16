@@ -1,32 +1,63 @@
 import apiSpec from '../../fixtures/apiSpec.json';
-import TerminalCollection from '../../fixtures/Terminal/getCollection.json';
-import ExtensionCollection from '../../fixtures/Extension/getCollection.json';
-import FaxCollection from '../../fixtures/Fax/getCollection.json';
-import ContactCollection from '../../fixtures/Contact/getCollection.json';
-import ConditionalRouteCollection from '../../fixtures/ConditionalRoute/getCollection.json';
-import QueueCollection from '../../fixtures/Queue/getCollection.json';
-import IvrCollection from '../../fixtures/Ivr/getCollection.json';
-import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
-import FriendCollection from '../../fixtures/Friend/getCollection.json';
-import ConferenceRoomCollection from '../../fixtures/ConferenceRoom/getCollection.json';
-import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getCollection.json';
+import BillableCallCollection from '../../fixtures/BillableCall/getCollection.json';
 import CalendarCollection from '../../fixtures/Calendar/getCollection.json';
-import ScheduleCollection from '../../fixtures/Schedule/getCollection.json';
-import MatchListCollection from '../../fixtures/MatchList/getCollection.json';
-import RouteLockCollection from '../../fixtures/RouteLock/getCollection.json';
-import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json';
-import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
-import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getCollection.json';
-import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json';
 import CallAclCollection from '../../fixtures/CallAcl/getCollection.json';
+import CallAclRelMatchListCollection from '../../fixtures/CallAclRelMatchList/getCollection.json';
+import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getCollection.json';
+import CallForwardSettingCollection from '../../fixtures/CallForwardSetting/getCollection.json';
+import CompanyCollection from '../../fixtures/Company/getCollection.json';
+import CompanyServiceCollection from '../../fixtures/CompanyService/getCollection.json';
+import ConditionalRouteCollection from '../../fixtures/ConditionalRoute/getCollection.json';
+import ConditionalRoutesConditionCollection from '../../fixtures/ConditionalRoutesCondition/getCollection.json';
+import ConferenceRoomCollection from '../../fixtures/ConferenceRoom/getCollection.json';
+import ContactCollection from '../../fixtures/Contact/getCollection.json';
+import CorporateUnassignedCollection from '../../fixtures/Corporate/getUnassignedCollection.json';
+import CountryCollection from '../../fixtures/Country/getCollection.json';
+import DdiCollection from '../../fixtures/Ddi/getCollection.json';
+import DomainCollection from '../../fixtures/Domain/getCollection.json';
+import ExtensionCollection from '../../fixtures/Extension/getCollection.json';
+import ExtensionUnassignedCollection from '../../fixtures/Extension/getUnassignedCollection.json';
+import ExternalCallFilterCollection from '../../fixtures/ExternalCallFilter/getCollection.json';
+import FaxCollection from '../../fixtures/Fax/getCollection.json';
+import FaxInOutCollection from '../../fixtures/FaxInOut/getCollection.json';
+import FriendCollection from '../../fixtures/Friend/getCollection.json';
+import FriendPatternsCollection from '../../fixtures/FriendPattern/getCollection.json';
+import HolidayDateCollection from '../../fixtures/HolidayDate/getCollection.json';
+import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
+import HuntGroupMemberByHuntGroupCollection from '../../fixtures/HuntGroupMember/getCollection.json';
+import IvrCollection from '../../fixtures/Ivr/getCollection.json';
+import IvrEntryCollection from '../../fixtures/IvrEntry/getCollection.json';
+import LanguageCollection from '../../fixtures/Language/getCollection.json';
 import LocationCollection from '../../fixtures/Location/getCollection.json';
 import LocutionCollection from '../../fixtures/Locution/getCollection.json';
-import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
-import CallForwardSettingCollection from '../../fixtures/CallForwardSetting/getCollection.json';
-import HuntGroupMemberCollection from '../../fixtures/HuntGroupMember/getCollection.json';
-import CompanyServiceCollection from '../../fixtures/CompanyService/getCollection.json';
+import MatchListCollection from '../../fixtures/MatchList/getCollection.json';
+import MatchListPatternCollection from '../../fixtures/MatchListPattern/getCollection.json';
+import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json';
+import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
+import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
+import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
+import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
+import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
+import OutgoingDdiRulePatternCollection from '../../fixtures/OutgoingDdiRulePatterns/getCollection.json';
+import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json';
+import QueueCollection from '../../fixtures/Queue/getCollection.json';
+import QueueMemberCollection from '../../fixtures/QueueMember/getCollection.json';
+import RecordingCollection from '../../fixtures/Recording/getCollection.json';
+import ResidentialDeviceCollection from '../../fixtures/ResidentialDevice/getCollection.json';
+import RetailAccountCollection from '../../fixtures/RetailAccount/getCollection.json';
+import RouteLockCollection from '../../fixtures/RouteLock/getCollection.json';
+import ScheduleCollection from '../../fixtures/Schedule/getCollection.json';
 import ServiceCollection from '../../fixtures/Service/getCollection.json';
+import ServiceUnassignedCollection from '../../fixtures/Service/getUnassignedCollection.json';
+import TerminalCollection from '../../fixtures/Terminal/getCollection.json';
+import TerminalUnassignedCollection from '../../fixtures/Terminal/getUnassignedCollection.json';
+import TerminalModelCollection from '../../fixtures/TerminalModel/getCollection.json';
+import TimezoneCollection from '../../fixtures/TimeZone/getCollection.json';
+import TransformationRuleSetCollection from '../../fixtures/TransformationRuleSet/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
+import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMemebersCollection.json';
+import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
+import VoicemailMessageCollection from '../../fixtures/VoicemailMessage/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.setupPact(
@@ -49,13 +80,41 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...TerminalCollection,
   }).as('getTerminal');
 
+  cy.intercept('GET', '**/api/client/terminals/unassigned?*', {
+    ...TerminalUnassignedCollection,
+  }).as('getTerminalUnassigned');
+
+  cy.intercept('GET', '**/api/client/services/unassigned?*', {
+    ...ServiceUnassignedCollection,
+  }).as('getServiceUnassigned');
+
   cy.intercept('GET', '**/api/client/extensions?*', {
     ...ExtensionCollection,
   }).as('getExtension');
 
+  cy.intercept('GET', '**/api/client/extensions/unassigned?*', {
+    ...ExtensionUnassignedCollection,
+  }).as('getUnassignedExtensions');
+
+  cy.intercept('GET', '**/api/client/companies/corporate/unassigned?*', {
+    ...CorporateUnassignedCollection,
+  }).as('getUnassignedCorporates');
+
+  cy.intercept('GET', '**/api/client/retail_accounts?*', {
+    ...RetailAccountCollection,
+  }).as('getRetailAccounts');
+
+  cy.intercept('GET', '**/api/client/residential_devices?*', {
+    ...ResidentialDeviceCollection,
+  }).as('getResidentialDevices');
+
   cy.intercept('GET', '**/api/client/faxes?*', {
     ...FaxCollection,
   }).as('getFax');
+
+  cy.intercept('GET', '**/api/client/faxes_in_outs?*', {
+    ...FaxInOutCollection,
+  }).as('getFaxesInOut');
 
   cy.intercept('GET', '**/api/client/contacts?*', {
     ...ContactCollection,
@@ -65,21 +124,49 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...ConditionalRouteCollection,
   }).as('getConditionalRoute');
 
+  cy.intercept('GET', '**/api/client/conditional_routes_conditions?*', {
+    ...ConditionalRoutesConditionCollection,
+  }).as('getConditionalRoutesCondition');
+
   cy.intercept('GET', '**/api/client/queues?*', {
     ...QueueCollection,
   }).as('getQueue');
+
+  cy.intercept('GET', '**/api/client/queue_members?*', {
+    ...QueueMemberCollection,
+  }).as('getQueueMember');
 
   cy.intercept('GET', '**/api/client/ivrs?*', {
     ...IvrCollection,
   }).as('getIvr');
 
+  cy.intercept('GET', '**/api/client/ivr_entries?*', {
+    ...IvrEntryCollection,
+  }).as('getIvrEntry');
+
   cy.intercept('GET', '**/api/client/voicemails?*', {
     ...VoicemailCollection,
   }).as('getVoicemail');
 
+  cy.intercept('GET', '**/api/client/voicemail_messages?*', {
+    ...VoicemailMessageCollection,
+  }).as('getVoicemailMessage');
+
   cy.intercept('GET', '**/api/client/friends?*', {
     ...FriendCollection,
   }).as('getFriend');
+
+  cy.intercept('GET', '**/api/client/friends_patterns?*', {
+    ...FriendPatternsCollection,
+  }).as('getFriendsPattern');
+
+  cy.intercept('GET', '**/api/client/friends/1/friends_patterns', {
+    ...FriendPatternsCollection,
+  }).as('getFriendFriendsPattern');
+
+  cy.intercept('GET', '**/api/client/companies?*', {
+    ...CompanyCollection,
+  }).as('getCompanies');
 
   cy.intercept('GET', '**/api/client/conference_rooms?*', {
     ...ConferenceRoomCollection,
@@ -100,6 +187,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/match_lists?*', {
     ...MatchListCollection,
   }).as('getMatchList');
+
+  cy.intercept('GET', '**/api/client/match_list_patterns?*', {
+    ...MatchListPatternCollection,
+  }).as('getMatchListPattern');
 
   cy.intercept('GET', '**/api/client/route_locks?*', {
     ...RouteLockCollection,
@@ -141,9 +232,13 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...CallForwardSettingCollection,
   }).as('getCallForwardSetting');
 
-  cy.intercept('GET', '**/api/client/hunt_group_members?*', {
-    ...HuntGroupMemberCollection,
-  }).as('getHuntGroupMember');
+  cy.intercept('GET', '**/api/client/hunt_group_members?huntGroup*', {
+    ...HuntGroupMemberByHuntGroupCollection,
+  }).as('getHuntGroupMemberByHuntGroup');
+
+  cy.intercept('GET', '**/api/client/hunt_group_members?user*', {
+    ...HuntGroupMemberByUserCollection,
+  }).as('getHuntGroupMemberByUser');
 
   cy.intercept('GET', '**/api/client/company_services?*', {
     ...CompanyServiceCollection,
@@ -152,4 +247,68 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/services?*', {
     ...ServiceCollection,
   }).as('getService');
+
+  cy.intercept('GET', '**/api/client/my/theme', {
+    ...ThemeItem,
+  }).as('getMyTheme');
+
+  cy.intercept('GET', '**/api/client/my/profile', { ...ProfileItem }).as(
+    'getMyProfile'
+  );
+
+  cy.intercept('GET', '**/api/client/my/dashboard', { ...DashboardItem }).as(
+    'getMyDashboard'
+  );
+
+  cy.intercept('GET', '**/api/client/my/active_calls', {
+    ...ActiveCallsItem,
+  }).as('getMyActiveCalls');
+
+  cy.intercept('GET', '**/api/client/languages?*', {
+    ...LanguageCollection,
+  }).as('getLanguage');
+
+  cy.intercept('GET', '**/api/client/timezones?*', {
+    ...TimezoneCollection,
+  }).as('getTimezone');
+
+  cy.intercept('GET', '**/api/client/transformation_rule_sets?*', {
+    ...TransformationRuleSetCollection,
+  }).as('getTransformationRuleSet');
+
+  cy.intercept('GET', '**/api/client/ddis?*', {
+    ...DdiCollection,
+  }).as('getDdi');
+
+  cy.intercept('GET', '**/api/client/domains?*', {
+    ...DomainCollection,
+  }).as('getDomain');
+
+  cy.intercept('GET', '**/api/client/terminal_models?*', {
+    ...TerminalModelCollection,
+  }).as('getTerminalModel');
+
+  cy.intercept('GET', '**/api/client/countries?*', {
+    ...CountryCollection,
+  }).as('getCountry');
+
+  cy.intercept('GET', '**/api/client/billable_calls?*', {
+    ...BillableCallCollection,
+  }).as('getBillableCalls');
+
+  cy.intercept('GET', '**/api/client/recordings?*', {
+    ...RecordingCollection,
+  }).as('getRecording');
+
+  cy.intercept('GET', '**/api/client/holiday_dates?*', {
+    ...HolidayDateCollection,
+  }).as('getHolidayDate');
+
+  cy.intercept('GET', '**/api/client/outgoing_ddi_rules_patterns?*', {
+    ...OutgoingDdiRulePatternCollection,
+  }).as('getOutgoingDdiRulePatterns');
+
+  cy.intercept('GET', '**/api/client/call_acl_rel_match_lists?*', {
+    ...CallAclRelMatchListCollection,
+  }).as('getCallAclRelMatchList');
 });

@@ -2,33 +2,41 @@
 
 namespace Ivoz\Provider\Domain\Service\User;
 
-use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Service\HostnameGetter;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAccountStatusException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class UserLoginChecker implements UserCheckerInterface
 {
+    public function __construct(
+        private HostnameGetter $hostnameGetter,
+        private AssertWebPortalAccessible $assertWebPortalAccesible
+    ) {
+    }
+
     /**
      * @return void
      */
     public function checkPreAuth(SymfonyUserInterface $admin)
     {
-        $isTargetClass =
-            $admin instanceof UserInterface
-            || $admin instanceof AdministratorInterface;
-
-        if (!$isTargetClass) {
+        if (!$admin instanceof UserInterface) {
             return;
         }
 
-        /** @var AdministratorInterface|UserInterface $admin */
+        /** @var UserInterface $admin */
         if (!$admin->isEnabled()) {
             throw new CustomUserMessageAccountStatusException(
                 'Your user account was disabled.'
             );
         }
+
+        $hostName = $this->hostnameGetter->__invoke() ?? '';
+        $this->assertWebPortalAccesible->execute(
+            $admin,
+            $hostName
+        );
     }
 
     /**

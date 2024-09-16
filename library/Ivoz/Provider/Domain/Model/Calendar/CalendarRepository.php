@@ -7,4 +7,5 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface CalendarRepository extends ObjectRepository, Selectable
 {
+    public function findCompanyCalendar(int $companyId, int $calendarId): ?CalendarInterface;
 }

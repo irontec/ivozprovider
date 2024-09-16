@@ -2,4 +2,7 @@
 
 # Install portal dependencies
 yarn config set network-timeout 1000000
-yarn --cwd /opt/irontec/ivozprovider/web/portal --cache-folder /opt/web-node_modules install
+
+# Restore web/portals node modules directory (speeds up yarn install)
+cp -fr /opt/web-node_modules /opt/irontec/ivozprovider/web/portal/node_modules
+cd /opt/irontec/ivozprovider/web/portal/ && yarn install

@@ -1,16 +1,17 @@
 import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
-import newOutgoingDdiRule from '../../fixtures/OutgoingDdiRule/post.json';
 import OutgoingDdiRuleItem from '../../fixtures/OutgoingDdiRule/getItem.json';
+import newOutgoingDdiRule from '../../fixtures/OutgoingDdiRule/post.json';
 import editOutgoingDdiRule from '../../fixtures/OutgoingDdiRule/put.json';
 
-describe('in OutgoingDdiRule', () => {
+describe('OutgoingDdiRule', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('OutgoingDdiRule');
     cy.before();
 
-    cy.contains('Reglas DDI de salida').click();
+    cy.contains('User configuration').click();
+    cy.contains('Outgoing DDI Rule').click();
 
-    cy.get('h3').should('contain', 'List of Reglas DDI de salida');
+    cy.get('header').should('contain', 'Outgoing DDI Rule');
 
     cy.get('table').should('contain', OutgoingDdiRuleCollection.body[0].name);
   });
@@ -38,7 +39,7 @@ describe('in OutgoingDdiRule', () => {
       forcedDdi,
     });
 
-    cy.get('h3').should('contain', 'List of Reglas DDI de salida');
+    cy.get('header').should('contain', 'Outgoing DDI Rule');
 
     cy.usePactWait('createOutgoingDdiRule')
       .its('response.statusCode')
@@ -70,7 +71,7 @@ describe('in OutgoingDdiRule', () => {
       defaultAction,
     });
 
-    cy.contains('List of Reglas DDI de salida');
+    cy.contains('Outgoing DDI Rule');
 
     cy.usePactWait(['editOutgoingDdiRule'])
       .its('response.statusCode')
@@ -85,15 +86,15 @@ describe('in OutgoingDdiRule', () => {
       statusCode: 204,
     }).as('deleteOutgoingDdiRule');
 
-    cy.get('td > a > svg[data-testid="DeleteIcon"]').first().click();
+    cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div[role=dialog] button')
+    cy.get('div.MuiDialog-container button')
       .filter(':visible')
-      .contains('Delete')
+      .contains('Yes, delete it')
       .click();
 
-    cy.get('h3').should('contain', 'List of Reglas DDI de salida');
+    cy.get('header').should('contain', 'Outgoing DDI Rule');
 
     cy.usePactWait(['deleteOutgoingDdiRule'])
       .its('response.statusCode')
