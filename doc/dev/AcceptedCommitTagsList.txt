@@ -6,6 +6,7 @@ ci
 core
 data
 doc
+docker
 kamailio
 kamtrunks
 kamusers
