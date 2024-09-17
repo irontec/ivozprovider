@@ -147,7 +147,7 @@ describe('HolidayDate', () => {
     }).as('createImportCSV');
 
     cy.get('button svg[data-testid="MoreHorizIcon"]').first().click();
-    cy.contains('Import CSV').click();
+    cy.contains('Import Holiday Dates').click();
     cy.get('h2').should('contain', 'Import Holiday Dates');
 
     cy.uploadFile(
@@ -157,7 +157,14 @@ describe('HolidayDate', () => {
       'binary'
     );
 
+    cy.get('div').should('contain', 'massImport.csv');
+    cy.contains('Continue').click();
+
+    cy.get('p').should('contain', 'Fields with * are required.');
     cy.contains('Send').click();
+
+    cy.get('div').should('contain', 'All lines have been imported');
+    cy.contains('Close').click();
 
     cy.get('header').should('contain', 'Holiday dates');
   });
