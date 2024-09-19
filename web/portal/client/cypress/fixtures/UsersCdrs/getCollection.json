@@ -1,0 +1,34 @@
+{
+  "body": [
+    {
+      "startTime": "2018-11-22 17:54:49",
+      "duration": 3600,
+      "direction": "outbound",
+      "caller": "102",
+      "callee": "+34676896562",
+      "owner": null,
+      "disposition": "answered",
+      "id": 1
+    },
+    {
+      "startTime": "2018-11-22 18:23:12",
+      "duration": 3600,
+      "direction": "outbound",
+      "caller": "102",
+      "callee": "+34676896561",
+      "owner": null,
+      "disposition": "answered",
+      "id": 2
+    },
+    {
+      "startTime": "2019-10-10 12:32:12",
+      "duration": 3600,
+      "direction": "outbound",
+      "caller": "103",
+      "callee": "+34676896564",
+      "owner": null,
+      "disposition": "answered",
+      "id": 3
+    }
+  ]
+}

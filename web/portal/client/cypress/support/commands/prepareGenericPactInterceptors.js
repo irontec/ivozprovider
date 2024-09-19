@@ -33,7 +33,7 @@ import LocutionCollection from '../../fixtures/Locution/getCollection.json';
 import MatchListCollection from '../../fixtures/MatchList/getCollection.json';
 import MatchListPatternCollection from '../../fixtures/MatchListPattern/getCollection.json';
 import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json';
-import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
+import ActiveCallsCollection from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
@@ -56,6 +56,7 @@ import TimezoneCollection from '../../fixtures/TimeZone/getCollection.json';
 import TransformationRuleSetCollection from '../../fixtures/TransformationRuleSet/getCollection.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
 import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMemebersCollection.json';
+import UsersCdrsCollection from '../../fixtures/UsersCdrs/getCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
 import VoicemailMessageCollection from '../../fixtures/VoicemailMessage/getCollection.json';
 
@@ -261,7 +262,7 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   );
 
   cy.intercept('GET', '**/api/client/my/active_calls', {
-    ...ActiveCallsItem,
+    ...ActiveCallsCollection,
   }).as('getMyActiveCalls');
 
   cy.intercept('GET', '**/api/client/languages?*', {
@@ -311,4 +312,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/client/call_acl_rel_match_lists?*', {
     ...CallAclRelMatchListCollection,
   }).as('getCallAclRelMatchList');
+
+  cy.intercept('GET', '**/api/client/users_cdrs?*', {
+    ...UsersCdrsCollection,
+  }).as('getUsersCdrs');
 });
