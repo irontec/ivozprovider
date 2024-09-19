@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use DomainException;
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
@@ -355,6 +356,10 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         if ($email === '') {
             // '' is NULL (avoid triggering the UNIQUE KEY)
             $email = null;
+        }
+
+        if ($email !== null) {
+            Assertion::email($email);
         }
 
         return parent::setEmail($email);
