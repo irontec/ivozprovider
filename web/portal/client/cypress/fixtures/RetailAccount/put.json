@@ -1,0 +1,23 @@
+{
+  "request": {
+    "name": "readOnlyRetailAccount",
+    "description": "updated desc",
+    "transformationRuleSet": 1,
+    "outgoingDdi": 1
+  },
+  "response": {
+    "body": {
+      "name": "testRetailAccount",
+      "description": "updated desc",
+      "transport": "udp",
+      "password": "9rv6G1TVc-",
+      "id": 1,
+      "transformationRuleSet": 1,
+      "outgoingDdi": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

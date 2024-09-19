@@ -1,0 +1,33 @@
+{
+  "request": {
+    "name": "alice2",
+    "password": "ZGthe7E2+5",
+    "mac": null,
+    "terminalModel": 1
+  },
+  "response": {
+    "body": {
+      "name": "alice2",
+      "disallow": "all",
+      "allowAudio": "alaw",
+      "allowVideo": null,
+      "directMediaMethod": "invite",
+      "password": "ZGthe7E2+5",
+      "mac": null,
+      "lastProvisionDate": null,
+      "t38Passthrough": "no",
+      "rtpEncryption": false,
+      "id": 5,
+      "terminalModel": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
