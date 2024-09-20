@@ -29,7 +29,7 @@ export default ({ mode }) => {
             port: 3000,
             proxy: {
                 '/api': {
-                     target: 'http://backend.ivozprovider.local/',
+                     target: 'https://127.0.0.1/',
                      changeOrigin: true,
                      secure: false,
                      ws: true,
