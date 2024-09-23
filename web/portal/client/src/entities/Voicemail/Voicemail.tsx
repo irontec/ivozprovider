@@ -70,7 +70,7 @@ const properties: VoicemailProperties = {
   },
 };
 
-const columns = ['enabled', 'name', 'email'];
+const columns = ['name', 'email', 'enabled'];
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
   const { routeMapItem, entityService, row } = props;
