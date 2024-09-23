@@ -24,6 +24,7 @@ const properties: DdiProviderProperties = {
   proxyTrunk: {
     label: _('Local socket'),
     helpText: _('Local address used in SIP signalling with this DDI Provider.'),
+    default: '__null__',
   },
   mediaRelaySets: {
     label: _('Media relay Set'),
