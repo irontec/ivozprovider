@@ -67,6 +67,7 @@ const CLIENT_TYPE = {
   Wholesale: 'wholesale',
   Vpbx: 'vpbx',
 };
+let profileItem;
 
 Cypress.Commands.add(
   'prepareGenericPactInterceptors',
@@ -266,16 +267,26 @@ Cypress.Commands.add(
 
     switch (clientType) {
       case CLIENT_TYPE.Retail:
-        cy.intercept('GET', '**/api/client/my/profile', {
-          ...RetailProfileItem,
-        }).as('getMyRetailProfile');
+        profileItem = RetailProfileItem;
         break;
       default:
-        cy.intercept('GET', '**/api/client/my/profile', { ...ProfileItem }).as(
-          'getMyProfile'
-        );
+        profileItem = ProfileItem;
         break;
     }
+
+    switch (pactContextName) {
+      case 'Retail-Accounts':
+      case 'Retail-Accounts-CallForwardSetting':
+      case 'Retail-Accounts-Ddi':
+        profileItem = RetailProfileItem;
+        break;
+      default:
+        break;
+    }
+
+    cy.intercept('GET', '**/api/client/my/profile', { ...profileItem }).as(
+      'getMyProfile'
+    );
 
     cy.intercept('GET', '**/api/client/my/active_calls', {
       ...ActiveCallsCollection,
