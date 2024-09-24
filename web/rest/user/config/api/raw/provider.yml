@@ -121,8 +121,14 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
         produces:
         - 'application/json'
         tags:
-        - My
-        parameters: []
+        - My        
+        responses:
+          200:
+            description: 'Voicemails retrieved successfully'
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/Voicemail'
   properties:
     name:
       attributes:

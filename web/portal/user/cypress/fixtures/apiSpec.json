@@ -3428,7 +3428,7 @@
                 "summary": "Retrieves the collection of Voicemail resources.",
                 "responses": {
                     "200": {
-                        "description": "Voicemail collection response",
+                        "description": "Voicemails retrieved successfully",
                         "schema": {
                             "type": "array",
                             "items": {
