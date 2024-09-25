@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cd6bcf3a24eda6647590baaeb241e77",
+    "content-hash": "ec6b0f7f2515416c178026215644753e",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2801,11 +2801,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.6.10",
+            "version": "2.6.11",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "b6e3085fca9ece1f526b3488930c6decde453030"
+                "reference": "636c031a5b496f810ec13937df816d56fa11e8fb"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
