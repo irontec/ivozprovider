@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed972d135a07e1dc54fec469d8b9cd49",
+    "content-hash": "75d32f7b9780183417197e7595b10377",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2154,11 +2154,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.10.7",
+            "version": "4.10.8",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "7c390992fb0f56c87ab701959cf6f93a50b4bfd5"
+                "reference": "c2e9efd75ae21b0d6c78e0ee0b693551fb7d5078"
             },
             "require": {
                 "api-platform/core": "2.6.*",
@@ -2218,15 +2218,15 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.8.5",
+            "version": "4.8.6",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "f6939a927e198c7984b055f24156bd474190b691"
+                "reference": "ba767bf1b2a42ea19f95756845f29c26f0ff5a9f"
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.12",
-                "irontec/ivoz-api": "^4.10.7",
+                "irontec/ivoz-api": "^4.10.8",
                 "irontec/ivoz-core-bundle": "^4.7",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",
@@ -2390,11 +2390,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.6.9",
+            "version": "2.6.11",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "99181376dd6f7962060c329639669e119ae0aec6"
+                "reference": "057f265bf9ff5cd675ac4ca978090c3f11995c25"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
