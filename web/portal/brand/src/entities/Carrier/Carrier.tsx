@@ -81,6 +81,7 @@ const properties: CarrierProperties = {
   proxyTrunk: {
     label: _('Local socket'),
     helpText: _('Local address used in SIP signalling with this carrier.'),
+    default: '__null__',
   },
 };
 
