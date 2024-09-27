@@ -23,6 +23,11 @@ Feature: Retrieve applicationServers
               "ip": "127.1.1.1",
               "name": "test001",
               "id": 2
+          },
+          {
+              "ip": "127.1.1.2",
+              "name": "test002",
+              "id": 3
           }
       ]
       """
