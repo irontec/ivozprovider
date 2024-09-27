@@ -9,9 +9,12 @@ import {
 describe('in Administrator', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('residential-client-administrator');
-    cy.before('residential');
+    cy.before();
+    cy.contains('Clients').click();
+    cy.contains('Residentials').click();
 
-    cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.get('header').should('contain', 'Residentials');
+    cy.get('td button svg[data-testid="MoreHorizIcon"]').eq(2).click();
     cy.get('li.MuiMenuItem-root')
       .contains(/^Client's Administrators$/)
       .click();

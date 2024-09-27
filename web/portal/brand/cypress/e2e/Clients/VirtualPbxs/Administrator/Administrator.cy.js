@@ -10,7 +10,9 @@ describe('in Administrator', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('vpbx-client-administrator');
     cy.before('vpbx');
-
+    cy.contains('Clients').click();
+    cy.contains('Virtual PBXs').click();
+    cy.get('header').should('contain', 'Virtual PBXs');
     cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
     cy.get('li.MuiMenuItem-root')
       .contains(/^Client's Administrators$/)
