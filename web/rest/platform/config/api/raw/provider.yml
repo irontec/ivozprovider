@@ -218,6 +218,21 @@ Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
     order:
       name: ASC
 
+Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet:
+  itemOperations:
+    get: ~
+    put:
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetDto::CONTEXT_DETAILED
+    delete: ~
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
+    normalization_context:
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetDto::CONTEXT_DETAILED
+      ]
+
 Ivoz\Provider\Domain\Model\BrandService\BrandService:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
