@@ -97,8 +97,8 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
 
 Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
   itemOperations:
-    get:
-    put:
+    get: ~
+    put: ~
   collectionOperations:
     get_my_company_voicemails:
       method: 'GET'

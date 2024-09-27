@@ -70,7 +70,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
   return DefaultChildDecorator(props);
 };
 
-const columns = ['enabled', 'name', 'email'];
+const columns = ['name', 'email', 'enabled'];
 
 const voicemail: EntityInterface = {
   ...defaultEntityBehavior,
