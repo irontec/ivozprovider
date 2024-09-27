@@ -1049,6 +1049,686 @@
                 }
             }
         },
+        "/application_server_set_rel_application_servers": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getApplicationServerSetRelApplicationServerCollection",
+                "summary": "Retrieves the collection of ApplicationServerSetRelApplicationServer resources.",
+                "responses": {
+                    "200": {
+                        "description": "ApplicationServerSetRelApplicationServer collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ApplicationServerSetRelApplicationServer-collection"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "applicationServer",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "applicationServer[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServer[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[applicationServerSet]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[applicationServer]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_itemsPerPage",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of items per page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "_page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: _properties[]={propertyName}&_properties[]={anotherPropertyName}&_properties[{nestedPropertyParent}][]={nestedProperty}",
+                        "name": "_properties[]",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false,
+                        "collectionFormat": "multi"
+                    }
+                ]
+            },
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "postApplicationServerSetRelApplicationServerCollection",
+                "summary": "Creates a ApplicationServerSetRelApplicationServer resource.",
+                "responses": {
+                    "201": {
+                        "description": "ApplicationServerSetRelApplicationServer resource created",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSetRelApplicationServer"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "applicationServerSetRelApplicationServer",
+                        "in": "body",
+                        "description": "The new ApplicationServerSetRelApplicationServer resource",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSetRelApplicationServer"
+                        }
+                    }
+                ]
+            }
+        },
+        "/application_server_set_rel_application_servers/{id}": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getApplicationServerSetRelApplicationServerItem",
+                "summary": "Retrieves a ApplicationServerSetRelApplicationServer resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ApplicationServerSetRelApplicationServer resource response",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSetRelApplicationServer-detailed"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "putApplicationServerSetRelApplicationServerItem",
+                "summary": "Replaces the ApplicationServerSetRelApplicationServer resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSetRelApplicationServer",
+                        "in": "body",
+                        "description": "The updated ApplicationServerSetRelApplicationServer resource",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSetRelApplicationServer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ApplicationServerSetRelApplicationServer resource updated",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSetRelApplicationServer"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "deleteApplicationServerSetRelApplicationServerItem",
+                "summary": "Removes the ApplicationServerSetRelApplicationServer resource.",
+                "responses": {
+                    "204": {
+                        "description": "ApplicationServerSetRelApplicationServer resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_rmAlso[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/application_server_sets": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getApplicationServerSetCollection",
+                "summary": "Retrieves the collection of ApplicationServerSet resources.",
+                "responses": {
+                    "200": {
+                        "description": "ApplicationServerSet collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ApplicationServerSet-collection"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "description[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exists[description]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[description]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[distributeMethod]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_itemsPerPage",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of items per page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "_page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: _properties[]={propertyName}&_properties[]={anotherPropertyName}&_properties[{nestedPropertyParent}][]={nestedProperty}",
+                        "name": "_properties[]",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false,
+                        "collectionFormat": "multi"
+                    }
+                ]
+            },
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "postApplicationServerSetCollection",
+                "summary": "Creates a ApplicationServerSet resource.",
+                "responses": {
+                    "201": {
+                        "description": "ApplicationServerSet resource created",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSet"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "applicationServerSet",
+                        "in": "body",
+                        "description": "The new ApplicationServerSet resource",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSet"
+                        }
+                    }
+                ]
+            }
+        },
+        "/application_server_sets/{id}": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getApplicationServerSetItem",
+                "summary": "Retrieves a ApplicationServerSet resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ApplicationServerSet resource response",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSet-detailed"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "putApplicationServerSetItem",
+                "summary": "Replaces the ApplicationServerSet resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet",
+                        "in": "body",
+                        "description": "The updated ApplicationServerSet resource",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSet"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ApplicationServerSet resource updated",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSet"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "deleteApplicationServerSetItem",
+                "summary": "Removes the ApplicationServerSet resource.",
+                "responses": {
+                    "204": {
+                        "description": "ApplicationServerSet resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_rmAlso[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
         "/application_servers": {
             "get": {
                 "produces": [
@@ -14552,6 +15232,195 @@
                     "description": "",
                     "type": "integer",
                     "readOnly": true
+                }
+            }
+        },
+        "ApplicationServerSet": {
+            "type": "object",
+            "required": [
+                "name",
+                "distributeMethod"
+            ],
+            "properties": {
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "distributeMethod": {
+                    "default": "hash",
+                    "enum": [
+                        "rr",
+                        "hash"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "hash",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "applicationServers": {
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "ApplicationServerSet-collection": {
+            "type": "object",
+            "required": [
+                "name",
+                "distributeMethod"
+            ],
+            "properties": {
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "distributeMethod": {
+                    "default": "hash",
+                    "enum": [
+                        "rr",
+                        "hash"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "hash",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                }
+            }
+        },
+        "ApplicationServerSet-detailed": {
+            "type": "object",
+            "required": [
+                "name",
+                "distributeMethod"
+            ],
+            "properties": {
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "distributeMethod": {
+                    "default": "hash",
+                    "enum": [
+                        "rr",
+                        "hash"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "hash",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "applicationServers": {
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "ApplicationServerSetRelApplicationServer": {
+            "type": "object",
+            "required": [
+                "applicationServer",
+                "applicationServerSet"
+            ],
+            "properties": {
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "applicationServer": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "applicationServerSet": {
+                    "description": "",
+                    "type": "integer"
+                }
+            }
+        },
+        "ApplicationServerSetRelApplicationServer-collection": {
+            "type": "object",
+            "required": [
+                "applicationServer",
+                "applicationServerSet"
+            ],
+            "properties": {
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "applicationServer": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "applicationServerSet": {
+                    "description": "",
+                    "type": "integer"
+                }
+            }
+        },
+        "ApplicationServerSetRelApplicationServer-detailed": {
+            "type": "object",
+            "required": [
+                "applicationServer",
+                "applicationServerSet"
+            ],
+            "properties": {
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "applicationServer": {
+                    "$ref": "#/definitions/ApplicationServer"
+                },
+                "applicationServerSet": {
+                    "$ref": "#/definitions/ApplicationServerSet"
                 }
             }
         },
