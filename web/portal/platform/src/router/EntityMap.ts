@@ -142,6 +142,9 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.ApplicationServer,
         },
+        {
+          entity: entities.ApplicationServerSet,
+        },
       ],
     },
     {
