@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Voicemail;
 
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
@@ -35,4 +36,9 @@ interface VoicemailRepository extends ObjectRepository, Selectable
      * @return   int[]
      */
     public function getGenericVoicemailIds(): array;
+
+    /**
+     * @return QueryBuilder
+     */
+    public function prepareAndJoinByUser(UserInterface $user): QueryBuilder;
 }

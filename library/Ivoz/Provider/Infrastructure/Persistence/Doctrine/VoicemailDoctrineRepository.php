@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
@@ -102,5 +103,20 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
         );
 
         return $result;
+    }
+
+    public function prepareAndJoinByUser(UserInterface $user): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        return $qb
+            ->select('self')
+            ->where(
+                $qb->expr()->eq('self.user', $user->getId())
+            )
+            ->leftJoin('Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUser', 'vru', 'WITH', 'vru.voicemail = self.id')
+            ->where('self.user = :userId')
+            ->orWhere('vru.user = :userId')
+            ->setParameter('userId', $user->getId());
     }
 }
