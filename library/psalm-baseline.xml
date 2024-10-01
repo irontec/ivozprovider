@@ -1340,6 +1340,35 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/ApplicationServerSet/ApplicationServerSetAbstract.php">
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/ApplicationServerSet/ApplicationServerSetTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/ApplicationServerSetRelApplicationServer/ApplicationServerSetRelApplicationServer.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>ApplicationServerSetRelApplicationServer</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/ApplicationServerSetRelApplicationServer/ApplicationServerSetRelApplicationServerAbstract.php">
+    <MixedArgument occurrences="4">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServer())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServer())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServerSet())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServerSet())</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1">
+      <code>new static()</code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/ApplicationServerSetRelApplicationServer/ApplicationServerSetRelApplicationServerTrait.php">
+    <TooManyArguments occurrences="1">
+      <code>parent::__construct(...func_get_args())</code>
+    </TooManyArguments>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/BalanceMovement/BalanceMovementAbstract.php">
     <MixedArgument occurrences="4">
       <code>$fkTransformer-&gt;transform($dto-&gt;getCarrier())</code>
@@ -4458,6 +4487,11 @@
     </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Service/ApplicationServer/ApplicationServerLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/ApplicationServerSet/ApplicationServerSetLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
