@@ -11,3 +11,4 @@ Sections in this group list the components of the platform and are not meant to 
     proxy_trunks
     media_relay_sets
     application_servers
+    application_server_sets
