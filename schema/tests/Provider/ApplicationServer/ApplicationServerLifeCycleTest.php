@@ -40,7 +40,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
         $asDto = new ApplicationServerDto();
         $asDto
             ->setIp('127.2.2.2')
-            ->setName('test002');
+            ->setName('test0002');
 
         /** @var ApplicationServer $as */
         $as = $this
@@ -123,8 +123,8 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
                 'flags' => 0,
                 'priority' => 0,
                 'attrs' => '',
-                'description' => 'test002',
-                'applicationServerId' => 3,
+                'description' => 'test0002',
+                'applicationServerId' => 4,
                 'id' => 3,
             ]
         );
