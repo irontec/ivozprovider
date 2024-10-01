@@ -40,7 +40,9 @@ class GetLogoPath
         );
 
         $baseName = $webPortalDto->getLogoBaseName();
-        if ($logoName !== $baseName) {
+        $decodedLogoName = urldecode($logoName);
+
+        if ($decodedLogoName !== $baseName) {
             throw new \RuntimeException(
                 'Logo name missmatch',
                 404
