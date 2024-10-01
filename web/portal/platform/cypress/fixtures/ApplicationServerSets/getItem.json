@@ -1,0 +1,13 @@
+{
+  "body": {
+    "name": "BlueApSet",
+    "distributeMethod": "hash",
+    "description": "An Application Server Set",
+    "id": 1,
+    "applicationServers": []
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

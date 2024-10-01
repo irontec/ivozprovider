@@ -1,5 +1,7 @@
 import AdministratorCollection from '../../fixtures/Administrator/getCollection.json';
 import apiSpec from '../../fixtures/apiSpec.json';
+import ApplicationServer from '../../fixtures/ApplicationServer/getCollection.json';
+import ApplicationServerSet from '../../fixtures/ApplicationServerSets/getCollection.json';
 import InvoiceTemplateCollection from '../../fixtures/InvoiceTemplate/getCollection.json';
 import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
@@ -58,4 +60,12 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/platform/web_portals*', {
     ...WebPortal,
   }).as('getWebPortals');
+
+  cy.intercept('GET', '**/api/platform/application_server_sets*', {
+    ...ApplicationServerSet,
+  }).as('getApplicationServerSets');
+
+  cy.intercept('GET', '**/api/platform/application_servers*', {
+    ...ApplicationServer,
+  }).as('getApplicationServers');
 });

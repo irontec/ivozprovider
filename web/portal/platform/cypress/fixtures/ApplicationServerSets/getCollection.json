@@ -1,0 +1,29 @@
+{
+  "body": [
+    {
+      "name": "default",
+      "distributeMethod": "hash",
+      "description": "Default application server set",
+      "id": 0
+    },
+    {
+      "name": "BlueApSet",
+      "distributeMethod": "hash",
+      "description": "An Application Server Set",
+      "id": 1
+    },
+    {
+      "name": "GreenApSet",
+      "distributeMethod": "rr",
+      "description": "Another Application Server Set",
+      "id": 2
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/platform/application_server_sets?_page=1",
+    "x-last-page": "/api/platform/application_server_sets?_page=1",
+    "x-next-page": "/api/platform/application_server_sets?_page=1",
+    "x-total-items": "3",
+    "x-total-pages": "1"
+  }
+}
