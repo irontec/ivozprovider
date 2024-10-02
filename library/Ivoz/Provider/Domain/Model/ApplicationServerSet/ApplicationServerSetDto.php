@@ -37,7 +37,7 @@ class ApplicationServerSetDto extends ApplicationServerSetDtoAbstract
             $role
         );
 
-       $response['applicationServers'] = $this->applicationServers;
+        $response['applicationServers'] = $this->applicationServers;
 
         return $response;
     }
