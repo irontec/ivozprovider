@@ -45,8 +45,19 @@ Cypress.Commands.add('fillTheForm', (values) => {
       }
 
       if (role === 'combobox') {
-        cy.get(`input[name="${idx}"]`).click().clear().type('{downArrow}');
+        if (Array.isArray(value)) {
+          value.forEach((item) => {
+            cy.get(`input[name="${idx}"]`)
+              .click({ force: true })
+              .clear()
+              .type('{downArrow}');
+            cy.get(`li[data-value=${item}]`).first().click();
+          });
 
+          return;
+        }
+
+        cy.get(`input[name="${idx}"]`).click().clear().type('{downArrow}');
         cy.get(`li[data-value=${value}]`).click();
       } else {
         cy.get(`div[id=mui-component-select-${idx}]`).click();
