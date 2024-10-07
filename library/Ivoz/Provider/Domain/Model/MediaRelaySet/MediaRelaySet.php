@@ -9,6 +9,8 @@ class MediaRelaySet extends MediaRelaySetAbstract implements MediaRelaySetInterf
 {
     use MediaRelaySetTrait;
 
+    public const DEFAULT_MEDIA_RELAY_SET = 0;
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>

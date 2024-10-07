@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 
 class CarrierDto extends CarrierDtoAbstract
 {
@@ -86,5 +87,12 @@ class CarrierDto extends CarrierDtoAbstract
             $this->status->toArray()
         );
         return $response;
+    }
+
+    public function setMediaRelaySetId(?int $id): static
+    {
+        return parent::setMediaRelaySetId(
+            $id ?? MediaRelaySet::DEFAULT_MEDIA_RELAY_SET
+        );
     }
 }
