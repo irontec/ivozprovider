@@ -1709,3 +1709,11 @@ Ivoz\Provider\Domain\Model\WebPortal\WebTheme:
         tags:
           - My
   collectionOperations: []
+
+Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
+  itemOperations: []
+  collectionOperations: []
+
+Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet:
+  itemOperations: []
+  collectionOperations: []
