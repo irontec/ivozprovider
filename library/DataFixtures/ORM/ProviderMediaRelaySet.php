@@ -25,7 +25,7 @@ class ProviderMediaRelaySet extends Fixture
         );
 
         $item0 = $manager->find(MediaRelaySet::class, 0);
-        $this->addReference('_reference_ProviderMediaRelaySet', $item0);
+        $this->addReference('_reference_ProviderMediaRelaySet0', $item0);
 
         $item1 = $this->createEntityInstance(MediaRelaySet::class);
         (function () use ($fixture) {
@@ -37,6 +37,15 @@ class ProviderMediaRelaySet extends Fixture
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        $item2 = $this->createEntityInstance(MediaRelaySet::class);
+        (function () use ($fixture) {
+            $this->setName("Test 2");
+            $this->setDescription("Not related with Brand 1");
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderMediaRelaySet2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
 
         $manager->flush();
     }

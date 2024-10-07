@@ -251,9 +251,11 @@ class CompanyLifeCycleTest extends KernelTestCase
             ->setDefaultTimezoneId(1)
             ->setBrandId(1)
             ->setDomainId(1)
-            ->setCountryId(1);
+            ->setCountryId(1)
+            ->setApplicationServerSetId(1)
+            ->setMediaRelaySetId(1);
 
-        /** @var Company $as */
+        /** @var Company $company */
         $company = $this->entityTools
             ->persistDto($companyDto, null, true);
 
@@ -282,6 +284,80 @@ class CompanyLifeCycleTest extends KernelTestCase
         $this->assertNull($company->getDomain());
     }
 
+    public function added_company_has_default_mediaRelaySetId()
+    {
+        $companyDto = new CompanyDto();
+        $companyDto
+            ->setName('ACompany')
+            ->setDomainUsers('127.3.0.1')
+            ->setInvoicingNif('12345678B')
+            ->setMaxCalls(0)
+            ->setInvoicingPostalAddress('An address')
+            ->setInvoicingPostalCode('54321')
+            ->setInvoicingTown('')
+            ->setInvoicingProvince('')
+            ->setInvoicingCountryName('')
+            ->setIpfilter(false)
+            ->setOnDemandRecord(0)
+            ->setOnDemandRecordCode('')
+            ->setExternallyextraopts('')
+            ->setRecordingsLimitEmail('')
+            ->setLanguageId(1)
+            ->setMediaRelaySetsId(null)
+            ->setDefaultTimezoneId(1)
+            ->setBrandId(1)
+            ->setDomainId(1)
+            ->setCountryId(1)
+            ->setApplicationServerSetId(1)
+            ->setMediaRelaySetId(null);
+
+        /** @var Company $company */
+        $company = $this->entityTools
+            ->persistDto($companyDto, null, true);
+
+        $this->assertEquals(
+            0,
+            $company->getMediaRelaySet()->getId()
+        );
+    }
+
+    public function added_company_has_default_applicationServerSetId()
+    {
+        $companyDto = new CompanyDto();
+        $companyDto
+            ->setName('ACompany')
+            ->setDomainUsers('127.3.0.1')
+            ->setInvoicingNif('12345678B')
+            ->setMaxCalls(0)
+            ->setInvoicingPostalAddress('An address')
+            ->setInvoicingPostalCode('54321')
+            ->setInvoicingTown('')
+            ->setInvoicingProvince('')
+            ->setInvoicingCountryName('')
+            ->setIpfilter(false)
+            ->setOnDemandRecord(0)
+            ->setOnDemandRecordCode('')
+            ->setExternallyextraopts('')
+            ->setRecordingsLimitEmail('')
+            ->setLanguageId(1)
+            ->setMediaRelaySetsId(null)
+            ->setDefaultTimezoneId(1)
+            ->setBrandId(1)
+            ->setDomainId(1)
+            ->setCountryId(1)
+            ->setApplicationServerSetId(null)
+            ->setMediaRelaySetId(1);
+
+        /** @var Company $company */
+        $company = $this->entityTools
+            ->persistDto($companyDto, null, true);
+
+        $this->assertEquals(
+            0,
+            $company->getApplicationServerSet()->getId()
+        );
+    }
+
     protected function createDto()
     {
         $companyDto = new CompanyDto();
@@ -305,7 +381,9 @@ class CompanyLifeCycleTest extends KernelTestCase
             ->setDefaultTimezoneId(1)
             ->setBrandId(1)
             ->setDomainId(1)
-            ->setCountryId(1);
+            ->setCountryId(1)
+            ->setApplicationServerSetId(0)
+            ->setMediaRelaySetId(0);
 
         return $companyDto;
     }
