@@ -142,6 +142,8 @@ Feature: Retrieve features rel brand
               "maxDailyUsageNotificationTemplate": 2,
               "accessCredentialNotificationTemplate": 5,
               "corporation": 1,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
               "featureIds": [],
               "geoIpAllowedCountries": [],
               "routingTagIds": [],

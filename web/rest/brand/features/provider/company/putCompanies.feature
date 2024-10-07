@@ -98,6 +98,8 @@ Feature: Update company
           "maxDailyUsageNotificationTemplate": 2,
           "accessCredentialNotificationTemplate": 5,
           "corporation": 1,
+          "applicationServerSet": 1,
+          "mediaRelaySet": 0,
           "featureIds": [
               3
           ],
