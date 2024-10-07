@@ -24,6 +24,9 @@ class ProviderApplicationServerSet extends Fixture implements FixtureInterface
             'INSERT INTO ApplicationServerSets (id, name, distributeMethod, description) VALUES (0, "default", "hash", "Default application server set")'
         );
 
+        $item0 = $manager->find(ApplicationServerSet::class, 0);
+        $this->addReference('_reference_ProviderApplicationServerSet0', $item0);
+
         $item1 = $this->createEntityInstance(ApplicationServerSet::class);
         (function () use ($fixture) {
             $this->setName('BlueApSet');

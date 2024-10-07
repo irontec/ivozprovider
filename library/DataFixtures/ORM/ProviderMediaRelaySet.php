@@ -25,7 +25,7 @@ class ProviderMediaRelaySet extends Fixture
         );
 
         $item0 = $manager->find(MediaRelaySet::class, 0);
-        $this->addReference('_reference_ProviderMediaRelaySet', $item0);
+        $this->addReference('_reference_ProviderMediaRelaySet0', $item0);
 
         $item1 = $this->createEntityInstance(MediaRelaySet::class);
         (function () use ($fixture) {
