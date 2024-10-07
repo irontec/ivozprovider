@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\ApplicationServerSet;
 
 use Ivoz\Core\Domain\Assert\Assertion;
-use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
-use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerInterface;
 
 /**
  * ApplicationServerSet
@@ -12,6 +10,8 @@ use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\Applicat
 class ApplicationServerSet extends ApplicationServerSetAbstract implements ApplicationServerSetInterface
 {
     use ApplicationServerSetTrait;
+
+    public const DEFAULT_APPLICATION_SERVER_SET = 0;
 
     /**
      * @codeCoverageIgnore

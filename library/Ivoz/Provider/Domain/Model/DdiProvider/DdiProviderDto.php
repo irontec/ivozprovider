@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
+
 class DdiProviderDto extends DdiProviderDtoAbstract
 {
     /**
@@ -47,5 +49,10 @@ class DdiProviderDto extends DdiProviderDtoAbstract
             $contextProperties,
             $data
         );
+    }
+
+    public function setMediaRelaySetId(?int $id): static
+    {
+        return parent::setMediaRelaySetId($id ?? MediaRelaySet::DEFAULT_MEDIA_RELAY_SET);
     }
 }
