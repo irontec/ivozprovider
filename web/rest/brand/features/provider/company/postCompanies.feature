@@ -44,7 +44,9 @@ Feature: Create companies
         "featureIds": [1],
         "geoIpAllowedCountries": [
           1
-        ]
+        ],
+        "applicationServerSet": 0,
+        "mediaRelaySet": 0
       }
       """
      Then the response status code should be 201
@@ -96,7 +98,9 @@ Feature: Create companies
               1
           ],
           "routingTagIds": [],
-          "codecIds": []
+          "codecIds": [],
+          "applicationServerSet": 0,
+          "mediaRelaySet": 0
       }
       """
 
@@ -107,47 +111,71 @@ Feature: Create companies
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
+      And the JSON should be equal to:
       """
       {
           "type": "vpbx",
           "name": "API company",
           "domainUsers": "api.irontec.com",
-          "invoicing": {
-            "nif": "1234",
-            "postalAddress": "abc",
-            "postalCode": "4848",
-            "town": "Usansolocity",
-            "province": "some",
-            "countryName": "country"
-          },
           "maxCalls": 0,
+          "maxDailyUsage": 100,
+          "currentDayUsage": 0,
+          "maxDailyUsageEmail": null,
           "ipfilter": true,
           "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
           "id": 7,
+          "invoicing": {
+              "nif": "1234",
+              "postalAddress": "abc",
+              "postalCode": "4848",
+              "town": "Usansolocity",
+              "province": "some",
+              "countryName": "country"
+          },
           "language": {
               "iden": "es",
               "id": 1,
-              "name": "~"
+              "name": {
+                  "en": "es",
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
+              }
           },
           "defaultTimezone": {
               "tz": "Europe/Andorra",
               "comment": "",
               "id": 1,
-              "label": "~",
+              "label": {
+                  "en": "",
+                  "es": "",
+                  "ca": "",
+                  "it": ""
+              },
               "country": 1
           },
           "country": {
               "code": "AD",
               "countryCode": "+376",
               "id": 1,
-              "name": "~",
-              "zone": "~"
+              "name": {
+                  "en": "Andorra",
+                  "es": "Andorra",
+                  "ca": "Andorra",
+                  "it": "Andorra"
+              },
+              "zone": {
+                  "en": "Europe",
+                  "es": "Europa",
+                  "ca": "Europa",
+                  "it": "Europe"
+              }
           },
           "currency": null,
           "transformationRuleSet": {
@@ -169,10 +197,20 @@ Feature: Create companies
           },
           "outgoingDdi": {
               "ddi": "123",
+              "ddie164": "+34123",
+              "description": "Description for DDI 123",
+              "type": "inout",
               "id": 1,
               "company": 1,
               "ddiProvider": 1,
               "country": 68
+          },
+          "outgoingDdiRule": {
+              "name": "testRule",
+              "defaultAction": "keep",
+              "id": 1,
+              "company": 1,
+              "forcedDdi": null
           },
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",
@@ -182,9 +220,27 @@ Feature: Create companies
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
-          "featureIds": [1],
+          "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "corporation": null,
+          "applicationServerSet": {
+              "name": "default",
+              "distributeMethod": "hash",
+              "description": "Default application server set",
+              "id": 0,
+              "applicationServers": null
+          },
+          "mediaRelaySet": {
+              "name": "Default",
+              "description": "Default media relay set",
+              "id": 0
+          },
+          "domainName": "api.irontec.com",
+          "featureIds": [
+              1
+          ],
           "geoIpAllowedCountries": [
-            1
+              1
           ],
           "routingTagIds": [],
           "codecIds": []
@@ -243,7 +299,9 @@ Feature: Create companies
         ],
         "codecIds": [
           1
-        ]
+        ],
+        "applicationServerSet": 1,
+        "mediaRelaySet": 1
       }
       """
      Then the response status code should be 201
@@ -255,14 +313,6 @@ Feature: Create companies
           "type": "retail",
           "name": "API retail",
           "domainUsers": "api.irontec.com",
-          "invoicing": {
-            "nif": "1234",
-            "postalAddress": "abc",
-            "postalCode": "4848",
-            "town": "Usansolocity",
-            "province": "some",
-            "countryName": "country"
-          },
           "maxCalls": 0,
           "maxDailyUsage": 100,
           "currentDayUsage": 0,
@@ -276,6 +326,14 @@ Feature: Create companies
           "balance": 0,
           "showInvoices": false,
           "id": 7,
+          "invoicing": {
+              "nif": "1234",
+              "postalAddress": "abc",
+              "postalCode": "4848",
+              "town": "Usansolocity",
+              "province": "some",
+              "countryName": "country"
+          },
           "language": 1,
           "defaultTimezone": 1,
           "country": 1,
@@ -288,6 +346,10 @@ Feature: Create companies
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "corporation": null,
+          "applicationServerSet": 1,
+          "mediaRelaySet": 1,
           "featureIds": [
               1
           ],

@@ -64,6 +64,16 @@ class CompanyTest extends KernelTestCase
                             'transformationRuleSet',
                             'in',
                             'TransformationRuleSetRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
+                        ],
+                        [
+                            'applicationServerSet',
+                            'in',
+                            'ApplicationServerSetRepository([["id","IN",["applicationServerSetsRelBrandRepository.getApplicationServerSetIdsByBrandAdmin(user)"]]])'
+                        ],
+                        [
+                            'mediaRelaySet',
+                            'in',
+                            'MediaRelaySetRepository([["id","IN",["mediaRelaySetsRelBrandRepository.getMediaRelaySetIdsByBrandAdmin(user)"]]])'
                         ]
                     ]
                 ],

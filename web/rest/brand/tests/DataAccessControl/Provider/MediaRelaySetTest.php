@@ -3,16 +3,16 @@
 namespace Tests\DataAccessControl\Provider;
 
 use Ivoz\Api\Core\Security\DataAccessControlParser;
-use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class CarrierTest extends KernelTestCase
+class MediaRelaySetTest extends KernelTestCase
 {
     use \Ivoz\Tests\AccessControlTestHelperTrait;
 
     protected function getResourceClass(): string
     {
-        return Carrier::class;
+        return MediaRelaySet::class;
     }
 
     protected function getAdminCriteria(): array
@@ -35,9 +35,9 @@ class CarrierTest extends KernelTestCase
             $accessControl,
             [
                 [
-                    'brand',
-                    'eq',
-                    'user.getBrand().getId()'
+                   'id',
+                   'in',
+                   'mediaRelaySetsRelBrandRepository.getMediaRelaySetIdsByBrandAdmin(user)'
                 ]
             ]
         );
@@ -57,25 +57,7 @@ class CarrierTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                [
-                    'and' => [
-                        [
-                            'brand',
-                            'eq',
-                            'user.getBrand().getId()'
-                        ],
-                        [
-                            'transformationRuleSet',
-                            'in',
-                            'TransformationRuleSetRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
-                        ],
-                        [
-                            'mediaRelaySet',
-                            'in',
-                            'MediaRelaySetRepository([["id","IN",["mediaRelaySetsRelBrandRepository.getMediaRelaySetIdsByBrandAdmin(user)"]]])'
-                        ]
-                    ]
-                ]
+                "FALSE"
             ]
         );
     }
