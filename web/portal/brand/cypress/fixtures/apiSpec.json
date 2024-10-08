@@ -1037,6 +1037,278 @@
                 }
             }
         },
+        "/application_server_sets": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getApplicationServerSetCollection",
+                "summary": "Retrieves the collection of ApplicationServerSet resources.",
+                "responses": {
+                    "200": {
+                        "description": "ApplicationServerSet collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ApplicationServerSet-collection"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "description[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributeMethod[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exists[description]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[description]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[distributeMethod]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_itemsPerPage",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of items per page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "_page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: _properties[]={propertyName}&_properties[]={anotherPropertyName}&_properties[{nestedPropertyParent}][]={nestedProperty}",
+                        "name": "_properties[]",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false,
+                        "collectionFormat": "multi"
+                    }
+                ]
+            }
+        },
+        "/application_server_sets/{id}": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getApplicationServerSetItem",
+                "summary": "Retrieves a ApplicationServerSet resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ApplicationServerSet resource response",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationServerSet-detailed"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
         "/balance_movements": {
             "get": {
                 "produces": [
@@ -6819,12 +7091,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[start]",
                         "in": "query",
                         "required": false,
@@ -6838,6 +7104,12 @@
                     },
                     {
                         "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6877,6 +7149,36 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "name",
@@ -7470,6 +7772,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "balance",
                         "in": "query",
                         "required": false,
@@ -7908,18 +8222,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalAddress[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalAddress[end]",
                         "in": "query",
                         "required": false,
@@ -7932,6 +8234,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalCode",
                         "in": "query",
                         "required": false,
@@ -7939,6 +8253,12 @@
                     },
                     {
                         "name": "invoicing.postalCode[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -7962,12 +8282,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalCode[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.province",
                         "in": "query",
                         "required": false,
@@ -7975,18 +8289,6 @@
                     },
                     {
                         "name": "invoicing.province[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.province[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.province[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8004,6 +8306,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.province[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.town",
                         "in": "query",
                         "required": false,
@@ -8011,6 +8325,12 @@
                     },
                     {
                         "name": "invoicing.town[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8029,12 +8349,6 @@
                     },
                     {
                         "name": "invoicing.town[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8118,6 +8432,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -8136,6 +8462,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -8143,12 +8475,6 @@
                     },
                     {
                         "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8220,18 +8546,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "type[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "type[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "type[start]",
                         "in": "query",
                         "required": false,
@@ -8239,6 +8553,18 @@
                     },
                     {
                         "name": "type[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10928,12 +11254,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[start]",
                         "in": "query",
                         "required": false,
@@ -10947,6 +11267,12 @@
                     },
                     {
                         "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10976,6 +11302,36 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -10988,6 +11344,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -10995,12 +11357,6 @@
                     },
                     {
                         "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -17042,6 +17398,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company.applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.balance",
                         "in": "query",
                         "required": false,
@@ -17145,6 +17507,12 @@
                     },
                     {
                         "name": "company.maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "company.mediaRelaySet",
                         "in": "query",
                         "required": false,
                         "type": "integer"
@@ -17294,12 +17662,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
@@ -17313,6 +17675,12 @@
                     },
                     {
                         "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -21290,6 +21658,232 @@
                         "type": "string"
                     }
                 ]
+            }
+        },
+        "/media_relay_sets": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getMediaRelaySetCollection",
+                "summary": "Retrieves the collection of MediaRelaySet resources.",
+                "responses": {
+                    "200": {
+                        "description": "MediaRelaySet collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/MediaRelaySet-collection"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "description[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exists[description]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[description]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_itemsPerPage",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of items per page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "_page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: _properties[]={propertyName}&_properties[]={anotherPropertyName}&_properties[{nestedPropertyParent}][]={nestedProperty}",
+                        "name": "_properties[]",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false,
+                        "collectionFormat": "multi"
+                    }
+                ]
+            }
+        },
+        "/media_relay_sets/{id}": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getMediaRelaySetItem",
+                "summary": "Retrieves a MediaRelaySet resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "MediaRelaySet resource response",
+                        "schema": {
+                            "$ref": "#/definitions/MediaRelaySet-detailed"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
             }
         },
         "/music_on_holds": {
@@ -26933,6 +27527,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company.applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.balance",
                         "in": "query",
                         "required": false,
@@ -27036,6 +27636,12 @@
                     },
                     {
                         "name": "company.maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "company.mediaRelaySet",
                         "in": "query",
                         "required": false,
                         "type": "integer"
@@ -27221,12 +27827,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -27240,6 +27840,12 @@
                     },
                     {
                         "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -27917,6 +28523,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company.applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.balance",
                         "in": "query",
                         "required": false,
@@ -28025,6 +28637,12 @@
                         "type": "integer"
                     },
                     {
+                        "name": "company.mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.name",
                         "in": "query",
                         "required": false,
@@ -28097,6 +28715,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description[neq]",
                         "in": "query",
                         "required": false,
@@ -28115,12 +28739,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "directConnectivity",
                         "in": "query",
                         "required": false,
@@ -28128,12 +28746,6 @@
                     },
                     {
                         "name": "directConnectivity[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "directConnectivity[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -28152,6 +28764,12 @@
                     },
                     {
                         "name": "directConnectivity[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "directConnectivity[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -31592,6 +32210,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company.applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.balance",
                         "in": "query",
                         "required": false,
@@ -31695,6 +32319,12 @@
                     },
                     {
                         "name": "company.maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "company.mediaRelaySet",
                         "in": "query",
                         "required": false,
                         "type": "integer"
@@ -31826,6 +32456,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[partial]",
                         "in": "query",
                         "required": false,
@@ -31839,12 +32475,6 @@
                     },
                     {
                         "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35690,6 +36320,123 @@
                 }
             }
         },
+        "ApplicationServerSet": {
+            "type": "object",
+            "required": [
+                "name",
+                "distributeMethod"
+            ],
+            "properties": {
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "distributeMethod": {
+                    "default": "hash",
+                    "enum": [
+                        "rr",
+                        "hash"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "hash",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "applicationServers": {
+                    "description": ""
+                }
+            }
+        },
+        "ApplicationServerSet-collection": {
+            "type": "object",
+            "required": [
+                "name",
+                "distributeMethod"
+            ],
+            "properties": {
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "distributeMethod": {
+                    "default": "hash",
+                    "enum": [
+                        "rr",
+                        "hash"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "hash",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                }
+            }
+        },
+        "ApplicationServerSet-detailed": {
+            "type": "object",
+            "required": [
+                "name",
+                "distributeMethod"
+            ],
+            "properties": {
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "distributeMethod": {
+                    "default": "hash",
+                    "enum": [
+                        "rr",
+                        "hash"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "hash",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "applicationServers": {
+                    "description": ""
+                }
+            }
+        },
         "BalanceMovement-collection": {
             "type": "object",
             "properties": {
@@ -37027,7 +37774,8 @@
             "required": [
                 "description",
                 "name",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -37069,6 +37817,14 @@
                     "type": "integer"
                 },
                 "proxyTrunk": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySets": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
                     "description": "",
                     "type": "integer"
                 }
@@ -37130,7 +37886,8 @@
             "required": [
                 "description",
                 "name",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -37171,6 +37928,12 @@
                 },
                 "proxyTrunk": {
                     "$ref": "#/definitions/ProxyTrunk"
+                },
+                "mediaRelaySets": {
+                    "$ref": "#/definitions/MediaRelaySet"
+                },
+                "mediaRelaySet": {
+                    "$ref": "#/definitions/MediaRelaySet"
                 }
             }
         },
@@ -37552,7 +38315,9 @@
                 "allowRecordingRemoval",
                 "billingMethod",
                 "country",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "type": {
@@ -37722,6 +38487,14 @@
                     "description": "",
                     "type": "integer"
                 },
+                "applicationServerSet": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
+                    "description": "",
+                    "type": "integer"
+                },
                 "featureIds": {
                     "description": "Active feature ids",
                     "type": "array",
@@ -37758,7 +38531,9 @@
                 "name",
                 "type",
                 "billingMethod",
-                "maxDailyUsage"
+                "maxDailyUsage",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "id": {
@@ -37842,6 +38617,10 @@
                     "description": "Active, inactive or unavailable",
                     "type": "string"
                 },
+                "applicationServerSet": {
+                    "description": "",
+                    "type": "integer"
+                },
                 "domainName": {
                     "readOnly": true,
                     "description": "Registration domain",
@@ -37878,6 +38657,10 @@
                 "corporation": {
                     "description": "",
                     "type": "integer"
+                },
+                "mediaRelaySet": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -37891,7 +38674,9 @@
                 "allowRecordingRemoval",
                 "billingMethod",
                 "country",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "type": {
@@ -38046,6 +38831,12 @@
                 },
                 "corporation": {
                     "$ref": "#/definitions/Corporation"
+                },
+                "applicationServerSet": {
+                    "$ref": "#/definitions/ApplicationServerSet"
+                },
+                "mediaRelaySet": {
+                    "$ref": "#/definitions/MediaRelaySet"
                 },
                 "domainName": {
                     "readOnly": true,
@@ -38765,7 +39556,8 @@
             "required": [
                 "description",
                 "name",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -38790,6 +39582,14 @@
                     "type": "integer"
                 },
                 "proxyTrunk": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySets": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
                     "description": "",
                     "type": "integer"
                 }
@@ -38835,7 +39635,8 @@
             "required": [
                 "description",
                 "name",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -38860,6 +39661,12 @@
                 },
                 "proxyTrunk": {
                     "$ref": "#/definitions/ProxyTrunk"
+                },
+                "mediaRelaySets": {
+                    "$ref": "#/definitions/MediaRelaySet"
+                },
+                "mediaRelaySet": {
+                    "$ref": "#/definitions/MediaRelaySet"
                 }
             }
         },
@@ -41801,6 +42608,81 @@
                 "type",
                 "matchList"
             ]
+        },
+        "MediaRelaySet": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                }
+            }
+        },
+        "MediaRelaySet-collection": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                }
+            }
+        },
+        "MediaRelaySet-detailed": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                }
+            }
         },
         "MusicOnHold": {
             "type": "object",
