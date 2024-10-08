@@ -23,6 +23,8 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrandInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 
 /**
@@ -284,6 +286,34 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      * @return array<array-key, OutgoingRoutingInterface>
      */
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
+
+    public function addRelApplicationServerSet(ApplicationServerSetsRelBrandInterface $relApplicationServerSet): BrandInterface;
+
+    public function removeRelApplicationServerSet(ApplicationServerSetsRelBrandInterface $relApplicationServerSet): BrandInterface;
+
+    /**
+     * @param Collection<array-key, ApplicationServerSetsRelBrandInterface> $relApplicationServerSets
+     */
+    public function replaceRelApplicationServerSets(Collection $relApplicationServerSets): BrandInterface;
+
+    /**
+     * @return array<array-key, ApplicationServerSetsRelBrandInterface>
+     */
+    public function getRelApplicationServerSets(?Criteria $criteria = null): array;
+
+    public function addRelMediaRelaySet(MediaRelaySetsRelBrandInterface $relMediaRelaySet): BrandInterface;
+
+    public function removeRelMediaRelaySet(MediaRelaySetsRelBrandInterface $relMediaRelaySet): BrandInterface;
+
+    /**
+     * @param Collection<array-key, MediaRelaySetsRelBrandInterface> $relMediaRelaySets
+     */
+    public function replaceRelMediaRelaySets(Collection $relMediaRelaySets): BrandInterface;
+
+    /**
+     * @return array<array-key, MediaRelaySetsRelBrandInterface>
+     */
+    public function getRelMediaRelaySets(?Criteria $criteria = null): array;
 
     /**
      * @return void
