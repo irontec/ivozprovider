@@ -23,7 +23,7 @@
           "email": "post-test@example.com",
           "active": true,
           "restricted": "0",
-          "company": 1,
+          "company": 4,
           "timezone": "8",
           "username": "post-test",
           "name": "post",
