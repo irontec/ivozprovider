@@ -6819,12 +6819,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[start]",
                         "in": "query",
                         "required": false,
@@ -6838,6 +6832,12 @@
                     },
                     {
                         "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6877,6 +6877,36 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "name",
@@ -7470,6 +7500,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "balance",
                         "in": "query",
                         "required": false,
@@ -7908,18 +7950,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalAddress[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalAddress[end]",
                         "in": "query",
                         "required": false,
@@ -7932,6 +7962,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalCode",
                         "in": "query",
                         "required": false,
@@ -7939,6 +7981,12 @@
                     },
                     {
                         "name": "invoicing.postalCode[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -7962,12 +8010,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalCode[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.province",
                         "in": "query",
                         "required": false,
@@ -7975,18 +8017,6 @@
                     },
                     {
                         "name": "invoicing.province[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.province[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.province[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8004,6 +8034,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.province[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.town",
                         "in": "query",
                         "required": false,
@@ -8011,6 +8053,12 @@
                     },
                     {
                         "name": "invoicing.town[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8029,12 +8077,6 @@
                     },
                     {
                         "name": "invoicing.town[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8118,6 +8160,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -8136,6 +8190,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -8143,12 +8203,6 @@
                     },
                     {
                         "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8220,18 +8274,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "type[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "type[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "type[start]",
                         "in": "query",
                         "required": false,
@@ -8239,6 +8281,18 @@
                     },
                     {
                         "name": "type[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10928,12 +10982,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[start]",
                         "in": "query",
                         "required": false,
@@ -10947,6 +10995,12 @@
                     },
                     {
                         "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10976,6 +11030,36 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySets[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -10988,6 +11072,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -10995,12 +11085,6 @@
                     },
                     {
                         "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -17042,6 +17126,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company.applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.balance",
                         "in": "query",
                         "required": false,
@@ -17145,6 +17235,12 @@
                     },
                     {
                         "name": "company.maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "company.mediaRelaySet",
                         "in": "query",
                         "required": false,
                         "type": "integer"
@@ -17294,12 +17390,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
@@ -17313,6 +17403,12 @@
                     },
                     {
                         "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -26933,6 +27029,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company.applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.balance",
                         "in": "query",
                         "required": false,
@@ -27036,6 +27138,12 @@
                     },
                     {
                         "name": "company.maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "company.mediaRelaySet",
                         "in": "query",
                         "required": false,
                         "type": "integer"
@@ -27221,12 +27329,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -27240,6 +27342,12 @@
                     },
                     {
                         "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -27917,6 +28025,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company.applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.balance",
                         "in": "query",
                         "required": false,
@@ -28025,6 +28139,12 @@
                         "type": "integer"
                     },
                     {
+                        "name": "company.mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.name",
                         "in": "query",
                         "required": false,
@@ -28097,6 +28217,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description[neq]",
                         "in": "query",
                         "required": false,
@@ -28115,12 +28241,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "directConnectivity",
                         "in": "query",
                         "required": false,
@@ -28128,12 +28248,6 @@
                     },
                     {
                         "name": "directConnectivity[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "directConnectivity[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -28152,6 +28266,12 @@
                     },
                     {
                         "name": "directConnectivity[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "directConnectivity[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -31592,6 +31712,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "company.applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.balance",
                         "in": "query",
                         "required": false,
@@ -31695,6 +31821,12 @@
                     },
                     {
                         "name": "company.maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "company.mediaRelaySet",
                         "in": "query",
                         "required": false,
                         "type": "integer"
@@ -31826,6 +31958,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[partial]",
                         "in": "query",
                         "required": false,
@@ -31839,12 +31977,6 @@
                     },
                     {
                         "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35690,6 +35822,46 @@
                 }
             }
         },
+        "ApplicationServerSet": {
+            "type": "object",
+            "required": [
+                "name",
+                "distributeMethod"
+            ],
+            "properties": {
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "distributeMethod": {
+                    "default": "hash",
+                    "enum": [
+                        "rr",
+                        "hash"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "hash",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "applicationServers": {
+                    "description": ""
+                }
+            }
+        },
         "BalanceMovement-collection": {
             "type": "object",
             "properties": {
@@ -37027,7 +37199,8 @@
             "required": [
                 "description",
                 "name",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -37069,6 +37242,14 @@
                     "type": "integer"
                 },
                 "proxyTrunk": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySets": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
                     "description": "",
                     "type": "integer"
                 }
@@ -37130,7 +37311,8 @@
             "required": [
                 "description",
                 "name",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -37171,6 +37353,12 @@
                 },
                 "proxyTrunk": {
                     "$ref": "#/definitions/ProxyTrunk"
+                },
+                "mediaRelaySets": {
+                    "$ref": "#/definitions/MediaRelaySet"
+                },
+                "mediaRelaySet": {
+                    "$ref": "#/definitions/MediaRelaySet"
                 }
             }
         },
@@ -37552,7 +37740,9 @@
                 "allowRecordingRemoval",
                 "billingMethod",
                 "country",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "type": {
@@ -37722,6 +37912,14 @@
                     "description": "",
                     "type": "integer"
                 },
+                "applicationServerSet": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
+                    "description": "",
+                    "type": "integer"
+                },
                 "featureIds": {
                     "description": "Active feature ids",
                     "type": "array",
@@ -37758,7 +37956,9 @@
                 "name",
                 "type",
                 "billingMethod",
-                "maxDailyUsage"
+                "maxDailyUsage",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "id": {
@@ -37878,6 +38078,14 @@
                 "corporation": {
                     "description": "",
                     "type": "integer"
+                },
+                "applicationServerSet": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -37891,7 +38099,9 @@
                 "allowRecordingRemoval",
                 "billingMethod",
                 "country",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "type": {
@@ -38046,6 +38256,12 @@
                 },
                 "corporation": {
                     "$ref": "#/definitions/Corporation"
+                },
+                "applicationServerSet": {
+                    "$ref": "#/definitions/ApplicationServerSet"
+                },
+                "mediaRelaySet": {
+                    "$ref": "#/definitions/MediaRelaySet"
                 },
                 "domainName": {
                     "readOnly": true,
@@ -38765,7 +38981,8 @@
             "required": [
                 "description",
                 "name",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -38790,6 +39007,14 @@
                     "type": "integer"
                 },
                 "proxyTrunk": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySets": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
                     "description": "",
                     "type": "integer"
                 }
@@ -38835,7 +39060,8 @@
             "required": [
                 "description",
                 "name",
-                "transformationRuleSet"
+                "transformationRuleSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -38860,6 +39086,12 @@
                 },
                 "proxyTrunk": {
                     "$ref": "#/definitions/ProxyTrunk"
+                },
+                "mediaRelaySets": {
+                    "$ref": "#/definitions/MediaRelaySet"
+                },
+                "mediaRelaySet": {
+                    "$ref": "#/definitions/MediaRelaySet"
                 }
             }
         },
@@ -41801,6 +42033,31 @@
                 "type",
                 "matchList"
             ]
+        },
+        "MediaRelaySet": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "default": "",
+                    "maxLength": 32,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 200,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                }
+            }
         },
         "MusicOnHold": {
             "type": "object",
