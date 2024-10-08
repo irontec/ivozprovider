@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetAbstract">
+    <field name="name" type="string" column="name" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="distributeMethod" type="string" column="distributeMethod" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:rr|hash]</option>
+        <option name="default">hash</option>
+      </options>
+    </field>
+    <field name="description" type="string" column="description" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <unique-constraints>
+      <unique-constraint name="applicationServerSet_name" columns="name"/>
+    </unique-constraints>
+  </mapped-superclass>
+</doctrine-mapping>

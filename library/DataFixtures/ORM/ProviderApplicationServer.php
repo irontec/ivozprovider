@@ -40,6 +40,15 @@ class ProviderApplicationServer extends Fixture
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
+        $item3 = $this->createEntityInstance(ApplicationServer::class);
+        (function () use ($fixture) {
+            $this->setIp("127.1.1.2");
+            $this->setName("test002");
+        })->call($item3);
+
+        $this->addReference('_reference_ProviderApplicationServer3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
 
         $manager->flush();
     }

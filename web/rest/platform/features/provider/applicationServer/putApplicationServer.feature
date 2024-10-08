@@ -11,7 +11,7 @@ Feature: Update application servers
       And I send a "PUT" request to "/application_servers/2" with body:
       """
       {
-        "ip": "127.1.1.2",
+        "ip": "127.1.2.2",
         "name": "updatedTest001"
       }
       """
@@ -21,7 +21,7 @@ Feature: Update application servers
       And the JSON should be equal to:
       """
       {
-          "ip": "127.1.1.2",
+          "ip": "127.1.2.2",
           "name": "updatedTest001",
           "id": 2
       }
