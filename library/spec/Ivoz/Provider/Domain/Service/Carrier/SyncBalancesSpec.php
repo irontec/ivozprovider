@@ -8,6 +8,7 @@ use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
 use Ivoz\Provider\Domain\Service\Carrier\SyncBalances;
 use PhpSpec\ObjectBehavior;
@@ -154,6 +155,7 @@ class SyncBalancesSpec extends ObjectBehavior
                 'balance' => $balance,
                 'name' => 'carrier1',
                 'brand' => $this->getInstance(Brand::class),
+                'mediaRelaySet' => $this->getInstance(MediaRelaySet::class),
             ]
         );
 
