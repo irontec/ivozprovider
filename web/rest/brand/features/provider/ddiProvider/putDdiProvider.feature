@@ -27,6 +27,8 @@ Feature: Update ddi providers
             "name": "UpdateDDIProviderName",
             "id": 1,
             "transformationRuleSet": 1,
-            "proxyTrunk": 1
+            "proxyTrunk": 1,
+            "mediaRelaySets": null,
+            "mediaRelaySet": 0
         }
       """

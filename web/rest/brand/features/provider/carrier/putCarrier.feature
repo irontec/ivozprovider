@@ -29,6 +29,8 @@ Feature: Update carriers
           "id": 1,
           "transformationRuleSet": 1,
           "currency": null,
-          "proxyTrunk": 1
+          "proxyTrunk": 1,
+          "mediaRelaySets": null,
+          "mediaRelaySet": 0
       }
       """

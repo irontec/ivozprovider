@@ -74,6 +74,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $mediaRelaySets = null;
 
     /**
+     * @var MediaRelaySetDto | null
+     */
+    private $mediaRelaySet = null;
+
+    /**
      * @var OutgoingRoutingDto[] | null
      */
     private $outgoingRoutings = null;
@@ -122,7 +127,8 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'transformationRuleSetId' => 'transformationRuleSet',
             'currencyId' => 'currency',
             'proxyTrunkId' => 'proxyTrunk',
-            'mediaRelaySetsId' => 'mediaRelaySets'
+            'mediaRelaySetsId' => 'mediaRelaySets',
+            'mediaRelaySetId' => 'mediaRelaySet'
         ];
     }
 
@@ -142,6 +148,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'currency' => $this->getCurrency(),
             'proxyTrunk' => $this->getProxyTrunk(),
             'mediaRelaySets' => $this->getMediaRelaySets(),
+            'mediaRelaySet' => $this->getMediaRelaySet(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
             'outgoingRoutingsRelCarriers' => $this->getOutgoingRoutingsRelCarriers(),
             'servers' => $this->getServers(),
@@ -370,6 +377,36 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getMediaRelaySetsId(): ?int
     {
         if ($dto = $this->getMediaRelaySets()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setMediaRelaySet(?MediaRelaySetDto $mediaRelaySet): static
+    {
+        $this->mediaRelaySet = $mediaRelaySet;
+
+        return $this;
+    }
+
+    public function getMediaRelaySet(): ?MediaRelaySetDto
+    {
+        return $this->mediaRelaySet;
+    }
+
+    public function setMediaRelaySetId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new MediaRelaySetDto($id)
+            : null;
+
+        return $this->setMediaRelaySet($value);
+    }
+
+    public function getMediaRelaySetId(): ?int
+    {
+        if ($dto = $this->getMediaRelaySet()) {
             return $dto->getId();
         }
 

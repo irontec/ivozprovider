@@ -2,6 +2,8 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Company;
 
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet;
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetDto;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -10,6 +12,8 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\Language\Language;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use PhpSpec\ObjectBehavior;
 use spec\DtoToEntityFakeTransformer;
@@ -24,6 +28,8 @@ class CompanySpec extends ObjectBehavior
     protected $timezone;
     protected $language;
     protected $country;
+    protected $mediaRelaySet;
+    protected $applicationServerSet;
 
     /**
      * @var DtoToEntityFakeTransformer
@@ -56,6 +62,12 @@ class CompanySpec extends ObjectBehavior
         $countryDto = new CountryDto();
         $this->country = $this->getInstance(Country::class);
 
+        $applicationServerSetDto = new ApplicationServerSetDto();
+        $this->applicationServerSet = $this->getInstance(ApplicationServerSet::class);
+
+        $mediaRelaySetDto = new MediaRelaySetDto();
+        $this->mediaRelaySet = $this->getInstance(MediaRelaySet::class);
+
         $this->dto = $dto = new CompanyDto();
         $dto
             ->setType('vpbx')
@@ -71,11 +83,15 @@ class CompanySpec extends ObjectBehavior
             ->setCountryId(1)
             ->setDomainUsers('something')
             ->setBrand($brandDto)
-            ->setCountry($countryDto);
+            ->setCountry($countryDto)
+            ->setApplicationServerSet($applicationServerSetDto)
+            ->setMediaRelaySet($mediaRelaySetDto);
 
         $this->transformer = new DtoToEntityFakeTransformer([
             [$brandDto, $this->brand->reveal()],
             [$countryDto, $this->country],
+            [$applicationServerSetDto, $this->applicationServerSet],
+            [$mediaRelaySetDto, $this->mediaRelaySet]
         ]);
 
         $this->beConstructedThrough(

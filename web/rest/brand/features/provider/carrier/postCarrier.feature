@@ -30,8 +30,10 @@ Feature: Create carriers
             "id": 3,
             "transformationRuleSet": 1,
             "currency": null,
-            "proxyTrunk": 1
-        }
+            "proxyTrunk": 1,
+            "mediaRelaySets": null,
+            "mediaRelaySet": 0
+      }
       """
 
   Scenario: Retrieve created carrier
@@ -64,6 +66,9 @@ Feature: Create carriers
               },
               "country": 68,
               "editable": true
+          },
+          "mediaRelaySet": {
+            "id": 0
           }
       }
       """
