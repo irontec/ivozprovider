@@ -23,6 +23,7 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Corporation\CorporationInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface;
 use Ivoz\Provider\Domain\Model\Language\Language;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
@@ -36,6 +37,7 @@ use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\Corporation\Corporation;
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet;
 
 /**
 * CompanyAbstract
@@ -238,6 +240,16 @@ abstract class CompanyAbstract
     protected $corporation = null;
 
     /**
+     * @var ApplicationServerSetInterface
+     */
+    protected $applicationServerSet;
+
+    /**
+     * @var MediaRelaySetInterface
+     */
+    protected $mediaRelaySet;
+
+    /**
      * Constructor
      */
     protected function __construct(
@@ -351,6 +363,10 @@ abstract class CompanyAbstract
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $country = $dto->getCountry();
         Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
+        $applicationServerSet = $dto->getApplicationServerSet();
+        Assertion::notNull($applicationServerSet, 'getApplicationServerSet value is null, but non null value was expected.');
+        $mediaRelaySet = $dto->getMediaRelaySet();
+        Assertion::notNull($mediaRelaySet, 'getMediaRelaySet value is null, but non null value was expected.');
 
         $invoicing = new Invoicing(
             $invoicingNif,
@@ -401,7 +417,9 @@ abstract class CompanyAbstract
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
             ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()))
             ->setAccessCredentialNotificationTemplate($fkTransformer->transform($dto->getAccessCredentialNotificationTemplate()))
-            ->setCorporation($fkTransformer->transform($dto->getCorporation()));
+            ->setCorporation($fkTransformer->transform($dto->getCorporation()))
+            ->setApplicationServerSet($fkTransformer->transform($applicationServerSet))
+            ->setMediaRelaySet($fkTransformer->transform($mediaRelaySet));
 
         $self->initChangelog();
 
@@ -448,6 +466,10 @@ abstract class CompanyAbstract
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $country = $dto->getCountry();
         Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
+        $applicationServerSet = $dto->getApplicationServerSet();
+        Assertion::notNull($applicationServerSet, 'getApplicationServerSet value is null, but non null value was expected.');
+        $mediaRelaySet = $dto->getMediaRelaySet();
+        Assertion::notNull($mediaRelaySet, 'getMediaRelaySet value is null, but non null value was expected.');
 
         $invoicing = new Invoicing(
             $invoicingNif,
@@ -495,7 +517,9 @@ abstract class CompanyAbstract
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
             ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()))
             ->setAccessCredentialNotificationTemplate($fkTransformer->transform($dto->getAccessCredentialNotificationTemplate()))
-            ->setCorporation($fkTransformer->transform($dto->getCorporation()));
+            ->setCorporation($fkTransformer->transform($dto->getCorporation()))
+            ->setApplicationServerSet($fkTransformer->transform($applicationServerSet))
+            ->setMediaRelaySet($fkTransformer->transform($mediaRelaySet));
 
         return $this;
     }
@@ -547,7 +571,9 @@ abstract class CompanyAbstract
             ->setCallCsvNotificationTemplate(NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth))
             ->setMaxDailyUsageNotificationTemplate(NotificationTemplate::entityToDto(self::getMaxDailyUsageNotificationTemplate(), $depth))
             ->setAccessCredentialNotificationTemplate(NotificationTemplate::entityToDto(self::getAccessCredentialNotificationTemplate(), $depth))
-            ->setCorporation(Corporation::entityToDto(self::getCorporation(), $depth));
+            ->setCorporation(Corporation::entityToDto(self::getCorporation(), $depth))
+            ->setApplicationServerSet(ApplicationServerSet::entityToDto(self::getApplicationServerSet(), $depth))
+            ->setMediaRelaySet(MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth));
     }
 
     /**
@@ -597,7 +623,9 @@ abstract class CompanyAbstract
             'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
             'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate()?->getId(),
             'accessCredentialNotificationTemplateId' => self::getAccessCredentialNotificationTemplate()?->getId(),
-            'corporationId' => self::getCorporation()?->getId()
+            'corporationId' => self::getCorporation()?->getId(),
+            'applicationServerSetId' => self::getApplicationServerSet()->getId(),
+            'mediaRelaySetId' => self::getMediaRelaySet()->getId()
         ];
     }
 
@@ -1116,5 +1144,29 @@ abstract class CompanyAbstract
     public function getCorporation(): ?CorporationInterface
     {
         return $this->corporation;
+    }
+
+    protected function setApplicationServerSet(ApplicationServerSetInterface $applicationServerSet): static
+    {
+        $this->applicationServerSet = $applicationServerSet;
+
+        return $this;
+    }
+
+    public function getApplicationServerSet(): ApplicationServerSetInterface
+    {
+        return $this->applicationServerSet;
+    }
+
+    protected function setMediaRelaySet(MediaRelaySetInterface $mediaRelaySet): static
+    {
+        $this->mediaRelaySet = $mediaRelaySet;
+
+        return $this;
+    }
+
+    public function getMediaRelaySet(): MediaRelaySetInterface
+    {
+        return $this->mediaRelaySet;
     }
 }

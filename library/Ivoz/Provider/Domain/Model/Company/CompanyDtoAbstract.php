@@ -17,6 +17,7 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto;
 use Ivoz\Provider\Domain\Model\Corporation\CorporationDto;
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\Contact\ContactDto;
@@ -255,6 +256,16 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $corporation = null;
 
     /**
+     * @var ApplicationServerSetDto | null
+     */
+    private $applicationServerSet = null;
+
+    /**
+     * @var MediaRelaySetDto | null
+     */
+    private $mediaRelaySet = null;
+
+    /**
      * @var ExtensionDto[] | null
      */
     private $extensions = null;
@@ -383,7 +394,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate',
             'maxDailyUsageNotificationTemplateId' => 'maxDailyUsageNotificationTemplate',
             'accessCredentialNotificationTemplateId' => 'accessCredentialNotificationTemplate',
-            'corporationId' => 'corporation'
+            'corporationId' => 'corporation',
+            'applicationServerSetId' => 'applicationServerSet',
+            'mediaRelaySetId' => 'mediaRelaySet'
         ];
     }
 
@@ -438,6 +451,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'maxDailyUsageNotificationTemplate' => $this->getMaxDailyUsageNotificationTemplate(),
             'accessCredentialNotificationTemplate' => $this->getAccessCredentialNotificationTemplate(),
             'corporation' => $this->getCorporation(),
+            'applicationServerSet' => $this->getApplicationServerSet(),
+            'mediaRelaySet' => $this->getMediaRelaySet(),
             'extensions' => $this->getExtensions(),
             'ddis' => $this->getDdis(),
             'friends' => $this->getFriends(),
@@ -1305,6 +1320,66 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getCorporationId(): ?int
     {
         if ($dto = $this->getCorporation()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setApplicationServerSet(?ApplicationServerSetDto $applicationServerSet): static
+    {
+        $this->applicationServerSet = $applicationServerSet;
+
+        return $this;
+    }
+
+    public function getApplicationServerSet(): ?ApplicationServerSetDto
+    {
+        return $this->applicationServerSet;
+    }
+
+    public function setApplicationServerSetId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new ApplicationServerSetDto($id)
+            : null;
+
+        return $this->setApplicationServerSet($value);
+    }
+
+    public function getApplicationServerSetId(): ?int
+    {
+        if ($dto = $this->getApplicationServerSet()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setMediaRelaySet(?MediaRelaySetDto $mediaRelaySet): static
+    {
+        $this->mediaRelaySet = $mediaRelaySet;
+
+        return $this;
+    }
+
+    public function getMediaRelaySet(): ?MediaRelaySetDto
+    {
+        return $this->mediaRelaySet;
+    }
+
+    public function setMediaRelaySetId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new MediaRelaySetDto($id)
+            : null;
+
+        return $this->setMediaRelaySet($value);
+    }
+
+    public function getMediaRelaySetId(): ?int
+    {
+        if ($dto = $this->getMediaRelaySet()) {
             return $dto->getId();
         }
 

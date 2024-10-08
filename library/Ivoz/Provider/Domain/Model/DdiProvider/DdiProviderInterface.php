@@ -68,6 +68,8 @@ interface DdiProviderInterface extends LoggableEntityInterface
 
     public function getMediaRelaySets(): ?MediaRelaySetInterface;
 
+    public function getMediaRelaySet(): MediaRelaySetInterface;
+
     public function addDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface;
 
     public function removeDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface;
