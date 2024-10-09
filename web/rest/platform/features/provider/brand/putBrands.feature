@@ -27,7 +27,9 @@ Feature: Manage brands
         "language": 1,
         "defaultTimezone": 145,
         "features": [2],
-        "proxyTrunks": [2]
+        "proxyTrunks": [2],
+        "applicationServerSets": [1],
+        "mediaRelaySets": [1]
       }
     """
     Then the response status code should be 200
@@ -67,6 +69,12 @@ Feature: Manage brands
           ],
           "proxyTrunks": [
               2
+          ],
+          "applicationServerSets": [
+              1
+          ],
+          "mediaRelaySets": [
+              1
           ]
       }
     """
@@ -127,3 +135,44 @@ This is file content
       And I send a "GET" request to "/brands/2/logo"
      Then the response status code should be 200
       And the header "Content-Type" should be equal to "text/plain; charset=us-ascii"
+
+  @createSchema
+  Scenario: Update a brand with empty application server sets
+    Given I add Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" request to "/brands/2" with body:
+    """
+      {
+        "applicationServerSets": []
+      }
+    """
+    Then the response status code should be 403
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+    And the JSON should be like:
+    """
+    {
+      "detail": "Brand cannot be left without a corresponding Application Server Sets"
+    }
+    """
+
+  @createSchema
+  Scenario: Update a brand with empty application server sets
+    Given I add Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" request to "/brands/2" with body:
+    """
+    {
+      "mediaRelaySets": []
+    }
+    """
+    Then the response status code should be 403
+    And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+    And the JSON should be like:
+    """
+    {
+      "detail": "Brand cannot be left without a corresponding Media Relay Set"
+    }
+    """

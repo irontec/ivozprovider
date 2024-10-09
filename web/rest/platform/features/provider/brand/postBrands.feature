@@ -26,7 +26,9 @@ Feature: Manage brands
         "language": 1,
         "currency": 1,
         "features": [1,2],
-        "proxyTrunks": [1]
+        "proxyTrunks": [1],
+        "applicationServerSets": [1],
+        "mediaRelaySets": [0]
       }
     """
     Then the response status code should be 201
@@ -97,6 +99,12 @@ Feature: Manage brands
           ],
           "proxyTrunks": [
               1
+          ],
+          "applicationServerSets": [
+              1
+          ],
+          "mediaRelaySets": [
+              0
           ]
       }
     """
@@ -173,6 +181,12 @@ Feature: Manage brands
           ],
           "proxyTrunks": [
               1
+          ],
+          "applicationServerSets": [
+              1
+          ],
+          "mediaRelaySets": [
+              0
           ]
       }
     """
@@ -205,7 +219,9 @@ Content-Disposition: form-data; name="brand"
         "language": 1,
         "currency": 1,
         "features": [1],
-        "proxyTrunks": [1]
+        "proxyTrunks": [1],
+        "applicationServerSets": [1],
+        "mediaRelaySets": [0]
       }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="Logo"; filename="uploadable"
@@ -282,6 +298,12 @@ This is file content
           ],
           "proxyTrunks": [
               1
+          ],
+          "applicationServerSets": [
+              1
+          ],
+          "mediaRelaySets": [
+              0
           ]
       }
     """
@@ -292,3 +314,77 @@ This is file content
       And I send a "GET" request to "/brands/3/logo"
      Then the response status code should be 200
       And the header "Content-Type" should be equal to "text/plain; charset=us-ascii"
+
+@createSchema
+Scenario: Create a brand without applicationServerSets
+  Given I add Authorization header
+  When I add "Content-Type" header equal to "application/json"
+  And I add "Accept" header equal to "application/json"
+  And I send a "POST" request to "/brands" with body:
+    """
+      {
+        "name": "api_brand",
+        "domainUsers": "sip-api.irontec.com",
+        "invoice": {
+          "nif": "123",
+          "postalAddress": "",
+          "postalCode": "48971",
+          "town": "Bilbo",
+          "province": "Bizkaia",
+          "country": "Spain",
+          "registryData": "registryData"
+        },
+        "defaultTimezone": 145,
+        "language": 1,
+        "currency": 1,
+        "features": [1,2],
+        "proxyTrunks": [1],
+        "mediaServerSets": [0]
+      }
+    """
+  Then the response status code should be 403
+  And the response should be in JSON
+  And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+  And the JSON should be like:
+  """
+  {
+    "detail": "Application Server Sets cannot be empty"
+  }
+  """
+
+  @createSchema
+  Scenario: Create a brand without mediaServerSets
+    Given I add Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/brands" with body:
+    """
+      {
+        "name": "api_brand",
+        "domainUsers": "sip-api.irontec.com",
+        "invoice": {
+          "nif": "123",
+          "postalAddress": "",
+          "postalCode": "48971",
+          "town": "Bilbo",
+          "province": "Bizkaia",
+          "country": "Spain",
+          "registryData": "registryData"
+        },
+        "defaultTimezone": 145,
+        "language": 1,
+        "currency": 1,
+        "features": [1,2],
+        "proxyTrunks": [1],
+        "applicationServerSets": [1]
+      }
+    """
+    Then the response status code should be 403
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+    And the JSON should be like:
+    """
+    {
+      "detail": "Media Relay Sets cannot be empty"
+    }
+    """
