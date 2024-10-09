@@ -3,9 +3,11 @@
 namespace DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrand;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\Logo;
 use Ivoz\Provider\Domain\Model\Brand\Invoice;
@@ -71,7 +73,7 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
             ProviderDomain::class,
             ProviderLanguage::class,
             ProviderTimezone::class,
-            ProviderCurrency::class
+            ProviderCurrency::class,
         );
     }
 }
