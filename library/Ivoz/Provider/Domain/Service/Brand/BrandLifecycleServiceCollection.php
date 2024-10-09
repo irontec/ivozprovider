@@ -17,6 +17,11 @@ class BrandLifecycleServiceCollection implements LifecycleServiceCollectionInter
 
     /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\Brand\AvoidEmptyApplicationServerSets::class => 200,
+            \Ivoz\Provider\Domain\Service\Brand\AvoidEmptyMediaRelaySets::class => 200,
+        ],
         "post_persist" =>
         [
             \Ivoz\Provider\Domain\Service\Domain\UpdateByBrand::class => 10,

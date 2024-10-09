@@ -3,7 +3,10 @@
 namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandDto;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
+use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrandDto;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandDto;
 
 class BrandDto extends BrandDtoAbstract
@@ -31,6 +34,26 @@ class BrandDto extends BrandDtoAbstract
      * )
      */
     private $proxyTrunks = [];
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Application Server Set ids"
+     * )
+     */
+    private $applicationServerSets = [];
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Media Relay Set Ids"
+     * )
+     */
+    private $mediaRelaySets = [];
 
     /**
      * @return string[]
@@ -86,6 +109,8 @@ class BrandDto extends BrandDtoAbstract
         if ($context !== self::CONTEXT_SIMPLE) {
             $response['features'] = 'features';
             $response['proxyTrunks'] = 'proxyTrunks';
+            $response['applicationServerSets'] = 'applicationServerSets';
+            $response['mediaRelaySets'] = 'mediaRelaySets';
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -122,6 +147,8 @@ class BrandDto extends BrandDtoAbstract
 
         $response['features'] = $this->features;
         $response['proxyTrunks'] = $this->proxyTrunks;
+        $response['applicationServerSets'] = $this->applicationServerSets;
+        $response['mediaRelaySets'] = $this->mediaRelaySets;
 
         return $response;
     }
@@ -192,5 +219,40 @@ class BrandDto extends BrandDtoAbstract
         }
 
         $this->setRelProxyTrunks($relProxyTrunks);
+    }
+
+    /**
+     * @param int[] $relApplicationServerSetIds
+     */
+    public function setApplicationServerSets(array $relApplicationServerSetIds): void
+    {
+        $this->applicationServerSets = $relApplicationServerSetIds;
+
+        $relApplicationServerSets = [];
+        foreach ($relApplicationServerSetIds as $id) {
+            $dto = new ApplicationServerSetsRelBrandDto();
+            $dto->setApplicationServerSetId($id);
+            $dto->setBrandId($this->getId());
+            $relApplicationServerSets[] = $dto;
+        }
+
+        $this->setRelApplicationServerSets($relApplicationServerSets);
+    }
+
+    /**
+     * @param int[] $relMediaRelaySetIds
+     */
+    public function setMediaRelaySets(array $relMediaRelaySetIds): void
+    {
+        $this->mediaRelaySets = $relMediaRelaySetIds;
+
+        $relMediaRelaySets = [];
+        foreach ($relMediaRelaySetIds as $id) {
+            $dto = new MediaRelaySetsRelBrandDto();
+            $dto->setMediaRelaySetId($id);
+            $relMediaRelaySets[] = $dto;
+        }
+
+        $this->setRelMediaRelaySets($relMediaRelaySets);
     }
 }
