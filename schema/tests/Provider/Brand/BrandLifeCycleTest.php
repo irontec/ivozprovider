@@ -4,9 +4,11 @@ namespace Tests\Provider\Brand;
 
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Core\Domain\Model\Changelog\Changelog;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrand;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUser;
+use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrand;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup;
@@ -97,6 +99,8 @@ class BrandLifeCycleTest extends KernelTestCase
             Brand::class,
             ProxyTrunksRelBrand::class,
             CompanyRelRoutingTag::class,
+            ApplicationServerSetsRelBrand::class,
+            MediaRelaySetsRelBrand::class
         ]);
     }
 
@@ -192,6 +196,9 @@ class BrandLifeCycleTest extends KernelTestCase
             ->setLanguageId(1)
             ->setCurrencyId(1);
 
+        $brandDto->setApplicationServerSets([0]);
+        $brandDto->setMediaRelaySets([0]);
+
         /** @var Brand $brand */
         $brand = $this->entityTools
             ->persistDto($brandDto, null, true);
@@ -239,6 +246,8 @@ class BrandLifeCycleTest extends KernelTestCase
             TpDerivedCharger::class,
             RoutingPatternGroupsRelPattern::class,
             Administrator::class,
+            ApplicationServerSetsRelBrand::class,
+            MediaRelaySetsRelBrand::class
         ]);
     }
 

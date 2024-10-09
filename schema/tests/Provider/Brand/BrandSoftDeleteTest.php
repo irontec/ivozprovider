@@ -2,8 +2,10 @@
 
 namespace Tests\Provider\Brand;
 
+use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrand;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
+use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrand;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
@@ -44,6 +46,8 @@ class BrandSoftDeleteTest extends KernelTestCase
         $this->removes_brand_musicsOnHold();
         $this->removes_brand_invoices();
         $this->removes_brand_companies();
+        $this->removes_brand_application_server_sets_rel_brand();
+        $this->removes_brand_media_relay_sets_rel_brand();
     }
 
     protected function removes_brand_webPortals()
@@ -54,7 +58,7 @@ class BrandSoftDeleteTest extends KernelTestCase
 
         $this->assertCount(4, $changelog);
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < count($changelog); $i++) {
             $this->assertEquals(
                 $changelog[$i]->getData(),
                 null
@@ -70,7 +74,7 @@ class BrandSoftDeleteTest extends KernelTestCase
 
         $this->assertCount(2, $changelog);
 
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < count($changelog); $i++) {
             $this->assertEquals(
                 $changelog[$i]->getData(),
                 null
@@ -100,7 +104,39 @@ class BrandSoftDeleteTest extends KernelTestCase
 
         $this->assertCount(5, $changelog);
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < count($changelog); $i++) {
+            $this->assertEquals(
+                $changelog[$i]->getData(),
+                null
+            );
+        }
+    }
+
+    protected function removes_brand_application_server_sets_rel_brand()
+    {
+        $changelog = $this->getChangelogByClass(
+            ApplicationServerSetsRelBrand::class
+        );
+
+        $this->assertCount(2, $changelog);
+
+        for ($i = 0; $i < count($changelog); $i++) {
+            $this->assertEquals(
+                $changelog[$i]->getData(),
+                null
+            );
+        }
+    }
+
+    protected function removes_brand_media_relay_sets_rel_brand()
+    {
+        $changelog = $this->getChangelogByClass(
+            MediaRelaySetsRelBrand::class
+        );
+
+        $this->assertCount(2, $changelog);
+
+        for ($i = 0; $i < count($changelog); $i++) {
             $this->assertEquals(
                 $changelog[$i]->getData(),
                 null
