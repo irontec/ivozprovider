@@ -196,6 +196,9 @@ class BrandLifeCycleTest extends KernelTestCase
             ->setLanguageId(1)
             ->setCurrencyId(1);
 
+        $brandDto->setApplicationServerSets([0]);
+        $brandDto->setMediaRelaySets([0]);
+
         /** @var Brand $brand */
         $brand = $this->entityTools
             ->persistDto($brandDto, null, true);
@@ -243,6 +246,8 @@ class BrandLifeCycleTest extends KernelTestCase
             TpDerivedCharger::class,
             RoutingPatternGroupsRelPattern::class,
             Administrator::class,
+            ApplicationServerSetsRelBrand::class,
+            MediaRelaySetsRelBrand::class
         ]);
     }
 
