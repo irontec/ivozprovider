@@ -1,6 +1,9 @@
 import { EntityValue } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  EntityValidator,
+  EntityValidatorResponse,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AlbumIcon from '@mui/icons-material/Album';
 
@@ -64,6 +67,16 @@ const properties: BrandProperties = {
     label: _('Proxy Trunk', { count: 20 }),
     null: _('There are not associated elements'),
     $ref: '#/definitions/ProxyTrunk',
+  },
+  applicationServerSets: {
+    required: true,
+    label: _('Application Server Set', { count: 20 }),
+    $ref: '#/definitions/ApplicationServerSet',
+  },
+  mediaRelaySets: {
+    required: true,
+    label: _('Media Relay Set', { count: 20 }),
+    $ref: '#/definitions/MediaRelaySet',
   },
 };
 
