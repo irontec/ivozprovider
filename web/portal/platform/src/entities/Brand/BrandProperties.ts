@@ -24,6 +24,8 @@ export type BrandPropertyList<T> = {
   maxCalls?: T;
   currency?: T;
   impersonationUrl?: T;
+  applicationServerSets?: T;
+  mediaRelaySets?: T;
 };
 
 export type BrandProperties = BrandPropertyList<Partial<PropertySpec>>;

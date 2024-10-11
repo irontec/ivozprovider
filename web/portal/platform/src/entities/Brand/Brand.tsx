@@ -65,6 +65,16 @@ const properties: BrandProperties = {
     null: _('There are not associated elements'),
     $ref: '#/definitions/ProxyTrunk',
   },
+  applicationServerSets: {
+    required: true,
+    label: _('Application Server Set', { count: 20 }),
+    $ref: '#/definitions/ApplicationServerSet',
+  },
+  mediaRelaySets: {
+    required: true,
+    label: _('Media Relay Set', { count: 20 }),
+    $ref: '#/definitions/MediaRelaySet',
+  },
 };
 
 const Brand: EntityInterface = {
