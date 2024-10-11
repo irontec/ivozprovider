@@ -15619,6 +15619,20 @@
                     "items": {
                         "type": "integer"
                     }
+                },
+                "applicationServerSets": {
+                    "description": "Application Server Set ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "mediaRelaySets": {
+                    "description": "Media Relay Set Ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 }
             }
         },
@@ -15658,6 +15672,20 @@
                 },
                 "proxyTrunks": {
                     "description": "Active proxyTrunks ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "applicationServerSets": {
+                    "description": "Application Server Set ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "mediaRelaySets": {
+                    "description": "Media Relay Set Ids",
                     "type": "array",
                     "items": {
                         "type": "integer"
@@ -15736,6 +15764,20 @@
                 },
                 "proxyTrunks": {
                     "description": "Active proxyTrunks ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "applicationServerSets": {
+                    "description": "Application Server Set ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "mediaRelaySets": {
+                    "description": "Media Relay Set Ids",
                     "type": "array",
                     "items": {
                         "type": "integer"
