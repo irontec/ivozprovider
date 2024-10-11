@@ -1369,6 +1369,27 @@
       <code>parent::__construct(...func_get_args())</code>
     </TooManyArguments>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/ApplicationServerSetsRelBrand/ApplicationServerSetsRelBrand.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>ApplicationServerSetsRelBrand</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/ApplicationServerSetsRelBrand/ApplicationServerSetsRelBrandAbstract.php">
+    <MixedArgument occurrences="4">
+      <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
+      <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1">
+      <code>new static()</code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/ApplicationServerSetsRelBrand/ApplicationServerSetsRelBrandTrait.php">
+    <TooManyArguments occurrences="1">
+      <code>parent::__construct(...func_get_args())</code>
+    </TooManyArguments>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/BalanceMovement/BalanceMovementAbstract.php">
     <MixedArgument occurrences="4">
       <code>$fkTransformer-&gt;transform($dto-&gt;getCarrier())</code>
@@ -3404,6 +3425,27 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/MediaRelaySetsRelBrand/MediaRelaySetsRelBrand.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>MediaRelaySetsRelBrand</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/MediaRelaySetsRelBrand/MediaRelaySetsRelBrandAbstract.php">
+    <MixedArgument occurrences="4">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
+      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
+      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1">
+      <code>new static()</code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/MediaRelaySetsRelBrand/MediaRelaySetsRelBrandTrait.php">
+    <TooManyArguments occurrences="1">
+      <code>parent::__construct(...func_get_args())</code>
+    </TooManyArguments>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHold.php">
     <MethodSignatureMismatch occurrences="1">
       <code>MusicOnHold</code>
@@ -4496,6 +4538,11 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
+  <file src="Ivoz/Provider/Domain/Service/ApplicationServerSetsRelBrand/ApplicationServerSetsRelBrandEntityLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Provider/Domain/Service/BalanceNotification/BalanceNotificationLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
@@ -5152,6 +5199,11 @@
       <code>$notificationTemplateContent-&gt;getFromAddress()</code>
       <code>$notificationTemplateContent-&gt;getFromName()</code>
     </PossiblyNullArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/MediaRelaySetsRelBrand/MediaRelaySetsRelBrandLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/MusicOnHold/MusicOnHoldLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
