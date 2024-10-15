@@ -1,6 +1,8 @@
 import apiSpec from '../../fixtures/apiSpec.json';
 import CompanyExtensionsCollection from '../../fixtures/CompanyExtensions/getCollection.json';
 import CountryCollection from '../../fixtures/Country/getCollection.json';
+import FaxCollection from '../../fixtures/Fax/getCollection.json';
+import FaxInOutCollection from '../../fixtures/FaxInOut/getCollection.json';
 import MyCallForwardSettings from '../../fixtures/My/Calls/getCallForwardSettings.json';
 import MyCallHistory from '../../fixtures/My/Calls/getCallHistory.json';
 import MyLastMonthCalls from '../../fixtures/My/Calls/getLastMonthCalls.json';
@@ -11,6 +13,7 @@ import MyTheme from '../../fixtures/My/Theme/getTheme.json';
 import RecordingCollection from '../../fixtures/Recording/getCollection.json';
 import Timezones from '../../fixtures/Timezones/getCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
+import VoicemailMessageCollection from '../../fixtures/VoicemailMessage/getCollection.json';
 
 Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.setupPact(
@@ -65,6 +68,10 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...VoicemailCollection,
   }).as('getVoicemail');
 
+  cy.intercept('GET', '**/api/user/voicemail_messages?*', {
+    ...VoicemailMessageCollection,
+  }).as('getVoicemailMessage');
+
   cy.intercept('GET', '**/api/user/my/company_extensions?*', {
     ...CompanyExtensionsCollection,
   }).as('getCompanyExtensions');
@@ -72,4 +79,12 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/user/recordings*', {
     ...RecordingCollection,
   }).as('getRecording');
+
+  cy.intercept('GET', '**/api/user/my/faxes?*', {
+    ...FaxCollection,
+  }).as('getFax');
+
+  cy.intercept('GET', '**/api/user/faxes_in_outs?*', {
+    ...FaxInOutCollection,
+  }).as('getFaxesInOut');
 });
