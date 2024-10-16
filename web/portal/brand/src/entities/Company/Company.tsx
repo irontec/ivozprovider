@@ -1,9 +1,15 @@
-import { EntityValues } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { useStoreState } from 'store';
 
+import RatingProfile from '../RatingProfile/RatingProfile';
 import Actions from './Action';
 import { CompanyProperties, CompanyPropertyList } from './CompanyProperties';
 import TypeIcon from './Field/TypeIcon';
@@ -366,6 +372,23 @@ const properties: CompanyProperties = {
   },
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const companyFeatures = aboutMe?.features;
+
+  const { routeMapItem } = props;
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === RatingProfile.iden
+  ) {
+    if (!companyFeatures?.includes('billing')) {
+      return <a className='disabled'>{routeMapItem.entity.title}</a>;
+    }
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const Company: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
@@ -374,9 +397,9 @@ const Company: EntityInterface = {
   path: '/companies',
   deleteDoubleCheck: true,
   defaultOrderBy: '',
+  ChildDecorator,
   toStr: (row: CompanyPropertyList<EntityValues>) => `${row.name}`,
   properties,
-
   columns: [
     'name',
     'invoicing.nif',
