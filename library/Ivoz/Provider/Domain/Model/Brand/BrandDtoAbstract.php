@@ -18,6 +18,8 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListDto;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandDto;
+use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrandDto;
 
 /**
 * BrandDtoAbstract
@@ -197,6 +199,16 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
      */
     private $outgoingRoutings = null;
 
+    /**
+     * @var ApplicationServerSetsRelBrandDto[] | null
+     */
+    private $relApplicationServerSets = null;
+
+    /**
+     * @var MediaRelaySetsRelBrandDto[] | null
+     */
+    private $relMediaRelaySets = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -287,7 +299,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'residentialDevices' => $this->getResidentialDevices(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'matchLists' => $this->getMatchLists(),
-            'outgoingRoutings' => $this->getOutgoingRoutings()
+            'outgoingRoutings' => $this->getOutgoingRoutings(),
+            'relApplicationServerSets' => $this->getRelApplicationServerSets(),
+            'relMediaRelaySets' => $this->getRelMediaRelaySets()
         ];
 
         if (!$hideSensitiveData) {
@@ -929,5 +943,41 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
+    }
+
+    /**
+     * @param ApplicationServerSetsRelBrandDto[] | null $relApplicationServerSets
+     */
+    public function setRelApplicationServerSets(?array $relApplicationServerSets): static
+    {
+        $this->relApplicationServerSets = $relApplicationServerSets;
+
+        return $this;
+    }
+
+    /**
+    * @return ApplicationServerSetsRelBrandDto[] | null
+    */
+    public function getRelApplicationServerSets(): ?array
+    {
+        return $this->relApplicationServerSets;
+    }
+
+    /**
+     * @param MediaRelaySetsRelBrandDto[] | null $relMediaRelaySets
+     */
+    public function setRelMediaRelaySets(?array $relMediaRelaySets): static
+    {
+        $this->relMediaRelaySets = $relMediaRelaySets;
+
+        return $this;
+    }
+
+    /**
+    * @return MediaRelaySetsRelBrandDto[] | null
+    */
+    public function getRelMediaRelaySets(): ?array
+    {
+        return $this->relMediaRelaySets;
     }
 }

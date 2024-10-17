@@ -45,6 +45,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'name',
         edit && 'invoice.nif',
         'proxyTrunks',
+        'applicationServerSets',
+        'mediaRelaySets',
         'features',
         edit && 'logo',
         'maxCalls',

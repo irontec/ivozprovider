@@ -3,6 +3,7 @@
 namespace DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
@@ -71,7 +72,7 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
             ProviderDomain::class,
             ProviderLanguage::class,
             ProviderTimezone::class,
-            ProviderCurrency::class
+            ProviderCurrency::class,
         );
     }
 }
