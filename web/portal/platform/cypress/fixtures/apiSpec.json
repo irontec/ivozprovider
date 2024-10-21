@@ -4556,6 +4556,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "mediaRelaySets",
                         "in": "query",
                         "required": false,
@@ -4586,12 +4598,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -4605,6 +4611,12 @@
                     },
                     {
                         "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -4735,6 +4747,18 @@
                     },
                     {
                         "name": "applicationServer",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet[]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -4986,12 +5010,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.countryName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.countryName[start]",
                         "in": "query",
                         "required": false,
@@ -5010,6 +5028,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.countryName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.nif",
                         "in": "query",
                         "required": false,
@@ -5017,6 +5041,12 @@
                     },
                     {
                         "name": "invoicing.nif[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5040,12 +5070,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.nif[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalAddress",
                         "in": "query",
                         "required": false,
@@ -5058,25 +5082,25 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalAddress[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalAddress[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalAddress[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5089,12 +5113,6 @@
                     },
                     {
                         "name": "invoicing.postalCode[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5113,6 +5131,12 @@
                     },
                     {
                         "name": "invoicing.postalCode[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5166,12 +5190,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.town[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.town[start]",
                         "in": "query",
                         "required": false,
@@ -5185,6 +5203,12 @@
                     },
                     {
                         "name": "invoicing.town[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5268,6 +5292,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "mediaRelaySets",
                         "in": "query",
                         "required": false,
@@ -5298,6 +5334,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
@@ -5311,12 +5353,6 @@
                     },
                     {
                         "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6540,6 +6576,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "mediaRelaySets",
                         "in": "query",
                         "required": false,
@@ -6570,12 +6618,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -6589,6 +6631,12 @@
                     },
                     {
                         "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -15949,7 +15997,8 @@
             "required": [
                 "description",
                 "name",
-                "brand"
+                "brand",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -15997,6 +16046,10 @@
                 "mediaRelaySets": {
                     "description": "",
                     "type": "integer"
+                },
+                "mediaRelaySet": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -16029,7 +16082,9 @@
                 "allowRecordingRemoval",
                 "billingMethod",
                 "brand",
-                "country"
+                "country",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "type": {
@@ -16217,6 +16272,14 @@
                     "type": "integer"
                 },
                 "accessCredentialNotificationTemplate": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "applicationServerSet": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
                     "description": "",
                     "type": "integer"
                 }
@@ -16752,7 +16815,8 @@
             "required": [
                 "description",
                 "name",
-                "brand"
+                "brand",
+                "mediaRelaySet"
             ],
             "properties": {
                 "description": {
@@ -16781,6 +16845,10 @@
                     "type": "integer"
                 },
                 "mediaRelaySets": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
                     "description": "",
                     "type": "integer"
                 }
