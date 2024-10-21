@@ -23,6 +23,11 @@ Feature: Retrieve media relay sets
               "name": "Test",
               "description": "Test media relay set",
               "id": 1
+          },
+          {
+              "name": "Test 2",
+              "description": "Not related with Brand 1",
+              "id": 2
           }
       ]
       """
