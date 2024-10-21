@@ -35,7 +35,9 @@
         ],
         "geoIpAllowedCountries": [
             1
-        ]
+        ],
+        "applicationServerSet": 0,
+        "mediaRelaySet": 0        
     },
     "response": {
         "body": {
@@ -82,7 +84,9 @@
                 1
             ],
             "routingTagIds": [],
-            "codecIds": []
+            "codecIds": [],
+            "applicationServerSet": 0,
+            "mediaRelaySet": 0            
         },
         "headers": {
             "content-type": "application/json; charset=utf-8"

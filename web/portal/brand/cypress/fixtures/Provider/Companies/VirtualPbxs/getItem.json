@@ -106,6 +106,18 @@
             "description": "Irontec Test Desc Corporation",
             "id": 1
         },
+        "applicationServerSet": {
+            "name": "BlueApSet",
+            "distributeMethod": "hash",
+            "description": "An Application Server Set",
+            "id": 1,
+            "applicationServers": null
+        },
+        "mediaRelaySet": {
+            "name": "Default",
+            "description": "Default media relay set",
+            "id": 0
+        },     
         "domainName": "127.0.0.1",
         "featureIds": [
             1,

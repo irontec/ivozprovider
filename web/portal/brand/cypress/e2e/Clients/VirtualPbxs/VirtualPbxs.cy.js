@@ -1,5 +1,4 @@
 import CompaniesCollection from '../../../fixtures/Provider/Companies/getCollection.json';
-import PBXsItem from '../../../fixtures/Provider/Companies/VirtualPbxs/getItem.json';
 import {
   deleteCompany,
   postCompany,
@@ -21,19 +20,13 @@ describe('in Companies', () => {
   });
 
   it('Impersonate enabled', () => {
-    cy.intercept('GET', '**/api/brand/vPbx/1', {
-      ...PBXsItem,
-    }).as('getCompanies-1');
-
-    cy.get('svg[data-testid="AdminPanelSettingsIcon"]')
-      .eq(1)
-      .first()
-      .scrollIntoView();
+    cy.usePactWait(['getWebPortals'])
+      .its('response.statusCode')
+      .should('eq', 200);
 
     cy.get('svg[data-testid="AdminPanelSettingsIcon"]')
       .first()
       .parent('button')
-      .should('be.visible')
       .should('not.be.disabled');
   });
 

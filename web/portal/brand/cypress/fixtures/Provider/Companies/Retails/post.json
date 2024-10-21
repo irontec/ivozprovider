@@ -44,7 +44,9 @@
         "routingTagIds": [
             1
         ],
-        "codecIds": []
+        "codecIds": [],
+        "applicationServerSet": 1,
+        "mediaRelaySet": 0
     },
     "response": {
         "body": {
@@ -92,7 +94,9 @@
             "routingTagIds": [
                 1
             ],
-            "codecIds": []
+            "codecIds": [],
+            "applicationServerSet": 1,
+            "mediaRelaySet": 0
         },
         "headers": {
             "content-type": "application/json; charset=utf-8"

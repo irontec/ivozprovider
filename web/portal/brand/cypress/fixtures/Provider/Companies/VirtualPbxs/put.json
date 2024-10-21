@@ -89,7 +89,9 @@
                 1
             ],
             "routingTagIds": [],
-            "codecIds": []
+            "codecIds": [],
+            "applicationServerSet": 1,
+            "mediaRelaySet": 0            
         },
         "headers": {
             "content-type": "application/json; charset=utf-8"

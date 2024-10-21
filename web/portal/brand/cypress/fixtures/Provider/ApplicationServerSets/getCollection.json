@@ -1,0 +1,24 @@
+{
+  "body": [
+      {
+          "name": "BlueApSet",
+          "distributeMethod": "hash",
+          "description": "An Application Server Set",
+          "id": 1
+      },
+      {
+          "name": "default",
+          "distributeMethod": "hash",
+          "description": "Default application server set",
+          "id": 0
+      }
+  ],
+ "headers":  {
+    "x-first-page": "/api/brand/application_server_sets?_page=1",
+    "x-last-page": "/api/brand/application_server_sets?_page=1",
+    "x-next-page": "/api/brand/application_server_sets?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+ },
+ "statusCode": 200
+}
