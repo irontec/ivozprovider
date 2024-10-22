@@ -14,19 +14,26 @@ Feature: Retrieve dashboard
           "admin": {
               "username": "admin",
               "name": "admin",
-              "lastname": "match:type('some lastname')",
-              "email": "match:regexp(/\\w+@\\w+\\.\\w+/)"
+              "lastname": "ivozprovider",
+              "email": "admin@example.com"
           },
           "recentActivity": [
               {
-                  "id": "match:type(0)",
+                  "id": 3,
+                  "name": "TestBrand",
+                  "nif": "",
+                  "sipDomain": "sip.irontec.com",
+                  "maxCalls": 0
+              },
+              {
+                  "id": 2,
                   "name": "Irontec_e2e",
                   "nif": "",
                   "sipDomain": "sip.irontec.com",
                   "maxCalls": 0
               },
               {
-                  "id": "match:type(1)",
+                  "id": 1,
                   "name": "DemoBrand",
                   "nif": "",
                   "sipDomain": "",
