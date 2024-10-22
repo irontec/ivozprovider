@@ -37,4 +37,9 @@ interface DdiProviderRepository extends ObjectRepository, Selectable
      * @return DdiProviderInterface | null
      */
     public function findOneByBrandAndName(int $brandId, string $name);
+
+    /**
+     * @return DdiProviderInterface[]
+     */
+    public function findByMediaRelaySetIdAndBrandId(int $mediaRelaySetId, int $brandId): array;
 }

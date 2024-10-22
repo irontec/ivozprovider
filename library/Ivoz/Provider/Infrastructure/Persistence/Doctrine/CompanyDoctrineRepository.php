@@ -369,4 +369,30 @@ class CompanyDoctrineRepository extends DoctrineRepository implements CompanyRep
             ]
         );
     }
+
+    /**
+     * @return CompanyInterface[]
+     */
+    public function findByApplicationServerSetIdAndBrandId(int $applicationServerSetId, int $brandId): array
+    {
+        return $this->findBy(
+            [
+                'applicationServerSet' => $applicationServerSetId,
+                'brand' => $brandId
+            ]
+        );
+    }
+
+    /**
+     * @return CompanyInterface[]
+     */
+    public function findByMediaRelaySetIdAndBrandId(int $mediaRelaySetId, int $brandId): array
+    {
+        return $this->findBy(
+            [
+                'mediaRelaySet' => $mediaRelaySetId,
+                'brand' => $brandId
+            ]
+        );
+    }
 }

@@ -19,7 +19,7 @@ class ApplicationServerSetsRelBrandEntityLifecycleServiceCollection implements L
     public static $bindedBaseServices = [
         "pre_remove" =>
         [
-            \Ivoz\Provider\Domain\Service\ApplicationServerSetsRelBrand\AvoidDeleteAllByBrand::class => 200,
+            \Ivoz\Provider\Domain\Service\ApplicationServerSetsRelBrand\AvoidDeleteUsed::class => 200,
         ],
     ];
 
