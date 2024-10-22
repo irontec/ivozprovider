@@ -28,8 +28,8 @@ Feature: Manage brands
         "defaultTimezone": 145,
         "features": [2],
         "proxyTrunks": [2],
-        "applicationServerSets": [1],
-        "mediaRelaySets": [1]
+        "applicationServerSets": [0, 1],
+        "mediaRelaySets": [0, 1]
       }
     """
     Then the response status code should be 200
@@ -71,9 +71,11 @@ Feature: Manage brands
               2
           ],
           "applicationServerSets": [
+              0,
               1
           ],
           "mediaRelaySets": [
+              0,
               1
           ]
       }
@@ -141,7 +143,7 @@ This is file content
     Given I add Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PUT" request to "/brands/2" with body:
+    And I send a "PUT" request to "/brands/3" with body:
     """
       {
         "applicationServerSets": []
@@ -174,5 +176,45 @@ This is file content
     """
     {
       "detail": "Media Relay Sets cannot be empty"
+    }
+    """
+
+  @createSchema
+  Scenario: Update a brand removing a used media relay set
+    Given I add Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" request to "/brands/2" with body:
+    """
+    {
+      "mediaRelaySets": [1]
+    }
+    """
+    Then the response status code should be 403
+    And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+    And the JSON should be like:
+    """
+    {
+      "detail": "A media relay set may not be unassociated while it is being used"
+    }
+    """
+
+  @createSchema
+  Scenario: Update a brand removing a used media relay set
+    Given I add Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" request to "/brands/2" with body:
+    """
+    {
+      "applicationServerSets": [1]
+    }
+    """
+    Then the response status code should be 403
+    And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+    And the JSON should be like:
+    """
+    {
+      "detail": "A application server set may not be unassociated while it is being used"
     }
     """
