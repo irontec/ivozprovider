@@ -156,4 +156,20 @@ class CarrierDoctrineRepository extends ServiceEntityRepository implements Carri
 
         return $result['count'];
     }
+
+    /**
+     * @return CarrierInterface[]
+     */
+    public function findByMediaRelaySetIdAndBrandId(int $mediaRelaySetId, int $brandId): array
+    {
+        /** @var CarrierInterface[] $result */
+        $result = $this->findBy(
+            [
+                'mediaRelaySet' => $mediaRelaySetId,
+                'brand' => $brandId
+            ]
+        );
+
+        return $result;
+    }
 }
