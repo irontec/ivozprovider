@@ -52,6 +52,15 @@ class ProviderApplicationServerSetsRelBrand extends Fixture implements Dependent
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
+        $item4 = $this->createEntityInstance(ApplicationServerSetsRelBrand::class);
+        (function () use ($fixture) {
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand3'));
+            $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet0'));
+        })->call($item4);
+
+        $this->addReference('_reference_ProviderApplicationServerSetsRelBrand4', $item4);
+        $this->sanitizeEntityValues($item4);
+        $manager->persist($item4);
         $manager->flush();
     }
 
