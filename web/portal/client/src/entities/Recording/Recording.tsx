@@ -6,6 +6,7 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
 
 import Ddi from '../Ddi/Ddi';
+import Actions from './Action';
 import Type from './Field/Type';
 import { RecordingProperties } from './RecordingProperties';
 
@@ -63,13 +64,14 @@ const recording: EntityInterface = {
   title: _('Recording', { count: 2 }),
   path: '/recordings',
   properties,
-  toStr: (row) => row.calldate,
+  toStr: (row) => row.calldate as string,
   columns: columnsFunc,
   defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Recordings',
   },
+  customActions: Actions,
   View: async () => {
     const module = await import('./View');
 
