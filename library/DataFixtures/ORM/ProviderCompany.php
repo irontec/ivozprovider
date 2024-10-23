@@ -55,7 +55,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             );
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
+            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
@@ -64,6 +64,8 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
             $this->setAccessCredentialNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate5'));
             $this->setCorporation($fixture->getReference('_reference_Corporation1'));
+            $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet1'));
+            $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
         })->call($item1);
 
         $this->addReference('_reference_ProviderCompany1', $item1);
@@ -92,7 +94,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setOnDemandRecordCode("");
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
+            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setDomain($fixture->getReference('_reference_ProviderDomain5'));
@@ -100,6 +102,8 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
             $this->setCorporation($fixture->getReference('_reference_Corporation1'));
+            $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet1'));
+            $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
         })->call($item2);
 
         $this->addReference('_reference_ProviderCompany2', $item2);
@@ -123,12 +127,14 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setShowInvoices(true);
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
+            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
+            $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet1'));
+            $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
         })->call($item3);
 
         $this->addReference('_reference_ProviderCompany3', $item3);
@@ -153,12 +159,14 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->invoicing = $invoicing;
             $this->setApplicationServer($fixture->getReference('_reference_ProviderApplicationServer1'));
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
+            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
+            $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet1'));
+            $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
         })->call($item4);
 
         $this->addReference('_reference_ProviderCompany4', $item4);
@@ -181,12 +189,14 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setOnDemandRecordCode("");
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
+            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
+            $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet1'));
+            $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
         })->call($item5);
 
         $this->addReference('_reference_ProviderCompany5', $item5);
@@ -211,12 +221,14 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setOnDemandRecordCode("");
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
+            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone18'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry10'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate4'));
+            $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet0'));
+            $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
         })->call($item6);
 
         $this->addReference('_reference_ProviderCompany6', $item6);
@@ -237,7 +249,9 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             ProviderCountry::class,
             ProviderTransformationRuleSet::class,
             ProviderNotificationTemplate::class,
-            ProviderCorporation::class
+            ProviderCorporation::class,
+            ProviderApplicationServerSet::class,
+            ProviderMediaRelaySet::class
         );
     }
 }

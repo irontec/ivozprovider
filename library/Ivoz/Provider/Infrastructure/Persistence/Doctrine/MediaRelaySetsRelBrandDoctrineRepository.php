@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Repository\DoctrineRepository;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrand;
 use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrandRepository;
 use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrandInterface;
@@ -29,5 +30,41 @@ class MediaRelaySetsRelBrandDoctrineRepository extends DoctrineRepository implem
             MediaRelaySetsRelBrand::class,
             $entityPersisterInterface
         );
+    }
+
+    /** @return int[] */
+    public function getMediaRelaySetIdsByBrandAdmin(AdministratorInterface $admin): array
+    {
+        if (!$admin->isBrandAdmin()) {
+            throw new \DomainException('User must be brand admin');
+        }
+
+        $brandId = $admin->getBrand()?->getId();
+        if (is_null($brandId)) {
+            return [];
+        }
+
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select(
+                'IDENTITY(self.mediaRelaySet) as mediaRelaySet'
+            )
+            ->where(
+                $expression->eq(
+                    'self.brand',
+                    $brandId,
+                )
+            );
+
+        $results = $qb->getQuery()->getArrayResult();
+
+        $response = [];
+        foreach ($results as $result) {
+            $response[] = (int) $result['mediaRelaySet'];
+        }
+
+        return $response;
     }
 }

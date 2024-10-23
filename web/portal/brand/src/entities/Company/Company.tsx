@@ -284,7 +284,7 @@ const properties: CompanyProperties = {
     },
   },
   applicationServer: {
-    label: _('Application Server'),
+    label: _('Application Server', { count: 1 }),
     default: '__null__',
     null: _('Unassigned'),
   },
@@ -364,6 +364,14 @@ const properties: CompanyProperties = {
     null: _('Not configured'),
     default: '__null__',
   },
+  applicationServerSet: {
+    label: _('Application Server Set', { count: 1 }),
+    default: '__auto__',
+  },
+  mediaRelaySet: {
+    label: _('Media Relay Set', { count: 1 }),
+    default: '__auto__',
+  },
 };
 
 const Company: EntityInterface = {
@@ -376,7 +384,6 @@ const Company: EntityInterface = {
   defaultOrderBy: '',
   toStr: (row: CompanyPropertyList<EntityValues>) => `${row.name}`,
   properties,
-
   columns: [
     'name',
     'invoicing.nif',

@@ -64,11 +64,6 @@ const properties: CarrierProperties = {
     label: _('Status'),
     component: StatusIcon,
   },
-  mediaRelaySet: {
-    label: _('Media relay Set'),
-    default: '__null__',
-    null: _(`Client's default`),
-  },
   transformationRuleSet: {
     label: _('Numeric transformation', { count: 1 }),
     default: 252,
@@ -82,6 +77,10 @@ const properties: CarrierProperties = {
     label: _('Local socket'),
     helpText: _('Local address used in SIP signalling with this carrier.'),
     default: '__null__',
+  },
+  mediaRelaySet: {
+    label: _('Media Relay Set', { count: 1 }),
+    default: '__auto__',
   },
 };
 

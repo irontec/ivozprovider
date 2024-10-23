@@ -1,0 +1,22 @@
+{
+  "body": [
+      {
+          "name": "Default",
+          "description": "Default media relay set",
+          "id": 0
+      },
+      {
+          "name": "Test",
+          "description": "Test media relay set",
+          "id": 1
+      }
+  ],
+ "headers": {
+    "x-first-page": "/api/brand/media_realy_sets?_page=1",
+    "x-last-page": "/api/brand/media_realy_sets?_page=1",
+    "x-next-page": "/api/brand/media_realy_sets?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+ },
+ "statusCode": 200
+}

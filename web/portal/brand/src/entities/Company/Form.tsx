@@ -102,11 +102,15 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
       legend: _('Wholesale specific'),
       fields: ['routingTagIds', edit && 'codecIds'],
     },
-    edit &&
-      isVpbx && {
-        legend: _('Platform data'),
-        fields: ['outgoingDdi', 'outgoingDdiRule'],
-      },
+    {
+      legend: _('Platform data'),
+      fields: [
+        edit && isVpbx && 'outgoingDdi',
+        edit && isVpbx && 'outgoingDdiRule',
+        'applicationServerSet',
+        'mediaRelaySet',
+      ],
+    },
     edit &&
       hasInvoicesFeature && {
         legend: _('Invoice data'),

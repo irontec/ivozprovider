@@ -94,6 +94,18 @@
         "maxDailyUsageNotificationTemplate": null,
         "accessCredentialNotificationTemplate": null,
         "corporation": null,
+        "applicationServerSet": {
+            "name": "BlueApSet",
+            "distributeMethod": "hash",
+            "description": "An Application Server Set",
+            "id": 1,
+            "applicationServers": null
+        },
+        "mediaRelaySet": {
+            "name": "Default",
+            "description": "Default media relay set",
+            "id": 0
+        },
         "domainName": "retail.irontec.com",
         "featureIds": [],
         "geoIpAllowedCountries": [],

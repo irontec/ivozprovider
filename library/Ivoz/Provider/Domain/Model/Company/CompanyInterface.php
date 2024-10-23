@@ -20,6 +20,7 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Corporation\CorporationInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -298,6 +299,10 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getAccessCredentialNotificationTemplate(): ?NotificationTemplateInterface;
 
     public function getCorporation(): ?CorporationInterface;
+
+    public function getApplicationServerSet(): ApplicationServerSetInterface;
+
+    public function getMediaRelaySet(): MediaRelaySetInterface;
 
     public function addExtension(ExtensionInterface $extension): CompanyInterface;
 

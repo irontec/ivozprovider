@@ -4,6 +4,7 @@ import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import AdministratorCollection from '../../fixtures/Provider/Administrator/getCollection.json';
+import ApplicationServerSetsCollection from '../../fixtures/Provider/ApplicationServerSets/getCollection.json';
 import BillableCallsCollection from '../../fixtures/Provider/BillableCalls/getCollection.json';
 import CarriersCollection from '../../fixtures/Provider/Carriers/getCollection.json';
 import CodecsCollection from '../../fixtures/Provider/Codecs/getCollection.json';
@@ -15,6 +16,7 @@ import DdiProvidersCollection from '../../fixtures/Provider/DdiProviders/getColl
 import DdisCollection from '../../fixtures/Provider/Ddis/getCollection.json';
 import FeaturesCollection from '../../fixtures/Provider/Features/getCollection.json';
 import LanguagesCollection from '../../fixtures/Provider/Languages/getCollection.json';
+import MediaRelaySetsColection from '../../fixtures/Provider/MediaRelaySets/getCollection.json';
 import NotificationTemplateContentsCollection from '../../fixtures/Provider/NotificationTemplateContents/getCollection.json';
 import NotificationTemplatesCollection from '../../fixtures/Provider/NotificationTemplates/getCollection.json';
 import OutgoingDdiRulesCollection from '../../fixtures/Provider/OutgoingDdiRules/getCollection.json';
@@ -141,5 +143,13 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/administrators?*', {
       ...AdministratorCollection,
     }).as('getAdministrator');
+
+    cy.intercept('GET', '**/api/brand/application_server_sets?*', {
+      ...ApplicationServerSetsCollection,
+    }).as('getApplicationServerSets');
+
+    cy.intercept('GET', '**/api/brand/media_relay_sets?*', {
+      ...MediaRelaySetsColection,
+    }).as('getMediaRelaySets');
   }
 );

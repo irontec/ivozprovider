@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Repository\DoctrineRepository;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrand;
 use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandRepository;
 use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandInterface;
@@ -40,6 +41,44 @@ class ApplicationServerSetsRelBrandDoctrineRepository extends DoctrineRepository
         $response = $this->findBy([
             'brandId' => $brandId
         ]);
+
+        return $response;
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getApplicationServerSetIdsByBrandAdmin(AdministratorInterface $admin): array
+    {
+        if (!$admin->isBrandAdmin()) {
+            throw new \DomainException('User must be brand admin');
+        }
+
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $brandId = $admin->getBrand()?->getId();
+        if (is_null($brandId)) {
+            return [];
+        }
+
+        $qb
+            ->select(
+                'IDENTITY(self.applicationServerSet) as applicationServerSet'
+            )
+            ->where(
+                $expression->eq(
+                    'self.brand',
+                    $brandId,
+                )
+            );
+
+        $results = $qb->getQuery()->getArrayResult();
+
+        $response = [];
+        foreach ($results as $result) {
+            $response[] = (int) $result['applicationServerSet'];
+        }
 
         return $response;
     }

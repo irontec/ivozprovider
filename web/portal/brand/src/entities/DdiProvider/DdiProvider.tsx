@@ -27,9 +27,13 @@ const properties: DdiProviderProperties = {
     default: '__null__',
   },
   mediaRelaySets: {
-    label: _('Media relay Set'),
+    label: _('Media Relay Set', { count: 1 }),
     default: '__null__',
     null: _("Client's default"),
+  },
+  mediaRelaySet: {
+    label: _('Media Relay Set', { count: 1 }),
+    default: '__auto__',
   },
 };
 

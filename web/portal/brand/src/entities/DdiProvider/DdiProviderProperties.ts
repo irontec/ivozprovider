@@ -11,6 +11,7 @@ export type DdiProviderPropertyList<T> = {
   transformationRuleSet?: T;
   proxyTrunk?: T;
   mediaRelaySets?: T;
+  mediaRelaySet?: T;
 };
 
 export type DdiProviderProperties = DdiProviderPropertyList<

@@ -1812,7 +1812,7 @@
     </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Carrier/CarrierAbstract.php">
-    <MixedArgument occurrences="10">
+    <MixedArgument occurrences="12">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
@@ -1823,6 +1823,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
+      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
+      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
     </MixedArgument>
     <RedundantCast occurrences="1">
       <code>(float) $balance</code>
@@ -1898,7 +1900,9 @@
     </UnnecessaryVarAnnotation>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyAbstract.php">
-    <MixedArgument occurrences="36">
+    <MixedArgument occurrences="40">
+      <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
+      <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($country)</code>
@@ -1935,6 +1939,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailNotificationTemplate())</code>
+      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
+      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
     </MixedArgument>
     <RedundantCast occurrences="2">
       <code>(float) $balance</code>
@@ -2373,7 +2379,7 @@
     </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderAbstract.php">
-    <MixedArgument occurrences="8">
+    <MixedArgument occurrences="10">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySets())</code>
@@ -2382,6 +2388,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
+      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
+      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>

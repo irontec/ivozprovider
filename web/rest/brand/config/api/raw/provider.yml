@@ -450,6 +450,10 @@ Ivoz\Provider\Domain\Model\Company\Company:
             eq: "user.getBrand().getId()"
         - inherited:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+        - inherited:
+            applicationServerSet: 'Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet'
+        - inherited:
+            mediaRelaySet: 'Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet'
       - or:
         - inheritedOrNull:
             voicemailNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
@@ -466,6 +470,8 @@ Ivoz\Provider\Domain\Model\Company\Company:
       required:
       - brand
       - transformationRuleSet
+      - applicationServerSet
+      - mediaRelaySet
 
 Ivoz\Provider\Domain\Model\Currency\Currency:
   itemOperations:
@@ -550,10 +556,13 @@ Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
             eq: "user.getBrand().getId()"
         - inherited:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+        - inherited:
+            mediaRelaySet: 'Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet'
     swagger_context:
       required:
       - brand
       - transformationRuleSet
+      - mediaRelaySet
 
 Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
   itemOperations:
@@ -1116,10 +1125,13 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
             eq: "user.getBrand().getId()"
         - inherited:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+        - inherited:
+            mediaRelaySet: 'Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet'
     swagger_context:
       required:
       - brand
       - transformationRuleSet
+      - mediaRelaySet
 
 Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerStatus:
   itemOperations: []
@@ -1709,3 +1721,37 @@ Ivoz\Provider\Domain\Model\WebPortal\WebTheme:
         tags:
           - My
   collectionOperations: []
+
+Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+          id:
+            in: "mediaRelaySetsRelBrandRepository.getMediaRelaySetIdsByBrandAdmin(user)"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
+
+Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        id:
+          in: "applicationServerSetsRelBrandRepository.getApplicationServerSetIdsByBrandAdmin(user)"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
