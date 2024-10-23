@@ -45,7 +45,7 @@ class BrandRepositoryTest extends KernelTestCase
         $count = $repository->count([]);
 
         $this->assertEquals(
-            2,
+            3,
             $count
         );
     }

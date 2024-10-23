@@ -63,6 +63,25 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
+        $item3 = $this->createEntityInstance(Brand::class);
+        (function () use ($fixture) {
+            $this->setName("TestBrand");
+            $this->setDomainUsers("sip.irontec.com");
+            $this->setRecordingsLimitMB(0);
+            $this->setMaxCalls(0);
+            $this->logo = new Logo(null, null, null);
+            $this->invoice = new Invoice('', '', '', '', '', '', '');
+            $this->setDomain($fixture->getReference('_reference_ProviderDomain4'));
+            $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
+            $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+            $this->setCurrency($fixture->getReference('_reference_ProviderCurrency2'));
+            $this->relFeatures = new \Doctrine\Common\Collections\ArrayCollection([]);
+        })->call($item3);
+
+        $this->addReference('_reference_ProviderBrand3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
+
         $manager->flush();
     }
 

@@ -40,7 +40,7 @@ Feature: Manage brands
           "name": "api_brand",
           "domainUsers": "sip-api.irontec.com",
           "maxCalls": 0,
-          "id": 3,
+          "id": 4,
           "logo": {
               "fileSize": null,
               "mimeType": null,
@@ -112,7 +112,7 @@ Feature: Manage brands
   Scenario: Retrieve created brand
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "brands/3"
+      And I send a "GET" request to "brands/4"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -122,7 +122,7 @@ Feature: Manage brands
           "name": "api_brand",
           "domainUsers": "sip-api.irontec.com",
           "maxCalls": 0,
-          "id": 3,
+          "id": 4,
           "logo": {
               "fileSize": null,
               "mimeType": null,
@@ -240,7 +240,7 @@ This is file content
           "name": "api_brand",
           "domainUsers": "sip-api.irontec.com",
           "maxCalls": 0,
-          "id": 3,
+          "id": 4,
           "logo": {
               "fileSize": 20,
               "mimeType": "text/plain; charset=us-ascii",
@@ -311,7 +311,7 @@ This is file content
   Scenario: Retrieve uploaded brand logo
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "/brands/3/logo"
+      And I send a "GET" request to "/brands/4/logo"
      Then the response status code should be 200
       And the header "Content-Type" should be equal to "text/plain; charset=us-ascii"
 

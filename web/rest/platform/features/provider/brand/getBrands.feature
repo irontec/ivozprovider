@@ -69,6 +69,28 @@ Feature: Manage brands
               "mediaRelaySets": [
                   0
               ]
+          },
+          {
+              "name": "TestBrand",
+              "domainUsers": "sip.irontec.com",
+              "id": 3,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "invoice": {
+                  "nif": "",
+                  "postalCode": ""
+              },
+              "features": [],
+              "proxyTrunks": [],
+              "applicationServerSets": [
+                  0
+              ],
+              "mediaRelaySets": [
+                  0
+              ]
           }
       ]
       """

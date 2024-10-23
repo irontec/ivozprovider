@@ -35,12 +35,12 @@ class BrandSoftDeleteTest extends KernelTestCase
             ->getRepository(Brand::class);
 
         $fixtureBrands = $brandRepository->findAll();
-        $this->assertCount(2, $fixtureBrands);
+        $this->assertCount(3, $fixtureBrands);
 
         $this->removeBrand(1);
 
         $brands = $brandRepository->findAll();
-        $this->assertCount(1, $brands);
+        $this->assertCount(2, $brands);
 
         $this->removes_brand_webPortals();
         $this->removes_brand_musicsOnHold();

@@ -5,8 +5,10 @@ namespace Tests\Provider\Brand;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Core\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrand;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
 use Ivoz\Provider\Domain\Model\Country\Country;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUser;
 use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrand;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
@@ -100,7 +102,9 @@ class BrandLifeCycleTest extends KernelTestCase
             ProxyTrunksRelBrand::class,
             CompanyRelRoutingTag::class,
             ApplicationServerSetsRelBrand::class,
-            MediaRelaySetsRelBrand::class
+            MediaRelaySetsRelBrand::class,
+            DdiProvider::class,
+            Carrier::class
         ]);
     }
 

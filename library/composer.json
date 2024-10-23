@@ -88,7 +88,7 @@
         "irontec/ivoz-api-bundle": "^4.8.6",
         "irontec/ivoz-core": "^4.18.0",
         "irontec/ivoz-dev-tools": "^5.13.0",
-        "irontec/ivoz-provider-bundle": "^2.6.12",
+        "irontec/ivoz-provider-bundle": "2.6.13",
         "irontec/prophecy": "^1.13",
         "irontec/replacements": "^1.0",
         "irontec/wkhtmltopdf-amd64": "0.12.6.1",

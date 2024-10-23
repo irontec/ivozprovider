@@ -20,6 +20,7 @@ class MediaRelaySetsRelBrandLifecycleServiceCollection implements LifecycleServi
         "pre_remove" =>
         [
             \Ivoz\Provider\Domain\Service\MediaRelaySetsRelBrand\AvoidDeleteAllByBrand::class => 200,
+            \Ivoz\Provider\Domain\Service\MediaRelaySetsRelBrand\AvoidDeleteUsed::class => 200,
         ],
     ];
 
