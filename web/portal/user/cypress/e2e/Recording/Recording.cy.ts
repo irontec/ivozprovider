@@ -57,4 +57,23 @@ describe('CallForwardSetting', () => {
       .its('response.statusCode')
       .should('eq', 204);
   });
+
+  it('Download multiple recording files', () => {
+    const downloadDir = 'cypress/downloads';
+    const fileName = 'recordings.zip';
+    cy.intercept('GET', '**/api/user/recordings/recorded_files_zip?*', {}).as(
+      'getDownloadRecordings'
+    );
+
+    cy.get('tbody.MuiTableBody-root > tr').each(($tr) => {
+      cy.wrap($tr).find('td').first().click();
+    });
+
+    cy.get('svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.get('li.MuiMenuItem-root').contains('Download').click();
+
+    cy.readFile(`${downloadDir}/${fileName}`).should('exist');
+
+    cy.contains('Caller');
+  });
 });
