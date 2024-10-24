@@ -1,0 +1,17 @@
+{
+  "body": [
+      {
+        "srcIp": "194.30.6.32",
+        "description": null,
+        "id": 1
+      }
+    ],
+  "headers": {
+    "x-first-page": "/api/brand/trusted?_page=1",
+    "x-last-page": "/api/brand/trusted?_page=1",
+    "x-next-page": "/api/brand/trusted?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

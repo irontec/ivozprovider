@@ -1,0 +1,16 @@
+{
+  "response": {
+    "body": {
+      "srcIp": "194.30.6.32",
+      "proto": "any",
+      "fromPattern": null,
+      "ruriPattern": null,
+      "tag": "1",
+      "description": null,
+      "priority": 0,
+      "id": 1,
+      "company": "1"
+    },
+    "statusCode": 200
+  }
+}

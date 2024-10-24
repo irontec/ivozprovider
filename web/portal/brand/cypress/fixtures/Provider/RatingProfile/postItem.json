@@ -1,0 +1,27 @@
+{
+  "request": {
+    "activationTime": "2018-03-03 10:00:00",
+    "company": 1,
+    "carrier": null,
+    "ratingPlanGroup": 1
+  },
+  "response": {
+    "body": {
+      "activationTime": "2018-03-03 10:00:00",
+      "id": 3,
+      "company": 1,
+      "carrier": null,
+      "ratingPlanGroup": 1,
+      "routingTag": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
