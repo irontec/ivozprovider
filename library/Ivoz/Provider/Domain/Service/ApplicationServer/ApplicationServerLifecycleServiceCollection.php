@@ -21,10 +21,6 @@ class ApplicationServerLifecycleServiceCollection implements LifecycleServiceCol
         [
             \Ivoz\Kam\Domain\Service\Dispatcher\UpdateByApplicationServer::class => 10,
         ],
-        "pre_remove" =>
-        [
-            \Ivoz\Provider\Domain\Service\ApplicationServer\DeleteProtection::class => 200,
-        ],
         "on_commit" =>
         [
             \Ivoz\Provider\Domain\Service\ApplicationServer\SendTrunksDispatcherReloadRequest::class => 300,

@@ -361,18 +361,6 @@ class CompanyDoctrineRepository extends DoctrineRepository implements CompanyRep
     /**
      * @return CompanyInterface[]
      */
-    public function findByApplicationServerId(int $applicationServerId): array
-    {
-        return $this->findBy(
-            [
-                'applicationServer' => $applicationServerId
-            ]
-        );
-    }
-
-    /**
-     * @return CompanyInterface[]
-     */
     public function findByApplicationServerSetIdAndBrandId(int $applicationServerSetId, int $brandId): array
     {
         return $this->findBy(

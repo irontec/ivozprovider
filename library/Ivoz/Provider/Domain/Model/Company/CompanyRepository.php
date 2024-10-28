@@ -88,11 +88,6 @@ interface CompanyRepository extends RepositoryInterface
     /**
      * @return CompanyInterface[]
      */
-    public function findByApplicationServerId(int $applicationServerId): array;
-
-    /**
-     * @return CompanyInterface[]
-     */
     public function findByApplicationServerSetIdAndBrandId(int $applicationServerSetId, int $brandId): array;
 
     /**
