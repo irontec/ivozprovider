@@ -8,11 +8,9 @@ use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
-use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
@@ -21,6 +19,7 @@ use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Corporation\CorporationInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -264,8 +263,6 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getInvoicing(): Invoicing;
 
-    public function getMediaRelaySets(): ?MediaRelaySetInterface;
-
     public function getDefaultTimezone(): ?TimezoneInterface;
 
     public function setBrand(BrandInterface $brand): static;
@@ -273,8 +270,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBrand(): BrandInterface;
 
     public function getDomain(): ?DomainInterface;
-
-    public function getApplicationServer(): ?ApplicationServerInterface;
 
     public function getCountry(): CountryInterface;
 
