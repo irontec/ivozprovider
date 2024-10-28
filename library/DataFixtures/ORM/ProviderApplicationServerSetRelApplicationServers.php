@@ -24,6 +24,7 @@ class ProviderApplicationServerSetRelApplicationServers extends Fixture implemen
         $manager->getConnection()->exec(
             'INSERT INTO ApplicationServerSetRelApplicationServers(applicationServerId, applicationServerSetId ) SELECT id, 0 FROM ApplicationServers WHERE id NOT IN(3,4)'
         );
+
         $item1 = $this->createEntityInstance(ApplicationServerSetRelApplicationServer::class);
         (function () use ($fixture) {
             $this->setApplicationServer($fixture->getReference('_reference_ProviderApplicationServer1'));

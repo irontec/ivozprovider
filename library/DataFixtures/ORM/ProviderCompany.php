@@ -55,7 +55,6 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             );
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
@@ -94,7 +93,6 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setOnDemandRecordCode("");
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setDomain($fixture->getReference('_reference_ProviderDomain5'));
@@ -127,7 +125,6 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setShowInvoices(true);
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
@@ -157,9 +154,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
             $this->invoicing = $invoicing;
-            $this->setApplicationServer($fixture->getReference('_reference_ProviderApplicationServer1'));
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
@@ -189,7 +184,6 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setOnDemandRecordCode("");
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
@@ -221,7 +215,6 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setOnDemandRecordCode("");
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet0'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone18'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry10'));
