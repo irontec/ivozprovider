@@ -30,7 +30,6 @@ Feature: Update carriers
           "transformationRuleSet": 1,
           "currency": null,
           "proxyTrunk": 1,
-          "mediaRelaySets": null,
           "mediaRelaySet": 0
       }
       """

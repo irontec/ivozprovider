@@ -28,7 +28,6 @@ Feature: Update ddi providers
             "id": 1,
             "transformationRuleSet": 1,
             "proxyTrunk": 1,
-            "mediaRelaySets": null,
             "mediaRelaySet": 0
         }
       """
