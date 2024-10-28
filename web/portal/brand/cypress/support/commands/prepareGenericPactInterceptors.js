@@ -20,6 +20,7 @@ import MediaRelaySetsColection from '../../fixtures/Provider/MediaRelaySets/getC
 import NotificationTemplateContentsCollection from '../../fixtures/Provider/NotificationTemplateContents/getCollection.json';
 import NotificationTemplatesCollection from '../../fixtures/Provider/NotificationTemplates/getCollection.json';
 import OutgoingDdiRulesCollection from '../../fixtures/Provider/OutgoingDdiRules/getCollection.json';
+import ProxyTrunksCollection from '../../fixtures/Provider/ProxyTrunks/getCollection.json';
 import RoutingTagsCollection from '../../fixtures/Provider/RoutingTags/getCollection.json';
 import TimezonesCollection from '../../fixtures/Provider/Timezones/getCollection.json';
 import TransformationRuleSetsCollection from '../../fixtures/Provider/TransformationRuleSets/getCollection.json';
@@ -151,5 +152,9 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/media_relay_sets?*', {
       ...MediaRelaySetsColection,
     }).as('getMediaRelaySets');
+
+    cy.intercept('GET', '**/api/brand/proxy_trunks?*', {
+      ...ProxyTrunksCollection,
+    }).as('getProxyTrunks');
   }
 );

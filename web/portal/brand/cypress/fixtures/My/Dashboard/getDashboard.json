@@ -1,7 +1,6 @@
 {
     "body": {
         "brand": {
-            "id": 1,
             "name": "DemoBrand",
             "nif": "",
             "postalCode": "",

@@ -1,0 +1,18 @@
+{
+  "body": [
+    {
+      "name": "proxytrunks",
+      "ip": "127.0.0.1",
+      "advertisedIp": "138.0.0.1",
+      "id": 1
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/proxy_trunks?_page=1",
+    "x-last-page": "/api/brand/proxy_trunks?_page=1",
+    "x-next-page": "/api/brand/proxy_trunks?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
