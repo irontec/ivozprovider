@@ -109,11 +109,6 @@
         <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="mediaRelaySets" target-entity="Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface" fetch="LAZY">
-      <join-columns>
-        <join-column name="mediaRelaySetsId" referenced-column-name="id" on-delete="SET NULL"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="defaultTimezone" target-entity="Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface" fetch="LAZY">
       <join-columns>
         <join-column name="defaultTimezoneId" referenced-column-name="id" on-delete="SET NULL"/>
@@ -127,11 +122,6 @@
     <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\DomainInterface" fetch="LAZY">
       <join-columns>
         <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="applicationServer" target-entity="Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface" fetch="LAZY">
-      <join-columns>
-        <join-column name="applicationServerId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="country" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
