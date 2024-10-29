@@ -21,6 +21,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
     {
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
+
         $manager->getClassMetadata(Company::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var CompanyInterface $item1 */

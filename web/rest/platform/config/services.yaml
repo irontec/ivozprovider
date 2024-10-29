@@ -78,3 +78,7 @@ when@test:
         Ivoz\Provider\Domain\Service\Terminal\Provision\ProvisionSpecific:
             arguments:
                 $storagePath: '%storagePath%'
+
+        Ivoz\Tests\TestSqliteSessionInitListener:
+            tags:
+                - { name: doctrine.event_listener, event: postConnect }

@@ -59,3 +59,13 @@ services:
         resource: '../src/Controller/Provider/*'
         tags: [ 'controller.service_arguments' ]
 
+when@test:
+    services:
+        _defaults:
+            autowire: true
+            autoconfigure: true
+            public: false
+        Ivoz\Tests\TestSqliteSessionInitListener:
+            tags:
+                - { name: doctrine.event_listener, event: postConnect }
+
