@@ -46,8 +46,7 @@ Feature: Retrieve application server sets
           "id": 0,
           "applicationServers": [
               1,
-              2,
-              3
+              2
           ]
       }
       """

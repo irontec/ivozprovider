@@ -8,7 +8,7 @@ Feature: Manage application server set
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "DELETE" request to "/application_server_sets/1"
+      And I send a "DELETE" request to "/application_server_sets/2"
      Then the response status code should be 204
 
   @createSchema

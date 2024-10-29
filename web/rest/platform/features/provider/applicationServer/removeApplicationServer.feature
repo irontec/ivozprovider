@@ -8,7 +8,7 @@ Feature: Remove application servers
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "DELETE" request to "/application_servers/2"
+      And I send a "DELETE" request to "/application_servers/3"
      Then the response status code should be 204
 
   @createSchema
@@ -18,3 +18,11 @@ Feature: Remove application servers
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/application_servers/1"
      Then the response status code should be 403
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+      And the JSON should be like:
+      """
+      {
+         "detail":"Cannot delete application server because it is in use in at least one company"
+      }
+      """
