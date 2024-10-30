@@ -3976,11 +3976,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Company/CompanyBalanceServiceInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\SanitizeEmptyValues\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Company/SanitizeEmptyValues.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\SearchBrokenThresholds\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Company/SearchBrokenThresholds.php
