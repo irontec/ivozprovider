@@ -1,0 +1,26 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Service\MediaRelaySet;
+
+use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
+use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
+
+/**
+ * @codeCoverageIgnore
+ */
+class MediaRelaySetLifecycleServiceCollection implements LifecycleServiceCollectionInterface
+{
+    use LifecycleServiceCollectionTrait;
+
+    /** @var array<array-key, array> $bindedBaseServices */
+    public static $bindedBaseServices = [];
+
+    protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
+    {
+        Assertion::isInstanceOf($service, MediaRelaySetHandlerInterface::class);
+        $this->services[$event][] = $service;
+    }
+}
