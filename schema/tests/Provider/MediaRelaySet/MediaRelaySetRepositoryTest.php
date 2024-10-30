@@ -17,6 +17,7 @@ class MediaRelaySetRepositoryTest extends KernelTestCase
     public function test_runner()
     {
         $this->its_instantiable();
+        $this->it_cannot_remove_default_set();
     }
 
     public function its_instantiable()
@@ -30,5 +31,24 @@ class MediaRelaySetRepositoryTest extends KernelTestCase
             MediaRelaySetRepository::class,
             $repository
         );
+    }
+
+    public function it_cannot_remove_default_set()
+    {
+        /** @var MediaRelaySetRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(MediaRelaySet::class);;
+
+        $mediaRelaySet = $repository->find(0);
+
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage(
+            'Default media relay set cannot be deleted'
+        );
+
+        $this
+            ->entityTools
+            ->remove($mediaRelaySet);
     }
 }
