@@ -19,12 +19,14 @@ import {
 } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
-import { useStoreActions } from 'store';
 
-import UsersCdr from '../UsersCdr';
+import { useStoreActions } from '../../../store';
+import Recording from '../Recording';
 
-const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
-  const { variant = 'icon' } = props;
+const Download: ActionFunctionComponent = (
+  props: MultiSelectActionItemProps
+) => {
+  const { variant = 'icon', selectedValues } = props;
 
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
@@ -34,11 +36,10 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
 
   const handleClickOpen = () => {
     setOpen(true);
-    const search = location.search;
-    const glue = search.includes('?') ? '&' : '?';
+    const recordingIds = selectedValues.join(',');
 
     apiDownload({
-      path: `${UsersCdr.path + search + glue}_pagination=false`,
+      path: `${Recording.path}/recorded_files_zip?_recordingIds=${recordingIds}`,
       params: {},
       headers: {
         accept: 'text/csv',
@@ -47,9 +48,8 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
         const blobUrl = URL.createObjectURL(data as Blob);
         const link = document.createElement('a');
         link.href = blobUrl;
-        link.download = 'external calls.csv';
+        link.download = 'recordings.zip';
 
-        // Append link to the body
         document.body.appendChild(link);
         link.dispatchEvent(
           new MouseEvent('click', {
@@ -59,11 +59,11 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
           })
         );
 
-        // Remove link from body
         document.body.removeChild(link);
         setOpen(false);
         setError(false);
       },
+      handleErrors: false,
     }).catch((error: { statusText: string; status: number }) => {
       setErrorMsg(`${error.statusText} (${error.status})`);
       setError(true);
@@ -82,15 +82,9 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
   return (
     <>
       <a onClick={handleClickOpen}>
-        {variant === 'text' && (
-          <MoreMenuItem>{_('Export to CSV')}</MoreMenuItem>
-        )}
+        {variant === 'text' && <MoreMenuItem>{_('Download')}</MoreMenuItem>}
         {variant === 'icon' && (
-          <Tooltip
-            title={_('Export to CSV')}
-            placement='bottom'
-            enterTouchDelay={0}
-          >
+          <Tooltip title={_('Download')} placement='bottom' enterTouchDelay={0}>
             <span>
               <StyledTableRowCustomCta>
                 <CloudDownloadIcon />
@@ -101,13 +95,13 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
       </a>
       {open && (
         <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle>{_('Downloading')}</DialogTitle>
+          <DialogTitle>Downloading</DialogTitle>
           <DialogContent sx={{ textAlign: 'left!important' }}>
             {!error && <DialogContentBody child={<CircularProgress />} />}
             {error && <ErrorMessageComponent message={errorMsg} />}
           </DialogContent>
           <DialogActions>
-            <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
+            <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
           </DialogActions>
         </Dialog>
       )}
@@ -115,4 +109,4 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
   );
 };
 
-export default Export;
+export default Download;
