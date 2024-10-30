@@ -1,7 +1,6 @@
 {
     "body": {
         "userName": "Alice",
-        "userLastName": "Allison",
         "extension": "",
         "terminal": "alice",
         "email": "alice@democompany.com",
