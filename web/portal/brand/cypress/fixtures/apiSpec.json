@@ -7163,24 +7163,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "mediaRelaySets",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -7188,12 +7170,6 @@
                     },
                     {
                         "name": "name[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -7212,6 +7188,12 @@
                     },
                     {
                         "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11254,6 +11236,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description[start]",
                         "in": "query",
                         "required": false,
@@ -11267,12 +11255,6 @@
                     },
                     {
                         "name": "description[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11314,24 +11296,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "mediaRelaySets",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -11350,6 +11314,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -11357,12 +11327,6 @@
                     },
                     {
                         "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -37842,10 +37806,6 @@
                     "description": "",
                     "type": "integer"
                 },
-                "mediaRelaySets": {
-                    "description": "",
-                    "type": "integer"
-                },
                 "mediaRelaySet": {
                     "description": "",
                     "type": "integer"
@@ -37950,9 +37910,6 @@
                 },
                 "proxyTrunk": {
                     "$ref": "#/definitions/ProxyTrunk"
-                },
-                "mediaRelaySets": {
-                    "$ref": "#/definitions/MediaRelaySet"
                 },
                 "mediaRelaySet": {
                     "$ref": "#/definitions/MediaRelaySet"
@@ -39607,10 +39564,6 @@
                     "description": "",
                     "type": "integer"
                 },
-                "mediaRelaySets": {
-                    "description": "",
-                    "type": "integer"
-                },
                 "mediaRelaySet": {
                     "description": "",
                     "type": "integer"
@@ -39683,9 +39636,6 @@
                 },
                 "proxyTrunk": {
                     "$ref": "#/definitions/ProxyTrunk"
-                },
-                "mediaRelaySets": {
-                    "$ref": "#/definitions/MediaRelaySet"
                 },
                 "mediaRelaySet": {
                     "$ref": "#/definitions/MediaRelaySet"
