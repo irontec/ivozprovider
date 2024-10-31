@@ -4568,24 +4568,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "mediaRelaySets",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -4746,12 +4728,6 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "applicationServer",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "applicationServerSet",
                         "in": "query",
                         "required": false,
@@ -4764,18 +4740,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "applicationServer[]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "applicationServer[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "billingMethod",
                         "in": "query",
                         "required": false,
@@ -4783,6 +4747,12 @@
                     },
                     {
                         "name": "billingMethod[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -4801,12 +4771,6 @@
                     },
                     {
                         "name": "billingMethod[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "billingMethod[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5010,6 +4974,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.countryName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.countryName[start]",
                         "in": "query",
                         "required": false,
@@ -5023,12 +4993,6 @@
                     },
                     {
                         "name": "invoicing.countryName[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.countryName[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5082,12 +5046,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalAddress[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalAddress[start]",
                         "in": "query",
                         "required": false,
@@ -5101,6 +5059,12 @@
                     },
                     {
                         "name": "invoicing.postalAddress[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5154,18 +5118,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.province[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.province[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.province[neq]",
                         "in": "query",
                         "required": false,
@@ -5178,6 +5130,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.province[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.town",
                         "in": "query",
                         "required": false,
@@ -5185,6 +5149,12 @@
                     },
                     {
                         "name": "invoicing.town[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5203,12 +5173,6 @@
                     },
                     {
                         "name": "invoicing.town[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5302,24 +5266,6 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "name",
@@ -6588,24 +6534,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "mediaRelaySets",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mediaRelaySets[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -6618,25 +6546,25 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "name[partial]",
+                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16043,10 +15971,6 @@
                     "description": "",
                     "type": "integer"
                 },
-                "mediaRelaySets": {
-                    "description": "",
-                    "type": "integer"
-                },
                 "mediaRelaySet": {
                     "description": "",
                     "type": "integer"
@@ -16223,19 +16147,11 @@
                     "description": "",
                     "type": "integer"
                 },
-                "mediaRelaySets": {
-                    "description": "",
-                    "type": "integer"
-                },
                 "defaultTimezone": {
                     "description": "",
                     "type": "integer"
                 },
                 "brand": {
-                    "description": "",
-                    "type": "integer"
-                },
-                "applicationServer": {
                     "description": "",
                     "type": "integer"
                 },
@@ -16841,10 +16757,6 @@
                     "type": "integer"
                 },
                 "proxyTrunk": {
-                    "description": "",
-                    "type": "integer"
-                },
-                "mediaRelaySets": {
                     "description": "",
                     "type": "integer"
                 },
