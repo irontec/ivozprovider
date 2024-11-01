@@ -36,7 +36,8 @@ import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json
 import ActiveCallsCollection from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
-import RetailProfileItem from '../../fixtures/My/Profile/getRetailProfile.json';
+import ResidentialProfile from '../../fixtures/My/Profile/getResidentialProfile.json';
+import RetailProfile from '../../fixtures/My/Profile/getRetailProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
 import OutgoingDdiRulePatternCollection from '../../fixtures/OutgoingDdiRulePatterns/getCollection.json';
@@ -61,7 +62,7 @@ import UsersCdrsCollection from '../../fixtures/UsersCdrs/getCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
 import VoicemailMessageCollection from '../../fixtures/VoicemailMessage/getCollection.json';
 
-const CLIENT_TYPE = {
+export const CLIENT_TYPE = {
   Retail: 'retail',
   Residential: 'residential',
   Wholesale: 'wholesale',
@@ -267,20 +268,13 @@ Cypress.Commands.add(
 
     switch (clientType) {
       case CLIENT_TYPE.Retail:
-        profileItem = RetailProfileItem;
+        profileItem = RetailProfile;
+        break;
+      case CLIENT_TYPE.Residential:
+        profileItem = ResidentialProfile;
         break;
       default:
         profileItem = ProfileItem;
-        break;
-    }
-
-    switch (pactContextName) {
-      case 'Retail-Accounts':
-      case 'Retail-Accounts-CallForwardSetting':
-      case 'Retail-Accounts-Ddi':
-        profileItem = RetailProfileItem;
-        break;
-      default:
         break;
     }
 

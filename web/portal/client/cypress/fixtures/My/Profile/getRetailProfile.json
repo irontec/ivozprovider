@@ -9,7 +9,11 @@
     "defaultCountryId": 3,
     "acls": [],
     "features": [
-      "progress"
+      "queues",
+      "recordings",
+      "faxes",
+      "friends",
+      "conferences"
     ]
   },
   "headers": {

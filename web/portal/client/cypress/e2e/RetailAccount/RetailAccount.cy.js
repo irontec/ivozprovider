@@ -1,10 +1,13 @@
 import RetailAccountCollection from '../../fixtures/RetailAccount/getCollection.json';
 import RetailAccountItem from '../../fixtures/RetailAccount/getItem.json';
 import editRetailAccount from '../../fixtures/RetailAccount/put.json';
+import { CLIENT_TYPE } from '../../support/commands/prepareGenericPactInterceptors';
 
 describe('Retail Account', () => {
   beforeEach(() => {
-    cy.prepareGenericPactInterceptors('Retail-Accounts');
+    cy.prepareGenericPactInterceptors('Retail-Accounts', {
+      clientType: CLIENT_TYPE.Retail,
+    });
     cy.before();
 
     cy.contains('Retail Accounts').click();
