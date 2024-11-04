@@ -5208,6 +5208,11 @@
       <code>$notificationTemplateContent-&gt;getFromName()</code>
     </PossiblyNullArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Service/MediaRelaySet/MediaRelaySetLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Provider/Domain/Service/MediaRelaySetsRelBrand/MediaRelaySetsRelBrandLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
