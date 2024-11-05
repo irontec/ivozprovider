@@ -1,0 +1,21 @@
+{
+    "body": {
+        "restricted": false,
+        "vpbx": false,
+        "residential": true,
+        "retail": false,
+        "wholesale": false,
+        "billingInfo": false,
+        "defaultCountryId": 68,
+        "acls": [],
+        "features": [
+            "faxes",
+            "recordings",
+            "residential"
+        ]
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

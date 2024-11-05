@@ -1,10 +1,13 @@
 import DdiCollection from '../../../fixtures/Ddi/getCollection.json';
 import DdiItem from '../../../fixtures/Ddi/getItem.json';
 import editDdi from '../../../fixtures/Ddi/put.json';
+import { CLIENT_TYPE } from '../../../support/commands/prepareGenericPactInterceptors';
 
 describe('Retail Accounts Ddi', () => {
   beforeEach(() => {
-    cy.prepareGenericPactInterceptors('Retail-Accounts-Ddi');
+    cy.prepareGenericPactInterceptors('Retail-Accounts-Ddi', {
+      clientType: CLIENT_TYPE.Retail,
+    });
     cy.before();
 
     cy.contains('Retail Accounts').click();

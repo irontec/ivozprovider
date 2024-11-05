@@ -1,15 +1,7 @@
 {
   "request": {
-    "enabled": false,
-    "name": "updatedGeneric",
-    "email": "updated@voicemail.com",
-    "sendMail": true,
-    "attachSound": "0",
-    "id": 1,
-    "user": 2,
-    "residentialDevice": null,
-    "company": 1,
-    "locution": null
+    "sendMail": false,
+    "enabled": false
   },
   "response": {
     "body": {

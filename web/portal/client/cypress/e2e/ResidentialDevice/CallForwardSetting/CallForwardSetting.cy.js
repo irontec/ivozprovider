@@ -6,16 +6,17 @@ import {
   putCallForwardSetting,
 } from '../../CallForwardSetting/CallForwardSetting.tests';
 
-describe('Retail Accounts CallForwardSetting', () => {
+describe('Residential Devices CallForwardSetting', () => {
   beforeEach(() => {
-    cy.prepareGenericPactInterceptors('Retail-Accounts-CallForwardSetting', {
-      clientType: CLIENT_TYPE.Retail,
-    });
+    cy.prepareGenericPactInterceptors(
+      'Residential-Devices-CallForwardSetting',
+      { clientType: CLIENT_TYPE.Residential }
+    );
     cy.before();
 
-    cy.contains('Retail Accounts').click();
+    cy.contains('Residential Devices').click();
 
-    cy.get('header').should('contain', 'Retail Accounts');
+    cy.get('header').should('contain', 'Residential Devices');
 
     cy.get('svg[data-testid="PhoneForwardedIcon"]').first().click();
 
@@ -29,13 +30,13 @@ describe('Retail Accounts CallForwardSetting', () => {
   // POST
   ///////////////////////
   it('add CallForwardSetting', () =>
-    postCallForwardSetting({ clientType: CLIENT_TYPE.Retail }));
+    postCallForwardSetting({ clientType: CLIENT_TYPE.Residential }));
 
   ///////////////////////////////
   // PUT
   ///////////////////////////////
   it('edit CallForwardSetting', () =>
-    putCallForwardSetting({ clientType: CLIENT_TYPE.Retail }));
+    putCallForwardSetting({ clientType: CLIENT_TYPE.Residential }));
 
   ///////////////////////
   // DELETE

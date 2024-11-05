@@ -1,0 +1,31 @@
+{
+  "request": {
+    "name": "New Lock",
+    "description": "description",
+    "open": false,
+    "id": 3,
+    "closeExtension": "",
+    "openExtension": "",
+    "toggleExtension": ""
+  },
+  "response": {
+    "body": {
+      "name": "New Lock",
+      "description": "description",
+      "open": false,
+      "id": 3,
+      "closeExtension": "",
+      "openExtension": "",
+      "toggleExtension": ""
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
