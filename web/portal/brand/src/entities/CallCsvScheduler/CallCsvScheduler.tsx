@@ -275,6 +275,7 @@ const properties: CallCsvSchedulerProperties = {
     default: '__null__',
   },
   endpointType: {
+    memoize: false,
     label: _('Endpoint Type'),
     type: 'string',
     null: _('All'),
@@ -304,6 +305,7 @@ const properties: CallCsvSchedulerProperties = {
     },
   },
   residentialEndpointType: {
+    memoize: false,
     label: _('Endpoint Type'),
     type: 'string',
     null: _('All'),
