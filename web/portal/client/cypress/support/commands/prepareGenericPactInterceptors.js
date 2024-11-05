@@ -35,6 +35,7 @@ import MatchListPatternCollection from '../../fixtures/MatchListPattern/getColle
 import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json';
 import ActiveCallsCollection from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
+import ResidentialDashboardItem from '../../fixtures/My/Dashboard/getResidentialDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ResidentialProfile from '../../fixtures/My/Profile/getResidentialProfile.json';
 import RetailProfile from '../../fixtures/My/Profile/getRetailProfile.json';
@@ -68,7 +69,8 @@ export const CLIENT_TYPE = {
   Wholesale: 'wholesale',
   Vpbx: 'vpbx',
 };
-let profileItem;
+let profileItem = ProfileItem;
+let dashboardItem = DashboardItem;
 
 Cypress.Commands.add(
   'prepareGenericPactInterceptors',
@@ -272,9 +274,7 @@ Cypress.Commands.add(
         break;
       case CLIENT_TYPE.Residential:
         profileItem = ResidentialProfile;
-        break;
-      default:
-        profileItem = ProfileItem;
+        dashboardItem = ResidentialDashboardItem;
         break;
     }
 
@@ -286,7 +286,7 @@ Cypress.Commands.add(
       ...ActiveCallsCollection,
     }).as('getMyActiveCalls');
 
-    cy.intercept('GET', '**/api/client/my/dashboard', { ...DashboardItem }).as(
+    cy.intercept('GET', '**/api/client/my/dashboard', { ...dashboardItem }).as(
       'getMyDashboard'
     );
 
