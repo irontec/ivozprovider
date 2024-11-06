@@ -1,9 +1,10 @@
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
+import { CLIENT_TYPE } from '../../support/commands/prepareGenericPactInterceptors';
 
 describe('Dashboard Retail', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Dashobard-Retail', {
-      clientType: 'retail',
+      clientType: CLIENT_TYPE.Retail,
     });
     cy.before();
 

@@ -1,9 +1,10 @@
 import DashboardItem from '../../fixtures/My/Dashboard/getResidentialDashboard.json';
+import { CLIENT_TYPE } from '../../support/commands/prepareGenericPactInterceptors';
 
 describe('Dashboard Residential', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Dashobard-Residential', {
-      clientType: 'residential',
+      clientType: CLIENT_TYPE.Residential,
     });
     cy.before();
 

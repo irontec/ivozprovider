@@ -36,9 +36,11 @@ import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json
 import ActiveCallsCollection from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ResidentialDashboardItem from '../../fixtures/My/Dashboard/getResidentialDashboard.json';
+import WholesaleDashboardItem from '../../fixtures/My/Dashboard/getWholesaleDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ResidentialProfile from '../../fixtures/My/Profile/getResidentialProfile.json';
 import RetailProfile from '../../fixtures/My/Profile/getRetailProfile.json';
+import WholesaleProfile from '../../fixtures/My/Profile/getWholesaleProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
 import OutgoingDdiRulePatternCollection from '../../fixtures/OutgoingDdiRulePatterns/getCollection.json';
@@ -275,6 +277,10 @@ Cypress.Commands.add(
       case CLIENT_TYPE.Residential:
         profileItem = ResidentialProfile;
         dashboardItem = ResidentialDashboardItem;
+        break;
+      case CLIENT_TYPE.Wholesale:
+        profileItem = WholesaleProfile;
+        dashboardItem = WholesaleDashboardItem;
         break;
     }
 
