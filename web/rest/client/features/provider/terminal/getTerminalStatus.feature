@@ -21,6 +21,7 @@ Feature: Retrieve terminals status
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.106:5060",
+                      "publicContact": false,
                       "received": "sip:212.64.172.23:5060",
                       "publicReceived": true,
                       "expires": "2031-01-01 00:59:59",
