@@ -80,7 +80,7 @@ const Status: StatusIconProps = (props): JSX.Element | null => {
         const publicReceived = row.publicReceived;
         const expires = row.expires;
         const userAgent = row.userAgent;
-        const contact = row.contact.match(/sips?:([^@]+@)?(.+)/)?.pop();
+        const contact = row.contact.match(/sips?:([^@]+@)?([^;]+)/)?.pop();
         const publicContact = row.publicContact;
 
         let hintMsg: string | React.ReactElement = '';
@@ -88,8 +88,6 @@ const Status: StatusIconProps = (props): JSX.Element | null => {
           hintMsg = publicContact
             ? _('No NAT with public Contact (hint: SIP ALG / STUN)')
             : _('No NAT with private Contact (hint: internal routing)');
-        } else if (contact === received) {
-          hintMsg = _('Regular NAT detected');
         } else if (publicReceived && !publicContact) {
           hintMsg = _('Regular NAT detected');
         } else {
@@ -134,6 +132,7 @@ const Status: StatusIconProps = (props): JSX.Element | null => {
               </Tooltip>
               {hintMsg}
             </div>
+            {status.length - 1 !== key && <br />}
           </div>
         );
       })}
