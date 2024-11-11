@@ -1,0 +1,30 @@
+{
+  "body": [
+    {
+      "id": 1,
+      "name": {
+        "en": "Something",
+        "es": "Algo",
+        "ca": "Algo mes",
+        "it": "Più"
+      }
+    },
+    {
+      "id": 2,
+      "name": {
+        "en": "Something more",
+        "es": "Algo más",
+        "ca": "Algo mes",
+        "it": "Più"
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/rating_plan_groups?_page=1",
+    "x-last-page": "/api/client/rating_plan_groups?_page=1",
+    "x-next-page": "/api/client/rating_plan_groups?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
