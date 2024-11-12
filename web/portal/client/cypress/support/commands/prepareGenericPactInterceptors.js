@@ -25,6 +25,7 @@ import FriendPatternsCollection from '../../fixtures/FriendPattern/getCollection
 import HolidayDateCollection from '../../fixtures/HolidayDate/getCollection.json';
 import HuntGroupCollection from '../../fixtures/HuntGroup/getCollection.json';
 import HuntGroupMemberByHuntGroupCollection from '../../fixtures/HuntGroupMember/getCollection.json';
+import InvoiceCollection from '../../fixtures/Invoices/getCollection.json';
 import IvrCollection from '../../fixtures/Ivr/getCollection.json';
 import IvrEntryCollection from '../../fixtures/IvrEntry/getCollection.json';
 import LanguageCollection from '../../fixtures/Language/getCollection.json';
@@ -36,19 +37,24 @@ import MusicOnHoldCollection from '../../fixtures/MusicOnHold/getCollection.json
 import ActiveCallsCollection from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ResidentialDashboardItem from '../../fixtures/My/Dashboard/getResidentialDashboard.json';
+import WholesaleDashboardItem from '../../fixtures/My/Dashboard/getWholesaleDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ResidentialProfile from '../../fixtures/My/Profile/getResidentialProfile.json';
 import RetailProfile from '../../fixtures/My/Profile/getRetailProfile.json';
+import WholesaleProfile from '../../fixtures/My/Profile/getWholesaleProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import OutgoingDdiRuleCollection from '../../fixtures/OutgoingDdiRule/getCollection.json';
 import OutgoingDdiRulePatternCollection from '../../fixtures/OutgoingDdiRulePatterns/getCollection.json';
 import PickUpGroupCollection from '../../fixtures/PickUpGroup/getCollection.json';
 import QueueCollection from '../../fixtures/Queue/getCollection.json';
 import QueueMemberCollection from '../../fixtures/QueueMember/getCollection.json';
+import RatingPlanGroup from '../../fixtures/RatingPlanGroup/getCollection.json';
+import RatingProfileCollection from '../../fixtures/RatingProfiles/getCollection.json';
 import RecordingCollection from '../../fixtures/Recording/getCollection.json';
 import ResidentialDeviceCollection from '../../fixtures/ResidentialDevice/getCollection.json';
 import RetailAccountCollection from '../../fixtures/RetailAccount/getCollection.json';
 import RouteLockCollection from '../../fixtures/RouteLock/getCollection.json';
+import RoutingTagCollection from '../../fixtures/RoutingTag/getCollection.json';
 import ScheduleCollection from '../../fixtures/Schedule/getCollection.json';
 import ServiceCollection from '../../fixtures/Service/getCollection.json';
 import ServiceUnassignedCollection from '../../fixtures/Service/getUnassignedCollection.json';
@@ -276,6 +282,10 @@ Cypress.Commands.add(
         profileItem = ResidentialProfile;
         dashboardItem = ResidentialDashboardItem;
         break;
+      case CLIENT_TYPE.Wholesale:
+        profileItem = WholesaleProfile;
+        dashboardItem = WholesaleDashboardItem;
+        break;
     }
 
     cy.intercept('GET', '**/api/client/my/profile', { ...profileItem }).as(
@@ -349,5 +359,21 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/client/call_acl_rel_match_lists?*', {
       ...CallAclRelMatchListCollection,
     }).as('getCallAclRelMatchList');
+
+    cy.intercept('GET', '**/api/client/rating_profiles?*', {
+      ...RatingProfileCollection,
+    }).as('getRatingProfiles');
+
+    cy.intercept('GET', '**/api/client/routing_tags?*', {
+      ...RoutingTagCollection,
+    }).as('getRoutingTags');
+
+    cy.intercept('GET', '**/api/client/rating_plan_groups?*', {
+      ...RatingPlanGroup,
+    }).as('getRatinggPlanGroups');
+
+    cy.intercept('GET', '**/api/client/invoices?*', {
+      ...InvoiceCollection,
+    }).as('getInvoices');
   }
 );

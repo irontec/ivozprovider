@@ -57,6 +57,7 @@ class TerminalDto extends TerminalDtoAbstract
                     'publicReceived',
                     'expires',
                     'userAgent',
+                    'publicContact'
                 ]]
             ];
 
@@ -94,6 +95,7 @@ class TerminalDto extends TerminalDtoAbstract
                 'publicReceived',
                 'expires',
                 'userAgent',
+                'publicContact'
             ]];
         }
 

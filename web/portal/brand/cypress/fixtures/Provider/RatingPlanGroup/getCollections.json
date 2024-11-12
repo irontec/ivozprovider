@@ -1,0 +1,41 @@
+{
+    "body": [
+        {
+            "id": 1,
+            "name": {
+                "en": "Something",
+                "es": "Algo",
+                "ca": "Algo mes",
+                "it": "Più"
+            },
+            "description": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            },
+            "currency": 1
+        },
+        {
+            "id": 2,
+            "name": {
+                "en": "Something more",
+                "es": "Algo más",
+                "ca": "Algo mes",
+                "it": "Più"
+            },
+            "description": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            },
+            "currency": 1
+        }
+    ],
+    "matchingRules": {
+        "$.body.id": {
+            "match": "true"
+        }
+    }
+}

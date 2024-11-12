@@ -1,10 +1,13 @@
 import apiSpec from '../../fixtures/apiSpec.json';
+import TrustedCollection from '../../fixtures/Kam/Trusted/getCollection.json';
+import UsersAddressesCollection from '../../fixtures/Kam/UsersAddresses/getCollection.json';
 import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import AdministratorCollection from '../../fixtures/Provider/Administrator/getCollection.json';
 import ApplicationServerSetsCollection from '../../fixtures/Provider/ApplicationServerSets/getCollection.json';
+import BannedAddressesCollection from '../../fixtures/Provider/BannedAddress/getCollection.json';
 import BillableCallsCollection from '../../fixtures/Provider/BillableCalls/getCollection.json';
 import CarriersCollection from '../../fixtures/Provider/Carriers/getCollection.json';
 import CodecsCollection from '../../fixtures/Provider/Codecs/getCollection.json';
@@ -21,6 +24,8 @@ import NotificationTemplateContentsCollection from '../../fixtures/Provider/Noti
 import NotificationTemplatesCollection from '../../fixtures/Provider/NotificationTemplates/getCollection.json';
 import OutgoingDdiRulesCollection from '../../fixtures/Provider/OutgoingDdiRules/getCollection.json';
 import ProxyTrunksCollection from '../../fixtures/Provider/ProxyTrunks/getCollection.json';
+import RatingPlanGroupCollection from '../../fixtures/Provider/RatingPlanGroup/getCollections.json';
+import RatingProfilesCollection from '../../fixtures/Provider/RatingProfile/getCollection.json';
 import RoutingTagsCollection from '../../fixtures/Provider/RoutingTags/getCollection.json';
 import TimezonesCollection from '../../fixtures/Provider/Timezones/getCollection.json';
 import TransformationRuleSetsCollection from '../../fixtures/Provider/TransformationRuleSets/getCollection.json';
@@ -156,5 +161,25 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/proxy_trunks?*', {
       ...ProxyTrunksCollection,
     }).as('getProxyTrunks');
+
+    cy.intercept('GET', '**/api/brand/users_addresses?*', {
+      ...UsersAddressesCollection,
+    }).as('getUserAddresses');
+
+    cy.intercept('GET', '**/api/brand/banned_address?*', {
+      ...BannedAddressesCollection,
+    }).as('getBannedAddresses');
+
+    cy.intercept('GET', '**/api/brand/rating_profiles?*', {
+      ...RatingProfilesCollection,
+    }).as('getRatingProfiles');
+
+    cy.intercept('GET', '**/api/brand/rating_plan_groups?*', {
+      ...RatingPlanGroupCollection,
+    }).as('getRatingPlanGroups');
+
+    cy.intercept('GET', '**/api/brand/trusteds?*', {
+      ...TrustedCollection,
+    }).as('getTrusteds');
   }
 );
