@@ -1,0 +1,27 @@
+{
+  "body": [
+    {
+      "activationTime": "2018-02-02 21:20:20",
+      "id": 1,
+      "company": 1,
+      "carrier": 1,
+      "ratingPlanGroup": 1,
+      "routingTag": 1
+    },
+    {
+      "activationTime": "2018-02-02 21:20:20",
+      "id": 2,
+      "company": 1,
+      "carrier": null,
+      "ratingPlanGroup": 2,
+      "routingTag": 1
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/rating_profiles?_page=1",
+    "x-last-page": "/api/brand/rating_profiles?_page=1",
+    "x-next-page": "/api/brand/rating_profiles?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  }
+}

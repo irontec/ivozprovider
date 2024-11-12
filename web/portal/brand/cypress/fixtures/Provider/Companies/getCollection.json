@@ -99,6 +99,31 @@
                 1
             ],
             "codecIds": []
+        },
+        {
+            "type": "wholesale",
+            "name": "Wholesale Company",
+            "domainUsers": "wholesale.irontec.com",
+            "maxDailyUsage": 1000000,
+            "currentDayUsage": -1,
+            "billingMethod": "postpaid",
+            "balance": 0,
+            "id": 5,
+            "invoicing": {
+                "nif": "12345689-Z"
+            },
+            "outgoingDdi": null,
+            "corporation": null,
+            "applicationServerSet": 1,
+            "mediaRelaySet": 0,
+            "domainName": null,
+            "currencySymbol": "€",
+            "currentDayMaxUsage": "Unavailable",
+            "accountStatus": "Unavailable",
+            "featureIds": [],
+            "geoIpAllowedCountries": [],
+            "routingTagIds": [],
+            "codecIds": []
         }
     ],
     "headers": {

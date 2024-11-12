@@ -1,0 +1,23 @@
+{
+  "request": {
+    "activationTime": "2018-03-03 20:30:30",
+    "id": 1,
+    "company": 3,
+    "carrier": null,
+    "ratingPlanGroup": 2
+  },
+  "response": {
+    "body": {
+      "activationTime": "2018-03-03 20:30:30",
+      "id": 1,
+      "company": 3,
+      "carrier": null,
+      "ratingPlanGroup": 2,
+      "routingTag": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

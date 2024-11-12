@@ -1,0 +1,119 @@
+{
+    "body": {
+        "type": "wholesale",
+        "name": "Wholesale Company",
+        "domainUsers": "wholesale.irontec.com",
+        "maxCalls": 0,
+        "maxDailyUsage": 1000000,
+        "currentDayUsage": 0,
+        "maxDailyUsageEmail": null,
+        "ipfilter": true,
+        "onDemandRecord": 0,
+        "allowRecordingRemoval": true,
+        "onDemandRecordCode": "",
+        "externallyextraopts": null,
+        "billingMethod": "postpaid",
+        "balance": 0,
+        "showInvoices": false,
+        "id": 5,
+        "invoicing": {
+            "nif": "12345689-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+        },
+        "language": {
+            "iden": "es",
+            "id": 1,
+            "name": {
+                "en": "es",
+                "es": "es",
+                "ca": "es",
+                "it": "es"
+            }
+        },
+        "defaultTimezone": {
+            "tz": "Europe/Madrid",
+            "comment": "mainland",
+            "id": 145,
+            "label": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            },
+            "country": 68
+        },
+        "country": {
+            "code": "ES",
+            "countryCode": "+34",
+            "id": 68,
+            "name": {
+                "en": "Spain",
+                "es": "España",
+                "ca": "España",
+                "it": "Spagna"
+            },
+            "zone": {
+                "en": "Europe",
+                "es": "Europa",
+                "ca": "Europa",
+                "it": "Europe"
+            }
+        },
+        "currency": null,
+        "transformationRuleSet": {
+            "description": "Brand 1 transformation for Spain",
+            "internationalCode": "00",
+            "trunkPrefix": "",
+            "areaCode": "",
+            "nationalLen": 9,
+            "generateRules": false,
+            "id": 1,
+            "name": {
+                "en": "Brand 1 transformation for Spain",
+                "es": "Marca 1 tansformacion para España",
+                "ca": "Marca 1 tansformacion para España",
+                "it": "Brand 1 transformation for Spain"
+            },
+            "country": 68,
+            "editable": true
+        },
+        "outgoingDdi": null,
+        "outgoingDdiRule": null,
+        "voicemailNotificationTemplate": {
+            "name": "Voicemail notification",
+            "type": "voicemail",
+            "id": 1
+        },
+        "faxNotificationTemplate": null,
+        "invoiceNotificationTemplate": null,
+        "callCsvNotificationTemplate": null,
+        "maxDailyUsageNotificationTemplate": null,
+        "accessCredentialNotificationTemplate": null,
+        "corporation": null,
+        "applicationServerSet": {
+            "name": "BlueApSet",
+            "distributeMethod": "hash",
+            "description": "An Application Server Set",
+            "id": 1,
+            "applicationServers": null
+        },
+        "mediaRelaySet": {
+            "name": "Default",
+            "description": "Default media relay set",
+            "id": 0
+        },
+        "domainName": null,
+        "featureIds": [],
+        "geoIpAllowedCountries": [],
+        "routingTagIds": [],
+        "codecIds": []
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}
