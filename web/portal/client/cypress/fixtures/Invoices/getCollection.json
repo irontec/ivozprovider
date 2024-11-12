@@ -1,0 +1,26 @@
+{
+  "body": [
+    {
+      "number": "TEST025",
+      "inDate": "2023-05-17 00:00:00",
+      "outDate": "2023-05-18 21:29:59",
+      "taxRate": 21,
+      "totalWithTax": null,
+      "id": 39,
+      "pdf": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      },
+      "currency": "€"
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/invoices?_page=1",
+    "x-next-page": "/api/client/invoices?_page=1",
+    "x-last-page": "/api/client/invoices?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
