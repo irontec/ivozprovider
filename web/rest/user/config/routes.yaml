@@ -7,6 +7,15 @@ api_admin_login:
 api_user_login:
   path: user_login
 
+post_auth_token_exchange:
+  path: '/token/exchange'
+  methods: ['POST', 'GET']
+  defaults:
+    _controller: Controller\Auth\TokenExchangeAction
+    _api_resource_class: 'Model\Token'
+    _api_item_operation_name: 'post_auth_token_exchange'
+    _api_receive: false
+
 ###############################
 ## Refresh JWT Token
 ###############################

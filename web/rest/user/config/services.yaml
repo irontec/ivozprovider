@@ -40,6 +40,12 @@ services:
         tags:
             - { name: serializer.normalizer, priority: 10 }
 
+    Ivoz\Api\Operation\ExchangeToken:
+        arguments:
+            $userProvider: '@Service\UserProvider'
+            $requiredInputRole: 'ROLE_COMPANY_ADMIN'
+            $requiredOutputRole: 'ROLE_COMPANY_USER'
+
     Ivoz\Api\Core\Security\DataAccessControlParser:
         public: true
         calls:
@@ -51,6 +57,10 @@ services:
     #######################################
     ## Controllers
     #######################################
+    Controller\Auth\:
+        resource: '../src/Controller/Auth/*'
+        tags: ['controller.service_arguments']
+
     Controller\My\:
         resource: '../src/Controller/My/*'
         tags: ['controller.service_arguments']
