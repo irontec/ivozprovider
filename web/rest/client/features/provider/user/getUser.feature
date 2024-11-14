@@ -17,6 +17,7 @@ Feature: Retrieve users
           {
               "name": "Alice",
               "lastname": "Allison",
+              "email": "alice@democompany.com",
               "id": 1,
               "terminal": 1,
               "extension": null,
@@ -34,6 +35,7 @@ Feature: Retrieve users
           {
               "name": "Bob",
               "lastname": "Bobson",
+              "email": "bob@democompany.com",
               "id": 2,
               "terminal": 2,
               "extension": null,
@@ -43,6 +45,7 @@ Feature: Retrieve users
           {
               "name": "Joe",
               "lastname": "Doe",
+              "email": "joe@democompany.com",
               "id": 3,
               "terminal": 4,
               "extension": 2,
