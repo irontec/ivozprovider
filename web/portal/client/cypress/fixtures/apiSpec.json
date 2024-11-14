@@ -33232,6 +33232,54 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "email",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "email[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exists[email]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[extension]",
                         "in": "query",
                         "required": false,
@@ -33310,12 +33358,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "lastname[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "lastname[start]",
                         "in": "query",
                         "required": false,
@@ -33329,6 +33371,12 @@
                     },
                     {
                         "name": "lastname[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "lastname[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33364,18 +33412,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -33383,6 +33419,18 @@
                     },
                     {
                         "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33476,6 +33524,16 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[email]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "enum": [
@@ -46455,6 +46513,11 @@
                 "outgoingDdi": {
                     "description": "",
                     "type": "integer"
+                },
+                "email": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
                 },
                 "status": {
                     "description": "Registration status",
