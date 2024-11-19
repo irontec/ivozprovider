@@ -30,6 +30,7 @@ const ResidentialFeatureSelectOptions: SelectOptionsType = ({
         ClientTypes.retail,
         ClientTypes.vpbx,
         ClientTypes.wholesale,
+        ClientTypes.residential,
       ];
 
       for (const item of data) {
