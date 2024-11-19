@@ -4,13 +4,13 @@ namespace Ivoz\Provider\Infrastructure\Api\Jwt;
 
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Provider\Domain\Service\Administrator\AssertAdministratorCanImpersonation;
+use Ivoz\Provider\Domain\Service\Administrator\AssertAdministratorCanImpersonate;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
 
 class JWTCreatedListener
 {
     public function __construct(
-        private AssertAdministratorCanImpersonation $administratorImpersonationChecker
+        private AssertAdministratorCanImpersonate $administratorImpersonationChecker
     ) {
     }
 
@@ -34,7 +34,7 @@ class JWTCreatedListener
             ->administratorImpersonationChecker
             ->execute(
                 end($onBehalfOfIds),
-                $user->getId() ?? -1
+                $user
             )
         ;
     }
