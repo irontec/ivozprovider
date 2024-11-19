@@ -46810,6 +46810,11 @@
                     "description": "",
                     "type": "integer"
                 },
+                "email": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
                 "status": {
                     "description": "Registration status",
                     "type": "array",
@@ -46820,11 +46825,6 @@
                 "company": {
                     "description": "",
                     "type": "integer"
-                },
-                "email": {
-                    "maxLength": 100,
-                    "description": "",
-                    "type": "string"
                 },
                 "location": {
                     "description": "",
