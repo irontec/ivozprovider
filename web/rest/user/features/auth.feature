@@ -27,3 +27,10 @@ Feature: Authorization checking
       And I add "Accept" header equal to "application/json"
       And I send a "GET" request to "/my/profile"
      Then the response status code should be 401
+
+  Scenario: A higher order admin can exchange token
+     When I exchange User Authorization header
+      And I add "Accept" header equal to "application/ld+json"
+      And I send a "GET" request to "/my/profile"
+     Then the response status code should be 200
+      And the response should be in JSON

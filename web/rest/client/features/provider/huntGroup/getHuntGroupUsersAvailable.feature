@@ -17,6 +17,7 @@ Feature: Retrieve hunt groups available users
           {
               "name": "Bob",
               "lastname": "Bobson",
+              "email": "bob@democompany.com",
               "id": 2,
               "terminal": 2,
               "extension": null,
@@ -26,6 +27,7 @@ Feature: Retrieve hunt groups available users
           {
               "name": "Joe",
               "lastname": "Doe",
+              "email": "joe@democompany.com",
               "id": 3,
               "terminal": 4,
               "extension": 2,

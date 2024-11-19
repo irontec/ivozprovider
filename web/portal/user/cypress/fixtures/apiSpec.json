@@ -4469,6 +4469,54 @@
                 ]
             }
         },
+        "/token/exchange": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "description": "Client admin token"
+                    },
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "type": "string",
+                        "required": false,
+                        "description": "Target user admin email"
+                    }
+                ],
+                "operationId": "post_auth_token_exchangeTokenCollection",
+                "summary": "Creates a Token resource.",
+                "responses": {
+                    "201": {
+                        "description": "Token resource created",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            }
+        },
         "/users_cdrs": {
             "get": {
                 "produces": [
@@ -6754,6 +6802,15 @@
                 },
                 "tz": {
                     "maxLength": 255,
+                    "description": "",
+                    "type": "string"
+                }
+            }
+        },
+        "Token": {
+            "type": "object",
+            "properties": {
+                "token": {
                     "description": "",
                     "type": "string"
                 }

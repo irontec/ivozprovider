@@ -51,13 +51,13 @@ class FeatureContext extends BaseFeatureContext
     }
 
     /**
-     * @Given I exchange Client Authorization header
+     * @Given I exchange User Authorization header
      *
      * @return void
      */
-    public function setBrandAuthorizationHeaderByExchange(): void
+    public function setUserAuthorizationHeaderByExchange(): void
     {
-        $this->exchangeAuthorizationHeader('test_brand_admin', 'test_company_admin');
+        $this->exchangeAuthorizationHeader('test_company_admin', 'alice@democompany.com');
     }
 
     /**
