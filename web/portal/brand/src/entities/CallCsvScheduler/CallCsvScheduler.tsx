@@ -247,26 +247,22 @@ const properties: CallCsvSchedulerProperties = {
   residentialDevice: {
     label: _('Residential Device', { count: 1 }),
     $ref: '#/definitions/ResidentialDevice',
-    null: _('All'),
-    default: '__null__',
+    required: true,
   },
   user: {
     label: _('User', { count: 1 }),
     $ref: '#/definitions/User',
-    null: _('All'),
-    default: '__null__',
+    required: true,
   },
   fax: {
     label: _('Fax', { count: 1 }),
     $ref: '#/definitions/Fax',
-    null: _('All'),
-    default: '__null__',
+    required: true,
   },
   friend: {
     label: _('Friend', { count: 1 }),
     $ref: '#/definitions/Friend',
-    null: _('All'),
-    default: '__null__',
+    required: true,
   },
   ddiProvider: {
     label: _('DDI Provider', { count: 1 }),
