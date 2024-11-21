@@ -35,21 +35,10 @@ if [ -z "$MAJOR" ] || [ -z "$MINOR" ] || [ -z "$PATCH" ]; then
     exit 2
 fi
 
-# Update package version
-grep -q -F $VERSION debian/changelog
-if [ $? -ne 0 ]; then
-    # Set the current version as stable:
-    dch --controlmaint --release ""
-    # Add a new entry with the new version with UNRELEASED distribution. 
-    dch --controlmaint --distribution UNRELEASED --newversion $MAJOR.$MINOR~$VERSION "Version bump to $VERSION" 
-fi
-
-
 # Update documentation version
 # Sphinx shows documentation version above the left menu
 sed -i "s/\(version =\) .*/\1 \"$MAJOR.$MINOR\"/" doc/sphinx/conf.py
 sed -i "s/IvozProvider [0-9\.]\+ Documentation/IvozProvider $MAJOR.$MINOR Documentation/" doc/sphinx/conf.py
-
 
 # Update Application User Agent
 sed -i "s/\(user_agent=Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR/" asterisk/config/pjsip.conf.in
