@@ -1,4 +1,25 @@
 # Changelog
+## 4.3.0
+* Endpoints:
+    - /application_server_sets
+      - Added [GET] endpoint to retrieve a collection of ApplicationServerSet resources.
+      - Added [POST] endpoint to create a new ApplicationServerSet resource.
+    - /application_server_sets/{id}
+      - Added [GET] endpoint to retrieve a specific ApplicationServerSet resource.
+      - Added [PUT] endpoint to update an ApplicationServerSet resource.
+      - Added [DELETE] endpoint to delete an ApplicationServerSet resource.
+* Models:
+    - ApplicationServerSet:
+        - Added distributeMethod filter parameters.
+    - Brand:
+        - Added applicationServerSets and mediaRelaySets properties.
+    - Carrier:
+        - Added mediaRelaySet property as a required field.
+    - DdiProvider:
+        - Added mediaRelaySet property as a required field.
+    - Company:
+        - Added applicationServerSet and mediaRelaySet properties as required fields.
+
 ## 4.2.0
 * Models:
   - Administrator:

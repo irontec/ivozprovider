@@ -1,4 +1,12 @@
 # Changelog
+## 4.3.0
+* Endpoints:
+    - /users:
+        - Added `email` as a new filter parameter.
+* Models:
+    - User-collection:
+        - Added `email` property.
+
 ## 4.2.0
 * Endpoints
   - /holiday_dates/mass_import:

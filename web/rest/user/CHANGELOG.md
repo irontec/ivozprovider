@@ -1,4 +1,12 @@
 # Changelog
+## 4.3.0
+* Endpoints:
+    - /token/exchange:
+        - Added [POST] endpoint to exchange a token for a new one.
+* Models:
+    - Token:
+        - New model added to support token exchange functionality.
+
 ## 4.2.0
 * Endpoints
  - /recordings:
