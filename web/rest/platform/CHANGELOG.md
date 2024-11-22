@@ -503,12 +503,12 @@ string search parameters are now deprecated and they'll be removed on next major
         - Added priceDetails array property to BillableCall-detailed model
     - Brand:
         - Added Brand-withFeatures model for [PUT] and [POST] operations which exposes features array property
-        - Added features array property to Brand-detailed model 
+        - Added features array property to Brand-detailed model
 
 ## 2.12
 * Endpoints:
-    - Removed filter parameters not present on response models (except for foreign keys) 
-    - Added [exists] filter modificator (brand[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
+    - Removed filter parameters not present on response models (except for foreign keys)
+    - Added [exists] filter modificator (brand[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions
 
 * Models:
     -  Added Catalan and Italian to each multi language field group
@@ -528,13 +528,13 @@ string search parameters are now deprecated and they'll be removed on next major
 * Bugfixes:
     - Fixed roles on refreshed token
 * Endpoints:
-    - /brands: 
+    - /brands:
       - Added file upload handler: POST and PUT
       - Set multipart/form-data as default content type: POST and PUT
       - Added endpoint: [GET] /brands/{id}/logo
-    - /invoices: 
+    - /invoices:
       - Added endpoint: [GET] /invoices/{id}/pdf
-    - /web_portals: 
+    - /web_portals:
       - Added file upload handler: POST and PUT
       - Set multipart/form-data as default content type: POST and PUT
       - Added endpoint: [GET] /web_portals/{id}/logo
