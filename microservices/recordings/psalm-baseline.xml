@@ -39,6 +39,9 @@
     <ImplicitToStringCast occurrences="1">
       <code>$ddi</code>
     </ImplicitToStringCast>
+    <InternalMethod occurrences="1">
+      <code>persistDto</code>
+    </InternalMethod>
     <PossiblyNullArgument occurrences="5">
       <code>$callee</code>
       <code>$caller</code>
