@@ -1,12 +1,17 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
+			message: "#^Parameter \\#1 \\$callid of method Service\\\\Encoder\\:\\:getHashId\\(\\) expects string, string\\|null given\\.$#"
+			count: 3
+			path: src/Service/Encoder.php
+
+		-
+			message: "#^Parameter \\#3 \\$recorder of method Service\\\\Encoder\\:\\:getBaseName\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Service/Encoder.php
 
 		-
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
-			count: 3
+			count: 2
 			path: src/Service/Encoder.php
 
