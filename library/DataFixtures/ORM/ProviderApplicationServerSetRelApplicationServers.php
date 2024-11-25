@@ -21,7 +21,7 @@ class ProviderApplicationServerSetRelApplicationServers extends Fixture implemen
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ApplicationServerSetRelApplicationServer::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
         $manager->getConnection()->exec(
-            'INSERT INTO ApplicationServerSetRelApplicationServers(applicationServerId, applicationServerSetId ) SELECT id, 0 FROM ApplicationServers'
+            'INSERT INTO ApplicationServerSetRelApplicationServers(applicationServerId, applicationServerSetId ) SELECT id, 0 FROM ApplicationServers WHERE id != 3'
         );
         $item1 = $this->createEntityInstance(ApplicationServerSetRelApplicationServer::class);
         (function () use ($fixture) {
