@@ -297,9 +297,7 @@ Feature: Create companies
         "routingTagIds": [
           1
         ],
-        "codecIds": [
-          1
-        ],
+        "codecIds": [],
         "applicationServerSet": 1,
         "mediaRelaySet": 1
       }
@@ -359,8 +357,6 @@ Feature: Create companies
           "routingTagIds": [
               1
           ],
-          "codecIds": [
-              1
-          ]
+          "codecIds": []
       }
       """

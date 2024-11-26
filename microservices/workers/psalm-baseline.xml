@@ -52,6 +52,11 @@
     </MixedReturnStatement>
   </file>
   <file src="src/Worker/Invoices.php">
+    <InternalMethod occurrences="3">
+      <code>persistDto</code>
+      <code>persistDto</code>
+      <code>persistDto</code>
+    </InternalMethod>
     <MixedArgument occurrences="2">
       <code>$totals["totalPrice"]</code>
       <code>$totals["totalWithTaxes"]</code>
@@ -114,6 +119,11 @@
       <code>$entity</code>
       <code>$entity</code>
     </ImplicitToStringCast>
+    <InternalMethod occurrences="3">
+      <code>persistDto</code>
+      <code>persistDto</code>
+      <code>persistDto</code>
+    </InternalMethod>
     <MixedArgument occurrences="7">
       <code>$entityDto-&gt;getOriginalFileBaseName()</code>
       <code>$entityId</code>
@@ -151,6 +161,12 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Worker/Rates.php">
+    <InternalMethod occurrences="4">
+      <code>persistDto</code>
+      <code>persistDto</code>
+      <code>persistDto</code>
+      <code>persistDto</code>
+    </InternalMethod>
     <MixedArgument occurrences="14">
       <code>$column</code>
       <code>$csvLines</code>

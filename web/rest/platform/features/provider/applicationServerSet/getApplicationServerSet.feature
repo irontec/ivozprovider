@@ -51,8 +51,7 @@ Feature: Retrieve applicationServers
           "id": 0,
           "applicationServers": [
               1,
-              2,
-              3
+              2
           ]
       }
       """

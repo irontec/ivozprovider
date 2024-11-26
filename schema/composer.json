@@ -62,8 +62,8 @@
         "gesdinet/jwt-refresh-token-bundle": "^0.12.0",
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.5.8",
-        "irontec/ivoz-dev-tools": "^5.0",
-        "irontec/ivoz-provider-bundle": "^2.6.12",
+        "irontec/ivoz-dev-tools": "^6.0",
+        "irontec/ivoz-provider-bundle": "^3.0",
         "irontec/replacements": "^1.0",
         "symfony/flex": "^1.9",
         "symfony/maker-bundle": "^1.2"

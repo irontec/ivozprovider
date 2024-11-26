@@ -191,8 +191,13 @@ class CallCsvSchedulerLifeCycleTest extends KernelTestCase
     public function duplicated_brand_and_name_throws_exception()
     {
         $this->expectException(
-            \Doctrine\DBAL\Exception\UniqueConstraintViolationException::class
+            \DomainException::class
         );
+
+        $this->expectExceptionMessage(
+            'Duplicated value found'
+        );
+
 
         $dto = $this->createDto();
         $dto->setBrandId(1);
