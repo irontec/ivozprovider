@@ -23,6 +23,6 @@ Feature: Remove application servers
       And the JSON should be like:
       """
       {
-         "detail":"Cannot delete application server because it is in use in at least one company"
+         "detail":"Unable delete this element, due to is being used by unknown"
       }
       """
