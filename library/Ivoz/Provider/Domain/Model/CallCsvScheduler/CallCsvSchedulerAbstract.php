@@ -66,7 +66,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * @var string
      */
-    protected $email;
+    protected $email = '';
 
     /**
      * @var ?\DateTime
