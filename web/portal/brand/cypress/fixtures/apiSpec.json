@@ -37527,8 +37527,10 @@
                     "type": "string"
                 },
                 "email": {
+                    "default": "",
                     "maxLength": 140,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "lastExecution": {
@@ -37646,8 +37648,10 @@
                     "type": "string"
                 },
                 "email": {
+                    "default": "",
                     "maxLength": 140,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "lastExecution": {
@@ -37711,8 +37715,10 @@
                     "type": "string"
                 },
                 "email": {
+                    "default": "",
                     "maxLength": 140,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "lastExecution": {
