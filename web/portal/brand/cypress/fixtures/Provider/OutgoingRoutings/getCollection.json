@@ -1,0 +1,40 @@
+{
+  "body": [
+    {
+      "type": "pattern",
+      "priority": 1,
+      "weight": 1,
+      "routingMode": "static",
+      "stopper": false,
+      "id": 1,
+      "company": 1,
+      "carrier": 1,
+      "routingPattern": 1,
+      "routingPatternGroup": null,
+      "routingTag": 1,
+      "carrierIds": []
+    },
+    {
+      "type": "pattern",
+      "priority": 11,
+      "weight": 6,
+      "routingMode": "static",
+      "stopper": false,
+      "id": 2,
+      "company": null,
+      "carrier": 1,
+      "routingPattern": 1,
+      "routingPatternGroup": null,
+      "routingTag": 1,
+      "carrierIds": []
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/outgoing_routing?_page=1",
+    "x-last-page": "/api/brand/outgoing_routing?_page=1",
+    "x-next-page": "/api/brand/outgoing_routing?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

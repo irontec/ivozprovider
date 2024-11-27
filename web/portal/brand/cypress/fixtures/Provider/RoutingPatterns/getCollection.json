@@ -1,0 +1,44 @@
+{
+  "body": [
+    {
+      "prefix": "+34",
+      "id": 1,
+      "name": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      }
+    },
+    {
+      "prefix": "+35",
+      "id": 2,
+      "name": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/routing_pattern_groups  ?_page=1",
+    "x-last-page": "/api/brand/routing_patterns?_page=1",
+    "x-next-page": "/api/brand/routing_patterns?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

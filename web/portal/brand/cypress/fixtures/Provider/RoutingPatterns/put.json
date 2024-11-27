@@ -1,0 +1,44 @@
+{
+    "request": {
+        "prefix": "+349",
+        "name": {
+            "en": "englishName",
+            "es": "nombreEspañol",
+            "ca": "nombreCatala",
+            "it": "nomeItaliano"
+        },
+        "description": {
+            "en": "en",
+            "es": "es",
+            "ca": "ca",
+            "it": "it"
+        }
+    },
+    "response": {
+        "body": {
+            "prefix": "+349",
+            "id": 1,
+            "name": {
+                "en": "englishName",
+                "es": "nombreEspañol",
+                "ca": "nombreCatala",
+                "it": "nomeItaliano"
+            },
+            "description": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

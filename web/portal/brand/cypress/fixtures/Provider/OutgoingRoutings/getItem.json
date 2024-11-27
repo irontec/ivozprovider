@@ -1,0 +1,40 @@
+{
+    "body": {
+        "type": "pattern",
+        "priority": 1,
+        "weight": 1,
+        "routingMode": "static",
+        "prefix": null,
+        "forceClid": false,
+        "clid": null,
+        "id": 1,
+        "company": "~",
+        "carrier": "~",
+        "routingPattern": {
+            "prefix": "+34",
+            "id": 1,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca"
+            },
+            "description": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca"
+            }
+        },
+        "routingPatternGroup": null,
+        "routingTag": {
+            "name": "TagName",
+            "tag": "123#",
+            "id": 1
+        },
+        "clidCountry": null,
+        "carrierIds": []
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

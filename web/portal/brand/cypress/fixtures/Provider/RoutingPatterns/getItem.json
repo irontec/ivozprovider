@@ -1,0 +1,14 @@
+{
+    "body": {
+        "name": "Europe",
+        "description": "",
+        "id": 1,
+        "patternIds": [
+            1
+        ]
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

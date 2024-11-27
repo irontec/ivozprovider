@@ -1,0 +1,28 @@
+{
+  "body": [
+    {
+      "name": "Empty",
+      "description": "Empty",
+      "id": 2,
+      "patternIds": [
+        1
+      ]
+    },
+    {
+      "name": "Europe",
+      "description": "",
+      "id": 1,
+      "patternIds": [
+        1
+      ]
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/routing_pattern_groups?_page=1",
+    "x-last-page": "/api/brand/routing_pattern_groups?_page=1",
+    "x-next-page": "/api/brand/routing_pattern_groups?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
