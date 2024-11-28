@@ -12,7 +12,7 @@ Feature: Create retail accounts
       """
       {
           "name": "postRetailAccount",
-          "description": "",
+          "description": "demo description",
           "transport": "udp",
           "ip": "1.2.3.4",
           "port": 1024,
@@ -34,7 +34,7 @@ Feature: Create retail accounts
       """
       {
           "name": "postRetailAccount",
-          "description": "",
+          "description": "demo description",
           "transport": "udp",
           "ip": "1.2.3.4",
           "port": 1024,
@@ -65,7 +65,7 @@ Feature: Create retail accounts
       """
       {
           "name": "postRetailAccount",
-          "description": "",
+          "description": "demo description",
           "transport": "udp",
           "ip": "1.2.3.4",
           "port": 1024,
