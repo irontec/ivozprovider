@@ -1,0 +1,44 @@
+{
+  "request": {
+    "name": "updatedRetailAccount",
+    "description": "demo description",
+    "directConnectivity": "no",
+    "transport": "udp",
+    "ip": null,
+    "port": null,
+    "password": "8rv6G3TVc-",
+    "fromDomain": null,
+    "ddiIn": "yes",
+    "t38Passthrough": "no",
+    "transformationRuleSet": null,
+    "outgoingDdi": null,
+    "proxyUser": 1
+  },
+  "response": {
+    "body": {
+      "name": "updatedRetailAccount",
+      "description": "demo description",
+      "transport": "udp",
+      "ip": null,
+      "port": null,
+      "password": "8rv6G3TVc-",
+      "fromDomain": null,
+      "directConnectivity": "no",
+      "ddiIn": "yes",
+      "t38Passthrough": "no",
+      "rtpEncryption": false,
+      "multiContact": true,
+      "ruriDomain": null,
+      "id": 1,
+      "company": 3,
+      "transformationRuleSet": null,
+      "outgoingDdi": null,
+      "proxyUser": null,
+      "status": []
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

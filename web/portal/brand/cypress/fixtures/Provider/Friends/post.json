@@ -1,0 +1,57 @@
+{
+  "request": {
+    "name": "beWatterMyFriend",
+    "description": "something",
+    "directConnectivity": "intervpbx",
+    "company": 3,
+    "interCompany": 2,
+    "transport": "tls",
+    "ip": "129.1.2.3",
+    "port": 5060,
+    "password": "",
+    "priority": 2,
+    "allow": "alaw",
+    "fromDomain": "",
+    "ddiIn": "yes",
+    "t38Passthrough": "no",
+    "transformationRuleSet": null,
+    "callAcl": null,
+    "outgoingDdi": null,
+    "language": null,
+    "ruriDomain": "test.example.com"
+  },
+  "response": {
+    "body": {
+      "name": "testResidentialDevice",
+      "description": "demo description",
+      "transport": "udp",
+      "ip": "1.2.3.4",
+      "port": 1024,
+      "password": "qq6G+As2M7",
+      "allow": "alaw",
+      "fromDomain": null,
+      "directConnectivity": "yes",
+      "ddiIn": "yes",
+      "maxCalls": 1,
+      "t38Passthrough": "no",
+      "rtpEncryption": false,
+      "multiContact": true,
+      "ruriDomain": null,
+      "id": 7,
+      "company": 1,
+      "transformationRuleSet": null,
+      "outgoingDdi": null,
+      "language": null,
+      "proxyUser": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
