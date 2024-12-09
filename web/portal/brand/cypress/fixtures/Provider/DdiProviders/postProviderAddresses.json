@@ -1,0 +1,24 @@
+{
+    "request": {
+        "ip": "1.1.1.1",
+        "description": "NewDDIProviderAddress",
+        "ddiProvider": 1
+    },
+    "response": {
+        "body": {
+            "ip": "1.1.1.1",
+            "description": "NewDDIProviderAddress",
+            "id": 2,
+            "ddiProvider": 1
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 201
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

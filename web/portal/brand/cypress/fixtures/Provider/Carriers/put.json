@@ -1,0 +1,32 @@
+{
+    "request": {
+        "description": "Artemis-Updated",
+        "name": "Artemis-Updated",
+        "transformationRuleSet": 1,
+        "proxyTrunk": 1,
+        "mediaRelaySet": 0
+    },
+    "response": {
+        "body": {
+            "description": "Artemis-Updated",
+            "name": "Artemis-Updated",
+            "balance": 0,
+            "calculateCost": true,
+            "id": 1,
+            "transformationRuleSet": 1,
+            "currency": null,
+            "proxyTrunk": 1,
+            "mediaRelaySets": null,
+            "mediaRelaySet": 0
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

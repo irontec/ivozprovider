@@ -1,0 +1,24 @@
+{
+    "body": {
+        "username": "DDIRegistrationUsername",
+        "domain": "DDIRegistrationDomain",
+        "realm": "DDIRegistrationRealm",
+        "authUsername": "DDIRegistrationAuthUsername",
+        "authPassword": "DDIRegistrationAuthPassword",
+        "authProxy": "sip:DDIRegistrationAuthProxy",
+        "expires": 2000,
+        "multiDdi": false,
+        "contactUsername": "DDIRegistrationContactUsername",
+        "id": 1,
+        "ddiProvider": {
+            "description": "DDIProviderDescription",
+            "name": "DDIProviderName",
+            "id": 1,
+            "transformationRuleSet": 1
+        }
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

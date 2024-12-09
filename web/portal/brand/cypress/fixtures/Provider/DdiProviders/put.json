@@ -1,0 +1,29 @@
+{
+    "request": {
+        "description": "UpdateDDIProviderDescription",
+        "name": "UpdateDDIProviderName",
+        "proxyTrunk": 1,
+        "transformationRuleSet": 1,
+        "mediaRelaySet": 0
+    },
+    "response": {
+        "body": {
+            "description": "UpdateDDIProviderDescription",
+            "name": "UpdateDDIProviderName",
+            "id": 1,
+            "transformationRuleSet": 1,
+            "proxyTrunk": 1,
+            "mediaRelaySets": null,
+            "mediaRelaySet": 0
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

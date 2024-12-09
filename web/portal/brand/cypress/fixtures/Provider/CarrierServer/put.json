@@ -1,0 +1,48 @@
+{
+    "request": {
+        "ip": "127.1.0.1",
+        "hostname": "hostname.net",
+        "port": 5060,
+        "uriScheme": 2,
+        "transport": 2,
+        "sendPAI": false,
+        "sendRPID": false,
+        "authNeeded": "no",
+        "authUser": null,
+        "authPassword": "*****",
+        "sipProxy": "127.0.0.1",
+        "outboundProxy": null,
+        "fromUser": "",
+        "fromDomain": "",
+        "carrier": 1
+    },
+    "response": {
+        "body": {
+            "ip": null,
+            "hostname": "127.0.0.1",
+            "port": 5060,
+            "uriScheme": 2,
+            "transport": 2,
+            "sendPAI": false,
+            "sendRPID": false,
+            "authNeeded": "no",
+            "authUser": null,
+            "authPassword": "*****",
+            "sipProxy": "127.0.0.1",
+            "outboundProxy": null,
+            "fromUser": "",
+            "fromDomain": "",
+            "id": 1,
+            "carrier": 1
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}
