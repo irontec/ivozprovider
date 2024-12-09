@@ -1,30 +1,30 @@
 {
   "consumer": {
-    "name": "brand-consumer-DDIs"
+    "name": "brand-consumer-Carriers"
   },
   "provider": {
-    "name": "brand-provider-DDIs"
+    "name": "brand-provider-Carriers"
   },
   "interactions": [
     {
-      "description": "add Ddi",
+      "description": "add Carrier",
       "providerState": "",
       "request": {
         "method": "POST",
-        "path": "/api/brand/ddis",
+        "path": "/api/brand/carriers",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
-          "content-length": "104",
+          "content-length": "131",
           "content-type": "application/json"
         },
         "body": {
-          "type": "inout",
-          "ddi": "321",
-          "description": "Description for 321",
-          "country": 8,
-          "ddiProvider": 1,
-          "company": 1
+          "description": "Artemis-New",
+          "calculateCost": false,
+          "transformationRuleSet": 1,
+          "proxyTrunk": 1,
+          "mediaRelaySet": 0,
+          "name": "Artemis-New"
         },
         "query": ""
       },
@@ -34,14 +34,16 @@
           "content-type": "application/json; charset=utf-8"
         },
         "body": {
-          "ddi": "321",
-          "ddie164": "+34321",
-          "description": "Description for 321",
-          "type": "inout",
-          "id": 4,
-          "company": 1,
-          "ddiProvider": 1,
-          "country": 8
+          "description": "Artemis-New",
+          "name": "Artemis-New",
+          "balance": 0,
+          "calculateCost": false,
+          "id": 3,
+          "transformationRuleSet": 1,
+          "currency": null,
+          "proxyTrunk": 1,
+          "mediaRelaySets": null,
+          "mediaRelaySet": 0
         },
         "matchingRules": {
           "$.body.id": {
@@ -51,24 +53,25 @@
       }
     },
     {
-      "description": "edit Ddi",
+      "description": "edit Carrier",
       "providerState": "",
       "request": {
         "method": "PUT",
-        "path": "/api/brand/ddis/1",
+        "path": "/api/brand/carriers/1",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
-          "content-length": "104",
+          "content-length": "154",
           "content-type": "application/json"
         },
         "body": {
-          "type": "inout",
-          "ddi": "321",
-          "description": "Description for 321",
-          "company": 1,
-          "ddiProvider": 1,
-          "country": 8
+          "description": "Artemis-Updated",
+          "calculateCost": true,
+          "transformationRuleSet": 1,
+          "currency": null,
+          "proxyTrunk": 1,
+          "mediaRelaySet": 0,
+          "name": "Artemis-Updated"
         },
         "query": ""
       },
@@ -78,34 +81,17 @@
           "content-type": "application/json; charset=utf-8"
         },
         "body": {
-          "ddi": "128",
-          "ddie164": "+34128",
-          "description": "Description for DDI 123",
-          "type": "inout",
+          "description": "Artemis-Updated",
+          "name": "Artemis-Updated",
+          "balance": 0,
+          "calculateCost": true,
           "id": 1,
-          "company": 1,
-          "ddiProvider": 1,
-          "country": 1
+          "transformationRuleSet": 1,
+          "currency": null,
+          "proxyTrunk": 1,
+          "mediaRelaySets": null,
+          "mediaRelaySet": 0
         }
-      }
-    },
-    {
-      "description": "delete Ddi",
-      "providerState": "",
-      "request": {
-        "method": "DELETE",
-        "path": "/api/brand/ddis/3",
-        "headers": {
-          "accept": "application/json, text/plain, */*",
-          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ"
-        },
-        "body": "",
-        "query": ""
-      },
-      "response": {
-        "status": 204,
-        "headers": {},
-        "body": ""
       }
     }
   ],
