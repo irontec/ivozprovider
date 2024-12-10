@@ -10,7 +10,8 @@ import { useStoreState } from 'store';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match, initialValues, create } = props;
-  const userContact = row?.user !== undefined;
+  const edit = props.edit || false;
+  const isEditable = row?.user !== null && edit;
 
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -27,10 +28,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
   }
 
   const readOnlyProperties = {
-    name: userContact,
-    lastname: userContact,
-    email: userContact,
-    otherPhone: userContact,
+    name: isEditable,
+    lastname: isEditable,
+    email: isEditable,
+    otherPhone: isEditable,
   };
 
   const groups: Array<FieldsetGroups> = [
