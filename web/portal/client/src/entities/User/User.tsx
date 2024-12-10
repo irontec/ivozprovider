@@ -9,6 +9,7 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PersonIcon from '@mui/icons-material/Person';
 
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
+import customAction from './Action';
 import { UserProperties, UserPropertyList } from './UserProperties';
 
 type marshallerType = typeof defaultMarshaller;
@@ -242,6 +243,7 @@ const user: EntityInterface = {
   toStr: (row: UserPropertyList<string>) => `${row.name} ${row.lastname}`,
   properties,
   columns,
+  customActions: customAction,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 
