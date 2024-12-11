@@ -31,6 +31,29 @@ pipeline {
     }
 
     stages {
+        stage('Pull Request') {
+            agent any
+            when {
+                expression {
+                    env.CHANGE_BRANCH.startsWith("PROVIDER-")
+                }
+            }
+            steps {
+                // Update Jira Ticket Custom fields
+                script {
+                    // customfield_10126 - Merge Request
+                    // customfield_10159 - Branch
+                    def fields = [
+                        fields: [
+                            customfield_10126: env.JOB_BASE_NAME,
+                            customfield_10159: env.CHANGE_BRANCH,
+                        ]
+                    ]
+                    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
+                }
+            }
+        }
+
         // --------------------------------------------------------------------
         // Image stage
         // --------------------------------------------------------------------
@@ -650,11 +673,6 @@ pipeline {
                     } else {
                         println "No functional reviewer assigned."
                     }
-
-                    // Link issue Pull Request field with current branch
-                    // customfield_10126 - Pull Request
-                    def fields = [fields: [customfield_10126: env.JOB_BASE_NAME]]
-                    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
 
                     // Validated - 10325
                     def status = issue.data.fields.status
