@@ -26,11 +26,35 @@ pipeline {
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
         SYMFONY_PHPUNIT_VERSION = "9.5.3"
         DOCKER_TAG = getDockerTag()
+        BRANCH_NAME = getBranchName()
         BASE_BRANCH = getBaseBranch()
         JIRA_TICKET = getJiraTicket()
     }
 
     stages {
+        stage('Pull Request') {
+            agent any
+            when {
+                expression {
+                    env.BRANCH_NAME.startsWith("PROVIDER-")
+                }
+            }
+            steps {
+                // Update Jira Ticket Custom fields
+                script {
+                    // customfield_10126 - Merge Request
+                    // customfield_10159 - Branch
+                    def fields = [
+                        fields: [
+                            customfield_10126: env.JOB_BASE_NAME,
+                            customfield_10159: env.CHANGE_BRANCH,
+                        ]
+                    ]
+                    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
+                }
+            }
+        }
+
         // --------------------------------------------------------------------
         // Image stage
         // --------------------------------------------------------------------
@@ -651,11 +675,6 @@ pipeline {
                         println "No functional reviewer assigned."
                     }
 
-                    // Link issue Pull Request field with current branch
-                    // customfield_10126 - Pull Request
-                    def fields = [fields: [customfield_10126: env.JOB_BASE_NAME]]
-                    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
-
                     // Validated - 10325
                     def status = issue.data.fields.status
                     println "Issue Status: ${status.name} (${status.id})"
@@ -723,6 +742,10 @@ boolean hasCommitTag(String module) {
     returnStatus: true,
     script: "git log --oneline origin/${env.CHANGE_TARGET}...${env.GIT_COMMIT} | grep ${module}"
   ) == 0
+}
+
+void getBranchName() {
+    return env.CHANGE_BRANCH ?: env.GIT_BRANCH
 }
 
 void getBaseBranch() {
