@@ -4,7 +4,7 @@ namespace Ivoz\Kam\Domain\Model\Dispatcher;
 
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\DtoNormalizer;
-use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerDto;
 
 /**
 * DispatcherDtoAbstract
@@ -50,9 +50,9 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     private $id = null;
 
     /**
-     * @var ApplicationServerDto | null
+     * @var ApplicationServerSetRelApplicationServerDto | null
      */
-    private $applicationServer = null;
+    private $applicationServerSetRelApplicationServer = null;
 
     public function __construct(?int $id = null)
     {
@@ -76,7 +76,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
             'attrs' => 'attrs',
             'description' => 'description',
             'id' => 'id',
-            'applicationServerId' => 'applicationServer'
+            'applicationServerSetRelApplicationServerId' => 'applicationServerSetRelApplicationServer'
         ];
     }
 
@@ -93,7 +93,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
             'attrs' => $this->getAttrs(),
             'description' => $this->getDescription(),
             'id' => $this->getId(),
-            'applicationServer' => $this->getApplicationServer()
+            'applicationServerSetRelApplicationServer' => $this->getApplicationServerSetRelApplicationServer()
         ];
 
         if (!$hideSensitiveData) {
@@ -197,30 +197,30 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 
-    public function setApplicationServer(?ApplicationServerDto $applicationServer): static
+    public function setApplicationServerSetRelApplicationServer(?ApplicationServerSetRelApplicationServerDto $applicationServerSetRelApplicationServer): static
     {
-        $this->applicationServer = $applicationServer;
+        $this->applicationServerSetRelApplicationServer = $applicationServerSetRelApplicationServer;
 
         return $this;
     }
 
-    public function getApplicationServer(): ?ApplicationServerDto
+    public function getApplicationServerSetRelApplicationServer(): ?ApplicationServerSetRelApplicationServerDto
     {
-        return $this->applicationServer;
+        return $this->applicationServerSetRelApplicationServer;
     }
 
-    public function setApplicationServerId(?int $id): static
+    public function setApplicationServerSetRelApplicationServerId(?int $id): static
     {
         $value = !is_null($id)
-            ? new ApplicationServerDto($id)
+            ? new ApplicationServerSetRelApplicationServerDto($id)
             : null;
 
-        return $this->setApplicationServer($value);
+        return $this->setApplicationServerSetRelApplicationServer($value);
     }
 
-    public function getApplicationServerId(): ?int
+    public function getApplicationServerSetRelApplicationServerId(): ?int
     {
-        if ($dto = $this->getApplicationServer()) {
+        if ($dto = $this->getApplicationServerSetRelApplicationServer()) {
             return $dto->getId();
         }
 
