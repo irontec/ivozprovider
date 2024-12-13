@@ -25,7 +25,7 @@ class MediaRelaySetLifecycleServiceCollection implements LifecycleServiceCollect
 
     protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
     {
-        Assertion::isInstanceOf($service, MediaRelaySetEventHandlerInterface::class);
+        Assertion::isInstanceOf($service, MediaRelaySetLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

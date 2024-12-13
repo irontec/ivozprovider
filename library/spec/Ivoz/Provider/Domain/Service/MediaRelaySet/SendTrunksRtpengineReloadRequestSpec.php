@@ -6,7 +6,7 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
-use Ivoz\Provider\Domain\Service\MediaRelaySet\MediaRelaySetEventHandlerInterface;
+use Ivoz\Provider\Domain\Service\MediaRelaySet\MediaRelaySetLifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Service\MediaRelaySet\SendTrunksRtpengineReloadRequest;
 use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
@@ -35,7 +35,7 @@ class SendTrunksRtpengineReloadRequestSpec extends ObjectBehavior
     function it_should_be_on_commit_lifecycle_service()
     {
         $this->shouldBeAnInstanceOf(
-            MediaRelaySetEventHandlerInterface::class
+            MediaRelaySetLifecycleEventHandlerInterface::class
         );
 
         $binding = SendTrunksRtpengineReloadRequest::getSubscribedEvents();

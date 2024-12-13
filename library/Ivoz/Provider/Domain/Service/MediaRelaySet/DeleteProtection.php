@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Domain\Service\MediaRelaySet;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 
-class DeleteProtection implements MediaRelaySetEventHandlerInterface
+class DeleteProtection implements MediaRelaySetLifecycleEventHandlerInterface
 {
     const PRE_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 

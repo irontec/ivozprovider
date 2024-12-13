@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Domain\Service\MediaRelaySet;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 
-class SendTrunksRtpengineReloadRequest implements MediaRelaySetEventHandlerInterface
+class SendTrunksRtpengineReloadRequest implements MediaRelaySetLifecycleEventHandlerInterface
 {
     public const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
 

@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Service\MediaRelaySet;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Service\UsersClientInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
-use Ivoz\Provider\Domain\Service\MediaRelaySet\MediaRelaySetEventHandlerInterface;
+use Ivoz\Provider\Domain\Service\MediaRelaySet\MediaRelaySetLifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Service\MediaRelaySet\SendUsersRtpengineReloadRequest;
 use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
@@ -34,7 +34,7 @@ class SendUsersRtpengineReloadRequestSpec extends ObjectBehavior
     function it_should_be_on_commit_lifecycle_service()
     {
         $this->shouldBeAnInstanceOf(
-            MediaRelaySetEventHandlerInterface::class
+            MediaRelaySetLifecycleEventHandlerInterface::class
         );
 
         $binding = SendUsersRtpengineReloadRequest::getSubscribedEvents();
