@@ -21,6 +21,11 @@ class MediaRelaySetLifecycleServiceCollection implements LifecycleServiceCollect
         [
             \Ivoz\Provider\Domain\Service\MediaRelaySet\DeleteProtection::class => 200,
         ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Domain\Service\MediaRelaySet\SendTrunksRtpengineReloadRequest::class => 300,
+            \Ivoz\Provider\Domain\Service\MediaRelaySet\SendUsersRtpengineReloadRequest::class => 300,
+        ],
     ];
 
     protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
