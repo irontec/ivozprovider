@@ -7,6 +7,7 @@ core
 data
 doc
 docker
+feature
 kamailio
 kamtrunks
 kamusers
