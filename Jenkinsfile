@@ -708,6 +708,77 @@ pipeline {
                 unstable { notifyUnstableGithub() }
             }
         }
+
+        // --------------------------------------------------------------------
+        // Mergeability validation
+        // --------------------------------------------------------------------
+        stage ('mergeability') {
+            steps {
+                script {
+                    // Check we're validating a Merge request
+                    if (!env.CHANGE_TARGET) {
+                        echo "Not a merge request branch. Merge checks not required."
+                        return
+                    }
+
+                    // Check Merge request has a Jira ticket associated
+                    if (!env.JIRA_TICKET) {
+                        failure "No ticket associated. Can not validate mergeability."
+                    }
+
+                    // Fetch issue data from Jira
+                    def issue = jiraGetIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET
+
+                    // Merge validations for feature subtask
+                    isSubtask = issue.data.fields.issuetype.subtask
+                    if (isSubtask) {
+                        // Get parent task
+                        def task = issue.data.fields.parent
+                        echo "${env.JIRA_TICKET} is a subtask part of a feature task."
+
+                        // Check the target branch is an feature branch
+                        if (!env.CHANGE_TARGET.startsWith(task.key)) {
+                            unstable "Target branch ${env.CHANGE_TARGET} is not an feature branch. Merge will be blocked until all previous task are merged"
+                        }
+
+                        // Validate parent status - Validated - 10325
+                        def status = task.fields.status
+                        if (status.id != "10325") {
+                            unstable "Feature not yet validated. Merge is blocked."
+                        }
+
+                        // Validate feature branch is properly rebased
+                        try {
+                            sh "git merge-base --is-ancestor origin/master origin/${env.CHANGE_TARGET}"
+                        } catch (Exception e) {
+                            unstable "Feature branch ${env.CHANGE_TARGET} is not properly rebased. Merge is blocked."
+                        }
+                    } else {
+                        echo "${env.JIRA_TICKET} is a task. Checking subtasks..."
+
+                        // Check the target branch is master
+                        if (env.CHANGE_TARGET != "bleeding") {
+                            unstable "Target branch ${env.CHANGE_TARGET} is not an bleeding branch."
+                        }
+
+                        // Check all subtask has been merged
+                        def subtasks = issue.data.fields.subtasks
+                        subtasks.each { subtask ->
+                            def status = subtask.fields.status
+                            // Validate child status - Done - 10002
+                            if (status.id != "10002") {
+                                unstable "Subtask ${subtask.key} is not completed (Status: ${status.name})."
+                            }
+                        }
+                    }
+                }
+            }
+            post {
+                success { notifySuccessGithub() }
+                failure { notifyFailureGithub() }
+                unstable { notifyUnstableGithub() }
+            }
+        }
     }
 
     // ------------------------------------------------------------------------
