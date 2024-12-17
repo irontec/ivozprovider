@@ -14,44 +14,47 @@ Feature: Retrieve users
       And the JSON should be equal to:
       """
       [
-          {
-              "name": "Alice",
-              "lastname": "Allison",
-              "email": "alice@democompany.com",
-              "id": 1,
-              "terminal": 1,
-              "extension": null,
-              "outgoingDdi": 3,
-              "status": [
-                  {
-                      "contact": "sip:yealinktest@10.10.1.106:5060",
-                      "received": "sip:212.64.172.23:5060",
-                      "publicReceived": true,
-                      "expires": "2031-01-01 00:59:59",
-                      "userAgent": "Yealink SIP-T23G 44.80.0.130"
-                  }
-              ]
-          },
-          {
-              "name": "Bob",
-              "lastname": "Bobson",
-              "email": "bob@democompany.com",
-              "id": 2,
-              "terminal": 2,
-              "extension": null,
-              "outgoingDdi": null,
-              "status": []
-          },
-          {
-              "name": "Joe",
-              "lastname": "Doe",
-              "email": "joe@democompany.com",
-              "id": 3,
-              "terminal": 4,
-              "extension": 2,
-              "outgoingDdi": null,
-              "status": []
-          }
+            {
+                "name": "Alice",
+                "lastname": "Allison",
+                "email": "alice@democompany.com",
+                "active": true,
+                "id": 1,
+                "terminal": 1,
+                "extension": null,
+                "outgoingDdi": 3,
+                "status": [
+                    {
+                        "contact": "sip:yealinktest@10.10.1.106:5060",
+                        "received": "sip:212.64.172.23:5060",
+                        "publicReceived": true,
+                        "expires": "2031-01-01 00:59:59",
+                        "userAgent": "Yealink SIP-T23G 44.80.0.130"
+                    }
+                ]
+            },
+            {
+                "name": "Bob",
+                "lastname": "Bobson",
+                "email": "bob@democompany.com",
+                "active": true,
+                "id": 2,
+                "terminal": 2,
+                "extension": null,
+                "outgoingDdi": null,
+                "status": []
+            },
+            {
+                "name": "Joe",
+                "lastname": "Doe",
+                "email": "joe@democompany.com",
+                "active": true,
+                "id": 3,
+                "terminal": 4,
+                "extension": 2,
+                "outgoingDdi": null,
+                "status": []
+            }
       ]
       """
 
