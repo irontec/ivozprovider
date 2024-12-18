@@ -27,8 +27,8 @@ class ApplicationServerLifecycleServiceCollection implements LifecycleServiceCol
         ],
         "on_commit" =>
         [
-            \Ivoz\Provider\Domain\Service\ApplicationServer\SendUsersDispatcherReloadRequest::class => 100,
             \Ivoz\Provider\Domain\Service\ApplicationServer\SendTrunksDispatcherReloadRequest::class => 300,
+            \Ivoz\Provider\Domain\Service\ApplicationServer\SendUsersDispatcherReloadRequest::class => 300,
         ],
     ];
 
