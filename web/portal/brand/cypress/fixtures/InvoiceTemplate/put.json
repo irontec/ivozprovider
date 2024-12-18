@@ -1,0 +1,24 @@
+{
+  "request": {
+    "name": "Updated",
+    "description": "updated something",
+    "template": "body v2",
+    "templateHeader": "header v2",
+    "templateFooter": "footer v2"
+  },
+  "response": {
+    "body": {
+      "name": "Updated",
+      "description": "updated something",
+      "template": "body v2",
+      "templateHeader": "header v2",
+      "templateFooter": "footer v2",
+      "id": 1,
+      "global": false
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "request": {
+    "name": "Identifier",
+    "prefix": "test",
+    "sequenceLength": 4,
+    "increment": 1,
+    "version": 0
+  },
+  "response": {
+    "body": {
+      "name": "Identifier",
+      "prefix": "test",
+      "sequenceLength": 4,
+      "increment": 1,
+      "latestValue": "",
+      "iteration": 0,
+      "version": 1,
+      "id": 2
+    }
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

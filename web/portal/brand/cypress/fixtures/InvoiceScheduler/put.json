@@ -1,0 +1,37 @@
+{
+  "request": {
+    "name": "UpdatedSchedulerName",
+    "unit": "month",
+    "frequency": 1,
+    "email": "something-new@domain.net",
+    "lastExecution": "2019-12-01 09:00:00",
+    "lastExecutionError": "",
+    "nextExecution": "2019-12-02 09:00:00",
+    "taxRate": 21,
+    "invoiceTemplate": null,
+    "brand": 1,
+    "company": 1,
+    "numberSequence": null
+  },
+  "response": {
+    "body": {
+      "name": "UpdatedSchedulerName",
+      "unit": "month",
+      "frequency": 1,
+      "email": "something-new@domain.net",
+      "lastExecution": "2019-12-01 09:00:00",
+      "lastExecutionError": "",
+      "nextExecution": "2019-12-02 09:00:00",
+      "taxRate": 21,
+      "id": 1,
+      "invoiceTemplate": null,
+      "brand": 1,
+      "company": 1,
+      "numberSequence": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

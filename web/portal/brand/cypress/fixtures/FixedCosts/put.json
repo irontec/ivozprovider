@@ -1,0 +1,19 @@
+{
+  "request": {
+    "name": "Monitoring upgraded",
+    "description": "Something else",
+    "cost": 1.2
+  },
+  "response": {
+    "body": {
+      "name": "Monitoring upgraded",
+      "description": "Something else",
+      "cost": 1.2,
+      "id": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
