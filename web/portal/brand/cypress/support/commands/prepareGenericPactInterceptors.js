@@ -1,4 +1,10 @@
 import apiSpec from '../../fixtures/apiSpec.json';
+import FixedCostsCollection from '../../fixtures/FixedCosts/getCollection.json';
+import FixedCostsRelInvoiceCollection from '../../fixtures/FixedCostsRelInvoice/getCollection.json';
+import InvoiceNumberSequenceCollection from '../../fixtures/InvoiceNumberSequence/getCollection.json';
+import InvoiceSchedulerCollection from '../../fixtures/InvoiceScheduler/getCollection.json';
+import InvoiceTemplateCollection from '../../fixtures/InvoiceTemplate/getCollection.json';
+import InvoiceCollection from '../../fixtures/Invoicing/getCollection.json';
 import TrustedCollection from '../../fixtures/Kam/Trusted/getCollection.json';
 import UsersAddressesCollection from '../../fixtures/Kam/UsersAddresses/getCollection.json';
 import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
@@ -56,6 +62,30 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/users?*', {
       ...UserCollection,
     }).as('getUsers');
+
+    cy.intercept('GET', '**/api/brand/invoices?*', {
+      ...InvoiceCollection,
+    }).as('getInvoices');
+
+    cy.intercept('GET', '**/api/brand/invoice_templates?*', {
+      ...InvoiceTemplateCollection,
+    }).as('getInvoiceTemplate');
+
+    cy.intercept('GET', '**/api/brand/invoice_schedulers?*', {
+      ...InvoiceSchedulerCollection,
+    }).as('getInvoiceScheduler');
+
+    cy.intercept('GET', '**/api/brand/invoice_number_sequences?*', {
+      ...InvoiceNumberSequenceCollection,
+    }).as('getInvoiceNumberSequence');
+
+    cy.intercept('GET', '**/api/brand/fixed_costs?*', {
+      ...FixedCostsCollection,
+    }).as('getFixedCosts');
+
+    cy.intercept('GET', '**/api/brand/fixed_costs_rel_invoices?*', {
+      ...FixedCostsRelInvoiceCollection,
+    }).as('getFixedCostsRelInvoice');
 
     cy.intercept('GET', '**/api/brand/companies?*', {
       ...CompaniesCollection,
