@@ -71,7 +71,8 @@ Feature: Retrieve applicationServers
           "description": "An Application Server Set",
           "id": 1,
           "applicationServers": [
-              1
+              1,
+              2
           ]
       }
       """
