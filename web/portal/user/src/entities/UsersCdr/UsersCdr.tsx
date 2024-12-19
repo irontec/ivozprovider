@@ -51,7 +51,6 @@ const properties: UsersCdrProperties = {
 
 const columns = [
   'startTime',
-  'owner',
   'direction',
   'caller',
   'callee',
