@@ -8,7 +8,7 @@ Feature: Remove application servers
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "DELETE" request to "/application_servers/3"
+      And I send a "DELETE" request to "/application_servers/4"
      Then the response status code should be 204
 
   @createSchema

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\ApplicationServer;
+namespace Ivoz\Provider\Domain\Service\ApplicationServerSetRelApplicationServer;
 
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
@@ -11,7 +11,7 @@ use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 /**
  * @codeCoverageIgnore
  */
-class ApplicationServerLifecycleServiceCollection implements LifecycleServiceCollectionInterface
+class ApplicationServerSetRelApplicationServerLifecycleServiceCollection implements LifecycleServiceCollectionInterface
 {
     use LifecycleServiceCollectionTrait;
 
@@ -19,22 +19,18 @@ class ApplicationServerLifecycleServiceCollection implements LifecycleServiceCol
     public static $bindedBaseServices = [
         "post_persist" =>
         [
-            \Ivoz\Kam\Domain\Service\Dispatcher\UpdateByApplicationServer::class => 10,
-        ],
-        "pre_remove" =>
-        [
-            \Ivoz\Provider\Domain\Service\ApplicationServer\DeleteProtection::class => 200,
+            \Ivoz\Kam\Domain\Service\Dispatcher\UpdateByApplicationServerSetRelApplicationServer::class => 10,
         ],
         "on_commit" =>
         [
-            \Ivoz\Provider\Domain\Service\ApplicationServer\SendTrunksDispatcherReloadRequest::class => 300,
-            \Ivoz\Provider\Domain\Service\ApplicationServer\SendUsersDispatcherReloadRequest::class => 300,
+            \Ivoz\Provider\Domain\Service\ApplicationServerSetRelApplicationServer\SendTrunksDispatcherReloadRequest::class => 300,
+            \Ivoz\Provider\Domain\Service\ApplicationServerSetRelApplicationServer\SendUsersDispatcherReloadRequest::class => 300,
         ],
     ];
 
     protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
     {
-        Assertion::isInstanceOf($service, ApplicationServerLifecycleEventHandlerInterface::class);
+        Assertion::isInstanceOf($service, ApplicationServerSetRelApplicationServerLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

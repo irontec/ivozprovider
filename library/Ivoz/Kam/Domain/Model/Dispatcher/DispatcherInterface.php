@@ -6,7 +6,7 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerInterface;
 
 /**
 * DispatcherInterface
@@ -61,5 +61,5 @@ interface DispatcherInterface extends LoggableEntityInterface
 
     public function getDescription(): string;
 
-    public function getApplicationServer(): ApplicationServerInterface;
+    public function getApplicationServerSetRelApplicationServer(): ApplicationServerSetRelApplicationServerInterface;
 }

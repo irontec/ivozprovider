@@ -29,7 +29,9 @@ class KamDispatcher extends Fixture implements DependentFixtureInterface
             $this->setFlags(0);
             $this->setPriority(0);
             $this->setDescription("as001");
-            $this->setApplicationServer($fixture->getReference('_reference_ProviderApplicationServer1'));
+            $this->setApplicationServerSetRelApplicationServer(
+                $fixture->getReference('_reference_ApplicationServerSetRelApplicationServer1')
+            );
         })->call($item1);
 
         $this->addReference('_reference_KamDispatcher1', $item1);
@@ -38,19 +40,37 @@ class KamDispatcher extends Fixture implements DependentFixtureInterface
 
         $item2 = $this->createEntityInstance(Dispatcher::class);
         (function () use ($fixture) {
-            $this->setSetid(1);
+            $this->setSetId(1);
             $this->setDestination("sip:127.1.1.1:6060");
             $this->setAttrs('');
             $this->setFlags(0);
             $this->setPriority(0);
             $this->setDescription("test001");
-            $this->setApplicationServer($fixture->getReference('_reference_ProviderApplicationServer2'));
+            $this->setApplicationServerSetRelApplicationServer(
+                $fixture->getReference('_reference_ApplicationServerSetRelApplicationServer2')
+            );
         })->call($item2);
 
         $this->addReference('_reference_KamDispatcher2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
+        $item3 = $this->createEntityInstance(Dispatcher::class);
+        (function () use ($fixture) {
+            $this->setSetId(2);
+            $this->setDestination("sip:127.0.0.1:6060");
+            $this->setAttrs('');
+            $this->setFlags(0);
+            $this->setPriority(0);
+            $this->setDescription("as001");
+            $this->setApplicationServerSetRelApplicationServer(
+                $fixture->getReference('_reference_ApplicationServerSetRelApplicationServer3')
+            );
+        })->call($item3);
+
+        $this->addReference('_reference_KamDispatcher3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
 
         $manager->flush();
     }
@@ -58,6 +78,7 @@ class KamDispatcher extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return array(
+            ProviderApplicationServerSetRelApplicationServers::class,
             ProviderApplicationServer::class,
         );
     }

@@ -4,6 +4,7 @@ namespace Ivoz\Kam\Domain\Service\Dispatcher;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher as KamDispatcher;
+use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherInterface;
 use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherRepository as KamDispatcherRepository;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 use Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleEventHandlerInterface;
@@ -28,26 +29,31 @@ class UpdateByApplicationServer implements ApplicationServerLifecycleEventHandle
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(ApplicationServerInterface $applicationServer)
+    public function execute(ApplicationServerInterface $applicationServer): void
     {
-        /**
-         * Replicate ApplicationServer IP into kam_dispatcher
-         * @var KamDispatcher $kamDispatcher
-         */
-        $kamDispatcher = $this->dispatcherRepository->findOneByApplicationServerId(
+        if ($applicationServer->isNew()) {
+            return;
+        }
+
+        $kamDispatchers = $this->dispatcherRepository->findByApplicationServerId(
             (int) $applicationServer->getId()
         );
 
-        $kamDispatcherDto = $applicationServer->isNew()
-            ? KamDispatcher::createDto()
-            : $kamDispatcher->toDto();
+        foreach ($kamDispatchers as $kamDispatcher) {
+            $this->updateDispatcher(
+                $applicationServer,
+                $kamDispatcher,
+            );
+        }
+    }
+
+    private function updateDispatcher(
+        ApplicationServerInterface $applicationServer,
+        DispatcherInterface $kamDispatcher
+    ): void {
+        $kamDispatcherDto = $kamDispatcher->toDto();
 
         $kamDispatcherDto
-            ->setApplicationServerId($applicationServer->getId())
-            ->setSetid(1)
             ->setDestination('sip:' . $applicationServer->getIp() . ":6060")
             ->setDescription($applicationServer->getName());
 

@@ -26,6 +26,11 @@ class ApplicationServerSetLifecycleServiceCollection implements LifecycleService
         [
             \Ivoz\Provider\Domain\Service\ApplicationServerSet\DeleteProtection::class => 200,
         ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Domain\Service\ApplicationServerSet\SendTrunksDispatcherReloadRequest::class => 300,
+            \Ivoz\Provider\Domain\Service\ApplicationServerSet\SendUsersDispatcherReloadRequest::class => 300,
+        ],
     ];
 
     protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void

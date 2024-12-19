@@ -1,0 +1,11 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Service\ApplicationServerSetRelApplicationServer;
+
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerInterface;
+
+interface ApplicationServerSetRelApplicationServerLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
+{
+    public function execute(ApplicationServerSetRelApplicationServerInterface $relApplicationServer): void;
+}

@@ -9,8 +9,8 @@ use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
-use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServer;
 
 /**
 * DispatcherAbstract
@@ -51,9 +51,9 @@ abstract class DispatcherAbstract
     protected $description = '';
 
     /**
-     * @var ApplicationServerInterface
+     * @var ApplicationServerSetRelApplicationServerInterface
      */
-    protected $applicationServer;
+    protected $applicationServerSetRelApplicationServer;
 
     /**
      * Constructor
@@ -147,8 +147,8 @@ abstract class DispatcherAbstract
         Assertion::notNull($attrs, 'getAttrs value is null, but non null value was expected.');
         $description = $dto->getDescription();
         Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
-        $applicationServer = $dto->getApplicationServer();
-        Assertion::notNull($applicationServer, 'getApplicationServer value is null, but non null value was expected.');
+        $applicationServerSetRelApplicationServer = $dto->getApplicationServerSetRelApplicationServer();
+        Assertion::notNull($applicationServerSetRelApplicationServer, 'getApplicationServerSetRelApplicationServer value is null, but non null value was expected.');
 
         $self = new static(
             $setid,
@@ -160,7 +160,7 @@ abstract class DispatcherAbstract
         );
 
         $self
-            ->setApplicationServer($fkTransformer->transform($applicationServer));
+            ->setApplicationServerSetRelApplicationServer($fkTransformer->transform($applicationServerSetRelApplicationServer));
 
         $self->initChangelog();
 
@@ -189,8 +189,8 @@ abstract class DispatcherAbstract
         Assertion::notNull($attrs, 'getAttrs value is null, but non null value was expected.');
         $description = $dto->getDescription();
         Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
-        $applicationServer = $dto->getApplicationServer();
-        Assertion::notNull($applicationServer, 'getApplicationServer value is null, but non null value was expected.');
+        $applicationServerSetRelApplicationServer = $dto->getApplicationServerSetRelApplicationServer();
+        Assertion::notNull($applicationServerSetRelApplicationServer, 'getApplicationServerSetRelApplicationServer value is null, but non null value was expected.');
 
         $this
             ->setSetid($setid)
@@ -199,7 +199,7 @@ abstract class DispatcherAbstract
             ->setPriority($priority)
             ->setAttrs($attrs)
             ->setDescription($description)
-            ->setApplicationServer($fkTransformer->transform($applicationServer));
+            ->setApplicationServerSetRelApplicationServer($fkTransformer->transform($applicationServerSetRelApplicationServer));
 
         return $this;
     }
@@ -216,7 +216,7 @@ abstract class DispatcherAbstract
             ->setPriority(self::getPriority())
             ->setAttrs(self::getAttrs())
             ->setDescription(self::getDescription())
-            ->setApplicationServer(ApplicationServer::entityToDto(self::getApplicationServer(), $depth));
+            ->setApplicationServerSetRelApplicationServer(ApplicationServerSetRelApplicationServer::entityToDto(self::getApplicationServerSetRelApplicationServer(), $depth));
     }
 
     /**
@@ -231,7 +231,7 @@ abstract class DispatcherAbstract
             'priority' => self::getPriority(),
             'attrs' => self::getAttrs(),
             'description' => self::getDescription(),
-            'applicationServerId' => self::getApplicationServer()->getId()
+            'applicationServerSetRelApplicationServerId' => self::getApplicationServerSetRelApplicationServer()->getId()
         ];
     }
 
@@ -313,15 +313,15 @@ abstract class DispatcherAbstract
         return $this->description;
     }
 
-    protected function setApplicationServer(ApplicationServerInterface $applicationServer): static
+    protected function setApplicationServerSetRelApplicationServer(ApplicationServerSetRelApplicationServerInterface $applicationServerSetRelApplicationServer): static
     {
-        $this->applicationServer = $applicationServer;
+        $this->applicationServerSetRelApplicationServer = $applicationServerSetRelApplicationServer;
 
         return $this;
     }
 
-    public function getApplicationServer(): ApplicationServerInterface
+    public function getApplicationServerSetRelApplicationServer(): ApplicationServerSetRelApplicationServerInterface
     {
-        return $this->applicationServer;
+        return $this->applicationServerSetRelApplicationServer;
     }
 }

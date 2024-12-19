@@ -3,12 +3,13 @@
 namespace DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServer;
 
-class ProviderApplicationServerSetRelApplicationServers extends Fixture implements FixtureInterface
+class ProviderApplicationServerSetRelApplicationServers extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
@@ -21,7 +22,7 @@ class ProviderApplicationServerSetRelApplicationServers extends Fixture implemen
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ApplicationServerSetRelApplicationServer::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
         $manager->getConnection()->exec(
-            'INSERT INTO ApplicationServerSetRelApplicationServers(applicationServerId, applicationServerSetId ) SELECT id, 0 FROM ApplicationServers WHERE id != 3'
+            'INSERT INTO ApplicationServerSetRelApplicationServers(applicationServerId, applicationServerSetId ) SELECT id, 0 FROM ApplicationServers WHERE id NOT IN(3,4)'
         );
         $item1 = $this->createEntityInstance(ApplicationServerSetRelApplicationServer::class);
         (function () use ($fixture) {
@@ -39,6 +40,7 @@ class ProviderApplicationServerSetRelApplicationServers extends Fixture implemen
         })->call($item2);
         $this->addReference('_reference_ApplicationServerSetRelApplicationServer2', $item2);
         $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
 
         $item3 = $this->createEntityInstance(ApplicationServerSetRelApplicationServer::class);
         (function () use ($fixture) {
@@ -47,6 +49,7 @@ class ProviderApplicationServerSetRelApplicationServers extends Fixture implemen
         })->call($item3);
         $this->addReference('_reference_ApplicationServerSetRelApplicationServer3', $item3);
         $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
 
         $item4 = $this->createEntityInstance(ApplicationServerSetRelApplicationServer::class);
         (function () use ($fixture) {
@@ -55,7 +58,15 @@ class ProviderApplicationServerSetRelApplicationServers extends Fixture implemen
         })->call($item4);
         $this->addReference('_reference_ApplicationServerSetRelApplicationServer4', $item4);
         $this->sanitizeEntityValues($item4);
+        $manager->persist($item4);
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            ProviderApplicationServer::class,
+        );
     }
 }

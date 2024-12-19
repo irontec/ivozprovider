@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <mapped-superclass name="Ivoz\Kam\Domain\Model\Dispatcher\DispatcherAbstract" table="dispatcher_abstract">
-    <indexes>
-      <index name="dispatcher_applicationServerId" columns="applicationServerId"/>
-    </indexes>
     <field name="setid" type="integer" column="setid" nullable="false">
       <options>
         <option name="unsigned"/>
@@ -40,9 +37,9 @@
         <option name="default"/>
       </options>
     </field>
-    <many-to-one field="applicationServer" target-entity="Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface" fetch="LAZY">
+    <many-to-one field="applicationServerSetRelApplicationServer" target-entity="Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="applicationServerId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="applicationServerSetRelApplicationServersId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>
