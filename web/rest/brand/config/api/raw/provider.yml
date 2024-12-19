@@ -562,7 +562,6 @@ Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
       required:
       - brand
       - transformationRuleSet
-      - mediaRelaySet
 
 Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
   itemOperations:
@@ -1131,7 +1130,6 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
       required:
       - brand
       - transformationRuleSet
-      - mediaRelaySet
 
 Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerStatus:
   itemOperations: []
