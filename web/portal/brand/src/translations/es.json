@@ -675,6 +675,7 @@
   "Update CallerID?": "¿Actualización Pantalla?",
   "Uploaded file": "Fichero original",
   "Use address or hostname": "Emplear dirección o nombre host",
+  "Use client’s set": "Usar el set del cliente",
   "Use generic template": "Emplear plantilla genérica",
   "Use point as decimal delimiter - e.g. 0.02": "Emplear punto como separador decimal - p.ej. 0.02",
   "Use this instead in From header domain": "Se empleará este en lugar de dominio de la cabecera From",

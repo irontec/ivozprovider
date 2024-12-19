@@ -80,6 +80,7 @@ const properties: CarrierProperties = {
   },
   mediaRelaySet: {
     label: _('Media Relay Set', { count: 1 }),
+    null: _('Use client’s set'),
     default: '__auto__',
   },
 };
