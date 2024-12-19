@@ -11,11 +11,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\Invoicing;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
-use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
-use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
@@ -24,12 +22,11 @@ use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Corporation\CorporationInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Language\Language;
-use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
-use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\Currency\Currency;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
@@ -38,6 +35,7 @@ use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\Corporation\Corporation;
 use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 
 /**
 * CompanyAbstract
@@ -154,11 +152,6 @@ abstract class CompanyAbstract
     protected $language = null;
 
     /**
-     * @var ?MediaRelaySetInterface
-     */
-    protected $mediaRelaySets = null;
-
-    /**
      * @var ?TimezoneInterface
      */
     protected $defaultTimezone = null;
@@ -173,11 +166,6 @@ abstract class CompanyAbstract
      * @var ?DomainInterface
      */
     protected $domain = null;
-
-    /**
-     * @var ?ApplicationServerInterface
-     */
-    protected $applicationServer = null;
 
     /**
      * @var CountryInterface
@@ -401,11 +389,9 @@ abstract class CompanyAbstract
             ->setBalance($dto->getBalance())
             ->setShowInvoices($dto->getShowInvoices())
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
             ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
             ->setCountry($fkTransformer->transform($country))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -501,11 +487,9 @@ abstract class CompanyAbstract
             ->setShowInvoices($dto->getShowInvoices())
             ->setInvoicing($invoicing)
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
             ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
             ->setCountry($fkTransformer->transform($country))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -555,11 +539,9 @@ abstract class CompanyAbstract
             ->setInvoicingProvince(self::getInvoicing()->getProvince())
             ->setInvoicingCountryName(self::getInvoicing()->getCountryName())
             ->setLanguage(Language::entityToDto(self::getLanguage(), $depth))
-            ->setMediaRelaySets(MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth))
             ->setDefaultTimezone(Timezone::entityToDto(self::getDefaultTimezone(), $depth))
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
-            ->setApplicationServer(ApplicationServer::entityToDto(self::getApplicationServer(), $depth))
             ->setCountry(Country::entityToDto(self::getCountry(), $depth))
             ->setCurrency(Currency::entityToDto(self::getCurrency(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
@@ -607,11 +589,9 @@ abstract class CompanyAbstract
             'invoicingProvince' => self::getInvoicing()->getProvince(),
             'invoicingCountryName' => self::getInvoicing()->getCountryName(),
             'languageId' => self::getLanguage()?->getId(),
-            'mediaRelaySetsId' => self::getMediaRelaySets()?->getId(),
             'defaultTimezoneId' => self::getDefaultTimezone()?->getId(),
             'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain()?->getId(),
-            'applicationServerId' => self::getApplicationServer()?->getId(),
             'countryId' => self::getCountry()->getId(),
             'currencyId' => self::getCurrency()?->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
@@ -942,18 +922,6 @@ abstract class CompanyAbstract
         return $this->language;
     }
 
-    protected function setMediaRelaySets(?MediaRelaySetInterface $mediaRelaySets = null): static
-    {
-        $this->mediaRelaySets = $mediaRelaySets;
-
-        return $this;
-    }
-
-    public function getMediaRelaySets(): ?MediaRelaySetInterface
-    {
-        return $this->mediaRelaySets;
-    }
-
     protected function setDefaultTimezone(?TimezoneInterface $defaultTimezone = null): static
     {
         $this->defaultTimezone = $defaultTimezone;
@@ -988,18 +956,6 @@ abstract class CompanyAbstract
     public function getDomain(): ?DomainInterface
     {
         return $this->domain;
-    }
-
-    protected function setApplicationServer(?ApplicationServerInterface $applicationServer = null): static
-    {
-        $this->applicationServer = $applicationServer;
-
-        return $this;
-    }
-
-    public function getApplicationServer(): ?ApplicationServerInterface
-    {
-        return $this->applicationServer;
     }
 
     protected function setCountry(CountryInterface $country): static

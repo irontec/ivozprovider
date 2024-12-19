@@ -220,51 +220,6 @@ class CompanyLifeCycleTest extends KernelTestCase
         );
     }
 
-    //////////////////////////////////////////////////
-    ///
-    //////////////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_company_has_default_mediaRelaySetsId()
-    {
-        $companyDto = new CompanyDto();
-        $companyDto
-            ->setName('ACompany')
-            ->setDomainUsers('127.3.0.1')
-            ->setInvoicingNif('12345678B')
-            ->setMaxCalls(0)
-            ->setInvoicingPostalAddress('An address')
-            ->setInvoicingPostalCode('54321')
-            ->setInvoicingTown('')
-            ->setInvoicingProvince('')
-            ->setInvoicingCountryName('')
-            ->setIpfilter(false)
-            ->setOnDemandRecord(0)
-            ->setOnDemandRecordCode('')
-            ->setExternallyextraopts('')
-            ->setRecordingsLimitEmail('')
-            ->setLanguageId(1)
-            ->setMediaRelaySetsId(null)
-            ->setDefaultTimezoneId(1)
-            ->setBrandId(1)
-            ->setDomainId(1)
-            ->setCountryId(1)
-            ->setApplicationServerSetId(1)
-            ->setMediaRelaySetId(1);
-
-        /** @var Company $company */
-        $company = $this->entityTools
-            ->persistDto($companyDto, null, true);
-
-        $this->assertEquals(
-            0,
-            $company->getMediaRelaySets()->getId()
-        );
-    }
-
     /**
      * @test
      * @deprecated
@@ -340,7 +295,6 @@ class CompanyLifeCycleTest extends KernelTestCase
             ->setExternallyextraopts('')
             ->setRecordingsLimitEmail('')
             ->setLanguageId(1)
-            ->setMediaRelaySetsId(null)
             ->setDefaultTimezoneId(1)
             ->setBrandId(1)
             ->setDomainId(1)
@@ -377,7 +331,6 @@ class CompanyLifeCycleTest extends KernelTestCase
             ->setExternallyextraopts('')
             ->setRecordingsLimitEmail('')
             ->setLanguageId(1)
-            ->setMediaRelaySetsId(0)
             ->setDefaultTimezoneId(1)
             ->setBrandId(1)
             ->setDomainId(1)

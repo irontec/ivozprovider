@@ -91,8 +91,6 @@ interface CarrierInterface extends LoggableEntityInterface
 
     public function getProxyTrunk(): ?ProxyTrunkInterface;
 
-    public function getMediaRelaySets(): ?MediaRelaySetInterface;
-
     public function getMediaRelaySet(): MediaRelaySetInterface;
 
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): CarrierInterface;

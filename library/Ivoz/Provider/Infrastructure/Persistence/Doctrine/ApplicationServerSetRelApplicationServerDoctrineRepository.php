@@ -30,4 +30,14 @@ class ApplicationServerSetRelApplicationServerDoctrineRepository extends Doctrin
             $entityPersisterInterface
         );
     }
+
+    /**
+     * @return ApplicationServerSetRelApplicationServerInterface[]
+     */
+    public function findByApplicationServerId(int $applicationServerId): array
+    {
+        return $this->findBy([
+            'applicationServer' => $applicationServerId
+        ]);
+    }
 }

@@ -52,11 +52,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySets = null;
-
-    /**
-     * @var MediaRelaySetDto | null
-     */
     private $mediaRelaySet = null;
 
     /**
@@ -90,7 +85,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet',
             'proxyTrunkId' => 'proxyTrunk',
-            'mediaRelaySetsId' => 'mediaRelaySets',
             'mediaRelaySetId' => 'mediaRelaySet'
         ];
     }
@@ -107,7 +101,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'proxyTrunk' => $this->getProxyTrunk(),
-            'mediaRelaySets' => $this->getMediaRelaySets(),
             'mediaRelaySet' => $this->getMediaRelaySet(),
             'ddiProviderRegistrations' => $this->getDdiProviderRegistrations(),
             'ddiProviderAddresses' => $this->getDdiProviderAddresses()
@@ -250,36 +243,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     public function getProxyTrunkId(): ?int
     {
         if ($dto = $this->getProxyTrunk()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    public function setMediaRelaySets(?MediaRelaySetDto $mediaRelaySets): static
-    {
-        $this->mediaRelaySets = $mediaRelaySets;
-
-        return $this;
-    }
-
-    public function getMediaRelaySets(): ?MediaRelaySetDto
-    {
-        return $this->mediaRelaySets;
-    }
-
-    public function setMediaRelaySetsId(?int $id): static
-    {
-        $value = !is_null($id)
-            ? new MediaRelaySetDto($id)
-            : null;
-
-        return $this->setMediaRelaySets($value);
-    }
-
-    public function getMediaRelaySetsId(): ?int
-    {
-        if ($dto = $this->getMediaRelaySets()) {
             return $dto->getId();
         }
 

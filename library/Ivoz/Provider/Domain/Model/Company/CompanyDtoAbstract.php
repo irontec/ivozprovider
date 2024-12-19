@@ -5,11 +5,9 @@ namespace Ivoz\Provider\Domain\Model\Company;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
-use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
-use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
@@ -18,6 +16,7 @@ use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto;
 use Ivoz\Provider\Domain\Model\Corporation\CorporationDto;
 use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetDto;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\Contact\ContactDto;
@@ -171,11 +170,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $language = null;
 
     /**
-     * @var MediaRelaySetDto | null
-     */
-    private $mediaRelaySets = null;
-
-    /**
      * @var TimezoneDto | null
      */
     private $defaultTimezone = null;
@@ -189,11 +183,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      * @var DomainDto | null
      */
     private $domain = null;
-
-    /**
-     * @var ApplicationServerDto | null
-     */
-    private $applicationServer = null;
 
     /**
      * @var CountryDto | null
@@ -378,11 +367,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 'countryName',
             ],
             'languageId' => 'language',
-            'mediaRelaySetsId' => 'mediaRelaySets',
             'defaultTimezoneId' => 'defaultTimezone',
             'brandId' => 'brand',
             'domainId' => 'domain',
-            'applicationServerId' => 'applicationServer',
             'countryId' => 'country',
             'currencyId' => 'currency',
             'transformationRuleSetId' => 'transformationRuleSet',
@@ -434,11 +421,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 'countryName' => $this->getInvoicingCountryName(),
             ],
             'language' => $this->getLanguage(),
-            'mediaRelaySets' => $this->getMediaRelaySets(),
             'defaultTimezone' => $this->getDefaultTimezone(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
-            'applicationServer' => $this->getApplicationServer(),
             'country' => $this->getCountry(),
             'currency' => $this->getCurrency(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
@@ -816,36 +801,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setMediaRelaySets(?MediaRelaySetDto $mediaRelaySets): static
-    {
-        $this->mediaRelaySets = $mediaRelaySets;
-
-        return $this;
-    }
-
-    public function getMediaRelaySets(): ?MediaRelaySetDto
-    {
-        return $this->mediaRelaySets;
-    }
-
-    public function setMediaRelaySetsId(?int $id): static
-    {
-        $value = !is_null($id)
-            ? new MediaRelaySetDto($id)
-            : null;
-
-        return $this->setMediaRelaySets($value);
-    }
-
-    public function getMediaRelaySetsId(): ?int
-    {
-        if ($dto = $this->getMediaRelaySets()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
     public function setDefaultTimezone(?TimezoneDto $defaultTimezone): static
     {
         $this->defaultTimezone = $defaultTimezone;
@@ -930,36 +885,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getDomainId(): ?int
     {
         if ($dto = $this->getDomain()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    public function setApplicationServer(?ApplicationServerDto $applicationServer): static
-    {
-        $this->applicationServer = $applicationServer;
-
-        return $this;
-    }
-
-    public function getApplicationServer(): ?ApplicationServerDto
-    {
-        return $this->applicationServer;
-    }
-
-    public function setApplicationServerId(?int $id): static
-    {
-        $value = !is_null($id)
-            ? new ApplicationServerDto($id)
-            : null;
-
-        return $this->setApplicationServer($value);
-    }
-
-    public function getApplicationServerId(): ?int
-    {
-        if ($dto = $this->getApplicationServer()) {
             return $dto->getId();
         }
 

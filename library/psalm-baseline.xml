@@ -1812,13 +1812,11 @@
     </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Carrier/CarrierAbstract.php">
-    <MixedArgument occurrences="12">
+    <MixedArgument occurrences="10">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySets())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySets())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
@@ -1900,7 +1898,7 @@
     </UnnecessaryVarAnnotation>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyAbstract.php">
-    <MixedArgument occurrences="40">
+    <MixedArgument occurrences="36">
       <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
       <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
@@ -1909,8 +1907,6 @@
       <code>$fkTransformer-&gt;transform($country)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getAccessCredentialNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getAccessCredentialNotificationTemplate())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServer())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServer())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCallCsvNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCallCsvNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCorporation())</code>
@@ -1929,8 +1925,6 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySets())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySets())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdiRule())</code>
@@ -2379,11 +2373,9 @@
     </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderAbstract.php">
-    <MixedArgument occurrences="10">
+    <MixedArgument occurrences="8">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySets())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySets())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>

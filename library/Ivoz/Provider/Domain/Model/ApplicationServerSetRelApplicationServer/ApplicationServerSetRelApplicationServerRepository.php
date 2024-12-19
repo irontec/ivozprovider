@@ -9,4 +9,8 @@ use Ivoz\Core\Domain\Service\Repository\RepositoryInterface;
  */
 interface ApplicationServerSetRelApplicationServerRepository extends RepositoryInterface
 {
+    /**
+     * @return ApplicationServerSetRelApplicationServerInterface[]
+     */
+    public function findByApplicationServerId(int $applicationServerId): array;
 }
