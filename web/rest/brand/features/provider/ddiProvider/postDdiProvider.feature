@@ -28,7 +28,7 @@ Feature: Create ddi providers
             "id": 2,
             "transformationRuleSet": 1,
             "proxyTrunk": 1,
-            "mediaRelaySet": 0
+            "mediaRelaySet": null
         }
       """
 
