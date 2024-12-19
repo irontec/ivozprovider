@@ -31,7 +31,7 @@ class ApplicationServerSetDtoAssembler implements CustomDtoAssemblerInterface
             function (ApplicationServerSetRelApplicationServerInterface $relApplicationServer) {
                 return (int) $relApplicationServer
                     ->getApplicationServer()
-                    ?->getId();
+                    ->getId();
             },
             $relApplicationServers
         );

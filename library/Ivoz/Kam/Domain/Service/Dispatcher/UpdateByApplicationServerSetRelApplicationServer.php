@@ -5,6 +5,7 @@ namespace Ivoz\Kam\Domain\Service\Dispatcher;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher as KamDispatcher;
 use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherRepository as KamDispatcherRepository;
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet;
 use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerInterface;
 use Ivoz\Provider\Domain\Service\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerLifecycleEventHandlerInterface;
 
@@ -45,14 +46,8 @@ class UpdateByApplicationServerSetRelApplicationServer implements ApplicationSer
         );
 
         $applicationServer = $relApplicationServer->getApplicationServer();
-        if (is_null($applicationServer)) {
-            return;
-        }
-
+        /** @var ApplicationServerSet $applicationServerSet */
         $applicationServerSet = $relApplicationServer->getApplicationServerSet();
-        if (is_null($applicationServerSet)) {
-            return;
-        }
 
         $kamDispatcherDto = $relApplicationServer->isNew()
             ? KamDispatcher::createDto()
@@ -64,7 +59,7 @@ class UpdateByApplicationServerSetRelApplicationServer implements ApplicationSer
             ->setDestination($dispatcherDestination)
             ->setDescription($applicationServer->getName())
             ->setApplicationServerSetRelApplicationServerId(
-                $relApplicationServer->getId()
+                (int) $relApplicationServer->getId()
             );
 
         $this->entityTools->persistDto(
