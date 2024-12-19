@@ -6,12 +6,12 @@
       </unique-constraints>
       <many-to-one field="applicationServer" target-entity="Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="applicationServerId" referenced-column-name="id" on-delete="RESTRICT"/>
+        <join-column name="applicationServerId" referenced-column-name="id" on-delete="RESTRICT" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="applicationServerSet" target-entity="Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface" inversed-by="relApplicationServers" fetch="LAZY">
       <join-columns>
-        <join-column name="applicationServerSetId" referenced-column-name="id" on-delete="CASCADE"/>
+        <join-column name="applicationServerSetId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>
