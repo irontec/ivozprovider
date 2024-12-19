@@ -1,0 +1,30 @@
+{
+    "request": {
+        "name": "Centreal Europe",
+        "description": "Description",
+        "patternIds": [
+            1,
+            2
+        ]
+    },
+    "response": {
+        "body": {
+            "name": "Centreal Europe",
+            "description": "Description",
+            "id": 1,
+            "patternIds": [
+                1,
+                2
+            ]
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "request": {
+        "prefix": "+349",
+        "id": 1,
+        "name": {
+            "en": "Spain",
+            "es": "España",
+            "ca": "España",
+            "it": "Spagna"
+        },
+        "description": {
+            "en": "desc en",
+            "es": "desc es",
+            "ca": "desc ca",
+            "it": "desc it"
+        }
+    },
+    "response": {
+        "body": {
+            "prefix": "+349",
+            "id": 3,
+            "name": {
+                "en": "Spain",
+                "es": "España",
+                "ca": "España",
+                "it": "Spagna"
+            },
+            "description": {
+                "en": "desc en",
+                "es": "desc es",
+                "ca": "desc ca",
+                "it": "desc it"
+            }
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 201
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}
