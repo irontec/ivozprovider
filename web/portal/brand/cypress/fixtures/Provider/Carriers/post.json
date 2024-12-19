@@ -1,0 +1,32 @@
+{
+    "request": {
+        "description": "Artemis-New",
+        "name": "Artemis-New",
+        "proxyTrunk": 1,
+        "transformationRuleSet": 1,
+        "mediaRelaySet": 0
+    },
+    "response": {
+        "body": {
+            "description": "Artemis-New",
+            "name": "Artemis-New",
+            "balance": 0,
+            "calculateCost": false,
+            "id": 3,
+            "transformationRuleSet": 1,
+            "currency": null,
+            "proxyTrunk": 1,
+            "mediaRelaySets": null,
+            "mediaRelaySet": 0
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 201
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

@@ -10,12 +10,15 @@ import ApplicationServerSetsCollection from '../../fixtures/Provider/Application
 import BannedAddressesCollection from '../../fixtures/Provider/BannedAddress/getCollection.json';
 import BillableCallsCollection from '../../fixtures/Provider/BillableCalls/getCollection.json';
 import CarriersCollection from '../../fixtures/Provider/Carriers/getCollection.json';
+import CarrierServerCollection from '../../fixtures/Provider/CarrierServer/getCollection.json';
 import CodecsCollection from '../../fixtures/Provider/Codecs/getCollection.json';
 import CompaniesCollection from '../../fixtures/Provider/Companies/getCollection.json';
 import CorporationsCollection from '../../fixtures/Provider/Corporations/getCollection.json';
 import CountriesCollection from '../../fixtures/Provider/Countries/getCollection.json';
 import CurrenciesCollection from '../../fixtures/Provider/Currencies/getCollection.json';
 import DdiProvidersCollection from '../../fixtures/Provider/DdiProviders/getCollection.json';
+import DdiProvidersAddressesCollection from '../../fixtures/Provider/DdiProviders/getProviderAddressesCollection.json';
+import DdiProvidersRegistrationsCollection from '../../fixtures/Provider/DdiProviders/getProviderRegistrationsCollection.json';
 import DdisCollection from '../../fixtures/Provider/Ddis/getCollection.json';
 import FeaturesCollection from '../../fixtures/Provider/Features/getCollection.json';
 import LanguagesCollection from '../../fixtures/Provider/Languages/getCollection.json';
@@ -63,9 +66,21 @@ Cypress.Commands.add(
       ...CarriersCollection,
     }).as('getCarriers');
 
+    cy.intercept('GET', '**/api/brand/carrier_servers?*', {
+      ...CarrierServerCollection,
+    }).as('getCarriersServer');
+
     cy.intercept('GET', '**/api/brand/ddi_providers?*', {
       ...DdiProvidersCollection,
     }).as('getDdiProviders');
+
+    cy.intercept('GET', '**/api/brand/ddi_provider_addresses?*', {
+      ...DdiProvidersAddressesCollection,
+    }).as('getDdiProvidersAddresses');
+
+    cy.intercept('GET', '**/api/brand/ddi_provider_registrations?*', {
+      ...DdiProvidersRegistrationsCollection,
+    }).as('getDdiProvidersRegistrations');
 
     cy.intercept('GET', '**/api/brand/ddis?*', {
       ...DdisCollection,

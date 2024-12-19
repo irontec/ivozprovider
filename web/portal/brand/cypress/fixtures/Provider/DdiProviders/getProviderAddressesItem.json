@@ -1,0 +1,17 @@
+{
+    "body": {
+        "ip": "127.0.0.1",
+        "description": "DDI Provider Address 1",
+        "id": 1,
+        "ddiProvider": {
+            "description": "DDIProviderDescription",
+            "name": "DDIProviderName",
+            "id": 1,
+            "transformationRuleSet": 1
+        }
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}
