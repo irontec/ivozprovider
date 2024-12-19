@@ -1,33 +1,29 @@
 import { Login as DefaultLogin } from '@irontec/ivoz-ui/components';
 import { EntityValidator } from '@irontec/ivoz-ui/entities/EntityInterface';
-import queryString from 'query-string';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'store';
 
 interface LoginProps {
   validator?: EntityValidator;
+  email?: string;
+  token?: string;
 }
 
 export default function Login(props: LoginProps): JSX.Element | null {
-  const { validator } = props;
-
+  const { validator, email, token } = props;
   const location = useLocation();
   const navigate = useNavigate();
-  const qsArgs = queryString.parse(location.search);
-  const { target, token }: { target?: string; token?: string } = qsArgs;
-
   const loggedIn = useStoreState((state) => state.auth.loggedIn);
-
   const exchangeToken = useStoreActions(
     (actions) => actions.auth.exchangeToken
   );
 
   useEffect(() => {
-    if (target && token) {
+    if (email && token) {
       exchangeToken({
-        clientId: target,
-        token,
+        username: email,
+        token: token ?? '',
       })
         .then((success: boolean) => {
           if (!success) {
@@ -47,9 +43,9 @@ export default function Login(props: LoginProps): JSX.Element | null {
 
       return;
     }
-  }, [target, token, exchangeToken, navigate, location.pathname]);
+  }, [email, token, exchangeToken, navigate, location.pathname]);
 
-  if (loggedIn || (target && token)) {
+  if (loggedIn || (email && token)) {
     return null;
   }
 

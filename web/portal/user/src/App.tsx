@@ -1,5 +1,4 @@
 import { StoreContainer } from '@irontec/ivoz-ui';
-import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
 import { CssBaseline, LinearProgress } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -18,20 +17,30 @@ export default function App(): JSX.Element {
   const setLoginProps = useStoreActions(
     (actions) => actions.auth.setLoginProps
   );
-
   const apiSpecStore = useStoreActions((actions) => {
     return actions.spec;
   });
   const authStore = useStoreActions((actions) => actions.auth);
   const token = useStoreState((actions) => actions.auth.token);
-
-  const loadStatus = useStoreActions(
+  const aboutMeResetProfile = useStoreActions(
+    (actions) => actions.userStatus.status.resetProfile
+  );
+  const aboutMeInit = useStoreActions(
+    (actions) => actions.userStatus.status.init
+  );
+  const aboutMe = useStoreState((state) => state.userStatus.status.profile);
+  const loadProfile = useStoreActions(
     (actions) => actions.userStatus.status.load
   );
-
-  const [, cancelToken] = useCancelToken();
+  const loggedIn = useStoreState((state) => state.auth.loggedIn);
 
   useTranslation();
+
+  useEffect(() => {
+    if (loggedIn && token && !aboutMe) {
+      loadProfile();
+    }
+  }, [loggedIn, token, aboutMe, loadProfile]);
 
   useEffect(() => {
     setLanguages(languagesList);
@@ -43,11 +52,17 @@ export default function App(): JSX.Element {
     apiSpecStore.init();
     authStore.setSessionStoragePrefix('IP-user-');
     authStore.init();
-  }, [apiSpecStore, authStore, token, setLanguages, setLoginProps]);
 
-  useEffect(() => {
-    loadStatus(cancelToken);
-  }, []);
+    aboutMeResetProfile();
+    aboutMeInit();
+  }, [
+    setLanguages,
+    apiSpecStore,
+    authStore,
+    token,
+    aboutMeInit,
+    aboutMeResetProfile,
+  ]);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
 

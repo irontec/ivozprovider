@@ -47,6 +47,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           },
           filterBy: 'user',
         },
+        ...Object.values(entities.User.customActions),
       ],
     },
     {

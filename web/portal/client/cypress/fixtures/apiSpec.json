@@ -33178,6 +33178,12 @@
                 },
                 "parameters": [
                     {
+                        "name": "active",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "bossAssistant",
                         "in": "query",
                         "required": false,
@@ -33244,18 +33250,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "email[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "email[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "email[neq]",
                         "in": "query",
                         "required": false,
@@ -33272,6 +33266,18 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "email[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "exists[email]",
@@ -33412,18 +33418,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
@@ -33431,6 +33425,18 @@
                     },
                     {
                         "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33524,6 +33530,16 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[active]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "enum": [
@@ -46490,7 +46506,8 @@
             "type": "object",
             "required": [
                 "name",
-                "lastname"
+                "lastname",
+                "active"
             ],
             "properties": {
                 "id": {
@@ -46524,6 +46541,12 @@
                     "maxLength": 100,
                     "description": "",
                     "type": "string"
+                },
+                "active": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
                 },
                 "status": {
                     "description": "Registration status",

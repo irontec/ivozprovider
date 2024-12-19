@@ -1,4 +1,4 @@
-import { CancelToken } from 'axios';
+import axios from 'axios';
 import { Action, action, Thunk, thunk } from 'easy-peasy';
 
 import { AppStore } from '../index';
@@ -39,7 +39,8 @@ export type StatusState = {
 interface StatusActions {
   setProfile: Action<StatusState, Status>;
   resetProfile: Action<StatusState>;
-  load: Thunk<StatusStore, CancelToken, unknown, AppStore>;
+  init: Thunk<StatusStore>;
+  load: Thunk<StatusStore, undefined, unknown, AppStore>;
 }
 
 export type StatusStore = StatusActions & StatusState;
@@ -54,51 +55,34 @@ const Status: StatusStore = {
     localStorage.removeItem('profile');
     state.profile = null;
   }),
+  init: thunk<StatusStore>(async (actions) => {
+    const profile = localStorage.getItem('profile') as string | undefined;
+    if (profile) {
+      actions.setProfile(JSON.parse(profile) as Status);
+    }
+  }),
   // thunks
-  load: thunk<StatusStore, CancelToken, unknown, AppStore>(
-    async (actions, cancelToken, { getStoreActions, getState }) => {
+  load: thunk<StatusStore, undefined, unknown, AppStore>(
+    async (actions, payload, { getStoreActions }) => {
       const storeActions = getStoreActions();
 
-      const request = async () => {
-        try {
-          const apiGet = storeActions.api.get;
+      try {
+        const apiGet = storeActions.api.get;
+        const cancelToken = axios.CancelToken.source();
 
-          await apiGet({
-            path: '/my/status',
-            params: {},
-            cancelToken: cancelToken,
-            successCallback: async (response) => {
-              const oldStatus = JSON.stringify(getState().profile);
-              const newStatus = JSON.stringify(response as Status);
-
-              if (newStatus === oldStatus) {
-                return;
-              }
-
-              actions.setProfile(response as Status);
-            },
-          });
-        } catch (error) {
-          storeActions.auth.setToken(null);
-          storeActions.api.setErrorMsg('Unable to load ACLs');
-        }
-      };
-
-      const reqLoop = () => {
-        request()
-          .catch((error) => {
-            throw error;
-          })
-          .finally(() => {
-            if (cancelToken.reason) {
-              return;
-            }
-
-            setTimeout(reqLoop, 60000);
-          });
-      };
-
-      reqLoop();
+        await apiGet({
+          path: '/my/status',
+          params: {},
+          cancelToken: cancelToken.token,
+          successCallback: async (response) => {
+            localStorage.setItem('profile', JSON.stringify(response as Status));
+            actions.init();
+          },
+        });
+      } catch (error) {
+        storeActions.auth.setToken(null);
+        storeActions.api.setErrorMsg('Unable to load ACLs');
+      }
     }
   ),
 };

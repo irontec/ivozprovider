@@ -14,25 +14,27 @@ Feature: Retrieve hunt groups available users
       And the JSON should be equal to:
       """
       [
-          {
-              "name": "Bob",
-              "lastname": "Bobson",
-              "email": "bob@democompany.com",
-              "id": 2,
-              "terminal": 2,
-              "extension": null,
-              "outgoingDdi": null,
-              "status": []
-          },
-          {
-              "name": "Joe",
-              "lastname": "Doe",
-              "email": "joe@democompany.com",
-              "id": 3,
-              "terminal": 4,
-              "extension": 2,
-              "outgoingDdi": null,
-              "status": []
-          }
+            {
+                "name": "Bob",
+                "lastname": "Bobson",
+                "email": "bob@democompany.com",
+                "active": true,
+                "id": 2,
+                "terminal": 2,
+                "extension": null,
+                "outgoingDdi": null,
+                "status": []
+            },
+            {
+                "name": "Joe",
+                "lastname": "Doe",
+                "email": "joe@democompany.com",
+                "active": true,
+                "id": 3,
+                "terminal": 4,
+                "extension": 2,
+                "outgoingDdi": null,
+                "status": []
+            }
       ]
       """
