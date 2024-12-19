@@ -49,7 +49,7 @@ interface ApplicationServerSetRelApplicationServerInterface extends LoggableEnti
      */
     public function toDto(int $depth = 0): ApplicationServerSetRelApplicationServerDto;
 
-    public function getApplicationServer(): ?ApplicationServerInterface;
+    public function getApplicationServer(): ApplicationServerInterface;
 
     public function setApplicationServerSet(?ApplicationServerSetInterface $applicationServerSet = null): static;
 

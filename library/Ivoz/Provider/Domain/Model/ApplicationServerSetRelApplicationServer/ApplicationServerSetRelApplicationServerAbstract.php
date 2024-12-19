@@ -23,9 +23,9 @@ abstract class ApplicationServerSetRelApplicationServerAbstract
     use ChangelogTrait;
 
     /**
-     * @var ?ApplicationServerInterface
+     * @var ApplicationServerInterface
      */
-    protected $applicationServer = null;
+    protected $applicationServer;
 
     /**
      * @var ?ApplicationServerSetInterface
@@ -101,11 +101,13 @@ abstract class ApplicationServerSetRelApplicationServerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ApplicationServerSetRelApplicationServerDto::class);
+        $applicationServer = $dto->getApplicationServer();
+        Assertion::notNull($applicationServer, 'getApplicationServer value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
-            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
+            ->setApplicationServer($fkTransformer->transform($applicationServer))
             ->setApplicationServerSet($fkTransformer->transform($dto->getApplicationServerSet()));
 
         $self->initChangelog();
@@ -123,8 +125,11 @@ abstract class ApplicationServerSetRelApplicationServerAbstract
     ): static {
         Assertion::isInstanceOf($dto, ApplicationServerSetRelApplicationServerDto::class);
 
+        $applicationServer = $dto->getApplicationServer();
+        Assertion::notNull($applicationServer, 'getApplicationServer value is null, but non null value was expected.');
+
         $this
-            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
+            ->setApplicationServer($fkTransformer->transform($applicationServer))
             ->setApplicationServerSet($fkTransformer->transform($dto->getApplicationServerSet()));
 
         return $this;
@@ -146,19 +151,19 @@ abstract class ApplicationServerSetRelApplicationServerAbstract
     protected function __toArray(): array
     {
         return [
-            'applicationServerId' => self::getApplicationServer()?->getId(),
+            'applicationServerId' => self::getApplicationServer()->getId(),
             'applicationServerSetId' => self::getApplicationServerSet()?->getId()
         ];
     }
 
-    protected function setApplicationServer(?ApplicationServerInterface $applicationServer = null): static
+    protected function setApplicationServer(ApplicationServerInterface $applicationServer): static
     {
         $this->applicationServer = $applicationServer;
 
         return $this;
     }
 
-    public function getApplicationServer(): ?ApplicationServerInterface
+    public function getApplicationServer(): ApplicationServerInterface
     {
         return $this->applicationServer;
     }
