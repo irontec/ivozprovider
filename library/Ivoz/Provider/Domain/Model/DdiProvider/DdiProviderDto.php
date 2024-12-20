@@ -50,9 +50,4 @@ class DdiProviderDto extends DdiProviderDtoAbstract
             $data
         );
     }
-
-    public function setMediaRelaySetId(?int $id): static
-    {
-        return parent::setMediaRelaySetId($id ?? MediaRelaySet::DEFAULT_MEDIA_RELAY_SET);
-    }
 }
