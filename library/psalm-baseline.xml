@@ -1355,8 +1355,8 @@
   </file>
   <file src="Ivoz/Provider/Domain/Model/ApplicationServerSetRelApplicationServer/ApplicationServerSetRelApplicationServerAbstract.php">
     <MixedArgument occurrences="4">
-      <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServer())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServer())</code>
+      <code>$fkTransformer-&gt;transform($applicationServer)</code>
+      <code>$fkTransformer-&gt;transform($applicationServer)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServerSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getApplicationServerSet())</code>
     </MixedArgument>
