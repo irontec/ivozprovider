@@ -69,9 +69,9 @@ abstract class CarrierAbstract
     protected $proxyTrunk = null;
 
     /**
-     * @var MediaRelaySetInterface
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySet;
+    protected $mediaRelaySet = null;
 
     /**
      * Constructor
@@ -151,8 +151,6 @@ abstract class CarrierAbstract
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
-        $mediaRelaySet = $dto->getMediaRelaySet();
-        Assertion::notNull($mediaRelaySet, 'getMediaRelaySet value is null, but non null value was expected.');
 
         $self = new static(
             $description,
@@ -166,7 +164,7 @@ abstract class CarrierAbstract
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
-            ->setMediaRelaySet($fkTransformer->transform($mediaRelaySet));
+            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
 
         $self->initChangelog();
 
@@ -189,8 +187,6 @@ abstract class CarrierAbstract
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
-        $mediaRelaySet = $dto->getMediaRelaySet();
-        Assertion::notNull($mediaRelaySet, 'getMediaRelaySet value is null, but non null value was expected.');
 
         $this
             ->setDescription($description)
@@ -201,7 +197,7 @@ abstract class CarrierAbstract
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
-            ->setMediaRelaySet($fkTransformer->transform($mediaRelaySet));
+            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
 
         return $this;
     }
@@ -237,7 +233,7 @@ abstract class CarrierAbstract
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
             'currencyId' => self::getCurrency()?->getId(),
             'proxyTrunkId' => self::getProxyTrunk()?->getId(),
-            'mediaRelaySetId' => self::getMediaRelaySet()->getId()
+            'mediaRelaySetId' => self::getMediaRelaySet()?->getId()
         ];
     }
 
@@ -345,14 +341,14 @@ abstract class CarrierAbstract
         return $this->proxyTrunk;
     }
 
-    protected function setMediaRelaySet(MediaRelaySetInterface $mediaRelaySet): static
+    protected function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): static
     {
         $this->mediaRelaySet = $mediaRelaySet;
 
         return $this;
     }
 
-    public function getMediaRelaySet(): MediaRelaySetInterface
+    public function getMediaRelaySet(): ?MediaRelaySetInterface
     {
         return $this->mediaRelaySet;
     }

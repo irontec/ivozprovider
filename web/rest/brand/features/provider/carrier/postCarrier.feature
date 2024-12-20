@@ -72,27 +72,3 @@ Feature: Create carriers
           }
       }
       """
-
-  @createSchema
-  Scenario: Create a carriers without media relay set
-    Given I add Brand Authorization header
-     When I add "Content-Type" header equal to "application/json"
-      And I add "Accept" header equal to "application/json"
-      And I send a "POST" request to "/carriers" with body:
-      """
-      {
-          "description": "No media relay set",
-          "name": "NoMediaRelaySet",
-          "proxyTrunk": 1,
-          "transformationRuleSet": 1
-      }
-      """
-     Then the response status code should be 400
-      And the response should be in JSON
-      And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-      And the JSON should be like:
-      """
-      {
-        "detail": "getMediaRelaySet value is null, but non null value was expected."
-      }
-      """

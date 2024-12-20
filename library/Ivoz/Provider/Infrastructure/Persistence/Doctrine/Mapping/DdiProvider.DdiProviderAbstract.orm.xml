@@ -32,7 +32,7 @@
     </many-to-one>
     <many-to-one field="mediaRelaySet" target-entity="Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="mediaRelaySetId" referenced-column-name="id" on-delete="RESTRICT" nullable="0"/>
+        <join-column name="mediaRelaySetId" referenced-column-name="id" on-delete="RESTRICT" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

@@ -1817,12 +1817,12 @@
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySet())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
-      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
-      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
     </MixedArgument>
     <RedundantCast occurrences="1">
       <code>(float) $balance</code>
@@ -2376,12 +2376,12 @@
     <MixedArgument occurrences="8">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySet())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
-      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
-      <code>$fkTransformer-&gt;transform($mediaRelaySet)</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>

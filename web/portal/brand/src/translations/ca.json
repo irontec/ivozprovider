@@ -675,6 +675,7 @@
   "Update CallerID?": "Actualitzar ID del trucant?",
   "Uploaded file": "Fitxer carregat",
   "Use address or hostname": "Utilitza una adreça o un nom d'amfitrió",
+  "Use client’s set": "Utilitzar el set del client",
   "Use generic template": "Utilitza plantilla genèrica",
   "Use point as decimal delimiter - e.g. 0.02": "Utilitza un punt com a indicador decimal - e.x. 0.002",
   "Use this instead in From header domain": "Utilitza aquest enlloc de la Capçalera Origen del domini",
