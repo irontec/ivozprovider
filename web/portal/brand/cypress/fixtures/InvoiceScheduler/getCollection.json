@@ -1,0 +1,23 @@
+{
+  "body": [
+    {
+      "name": "SchedulerName",
+      "unit": "week",
+      "frequency": 1,
+      "lastExecution": "2018-12-01 09:00:00",
+      "lastExecutionError": "",
+      "nextExecution": "2018-12-02 09:00:00",
+      "id": 1,
+      "brand": 1,
+      "company": 1
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/invoice_schedulers?_page=1",
+    "x-last-page": "/api/brand/invoice_schedulers?_page=1",
+    "x-next-page": "/api/brand/invoice_schedulers?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

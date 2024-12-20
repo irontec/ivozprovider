@@ -1,0 +1,16 @@
+{
+  "body": {
+    "name": "GeneratorName",
+    "prefix": "auto",
+    "sequenceLength": 4,
+    "increment": 1,
+    "latestValue": "auto0001",
+    "iteration": 1,
+    "version": 1,
+    "id": 1
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

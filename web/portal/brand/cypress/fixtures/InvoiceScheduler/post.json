@@ -1,0 +1,42 @@
+{
+  "request": {
+    "name": "SchedulerName2",
+    "unit": "month",
+    "frequency": 1,
+    "email": "something@domain.net",
+    "lastExecution": "2019-12-01 09:00:00",
+    "lastExecutionError": "",
+    "nextExecution": "2019-12-02 09:00:00",
+    "taxRate": 21,
+    "invoiceTemplate": 1,
+    "brand": 1,
+    "company": 2,
+    "numberSequence": 1
+  },
+  "response": {
+    "body": {
+      "name": "SchedulerName2",
+      "unit": "month",
+      "frequency": 1,
+      "email": "something@domain.net",
+      "lastExecution": "2019-12-01 09:00:00",
+      "lastExecutionError": "",
+      "nextExecution": "2019-12-02 09:00:00",
+      "taxRate": 21,
+      "id": 2,
+      "invoiceTemplate": 1,
+      "brand": 1,
+      "company": 2,
+      "numberSequence": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
