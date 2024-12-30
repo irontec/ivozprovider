@@ -43,7 +43,8 @@ const RecordingExtension: RecordingExtensionType = (
   }, [recordLocutionServiceLoader, cancelTokenSource]);
 
   const recordLocutionService = useStoreState(
-    (state) => state.clientSession.recordLocutionService.recordLocutionService
+    (state) =>
+      state.clientSession.recordLocutionService.companyRecordLocutionService
   );
   const serviceEnabled = useStoreState(
     (state) => state.clientSession.recordLocutionService.serviceEnabled
@@ -53,7 +54,7 @@ const RecordingExtension: RecordingExtensionType = (
 
   let code = '';
   if (recordLocutionService !== null && serviceEnabled) {
-    code = `*${recordLocutionService.defaultCode}${values.id}`;
+    code = `*${recordLocutionService.code}${values.id}`;
   }
 
   return <span className={className}>{code}</span>;
