@@ -12,7 +12,7 @@ Feature: Update ddi
       """
       {
           "name": "updatedRetailAccount",
-          "description": "",
+          "description": "demo description",
           "transport": "udp",
           "ip": null,
           "port": null,
@@ -33,7 +33,7 @@ Feature: Update ddi
       """
       {
           "name": "updatedRetailAccount",
-          "description": "",
+          "description": "demo description",
           "transport": "udp",
           "ip": null,
           "port": null,
