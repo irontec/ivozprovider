@@ -18884,6 +18884,76 @@
                 ]
             }
         },
+        "/invoices/{id}": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getInvoiceItem",
+                "summary": "Retrieves a Invoice resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_timezone",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Use a time zone of choice instead of the token user one (Applies to both input and output)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Invoice resource response",
+                        "schema": {
+                            "$ref": "#/definitions/Invoice-detailed"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/invoices/{id}/pdf": {
+            "get": {
+                "produces": [
+                    "application/octet-stream"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "#/definitions/Invoice_Pdf",
+                        "schema": {
+                            "type": "file"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "/invoice_pdfInvoiceItem",
+                "summary": "Retrieves a Invoice resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
         "/ivr_entries": {
             "get": {
                 "produces": [
@@ -41408,6 +41478,73 @@
                 }
             }
         },
+        "Invoice-detailed": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "maxLength": 30,
+                    "description": "",
+                    "type": "string"
+                },
+                "inDate": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                },
+                "outDate": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                },
+                "taxRate": {
+                    "format": "float",
+                    "description": "",
+                    "type": "number"
+                },
+                "totalWithTax": {
+                    "format": "float",
+                    "description": "",
+                    "type": "number"
+                },
+                "statusMsg": {
+                    "maxLength": 140,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "pdf": {
+                    "$ref": "#/definitions/Invoice_Pdf"
+                },
+                "currency": {
+                    "description": "Invoice currency",
+                    "type": "string"
+                }
+            }
+        },
+        "Invoice_Pdf": {
+            "type": "object",
+            "properties": {
+                "fileSize": {
+                    "minimum": 0,
+                    "description": "",
+                    "type": "integer"
+                },
+                "mimeType": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "baseName": {
+                    "maxLength": 255,
+                    "description": "",
+                    "type": "string"
+                }
+            }
+        },
         "Invoicing": {
             "type": "object",
             "required": [
@@ -47268,26 +47405,6 @@
                     "type": "string"
                 },
                 "title": {
-                    "description": "",
-                    "type": "string"
-                }
-            }
-        },
-        "Invoice_Pdf": {
-            "type": "object",
-            "properties": {
-                "fileSize": {
-                    "minimum": 0,
-                    "description": "",
-                    "type": "integer"
-                },
-                "mimeType": {
-                    "maxLength": 80,
-                    "description": "",
-                    "type": "string"
-                },
-                "baseName": {
-                    "maxLength": 255,
                     "description": "",
                     "type": "string"
                 }
