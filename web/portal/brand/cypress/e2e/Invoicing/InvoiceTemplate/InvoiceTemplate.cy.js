@@ -1,4 +1,4 @@
-import FixedCostsCollection from '../../../fixtures/InvoiceTemplate/getCollection.json';
+import FixedCostsCollection from '../../../fixtures/Provider/InvoiceTemplate/getCollection.json';
 import {
   deleteteInvoiceTemplates,
   postInvoiceTemplates,

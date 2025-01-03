@@ -1,6 +1,6 @@
-import FixedCostsItem from '../../../fixtures/FixedCosts/getItem.json';
-import newFixedCosts from '../../../fixtures/FixedCosts/post.json';
-import editFixedCosts from '../../../fixtures/FixedCosts/put.json';
+import FixedCostsItem from '../../../fixtures/Provider/FixedCosts/getItem.json';
+import newFixedCosts from '../../../fixtures/Provider/FixedCosts/post.json';
+import editFixedCosts from '../../../fixtures/Provider/FixedCosts/put.json';
 
 export const postFixedCosts = () => {
   cy.intercept('GET', '**/api/brand/fixed_costs/1', {

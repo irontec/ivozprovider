@@ -1,6 +1,6 @@
-import InvoiceSchedulers from '../../../fixtures/InvoiceScheduler/getItem.json';
-import newInvoiceSchedulers from '../../../fixtures/InvoiceScheduler/post.json';
-import editInvoiceSchedulers from '../../../fixtures/InvoiceScheduler/put.json';
+import InvoiceSchedulers from '../../../fixtures/Provider/InvoiceScheduler/getItem.json';
+import newInvoiceSchedulers from '../../../fixtures/Provider/InvoiceScheduler/post.json';
+import editInvoiceSchedulers from '../../../fixtures/Provider/InvoiceScheduler/put.json';
 
 export const postInvoiceSchedulers = () => {
   cy.intercept('GET', '**/api/brand/invoice_schedulers/1', {

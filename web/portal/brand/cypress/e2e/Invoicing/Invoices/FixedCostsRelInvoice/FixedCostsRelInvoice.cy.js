@@ -1,4 +1,4 @@
-import InvoiceFidexCostsCollection from '../../../../fixtures/FixedCostsRelInvoice/getCollection.json';
+import InvoiceFidexCostsCollection from '../../../../fixtures/Provider/FixedCostsRelInvoice/getCollection.json';
 import {
   deleteteFixedCostsRelInvoice,
   postFixedCostsRelInvoice,

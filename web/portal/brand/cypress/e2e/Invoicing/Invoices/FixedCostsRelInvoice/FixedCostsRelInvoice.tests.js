@@ -1,7 +1,7 @@
-import FixedCostsItem from '../../../../fixtures/FixedCosts/getItem.json';
-import InvoiceFixedCosts from '../../../../fixtures/FixedCostsRelInvoice/getItem.json';
-import newInvoiceFixedCosts from '../../../../fixtures/FixedCostsRelInvoice/post.json';
-import editInvoiceFixedCosts from '../../../../fixtures/FixedCostsRelInvoice/put.json';
+import FixedCostsItem from '../../../../fixtures/Provider/FixedCosts/getItem.json';
+import InvoiceFixedCosts from '../../../../fixtures/Provider/FixedCostsRelInvoice/getItem.json';
+import newInvoiceFixedCosts from '../../../../fixtures/Provider/FixedCostsRelInvoice/post.json';
+import editInvoiceFixedCosts from '../../../../fixtures/Provider/FixedCostsRelInvoice/put.json';
 
 export const postFixedCostsRelInvoice = () => {
   cy.usePactIntercept(
