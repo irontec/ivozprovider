@@ -4568,6 +4568,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -4575,6 +4581,12 @@
                     },
                     {
                         "name": "name[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -4593,12 +4605,6 @@
                     },
                     {
                         "name": "name[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6534,6 +6540,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "required": false,
@@ -6546,12 +6558,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -6559,6 +6565,12 @@
                     },
                     {
                         "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -15925,8 +15937,7 @@
             "required": [
                 "description",
                 "name",
-                "brand",
-                "mediaRelaySet"
+                "brand"
             ],
             "properties": {
                 "description": {
@@ -16731,8 +16742,7 @@
             "required": [
                 "description",
                 "name",
-                "brand",
-                "mediaRelaySet"
+                "brand"
             ],
             "properties": {
                 "description": {
