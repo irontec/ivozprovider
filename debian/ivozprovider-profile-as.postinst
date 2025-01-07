@@ -44,11 +44,19 @@ function setup_default_dial_opts()
     sed -i -r "s/(DIAL_DEF_OPTS *= *).*/\1$DIAL_DEF_OPTS/"  /etc/asterisk/extensions.conf
 }
 
+function setup_odbcinst()
+{
+    if ! odbcinst -q -d -n "MYSQL" >/dev/null 2>&1; then
+        odbcinst -i -d -f /etc/odbcinst.ini.ivozprovider
+    fi
+}
+
 #######################################################################################################################
 #######################################################################################################################
 setup_php
 setup_mysql_access
 setup_fastagi_server
 setup_default_dial_opts
+setup_odbcinst
 
 :
