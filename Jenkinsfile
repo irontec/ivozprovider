@@ -213,6 +213,7 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api --skip-db'
+                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-sync-api-spec platform'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -230,6 +231,7 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api --skip-db'
+                                sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-sync-api-spec brand'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -247,6 +249,7 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api --skip-db'
+                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-sync-api-spec client'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -264,6 +267,7 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/user/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/user/bin/test-api --skip-db'
+                                sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-sync-api-spec user'
                             }
                             post {
                                 success { notifySuccessGithub() }
