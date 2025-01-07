@@ -4,6 +4,7 @@
 # libgnutls-openssl27
 # libgnutls30
 perl-openssl-defaults
+zstd
 
 # Main iso package
 ivozprovider
