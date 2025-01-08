@@ -28,6 +28,7 @@ const properties: InvoiceProperties = {
   pdf: {
     label: _('PDF File'),
     type: 'file',
+    downloadable: true,
   },
 };
 
