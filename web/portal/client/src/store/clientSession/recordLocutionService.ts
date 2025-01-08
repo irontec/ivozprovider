@@ -6,7 +6,6 @@ import { AppStore } from '../index';
 type NullableRecordType = Record<string, string | number> | null;
 
 interface RecordLocutionServiceState {
-  loading: boolean;
   serviceEnabled: Computed<RecordLocutionServiceState, boolean>;
   recordLocutionService: NullableRecordType;
   companyRecordLocutionService: NullableRecordType;
@@ -22,8 +21,6 @@ type loadCompanyRecordLocutionServiceProps = CancelTokenSourceProps & {
 
 interface RecordLocutionServiceActions {
   reset: Action<RecordLocutionServiceState, void>;
-  setLoading: Action<RecordLocutionServiceState, void>;
-  unsetLoading: Action<RecordLocutionServiceState, void>;
   setRecordLocutionService: Action<
     RecordLocutionServiceState,
     NullableRecordType
@@ -51,7 +48,6 @@ export type RecordLocutionServiceStore = RecordLocutionServiceActions &
 
 // TODO reset after a login
 const recordLocutionService: RecordLocutionServiceStore = {
-  loading: false,
   recordLocutionService: null,
   companyRecordLocutionService: null,
   serviceEnabled: computed<RecordLocutionServiceState, boolean>((state) => {
@@ -64,15 +60,8 @@ const recordLocutionService: RecordLocutionServiceStore = {
   // Actions
   ///////////////////////////////
   reset: action<RecordLocutionServiceState, void>((state) => {
-    state.loading = false;
     state.recordLocutionService = null;
     state.companyRecordLocutionService = null;
-  }),
-  setLoading: action<RecordLocutionServiceState, void>((state) => {
-    state.loading = true;
-  }),
-  unsetLoading: action<RecordLocutionServiceState, void>((state) => {
-    state.loading = false;
   }),
   setRecordLocutionService: action<
     RecordLocutionServiceState,
@@ -90,14 +79,7 @@ const recordLocutionService: RecordLocutionServiceStore = {
   // Thunks
   ///////////////////////////////
   load: thunk<RecordLocutionServiceStore, CancelTokenSourceProps>(
-    async (actions, { cancelTokenSource }, { getState }) => {
-      const state = getState();
-      if (state.loading) {
-        return;
-      }
-
-      actions.setLoading();
-
+    async (actions, { cancelTokenSource }) => {
       const recordLocutionService = await actions.loadRecordLocutionService({
         cancelTokenSource,
       });
