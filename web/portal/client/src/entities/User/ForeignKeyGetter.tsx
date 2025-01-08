@@ -54,6 +54,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     );
 
     const _includeExtensionlId = (row?.extension as EntityValues)?.id as number;
+    const _includeUserId = row?.id as number;
     promises[promises.length] = UnassignedExtensionSelectOptions(
       {
         callback: (options) => {
@@ -63,6 +64,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
       },
       {
         _includeId: _includeExtensionlId,
+        _userId: _includeUserId,
       }
     );
   }
