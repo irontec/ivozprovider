@@ -48,7 +48,7 @@ export default function Login(props: LoginProps): JSX.Element | null {
             return;
           }
 
-          navigate(`${location.pathname}/`, {
+          navigate(`${location.pathname}`, {
             replace: true,
             preventScrollReset: true,
           });
