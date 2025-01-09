@@ -15,22 +15,23 @@ pushd /opt/irontec/ivozprovider/doc/sphinx
         git --no-pager diff .
     fi
 
-# @TODO
-#    for POFILE in locale/*/LC_MESSAGES/*.po; do
-#        # Check there are no empty translations
-#        msggrep -v -T -e "." ${POFILE} -o ${POFILE}.empty
-#        if [ -f ${POFILE}.empty ]; then
-#            echo "Following messages has no translation"
-#            cat ${POFILE}.empty
-#            EXITCODE=1
-#        fi
-#
-#        # Check there are no fuzzy translations
-#        grep -A3 fuzzy ${POFILE}
-#        if [ $? -eq 0 ]; then
-#            EXITCODE=1
-#        fi
-#    done
+    find locale -name '*.empty' -delete
+
+    for POFILE in $(find locale -name '*.po'); do
+        # Check there are no empty translations
+        msggrep -v -T -e "." ${POFILE} -o ${POFILE}.empty
+        if [ -f ${POFILE}.empty ]; then
+            echo "Following messages has no translation"
+            cat ${POFILE}.empty
+            EXITCODE=1
+        fi
+
+        # Check there are no fuzzy translations
+        grep -A3 fuzzy ${POFILE}
+        if [ $? -eq 0 ]; then
+            EXITCODE=1
+        fi
+    done
 popd
 
 exit $EXITCODE

@@ -95,6 +95,7 @@ pipeline {
                     expression { hasLabel("ci-force-tests-back") }
                     expression { hasLabel("ci-force-tests") }
                     expression { hasCommitTag("core:") }
+                    expression { hasCommitTag("doc:") }
                     expression { hasCommitTag("schema:") }
                     expression { hasCommitTag("microservices/") }
                     expression { hasCommitTag("rest/") }
