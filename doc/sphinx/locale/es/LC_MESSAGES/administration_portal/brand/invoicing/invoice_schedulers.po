@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:5
+msgid "Invoice schedulers"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:7
+msgid ""
+"This section allows programming the automatic periodical creation of "
+"invoices."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:9
+msgid "When adding a new definition, these fields are shown:"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:12
+msgid "Name"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:12
+msgid "Name of the scheduled invoice"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:15
+msgid "Client"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:15
+msgid "Which client calls should be included"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:18
+msgid "Email"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:18
+msgid "Send generated invoices via email. Empty if no automatic mail is wanted."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:21
+msgid "Frequency/Unit"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:21
+msgid ""
+"Defines the frequency (once a month, every 7 days, etc.) of the "
+"programmed task"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:24
+msgid "Invoice number sequence"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:24
+msgid ""
+"Scheduled invoices will use the next invoice number available in a given "
+"predefined sequence"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:27
+msgid "Call discount"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:27
+msgid ""
+"Percentage to discount calls, prior to tax rate calculation. No effect on"
+" fixed concepts."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:31
+msgid "Tax rate"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:30
+msgid "Taxes to add to the final cost (e.g. VAT)"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:33
+msgid "Invoices generated due to a schedule can be seen in two ways:"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:35
+msgid "In each row of *Invoice schedulers* section, **List of Invoices** option."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:37
+msgid "In *Invoices* section, indistinguishable to manually generated invoices."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:40
+msgid "Fixed costs"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:42
+msgid ""
+"When defining a scheduled invoice, you can add fixed costs in a static or"
+" dynamic way:"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:44
+msgid "Type **'static'** is used for fixed quantities."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:46
+msgid ""
+"Type **'Max calls'** sets the quantity in the moment of the creation of "
+"the invoice to \"Max calls\" value of the client in that specific moment."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:49
+msgid ""
+"Type **'DDIs'** sets the quantity in the moment of the creation of the "
+"invoice to the number of DDIS matching criteria (all, national, "
+"international or belonging to specific country) in the client in that "
+"specific moment."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:53
+msgid ""
+"Non-static values are retrieved from client configuration in the date "
+"specified in \"Next execution\". Regenerating the invoice later will not "
+"modify assigned value, but you can adapt it manually to the desired value"
+" editing the fixed cost in Invoice section and regenerating the invoice."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:58
+msgid "Frequency definition"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:60
+msgid ""
+"It is interesting to understand how *Frequency* and *Unit* fields define "
+"the periodical task:"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:62
+msgid ""
+"Invoices are programmed at 08:00:00 by default on mondays, 1st of month "
+"or 1st of January (depending on Unit value)."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:64
+msgid ""
+"Once created a new schedule, **Next execution** shows when will happen "
+"next invoice generation."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:66
+msgid ""
+"**Next execution** value can be mangled, but generated invoice always "
+"will:"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:68
+msgid ""
+"Discard current day (2018/11/01 08:00:00 will set 2018/10/31 23:59:59 as "
+"*Out date*)."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:70
+msgid ""
+"*In date* will be *out date* minus X week(s), X month(s) or X year(s) (X "
+"equals to *Frequency* value) + 1 second."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:74
+msgid "Example 1: Unit: week - Frequency 2"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:75
+msgid ""
+"Next execution will be set to next monday at 08:00 and invoices will "
+"include calls of last 2 weeks."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:78
+msgid "Example 1: Unit: month - Frequency 3"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:79
+msgid ""
+"Next execution will be set to next 1st of month at 08:00 and invoices "
+"will include calls of last 3 months."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:82
+msgid "Example 1: Unit: month - Frequency 1 - Next execution mangling"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:83
+msgid ""
+"Next execution will be set to next 1st of month at 08:00 but we mangle it"
+" to 3rd of month at 10:00:00."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:85
+msgid ""
+"Invoice will include calls from 3nd of previous month at 00:00:00 to 2nd "
+"to current month at 23:59:59."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:87
+msgid ""
+"*Last execution* shows the date of last execution and its result "
+"(success/error)."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:89
+msgid "Both *next execution* and *last execution* are shown using brand timezone."
+msgstr ""
+

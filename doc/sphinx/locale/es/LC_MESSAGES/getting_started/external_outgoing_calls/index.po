@@ -17,31 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: ../../index.rst:10
-msgid "Basic Concepts"
+#: ../../getting_started/external_outgoing_calls/index.rst:3
+msgid "Making external calls"
 msgstr ""
 
-#: ../../index.rst:18
-msgid "Getting Started"
+#: ../../getting_started/external_outgoing_calls/index.rst:5
+msgid ""
+"The goal of this section is configuring IvozProvider to make external "
+"outgoing calls, taking previous section configuration as a starting "
+"point."
 msgstr ""
 
-#: ../../index.rst:26
-msgid "Administration portal"
-msgstr ""
-
-#: ../../index.rst:34
-msgid "Specific portals"
-msgstr ""
-
-#: ../../index.rst:39
-msgid "Security and Maintenance"
-msgstr ""
-
-#: ../../index.rst:45
-msgid "Rest API"
-msgstr ""
-
-#: ../../index.rst:8
-msgid "IvozProvider Official Documentation"
+#: ../../getting_started/external_outgoing_calls/index.rst:8
+msgid "We will follow these steps:"
 msgstr ""
 

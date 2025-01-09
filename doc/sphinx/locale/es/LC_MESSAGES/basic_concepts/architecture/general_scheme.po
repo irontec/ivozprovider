@@ -17,31 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: ../../index.rst:10
-msgid "Basic Concepts"
+#: ../../basic_concepts/architecture/general_scheme.rst:2
+msgid ""
+"Following diagram shows the global architecture of IvozProvider solution,"
+" with all its components:"
 msgstr ""
 
-#: ../../index.rst:18
-msgid "Getting Started"
-msgstr ""
-
-#: ../../index.rst:26
-msgid "Administration portal"
-msgstr ""
-
-#: ../../index.rst:34
-msgid "Specific portals"
-msgstr ""
-
-#: ../../index.rst:39
-msgid "Security and Maintenance"
-msgstr ""
-
-#: ../../index.rst:45
-msgid "Rest API"
-msgstr ""
-
-#: ../../index.rst:8
-msgid "IvozProvider Official Documentation"
+#: ../../basic_concepts/architecture/general_scheme.rst:13
+msgid "This is a more conceptual diagram:"
 msgstr ""
 

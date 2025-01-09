@@ -1,0 +1,411 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:5
+msgid "Destination Rates"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:7
+msgid "A *Destination rate* groups some prefixes with their cost details."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:9
+msgid "They only have two fields:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:12
+msgid "Name"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:12
+msgid "Name to reference the destination rate"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:15
+msgid "Description"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:15
+msgid "Additional details"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:18
+msgid "Currency"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:18
+msgid "All rates imported/added will use this currency"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:22
+msgid "Deductible Connection Fee"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:21
+msgid ""
+"Set to 'No' for typical fee charged at call establishment. Set to 'Yes' "
+"to enable minimal-cost-alike behaviour (read below)."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:24
+msgid ""
+"Destination rate names are not shown to the final client, you can use "
+"whatever makes sense to you."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:28
+msgid "Deductible Connection Fee (Minimal Cost)"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:30
+msgid ""
+"When Destination Rate has *Deductible Connection Fee* set to yes, all "
+"rates' Connection Fee will behave like Minimal Cost."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:32
+msgid "This is underlying logic:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:34
+msgid "When call is established, Connection Fee of matched prefix is charged."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:36
+msgid "When call is hung up:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:38
+msgid ""
+"Total cost without connection fee is calculated "
+"(CostWithoutConnectionFee):"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:40
+msgid ""
+"If is greater than connection fee, connection fee is subtracted from "
+"total cost."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:42
+msgid "Final connection fee: 0"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:44
+msgid "Final cost: CostWithoutConnectionFee"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:46
+msgid ""
+"If is lower than connection fee, connection fee is adjusted so that total"
+" cost is equal to connection fee."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:48
+msgid "Final connection fee: ConnectionFee - CostWithoutConnectionFee"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:50
+msgid "Final cost: ConnectionFee"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:52
+msgid "In both cases, cost difference is refunded to affected balances."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:56
+msgid "Connection fee 0.01 - Total cost 0.21"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:57
+msgid "Cost without connection fee: 0.20"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:59
+msgid "As 0.20 > 0.01:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:61
+msgid "Call cost is reduced to 0.20"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:63
+msgid "0.01 is refunded to affected balances"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:66
+msgid "Connection fee 0.01 - Total cost 0.013"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:67
+msgid "Cost without connection fee: 0.003"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:69
+msgid "As 0.003 < 0.01:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:71
+msgid "Call cost is reduced to 0.01"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:73
+msgid "0.003 is refunded to affected balances"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:76
+msgid "This setting guarantees a minimal cost of 0.01."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:82
+msgid "Add rates manually"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:84
+msgid ""
+"Brand operator can add rates by hand, filling these fields (**List of "
+"rates** subsection):"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:87
+msgid "Destination"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:87
+msgid "Pre-created destination that specifies a concrete prefix."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:90
+#: ../../administration_portal/brand/billing/destination_rates.rst:168
+msgid "Connection charge"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:90
+msgid "The amount that is charged just for call establishment."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:93
+msgid "Interval start"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:93
+msgid ""
+"When should the billing engine start rating the calls. If you set it to "
+"10, first 10 seconds will be for free."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:96
+#: ../../administration_portal/brand/billing/destination_rates.rst:167
+msgid "Per minute rate"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:96
+msgid "Price per minute of conversation."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:99
+#: ../../administration_portal/brand/billing/destination_rates.rst:172
+msgid "Charge period"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:99
+msgid "Increase cost every seconds? Or in 10 second intervals? Or every minute?"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:101
+msgid ""
+"A call with less duration that the one defined in interval start will "
+"have the price of the **Connection fee**."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:103
+msgid ""
+"All decimals must use point as decimal delimiter. 4 decimals precision is"
+" used."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:106
+msgid "How it works"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:107
+msgid ""
+"Call cost/price is increased by (*Per minute rate* / 60 ) * *charge "
+"period* every *charge period* seconds:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:109
+msgid ""
+"If *billing period* is set to 1, every second the price will be increased"
+" *price per minute* divided by 60 (bill by seconds)."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:112
+msgid ""
+"If *billing period* is set to 60, every minute the price will be "
+"increased *price per minute* (bill by minutes)."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:119
+msgid "Importing a CSV file"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:121
+msgid ""
+"At this point, the brand operator may have noticed that adding thousands "
+"of rates would be a really annoying and time consuming task, as there are"
+" 254 countries, each of them with their mobile networks, landline "
+"networks, special service numbers, etc."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:126
+msgid ""
+"That's why the creation of destination rates is done using a `CSV "
+"<https://es.wikipedia.org/wiki/CSV>`_ file."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:129
+msgid ""
+"The first step is creating an empty *Destination rate* to import the "
+"prices in and using **Import rates** option."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:132
+msgid ""
+"We can select which column contains which field, in case we want to "
+"import a `CSV <https://es.wikipedia.org/wiki/CSV>`_ file in a non-"
+"recommended format. We can also decide whether to import the first line "
+"or discard it as it may have titles instead of data."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:137
+msgid ""
+"The importing process is done in background, letting the brand operator "
+"continue doing other stuff while it is finished."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:141
+msgid "CSV format"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:143
+msgid ""
+"Although the import window allows importing non-recommended format CSV "
+"files, we encourage you to import a file in the proposed format, as it "
+"will make this process much easier:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:147
+msgid "Comma is the only allowed separator character."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:149
+msgid "Single quotes are not supported."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:151
+msgid ""
+"You can find a sample CSV for importing `here "
+"<https://raw.githubusercontent.com/ "
+"irontec/ivozprovider/bleeding/web/portal/brand/samples/billing/pricesSample.csv>`_."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:155
+msgid "The order of the columns should be:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:157
+msgid "Destination name"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:159
+msgid ""
+"If they contain any comma, they MUST be quoted with double quotes. "
+"Otherwise, double quotes are optional."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:161
+msgid "Destination prefix"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:163
+msgid "MUST start with + sign."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:165
+msgid ""
+"If same prefix is used in multiple times in CSV file, import process will"
+" fail."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:170
+msgid "MUST use point as decimal separator."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:174
+msgid "Given in seconds, only integers greater or equal 1 are supported."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:177
+msgid ""
+"Once the import process is over, we only have to include this destination"
+" rate into some rating plan and bind it to the clients/carriers we want "
+"following the procedure explained in :ref:`Rating plans`."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:183
+msgid "Re-importing a CSV file"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:185
+msgid ""
+"Once a CSV (first.csv) is imported into an empty destination-rates row, "
+"you can **import another CSV** (second.csv)."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:187
+msgid "However, it is **important to understand what happens** when you do so:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:189
+msgid "Prefixes in both CSV will get its rate **updated** with second's CSV one."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:191
+msgid "Prefixes existing only in the first CSV file will be **kept**."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:193
+msgid "Prefixes existing only in the second CSV file will be **added**."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:196
+msgid ""
+"Downloading CSV using *Imported file* option will always download **last "
+"imported CSV file** (no the combination of both as described above)."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:199
+msgid ""
+"Note that if both *first.csv* and *second.csv* contain exactly the same "
+"prefixes, resulting destination-rate will be as we had only imported "
+"*second.csv*. And downloading *Imported file* will download *second.csv*,"
+" that is exactly the current state of destination-rate."
+msgstr ""
+

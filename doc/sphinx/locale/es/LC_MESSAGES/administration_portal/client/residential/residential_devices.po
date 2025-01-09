@@ -1,0 +1,351 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/client/residential/residential_devices.rst:5
+msgid "Residential devices"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:7
+msgid ""
+"Residential Devices are the main routable option in Residential clients. "
+"More or less like :ref:`friends` are to Virtual PBX Clients, devices "
+"contain the required configurable options to provide a SIP connectivity "
+"service with IvozProvider and an external SIP entity."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:12
+msgid ""
+"Although both **Carriers/DDI Providers** and **Residential Devices** are "
+"defined by the **brand operator**, the former are designed to connect "
+"with the public switched telephony network while the latter connects the "
+"system with our clients' SIP entities."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:17
+msgid "Types of residential devices"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:19
+msgid ""
+"There are 2 main types of SIP endpoints that can use residential with "
+"IvozProvider:"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:21
+msgid ""
+"**Direct connection endpoint**: IvozProvider must be able to talk SIP "
+"directly with this kind of devices by just forwarding the traffic to the "
+"proper port of the public IP address of the PBX."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:25
+msgid ""
+"**Endpoint behind NAT**: Not directly reachable. This kind of endpoint "
+"must register at IvozProvider (just like all the :ref:`Terminals "
+"<terminals>` do)."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:29
+msgid "What kind of calls can be routed through a *Residential Device*?"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:31
+msgid ""
+"Contrary to Friends, **Residential Devices** have some simplifications "
+"and limitations:"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:33
+msgid "Residential Devices only route their assigned DDIs"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:34
+msgid "Residential Devices only place externals calls to Carriers"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:35
+msgid "Residential Devices only receive external calls from DDI Providers"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:38
+msgid "Residential Devices Configuration"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:40
+msgid "These are the configurable settings of *Residential devices*:"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:44
+msgid "Basic configuration"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:48
+msgid "Name"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:46
+msgid ""
+"Name of the **residential device**. This name must be unique in the whole"
+" brand so it's recommended to use some kind of sequential identifier. "
+"This will also be used in SIP messages (sent **From User**)."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:51
+msgid "Description"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:51
+msgid "Optional. Extra information for this *residential device*."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:56
+msgid "Password"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:54
+msgid ""
+"When the *residential device* send requests, IvozProvider will "
+"authenticate it using this password. **Using password IS A MUST in "
+"\"Register\" mode**. In \"Direct\" mode, leaving it blank disables SIP "
+"authentication and enables IP source check."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:60
+msgid "Direct connectivity"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:59
+msgid ""
+"If you choose 'Yes' here, you'll have to fill the protocol, address and "
+"port where this *residential device* can be contacted."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:65
+msgid "Multi Contact"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:63
+msgid ""
+"Same SIP credentials can be configured in multiple SIP devices. In that "
+"case, all devices ring simultaneously when receiving a call. Setting this"
+" toggle to 'No' limits this behaviour so that only latest registered SIP "
+"device rings."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:69
+msgid "Geographic configuration"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:71
+msgid "Language"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:71
+msgid "Locutions will be played in this language"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:74
+msgid "Numeric transformation"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:74
+msgid ""
+"Numeric transformation set that will be applied when communicating with "
+"this device."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:78
+msgid "Outgoing configuration"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:81
+msgid "Fallback Outgoing DDI"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:80
+msgid ""
+"External calls from this *residential device* will be presented with this"
+" DDI, **unless the source presented matches a DDI belonging to the "
+"residential client**."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:85
+msgid "Advanced configuration"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:87
+msgid "Allowed codec"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:87
+msgid ""
+"Like vPBX terminals, *residential devices* will talk only the selected "
+"codec."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:91
+msgid "From domain"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:90
+msgid ""
+"Request from IvozProvider to this device will include this domain in the "
+"From header."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:96
+msgid "DDI In"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:94
+msgid ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI when "
+"calling to this endpoint. If set 'No', username used in Contact header of"
+" registration will be used, as specified in SIP RFC (residential device "
+"name will be used for endpoints with direct connectivity). Defaults to "
+"'No'."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:100
+msgid "Enable T.38 passthrough"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:99
+msgid ""
+"If set to 'yes', this SIP endpoint must be a **T.38 capable fax "
+"sender/receiver**. IvozProvider will act as a T.38 gateway, bridging fax-"
+"calls of a T.38 capable carrier and a T.38 capable device."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:103
+msgid "Call waiting"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:103
+msgid ""
+"Limits received calls when already handling this number of calls. Set 0 "
+"for unlimited."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:107
+msgid "RTP Encryption"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:106
+msgid ""
+"If set to 'yes', call won't be established unless it's possible to "
+"encryption its audio. If set to 'no', audio won't be encrypted."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:109
+msgid ""
+"Residential device can be contacted due to calls to several DDIs. *DDI "
+"In* setting allows remote SIP endpoint to know which number caused each "
+"call, setting that number as destination (R-URI and To headers). This "
+"way, residential device can handle calls differently."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:114
+msgid "Voicemail settings"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:116
+msgid ""
+"Every residential device has a voicemail that can be accessed using "
+"voicemail service code defined at brand level."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:118
+msgid ""
+"Additionally, voicemails can be configured to send their messages to an "
+"email address in :ref:`Residential Voicemails <residential_voicemails>`."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:123
+msgid "Call forwarding settings"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:125
+msgid ""
+"Apart from unconditional call forwarding to external number through "
+":ref:`External call filters` applied to DDI, residential devices may have"
+" additional call forwarding settings that allow:"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:128
+msgid "Forwarding to another external number."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:130
+msgid "Forwarding to voicemail associated to each residential device."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:132
+msgid ""
+"Supported forwarding types: unconditional, no-answer, non-registered, "
+"busy."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:134
+msgid ""
+":ref:`External call filters` have precedence over residential devices "
+"call forwarding settings."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:136
+msgid ""
+"Forwarding to national numbers can be configured using services codes "
+"(further information :ref:`here <Call forward services>`)."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:141
+msgid "Asterisk as a residential device"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:143
+msgid ""
+"At the other end of a device can be any kind of SIP entity. This section "
+"takes as example an Asterisk PBX system using SIP channel driver that "
+"wants to connect to IvozProvider."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:150
+msgid ""
+"If the system can not be directly access, Asterisk will have to register "
+"in the platform (like a terminal will do)."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:153
+msgid "Configuration will be something like this:"
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:178
+msgid ""
+"*Residential devices* MUST NOT challenge IvozProvider. That's why the "
+"*insecure* setting is used here."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:181
+msgid ""
+"As From username is used to identify the residential device, P-Asserted-"
+"Identity (or P-Preferred-Identity or Remote-Party-Id) must be used to "
+"specify caller number. Prevalence among these source headers is: PAI > "
+"PPI > RPID."
+msgstr ""
+

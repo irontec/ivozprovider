@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:5
+msgid "Friends"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:7
+msgid ""
+"**Friends** section in the **Client configuration** allows "
+"interconnection of IvozProvider with other SIP PBX systems through a SIP "
+"*trunk*. The most typical use case is when a client have multiple PBX "
+"systems that want to integrate in a single flow."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:12
+msgid ""
+"Since 2.10, **Friends** also lets a vPBX client to call to extensions of "
+"another vPBX client in the same brand."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:15
+msgid ""
+"It's important to understand the difference between **Carrier** defined "
+"by the **brand operator** to connect with the public network and "
+"**Friends**, defined by **client administrators** to connect the system "
+"with other PBXs."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:20
+msgid ""
+"**Friends** are so similar to **Users** that both talk SIP with the "
+":ref:`proxyusers`."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:24
+msgid "Types of friends"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:26
+msgid "There are 2 main types of Friends:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:28
+msgid "**Remote friends**: SIP trunks to external SIP PBX system."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:30
+msgid ""
+"**Internal friends**: connection between extensions of two vPBX client in"
+" the same brand."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:34
+msgid "What kind of calls can be routed through an *internal friend*?"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:36
+msgid ""
+"IvozProvider will route a call received by a :ref:`user <users>` or a "
+":ref:`friend <friends>` following this logic:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:38
+msgid "Destination matches an existing IvozProvider extension?"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:39
+msgid ""
+"If not: Destination matches any *friend* regular expression (for remote "
+"friends) or extensions (for internal ones)? Ordered by priority (lower "
+"has precedence)."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:40
+msgid "If not: This is an external call."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:44
+msgid "Following sections explain both kind of friends:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:55
+msgid "Friend Call Forward"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:57
+msgid ""
+"The friend's call forward can be configured with the **List of call "
+"forward settings**  button."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:59
+msgid "These are the fields and available values:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:62
+msgid "Call Type"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:64
+msgid ""
+"Determines if the forward must be applied to external, internal or any "
+"type of call."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:66
+msgid "Forward type"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:72
+msgid "When this forward must be applied:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:69
+msgid "Unconditional: always"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:70
+msgid "No answer: when the call is not answered in X seconds"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:71
+msgid "Busy: When the friend rejects an incoming call."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:72
+msgid "Not registered: when the friend is not registered against IvozProvider."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:73
+msgid "Target type"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:77
+msgid "What route will use the forwarded call."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:76
+msgid "VoiceMail"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:77
+msgid "Number (external)"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:78
+msgid "Extension (internal)"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:80
+msgid ""
+"If we want to forward to other process, we can create an extension routed"
+" to that object and use the target type *Extension*."
+msgstr ""
+

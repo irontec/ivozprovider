@@ -1,0 +1,357 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:3
+msgid "What is IvozProvider?"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:5
+msgid ""
+"IvozProvider is a :ref:`provider oriented <operator_oriented>` "
+":ref:`multilevel <multilevel>` :ref:`IP telephony <voip>` solution "
+":ref:`exposed to the public network <exposed>`."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:12
+msgid "IP Telephony"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:14
+msgid ""
+"IvozProvider supports telephony systems that use *Session Initiation "
+"Protocol*, **SIP**, described in `RFC 3261 "
+"<https://tools.ietf.org/html/rfc3261>`_ and any `related RFCs "
+"<https://www.packetizer.com/ipmc/sip/standards.html>`_ independent of "
+"manufacturers."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:20
+msgid ""
+"This allows total freedom to choose *softphones*, *hardphones* and the "
+"rest of elements that interact with IvozProvider, without any kind of "
+"binding with a manufacturer."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:24
+msgid ""
+"Right now, IvozProvider supports the following **transport protocols** "
+"for SIP:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:27
+msgid "UDP"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:28
+msgid "TCP"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:29
+msgid "TLS"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:30
+msgid "Websockets"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:32
+msgid ""
+"This last transport protocol described in `RFC 7118 "
+"<https://tools.ietf.org/html/rfc7118>`_ supports web integrated "
+"softphones, using the `WebRTC <https://webrtc.org/>`_ standard allowing "
+"browsers to establish real-time *peer-to-peer* connections."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:37
+msgid "The **supported audio codec** list is:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:39
+msgid "PCMA (*alaw*)"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:40
+msgid "PCMU (*ulaw*)"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:41
+msgid "GSM"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:42
+msgid "SpeeX"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:43
+msgid "G.722"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:44
+msgid "G.726"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:45
+msgid "G.729 (manual installation required)"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:46
+msgid "iLBC"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:47
+msgid "`OPUS <http://opus-codec.org/>`_"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:52
+msgid "Multilevel"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:54
+msgid ""
+"The web portal design of IvozProvider allows **multiple actors within the"
+" same infrastructure**:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:65
+msgid ""
+"In :ref:`operation_roles` section, the different roles are deeply "
+"described, but to sum up:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:68
+msgid ""
+"**God Admin**: The administrator and maintainer of the solution. Provides"
+" access to multiple brand operators."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:71
+msgid ""
+"**Brand Operator**: Responsible of configuring carrier routing, billing "
+"and invoicing to multiple clients."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:74
+msgid ""
+"**Client Operator**: Responsible of its own configuration and to manage "
+"the final platform users."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:76
+msgid ""
+"**Users**: The last link of the chain, has SIP credentials and can access"
+" its own portal for custom configurations. This level is only available "
+"for vPBX client types."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:79
+msgid ""
+"**Each one** of this roles **has its own portal** that allows them to "
+"fulfill their tasks. Each portal can be customized in the following ways:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:83
+msgid "Themes and *skins* for corporate colours."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:85
+msgid "Client Logos."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:87
+msgid "Customized URLs with the Brand or Client domain."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:92
+msgid "Provider oriented"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:94
+msgid ""
+"IvozProvider is a telephony solution **designed with horizontal scaling "
+"in mind**. This allows handling a great amount of **traffic and users** "
+"only by increasing the machines and resources of them."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:98
+msgid "This are the main ideas that makes this product provider oriented:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:100
+msgid ""
+"Despite the fact that all machine profiles can run in the same host, what"
+" makes it easier for the initial testing, each profile of IvozProvider "
+"can be separated from the rest to make it run in its own machine."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:104
+msgid ""
+"A **distributed installation** allows to distribute the correct amount of"
+" resources to each task, but also:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:107
+msgid ""
+"Geographic distribution of elements to warranty high availability in case"
+" of CPD failure."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:110
+msgid ""
+"Setup of key elements near the final users, to minimize the communication"
+" latencies."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:113
+msgid ""
+"Horizontal scaling of key profiles to handle hundred of thousands "
+"concurrent calls."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:116
+msgid ""
+"The resource consuming elements that limit the service of VoIP solutions "
+"use to be:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:119
+msgid "Already established calls audio management."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:121
+msgid ""
+"Managing configuration for each client administrator (IVRs, conference "
+"rooms, external call filters, etc.)"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:124
+msgid "Databases of configuration and records."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:126
+msgid ""
+"IvozProvider was designed always keeping in mind the **horizontal "
+"scaling** of each of its elements, so it **can handle thousands "
+"concurrent calls** and what is more important, **adapt the platform "
+"resources to the expected service quality**:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:130
+msgid ""
+"**Media-relay** servers handle audio frames for the already established "
+"calls:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:133
+msgid "You can use as many media-relays as you need."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:135
+msgid ""
+"You can join media-relay in groups, and force some clients to use a group"
+" if you want."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:138
+msgid ""
+"You can setup media-relays near the final users, to minimize network "
+"latencies in the calls."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:141
+msgid "**Application servers** are in charge of processing the configured logic:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:143
+msgid ""
+"They scale horizontally: new Application Serves can be installed and "
+"added to the pool if you feel the need."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:146
+msgid "Every call is handled by the least busy Application Server"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:148
+msgid ""
+"By default, there is no static assignment * between Clients and "
+"Application Servers. This way failure of any Application Server is not "
+"critical: the platform will ignore the faulty Application Server while "
+"distributing calls."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:156
+msgid "Exposed to the public network"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:158
+msgid ""
+"As showed in the installation process, **IvozProvider is designed to "
+"serve users directly from Internet**. Although it can be used in local "
+"environments, IvozProvider is designed to use public IP addresses for its"
+" services, removing the need of VPN or IPSec tunnels that connect the "
+"infrastructure with the final users"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:164
+msgid "Highlights:"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:166
+msgid "Only the required services will be exposed to Internet."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:168
+msgid "The untrusted origins access can be filtered out by integrated firewall"
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:170
+msgid ""
+"Access from IP addresses or networks can be filtered to avoid any kind of"
+" phishing."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:173
+msgid ""
+"There is also an anti-flood mechanism to avoid short-life Denial of "
+"Service attacks."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:176
+msgid "Each client concurrent calls can be limited to a fixed amount."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:178
+msgid ""
+"IvozProvider supports connection from terminals behind `NAT "
+"<https://en.wikipedia.org/wiki/Network_address_translation>`_."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:181
+msgid ""
+"IvozProvider keep track of those NAT windows and keep them alive with "
+"*nat-piercing* mechanisms."
+msgstr ""
+
+#: ../../basic_concepts/intro/what_is_ivozprovider.rst:184
+msgid ""
+"The global administrator can assign Application Servers to some client "
+"types but this feature is more designed as a temporal debug and "
+"troubleshoot measure."
+msgstr ""
+

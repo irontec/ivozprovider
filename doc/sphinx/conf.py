@@ -48,7 +48,7 @@ templates_path = ['_templates']
 
 # Put localized texts here
 locale_dirs = ['locale']
-gettext_compact = True
+gettext_compact = False
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:

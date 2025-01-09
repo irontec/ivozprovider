@@ -17,31 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: ../../index.rst:10
-msgid "Basic Concepts"
+#: ../../administration_portal/brand/views/retail_accounts.rst:3
+msgid "Retail accounts"
 msgstr ""
 
-#: ../../index.rst:18
-msgid "Getting Started"
+#: ../../administration_portal/brand/views/retail_accounts.rst:5
+msgid ""
+"This section lists **all existing retail accounts** of every retail "
+"client of the brand."
 msgstr ""
 
-#: ../../index.rst:26
-msgid "Administration portal"
-msgstr ""
-
-#: ../../index.rst:34
-msgid "Specific portals"
-msgstr ""
-
-#: ../../index.rst:39
-msgid "Security and Maintenance"
-msgstr ""
-
-#: ../../index.rst:45
-msgid "Rest API"
-msgstr ""
-
-#: ../../index.rst:8
-msgid "IvozProvider Official Documentation"
+#: ../../administration_portal/brand/views/retail_accounts.rst:7
+msgid ""
+"As all retail accounts of all retail clients use the same SIP domain "
+"(brand's SIP domain), collision has to be avoided using some kind of "
+"numeric sequence. This section may be handy for this purpose."
 msgstr ""
 

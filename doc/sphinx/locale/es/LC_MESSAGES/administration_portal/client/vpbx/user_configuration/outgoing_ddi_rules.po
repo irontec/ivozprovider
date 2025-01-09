@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:5
+msgid "Outgoing DDI Rules"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:7
+msgid ""
+"Most calling entities in IvozProvider require an outgoing DDI when "
+"placing calls to external numbers. This includes: Users, Friends, Faxes, "
+"Retail Accounts, and so on.."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:11
+msgid ""
+"But there are some cases when a single outgoing DDI is not enough, and "
+"the presented DDI depends on the called number or a given prefix. To "
+"archive this dynamic outgoing DDI selection you can use Outgoing DDI "
+"rules."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:17
+msgid "Outgoing DDI based on destination"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:19
+msgid ""
+"For destination based rules, you would require first group the "
+"destination numbers in :ref:`match_lists`."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:22
+msgid ""
+"For this example, we will create a match list of corporate mobiles with "
+"all the mobile numbers of our client workers. When we call to those "
+"numbers, we will keep the original outgoing DDI assigned to the user, and"
+" for the rest of the cases we will force the DDI to the main client "
+"outgoing DDI."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:28
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:53
+msgid "Create a new Outgoing DDI Rule"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:29
+msgid ""
+"The main creation screen defines the action that will take place when no "
+"rule matches the dialed destination, so we define to force the main "
+"client DDI here."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:33
+msgid "Assign rule lists actions"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:34
+msgid ""
+"Now we add a new rule that will match our mobiles to make the user's "
+"outgoing DDI be kept untouched."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:38
+msgid "Assign rule to callers"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:39
+msgid ""
+"At last, we have to configure who will use this rule to dynamically "
+"change it's presentation number. We can do this in the **Client's edit "
+"screen** or the **Users's edit screen**."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:43
+msgid ""
+"In this case, the User will present 777777777 DDI when calling corporate "
+"mobiles and 666666666 when calling the rest of the external numbers."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:47
+msgid "Outgoing DDI based on prefix"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:49
+msgid ""
+"Outgoing DDI Rules can be also used to change the default Outgoing DDI "
+"based on a call prefix."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:54
+msgid ""
+"The main creation screen defines the action that will take place when no "
+"rule matches the dialed destination, we will keep original DDI if no "
+"prefix is used."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:58
+msgid "Assign a prefix pattern"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:59
+msgid ""
+"Now we add a new rule that with prefix (let's say 111) and action to "
+"force the DDI to 666666666."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:62
+msgid ""
+"In this case, the User will present 666666666 DDI when calling any "
+"destination with 111 prefix and 777777777 when not using any prefix."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:65
+msgid "Prefix **must** have this format: from 1 to 3 digits ended by * symbol."
+msgstr ""
+

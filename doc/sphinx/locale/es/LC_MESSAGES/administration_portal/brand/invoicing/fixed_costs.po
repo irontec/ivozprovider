@@ -17,31 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: ../../index.rst:10
-msgid "Basic Concepts"
+#: ../../administration_portal/brand/invoicing/fixed_costs.rst:5
+msgid "Fixed costs"
 msgstr ""
 
-#: ../../index.rst:18
-msgid "Getting Started"
+#: ../../administration_portal/brand/invoicing/fixed_costs.rst:7
+msgid ""
+"Fixed costs are a positive concepts that can be added to invoices prior "
+"to generating the final PDF."
 msgstr ""
 
-#: ../../index.rst:26
-msgid "Administration portal"
+#: ../../administration_portal/brand/invoicing/fixed_costs.rst:9
+msgid ""
+"It may be useful for services with fixed cost (e.g. FTTH 100 Mbps) of "
+"certain clients."
 msgstr ""
 
-#: ../../index.rst:34
-msgid "Specific portals"
-msgstr ""
-
-#: ../../index.rst:39
-msgid "Security and Maintenance"
-msgstr ""
-
-#: ../../index.rst:45
-msgid "Rest API"
-msgstr ""
-
-#: ../../index.rst:8
-msgid "IvozProvider Official Documentation"
+#: ../../administration_portal/brand/invoicing/fixed_costs.rst:11
+msgid ""
+"Use invoice templates that show a custom table for these concepts if your"
+" invoice will have any fixed cost."
 msgstr ""
 

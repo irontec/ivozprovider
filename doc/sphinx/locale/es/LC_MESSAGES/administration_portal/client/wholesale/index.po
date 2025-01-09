@@ -17,31 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: ../../index.rst:10
-msgid "Basic Concepts"
+#: ../../administration_portal/client/wholesale/index.rst:6
+msgid "Wholesale clients"
 msgstr ""
 
-#: ../../index.rst:18
-msgid "Getting Started"
+#: ../../administration_portal/client/wholesale/index.rst:8
+msgid "Wholesale clients are the most lightweight client type in IvozProvider."
 msgstr ""
 
-#: ../../index.rst:26
-msgid "Administration portal"
+#: ../../administration_portal/client/wholesale/index.rst:10
+msgid ""
+"You can read the details about this client type :ref:`here "
+"<wholesale_clients>`."
 msgstr ""
 
-#: ../../index.rst:34
-msgid "Specific portals"
-msgstr ""
-
-#: ../../index.rst:39
-msgid "Security and Maintenance"
-msgstr ""
-
-#: ../../index.rst:45
-msgid "Rest API"
-msgstr ""
-
-#: ../../index.rst:8
-msgid "IvozProvider Official Documentation"
+#: ../../administration_portal/client/wholesale/index.rst:12
+msgid "These sections will be covered for this client type:"
 msgstr ""
 

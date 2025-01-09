@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../user_portal/features.rst:3
+msgid "Features"
+msgstr ""
+
+#: ../../user_portal/features.rst:5
+msgid ""
+"IvozProvider provides a web portal where final users can do the following"
+" actions:"
+msgstr ""
+
+#: ../../user_portal/features.rst:8
+msgid "See all calls he or she has been involved."
+msgstr ""
+
+#: ../../user_portal/features.rst:10
+msgid "Configure call forwards:"
+msgstr ""
+
+#: ../../user_portal/features.rst:12
+msgid "To voicemail"
+msgstr ""
+
+#: ../../user_portal/features.rst:14
+msgid "To an internal extension"
+msgstr ""
+
+#: ../../user_portal/features.rst:16
+msgid "To an external number"
+msgstr ""
+
+#: ../../user_portal/features.rst:18
+msgid "Enable functionalities:"
+msgstr ""
+
+#: ../../user_portal/features.rst:20
+msgid "Call waiting"
+msgstr ""
+
+#: ../../user_portal/features.rst:22
+msgid "Do Not Disturb"
+msgstr ""
+
+#: ../../user_portal/features.rst:24
+msgid "See the state of his or her SIP device registration"
+msgstr ""
+

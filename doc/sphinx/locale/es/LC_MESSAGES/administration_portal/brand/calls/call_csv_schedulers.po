@@ -1,0 +1,519 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:5
+msgid "Call CSV schedulers"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:7
+msgid ""
+"This section allows programming automatic periodical CSV reports to brand"
+" operators."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:9
+msgid ""
+"This section is almost identical to :ref:`Invoice schedulers` except to "
+"the fields that do not apply to CSVs (Invoice number sequence, Tax "
+"rate...)"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:12
+msgid "When adding a new definition, these fields are shown:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:15
+msgid "Name"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:15
+msgid "Name of the scheduled Call CSV"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:18
+msgid "Email"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:18
+msgid "Send generated Call CSV via email. Empty if no automatic mail is wanted."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:22
+msgid "Client type"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:21
+msgid ""
+"Selecting *All* will generate a CSV containing calls of all clients. "
+"Selecting one client type will allow selecting one specific client of "
+"that type."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:26
+msgid "Notification template"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:25
+msgid ""
+"Used on email notifications for schedulers containing calls of all "
+"clients. In client specific schedulers, the notification template "
+"assigned to the specific client will be used."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:29
+msgid "Frequency/Unit"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:29
+msgid ""
+"Defines the frequency (once a month, every 7 days, etc.) of the "
+"programmed task"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:32
+msgid "Direction"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:32
+msgid ""
+"Defines which calls should be included attending to its direction "
+"(inbound, outbound, both)."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:35
+msgid "Carrier"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:35
+msgid ""
+"Only for *Direction: outbound* reports, allows filtering calls of one "
+"specific carrier."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:38
+msgid "Client"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:38
+msgid ""
+"Only for *Client type* different from *All*, allows selecting one "
+"specific client of chosen type."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:41
+msgid "DDI"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:41
+msgid ""
+"Lists all DDIs of chosen client to get only calls from/to that specific "
+"DDI."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:45
+msgid "Endpoint type"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:44
+msgid ""
+"Allows selecting one specific endpoint type of chosen client. Depending "
+"on client type, different values will be listed."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:48
+msgid "Residential device"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:48
+msgid ""
+"Only for *Client type: residential* and *Endpoint type: residential "
+"device*, allows selecting one specific residential device of chosen "
+"client."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:51
+msgid "Retail account"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:51
+msgid ""
+"Only for *Client type: retail*, allows selecting one specific retail "
+"account of chosen client."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:54
+msgid "User"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:54
+msgid ""
+"Only for *Client type: vpbx* and *Endpoint type: user*, allows selecting "
+"one specific user of chosen client."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:57
+msgid "Fax"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:57
+msgid ""
+"Only for *Client type: vpbx/residential* and *Endpoint type: fax*, allows"
+" selecting one specific fax of chosen client."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:61
+msgid "Friend"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:60
+msgid ""
+"Only for *Client type: vpbx* and *Endpoint type: friend*, allows "
+"selecting one specific friend of chosen client."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:63
+msgid "Once created, some new fields and subsections are accesible:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:66
+msgid "Next execution"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:66
+msgid "Shows next execution date"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:70
+msgid "Last execution"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:69
+msgid "Shows last execution and its result."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:72
+msgid ""
+"Modifying *Next execution* value allows forcing specific runs. For "
+"example, setting *Next execution* to current month's first day will "
+"create again last month's CSV report (for a monthly scheduler)."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:76
+msgid ""
+"Generated CSVs of each scheduler can be accessed in **List of Call CSV "
+"reports** subsection."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:80
+msgid "CSV fields"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:82
+msgid "These are the fields of the generated CSV files:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:85
+msgid "callid"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:85
+msgid "Call-ID of the SIP dialog"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:88
+msgid "startTime"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:88
+msgid "Time and date of the call establishment"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:91
+msgid "duration"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:91
+msgid "Call duration in seconds"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:94
+msgid "caller"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:94
+msgid "Caller number in E.164 format (with '+')"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:97
+msgid "callee"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:97
+msgid "Callee number in E.164 format (with '+')"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:100
+msgid "cost"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:100
+msgid "Calculated cost for the given call"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:103
+msgid "price"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:103
+msgid "Calculated price for the given call"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:106
+msgid "endpointType"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:106
+msgid "Possible values: RetailAccount, ResidentialDevice, User, Fax, Friend."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:109
+msgid "endpointId"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:109
+msgid "Internal ID of specific endpoint (only when *endpointType* is non-empty)."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:112
+msgid "endpointName"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:112
+msgid ""
+"User extension, friend name, fax name, retail account name or residential"
+" device name (only when *endpointId* is non-empty)."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:115
+msgid "direction"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:115
+msgid "Possible values: inbound, outbound."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:118
+msgid "companyId"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:118
+msgid "Client ID"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:121
+msgid "carrierId"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:121
+msgid "Only for outbound calls, internal ID of used carrier"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:124
+msgid "ddiProviderId"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:124
+msgid "Only for inbound calls, internal ID of used DDI Provider"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:128
+msgid "ddiId"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:127
+msgid ""
+"Client DDI to which call will be assigned (callee for inbound calls, "
+"caller for outbound calls). Empty for wholesale clients."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:131
+msgid "DDI Provider detection"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:133
+msgid ""
+"DDI Provider detection deserves a deeper explanation as is not as "
+"unambiguous as Carrier (carrier is the one chosen by routing logic, no "
+"doubt here)."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:136
+msgid ""
+"DDI Provider detection logic is directly related to underlying DDI "
+"detection logic."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:138
+msgid "When IvozProvider receives an INVITE to KamTrunks from an outside entity:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:140
+msgid ""
+"Source IP is compared against all DDI Providers addresses (from all "
+"brands)."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:142
+msgid "If none matches, call is rejected."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:144
+msgid ""
+"DDI is transformated in a loop using matching DDI Providers "
+"transformation rules (the lower id, the first)."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:146
+msgid ""
+"As soon as transformated DDI matches a DDI (in E.164) within the same "
+"brand, loop ends and call is accepted."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:148
+msgid "If loop ends without any match, call is rejected."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:150
+msgid ""
+"The DDI Provider that allowed that match is saved as DDI Provider for "
+"that inbound all, except:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:152
+msgid ""
+"Matched DDI is linked to another DDI Provider that also matches source IP"
+" address. If this happens, linked DDI Provider is saved instead."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:157
+msgid "Using CSV scheduler as a one-shot CSV generator"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:159
+msgid ""
+"*External Calls* section can filter list and export resulting rows to "
+"CSV, but filter criteria are much powerful in *Call CSV schedulers* "
+"section."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:162
+msgid ""
+"That's why **it could be useful to use this section even if we are not "
+"interested in scheduling any recurring CSV**."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:164
+msgid ""
+"Scheduling a CSV to generate just a CSV could be useful as *Call CSV "
+"Schedulers* have more filtering criteria than *External Calls* section."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:167
+msgid "Imagine you need:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:169
+msgid "Start date: 2020/06/02 (included)"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:171
+msgid "End date: 2020/06/14 (included)"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:173
+msgid "Client: XXX (vpbx)"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:175
+msgid "Inbound calls to YYY DDI answered by user ZZZ"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:177
+msgid ""
+"To achieve such a CSV using schedules section we would **create a "
+"scheduler** with these inputs:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:179
+msgid "Client Type: vpbx"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:181
+msgid "Client: XXX"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:183
+msgid "DDI: YYY"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:185
+msgid "Endpoint Type: user"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:187
+msgid "User: ZZZ"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:189
+msgid "Direction: inbound."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:191
+msgid "Unit: days."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:193
+msgid "Frequency: 13"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:195
+msgid ""
+"Get sure you set *Unit* to days and *Frequency* to the amount of days "
+"wanted in resulting CSV. In the example, from 2nd of June to 14th, both "
+"included, we have 13 days."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:198
+msgid ""
+"Once generated, we would **edit Next execution time** from tomorrow's "
+"date to 2020/06/15, leaving time unchanged."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:200
+msgid ""
+"Get sure you modify *Next execution* to the first day not wanted in "
+"resulting CSV."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:202
+msgid ""
+"Then we will **wait a few minutes** until scheduler generates our CSV, "
+"**download** it and **delete the row to avoid recurrent CSV generation**."
+msgstr ""
+

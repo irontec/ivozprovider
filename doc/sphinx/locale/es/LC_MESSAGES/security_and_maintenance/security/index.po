@@ -17,31 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: ../../index.rst:10
-msgid "Basic Concepts"
+#: ../../security_and_maintenance/security/index.rst:5
+msgid "Security"
 msgstr ""
 
-#: ../../index.rst:18
-msgid "Getting Started"
+#: ../../security_and_maintenance/security/index.rst:7
+msgid ""
+"IvozProvider is designed to be exposed to Internet, having public IPs on "
+"some profile's NICs."
 msgstr ""
 
-#: ../../index.rst:26
-msgid "Administration portal"
-msgstr ""
-
-#: ../../index.rst:34
-msgid "Specific portals"
-msgstr ""
-
-#: ../../index.rst:39
-msgid "Security and Maintenance"
-msgstr ""
-
-#: ../../index.rst:45
-msgid "Rest API"
-msgstr ""
-
-#: ../../index.rst:8
-msgid "IvozProvider Official Documentation"
+#: ../../security_and_maintenance/security/index.rst:9
+msgid ""
+"This section talks about included and non-included (but recommended and "
+"shipped in all production IvozProvider installations maintained by "
+"`Irontec <https://www.irontec.com>`_) security mechanisms:"
 msgstr ""
 

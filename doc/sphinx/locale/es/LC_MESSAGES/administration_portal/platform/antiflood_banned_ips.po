@@ -17,31 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: ../../index.rst:10
-msgid "Basic Concepts"
+#: ../../administration_portal/platform/antiflood_banned_ips.rst:5
+msgid "Antiflood banned IPs"
 msgstr ""
 
-#: ../../index.rst:18
-msgid "Getting Started"
+#: ../../administration_portal/platform/antiflood_banned_ips.rst:7
+msgid ""
+"Addresses listed here have been banned at least once by *Antiflooding* "
+"mechanism."
 msgstr ""
 
-#: ../../index.rst:26
-msgid "Administration portal"
+#: ../../administration_portal/platform/antiflood_banned_ips.rst:9
+msgid ""
+"**IPs are only blocked during 5 minutes**. Entries with *Last time "
+"banned* older than 5 minutes are not currently banned."
 msgstr ""
 
-#: ../../index.rst:34
-msgid "Specific portals"
-msgstr ""
-
-#: ../../index.rst:39
-msgid "Security and Maintenance"
-msgstr ""
-
-#: ../../index.rst:45
-msgid "Rest API"
-msgstr ""
-
-#: ../../index.rst:8
-msgid "IvozProvider Official Documentation"
+#: ../../administration_portal/platform/antiflood_banned_ips.rst:12
+msgid "See :ref:`SIP antiflooding` for further information."
 msgstr ""
 

@@ -1,0 +1,51 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/platform/infrastructure/application_servers.rst:2
+msgid "Application Servers"
+msgstr ""
+
+#: ../../administration_portal/platform/infrastructure/application_servers.rst:4
+msgid ""
+"The section **Application Servers** will list the IP address where the "
+"existing Asterisk processes will listen for request, and like previously "
+"mentioned, can scale horizontally to adapt the platform for the required "
+"load."
+msgstr ""
+
+#: ../../administration_portal/platform/infrastructure/application_servers.rst:8
+msgid ""
+"Contrary to the Proxies, Asterisk is not exposed to the external world, "
+"so for a standalone installation there will only be one listening at "
+"127.0.0.1."
+msgstr ""
+
+#: ../../administration_portal/platform/infrastructure/application_servers.rst:11
+msgid ""
+"The listening port will not be displayed in the field because it will "
+"always be 6060 (UDP)."
+msgstr ""
+
+#: ../../administration_portal/platform/infrastructure/application_servers.rst:14
+msgid ""
+"As soon as another Application Server is added, the proxies will try to "
+"balance load using it. If no response is received from added Application "
+"server, it will be disabled automatically."
+msgstr ""
+

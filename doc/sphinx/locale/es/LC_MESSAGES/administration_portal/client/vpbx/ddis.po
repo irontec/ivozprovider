@@ -1,0 +1,202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/client/vpbx/ddis.rst:5
+msgid "DDIs"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:9
+msgid "Number data"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:11
+msgid "Country"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:11
+msgid "The country of the new created DDI. Used for E164 standardization."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:14
+msgid "DDI"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:14
+msgid "The number, without country code."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:17
+msgid "Display name"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:17
+msgid "This value will be shown in the called terminals."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:19
+msgid "Language"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:21
+msgid "Description"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:26
+msgid "Type"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:24
+msgid ""
+"Choose 'Inbound & outbound' for a normal DDI that can be used both as "
+"outgoing DDI and as incoming DDI from a :ref:`DDI Provider <DDI "
+"Providers>`. Choose 'Outbound only' for a DDI that won't reach us from a "
+":ref:`DDI Provider <DDI Providers>` and will only be used as an outgoing "
+"DDI."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:30
+msgid "DDI Provider"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:29
+msgid ""
+"The :ref:`DDI Provider <DDI Providers>` that provides this number. This "
+"relation has no functional purpose, it is just for DDI Provider <-> DDI "
+"navigation in some brand level sections."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:34
+msgid "Filters data"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:38
+msgid "External Call Filter"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:36
+msgid ""
+"Allows configuration based on Calendars and Schedulers as shown in "
+":ref:`External Call Filters`. Leave empty if you don't need to apply any "
+"kind of filter."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:42
+msgid "Routing configuration"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:45
+msgid "Route type"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:44
+msgid ""
+"A DDI can have different :ref:`treatments <routing_logics>`. For our "
+"current goal, set route to user and select *Alice*."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:49
+msgid "Recording data"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:51
+msgid "Record calls"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:51
+msgid "Can be used to record external calls (see :ref:`call_recordings`)."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:56
+msgid "Tarificate incoming calls"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:54
+msgid ""
+"This setting requires the external tarification module and allows "
+"tarification on special numbers. This module is not standard so don't "
+"hesitate in :ref:`contact us <getting_help>` if you are interested."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:58
+msgid ""
+"Calls received from a :ref:`DDI Provider <DDI Providers>` to an 'Outbound"
+" only' DDI will be rejected."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:61
+msgid ""
+"Calls from within the platform to 'Inbound & outbound' DDIs won't reach "
+"any carrier, they will be routed internally."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:66
+msgid "DDI external filters"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:68
+msgid ""
+"We can assign a **external call filter** configured in :ref:`External "
+"Call Filters`."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:75
+msgid "DDI routes"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:77
+msgid ""
+"Once the call has passed all the checks in the filter (schedules and "
+"calendars) and after the welcome locution has been played (if there is "
+"any configured), we can route the call to the following processes:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:81
+msgid ":ref:`users`"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:82
+msgid ":ref:`huntgroups`"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:83
+msgid ":ref:`ivrs`"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:84
+msgid ":ref:`conference_rooms`"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:85
+msgid ":ref:`conditional_routes`"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:86
+msgid ":ref:`queues`"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:87
+msgid ":ref:`friends`"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/ddis.rst:91
+msgid ""
+"We can also route the DDI to a :ref:`Virtual Fax <faxing_system>`, but "
+"this is something we will explain in the following block."
+msgstr ""
+

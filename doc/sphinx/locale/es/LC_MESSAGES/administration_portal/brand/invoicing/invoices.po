@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:5
+msgid "Invoices"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:7
+msgid ""
+"**Invoices** section lets **brand operator** generate invoices to issue "
+"to its clients and lists all invoices of all clients, no matter if they "
+"were generated automatically or manually."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:10
+msgid ""
+"Brand administrators can also enable view mode on this section to their "
+"clients. Check Client's Invoice data configuration section for more "
+"information."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:15
+msgid "Generating a new invoice"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:17
+msgid "These are the fields shown when *Add Invoice* options is used:"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:20
+msgid "Invoice number sequence"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:20
+msgid "Use next number of a predefined sequence or use custom number"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:23
+msgid "Number"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:23
+msgid ""
+"Only shown if no sequence number is used, lets brand operator to "
+"introduce a custom number"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:26
+msgid "Client"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:26
+msgid "The client whose calls will be invoiced"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:29
+msgid "Template"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:29
+msgid "Invoice template that will be used to generate the PDF invoice file"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:32
+msgid "In/Out date"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:32
+msgid "The time period of the calls that will be invoiced"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:35
+msgid "Call discount"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:35
+msgid ""
+"Percentage to discount calls, prior to tax rate calculation. No effect on"
+" fixed concepts."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:39
+msgid "Tax rate"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:38
+msgid "Taxes to add to the final cost (e.g. VAT)"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:41
+msgid ""
+"Once saved, some :ref:`fixed costs` can be added before generating the "
+"final invoice. This is achieved with **Fixed costs** subsection, that "
+"allows adding several positive concepts to the invoice:"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:45
+msgid "Fixed cost"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:45
+msgid "Choose a predefined cost"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:48
+msgid "Quantity"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:48
+msgid "How many of this must be included"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:50
+msgid ""
+"The last step is pressing **Generate invoice** suboption to create the "
+"final PDF. Afterwards, we can see which calls have been included in a "
+"particular invoice with **List of External Calls** option or download the"
+" PDF file."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:53
+msgid "Only outbound external calls are included into invoices"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:54
+msgid ""
+"**Status** column shows if the PDF generation task is waiting for async "
+"worker (*waiting*), in process (*processing*), ended with errors "
+"(*failed*) or ended successfully (*created*). On blank, *Generate "
+"invoice* needs to be pressed."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:58
+msgid "Rules"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:60
+msgid "Invoice subsystem enforces several rules before generating a new invoice:"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:62
+msgid ""
+"**Proper date interval**: *out date* must be bigger (after) than *in "
+"date*."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:64
+msgid ""
+"**Out date must be previous than today**: Future dates or today's calls "
+"cannot be invoiced."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:66
+msgid ""
+"**One call, one invoice:** All calls in time interval cannot be included "
+"in any other invoice."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:68
+msgid "**All calls in interval must be billed**."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:70
+msgid ""
+"If any of these rules is not fulfilled, the invoice won't be created and "
+"the system will warn."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:73
+msgid "Timezones"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:75
+msgid ""
+"*In date* and *Out date* will be interpreted using brand timezone. On the"
+" other hand, call times in invoices are converted to client timezone, "
+"leading to situations like this:"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:78
+msgid "*In date*: 01/10/2018 00:00:00"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:80
+msgid "*Out date*: 31/10/2018 23:59:59"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:82
+msgid "Brand timezone: UTC + 1"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:84
+msgid "Client timezone: UTC - 1"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:86
+msgid "Time interval in brand timezone: 01/10/2018 00:00 - 31/10/2018 23:59:59"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:88
+msgid "Time interval in client timezone: 30/09/2018 22:00 - 31/10/2018 21:59:59"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:91
+msgid ""
+"Invoice generated for the client will have calls from 30nd of september "
+"at 22:00 to 31st of october at 21:59:59, which may seem awkward to the "
+"client."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:96
+msgid "Regenerating an existing invoice"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:98
+msgid ""
+"Brand operator can edit any invoice parameter (as long as rules above are"
+" fulfilled), add/remove fixed concepts, etc. and press **Generate "
+"invoice** again."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:101
+msgid ""
+"Whenever a change is made, *Status* column will change to blank to show "
+"that *Generate invoice* must be pressed."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:104
+msgid "Generate invoice for rerated calls"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:106
+msgid ""
+"If rating of any call included in an invoice is wrong, :ref:`External "
+"Calls` section allows rerating it, as long as the invoice that includes "
+"the call is previously deleted."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:109
+msgid ""
+"Once deleted and rerated, a new row can be added in *Invoices* section to"
+" include rerated calls."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:112
+msgid "List of external calls"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:114
+msgid ""
+"You can see calls of a given invoice using this option. You will see the "
+"same fields as in :ref:`External calls`."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:116
+msgid ""
+"It is compulsory to have **a valid brand URL** in order to use *Export to"
+" CSV* feature in this subsection."
+msgstr ""
+

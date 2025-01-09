@@ -1,0 +1,406 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/client/vpbx/users.rst:5
+msgid "Users"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:7
+msgid ""
+"The installation process creates *Alice* and *Bob* users, allowing us to "
+"test internals calls between them without too much effort."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:10
+msgid ""
+"We skipped most of the settings in **Users** configuration that we will "
+"described in this section."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:15
+msgid "Personal data"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:19
+msgid "Name"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:18
+msgid ""
+"Used to identify this user in most of the screens. This is also the name "
+"that will be displayed in internal calls made from this user."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:22
+msgid "Lastname"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:22
+msgid "Most of the times this is used to complete the previous field."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:27
+msgid "Email"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:25
+msgid ""
+"Email used to send the user's received voicemails. This is also used to "
+"identify the user in their portal."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:31
+msgid "Geographic Configuration"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:34
+msgid "Language"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:36
+msgid "When a locution is played to this user, this language is used."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:37
+msgid "Timezone"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:39
+msgid "User portal call list times will use this timezone."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:40
+msgid "Numeric transformation"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:42
+msgid ""
+"Defines how numbers are converted from user format to E.164 and the other"
+" way around."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:44
+msgid "Location"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:46
+msgid "User geographical location where the user is working at."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:51
+msgid "Login Info"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:55
+#: ../../administration_portal/client/vpbx/users.rst:160
+msgid "Active"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:54
+msgid ""
+"Allows administrators to grant or disable user's acces to the "
+":ref:`user's portal <userportal>`."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:58
+msgid "Password"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:58
+msgid "Password used to access the :ref:`user's portal <userportal>`."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:62
+msgid "QR Code"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:61
+msgid ""
+"If enabled, a QR code for Grandstream Wave softphone configuration will "
+"be shown."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:66
+msgid "Boss-Assistant"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:68
+msgid ""
+"This feature will turn the user into a boss that can only be directly "
+"call by:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:70
+msgid "The selected assistant."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:72
+msgid "Any origin that matches the white list."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:74
+msgid "The rest of the calls to *a boss* will be redirected to the assistant."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:77
+msgid "Is boss"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:77
+msgid "Determines if this user is a boss."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:80
+msgid "Assistant"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:80
+msgid "Who will receive the redirected calls of this boss."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:84
+msgid "Whitelist"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:83
+msgid ""
+":ref:`match_lists` with origins that are allowed to call directly to the "
+"boss."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:88
+msgid "Basic Configuration"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:93
+msgid "Terminal"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:92
+msgid ""
+"The available terminals created in :ref:`terminals` are listed here for "
+"assignment."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:98
+msgid "Screen Extension"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:96
+msgid ""
+"One of the available :ref:`extensions` that this user will display when "
+"placing internal calls. While multiple extensions can be routed to the "
+"user, only one of them will be presented when the user calls."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:102
+msgid "Outgoing DDI"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:101
+msgid ""
+"As described in :ref:`external_ddi`, determines the number that will "
+"present when placing external outgoing calls."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:106
+msgid "Outgoing DDI Rules"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:105
+msgid ""
+"Manages exceptions to previous setting. Read :ref:`outgoingddi_rules` for"
+" further reference."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:110
+msgid "Call ACL"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:109
+msgid ""
+"One of the created :ref:`Call ACL <call_permissions>` groups, described "
+"it the previous sections."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:114
+msgid "Do not disturb"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:113
+msgid ""
+"When this setting is enabled, the user won't receive any call but can "
+"still place calls."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:117
+msgid "Call waiting"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:117
+msgid ""
+"Limits received calls when already handling this number of calls. Set 0 "
+"for unlimited."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:123
+msgid "Calls from non-granted IPs"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:120
+msgid ""
+"Enable calling from non-granted IP addresses for this user. It limits the"
+" number of outgoing calls to avoid toll-fraud. 'None' value makes "
+"outgoing calls unlimited as long as client IP policy is fulfilled. Read "
+":ref:`roadwarrior_users` for further reference."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:128
+msgid "Multi Contact"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:126
+msgid ""
+"Same SIP credentials can be configured in multiple SIP devices. In that "
+"case, all devices ring simultaneously when receiving a call. Setting this"
+" toggle to 'No' limits this behaviour so that only latest registered SIP "
+"device rings."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:136
+msgid "Call Rejection Method"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:131
+msgid ""
+"This setting allows configuring a behaviour on call rejection for users "
+"with several SIP devices (Multi Contact: yes). In such scenarios, all "
+"devices ring simultaneously and call rejection must choose whether "
+"rejecting call just in the device that declined or in all ringing "
+"devices. Default behaviour is to cancel call in all devices for 600/603 "
+"response codes and only in current device for 480/486. Choose whether you"
+" want to force one behaviour or another no matter which response code "
+"your SIP device sends on call rejection."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:140
+msgid "Group Configuration"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:142
+msgid ""
+"As described in the sections :ref:`huntgroups` and :ref:`capture_groups`,"
+" the user can be part of one or more hunt groups and pickup groups."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:145
+msgid ""
+"Those groups can be configured from the sections :ref:`huntgroups` and "
+":ref:`capture_groups` or the user's screen if the groups already exists."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:148
+msgid ""
+"You can also configure the user's **hunt groups** from the icon in each "
+"user line of the users list."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:153
+msgid "User Call Forward"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:155
+msgid ""
+"The user's call forward can be configured with the **List of call forward"
+" settings**  button."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:157
+msgid "These are the fields and available values:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:160
+msgid "Allows enabling or disabling this call forward."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:164
+msgid "Call Type"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:163
+msgid ""
+"Determines if the forward must be applied to external, internal or any "
+"type of call."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:174
+msgid "Forward type"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:174
+msgid "When this forward must be applied:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:168
+msgid "Unconditional: always"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:169
+msgid "No answer: when the call is not answered in X seconds"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:170
+msgid ""
+"Busy: When the user is talking to someone (and call waiting is disabled),"
+" when *Do not disturb* is enabled or when the user rejects an incoming "
+"call."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:173
+msgid ""
+"Not registered: when the user SIP terminal is not registered against "
+"IvozProvider."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:180
+msgid "Target type"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:180
+msgid "What route will use the forwarded call."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:178
+msgid "VoiceMail"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:179
+msgid "Number (external)"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:180
+msgid "Extension (internal)"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:182
+msgid ""
+"If we want to forward to other process, we can create an extension routed"
+" to that object and use the target type *Extension*."
+msgstr ""
+

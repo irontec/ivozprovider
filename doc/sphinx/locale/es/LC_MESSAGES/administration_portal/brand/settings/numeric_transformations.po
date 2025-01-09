@@ -1,0 +1,384 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:7
+msgid "Numeric transformations"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:9
+msgid ""
+"**IvozProvider** is designed to provide service **anywhere in the "
+"planet**, not only the original country where the platform is installed."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:12
+msgid ""
+"A very important concept to achieve this goal is the numeric "
+"transformation, that **adapts the different number format systems of the "
+"countries of the world** defined in `E.164 "
+"<https://www.itu.int/rec/T-REC-E.164/es>`_ **to a neutral format**."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:16
+msgid ""
+"Numeric transformation *sets* must be assigned to :ref:`Carriers`, "
+":ref:`DDI Providers`, **Clients** and **User endpoints** (Users, Friends,"
+" retail accounts, residential devices, etc.) to define the way every "
+"entity talks with IvozProvider."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:20
+msgid "There are two different transformation scenarios:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:23
+msgid "Incoming transformations"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:25
+msgid ""
+"When a new call is received in IvozProvider matching a provider that has "
+"been configured for *peering*, we must adapt the numbers that make "
+"reference to:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:28
+msgid "Origin of the call"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:30
+msgid "Destination of the call"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:32
+msgid ""
+"Depending on the country of the provider, the international numbers will "
+"have a format or another. In this case, the spanish provider will use, "
+"for example:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:35
+msgid "00 + 33 + number belonging to France"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:37
+msgid "It's possible that the international numbers came without the 00 code."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:39
+msgid ""
+"It's possible that, if the call comes from the same country that the "
+"provider, the number comes without the calling code (911234567 instead of"
+" 00 + 34 + 911234567 for Spain)."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:44
+msgid "For an Ukranian provider, that doesn't use the 00 as international code:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:46
+msgid "It will use 810 + 33 + number belonging to France."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:48
+msgid ""
+"It's possible that even part of the international code (00 in most of the"
+" countries of the world) the provider use specific codes as prefix."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:51
+msgid ""
+"The goal of the incoming transformation is that, no matter what numeric "
+"system the provider uses, the number will end in a general and common "
+"format."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:56
+msgid ""
+"This common format is usually called E.164 and shows the numbers without "
+"international code, but with country calling code: i.e. +34911234567"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:61
+msgid "Outgoing transformations"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:63
+msgid ""
+"In the same way the origin and destination must adapt incoming numbers, "
+"it will be required to adapt outgoing dialed numbers to properly work "
+"with each of the providers that will route our call."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:67
+msgid "For example, for a number with spanish number system:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:69
+msgid ""
+"*Spanish provider*: Destination will come in E164 (+34911234567) and for "
+"this provider, we can remove the calling code (will understand it belongs"
+" to its country), so the number sent to them will be 911234567."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:73
+msgid ""
+"*French provider*: The destination will come in E164 (+34911234567) and "
+"we must add the international code for France, so the number sent to them"
+" will be 0034911234567."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:77
+msgid ""
+"To sum up, we aim to send the origin and destination in the format the "
+"provider is expecting."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:80
+msgid ""
+"Numeric transformation uses `simple regular expressions "
+"<https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular>`_ to describe the "
+"changes done to the numbers. You can find multiple tutorials on net with "
+"the basic regular expression format."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:87
+msgid "Add a new transformation set"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:89
+msgid ""
+"IvozProvider comes with an automatic transformation rules generator that "
+"fits with most of the countries."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:92
+msgid ""
+"In order to create a new set of transformations use **Add Numeric "
+"transformations**:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:95
+msgid "Name"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:95
+msgid "Use to reference this numeric transformation set"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:98
+msgid "Description"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:98
+msgid "Additional information for each set"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:101
+msgid "Automatic creation of rules"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:101
+msgid ""
+"If set, *Geographic Configuration* fields will be used to automatically "
+"configure the rules of the set."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:105
+msgid "Geographic Configuration"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:104
+msgid ""
+"International Code of the country, country code, trunk prefix if any, "
+"area code if any and national subscriber number length"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:109
+msgid "Example for Spain"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:111
+msgid "Fulfilling Geographic Configuration with:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:113
+msgid "International Code: 00"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:114
+msgid "Country Code: +34"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:115
+msgid "Trunk Prefix: <empty>"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:116
+msgid "Area Code: <empty>"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:117
+msgid "National number length: 9"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:119
+msgid ""
+"Auto-created rules will transform the numbers for spanish providers that "
+"follow these rules:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:121
+msgid "A spanish number: Neither international nor calling code (34)."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:122
+msgid "Not a spanish number: International code (00) and calling code (34)."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:124
+msgid "Let's check this *set* to understand what transformation rule does:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:126
+msgid ""
+"The automatic rule generation will create 8 common rules based on the "
+"given parameters. This rules can be edited later to match the provider "
+"requirements."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:131
+msgid "Spanish incoming transformation"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:133
+msgid "Displayed in blue in the previous image:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:135
+msgid "Left called/destination"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:137
+msgid "Right callee/origin"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:139
+msgid "The same rules will be applied for the origin and destination:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:141
+msgid "The **metric** field will be used to order the rules (smaller first)."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:143
+msgid "If a rule doesn't *match*, the next rule is evaluated."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:144
+msgid "If a rule *matches*, no more rules are evaluated."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:145
+msgid "If no rule *matches*, no change is applied."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:147
+msgid ""
+"The **Search** field is evaluated against the number (depending of the "
+"transformation type it will be destination or origin)."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:150
+msgid ""
+"The **Replace** field will use the capture groups that matched the Search"
+" field (displayed between brackets, \\1 for the first one, \\2 for the "
+"second one, and so on) to determine how the number will end."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:156
+msgid "Spanish outgoing transformation"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:158
+msgid ""
+"Following the same logic, this 2 rules make the change of the outgoing "
+"external destination numbers."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:162
+msgid ""
+"**To sum up**: numeric transformation can adapt origin and destination "
+"numbers to E.164 for the platform, and to providers expected formats, "
+"based on regular expressions and metric that can be grouped in *sets* to "
+"be shared between multiple **Carriers**."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:170
+msgid "Conclusion"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:172
+msgid ""
+"This is a key section that allows creating sets that will allow "
+"IvozProvider make needed numeric translations to 'talk' with all the "
+"external entities:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:175
+msgid "Providers (carriers and DDI Providers)"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:177
+msgid ""
+"Client endpoints (Users, Friends, Retail accounts, Residential accounts, "
+"Wholesale clients)"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:179
+msgid "Those sets will:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:181
+msgid "Convert custom external format to E.164 for internal usage."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:183
+msgid "Convert E.164 to custom external format for external usage."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:185
+msgid "Converted SIP headers:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:187
+msgid "Destination headers (R-URI/To/Refer-To)"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:189
+msgid "Source headers (From/RPID/PAI/Diversion)"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/numeric_transformations.rst:191
+msgid ""
+"For all these transformations `Regular Expressions "
+"<http://php.net/manual/en/reference.pcre.pattern.syntax.php>`_ knowledge "
+"is needed, unless automatic created rules work out of the box."
+msgstr ""
+

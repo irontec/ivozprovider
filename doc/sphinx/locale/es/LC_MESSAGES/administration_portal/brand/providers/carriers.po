@@ -1,0 +1,286 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/brand/providers/carriers.rst:5
+msgid "Carriers"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:7
+msgid "Carriers are used for placing external outgoing calls."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:9
+msgid "This are the fields that define a carrier:"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:11
+msgid ""
+"Some fields described below may not be visible depending on enabled "
+"features."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:14
+msgid "Name"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:14
+msgid "Used to reference this Carrier."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:17
+msgid "Description"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:17
+msgid "Optional field with any required extra information."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:22
+msgid "Numeric Transformation"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:20
+msgid ""
+"Transformation that will be applied to the origin and destination of the "
+"outgoing numbers that use this Carrier (see :ref:`Numeric "
+"transformations`)."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:25
+msgid "Calculate cost"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:25
+msgid ""
+"If set, IvozProvider will calculate the cost of the call using the "
+"carrier's active rating profile."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:29
+msgid "Currency"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:28
+msgid ""
+"Chosen currency will be used in cost calculation, balance movements and "
+"remaining money operations of this carrier."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:33
+msgid "Local socket"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:32
+msgid ""
+"Selected address will be used as source address for signalling with this "
+"carrier. Brand operator can choose among addresses assigned by main "
+"operator via :ref:`Brands`. Read :ref:`Proxy Trunks` for further details."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:37
+msgid "Media relay set"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:36
+msgid ""
+"Media-relays can be grouped in sets to reserve capacities or on a "
+"geographical purpose. Selected set will be used in calls through this "
+"specific carrier. This field in only seen by Global administrator (aka "
+"God)."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:40
+#: ../../administration_portal/brand/providers/carriers.rst:105
+msgid "Status"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:40
+msgid ""
+"Non-responding carrier servers are inactivated until they respond to "
+"OPTIONS ping request. This icon is green if every carrier server of given"
+" carrier is active, red if they are all inactive and yellow if just some "
+"of them are inactive."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:43
+msgid ""
+"If you want carrier-side media handled by the same mediarelay set than "
+"client-side, select \"Client's default\"."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:48
+msgid "Cost calculation"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:50
+msgid ""
+"If *Calculate cost* is enabled, *Rating plans* can be linked to carriers "
+"for cost calculation (see :ref:`Assigning rating plans to carriers`) and "
+"a balance is attached to each carrier. Whenever a carrier is used for "
+"placing a call, this balance will be decreased using carrier's active "
+"rating profile."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:54
+msgid "Besides:"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:56
+msgid "Carrier balance can be increased/decreased with *Balance operations*."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:58
+msgid "These operations are listed in *List of Balances movements*."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:60
+msgid ""
+"*Balance notifications* can be configured to be notified when balance "
+"reaches a given threshold."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:62
+msgid ""
+"Contrary to clients' balances, **carriers' (negative/zero) balances won't"
+" disable the carrier**."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:66
+msgid "Carrier Servers"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:68
+msgid ""
+"A **Carrier Server** is a SIP server associated to an IP Provider. "
+"Carrier servers are used for placing outgoing calls by using "
+":ref:`Outgoing routings`."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:73
+msgid "SIP Proxy"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:72
+msgid ""
+"IP address (or DNS registry) of the Carrier Server. You can also specify "
+"a port if it's different from 5060."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:80
+msgid "Outbound Proxy"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:76
+msgid ""
+"Usually this is left empty. It can be filled with the IP address of the "
+"**SIP Proxy** domain (to avoid DNS resolution, but keeping the domain in "
+"the SIP messages). It works like a web proxy: instead of sending the SIP "
+"messages to destination **SIP Proxy**, they will be sent to the IP:PORT "
+"of this field."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:83
+msgid "URI Scheme"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:83
+msgid "Supported schemes are sip and sips. Use 'sip' in case of doubt."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:86
+msgid "Transport"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:86
+msgid "Supported transport protocols. Use 'udp' in case of doubt."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:91
+msgid "Requires Authentication"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:89
+msgid ""
+"Some Carriers validate our platform by IP, others require each session "
+"that we want to establish. For this last case, this section allows to "
+"configure user and password for this authentication."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:96
+msgid "Call Origin Header"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:94
+msgid ""
+"Some Providers get origin from SIP From header. Others use the From "
+"header for accounting and need extra headers to identify the origin. In "
+"case of doubt leave **PAI** checked."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:101
+msgid "From header customization"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:99
+msgid ""
+"For those providers that show origin in other headers (PAI/RPID), it is "
+"possible that request that From User have the account code being used and"
+" from domain their SIP domain. In case of doubt, leave empty."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:104
+msgid ""
+"Non-responding carrier servers are inactivated until they respond to a "
+"OPTIONS ping request. This icon shows if carrier server is active or "
+"inactive (and being pinged via OPTIONS message until gets back)."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:107
+msgid ""
+"There are many fields to establish *peering* with multiple kind of "
+"carriers, but usually with the name and SIP Proxy will be enough (for "
+"those that validate our platform by IP) and Authentication (for those "
+"that won't)."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:112
+msgid ""
+"In case of defining multiple Carrier Servers for a single Carrier, "
+"IvozProvider will balance and failover using all of them. Like with "
+"Application Servers, it will disable those who doesn't respond to our "
+"requests."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:118
+msgid "List of external calls"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:120
+msgid ""
+"You can see external calls placed through a given carrier using this "
+"option. You will see the same fields as in :ref:`External calls` but "
+"filtered for the chosen carrier."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:123
+msgid ""
+"It is compulsory to have **a valid brand URL** in order to use *Export to"
+" CSV* feature in this subsection."
+msgstr ""
+

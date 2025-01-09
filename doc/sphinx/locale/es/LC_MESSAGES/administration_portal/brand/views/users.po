@@ -17,31 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: ../../index.rst:10
-msgid "Basic Concepts"
+#: ../../administration_portal/brand/views/users.rst:3
+msgid "Users"
 msgstr ""
 
-#: ../../index.rst:18
-msgid "Getting Started"
+#: ../../administration_portal/brand/views/users.rst:5
+msgid "This section lists **all vpbx Users** in all the clients of the brand."
 msgstr ""
 
-#: ../../index.rst:26
-msgid "Administration portal"
+#: ../../administration_portal/brand/views/users.rst:7
+msgid "It makes easy to answer to these questions:"
 msgstr ""
 
-#: ../../index.rst:34
-msgid "Specific portals"
+#: ../../administration_portal/brand/views/users.rst:9
+msgid "Which user has this email?"
 msgstr ""
 
-#: ../../index.rst:39
-msgid "Security and Maintenance"
+#: ../../administration_portal/brand/views/users.rst:11
+msgid "Is terminal X registered?"
 msgstr ""
 
-#: ../../index.rst:45
-msgid "Rest API"
-msgstr ""
-
-#: ../../index.rst:8
-msgid "IvozProvider Official Documentation"
+#: ../../administration_portal/brand/views/users.rst:13
+msgid "Etc."
 msgstr ""
 

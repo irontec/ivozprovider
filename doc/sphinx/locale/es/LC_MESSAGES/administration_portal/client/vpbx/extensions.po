@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/client/vpbx/extensions.rst:5
+msgid "Extensions"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:7
+msgid ""
+"**An extensions is**, by definition, **an internal number with an "
+"assigned logic**. Internal users' calls to numbers listed in this section"
+" do not traverse call ACL logics: **every user/friend is allowed to call "
+"to any number listed here**."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:12
+msgid "Create a new extension"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:16
+#: ../../administration_portal/client/vpbx/extensions.rst:45
+msgid "Number"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:14
+msgid ""
+"The number that must be dialed by the internal user that will trigger the"
+" configured logic. It must have a minimum length of 2 and must be a "
+"number."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:22
+msgid "Route"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:19
+msgid ""
+"This select will allow us to choose the logic that will use this "
+"extension when is dialed from an internal user. Depending on the selected"
+" route, and additional select or input will be shown to select the hunt "
+"group, conference room, user, etc."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:24
+msgid ""
+"If an extension has a number that conflicts with an external number, this"
+" external number will be masked and, in practice, will be unavailable for"
+" the whole client."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:29
+msgid "Route options"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:32
+msgid "Unassigned"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:32
+msgid "Calls to this extension will be hung up."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:35
+msgid "User"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:35
+msgid "Selected :ref:`user <Users>` will be called."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:38
+msgid "IVR"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:38
+msgid "Selected :ref:`IVR <IVRs>` logic will be called."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:41
+msgid "Hunt Group"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:41
+msgid "Selected :ref:`huntgroup <huntgroups>` will be called."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:44
+msgid ""
+"Calling to this extension will generate an external outbound call to "
+"introduced number."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:48
+msgid "Friend"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:48
+msgid "Calls to this extension will evaluate :ref:`friends <Friends>` logic."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:51
+msgid "Queue"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:51
+msgid "Call will be delivered to selected :ref:`queue <Queues>`."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:54
+msgid "Conditional route"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:54
+msgid ""
+"Call will be delivered to selected :ref:`conditional route <Conditional "
+"Routes>`."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:57
+msgid "Voicemail"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:57
+msgid "Calls will be delivered to selected :ref:`voicemails <Voicemails>`."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:59
+msgid ""
+"Any internal user can generate an external outbound call via an "
+"**Extension routed to Number** even if its *Call permissions* does not "
+"allow to call to that destination directly."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:65
+msgid "Import aliases"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:67
+msgid ""
+"*Extensions to numbers* are useful to call to most dialed numbers easily."
+" As each client usually has a list with frequent numbers, **Import "
+"aliases** button allows importing them through a CSV file."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:72
+msgid "Example import file"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:82
+msgid "Numbers will be imported synchronously following these rules:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:84
+msgid ""
+"If given extension already exists and points to a number: number is "
+"updated."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:85
+msgid "If given extension already exists and does not point to a number: error."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:86
+msgid "If given country prefix does not exist: error."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:87
+msgid "If given country code does not exist: error."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:88
+msgid ""
+"If given country prefix and country code combination does not exist: "
+"error."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/extensions.rst:89
+msgid ""
+"CountryCode is optional: if given country prefix is used in multiple "
+"countries and country code is not given, first country is selected."
+msgstr ""
+
