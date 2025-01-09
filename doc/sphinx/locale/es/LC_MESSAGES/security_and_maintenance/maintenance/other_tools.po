@@ -19,23 +19,27 @@ msgstr ""
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:3
 msgid "Other tools"
-msgstr ""
+msgstr "Otras herramientas"
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:5
 msgid ""
 "Although IvozProvider does not include any of the tools mentioned here, "
 "we consider them crucial for dealing with production environments."
 msgstr ""
+"Aunque IvozProvider no incluye ninguna de las herramientas mencionadas aquí, "
+"las consideramos cruciales para manejar entornos de producción."
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:8
 msgid ""
 "We list here tools configured in all production IvozProvider "
 "installations maintained by `Irontec <https://www.irontec.com>`_."
 msgstr ""
+"Aquí enumeramos las herramientas configuradas en todas las instalaciones de producción de "
+"IvozProvider mantenidas por `Irontec <https://www.irontec.com>`_."
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:13
 msgid "Metrics viewer"
-msgstr ""
+msgstr "Visor de métricas"
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:15
 msgid ""
@@ -44,18 +48,22 @@ msgid ""
 "Stack components <https://www.influxdata.com/time-series-platform/>`_, "
 "allow us to show:"
 msgstr ""
+"`Interfaz web de Chronograf <https://www.influxdata.com/time-series-"
+"platform/chronograf/>`_ mostrando información recopilada por los demás `componentes del TICK "
+"Stack <https://www.influxdata.com/time-series-platform/>`_, "
+"nos permite mostrar:"
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:19
 msgid "Realtime system metrics."
-msgstr ""
+msgstr "Métricas del sistema en tiempo real."
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:21
 msgid "Realtime VoIP metrics."
-msgstr ""
+msgstr "Métricas VoIP en tiempo real."
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:23
 msgid "Custom dashboard per profile."
-msgstr ""
+msgstr "Panel personalizado por perfil."
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:25
 msgid ""
@@ -63,10 +71,13 @@ msgid ""
 "platform/kapacitor/>`_ allows setting alarms when anomalous metrics "
 "happen or certain thresholds are exceeded."
 msgstr ""
+"El `componente Kapacitor <https://www.influxdata.com/time-series-"
+"platform/kapacitor/>`_ permite configurar alarmas cuando ocurren métricas anómalas "
+"o se superan ciertos umbrales."
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:30
 msgid "Active monitoring"
-msgstr ""
+msgstr "Monitoreo activo"
 
 #: ../../security_and_maintenance/maintenance/other_tools.rst:32
 msgid ""
@@ -74,4 +85,7 @@ msgid ""
 "<https://www.irontec.com>`_ are thoroughly monitored to solve problems as"
 " soon as possible and to prevent future problems when possible."
 msgstr ""
+"Todas las instalaciones de IvozProvider mantenidas por `Irontec "
+"<https://www.irontec.com>`_ son monitoreadas exhaustivamente para resolver problemas lo "
+"antes posible y prevenir problemas futuros cuando sea posible."
 

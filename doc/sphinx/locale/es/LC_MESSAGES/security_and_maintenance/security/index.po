@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../security_and_maintenance/security/index.rst:5
 msgid "Security"
-msgstr ""
+msgstr "Seguridad"
 
 #: ../../security_and_maintenance/security/index.rst:7
 msgid ""
 "IvozProvider is designed to be exposed to Internet, having public IPs on "
 "some profile's NICs."
 msgstr ""
+"IvozProvider está diseñado para estar expuesto a Internet, teniendo IPs públicas en "
+"algunas NICs de perfil."
 
 #: ../../security_and_maintenance/security/index.rst:9
 msgid ""
@@ -33,4 +35,7 @@ msgid ""
 "shipped in all production IvozProvider installations maintained by "
 "`Irontec <https://www.irontec.com>`_) security mechanisms:"
 msgstr ""
+"Esta sección habla sobre los mecanismos de seguridad incluidos y no incluidos (pero recomendados y "
+"enviados en todas las instalaciones de producción de IvozProvider mantenidas por "
+"`Irontec <https://www.irontec.com>`_):"
 

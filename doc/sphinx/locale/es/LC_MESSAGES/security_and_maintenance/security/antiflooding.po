@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../security_and_maintenance/security/antiflooding.rst:5
 msgid "SIP Antiflooding"
-msgstr ""
+msgstr "Antiflooding SIP"
 
 #: ../../security_and_maintenance/security/antiflooding.rst:7
 msgid ""
@@ -27,12 +27,17 @@ msgid ""
 "`PIKE module <http://kamailio.org/docs/modules/5.1.x/modules/pike.html>`_"
 " to avoid DoS attacks."
 msgstr ""
+"Los proxies SIP incluidos en la instalación de IvozProvider para la señalización SIP usan "
+"el `módulo PIKE <http://kamailio.org/docs/modules/5.1.x/modules/pike.html>`_ "
+"para evitar ataques DoS."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:10
 msgid ""
 "This module keeps trace of incoming request's IP address and blocks the "
 "ones that exceed the limit on a given time interval."
 msgstr ""
+"Este módulo rastrea la dirección IP de las solicitudes entrantes y bloquea las "
+"que exceden el límite en un intervalo de tiempo dado."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:13
 msgid ""
@@ -40,24 +45,29 @@ msgid ""
 "After this time, they are allowed again as long as their incoming request"
 " rate don't exceed the limit."
 msgstr ""
+"**Las IPs no se bloquean permanentemente**, se bloquean durante 5 minutos. "
+"Después de este tiempo, se permiten nuevamente siempre que su tasa de solicitudes entrantes "
+"no exceda el límite."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:16
 msgid ""
 ":ref:`Antiflood banned IPs` shows a list of addresses that have been "
 "banned at some point."
 msgstr ""
+":ref:`IPs prohibidas por antiflood <Antiflood banned IPs>` muestra una lista de direcciones que han sido "
+"prohibidas en algún momento."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:18
 msgid "Current configuration parameters are:"
-msgstr ""
+msgstr "Los parámetros de configuración actuales son:"
 
 #: ../../security_and_maintenance/security/antiflooding.rst:20
 msgid "**Sampling time interval**: 2 seconds."
-msgstr ""
+msgstr "**Intervalo de tiempo de muestreo**: 2 segundos."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:22
 msgid "**Threshold per time unit**: 100 requests."
-msgstr ""
+msgstr "**Umbral por unidad de tiempo**: 100 solicitudes."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:25
 msgid ""
@@ -66,77 +76,88 @@ msgid ""
 " time, it will be unblocked and its request rate will be evaluated "
 "again*."
 msgstr ""
+"Esto significa que *cualquier dirección IP que envíe más de 100 solicitudes en un intervalo de tiempo de 2 "
+"segundos será bloqueada (ignorada) durante 5 minutos. Después de este tiempo, será desbloqueada y su tasa de solicitudes será evaluada "
+"nuevamente*."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:28
 msgid ""
 "Be aware that some requests are not taken into account by antiflood, "
 "continue reading please."
 msgstr ""
+"Tenga en cuenta que algunas solicitudes no son tenidas en cuenta por antiflood, "
+"por favor continúe leyendo."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:31
 msgid "Which requests are taken into account in KamUsers?"
-msgstr ""
+msgstr "¿Qué solicitudes se tienen en cuenta en KamUsers?"
 
 #: ../../security_and_maintenance/security/antiflooding.rst:33
 msgid "Client side requests usually traverse 2 different phases:"
-msgstr ""
+msgstr "Las solicitudes del lado del cliente generalmente atraviesan 2 fases diferentes:"
 
 #: ../../security_and_maintenance/security/antiflooding.rst:35
 msgid "Step 0: initial checks, endpoint identification and authentication."
-msgstr ""
+msgstr "Paso 0: verificaciones iniciales, identificación del punto final y autenticación."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:37
 msgid "Step 1: remaining logic."
-msgstr ""
+msgstr "Paso 1: lógica restante."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:39
 #: ../../security_and_maintenance/security/antiflooding.rst:57
 msgid "Antiflood will take into account:"
-msgstr ""
+msgstr "Antiflood tendrá en cuenta:"
 
 #: ../../security_and_maintenance/security/antiflooding.rst:41
 msgid "Requests failing during step 0:"
-msgstr ""
+msgstr "Solicitudes fallidas durante el paso 0:"
 
 #: ../../security_and_maintenance/security/antiflooding.rst:43
 msgid "Requests not using SIP domain in KamUsers (except wholesale)."
-msgstr ""
+msgstr "Solicitudes que no usan el dominio SIP en KamUsers (excepto mayoristas)."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:45
 msgid "Requests from non-existing AoRs in KamUsers."
-msgstr ""
+msgstr "Solicitudes de AoRs no existentes en KamUsers."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:47
 msgid "Requests failing SIP authentication with wrong passwords in KamUsers."
-msgstr ""
+msgstr "Solicitudes que fallan la autenticación SIP con contraseñas incorrectas en KamUsers."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:49
 msgid ""
 "Initial INVITE requests reaching step 1 (aka: new call establishments of "
 "legitimate clients)."
 msgstr ""
+"Solicitudes INVITE iniciales que alcanzan el paso 1 (es decir: nuevos establecimientos de llamadas de "
+"clientes legítimos)."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:52
 msgid ""
 "Note that antiflood will not take into account successful "
 "REGISTER/SUBSCRIBE cycles."
 msgstr ""
+"Tenga en cuenta que antiflood no tendrá en cuenta los ciclos exitosos de "
+"REGISTER/SUBSCRIBE."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:55
 msgid "Which requests are taken into account in KamTrunks?"
-msgstr ""
+msgstr "¿Qué solicitudes se tienen en cuenta en KamTrunks?"
 
 #: ../../security_and_maintenance/security/antiflooding.rst:59
 msgid "SIP OPTIONS from non-DDIproviders."
-msgstr ""
+msgstr "OPCIONES SIP de proveedores no-DDI."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:61
 msgid "Non-DDIproviders talking to KamTrunks."
-msgstr ""
+msgstr "Proveedores no-DDI hablando con KamTrunks."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:63
 msgid ""
 "Note that antiflood will not take into account DDI Provider requests to "
 "KamTrunks."
 msgstr ""
+"Tenga en cuenta que antiflood no tendrá en cuenta las solicitudes de proveedores DDI a "
+"KamTrunks."
 

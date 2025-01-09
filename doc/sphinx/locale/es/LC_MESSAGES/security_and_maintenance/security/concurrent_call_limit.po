@@ -19,35 +19,39 @@ msgstr ""
 
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:3
 msgid "Concurrent call limit"
-msgstr ""
+msgstr "Límite de llamadas concurrentes"
 
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:5
 msgid ""
 "This mechanism **limits the number of concurrent calls** of each "
 "client/brand."
 msgstr ""
+"Este mecanismo **limita el número de llamadas concurrentes** de cada "
+"cliente/marca."
 
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:7
 msgid "Both incoming external calls and outgoing external calls will be limited."
-msgstr ""
+msgstr "Tanto las llamadas externas entrantes como las salientes serán limitadas."
 
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:9
 msgid "It can be configured at two levels:"
-msgstr ""
+msgstr "Se puede configurar en dos niveles:"
 
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:11
 msgid "At Brand level with **Max calls** setting."
-msgstr ""
+msgstr "A nivel de Marca con la configuración de **Máximo de llamadas**."
 
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:13
 msgid "At Client level with **Max calls** setting."
-msgstr ""
+msgstr "A nivel de Cliente con la configuración de **Máximo de llamadas**."
 
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:15
 msgid ""
 "A brand clients' *Max calls* sum may be bigger than brand's *Max calls* "
 "value, there is no control to avoid this situation."
 msgstr ""
+"La suma de *Máximo de llamadas* de los clientes de una marca puede ser mayor que el valor de "
+"*Máximo de llamadas* de la marca, no hay control para evitar esta situación."
 
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:17
 msgid ""
@@ -56,8 +60,12 @@ msgid ""
 " not exceeded it own *Max call* setting may be denied if brand's limit "
 "has been exceeded."
 msgstr ""
+"Estos contadores son independientes. Siempre que uno de estos contadores alcance su "
+"límite, la llamada será denegada. Esto significa que una llamada de un cliente que no ha "
+"superado su propia configuración de *Máximo de llamadas* puede ser denegada si se ha "
+"superado el límite de la marca."
 
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:21
 msgid "To disable this mechanism, set its value to 0."
-msgstr ""
+msgstr "Para deshabilitar este mecanismo, establezca su valor en 0."
 

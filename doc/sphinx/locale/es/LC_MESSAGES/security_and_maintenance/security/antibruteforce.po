@@ -19,55 +19,60 @@ msgstr ""
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:5
 msgid "Anti brute-force attacks"
-msgstr ""
+msgstr "Ataques anti fuerza bruta"
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:7
 msgid ""
 "IvozProvider ships a simple anti brute-force attack in KamUsers that bans"
 " sources after continuous SIP auth failures from same IP address."
 msgstr ""
+"IvozProvider incluye un simple ataque anti fuerza bruta en KamUsers que prohíbe "
+"fuentes después de fallos continuos de autenticación SIP desde la misma dirección IP."
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:10
 msgid "It works like this:"
-msgstr ""
+msgstr "Funciona así:"
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:12
 msgid ""
 "On SIP failures (invalid user or invalid password cases only), a counter "
 "is increased:"
 msgstr ""
+"En fallos de SIP (solo en casos de usuario inválido o contraseña inválida), se incrementa un contador:"
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:15
 msgid "Key: fromUsername@fromDomain::source_ip"
-msgstr ""
+msgstr "Clave: fromUsername@fromDomain::source_ip"
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:15
 msgid "e.g. terminal@vpbx.domain.net::1.2.3.4"
-msgstr ""
+msgstr "por ejemplo, terminal@vpbx.domain.net::1.2.3.4"
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:17
 msgid "Counter is increased on every failure."
-msgstr ""
+msgstr "El contador se incrementa en cada fallo."
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:19
 msgid ""
 "When counter reaches 100, that specific source (user + domain + ip) is "
 "banned for 12 hours."
 msgstr ""
+"Cuando el contador alcanza 100, esa fuente específica (usuario + dominio + ip) es "
+"prohibida durante 12 horas."
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:22
 msgid "After 12 hours, source is accepted again and:"
-msgstr ""
+msgstr "Después de 12 horas, la fuente es aceptada nuevamente y:"
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:24
 msgid "Counter starts counting again from 80."
-msgstr ""
+msgstr "El contador comienza a contar nuevamente desde 80."
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:26
 msgid "If it reaches 100 again, it is banned for another 12 hours."
-msgstr ""
+msgstr "Si alcanza 100 nuevamente, se prohíbe por otras 12 horas."
 
 #: ../../security_and_maintenance/security/antibruteforce.rst:28
 msgid "See :ref:`Brute-force attacks` for currently blocked sources."
-msgstr ""
+msgstr "Vea :ref:`Ataques de fuerza bruta <Brute-force attacks>` para fuentes actualmente bloqueadas."
 

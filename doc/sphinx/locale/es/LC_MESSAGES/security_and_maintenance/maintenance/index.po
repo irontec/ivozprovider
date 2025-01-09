@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../security_and_maintenance/maintenance/index.rst:3
 msgid "Troubleshooting"
-msgstr ""
+msgstr "Solución de problemas"
 
 #: ../../security_and_maintenance/maintenance/index.rst:5
 msgid ""
@@ -28,4 +28,8 @@ msgid ""
 "`Irontec <https://www.irontec.com>`_) tools to troubleshoot any problem "
 "you may have:"
 msgstr ""
+"Esta sección habla sobre herramientas incluidas y no incluidas (pero recomendadas e "
+"instaladas en todas las instalaciones de producción de IvozProvider mantenidas por "
+"`Irontec <https://www.irontec.com>`_) para solucionar cualquier problema "
+"que puedas tener:"
 

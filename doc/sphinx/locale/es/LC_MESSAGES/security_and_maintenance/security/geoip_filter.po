@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../security_and_maintenance/security/geoip_filter.rst:5
 msgid "GeoIP filter"
-msgstr ""
+msgstr "Filtro GeoIP"
 
 #: ../../security_and_maintenance/security/geoip_filter.rst:7
 msgid ""
@@ -28,12 +28,18 @@ msgid ""
 " to chosen countries with the combination of **Filter by IP address** "
 "field and **GeoIP countries** selector."
 msgstr ""
+":ref:`Clientes de PBX Virtual <vPBX clients>`, :ref:`clientes minoristas <retail clients>` y "
+":ref:`clientes residenciales <residential clients>` pueden permitir el tráfico de direcciones IP "
+"pertenecientes a países elegidos con la combinación del campo **Filtrar por dirección IP** "
+"y el selector **Países GeoIP**."
 
 #: ../../security_and_maintenance/security/geoip_filter.rst:10
 msgid ""
 "On :ref:`wholesale clients` there is no **Filter by IP address** field as"
 " this type of clients are authenticated by IP."
 msgstr ""
+"En :ref:`clientes mayoristas <wholesale clients>` no hay campo **Filtrar por dirección IP** ya que "
+"este tipo de clientes se autentican por IP."
 
 #: ../../security_and_maintenance/security/geoip_filter.rst:12
 msgid ""
@@ -41,10 +47,15 @@ msgid ""
 "country. If you want to allow specific IPs, use "
 ":ref:`client_authorized_ip_ranges` instead."
 msgstr ""
+"Seleccionar un país permitirá el tráfico de todas las direcciones de ese "
+"país. Si desea permitir IPs específicas, use "
+":ref:`rangos de IP autorizados del cliente <client_authorized_ip_ranges>`."
 
 #: ../../security_and_maintenance/security/geoip_filter.rst:15
 msgid ""
 "Enabling **Filter by IP address** and leaving blank both **GeoIP "
 "countries** and **List of authorized sources** will prevent all calls."
 msgstr ""
+"Habilitar **Filtrar por dirección IP** y dejar en blanco tanto **Países GeoIP** "
+"como **Lista de fuentes autorizadas** evitará todas las llamadas."
 
