@@ -287,6 +287,8 @@ const _testWholesaleCompany = (props: TestCompanyProps) => {
     );
   }
 
+  removeFields.push('applicationServerSet');
+
   const form = _.omit(company, removeFields);
   cy.fillTheForm(form);
 };
