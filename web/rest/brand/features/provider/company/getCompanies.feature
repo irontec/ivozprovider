@@ -136,7 +136,7 @@ Feature: Retrieve companies
               },
               "outgoingDdi": null,
               "corporation": null,
-              "applicationServerSet": 1,
+              "applicationServerSet": 0,
               "mediaRelaySet": 0,
               "domainName": null,
               "currencySymbol": "€",

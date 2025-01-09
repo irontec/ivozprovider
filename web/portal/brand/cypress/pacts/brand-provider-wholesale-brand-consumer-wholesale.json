@@ -27,13 +27,13 @@
           "defaultTimezone": "1",
           "country": 3,
           "currency": null,
-          "applicationServerSet": 1,
           "mediaRelaySet": 0,
           "routingTagIds": [],
           "domainUsers": null,
           "name": "Wholesale",
           "maxDailyUsageEmail": "",
-          "transformationRuleSet": 1
+          "transformationRuleSet": 1,
+          "applicationServerSet": 0
         },
         "query": ""
       },
@@ -121,7 +121,6 @@
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
           "accessCredentialNotificationTemplate": null,
-          "applicationServerSet": 1,
           "mediaRelaySet": 0,
           "routingTagIds": [],
           "codecIds": [],
@@ -137,7 +136,8 @@
           "domainUsers": null,
           "maxDailyUsageEmail": "",
           "externallyextraopts": "",
-          "transformationRuleSet": 1
+          "transformationRuleSet": 1,
+          "applicationServerSet": 0
         },
         "query": ""
       },
