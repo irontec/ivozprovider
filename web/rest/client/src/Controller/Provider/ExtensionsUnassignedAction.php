@@ -39,10 +39,15 @@ class ExtensionsUnassignedAction
         $company = $admin->getCompany();
 
         $includeId = (int) $request->query->get('_includeId');
-        $userId = (int) $request->query->get('_userId');
+        $userId = $request->query->get('_userId');
+
         $includeIds = $includeId
             ? [$includeId]
             : [];
+
+        $userId = $userId
+            ? (int) $userId
+            : null;
 
         $extensions = $this->extensionRepository->findUnassignedByCompanyId(
             (int) $company->getId(),
