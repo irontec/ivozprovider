@@ -107,7 +107,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
       fields: [
         edit && isVpbx && 'outgoingDdi',
         edit && isVpbx && 'outgoingDdiRule',
-        'applicationServerSet',
+        !isWholesale && 'applicationServerSet',
         'mediaRelaySet',
       ],
     },
