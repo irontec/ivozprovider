@@ -19,144 +19,144 @@ msgstr ""
 
 #: ../../administration_portal/brand/billing/index.rst:5
 msgid "Billing"
-msgstr ""
+msgstr "Tarificación"
 
 #: ../../administration_portal/brand/billing/index.rst:7
 msgid ""
 "Billing a call is the **action of setting a price** to a call that "
 "implies cost."
-msgstr ""
+msgstr "Tarificar una llamada es la **acción de establecer un precio** a una llamada que implica un costo."
 
 #: ../../administration_portal/brand/billing/index.rst:9
 msgid "Billing calls depends upon an automatic process:"
-msgstr ""
+msgstr "La tarificación de llamadas depende de un proceso automático:"
 
 #: ../../administration_portal/brand/billing/index.rst:11
 msgid ""
 "When a call is about to be established, IvozProvider verifies that it "
 "will be able to bill it."
-msgstr ""
+msgstr "Cuando una llamada está a punto de establecerse, IvozProvider verifica que podrá tarificarla."
 
 #: ../../administration_portal/brand/billing/index.rst:13
 msgid ""
 "If with the current configuration (active and applicable rating plans for"
 " a given client and for the specific destination) it won't be possible to"
 " bill the call, IvozProvider will prevent its establishment."
-msgstr ""
+msgstr "Si con la configuración actual (planes de tarifas activos y aplicables para un cliente determinado y para el destino específico) no es posible tarificar la llamada, IvozProvider evitará su establecimiento."
 
 #: ../../administration_portal/brand/billing/index.rst:17
 msgid ""
 "Once a call that implies cost is hung up and is parsed by an asynchronous"
 " process, it is listed in :ref:`external_calls`."
-msgstr ""
+msgstr "Una vez que una llamada que implica un costo se cuelga y se analiza mediante un proceso asincrónico, se lista en :ref:`llamadas_externas <external_calls>`."
 
 #: ../../administration_portal/brand/billing/index.rst:21
 msgid "Billing methods"
-msgstr ""
+msgstr "Métodos de tarificación"
 
 #: ../../administration_portal/brand/billing/index.rst:23
 msgid ""
 "IvozProvider supports 3 different billing methods. Billing method is "
 "configured at client level via *Billing method* parameter."
-msgstr ""
+msgstr "IvozProvider admite 3 métodos de tarificación diferentes. El método de tarificación se configura a nivel de cliente mediante el parámetro *Método de tarificación*."
 
 #: ../../administration_portal/brand/billing/index.rst:28
 msgid "Postpaid billing"
-msgstr ""
+msgstr "Tarificación postpago"
 
 #: ../../administration_portal/brand/billing/index.rst:30
 #: ../../administration_portal/brand/billing/index.rst:55
 msgid "Call rating is done after the call ends."
-msgstr ""
+msgstr "La calificación de la llamada se realiza después de que la llamada termina."
 
 #: ../../administration_portal/brand/billing/index.rst:32
 msgid "No configurable limit or balances involved."
-msgstr ""
+msgstr "No hay límite configurable ni saldos involucrados."
 
 #: ../../administration_portal/brand/billing/index.rst:38
 msgid "Prepaid billing"
-msgstr ""
+msgstr "Tarificación prepago"
 
 #: ../../administration_portal/brand/billing/index.rst:40
 msgid "Call rating is done during the call."
-msgstr ""
+msgstr "La calificación de la llamada se realiza durante la llamada."
 
 #: ../../administration_portal/brand/billing/index.rst:42
 msgid ""
 "Clients with prepaid billing method have a preconfigured balance that "
 "will be decrement during the call."
-msgstr ""
+msgstr "Los clientes con el método de tarificación prepago tienen un saldo preconfigurado que se decrementará durante la llamada."
 
 #: ../../administration_portal/brand/billing/index.rst:44
 msgid ""
 "When the balance reaches zero, all established calls for the client will "
 "hang up."
-msgstr ""
+msgstr "Cuando el saldo llegue a cero, todas las llamadas establecidas para el cliente se colgarán."
 
 #: ../../administration_portal/brand/billing/index.rst:46
 msgid "Clients cannot place new calls with zero or negative balance."
-msgstr ""
+msgstr "Los clientes no pueden realizar nuevas llamadas con saldo cero o negativo."
 
 #: ../../administration_portal/brand/billing/index.rst:48
 #: ../../administration_portal/brand/billing/index.rst:61
 msgid "Low balance email notifications can be configured."
-msgstr ""
+msgstr "Se pueden configurar notificaciones por correo electrónico de saldo bajo."
 
 #: ../../administration_portal/brand/billing/index.rst:53
 msgid "Pseudo-prepaid billing"
-msgstr ""
+msgstr "Tarificación pseudo-prepago"
 
 #: ../../administration_portal/brand/billing/index.rst:57
 msgid ""
 "Clients with pseudo-prepaid billing method have a preconfigured balance "
 "that will be decrement after the call ends."
-msgstr ""
+msgstr "Los clientes con el método de tarificación pseudo-prepago tienen un saldo preconfigurado que se decrementará después de que la llamada termina."
 
 #: ../../administration_portal/brand/billing/index.rst:59
 msgid "Clients cannot place new calls with zero or below balance."
-msgstr ""
+msgstr "Los clientes no pueden realizar nuevas llamadas con saldo cero o negativo."
 
 #: ../../administration_portal/brand/billing/index.rst:63
 msgid ""
 "Call duration is limited to the maximum duration possible with available "
 "balance at the moment of call establishment."
-msgstr ""
+msgstr "La duración de la llamada está limitada a la duración máxima posible con el saldo disponible en el momento del establecimiento de la llamada."
 
 #: ../../administration_portal/brand/billing/index.rst:67
 msgid "Price and cost"
-msgstr ""
+msgstr "Precio y costo"
 
 #: ../../administration_portal/brand/billing/index.rst:69
 msgid ""
 "Call **price** is the amount of money the brand operator will charge to "
 "its **client** for every call."
-msgstr ""
+msgstr "El **precio** de la llamada es la cantidad de dinero que el operador de la marca cobrará a su **cliente** por cada llamada."
 
 #: ../../administration_portal/brand/billing/index.rst:71
 msgid ""
 "Call **cost** is the amount of money the brand operator will be charged "
 "by the **carrier** for every call."
-msgstr ""
+msgstr "El **costo** de la llamada es la cantidad de dinero que el operador de la marca será cobrado por el **operador** por cada llamada."
 
 #: ../../administration_portal/brand/billing/index.rst:73
 msgid ""
 "**Call cost calculation is optional**, as no every carrier has *Calculate"
 " Cost?* setting enabled. On the other hand, **call price calculation is "
 "mandatory** for every outgoing call."
-msgstr ""
+msgstr "**El cálculo del costo de la llamada es opcional**, ya que no todos los operadores tienen habilitada la configuración *¿Calcular costo?*. Por otro lado, **el cálculo del precio de la llamada es obligatorio** para cada llamada saliente."
 
 #: ../../administration_portal/brand/billing/index.rst:76
 msgid ""
 "Carrier call cost calculation, if enabled, is always done postpaid. "
 "Carriers with negative balance are allowed and no call will be hung up "
 "when carrier balance reaches 0."
-msgstr ""
+msgstr "El cálculo del costo de la llamada del operador, si está habilitado, siempre se realiza postpago. Se permiten operadores con saldo negativo y no se colgará ninguna llamada cuando el saldo del operador llegue a 0."
 
 #: ../../administration_portal/brand/billing/index.rst:81
 msgid "Concepts"
-msgstr ""
+msgstr "Conceptos"
 
 #: ../../administration_portal/brand/billing/index.rst:83
 msgid "This topic will cover every topic involved in the billing process:"
-msgstr ""
+msgstr "Este tema cubrirá todos los temas involucrados en el proceso de tarificación:"
 

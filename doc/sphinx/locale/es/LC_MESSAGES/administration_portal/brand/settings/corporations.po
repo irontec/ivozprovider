@@ -19,39 +19,41 @@ msgstr ""
 
 #: ../../administration_portal/brand/settings/corporations.rst:5
 msgid "Corporations"
-msgstr ""
+msgstr "Corporaciones"
 
 #: ../../administration_portal/brand/settings/corporations.rst:7
 msgid "Corporations allows clients to be grouped into a single entity:"
-msgstr ""
+msgstr "Las corporaciones permiten agrupar a los clientes en una sola entidad:"
 
 #: ../../administration_portal/brand/settings/corporations.rst:9
 msgid ""
 "Enables :ref:`Inter VPBX friends <internal_friends>` to call the "
 "extension of another vPBX of the same Corporation"
 msgstr ""
+"Permite a :ref:`Amigos Inter VPBX <internal_friends>` llamar a la "
+"extensión de otro vPBX de la misma Corporación"
 
 #: ../../administration_portal/brand/settings/corporations.rst:12
 msgid "These are the fields shown for new corporations:"
-msgstr ""
+msgstr "Estos son los campos que se muestran para nuevas corporaciones:"
 
 #: ../../administration_portal/brand/settings/corporations.rst:15
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/brand/settings/corporations.rst:15
 msgid "Used to reference this corporation"
-msgstr ""
+msgstr "Usado para referenciar esta corporación"
 
 #: ../../administration_portal/brand/settings/corporations.rst:19
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../administration_portal/brand/settings/corporations.rst:18
 msgid "Additional information"
-msgstr ""
+msgstr "Información adicional"
 
 #: ../../administration_portal/brand/settings/corporations.rst:21
 msgid "Corporation can be assigned in the client edit screen."
-msgstr ""
+msgstr "La corporación se puede asignar en la pantalla de edición del cliente."
 

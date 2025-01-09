@@ -19,23 +19,29 @@ msgstr ""
 
 #: ../../administration_portal/brand/settings/generic_match_lists.rst:5
 msgid "Generic Match Lists"
-msgstr ""
+msgstr "Listas de coincidencias genéricas"
 
 #: ../../administration_portal/brand/settings/generic_match_lists.rst:7
 msgid ""
 ":ref:`Match Lists` are designed to group well known numbers or patterns "
 "in order to use them in specific treatments."
 msgstr ""
+":ref:`Listas de coincidencias <Match Lists>` están diseñadas para agrupar números o patrones bien conocidos "
+"con el fin de utilizarlos en tratamientos específicos."
 
 #: ../../administration_portal/brand/settings/generic_match_lists.rst:9
 msgid ""
 "Brand administrators can create generic Match lists to have it available "
 "for new clients."
 msgstr ""
+"Los administradores de la marca pueden crear listas de coincidencias genéricas para tenerlas disponibles "
+"para nuevos clientes."
 
 #: ../../administration_portal/brand/settings/generic_match_lists.rst:11
 msgid ""
 "Existing matchlists will be copied for new vPBX clients. Already existing"
 " clients won't be affected at all by by changes made here."
 msgstr ""
+"Las listas de coincidencias existentes se copiarán para los nuevos clientes de vPBX. Los clientes ya existentes "
+"no se verán afectados en absoluto por los cambios realizados aquí."
 

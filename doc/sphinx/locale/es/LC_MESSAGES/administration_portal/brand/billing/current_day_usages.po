@@ -19,76 +19,76 @@ msgstr ""
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:5
 msgid "Current day usages"
-msgstr ""
+msgstr "Usos del día actual"
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:7
 msgid "This section lists current day usage for each client in the brand:"
-msgstr ""
+msgstr "Esta sección lista el uso del día actual para cada cliente en la marca:"
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:10
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:10
 msgid "Type of client (vPBX, retail, residential or wholesale)."
-msgstr ""
+msgstr "Tipo de cliente (vPBX, minorista, residencial o mayorista)."
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:13
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:13
 msgid "Client name."
-msgstr ""
+msgstr "Nombre del cliente."
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:16
 msgid "Today usage"
-msgstr ""
+msgstr "Uso de hoy"
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:16
 msgid "Amount of spent money in today's external calls."
-msgstr ""
+msgstr "Cantidad de dinero gastado en las llamadas externas de hoy."
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:19
 msgid "Max daily usage"
-msgstr ""
+msgstr "Uso diario máximo"
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:19
 msgid ""
 "When this threshold is reached, account is disabled. At midnight, it will"
 " be re-enabled."
-msgstr ""
+msgstr "Cuando se alcanza este umbral, la cuenta se desactiva. A medianoche, se volverá a habilitar."
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:23
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:22
 msgid "Whether account has been disabled or not."
-msgstr ""
+msgstr "Si la cuenta ha sido desactivada o no."
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:25
 msgid ""
 "Client max daily usage is configured in **Clients configuration** with "
 "**Max daily usage** parameter."
-msgstr ""
+msgstr "El uso diario máximo del cliente se configura en **Configuración de clientes** con el parámetro **Uso diario máximo**."
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:27
 msgid ""
 "If an account is disabled, increasing its counter above current day "
 "usages re-enables it. Otherwise, it will be re-enabled at midnight."
-msgstr ""
+msgstr "Si una cuenta está desactivada, aumentar su contador por encima de los usos del día actual la vuelve a habilitar. De lo contrario, se volverá a habilitar a medianoche."
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:31
 msgid ""
 "This is one of main :ref:`security` mechanisms available in IvozProvider."
 " Use it to avoid toll fraud calls (see :ref:`Current day max usage`)."
-msgstr ""
+msgstr "Este es uno de los principales mecanismos de :ref:`seguridad<security>` disponibles en IvozProvider. Úselo para evitar llamadas de fraude de peaje (ver :ref:`Uso máximo del día actual<Current day max usage>`)."
 
 #: ../../administration_portal/brand/billing/current_day_usages.rst:34
 msgid ""
 "This section shows runtime value obtained asking to CGRateS (value "
 "actually applying) that should be equal to the one set editing the client"
 " itself. If data is shown in red, these values differ."
-msgstr ""
+msgstr "Esta sección muestra el valor en tiempo de ejecución obtenido al preguntar a CGRateS (valor que realmente se aplica) que debe ser igual al establecido al editar el propio cliente. Si los datos se muestran en rojo, estos valores difieren."
 

@@ -19,15 +19,17 @@ msgstr ""
 
 #: ../../administration_portal/brand/clients/index.rst:3
 msgid "Clients"
-msgstr ""
+msgstr "Clientes"
 
 #: ../../administration_portal/brand/clients/index.rst:5
 msgid ""
 "This group will show all available client types for a given "
 "(emulated/logged in) brand:"
 msgstr ""
+"Este grupo mostrará todos los tipos de clientes disponibles para una "
+"marca dada (emulada/registrada):"
 
 #: ../../administration_portal/brand/clients/index.rst:17
 msgid "Available client types can be configured through *Brand Features*."
-msgstr ""
+msgstr "Los tipos de clientes disponibles se pueden configurar a través de *Características de la marca*."
 

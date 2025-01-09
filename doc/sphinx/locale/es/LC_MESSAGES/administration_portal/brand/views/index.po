@@ -19,11 +19,13 @@ msgstr ""
 
 #: ../../administration_portal/brand/views/index.rst:3
 msgid "Views"
-msgstr ""
+msgstr "Vistas"
 
 #: ../../administration_portal/brand/views/index.rst:5
 msgid ""
 "Sections in this group list read-only handy information for brand "
 "operators:"
 msgstr ""
+"Las secciones de este grupo enumeran información útil de solo lectura para los "
+"operadores de la marca:"
 

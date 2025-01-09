@@ -19,252 +19,278 @@ msgstr ""
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:5
 msgid "Destination Rates"
-msgstr ""
+msgstr "Tarifas de Destino"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:7
 msgid "A *Destination rate* groups some prefixes with their cost details."
-msgstr ""
+msgstr "Una *tarifa de destino* agrupa algunos prefijos con sus detalles de costo."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:9
 msgid "They only have two fields:"
-msgstr ""
+msgstr "Solo tienen dos campos:"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:12
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:12
 msgid "Name to reference the destination rate"
-msgstr ""
+msgstr "Nombre para referenciar la tarifa de destino"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:15
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:15
 msgid "Additional details"
-msgstr ""
+msgstr "Detalles adicionales"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:18
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:18
 msgid "All rates imported/added will use this currency"
-msgstr ""
+msgstr "Todas las tarifas importadas/agregadas usarán esta moneda"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:22
 msgid "Deductible Connection Fee"
-msgstr ""
+msgstr "Tarifa de Conexión Deducible"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:21
 msgid ""
 "Set to 'No' for typical fee charged at call establishment. Set to 'Yes' "
 "to enable minimal-cost-alike behaviour (read below)."
 msgstr ""
+"Configurar en 'No' para la tarifa típica cobrada al establecer la llamada. Configurar en 'Sí' "
+"para habilitar el comportamiento similar al costo mínimo (leer abajo)."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:24
 msgid ""
 "Destination rate names are not shown to the final client, you can use "
 "whatever makes sense to you."
 msgstr ""
+"Los nombres de las tarifas de destino no se muestran al cliente final, puedes usar "
+"lo que tenga sentido para ti."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:28
 msgid "Deductible Connection Fee (Minimal Cost)"
-msgstr ""
+msgstr "Tarifa de Conexión Deducible (Costo Mínimo)"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:30
 msgid ""
 "When Destination Rate has *Deductible Connection Fee* set to yes, all "
 "rates' Connection Fee will behave like Minimal Cost."
 msgstr ""
+"Cuando la Tarifa de Destino tiene *Tarifa de Conexión Deducible* configurada en sí, todas "
+"las tarifas de Conexión se comportarán como Costo Mínimo."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:32
 msgid "This is underlying logic:"
-msgstr ""
+msgstr "Esta es la lógica subyacente:"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:34
 msgid "When call is established, Connection Fee of matched prefix is charged."
-msgstr ""
+msgstr "Cuando se establece la llamada, se cobra la Tarifa de Conexión del prefijo coincidente."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:36
 msgid "When call is hung up:"
-msgstr ""
+msgstr "Cuando se cuelga la llamada:"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:38
 msgid ""
 "Total cost without connection fee is calculated "
 "(CostWithoutConnectionFee):"
 msgstr ""
+"Se calcula el costo total sin la tarifa de conexión "
+"(CostWithoutConnectionFee):"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:40
 msgid ""
 "If is greater than connection fee, connection fee is subtracted from "
 "total cost."
 msgstr ""
+"Si es mayor que la tarifa de conexión, la tarifa de conexión se resta del "
+"costo total."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:42
 msgid "Final connection fee: 0"
-msgstr ""
+msgstr "Tarifa de conexión final: 0"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:44
 msgid "Final cost: CostWithoutConnectionFee"
-msgstr ""
+msgstr "Costo final: CostWithoutConnectionFee"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:46
 msgid ""
 "If is lower than connection fee, connection fee is adjusted so that total"
 " cost is equal to connection fee."
 msgstr ""
+"Si es menor que la tarifa de conexión, la tarifa de conexión se ajusta para que el costo total "
+"sea igual a la tarifa de conexión."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:48
 msgid "Final connection fee: ConnectionFee - CostWithoutConnectionFee"
-msgstr ""
+msgstr "Tarifa de conexión final: ConnectionFee - CostWithoutConnectionFee"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:50
 msgid "Final cost: ConnectionFee"
-msgstr ""
+msgstr "Costo final: ConnectionFee"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:52
 msgid "In both cases, cost difference is refunded to affected balances."
-msgstr ""
+msgstr "En ambos casos, la diferencia de costo se reembolsa a los saldos afectados."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:56
 msgid "Connection fee 0.01 - Total cost 0.21"
-msgstr ""
+msgstr "Tarifa de conexión 0.01 - Costo total 0.21"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:57
 msgid "Cost without connection fee: 0.20"
-msgstr ""
+msgstr "Costo sin tarifa de conexión: 0.20"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:59
 msgid "As 0.20 > 0.01:"
-msgstr ""
+msgstr "Como 0.20 > 0.01:"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:61
 msgid "Call cost is reduced to 0.20"
-msgstr ""
+msgstr "El costo de la llamada se reduce a 0.20"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:63
 msgid "0.01 is refunded to affected balances"
-msgstr ""
+msgstr "0.01 se reembolsa a los saldos afectados"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:66
 msgid "Connection fee 0.01 - Total cost 0.013"
-msgstr ""
+msgstr "Tarifa de conexión 0.01 - Costo total 0.013"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:67
 msgid "Cost without connection fee: 0.003"
-msgstr ""
+msgstr "Costo sin tarifa de conexión: 0.003"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:69
 msgid "As 0.003 < 0.01:"
-msgstr ""
+msgstr "Como 0.003 < 0.01:"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:71
 msgid "Call cost is reduced to 0.01"
-msgstr ""
+msgstr "El costo de la llamada se reduce a 0.01"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:73
 msgid "0.003 is refunded to affected balances"
-msgstr ""
+msgstr "0.003 se reembolsa a los saldos afectados"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:76
 msgid "This setting guarantees a minimal cost of 0.01."
-msgstr ""
+msgstr "Esta configuración garantiza un costo mínimo de 0.01."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:82
 msgid "Add rates manually"
-msgstr ""
+msgstr "Agregar tarifas manualmente"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:84
 msgid ""
 "Brand operator can add rates by hand, filling these fields (**List of "
 "rates** subsection):"
 msgstr ""
+"El operador de la marca puede agregar tarifas manualmente, llenando estos campos (**Lista de "
+"tarifas** subsección):"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:87
 msgid "Destination"
-msgstr ""
+msgstr "Destino"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:87
 msgid "Pre-created destination that specifies a concrete prefix."
-msgstr ""
+msgstr "Destino pre-creado que especifica un prefijo concreto."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:90
 #: ../../administration_portal/brand/billing/destination_rates.rst:168
 msgid "Connection charge"
-msgstr ""
+msgstr "Cargo de conexión"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:90
 msgid "The amount that is charged just for call establishment."
-msgstr ""
+msgstr "La cantidad que se cobra solo por el establecimiento de la llamada."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:93
 msgid "Interval start"
-msgstr ""
+msgstr "Inicio del intervalo"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:93
 msgid ""
 "When should the billing engine start rating the calls. If you set it to "
 "10, first 10 seconds will be for free."
 msgstr ""
+"Cuándo debe el motor de facturación comenzar a calificar las llamadas. Si lo configuras en "
+"10, los primeros 10 segundos serán gratis."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:96
 #: ../../administration_portal/brand/billing/destination_rates.rst:167
 msgid "Per minute rate"
-msgstr ""
+msgstr "Tarifa por minuto"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:96
 msgid "Price per minute of conversation."
-msgstr ""
+msgstr "Precio por minuto de conversación."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:99
 #: ../../administration_portal/brand/billing/destination_rates.rst:172
 msgid "Charge period"
-msgstr ""
+msgstr "Período de cobro"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:99
 msgid "Increase cost every seconds? Or in 10 second intervals? Or every minute?"
 msgstr ""
+"¿Aumentar el costo cada segundos? ¿O en intervalos de 10 segundos? ¿O cada minuto?"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:101
 msgid ""
 "A call with less duration that the one defined in interval start will "
 "have the price of the **Connection fee**."
 msgstr ""
+"Una llamada con una duración menor a la definida en el inicio del intervalo tendrá "
+"el precio de la **Tarifa de Conexión**."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:103
 msgid ""
 "All decimals must use point as decimal delimiter. 4 decimals precision is"
 " used."
 msgstr ""
+"Todos los decimales deben usar punto como delimitador decimal. Se usa una precisión de 4 decimales."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:106
 msgid "How it works"
-msgstr ""
+msgstr "Cómo funciona"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:107
 msgid ""
 "Call cost/price is increased by (*Per minute rate* / 60 ) * *charge "
 "period* every *charge period* seconds:"
 msgstr ""
+"El costo/precio de la llamada se incrementa en (*Tarifa por minuto* / 60 ) * *período de cobro* "
+"cada *período de cobro* segundos:"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:109
 msgid ""
 "If *billing period* is set to 1, every second the price will be increased"
 " *price per minute* divided by 60 (bill by seconds)."
 msgstr ""
+"Si el *período de facturación* se establece en 1, cada segundo el precio se incrementará "
+"*precio por minuto* dividido por 60 (facturación por segundos)."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:112
 msgid ""
 "If *billing period* is set to 60, every minute the price will be "
 "increased *price per minute* (bill by minutes)."
 msgstr ""
+"Si el *período de facturación* se establece en 60, cada minuto el precio se incrementará "
+"*precio por minuto* (facturación por minutos)."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:119
 msgid "Importing a CSV file"
-msgstr ""
+msgstr "Importando un archivo CSV"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:121
 msgid ""
@@ -273,18 +299,25 @@ msgid ""
 " 254 countries, each of them with their mobile networks, landline "
 "networks, special service numbers, etc."
 msgstr ""
+"En este punto, el operador de la marca puede haber notado que agregar miles "
+"de tarifas sería una tarea realmente molesta y que consume mucho tiempo, ya que hay "
+"254 países, cada uno con sus redes móviles, redes fijas, números de servicios especiales, etc."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:126
 msgid ""
 "That's why the creation of destination rates is done using a `CSV "
 "<https://es.wikipedia.org/wiki/CSV>`_ file."
 msgstr ""
+"Es por eso que la creación de tarifas de destino se realiza utilizando un archivo `CSV "
+"<https://es.wikipedia.org/wiki/CSV>`_."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:129
 msgid ""
 "The first step is creating an empty *Destination rate* to import the "
 "prices in and using **Import rates** option."
 msgstr ""
+"El primer paso es crear una *tarifa de destino* vacía para importar los "
+"precios y usar la opción **Importar tarifas**."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:132
 msgid ""
@@ -293,16 +326,22 @@ msgid ""
 "recommended format. We can also decide whether to import the first line "
 "or discard it as it may have titles instead of data."
 msgstr ""
+"Podemos seleccionar qué columna contiene qué campo, en caso de que queramos "
+"importar un archivo `CSV <https://es.wikipedia.org/wiki/CSV>`_ en un formato no "
+"recomendado. También podemos decidir si importar la primera línea "
+"o descartarla ya que puede tener títulos en lugar de datos."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:137
 msgid ""
 "The importing process is done in background, letting the brand operator "
 "continue doing other stuff while it is finished."
 msgstr ""
+"El proceso de importación se realiza en segundo plano, permitiendo al operador de la marca "
+"continuar haciendo otras cosas mientras se termina."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:141
 msgid "CSV format"
-msgstr ""
+msgstr "Formato CSV"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:143
 msgid ""
@@ -310,14 +349,17 @@ msgid ""
 "files, we encourage you to import a file in the proposed format, as it "
 "will make this process much easier:"
 msgstr ""
+"Aunque la ventana de importación permite importar archivos CSV en formatos no recomendados, "
+"te recomendamos importar un archivo en el formato propuesto, ya que "
+"hará este proceso mucho más fácil:"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:147
 msgid "Comma is the only allowed separator character."
-msgstr ""
+msgstr "La coma es el único carácter separador permitido."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:149
 msgid "Single quotes are not supported."
-msgstr ""
+msgstr "Las comillas simples no son compatibles."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:151
 msgid ""
@@ -325,42 +367,49 @@ msgid ""
 "<https://raw.githubusercontent.com/ "
 "irontec/ivozprovider/bleeding/web/portal/brand/samples/billing/pricesSample.csv>`_."
 msgstr ""
+"Puedes encontrar un CSV de muestra para importar `aquí "
+"<https://raw.githubusercontent.com/ "
+"irontec/ivozprovider/bleeding/web/portal/brand/samples/billing/pricesSample.csv>`_."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:155
 msgid "The order of the columns should be:"
-msgstr ""
+msgstr "El orden de las columnas debe ser:"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:157
 msgid "Destination name"
-msgstr ""
+msgstr "Nombre del destino"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:159
 msgid ""
 "If they contain any comma, they MUST be quoted with double quotes. "
 "Otherwise, double quotes are optional."
 msgstr ""
+"Si contienen alguna coma, DEBEN estar entre comillas dobles. "
+"De lo contrario, las comillas dobles son opcionales."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:161
 msgid "Destination prefix"
-msgstr ""
+msgstr "Prefijo del destino"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:163
 msgid "MUST start with + sign."
-msgstr ""
+msgstr "DEBE comenzar con el signo +."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:165
 msgid ""
 "If same prefix is used in multiple times in CSV file, import process will"
 " fail."
 msgstr ""
+"Si el mismo prefijo se usa varias veces en el archivo CSV, el proceso de importación "
+"fallará."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:170
 msgid "MUST use point as decimal separator."
-msgstr ""
+msgstr "DEBE usar punto como separador decimal."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:174
 msgid "Given in seconds, only integers greater or equal 1 are supported."
-msgstr ""
+msgstr "Dado en segundos, solo se admiten enteros mayores o iguales a 1."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:177
 msgid ""
@@ -368,38 +417,47 @@ msgid ""
 " rate into some rating plan and bind it to the clients/carriers we want "
 "following the procedure explained in :ref:`Rating plans`."
 msgstr ""
+"Una vez que el proceso de importación haya terminado, solo tenemos que incluir esta tarifa de destino "
+"en algún plan de tarifas y vincularlo a los clientes/carriers que queramos "
+"siguiendo el procedimiento explicado en :ref:`Planes de tarifas <Rating plans>`."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:183
 msgid "Re-importing a CSV file"
-msgstr ""
+msgstr "Reimportando un archivo CSV"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:185
 msgid ""
 "Once a CSV (first.csv) is imported into an empty destination-rates row, "
 "you can **import another CSV** (second.csv)."
 msgstr ""
+"Una vez que un CSV (first.csv) se importa en una fila de tarifas de destino vacía, "
+"puedes **importar otro CSV** (second.csv)."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:187
 msgid "However, it is **important to understand what happens** when you do so:"
 msgstr ""
+"Sin embargo, es **importante entender lo que sucede** cuando lo haces:"
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:189
 msgid "Prefixes in both CSV will get its rate **updated** with second's CSV one."
 msgstr ""
+"Los prefijos en ambos CSV tendrán su tarifa **actualizada** con la del segundo CSV."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:191
 msgid "Prefixes existing only in the first CSV file will be **kept**."
-msgstr ""
+msgstr "Los prefijos que existen solo en el primer archivo CSV se **mantendrán**."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:193
 msgid "Prefixes existing only in the second CSV file will be **added**."
-msgstr ""
+msgstr "Los prefijos que existen solo en el segundo archivo CSV se **agregarán**."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:196
 msgid ""
 "Downloading CSV using *Imported file* option will always download **last "
 "imported CSV file** (no the combination of both as described above)."
 msgstr ""
+"Descargar CSV usando la opción *Archivo importado* siempre descargará **el último "
+"archivo CSV importado** (no la combinación de ambos como se describe arriba)."
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:199
 msgid ""
@@ -408,4 +466,8 @@ msgid ""
 "*second.csv*. And downloading *Imported file* will download *second.csv*,"
 " that is exactly the current state of destination-rate."
 msgstr ""
+"Ten en cuenta que si tanto *first.csv* como *second.csv* contienen exactamente los mismos "
+"prefijos, la tarifa de destino resultante será como si solo hubiéramos importado "
+"*second.csv*. Y descargar *Archivo importado* descargará *second.csv*, "
+"que es exactamente el estado actual de la tarifa de destino."
 

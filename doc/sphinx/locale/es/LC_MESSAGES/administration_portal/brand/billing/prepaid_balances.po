@@ -19,46 +19,46 @@ msgstr ""
 
 #: ../../administration_portal/brand/billing/prepaid_balances.rst:3
 msgid "Prepaid balances"
-msgstr ""
+msgstr "Saldos prepago"
 
 #: ../../administration_portal/brand/billing/prepaid_balances.rst:5
 msgid ""
 "This section displays the balance status for :ref:`Prepaid billing` and "
 ":ref:`Pseudo-prepaid billing` clients."
-msgstr ""
+msgstr "Esta sección muestra el estado del saldo para clientes con :ref:`Facturación prepago <Prepaid billing>` y :ref:`Facturación pseudo-prepago <Pseudo-prepaid billing>`."
 
 #: ../../administration_portal/brand/billing/prepaid_balances.rst:7
 msgid "Following options are available for each client:"
-msgstr ""
+msgstr "Las siguientes opciones están disponibles para cada cliente:"
 
 #: ../../administration_portal/brand/billing/prepaid_balances.rst:10
 msgid "Balance Operations"
-msgstr ""
+msgstr "Operaciones de saldo"
 
 #: ../../administration_portal/brand/billing/prepaid_balances.rst:12
 msgid ""
 "Brand administrators increase/decrease the balance of a given client "
 "using this option."
-msgstr ""
+msgstr "Los administradores de la marca aumentan/disminuyen el saldo de un cliente determinado utilizando esta opción."
 
 #: ../../administration_portal/brand/billing/prepaid_balances.rst:15
 msgid "Balance Movements List"
-msgstr ""
+msgstr "Lista de movimientos de saldo"
 
 #: ../../administration_portal/brand/billing/prepaid_balances.rst:17
 msgid ""
 "Brand administrators can keep track the balance movements (increase or "
 "decrease) on this account and their status after the movement."
-msgstr ""
+msgstr "Los administradores de la marca pueden rastrear los movimientos de saldo (aumento o disminución) en esta cuenta y su estado después del movimiento."
 
 #: ../../administration_portal/brand/billing/prepaid_balances.rst:22
 msgid "Balance Notifications"
-msgstr ""
+msgstr "Notificaciones de saldo"
 
 #: ../../administration_portal/brand/billing/prepaid_balances.rst:24
 msgid ""
 "Brand administrators can configure email notifications when the balance "
 "is below a given threshold. See :ref:`Notification templates` to "
 "customize the sent email."
-msgstr ""
+msgstr "Los administradores de la marca pueden configurar notificaciones por correo electrónico cuando el saldo esté por debajo de un umbral determinado. Consulte :ref:`Plantillas de notificación <Notification templates>` para personalizar el correo electrónico enviado."
 

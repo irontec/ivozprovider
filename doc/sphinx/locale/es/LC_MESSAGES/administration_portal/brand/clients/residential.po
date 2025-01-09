@@ -19,193 +19,214 @@ msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:3
 msgid "Residential"
-msgstr ""
+msgstr "Residencial"
 
 #: ../../administration_portal/brand/clients/residential.rst:5
 msgid ""
 "Residential clients are a more lightweight client type than *vPBX "
 "clients*."
 msgstr ""
+"Los clientes residenciales son un tipo de cliente más ligero que los *clientes vPBX*."
 
 #: ../../administration_portal/brand/clients/residential.rst:7
 msgid "Their target is to provide these services to residential environments:"
-msgstr ""
+msgstr "Su objetivo es proporcionar estos servicios a entornos residenciales:"
 
 #: ../../administration_portal/brand/clients/residential.rst:9
 msgid "Configure one or more residential devices (SIP devices)."
-msgstr ""
+msgstr "Configurar uno o más dispositivos residenciales (dispositivos SIP)."
 
 #: ../../administration_portal/brand/clients/residential.rst:10
 msgid "Setup one or more DDIs."
-msgstr ""
+msgstr "Configurar uno o más DDI."
 
 #: ../../administration_portal/brand/clients/residential.rst:11
 msgid "**Place external calls** showing one of those DDIs."
-msgstr ""
+msgstr "**Realizar llamadas externas** mostrando uno de esos DDI."
 
 #: ../../administration_portal/brand/clients/residential.rst:12
 msgid "**Receive external calls** to their DDIs."
-msgstr ""
+msgstr "**Recibir llamadas externas** a sus DDI."
 
 #: ../../administration_portal/brand/clients/residential.rst:13
 msgid "Send/Receive virtual faxes."
-msgstr ""
+msgstr "Enviar/Recibir faxes virtuales."
 
 #: ../../administration_portal/brand/clients/residential.rst:14
 msgid "Record calls."
-msgstr ""
+msgstr "Grabar llamadas."
 
 #: ../../administration_portal/brand/clients/residential.rst:16
 msgid ""
 "No users, no extensions, no internal calls, no hunt groups, no IVRs... "
 "just **incoming and outgoing external calls (and a few voice services)**."
 msgstr ""
+"Sin usuarios, sin extensiones, sin llamadas internas, sin grupos de búsqueda, sin IVR... "
+"solo **llamadas externas entrantes y salientes (y algunos servicios de voz)**."
 
 #: ../../administration_portal/brand/clients/residential.rst:19
 msgid ""
 "Residential clients and their devices **MUST use Brand's SIP domain in "
 "their SIP messages**."
 msgstr ""
+"Los clientes residenciales y sus dispositivos **DEBEN usar el dominio SIP de la marca en "
+"sus mensajes SIP**."
 
 #: ../../administration_portal/brand/clients/residential.rst:22
 msgid "Adding/Editing residential clients"
-msgstr ""
+msgstr "Agregar/Editar clientes residenciales"
 
 #: ../../administration_portal/brand/clients/residential.rst:24
 msgid ""
 "Some fields described below may not be visible depending on enabled "
 "features."
 msgstr ""
+"Algunos campos descritos a continuación pueden no ser visibles dependiendo de las "
+"funcionalidades habilitadas."
 
 #: ../../administration_portal/brand/clients/residential.rst:26
 msgid "These are the fields shown when **adding** a new residential client:"
-msgstr ""
+msgstr "Estos son los campos mostrados al **agregar** un nuevo cliente residencial:"
 
 #: ../../administration_portal/brand/clients/residential.rst:29
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/brand/clients/residential.rst:29
 msgid "Used to reference this particular client."
-msgstr ""
+msgstr "Usado para referenciar a este cliente en particular."
 
 #: ../../administration_portal/brand/clients/residential.rst:32
 msgid "Billing method"
-msgstr ""
+msgstr "Método de facturación"
 
 #: ../../administration_portal/brand/clients/residential.rst:32
 msgid ""
 "To choose among postpaid, prepaid and pseudo-prepaid. 'none' disables "
 "billing."
 msgstr ""
+"Para elegir entre pospago, prepago y pseudo-prepago. 'ninguno' desactiva "
+"la facturación."
 
 #: ../../administration_portal/brand/clients/residential.rst:35
 msgid "Features"
-msgstr ""
+msgstr "Características"
 
 #: ../../administration_portal/brand/clients/residential.rst:35
 msgid "Enable/Disable faxing and call recording for this particular client."
-msgstr ""
+msgstr "Habilitar/Deshabilitar el envío de faxes y la grabación de llamadas para este cliente en particular."
 
 #: ../../administration_portal/brand/clients/residential.rst:38
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: ../../administration_portal/brand/clients/residential.rst:38
 msgid "Used to choose the language of played locutions."
-msgstr ""
+msgstr "Usado para elegir el idioma de las locuciones reproducidas."
 
 #: ../../administration_portal/brand/clients/residential.rst:41
 msgid "Country code"
-msgstr ""
+msgstr "Código de país"
 
 #: ../../administration_portal/brand/clients/residential.rst:41
 msgid "Default country code for DDIs."
-msgstr ""
+msgstr "Código de país predeterminado para los DDI."
 
 #: ../../administration_portal/brand/clients/residential.rst:44
 msgid "Default timezone"
-msgstr ""
+msgstr "Zona horaria predeterminada"
 
 #: ../../administration_portal/brand/clients/residential.rst:44
 msgid "Used for showing call registries dates."
-msgstr ""
+msgstr "Usado para mostrar las fechas de los registros de llamadas."
 
 #: ../../administration_portal/brand/clients/residential.rst:48
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 #: ../../administration_portal/brand/clients/residential.rst:47
 msgid ""
 "Chosen currency will be used in price calculation, invoices, balance "
 "movements and remaining money operations of this client."
 msgstr ""
+"La moneda elegida se usará en el cálculo de precios, facturas, movimientos de saldo "
+"y operaciones de dinero restante de este cliente."
 
 #: ../../administration_portal/brand/clients/residential.rst:51
 msgid "Numeric transformation"
-msgstr ""
+msgstr "Transformación numérica"
 
 #: ../../administration_portal/brand/clients/residential.rst:51
 msgid ""
 "Describes the way the client will \"talk\" and the way the client wants "
 "to be \"talked\"."
 msgstr ""
+"Describe la forma en que el cliente \"hablará\" y la forma en que el cliente quiere "
+"ser \"hablado\"."
 
 #: ../../administration_portal/brand/clients/residential.rst:54
 msgid "Max calls"
-msgstr ""
+msgstr "Máximo de llamadas"
 
 #: ../../administration_portal/brand/clients/residential.rst:54
 msgid "Limits both incoming and outgoing external calls (0 for unlimited)."
-msgstr ""
+msgstr "Limita tanto las llamadas externas entrantes como salientes (0 para ilimitado)."
 
 #: ../../administration_portal/brand/clients/residential.rst:57
 msgid "Filter by IP address"
-msgstr ""
+msgstr "Filtrar por dirección IP"
 
 #: ../../administration_portal/brand/clients/residential.rst:57
 msgid ""
 "If set, the platform will only allow calls coming from allowed IP/ranges "
 "or countries."
 msgstr ""
+"Si se establece, la plataforma solo permitirá llamadas provenientes de IP/rangos "
+"o países permitidos."
 
 #: ../../administration_portal/brand/clients/residential.rst:60
 msgid "GeoIP allowed countries"
-msgstr ""
+msgstr "Países permitidos por GeoIP"
 
 #: ../../administration_portal/brand/clients/residential.rst:60
 msgid ""
 "If *Filter by IP address* is enabled, traffic from selected countries "
 "will be allowed."
 msgstr ""
+"Si *Filtrar por dirección IP* está habilitado, se permitirá el tráfico de los países "
+"seleccionados."
 
 #: ../../administration_portal/brand/clients/residential.rst:64
 msgid "Max daily usage"
-msgstr ""
+msgstr "Uso máximo diario"
 
 #: ../../administration_portal/brand/clients/residential.rst:63
 msgid ""
 "Limits external outbound calls when this limit is reached within a day. "
 "At midnight counters are reset and accounts are re-enabled."
 msgstr ""
+"Limita las llamadas externas salientes cuando se alcanza este límite dentro de un día. "
+"A medianoche se restablecen los contadores y se reactivan las cuentas."
 
 #: ../../administration_portal/brand/clients/residential.rst:68
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: ../../administration_portal/brand/clients/residential.rst:67
 msgid ""
 "A notification email will be sent to given address when configured max "
 "daily usage is reached. Leave empty to avoid notification."
 msgstr ""
+"Se enviará un correo electrónico de notificación a la dirección dada cuando se alcance el uso máximo "
+"diario configurado. Dejar vacío para evitar la notificación."
 
 #: ../../administration_portal/brand/clients/residential.rst:70
 msgid "When **editing** a client, these additional fields can be configured:"
-msgstr ""
+msgstr "Al **editar** un cliente, se pueden configurar estos campos adicionales:"
 
 #: ../../administration_portal/brand/clients/residential.rst:74
 msgid "Invoice data"
-msgstr ""
+msgstr "Datos de la factura"
 
 #: ../../administration_portal/brand/clients/residential.rst:73
 msgid ""
@@ -214,52 +235,65 @@ msgid ""
 "client's portal, such as Invoices, Rating Profiles and Price of external "
 "calls."
 msgstr ""
+"Todos los campos de este grupo se incluirán en las facturas generadas para "
+"este cliente. Esta sección también permite mostrar/ocultar detalles de facturación en "
+"el portal del cliente, como Facturas, Perfiles de Tarifas y Precio de llamadas externas."
 
 #: ../../administration_portal/brand/clients/residential.rst:77
 msgid "Outgoing DDI"
-msgstr ""
+msgstr "DDI saliente"
 
 #: ../../administration_portal/brand/clients/residential.rst:77
 msgid ""
 "Fallback DDI for external outgoing calls (can be overridden at "
 "residential device level)."
 msgstr ""
+"DDI de respaldo para llamadas externas salientes (puede ser anulado a nivel de "
+"dispositivo residencial)."
 
 #: ../../administration_portal/brand/clients/residential.rst:80
 msgid "Notification options"
-msgstr ""
+msgstr "Opciones de notificación"
 
 #: ../../administration_portal/brand/clients/residential.rst:80
 msgid ""
 "This group allows choosing a notification template for both faxes and "
 "voicemail notifications."
 msgstr ""
+"Este grupo permite elegir una plantilla de notificación tanto para faxes como "
+"notificaciones de correo de voz."
 
 #: ../../administration_portal/brand/clients/residential.rst:84
 msgid "Allow Client to remove recordings"
-msgstr ""
+msgstr "Permitir al cliente eliminar grabaciones"
 
 #: ../../administration_portal/brand/clients/residential.rst:83
 msgid ""
 "Shown only if *Recording* feature is enabled for client, shows/hides "
 "recording removal button on client *Call Recordings* section."
 msgstr ""
+"Se muestra solo si la función *Grabación* está habilitada para el cliente, muestra/oculta "
+"el botón de eliminación de grabaciones en la sección *Grabaciones de llamadas* del cliente."
 
 #: ../../administration_portal/brand/clients/residential.rst:86
 msgid ""
 "Apart from these fields, main operator (*aka* God) will also see a "
 "**Platform data** group that allows:"
 msgstr ""
+"Aparte de estos campos, el operador principal (*también conocido como* Dios) también verá un "
+"grupo de **Datos de la plataforma** que permite:"
 
 #: ../../administration_portal/brand/clients/residential.rst:88
 msgid "Choosing an specific media relay set for the client."
-msgstr ""
+msgstr "Elegir un conjunto específico de retransmisión de medios para el cliente."
 
 #: ../../administration_portal/brand/clients/residential.rst:90
 msgid ""
 "Choose the way that calls of this client will be distributed among "
 "existing application servers (**hash based** is recommended)."
 msgstr ""
+"Elija la forma en que las llamadas de este cliente se distribuirán entre "
+"los servidores de aplicaciones existentes (**basado en hash** es recomendado)."
 
 #: ../../administration_portal/brand/clients/residential.rst:92
 msgid ""
@@ -268,26 +302,33 @@ msgid ""
 "platform will consider as valid any CLID that matches one of the client's"
 " DDIs."
 msgstr ""
+"Para llamadas salientes, la plataforma usará el CLID proporcionado por el cliente siempre "
+"que se considere válido, de lo contrario se usará el DDI de respaldo. La "
+"plataforma considerará válido cualquier CLID que coincida con uno de los DDI del cliente."
 
 #: ../../administration_portal/brand/clients/residential.rst:96
 msgid "Additional subsections"
-msgstr ""
+msgstr "Subsecciones adicionales"
 
 #: ../../administration_portal/brand/clients/residential.rst:98
 msgid "Each entry in this table has these additional options:"
-msgstr ""
+msgstr "Cada entrada en esta tabla tiene estas opciones adicionales:"
 
 #: ../../administration_portal/brand/clients/residential.rst:100
 msgid ""
 "**List of authorized sources**: if *Filter by IP address* is enabled, "
 "this subsection allows adding addresses or network ranges."
 msgstr ""
+"**Lista de fuentes autorizadas**: si *Filtrar por dirección IP* está habilitado, "
+"esta subsección permite agregar direcciones o rangos de red."
 
 #: ../../administration_portal/brand/clients/residential.rst:102
 msgid ""
 "No outgoing call will be allowed if *Filter by IP address* is enabled and"
 " the corresponding list is empty."
 msgstr ""
+"No se permitirá ninguna llamada saliente si *Filtrar por dirección IP* está habilitado y "
+"la lista correspondiente está vacía."
 
 #: ../../administration_portal/brand/clients/residential.rst:104
 msgid ""
@@ -295,16 +336,23 @@ msgid ""
 "credentials for this specific client. Read :ref:`acls` for further "
 "explanation about restricted client administrators."
 msgstr ""
+"**Lista de administradores de clientes**: esta subsección permite gestionar las credenciales del portal "
+"para este cliente específico. Lea :ref:`acls` para una mayor "
+"explicación sobre administradores de clientes restringidos."
 
 #: ../../administration_portal/brand/clients/residential.rst:107
 msgid ""
 "**List of rating profiles**: this subsection allows managing the rating "
 "profiles that will be used to bill its outgoing calls."
 msgstr ""
+"**Lista de perfiles de tarifas**: esta subsección permite gestionar los perfiles de tarifas "
+"que se utilizarán para facturar sus llamadas salientes."
 
 #: ../../administration_portal/brand/clients/residential.rst:109
 msgid ""
 "No outgoing call will be allowed for this client unless an active rating "
 "profiles that can bill the specific call."
 msgstr ""
+"No se permitirá ninguna llamada saliente para este cliente a menos que haya un perfil de tarifas activo "
+"que pueda facturar la llamada específica."
 

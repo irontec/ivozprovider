@@ -19,25 +19,25 @@ msgstr ""
 
 #: ../../administration_portal/brand/billing/destinations.rst:3
 msgid "Destinations"
-msgstr ""
+msgstr "Destinos"
 
 #: ../../administration_portal/brand/billing/destinations.rst:5
 msgid "*Destinations* section binds prefixes (always starting with +) with names."
-msgstr ""
+msgstr "La sección *Destinos* vincula prefijos (siempre comenzando con +) con nombres."
 
 #: ../../administration_portal/brand/billing/destinations.rst:7
 msgid "These names will be used in invoices to identify matching destinations."
-msgstr ""
+msgstr "Estos nombres se utilizarán en las facturas para identificar los destinos correspondientes."
 
 #: ../../administration_portal/brand/billing/destinations.rst:9
 msgid ""
 "Adding destination by hand is only needed is you want to add *destination"
 " rates* by hand as explained in :ref:`Add rates manually`."
-msgstr ""
+msgstr "Agregar destinos manualmente solo es necesario si desea agregar *tarifas de destino* manualmente como se explica en :ref:`Agregar tarifas manualmente <Add rates manually>`."
 
 #: ../../administration_portal/brand/billing/destinations.rst:11
 msgid ""
 "All non-existent prefixes found in CSV importing process described in "
 ":ref:`Importing a CSV file` will added to this list automatically."
-msgstr ""
+msgstr "Todos los prefijos inexistentes encontrados en el proceso de importación de CSV descrito en :ref:`Importando un archivo CSV <Importing a CSV file>` se agregarán a esta lista automáticamente."
 

@@ -19,15 +19,17 @@ msgstr ""
 
 #: ../../administration_portal/brand/providers/index.rst:3
 msgid "Providers"
-msgstr ""
+msgstr "Proveedores"
 
 #: ../../administration_portal/brand/providers/index.rst:5
 msgid ""
 "Brand operator must reach agreements with VoIP providers to place calls "
 "of its clients and to receive calls to the DDIs of its clients."
 msgstr ""
+"El operador de la marca debe llegar a acuerdos con los proveedores de VoIP para realizar llamadas "
+"de sus clientes y recibir llamadas a los DDIs de sus clientes."
 
 #: ../../administration_portal/brand/providers/index.rst:8
 msgid "Depending the call direction, they can be divided into:"
-msgstr ""
+msgstr "Dependiendo de la dirección de la llamada, se pueden dividir en:"
 

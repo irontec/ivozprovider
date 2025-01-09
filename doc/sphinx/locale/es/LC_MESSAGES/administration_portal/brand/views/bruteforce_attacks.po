@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/brand/views/bruteforce_attacks.rst:5
 msgid "Brute-force attacks"
-msgstr ""
+msgstr "Ataques de fuerza bruta"
 
 #: ../../administration_portal/brand/views/bruteforce_attacks.rst:7
 msgid ""
@@ -27,12 +27,15 @@ msgid ""
 "(for 12 hours) by *Anti brute-force* mechanism. User-Agent may be shown "
 "in *Description* column."
 msgstr ""
+"Las combinaciones de *dirección SIP + dirección IP* enumeradas aquí han sido bloqueadas "
+"(por 12 horas) por el mecanismo de *Anti fuerza bruta*. El User-Agent puede mostrarse "
+"en la columna *Descripción*."
 
 #: ../../administration_portal/brand/views/bruteforce_attacks.rst:10
 msgid "You can unblock any source using green flag button of each row."
-msgstr ""
+msgstr "Puedes desbloquear cualquier fuente usando el botón de bandera verde de cada fila."
 
 #: ../../administration_portal/brand/views/bruteforce_attacks.rst:12
 msgid "See :ref:`Anti brute-force attacks` for further information."
-msgstr ""
+msgstr "Consulta :ref:`Ataques de fuerza bruta <Anti brute-force attacks>` para más información."
 

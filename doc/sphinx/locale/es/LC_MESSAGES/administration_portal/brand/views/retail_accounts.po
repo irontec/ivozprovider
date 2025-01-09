@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../administration_portal/brand/views/retail_accounts.rst:3
 msgid "Retail accounts"
-msgstr ""
+msgstr "Cuentas minoristas"
 
 #: ../../administration_portal/brand/views/retail_accounts.rst:5
 msgid ""
 "This section lists **all existing retail accounts** of every retail "
 "client of the brand."
 msgstr ""
+"Esta sección lista **todas las cuentas minoristas existentes** de cada "
+"cliente minorista de la marca."
 
 #: ../../administration_portal/brand/views/retail_accounts.rst:7
 msgid ""
@@ -33,4 +35,8 @@ msgid ""
 "(brand's SIP domain), collision has to be avoided using some kind of "
 "numeric sequence. This section may be handy for this purpose."
 msgstr ""
+"Como todas las cuentas minoristas de todos los clientes minoristas usan el "
+"mismo dominio SIP (dominio SIP de la marca), se debe evitar la colisión "
+"usando algún tipo de secuencia numérica. Esta sección puede ser útil para "
+"este propósito."
 

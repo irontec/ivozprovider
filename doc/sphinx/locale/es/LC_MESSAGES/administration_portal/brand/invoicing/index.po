@@ -19,15 +19,17 @@ msgstr ""
 
 #: ../../administration_portal/brand/invoicing/index.rst:3
 msgid "Invoicing"
-msgstr ""
+msgstr "Facturación"
 
 #: ../../administration_portal/brand/invoicing/index.rst:5
 msgid ""
 "The final goal of this section is to generate invoices with the calls "
 "that imply cost of a given client."
 msgstr ""
+"El objetivo final de esta sección es generar facturas con las llamadas "
+"que implican costo de un cliente dado."
 
 #: ../../administration_portal/brand/invoicing/index.rst:8
 msgid "These topics will be covered:"
-msgstr ""
+msgstr "Se cubrirán estos temas:"
 

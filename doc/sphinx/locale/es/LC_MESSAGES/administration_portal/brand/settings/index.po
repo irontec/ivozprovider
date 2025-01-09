@@ -19,21 +19,21 @@ msgstr ""
 
 #: ../../administration_portal/brand/settings/index.rst:4
 msgid "Settings"
-msgstr ""
+msgstr "Configuraciones"
 
 #: ../../administration_portal/brand/settings/index.rst:6
 msgid "This group contains two kind of sections:"
-msgstr ""
+msgstr "Este grupo contiene dos tipos de secciones:"
 
 #: ../../administration_portal/brand/settings/index.rst:8
 msgid "Brand global configuration"
-msgstr ""
+msgstr "Configuración global de la marca"
 
 #: ../../administration_portal/brand/settings/index.rst:10
 msgid "Brand defaults for new clients"
-msgstr ""
+msgstr "Valores predeterminados de la marca para nuevos clientes"
 
 #: ../../administration_portal/brand/settings/index.rst:12
 msgid "These will be covered topics:"
-msgstr ""
+msgstr "Estos serán los temas cubiertos:"
 

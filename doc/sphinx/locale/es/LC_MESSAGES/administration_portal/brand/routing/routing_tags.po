@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:3
 msgid "Routing tags"
-msgstr ""
+msgstr "Etiquetas de enrutamiento"
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:5
 msgid ""
@@ -28,6 +28,10 @@ msgid ""
 "their clients. But in some cases, clients want to choose the outgoing "
 "routing to use per call."
 msgstr ""
+"En la mayoría de los casos, los administradores de Marcas son responsables de configurar "
+":ref:`Transportistas <Carriers>` y :ref:`Enrutamientos Salientes <Outgoing Routings>` para proporcionar conectividad a "
+"sus clientes. Pero en algunos casos, los clientes quieren elegir el enrutamiento saliente "
+"a utilizar por llamada."
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:10
 msgid ""
@@ -35,64 +39,71 @@ msgid ""
 "placing calls to IvozProvider** and allow clients to choose different "
 "routes for same destinations."
 msgstr ""
+"Una etiqueta de enrutamiento es **un código que antecederá al número de destino al "
+"realizar llamadas a IvozProvider** y permitirá a los clientes elegir diferentes "
+"rutas para los mismos destinos."
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:14
 msgid "Add/Edit/Delete a routing tag"
-msgstr ""
+msgstr "Agregar/Editar/Eliminar una etiqueta de enrutamiento"
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:16
 msgid "Routing tag definition only implies these two fields:"
-msgstr ""
+msgstr "La definición de la etiqueta de enrutamiento solo implica estos dos campos:"
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:19
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:19
 msgid "Name used for referencing (e.g. \"Premium\")"
-msgstr ""
+msgstr "Nombre utilizado para referenciar (por ejemplo, \"Premium\")"
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:22
 msgid "Tag"
-msgstr ""
+msgstr "Etiqueta"
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:22
 msgid "Prefix itself"
-msgstr ""
+msgstr "El prefijo en sí"
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:24
 msgid "Tag **must** have this format: from 1 to 3 digits ended by # symbol."
-msgstr ""
+msgstr "La etiqueta **debe** tener este formato: de 1 a 3 dígitos terminados con el símbolo #."
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:27
 msgid "Using routing tags"
-msgstr ""
+msgstr "Usando etiquetas de enrutamiento"
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:29
 msgid "Once created, routing tags can be used in three different sections:"
-msgstr ""
+msgstr "Una vez creadas, las etiquetas de enrutamiento se pueden usar en tres secciones diferentes:"
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:31
 msgid "In **client edit screen**, to allow a client to use a routing tag."
-msgstr ""
+msgstr "En **pantalla de edición del cliente**, para permitir que un cliente use una etiqueta de enrutamiento."
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:33
 msgid "Using a non enabled routing tag will cause the call to be declined."
-msgstr ""
+msgstr "Usar una etiqueta de enrutamiento no habilitada hará que la llamada sea rechazada."
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:35
 msgid "In **Outgoing routings** to modify the way those calls are routed."
-msgstr ""
+msgstr "En **Enrutamientos salientes** para modificar la forma en que se enrutan esas llamadas."
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:37
 msgid ""
 "In **client - rating profiles association**, so that different routes "
 "imply different billing."
 msgstr ""
+"En **asociación de cliente - perfiles de calificación**, para que diferentes rutas "
+"impliquen diferentes facturaciones."
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:39
 msgid ""
 "Route tags are only available to wholesale and retail clients at the "
 "moment."
 msgstr ""
+"Las etiquetas de ruta solo están disponibles para clientes mayoristas y minoristas en este "
+"momento."
 

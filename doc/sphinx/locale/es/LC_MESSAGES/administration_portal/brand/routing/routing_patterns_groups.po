@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_patterns_groups.rst:5
 msgid "Routing pattern groups"
-msgstr ""
+msgstr "Grupos de patrones de enrutamiento"
 
 #: ../../administration_portal/brand/routing/routing_patterns_groups.rst:7
 msgid ""
 "As we will see in :ref:`Outgoing Routings` section, every routing pattern"
 " will be linked to a Carrier."
 msgstr ""
+"Como veremos en la sección :ref:`Enrutamientos Salientes <Outgoing Routings>`, cada patrón de enrutamiento "
+"estará vinculado a un Transportista."
 
 #: ../../administration_portal/brand/routing/routing_patterns_groups.rst:10
 msgid ""
@@ -33,12 +35,16 @@ msgid ""
 "**routing pattern groups** so that we can use a whole group in a routing "
 "rule."
 msgstr ""
+"Es por eso que puede ser útil agrupar los :ref:`Patrones de Enrutamiento <Routing patterns>` en "
+"**grupos de patrones de enrutamiento** para que podamos usar un grupo completo en una regla de enrutamiento."
 
 #: ../../administration_portal/brand/routing/routing_patterns_groups.rst:13
 msgid ""
 "By default we can see the countries grouped in the continents defined in "
 "`ISO 3166 <https://en.wikipedia.org/wiki/ISO_3166>`_."
 msgstr ""
+"Por defecto podemos ver los países agrupados en los continentes definidos en "
+"`ISO 3166 <https://en.wikipedia.org/wiki/ISO_3166>`_."
 
 #: ../../administration_portal/brand/routing/routing_patterns_groups.rst:16
 msgid ""
@@ -46,4 +52,6 @@ msgid ""
 "finds them useful or deleting them an creating the ones that meet his "
 "needs."
 msgstr ""
+"El operador de la marca puede elegir entre mantener estos grupos de patrones de enrutamiento si los "
+"encuentra útiles o eliminarlos y crear los que se ajusten a sus necesidades."
 

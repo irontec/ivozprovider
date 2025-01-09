@@ -19,31 +19,32 @@ msgstr ""
 
 #: ../../administration_portal/brand/views/ddis.rst:5
 msgid "DDIs"
-msgstr ""
+msgstr "DDIs"
 
 #: ../../administration_portal/brand/views/ddis.rst:7
 msgid ""
 "This section lists **all configured DDIs** in all the clients of the "
 "brand."
-msgstr ""
+msgstr "Esta sección enumera **todos los DDIs configurados** en todos los clientes de la "
+"marca."
 
 #: ../../administration_portal/brand/views/ddis.rst:9
 msgid "It makes easy to answer to these questions:"
-msgstr ""
+msgstr "Facilita responder a estas preguntas:"
 
 #: ../../administration_portal/brand/views/ddis.rst:11
 msgid "Is this DDI of one of my clients? If so, whose?"
-msgstr ""
+msgstr "¿Este DDI es de uno de mis clientes? Si es así, ¿de quién?"
 
 #: ../../administration_portal/brand/views/ddis.rst:13
 msgid "Who DDI Provider provides it?"
-msgstr ""
+msgstr "¿Qué proveedor de DDI lo proporciona?"
 
 #: ../../administration_portal/brand/views/ddis.rst:15
 msgid "How many DDIs of country X does client Y have?"
-msgstr ""
+msgstr "¿Cuántos DDIs del país X tiene el cliente Y?"
 
 #: ../../administration_portal/brand/views/ddis.rst:17
 msgid "Etc."
-msgstr ""
+msgstr "Etc."
 

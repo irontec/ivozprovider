@@ -19,11 +19,12 @@ msgstr ""
 
 #: ../../administration_portal/brand/calls/index.rst:3
 msgid "Calls"
-msgstr ""
+msgstr "Llamadas"
 
 #: ../../administration_portal/brand/calls/index.rst:5
 msgid ""
 "This group shows call lists and allows brand operator a few operations on"
 " them:"
 msgstr ""
+"Este grupo muestra listas de llamadas y permite al operador de la marca realizar algunas operaciones sobre ellas:"
 

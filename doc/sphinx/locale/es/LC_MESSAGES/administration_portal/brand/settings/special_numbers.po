@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/brand/settings/special_numbers.rst:4
 msgid "Special Numbers"
-msgstr ""
+msgstr "Números Especiales"
 
 #: ../../administration_portal/brand/settings/special_numbers.rst:6
 msgid ""
@@ -27,10 +27,15 @@ msgid ""
 " here will be handled as explained in :ref:`Global Special Numbers` just "
 "for that brand."
 msgstr ""
+"Esta sección permite agregar números especiales a nivel de marca. Los números "
+"agregados aquí se manejarán como se explica en :ref:`Números Especiales Globales <Global Special Numbers>` "
+"sólo para esa marca."
 
 #: ../../administration_portal/brand/settings/special_numbers.rst:9
 msgid ""
 "Numbers listed in :ref:`Global Special Numbers` will be handled "
 "differently too."
 msgstr ""
+"Los números listados en :ref:`Números Especiales Globales <Global Special Numbers>` "
+"también se manejarán de manera diferente."
 

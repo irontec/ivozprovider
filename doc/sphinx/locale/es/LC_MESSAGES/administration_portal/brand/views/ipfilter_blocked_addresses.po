@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../administration_portal/brand/views/ipfilter_blocked_addresses.rst:5
 msgid "IP filter blocked addresses"
-msgstr ""
+msgstr "Direcciones bloqueadas por filtro IP"
 
 #: ../../administration_portal/brand/views/ipfilter_blocked_addresses.rst:7
 msgid ""
 "Addresses listed here have been banned at least once by *IP filter* "
 "security mechanism."
 msgstr ""
+"Las direcciones listadas aquí han sido bloqueadas al menos una vez por el "
+"mecanismo de seguridad *filtro IP*."
 
 #: ../../administration_portal/brand/views/ipfilter_blocked_addresses.rst:9
 msgid ""
@@ -33,4 +35,7 @@ msgid ""
 "to search for recently blocked addresses and add them to :ref:`Authorized"
 " IP ranges` if they are legitimate sources."
 msgstr ""
+"**Las IPs se bloquean por solicitud, no permanentemente**. Vea *Última vez "
+"bloqueada* para buscar direcciones bloqueadas recientemente y agregarlas a "
+":ref:`Rangos de IP autorizados <Authorized IP ranges>` si son fuentes legítimas."
 

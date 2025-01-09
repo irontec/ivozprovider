@@ -19,25 +19,25 @@ msgstr ""
 
 #: ../../administration_portal/brand/views/users.rst:3
 msgid "Users"
-msgstr ""
+msgstr "Usuarios"
 
 #: ../../administration_portal/brand/views/users.rst:5
 msgid "This section lists **all vpbx Users** in all the clients of the brand."
-msgstr ""
+msgstr "Esta sección lista **todos los usuarios de vpbx** en todos los clientes de la marca."
 
 #: ../../administration_portal/brand/views/users.rst:7
 msgid "It makes easy to answer to these questions:"
-msgstr ""
+msgstr "Facilita responder a estas preguntas:"
 
 #: ../../administration_portal/brand/views/users.rst:9
 msgid "Which user has this email?"
-msgstr ""
+msgstr "¿Qué usuario tiene este correo electrónico?"
 
 #: ../../administration_portal/brand/views/users.rst:11
 msgid "Is terminal X registered?"
-msgstr ""
+msgstr "¿Está registrado el terminal X?"
 
 #: ../../administration_portal/brand/views/users.rst:13
 msgid "Etc."
-msgstr ""
+msgstr "Etc."
 

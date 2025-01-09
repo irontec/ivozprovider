@@ -19,75 +19,78 @@ msgstr ""
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:6
 msgid "Notification Templates"
-msgstr ""
+msgstr "Plantillas de Notificación"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:8
 msgid "Brand administrators can configure the notifications sent by IvozProvider:"
-msgstr ""
+msgstr "Los administradores de la marca pueden configurar las notificaciones enviadas por IvozProvider:"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:10
 msgid "Email sent when a new voicemail is received"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se recibe un nuevo buzón de voz"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:12
 msgid "Email sent when a new fax is received"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se recibe un nuevo fax"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:14
 msgid "Email sent when a balance is below configured threshold"
-msgstr ""
+msgstr "Correo electrónico enviado cuando el saldo está por debajo del umbral configurado"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:16
 msgid "Email sent when an automatic invoice is generated"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se genera una factura automática"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:18
 msgid "Email sent when scheduled CDR CSVs are generated"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se generan CSVs de CDR programados"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:20
 msgid "Email sent when max daily usage is reached"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se alcanza el uso máximo diario"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:22
 msgid "Email sent with access credentials"
-msgstr ""
+msgstr "Correo electrónico enviado con credenciales de acceso"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:24
 msgid "When no custom notification is configured, default ones will be used"
-msgstr ""
+msgstr "Cuando no se configura una notificación personalizada, se usarán las predeterminadas"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:26
 msgid ""
 "Notifications are created in two steps: Create a notification type and "
 "add contents to the notification for each required language."
 msgstr ""
+"Las notificaciones se crean en dos pasos: Crear un tipo de notificación y "
+"agregar contenido a la notificación para cada idioma requerido."
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:31
 msgid "Creating a new notification"
-msgstr ""
+msgstr "Creando una nueva notificación"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:33
 msgid ""
 "Brand administrators can create new notification templates in **Brand "
 "configuration** > **Notification templates**:"
 msgstr ""
+"Los administradores de la marca pueden crear nuevas plantillas de notificación en **Configuración de la marca** > **Plantillas de notificación**:"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:35
 msgid "Fields are nearly self-explanatory:"
-msgstr ""
+msgstr "Los campos son casi autoexplicativos:"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:38
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:38
 msgid "Used to identify this notification template"
-msgstr ""
+msgstr "Usado para identificar esta plantilla de notificación"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:42
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:41
 msgid ""
@@ -95,10 +98,13 @@ msgid ""
 "substitution variables available to replace the contents of the subject "
 "and body."
 msgstr ""
+"Determina el tipo de notificación. Cada tipo de notificación tiene sus propias "
+"variables de sustitución disponibles para reemplazar el contenido del asunto "
+"y el cuerpo."
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:46
 msgid "Adding Notification contents"
-msgstr ""
+msgstr "Agregando contenido de notificación"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:48
 msgid ""
@@ -106,50 +112,55 @@ msgid ""
 "contents. IvozProvider will automatically use the proper language based "
 "on the destination:"
 msgstr ""
+"Una vez que se ha creado la notificación, puedes agregar contenido en diferentes idiomas. IvozProvider usará automáticamente el idioma adecuado "
+"según el destino:"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:51
 msgid "For Voicemails, the user language will be used"
-msgstr ""
+msgstr "Para los buzones de voz, se usará el idioma del usuario"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:53
 msgid "For Faxes, the client language will be used."
-msgstr ""
+msgstr "Para los faxes, se usará el idioma del cliente."
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:55
 msgid "Configurable fields of each content:"
-msgstr ""
+msgstr "Campos configurables de cada contenido:"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:58
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:58
 msgid "Language of the contents."
-msgstr ""
+msgstr "Idioma del contenido."
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:61
 msgid "From Name"
-msgstr ""
+msgstr "Nombre del remitente"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:61
 msgid ""
 "The from name used while sending emails (p.e. IvozProvider Voicemail "
 "Notifications)"
 msgstr ""
+"El nombre del remitente utilizado al enviar correos electrónicos (p.e. Notificaciones de Buzón de Voz de IvozProvider)"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:64
 msgid "From Address"
-msgstr ""
+msgstr "Dirección del remitente"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:64
 msgid ""
 "The from address used while sending emails (p.e. no-"
 "reply@ivozprovider.com)"
 msgstr ""
+"La dirección del remitente utilizada al enviar correos electrónicos (p.e. no-"
+"reply@ivozprovider.com)"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:68
 msgid "Substitution variables"
-msgstr ""
+msgstr "Variables de sustitución"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:67
 msgid ""
@@ -157,32 +168,36 @@ msgid ""
 "replaced before sending the email. Each notification type has its own "
 "variables."
 msgstr ""
+"Variables disponibles que se pueden usar en el asunto y el cuerpo que serán "
+"reemplazadas antes de enviar el correo electrónico. Cada tipo de notificación tiene sus propias variables."
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:71
 msgid "Subject"
-msgstr ""
+msgstr "Asunto"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:71
 msgid ""
 "Subject of the email to be sent. You can include Substitution variables "
 "here."
 msgstr ""
+"Asunto del correo electrónico a enviar. Puedes incluir variables de sustitución "
+"aquí."
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:74
 msgid "Body type"
-msgstr ""
+msgstr "Tipo de cuerpo"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:74
 msgid "Body of the mail can be both plaintext or html."
-msgstr ""
+msgstr "El cuerpo del correo puede ser tanto texto plano como html."
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:77
 msgid "Body"
-msgstr ""
+msgstr "Cuerpo"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:77
 msgid "Body of the email to be sent. You can include Substitution variables here."
-msgstr ""
+msgstr "Cuerpo del correo electrónico a enviar. Puedes incluir variables de sustitución aquí."
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:79
 msgid ""
@@ -190,10 +205,13 @@ msgid ""
 "has some languages not defined the default contents will be used for that"
 " notification type."
 msgstr ""
+"No es necesario crear todos los idiomas del contenido. Si la notificación personalizada "
+"no tiene algunos idiomas definidos, se usarán los contenidos predeterminados para ese "
+"tipo de notificación."
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:85
 msgid "Assigning templates to clients"
-msgstr ""
+msgstr "Asignando plantillas a clientes"
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:87
 msgid ""
@@ -204,4 +222,10 @@ msgid ""
 "for that client instead. If brand has no notification configured, default"
 " notifications will be used."
 msgstr ""
+"Una vez que la notificación ha sido configurada para los idiomas deseados, "
+"el administrador de la marca puede asignarla al cliente que la usará. Esto "
+"se puede hacer en la sección de configuración de notificaciones de cada cliente. Si "
+"el cliente no tiene una notificación configurada, se usarán las notificaciones de la marca "
+"para ese cliente. Si la marca no tiene una notificación configurada, se usarán las "
+"notificaciones predeterminadas."
 

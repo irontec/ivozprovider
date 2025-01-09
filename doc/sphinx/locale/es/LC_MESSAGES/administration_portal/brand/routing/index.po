@@ -19,15 +19,17 @@ msgstr ""
 
 #: ../../administration_portal/brand/routing/index.rst:3
 msgid "Routing"
-msgstr ""
+msgstr "Enrutamiento"
 
 #: ../../administration_portal/brand/routing/index.rst:5
 msgid ""
 "Routing is the process in which a carrier is chosen to place an external "
 "outgoing call."
 msgstr ""
+"El enrutamiento es el proceso en el cual se elige un transportista para realizar una llamada "
+"saliente externa."
 
 #: ../../administration_portal/brand/routing/index.rst:7
 msgid "All these concepts are taken into account:"
-msgstr ""
+msgstr "Todos estos conceptos se tienen en cuenta:"
 

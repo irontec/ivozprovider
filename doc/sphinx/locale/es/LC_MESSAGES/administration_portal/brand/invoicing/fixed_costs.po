@@ -19,23 +19,29 @@ msgstr ""
 
 #: ../../administration_portal/brand/invoicing/fixed_costs.rst:5
 msgid "Fixed costs"
-msgstr ""
+msgstr "Costos fijos"
 
 #: ../../administration_portal/brand/invoicing/fixed_costs.rst:7
 msgid ""
 "Fixed costs are a positive concepts that can be added to invoices prior "
 "to generating the final PDF."
 msgstr ""
+"Los costos fijos son conceptos positivos que se pueden añadir a las facturas antes "
+"de generar el PDF final."
 
 #: ../../administration_portal/brand/invoicing/fixed_costs.rst:9
 msgid ""
 "It may be useful for services with fixed cost (e.g. FTTH 100 Mbps) of "
 "certain clients."
 msgstr ""
+"Puede ser útil para servicios con costo fijo (por ejemplo, FTTH 100 Mbps) de "
+"ciertos clientes."
 
 #: ../../administration_portal/brand/invoicing/fixed_costs.rst:11
 msgid ""
 "Use invoice templates that show a custom table for these concepts if your"
 " invoice will have any fixed cost."
 msgstr ""
+"Use plantillas de factura que muestren una tabla personalizada para estos conceptos si su "
+"factura tendrá algún costo fijo."
 

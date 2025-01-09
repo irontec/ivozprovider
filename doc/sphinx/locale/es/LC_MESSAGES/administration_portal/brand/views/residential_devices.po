@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../administration_portal/brand/views/residential_devices.rst:3
 msgid "Residential devices"
-msgstr ""
+msgstr "Dispositivos residenciales"
 
 #: ../../administration_portal/brand/views/residential_devices.rst:5
 msgid ""
 "This section lists **all existing residential devices** of every "
 "residential client of the brand."
 msgstr ""
+"Esta sección lista **todos los dispositivos residenciales existentes** de "
+"cada cliente residencial de la marca."
 
 #: ../../administration_portal/brand/views/residential_devices.rst:7
 msgid ""
@@ -33,4 +35,8 @@ msgid ""
 "domain (brand's SIP domain), collision has to be avoided using some kind "
 "of numeric sequence. This section may be handy for this purpose."
 msgstr ""
+"Como todos los dispositivos residenciales de todos los clientes "
+"residenciales usan el mismo dominio SIP (dominio SIP de la marca), se debe "
+"evitar la colisión usando algún tipo de secuencia numérica. Esta sección "
+"puede ser útil para este propósito."
 

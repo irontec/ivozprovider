@@ -19,52 +19,52 @@ msgstr ""
 
 #: ../../administration_portal/brand/settings/generic_services.rst:5
 msgid "Generic Services"
-msgstr ""
+msgstr "Servicios Genéricos"
 
 #: ../../administration_portal/brand/settings/generic_services.rst:7
 msgid ""
 "This section allows the brand operator to change the default services and"
 " default service codes for new clients."
-msgstr ""
+msgstr "Esta sección permite al operador de la marca cambiar los servicios predeterminados y los códigos de servicio predeterminados para nuevos clientes."
 
 #: ../../administration_portal/brand/settings/generic_services.rst:9
 msgid ""
 "By default this list has all the services and codes from the god level "
 "**Service** section."
-msgstr ""
+msgstr "Por defecto, esta lista tiene todos los servicios y códigos de la sección **Servicio** del nivel superior."
 
 #: ../../administration_portal/brand/settings/generic_services.rst:11
 msgid ""
 "Changing/deleting the default code in this section will only affect new "
 "created clients. Existing clients codes won't be modified."
-msgstr ""
+msgstr "Cambiar/eliminar el código predeterminado en esta sección solo afectará a los nuevos clientes creados. Los códigos de los clientes existentes no se modificarán."
 
 #: ../../administration_portal/brand/settings/generic_services.rst:17
 msgid "Call forward services"
-msgstr ""
+msgstr "Servicios de desvío de llamadas"
 
 #: ../../administration_portal/brand/settings/generic_services.rst:19
 msgid ""
 "Call forward services (unconditional, no answer, busy and unreachable) "
 "are **only available for residential clients** and allow adding **call "
 "forward to national phone numbers and to voicemail**."
-msgstr ""
+msgstr "Los servicios de desvío de llamadas (incondicional, sin respuesta, ocupado e inalcanzable) **solo están disponibles para clientes residenciales** y permiten agregar **desvío de llamadas a números de teléfono nacionales y al buzón de voz**."
 
 #: ../../administration_portal/brand/settings/generic_services.rst:22
 msgid ""
 "All residential **clients within a brand use the same codes** to access "
 "to this feature, those defined in this section."
-msgstr ""
+msgstr "Todos los **clientes residenciales dentro de una marca usan los mismos códigos** para acceder a esta función, los definidos en esta sección."
 
 #: ../../administration_portal/brand/settings/generic_services.rst:24
 msgid ""
 "Call forward to numbers outside company's country is not supported using "
 "services codes. Use web portal instead."
-msgstr ""
+msgstr "El desvío de llamadas a números fuera del país de la empresa no es compatible usando códigos de servicios. Use el portal web en su lugar."
 
 #: ../../administration_portal/brand/settings/generic_services.rst:28
 msgid "Enabling a call forward setting"
-msgstr ""
+msgstr "Habilitar una configuración de desvío de llamadas"
 
 #: ../../administration_portal/brand/settings/generic_services.rst:29
 msgid ""
@@ -72,7 +72,7 @@ msgid ""
 "number, residential device must call to defined service code followed by "
 "destination number. This will create and enable (or modify if already "
 "exists one) a call forward of given type to that national number."
-msgstr ""
+msgstr "Para habilitar un desvío de llamadas de un tipo dado a un número nacional, el dispositivo residencial debe llamar al código de servicio definido seguido del número de destino. Esto creará y habilitará (o modificará si ya existe uno) un desvío de llamadas del tipo dado a ese número nacional."
 
 #: ../../administration_portal/brand/settings/generic_services.rst:33
 msgid ""
@@ -80,15 +80,15 @@ msgid ""
 "residential device must call to defined service code followed by '*'. "
 "This will create and enable (or modify if already exists one) a call "
 "forward of given type to voicemail."
-msgstr ""
+msgstr "Para habilitar un desvío de llamadas de un tipo dado al buzón de voz, el dispositivo residencial debe llamar al código de servicio definido seguido de '*'. Esto creará y habilitará (o modificará si ya existe uno) un desvío de llamadas del tipo dado al buzón de voz."
 
 #: ../../administration_portal/brand/settings/generic_services.rst:38
 msgid "Disabling a call forward setting"
-msgstr ""
+msgstr "Deshabilitar una configuración de desvío de llamadas"
 
 #: ../../administration_portal/brand/settings/generic_services.rst:39
 msgid ""
 "Calling to the code without any additional number will delete all active "
 "call forward settings of that type."
-msgstr ""
+msgstr "Llamar al código sin ningún número adicional eliminará todas las configuraciones de desvío de llamadas activas de ese tipo."
 

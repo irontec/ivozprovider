@@ -19,9 +19,9 @@ msgstr ""
 
 #: ../../administration_portal/brand/index.rst:3
 msgid "Brand Configuration"
-msgstr ""
+msgstr "Configuración de Marca"
 
 #: ../../administration_portal/brand/index.rst:5
 msgid "This module will describe all the sections shown to brand operators:"
-msgstr ""
+msgstr "Este módulo describirá todas las secciones mostradas a los operadores de marca:"
 

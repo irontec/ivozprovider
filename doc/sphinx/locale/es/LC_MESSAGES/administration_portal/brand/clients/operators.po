@@ -19,15 +19,17 @@ msgstr ""
 
 #: ../../administration_portal/brand/clients/operators.rst:5
 msgid "Client Operators"
-msgstr ""
+msgstr "Operadores de Clientes"
 
 #: ../../administration_portal/brand/clients/operators.rst:7
 msgid ""
 "**List of client operators** subsection allows adding/editing/deleting "
 "credentials for client portal access."
 msgstr ""
+"La subsección **Lista de operadores de clientes** permite agregar/editar/eliminar "
+"credenciales para el acceso al portal del cliente."
 
 #: ../../administration_portal/brand/clients/operators.rst:9
 msgid "Read :ref:`acls` for further explanation about restricted administrators."
-msgstr ""
+msgstr "Lea :ref:`acls` para una mayor explicación sobre administradores restringidos."
 

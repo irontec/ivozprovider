@@ -19,19 +19,23 @@ msgstr ""
 
 #: ../../administration_portal/brand/invoicing/invoice_templates.rst:3
 msgid "Invoice templates"
-msgstr ""
+msgstr "Plantillas de facturas"
 
 #: ../../administration_portal/brand/invoicing/invoice_templates.rst:5
 msgid ""
 "Before generating an example invoice, it is important to understand that "
 "invoice creation process uses templates."
 msgstr ""
+"Antes de generar una factura de ejemplo, es importante entender que el "
+"proceso de creación de facturas utiliza plantillas."
 
 #: ../../administration_portal/brand/invoicing/invoice_templates.rst:8
 msgid ""
 "This way, every **brand operator** can adapt which information is shown "
 "and how this information is shown, add logos, graphs, etc.."
 msgstr ""
+"De esta manera, cada **operador de la marca** puede adaptar qué información "
+"se muestra y cómo se muestra esta información, añadir logotipos, gráficos, etc."
 
 #: ../../administration_portal/brand/invoicing/invoice_templates.rst:11
 msgid ""
@@ -39,6 +43,9 @@ msgid ""
 "<https://github.com/XaminProject/handlebars.php>`_ and rendered using "
 "`wkhtmltopdf <https://wkhtmltopdf.org/>`_ library."
 msgstr ""
+"Las plantillas son analizadas por `handlebars "
+"<https://github.com/XaminProject/handlebars.php>`_ y renderizadas usando "
+"la biblioteca `wkhtmltopdf <https://wkhtmltopdf.org/>`_."
 
 #: ../../administration_portal/brand/invoicing/invoice_templates.rst:14
 msgid ""
@@ -49,8 +56,15 @@ msgid ""
 "additional information. You can delve into template expressions `here "
 "<http://handlebarsjs.com/expressions.html>`_ as well."
 msgstr ""
+"El asistente en la sección **Configuración de la marca** > **Plantillas de facturas** "
+"incluye una explicación resumida de la creación de plantillas. En el "
+"`sitio oficial de wkhtmltopdf "
+"<https://wkhtmltopdf.org/usage/wkhtmltopdf.txt>`_ hay mucha información adicional. "
+"También puede profundizar en las expresiones de plantillas `aquí "
+"<http://handlebarsjs.com/expressions.html>`_."
 
 #: ../../administration_portal/brand/invoicing/invoice_templates.rst:19
 msgid "Use *Template testing* option to see a demo invoice for each template."
 msgstr ""
+"Use la opción *Prueba de plantilla* para ver una factura de demostración para cada plantilla."
 

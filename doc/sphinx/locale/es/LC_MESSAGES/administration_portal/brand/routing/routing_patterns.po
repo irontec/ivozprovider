@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_patterns.rst:6
 msgid "Routing patterns"
-msgstr ""
+msgstr "Patrones de enrutamiento"
 
 #: ../../administration_portal/brand/routing/routing_patterns.rst:8
 msgid ""
@@ -28,6 +28,10 @@ msgid ""
 "section. Once categorized, the pattern will be used in routing process "
 "described in :ref:`Outgoing Routings`."
 msgstr ""
+"Cuando un usuario marca un número de teléfono externo, IvozProvider intenta "
+"categorizar esta llamada en uno de los patrones de enrutamiento definidos en esta "
+"sección. Una vez categorizado, el patrón se utilizará en el proceso de enrutamiento "
+"descrito en :ref:`Enrutamientos Salientes <Outgoing Routings>`."
 
 #: ../../administration_portal/brand/routing/routing_patterns.rst:12
 msgid ""
@@ -36,10 +40,16 @@ msgid ""
 "That's why IvozProvider automatically includes all this countries and "
 "their prefixes."
 msgstr ""
+"Por lo general, será útil tener un patrón de enrutamiento para los países "
+"definidos en el `ISO 3166 <https://en.wikipedia.org/wiki/ISO_3166>`_. "
+"Es por eso que IvozProvider incluye automáticamente todos estos países y "
+"sus prefijos."
 
 #: ../../administration_portal/brand/routing/routing_patterns.rst:17
 msgid ""
 "Brand operator can choose between keeping this routing pattern if finds "
 "them useful or deleting them an creating the ones that meet his needs."
 msgstr ""
+"El operador de la marca puede elegir entre mantener este patrón de enrutamiento si lo encuentra "
+"útil o eliminarlos y crear los que se ajusten a sus necesidades."
 

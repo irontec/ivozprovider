@@ -19,27 +19,27 @@ msgstr ""
 
 #: ../../administration_portal/brand/settings/client_portals.rst:6
 msgid "Client Portals"
-msgstr ""
+msgstr "Portales de Clientes"
 
 #: ../../administration_portal/brand/settings/client_portals.rst:8
 msgid "This section allows configuration of client portals:"
-msgstr ""
+msgstr "Esta sección permite la configuración de portales de clientes:"
 
 #: ../../administration_portal/brand/settings/client_portals.rst:10
 msgid "**Client**: Administration portal for all client types"
-msgstr ""
+msgstr "**Cliente**: Portal de administración para todos los tipos de clientes"
 
 #: ../../administration_portal/brand/settings/client_portals.rst:11
 msgid "**User**: Special portal for Virtual PBXs users"
-msgstr ""
+msgstr "**Usuario**: Portal especial para usuarios de PBXs Virtuales"
 
 #: ../../administration_portal/brand/settings/client_portals.rst:14
 msgid "URLs MUST be HTTPS"
-msgstr ""
+msgstr "Las URLs DEBEN ser HTTPS"
 
 #: ../../administration_portal/brand/settings/client_portals.rst:15
 msgid "URLs MUST not end with slash /"
-msgstr ""
+msgstr "Las URLs NO DEBEN terminar con una barra /"
 
 #: ../../administration_portal/brand/settings/client_portals.rst:18
 msgid ""
@@ -47,4 +47,7 @@ msgid ""
 "as the title of the portal allowing creation of corporate portals per "
 "client."
 msgstr ""
+"Cada URL también puede configurar un logo por URL, un tema y una frase para usar "
+"como título del portal, permitiendo la creación de portales corporativos por "
+"cliente."
 
