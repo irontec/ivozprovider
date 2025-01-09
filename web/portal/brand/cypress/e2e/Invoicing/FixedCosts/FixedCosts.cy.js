@@ -1,4 +1,4 @@
-import FixedCostsCollection from '../../../fixtures/FixedCosts/getCollection.json';
+import FixedCostsCollection from '../../../fixtures/Provider/FixedCosts/getCollection.json';
 import {
   deleteteFixedCosts,
   postFixedCosts,

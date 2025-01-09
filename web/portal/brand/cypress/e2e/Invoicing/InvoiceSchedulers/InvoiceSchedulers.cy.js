@@ -1,4 +1,4 @@
-import InvoiceSchedulers from '../../../fixtures/InvoiceNumberSequence/getCollection.json';
+import InvoiceSchedulers from '../../../fixtures/Provider/InvoiceNumberSequence/getCollection.json';
 import {
   deleteteInvoiceSchedulers,
   postInvoiceSchedulers,

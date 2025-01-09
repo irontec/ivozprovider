@@ -1,6 +1,6 @@
-import InvoiceNumberSequencesItem from '../../../fixtures/InvoiceNumberSequence/getItem.json';
-import newInvoiceNumberSequences from '../../../fixtures/InvoiceNumberSequence/post.json';
-import editInvoiceNumberSequences from '../../../fixtures/InvoiceNumberSequence/put.json';
+import InvoiceNumberSequencesItem from '../../../fixtures/Provider/InvoiceNumberSequence/getItem.json';
+import newInvoiceNumberSequences from '../../../fixtures/Provider/InvoiceNumberSequence/post.json';
+import editInvoiceNumberSequences from '../../../fixtures/Provider/InvoiceNumberSequence/put.json';
 
 export const postInvoiceNumberSequences = () => {
   cy.intercept('GET', '**/api/brand/invoice_number_sequences/1', {

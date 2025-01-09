@@ -1,4 +1,4 @@
-import InvoiceNumberSequencesCollection from '../../../fixtures/InvoiceNumberSequence/getCollection.json';
+import InvoiceNumberSequencesCollection from '../../../fixtures/Provider/InvoiceNumberSequence/getCollection.json';
 import {
   deleteteInvoiceNumberSequences,
   postInvoiceNumberSequences,

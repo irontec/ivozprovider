@@ -1,6 +1,6 @@
-import InvoiceTemplateItem from '../../../fixtures/InvoiceTemplate/getItem.json';
-import newInvoiceTemplate from '../../../fixtures/InvoiceTemplate/post.json';
-import editInvoiceTemplate from '../../../fixtures/InvoiceTemplate/put.json';
+import InvoiceTemplateItem from '../../../fixtures/Provider/InvoiceTemplate/getItem.json';
+import newInvoiceTemplate from '../../../fixtures/Provider/InvoiceTemplate/post.json';
+import editInvoiceTemplate from '../../../fixtures/Provider/InvoiceTemplate/put.json';
 
 export const postInvoiceTemplates = () => {
   cy.intercept('GET', '**/api/brand/invoice_templates/1', {

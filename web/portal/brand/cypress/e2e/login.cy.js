@@ -1,5 +1,5 @@
-import user from '../fixtures/Users/userLogin.json';
-import wrongUser from '../fixtures/Users/userWrongLogin.json';
+import user from '../fixtures/Provider/Users/userLogin.json';
+import wrongUser from '../fixtures/Provider/Users/userWrongLogin.json';
 
 describe('auth', () => {
   beforeEach(() => {

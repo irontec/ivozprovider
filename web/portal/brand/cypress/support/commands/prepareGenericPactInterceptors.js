@@ -1,10 +1,4 @@
 import apiSpec from '../../fixtures/apiSpec.json';
-import FixedCostsCollection from '../../fixtures/FixedCosts/getCollection.json';
-import FixedCostsRelInvoiceCollection from '../../fixtures/FixedCostsRelInvoice/getCollection.json';
-import InvoiceNumberSequenceCollection from '../../fixtures/InvoiceNumberSequence/getCollection.json';
-import InvoiceSchedulerCollection from '../../fixtures/InvoiceScheduler/getCollection.json';
-import InvoiceTemplateCollection from '../../fixtures/InvoiceTemplate/getCollection.json';
-import InvoiceCollection from '../../fixtures/Invoicing/getCollection.json';
 import TrustedCollection from '../../fixtures/Kam/Trusted/getCollection.json';
 import UsersAddressesCollection from '../../fixtures/Kam/UsersAddresses/getCollection.json';
 import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
@@ -28,9 +22,17 @@ import DdiProvidersAddressesCollection from '../../fixtures/Provider/DdiProvider
 import DdiProvidersRegistrationsCollection from '../../fixtures/Provider/DdiProviders/getProviderRegistrationsCollection.json';
 import DdisCollection from '../../fixtures/Provider/Ddis/getCollection.json';
 import DomainsCollection from '../../fixtures/Provider/Domains/getCollection.json';
+import ExtensionsCollection from '../../fixtures/Provider/Extension/getCollection.json';
 import FeaturesCollection from '../../fixtures/Provider/Features/getCollection.json';
+import FixedCostsCollection from '../../fixtures/Provider/FixedCosts/getCollection.json';
+import FixedCostsRelInvoiceCollection from '../../fixtures/Provider/FixedCostsRelInvoice/getCollection.json';
 import FriendsCollection from '../../fixtures/Provider/Friends/getCollection.json';
+import InvoiceNumberSequenceCollection from '../../fixtures/Provider/InvoiceNumberSequence/getCollection.json';
+import InvoiceSchedulerCollection from '../../fixtures/Provider/InvoiceScheduler/getCollection.json';
+import InvoiceTemplateCollection from '../../fixtures/Provider/InvoiceTemplate/getCollection.json';
+import InvoiceCollection from '../../fixtures/Provider/Invoicing/getCollection.json';
 import LanguagesCollection from '../../fixtures/Provider/Languages/getCollection.json';
+import LocationsCollection from '../../fixtures/Provider/Location/getCollection.json';
 import MediaRelaySetsColection from '../../fixtures/Provider/MediaRelaySets/getCollection.json';
 import NotificationTemplateContentsCollection from '../../fixtures/Provider/NotificationTemplateContents/getCollection.json';
 import NotificationTemplatesCollection from '../../fixtures/Provider/NotificationTemplates/getCollection.json';
@@ -45,10 +47,11 @@ import RetailAccountsCollection from '../../fixtures/Provider/RetailAccounts/get
 import RoutingPatternGroupsCollection from '../../fixtures/Provider/RoutingPatternGroups/getCollection.json';
 import RoutingPatternsCollection from '../../fixtures/Provider/RoutingPatterns/getCollection.json';
 import RoutingTagsCollection from '../../fixtures/Provider/RoutingTags/getCollection.json';
+import TerminalsCollection from '../../fixtures/Provider/Terminal/getCollection.json';
 import TimezonesCollection from '../../fixtures/Provider/Timezones/getCollection.json';
 import TransformationRuleSetsCollection from '../../fixtures/Provider/TransformationRuleSets/getCollection.json';
+import UserCollection from '../../fixtures/Provider/Users/getCollection.json';
 import WebPortalCollection from '../../fixtures/Provider/WebPortals/getCollection.json';
-import UserCollection from '../../fixtures/Users/getCollection.json';
 
 Cypress.Commands.add(
   'prepareGenericPactInterceptors',
@@ -220,9 +223,31 @@ Cypress.Commands.add(
       ...UsersAddressesCollection,
     }).as('getUserAddresses');
 
-    cy.intercept('GET', '**/api/brand/banned_address?*', {
+    const ipfilter = [];
+    const antibruteforce = [];
+    BannedAddressesCollection.body.forEach((address) => {
+      if (address.blocker === 'ipfilter') {
+        ipfilter.push(address);
+
+        return;
+      }
+
+      antibruteforce.push(address);
+    });
+
+    cy.intercept('GET', '**/api/brand/banned_addresses?blocker=ipfilter*', {
       ...BannedAddressesCollection,
-    }).as('getBannedAddresses');
+      body: ipfilter,
+    }).as('getBannedAddressesIpFilter');
+
+    cy.intercept(
+      'GET',
+      '**/api/brand/banned_addresses?blocker=antibruteforce*',
+      {
+        ...BannedAddressesCollection,
+        body: antibruteforce,
+      }
+    ).as('getBannedAddressesAntiBruteForce');
 
     cy.intercept('GET', '**/api/brand/rating_profiles?*', {
       ...RatingProfilesCollection,
@@ -269,6 +294,18 @@ Cypress.Commands.add(
 
     cy.intercept('GET', '**/api/brand/companies/corporate/unassigned*', {
       ...CompaniesUnassignedCollection,
-    }).as('getFriends');
+    }).as('getCompaniesUnassigned');
+
+    cy.intercept('GET', '**/api/brand/terminals*', {
+      ...TerminalsCollection,
+    }).as('getTerminals');
+
+    cy.intercept('GET', '**/api/brand/locations*', {
+      ...LocationsCollection,
+    }).as('getLocations');
+
+    cy.intercept('GET', '**/api/brand/extensions*', {
+      ...ExtensionsCollection,
+    }).as('getExtensions');
   }
 );
