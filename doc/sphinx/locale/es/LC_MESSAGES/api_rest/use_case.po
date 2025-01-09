@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../api_rest/use_case.rst:5
 msgid "Use Case"
-msgstr ""
+msgstr "Caso de Uso"
 
 #: ../../api_rest/use_case.rst:7
 msgid ""
@@ -27,22 +27,25 @@ msgid ""
 "obtain the companies of one specific brand (companies are exposed on "
 "Brand API only). The operation would be:"
 msgstr ""
+"Pongamos un pequeño caso de uso como ejemplo: Un administrador de la plataforma quiere "
+"obtener las empresas de una marca específica (las empresas solo se exponen en la API de Marca). "
+"La operación sería:"
 
 #: ../../api_rest/use_case.rst:10
 msgid "On platform API (https://your-domain/api/platform)"
-msgstr ""
+msgstr "En la API de la plataforma (https://your-domain/api/platform)"
 
 #: ../../api_rest/use_case.rst:11
 msgid "Login (request a token) as god admin on /admin_login"
-msgstr ""
+msgstr "Iniciar sesión (solicitar un token) como administrador god en /admin_login"
 
 #: ../../api_rest/use_case.rst:13
 msgid "Search target brand on /brands"
-msgstr ""
+msgstr "Buscar la marca objetivo en /brands"
 
 #: ../../api_rest/use_case.rst:16
 msgid "On Brand API (https://brand-domain/api/brand)"
-msgstr ""
+msgstr "En la API de Marca (https://brand-domain/api/brand)"
 
 #: ../../api_rest/use_case.rst:17
 msgid ""
@@ -50,8 +53,11 @@ msgid ""
 "token and the brand Id. You can impersonate by the username of a brand "
 "administrator instead of a brand id as well)"
 msgstr ""
+"Suplantar como administrador de marca en Auth> /token/exchange (requiere un token god "
+"y el Id de la marca. También puedes suplantar por el nombre de usuario de un administrador de marca "
+"en lugar de un id de marca)"
 
 #: ../../api_rest/use_case.rst:19
 msgid "Request brand companies using the endpoint /companies"
-msgstr ""
+msgstr "Solicitar las empresas de la marca usando el endpoint /companies"
 

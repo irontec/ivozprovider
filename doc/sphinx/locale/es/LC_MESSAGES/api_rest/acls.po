@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../api_rest/acls.rst:5
 msgid "ACLs"
-msgstr ""
+msgstr "ACLs"
 
 #: ../../api_rest/acls.rst:7
 msgid ""
@@ -27,96 +27,115 @@ msgid ""
 "level. These administrators (global, brand, client) have full access to "
 "all endpoints of their level."
 msgstr ""
+"Las credenciales utilizadas para el acceso web pueden ser utilizadas con su "
+"nivel correspondiente de API. Estos administradores (global, marca, cliente) "
+"tienen acceso completo a todos los endpoints de su nivel."
 
 #: ../../api_rest/acls.rst:10
 msgid "Since 2.15, it is possible to create **restricted administrators** too."
-msgstr ""
+msgstr "Desde la versión 2.15, también es posible crear **administradores restringidos**."
 
 #: ../../api_rest/acls.rst:13
 msgid "Restricted global/brand administrators"
-msgstr ""
+msgstr "Administradores globales/marca restringidos"
 
 #: ../../api_rest/acls.rst:15
 msgid ""
 "Enabling global/brand administrator **Restricted** option makes this "
 "administrator special:"
 msgstr ""
+"Habilitar la opción **Restringido** para el administrador global/marca hace que "
+"este administrador sea especial:"
 
 #: ../../api_rest/acls.rst:17
 msgid "Cannot be used anymore to access web portal."
-msgstr ""
+msgstr "No se puede usar más para acceder al portal web."
 
 #: ../../api_rest/acls.rst:19
 msgid ""
 "Full API endpoint access is restricted to read-only access to those "
 "endpoints."
 msgstr ""
+"El acceso completo a los endpoints de la API está restringido a acceso de solo lectura "
+"a esos endpoints."
 
 #: ../../api_rest/acls.rst:21
 msgid ""
 "Privileges can be fine-tuned in *List of Administrator access privileges*"
 " subsection, where you can enable/disable for each endpoint:"
 msgstr ""
+"Los privilegios se pueden ajustar en la subsección *Lista de privilegios de acceso del administrador*, "
+"donde puedes habilitar/deshabilitar para cada endpoint:"
 
 #: ../../api_rest/acls.rst:25
 msgid "Create privilege"
-msgstr ""
+msgstr "Privilegio de creación"
 
 #: ../../api_rest/acls.rst:25
 msgid "Administrator with this privilege can create new items of given endpoint."
-msgstr ""
+msgstr "El administrador con este privilegio puede crear nuevos elementos del endpoint dado."
 
 #: ../../api_rest/acls.rst:29
 msgid "Read privilege"
-msgstr ""
+msgstr "Privilegio de lectura"
 
 #: ../../api_rest/acls.rst:28
 msgid ""
 "Administrator with this privilege can read existing items of given "
 "endpoint. Just watch existing items, no modification is allowed."
 msgstr ""
+"El administrador con este privilegio puede leer elementos existentes del endpoint dado. "
+"Solo puede ver elementos existentes, no se permite la modificación."
 
 #: ../../api_rest/acls.rst:32
 msgid "Update privilege"
-msgstr ""
+msgstr "Privilegio de actualización"
 
 #: ../../api_rest/acls.rst:32
 msgid ""
 "Administrator with this privilege can modify existing items of given "
 "endpoint."
 msgstr ""
+"El administrador con este privilegio puede modificar elementos existentes del endpoint dado."
 
 #: ../../api_rest/acls.rst:35
 msgid "Delete privilege"
-msgstr ""
+msgstr "Privilegio de eliminación"
 
 #: ../../api_rest/acls.rst:35
 msgid ""
 "Administrator with this privilege can delete existing items of given "
 "endpoint."
 msgstr ""
+"El administrador con este privilegio puede eliminar elementos existentes del endpoint dado."
 
 #: ../../api_rest/acls.rst:37
 msgid ""
 "Changing a non-rectricted administrator to restricted turns it into a "
 "read-only API-capable administrator."
 msgstr ""
+"Cambiar un administrador no restringido a restringido lo convierte en un administrador "
+"capaz de usar la API solo en modo lectura."
 
 #: ../../api_rest/acls.rst:39
 msgid ""
 "Changing a restricted administrator to non-restricted turns it into a "
 "full access web+API capable administrator."
 msgstr ""
+"Cambiar un administrador restringido a no restringido lo convierte en un administrador "
+"capaz de usar la web y la API con acceso completo."
 
 #: ../../api_rest/acls.rst:41
 msgid ""
 "You can easily select multiple endpoints in *List of Administrator access"
 " privileges* and revoke/grant them all."
 msgstr ""
+"Puedes seleccionar fácilmente múltiples endpoints en la *Lista de privilegios de acceso del administrador* "
+"y revocar/otorgar todos ellos."
 
 #: ../../api_rest/acls.rst:44
 msgid "Client restricted administrators"
-msgstr ""
+msgstr "Administradores restringidos de clientes"
 
 #: ../../api_rest/acls.rst:46
 msgid ""
@@ -124,66 +143,76 @@ msgid ""
 "administrators can login into client web portal**. As a consequence, "
 "privileges of a given client administrator apply to:"
 msgstr ""
+"A diferencia de los administradores globales/marca, **los administradores restringidos de clientes "
+"pueden iniciar sesión en el portal web del cliente**. Como consecuencia, los privilegios de un "
+"administrador de cliente dado se aplican a:"
 
 #: ../../api_rest/acls.rst:49
 msgid "Privileges for API integrations."
-msgstr ""
+msgstr "Privilegios para integraciones de API."
 
 #: ../../api_rest/acls.rst:50
 msgid "Web access to sections and available operations in those sections."
-msgstr ""
+msgstr "Acceso web a secciones y operaciones disponibles en esas secciones."
 
 #: ../../api_rest/acls.rst:52
 msgid ""
 "Privileges can be fine-tuned in *List of Administrator access privileges*"
 " subsection too."
 msgstr ""
+"Los privilegios también se pueden ajustar en la subsección *Lista de privilegios de acceso del administrador*."
 
 #: ../../api_rest/acls.rst:55
 msgid "Example 1: Recordings-only client administrator"
-msgstr ""
+msgstr "Ejemplo 1: Administrador de cliente solo para grabaciones"
 
 #: ../../api_rest/acls.rst:56
 msgid "To create a client administrator that only sees Recordings section:"
-msgstr ""
+msgstr "Para crear un administrador de cliente que solo vea la sección de Grabaciones:"
 
 #: ../../api_rest/acls.rst:58
 msgid ""
 "Create a new restricted client administrator or turn a non-rectricted one"
 " into restricted."
 msgstr ""
+"Crea un nuevo administrador de cliente restringido o convierte uno no restringido en restringido."
 
 #: ../../api_rest/acls.rst:59 ../../api_rest/acls.rst:67
 msgid ""
 "Access to **List of Administrator access privileges**, select all "
 "endpoints and press **Revoke access**."
 msgstr ""
+"Accede a la **Lista de privilegios de acceso del administrador**, selecciona todos "
+"los endpoints y presiona **Revocar acceso**."
 
 #: ../../api_rest/acls.rst:60
 msgid "Edit *Recordings* endpoint and enable Read access."
-msgstr ""
+msgstr "Edita el endpoint *Grabaciones* y habilita el acceso de lectura."
 
 #: ../../api_rest/acls.rst:63
 msgid "Example 2: Fax-only client administrator"
-msgstr ""
+msgstr "Ejemplo 2: Administrador de cliente solo para faxes"
 
 #: ../../api_rest/acls.rst:64
 msgid ""
 "To create a client administrator that only sees Fax section and can "
 "send/receive faxes:"
 msgstr ""
+"Para crear un administrador de cliente que solo vea la sección de Faxes y pueda "
+"enviar/recibir faxes:"
 
 #: ../../api_rest/acls.rst:66
 msgid ""
 "Create a new restricted client administrator or turn a non-restricted one"
 " into restricted."
 msgstr ""
+"Crea un nuevo administrador de cliente restringido o convierte uno no restringido en restringido."
 
 #: ../../api_rest/acls.rst:68
 msgid "Edit *Faxes* endpoint and enable Read access."
-msgstr ""
+msgstr "Edita el endpoint *Faxes* y habilita el acceso de lectura."
 
 #: ../../api_rest/acls.rst:69
 msgid "Edit *FaxesFiles* endpoint and enable Create/Update access."
-msgstr ""
+msgstr "Edita el endpoint *FaxesFiles* y habilita el acceso de creación/actualización."
 

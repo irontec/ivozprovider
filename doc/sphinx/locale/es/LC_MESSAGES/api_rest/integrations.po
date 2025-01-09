@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../api_rest/integrations.rst:3
 msgid "Third party integrations"
-msgstr ""
+msgstr "Integraciones de terceros"
 
 #: ../../api_rest/integrations.rst:5
 msgid ""
@@ -27,6 +27,9 @@ msgid ""
 "identical to the Swagger 2.0 specification before it was renamed to "
 "\"OpenAPI Specification\")."
 msgstr ""
+"Ivoz Provider utiliza la **Especificación OpenAPI 2.0** (que es "
+"idéntica a la especificación Swagger 2.0 antes de que se renombrara a "
+"\"Especificación OpenAPI\")."
 
 #: ../../api_rest/integrations.rst:8
 msgid ""
@@ -36,66 +39,71 @@ msgid ""
 "during the client development. According to their github page the "
 "following language/framework code auto-generation is supported:"
 msgstr ""
+"Se supone que las APIs son la forma de integrar aplicaciones de terceros "
+"con IvozProvider. Algunas herramientas de la comunidad, como `swagger-codegen "
+"<https://github.com/swagger-api/swagger-codegen>`_, pueden ser de gran ayuda "
+"durante el desarrollo del cliente. Según su página de github, se admite la "
+"generación automática de código para los siguientes lenguajes/marcos:"
 
 #: ../../api_rest/integrations.rst:12
 msgid "ActionScript"
-msgstr ""
+msgstr "ActionScript"
 
 #: ../../api_rest/integrations.rst:13
 msgid "Ada"
-msgstr ""
+msgstr "Ada"
 
 #: ../../api_rest/integrations.rst:14
 msgid "Apex"
-msgstr ""
+msgstr "Apex"
 
 #: ../../api_rest/integrations.rst:15
 msgid "Bash"
-msgstr ""
+msgstr "Bash"
 
 #: ../../api_rest/integrations.rst:16
 msgid "C# (.net 2.0, 3.5 or later)"
-msgstr ""
+msgstr "C# (.net 2.0, 3.5 o posterior)"
 
 #: ../../api_rest/integrations.rst:17
 msgid "C++ (cpprest, Qt5, Tizen)"
-msgstr ""
+msgstr "C++ (cpprest, Qt5, Tizen)"
 
 #: ../../api_rest/integrations.rst:18
 msgid "Clojure"
-msgstr ""
+msgstr "Clojure"
 
 #: ../../api_rest/integrations.rst:19
 msgid "Dart"
-msgstr ""
+msgstr "Dart"
 
 #: ../../api_rest/integrations.rst:20
 msgid "Elixir"
-msgstr ""
+msgstr "Elixir"
 
 #: ../../api_rest/integrations.rst:21
 msgid "Elm"
-msgstr ""
+msgstr "Elm"
 
 #: ../../api_rest/integrations.rst:22
 msgid "Eiffel"
-msgstr ""
+msgstr "Eiffel"
 
 #: ../../api_rest/integrations.rst:23
 msgid "Erlang"
-msgstr ""
+msgstr "Erlang"
 
 #: ../../api_rest/integrations.rst:24
 msgid "Go"
-msgstr ""
+msgstr "Go"
 
 #: ../../api_rest/integrations.rst:25
 msgid "Groovy"
-msgstr ""
+msgstr "Groovy"
 
 #: ../../api_rest/integrations.rst:26
 msgid "Haskell (http-client, Servant)"
-msgstr ""
+msgstr "Haskell (http-client, Servant)"
 
 #: ../../api_rest/integrations.rst:27
 msgid ""
@@ -103,76 +111,79 @@ msgid ""
 "RestTemplate, RESTEasy, Vertx, Google API Client Library for Java, Rest-"
 "assured)"
 msgstr ""
+"Java (Jersey1.x, Jersey2.x, OkHttp, Retrofit1.x, Retrofit2.x, Feign, "
+"RestTemplate, RESTEasy, Vertx, Google API Client Library for Java, Rest-"
+"assured)"
 
 #: ../../api_rest/integrations.rst:28
 msgid "Kotlin"
-msgstr ""
+msgstr "Kotlin"
 
 #: ../../api_rest/integrations.rst:29
 msgid "Lua"
-msgstr ""
+msgstr "Lua"
 
 #: ../../api_rest/integrations.rst:30
 msgid "Node.js (ES5, ES6, AngularJS with Google Closure Compiler annotations)"
-msgstr ""
+msgstr "Node.js (ES5, ES6, AngularJS con anotaciones de Google Closure Compiler)"
 
 #: ../../api_rest/integrations.rst:31
 msgid "Objective-C"
-msgstr ""
+msgstr "Objective-C"
 
 #: ../../api_rest/integrations.rst:32
 msgid "Perl"
-msgstr ""
+msgstr "Perl"
 
 #: ../../api_rest/integrations.rst:33
 msgid "PHP"
-msgstr ""
+msgstr "PHP"
 
 #: ../../api_rest/integrations.rst:34
 msgid "PowerShell"
-msgstr ""
+msgstr "PowerShell"
 
 #: ../../api_rest/integrations.rst:35
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #: ../../api_rest/integrations.rst:36
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #: ../../api_rest/integrations.rst:37
 msgid "Ruby"
-msgstr ""
+msgstr "Ruby"
 
 #: ../../api_rest/integrations.rst:38
 msgid "Rust (rust, rust-server)"
-msgstr ""
+msgstr "Rust (rust, rust-server)"
 
 #: ../../api_rest/integrations.rst:39
 msgid "Scala (akka, http4s, swagger-async-httpclient)"
-msgstr ""
+msgstr "Scala (akka, http4s, swagger-async-httpclient)"
 
 #: ../../api_rest/integrations.rst:40
 msgid "Swift (2.x, 3.x, 4.x)"
-msgstr ""
+msgstr "Swift (2.x, 3.x, 4.x)"
 
 #: ../../api_rest/integrations.rst:41
 msgid "Typescript (Angular1.x, Angular2.x, Fetch, jQuery, Node)"
-msgstr ""
+msgstr "Typescript (Angular1.x, Angular2.x, Fetch, jQuery, Node)"
 
 #: ../../api_rest/integrations.rst:43
 msgid "You'll find API specs in the URLs below:"
-msgstr ""
+msgstr "Encontrarás las especificaciones de la API en las siguientes URLs:"
 
 #: ../../api_rest/integrations.rst:45
 msgid "`Platform API spec </api/platform/docs.json>`_"
-msgstr ""
+msgstr "`Especificación de la API de la Plataforma </api/platform/docs.json>`_"
 
 #: ../../api_rest/integrations.rst:46
 msgid "`Brand API spec </api/brand/docs.json>`_"
-msgstr ""
+msgstr "`Especificación de la API de la Marca </api/brand/docs.json>`_"
 
 #: ../../api_rest/integrations.rst:47
 msgid "`Client API spec </api/client/docs.json>`_"
-msgstr ""
+msgstr "`Especificación de la API del Cliente </api/client/docs.json>`_"
 

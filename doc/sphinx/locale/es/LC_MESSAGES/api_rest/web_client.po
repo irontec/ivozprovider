@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../api_rest/web_client.rst:3
 msgid "Built-in web client"
-msgstr ""
+msgstr "Cliente web incorporado"
 
 #: ../../api_rest/web_client.rst:5
 msgid ""
 "APIs come with their own web client so that you can test them easily. Go "
 "to `Platform API </api/platform/index.html>`_ for instance."
 msgstr ""
+"Las APIs vienen con su propio cliente web para que puedas probarlas fácilmente. "
+"Por ejemplo, ve a `API de la Plataforma </api/platform/index.html>`_."
 
 #: ../../api_rest/web_client.rst:10
 msgid ""
@@ -35,6 +37,10 @@ msgid ""
 "`execute` to send the request. You should get a response that contains a "
 "token and a refresh token."
 msgstr ""
+"Necesitarás obtener un token de acceso con credenciales de administrador válidas "
+"antes de cualquier otra cosa. Puedes hacerlo desde la sección [Auth] > [POST /admin_login]. "
+"Haz clic en el botón `Probar`, ingresa tus credenciales y haz clic en `ejecutar` para enviar la solicitud. "
+"Deberías recibir una respuesta que contenga un token y un token de actualización."
 
 #: ../../api_rest/web_client.rst:15
 msgid ""
@@ -43,6 +49,9 @@ msgid ""
 "refresh token then to get a new one without sending admin credentials "
 "again."
 msgstr ""
+"Copia el token y configúralo en el botón `Autorizar` en la parte superior de la página. "
+"El ttl (tiempo de vida) del token es de una hora por defecto, puedes usar el "
+"token de actualización para obtener uno nuevo sin enviar las credenciales de administrador nuevamente."
 
 #: ../../api_rest/web_client.rst:17
 msgid ""
@@ -50,18 +59,22 @@ msgid ""
 " endpoint, `Try it out` and `Execute`. You may want to switch `Response "
 "content type` as well (JSON or LD+JSON for this endpoint)."
 msgstr ""
+"Una vez que hayas configurado correctamente tu token, haz clic en el endpoint [GET /administrators], "
+"`Probar` y `Ejecutar`. También puedes cambiar el `Tipo de contenido de la respuesta` "
+"(JSON o LD+JSON para este endpoint)."
 
 #: ../../api_rest/web_client.rst:22
 msgid ""
 "It's possible to filter and sort response using `Parameters` input fields"
 " as well."
 msgstr ""
+"Es posible filtrar y ordenar la respuesta usando los campos de entrada `Parámetros` también."
 
 #: ../../api_rest/web_client.rst:26
 msgid "Specification"
-msgstr ""
+msgstr "Especificación"
 
 #: ../../api_rest/web_client.rst:27
 msgid "You can check out request and response models from the web client itself."
-msgstr ""
+msgstr "Puedes consultar los modelos de solicitud y respuesta desde el propio cliente web."
 
