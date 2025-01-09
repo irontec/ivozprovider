@@ -19,43 +19,49 @@ msgstr ""
 
 #: ../../basic_concepts/installation/install_types.rst:3
 msgid "Installation Types"
-msgstr ""
+msgstr "Tipos de instalación"
 
 #: ../../basic_concepts/installation/install_types.rst:10
 msgid "Distributed Install"
-msgstr ""
+msgstr "Instalación distribuida"
 
 #: ../../basic_concepts/installation/install_types.rst:12
 msgid ""
 "IvozProvider software is designed to run distributed between multiple "
 "systems in what we call profiles:"
 msgstr ""
+"El software de IvozProvider está diseñado para ejecutarse distribuido "
+"entre múltiples sistemas en lo que llamamos perfiles:"
 
 #: ../../basic_concepts/installation/install_types.rst:15
 msgid "Each profile is in charge of performing one of the platform functions:"
 msgstr ""
+"Cada perfil se encarga de realizar una de las funciones de la plataforma:"
 
 #: ../../basic_concepts/installation/install_types.rst:17
 msgid "Data storage"
-msgstr ""
+msgstr "Almacenamiento de datos"
 
 #: ../../basic_concepts/installation/install_types.rst:18
 msgid "SIP Proxy"
-msgstr ""
+msgstr "Proxy SIP"
 
 #: ../../basic_concepts/installation/install_types.rst:19
 msgid "Application Server"
-msgstr ""
+msgstr "Servidor de aplicaciones"
 
 #: ../../basic_concepts/installation/install_types.rst:20
 msgid "Web portal"
-msgstr ""
+msgstr "Portal web"
 
 #: ../../basic_concepts/installation/install_types.rst:22
 msgid ""
 "For each of this profiles, there's a virtual package that will install "
 "all the required dependencies (see :ref:`Installing profile package`)."
 msgstr ""
+"Para cada uno de estos perfiles, hay un paquete virtual que instalará "
+"todas las dependencias requeridas (ver :ref:`Instalación del paquete de "
+"perfil <Installing profile package>`)."
 
 #: ../../basic_concepts/installation/install_types.rst:25
 msgid ""
@@ -65,10 +71,16 @@ msgid ""
 "software so the systems that have the same profile are synchronized (for "
 "example: database replication or http request balancing)."
 msgstr ""
+"Puede instalar tantas instancias como desee para cada perfil, pero tenga "
+"en cuenta que, mientras que algunos de ellos están diseñados para escalar "
+"horizontalmente (por ejemplo: asterisk o media-relays), otros requerirán "
+"software adicional para que los sistemas que tienen el mismo perfil estén "
+"sincronizados (por ejemplo: replicación de bases de datos o balanceo de "
+"solicitudes http)."
 
 #: ../../basic_concepts/installation/install_types.rst:36
 msgid "StandAlone Install"
-msgstr ""
+msgstr "Instalación StandAlone"
 
 #: ../../basic_concepts/installation/install_types.rst:38
 msgid ""
@@ -76,6 +88,9 @@ msgid ""
 "basic service, we have designed all this configuration so they can work "
 "in a single machine."
 msgstr ""
+"Si desea una instalación pequeña para realizar un par de pruebas o "
+"proporcionar un servicio básico, hemos diseñado toda esta configuración "
+"para que puedan funcionar en una sola máquina."
 
 #: ../../basic_concepts/installation/install_types.rst:42
 msgid ""
@@ -83,4 +98,7 @@ msgid ""
 " created :ref:`Automatic ISO CD image` so you can install in a couple of "
 "minutes."
 msgstr ""
+"Hemos llamado a este tipo de instalaciones **StandAlone** y también hemos "
+"creado :ref:`imagen ISO CD automática<Automatic ISO CD image>` para que pueda instalar en un par "
+"de minutos."
 

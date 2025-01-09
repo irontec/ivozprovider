@@ -22,8 +22,10 @@ msgid ""
 "Following diagram shows the global architecture of IvozProvider solution,"
 " with all its components:"
 msgstr ""
+"El siguiente diagrama muestra la arquitectura global de la solución IvozProvider, "
+"con todos sus componentes:"
 
 #: ../../basic_concepts/architecture/general_scheme.rst:13
 msgid "This is a more conceptual diagram:"
-msgstr ""
+msgstr "Este es un diagrama más conceptual:"
 

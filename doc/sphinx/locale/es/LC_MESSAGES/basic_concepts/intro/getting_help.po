@@ -19,21 +19,23 @@ msgstr ""
 
 #: ../../basic_concepts/intro/getting_help.rst:5
 msgid "Getting help"
-msgstr ""
+msgstr "Obteniendo ayuda"
 
 #: ../../basic_concepts/intro/getting_help.rst:7
 msgid ""
 "IvozProvider is an alive and highly developed project. There are multiple"
 " channels to get information or report bugs."
 msgstr ""
+"IvozProvider es un proyecto vivo y altamente desarrollado. Hay múltiples "
+"canales para obtener información o reportar errores."
 
 #: ../../basic_concepts/intro/getting_help.rst:10
 msgid "In order of preference:"
-msgstr ""
+msgstr "En orden de preferencia:"
 
 #: ../../basic_concepts/intro/getting_help.rst:12
 msgid "GitHub: https://github.com/irontec/ivozprovider"
-msgstr ""
+msgstr "GitHub: https://github.com/irontec/ivozprovider"
 
 #: ../../basic_concepts/intro/getting_help.rst:14
 msgid ""
@@ -41,16 +43,19 @@ msgid ""
 "<https://kiwiirc.com/nextclient/irc.libera.chat/#ivozprovider>`_ at "
 "irc.libera.chat"
 msgstr ""
+"Canal IRC `#ivozprovider "
+"<https://kiwiirc.com/nextclient/irc.libera.chat/#ivozprovider>`_ en "
+"irc.libera.chat"
 
 #: ../../basic_concepts/intro/getting_help.rst:17
 msgid "email: vozip+ivozprovider@irontec.com"
-msgstr ""
+msgstr "correo electrónico: vozip+ivozprovider@irontec.com"
 
 #: ../../basic_concepts/intro/getting_help.rst:19
 msgid "Twitter: `@irontec <https://twitter.com/irontec>`_"
-msgstr ""
+msgstr "Twitter: `@irontec <https://twitter.com/irontec>`_"
 
 #: ../../basic_concepts/intro/getting_help.rst:22
 msgid "Don't hesitate to contact us for any kind of feedback :)"
-msgstr ""
+msgstr "No dude en contactarnos para cualquier tipo de comentario :)"
 

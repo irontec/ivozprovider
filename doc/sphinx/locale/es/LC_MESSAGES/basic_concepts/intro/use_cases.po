@@ -19,47 +19,54 @@ msgstr ""
 
 #: ../../basic_concepts/intro/use_cases.rst:3
 msgid "Who should use IvozProvider?"
-msgstr ""
+msgstr "¿Quién debería usar IvozProvider?"
 
 #: ../../basic_concepts/intro/use_cases.rst:5
 msgid ""
 "IvozProvider is a good option for those interested in having a telephony "
 "platform that can provide service to **thousands concurrent calls**."
 msgstr ""
+"IvozProvider es una buena opción para aquellos interesados en tener una "
+"plataforma de telefonía que pueda proporcionar servicio a **miles de llamadas "
+"concurrentes**."
 
 #: ../../basic_concepts/intro/use_cases.rst:8
 msgid ""
 "The greatest strengths of IvozProvide can help to decide if the solution "
 "meets your needs:"
 msgstr ""
+"Las mayores fortalezas de IvozProvider pueden ayudar a decidir si la solución "
+"cumple con sus necesidades:"
 
 #: ../../basic_concepts/intro/use_cases.rst:11
 msgid "VoIP: SIP"
-msgstr ""
+msgstr "VoIP: SIP"
 
 #: ../../basic_concepts/intro/use_cases.rst:13
 msgid "Multilevel, multitenant"
-msgstr ""
+msgstr "Multinivel, multiinquilino"
 
 #: ../../basic_concepts/intro/use_cases.rst:15
 msgid "Horizontal scaling"
-msgstr ""
+msgstr "Escalabilidad horizontal"
 
 #: ../../basic_concepts/intro/use_cases.rst:17
 msgid "PseudoSBC: open to Internet"
-msgstr ""
+msgstr "PseudoSBC: abierto a Internet"
 
 #: ../../basic_concepts/intro/use_cases.rst:19
 msgid "Billing and Invoicing engines integrated"
-msgstr ""
+msgstr "Motores de facturación e invoicing integrados"
 
 #: ../../basic_concepts/intro/use_cases.rst:21
 msgid "PBX Features"
-msgstr ""
+msgstr "Características de PBX"
 
 #: ../../basic_concepts/intro/use_cases.rst:24
 msgid ""
 "The installation process is so simple, that the best way to test if "
 "IvozProvider fulfills your needs is to test it!"
 msgstr ""
+"El proceso de instalación es tan simple, que la mejor manera de probar si "
+"IvozProvider cumple con sus necesidades es probarlo!"
 

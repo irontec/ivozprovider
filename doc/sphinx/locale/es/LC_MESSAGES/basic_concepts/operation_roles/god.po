@@ -22,62 +22,72 @@ msgid ""
 "The global administrator role (operator in the image) is usually done by "
 "the installation responsible."
 msgstr ""
+"El rol de administrador global (operador en la imagen) generalmente lo "
+"realiza el responsable de la instalación."
 
 #: ../../basic_concepts/operation_roles/god.rst:4
 msgid ""
 "All options and platform features are visible to this role and usually is"
 " in charge of its maintenance."
 msgstr ""
+"Todas las opciones y características de la plataforma son visibles para "
+"este rol y generalmente está a cargo de su mantenimiento."
 
 #: ../../basic_concepts/operation_roles/god.rst:7
 msgid ""
 "Their most important task is to **create Brands** and configure them so "
 "they have the enough autonomy to properly use the platform:"
 msgstr ""
+"Su tarea más importante es **crear Marcas** y configurarlas para que "
+"tengan la suficiente autonomía para usar correctamente la plataforma:"
 
 #: ../../basic_concepts/operation_roles/god.rst:10
 msgid "Configure their web access."
-msgstr ""
+msgstr "Configurar su acceso web."
 
 #: ../../basic_concepts/operation_roles/god.rst:12
 msgid "Configure their brand portal look and feel: themes, colors, etc."
-msgstr ""
+msgstr "Configurar la apariencia del portal de su marca: temas, colores, etc."
 
 #: ../../basic_concepts/operation_roles/god.rst:14
 msgid ""
 "Apart from their main task, their global visibility and total access "
 "makes them responsible of:"
 msgstr ""
+"Aparte de su tarea principal, su visibilidad global y acceso total los "
+"hace responsables de:"
 
 #: ../../basic_concepts/operation_roles/god.rst:17
 msgid "Monitor the platform so it keeps always UP & RUNNING"
-msgstr ""
+msgstr "Monitorear la plataforma para que siempre esté en funcionamiento"
 
 #: ../../basic_concepts/operation_roles/god.rst:19
 msgid "Analyze platform logs to track possible errors."
-msgstr ""
+msgstr "Analizar los registros de la plataforma para rastrear posibles errores."
 
 #: ../../basic_concepts/operation_roles/god.rst:21
 msgid "Polish the security mechanisms to avoid external attacks."
-msgstr ""
+msgstr "Pulir los mecanismos de seguridad para evitar ataques externos."
 
 #: ../../basic_concepts/operation_roles/god.rst:23
 msgid "Obtain global statistics of calls audio quality."
-msgstr ""
+msgstr "Obtener estadísticas globales de la calidad del audio de las llamadas."
 
 #: ../../basic_concepts/operation_roles/god.rst:25
 msgid "Increase the available resources of the platform as long as is needed:"
-msgstr ""
+msgstr "Aumentar los recursos disponibles de la plataforma según sea necesario:"
 
 #: ../../basic_concepts/operation_roles/god.rst:27
 msgid "Increasing resources available in a standalone installation"
-msgstr ""
+msgstr "Aumentar los recursos disponibles en una instalación independiente"
 
 #: ../../basic_concepts/operation_roles/god.rst:29
 msgid ""
 "Migrating, whenever required, to a distributed installation with multiple"
 " AS, media relays, etc."
 msgstr ""
+"Migrar, cuando sea necesario, a una instalación distribuida con múltiples "
+"AS, relés de medios, etc."
 
 #: ../../basic_concepts/operation_roles/god.rst:32
 msgid ""
@@ -85,6 +95,9 @@ msgid ""
 "platform**, that's why *God* is a term used in multiple places along this"
 " documentation."
 msgstr ""
+"En resumen, **este rol es el único que no tiene límites dentro de la "
+"plataforma**, por eso *Dios* es un término utilizado en múltiples lugares "
+"a lo largo de esta documentación."
 
 #: ../../basic_concepts/operation_roles/god.rst:36
 msgid ""
@@ -92,4 +105,7 @@ msgid ""
 "for the correct behaviour. This role **doesn't have any kind of limit** "
 "and **grants access** to the **brand operators**."
 msgstr ""
+"*Este rol es responsable de mantener la plataforma**, configurándola para "
+"el comportamiento correcto. Este rol **no tiene ningún tipo de límite** y "
+"**otorga acceso** a los **operadores de marca**."
 

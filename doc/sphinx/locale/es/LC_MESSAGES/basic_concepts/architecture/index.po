@@ -19,25 +19,27 @@ msgstr ""
 
 #: ../../basic_concepts/architecture/index.rst:5
 msgid "Platform general architecture"
-msgstr ""
+msgstr "Arquitectura general de la plataforma"
 
 #: ../../basic_concepts/architecture/index.rst:10
 msgid "General diagram"
-msgstr ""
+msgstr "Diagrama general"
 
 #: ../../basic_concepts/architecture/general_scheme.rst:2
 msgid ""
 "Following diagram shows the global architecture of IvozProvider solution,"
 " with all its components:"
 msgstr ""
+"El siguiente diagrama muestra la arquitectura global de la solución IvozProvider, "
+"con todos sus componentes:"
 
 #: ../../basic_concepts/architecture/general_scheme.rst:13
 msgid "This is a more conceptual diagram:"
-msgstr ""
+msgstr "Este es un diagrama más conceptual:"
 
 #: ../../basic_concepts/architecture/index.rst:18
 msgid "SIP signalling flow"
-msgstr ""
+msgstr "Flujo de señalización SIP"
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:1
 msgid ""
@@ -46,20 +48,26 @@ msgid ""
 " `RFC 3261 <https://tools.ietf.org/html/rfc3261>`_ and any `related RFCs "
 "<https://www.packetizer.com/ipmc/sip/standards.html>`_."
 msgstr ""
+"El primer diagrama muestra el tráfico de señalización SIP involucrado en el "
+"establecimiento, modificación y terminación de sesiones siguiendo el SIP "
+"`RFC 3261 <https://tools.ietf.org/html/rfc3261>`_ y cualquier `RFC relacionado "
+"<https://www.packetizer.com/ipmc/sip/standards.html>`_."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:6
 msgid "These are the **external SIP entities** involved:"
-msgstr ""
+msgstr "Estas son las **entidades SIP externas** involucradas:"
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:8
 msgid "UACs: users hardphones, softphones, SIP-capable gadget."
-msgstr ""
+msgstr "UACs: teléfonos fijos de usuarios, softphones, dispositivos compatibles con SIP."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:10
 msgid ""
 "SIP carriers/DDI Providers: carriers used to interconnect IvozProvider "
 "with external SIP networks (and, probably, with PSTN)."
 msgstr ""
+"Operadores SIP/Proveedores DDI: operadores utilizados para interconectar IvozProvider "
+"con redes SIP externas (y, probablemente, con PSTN)."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:13
 msgid ""
@@ -67,24 +75,29 @@ msgid ""
 "WSS) they send/receive is to/from this two **internal SIP entities** of "
 "IvozProvider:"
 msgstr ""
+"Todo el tráfico SIP (en cualquiera de los transportes soportados: TCP, UDP, TLS, "
+"WSS) que envían/reciben es hacia/desde estas dos **entidades SIP internas** de "
+"IvozProvider:"
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:16
 msgid "Users SIP Proxy (running `Kamailio <https://www.kamailio.org>`_)."
-msgstr ""
+msgstr "Proxy SIP de Usuarios (ejecutando `Kamailio <https://www.kamailio.org>`_)."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:18
 msgid "Trunks SIP Proxy (running `Kamailio <https://www.kamailio.org>`_)."
-msgstr ""
+msgstr "Proxy SIP de Trunks (ejecutando `Kamailio <https://www.kamailio.org>`_)."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:21
 msgid ""
 "In fact, users UACs only talk to *Users SIP Proxy* and 'SIP carriers' and"
 " 'DDI"
 msgstr ""
+"De hecho, los UACs de usuarios solo hablan con el *Proxy SIP de Usuarios* y los 'Operadores SIP' y"
+" 'Proveedores DDI'."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:21
 msgid "Providers' only talk to *Trunks SIP Proxy*."
-msgstr ""
+msgstr "Los Proveedores solo hablan con el *Proxy SIP de Trunks*."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:23
 msgid ""
@@ -93,16 +106,21 @@ msgid ""
 "**no external element is allowed to talk to Application Servers "
 "directly**."
 msgstr ""
+"Dentro de IvozProvider, estos dos proxies pueden hablar con *Servidores de Aplicaciones* "
+"ejecutando `Asterisk <http://www.asterisk.org/>`_ para algunos tipos de clientes, pero "
+"**no se permite que ningún elemento externo hable directamente con los Servidores de Aplicaciones**."
 
 #: ../../basic_concepts/architecture/index.rst:26
 msgid "RTP audio flow"
-msgstr ""
+msgstr "Flujo de audio RTP"
 
 #: ../../basic_concepts/architecture/audio_flow.rst:1
 msgid ""
 "Sessions initiated by SIP signalling protocol imply media streams shared "
 "by involved entities."
 msgstr ""
+"Las sesiones iniciadas por el protocolo de señalización SIP implican flujos de medios compartidos "
+"por las entidades involucradas."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:4
 msgid ""
@@ -110,30 +128,35 @@ msgid ""
 "send and receive the media itself, usually using UDP as a transport "
 "protocol."
 msgstr ""
+"Estos flujos de medios utilizan `RTP <https://tools.ietf.org/html/rfc3550>`_ para "
+"enviar y recibir los medios en sí, generalmente utilizando UDP como protocolo de transporte."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:7
 msgid "**External entities** involved in RTP sessions can be divided in:"
-msgstr ""
+msgstr "**Entidades externas** involucradas en sesiones RTP se pueden dividir en:"
 
 #: ../../basic_concepts/architecture/audio_flow.rst:9
 msgid "Clients endpoints."
-msgstr ""
+msgstr "Puntos finales de clientes."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:11
 msgid "Carriers/DDI Providers."
-msgstr ""
+msgstr "Operadores/Proveedores DDI."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:13
 msgid ""
 "Both entities exchanges RTP with the same IvozProvider entity: *media-"
 "relays*."
 msgstr ""
+"Ambas entidades intercambian RTP con la misma entidad de IvozProvider: *media-relays*."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:15
 msgid ""
 "IvozProvider implements *media-relays* using `RTPengine "
 "<https://github.com/sipwise/rtpengine>`_."
 msgstr ""
+"IvozProvider implementa *media-relays* utilizando `RTPengine "
+"<https://github.com/sipwise/rtpengine>`_."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:17
 msgid ""
@@ -141,20 +164,24 @@ msgid ""
 "*Application Servers*, but **external entities never talk directly to "
 "them**."
 msgstr ""
+"Similar al SIP, estos *media-relays* intercambian RTP cuando es necesario con "
+"*Servidores de Aplicaciones*, pero **las entidades externas nunca hablan directamente con ellos**."
 
 #: ../../basic_concepts/architecture/index.rst:32
 msgid "HTTPS traffic"
-msgstr ""
+msgstr "Tráfico HTTPS"
 
 #: ../../basic_concepts/architecture/web_traffic.rst:1
 msgid ""
 "HTTPS is the third traffic type exchanged between IvozProvider and "
 "*external world*."
 msgstr ""
+"HTTPS es el tercer tipo de tráfico intercambiado entre IvozProvider y "
+"el *mundo exterior*."
 
 #: ../../basic_concepts/architecture/web_traffic.rst:4
 msgid "HTTPS traffic is used for:"
-msgstr ""
+msgstr "El tráfico HTTPS se utiliza para:"
 
 #: ../../basic_concepts/architecture/web_traffic.rst:6
 msgid ""
@@ -162,26 +189,33 @@ msgid ""
 " when they wake up and this configuration files can be served through "
 "HTTPS."
 msgstr ""
+"**Provisionamiento de terminales**: varios teléfonos fijos solicitan su configuración "
+"cuando se encienden y estos archivos de configuración se pueden servir a través de "
+"HTTPS."
 
 #: ../../basic_concepts/architecture/web_traffic.rst:9
 msgid ""
 "**Web portals**: IvozProvider has 4-level web portals for all the "
 ":ref:`platform roles <operation_roles>`."
 msgstr ""
+"**Portales web**: IvozProvider tiene portales web de 4 niveles para todos los "
+":ref:`roles de la plataforma <operation_roles>`."
 
 #: ../../basic_concepts/architecture/web_traffic.rst:12
 msgid "Both of these traffics are handled by *Web portals* IvozProvider entity."
-msgstr ""
+msgstr "Ambos tipos de tráfico son manejados por la entidad *Portales web* de IvozProvider."
 
 #: ../../basic_concepts/architecture/index.rst:38
 msgid "Additional elements"
-msgstr ""
+msgstr "Elementos adicionales"
 
 #: ../../basic_concepts/architecture/additional_elements.rst:1
 msgid ""
 "IvozProvider has multiple elements that are not exposed to the *external "
 "world* but play a crucial task."
 msgstr ""
+"IvozProvider tiene múltiples elementos que no están expuestos al *mundo exterior* "
+"pero desempeñan una tarea crucial."
 
 #: ../../basic_concepts/architecture/additional_elements.rst:4
 msgid ""
@@ -190,6 +224,10 @@ msgid ""
 "software packaged. IvozProvider uses `MySQL database engine "
 "<https://www.mysql.com/>`_ for this task."
 msgstr ""
+"El perfil más notable es el **perfil de base de datos** que recopila toda la "
+"información de la plataforma y la comparte entre la mayoría del software empaquetado. "
+"IvozProvider utiliza el `motor de base de datos MySQL "
+"<https://www.mysql.com/>`_ para esta tarea."
 
 #: ../../basic_concepts/architecture/additional_elements.rst:8
 msgid ""
@@ -197,34 +235,45 @@ msgid ""
 "encoding recordings, generating invoices, reloading services, importing "
 "data, etc."
 msgstr ""
+"Otra tarea notable es el **manejador de tareas asincrónicas** encargado de "
+"codificar grabaciones, generar facturas, recargar servicios, importar "
+"datos, etc."
 
 #: ../../basic_concepts/architecture/index.rst:44
 msgid "Auxiliary elements"
-msgstr ""
+msgstr "Elementos auxiliares"
 
 #: ../../basic_concepts/architecture/aux_elements.rst:1
 msgid ""
 "**Aux profile** runs software that, even though is not vital for calls "
 "placing, makes IvozProvider maintainer's life much easier."
 msgstr ""
+"El **perfil Aux** ejecuta software que, aunque no es vital para la realización de llamadas, "
+"hace la vida del mantenedor de IvozProvider mucho más fácil."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:4
 msgid ""
 "In fact, without them, debugging problems would be much harder and the "
 "quality of given service would be damaged."
 msgstr ""
+"De hecho, sin ellos, la depuración de problemas sería mucho más difícil y la "
+"calidad del servicio prestado se vería afectada."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:7
 msgid ""
 "Although IvozProvider does not include any of the tools mentioned here, "
 "we consider them crucial for dealing with production environments."
 msgstr ""
+"Aunque IvozProvider no incluye ninguna de las herramientas mencionadas aquí, "
+"las consideramos cruciales para tratar con entornos de producción."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:10
 msgid ""
 "We list here tools configured in all production IvozProvider "
 "installations maintained by `Irontec <https://www.irontec.com>`_:"
 msgstr ""
+"Aquí enumeramos las herramientas configuradas en todas las instalaciones de IvozProvider "
+"en producción mantenidas por `Irontec <https://www.irontec.com>`_:"
 
 #: ../../basic_concepts/architecture/aux_elements.rst:13
 msgid ""
@@ -233,12 +282,17 @@ msgid ""
 "measuring, etc. Visit `SIP Capture website <http://sipcapture.org/>`_ for"
 " more information."
 msgstr ""
+"**Captura SIP de Homer**: Este increíble software nos permite capturar todo el tráfico SIP "
+"para su posterior análisis, para obtener estadísticas, medir la calidad de las llamadas, etc. "
+"Visita el `sitio web de SIP Capture <http://sipcapture.org/>`_ para más información."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:17
 msgid ""
 "**Kibana log viewer**: Showing logs collected by remaining `ELK stack "
 "components <https://www.elastic.co/elk-stack>`_."
 msgstr ""
+"**Visor de logs de Kibana**: Mostrando logs recopilados por los restantes `componentes de la pila ELK "
+"<https://www.elastic.co/elk-stack>`_."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:19
 msgid ""
@@ -246,4 +300,7 @@ msgid ""
 "`TICK stack components <https://www.influxdata.com/time-series-"
 "platform/>`_."
 msgstr ""
+"**Visor de métricas de Chronograf**: Mostrando métricas recopiladas por los restantes "
+"`componentes de la pila TICK <https://www.influxdata.com/time-series-"
+"platform/>`_."
 

@@ -19,9 +19,9 @@ msgstr ""
 
 #: ../../basic_concepts/intro/index.rst:3
 msgid "Introduction to IvozProvider"
-msgstr ""
+msgstr "Introducción a IvozProvider"
 
 #: ../../basic_concepts/intro/index.rst:5
 msgid "The following sections will serve as general introduction to IvozProvider:"
-msgstr ""
+msgstr "Las siguientes secciones servirán como introducción general a IvozProvider:"
 

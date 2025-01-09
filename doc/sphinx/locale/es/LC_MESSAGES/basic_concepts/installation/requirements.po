@@ -19,17 +19,19 @@ msgstr ""
 
 #: ../../basic_concepts/installation/requirements.rst:6
 msgid "Minimum requirements"
-msgstr ""
+msgstr "Requisitos mínimos"
 
 #: ../../basic_concepts/installation/requirements.rst:10
 msgid "System requirements"
-msgstr ""
+msgstr "Requisitos del sistema"
 
 #: ../../basic_concepts/installation/requirements.rst:11
 msgid ""
 "IvozProvider is designed to be installed using Debian GNU/Linux APT "
 "package system."
 msgstr ""
+"IvozProvider está diseñado para ser instalado utilizando el sistema de "
+"paquetes APT de Debian GNU/Linux."
 
 #: ../../basic_concepts/installation/requirements.rst:14
 msgid ""
@@ -37,26 +39,30 @@ msgid ""
 "platform. Many of the installed software may not work properly with other"
 " pre-installed services (like MySQL or DNS servers)."
 msgstr ""
+"Se recomienda instalar IvozProvider en un servidor dedicado para la "
+"plataforma. Muchos de los programas instalados pueden no funcionar "
+"correctamente con otros servicios preinstalados (como servidores MySQL o "
+"DNS)."
 
 #: ../../basic_concepts/installation/requirements.rst:18
 msgid "For a StandAlone installation, we recommend at least:"
-msgstr ""
+msgstr "Para una instalación StandAlone, recomendamos al menos:"
 
 #: ../../basic_concepts/installation/requirements.rst:20
 msgid "4 CPUs (x86_64 or i386)"
-msgstr ""
+msgstr "4 CPUs (x86_64 o i386)"
 
 #: ../../basic_concepts/installation/requirements.rst:21
 msgid "4 Gb memory"
-msgstr ""
+msgstr "4 Gb de memoria"
 
 #: ../../basic_concepts/installation/requirements.rst:22
 msgid "30GB HDD"
-msgstr ""
+msgstr "30GB de HDD"
 
 #: ../../basic_concepts/installation/requirements.rst:23
 msgid "1/2 public IP Addresses (read note behind)"
-msgstr ""
+msgstr "1/2 direcciones IP públicas (leer nota detrás)"
 
 #: ../../basic_concepts/installation/requirements.rst:25
 msgid ""
@@ -64,16 +70,21 @@ msgid ""
 "IP address. If so, **KamTrunks ports will be changed from 5060 (TCP/UDP) "
 "to 7060 (TCP/UDP) and from 5061 (TCP) to 7061 (TCP)**."
 msgstr ""
+"Es posible que tanto KamUsers como KamTrunks compartan una única dirección"
+" IP pública. Si es así, **los puertos de KamTrunks se cambiarán de 5060 "
+"(TCP/UDP) a 7060 (TCP/UDP) y de 5061 (TCP) a 7061 (TCP)**."
 
 #: ../../basic_concepts/installation/requirements.rst:30
 msgid "If you're not using a :ref:`Automatic ISO CD image` you will also need:"
 msgstr ""
+"Si no está utilizando una :ref:`imagen ISO CD automática<Automatic ISO CD image>`, también "
+"necesitará:"
 
 #: ../../basic_concepts/installation/requirements.rst:32
 msgid "Debian Bookworm 12.0 base install"
-msgstr ""
+msgstr "Instalación base de Debian Bookworm 12.0"
 
 #: ../../basic_concepts/installation/requirements.rst:33
 msgid "Internet access"
-msgstr ""
+msgstr "Acceso a Internet"
 

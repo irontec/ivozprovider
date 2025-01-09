@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../basic_concepts/intro/about.rst:3
 msgid "About this documentation"
-msgstr ""
+msgstr "Acerca de esta documentación"
 
 #: ../../basic_concepts/intro/about.rst:5
 msgid ""
@@ -27,6 +27,9 @@ msgid ""
 "IvozProvider, the multi-tenant telephony platform for providers developed"
 " by `Irontec <http://irontec.com>`_."
 msgstr ""
+"Esta documentación describe el proceso de instalación y uso de "
+"IvozProvider, la plataforma de telefonía multiinquilino para proveedores "
+"desarrollada por `Irontec <http://irontec.com>`_."
 
 #: ../../basic_concepts/intro/about.rst:9
 msgid ""
@@ -35,4 +38,8 @@ msgid ""
 "in multiple sections from the basic infrastructure information and "
 "configuration to the final user settings."
 msgstr ""
+"Este debería ser el punto de partida para cualquier persona interesada en "
+"esta solución, tanto desde el punto de vista técnico como del usuario y está "
+"dividido en múltiples secciones desde la información y configuración básica "
+"de la infraestructura hasta la configuración del usuario final."
 

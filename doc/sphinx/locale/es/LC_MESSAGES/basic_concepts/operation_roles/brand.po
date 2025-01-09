@@ -23,44 +23,57 @@ msgid ""
 "to the previous role. The general (God) administrator is in charge of "
 "providing an URL with credentials for its brand portal."
 msgstr ""
+"El operador de marca puede acceder a un portal con menos secciones "
+"disponibles en comparación con el rol anterior. El administrador general "
+"(Dios) es el encargado de proporcionar una URL con credenciales para su "
+"portal de marca."
 
 #: ../../basic_concepts/operation_roles/brand.rst:5
 msgid ""
 "The most important task for brand operator is to **create and configure "
 "clients so they can work properly**."
 msgstr ""
+"La tarea más importante para el operador de marca es **crear y configurar "
+"clientes para que puedan trabajar correctamente**."
 
 #: ../../basic_concepts/operation_roles/brand.rst:8
 msgid ""
 "Due to brand operators are also responsible of billing their clients and "
 "make sure the external calls are properly setup, it must also manage:"
 msgstr ""
+"Debido a que los operadores de marca también son responsables de facturar "
+"a sus clientes y asegurarse de que las llamadas externas estén "
+"correctamente configuradas, también deben gestionar:"
 
 #: ../../basic_concepts/operation_roles/brand.rst:11
 msgid "Peering contracts with other IP providers for PSTN interconnection."
-msgstr ""
+msgstr "Contratos de interconexión con otros proveedores de IP para la interconexión PSTN."
 
 #: ../../basic_concepts/operation_roles/brand.rst:13
 msgid "Include all required client information for the billing process."
-msgstr ""
+msgstr "Incluir toda la información requerida del cliente para el proceso de facturación."
 
 #: ../../basic_concepts/operation_roles/brand.rst:15
 msgid ""
 "Pricing plans that will offer to their clients, that will determine how "
 "match they pay for each call."
 msgstr ""
+"Planes de precios que ofrecerán a sus clientes, que determinarán cuánto "
+"pagarán por cada llamada."
 
 #: ../../basic_concepts/operation_roles/brand.rst:18
 msgid ""
 "Setup the routes for each outgoing call types based on their final "
 "destination"
 msgstr ""
+"Configurar las rutas para cada tipo de llamada saliente según su destino final"
 
 #: ../../basic_concepts/operation_roles/brand.rst:21
 msgid ""
 "Create the invoices for each billing period and send them to their "
 "clients."
 msgstr ""
+"Crear las facturas para cada período de facturación y enviarlas a sus clientes."
 
 #: ../../basic_concepts/operation_roles/brand.rst:24
 msgid ""
@@ -68,6 +81,9 @@ msgid ""
 "global operator, but their importance is vital so the final users can use"
 " all the features includes in IvozProvider"
 msgstr ""
+"Como puede ver, la tarea del operador de marca tiene poco en común con el "
+"operador global, pero su importancia es vital para que los usuarios "
+"finales puedan utilizar todas las características incluidas en IvozProvider."
 
 #: ../../basic_concepts/operation_roles/brand.rst:30
 msgid ""
@@ -75,4 +91,7 @@ msgid ""
 "administrators and **configure the platform to route and rate their "
 "calls**."
 msgstr ""
+"**En resumen**, los operadores de marca **otorgan acceso** a los "
+"administradores de sus **clientes** y **configuran la plataforma para "
+"enrutar y tarificar sus llamadas**."
 

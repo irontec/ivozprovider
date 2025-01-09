@@ -22,44 +22,48 @@ msgid ""
 "The final user has two different kinds of credentials, both supplied by "
 "its client administrator:"
 msgstr ""
+"El usuario final tiene dos tipos diferentes de credenciales, ambas "
+"suministradas por su administrador de cliente:"
 
 #: ../../basic_concepts/operation_roles/user.rst:4
 msgid "User portal access credentials"
-msgstr ""
+msgstr "Credenciales de acceso al portal de usuario"
 
 #: ../../basic_concepts/operation_roles/user.rst:6
 msgid "SIP credentials used to register terminals to IvozProvider"
-msgstr ""
+msgstr "Credenciales SIP utilizadas para registrar terminales en IvozProvider"
 
 #: ../../basic_concepts/operation_roles/user.rst:8
 msgid "Through the user portal, it can browse their call registry and configure:"
-msgstr ""
+msgstr "A través del portal de usuario, puede navegar por su registro de llamadas y configurar:"
 
 #: ../../basic_concepts/operation_roles/user.rst:10
 msgid "Call forward"
-msgstr ""
+msgstr "Desvío de llamadas"
 
 #: ../../basic_concepts/operation_roles/user.rst:11
 msgid "Do not disturb"
-msgstr ""
+msgstr "No molestar"
 
 #: ../../basic_concepts/operation_roles/user.rst:12
 msgid "Call waiting"
-msgstr ""
+msgstr "Llamada en espera"
 
 #: ../../basic_concepts/operation_roles/user.rst:13
 msgid "Displayed data when calling"
-msgstr ""
+msgstr "Datos mostrados al llamar"
 
 #: ../../basic_concepts/operation_roles/user.rst:14
 msgid "Geographical configuration"
-msgstr ""
+msgstr "Configuración geográfica"
 
 #: ../../basic_concepts/operation_roles/user.rst:16
 msgid ""
 "On the other hand, the SIP credentials allow users to configure their "
 "terminals to place and receive calls."
 msgstr ""
+"Por otro lado, las credenciales SIP permiten a los usuarios configurar sus "
+"terminales para realizar y recibir llamadas."
 
 #: ../../basic_concepts/operation_roles/user.rst:18
 msgid ""
@@ -68,4 +72,9 @@ msgid ""
 "placed to an user, all the active devices will ring so the user can "
 "answer the call from any of them."
 msgstr ""
+"Las mismas credenciales SIP pueden ser utilizadas en múltiples dispositivos "
+"al mismo tiempo, generando lo que se conoce como *parallel-forking*: "
+"siempre que se realice una llamada a un usuario, todos los dispositivos "
+"activos sonarán para que el usuario pueda responder la llamada desde "
+"cualquiera de ellos."
 

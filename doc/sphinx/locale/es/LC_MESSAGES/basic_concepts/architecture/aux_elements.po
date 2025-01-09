@@ -22,24 +22,32 @@ msgid ""
 "**Aux profile** runs software that, even though is not vital for calls "
 "placing, makes IvozProvider maintainer's life much easier."
 msgstr ""
+"El **perfil Aux** ejecuta software que, aunque no es vital para la realización de llamadas, "
+"hace la vida del mantenedor de IvozProvider mucho más fácil."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:4
 msgid ""
 "In fact, without them, debugging problems would be much harder and the "
 "quality of given service would be damaged."
 msgstr ""
+"De hecho, sin ellos, la depuración de problemas sería mucho más difícil y la "
+"calidad del servicio prestado se vería afectada."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:7
 msgid ""
 "Although IvozProvider does not include any of the tools mentioned here, "
 "we consider them crucial for dealing with production environments."
 msgstr ""
+"Aunque IvozProvider no incluye ninguna de las herramientas mencionadas aquí, "
+"las consideramos cruciales para tratar con entornos de producción."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:10
 msgid ""
 "We list here tools configured in all production IvozProvider "
 "installations maintained by `Irontec <https://www.irontec.com>`_:"
 msgstr ""
+"Aquí enumeramos las herramientas configuradas en todas las instalaciones de IvozProvider "
+"en producción mantenidas por `Irontec <https://www.irontec.com>`_:"
 
 #: ../../basic_concepts/architecture/aux_elements.rst:13
 msgid ""
@@ -48,12 +56,17 @@ msgid ""
 "measuring, etc. Visit `SIP Capture website <http://sipcapture.org/>`_ for"
 " more information."
 msgstr ""
+"**Captura SIP de Homer**: Este increíble software nos permite capturar todo el tráfico SIP "
+"para su posterior análisis, para obtener estadísticas, medir la calidad de las llamadas, etc. "
+"Visita el `sitio web de SIP Capture <http://sipcapture.org/>`_ para más información."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:17
 msgid ""
 "**Kibana log viewer**: Showing logs collected by remaining `ELK stack "
 "components <https://www.elastic.co/elk-stack>`_."
 msgstr ""
+"**Visor de logs de Kibana**: Mostrando logs recopilados por los restantes `componentes de la pila ELK "
+"<https://www.elastic.co/elk-stack>`_."
 
 #: ../../basic_concepts/architecture/aux_elements.rst:19
 msgid ""
@@ -61,4 +74,7 @@ msgid ""
 "`TICK stack components <https://www.influxdata.com/time-series-"
 "platform/>`_."
 msgstr ""
+"**Visor de métricas de Chronograf**: Mostrando métricas recopiladas por los restantes "
+"`componentes de la pila TICK <https://www.influxdata.com/time-series-"
+"platform/>`_."
 

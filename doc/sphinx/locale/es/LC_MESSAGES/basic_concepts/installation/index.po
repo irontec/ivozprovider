@@ -19,5 +19,5 @@ msgstr ""
 
 #: ../../basic_concepts/installation/index.rst:3
 msgid "Initial Installation"
-msgstr ""
+msgstr "Instalación inicial"
 

@@ -22,6 +22,8 @@ msgid ""
 "IvozProvider has multiple elements that are not exposed to the *external "
 "world* but play a crucial task."
 msgstr ""
+"IvozProvider tiene múltiples elementos que no están expuestos al *mundo "
+"externo* pero desempeñan una tarea crucial."
 
 #: ../../basic_concepts/architecture/additional_elements.rst:4
 msgid ""
@@ -30,6 +32,10 @@ msgid ""
 "software packaged. IvozProvider uses `MySQL database engine "
 "<https://www.mysql.com/>`_ for this task."
 msgstr ""
+"El perfil más notable es el **perfil de base de datos** que recopila toda la "
+"información de la plataforma y la comparte entre la mayoría del software "
+"empaquetado. IvozProvider utiliza `el motor de base de datos MySQL "
+"<https://www.mysql.com/>`_ para esta tarea."
 
 #: ../../basic_concepts/architecture/additional_elements.rst:8
 msgid ""
@@ -37,4 +43,7 @@ msgid ""
 "encoding recordings, generating invoices, reloading services, importing "
 "data, etc."
 msgstr ""
+"Otra tarea notable es el **manejador de tareas asincrónicas** encargado de "
+"codificar grabaciones, generar facturas, recargar servicios, importar "
+"datos, etc."
 

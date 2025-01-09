@@ -24,20 +24,26 @@ msgid ""
 " `RFC 3261 <https://tools.ietf.org/html/rfc3261>`_ and any `related RFCs "
 "<https://www.packetizer.com/ipmc/sip/standards.html>`_."
 msgstr ""
+"El primer diagrama muestra el tráfico de señalización SIP involucrado en el "
+"establecimiento, modificación y terminación de sesiones siguiendo el SIP "
+"`RFC 3261 <https://tools.ietf.org/html/rfc3261>`_ y cualquier `RFC relacionado "
+"<https://www.packetizer.com/ipmc/sip/standards.html>`_."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:6
 msgid "These are the **external SIP entities** involved:"
-msgstr ""
+msgstr "Estas son las **entidades SIP externas** involucradas:"
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:8
 msgid "UACs: users hardphones, softphones, SIP-capable gadget."
-msgstr ""
+msgstr "UACs: teléfonos de hardware de usuarios, softphones, dispositivos compatibles con SIP."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:10
 msgid ""
 "SIP carriers/DDI Providers: carriers used to interconnect IvozProvider "
 "with external SIP networks (and, probably, with PSTN)."
 msgstr ""
+"Operadores SIP/Proveedores DDI: operadores utilizados para interconectar IvozProvider "
+"con redes SIP externas (y, probablemente, con la PSTN)."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:13
 msgid ""
@@ -45,24 +51,28 @@ msgid ""
 "WSS) they send/receive is to/from this two **internal SIP entities** of "
 "IvozProvider:"
 msgstr ""
+"Todo el tráfico SIP (en cualquiera de los transportes soportados: TCP, UDP, TLS, "
+"WSS) que envían/reciben es hacia/desde estas dos **entidades SIP internas** de "
+"IvozProvider:"
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:16
 msgid "Users SIP Proxy (running `Kamailio <https://www.kamailio.org>`_)."
-msgstr ""
+msgstr "Proxy SIP de Usuarios (ejecutando `Kamailio <https://www.kamailio.org>`_)."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:18
 msgid "Trunks SIP Proxy (running `Kamailio <https://www.kamailio.org>`_)."
-msgstr ""
+msgstr "Proxy SIP de Trunks (ejecutando `Kamailio <https://www.kamailio.org>`_)."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:21
 msgid ""
 "In fact, users UACs only talk to *Users SIP Proxy* and 'SIP carriers' and"
 " 'DDI"
 msgstr ""
+"De hecho, los UACs de usuarios solo hablan con el *Proxy SIP de Usuarios* y los 'Operadores SIP' y los 'Proveedores DDI'."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:21
 msgid "Providers' only talk to *Trunks SIP Proxy*."
-msgstr ""
+msgstr "Los proveedores solo hablan con el *Proxy SIP de Trunks*."
 
 #: ../../basic_concepts/architecture/signalling_flow.rst:23
 msgid ""
@@ -71,4 +81,7 @@ msgid ""
 "**no external element is allowed to talk to Application Servers "
 "directly**."
 msgstr ""
+"Dentro de IvozProvider, estos dos proxies pueden hablar con *Servidores de Aplicaciones* "
+"ejecutando `Asterisk <http://www.asterisk.org/>`_ para algunos tipos de clientes, pero "
+"**no se permite que ningún elemento externo hable directamente con los Servidores de Aplicaciones**."
 

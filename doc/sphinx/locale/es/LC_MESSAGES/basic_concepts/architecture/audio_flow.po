@@ -22,6 +22,8 @@ msgid ""
 "Sessions initiated by SIP signalling protocol imply media streams shared "
 "by involved entities."
 msgstr ""
+"Las sesiones iniciadas por el protocolo de señalización SIP implican flujos de medios compartidos "
+"por las entidades involucradas."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:4
 msgid ""
@@ -29,30 +31,35 @@ msgid ""
 "send and receive the media itself, usually using UDP as a transport "
 "protocol."
 msgstr ""
+"Estos flujos de medios utilizan `RTP <https://tools.ietf.org/html/rfc3550>`_ para "
+"enviar y recibir los medios en sí, generalmente utilizando UDP como protocolo de transporte."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:7
 msgid "**External entities** involved in RTP sessions can be divided in:"
-msgstr ""
+msgstr "**Entidades externas** involucradas en sesiones RTP se pueden dividir en:"
 
 #: ../../basic_concepts/architecture/audio_flow.rst:9
 msgid "Clients endpoints."
-msgstr ""
+msgstr "Puntos finales de clientes."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:11
 msgid "Carriers/DDI Providers."
-msgstr ""
+msgstr "Operadores/Proveedores DDI."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:13
 msgid ""
 "Both entities exchanges RTP with the same IvozProvider entity: *media-"
 "relays*."
 msgstr ""
+"Ambas entidades intercambian RTP con la misma entidad de IvozProvider: *media-relays*."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:15
 msgid ""
 "IvozProvider implements *media-relays* using `RTPengine "
 "<https://github.com/sipwise/rtpengine>`_."
 msgstr ""
+"IvozProvider implementa *media-relays* utilizando `RTPengine "
+"<https://github.com/sipwise/rtpengine>`_."
 
 #: ../../basic_concepts/architecture/audio_flow.rst:17
 msgid ""
@@ -60,4 +67,6 @@ msgid ""
 "*Application Servers*, but **external entities never talk directly to "
 "them**."
 msgstr ""
+"Similar al SIP, estos *media-relays* intercambian RTP cuando es necesario con "
+"*Servidores de Aplicaciones*, pero **las entidades externas nunca hablan directamente con ellos**."
 

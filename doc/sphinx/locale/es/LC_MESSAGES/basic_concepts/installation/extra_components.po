@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../basic_concepts/installation/extra_components.rst:3
 msgid "Extra components"
-msgstr ""
+msgstr "Componentes adicionales"
 
 #: ../../basic_concepts/installation/extra_components.rst:7
 msgid "G.729"
-msgstr ""
+msgstr "G.729"
 
 #: ../../basic_concepts/installation/extra_components.rst:9
 msgid ""
@@ -32,6 +32,10 @@ msgid ""
 "pjsip.conf configuration file. Otherwise, application servers will be "
 "offering a not available codec."
 msgstr ""
+"El códec G.729 se ofrece por defecto para llamadas externas salientes. Si "
+"no lo instala utilizando las siguientes instrucciones, debe ser eliminado "
+"del archivo de configuración pjsip.conf. De lo contrario, los servidores "
+"de aplicaciones ofrecerán un códec no disponible."
 
 #: ../../basic_concepts/installation/extra_components.rst:13
 msgid ""
@@ -39,6 +43,9 @@ msgid ""
 "G.729 codec to their patent holders. We're not legal advisers regarding "
 "active or withdrawn world patents."
 msgstr ""
+"En algunos países, es posible que deba pagar tarifas de regalías para "
+"utilizar el códec G.729 a sus titulares de patentes. No somos asesores "
+"legales en cuanto a patentes mundiales activas o retiradas."
 
 #: ../../basic_concepts/installation/extra_components.rst:17
 msgid ""
@@ -46,22 +53,32 @@ msgid ""
 "manually. G.729 codec is optimized for each CPU type and version of "
 "asterisk, so each installation may require a different codec module."
 msgstr ""
+"Puede usar G.729 con IvozProvider, pero la instalación debe hacerse "
+"manualmente. El códec G.729 está optimizado para cada tipo de CPU y "
+"versión de asterisk, por lo que cada instalación puede requerir un módulo "
+"de códec diferente."
 
 #: ../../basic_concepts/installation/extra_components.rst:21
 msgid ""
 "You can download codec from `here <http://asterisk.hosting.lv/>`_ under "
 "the section Asterisk 18."
 msgstr ""
+"Puede descargar el códec desde `aquí <http://asterisk.hosting.lv/>`_ en la "
+"sección Asterisk 18."
 
 #: ../../basic_concepts/installation/extra_components.rst:24
 msgid ""
 "Once downloaded, move the `.so` file to **/usr/lib/asterisk/modules/** "
 "and rename it to **codec_g729.so**"
 msgstr ""
+"Una vez descargado, mueva el archivo `.so` a **/usr/lib/asterisk/modules/** "
+"y renómbrelo a **codec_g729.so**"
 
 #: ../../basic_concepts/installation/extra_components.rst:27
 msgid ""
 "You can check the codec is valid by loading the module in asterisk and "
 "printing the available codec translations using:"
 msgstr ""
+"Puede verificar que el códec es válido cargando el módulo en asterisk e "
+"imprimiendo las traducciones de códecs disponibles usando:"
 

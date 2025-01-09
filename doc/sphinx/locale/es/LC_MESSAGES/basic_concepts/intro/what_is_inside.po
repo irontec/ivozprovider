@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../basic_concepts/intro/what_is_inside.rst:3
 msgid "What is inside IvozProvider?"
-msgstr ""
+msgstr "¿Qué hay dentro de IvozProvider?"
 
 #: ../../basic_concepts/intro/what_is_inside.rst:5
 msgid ""
@@ -27,22 +27,31 @@ msgid ""
 "<https://www.gnu.org/philosophy/free-sw.en.html>`_ projects to fulfill "
 "the different required task of the platform."
 msgstr ""
+"IvozProvider utiliza proyectos de `Software Libre "
+"<https://www.gnu.org/philosophy/free-sw.en.html>`_ bien conocidos y estables "
+"para cumplir con las diferentes tareas requeridas de la plataforma."
 
 #: ../../basic_concepts/intro/what_is_inside.rst:9
 msgid ""
 "Nothing better than an image to show all the software that its integrated"
 " into IvozProvider:"
 msgstr ""
+"Nada mejor que una imagen para mostrar todo el software que está integrado "
+"en IvozProvider:"
 
 #: ../../basic_concepts/intro/what_is_inside.rst:15
 msgid ""
 "We can not stress enough our gratitude to the developers and communities "
 "of this projects."
 msgstr ""
+"No podemos enfatizar lo suficiente nuestra gratitud a los desarrolladores "
+"y comunidades de estos proyectos."
 
 #: ../../basic_concepts/intro/what_is_inside.rst:18
 msgid ""
 "The task of each of this software will be deeply detailed in the block "
 ":ref:`architecture`."
 msgstr ""
+"La tarea de cada uno de estos programas se detallará en profundidad en el "
+"bloque :ref:`arquitectura <architecture>`."
 
