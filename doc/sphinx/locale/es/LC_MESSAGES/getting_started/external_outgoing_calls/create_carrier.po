@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../getting_started/external_outgoing_calls/create_carrier.rst:3
 msgid "Create a new carrier"
-msgstr ""
+msgstr "Crear un nuevo carrier"
 
 #: ../../getting_started/external_outgoing_calls/create_carrier.rst:5
 msgid ""
@@ -27,12 +27,17 @@ msgid ""
 "receive calls using a DDI Provider, but we have not configured a Carrier "
 "to make external call."
 msgstr ""
+"En este punto de la configuración, tenemos que configurar IvozProvider para "
+"recibir llamadas usando un Proveedor DDI, pero no hemos configurado un Carrier "
+"para realizar llamadas externas."
 
 #: ../../getting_started/external_outgoing_calls/create_carrier.rst:8
 msgid ""
 "VoIP Providers will usually provide both services: making and receiving "
 "calls."
 msgstr ""
+"Los proveedores de VoIP generalmente proporcionarán ambos servicios: realizar y "
+"recibir llamadas."
 
 #: ../../getting_started/external_outgoing_calls/create_carrier.rst:10
 msgid ""
@@ -40,4 +45,7 @@ msgid ""
 "(further instructions :ref:`here <Carriers>`), assigning it the same "
 "numeric transformation set."
 msgstr ""
+"Configure un Carrier de manera similar a como configuramos el Proveedor DDI "
+"(instrucciones adicionales :ref:`aquí <Carriers>`), asignándole el mismo conjunto "
+"de transformaciones numéricas."
 

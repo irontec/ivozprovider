@@ -19,15 +19,17 @@ msgstr ""
 
 #: ../../getting_started/external_incoming_calls/index.rst:3
 msgid "Receiving external calls"
-msgstr ""
+msgstr "Recibiendo llamadas externas"
 
 #: ../../getting_started/external_incoming_calls/index.rst:5
 msgid ""
 "The goal of this block will be configure IvozProvider to receive incoming"
 " external calls."
 msgstr ""
+"El objetivo de este bloque será configurar IvozProvider para recibir "
+"llamadas externas entrantes."
 
 #: ../../getting_started/external_incoming_calls/index.rst:8
 msgid "In order to achieve this, this steps will be followed:"
-msgstr ""
+msgstr "Para lograr esto, se seguirán estos pasos:"
 

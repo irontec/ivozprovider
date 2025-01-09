@@ -19,15 +19,17 @@ msgstr ""
 
 #: ../../getting_started/external_outgoing_calls/finish.rst:3
 msgid "Outgoing configuration complete!"
-msgstr ""
+msgstr "¡Configuración de salida completa!"
 
 #: ../../getting_started/external_outgoing_calls/finish.rst:5
 msgid "That's it!"
-msgstr ""
+msgstr "¡Eso es todo!"
 
 #: ../../getting_started/external_outgoing_calls/finish.rst:7
 msgid ""
 "At this point, *Alice* should be able to make outgoing calls to spanish "
 "destinations and this calls should be routed and billed accordingly."
 msgstr ""
+"En este punto, *Alice* debería poder realizar llamadas salientes a destinos "
+"españoles y estas llamadas deberían ser enrutadas y facturadas adecuadamente."
 

@@ -23,10 +23,13 @@ msgid ""
 "with our new IvozProvider, we may have even tried to call with current "
 "configuration but..."
 msgstr ""
+"En este punto, estamos deseando hacer nuestra primera llamada saliente "
+"con nuestro nuevo IvozProvider, puede que incluso hayamos intentado llamar "
+"con la configuración actual pero..."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:8
 msgid "No rating plan, no call"
-msgstr ""
+msgstr "Sin plan de tarifas, no hay llamada"
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:10
 msgid ""
@@ -35,12 +38,18 @@ msgid ""
 "for making all the needed setup so that IvozProvider is able to bill all "
 "external calls**."
 msgstr ""
+"Tal como advertimos :ref:`cuando describimos las responsabilidades del operador "
+"de marca <brand_responsibilities>`, el operador de marca es **responsable de hacer "
+"toda la configuración necesaria para que IvozProvider pueda facturar todas las "
+"llamadas externas**."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:14
 msgid ""
 "**Billing a call** is the action of **assigning price** to a call that "
 "implies cost."
 msgstr ""
+"**Facturar una llamada** es la acción de **asignar un precio** a una llamada que "
+"implica un costo."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:17
 msgid ""
@@ -48,14 +57,18 @@ msgid ""
 "established** to avoid placing calls that imply cost but won't be billed "
 "because Brand Operator, due to a mistake, hasn't assigned a price."
 msgstr ""
+"**IvozProvider verifica en vivo que una llamada pueda ser facturada cuando se "
+"establece** para evitar realizar llamadas que impliquen un costo pero que no "
+"serán facturadas porque el Operador de Marca, debido a un error, no ha asignado "
+"un precio."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:21
 msgid "If a call can't be billed, IvozProvider won't allow its establishment."
-msgstr ""
+msgstr "Si una llamada no puede ser facturada, IvozProvider no permitirá su establecimiento."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:25
 msgid "Creating a rating plan"
-msgstr ""
+msgstr "Creando un plan de tarifas"
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:27
 msgid ""
@@ -65,6 +78,11 @@ msgid ""
 "usually imply lots of pattern per country (GSM networks, especial "
 "numbers, mobile numbers, fixed lines, etc.)."
 msgstr ""
+"La sección **Configuración de Marca > Facturación > Destino** está vacía por "
+"defecto, a diferencia de la sección de patrones de enrutamiento, que tiene los "
+"254 países del mundo. La razón es que una tarifa de destino generalmente implicará "
+"muchos patrones por país (redes GSM, números especiales, números móviles, líneas "
+"fijas, etc.)."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:32
 msgid ""
@@ -72,26 +90,31 @@ msgid ""
 "provided by your VoIP provider, but for our test we will create it "
 "manually:"
 msgstr ""
+"En la mayoría de los casos, los datos de esta sección se importarán desde un CSV "
+"proporcionado por su proveedor de VoIP, pero para nuestra prueba lo crearemos "
+"manualmente:"
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:35
 msgid "Create a **destination** with '+34' for Spain."
-msgstr ""
+msgstr "Cree un **destino** con '+34' para España."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:37
 msgid "Create a **destination rate** and insert a price for Spain destination."
-msgstr ""
+msgstr "Cree una **tarifa de destino** e inserte un precio para el destino España."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:39
 msgid "Create a **rating plan** that includes that destination rate."
-msgstr ""
+msgstr "Cree un **plan de tarifas** que incluya esa tarifa de destino."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:43
 msgid "Assign rating plan to client"
-msgstr ""
+msgstr "Asignar plan de tarifas al cliente"
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:45
 msgid ""
 "The last step is **assigning that rating plan** to *democompany* "
 "following the indication :ref:`here <Assigning rating plans to clients>`."
 msgstr ""
+"El último paso es **asignar ese plan de tarifas** a *democompany* siguiendo la "
+"indicación :ref:`aquí <Assigning rating plans to clients>`."
 

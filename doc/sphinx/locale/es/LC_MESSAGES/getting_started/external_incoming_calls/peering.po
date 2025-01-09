@@ -19,25 +19,27 @@ msgstr ""
 
 #: ../../getting_started/external_incoming_calls/peering.rst:3
 msgid "Peering configuration"
-msgstr ""
+msgstr "Configuración de peering"
 
 #: ../../getting_started/external_incoming_calls/peering.rst:5
 msgid ""
 "We understand a **Peering contract** the agreement between a **Brand "
 "Operator** and a VoIP Provider to make and receive calls."
 msgstr ""
+"Entendemos un **contrato de peering** como el acuerdo entre un **Operador "
+"de Marca** y un Proveedor de VoIP para realizar y recibir llamadas."
 
 #: ../../getting_started/external_incoming_calls/peering.rst:8
 msgid "We divide Peerings in two types:"
-msgstr ""
+msgstr "Dividimos los peerings en dos tipos:"
 
 #: ../../getting_started/external_incoming_calls/peering.rst:10
 msgid "**Carriers** for outgoing calls (see :ref:`Carriers`)."
-msgstr ""
+msgstr "**Carriers** para llamadas salientes (ver :ref:`Carriers`)."
 
 #: ../../getting_started/external_incoming_calls/peering.rst:12
 msgid "**DDI Providers** for incoming calls (see :ref:`DDI Providers`)."
-msgstr ""
+msgstr "**Proveedores de DDI** para llamadas entrantes (ver :ref:`Proveedores de DDI <DDI Providers>`)."
 
 #: ../../getting_started/external_incoming_calls/peering.rst:14
 msgid ""
@@ -45,4 +47,7 @@ msgid ""
 " Provider assign our country's numeric transformation. See :ref:`DDI "
 "Providers` for further reference."
 msgstr ""
+"Para lograr nuestro objetivo, necesitaremos crear un nuevo (y válido) "
+"Proveedor de DDI y asignar la transformación numérica de nuestro país. "
+"Consulte :ref:`Proveedores de DDI <DDI Providers>` para más información."
 

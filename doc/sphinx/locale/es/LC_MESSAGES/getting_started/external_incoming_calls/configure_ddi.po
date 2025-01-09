@@ -22,16 +22,20 @@ msgid ""
 "Once we have an agreement with a DDI provider and we have configured it "
 "in the previous section, only two task are pending:"
 msgstr ""
+"Una vez que tenemos un acuerdo con un proveedor de DDI y lo hemos configurado "
+"en la sección anterior, solo quedan dos tareas pendientes:"
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:8
 msgid "Configuring an external DDI"
-msgstr ""
+msgstr "Configurando un DDI externo"
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:10
 msgid ""
 "The brand operator, responsible of these *peering* agreements with VoIP "
 "providers, has the task to create the DDIs for each client."
 msgstr ""
+"El operador de la marca, responsable de estos acuerdos de *peering* con "
+"proveedores de VoIP, tiene la tarea de crear los DDIs para cada cliente."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:13
 msgid ""
@@ -39,6 +43,9 @@ msgid ""
 "*god*) must have emulated the proper client and access the menu section "
 "**Client Configuration**."
 msgstr ""
+"Tenga en cuenta que para acceder a esta sección, el operador de la marca "
+"(o *dios*) debe haber emulado al cliente adecuado y acceder a la sección "
+"del menú **Configuración del Cliente**."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:17
 msgid ""
@@ -47,22 +54,31 @@ msgid ""
 "administrator does. Client administrator are unable to create or delete "
 "DDIs, just edit the one created by the brand or god administrator."
 msgstr ""
+"La sección **Configuración del Cliente > DDIs** es diferente cuando accede "
+"el administrador del cliente que los datos mostrados cuando lo hace un "
+"administrador global o de marca. Los administradores de clientes no pueden "
+"crear o eliminar DDIs, solo editar los creados por el administrador de marca "
+"o dios."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:22
 msgid ""
 "Taking into account these concepts, we create a new DDI and fill the "
 "required fields."
 msgstr ""
+"Teniendo en cuenta estos conceptos, creamos un nuevo DDI y llenamos los "
+"campos requeridos."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:25
 msgid ""
 "For detailed information about configuration fields, check :ref:`DDIs "
 "<pbx_ddis>` section."
 msgstr ""
+"Para información detallada sobre los campos de configuración, consulte la "
+"sección :ref:`DDIs <pbx_ddis>`."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:28
 msgid "Configure incoming routes"
-msgstr ""
+msgstr "Configurar rutas entrantes"
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:29
 msgid ""
@@ -72,10 +88,17 @@ msgid ""
 "administrator**, using the same section, **configures** it choosing the "
 "correct route (user, hunt group, etc.), calendars filters and so on."
 msgstr ""
+"En la sección anterior, hemos creado el DDI y lo configuramos "
+"(apuntándolo al usuario Alice), pero **el procedimiento más común** es que "
+"el operador de la marca solo cree el DDI mientras que el **administrador "
+"del cliente**, usando la misma sección, **lo configura** eligiendo la "
+"ruta correcta (usuario, grupo de búsqueda, etc.), filtros de calendarios, etc."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:34
 msgid ""
 "At this point, calling the number of the configured DDI will make the "
 "*Alice* phone ring."
 msgstr ""
+"En este punto, llamar al número del DDI configurado hará que suene el "
+"teléfono de *Alice*."
 

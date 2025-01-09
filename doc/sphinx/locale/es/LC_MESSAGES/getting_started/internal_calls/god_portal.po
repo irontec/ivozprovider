@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../getting_started/internal_calls/god_portal.rst:3
 msgid "Global Configuration"
-msgstr ""
+msgstr "Configuración Global"
 
 #: ../../getting_started/internal_calls/god_portal.rst:5
 msgid ""
@@ -27,6 +27,9 @@ msgid ""
 "work to access the web portal. Default credentials are **admin / "
 "changeme**."
 msgstr ""
+"Cualquiera de las 2 direcciones IP públicas configuradas durante la instalación "
+"funcionará para acceder al portal web. Las credenciales predeterminadas son **admin / "
+"changeme**."
 
 #: ../../getting_started/internal_calls/god_portal.rst:9
 msgid ""
@@ -34,10 +37,13 @@ msgid ""
 "options, available in the menu (**Main management**) of the web portal "
 "(only visible to God Admins):"
 msgstr ""
+"En esta sección se hará referencia a las opciones de configuración del administrador global, "
+"disponibles en el menú (**Gestión principal**) del portal web "
+"(solo visible para los administradores God):"
 
 #: ../../getting_started/internal_calls/god_portal.rst:14
 msgid "Emulate the Demo brand"
-msgstr ""
+msgstr "Emular la marca Demo"
 
 #: ../../getting_started/internal_calls/god_portal.rst:16
 msgid ""
@@ -45,48 +51,61 @@ msgid ""
 " brand called DemoBrand, that will be used for our goal: to have 2 "
 "telephones registered that can call each other."
 msgstr ""
+"Como se mencionó anteriormente, la instalación inicial tendrá una marca ya creada "
+"llamada DemoBrand, que se utilizará para nuestro objetivo: tener 2 "
+"teléfonos registrados que puedan llamarse entre sí."
 
 #: ../../getting_started/internal_calls/god_portal.rst:20
 msgid ""
 "Before going to the next section, is quite important to understand how "
 "the **emulation** works."
 msgstr ""
+"Antes de pasar a la siguiente sección, es bastante importante entender cómo "
+"funciona la **emulación**."
 
 #: ../../getting_started/internal_calls/god_portal.rst:23
 msgid ""
 "As global operator, you have access to the menu **Global Configuration** "
 "only visible to *God* administrators."
 msgstr ""
+"Como operador global, tienes acceso al menú **Configuración Global** "
+"solo visible para los administradores *God*."
 
 #: ../../getting_started/internal_calls/god_portal.rst:26
 msgid ""
 "Apart from that menu, you will also have access to the **Brand "
 "Configuration** and **Client configuration** blocks."
 msgstr ""
+"Aparte de ese menú, también tendrás acceso a los bloques de **Configuración de Marca** "
+"y **Configuración de Cliente**."
 
 #: ../../getting_started/internal_calls/god_portal.rst:29
 msgid "Last two blocks have a red button in the right side."
-msgstr ""
+msgstr "Los dos últimos bloques tienen un botón rojo en el lado derecho."
 
 #: ../../getting_started/internal_calls/god_portal.rst:31
 msgid ""
 "When pressed, a popup will be displayed that lists all existing brands / "
 "clients."
 msgstr ""
+"Al presionarlo, se mostrará un popup que lista todas las marcas / "
+"clientes existentes."
 
 #: ../../getting_started/internal_calls/god_portal.rst:33
 msgid "After selecting the DemoBrand brand, the icon will change."
-msgstr ""
+msgstr "Después de seleccionar la marca DemoBrand, el icono cambiará."
 
 #: ../../getting_started/internal_calls/god_portal.rst:35
 msgid ""
 "The upper right corner of the portal will also display the brand that is "
 "being emulated."
 msgstr ""
+"La esquina superior derecha del portal también mostrará la marca que se "
+"está emulando."
 
 #: ../../getting_started/internal_calls/god_portal.rst:39
 msgid "What emulation means"
-msgstr ""
+msgstr "Qué significa la emulación"
 
 #: ../../getting_started/internal_calls/god_portal.rst:41
 msgid ""
@@ -94,6 +113,9 @@ msgid ""
 "relative to the chosen brand** and is **exactly** the same menu entries "
 "that the brand operator will see using its brand portal."
 msgstr ""
+"Básicamente, que **todo en el menú 'Configuración de Marca' será "
+"relativo a la marca elegida** y es **exactamente** las mismas entradas de menú "
+"que el operador de la marca verá usando su portal de marca."
 
 #: ../../getting_started/internal_calls/god_portal.rst:45
 msgid ""
@@ -102,4 +124,8 @@ msgid ""
 "Client edit screen, fields like 'Media relays' or 'Application server' "
 "are only configurable by the global operator."
 msgstr ""
+"Ok, ok, tal vez exactamente no sea totalmente preciso. El operador global "
+"puede ver algunos campos en algunas pantallas que otros administradores no pueden (por ejemplo, en "
+"la pantalla de edición del Cliente, campos como 'Relés de medios' o 'Servidor de aplicaciones' "
+"solo son configurables por el operador global."
 

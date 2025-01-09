@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:5
 msgid "Outgoing DDI configuration"
-msgstr ""
+msgstr "Configuración de DDI saliente"
 
 #: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:7
 msgid ""
@@ -27,6 +27,9 @@ msgid ""
 "the number that the callee will see when the phone rings, so that he can "
 "return the call easily."
 msgstr ""
+"Antes de realizar nuestra primera llamada saliente, sería deseable elegir "
+"el número que el destinatario verá cuando suene el teléfono, para que pueda "
+"devolver la llamada fácilmente."
 
 #: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:11
 msgid ""
@@ -34,6 +37,9 @@ msgid ""
 "**outbound DDI**, because she will be the chosen one to place our first "
 "outgoing call."
 msgstr ""
+"Para lograr este objetivo, tenemos que configurar nuestro DDI como el "
+"**DDI saliente** de *Alice*, porque ella será la elegida para realizar nuestra "
+"primera llamada saliente."
 
 #: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:14
 msgid ""
@@ -42,14 +48,19 @@ msgid ""
 "he must :ref:`emulate the corresponding client <emulate_client>` "
 "previously."
 msgstr ""
+"Podemos configurar esto editando a *Alice* en **Configuración del Cliente** > "
+"**Usuarios**. Si este cambio lo realiza el operador de marca o el operador global, "
+"debe :ref:`emular al cliente correspondiente <emulate_client>` previamente."
 
 #: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:18
 msgid ""
 "We could have set the same DDI as Default Outgoing DDI at client level, "
 "editing *democompany* client."
 msgstr ""
+"Podríamos haber configurado el mismo DDI como DDI Saliente Predeterminado a nivel "
+"de cliente, editando el cliente *democompany*."
 
 #: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:20
 msgid "Calls from users without an outgoing DDI will be rejected by IvozProvider."
-msgstr ""
+msgstr "Las llamadas de usuarios sin un DDI saliente serán rechazadas por IvozProvider."
 

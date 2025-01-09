@@ -19,25 +19,27 @@ msgstr ""
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:2
 msgid "SIP Terminal configuration"
-msgstr ""
+msgstr "Configuración del Terminal SIP"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:4
 msgid ""
 "The last thing we need is 2 SIP terminals (hardphones, softphones or even"
 " mobile applications) and configure them as follows:"
 msgstr ""
+"Lo último que necesitamos son 2 terminales SIP (teléfonos fijos, softphones o incluso "
+"aplicaciones móviles) y configurarlos de la siguiente manera:"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:7
 msgid "**ALICE**"
-msgstr ""
+msgstr "**ALICE**"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:9
 msgid "**User**: alice"
-msgstr ""
+msgstr "**Usuario**: alice"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:10
 msgid "**Password**: alice"
-msgstr ""
+msgstr "**Contraseña**: alice"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:11
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:18
@@ -45,18 +47,19 @@ msgid ""
 "**Domain**: users.democlient.com (or the IP if we are using :ref:`the DNS"
 " trick <dnshack>`)"
 msgstr ""
+"**Dominio**: users.democlient.com (o la IP si estamos usando :ref:`el truco de DNS <dnshack>`)"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:14
 msgid "**BOB**"
-msgstr ""
+msgstr "**BOB**"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:16
 msgid "**User**: bob"
-msgstr ""
+msgstr "**Usuario**: bob"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:17
 msgid "**Password**: bob"
-msgstr ""
+msgstr "**Contraseña**: bob"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:21
 msgid ""
@@ -65,10 +68,16 @@ msgid ""
 "bob@users.democlient.com (or the IP if we are using :ref:`the DNS trick "
 "<dnshack>`)"
 msgstr ""
+"A veces el usuario y el dominio se configuran en una sola opción. En este "
+"caso deberíamos ingresar alice@users.democlient.com y "
+"bob@users.democlient.com (o la IP si estamos usando :ref:`el truco de DNS "
+"<dnshack>`)"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:25
 msgid ""
 "After configuring the terminals, Alice should be able to call Bob only by"
 " dialing 102 in her terminal."
 msgstr ""
+"Después de configurar los terminales, Alice debería poder llamar a Bob solo "
+"marcando 102 en su terminal."
 

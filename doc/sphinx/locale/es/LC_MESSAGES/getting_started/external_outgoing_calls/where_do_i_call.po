@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:3
 msgid "Where do I call?"
-msgstr ""
+msgstr "¿Dónde llamo?"
 
 #: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:5
 msgid ""
@@ -27,20 +27,25 @@ msgid ""
 "use the already configured *Carrier* to place the external calls we are "
 "making."
 msgstr ""
+"En este punto de la configuración, tenemos que configurar IvozProvider para "
+"usar el *Carrier* ya configurado para realizar las llamadas externas que "
+"estamos haciendo."
 
 #: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:8
 msgid ""
 "To achieve this, in first place, we need that the dialed external numbers"
 " fall in an existing **target pattern**:"
 msgstr ""
+"Para lograr esto, en primer lugar, necesitamos que los números externos "
+"marcados caigan en un **patrón de destino** existente:"
 
 #: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:11
 msgid ":ref:`Routing patterns`"
-msgstr ""
+msgstr ":ref:`Patrones de enrutamiento <Routing patterns>`"
 
 #: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:12
 msgid ":ref:`Routing pattern groups`"
-msgstr ""
+msgstr ":ref:`Grupos de patrones de enrutamiento <Routing pattern groups>`"
 
 #: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:14
 msgid ""
@@ -48,4 +53,7 @@ msgid ""
 "didn't have to modify the initial contents of this two sections as Spain "
 "pattern already exists :)"
 msgstr ""
+"Para lograr nuestro objetivo de hacer una llamada externa a un número español, "
+"no tuvimos que modificar el contenido inicial de estas dos secciones ya que el "
+"patrón de España ya existe :)"
 

@@ -19,63 +19,73 @@ msgstr ""
 
 #: ../../getting_started/internal_calls/client_portal.rst:5
 msgid "Client Configuration"
-msgstr ""
+msgstr "Configuración del Cliente"
 
 #: ../../getting_started/internal_calls/client_portal.rst:7
 msgid ""
 "We're close to make our fist call in our fresh installed IvozProvider, "
 "there are only 6 steps to configure in our DemoClient virtual pbx."
 msgstr ""
+"Estamos cerca de hacer nuestra primera llamada en nuestro recién instalado IvozProvider, "
+"solo hay 6 pasos para configurar en nuestra pbx virtual DemoClient."
 
 #: ../../getting_started/internal_calls/client_portal.rst:10
 msgid "2 terminals"
-msgstr ""
+msgstr "2 terminales"
 
 #: ../../getting_started/internal_calls/client_portal.rst:11
 msgid "2 extensions"
-msgstr ""
+msgstr "2 extensiones"
 
 #: ../../getting_started/internal_calls/client_portal.rst:12
 msgid "2 users"
-msgstr ""
+msgstr "2 usuarios"
 
 #: ../../getting_started/internal_calls/client_portal.rst:15
 msgid "Creating Terminals"
-msgstr ""
+msgstr "Creando Terminales"
 
 #: ../../getting_started/internal_calls/client_portal.rst:17
 msgid ""
 "Go to the terminal section and... voilà! We already have 2 terminals "
 "created."
 msgstr ""
+"Ve a la sección de terminales y... ¡voilà! Ya tenemos 2 terminales "
+"creados."
 
 #: ../../getting_started/internal_calls/client_portal.rst:20
 msgid "Creating Extensions"
-msgstr ""
+msgstr "Creando Extensiones"
 
 #: ../../getting_started/internal_calls/client_portal.rst:22
 msgid ""
 "Then we go to extensions, just to check that we have 2 extensions already"
 " created for us."
 msgstr ""
+"Luego vamos a extensiones, solo para verificar que ya tenemos 2 extensiones "
+"creadas para nosotros."
 
 #: ../../getting_started/internal_calls/client_portal.rst:25
 msgid "Nothing more to do in this section, let's go the next one!"
-msgstr ""
+msgstr "Nada más que hacer en esta sección, ¡vamos a la siguiente!"
 
 #: ../../getting_started/internal_calls/client_portal.rst:28
 msgid "Creating Users"
-msgstr ""
+msgstr "Creando Usuarios"
 
 #: ../../getting_started/internal_calls/client_portal.rst:30
 msgid ""
 "As expected, we also have 2 created users with previous extensions and "
 "terminals assigned."
 msgstr ""
+"Como se esperaba, también tenemos 2 usuarios creados con extensiones y "
+"terminales asignados previamente."
 
 #: ../../getting_started/internal_calls/client_portal.rst:32
 msgid ""
 "At this point, we have everything ready make a call between this two "
 "users: Alice and Bob."
 msgstr ""
+"En este punto, tenemos todo listo para hacer una llamada entre estos dos "
+"usuarios: Alice y Bob."
 

@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:3
 msgid "Transformations configuration"
-msgstr ""
+msgstr "Configuración de transformaciones"
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:5
 msgid ""
 "**IvozProvider** is designed to provide service **anywhere in the "
 "planet**, not only the original country where the platform is installed."
 msgstr ""
+"**IvozProvider** está diseñado para proporcionar servicio **en cualquier "
+"lugar del planeta**, no solo en el país original donde se instala la plataforma."
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:8
 msgid ""
@@ -34,6 +36,10 @@ msgid ""
 " countries of the world** defined in `E.164 "
 "<https://www.itu.int/rec/T-REC-E.164/es>`_ **to a neutral format**."
 msgstr ""
+"Un concepto muy importante para lograr este objetivo son las transformaciones "
+"numéricas, que **adaptan los diferentes sistemas de formato de números de los "
+"países del mundo** definidos en `E.164 "
+"<https://www.itu.int/rec/T-REC-E.164/es>`_ **a un formato neutral**."
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:13
 msgid ""
@@ -41,16 +47,23 @@ msgid ""
 " transformations** is **Brand Configuration / Providers / Numeric "
 "transformations**."
 msgstr ""
+"La sección que permite al operador de la marca configurar todas las "
+"**transformaciones numéricas** es **Configuración de Marca / Proveedores / "
+"Transformaciones numéricas**."
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:16
 msgid ""
 "You can find more information about transformations in :ref:`Numeric "
 "transformations` section."
 msgstr ""
+"Puede encontrar más información sobre transformaciones en la sección "
+":ref:`Transformaciones numéricas <Numeric transformations>`."
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:18
 msgid ""
 "We already have a pre-created set for most of the countries of the world,"
 " so hopefully nothing needs to be done here."
 msgstr ""
+"Ya tenemos un conjunto pre-creado para la mayoría de los países del mundo, "
+"por lo que con suerte no se necesita hacer nada aquí."
 

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../getting_started/external_outgoing_calls/index.rst:3
 msgid "Making external calls"
-msgstr ""
+msgstr "Realizando llamadas externas"
 
 #: ../../getting_started/external_outgoing_calls/index.rst:5
 msgid ""
@@ -27,8 +27,11 @@ msgid ""
 "outgoing calls, taking previous section configuration as a starting "
 "point."
 msgstr ""
+"El objetivo de esta sección es configurar IvozProvider para realizar llamadas "
+"externas salientes, tomando la configuración de la sección anterior como punto "
+"de partida."
 
 #: ../../getting_started/external_outgoing_calls/index.rst:8
 msgid "We will follow these steps:"
-msgstr ""
+msgstr "Seguiremos estos pasos:"
 

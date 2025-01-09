@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../getting_started/internal_calls/index.rst:3
 msgid "Making internal calls"
-msgstr ""
+msgstr "Realizando llamadas internas"
 
 #: ../../getting_started/internal_calls/index.rst:5
 msgid ""
@@ -27,6 +27,9 @@ msgid ""
 " internal calls, using as the starting point the base installation "
 "described in the previous step."
 msgstr ""
+"El objetivo de este bloque será configurar IvozProvider para realizar "
+"llamadas internas, utilizando como punto de partida la instalación base "
+"descrita en el paso anterior."
 
 #: ../../getting_started/internal_calls/index.rst:9
 msgid ""
@@ -34,8 +37,11 @@ msgid ""
 "fulfill some tasks in the three configuration levels described in "
 ":ref:`operation_roles`."
 msgstr ""
+"Para lograr realizar una llamada entre Alice y Bob, debemos cumplir con "
+"algunas tareas en los tres niveles de configuración descritos en "
+":ref:`roles de operación <operation_roles>`."
 
 #: ../../getting_started/internal_calls/index.rst:12
 msgid "That's why we have ordered the index in these 3 blocks:"
-msgstr ""
+msgstr "Por eso hemos ordenado el índice en estos 3 bloques:"
 

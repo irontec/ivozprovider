@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../getting_started/internal_calls/brand_portal.rst:5
 msgid "Brand Configuration"
-msgstr ""
+msgstr "Configuración de Marca"
 
 #: ../../getting_started/internal_calls/brand_portal.rst:7
 msgid ""
@@ -27,6 +27,8 @@ msgid ""
 " order to achieve this we will require a little configuration in this "
 "section."
 msgstr ""
+"Necesitamos que la DemoBrand predeterminada tenga un cliente con al menos 2 usuarios. Para "
+"lograr esto, necesitaremos un poco de configuración en esta sección."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:10
 msgid ""
@@ -34,16 +36,21 @@ msgid ""
 "that there is already an existing *DemoCompany* that we can use to "
 "fulfill our desired goal :)"
 msgstr ""
+"De hecho, si revisamos **PBXs Virtuales** en el menú de la marca, descubriremos "
+"que ya existe una *DemoCompany* que podemos usar para "
+"cumplir nuestro objetivo deseado :)"
 
 #: ../../getting_started/internal_calls/brand_portal.rst:14
 msgid ""
 "Only a thing is required to configure for this client, pressing **Edit "
 "client** option."
 msgstr ""
+"Solo se requiere una cosa para configurar este cliente, presionar la opción **Editar "
+"cliente**."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:20
 msgid "Client SIP Domain"
-msgstr ""
+msgstr "Dominio SIP del Cliente"
 
 #: ../../getting_started/internal_calls/brand_portal.rst:22
 msgid ""
@@ -51,12 +58,16 @@ msgid ""
 "vPBX clients has a public domain that resolves to the configured IP "
 "address for :ref:`proxyusers`."
 msgstr ""
+"Como se mencionó en la sección anterior, es **requerido** que cada uno de los "
+"clientes vPBX tenga un dominio público que resuelva a la dirección IP configurada para :ref:`proxyusers`."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:26
 msgid ""
 "DNS register can be type A (supported by all the hardphones/softphones ) "
 "or even NAPTR+SRV."
 msgstr ""
+"El registro DNS puede ser de tipo A (compatible con todos los teléfonos fijos/softphones) "
+"o incluso NAPTR+SRV."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:29
 msgid ""
@@ -64,12 +75,17 @@ msgid ""
 "this document), it will be enough to write it in our client configuration"
 " **SIP Domain** field."
 msgstr ""
+"Una vez que el dominio ha sido configurado (por medios que están fuera del alcance de "
+"este documento), será suficiente escribirlo en nuestra configuración del cliente "
+"campo **Dominio SIP**."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:32
 msgid ""
 "Once the client has been saved, the domain will be also displayed in the "
 "list in the column **SIP domain**."
 msgstr ""
+"Una vez que el cliente ha sido guardado, el dominio también se mostrará en la "
+"lista en la columna **Dominio SIP**."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:34
 msgid ""
@@ -77,44 +93,56 @@ msgid ""
 "client registered <dnshack>`, without a DNS domain pointing to our users "
 "proxy IP address, everything will fail."
 msgstr ""
+"Es importante entender este bloque. :ref:`A menos que tengamos un solo "
+"cliente registrado <dnshack>`, sin un dominio DNS apuntando a nuestra dirección IP del proxy de usuarios, todo fallará."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:38
 msgid ""
 "Have we repeated enough that without a properly configured DNS pointing "
 "to the Users proxy IP address nothing will work?"
 msgstr ""
+"¿Hemos repetido lo suficiente que sin un DNS configurado correctamente apuntando "
+"a la dirección IP del proxy de Usuarios nada funcionará?"
 
 #: ../../getting_started/internal_calls/brand_portal.rst:44
 msgid "I have no time for a DNS registry"
-msgstr ""
+msgstr "No tengo tiempo para un registro DNS"
 
 #: ../../getting_started/internal_calls/brand_portal.rst:46
 msgid ""
 "Everything we have said is true: as we create new brands and brands "
 "create new clients, each of them will need a DNS registry."
 msgstr ""
+"Todo lo que hemos dicho es cierto: a medida que creamos nuevas marcas y las marcas "
+"crean nuevos clientes, cada uno de ellos necesitará un registro DNS."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:49
 msgid ""
 "But the first client of the platform is quite special and can take over "
 "the IP address of the proxy to use it as a domain."
 msgstr ""
+"Pero el primer cliente de la plataforma es bastante especial y puede tomar la "
+"dirección IP del proxy para usarla como un dominio."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:52
 msgid ""
 "Although it is not a domain, but being used like it was, it will be "
 "displayed in :ref:`SIP Domains` section."
 msgstr ""
+"Aunque no es un dominio, pero al ser usado como si lo fuera, se mostrará "
+"en la sección :ref:`Dominios SIP <SIP Domains>`."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:55
 msgid ""
 "It’s important to understand the this trick is only valid for the first "
 "client of the platform ;)"
 msgstr ""
+"Es importante entender que este truco solo es válido para el primer "
+"cliente de la plataforma ;)"
 
 #: ../../getting_started/internal_calls/brand_portal.rst:61
 msgid "Emulate Demo client"
-msgstr ""
+msgstr "Emular cliente Demo"
 
 #: ../../getting_started/internal_calls/brand_portal.rst:63
 msgid ""
@@ -122,10 +150,15 @@ msgid ""
 " difference that it filters the block ‘Client Configuration’ instead of "
 "‘Brand Configuration’."
 msgstr ""
+"El proceso de emulación del cliente es el mismo que el de la emulación de la marca, con la "
+"diferencia de que filtra el bloque ‘Configuración del Cliente’ en lugar de "
+"‘Configuración de Marca’."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:67
 msgid ""
 "Once the client has been emulated, the top right corner of the portal "
 "will show that we are in the right path :)"
 msgstr ""
+"Una vez que el cliente ha sido emulado, la esquina superior derecha del portal "
+"mostrará que estamos en el camino correcto :)"
 
