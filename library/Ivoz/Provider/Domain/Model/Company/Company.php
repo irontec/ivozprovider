@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Company;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
@@ -118,6 +119,22 @@ class Company extends CompanyAbstract implements CompanyInterface
                     'Only %s clients can be part of a corporation.',
                     self::TYPE_VPBX
                 )
+            );
+        }
+
+        $this->sanitizeApplicationServerSet();
+    }
+
+    protected function sanitizeApplicationServerSet(): void
+    {
+        if (!$this->isWholesale()) {
+            return;
+        }
+
+        $applicationServerSetId = $this->getApplicationServerSet()->getId();
+        if ($applicationServerSetId !== ApplicationServerSet::DEFAULT_APPLICATION_SERVER_SET) {
+            throw new \DomainException(
+                'Can not set an application server set other than default for wholesale company'
             );
         }
     }
