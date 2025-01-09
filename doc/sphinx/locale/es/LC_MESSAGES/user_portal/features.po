@@ -19,47 +19,49 @@ msgstr ""
 
 #: ../../user_portal/features.rst:3
 msgid "Features"
-msgstr ""
+msgstr "Características"
 
 #: ../../user_portal/features.rst:5
 msgid ""
 "IvozProvider provides a web portal where final users can do the following"
 " actions:"
 msgstr ""
+"IvozProvider proporciona un portal web donde los usuarios finales pueden realizar las siguientes "
+"acciones:"
 
 #: ../../user_portal/features.rst:8
 msgid "See all calls he or she has been involved."
-msgstr ""
+msgstr "Ver todas las llamadas en las que ha estado involucrado."
 
 #: ../../user_portal/features.rst:10
 msgid "Configure call forwards:"
-msgstr ""
+msgstr "Configurar desvíos de llamadas:"
 
 #: ../../user_portal/features.rst:12
 msgid "To voicemail"
-msgstr ""
+msgstr "Al buzón de voz"
 
 #: ../../user_portal/features.rst:14
 msgid "To an internal extension"
-msgstr ""
+msgstr "A una extensión interna"
 
 #: ../../user_portal/features.rst:16
 msgid "To an external number"
-msgstr ""
+msgstr "A un número externo"
 
 #: ../../user_portal/features.rst:18
 msgid "Enable functionalities:"
-msgstr ""
+msgstr "Habilitar funcionalidades:"
 
 #: ../../user_portal/features.rst:20
 msgid "Call waiting"
-msgstr ""
+msgstr "Llamada en espera"
 
 #: ../../user_portal/features.rst:22
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "No molestar"
 
 #: ../../user_portal/features.rst:24
 msgid "See the state of his or her SIP device registration"
-msgstr ""
+msgstr "Ver el estado del registro de su dispositivo SIP"
 

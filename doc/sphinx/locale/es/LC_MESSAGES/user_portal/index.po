@@ -19,27 +19,33 @@ msgstr ""
 
 #: ../../user_portal/index.rst:5
 msgid "User Portal"
-msgstr ""
+msgstr "Portal de Usuario"
 
 #: ../../user_portal/index.rst:7
 msgid ""
 ":ref:`Virtual PBX` clients have an additional role apart from god, brand "
 "and client: **user role**."
 msgstr ""
+":ref:`PBX Virtual <Virtual PBX>` los clientes tienen un rol adicional aparte de dios, marca "
+"y cliente: **rol de usuario**."
 
 #: ../../user_portal/index.rst:9
 msgid ""
 "As remaining IvozProvider levels, final users have an independent web "
 "portal."
 msgstr ""
+"Como los demás niveles de IvozProvider, los usuarios finales tienen un portal web "
+"independiente."
 
 #: ../../user_portal/index.rst:11
 msgid "This section will cover these topics:"
-msgstr ""
+msgstr "Esta sección cubrirá estos temas:"
 
 #: ../../user_portal/index.rst:21
 msgid ""
 "User portal has a different look-and-feel than remaining portals and is "
 "responsive to work with mobile devices."
 msgstr ""
+"El portal de usuario tiene una apariencia diferente a los demás portales y es "
+"responsivo para trabajar con dispositivos móviles."
 

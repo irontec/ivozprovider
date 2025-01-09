@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../user_portal/urls.rst:2
 msgid "URLs"
-msgstr ""
+msgstr "URLs"
 
 #: ../../user_portal/urls.rst:4
 msgid ""
@@ -27,14 +27,17 @@ msgid ""
 "(domains in these URLs must point to any of the public IP addresses of "
 "the platform)."
 msgstr ""
+"Antes de acceder al portal de usuario, las direcciones URL deben estar configuradas "
+"(los dominios en estas URLs deben apuntar a cualquiera de las direcciones IP públicas de "
+"la plataforma)."
 
 #: ../../user_portal/urls.rst:7
 msgid "2 roles can perform this task:"
-msgstr ""
+msgstr "2 roles pueden realizar esta tarea:"
 
 #: ../../user_portal/urls.rst:10
 msgid "God operator"
-msgstr ""
+msgstr "Operador dios"
 
 #: ../../user_portal/urls.rst:12
 msgid ""
@@ -42,6 +45,9 @@ msgid ""
 "many user URLs as you wish, using the button **Portal list** of each "
 "brand."
 msgstr ""
+"En la sección **Configuración de la plataforma > Marcas** puedes configurar tantas "
+"URLs de usuario como desees, usando el botón **Lista de portales** de cada "
+"marca."
 
 #: ../../user_portal/urls.rst:15
 msgid ""
@@ -49,30 +55,37 @@ msgid ""
 " shared user portal URL for all the clients of a brand or creating one "
 "per client."
 msgstr ""
+"Las URLs están vinculadas a las marcas y el operador dios puede elegir si crear una "
+"URL de portal de usuario compartida para todos los clientes de una marca o crear una "
+"por cliente."
 
 #: ../../user_portal/urls.rst:19
 msgid "URLs MUST be HTTPS."
-msgstr ""
+msgstr "Las URLs DEBEN ser HTTPS."
 
 #: ../../user_portal/urls.rst:21
 msgid ""
 "This section also allows setting a logo per URL, a theme and a phrase to "
 "use as the title of user portal."
 msgstr ""
+"Esta sección también permite configurar un logo por URL, un tema y una frase para "
+"usar como título del portal de usuario."
 
 #: ../../user_portal/urls.rst:24
 msgid "This allows creating corporate user portals."
-msgstr ""
+msgstr "Esto permite crear portales de usuario corporativos."
 
 #: ../../user_portal/urls.rst:27
 msgid "Brand Operator"
-msgstr ""
+msgstr "Operador de marca"
 
 #: ../../user_portal/urls.rst:29
 msgid ""
 "Brand Operator can also perform this same task in order to configure the "
 "user portal URLs of his clients."
 msgstr ""
+"El operador de marca también puede realizar esta misma tarea para configurar las "
+"URLs del portal de usuario de sus clientes."
 
 #: ../../user_portal/urls.rst:32
 msgid ""
@@ -80,8 +93,11 @@ msgid ""
 "custom domains, logos, theme and title) or sharing a global URL for all "
 "of them."
 msgstr ""
+"De esta manera, puede elegir si configurar una URL por cliente (con "
+"dominios personalizados, logos, tema y título) o compartir una URL global para todos "
+"ellos."
 
 #: ../../user_portal/urls.rst:35
 msgid "The section to do this is **Brand configuration > Portal URLs**."
-msgstr ""
+msgstr "La sección para hacer esto es **Configuración de marca > URLs del portal**."
 
