@@ -19,9 +19,9 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/user_configuration/index.rst:3
 msgid "User configuration"
-msgstr ""
+msgstr "Configuración de usuario"
 
 #: ../../administration_portal/client/vpbx/user_configuration/index.rst:5
 msgid "This section groups features that may be assigned to users/friends:"
-msgstr ""
+msgstr "Esta sección agrupa funcionalidades que pueden ser asignadas a usuarios/friends:"
 

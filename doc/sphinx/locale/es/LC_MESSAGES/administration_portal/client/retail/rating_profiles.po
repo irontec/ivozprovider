@@ -19,29 +19,29 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/rating_profiles.rst:3
 msgid "Rating profiles"
-msgstr ""
+msgstr "Perfiles de precio"
 
 #: ../../administration_portal/client/vpbx/rating_profiles.rst:5
 msgid "This section allows the client to:"
-msgstr ""
+msgstr "Esta sección permite al cliente:"
 
 #: ../../administration_portal/client/vpbx/rating_profiles.rst:7
 msgid "See the list of rating plans and their activation time."
-msgstr ""
+msgstr "Ver la lista de planes de precios y su tiempo de activación."
 
 #: ../../administration_portal/client/vpbx/rating_profiles.rst:9
 msgid ""
 "Check available routing tags (only for retail and wholesale clients) to "
 "reach different destinations."
-msgstr ""
+msgstr "Verificar las etiquetas de enrutamiento disponibles (solo para clientes Retail y Wholesale) para alcanzar diferentes destinos."
 
 #: ../../administration_portal/client/vpbx/rating_profiles.rst:11
 msgid "Simulate a call and guess the cost of a given call."
-msgstr ""
+msgstr "Simular una llamada y estimar el costo de una llamada dada."
 
 #: ../../administration_portal/client/vpbx/rating_profiles.rst:13
 msgid ""
 "This section is only shown to clients with *Display billing details to "
 "client* set to Yes."
-msgstr ""
+msgstr "Esta sección solo se muestra a los clientes con *Mostrar detalles de facturación al cliente* configurado en Sí."
 

@@ -19,19 +19,21 @@ msgstr ""
 
 #: ../../administration_portal/client/wholesale/index.rst:6
 msgid "Wholesale clients"
-msgstr ""
+msgstr "Clientes Wholesale"
 
 #: ../../administration_portal/client/wholesale/index.rst:8
 msgid "Wholesale clients are the most lightweight client type in IvozProvider."
-msgstr ""
+msgstr "Los clientes Wholesale son el tipo de cliente más ligero en IvozProvider."
 
 #: ../../administration_portal/client/wholesale/index.rst:10
 msgid ""
 "You can read the details about this client type :ref:`here "
 "<wholesale_clients>`."
 msgstr ""
+"Puedes leer los detalles sobre este tipo de cliente :ref:`aquí "
+"<wholesale_clients>`."
 
 #: ../../administration_portal/client/wholesale/index.rst:12
 msgid "These sections will be covered for this client type:"
-msgstr ""
+msgstr "Estas secciones se cubrirán para este tipo de cliente:"
 

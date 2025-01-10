@@ -19,33 +19,36 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:5
 msgid "External call filters"
-msgstr ""
+msgstr "Filtros de llamadas externas"
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:7
 msgid ""
 "Residential External Filters can be assigned to DDIs to temporary forward"
 " calls to an external number or to avoid call from undesirable sources."
 msgstr ""
+"Los filtros externos residenciales se pueden asignar a DDIs para "
+"reenviar temporalmente las llamadas a un número externo o para evitar "
+"llamadas de fuentes indeseables."
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:11
 msgid "Filters Configuration"
-msgstr ""
+msgstr "Configuración de filtros"
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:13
 msgid "This are the configurable settings of *Residential external filters*:"
-msgstr ""
+msgstr "Estos son los ajustes configurables de los *filtros externos residenciales*:"
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:16
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:16
 msgid "Name of the filter."
-msgstr ""
+msgstr "Nombre del filtro."
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:20
 msgid "Black list"
-msgstr ""
+msgstr "Lista negra"
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:19
 msgid ""
@@ -53,16 +56,20 @@ msgid ""
 ":ref:`match_lists`, if a coincidence is found, the call will be rejected "
 "immediately."
 msgstr ""
+"El origen externo se verificará contra las :ref:`listas de coincidencias <match_lists>` asociadas, si se encuentra una coincidencia, la llamada será rechazada "
+"inmediatamente."
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:23
 msgid "Unconditional Call Forward"
-msgstr ""
+msgstr "Reenvío de llamadas incondicional"
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:23
 msgid ""
 "Calls to DDIs using this filter will be forwarded to given external "
 "number."
 msgstr ""
+"Las llamadas a DDIs que usen este filtro se reenviarán al número externo "
+"indicado."
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:25
 msgid ""
@@ -70,10 +77,14 @@ msgid ""
 "numbers matching associated matchlist won't be forwarded, they will be "
 "rejected."
 msgstr ""
+"La lista negra tiene prioridad sobre el reenvío de llamadas incondicional. "
+"Las llamadas de números que coincidan con la lista de coincidencias asociada no serán reenviadas, serán rechazadas."
 
 #: ../../administration_portal/client/residential/external_call_filters.rst:28
 msgid ""
 "Calls forwarded by a filter will keep the original caller identification,"
 " adding the forwarding info in a SIP *Diversion* header."
 msgstr ""
+"Las llamadas reenviadas por un filtro mantendrán la identificación del "
+"llamante original, añadiendo la información de reenvío en un encabezado SIP *Diversion*."
 

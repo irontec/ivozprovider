@@ -19,11 +19,12 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/index.rst:6
 msgid "vPBX Clients"
-msgstr ""
+msgstr "Clientes vPBX"
 
 #: ../../administration_portal/client/vpbx/index.rst:8
 msgid ""
 "This section will explain all these topics related to the most feature-"
 "full type of client in IvozProvider:"
 msgstr ""
+"Esta sección explicará todos estos temas relacionados con el tipo de cliente más completo en IvozProvider:"
 

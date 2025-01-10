@@ -19,39 +19,43 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:6
 msgid "External call filters"
-msgstr ""
+msgstr "Filtros de llamadas externas"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:8
 msgid ""
 "One of the most common task a client's administrator will do is to "
 "configure schedules and calendars to apply to existing :ref:`ddis`."
 msgstr ""
+"Una de las tareas más comunes que realizará el administrador de un cliente es "
+"configurar horarios y calendarios para aplicarlos a los :ref:`DDIs <ddis>` existentes."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:11
 msgid ""
 "Once we have our new created :ref:`Schedules` and :ref:`Calendars`, it's "
 "time to apply them in what we call **External call filter**."
 msgstr ""
+"Una vez que tengamos nuestros nuevos :ref:`Horarios <Schedules>` y :ref:`Calendarios <Calendars>` creados, "
+"es hora de aplicarlos en lo que llamamos **Filtro de llamadas externas**."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:14
 msgid "The client admin can configure them in the following screen:"
-msgstr ""
+msgstr "El administrador del cliente puede configurarlos en la siguiente pantalla:"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:18
 msgid "Basic info"
-msgstr ""
+msgstr "Información básica"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:20
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:20
 msgid "Descriptive name that will reference this filter in DDIs configuration."
-msgstr ""
+msgstr "Nombre descriptivo que hará referencia a este filtro en la configuración de DDIs."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:25
 msgid "Welcome locution"
-msgstr ""
+msgstr "Locución de bienvenida"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:23
 msgid ""
@@ -59,14 +63,17 @@ msgid ""
 "out of schedule or holiday filtering (in other words if the normal "
 "routing of the DDI is going to be applied)."
 msgstr ""
+"Esta locución se reproducirá si la llamada no va a ser desviada por "
+"filtros fuera de horario o festivos (en otras palabras, si se va a aplicar el "
+"enrutamiento normal del DDI)."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:29
 msgid "Filtering info"
-msgstr ""
+msgstr "Información de filtrado"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:33
 msgid "White list"
-msgstr ""
+msgstr "Lista blanca"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:31
 msgid ""
@@ -75,10 +82,14 @@ msgid ""
 "routed to the DDI destination, skipping the filter process. Take into "
 "account that black listed are checked before white lists."
 msgstr ""
+"El origen externo se verificará contra las :ref:`listas de coincidencia <match_lists>` asociadas, "
+"si se encuentra una coincidencia, la llamada se enruta directamente al destino DDI, "
+"saltando el proceso de filtrado. Ten en cuenta que las listas negras se verifican "
+"antes que las listas blancas."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:37
 msgid "Black list"
-msgstr ""
+msgstr "Lista negra"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:36
 msgid ""
@@ -86,32 +97,36 @@ msgid ""
 ":ref:`match_lists`, if a coincidence is found, the call will be rejected "
 "immediately."
 msgstr ""
+"El origen externo se verificará contra las :ref:`listas de coincidencia <match_lists>` asociadas, "
+"si se encuentra una coincidencia, la llamada será rechazada inmediatamente."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:41
 msgid "Holidays configuration"
-msgstr ""
+msgstr "Configuración de festivos"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:43
 msgid "Holiday enabled"
-msgstr ""
+msgstr "Festivos habilitados"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:43
 msgid "Set this to no to totally ignore holidays filtering."
-msgstr ""
+msgstr "Configura esto en no para ignorar completamente el filtrado de festivos."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:47
 msgid "Calendars"
-msgstr ""
+msgstr "Calendarios"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:46
 msgid ""
 "One or more :ref:`calendars` can be associated with the filter. The "
 "combination of all the calendars will be applied."
 msgstr ""
+"Uno o más :ref:`calendarios <calendars>` pueden asociarse con el filtro. Se aplicará la "
+"combinación de todos los calendarios."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:52
 msgid "Holiday locution"
-msgstr ""
+msgstr "Locución de festivo"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:50
 msgid ""
@@ -119,10 +134,13 @@ msgid ""
 "the calendars associated with the filter **if the calendar entry has no "
 "locution** for that day."
 msgstr ""
+"La locución se reproducirá cuando el día esté marcado como festivo en cualquiera de "
+"los calendarios asociados con el filtro **si la entrada del calendario no tiene "
+"locución** para ese día."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:58
 msgid "Holiday target type"
-msgstr ""
+msgstr "Tipo de destino festivo"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:55
 msgid ""
@@ -131,32 +149,38 @@ msgid ""
 "filter of the image will redirect calls during holidays to the external "
 "number 676 676 676."
 msgstr ""
+"Después de reproducir la locución anterior (si está configurada), la llamada puede "
+"ser desviada a un buzón de voz, número externo o extensión interna. Por ejemplo, el "
+"filtro de la imagen redirigirá las llamadas durante los festivos al número externo "
+"676 676 676."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:62
 msgid "Out of schedule configuration"
-msgstr ""
+msgstr "Configuración fuera de horario"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:64
 msgid "Out of schedule enabled"
-msgstr ""
+msgstr "Fuera de horario habilitado"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:64
 msgid "Set this to no to totally ignore out of schedule filtering."
-msgstr ""
+msgstr "Configura esto en no para ignorar completamente el filtrado fuera de horario."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:68
 msgid "Schedules"
-msgstr ""
+msgstr "Horarios"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:67
 msgid ""
 "One or more :ref:`schedules` can be applied. The combination of all the "
 "time gaps defined in the schedules will be applied."
 msgstr ""
+"Se pueden aplicar uno o más :ref:`horarios <schedules>`. Se aplicará la combinación de todos los "
+"intervalos de tiempo definidos en los horarios."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:73
 msgid "Out of schedule locution"
-msgstr ""
+msgstr "Locución fuera de horario"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:71
 msgid ""
@@ -164,20 +188,24 @@ msgid ""
 "not in any of the time gaps defined in the schedules assigned to the "
 "filter."
 msgstr ""
+"La locución se reproducirá cuando, no siendo festivo, la hora actual no esté en "
+"ninguno de los intervalos de tiempo definidos en los horarios asignados al filtro."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:78
 msgid "Out of schedule target type"
-msgstr ""
+msgstr "Tipo de destino fuera de horario"
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:76
 msgid ""
 "Like in the holidays forward, but for out of schedule. The image above "
 "won't apply any forward (and the call will be hung up)."
 msgstr ""
+"Como en el desvío de festivos, pero para fuera de horario. La imagen anterior no "
+"aplicará ningún desvío (y la llamada se colgará)."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:80
 msgid "Holidays are processed **before** out of schedule events."
-msgstr ""
+msgstr "Los festivos se procesan **antes** de los eventos fuera de horario."
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:82
 msgid ""
@@ -185,4 +213,7 @@ msgid ""
 "so we can configure a welcome locution for normal days, and especial "
 "behaviours for holidays and out of schedule events."
 msgstr ""
+"En la siguiente sección utilizaremos este nuevo filtro creado con :ref:`DDIs <ddis>` "
+"para que podamos configurar una locución de bienvenida para los días normales, y "
+"comportamientos especiales para los festivos y eventos fuera de horario."
 

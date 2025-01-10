@@ -19,9 +19,9 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/index.rst:3
 msgid "Routing tools"
-msgstr ""
+msgstr "Herramientas de encaminamiento"
 
 #: ../../administration_portal/client/vpbx/routing_tools/index.rst:5
 msgid "Sections in this group are used to modify the routing policy of calls:"
-msgstr ""
+msgstr "Las secciones de este grupo se utilizan para modificar la política de enrutamiento de llamadas:"
 

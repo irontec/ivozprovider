@@ -19,13 +19,14 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:3
 msgid "Call CSV schedulers"
-msgstr ""
+msgstr "Programadores de CSV de llamadas"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:5
 msgid ""
 "This section allows programming automatic periodical CSV reports to vPBX "
 "client administrators."
 msgstr ""
+"Esta sección permite programar informes CSV periódicos automáticos para los administradores de clientes vPBX."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:7
 msgid ""
@@ -33,106 +34,112 @@ msgid ""
 "the fields that do not apply to CSVs (Invoice number sequence, Tax "
 "rate...)"
 msgstr ""
+"Esta sección es casi idéntica a :ref:`Programadores de facturas <Invoice schedulers>` excepto por "
+"los campos que no se aplican a los CSV (secuencia de número de factura, tasa de impuesto...)"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:10
 msgid "When adding a new definition, these fields are shown:"
-msgstr ""
+msgstr "Al agregar una nueva definición, se muestran estos campos:"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:13
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:13
 msgid "Name of the scheduled Call CSV"
-msgstr ""
+msgstr "Nombre del CSV de llamadas programado"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:16
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:16
 msgid "Send generated Call CSV via email. Empty if no automatic mail is wanted."
-msgstr ""
+msgstr "Enviar CSV de llamadas generado por correo electrónico. Vacío si no se desea correo automático."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:19
 msgid "Frequency/Unit"
-msgstr ""
+msgstr "Frecuencia/Unidad"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:19
 msgid ""
 "Defines the frequency (once a month, every 7 days, etc.) of the "
 "programmed task"
 msgstr ""
+"Define la frecuencia (una vez al mes, cada 7 días, etc.) de la "
+"tarea programada"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:22
 msgid "Direction"
-msgstr ""
+msgstr "Dirección"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:22
 msgid ""
 "Defines which calls should be included attending to its direction "
 "(inbound, outbound, both)."
 msgstr ""
+"Define qué llamadas deben incluirse según su dirección "
+"(entrantes, salientes, ambas)."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:25
 msgid "DDI"
-msgstr ""
+msgstr "DDI"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:25
 msgid "Allows selecting a client's specific DDI."
-msgstr ""
+msgstr "Permite seleccionar un DDI específico del cliente."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:28
 msgid "Endpoint type"
-msgstr ""
+msgstr "Tipo de punto final"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:28
 msgid "Allows selecting one specific endpoint type between: user, friend and fax."
-msgstr ""
+msgstr "Permite seleccionar un tipo específico de punto final entre: usuario, friend y fax."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:31
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:31
 msgid "Only for *Endpoint type: user*, allows selecting one specific user."
-msgstr ""
+msgstr "Solo para *Tipo de punto final: usuario*, permite seleccionar un usuario específico."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:34
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:34
 msgid "Only for *Endpoint type: fax*, allows selecting one specific fax."
-msgstr ""
+msgstr "Solo para *Tipo de punto final: fax*, permite seleccionar un fax específico."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:38
 msgid "Friend"
-msgstr ""
+msgstr "Friend"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:37
 msgid "Only for *Endpoint type: friend*, allows selecting one specific friend."
-msgstr ""
+msgstr "Solo para *Tipo de punto final: friend*, permite seleccionar un friend específico."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:40
 msgid "Once created, some new fields and subsections are accesible:"
-msgstr ""
+msgstr "Una vez creado, algunos campos y subsecciones nuevos son accesibles:"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:43
 msgid "Next execution"
-msgstr ""
+msgstr "Próxima ejecución"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:43
 msgid "Shows next execution date"
-msgstr ""
+msgstr "Muestra la fecha de la próxima ejecución"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:47
 msgid "Last execution"
-msgstr ""
+msgstr "Última ejecución"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:46
 msgid "Shows last execution and its result."
-msgstr ""
+msgstr "Muestra la última ejecución y su resultado."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:49
 msgid ""
@@ -140,112 +147,121 @@ msgid ""
 "example, setting *Next execution* to current month's first day will "
 "create again last month's CSV report (for a monthly scheduler)."
 msgstr ""
+"Modificar el valor de *Próxima ejecución* permite forzar ejecuciones específicas. Por "
+"ejemplo, establecer *Próxima ejecución* al primer día del mes actual "
+"creará nuevamente el informe CSV del mes pasado (para un programador mensual)."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:53
 msgid ""
 "Generated CSVs of each scheduler can be accessed in **List of Call CSV "
 "reports** subsection."
 msgstr ""
+"Los CSV generados de cada programador se pueden acceder en la subsección **Lista de informes CSV de llamadas**."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:57
 msgid "CSV fields"
-msgstr ""
+msgstr "Campos CSV"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:59
 msgid "These are the fields of the generated CSV files:"
-msgstr ""
+msgstr "Estos son los campos de los archivos CSV generados:"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:62
 msgid "callid"
-msgstr ""
+msgstr "callid"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:62
 msgid "Call-ID of the SIP dialog"
-msgstr ""
+msgstr "Call-ID del diálogo SIP"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:65
 msgid "startTime"
-msgstr ""
+msgstr "startTime"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:65
 msgid "Time and date of the call establishment"
-msgstr ""
+msgstr "Hora y fecha del establecimiento de la llamada"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:68
 msgid "duration"
-msgstr ""
+msgstr "duración"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:68
 msgid "Call duration in seconds"
-msgstr ""
+msgstr "Duración de la llamada en segundos"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:71
 msgid "caller"
-msgstr ""
+msgstr "llamante"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:71
 msgid "Caller number in E.164 format (with '+')"
-msgstr ""
+msgstr "Número del llamante en formato E.164 (con '+')"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:74
 msgid "callee"
-msgstr ""
+msgstr "llamado"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:74
 msgid "Callee number in E.164 format (with '+')"
-msgstr ""
+msgstr "Número del llamado en formato E.164 (con '+')"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:77
 msgid "price"
-msgstr ""
+msgstr "precio"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:77
 msgid ""
 "Calculated price for the given call (empty if *Display billing details to"
 " client* is disabled)"
 msgstr ""
+"Precio calculado para la llamada dada (vacío si *Mostrar detalles de facturación al "
+"cliente* está deshabilitado)"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:80
 msgid "direction"
-msgstr ""
+msgstr "dirección"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:80
 msgid "Possible values: inbound, outbound."
-msgstr ""
+msgstr "Valores posibles: entrante, saliente."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:83
 msgid "ddiId"
-msgstr ""
+msgstr "ddiId"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:83
 msgid ""
 "Client DDI to which call will be assigned (callee for inbound calls, "
 "caller for outbound calls)."
 msgstr ""
+"DDI del cliente al que se asignará la llamada (llamado para llamadas entrantes, "
+"llamante para llamadas salientes)."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:86
 msgid "endpointType"
-msgstr ""
+msgstr "tipo de punto final"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:86
 msgid "Possible values: User, Fax, Friend."
-msgstr ""
+msgstr "Valores posibles: Usuario, Fax, Friend."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:89
 msgid "endpointId"
-msgstr ""
+msgstr "id de punto final"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:89
 msgid ""
 "Internal ID of specific endpoint (only when *endpointType* has a non-"
 "empty value)."
 msgstr ""
+"ID interno del punto final específico (solo cuando *tipo de punto final* tiene un valor no vacío)."
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:91
 msgid "endpointName"
-msgstr ""
+msgstr "nombre de punto final"
 
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:92
 msgid "User extension, friend name or fax name"
-msgstr ""
+msgstr "Extensión de usuario, nombre de friend o nombre de fax"
 

@@ -19,13 +19,14 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/multimedia/locutions.rst:3
 msgid "Locutions"
-msgstr ""
+msgstr "Locuciones"
 
 #: ../../administration_portal/client/vpbx/multimedia/locutions.rst:5
 msgid ""
 "The locutions of the platform are created and uploaded just like the "
 "files of :ref:`Music on Hold <musiconhold>`."
 msgstr ""
+"Las locuciones de la plataforma se crean y suben igual que los archivos de :ref:`Música en Espera <musiconhold>`."
 
 #: ../../administration_portal/client/vpbx/multimedia/locutions.rst:8
 msgid ""
@@ -33,12 +34,14 @@ msgid ""
 "admin to choose the sounds that will be played in many configuration "
 "places (IVR, etc) accross the platform."
 msgstr ""
+"La sección **Configuración del cliente** > **Locuciones** permite al administrador del cliente elegir los sonidos que se reproducirán en muchos lugares de configuración (IVR, etc.) en toda la plataforma."
 
 #: ../../administration_portal/client/vpbx/multimedia/locutions.rst:13
 msgid ""
 "Locutions can be recorded from any terminal by dialing the Recording "
 "extension displayed in their edit screen."
 msgstr ""
+"Las locuciones se pueden grabar desde cualquier terminal marcando la extensión de grabación que se muestra en su pantalla de edición."
 
 #: ../../administration_portal/client/vpbx/multimedia/locutions.rst:16
 msgid ""
@@ -47,4 +50,5 @@ msgid ""
 "schedule, IVRs, and so on) and the second one will be played when a call "
 "is held by an user."
 msgstr ""
+"La principal diferencia entre una **locución** y **música en espera** es que el administrador elige cuándo se reproducirá la primera (fuera de horario, IVR, etc.) y la segunda se reproducirá cuando un usuario ponga una llamada en espera."
 

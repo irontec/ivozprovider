@@ -19,19 +19,19 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:2
 msgid "Remote friends"
-msgstr ""
+msgstr "Friends remotos"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:4
 msgid "Remote friends connect a vPBX client with an external SIP entity."
-msgstr ""
+msgstr "Los friends remotos conectan un cliente vPBX con una entidad SIP externa."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:7
 msgid "Types of remote friends"
-msgstr ""
+msgstr "Tipos de friends remotos"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:9
 msgid "There are 2 main types of SIP PBX that can be integrate with IvozProvider:"
-msgstr ""
+msgstr "Hay 2 tipos principales de PBX SIP que se pueden integrar con IvozProvider:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:11
 msgid ""
@@ -40,6 +40,10 @@ msgid ""
 "redirecting the traffic to the proper port of the public IP address of "
 "the PBX."
 msgstr ""
+"**PBX de conexión directa** (Modo de conectividad: directo): IvozProvider debe "
+"poder hablar SIP directamente con este tipo de friends simplemente "
+"redirigiendo el tráfico al puerto adecuado de la dirección IP pública del "
+"PBX."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:15
 msgid ""
@@ -47,30 +51,37 @@ msgid ""
 "accessible. This kind of PBX must register at IvozProvider (just like all"
 " the :ref:`Terminals <terminals>` do)."
 msgstr ""
+"**PBX detrás de NAT** (Modo de conectividad: registrar): No accesible "
+"directamente. Este tipo de PBX debe registrarse en IvozProvider (al igual que todos "
+"los :ref:`Terminales <terminals>`)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:19
 msgid "What do remote friends allow?"
-msgstr ""
+msgstr "¿Qué permiten los friends remotos?"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:21
 msgid ""
 "This section allows not just communication between users at boths ends of"
 " the SIP *trunk*, but also:"
 msgstr ""
+"Esta sección permite no solo la comunicación entre usuarios en ambos extremos del "
+"SIP *trunk*, sino también:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:24
 msgid ""
 "Users \"from the other side\" can call to the public network just like "
 "native Ivozprovider :ref:`Users <users>`."
 msgstr ""
+"Los usuarios \"del otro lado\" pueden llamar a la red pública igual que "
+"los :ref:`Usuarios <users>` nativos de Ivozprovider."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:27
 msgid "Public network calls can be routed to the other SIP *trunk* end."
-msgstr ""
+msgstr "Las llamadas a la red pública pueden ser enrutadas al otro extremo del SIP *trunk*."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:30
 msgid "What kind of calls can be routed through a *remote friend*?"
-msgstr ""
+msgstr "¿Qué tipo de llamadas se pueden enrutar a través de un *friend remoto*?"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:32
 msgid ""
@@ -79,54 +90,66 @@ msgid ""
 "regular expressions that describe the numbers that *can be reached* "
 "through the **friend**."
 msgstr ""
+"IvozProvider debe saber qué llamadas deben ser enrutadas a los diferentes "
+"*friends remotos* definidos. Para eso, el **administrador del cliente** configurará "
+"expresiones regulares que describan los números que *se pueden alcanzar* "
+"a través del **friend**."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:36
 msgid ""
 "Internal :ref:`extensions <extensions>` have priority over any expression"
 " defined in the *friends*."
 msgstr ""
+"Las :ref:`extensiones <extensions>` internas tienen prioridad sobre cualquier expresión "
+"definida en los *friends*."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:39
 msgid ""
 "Avoid PCRE regular expressions in friend configuration: use [0-9] instead"
 " of \\\\d."
 msgstr ""
+"Evite las expresiones regulares PCRE en la configuración de friends: use [0-9] en lugar "
+"de \\\\d."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:42
 msgid "Configuration of remote friends"
-msgstr ""
+msgstr "Configuración de friends remotos"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:44
 msgid ""
 "The **Friend** configuration is a merge between a **User** and a "
 "**Terminal**"
 msgstr ""
+"La configuración de **Friend** es una combinación entre un **Usuario** y un "
+"**Terminal**"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:46
 msgid "These are the configurable settings of *friends*:"
-msgstr ""
+msgstr "Estos son los ajustes configurables de los *friends*:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:50
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:49
 msgid ""
 "Name of the **friend**, like in **Terminals**. This will also be used in "
 "SIP messages (sent **From User**)."
 msgstr ""
+"Nombre del **friend**, como en **Terminales**. Esto también se usará en "
+"mensajes SIP (enviados **Desde Usuario**)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:53
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:53
 msgid "Optional. Extra information for this **friend**."
-msgstr ""
+msgstr "Opcional. Información adicional para este **friend**."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:58
 msgid "Priority"
-msgstr ""
+msgstr "Prioridad"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:56
 msgid ""
@@ -134,10 +157,13 @@ msgid ""
 "call destination **matches** more than one friend regular expression the "
 "call will be routed through the friend with **less priority value**."
 msgstr ""
+"Se usa para resolver conflictos al enrutar llamadas a través de **friends**. Si un "
+"destino de llamada **coincide** con más de una expresión regular de friend, la "
+"llamada se enrutarán a través del friend con **menor valor de prioridad**."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:63
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:61
 msgid ""
@@ -146,18 +172,22 @@ msgid ""
 "\"Direct\" mode, leaving it blank disables SIP authentication and enables"
 " IP source check."
 msgstr ""
+"Cuando el *friend* envía solicitudes, IvozProvider lo autentificará usando "
+"esta contraseña. **Usar contraseña ES OBLIGATORIO en modo \"Registrar\"**. En "
+"modo \"Directo\", dejarlo en blanco desactiva la autenticación SIP y habilita "
+"la verificación de la fuente IP."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:66
 msgid "Connectivity mode"
-msgstr ""
+msgstr "Modo de conectividad"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:66
 msgid "Choose between \"Direct\" and \"Register\" for a remote friend."
-msgstr ""
+msgstr "Elija entre \"Directo\" y \"Registrar\" para un friend remoto."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:71
 msgid "Call ACL"
-msgstr ""
+msgstr "ACL de llamada"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:69
 msgid ""
@@ -165,10 +195,13 @@ msgid ""
 "client calls without restriction (including Extension or other Friends). "
 "When calling to external numbers, this ACL will be checked if set."
 msgstr ""
+"Similar a :ref:`usuarios internos <users>`, los friends pueden realizar llamadas internas "
+"del cliente sin restricciones (incluyendo Extensiones u otros Friends). "
+"Al llamar a números externos, se verificará esta ACL si está configurada."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:75
 msgid "Fallback Outgoing DDI"
-msgstr ""
+msgstr "DDI de salida de respaldo"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:74
 msgid ""
@@ -176,46 +209,52 @@ msgid ""
 "**unless the source presented by friend is a DDI that exists in DDIs "
 "section**."
 msgstr ""
+"Las llamadas externas de este *friend* se presentarán con este DDI, "
+"**a menos que la fuente presentada por el friend sea un DDI que exista en la sección de DDIs**."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:78
 msgid "Country and Area code"
-msgstr ""
+msgstr "Código de país y área"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:78
 msgid "Used for number transformation from and to this friend."
-msgstr ""
+msgstr "Se usa para la transformación de números desde y hacia este friend."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:81
 msgid "Allowed codecs"
-msgstr ""
+msgstr "Codecs permitidos"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:81
 msgid "Like a terminal, *friends* will talk the selected codec."
-msgstr ""
+msgstr "Como un terminal, los *friends* hablarán el codec seleccionado."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:85
 msgid "From user"
-msgstr ""
+msgstr "Desde usuario"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:84
 msgid ""
 "Request from IvozProvider to this friend will include this user in the "
 "From header."
 msgstr ""
+"La solicitud de IvozProvider a este friend incluirá este usuario en el "
+"encabezado From."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:89
 msgid "From domain"
-msgstr ""
+msgstr "Desde dominio"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:88
 msgid ""
 "Request from IvozProvider to this friend will include this domain in the "
 "From header."
 msgstr ""
+"La solicitud de IvozProvider a este friend incluirá este dominio en el "
+"encabezado From."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:94
 msgid "DDI In"
-msgstr ""
+msgstr "DDI entrante"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:92
 msgid ""
@@ -224,10 +263,13 @@ msgid ""
 "of registration will be used, as specified in SIP RFC (friend name will "
 "be used for endpoints with direct connectivity). Defaults to 'Yes'."
 msgstr ""
+"Si se establece en 'Sí', establezca el destino (R-URI y To) al DDI/número llamado cuando "
+"se llame a este punto final. Si se establece en 'No', se usará el nombre de usuario utilizado en el encabezado Contact "
+"de registro, como se especifica en el RFC SIP (se usará el nombre del friend para puntos finales con conectividad directa). Por defecto es 'Sí'."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:98
 msgid "Enable T.38 passthrough"
-msgstr ""
+msgstr "Habilitar paso a través de T.38"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:97
 msgid ""
@@ -235,10 +277,12 @@ msgid ""
 "sender/receiver**. IvozProvider will act as a T.38 gateway, bridging fax-"
 "calls of a T.38 capable carrier and a T.38 capable device."
 msgstr ""
+"Si se establece en 'sí', este punto final SIP debe ser un **emisor/receptor de fax compatible con T.38**. "
+"IvozProvider actuará como una puerta de enlace T.38, conectando llamadas de fax de un operador compatible con T.38 y un dispositivo compatible con T.38."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:102
 msgid "Always apply transformations"
-msgstr ""
+msgstr "Aplicar siempre transformaciones"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:101
 msgid ""
@@ -247,20 +291,24 @@ msgid ""
 "transformation rules.  Enable this setting to force Numeric "
 "Transformation rules even on these numbers."
 msgstr ""
+"Tanto los números listados en la sección de Extensiones como los números que coincidan con cualquier expresión regular de friend "
+"se considerarán internos y no atravesarán las reglas de transformación numérica. Habilite esta configuración para forzar las reglas de Transformación Numérica incluso en estos números."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:106
 msgid "RTP Encryption"
-msgstr ""
+msgstr "Encriptación RTP"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:105
 msgid ""
 "If set to 'yes', call won't be established unless it's possible to "
 "encryption its audio. If set to 'no', audio won't be encrypted."
 msgstr ""
+"Si se establece en 'sí', la llamada no se establecerá a menos que sea posible "
+"encriptar su audio. Si se establece en 'no', el audio no se encriptará."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:111
 msgid "Multi Contact"
-msgstr ""
+msgstr "Contacto múltiple"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:109
 msgid ""
@@ -269,6 +317,9 @@ msgid ""
 " toggle to 'No' limits this behaviour so that only latest registered SIP "
 "device rings."
 msgstr ""
+"Las mismas credenciales SIP se pueden configurar en múltiples dispositivos SIP. En ese "
+"caso, todos los dispositivos suenan simultáneamente al recibir una llamada. Configurar este "
+"interruptor en 'No' limita este comportamiento para que solo suene el último dispositivo SIP registrado."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:113
 msgid ""
@@ -276,6 +327,9 @@ msgid ""
 " checked when calling a friend, no matter if the origin of the call is a "
 "user or another friend."
 msgstr ""
+"Las llamadas a *friends* se consideran internas. Eso significa que no se verificarán las ACLs "
+"al llamar a un friend, sin importar si el origen de la llamada es un "
+"usuario u otro friend."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:117
 msgid ""
@@ -284,10 +338,14 @@ msgid ""
 "call, setting that number as destination (R-URI and To headers). This "
 "way, friend can handle calls differently."
 msgstr ""
+"Se puede contactar al friend debido a llamadas a varias extensiones/DDIs. La configuración de *DDI entrante* "
+"permite al punto final SIP remoto saber qué número causó cada "
+"llamada, estableciendo ese número como destino (encabezados R-URI y To). De esta "
+"manera, el friend puede manejar las llamadas de manera diferente."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:122
 msgid "Asterisk as a remote friend"
-msgstr ""
+msgstr "Asterisk como un friend remoto"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:124
 msgid ""
@@ -295,30 +353,37 @@ msgid ""
 "takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
+"En el otro extremo de un friend puede haber cualquier tipo de entidad SIP. Esta sección "
+"toma como ejemplo un sistema PBX Asterisk que usa el controlador de canal SIP que "
+"desea conectarse a IvozProvider."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:129
 msgid "register"
-msgstr ""
+msgstr "registrar"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:130
 msgid ""
 "If the system can not be directly access, Asterisk will have to register "
 "in the platform (like a terminal will do)."
 msgstr ""
+"Si el sistema no se puede acceder directamente, Asterisk tendrá que registrarse "
+"en la plataforma (como lo haría un terminal)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:133
 msgid "Configuration will be something like this:"
-msgstr ""
+msgstr "La configuración será algo así:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:140
 msgid "peer"
-msgstr ""
+msgstr "par"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:157
 msgid ""
 "*Friends*, like terminals, MUST NOT challenge IvozProvider. That's why "
 "the *insecure* setting is used here."
 msgstr ""
+"*Los friends*, como los terminales, NO DEBEN desafiar a IvozProvider. Por eso "
+"se usa la configuración *insegura* aquí."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:160
 msgid ""
@@ -326,40 +391,48 @@ msgid ""
 "P-Preferred-Identity or Remote-Party-Id) must be used to specify caller "
 "number. Prevalence among these source headers is: PAI > PPI > RPID."
 msgstr ""
+"Dado que el nombre de usuario From se usa para identificar al friend, se debe usar P-Asserted-Identity (o "
+"P-Preferred-Identity o Remote-Party-Id) para especificar el número del llamante. La prevalencia entre estos encabezados de origen es: PAI > PPI > RPID."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:164
 msgid "Summary of remote friends"
-msgstr ""
+msgstr "Resumen de friends remotos"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:166
 msgid ""
 "The key point is understanding that a *remote friend* has a direct "
 "relation with the extension-user-terminal trio:"
 msgstr ""
+"El punto clave es entender que un *friend remoto* tiene una relación directa "
+"con el trío extensión-usuario-terminal:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:169
 msgid "Can place calls to all internal extensions and other friends."
-msgstr ""
+msgstr "Puede realizar llamadas a todas las extensiones internas y otros friends."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:171
 msgid "Can place external calls that its ACL allows"
-msgstr ""
+msgstr "Puede realizar llamadas externas que su ACL permita"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:173
 msgid "Display their configured outgoing DDI when calling to external entities"
-msgstr ""
+msgstr "Muestra su DDI de salida configurado al llamar a entidades externas"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:175
 msgid ""
 "Never challenge IvozProvider requests (don't request authentication on "
 "received requests)"
 msgstr ""
+"Nunca desafíe las solicitudes de IvozProvider (no solicite autenticación en "
+"solicitudes recibidas)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:177
 msgid ""
 "Answers IvozProvider authentication challenges (All request from them to "
 "IvozProvider must be authenticated for security reasons)"
 msgstr ""
+"Responde a los desafíos de autenticación de IvozProvider (Todas las solicitudes de ellos a "
+"IvozProvider deben ser autenticadas por razones de seguridad)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:180
 msgid ""
@@ -367,4 +440,7 @@ msgid ""
 "traffic from friends are identical to any other user terminal traffic in "
 "format."
 msgstr ""
+"Solo se conecta con *Proxy SIP de Usuarios*, como terminales. De hecho, el "
+"tráfico SIP de friends es idéntico al tráfico de cualquier otro terminal de usuario en "
+"formato."
 

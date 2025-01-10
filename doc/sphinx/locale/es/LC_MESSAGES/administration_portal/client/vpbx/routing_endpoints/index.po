@@ -19,11 +19,13 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/index.rst:3
 msgid "Routing endpoints"
-msgstr ""
+msgstr "Items enrutables"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/index.rst:5
 msgid ""
 "Sections in this group can be selected as a Route option for external "
 "DDIs and internal extensions:"
 msgstr ""
+"Los elementos de este grupo se pueden seleccionar como una opción de ruta para "
+"DDIs externos y extensiones internas:"
 

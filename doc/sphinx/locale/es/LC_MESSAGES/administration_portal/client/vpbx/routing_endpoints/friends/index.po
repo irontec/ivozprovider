@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:5
 msgid "Friends"
-msgstr ""
+msgstr "Friends"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:7
 msgid ""
@@ -28,12 +28,18 @@ msgid ""
 "*trunk*. The most typical use case is when a client have multiple PBX "
 "systems that want to integrate in a single flow."
 msgstr ""
+"La sección **Friends** en la **Configuración del cliente** permite la "
+"interconexión de IvozProvider con otros sistemas PBX SIP a través de un SIP "
+"*trunk*. El caso de uso más típico es cuando un cliente tiene múltiples sistemas PBX "
+"que quieren integrarse en un solo flujo."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:12
 msgid ""
 "Since 2.10, **Friends** also lets a vPBX client to call to extensions of "
 "another vPBX client in the same brand."
 msgstr ""
+"Desde la versión 2.10, **Friends** también permite a un cliente vPBX llamar a extensiones de "
+"otro cliente vPBX en la misma marca."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:15
 msgid ""
@@ -42,44 +48,54 @@ msgid ""
 "**Friends**, defined by **client administrators** to connect the system "
 "with other PBXs."
 msgstr ""
+"Es importante entender la diferencia entre **Carrier** definido "
+"por el **operador de la marca** para conectarse con la red pública y "
+"**Friends**, definido por los **administradores del cliente** para conectar el sistema "
+"con otros PBXs."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:20
 msgid ""
 "**Friends** are so similar to **Users** that both talk SIP with the "
 ":ref:`proxyusers`."
 msgstr ""
+"**Friends** son tan similares a **Usuarios** que ambos hablan SIP con el "
+":ref:`proxyusers`."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:24
 msgid "Types of friends"
-msgstr ""
+msgstr "Tipos de Friends"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:26
 msgid "There are 2 main types of Friends:"
-msgstr ""
+msgstr "Hay 2 tipos principales de Friends:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:28
 msgid "**Remote friends**: SIP trunks to external SIP PBX system."
-msgstr ""
+msgstr "**Friends remotos**: SIP trunks a sistemas PBX SIP externos."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:30
 msgid ""
 "**Internal friends**: connection between extensions of two vPBX client in"
 " the same brand."
 msgstr ""
+"**Friends internos**: conexión entre extensiones de dos clientes vPBX en "
+"la misma marca."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:34
 msgid "What kind of calls can be routed through an *internal friend*?"
-msgstr ""
+msgstr "¿Qué tipo de llamadas se pueden enrutar a través de un *friend interno*?"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:36
 msgid ""
 "IvozProvider will route a call received by a :ref:`user <users>` or a "
 ":ref:`friend <friends>` following this logic:"
 msgstr ""
+"IvozProvider enrutar una llamada recibida por un :ref:`usuario <users>` o un "
+":ref:`friend <friends>` siguiendo esta lógica:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:38
 msgid "Destination matches an existing IvozProvider extension?"
-msgstr ""
+msgstr "¿El destino coincide con una extensión existente de IvozProvider?"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:39
 msgid ""
@@ -87,86 +103,93 @@ msgid ""
 "friends) or extensions (for internal ones)? Ordered by priority (lower "
 "has precedence)."
 msgstr ""
+"Si no: ¿El destino coincide con alguna expresión regular de *friend* (para friends remotos) "
+"o extensiones (para los internos)? Ordenado por prioridad (el menor tiene precedencia)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:40
 msgid "If not: This is an external call."
-msgstr ""
+msgstr "Si no: Esta es una llamada externa."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:44
 msgid "Following sections explain both kind of friends:"
-msgstr ""
+msgstr "Las siguientes secciones explican ambos tipos de friends:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:55
 msgid "Friend Call Forward"
-msgstr ""
+msgstr "Desvío de llamadas de friends"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:57
 msgid ""
 "The friend's call forward can be configured with the **List of call "
 "forward settings**  button."
 msgstr ""
+"El desvío de llamadas del friend se puede configurar con el botón **Lista de configuraciones de desvío de llamadas**."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:59
 msgid "These are the fields and available values:"
-msgstr ""
+msgstr "Estos son los campos y valores disponibles:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:62
 msgid "Call Type"
-msgstr ""
+msgstr "Tipo de llamada"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:64
 msgid ""
 "Determines if the forward must be applied to external, internal or any "
 "type of call."
 msgstr ""
+"Determina si el desvío debe aplicarse a llamadas externas, internas o cualquier "
+"tipo de llamada."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:66
 msgid "Forward type"
-msgstr ""
+msgstr "Tipo de desvío"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:72
 msgid "When this forward must be applied:"
-msgstr ""
+msgstr "Cuándo debe aplicarse este desvío:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:69
 msgid "Unconditional: always"
-msgstr ""
+msgstr "Incondicional: siempre"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:70
 msgid "No answer: when the call is not answered in X seconds"
-msgstr ""
+msgstr "Sin respuesta: cuando la llamada no se responde en X segundos"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:71
 msgid "Busy: When the friend rejects an incoming call."
-msgstr ""
+msgstr "Ocupado: Cuando el friend rechaza una llamada entrante."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:72
 msgid "Not registered: when the friend is not registered against IvozProvider."
-msgstr ""
+msgstr "No registrado: cuando el friend no está registrado en IvozProvider."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:73
 msgid "Target type"
-msgstr ""
+msgstr "Tipo de destino"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:77
 msgid "What route will use the forwarded call."
-msgstr ""
+msgstr "Qué ruta usará la llamada desviada."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:76
 msgid "VoiceMail"
-msgstr ""
+msgstr "Correo de voz"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:77
 msgid "Number (external)"
-msgstr ""
+msgstr "Número (externo)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:78
 msgid "Extension (internal)"
-msgstr ""
+msgstr "Extensión (interna)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/index.rst:80
 msgid ""
 "If we want to forward to other process, we can create an extension routed"
 " to that object and use the target type *Extension*."
 msgstr ""
+"Si queremos desviar a otro proceso, podemos crear una extensión enrutada "
+"a ese objeto y usar el tipo de destino *Extensión*."
 

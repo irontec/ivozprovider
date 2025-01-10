@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:5
 msgid "Call ACLs"
-msgstr ""
+msgstr "Permisos de llamada"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:7
 msgid "The **Call ACLs** determines what users can call to external numbers."
-msgstr ""
+msgstr "Los **Permisos de llamada** determinan qué usuarios pueden llamar a números externos."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:9
 msgid ""
@@ -32,50 +32,60 @@ msgid ""
 "Calls to friends extensions are considered internal too, no call ACL is "
 "needed."
 msgstr ""
+"Las extensiones internas (las que se enumeran en :ref:`Extensiones <Extensions>`) "
+"están permitidas para todos los usuarios, los **Permisos de llamada solo se aplican a números externos**. "
+"Las llamadas a extensiones de friends también se consideran internas, no se necesita permiso de llamada."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:12
 msgid "The **Call ACL** setup has two different parts:"
-msgstr ""
+msgstr "La configuración de **Permisos de llamada** tiene dos partes diferentes:"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:14
 msgid "Classify the call in different types based on **match lists**:"
-msgstr ""
+msgstr "Clasificar la llamada en diferentes tipos basados en **listas de coincidencia**:"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:16
 msgid "Brand level: **Brand Configuration** > **Generic Match Lists**"
-msgstr ""
+msgstr "Nivel de marca: **Configuración de marca** > **Listas de coincidencia genéricas**"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:18
 msgid "Client level: **Client Configuration** > **Match Lists**"
-msgstr ""
+msgstr "Nivel de cliente: **Configuración del cliente** > **Listas de coincidencia**"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:20
 msgid ""
 "Choose policies for groups of patterns: **Client Configuration** > **Call"
 " ACLs**"
 msgstr ""
+"Elegir políticas para grupos de patrones: **Configuración del cliente** > **Permisos de llamada**"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:25
 msgid "Call ACL Matchlists"
-msgstr ""
+msgstr "Listas de coincidencia de permisos de llamada"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:27
 msgid ""
 "The destination number is matched against the **ACL MatchLists** to "
 "determine the call permission."
 msgstr ""
+"El número de destino se compara con las **Listas de coincidencia de permisos** para "
+"determinar el permiso de llamada."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:30
 msgid ""
 "Brand matchlists can be used by any of its clients, so most common ACL "
 "Patterns (p.e. country prefixes) can be reused easily."
 msgstr ""
+"Las listas de coincidencia de marca pueden ser utilizadas por cualquiera de sus clientes, "
+"por lo que los patrones de permisos más comunes (por ejemplo, prefijos de país) pueden ser reutilizados fácilmente."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:33
 msgid ""
 "For more information of how MatchLists patterns are created, please refer"
 " to section :ref:`match_lists`."
 msgstr ""
+"Para obtener más información sobre cómo se crean los patrones de listas de coincidencia, "
+"consulta la sección :ref:`listas de coincidencia <match_lists>`."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:36
 msgid ""
@@ -83,60 +93,62 @@ msgid ""
 "format and **plus symbol must be escaped** (e.g. ^\\\\+34 for all spanish"
 " numbers)."
 msgstr ""
+"Las **expresiones regulares** de los patrones de listas de coincidencia deben estar **en formato E.164** "
+"y **el símbolo más debe estar escapado** (por ejemplo, ^\\\\+34 para todos los números españoles)."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:42
 msgid "Call ACL"
-msgstr ""
+msgstr "Permiso de llamada"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:44
 msgid "When a new **Call ACL** is created, these two fields turn up:"
-msgstr ""
+msgstr "Cuando se crea un nuevo **Permiso de llamada**, aparecen estos dos campos:"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:47
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:47
 msgid "Used to reference this Call ACL."
-msgstr ""
+msgstr "Utilizado para referenciar este Permiso de llamada."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:50
 msgid "Default policy"
-msgstr ""
+msgstr "Política por defecto"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:50
 msgid "If no rule matches, this ACL will deny the call or allow it?"
-msgstr ""
+msgstr "Si no coincide ninguna regla, ¿este permiso denegará la llamada o la permitirá?"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:52
 msgid "After creating the **Call ACL** we can edit it to add the required rules:"
-msgstr ""
+msgstr "Después de crear el **Permiso de llamada** podemos editarlo para agregar las reglas necesarias:"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:54
 msgid "Rules to deny some specific destinations."
-msgstr ""
+msgstr "Reglas para denegar algunos destinos específicos."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:56
 msgid "Rules to allow some specific destinations."
-msgstr ""
+msgstr "Reglas para permitir algunos destinos específicos."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:58
 msgid "The **metric** determines the evaluation order of the rules."
-msgstr ""
+msgstr "La **métrica** determina el orden de evaluación de las reglas."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:61
 msgid "Assign Call ACLs"
-msgstr ""
+msgstr "Asignar permisos de llamada"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:63
 msgid "Created *Call ACLs* can be assigned to:"
-msgstr ""
+msgstr "Los *Permisos de llamada* creados pueden ser asignados a:"
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:65
 msgid "Friends through *Call ACL* parameter."
-msgstr ""
+msgstr "Friends a través del parámetro *Permiso de llamada*."
 
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:67
 msgid "Users through *Call ACL* parameter."
-msgstr ""
+msgstr "Usuarios a través del parámetro *Permiso de llamada*."
 

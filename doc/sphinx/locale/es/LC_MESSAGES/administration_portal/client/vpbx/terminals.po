@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/terminals.rst:5
 msgid "Terminals"
-msgstr ""
+msgstr "Terminales"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:7
 msgid ""
@@ -27,30 +27,37 @@ msgid ""
 "SIP credentials that can be used by multiple SIP devices to place and "
 "receive calls from IvozProvider."
 msgstr ""
+"La sección **Configuración del cliente** > **Terminales** permite crear nuevas "
+"credenciales SIP que pueden ser utilizadas por múltiples dispositivos SIP para realizar y "
+"recibir llamadas desde IvozProvider."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:11
 msgid ""
 "The best way to understand this section is creating a new item and see "
 "the fields that must be filled."
 msgstr ""
+"La mejor manera de entender esta sección es creando un nuevo elemento y viendo "
+"los campos que deben ser completados."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:16
 msgid "Login information"
-msgstr ""
+msgstr "Información de inicio de sesión"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:19
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:18
 msgid ""
 "Username that will use the terminal during the SIP authentication phase "
 "with IvozProvider."
 msgstr ""
+"Nombre de usuario que utilizará el terminal durante la fase de autenticación SIP "
+"con IvozProvider."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:24
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:22
 msgid ""
@@ -58,22 +65,25 @@ msgid ""
 "challenge. You can use the automatic password generator to fulfill the "
 "secure password requirements."
 msgstr ""
+"Contraseña que utilizará el terminal para responder al desafío de autenticación SIP. "
+"Puede usar el generador automático de contraseñas para cumplir con los "
+"requisitos de contraseña segura."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:28
 msgid "Connection configuration"
-msgstr ""
+msgstr "Configuración de conexión"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:30
 msgid "Allowed/Disallowed codecs"
-msgstr ""
+msgstr "Codecs permitidos/rechazados"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:30
 msgid "Determines what audio and video codecs will be used with the terminal."
-msgstr ""
+msgstr "Determina qué codecs de audio y video se utilizarán con el terminal."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:36
 msgid "CallerID update method"
-msgstr ""
+msgstr "Modo actualización"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:33
 msgid ""
@@ -82,10 +92,14 @@ msgid ""
 "configure different terminal manufacturers. Use *INVITE* in case of "
 "doubt."
 msgstr ""
+"Elija el método SIP que el terminal prefiere para recibir la información de actualización "
+"de la sesión: INVITE o UPDATE. La pista de ayuda puede usarse como guía para "
+"configurar diferentes fabricantes de terminales. Use *INVITE* en caso de "
+"duda."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:40
 msgid "Enable T.38 passthrough"
-msgstr ""
+msgstr "Habilitar pasarela T.38"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:39
 msgid ""
@@ -93,24 +107,29 @@ msgid ""
 "sender/receiver**. IvozProvider will act as a T.38 gateway, bridging fax-"
 "calls of a T.38 capable carrier and a T.38 capable device."
 msgstr ""
+"Si se establece en 'sí', este punto final SIP debe ser un **fax capaz de T.38 "
+"emisor/receptor**. IvozProvider actuará como una pasarela T.38, conectando llamadas de fax "
+"de un operador compatible con T.38 y un dispositivo compatible con T.38."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:44
 msgid "RTP Encryption"
-msgstr ""
+msgstr "Cifrar RTP"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:43
 msgid ""
 "If set to 'yes', call won't be established unless it's possible to "
 "encryption its audio. If set to 'no', audio won't be encrypted."
 msgstr ""
+"Si se establece en 'sí', la llamada no se establecerá a menos que sea posible "
+"cifrar su audio. Si se establece en 'no', el audio no se cifrará."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:48
 msgid "Provisioning"
-msgstr ""
+msgstr "Provisioning"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:53
 msgid "Terminal model"
-msgstr ""
+msgstr "Modelo de Terminales"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:50
 msgid ""
@@ -119,10 +138,14 @@ msgid ""
 " the different models for automatic provision. If your device does not "
 "require provisioning, just select *Generic*."
 msgstr ""
+"Determina el tipo de aprovisionamiento que recibirá este terminal. La "
+"sección :ref:`provisionamiento de terminales <provisioning>` explicará en profundidad "
+"los diferentes modelos para el aprovisionamiento automático. Si su dispositivo no "
+"requiere aprovisionamiento, simplemente seleccione *Genérico*."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:60
 msgid "MAC"
-msgstr ""
+msgstr "MAC"
 
 #: ../../administration_portal/client/vpbx/terminals.rst:56
 msgid ""
@@ -131,12 +154,18 @@ msgid ""
 "address <https://wikipedia.org/wiki/MAC_Address>`_ of the network adapter"
 " of the SIP device."
 msgstr ""
+"Campo opcional que solo es necesario si planea usar el "
+":ref:`provisionamiento de terminales <provisioning>` de IvozProvider. Esta es la `dirección "
+"física <https://wikipedia.org/wiki/MAC_Address>`_ del adaptador de red "
+"del dispositivo SIP."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:62
 msgid ""
 "For **most of devices** that doesn't require provisioning just filling "
 "**username** and **password** will be enough."
 msgstr ""
+"Para **la mayoría de los dispositivos** que no requieren aprovisionamiento, solo completar "
+"**nombre de usuario** y **contraseña** será suficiente."
 
 #: ../../administration_portal/client/vpbx/terminals.rst:65
 msgid ""
@@ -144,4 +173,7 @@ msgid ""
 "name, password and :ref:`Client SIP domain <domain_per_client>` in order "
 "to place calls."
 msgstr ""
+"Una vez que se haya creado el terminal, la mayoría de los dispositivos solo requerirán el "
+"nombre, la contraseña y el :ref:`dominio SIP del cliente <domain_per_client>` para "
+"realizar llamadas."
 

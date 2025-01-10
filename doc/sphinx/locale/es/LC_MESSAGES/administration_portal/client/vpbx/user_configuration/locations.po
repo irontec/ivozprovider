@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"POT-Creation-Date: 2025-01-10 07:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,37 +19,40 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/user_configuration/locations.rst:3
 msgid "Locations"
-msgstr ""
+msgstr "Ubicaciones"
 
 #: ../../administration_portal/client/vpbx/user_configuration/locations.rst:5
 msgid ""
 "Locations provide an easy way to group users by the place they are "
 "working at."
 msgstr ""
+"Las ubicaciones proporcionan una forma fácil de agrupar a los usuarios "
+"por el lugar en el que están trabajando."
 
 #: ../../administration_portal/client/vpbx/user_configuration/locations.rst:8
-msgid "Create a new location"
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/user_configuration/locations.rst:10
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
-#: ../../administration_portal/client/vpbx/user_configuration/locations.rst:12
+#: ../../administration_portal/client/vpbx/user_configuration/locations.rst:8
 msgid "Name of the Location where users are working"
-msgstr ""
+msgstr "Nombre de la ubicación donde trabajan los usuarios"
+
+#: ../../administration_portal/client/vpbx/user_configuration/locations.rst:11
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../administration_portal/client/vpbx/user_configuration/locations.rst:11
+msgid "Long description with additional location information"
+msgstr "Descripción larga con información adicional de la ubicación"
 
 #: ../../administration_portal/client/vpbx/user_configuration/locations.rst:13
-msgid "Description"
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/user_configuration/locations.rst:15
-msgid "Long description with additional location information"
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/user_configuration/locations.rst:17
 msgid ""
 "There is currently no internal usage for Locations in the platform, but "
 "it's a prerequisite for future developments."
 msgstr ""
+"Actualmente no hay uso interno para las ubicaciones en la plataforma, "
+"pero es un requisito previo para futuros desarrollos."
+
+#~ msgid "Create a new location"
+#~ msgstr "Crear una nueva ubicación"
 

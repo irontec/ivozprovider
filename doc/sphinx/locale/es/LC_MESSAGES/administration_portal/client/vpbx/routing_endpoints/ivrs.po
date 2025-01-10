@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:3
 msgid "Interactive Voice Responses (IVRs)"
-msgstr ""
+msgstr "Respuestas de Voz Interactivas (IVRs)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:5
 msgid ""
@@ -27,61 +27,66 @@ msgid ""
 "must choose the destination of the call by **pressing codes** based on "
 "the locutions instructions that will be played."
 msgstr ""
+"Los IVRs son la forma más común de hacer **menús de audio** donde el llamante "
+"debe elegir el destino de la llamada **presionando códigos** basados en las "
+"instrucciones de las locuciones que se reproducirán."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:13
 msgid "IVRs"
-msgstr ""
+msgstr "IVRs"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:15
 msgid ""
 "IVRs support specifying actions for dialed digits, but also they can be "
 "also be used to route any existing client extension."
 msgstr ""
+"Los IVRs admiten especificar acciones para los dígitos marcados, pero también "
+"pueden usarse para enrutar cualquier extensión de cliente existente."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:18
 msgid "IVRs have the following fields:"
-msgstr ""
+msgstr "Los IVRs tienen los siguientes campos:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:22
 msgid "Basic configuration"
-msgstr ""
+msgstr "Configuración básica"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:24
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:24
 msgid "Descriptive name of the IVR that will be used in other sections."
-msgstr ""
+msgstr "Nombre descriptivo del IVR que se utilizará en otras secciones."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:27
 msgid "Timeout"
-msgstr ""
+msgstr "Tiempo de espera"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:27
 msgid "Time that caller has to enter the digits of the target extension."
-msgstr ""
+msgstr "Tiempo que tiene el llamante para ingresar los dígitos de la extensión de destino."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:30
 msgid "Max digits"
-msgstr ""
+msgstr "Máximo de dígitos"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:30
 msgid "Maximum number of digits allowed in this IVR."
-msgstr ""
+msgstr "Número máximo de dígitos permitidos en este IVR."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:33
 msgid "Welcome locution"
-msgstr ""
+msgstr "Locución de bienvenida"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:33
 msgid "This locution will be played as soon as the caller enters the IVR."
-msgstr ""
+msgstr "Esta locución se reproducirá tan pronto como el llamante ingrese al IVR."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:38
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:122
 msgid "Success locution"
-msgstr ""
+msgstr "Locución de éxito"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:36
 msgid ""
@@ -89,14 +94,17 @@ msgid ""
 "exists in the client (and allow extensions is enabled), this locution "
 "will be played (usually something like 'Connecting, please wait...')."
 msgstr ""
+"En caso de que el número marcado coincida con una de las entradas del IVR o la "
+"extensión exista en el cliente (y permitir extensiones esté habilitado), se "
+"reproducirá esta locución (generalmente algo como 'Conectando, por favor espere...')."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:42
 msgid "Dialing extensions"
-msgstr ""
+msgstr "Marcando extensiones"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:46
 msgid "Allow dialing extensions"
-msgstr ""
+msgstr "Permitir marcar extensiones"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:44
 msgid ""
@@ -104,20 +112,25 @@ msgid ""
 " that must previously know (or the welcome locution suggests) and the "
 "system will automatically connect with that extension."
 msgstr ""
+"Cuando esta configuración está habilitada, el llamante puede presionar directamente "
+"la extensión que debe conocer previamente (o la locución de bienvenida sugiere) y el "
+"sistema se conectará automáticamente con esa extensión."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:50
 msgid "Excluded Extensions"
-msgstr ""
+msgstr "Extensiones excluidas"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:49
 msgid ""
 "When Allow extensions is enabled, you can exclude some extensions to be "
 "directly dialed adding them to the exclusion list."
 msgstr ""
+"Cuando Permitir extensiones está habilitado, puedes excluir algunas extensiones para "
+"que se marquen directamente agregándolas a la lista de exclusión."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:54
 msgid "No input configuration"
-msgstr ""
+msgstr "Configuración sin entrada"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:56
 msgid ""
@@ -125,18 +138,21 @@ msgid ""
 " process will trigger, playing the configured locution and redirecting to"
 " another number, extension or voicemail."
 msgstr ""
+"Si el llamante no ingresa ningún dígito en el valor de tiempo de espera, se activará "
+"el proceso sin entrada, reproduciendo la locución configurada y redirigiendo a otro "
+"número, extensión o buzón de voz."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:61
 msgid "No input locution"
-msgstr ""
+msgstr "Locución sin entrada"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:61
 msgid "Locution that will be played."
-msgstr ""
+msgstr "Locución que se reproducirá."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:65
 msgid "No input target"
-msgstr ""
+msgstr "Destino sin entrada"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:64
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:80
@@ -144,10 +160,12 @@ msgid ""
 "Number, extension or voicemail to redirect to after the locution is "
 "played. Additional fields are required depending on the selected value."
 msgstr ""
+"Número, extensión o buzón de voz al que redirigir después de que se reproduzca la "
+"locución. Se requieren campos adicionales dependiendo del valor seleccionado."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:69
 msgid "Error configuration"
-msgstr ""
+msgstr "Configuración de error"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:71
 msgid ""
@@ -157,22 +175,27 @@ msgid ""
 "trigger, playing the configured locution and redirecting the call to "
 "another number, extension or voicemail."
 msgstr ""
+"Si la extensión marcada no coincide con ninguna entrada del IVR, ninguna extensión "
+"de cliente (cuando permitir extensiones está habilitado), o coincide con una de las "
+"extensiones en la lista de extensiones excluidas, se activará el proceso de error, "
+"reproduciendo la locución configurada y redirigiendo la llamada a otro número, "
+"extensión o buzón de voz."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:77
 msgid "Locution"
-msgstr ""
+msgstr "Locución"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:77
 msgid "Locution that will be played in case of error."
-msgstr ""
+msgstr "Locución que se reproducirá en caso de error."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:81
 msgid "Error target"
-msgstr ""
+msgstr "Destino de error"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:85
 msgid "IVR Entries"
-msgstr ""
+msgstr "Entradas IVR"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:87
 msgid ""
@@ -180,32 +203,41 @@ msgid ""
 "that says something like 'Press 1 to contact XXX, Press 2 to contact YYY,"
 " ...\""
 msgstr ""
+"El uso más común de los IVR es combinarlos con una locución de bienvenida "
+"que diga algo como 'Presione 1 para contactar a XXX, Presione 2 para contactar a YYY,"
+" ...\""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:91
 msgid ""
 "The process of each entry of the IVR can be defined in the following "
 "button:"
 msgstr ""
+"El proceso de cada entrada del IVR se puede definir en el siguiente "
+"botón:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:94
 msgid ""
 "In this example, the caller can dial 1, 2 or 3 (the rest will be "
 "considered as an error and will trigger the **Error process**):"
 msgstr ""
+"En este ejemplo, el llamante puede marcar 1, 2 o 3 (el resto se considerará "
+"un error y activará el **proceso de error**):"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:98
 msgid ""
 "1: Call to the internal extension 200, created in :ref:`previous section "
 "<huntgroups>` that routes to hunt group *Reception*."
 msgstr ""
+"1: Llamada a la extensión interna 200, creada en :ref:`sección anterior "
+"<huntgroups>` que enruta al grupo de búsqueda *Recepción*."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:100
 msgid "2: Call to the internal extension 101."
-msgstr ""
+msgstr "2: Llamada a la extensión interna 101."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:101
 msgid "3: Route this call to the external number 676 676 676."
-msgstr ""
+msgstr "3: Enrutar esta llamada al número externo 676 676 676."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:103
 msgid ""
@@ -214,14 +246,18 @@ msgid ""
 "generic locution (like 'Connecting....') or a custom one for a given "
 "entry (like 'Connecting reception department, please wait...')."
 msgstr ""
+"Cada una de las entradas del IVR admite una locución que, si se establece, se "
+"reproducirá en lugar de la **locución de éxito** del IVR. De esta manera, puedes "
+"configurar una locución genérica (como 'Conectando....') o una personalizada para "
+"una entrada dada (como 'Conectando con el departamento de recepción, por favor espere...')."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:109
 msgid "Entries are regular expressions"
-msgstr ""
+msgstr "Las entradas son expresiones regulares"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:112
 msgid "Entry information"
-msgstr ""
+msgstr "Información de entrada"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:113
 msgid ""
@@ -230,36 +266,40 @@ msgid ""
 "will be handled as a regular expression. This can be handy if you have "
 "the same behaviour for a group of dialed numbers."
 msgstr ""
+"Puedes especificar entradas IVR como Expresiones Regulares. Si la entrada es solo un "
+"valor numérico, se manejará como una secuencia de dígitos, de lo contrario se "
+"manejará como una expresión regular. Esto puede ser útil si tienes el mismo "
+"comportamiento para un grupo de números marcados."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:119
 msgid "Entry"
-msgstr ""
+msgstr "Entrada"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:119
 msgid "Regular expression."
-msgstr ""
+msgstr "Expresión regular."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:122
 msgid "Locution to be played in case of success."
-msgstr ""
+msgstr "Locución que se reproducirá en caso de éxito."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:125
 msgid "Display name"
-msgstr ""
+msgstr "Nombre para mostrar"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:125
 msgid "This value will be displayed in the called terminals"
-msgstr ""
+msgstr "Este valor se mostrará en los terminales llamados"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:129
 msgid "Routing configuration"
-msgstr ""
+msgstr "Configuración de enrutamiento"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:131
 msgid "Target type"
-msgstr ""
+msgstr "Tipo de destino"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:132
 msgid "Depending on the type chosen, additional parameters may be required."
-msgstr ""
+msgstr "Dependiendo del tipo elegido, se pueden requerir parámetros adicionales."
 

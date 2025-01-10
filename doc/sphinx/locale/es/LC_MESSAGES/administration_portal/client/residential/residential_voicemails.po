@@ -19,31 +19,31 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:5
 msgid "Residential Voicemails"
-msgstr ""
+msgstr "Buzones de Voz Residenciales"
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:7
 msgid "Voicemail most notable fields are:"
-msgstr ""
+msgstr "Los campos más notables del buzón de voz son:"
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:10
 msgid "Enabled"
-msgstr ""
+msgstr "Habilitado"
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:10
 msgid "Enables or disables voicemail."
-msgstr ""
+msgstr "Habilita o deshabilita el buzón de voz."
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:13
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:13
 msgid "Residential Device name owner of this voicemail."
-msgstr ""
+msgstr "Nombre del dispositivo residencial propietario de este buzón de voz."
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:18
 msgid "Locution"
-msgstr ""
+msgstr "Locución"
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:16
 msgid ""
@@ -51,24 +51,26 @@ msgid ""
 "voicemail for this voicemail is going to be recorded. This only applies "
 "for call forwards to voicemail."
 msgstr ""
+"Si se establece, esta locución se reproduce como mensaje de bienvenida del buzón de voz cuando se va a grabar un mensaje de voz para este buzón. Esto solo se aplica para desvíos de llamadas al buzón de voz."
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:21
 msgid "Email address"
-msgstr ""
+msgstr "Dirección de correo electrónico"
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:21
 msgid ""
 "Send an email to the configured user address when a new voicemail is "
 "received."
 msgstr ""
+"Enviar un correo electrónico a la dirección de usuario configurada cuando se reciba un nuevo mensaje de voz."
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:24
 msgid "Attach sounds:"
-msgstr ""
+msgstr "Adjuntar sonidos:"
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:24
 msgid "Attach the audio message to the sent email."
-msgstr ""
+msgstr "Adjuntar el mensaje de audio al correo electrónico enviado."
 
 #: ../../administration_portal/client/residential/residential_voicemails.rst:26
 msgid ""
@@ -76,4 +78,5 @@ msgid ""
 "long as the owner has not recorded a custom message through the voicemail"
 " menu (calling to voicemail service code)."
 msgstr ""
+"Si no se asigna una locución al buzón de voz, se utilizará la locución predeterminada siempre que el propietario no haya grabado un mensaje personalizado a través del menú del buzón de voz (llamando al código de servicio del buzón de voz)."
 

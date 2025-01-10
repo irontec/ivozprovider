@@ -19,9 +19,9 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/calls/index.rst:3
 msgid "Calls"
-msgstr ""
+msgstr "Llamadas"
 
 #: ../../administration_portal/client/residential/calls/index.rst:5
 msgid "These are the call-list sections for residential clients:"
-msgstr ""
+msgstr "Estas son las secciones de la lista de llamadas para clientes residenciales:"
 

@@ -19,207 +19,207 @@ msgstr ""
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:3
 msgid "Call CSV schedulers"
-msgstr ""
+msgstr "Programadores de CSV de llamadas"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:5
 msgid ""
 "This section allows programming automatic periodical CSV reports to "
 "retail client administrators."
-msgstr ""
+msgstr "Esta sección permite programar informes CSV periódicos automáticos para administradores de clientes retail."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:7
 msgid ""
 "This section is almost identical to :ref:`Invoice schedulers` except to "
 "the fields that do not apply to CSVs (Invoice number sequence, Tax "
 "rate...)"
-msgstr ""
+msgstr "Esta sección es casi idéntica a :ref:`Programadores de facturas <Invoice schedulers>` excepto por los campos que no aplican a CSVs (secuencia de número de factura, tasa de impuestos...)"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:10
 msgid "When adding a new definition, these fields are shown:"
-msgstr ""
+msgstr "Al agregar una nueva definición, se muestran estos campos:"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:13
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:13
 msgid "Name of the scheduled Call CSV"
-msgstr ""
+msgstr "Nombre del CSV de llamadas programado"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:16
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:16
 msgid "Send generated Call CSV via email. Empty if no automatic mail is wanted."
-msgstr ""
+msgstr "Enviar el CSV de llamadas generado por correo electrónico. Vacío si no se desea correo automático."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:19
 msgid "Frequency/Unit"
-msgstr ""
+msgstr "Frecuencia/Unidad"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:19
 msgid ""
 "Defines the frequency (once a month, every 7 days, etc.) of the "
 "programmed task"
-msgstr ""
+msgstr "Define la frecuencia (una vez al mes, cada 7 días, etc.) de la tarea programada"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:22
 msgid "Direction"
-msgstr ""
+msgstr "Dirección"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:22
 msgid ""
 "Defines which calls should be included attending to its direction "
 "(inbound, outbound, both)."
-msgstr ""
+msgstr "Define qué llamadas deben incluirse según su dirección (entrantes, salientes, ambas)."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:25
 msgid "DDI"
-msgstr ""
+msgstr "DDI"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:25
 msgid "Allows selecting client's one specific DDI."
-msgstr ""
+msgstr "Permite seleccionar un DDI específico del cliente."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:29
 msgid "Retail account"
-msgstr ""
+msgstr "Cuenta retail"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:28
 msgid "Allows selecting client's one specific retail account."
-msgstr ""
+msgstr "Permite seleccionar una cuenta retail específica del cliente."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:31
 msgid "Once created, some new fields and subsections are accesible:"
-msgstr ""
+msgstr "Una vez creada, se accede a algunos campos y subsecciones nuevos:"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:34
 msgid "Next execution"
-msgstr ""
+msgstr "Próxima ejecución"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:34
 msgid "Shows next execution date"
-msgstr ""
+msgstr "Muestra la fecha de la próxima ejecución"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:38
 msgid "Last execution"
-msgstr ""
+msgstr "Última ejecución"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:37
 msgid "Shows last execution and its result."
-msgstr ""
+msgstr "Muestra la última ejecución y su resultado."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:40
 msgid ""
 "Modifying *Next execution* value allows forcing specific runs. For "
 "example, setting *Next execution* to current month's first day will "
 "create again last month's CSV report (for a monthly scheduler)."
-msgstr ""
+msgstr "Modificar el valor de *Próxima ejecución* permite forzar ejecuciones específicas. Por ejemplo, establecer *Próxima ejecución* al primer día del mes actual creará nuevamente el informe CSV del mes pasado (para un programador mensual)."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:44
 msgid ""
 "Generated CSVs of each scheduler can be accessed in **List of Call CSV "
 "reports** subsection."
-msgstr ""
+msgstr "Los CSV generados de cada programador se pueden acceder en la subsección **Lista de informes CSV de llamadas**."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:48
 msgid "CSV fields"
-msgstr ""
+msgstr "Campos CSV"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:50
 msgid "These are the fields of the generated CSV files:"
-msgstr ""
+msgstr "Estos son los campos de los archivos CSV generados:"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:53
 msgid "callid"
-msgstr ""
+msgstr "callid"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:53
 msgid "Call-ID of the SIP dialog"
-msgstr ""
+msgstr "ID de llamada del diálogo SIP"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:56
 msgid "startTime"
-msgstr ""
+msgstr "horaInicio"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:56
 msgid "Time and date of the call establishment"
-msgstr ""
+msgstr "Hora y fecha del establecimiento de la llamada"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:59
 msgid "duration"
-msgstr ""
+msgstr "duración"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:59
 msgid "Call duration in seconds"
-msgstr ""
+msgstr "Duración de la llamada en segundos"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:62
 msgid "caller"
-msgstr ""
+msgstr "llamante"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:62
 msgid "Caller number in E.164 format (with '+')"
-msgstr ""
+msgstr "Número del llamante en formato E.164 (con '+')"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:65
 msgid "callee"
-msgstr ""
+msgstr "llamado"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:65
 msgid "Callee number in E.164 format (with '+')"
-msgstr ""
+msgstr "Número del llamado en formato E.164 (con '+')"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:68
 msgid "price"
-msgstr ""
+msgstr "precio"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:68
 msgid ""
 "Calculated price for the given call (empty if *Display billing details to"
 " client* is disabled)"
-msgstr ""
+msgstr "Precio calculado para la llamada dada (vacío si *Mostrar detalles de facturación al cliente* está deshabilitado)"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:71
 msgid "direction"
-msgstr ""
+msgstr "dirección"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:71
 msgid "Possible values: inbound, outbound."
-msgstr ""
+msgstr "Valores posibles: entrante, saliente."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:74
 msgid "ddiId"
-msgstr ""
+msgstr "ddiId"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:74
 msgid ""
 "Client DDI to which call will be assigned (callee for inbound calls, "
 "caller for outbound calls)."
-msgstr ""
+msgstr "DDI del cliente al que se asignará la llamada (llamado para llamadas entrantes, llamante para llamadas salientes)."
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:77
 msgid "endpointType"
-msgstr ""
+msgstr "tipoDePuntoFinal"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:77
 msgid "Fixed value: RetailAccount"
-msgstr ""
+msgstr "Valor fijo: RetailAccount"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:80
 msgid "endpointId"
-msgstr ""
+msgstr "idDePuntoFinal"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:80
 msgid "Internal ID of specific retail account"
-msgstr ""
+msgstr "ID interno de la cuenta retail específica"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:82
 msgid "endpointName"
-msgstr ""
+msgstr "nombreDePuntoFinal"
 
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:83
 msgid "Retail account name"
-msgstr ""
+msgstr "Nombre de la cuenta retail"
 

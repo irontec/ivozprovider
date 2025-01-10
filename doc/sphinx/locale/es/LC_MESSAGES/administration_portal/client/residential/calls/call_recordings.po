@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:4
 msgid "Call recordings"
-msgstr ""
+msgstr "Grabaciones de llamadas"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:6
 msgid ""
@@ -27,112 +27,112 @@ msgid ""
 "being recorded (sometimes to both parties). You should include a "
 "recording disclaimer in your welcome locutions for DDIs with automatic "
 "recording enabled."
-msgstr ""
+msgstr "Tenga en cuenta que la legislación local puede exigir anunciar que la llamada está siendo grabada (a veces a ambas partes). Debe incluir un aviso de grabación en sus locuciones de bienvenida para los DDIs con grabación automática habilitada."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:11
 msgid "IvozProvider supports two different ways of recording calls:"
-msgstr ""
+msgstr "IvozProvider admite dos formas diferentes de grabar llamadas:"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:13
 msgid ""
 "**Automatic recordings** for the incoming/outgoing calls that use a "
 ":ref:`External DDI <ddis>`."
-msgstr ""
+msgstr "**Grabaciones automáticas** para las llamadas entrantes/salientes que utilizan un :ref:`DDI externo <ddis>`."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:16
 msgid "**On demand recordings** requested by a user during a call."
-msgstr ""
+msgstr "**Grabaciones bajo demanda** solicitadas por un usuario durante una llamada."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:20
 msgid "Automatic DDI recordings"
-msgstr ""
+msgstr "Grabaciones automáticas de DDI"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:22
 msgid ""
 "In this type of recording, **the whole conversation will be recorded**: "
 "from the start until it finishes."
-msgstr ""
+msgstr "En este tipo de grabación, **se grabará toda la conversación**: desde el inicio hasta que termine."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:25
 msgid "Two different scenarios:"
-msgstr ""
+msgstr "Dos escenarios diferentes:"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:27
 msgid ""
 "**Incoming calls to a DDI**: The call will continue until the external "
 "dialer hangups (no matter whom is talking to)."
-msgstr ""
+msgstr "**Llamadas entrantes a un DDI**: La llamada continuará hasta que el marcador externo cuelgue (sin importar con quién esté hablando)."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:30
 msgid ""
 "**Outgoing calls using a DDI** as :ref:`Outgoing DDI <ddis>`: the "
 "recording will continue as long as the external destination keeps in the "
 "conversation."
-msgstr ""
+msgstr "**Llamadas salientes utilizando un DDI** como :ref:`DDI saliente <ddis>`: la grabación continuará mientras el destino externo permanezca en la conversación."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:34
 msgid ""
 "Take into account that the call will be recorded while the external "
 "entity is present, even it the call is being transferred between multiple"
 " users of the platform."
-msgstr ""
+msgstr "Tenga en cuenta que la llamada se grabará mientras la entidad externa esté presente, incluso si la llamada se transfiere entre varios usuarios de la plataforma."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:39
 msgid "Record all the calls of a DDI"
-msgstr ""
+msgstr "Grabar todas las llamadas de un DDI"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:40
 msgid ""
 "To enable this feature, edit the DDI and configure the field under the "
 "section recording data:"
-msgstr ""
+msgstr "Para habilitar esta función, edite el DDI y configure el campo en la sección de datos de grabación:"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:44
 msgid "There are 4 available options:"
-msgstr ""
+msgstr "Hay 4 opciones disponibles:"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:46
 msgid "Disable recordings"
-msgstr ""
+msgstr "Deshabilitar grabaciones"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:47
 msgid "Enable incoming recordings"
-msgstr ""
+msgstr "Habilitar grabaciones entrantes"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:48
 msgid "Enable outgoing recordings"
-msgstr ""
+msgstr "Habilitar grabaciones salientes"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:49
 msgid "Enable all call recordings"
-msgstr ""
+msgstr "Habilitar todas las grabaciones de llamadas"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:53
 msgid "On demand recordings"
-msgstr ""
+msgstr "Grabaciones bajo demanda"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:55
 msgid ""
 "The *on-demand* recordings must be enabled by the *brand administrator* "
 "for the clients that request it. This can be done in the client edit "
 "screen:"
-msgstr ""
+msgstr "Las grabaciones *bajo demanda* deben ser habilitadas por el *administrador de la marca* para los clientes que lo soliciten. Esto se puede hacer en la pantalla de edición del cliente:"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:59
 msgid ""
 "Contrary to the :ref:`Services <services>` mentioned in the previous "
 "section, the on demand record are activated within a conversation."
-msgstr ""
+msgstr "A diferencia de los :ref:`Servicios <services>` mencionados en la sección anterior, la grabación bajo demanda se activa dentro de una conversación."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:62
 msgid ""
 "Contrary to automatic ones, on demand recording can be stopped using the "
 "same process that started them."
-msgstr ""
+msgstr "A diferencia de las automáticas, la grabación bajo demanda se puede detener utilizando el mismo proceso que las inició."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:66
 msgid "Activated using the *Record* key"
-msgstr ""
+msgstr "Activado usando la tecla *Grabar*"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:68
 msgid ""
@@ -143,23 +143,23 @@ msgid ""
 " This is not a standard for the protocol, but being Yealink one of the "
 "supported manufacturers of the solution, we include this kind of on-"
 "demand recording."
-msgstr ""
+msgstr "Algunos terminales (por ejemplo, *Yealink*) admiten el envío de un mensaje `SIP INFO <https://tools.ietf.org/html/rfc6086>`_ durante la conversación con un encabezado especial *Grabar* (ver `referencia <http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf>`_). Esto no es un estándar para el protocolo, pero siendo Yealink uno de los fabricantes compatibles con la solución, incluimos este tipo de grabación bajo demanda."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:74
 msgid ""
 "For this recording requests, the configured code doesn't matter but the "
 "client still must have on demand records enabled."
-msgstr ""
+msgstr "Para estas solicitudes de grabación, el código configurado no importa, pero el cliente aún debe tener habilitadas las grabaciones bajo demanda."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:77
 msgid ""
 "To start or stop this kind of recordings, just press the Record key in "
 "the terminal and the system will handle the sent message."
-msgstr ""
+msgstr "Para iniciar o detener este tipo de grabaciones, simplemente presione la tecla Grabar en el terminal y el sistema manejará el mensaje enviado."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:81
 msgid "Activated using *DTMF* codes"
-msgstr ""
+msgstr "Activado usando códigos *DTMF*"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:83
 msgid ""
@@ -170,7 +170,7 @@ msgid ""
 "<https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_ using the same"
 " audio stream that the conversation (as mentioned in `RFC 4733 "
 "<https://tools.ietf.org/html/rfc4733>`_)."
-msgstr ""
+msgstr "El enfoque más tradicional para esta función es presionar una combinación de teclas durante la llamada. Se reproducirá una notificación y la grabación comenzará o se detendrá. Esta combinación se envía al sistema utilizando `tonos DTMF <https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_ utilizando el mismo flujo de audio que la conversación (como se menciona en `RFC 4733 <https://tools.ietf.org/html/rfc4733>`_)."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:90
 msgid ""
@@ -178,37 +178,37 @@ msgid ""
 "an important downside. In order to capture this codes, the pbx must "
 "process each audio packet to detect the code, avoiding the direct flow of"
 " media between the final endpoints."
-msgstr ""
+msgstr "IvozProvider admite este tipo de activación de grabación bajo demanda, pero con una desventaja importante. Para capturar estos códigos, la pbx debe procesar cada paquete de audio para detectar el código, evitando el flujo directo de medios entre los puntos finales finales."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:95
 msgid ""
 "Enabling this record mode highly affects the performance of the platform."
 " Use at your own risk."
-msgstr ""
+msgstr "Habilitar este modo de grabación afecta en gran medida el rendimiento de la plataforma. Úselo bajo su propio riesgo."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:100
 msgid "Recordings list"
-msgstr ""
+msgstr "Lista de grabaciones"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:102
 msgid ""
 "The *client administrator* can access to all the recordings in the "
 "section **Client configuration** > **Calls** > **Call recordings**:"
-msgstr ""
+msgstr "El *administrador del cliente* puede acceder a todas las grabaciones en la sección **Configuración del cliente** > **Llamadas** > **Grabaciones de llamadas**:"
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:105
 msgid "Recordings can be heard from the *web* or downloaded in MP3 format."
-msgstr ""
+msgstr "Las grabaciones se pueden escuchar desde la *web* o descargar en formato MP3."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:107
 msgid ""
 "If the recording has been started on demand, it will also include the "
 "user that requested it."
-msgstr ""
+msgstr "Si la grabación se ha iniciado bajo demanda, también incluirá al usuario que la solicitó."
 
 #: ../../administration_portal/client/shared/call_recordings.rst.inc:110
 msgid ""
 "Recording removal button is shown only if **Allow Client to remove "
 "recordings** is enabled for the client in *Client configuration*."
-msgstr ""
+msgstr "El botón de eliminación de grabaciones se muestra solo si **Permitir al cliente eliminar grabaciones** está habilitado para el cliente en *Configuración del cliente*."
 

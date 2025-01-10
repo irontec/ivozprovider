@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/services.rst:6
 msgid "Services"
-msgstr ""
+msgstr "Servicios"
 
 #: ../../administration_portal/client/vpbx/services.rst:8
 msgid ""
@@ -27,6 +27,9 @@ msgid ""
 "conversation**. They are activated by **calling the codes**, not using "
 "DTMF codes while talking."
 msgstr ""
+"Los servicios definidos en esta sección **no son accesibles durante una "
+"conversación**. Se activan **llamando a los códigos**, no usando "
+"códigos DTMF mientras se habla."
 
 #: ../../administration_portal/client/vpbx/services.rst:12
 msgid ""
@@ -34,8 +37,12 @@ msgid ""
 "operator* using the section **Client configuration** > **Services** and "
 "changing the codes listed there."
 msgstr ""
+"Cada cliente puede *personalizar* los valores predeterminados asignados por el *operador de la marca* "
+"usando la sección **Configuración del cliente** > **Servicios** y "
+"cambiando los códigos listados allí."
 
 #: ../../administration_portal/client/vpbx/services.rst:16
 msgid "Services deleted by the *client admin* will not available to users."
 msgstr ""
+"Los servicios eliminados por el *administrador del cliente* no estarán disponibles para los usuarios."
 

@@ -19,15 +19,15 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/calls/call_registry.rst:5
 msgid "Call registry"
-msgstr ""
+msgstr "Registro de llamadas"
 
 #: ../../administration_portal/client/vpbx/calls/call_registry.rst:7
 msgid "Lists all the calls of the client, even those that do not imply cost."
-msgstr ""
+msgstr "Lista todas las llamadas del cliente, incluso aquellas que no implican costo."
 
 #: ../../administration_portal/client/vpbx/calls/call_registry.rst:10
 msgid ""
 "`CSV <https://es.wikipedia.org/wiki/CSV>`_ export makes possible to "
 "download the list for its later analysis."
-msgstr ""
+msgstr "La exportación en `CSV <https://es.wikipedia.org/wiki/CSV>`_ permite descargar la lista para su posterior análisis."
 

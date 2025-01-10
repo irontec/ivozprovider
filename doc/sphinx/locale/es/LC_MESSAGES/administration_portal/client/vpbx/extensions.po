@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/extensions.rst:5
 msgid "Extensions"
-msgstr ""
+msgstr "Extensiones"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:7
 msgid ""
@@ -28,15 +28,16 @@ msgid ""
 " do not traverse call ACL logics: **every user/friend is allowed to call "
 "to any number listed here**."
 msgstr ""
+"**Una extensión es**, por definición, **un número interno con una lógica asignada**. Las llamadas de usuarios internos a los números listados en esta sección no atraviesan las lógicas de permisos de llamada: **todos los usuarios/friends pueden llamar a cualquier número listado aquí**."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:12
 msgid "Create a new extension"
-msgstr ""
+msgstr "Crear una nueva extensión"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:16
 #: ../../administration_portal/client/vpbx/extensions.rst:45
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:14
 msgid ""
@@ -44,10 +45,11 @@ msgid ""
 " configured logic. It must have a minimum length of 2 and must be a "
 "number."
 msgstr ""
+"El número que debe marcar el usuario interno que activará la lógica configurada. Debe tener una longitud mínima de 2 y debe ser un número."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:22
 msgid "Route"
-msgstr ""
+msgstr "Ruta"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:19
 msgid ""
@@ -56,6 +58,7 @@ msgid ""
 " route, and additional select or input will be shown to select the hunt "
 "group, conference room, user, etc."
 msgstr ""
+"Esta selección nos permitirá elegir la lógica que usará esta extensión cuando sea marcada por un usuario interno. Dependiendo de la ruta seleccionada, se mostrará una selección o entrada adicional para seleccionar el grupo de salto, sala de conferencias, usuario, etc."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:24
 msgid ""
@@ -63,82 +66,85 @@ msgid ""
 " external number will be masked and, in practice, will be unavailable for"
 " the whole client."
 msgstr ""
+"Si una extensión tiene un número que entra en conflicto con un número externo, este número externo será enmascarado y, en la práctica, estará indisponible para todo el cliente."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:29
 msgid "Route options"
-msgstr ""
+msgstr "Opciones de ruta"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:32
 msgid "Unassigned"
-msgstr ""
+msgstr "No asignado"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:32
 msgid "Calls to this extension will be hung up."
-msgstr ""
+msgstr "Las llamadas a esta extensión serán colgadas."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:35
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:35
 msgid "Selected :ref:`user <Users>` will be called."
-msgstr ""
+msgstr "Se llamará al :ref:`usuario <Users>` seleccionado."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:38
 msgid "IVR"
-msgstr ""
+msgstr "IVR"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:38
 msgid "Selected :ref:`IVR <IVRs>` logic will be called."
-msgstr ""
+msgstr "Se llamará a la lógica del :ref:`IVR <IVRs>` seleccionado."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:41
 msgid "Hunt Group"
-msgstr ""
+msgstr "Grupo de salto"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:41
 msgid "Selected :ref:`huntgroup <huntgroups>` will be called."
-msgstr ""
+msgstr "Se llamará al :ref:`grupo de salto <huntgroups>` seleccionado."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:44
 msgid ""
 "Calling to this extension will generate an external outbound call to "
 "introduced number."
 msgstr ""
+"Llamar a esta extensión generará una llamada externa saliente al número introducido."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:48
 msgid "Friend"
-msgstr ""
+msgstr "Friend"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:48
 msgid "Calls to this extension will evaluate :ref:`friends <Friends>` logic."
-msgstr ""
+msgstr "Las llamadas a esta extensión evaluarán la lógica de :ref:`friends <Friends>`."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:51
 msgid "Queue"
-msgstr ""
+msgstr "Cola"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:51
 msgid "Call will be delivered to selected :ref:`queue <Queues>`."
-msgstr ""
+msgstr "La llamada será entregada a la :ref:`cola <Queues>` seleccionada."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:54
 msgid "Conditional route"
-msgstr ""
+msgstr "Ruta condicional"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:54
 msgid ""
 "Call will be delivered to selected :ref:`conditional route <Conditional "
 "Routes>`."
 msgstr ""
+"La llamada será entregada a la :ref:`ruta condicional <Conditional Routes>` seleccionada."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:57
 msgid "Voicemail"
-msgstr ""
+msgstr "Buzón de voz"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:57
 msgid "Calls will be delivered to selected :ref:`voicemails <Voicemails>`."
-msgstr ""
+msgstr "Las llamadas serán entregadas al :ref:`buzón de voz <Voicemails>` seleccionado."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:59
 msgid ""
@@ -146,10 +152,11 @@ msgid ""
 "**Extension routed to Number** even if its *Call permissions* does not "
 "allow to call to that destination directly."
 msgstr ""
+"Cualquier usuario interno puede generar una llamada externa saliente a través de una **Extensión enrutada a Número** incluso si sus *Permisos de llamada* no permiten llamar a ese destino directamente."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:65
 msgid "Import aliases"
-msgstr ""
+msgstr "Importar alias"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:67
 msgid ""
@@ -157,42 +164,46 @@ msgid ""
 " As each client usually has a list with frequent numbers, **Import "
 "aliases** button allows importing them through a CSV file."
 msgstr ""
+"*Extensiones a números* son útiles para llamar fácilmente a los números más marcados. Como cada cliente suele tener una lista con números frecuentes, el botón **Importar alias** permite importarlos a través de un archivo CSV."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:72
 msgid "Example import file"
-msgstr ""
+msgstr "Archivo de importación de ejemplo"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:82
 msgid "Numbers will be imported synchronously following these rules:"
-msgstr ""
+msgstr "Los números se importarán de forma sincrónica siguiendo estas reglas:"
 
 #: ../../administration_portal/client/vpbx/extensions.rst:84
 msgid ""
 "If given extension already exists and points to a number: number is "
 "updated."
 msgstr ""
+"Si la extensión dada ya existe y apunta a un número: el número se actualiza."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:85
 msgid "If given extension already exists and does not point to a number: error."
-msgstr ""
+msgstr "Si la extensión dada ya existe y no apunta a un número: error."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:86
 msgid "If given country prefix does not exist: error."
-msgstr ""
+msgstr "Si el prefijo del país dado no existe: error."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:87
 msgid "If given country code does not exist: error."
-msgstr ""
+msgstr "Si el código del país dado no existe: error."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:88
 msgid ""
 "If given country prefix and country code combination does not exist: "
 "error."
 msgstr ""
+"Si la combinación de prefijo y código de país dada no existe: error."
 
 #: ../../administration_portal/client/vpbx/extensions.rst:89
 msgid ""
 "CountryCode is optional: if given country prefix is used in multiple "
 "countries and country code is not given, first country is selected."
 msgstr ""
+"El código de país es opcional: si el prefijo del país dado se usa en múltiples países y no se da el código de país, se selecciona el primer país."
 

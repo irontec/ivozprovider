@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:6
 msgid "Route locks"
-msgstr ""
+msgstr "Candados de ruta"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:8
 msgid ""
@@ -27,58 +27,65 @@ msgid ""
 "delivering calls. This fork is done depending on the state of the lock on"
 " a particular moment:"
 msgstr ""
+"Los candados de ruta son una forma simple pero poderosa de bifurcar las lógicas de ruta "
+"al entregar llamadas. Esta bifurcación se realiza dependiendo del estado del candado en "
+"un momento particular:"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:11
 msgid "**Opened**: green light, go ahead."
-msgstr ""
+msgstr "**Abierto**: luz verde, adelante."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:12
 msgid "**Closed**: red light, no trespassing allowed."
-msgstr ""
+msgstr "**Cerrado**: luz roja, no se permite el paso."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:14
 msgid ""
 "They are used as conditional route rule criteria (see how in "
 ":ref:`conditional_routes`)."
 msgstr ""
+"Se utilizan como criterios de reglas de ruta condicional (ver cómo en "
+":ref:`rutas_condicionales <conditional_routes>`)."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:17
 msgid "Route lock creation"
-msgstr ""
+msgstr "Creación de candado de ruta"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:19
 msgid ""
 "When you add a new route lock in **Route Locks** section, you are asked "
 "for the following fields:"
 msgstr ""
+"Cuando agregas un nuevo candado de ruta en la sección **Candados de ruta**, se te "
+"pedirá que completes los siguientes campos:"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:22
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:22
 msgid "This name will be used in conditional routes to identify the lock."
-msgstr ""
+msgstr "Este nombre se utilizará en rutas condicionales para identificar el candado."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:25
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:25
 msgid "Just a description."
-msgstr ""
+msgstr "Solo una descripción."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:28
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:28
 msgid "Set the initial status of the lock: opened or closed."
-msgstr ""
+msgstr "Establece el estado inicial del candado: abierto o cerrado."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:31
 msgid "Route locks service codes"
-msgstr ""
+msgstr "Códigos de servicio de candados de ruta"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:33
 msgid ""
@@ -86,36 +93,40 @@ msgid ""
 "using the admin portal too, the usual way to handle the status changes of"
 " a lock is to use the service codes listed in **Route locks** section."
 msgstr ""
+"Aunque puedes establecer el estado inicial del candado al crearlo y cambiarlo "
+"también usando el portal de administración, la forma habitual de manejar los cambios "
+"de estado de un candado es usar los códigos de servicio listados en la sección "
+"**Candados de ruta**."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:36
 msgid "These services codes have two parts:"
-msgstr ""
+msgstr "Estos códigos de servicio tienen dos partes:"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:38
 msgid "**Service code**: configured in **Services** section per brand/client."
-msgstr ""
+msgstr "**Código de servicio**: configurado en la sección **Servicios** por marca/cliente."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:40
 msgid "**Lock id**: immutable numeric id assigned to each lock."
-msgstr ""
+msgstr "**ID del candado**: ID numérico inmutable asignado a cada candado."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:42
 msgid "There are 3 service codes available for most common operations on locks:"
-msgstr ""
+msgstr "Hay 3 códigos de servicio disponibles para las operaciones más comunes en candados:"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:44
 msgid "Open Lock"
-msgstr ""
+msgstr "Abrir candado"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:46
 msgid "Close Lock"
-msgstr ""
+msgstr "Cerrar candado"
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:48
 msgid "Toggle Lock."
-msgstr ""
+msgstr "Alternar candado."
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:50
 msgid "Read :ref:`services` for further details."
-msgstr ""
+msgstr "Lee :ref:`servicios <services>` para más detalles."
 

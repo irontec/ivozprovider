@@ -19,58 +19,58 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:3
 msgid "Active calls"
-msgstr ""
+msgstr "Llamadas activas"
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:5
 msgid "This section allows client administrator view **current active calls**."
-msgstr ""
+msgstr "Esta sección permite al administrador del cliente ver **llamadas activas actuales**."
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:7
 msgid ""
 "**Calls involving any user, friend, retail account, residential device or"
 " wholesale client will be shown**, no matter they are internal or "
 "external."
-msgstr ""
+msgstr "**Se mostrarán las llamadas que involucren a cualquier usuario, friend, cuenta retail, dispositivo residencial o cliente wholesale**, sin importar si son internas o externas."
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:10
 msgid "These are columns shown:"
-msgstr ""
+msgstr "Estas son las columnas mostradas:"
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:14
 msgid "Duration"
-msgstr ""
+msgstr "Duración"
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:13
 msgid ""
 "Show call establishment duration during establishment and call duration "
 "during ongoing call. It also shows direction (inbound/outbound) and call "
 "state information, as explained :ref:`here <Call state>`."
-msgstr ""
+msgstr "Muestra la duración del establecimiento de la llamada durante el establecimiento y la duración de la llamada durante la llamada en curso. También muestra la dirección (entrante/saliente) y la información del estado de la llamada, como se explica :ref:`aquí <Call state>`."
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:17
 msgid "Owner"
-msgstr ""
+msgstr "Propietario"
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:17
 msgid ""
 "User, friend, retail account, residential device or wholesale client "
 "involved in given call."
-msgstr ""
+msgstr "Usuario, friend, cuenta retail, dispositivo residencial o cliente wholesale involucrado en la llamada dada."
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:21
 msgid "Party"
-msgstr ""
+msgstr "Parte"
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:20
 msgid ""
 "Remaining participant of given call. It gets updated to show current "
 "party (in transfers and diverted calls)."
-msgstr ""
+msgstr "Participante restante de la llamada dada. Se actualiza para mostrar la parte actual (en transferencias y llamadas desviadas)."
 
 #: ../../administration_portal/client/vpbx/calls/active_calls.rst:23
 msgid ""
 "There will be one entry per entity involved. This means that a standard "
 "internal call will be shown in two different rows: one outbound call for "
 "calling user and one inbound call for called user."
-msgstr ""
+msgstr "Habrá una entrada por entidad involucrada. Esto significa que una llamada interna estándar se mostrará en dos filas diferentes: una llamada saliente para el usuario que llama y una llamada entrante para el usuario llamado."
 

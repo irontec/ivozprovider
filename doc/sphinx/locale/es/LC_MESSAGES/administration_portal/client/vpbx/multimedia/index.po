@@ -19,9 +19,9 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/multimedia/index.rst:3
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimedia"
 
 #: ../../administration_portal/client/vpbx/multimedia/index.rst:5
 msgid "This two sections involve media files:"
-msgstr ""
+msgstr "Estas dos secciones involucran archivos multimedia:"
 

@@ -19,13 +19,14 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:3
 msgid "Address Book"
-msgstr ""
+msgstr "Agenda"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:5
 msgid ""
 "Virtual PBX clients have access to a simple Address book to store "
 "contacts, that can be used for third party integrations."
 msgstr ""
+"Los clientes de PBX virtual tienen acceso a una agenda simple para almacenar contactos, que se puede usar para integraciones de terceros."
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:8
 msgid ""
@@ -33,60 +34,61 @@ msgid ""
 "system, but client administrators can add other external numbers to "
 "existing contacts."
 msgstr ""
+"Los contactos para los usuarios de vPBX son creados y gestionados automáticamente por el sistema, pero los administradores del cliente pueden agregar otros números externos a los contactos existentes."
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:13
 msgid "Personal data"
-msgstr ""
+msgstr "Datos personales"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:16
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:18
 msgid "Name of the contact."
-msgstr ""
+msgstr "Nombre del contacto."
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:19
 msgid "Lastname"
-msgstr ""
+msgstr "Apellido"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:21
 msgid "Lastname of the contact."
-msgstr ""
+msgstr "Apellido del contacto."
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:22
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:24
 msgid "Email of the contact."
-msgstr ""
+msgstr "Email del contacto."
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:28
 msgid "Phones"
-msgstr ""
+msgstr "Teléfonos"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:31
 msgid "Work Phone"
-msgstr ""
+msgstr "Teléfono Trabajo"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:33
 msgid "Public external work number of the contact."
-msgstr ""
+msgstr "Número de trabajo externo público del contacto."
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:34
 msgid "Mobile Phone"
-msgstr ""
+msgstr "Teléfono Móvil"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:36
 msgid "Public external mobile number of the contact."
-msgstr ""
+msgstr "Número de móvil externo público del contacto."
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:37
 msgid "Other Phone"
-msgstr ""
+msgstr "Otro Teléfono"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:39
 msgid "Free format number of the contact (Internal Extension, Fax, etc)"
-msgstr ""
+msgstr "Número en formato libre del contacto (Extensión interna, Fax, etc)"
 

@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../administration_portal/client/retail/index.rst:6
 msgid "Retail Clients"
-msgstr ""
+msgstr "Clientes Retail"
 
 #: ../../administration_portal/client/retail/index.rst:8
 msgid ""
 "Retail clients are a special type of client that only provides a "
 "connectivity service with carriers through retail accounts."
 msgstr ""
+"Los clientes Retail son un tipo especial de cliente que solo proporciona un "
+"servicio de conectividad con operadores a través de cuentas retail."
 
 #: ../../administration_portal/client/retail/index.rst:11
 msgid ""
@@ -33,20 +35,27 @@ msgid ""
 "domain to unequivocally identify their accounts. You'll need to configure"
 " Brand's domain to use this feature."
 msgstr ""
+"Al contrario de los clientes de PBX Virtual, todos los clientes Retail usan "
+"el dominio de la marca para identificar inequívocamente sus cuentas. Necesitarás "
+"configurar el dominio de la marca para usar esta función."
 
 #: ../../administration_portal/client/retail/index.rst:15
 msgid "Retail clients can be enabled per Brand basis via Features."
-msgstr ""
+msgstr "Los clientes Retail se pueden habilitar por marca a través de Funciones."
 
 #: ../../administration_portal/client/retail/index.rst:17
 msgid ""
 "The goal of this section will be describe each of the configuration "
 "settings associated with Retail clients included in IvozProvider:"
 msgstr ""
+"El objetivo de esta sección será describir cada una de las configuraciones "
+"asociadas con los clientes Retail incluidos en IvozProvider:"
 
 #: ../../administration_portal/client/retail/index.rst:29
 msgid ""
 "Check :ref:`Differences between retail and residential clients` to "
 "understand the difference between these two client types."
 msgstr ""
+"Consulta :ref:`Diferencias entre clientes retail y residenciales <Differences between retail and residential clients>` "
+"para entender la diferencia entre estos dos tipos de clientes."
 

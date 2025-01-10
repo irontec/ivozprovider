@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:5
 msgid "Outgoing DDI Rules"
-msgstr ""
+msgstr "Reglas DDI de salida"
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:7
 msgid ""
@@ -27,6 +27,9 @@ msgid ""
 "placing calls to external numbers. This includes: Users, Friends, Faxes, "
 "Retail Accounts, and so on.."
 msgstr ""
+"La mayoría de las entidades que llaman en IvozProvider requieren un DDI de salida cuando "
+"realizan llamadas a números externos. Esto incluye: Usuarios, Friends, Faxes, "
+"Cuentas Retail, etc."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:11
 msgid ""
@@ -35,16 +38,21 @@ msgid ""
 "archive this dynamic outgoing DDI selection you can use Outgoing DDI "
 "rules."
 msgstr ""
+"Pero hay algunos casos en los que un solo DDI de salida no es suficiente, y "
+"el DDI presentado depende del número llamado o de un prefijo dado. Para "
+"archivar esta selección dinámica de DDI de salida, puedes usar las reglas de DDI de salida."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:17
 msgid "Outgoing DDI based on destination"
-msgstr ""
+msgstr "DDI de salida basado en destino"
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:19
 msgid ""
 "For destination based rules, you would require first group the "
 "destination numbers in :ref:`match_lists`."
 msgstr ""
+"Para las reglas basadas en destino, primero necesitarías agrupar los "
+"números de destino en :ref:`listas de coincidencia <match_lists>`."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:22
 msgid ""
@@ -54,11 +62,15 @@ msgid ""
 " for the rest of the cases we will force the DDI to the main client "
 "outgoing DDI."
 msgstr ""
+"Para este ejemplo, crearemos una lista de coincidencia de móviles corporativos con "
+"todos los números móviles de los trabajadores de nuestro cliente. Cuando llamemos a esos "
+"números, mantendremos el DDI de salida original asignado al usuario, y "
+"para el resto de los casos, forzaremos el DDI al DDI de salida principal del cliente."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:28
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:53
 msgid "Create a new Outgoing DDI Rule"
-msgstr ""
+msgstr "Crear una nueva regla DDI de salida"
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:29
 msgid ""
@@ -66,20 +78,24 @@ msgid ""
 "rule matches the dialed destination, so we define to force the main "
 "client DDI here."
 msgstr ""
+"La pantalla principal de creación define la acción que se llevará a cabo cuando ninguna "
+"regla coincida con el destino marcado, por lo que aquí definimos forzar el DDI principal del cliente."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:33
 msgid "Assign rule lists actions"
-msgstr ""
+msgstr "Asignar acciones de listas de reglas"
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:34
 msgid ""
 "Now we add a new rule that will match our mobiles to make the user's "
 "outgoing DDI be kept untouched."
 msgstr ""
+"Ahora agregamos una nueva regla que coincidirá con nuestros móviles para que el DDI de salida del usuario "
+"se mantenga sin cambios."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:38
 msgid "Assign rule to callers"
-msgstr ""
+msgstr "Asignar regla a los llamantes"
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:39
 msgid ""
@@ -87,22 +103,28 @@ msgid ""
 "change it's presentation number. We can do this in the **Client's edit "
 "screen** or the **Users's edit screen**."
 msgstr ""
+"Por último, tenemos que configurar quién usará esta regla para cambiar dinámicamente "
+"su número de presentación. Podemos hacer esto en la **pantalla de edición del cliente** o en la **pantalla de edición de usuarios**."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:43
 msgid ""
 "In this case, the User will present 777777777 DDI when calling corporate "
 "mobiles and 666666666 when calling the rest of the external numbers."
 msgstr ""
+"En este caso, el Usuario presentará el DDI 777777777 al llamar a móviles corporativos "
+"y 666666666 al llamar al resto de los números externos."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:47
 msgid "Outgoing DDI based on prefix"
-msgstr ""
+msgstr "DDI de salida basado en prefijo"
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:49
 msgid ""
 "Outgoing DDI Rules can be also used to change the default Outgoing DDI "
 "based on a call prefix."
 msgstr ""
+"Las reglas de DDI de salida también se pueden usar para cambiar el DDI de salida predeterminado "
+"basado en un prefijo de llamada."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:54
 msgid ""
@@ -110,24 +132,31 @@ msgid ""
 "rule matches the dialed destination, we will keep original DDI if no "
 "prefix is used."
 msgstr ""
+"La pantalla principal de creación define la acción que se llevará a cabo cuando ninguna "
+"regla coincida con el destino marcado, mantendremos el DDI original si no se usa "
+"ningún prefijo."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:58
 msgid "Assign a prefix pattern"
-msgstr ""
+msgstr "Asignar un patrón de prefijo"
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:59
 msgid ""
 "Now we add a new rule that with prefix (let's say 111) and action to "
 "force the DDI to 666666666."
 msgstr ""
+"Ahora agregamos una nueva regla con prefijo (digamos 111) y acción para "
+"forzar el DDI a 666666666."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:62
 msgid ""
 "In this case, the User will present 666666666 DDI when calling any "
 "destination with 111 prefix and 777777777 when not using any prefix."
 msgstr ""
+"En este caso, el Usuario presentará el DDI 666666666 al llamar a cualquier "
+"destino con el prefijo 111 y 777777777 cuando no use ningún prefijo."
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:65
 msgid "Prefix **must** have this format: from 1 to 3 digits ended by * symbol."
-msgstr ""
+msgstr "El prefijo **debe** tener este formato: de 1 a 3 dígitos terminados con el símbolo \*."
 

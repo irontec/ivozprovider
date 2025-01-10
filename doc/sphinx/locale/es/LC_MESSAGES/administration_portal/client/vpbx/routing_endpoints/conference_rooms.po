@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:5
 msgid "Conference rooms"
-msgstr ""
+msgstr "Salas de conferencias"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:7
 msgid ""
 "IvozProvider supports Conference rooms that can be configured in the "
 "section **Client configuration** > **Conference rooms**."
 msgstr ""
+"IvozProvider soporta salas de conferencias que pueden configurarse en la "
+"sección **Configuración del cliente** > **Salas de conferencias**."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:10
 msgid ""
@@ -33,6 +35,8 @@ msgid ""
 "with an static assignment or 'hash based' distribution (see **Distribute "
 "method** :ref:`here <Virtual PBX>`)."
 msgstr ""
+"**En instalaciones distribuidas** el uso de conferencias solo es compatible "
+"con una asignación estática o distribución 'basada en hash' (ver **Método de distribución** :ref:`aquí <Virtual PBX>`)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:13
 msgid ""
@@ -40,36 +44,40 @@ msgid ""
 "**Features** in :ref:`Brand Configuration` and :ref:`Client "
 "Configuration`)."
 msgstr ""
+"Los operadores de marca pueden elegir qué Clientes tienen conferencias (ver "
+"**Características** en :ref:`Configuración de Marca <Brand Configuration>` y :ref:`Configuración del Cliente <Client Configuration>`)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:17
 msgid "Create a new audio conference"
-msgstr ""
+msgstr "Crear una nueva conferencia de audio"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:18
 msgid "The following image shows the process of creating a new conference room:"
-msgstr ""
+msgstr "La siguiente imagen muestra el proceso de creación de una nueva sala de conferencias:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:22
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:22
 msgid "Name that will used to identify this conference room in other sections"
-msgstr ""
+msgstr "Nombre que se utilizará para identificar esta sala de conferencias en otras secciones"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:26
 msgid "Max members"
-msgstr ""
+msgstr "Miembros máximos"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:25
 msgid ""
 "Maximum number of participants in the conference. When this limit is "
 "reached, join requests will be rejected."
 msgstr ""
+"Número máximo de participantes en la conferencia. Cuando se alcance este límite, "
+"las solicitudes de unión serán rechazadas."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:32
 msgid "Announce user count"
-msgstr ""
+msgstr "Anunciar número de usuarios"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:29
 msgid ""
@@ -77,36 +85,44 @@ msgid ""
 " how many users there are already participating. Options are: only to the"
 " first member of the conference or anybody joining."
 msgstr ""
+"Primer miembro o siempre. Reproducir una locución al unirse a una conferencia indicando "
+"cuántos usuarios ya están participando. Las opciones son: solo al "
+"primer miembro de la conferencia o a cualquiera que se una."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:36
 msgid "Pin protected"
-msgstr ""
+msgstr "Protegido por pin"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:35
 msgid ""
 "Conference rooms can be pin protected. The pin will be requested before "
 "entering and must be numeric."
 msgstr ""
+"Las salas de conferencias pueden estar protegidas por pin. El pin se solicitará antes de "
+"entrar y debe ser numérico."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:38
 msgid "Member limit can be disabled by setting it to 0."
-msgstr ""
+msgstr "El límite de miembros puede deshabilitarse configurándolo en 0."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:41
 msgid "Route an extension or DDI to the conference"
-msgstr ""
+msgstr "Enrutar una extensión o DDI a la conferencia"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:42
 msgid ""
 "In order to enter a conference there must be a number that is route to "
 "them:"
 msgstr ""
+"Para ingresar a una conferencia debe haber un número que se enrute a "
+"ellas:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:45
 msgid ""
 "In the following section we will see how to configure a :ref:`external "
 "DDI <ddis>` to a conference room so it can be used by external callers."
 msgstr ""
+"En la siguiente sección veremos cómo configurar un :ref:`DDI externo <ddis>` a una sala de conferencias para que pueda ser utilizado por llamantes externos."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:48
 msgid ""
@@ -115,4 +131,8 @@ msgid ""
 "user can transfer the call to the conference extension, or can be routed,"
 " for example using an IVR entry."
 msgstr ""
+"Hay otras formas de hacer que los llamantes externos se unan a una sala de conferencias "
+"sin usar un DDI: se puede asignar a una Extensión. De esta manera, cualquier "
+"usuario puede transferir la llamada a la extensión de la conferencia, o puede ser enrutada, "
+"por ejemplo, usando una entrada IVR."
 

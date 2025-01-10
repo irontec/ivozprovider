@@ -19,19 +19,19 @@ msgstr ""
 
 #: ../../administration_portal/client/index.rst:3
 msgid "Client Configuration"
-msgstr ""
+msgstr "Configuración del Cliente"
 
 #: ../../administration_portal/client/index.rst:5
 msgid "Currently, there are 4 different types of client in IvozProvider."
-msgstr ""
+msgstr "Actualmente, hay 4 tipos diferentes de clientes en IvozProvider."
 
 #: ../../administration_portal/client/index.rst:7
 msgid "Each of them is thoroughly described in the following sections:"
-msgstr ""
+msgstr "Cada uno de ellos se describe detalladamente en las siguientes secciones:"
 
 #: ../../administration_portal/client/index.rst:19
 msgid ""
 "Client types are order from the most feature-full to the most lightweight"
 " one."
-msgstr ""
+msgstr "Los tipos de clientes están ordenados desde el más completo en funciones hasta el más ligero."
 

@@ -19,157 +19,174 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:6
 msgid "Conditional routes"
-msgstr ""
+msgstr "Rutas condicionales"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:8
 msgid "Conditional routes allows changing a call logic depending on:"
-msgstr ""
+msgstr "Las rutas condicionales permiten cambiar la lógica de una llamada dependiendo de:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:10
 msgid "Who is calling."
-msgstr ""
+msgstr "Quién está llamando."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:11
 msgid "What time is calling."
-msgstr ""
+msgstr "A qué hora está llamando."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:12
 msgid "What day is calling."
-msgstr ""
+msgstr "Qué día está llamando."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:13
 msgid "Status of selected route locks."
-msgstr ""
+msgstr "Estado de los bloqueos de ruta seleccionados."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:15
 msgid "These routes are electable in three sections:"
-msgstr ""
+msgstr "Estas rutas son elegibles en tres secciones:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:17
 msgid "DDIs"
-msgstr ""
+msgstr "DDIs"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:19
 msgid "Extensions"
-msgstr ""
+msgstr "Extensiones"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:21
 msgid "IVR custom options"
-msgstr ""
+msgstr "Opciones personalizadas de IVR"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:23
 msgid ""
 "Remaining sections could use conditional routes creating an extension "
 "that point to a conditional route first, and routing to this extension."
 msgstr ""
+"Las secciones restantes podrían usar rutas condicionales creando una extensión "
+"que apunte primero a una ruta condicional y enrutando a esta extensión."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:27
 msgid "Creating a conditional route"
-msgstr ""
+msgstr "Creando una ruta condicional"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:29
 msgid ""
 "First of all we create a conditional route in **Conditional routes** "
 "section."
 msgstr ""
+"Primero creamos una ruta condicional en la sección **Rutas condicionales**."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:32
 msgid ""
 "On creation we define what should be done with a call that does not "
 "satisfy any of the rules added bellow."
 msgstr ""
+"Al crearla definimos qué se debe hacer con una llamada que no "
+"cumpla con ninguna de las reglas agregadas a continuación."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:36
 msgid "Adding rules"
-msgstr ""
+msgstr "Agregando reglas"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:38
 msgid "Once created, we need to add rules, for example:"
-msgstr ""
+msgstr "Una vez creada, necesitamos agregar reglas, por ejemplo:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:40
 msgid "Calls from Japan and Germany received in the morning to an specific user"
-msgstr ""
+msgstr "Llamadas de Japón y Alemania recibidas por la mañana a un usuario específico"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:43
 msgid "Calls from Japan and Germany received in the afternoon to another user"
-msgstr ""
+msgstr "Llamadas de Japón y Alemania recibidas por la tarde a otro usuario"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:46
 msgid "Override the reception IVR for summer days"
-msgstr ""
+msgstr "Anular el IVR de recepción para los días de verano"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:50
 msgid "Evaluating conditional routes"
-msgstr ""
+msgstr "Evaluando rutas condicionales"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:52
 msgid ""
 "Rules are evaluated following the metric parameter. Once a rule matches, "
 "its logic is applied."
 msgstr ""
+"Las reglas se evalúan siguiendo el parámetro métrico. Una vez que una regla coincide, "
+"se aplica su lógica."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:55
 msgid "Rules may have from 1 to 4 criteria:"
-msgstr ""
+msgstr "Las reglas pueden tener de 1 a 4 criterios:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:57
 msgid "None, one or more matchlist (pre-created, see :ref:`match_lists`)"
 msgstr ""
+"Ninguna, una o más listas de coincidencia (pre-creadas, ver :ref:`listas de coincidencia <match_lists>`)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:59
 msgid "None, one or more schedules (pre-created, see :ref:`schedules`)"
 msgstr ""
+"Ninguna, uno o más horarios (pre-creados, ver :ref:`horarios <schedules>`)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:61
 msgid "None, one or more calendar (pre-created, see :ref:`calendars`)"
 msgstr ""
+"Ninguno, uno o más calendarios (pre-creados, ver :ref:`calendarios <calendars>`)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:63
 msgid "None, one or more route locks (pre-created, see :ref:`route locks`)"
 msgstr ""
+"Ninguno, uno o más bloqueos de ruta (pre-creados, ver :ref:`bloqueos de ruta <route locks>`)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:65
 msgid "These 4 criteria are combined (applying an AND logic)."
-msgstr ""
+msgstr "Estos 4 criterios se combinan (aplicando una lógica AND)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:67
 msgid "If all used criterias in a rule are fulfilled, its logic is applied."
-msgstr ""
+msgstr "Si se cumplen todos los criterios utilizados en una regla, se aplica su lógica."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:69
 msgid "This is how each criteria is evaluated:"
-msgstr ""
+msgstr "Así es como se evalúa cada criterio:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:72
 msgid "Matchlist criteria"
-msgstr ""
+msgstr "Criterio de lista de coincidencia"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:72
 msgid ""
 "If caller number matches any of selected matchlist(s), this criteria is "
 "considered fulfilled."
 msgstr ""
+"Si el número del llamante coincide con alguna de las listas de coincidencia seleccionadas, "
+"este criterio se considera cumplido."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:75
 msgid "Schedule criteria"
-msgstr ""
+msgstr "Criterio de horario"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:75
 msgid ""
 "If current time is included in any of selected schedules, this criteria "
 "is considered fulfilled."
 msgstr ""
+"Si la hora actual está incluida en alguno de los horarios seleccionados, este criterio "
+"se considera cumplido."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:80
 msgid "Calendar criteria"
-msgstr ""
+msgstr "Criterio de calendario"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:78
 msgid ""
 "If current day is marked as holiday in any of selected calendars, this "
 "criteria is considered fulfilled."
 msgstr ""
+"Si el día actual está marcado como festivo en alguno de los calendarios seleccionados, "
+"este criterio se considera cumplido."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:79
 msgid ""
@@ -177,58 +194,67 @@ msgid ""
 "calendars and current time is included in its interval, this criteria is "
 "considered fulfilled."
 msgstr ""
+"Si el día actual está marcado como festivo parcial en alguno de los calendarios seleccionados "
+"y la hora actual está incluida en su intervalo, este criterio se considera cumplido."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:83
 msgid "Lock criteria"
-msgstr ""
+msgstr "Criterio de bloqueo"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:83
 msgid ""
 "If one of selected route locks is open, this criteria is considered "
 "fulfilled."
 msgstr ""
+"Si uno de los bloqueos de ruta seleccionados está abierto, este criterio se considera cumplido."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:85
 msgid ""
 ":ref:`Special Schedules` linked to selected calendars are not taken into "
 "account."
 msgstr ""
+":ref:`Horarios especiales <Special Schedules>` vinculados a los calendarios seleccionados no se tienen en cuenta."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:88
 msgid "DDI routed to a conditional route"
-msgstr ""
+msgstr "DDI enrutado a una ruta condicional"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:90
 msgid ""
 "Imagine this scenario: DDI has an external call filter and is routed to "
 "the new conditional route."
 msgstr ""
+"Imagina este escenario: el DDI tiene un filtro de llamadas externas y está enrutado a "
+"la nueva ruta condicional."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:92
 msgid "When a call is received:"
-msgstr ""
+msgstr "Cuando se recibe una llamada:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:94
 msgid "External call filter is evaluated:"
-msgstr ""
+msgstr "Se evalúa el filtro de llamadas externas:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:96
 msgid "If current day is marked in any calendar, the holiday logic applies."
-msgstr ""
+msgstr "Si el día actual está marcado en algún calendario, se aplica la lógica de festivo."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:98
 msgid "If current time is not inside any time-gap, out-of-schedule logic applies."
-msgstr ""
+msgstr "Si la hora actual no está dentro de ningún intervalo de tiempo, se aplica la lógica fuera de horario."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:100
 msgid ""
 "If external call filter logics have not applied, conditional route is "
 "evaluated."
 msgstr ""
+"Si no se han aplicado las lógicas del filtro de llamadas externas, se evalúa la ruta condicional."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/conditional_routes.rst:102
 msgid ""
 "Conditional route is not intended as an external call filter replacement."
 " Filter is evaluated first, conditional route afterwards."
 msgstr ""
+"La ruta condicional no está destinada a reemplazar el filtro de llamadas externas. "
+"Primero se evalúa el filtro, luego la ruta condicional."
 

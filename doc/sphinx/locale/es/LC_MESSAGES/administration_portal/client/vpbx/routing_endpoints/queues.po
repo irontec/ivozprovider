@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:5
 msgid "Queues"
-msgstr ""
+msgstr "Colas"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:7
 msgid ""
@@ -27,6 +27,9 @@ msgid ""
 " simple approach with **the unique goal to provide the capability to "
 "handle more calls than users attending them**."
 msgstr ""
+"El comportamiento de colas fácil se incluyó en IvozProvider en la versión 1.3. Es un "
+"enfoque simple con **el único objetivo de proporcionar la capacidad de manejar más "
+"llamadas que usuarios atendiéndolas**."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:11
 msgid ""
@@ -35,6 +38,10 @@ msgid ""
 " features that are crucial to them (reports, RT visualization, queue "
 "related stat, etc.)."
 msgstr ""
+"Colas y callcenter son términos cercanos pero diferentes. **IvozProvider no es un "
+"producto adecuado para callcenters**, ya que no proporciona características avanzadas "
+"que son cruciales para ellos (informes, visualización en tiempo real, estadísticas "
+"relacionadas con colas, etc.)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:16
 msgid ""
@@ -42,154 +49,176 @@ msgid ""
 "static assignment or 'hash based' distribution (see **Distribute method**"
 " :ref:`here <Virtual PBX>`)."
 msgstr ""
+"**En instalaciones distribuidas** el uso de Colas solo es compatible con una "
+"asignación estática o distribución 'basada en hash' (ver **Método de distribución** "
+":ref:`aquí <Virtual PBX>`)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:19
 msgid ""
 "Brand operators can choose which Clients have queues (see **Features** in"
 " :ref:`Brand Configuration` and :ref:`Client Configuration`)."
 msgstr ""
+"Los operadores de marca pueden elegir qué Clientes tienen colas (ver **Características** en "
+":ref:`Configuración de Marca <Brand Configuration>` y :ref:`Configuración de Cliente <Client Configuration>`)."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:23
 msgid "Queue configuration"
-msgstr ""
+msgstr "Configuración de la cola"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:25
 msgid "This are the settings related to a queue:"
-msgstr ""
+msgstr "Estos son los ajustes relacionados con una cola:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:29
 msgid "Basic configuration"
-msgstr ""
+msgstr "Configuración básica"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:31
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:31
 msgid ""
 "Use to reference this queue. Allowed characters: a-z, A-Z, 0-9, "
 "underscore and '-'."
 msgstr ""
+"Usar para referenciar esta cola. Caracteres permitidos: a-z, A-Z, 0-9, "
+"guion bajo y '-'."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:35
 msgid "Weight"
-msgstr ""
+msgstr "Peso"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:34
 msgid ""
 "Prioritizes calls to an agent that attends calls in two (or more) queues."
 " The higher, the more prioritized."
 msgstr ""
+"Prioriza las llamadas a un agente que atiende llamadas en dos (o más) colas. "
+"Cuanto mayor sea, más priorizado será."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:39
 msgid "Strategy"
-msgstr ""
+msgstr "Estrategia"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:38
 msgid ""
 "How will the queue deliver the calls? Calling to all agents, calling to a"
 " random one?"
 msgstr ""
+"¿Cómo entregará la cola las llamadas? ¿Llamando a todos los agentes, llamando a uno "
+"aleatorio?"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:42
 msgid "Display name"
-msgstr ""
+msgstr "Nombre para mostrar"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:42
 msgid "This value will be displayed in the called terminals"
-msgstr ""
+msgstr "Este valor se mostrará en los terminales llamados"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:46
 msgid "Members configuration"
-msgstr ""
+msgstr "Configuración de miembros"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:48
 msgid "Member call seconds"
-msgstr ""
+msgstr "Segundos de llamada del miembro"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:48
 msgid "Defines how long will a call to an agent last."
-msgstr ""
+msgstr "Define cuánto durará una llamada a un agente."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:51
 msgid "Member rest seconds"
-msgstr ""
+msgstr "Segundos de descanso del miembro"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:51
 msgid "Seconds between calls for an agent."
-msgstr ""
+msgstr "Segundos entre llamadas para un agente."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:55
 msgid "Prevent missed calls"
-msgstr ""
+msgstr "Prevenir llamadas perdidas"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:54
 msgid ""
 "When 'Yes', calls will never generate a missed call. When 'No', missed "
 "calls will be prevented only for RingAll queues if someone answers."
 msgstr ""
+"Cuando 'Sí', las llamadas nunca generarán una llamada perdida. Cuando 'No', las "
+"llamadas perdidas se evitarán solo para colas RingAll si alguien responde."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:59
 msgid "Announce"
-msgstr ""
+msgstr "Anunciar"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:60
 msgid ""
 "Select a locution and its frequency. Caller waiting in the call will "
 "listen to this locution."
 msgstr ""
+"Seleccione una locución y su frecuencia. El llamante en espera escuchará esta locución."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:64
 msgid "Periodic Announce Locution"
-msgstr ""
+msgstr "Locución de anuncio periódico"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:64
 msgid "Locution periodically played to calls that are queued."
-msgstr ""
+msgstr "Locución reproducida periódicamente a las llamadas que están en cola."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:68
 msgid "Announce Position"
-msgstr ""
+msgstr "Anunciar posición"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:67
 msgid ""
 "Announce queue position to waiting users when they enter the queue and "
 "after defined frequency."
 msgstr ""
+"Anunciar la posición en la cola a los usuarios en espera cuando ingresan a la cola y "
+"después de la frecuencia definida."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:72
 msgid "Timeout configuration"
-msgstr ""
+msgstr "Configuración de tiempo de espera"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:73
 msgid ""
 "Limits the time that a call can wait in a queue and the following "
 "behaviour."
 msgstr ""
+"Limita el tiempo que una llamada puede esperar en una cola y el comportamiento "
+"siguiente."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:77
 msgid "Max wait time"
-msgstr ""
+msgstr "Tiempo máximo de espera"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:76
 msgid ""
 "If no queue member answers before this seconds, the timeout queue logic "
 "will be activated. Leave empty to disable."
 msgstr ""
+"Si ningún miembro de la cola responde antes de estos segundos, se activará la lógica "
+"de tiempo de espera de la cola. Dejar vacío para desactivar."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:79
 msgid "Locution"
-msgstr ""
+msgstr "Locución"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:83
 msgid "Full Queue configuration"
-msgstr ""
+msgstr "Configuración completa de la cola"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:82
 msgid ""
 "Limits the amount of people waiting in a call and the behaviour when this"
 " limit it reached."
 msgstr ""
+"Limita la cantidad de personas esperando en una llamada y el comportamiento cuando "
+"se alcanza este límite."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:85
 msgid ""
@@ -197,6 +226,9 @@ msgid ""
 "will have a **penalty: a user will not be selected to deliver a call if "
 "any user with lower penalty is available**."
 msgstr ""
+"Aparte de crear una cola, tienes que asignar usuarios a ella. Estos usuarios tendrán "
+"una **penalización: un usuario no será seleccionado para entregar una llamada si "
+"cualquier usuario con una penalización menor está disponible**."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:90
 msgid ""
@@ -204,38 +236,50 @@ msgid ""
 "selectors available in multiple sections of IvozProvider (extension to "
 "queue, DDI to queue, etc.)"
 msgstr ""
+"Una llamada puede ser enviada a una cola seleccionándola en los selectores de \"Tipo "
+"de ruta\" disponibles en múltiples secciones de IvozProvider (extensión a cola, DDI a "
+"cola, etc.)"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:94
 msgid ""
 "When configuring a queue, you can prevent missed calls on called members "
 "with **Prevent missed calls** setting:"
 msgstr ""
+"Al configurar una cola, puedes prevenir llamadas perdidas en los miembros llamados "
+"con la configuración **Prevenir llamadas perdidas**:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:96
 msgid ""
 "**Yes**: calls generated by the queue will never generate missed calls on"
 " called members."
 msgstr ""
+"**Sí**: las llamadas generadas por la cola nunca generarán llamadas perdidas en los "
+"miembros llamados."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:98
 msgid "**No**: The behaviour of this setting depends on the queue strategy:"
 msgstr ""
+"**No**: El comportamiento de esta configuración depende de la estrategia de la cola:"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:100
 msgid ""
 "**RingAll**: calls generated by the queue will generate missed calls on "
 "called members only if none of them answers the call."
 msgstr ""
+"**RingAll**: las llamadas generadas por la cola generarán llamadas perdidas en los "
+"miembros llamados solo si ninguno de ellos responde la llamada."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:102
 msgid ""
 "**Remaining types**: calls generated by the queue will generate missed "
 "calls on every called member that does not answer the call."
 msgstr ""
+"**Tipos restantes**: las llamadas generadas por la cola generarán llamadas perdidas en "
+"cada miembro llamado que no responda la llamada."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:106
 msgid "Queue strategy"
-msgstr ""
+msgstr "Estrategia de la cola"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:108
 msgid ""
@@ -243,20 +287,25 @@ msgid ""
 " with the smallest penalty value and only going to the next penalty if "
 "all members of current one are busy or unavailable."
 msgstr ""
+"La estrategia de la cola **siempre se aplica a los miembros con penalización actual** "
+"comenzando con el valor de penalización más pequeño y solo pasando a la siguiente "
+"penalización si todos los miembros de la actual están ocupados o no disponibles."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:114
 msgid "Ring all"
-msgstr ""
+msgstr "Llamar a todos"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:113
 msgid ""
 "The call will make all the members of the current priority during a "
 "predefined time."
 msgstr ""
+"La llamada hará que todos los miembros de la prioridad actual durante un tiempo "
+"predefinido."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:119
 msgid "Least recent"
-msgstr ""
+msgstr "Menos reciente"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:117
 msgid ""
@@ -264,10 +313,13 @@ msgid ""
 "based on the last time the member attended a call. Members whose latest "
 "call is older will be called first."
 msgstr ""
+"La llamada *saltará* de un miembro a otro en un orden predefinido basado en la última "
+"vez que el miembro atendió una llamada. Los miembros cuya última llamada sea más "
+"antigua serán llamados primero."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:124
 msgid "Fewer calls"
-msgstr ""
+msgstr "Menos llamadas"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:122
 msgid ""
@@ -275,46 +327,59 @@ msgid ""
 "based on the number of attended calls. Members that have attended less "
 "calls will be called first."
 msgstr ""
+"La llamada *saltará* de un miembro a otro en un orden predefinido basado en el número "
+"de llamadas atendidas. Los miembros que hayan atendido menos llamadas serán llamados "
+"primero."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:128
 msgid "Random"
-msgstr ""
+msgstr "Aleatorio"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:127
 msgid ""
 "The call will *jump* from one member to another in a random order, "
 "ringing during the configured time."
 msgstr ""
+"La llamada *saltará* de un miembro a otro en un orden aleatorio, sonando durante el "
+"tiempo configurado."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:132
 msgid "Round Robin memory"
-msgstr ""
+msgstr "Memoria de Round Robin"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:131
 msgid ""
 "The call will *jump* from one member to another in a predefined order "
 "starting past the last member that attended a call."
 msgstr ""
+"La llamada *saltará* de un miembro a otro en un orden predefinido comenzando después "
+"del último miembro que atendió una llamada."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:137
 msgid "Linear"
-msgstr ""
+msgstr "Lineal"
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:135
 msgid ""
 "The call will *jump* from one member to another in a predefined order "
 "based on the creation time of the member."
 msgstr ""
+"La llamada *saltará* de un miembro a otro en un orden predefinido basado en el tiempo "
+"de creación del miembro."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:139
 msgid ""
 "A given penalty will never the called until all users with lower priority"
 " are on call."
 msgstr ""
+"Una penalización dada nunca será llamada hasta que todos los usuarios con menor "
+"prioridad estén en llamada."
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:141
 msgid ""
 "*Linear* queues are special: a non-linear queue cannot be converted to "
 "linear."
 msgstr ""
+"Las colas *lineales* son especiales: una cola no lineal no puede convertirse en "
+"lineal."
 

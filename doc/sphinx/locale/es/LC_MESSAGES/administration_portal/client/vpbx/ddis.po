@@ -19,47 +19,47 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/ddis.rst:5
 msgid "DDIs"
-msgstr ""
+msgstr "DDIs"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:9
 msgid "Number data"
-msgstr ""
+msgstr "Datos del número"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:11
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:11
 msgid "The country of the new created DDI. Used for E164 standardization."
-msgstr ""
+msgstr "El país del nuevo DDI creado. Usado para la estandarización E164."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:14
 msgid "DDI"
-msgstr ""
+msgstr "DDI"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:14
 msgid "The number, without country code."
-msgstr ""
+msgstr "El número, sin código de país."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:17
 msgid "Display name"
-msgstr ""
+msgstr "Nombre en pantalla"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:17
 msgid "This value will be shown in the called terminals."
-msgstr ""
+msgstr "Este valor se mostrará en los terminales llamados."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:19
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:21
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:26
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:24
 msgid ""
@@ -69,10 +69,11 @@ msgid ""
 ":ref:`DDI Provider <DDI Providers>` and will only be used as an outgoing "
 "DDI."
 msgstr ""
+"Elija 'Entrante y saliente' para un DDI normal que se puede usar tanto como DDI saliente como DDI entrante desde un :ref:`Proveedor DDI <DDI Providers>`. Elija 'Solo saliente' para un DDI que no nos llegará desde un :ref:`Proveedor DDI <DDI Providers>` y solo se usará como DDI saliente."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:30
 msgid "DDI Provider"
-msgstr ""
+msgstr "Proveedor DDI"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:29
 msgid ""
@@ -80,14 +81,17 @@ msgid ""
 "relation has no functional purpose, it is just for DDI Provider <-> DDI "
 "navigation in some brand level sections."
 msgstr ""
+"El :ref:`Proveedor DDI <DDI Providers>` que proporciona este número. Esta "
+"relación no tiene un propósito funcional, es solo para la navegación Proveedor <-> DDI "
+"en algunas secciones a nivel de marca."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:34
 msgid "Filters data"
-msgstr ""
+msgstr "Datos de filtros"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:38
 msgid "External Call Filter"
-msgstr ""
+msgstr "Filtro de llamada externa"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:36
 msgid ""
@@ -95,36 +99,38 @@ msgid ""
 ":ref:`External Call Filters`. Leave empty if you don't need to apply any "
 "kind of filter."
 msgstr ""
+"Permite la configuración basada en Calendarios y Programadores como se muestra en :ref:`Filtros de llamadas externas <External Call Filters>`. Dejar vacío si no necesita aplicar ningún tipo de filtro."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:42
 msgid "Routing configuration"
-msgstr ""
+msgstr "Configuración de enrutamiento"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:45
 msgid "Route type"
-msgstr ""
+msgstr "Tipo de ruta"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:44
 msgid ""
 "A DDI can have different :ref:`treatments <routing_logics>`. For our "
 "current goal, set route to user and select *Alice*."
 msgstr ""
+"Un DDI puede tener diferentes :ref:`tratamientos <routing_logics>`. Para nuestro objetivo actual, configure la ruta al usuario y seleccione *Alice*."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:49
 msgid "Recording data"
-msgstr ""
+msgstr "Datos de grabación"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:51
 msgid "Record calls"
-msgstr ""
+msgstr "Grabar llamadas"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:51
 msgid "Can be used to record external calls (see :ref:`call_recordings`)."
-msgstr ""
+msgstr "Se puede usar para grabar llamadas externas (ver :ref:`grabaciones_de_llamadas <call_recordings>`)."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:56
 msgid "Tarificate incoming calls"
-msgstr ""
+msgstr "Tarificar llamadas entrantes"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:54
 msgid ""
@@ -132,32 +138,36 @@ msgid ""
 "tarification on special numbers. This module is not standard so don't "
 "hesitate in :ref:`contact us <getting_help>` if you are interested."
 msgstr ""
+"Esta configuración requiere el módulo de tarificación externa y permite la tarificación en números especiales. Este módulo no es estándar, así que no dude en :ref:`contactarnos <getting_help>` si está interesado."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:58
 msgid ""
 "Calls received from a :ref:`DDI Provider <DDI Providers>` to an 'Outbound"
 " only' DDI will be rejected."
 msgstr ""
+"Las llamadas recibidas de un :ref:`Proveedor DDI <DDI Providers>` a un DDI 'Solo saliente' serán rechazadas."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:61
 msgid ""
 "Calls from within the platform to 'Inbound & outbound' DDIs won't reach "
 "any carrier, they will be routed internally."
 msgstr ""
+"Las llamadas desde dentro de la plataforma a DDIs 'Entrante y saliente' no llegarán a ningún operador, se enrutarán internamente."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:66
 msgid "DDI external filters"
-msgstr ""
+msgstr "Filtros externos de DDI"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:68
 msgid ""
 "We can assign a **external call filter** configured in :ref:`External "
 "Call Filters`."
 msgstr ""
+"Podemos asignar un **filtro de llamada externa** configurado en :ref:`Filtros de llamadas externas <External Call Filters>`."
 
 #: ../../administration_portal/client/vpbx/ddis.rst:75
 msgid "DDI routes"
-msgstr ""
+msgstr "Rutas DDI"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:77
 msgid ""
@@ -165,38 +175,40 @@ msgid ""
 "calendars) and after the welcome locution has been played (if there is "
 "any configured), we can route the call to the following processes:"
 msgstr ""
+"Una vez que la llamada ha pasado todas las verificaciones en el filtro (horarios y calendarios) y después de que se haya reproducido la locución de bienvenida (si hay alguna configurada), podemos enrutar la llamada a los siguientes procesos:"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:81
 msgid ":ref:`users`"
-msgstr ""
+msgstr ":ref:`usuarios <users>`"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:82
 msgid ":ref:`huntgroups`"
-msgstr ""
+msgstr ":ref:`grupos de salto <huntgroups>`"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:83
 msgid ":ref:`ivrs`"
-msgstr ""
+msgstr ":ref:`ivrs <ivrs>`"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:84
 msgid ":ref:`conference_rooms`"
-msgstr ""
+msgstr ":ref:`salas de conferencias <conference_rooms>`"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:85
 msgid ":ref:`conditional_routes`"
-msgstr ""
+msgstr ":ref:`rutas condicionales <conditional_routes>`"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:86
 msgid ":ref:`queues`"
-msgstr ""
+msgstr ":ref:`colas <queues>`"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:87
 msgid ":ref:`friends`"
-msgstr ""
+msgstr ":ref:`friends <friends>`"
 
 #: ../../administration_portal/client/vpbx/ddis.rst:91
 msgid ""
 "We can also route the DDI to a :ref:`Virtual Fax <faxing_system>`, but "
 "this is something we will explain in the following block."
 msgstr ""
+"También podemos enrutar el DDI a un :ref:`Fax Virtual <faxing_system>`, pero esto es algo que explicaremos en el siguiente bloque."
 
