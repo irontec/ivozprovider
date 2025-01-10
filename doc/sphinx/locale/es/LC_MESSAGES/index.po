@@ -19,29 +19,29 @@ msgstr ""
 
 #: ../../index.rst:10
 msgid "Basic Concepts"
-msgstr ""
+msgstr "Conceptos Básicos"
 
 #: ../../index.rst:18
 msgid "Getting Started"
-msgstr ""
+msgstr "Primeros Pasos"
 
 #: ../../index.rst:26
 msgid "Administration portal"
-msgstr ""
+msgstr "Portal de Administración"
 
 #: ../../index.rst:34
 msgid "Specific portals"
-msgstr ""
+msgstr "Portales Específicos"
 
 #: ../../index.rst:39
 msgid "Security and Maintenance"
-msgstr ""
+msgstr "Seguridad y Mantenimiento"
 
 #: ../../index.rst:45
 msgid "Rest API"
-msgstr ""
+msgstr "API Rest"
 
 #: ../../index.rst:8
 msgid "IvozProvider Official Documentation"
-msgstr ""
+msgstr "Documentación Oficial de IvozProvider"
 

@@ -19,23 +19,23 @@ msgstr ""
 
 #: ../../administration_portal/platform/portals.rst:6
 msgid "Platform Portals"
-msgstr ""
+msgstr "Portales de Plataforma"
 
 #: ../../administration_portal/platform/portals.rst:8
 msgid ""
 "This section allows configuration of platform portals that will be used "
 "by :ref:`Main operators`."
-msgstr ""
+msgstr "Esta sección permite la configuración de los portales de la plataforma que serán utilizados por :ref:`Operadores de Plataforma <Main operators>`."
 
 #: ../../administration_portal/platform/portals.rst:11
 msgid "URLs MUST be HTTPS"
-msgstr ""
+msgstr "Las URLs DEBEN ser HTTPS"
 
 #: ../../administration_portal/platform/portals.rst:12
 msgid "URLs MUST not end with slash /"
-msgstr ""
+msgstr "Las URLs NO DEBEN terminar con una barra /"
 
 #: ../../administration_portal/platform/portals.rst:14
 msgid "Each URL can also configure a logo and a theme per URL."
-msgstr ""
+msgstr "Cada URL también puede configurar un logo y un tema por URL."
 

@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../administration_portal/platform/infrastructure/index.rst:3
 msgid "Infrastructure"
-msgstr ""
+msgstr "Infraestructura"
 
 #: ../../administration_portal/platform/infrastructure/index.rst:5
 msgid ""
 "Sections in this group list the components of the platform and are not "
 "meant to be modified without a deep knowledge:"
-msgstr ""
+msgstr "Las secciones de este grupo enumeran los componentes de la plataforma y no deben modificarse sin un conocimiento profundo:"
 

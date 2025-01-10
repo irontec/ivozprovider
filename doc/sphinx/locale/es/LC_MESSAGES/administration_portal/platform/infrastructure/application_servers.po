@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../administration_portal/platform/infrastructure/application_servers.rst:2
 msgid "Application Servers"
-msgstr ""
+msgstr "Servidores de Aplicación"
 
 #: ../../administration_portal/platform/infrastructure/application_servers.rst:4
 msgid ""
@@ -27,25 +27,25 @@ msgid ""
 "existing Asterisk processes will listen for request, and like previously "
 "mentioned, can scale horizontally to adapt the platform for the required "
 "load."
-msgstr ""
+msgstr "La sección **Servidores de Aplicación** enumerará la dirección IP donde los procesos de Asterisk existentes escucharán las solicitudes y, como se mencionó anteriormente, pueden escalar horizontalmente para adaptar la plataforma a la carga requerida."
 
 #: ../../administration_portal/platform/infrastructure/application_servers.rst:8
 msgid ""
 "Contrary to the Proxies, Asterisk is not exposed to the external world, "
 "so for a standalone installation there will only be one listening at "
 "127.0.0.1."
-msgstr ""
+msgstr "A diferencia de los Proxies, Asterisk no está expuesto al mundo exterior, por lo que para una instalación independiente solo habrá uno escuchando en 127.0.0.1."
 
 #: ../../administration_portal/platform/infrastructure/application_servers.rst:11
 msgid ""
 "The listening port will not be displayed in the field because it will "
 "always be 6060 (UDP)."
-msgstr ""
+msgstr "El puerto de escucha no se mostrará en el campo porque siempre será 6060 (UDP)."
 
 #: ../../administration_portal/platform/infrastructure/application_servers.rst:14
 msgid ""
 "As soon as another Application Server is added, the proxies will try to "
 "balance load using it. If no response is received from added Application "
 "server, it will be disabled automatically."
-msgstr ""
+msgstr "Tan pronto como se agregue otro Servidor de Aplicación, los proxies intentarán equilibrar la carga usándolo. Si no se recibe respuesta del servidor de aplicación agregado, se deshabilitará automáticamente."
 

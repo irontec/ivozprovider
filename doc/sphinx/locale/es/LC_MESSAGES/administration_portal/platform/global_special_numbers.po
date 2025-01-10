@@ -19,84 +19,84 @@ msgstr ""
 
 #: ../../administration_portal/platform/global_special_numbers.rst:4
 msgid "Global Special Numbers"
-msgstr ""
+msgstr "Números Especiales Globales"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:6
 msgid ""
 "This section allows adding external numbers that will be handled in a "
 "different way by IvozProvider when a client calls to those destinations "
 "(**only for external outgoing calls**)."
-msgstr ""
+msgstr "Esta sección permite añadir números externos que serán manejados de una manera diferente por IvozProvider cuando un cliente llame a esos destinos (**solo para llamadas externas salientes**)."
 
 #: ../../administration_portal/platform/global_special_numbers.rst:9
 msgid ""
 "Numbers listed here will apply in every brand. Brand operator may add "
 "numbers too using :ref:`Special Numbers`."
-msgstr ""
+msgstr "Los números enumerados aquí se aplicarán en cada marca. El operador de marca también puede añadir números utilizando :ref:`Números Especiales <Special Numbers>`."
 
 #: ../../administration_portal/platform/global_special_numbers.rst:12
 msgid "Disable CDR"
-msgstr ""
+msgstr "Deshabilitar CDR"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:14
 msgid ""
 "Currently there is only one special treatment: **Disable CDR**. Setting "
 "this to *Yes* for a number will:"
-msgstr ""
+msgstr "Actualmente solo hay un tratamiento especial: **Deshabilitar CDR**. Configurar esto en *Sí* para un número:"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:16
 msgid "Prevent outgoing external calls from being listed in following sections:"
-msgstr ""
+msgstr "Evitar que las llamadas externas salientes se enumeren en las siguientes secciones:"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:18
 msgid "*Active Calls*"
-msgstr ""
+msgstr "*Llamadas Activas*"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:20
 msgid "*External Calls*"
-msgstr ""
+msgstr "*Llamadas Externas*"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:22
 msgid "*Call Registry* (both client portal and user portal)"
-msgstr ""
+msgstr "*Registro de Llamadas* (tanto en el portal del cliente como en el portal del usuario)"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:24
 msgid "As a consequence, calls won't be included in any:"
-msgstr ""
+msgstr "Como consecuencia, las llamadas no se incluirán en ningún:"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:26
 msgid ":ref:`Invoices`"
-msgstr ""
+msgstr ":ref:`Facturas <Invoices>`"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:28
 msgid "CSV defined by :ref:`Call CSV schedulers`"
-msgstr ""
+msgstr "CSV definido por :ref:`Programadores de CSV de Llamadas <Call CSV schedulers>`"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:30
 msgid "API response of related endpoints"
-msgstr ""
+msgstr "Respuesta de la API de los endpoints relacionados"
 
 #: ../../administration_portal/platform/global_special_numbers.rst:32
 msgid ""
 "Do not call CGRateS for these calls: call will be allowed no matter if "
 "active pricing plan allows it."
-msgstr ""
+msgstr "No llame a CGRateS para estas llamadas: la llamada será permitida sin importar si el plan de precios activo lo permite."
 
 #: ../../administration_portal/platform/global_special_numbers.rst:34
 msgid ""
 "As a consequence, no price/cost will be decreased from carrier/client "
 "account."
-msgstr ""
+msgstr "Como consecuencia, no se disminuirá el precio/coste de la cuenta del operador/cliente."
 
 #: ../../administration_portal/platform/global_special_numbers.rst:36
 msgid ""
 "Prevent recording these calls. As a consequence, *Recordings* section "
 "won't list them."
-msgstr ""
+msgstr "Evitar grabar estas llamadas. Como consecuencia, la sección *Grabaciones* no las enumerará."
 
 #: ../../administration_portal/platform/global_special_numbers.rst:38
 msgid ""
 "Adding a number will cause this special handling **only for future "
 "outgoing external calls**. No change is made in previous calls."
-msgstr ""
+msgstr "Añadir un número causará este manejo especial **solo para futuras llamadas externas salientes**. No se realizan cambios en llamadas anteriores."
 

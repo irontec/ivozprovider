@@ -19,21 +19,21 @@ msgstr ""
 
 #: ../../administration_portal/platform/antiflood_banned_ips.rst:5
 msgid "Antiflood banned IPs"
-msgstr ""
+msgstr "IPs bloqueadas por Antiflood"
 
 #: ../../administration_portal/platform/antiflood_banned_ips.rst:7
 msgid ""
 "Addresses listed here have been banned at least once by *Antiflooding* "
 "mechanism."
-msgstr ""
+msgstr "Las direcciones enumeradas aquí han sido bloqueadas al menos una vez por el mecanismo de *Antiflooding*."
 
 #: ../../administration_portal/platform/antiflood_banned_ips.rst:9
 msgid ""
 "**IPs are only blocked during 5 minutes**. Entries with *Last time "
 "banned* older than 5 minutes are not currently banned."
-msgstr ""
+msgstr "**Las IPs solo se bloquean durante 5 minutos**. Las entradas con *Último bloqueo* de más de 5 minutos no están actualmente bloqueadas."
 
 #: ../../administration_portal/platform/antiflood_banned_ips.rst:12
 msgid "See :ref:`SIP antiflooding` for further information."
-msgstr ""
+msgstr "Vea :ref:`Antiflooding SIP <SIP antiflooding>` para más información."
 

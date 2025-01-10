@@ -19,65 +19,65 @@ msgstr ""
 
 #: ../../administration_portal/platform/brands.rst:5
 msgid "Brands"
-msgstr ""
+msgstr "Marcas"
 
 #: ../../administration_portal/platform/brands.rst:7
 msgid ""
 "*God operator* is responsible for creating and managing platform brands "
 "through this section."
-msgstr ""
+msgstr "El *operador principal* es responsable de crear y gestionar las marcas de la plataforma a través de esta sección."
 
 #: ../../administration_portal/platform/brands.rst:9
 msgid "This are the fields shown when a new brand is created:"
-msgstr ""
+msgstr "Estos son los campos que se muestran cuando se crea una nueva marca:"
 
 #: ../../administration_portal/platform/brands.rst:12
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/platform/brands.rst:12
 msgid "Sets the name for this brand."
-msgstr ""
+msgstr "Establece el nombre para esta marca."
 
 #: ../../administration_portal/platform/brands.rst:15
 msgid "TIN"
-msgstr ""
+msgstr "NIF"
 
 #: ../../administration_portal/platform/brands.rst:15
 msgid "Number used in this brand's invoices."
-msgstr ""
+msgstr "Número utilizado en las facturas de esta marca."
 
 #: ../../administration_portal/platform/brands.rst:19
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 #: ../../administration_portal/platform/brands.rst:18
 msgid ""
 "Used as default logo in invoices and in portals (if they don't specify "
 "another logo)."
-msgstr ""
+msgstr "Utilizado como logo predeterminado en facturas y en portales (si no especifican otro logo)."
 
 #: ../../administration_portal/platform/brands.rst:22
 msgid "Invoice data"
-msgstr ""
+msgstr "Datos Facturación"
 
 #: ../../administration_portal/platform/brands.rst:22
 msgid "Data included in invoices created by this brand."
-msgstr ""
+msgstr "Datos incluidos en las facturas creadas por esta marca."
 
 #: ../../administration_portal/platform/brands.rst:26
 msgid "SIP domain"
-msgstr ""
+msgstr "Dominio SIP"
 
 #: ../../administration_portal/platform/brands.rst:25
 msgid ""
 "Introduced in 1.4. Domain pointing to Users SIP proxy used by all the "
 "Retail Accounts and Residential Devices of this brand."
-msgstr ""
+msgstr "Introducido en 1.4. Dominio que apunta al proxy SIP de Usuarios utilizado por todas las Cuentas Retail y Dispositivos Residenciales de esta marca."
 
 #: ../../administration_portal/platform/brands.rst:31
 msgid "Recordings"
-msgstr ""
+msgstr "Grabaciones"
 
 #: ../../administration_portal/platform/brands.rst:29
 #, python-format
@@ -85,11 +85,11 @@ msgid ""
 "Configures a limit for the size of recordings of this brand. A "
 "notification is sent to configured address when 80% is reached and older "
 "recordings are rotated when configured size is reached."
-msgstr ""
+msgstr "Configura un límite para el tamaño de las grabaciones de esta marca. Se envía una notificación a la dirección configurada cuando se alcanza el 80% y las grabaciones más antiguas se rotan cuando se alcanza el tamaño configurado."
 
 #: ../../administration_portal/platform/brands.rst:37
 msgid "Features"
-msgstr ""
+msgstr "Funcionalidades"
 
 #: ../../administration_portal/platform/brands.rst:34
 msgid ""
@@ -97,29 +97,29 @@ msgid ""
 "brand. An equivalent configuration is available in Clients, to choose "
 "between the ones that god operator gave to your Brand. Related sections "
 "are hidden consequently."
-msgstr ""
+msgstr "Introducido en 1.3, permite al operador principal elegir las funcionalidades de la marca creada. Una configuración equivalente está disponible en Clientes, para elegir entre las que el operador principal dio a su Marca. Las secciones relacionadas se ocultan en consecuencia."
 
 #: ../../administration_portal/platform/brands.rst:41
 msgid "Max calls"
-msgstr ""
+msgstr "Límite llamadas"
 
 #: ../../administration_portal/platform/brands.rst:40
 msgid ""
 "Limits both user generated and **external** received calls to this value "
 "(0 for unlimited)."
-msgstr ""
+msgstr "Limita tanto las llamadas generadas por el usuario como las recibidas **externas** a este valor (0 para ilimitado)."
 
 #: ../../administration_portal/platform/brands.rst:44
 msgid "Locales"
-msgstr ""
+msgstr "Localización"
 
 #: ../../administration_portal/platform/brands.rst:44
 msgid "Define default Timezone, Language and Currency for clients of this brand."
-msgstr ""
+msgstr "Define la Zona Horaria, Idioma y Divisa predeterminados para los clientes de esta marca."
 
 #: ../../administration_portal/platform/brands.rst:50
 msgid "Notifications"
-msgstr ""
+msgstr "Notificaciones"
 
 #: ../../administration_portal/platform/brands.rst:47
 msgid ""
@@ -127,11 +127,11 @@ msgid ""
 "Clients configured to use generic notifications will use configured brand"
 " notifications. If brand has no notification configured :ref:`default "
 "notification templates` will be used."
-msgstr ""
+msgstr "Configure las :ref:`plantillas de notificación <notification templates>` de correo electrónico para usar en esta marca. Los clientes configurados para usar notificaciones genéricas usarán las notificaciones configuradas de la marca. Si la marca no tiene notificaciones configuradas, se usarán las :ref:`plantillas de notificación por defecto <default notification templates>`."
 
 #: ../../administration_portal/platform/brands.rst:55
 msgid "ProxyTrunks"
-msgstr ""
+msgstr "ProxyTrunks"
 
 #: ../../administration_portal/platform/brands.rst:53
 msgid ""
@@ -139,63 +139,63 @@ msgid ""
 ":ref:`Proxy Trunks` for further details. It is not possible to unassign "
 "an address used in any :ref:`carrier <Carriers>` or :ref:`DDI provider "
 "<DDI Providers>`."
-msgstr ""
+msgstr "Seleccione qué direcciones de ProxyTrunks pueden ser utilizadas por esta marca. Lea :ref:`Proxy Trunks <Proxy Trunks>` para más detalles. No es posible desasignar una dirección utilizada en cualquier :ref:`operador <Carriers>` o :ref:`proveedor de DDI <DDI Providers>`."
 
 #: ../../administration_portal/platform/brands.rst:57
 msgid ""
 "Some features are related to brand and cannot be assigned to clients. "
 "Other ones are also related to clients and lets the brand operator to "
 "assign them to its clients."
-msgstr ""
+msgstr "Algunas funcionalidades están relacionadas con la marca y no pueden ser asignadas a los clientes. Otras también están relacionadas con los clientes y permiten al operador de la marca asignarlas a sus clientes."
 
 #: ../../administration_portal/platform/brands.rst:61
 msgid ""
 "Disabling billing hides all related sections and assumes that an external"
 " element will set a price for calls (external tarification module is "
 "needed, ask for it!)."
-msgstr ""
+msgstr "Deshabilitar la facturación oculta todas las secciones relacionadas y asume que un elemento externo establecerá un precio para las llamadas (se necesita un módulo de tarificación externo, ¡pregunte por él!)."
 
 #: ../../administration_portal/platform/brands.rst:65
 msgid ""
 "Disabling invoices hides related sections, assuming you will use an "
 "external tool to generate them."
-msgstr ""
+msgstr "Deshabilitar las facturas oculta las secciones relacionadas, asumiendo que utilizará una herramienta externa para generarlas."
 
 #: ../../administration_portal/platform/brands.rst:68
 msgid ""
 "SIP domain is only visible for Brands with Retail or Residential features"
 " enabled."
-msgstr ""
+msgstr "El dominio SIP solo es visible para las Marcas con funcionalidades Retail o Residenciales habilitadas."
 
 #: ../../administration_portal/platform/brands.rst:74
 msgid "Brand operators"
-msgstr ""
+msgstr "Operadores de Marca"
 
 #: ../../administration_portal/platform/brands.rst:76
 msgid ""
 "**List of brand operators** subsection allows adding/editing/deleting "
 "credentials for brand portal access."
-msgstr ""
+msgstr "La subsección **Listado de operadores de marca** permite añadir/editar/eliminar credenciales para el acceso al portal de la marca."
 
 #: ../../administration_portal/platform/brands.rst:78
 msgid ""
 "Read :ref:`acls` for further explanation about restricted brand "
 "administrators."
-msgstr ""
+msgstr "Lea :ref:`acls <acls>` para más información sobre administradores de marca restringidos."
 
 #: ../../administration_portal/platform/brands.rst:84
 msgid "Brand Portals"
-msgstr ""
+msgstr "Portales de Marca"
 
 #: ../../administration_portal/platform/brands.rst:86
 msgid ""
 "**List of brand portals** subsection allows managing URLs to access to "
 "the different web portals available for a given brand."
-msgstr ""
+msgstr "La subsección **Listado de portales de marca** permite gestionar las URLs para acceder a los diferentes portales web disponibles para una marca dada."
 
 #: ../../administration_portal/platform/brands.rst:88
 msgid "See :ref:`Client Portals` for further reference."
-msgstr ""
+msgstr "Vea :ref:`Portales de Clientes <Client Portals>` para más información."
 
 #: ../../administration_portal/platform/brands.rst:90
 msgid ""
@@ -203,5 +203,5 @@ msgid ""
 "brand can be guessed, but not the client. As a result, username collision"
 " domain will be at brand level (there cannot exist to client "
 "administrators with the same username within a brand)."
-msgstr ""
+msgstr "Las URLs se asignan a las marcas. Esto significa que a través de una URL dada se puede adivinar la marca, pero no el cliente. Como resultado, el dominio de colisión de nombres de usuario estará a nivel de marca (no pueden existir dos administradores de clientes con el mismo nombre de usuario dentro de una marca)."
 

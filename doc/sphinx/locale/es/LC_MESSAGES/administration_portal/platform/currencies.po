@@ -19,92 +19,92 @@ msgstr ""
 
 #: ../../administration_portal/platform/currencies.rst:3
 msgid "Currencies"
-msgstr ""
+msgstr "Divisas"
 
 #: ../../administration_portal/platform/currencies.rst:5
 msgid ""
 "This section allows adding as many currencies as wanted. It is a "
 "multilanguage field with a symbol that will be used in invoices, balance "
 "movements, etc."
-msgstr ""
+msgstr "Esta sección permite añadir tantas divisas como se desee. Es un campo multilingüe con un símbolo que se utilizará en facturas, movimientos de saldo, etc."
 
 #: ../../administration_portal/platform/currencies.rst:8
 msgid "These IvozProvider elements have an assigned currency:"
-msgstr ""
+msgstr "Estos elementos de IvozProvider tienen una divisa asignada:"
 
 #: ../../administration_portal/platform/currencies.rst:11
 msgid "Brand"
-msgstr ""
+msgstr "Marca"
 
 #: ../../administration_portal/platform/currencies.rst:11
 msgid "Used as default currency for all underlying items that have currency."
-msgstr ""
+msgstr "Utilizado como divisa predeterminada para todos los elementos subyacentes que tienen divisa."
 
 #: ../../administration_portal/platform/currencies.rst:15
 msgid "Client"
-msgstr ""
+msgstr "Cliente"
 
 #: ../../administration_portal/platform/currencies.rst:14
 msgid ""
 "Chosen currency will be used in price calculation, invoices, invoice's "
 "fixed costs, balance movements and remaining money operations of this "
 "client."
-msgstr ""
+msgstr "La divisa elegida se utilizará en el cálculo de precios, facturas, costos fijos de la factura, movimientos de saldo y operaciones de dinero restantes de este cliente."
 
 #: ../../administration_portal/platform/currencies.rst:19
 msgid "Carrier"
-msgstr ""
+msgstr "Operador"
 
 #: ../../administration_portal/platform/currencies.rst:18
 msgid ""
 "Chosen currency will be used in cost calculation, balance movements and "
 "remaining money operations of this carrier."
-msgstr ""
+msgstr "La divisa elegida se utilizará en el cálculo de costos, movimientos de saldo y operaciones de dinero restantes de este operador."
 
 #: ../../administration_portal/platform/currencies.rst:22
 msgid "Destination rate"
-msgstr ""
+msgstr "Tarifa de destino"
 
 #: ../../administration_portal/platform/currencies.rst:22
 msgid "All rates within a destination rate will assume this currency."
-msgstr ""
+msgstr "Todas las tarifas dentro de una tarifa de destino asumirán esta divisa."
 
 #: ../../administration_portal/platform/currencies.rst:26
 msgid "Rating plan"
-msgstr ""
+msgstr "Plan de precios"
 
 #: ../../administration_portal/platform/currencies.rst:25
 msgid "All destination rates grouped in a rating plan **must** use this currency."
-msgstr ""
+msgstr "Todas las tarifas de destino agrupadas en un plan de precios **deben** usar esta divisa."
 
 #: ../../administration_portal/platform/currencies.rst:28
 msgid ""
 "It is important to take into account notes below before using this "
 "feature:"
-msgstr ""
+msgstr "Es importante tener en cuenta las notas a continuación antes de usar esta función:"
 
 #: ../../administration_portal/platform/currencies.rst:30
 msgid "Rating plans **must** only group destination rates using its currency."
-msgstr ""
+msgstr "Los planes de precios **deben** agrupar solo tarifas de destino que usen su divisa."
 
 #: ../../administration_portal/platform/currencies.rst:32
 msgid "Clients and carriers **must** only use rating plans using its currency."
-msgstr ""
+msgstr "Los clientes y operadores **deben** usar solo planes de precios que usen su divisa."
 
 #: ../../administration_portal/platform/currencies.rst:34
 msgid ""
 "Some backend checks avoid some of previous misconfigurations, but not all"
 " of them: **use this feature carefully**."
-msgstr ""
+msgstr "Algunas verificaciones en el backend evitan algunas de las configuraciones incorrectas anteriores, pero no todas: **use esta función con cuidado**."
 
 #: ../../administration_portal/platform/currencies.rst:36
 msgid ""
 "**There is no currency conversion involved**: call cost will be "
 "calculated in carrier's currency, call price will be calculated in "
 "client's currency."
-msgstr ""
+msgstr "**No hay conversión de divisas involucrada**: el costo de la llamada se calculará en la divisa del operador, el precio de la llamada se calculará en la divisa del cliente."
 
 #: ../../administration_portal/platform/currencies.rst:39
 msgid "LCR routes involving carriers with different currencies are not supported."
-msgstr ""
+msgstr "Las rutas LCR que involucran operadores con diferentes divisas no son compatibles."
 

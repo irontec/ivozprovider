@@ -19,43 +19,43 @@ msgstr ""
 
 #: ../../administration_portal/platform/default_notification_templates.rst:6
 msgid "Default Notification Templates"
-msgstr ""
+msgstr "Plantillas de Notificación por Defecto"
 
 #: ../../administration_portal/platform/default_notification_templates.rst:8
 msgid "Brand administrators can configure the notifications sent by IvozProvider:"
-msgstr ""
+msgstr "Los administradores de marca pueden configurar las notificaciones enviadas por IvozProvider:"
 
 #: ../../administration_portal/platform/default_notification_templates.rst:10
 msgid "Email sent when a new voicemail is received"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se recibe un nuevo buzón de voz"
 
 #: ../../administration_portal/platform/default_notification_templates.rst:12
 msgid "Email sent when a new fax is received"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se recibe un nuevo fax"
 
 #: ../../administration_portal/platform/default_notification_templates.rst:14
 msgid "Email sent when a balance is below configured threshold"
-msgstr ""
+msgstr "Correo electrónico enviado cuando el saldo está por debajo del umbral configurado"
 
 #: ../../administration_portal/platform/default_notification_templates.rst:16
 msgid "Email sent when an automatic invoice is generated"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se genera una factura automática"
 
 #: ../../administration_portal/platform/default_notification_templates.rst:18
 msgid "Email sent when scheduled CDR CSVs are generated"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se generan CSVs de CDR programados"
 
 #: ../../administration_portal/platform/default_notification_templates.rst:20
 msgid "Email sent when max daily usage is reached"
-msgstr ""
+msgstr "Correo electrónico enviado cuando se alcanza el uso máximo diario"
 
 #: ../../administration_portal/platform/default_notification_templates.rst:22
 msgid ""
 "This section allows **modifying default templates** that will be **used "
 "when no custom notification is configured**."
-msgstr ""
+msgstr "Esta sección permite **modificar las plantillas por defecto** que se **utilizarán cuando no se configure una notificación personalizada**."
 
 #: ../../administration_portal/platform/default_notification_templates.rst:24
 msgid "See :ref:`notification_templates` for further reference."
-msgstr ""
+msgstr "Vea :ref:`plantillas de notificación <notification_templates>` para más información."
 

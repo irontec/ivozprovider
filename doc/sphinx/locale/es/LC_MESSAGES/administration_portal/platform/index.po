@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../administration_portal/platform/index.rst:3
 msgid "Platform Configuration"
-msgstr ""
+msgstr "Configuración de la Plataforma"
 
 #: ../../administration_portal/platform/index.rst:5
 msgid ""
 "This section is only shown to *God administrator* and allows modifying "
 "global configurations:"
-msgstr ""
+msgstr "Esta sección solo se muestra al *administrador principal* y permite modificar configuraciones globales:"
 

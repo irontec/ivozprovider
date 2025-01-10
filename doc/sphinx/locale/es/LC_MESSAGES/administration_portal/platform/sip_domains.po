@@ -19,68 +19,68 @@ msgstr ""
 
 #: ../../administration_portal/platform/sip_domains.rst:5
 msgid "SIP domains"
-msgstr ""
+msgstr "Dominios SIP"
 
 #: ../../administration_portal/platform/sip_domains.rst:7
 msgid ""
 "The section **Domains** will display the SIP domains that point to "
 ":ref:`ProxyUsers` public address."
-msgstr ""
+msgstr "La sección **Dominios** mostrará los dominios SIP que apuntan a la dirección pública de :ref:`ProxyUsers <ProxyUsers>`."
 
 #: ../../administration_portal/platform/sip_domains.rst:9
 msgid ""
 "DNS register can be type A (supported by all the hardphones/softphones ) "
 "or even NAPTR+SRV."
-msgstr ""
+msgstr "El registro DNS puede ser de tipo A (soportado por todos los teléfonos físicos/softphones) o incluso NAPTR+SRV."
 
 #: ../../administration_portal/platform/sip_domains.rst:12
 msgid "There are two type of SIP domains:"
-msgstr ""
+msgstr "Hay dos tipos de dominios SIP:"
 
 #: ../../administration_portal/platform/sip_domains.rst:15
 msgid "vPBX client SIP domain"
-msgstr ""
+msgstr "Dominio SIP del cliente vPBX"
 
 #: ../../administration_portal/platform/sip_domains.rst:15
 msgid "Each vPBX client has a unique SIP domain."
-msgstr ""
+msgstr "Cada cliente vPBX tiene un dominio SIP único."
 
 #: ../../administration_portal/platform/sip_domains.rst:18
 msgid "Brand SIP domain"
-msgstr ""
+msgstr "Dominio SIP de la marca"
 
 #: ../../administration_portal/platform/sip_domains.rst:18
 msgid "Shared by all retail and residential clients in the brand."
-msgstr ""
+msgstr "Compartido por todos los clientes retail y residenciales de la marca."
 
 #: ../../administration_portal/platform/sip_domains.rst:20
 msgid ""
 "All these SIP domains will be displayed in this list so that global "
 "administrator can check what domains are registered for each "
 "client/brand:"
-msgstr ""
+msgstr "Todos estos dominios SIP se mostrarán en esta lista para que el administrador global pueda verificar qué dominios están registrados para cada cliente/marca:"
 
 #: ../../administration_portal/platform/sip_domains.rst:24
 msgid "Domain"
-msgstr ""
+msgstr "Dominio"
 
 #: ../../administration_portal/platform/sip_domains.rst:24
 msgid "DNS pointing to :ref:`ProxyUsers` public address"
-msgstr ""
+msgstr "DNS apuntando a la dirección pública de :ref:`ProxyUsers <ProxyUsers>`"
 
 #: ../../administration_portal/platform/sip_domains.rst:27
 msgid "Brand"
-msgstr ""
+msgstr "Marca"
 
 #: ../../administration_portal/platform/sip_domains.rst:27
 msgid "Brand of specific brand domain or vPBX client."
-msgstr ""
+msgstr "Marca del dominio de marca específico o cliente vPBX."
 
 #: ../../administration_portal/platform/sip_domains.rst:29
 msgid "Client"
-msgstr ""
+msgstr "Cliente"
 
 #: ../../administration_portal/platform/sip_domains.rst:30
 msgid "vPBX client of specific vPBX client domain. Empty for brand domains."
-msgstr ""
+msgstr "Cliente vPBX del dominio vPBX específico. Vacío para dominios de marca."
 

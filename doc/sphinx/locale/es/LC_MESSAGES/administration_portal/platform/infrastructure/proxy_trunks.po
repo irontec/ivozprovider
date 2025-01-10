@@ -19,71 +19,71 @@ msgstr ""
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:5
 msgid "Proxy Trunks"
-msgstr ""
+msgstr "Proxies de Salida"
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:7
 msgid ""
 "This is the SIP proxy exposed to external world and is in charge of "
 "connecting with providers (carriers / DDI providers) brand administrators"
 " will configure for *SIP peering*."
-msgstr ""
+msgstr "Este es el proxy SIP expuesto al mundo exterior y se encarga de conectar con proveedores (operadores / proveedores de DDI) que los administradores de marca configurarán para *SIP peering*."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:10
 msgid ""
 "Only the IP addresses will be listed, as the port will be always 5060 "
 "(5061 for SIP over TLS)."
-msgstr ""
+msgstr "Solo se enumerarán las direcciones IP, ya que el puerto siempre será 5060 (5061 para SIP sobre TLS)."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:14
 msgid "Main address"
-msgstr ""
+msgstr "Dirección principal"
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:16
 msgid ""
 "The value displayed in the entry **proxytrunks** will show the IP address"
 " entered during the installation process."
-msgstr ""
+msgstr "El valor mostrado en la entrada **proxytrunks** mostrará la dirección IP ingresada durante el proceso de instalación."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:19
 msgid "This entry cannot be removed."
-msgstr ""
+msgstr "Esta entrada no se puede eliminar."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:21
 msgid "This IP address:"
-msgstr ""
+msgstr "Esta dirección IP:"
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:23
 msgid "Will be used for internal signalling:"
-msgstr ""
+msgstr "Se utilizará para la señalización interna:"
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:25
 msgid "KamTrunks <-> KamUsers"
-msgstr ""
+msgstr "KamTrunks <-> KamUsers"
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:27
 msgid "KamTrunks <-> Application Servers"
-msgstr ""
+msgstr "KamTrunks <-> Servidores de Aplicación"
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:29
 msgid "Will be used to reload Kamailio modules when needed (XMLRPC)."
-msgstr ""
+msgstr "Se utilizará para recargar los módulos de Kamailio cuando sea necesario (XMLRPC)."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:32
 msgid ""
 "This value can be changed from the portal, but Kamailio make sure that "
 "KamTrunks is binded to given IP."
-msgstr ""
+msgstr "Este valor se puede cambiar desde el portal, pero Kamailio se asegura de que KamTrunks esté vinculado a la dirección IP dada."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:36
 msgid "Additional addresses"
-msgstr ""
+msgstr "Direcciones adicionales"
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:38
 msgid ""
 "Apart from unremovable **proxytrunks** entry, additional addresses can be"
 " added here. These additional addresses can be removed as long as they "
 "are not assigned to any Carrier / DDI Provider."
-msgstr ""
+msgstr "Además de la entrada **proxytrunks** no removible, se pueden agregar direcciones adicionales aquí. Estas direcciones adicionales se pueden eliminar siempre que no estén asignadas a ningún Operador / Proveedor de DDI."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:41
 msgid ""
@@ -91,47 +91,47 @@ msgid ""
 "*/etc/kamailio/proxytrunks/additional_addresses.cfg* "
 "(*additional_addresses.cfg.in* is given as an example). Make sure "
 "Kamailio can bind to given addresses, otherwise it won't boot."
-msgstr ""
+msgstr "Además de agregarlas aquí, las direcciones deben configurarse en */etc/kamailio/proxytrunks/additional_addresses.cfg* (*additional_addresses.cfg.in* se proporciona como ejemplo). Asegúrese de que Kamailio pueda vincularse a las direcciones dadas, de lo contrario no se iniciará."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:45
 msgid ""
 "The purpose of these additional addresses is to talk to different "
 "Providers using different addresses:"
-msgstr ""
+msgstr "El propósito de estas direcciones adicionales es comunicarse con diferentes Proveedores utilizando diferentes direcciones:"
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:47
 msgid ""
 "Main operator (*God*) will assign IP addresses listed in this section to "
 "Brands (read :ref:`Brands`)."
-msgstr ""
+msgstr "El operador principal (*God*) asignará las direcciones IP enumeradas en esta sección a las Marcas (leer :ref:`Marcas <Brands>`)."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:49
 msgid "Each brand must have at least one address."
-msgstr ""
+msgstr "Cada marca debe tener al menos una dirección."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:51
 msgid "Each address can be assigned in several brands."
-msgstr ""
+msgstr "Cada dirección se puede asignar en varias marcas."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:53
 msgid ""
 "Brand operator will assign these addresses to Carriers (read "
 ":ref:`Carriers`) and DDI Providers (read :ref:`DDI Providers`)."
-msgstr ""
+msgstr "El operador de marca asignará estas direcciones a los Operadores (leer :ref:`Operadores <Carriers>`) y Proveedores de DDI (leer :ref:`Proveedores de DDI <DDI Providers>`)."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:55
 msgid "Each Provider (both Carriers and DDI Providers) must have one address."
-msgstr ""
+msgstr "Cada Proveedor (tanto Operadores como Proveedores de DDI) debe tener una dirección."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:57
 msgid ""
 "IvozProvider will use assigned addresses in SIP signalling with those "
 "Carriers / DDI Providers."
-msgstr ""
+msgstr "IvozProvider utilizará las direcciones asignadas en la señalización SIP con esos Operadores / Proveedores de DDI."
 
 #: ../../administration_portal/platform/infrastructure/proxy_trunks.rst:59
 msgid ""
 "Be aware that it only applies to SIP signalling, no changes are made in "
 "RTP media handling."
-msgstr ""
+msgstr "Tenga en cuenta que solo se aplica a la señalización SIP, no se realizan cambios en el manejo de medios RTP."
 

@@ -19,268 +19,268 @@ msgstr ""
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:5
 msgid "Terminal manufacturers"
-msgstr ""
+msgstr "Fabricantes de Terminales"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:8
 msgid "Overview"
-msgstr ""
+msgstr "Descripción general"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:10
 msgid ""
 "IvozProvider supports provisioning of terminals via HTTP/HTTPS that "
 "fulfill the following requirements:"
-msgstr ""
+msgstr "IvozProvider soporta la provisión de terminales vía HTTP/HTTPS que cumplen con los siguientes requisitos:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:13
 msgid ""
 "Assuming a just unboxed terminal, just plugged and connected to the "
 "network:"
-msgstr ""
+msgstr "Asumiendo un terminal recién desempaquetado, recién conectado y conectado a la red:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:15
 msgid "Ask IP address via DHCP."
-msgstr ""
+msgstr "Solicitar dirección IP vía DHCP."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:17
 msgid "DCHP has enabled the option 66 that points to the platform portal"
-msgstr ""
+msgstr "DHCP ha habilitado la opción 66 que apunta al portal de la plataforma"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:19
 msgid ""
 "The first requested provisioning file is a static file (different for "
 "each model) prefixed with the previous step URL."
-msgstr ""
+msgstr "El primer archivo de provisión solicitado es un archivo estático (diferente para cada modelo) con el prefijo de la URL del paso anterior."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:22
 msgid "The served file can redefine the URL for further requests"
-msgstr ""
+msgstr "El archivo servido puede redefinir la URL para solicitudes adicionales"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:25
 msgid ""
 "Any terminal model that can adapt to this provisioning way can be added "
 "into the section **Platform Configuration > Terminal manufacturers**."
-msgstr ""
+msgstr "Cualquier modelo de terminal que pueda adaptarse a esta forma de provisión puede añadirse en la sección **Configuración de la Plataforma > Fabricantes de Terminales**."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:29
 msgid "Example Cisco SPA504G"
-msgstr ""
+msgstr "Ejemplo Cisco SPA504G"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:30
 msgid "Cisco SPA504G is turned on and requests an IP address to DHCP"
-msgstr ""
+msgstr "Cisco SPA504G se enciende y solicita una dirección IP a DHCP"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:32
 msgid "Receives “http://provision.example.com/provision” as DHCP option 66"
-msgstr ""
+msgstr "Recibe “http://provision.example.com/provision” como opción 66 de DHCP"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:34
 msgid ""
 "Request HTTP configuration from "
 "http://provision.example.com/provision/spa504g.cfg"
-msgstr ""
+msgstr "Solicitar configuración HTTP desde http://provision.example.com/provision/spa504g.cfg"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:36
 msgid "All 504G request the same file (spa504.cfg), prefixed with the given URL"
-msgstr ""
+msgstr "Todos los 504G solicitan el mismo archivo (spa504.cfg), con el prefijo de la URL dada"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:38
 msgid ""
 "This file only contain basic configuration settings for the model and the"
 " URL for the next request (p.e. "
 "https://provision.example.com/provision/$MAC.cfg)"
-msgstr ""
+msgstr "Este archivo solo contiene configuraciones básicas para el modelo y la URL para la siguiente solicitud (p.e. https://provision.example.com/provision/$MAC.cfg)"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:41
 msgid ""
 "This way, each terminal (MAC should be unique) request a specific file "
 "(and different) after the generic one has been served."
-msgstr ""
+msgstr "De esta manera, cada terminal (MAC debe ser único) solicita un archivo específico (y diferente) después de que se haya servido el genérico."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:44
 msgid "This file will contain the specific configuration for the terminal:"
-msgstr ""
+msgstr "Este archivo contendrá la configuración específica para el terminal:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:46
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:48
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:50
 msgid "SIP Domain"
-msgstr ""
+msgstr "Dominio SIP"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:53
 msgid ""
 "IvozProvider provisioning system, right now, only has one goal: provide "
 "credentials and language settings for the terminals."
-msgstr ""
+msgstr "El sistema de provisión de IvozProvider, en este momento, solo tiene un objetivo: proporcionar credenciales y configuraciones de idioma para los terminales."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:57
 msgid "Configuration of supported models"
-msgstr ""
+msgstr "Configuración de modelos soportados"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:59
 msgid ""
 "IvozProvider uses a template system that allows global operator (God) to "
 "define new models and configure what files will be served."
-msgstr ""
+msgstr "IvozProvider utiliza un sistema de plantillas que permite al operador global (God) definir nuevos modelos y configurar qué archivos se servirán."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:62
 msgid ""
 "The help section of **Terminal manufacturers** has examples for some "
 "models that work (in the moment of writting this) with IvozProvider "
 "provisioning system."
-msgstr ""
+msgstr "La sección de ayuda de **Fabricantes de Terminales** tiene ejemplos para algunos modelos que funcionan (en el momento de escribir esto) con el sistema de provisión de IvozProvider."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:65
 msgid ""
 "These models will be available after the initial installation, but you "
 "must edit them and load the default configuration before you can use the "
 "provisioning system (option **Restore default template**)."
-msgstr ""
+msgstr "Estos modelos estarán disponibles después de la instalación inicial, pero debe editarlos y cargar la configuración predeterminada antes de poder usar el sistema de provisión (opción **Restaurar plantilla por defecto**)."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:69
 msgid ""
 "UACs firmware changes may cause that given examples stop working. We will"
 " try to keep templates updated, but we can't guarantee this point."
-msgstr ""
+msgstr "Los cambios en el firmware de los UAC pueden hacer que los ejemplos dados dejen de funcionar. Intentaremos mantener las plantillas actualizadas, pero no podemos garantizar este punto."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:72
 msgid ""
 "Analyzing the suggested templates you can have a basic idea of the "
 "flexibility of the system to configure any existing terminal model in the"
 " market and to adapt them to eventual changes in given examples."
-msgstr ""
+msgstr "Analizando las plantillas sugeridas puede tener una idea básica de la flexibilidad del sistema para configurar cualquier modelo de terminal existente en el mercado y adaptarlos a cambios eventuales en los ejemplos dados."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:77
 msgid "Getting technical"
-msgstr ""
+msgstr "Aspectos técnicos"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:79
 msgid "Imagine an environment with this configuration:"
-msgstr ""
+msgstr "Imagine un entorno con esta configuración:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:81
 msgid "Provisioning URLs:"
-msgstr ""
+msgstr "URLs de provisión:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:83
 msgid "Generic file: http://PROV_IP/provision"
-msgstr ""
+msgstr "Archivo genérico: http://PROV_IP/provision"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:85
 msgid "Specific file: https://PROV_IP:PROV_PORT/provision"
-msgstr ""
+msgstr "Archivo específico: https://PROV_IP:PROV_PORT/provision"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:87
 msgid "TerminalModels.genericUrlPattern: y000000000044.cfg"
-msgstr ""
+msgstr "TerminalModels.genericUrlPattern: y000000000044.cfg"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:89
 msgid "Which requested URLs will be valid?"
-msgstr ""
+msgstr "¿Qué URLs solicitadas serán válidas?"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:91
 msgid "For generic file, just one: http://PROV_IP/provision/y000000000044.cfg"
-msgstr ""
+msgstr "Para el archivo genérico, solo una: http://PROV_IP/provision/y000000000044.cfg"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:93
 msgid "For specific file, requests are right as long as this rules are fulfilled:"
-msgstr ""
+msgstr "Para el archivo específico, las solicitudes son correctas siempre que se cumplan estas reglas:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:95
 msgid "All HTTP requests are wrong."
-msgstr ""
+msgstr "Todas las solicitudes HTTP son incorrectas."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:97
 msgid "HTTPS requests to 443 are wrong (PROV_PORT must be used)."
-msgstr ""
+msgstr "Las solicitudes HTTPS al 443 son incorrectas (se debe usar PROV_PORT)."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:99
 msgid ""
 "Subpaths after provisioning URL are ignored, both in request and in "
 "specificUrlPattern."
-msgstr ""
+msgstr "Los subrutas después de la URL de provisión se ignoran, tanto en la solicitud como en specificUrlPattern."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:102
 msgid ""
 "On specific file request, extension must match as long as extension is "
 "used in specificUrlPattern."
-msgstr ""
+msgstr "En la solicitud de archivo específico, la extensión debe coincidir siempre que se use la extensión en specificUrlPattern."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:105
 msgid ""
 "On specific file request, the filename must match exactly once {mac} is "
 "replaced."
-msgstr ""
+msgstr "En la solicitud de archivo específico, el nombre del archivo debe coincidir exactamente una vez que se reemplace {mac}."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:107
 msgid "MAC address is case insensitive and can contain colons or not (':')."
-msgstr ""
+msgstr "La dirección MAC no distingue entre mayúsculas y minúsculas y puede contener dos puntos o no (':')."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:109
 msgid "Let's analyze the examples below to understand this rules better:"
-msgstr ""
+msgstr "Analicemos los ejemplos a continuación para entender mejor estas reglas:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:112
 msgid "Example 1 - TerminalModels.specificUrlPattern: {mac}.cfg"
-msgstr ""
+msgstr "Ejemplo 1 - TerminalModels.specificUrlPattern: {mac}.cfg"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:113
 #: ../../administration_portal/platform/terminal_manufacturers.rst:147
 msgid "Working requests:"
-msgstr ""
+msgstr "Solicitudes correctas:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:125
 #: ../../administration_portal/platform/terminal_manufacturers.rst:153
 #: ../../administration_portal/platform/terminal_manufacturers.rst:171
 msgid "Wrong requests:"
-msgstr ""
+msgstr "Solicitudes incorrectas:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:132
 msgid "This example is identical to 't23/{mac}.cfg', as subpaths are ignored."
-msgstr ""
+msgstr "Este ejemplo es idéntico a 't23/{mac}.cfg', ya que se ignoran las subrutas."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:135
 msgid "Example 2 - TerminalModels.specificUrlPattern: {mac}"
-msgstr ""
+msgstr "Ejemplo 2 - TerminalModels.specificUrlPattern: {mac}"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:136
 msgid ""
 "All previous examples are ok, as extension is ignored if no extension is "
 "found in specificUrlPattern."
-msgstr ""
+msgstr "Todos los ejemplos anteriores son correctos, ya que se ignora la extensión si no se encuentra ninguna extensión en specificUrlPattern."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:139
 msgid "This example is identical to 't23/{mac}', as subpaths are ignored."
-msgstr ""
+msgstr "Este ejemplo es idéntico a 't23/{mac}', ya que se ignoran las subrutas."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:143
 msgid "Example 3 - TerminalModels.specificUrlPattern: yea-{mac}.cfg"
-msgstr ""
+msgstr "Ejemplo 3 - TerminalModels.specificUrlPattern: yea-{mac}.cfg"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:144
 msgid ""
 "All previous examples are wrong, as no 'yea-' is found ('yea' match is "
 "case sensitive)."
-msgstr ""
+msgstr "Todos los ejemplos anteriores son incorrectos, ya que no se encuentra 'yea-' (la coincidencia de 'yea' distingue entre mayúsculas y minúsculas)."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:160
 msgid "This example is identical to 't23/yea-{mac}.cfg', as subpaths are ignored."
-msgstr ""
+msgstr "Este ejemplo es idéntico a 't23/yea-{mac}.cfg', ya que se ignoran las subrutas."
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:163
 msgid "Example 4 - TerminalModels.specificUrlPattern: yea-{mac}"
-msgstr ""
+msgstr "Ejemplo 4 - TerminalModels.specificUrlPattern: yea-{mac}"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:164
 msgid "As no extension is given:"
-msgstr ""
+msgstr "Como no se da ninguna extensión:"
 
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
-msgstr ""
+msgstr "Este ejemplo es idéntico a 't23/yea-{mac}', ya que se ignoran las subrutas."
 

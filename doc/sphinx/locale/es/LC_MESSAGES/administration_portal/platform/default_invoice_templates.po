@@ -19,17 +19,17 @@ msgstr ""
 
 #: ../../administration_portal/platform/default_invoice_templates.rst:5
 msgid "Default Invoice Templates"
-msgstr ""
+msgstr "Plantillas de Factura por Defecto"
 
 #: ../../administration_portal/platform/default_invoice_templates.rst:7
 msgid ""
 "Platform administators can create Invoice templates that can be used by "
 "all brands in the platform."
-msgstr ""
+msgstr "Los administradores de la plataforma pueden crear plantillas de factura que pueden ser utilizadas por todas las marcas en la plataforma."
 
 #: ../../administration_portal/platform/default_invoice_templates.rst:9
 msgid ""
 "Although brand administrators won't be able to edit them, they will be "
 "available for :ref:`Invoices` and :ref:`Invoice Schedulers`."
-msgstr ""
+msgstr "Aunque los administradores de marca no podrán editarlas, estarán disponibles para :ref:`Facturas <Invoices>` y :ref:`Programadores de Facturas <Invoice Schedulers>`."
 

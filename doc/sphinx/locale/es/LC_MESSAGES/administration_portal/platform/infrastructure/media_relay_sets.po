@@ -19,14 +19,14 @@ msgstr ""
 
 #: ../../administration_portal/platform/infrastructure/media_relay_sets.rst:2
 msgid "Media relay sets"
-msgstr ""
+msgstr "Sets de Servidores de Media"
 
 #: ../../administration_portal/platform/infrastructure/media_relay_sets.rst:4
 msgid ""
 "Media relays are in charge of bridging RTP traffic of established calls. "
 "Like the Application Servers, they can scale horizontally as much as "
 "required."
-msgstr ""
+msgstr "Los servidores de media se encargan de intermediar el tráfico RTP de las llamadas establecidas. Al igual que los Servidores de Aplicación, pueden escalar horizontalmente según sea necesario."
 
 #: ../../administration_portal/platform/infrastructure/media_relay_sets.rst:7
 msgid ""
@@ -35,7 +35,7 @@ msgid ""
 "non-equal load balancing within the same group (i.e. media-relay1 metric "
 "1; media-relay2 metric 2: the second media relay will handle two times "
 "the calls than the first one)."
-msgstr ""
+msgstr "Los servidores de media están organizados en grupos para que puedan ser asignados a un cliente/proveedor. Cada elemento del grupo tiene una **métrica** que permite un balanceo de carga no igual dentro del mismo grupo (por ejemplo, media-relay1 métrica 1; media-relay2 métrica 2: el segundo servidor de media manejará el doble de llamadas que el primero)."
 
 #: ../../administration_portal/platform/infrastructure/media_relay_sets.rst:12
 msgid ""
@@ -45,18 +45,18 @@ msgid ""
 "relays** is to place them near the geographic area of the client (usually"
 " far from the rest of the platform systems) in order to reduce "
 "**latencies** in their conversations."
-msgstr ""
+msgstr "La asignación estática de grupos de servidores de media no es la práctica común, pero nos permite asignar recursos estratégicos a clientes que necesitan un servicio garantizado. El uso más común de estos **grupos de servidores de media** es colocarlos cerca del área geográfica del cliente (generalmente lejos del resto de los sistemas de la plataforma) para reducir las **latencias** en sus conversaciones."
 
 #: ../../administration_portal/platform/infrastructure/media_relay_sets.rst:19
 msgid ""
 "In a standalone installation, only one media relay group will exist. By "
 "default this group only has a media server."
-msgstr ""
+msgstr "En una instalación independiente, solo existirá un grupo de servidores de media. Por defecto, este grupo solo tiene un servidor de media."
 
 #: ../../administration_portal/platform/infrastructure/media_relay_sets.rst:21
 msgid ""
 "The address displayed is the control socket, not the SDP address that "
 "will be included during SIP negotiation. By default this alone media-"
 "relay will share the same IP address that the User's SIP proxy."
-msgstr ""
+msgstr "La dirección mostrada es el socket de control, no la dirección SDP que se incluirá durante la negociación SIP. Por defecto, este único servidor de media compartirá la misma dirección IP que el proxy SIP del Usuario."
 

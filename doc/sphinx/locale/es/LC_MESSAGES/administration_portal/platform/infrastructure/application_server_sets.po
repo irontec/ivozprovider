@@ -19,47 +19,47 @@ msgstr ""
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:2
 msgid "Application Server Sets"
-msgstr ""
+msgstr "Sets de Servidores de Aplicación"
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:4
 msgid ""
 "The Application Server Sets section allows platform administators to "
 "manage sets of application servers by adding, deleting, and editing them."
-msgstr ""
+msgstr "La sección de Sets de Servidores de Aplicación permite a los administradores de la plataforma gestionar conjuntos de servidores de aplicación añadiéndolos, eliminándolos y editándolos."
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:7
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:7
 msgid "The name of the Application Server Set."
-msgstr ""
+msgstr "El nombre del Set de Servidores de Aplicación."
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:11
 msgid "Distribute Method"
-msgstr ""
+msgstr "Método de Distribución"
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:10
 msgid "**Hash**: Distributes calls hashing a parameter that is unique per client."
-msgstr ""
+msgstr "**Hash**: Distribuye las llamadas haciendo hash de un parámetro que es único por cliente."
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:11
 msgid "**Round robin**: Distributes calls equally between Application Servers."
-msgstr ""
+msgstr "**Round robin**: Distribuye las llamadas equitativamente entre los Servidores de Aplicación."
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:14
 msgid "Description:"
-msgstr ""
+msgstr "Descripción:"
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:14
 msgid "A brief description of the Application Server Set."
-msgstr ""
+msgstr "Una breve descripción del Set de Servidores de Aplicación."
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:16
 msgid "Application Servers:"
-msgstr ""
+msgstr "Servidores de Aplicación:"
 
 #: ../../administration_portal/platform/infrastructure/application_server_sets.rst:17
 msgid "A multi-select list with one or more application servers."
-msgstr ""
+msgstr "Una lista de selección múltiple con uno o más servidores de aplicación."
 
