@@ -1,0 +1,41 @@
+{
+  "body": {
+    "create": false,
+    "read": true,
+    "update": false,
+    "delete": false,
+    "id": 245,
+    "administrator": {
+      "username": "restrictedBrandOnlyAdmin",
+      "pass": "*****",
+      "email": "restrictedAdmin@irontec.com",
+      "active": true,
+      "restricted": true,
+      "name": "RestrictedAdmin",
+      "lastname": "Lastname",
+      "canImpersonate": false,
+      "id": 14,
+      "brand": 1,
+      "company": null,
+      "timezone": 145
+    },
+    "publicEntity": {
+      "iden": "BillableCalls",
+      "fqdn": "Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall",
+      "platform": true,
+      "brand": true,
+      "client": true,
+      "id": 2,
+      "name": {
+        "en": "BillableCalls",
+        "es": "BillableCalls",
+        "ca": "BillableCalls",
+        "it": "BillableCalls"
+      }
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

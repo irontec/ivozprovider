@@ -1,0 +1,25 @@
+{
+  "request": {
+    "create": true,
+    "read": false,
+    "update": true,
+    "delete": false,
+    "administrator": 5,
+    "publicEntity": 2
+  },
+  "response": {
+    "body": {
+      "create": true,
+      "read": false,
+      "update": true,
+      "delete": false,
+      "id": 245,
+      "administrator": 5,
+      "publicEntity": 2
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

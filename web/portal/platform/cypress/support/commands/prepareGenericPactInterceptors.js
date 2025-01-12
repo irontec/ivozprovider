@@ -1,4 +1,5 @@
 import AdministratorCollection from '../../fixtures/Administrator/getCollection.json';
+import AdministratorRelPublicEntitiesCollection from '../../fixtures/AdministratorRelPublicEntities/getCollection.json';
 import apiSpec from '../../fixtures/apiSpec.json';
 import ApplicationServer from '../../fixtures/ApplicationServer/getCollection.json';
 import ApplicationServerSet from '../../fixtures/ApplicationServerSets/getCollection.json';
@@ -10,6 +11,7 @@ import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import ProxyTrunkCollection from '../../fixtures/ProxyTrunk/getCollection.json';
 import ProxyUserCollection from '../../fixtures/ProxyUser/getCollection.json';
+import PublicEntitiesCollection from '../../fixtures/PublicEntities/getCollection.json';
 import RtpengineCollection from '../../fixtures/Rtpengine/getCollection.json';
 import TerminalManufacturerCollection from '../../fixtures/TerminalManufacturer/getCollection.json';
 import TimezonesItem from '../../fixtures/Timezones/getTimezones.json';
@@ -44,6 +46,14 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/platform/administrators?*', {
     ...AdministratorCollection,
   }).as('getAdministrator');
+
+  cy.intercept('GET', '**/api/platform/administrator_rel_public_entities?*', {
+    ...AdministratorRelPublicEntitiesCollection,
+  }).as('getAdministratorRelPublicEntities');
+
+  cy.intercept('GET', '**/api/platform/public_entities?*', {
+    ...PublicEntitiesCollection,
+  }).as('getPublicEntities');
 
   cy.intercept('GET', '**/api/platform/my/theme', {
     ...ThemeItem,

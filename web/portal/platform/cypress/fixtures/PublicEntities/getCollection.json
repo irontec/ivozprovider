@@ -1,0 +1,62 @@
+{
+  "body": [
+    {
+      "iden": "BillableCalls",
+      "id": 2,
+      "name": {
+          "en": "BillableCalls",
+          "es": "BillableCalls",
+          "ca": "BillableCalls",
+          "it": "BillableCalls"
+      }
+  },
+  {
+      "iden": "Companies",
+      "id": 11,
+      "name": {
+          "en": "Companies",
+          "es": "Companies",
+          "ca": "Companies",
+          "it": "Companies"
+      }
+  },
+  {
+      "iden": "Countries",
+      "id": 20,
+      "name": {
+          "en": "Countries",
+          "es": "Countries",
+          "ca": "Countries",
+          "it": "Countries"
+      }
+  },
+  {
+      "iden": "Features",
+      "id": 30,
+      "name": {
+          "en": "Features",
+          "es": "Features",
+          "ca": "Features",
+          "it": "Features"
+      }
+  },
+  {
+      "iden": "Invoices",
+      "id": 37,
+      "name": {
+          "en": "Invoices",
+          "es": "Invoices",
+          "ca": "Invoices",
+          "it": "Invoices"
+      }
+  }
+  ],
+  "headers": {
+    "x-first-page": "/api/platform/public_entities?_page=1",
+    "x-last-page": "/api/platform/public_entities?_page=1",
+    "x-next-page": "/api/platform/public_entities?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
