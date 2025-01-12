@@ -1,0 +1,52 @@
+{
+  "body": [
+    {
+      "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
+      "startTime": "2019-01-01 09:01:44",
+      "duration": 0,
+      "caller": "+34633646464",
+      "callee": "+34633656565",
+      "cost": null,
+      "price": 1,
+      "endpointType": null,
+      "endpointId": null,
+      "endpointName": null,
+      "direction": "outbound",
+      "id": 105,
+      "brand": 1,
+      "company": 5,
+      "carrier": 1,
+      "invoice": null,
+      "ddi": 1,
+      "ddiProvider": null
+    },
+    {
+      "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
+      "startTime": "2019-01-01 09:01:43",
+      "duration": 0,
+      "caller": "+34633646464",
+      "callee": "+34633656565",
+      "cost": null,
+      "price": 1,
+      "endpointType": null,
+      "endpointId": null,
+      "endpointName": null,
+      "direction": "outbound",
+      "id": 104,
+      "brand": 1,
+      "company": 5,
+      "carrier": 1,
+      "invoice": null,
+      "ddi": 1,
+      "ddiProvider": null
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/platform/billable_calls?_page=1",
+    "x-last-page": "/api/platform/billable_calls?_page=1",
+    "x-next-page": "/api/platform/billable_calls?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
