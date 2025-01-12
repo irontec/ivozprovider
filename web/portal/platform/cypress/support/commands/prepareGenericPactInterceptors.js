@@ -7,6 +7,7 @@ import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
+import ProxyTrunkCollection from '../../fixtures/ProxyTrunk/getCollection.json';
 import ProxyUserCollection from '../../fixtures/ProxyUser/getCollection.json';
 import TerminalManufacturerCollection from '../../fixtures/TerminalManufacturer/getCollection.json';
 import TimezonesItem from '../../fixtures/Timezones/getTimezones.json';
@@ -73,4 +74,8 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/platform/proxy_users*', {
     ...ProxyUserCollection,
   }).as('getProxyUser');
+
+  cy.intercept('GET', '**/api/platform/proxy_trunks*', {
+    ...ProxyTrunkCollection,
+  }).as('getProxyTrunk');
 });
