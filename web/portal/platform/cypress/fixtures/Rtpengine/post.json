@@ -1,0 +1,26 @@
+{
+  "request": {
+    "url": "udp:127.0.0.2:2223",
+    "weight": 2,
+    "disabled": false,
+    "description": "rtpengine02"
+  },
+  "response": {
+    "body": {
+      "url": "udp:127.0.0.2:2223",
+      "weight": 2,
+      "disabled": false,
+      "description": "rtpengine02",
+      "id": 2
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

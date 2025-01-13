@@ -1,0 +1,21 @@
+{
+  "request": {
+    "url": "udp:127.0.0.1:22222",
+    "weight": 3,
+    "disabled": true,
+    "description": "rtpengine01-updated"
+  },
+  "response": {
+    "body": {
+      "url": "udp:127.0.0.1:22222",
+      "weight": 3,
+      "disabled": true,
+      "description": "rtpengine01-updated",
+      "id": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

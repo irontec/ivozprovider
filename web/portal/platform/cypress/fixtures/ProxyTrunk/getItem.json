@@ -1,0 +1,12 @@
+{
+  "body": {
+    "name": "proxytrunks",
+    "ip": "127.0.0.1",
+    "advertisedIp": "138.0.0.1",
+    "id": 1
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

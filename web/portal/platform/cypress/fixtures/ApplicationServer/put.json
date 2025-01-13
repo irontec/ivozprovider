@@ -1,0 +1,17 @@
+{
+  "request": {
+    "ip": "127.1.2.2",
+    "name": "updatedTest001"
+  },
+  "response": {
+    "body": {
+      "ip": "127.1.2.2",
+      "name": "updatedTest001",
+      "id": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

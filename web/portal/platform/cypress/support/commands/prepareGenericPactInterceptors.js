@@ -3,10 +3,14 @@ import apiSpec from '../../fixtures/apiSpec.json';
 import ApplicationServer from '../../fixtures/ApplicationServer/getCollection.json';
 import ApplicationServerSet from '../../fixtures/ApplicationServerSets/getCollection.json';
 import InvoiceTemplateCollection from '../../fixtures/InvoiceTemplate/getCollection.json';
+import MediaRelaySetsCollection from '../../fixtures/MediaRelaySets/getCollection.json';
 import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
+import ProxyTrunkCollection from '../../fixtures/ProxyTrunk/getCollection.json';
+import ProxyUserCollection from '../../fixtures/ProxyUser/getCollection.json';
+import RtpengineCollection from '../../fixtures/Rtpengine/getCollection.json';
 import TerminalManufacturerCollection from '../../fixtures/TerminalManufacturer/getCollection.json';
 import TimezonesItem from '../../fixtures/Timezones/getTimezones.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
@@ -68,4 +72,20 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
   cy.intercept('GET', '**/api/platform/application_servers*', {
     ...ApplicationServer,
   }).as('getApplicationServers');
+
+  cy.intercept('GET', '**/api/platform/proxy_users*', {
+    ...ProxyUserCollection,
+  }).as('getProxyUser');
+
+  cy.intercept('GET', '**/api/platform/proxy_trunks*', {
+    ...ProxyTrunkCollection,
+  }).as('getProxyTrunk');
+
+  cy.intercept('GET', '**/api/platform/media_relay_sets*', {
+    ...MediaRelaySetsCollection,
+  }).as('getMediaRelaySets');
+
+  cy.intercept('GET', '**/api/platform/rtpengines*', {
+    ...RtpengineCollection,
+  }).as('getRtpengine');
 });
