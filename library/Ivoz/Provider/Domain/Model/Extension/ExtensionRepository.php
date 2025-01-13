@@ -19,10 +19,10 @@ interface ExtensionRepository extends ObjectRepository, Selectable
     public function findCompanyExtension(int $companyId, string $extensionNumber);
 
     /**
-     * @param int[] $includeIds
+     * @param int[] | null $includeIds
      * @return ExtensionInterface[]
      */
-    public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array;
+    public function findUnassignedByCompanyId(int $companyId, ?array $includeIds, ?int $userId): array;
 
     /**
      * @param array<string, mixed> $criteria

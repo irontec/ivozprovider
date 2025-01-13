@@ -11296,6 +11296,13 @@
                 ],
                 "parameters": [
                     {
+                        "name": "_userId",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Search for unassigned user extensions"
+                    },
+                    {
                         "name": "_includeId",
                         "in": "query",
                         "type": "integer",

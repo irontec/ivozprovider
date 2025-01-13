@@ -8,6 +8,8 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+use function PHPUnit\Framework\isNull;
+
 /**
  * ExtensionDoctrineRepository
  *
@@ -55,30 +57,43 @@ class ExtensionDoctrineRepository extends ServiceEntityRepository implements Ext
      * @param int[] $includeIds
      * @return ExtensionInterface[]
      */
-    public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array
-    {
+    public function findUnassignedByCompanyId(
+        int $companyId,
+        ?array $includeIds,
+        ?int $userId
+    ): array {
         $qb = $this->createQueryBuilder('self');
         $expression = $qb->expr();
 
-        $routeConditions = [
+        $andXExpressions = $expression->andX();
+
+        if ($userId !== null) {
+            $andXExpressions->add($expression->eq('self.routeType', ':routeType'));
+            $andXExpressions->add($expression->eq('self.user', ':userId'));
+        }
+
+        $unassignedExtensionsCondition = [
+            $andXExpressions,
             $expression->isNull('self.routeType')
         ];
 
+
         if (!empty($includeIds)) {
-            $routeConditions[] = $expression->in('self.id', $includeIds);
+            $unassignedExtensionsCondition[] = $expression->in('self.id', $includeIds);
         }
 
-        $routeCondition = empty($includeIds)
-            ? $routeConditions[0]
-            : $expression->orX(...$routeConditions);
+        $finalCondition = $expression->orX(...$unassignedExtensionsCondition);
 
         $qb
-            ->where(
-                $expression->eq('self.company', $companyId)
-            )
-            ->andWhere(
-                $routeCondition
-            );
+            ->where($expression->eq('self.company', ':companyId'))
+            ->andWhere($finalCondition)
+            ->setParameter('companyId', $companyId);
+
+        if ($userId !== null) {
+            $qb
+                ->setParameter('userId', $userId)
+                ->setParameter('routeType', 'user');
+        }
 
         $query = $qb->getQuery();
 
