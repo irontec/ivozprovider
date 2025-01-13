@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:5
+msgid "Outgoing DDI configuration"
+msgstr "Configuración de DDI saliente"
+
+#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:7
+msgid ""
+"Before placing our first outgoing call, it would be desirable to choose "
+"the number that the callee will see when the phone rings, so that he can "
+"return the call easily."
+msgstr ""
+"Antes de realizar nuestra primera llamada saliente, sería deseable elegir "
+"el número que el destinatario verá cuando suene el teléfono, para que pueda "
+"devolver la llamada fácilmente."
+
+#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:11
+msgid ""
+"To achieve this goal, we have to configure our DDI as *Alice's* "
+"**outbound DDI**, because she will be the chosen one to place our first "
+"outgoing call."
+msgstr ""
+"Para lograr este objetivo, tenemos que configurar nuestro DDI como el "
+"**DDI saliente** de *Alice*, porque ella será la elegida para realizar nuestra "
+"primera llamada saliente."
+
+#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:14
+msgid ""
+"We can set this up editing *Alice* in **Client Configuration** > "
+"**Users**. If this change is made by brand operator or global operator, "
+"he must :ref:`emulate the corresponding client <emulate_client>` "
+"previously."
+msgstr ""
+"Podemos configurar esto editando a *Alice* en **Configuración del Cliente** > "
+"**Usuarios**. Si este cambio lo realiza el operador de marca o el operador global, "
+"debe :ref:`emular al cliente correspondiente <emulate_client>` previamente."
+
+#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:18
+msgid ""
+"We could have set the same DDI as Default Outgoing DDI at client level, "
+"editing *democompany* client."
+msgstr ""
+"Podríamos haber configurado el mismo DDI como DDI Saliente Predeterminado a nivel "
+"de cliente, editando el cliente *democompany*."
+
+#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:20
+msgid "Calls from users without an outgoing DDI will be rejected by IvozProvider."
+msgstr "Las llamadas de usuarios sin un DDI saliente serán rechazadas por IvozProvider."
+

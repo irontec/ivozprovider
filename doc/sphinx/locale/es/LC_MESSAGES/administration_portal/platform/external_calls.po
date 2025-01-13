@@ -1,0 +1,251 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:3
+msgid "External calls"
+msgstr "Llamadas externas"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:5
+msgid ""
+"**External calls** section lists **both inbound and outbound external "
+"calls**."
+msgstr "La sección **Llamadas externas** enumera **tanto las llamadas externas entrantes como las salientes**."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:7
+msgid "This section is shown at different levels:"
+msgstr "Esta sección se muestra en diferentes niveles:"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:9
+msgid "Main level (god level)"
+msgstr "Nivel principal (nivel principal)"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:11
+msgid "Brand level (filtered for emulated/logged brand)."
+msgstr "Nivel de marca (filtrado para marca emulada/registrada)."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:13
+msgid "Client level (filtered for emulated/logged client)."
+msgstr "Nivel de cliente (filtrado para cliente emulado/registrado)."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:15
+msgid "Each entry shows this information:"
+msgstr "Cada entrada muestra esta información:"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:18
+msgid "Start time"
+msgstr "Tiempo de inicio"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:18
+msgid "Date and time of the call establishment."
+msgstr "Fecha y hora del establecimiento de la llamada."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:21
+msgid "Brand"
+msgstr "Marca"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:21
+msgid "Only visible for *god*, shows the brand of each call."
+msgstr "Solo visible para *principal*, muestra la marca de cada llamada."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:24
+msgid "Client"
+msgstr "Cliente"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:24
+msgid "Visible for *god* and *brand operator*, shows the client of each call."
+msgstr "Visible para *principal* y *operador de marca*, muestra el cliente de cada llamada."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:27
+msgid "Caller"
+msgstr "Llamante"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:27
+msgid "DDI presented for the outgoing call."
+msgstr "DDI presentado para la llamada saliente."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:30
+msgid "Callee"
+msgstr "Llamado"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:30
+msgid "External number dialed."
+msgstr "Número externo marcado."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:33
+msgid "Duration"
+msgstr "Duración"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:33
+msgid "Shows how long the call lasted."
+msgstr "Muestra cuánto duró la llamada."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:37
+msgid "Price"
+msgstr "Precio"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:36
+msgid ""
+"The money amount for the client. Visible for *god* and *brand operator* "
+"and *Client administrator* if *Display billing details to client* is "
+"enabled."
+msgstr "El monto de dinero para el cliente. Visible para *principal* y *operador de marca* y *administrador del cliente* si *Mostrar detalles de facturación al cliente* está habilitado."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:40
+msgid "Cost"
+msgstr "Coste"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:40
+msgid ""
+"Visible for *god* and *brand operator*, the money amount for the brand "
+"(the money that the carrier will bill for the call)."
+msgstr "Visible para *principal* y *operador de marca*, el monto de dinero para la marca (el dinero que el operador facturará por la llamada)."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:44
+msgid "Rating Plan"
+msgstr "Plan de precios"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:43
+msgid ""
+"Rating plan used to set price for the call. Visible for *god* and *brand "
+"operator* and *Client administrator* if *Display billing details to "
+"client* is enabled."
+msgstr "Plan de precios utilizado para establecer el precio de la llamada. Visible para *principal* y *operador de marca* y *administrador del cliente* si *Mostrar detalles de facturación al cliente* está habilitado."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:48
+msgid "Destination"
+msgstr "Destino"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:47
+msgid ""
+"Destination that matched the call for billing. Visible for *god* and "
+"*brand operator* and *Client administrator* if *Display billing details "
+"to client* is enabled."
+msgstr "Destino que coincidió con la llamada para la facturación. Visible para *principal* y *operador de marca* y *administrador del cliente* si *Mostrar detalles de facturación al cliente* está habilitado."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:51
+msgid "Carrier"
+msgstr "Operador"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:51
+msgid ""
+"Visible for *god* and *brand operator*, shows which :ref:`Carrier "
+"<carriers>` was used for each outbound call."
+msgstr "Visible para *principal* y *operador de marca*, muestra qué :ref:`Operador <carriers>` se utilizó para cada llamada saliente."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:54
+msgid "DDI Provider"
+msgstr "Proveedor DDI"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:54
+msgid ""
+"Visible for *god* and *brand operator*, shows which :ref:`DDI Provider "
+"<DDI Providers>` was used for each inbound call."
+msgstr "Visible para *principal* y *operador de marca*, muestra qué :ref:`Proveedor DDI <DDI Providers>` se utilizó para cada llamada entrante."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:57
+msgid "Invoice"
+msgstr "Factura"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:57
+msgid ""
+"Visible for *god* and *brand operator*, shows if a call is already "
+"included in any :ref:`Invoice <invoices>`."
+msgstr "Visible para *principal* y *operador de marca*, muestra si una llamada ya está incluida en alguna :ref:`Factura <invoices>`."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:60
+msgid "Call ID"
+msgstr "ID de llamada"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:60
+msgid "Shows the call ID of the call for troubleshooting and CSV export."
+msgstr "Muestra el ID de la llamada para la resolución de problemas y exportación CSV."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:63
+msgid "Endpoint Type"
+msgstr "Tipo de Endpoint"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:63
+msgid "Possible values: RetailAccount, ResidentialDevice, User, Fax, Friend."
+msgstr "Valores posibles: RetailAccount, ResidentialDevice, User, Fax, Friend."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:66
+msgid "Endpoint Id"
+msgstr "ID de Endpoint"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:66
+msgid "Internal ID of specific endpoint (only when *endpointType* is non-empty)."
+msgstr "ID interno del endpoint específico (solo cuando *endpointType* no está vacío)."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:69
+msgid "Endpoint Name"
+msgstr "Nombre de Endpoint"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:69
+msgid ""
+"User extension, friend name, fax name, retail account name or residential"
+" device name (only when *endpointId* is non-empty)."
+msgstr "Extensión de usuario, nombre de amigo, nombre de fax, nombre de cuenta retail o nombre de dispositivo residencial (solo cuando *endpointId* no está vacío)."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:71
+msgid ""
+"An asynchronous process parses each external call and adds it to this "
+"list a few minutes after call hangup. Billing related fields, such as "
+"cost and price, will be empty for external incoming calls."
+msgstr "Un proceso asíncrono analiza cada llamada externa y la añade a esta lista unos minutos después de colgar la llamada. Los campos relacionados con la facturación, como el coste y el precio, estarán vacíos para las llamadas entrantes externas."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:74
+msgid "Call rerating"
+msgstr "Recalificación de llamada"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:76
+msgid ""
+"At **brand level**, there is an additional available operation for "
+"outbound calls: **Rerate call**. This option allows calling rating engine"
+" again for a call or a bunch of calls."
+msgstr "A nivel de **marca**, hay una operación adicional disponible para llamadas salientes: **Recalificar llamada**. Esta opción permite llamar al motor de calificación nuevamente para una llamada o un grupo de llamadas."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:78
+msgid "Notes about this rerating process:"
+msgstr "Notas sobre este proceso de recalificación:"
+
+#: ../../administration_portal/shared/external_calls.rst.inc:80
+msgid ""
+"If a call is in an invoice, it cannot be rerated. Invoice must be deleted"
+" first."
+msgstr "Si una llamada está en una factura, no se puede recalificar. La factura debe ser eliminada primero."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:82
+msgid ""
+"Call will be rerated with the *Start time* of the call (no with current "
+"active rating plans, but with active rating plans on the moment of the "
+"call)."
+msgstr "La llamada será recalificada con el *Tiempo de inicio* de la llamada (no con los planes de calificación activos actuales, sino con los planes de calificación activos en el momento de la llamada)."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:85
+msgid ""
+"Both *Price* and *Cost* will be recalculated. This may imply updating "
+"*rating plan* and *destination* too."
+msgstr "Tanto el *Precio* como el *Coste* serán recalculados. Esto puede implicar actualizar el *plan de precios* y el *destino* también."
+
+#: ../../administration_portal/shared/external_calls.rst.inc:87
+msgid ""
+"When a call is rerated, cost and price are emptied until the next "
+"iteration of the asynchronous task."
+msgstr "Cuando una llamada es recalificada, el coste y el precio se vacían hasta la siguiente iteración de la tarea asíncrona."
+

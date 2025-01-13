@@ -1,0 +1,35 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/brand/providers/index.rst:3
+msgid "Providers"
+msgstr "Proveedores"
+
+#: ../../administration_portal/brand/providers/index.rst:5
+msgid ""
+"Brand operator must reach agreements with VoIP providers to place calls "
+"of its clients and to receive calls to the DDIs of its clients."
+msgstr ""
+"El operador de la marca debe llegar a acuerdos con los proveedores de VoIP para realizar llamadas "
+"de sus clientes y recibir llamadas a los DDIs de sus clientes."
+
+#: ../../administration_portal/brand/providers/index.rst:8
+msgid "Depending the call direction, they can be divided into:"
+msgstr "Dependiendo de la dirección de la llamada, se pueden dividir en:"
+

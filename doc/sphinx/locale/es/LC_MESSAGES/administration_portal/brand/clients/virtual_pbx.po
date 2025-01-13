@@ -1,0 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:5
+msgid "Virtual PBX"
+msgstr "PBX Virtual"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:7
+msgid ""
+"Virtual PBX clients are designed to provide service to clients with "
+"multiple terminals that require feature-full call flows."
+msgstr ""
+"Los clientes de PBX Virtual están diseñados para proporcionar servicio a "
+"clientes con múltiples terminales que requieren flujos de llamadas con "
+"muchas características."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:10
+msgid ""
+"Some fields described below may not be visible depending on enabled "
+"features."
+msgstr ""
+"Algunos campos descritos a continuación pueden no ser visibles "
+"dependiendo de las funcionalidades habilitadas."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:13
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:13
+msgid "Sets the name for this client."
+msgstr "Establece el nombre para este cliente."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:16
+msgid "SIP domain"
+msgstr "Dominio SIP"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:16
+msgid "DNS for this client. See :ref:`Client SIP Domain` section."
+msgstr ""
+"DNS para este cliente. Ver sección :ref:`Dominio SIP del Cliente<Client "
+"SIP Domain>`."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:20
+msgid "Features"
+msgstr "Características"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:19
+msgid ""
+"Allow configuration of available features for this client. Related "
+"sections are hidden consequently and the client cannot use them."
+msgstr ""
+"Permite la configuración de características disponibles para este "
+"cliente. Las secciones relacionadas se ocultan en consecuencia y el "
+"cliente no puede usarlas."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:24
+msgid "Billing method"
+msgstr "Método de facturación"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:23
+msgid ""
+"When billing feature is enabled determines when calls will be priced. "
+"'none' disables billing. See :ref:`Billing` section."
+msgstr ""
+"Cuando la función de facturación está habilitada, determina cuándo se "
+"valorarán las llamadas. 'ninguno' desactiva la facturación. Ver sección "
+":ref:`Facturación<Billing>`."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:28
+msgid "Corporation"
+msgstr "Corporación"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:27
+msgid ""
+"Select which corporation this client belongs to. Enables using "
+":ref:`Inter VPBX friends <internal_friends>` to dial other client "
+"extensions."
+msgstr ""
+"Seleccione a qué corporación pertenece este cliente. Permite usar "
+":ref:`Amigos Inter VPBX <internal_friends>` para marcar otras extensiones"
+" de clientes."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:32
+msgid "Geographic Configuration"
+msgstr "Configuración Geográfica"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:31
+msgid ""
+"General client configuration for language and timezones. Most of the "
+"settings in the section can be configured per user if required."
+msgstr ""
+"Configuración general del cliente para idioma y zonas horarias. La "
+"mayoría de las configuraciones en la sección se pueden configurar por "
+"usuario si es necesario."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:36
+msgid "Currency"
+msgstr "Moneda"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:35
+msgid ""
+"Chosen currency will be used in price calculation, invoices, balance "
+"movements and remaining money operations of this client."
+msgstr ""
+"La moneda elegida se usará en el cálculo de precios, facturas, "
+"movimientos de saldo y operaciones de dinero restante de este cliente."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:39
+msgid "Max calls"
+msgstr "Máximo de llamadas"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:39
+msgid "Limits both incoming and outgoing external calls (0 for unlimited)."
+msgstr ""
+"Limita tanto las llamadas externas entrantes como salientes (0 para "
+"ilimitado)."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:42
+msgid "Filter by IP address"
+msgstr "Filtrar por dirección IP"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:42
+msgid ""
+"If set, the platform will only allow calls coming from allowed IP/ranges "
+"or countries."
+msgstr ""
+"Si se establece, la plataforma solo permitirá llamadas provenientes de "
+"IP/rangos o países permitidos."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:45
+msgid "GeoIP allowed countries"
+msgstr "Países permitidos por GeoIP"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:45
+msgid ""
+"If *Filter by IP address* is enabled, traffic from selected countries "
+"will be allowed."
+msgstr ""
+"Si *Filtrar por dirección IP* está habilitado, se permitirá el tráfico de"
+" los países seleccionados."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:49
+msgid "Max daily usage"
+msgstr "Uso máximo diario"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:48
+msgid ""
+"Limits external outbound calls when this limit is reached within a day. "
+"At midnight counters are reset and accounts are re-enabled."
+msgstr ""
+"Limita las llamadas externas salientes cuando se alcanza este límite "
+"dentro de un día. A medianoche se restablecen los contadores y se "
+"reactivan las cuentas."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:53
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:52
+msgid ""
+"A notification email will be sent to given address when configured max "
+"daily usage is reached. Leave empty to avoid notification."
+msgstr ""
+"Se enviará un correo electrónico de notificación a la dirección dada "
+"cuando se alcance el uso máximo diario configurado. Dejar vacío para "
+"evitar la notificación."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:57
+msgid "Invoice data"
+msgstr "Datos de la factura"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:56
+msgid ""
+"Data included in invoices created by this brand. This section also allows"
+" showing/hiding billing details to client's portal, such as Invoices, "
+"Rating Profiles and Price of external calls."
+msgstr ""
+"Datos incluidos en las facturas creadas por esta marca. Esta sección "
+"también permite mostrar/ocultar detalles de facturación en el portal del "
+"cliente, como Facturas, Perfiles de Tarifas y Precio de llamadas "
+"externas."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:60
+msgid "Notifications"
+msgstr "Notificaciones"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:60
+msgid "Configure the email :ref:`notification templates` to use for this client."
+msgstr ""
+"Configurar las :ref:`plantillas de notificación<notification templates>` "
+"por correo electrónico para usar con este cliente."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:64
+msgid "Outgoing DDI"
+msgstr "DDI saliente"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:63
+msgid ""
+"Selects a DDI for outgoing calls of this client, if it is no overridden "
+"in a lower level."
+msgstr ""
+"Selecciona un DDI para las llamadas salientes de este cliente, si no se "
+"anula en un nivel inferior."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:68
+msgid "Media relay set"
+msgstr "Conjunto de retransmisión de medios"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:67
+msgid ""
+"As mentioned above, media-relay can be grouped in sets to reserve "
+"capacities or on a geographical purpose. This section lets you assign "
+"them to clients."
+msgstr ""
+"Como se mencionó anteriormente, la retransmisión de medios se puede "
+"agrupar en conjuntos para reservar capacidades o con un propósito "
+"geográfico. Esta sección te permite asignarlos a los clientes."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:73
+msgid "Distribute Method"
+msgstr "Método de Distribución"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:71
+msgid ""
+"'Hash based' distributes calls hashing a parameter that is unique per "
+"client, 'Round robin' distributes calls equally between AS-es and "
+"'static' is used for debugging purposes."
+msgstr ""
+"'Basado en hash' distribuye las llamadas haciendo hash de un parámetro "
+"que es único por cliente, 'Round robin' distribuye las llamadas "
+"equitativamente entre los AS y 'estático' se usa para fines de "
+"depuración."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:76
+msgid "Application Server"
+msgstr "Servidor de Aplicaciones"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:76
+msgid ""
+"If 'static' *distribute method* is used, select an application server "
+"here."
+msgstr ""
+"Si se usa el *método de distribución* 'estático', selecciona un servidor "
+"de aplicaciones aquí."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:81
+msgid "On-demand call recording"
+msgstr "Grabación de llamadas bajo demanda"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:79
+msgid ""
+"Shown only if *Recording* feature is enabled for client, allows enabling "
+"and disabling on-demand call recording. If enabled, you can choose how to"
+" invoke and service code if needed."
+msgstr ""
+"Se muestra solo si la función *Grabación* está habilitada para el cliente, permite habilitar y deshabilitar la grabación de llamadas bajo demanda. Si está habilitado, puedes elegir cómo invocar y el código de servicio si es necesario."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:84
+msgid "Allow Client to remove recordings"
+msgstr "Permitir al Cliente eliminar grabaciones"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:84
+msgid ""
+"Shown only if *Recording* feature is enabled for client, shows/hides "
+"recording removal button on client *Call Recordings* section."
+msgstr ""
+"Se muestra solo si la función *Grabación* está habilitada para el cliente, muestra/oculta el botón de eliminación de grabaciones en la sección *Grabaciones de Llamadas* del cliente."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:88
+msgid ""
+"Most of the features are self-explanatory, but **voice notification** "
+"deserves an explanation: if you enable them, when a call fails, the user "
+"will listen a locution explaining what occurred (\"you have no "
+"permissions to place this call\", \"the call cannot be billed\", etc.)"
+msgstr ""
+"La mayoría de las características son autoexplicativas, pero **notificación de voz** merece una explicación: si las habilitas, cuando una llamada falla, el usuario escuchará una locución explicando lo ocurrido (\"no tienes permisos para realizar esta llamada\", \"la llamada no se puede facturar\", etc.)"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:93
+msgid ""
+"Both **Distribute method** and **Application Server** are only visible "
+"for God Administrator."
+msgstr ""
+"Tanto **Método de Distribución** como **Servidor de Aplicaciones** son visibles solo para el Administrador Principal."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:96
+msgid ""
+"'Round-robin' distribute method is reserved for huge clients whose calls "
+"cannot be handled in a single AS. **Use 'Hash based' for remaining "
+"ones**, as 'Round-robin' imposes some limitations to client features (no "
+"queues, no conferences)."
+msgstr ""
+"El método de distribución 'Round-robin' está reservado para clientes grandes cuyas llamadas no pueden ser manejadas en un solo AS. **Usa 'Basado en hash' para los restantes**, ya que 'Round-robin' impone algunas limitaciones a las características del cliente (sin colas, sin conferencias)."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:102
+msgid "Additional subsections"
+msgstr "Subsecciones adicionales"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:104
+msgid "Each entry in this table has these additional options:"
+msgstr "Cada entrada en esta tabla tiene estas opciones adicionales:"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:106
+msgid ""
+"**List of authorized sources**: if *Filter by IP address* is enabled, "
+"this subsection allows adding addresses or network ranges."
+msgstr ""
+"**Lista de fuentes autorizadas**: si *Filtrar por dirección IP* está "
+"habilitado, esta subsección permite agregar direcciones o rangos de red."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:108
+msgid ""
+"No outgoing call will be allowed if *Filter by IP address* is enabled and"
+" the corresponding list is empty."
+msgstr ""
+"No se permitirá ninguna llamada saliente si *Filtrar por dirección IP* "
+"está habilitado y la lista correspondiente está vacía."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:110
+msgid ""
+"**List of client admins**: this subsection allows managing portal "
+"credentials for this specific client. Read :ref:`acls` for further "
+"explanation about restricted client administrators."
+msgstr ""
+"**Lista de administradores de clientes**: esta subsección permite "
+"gestionar las credenciales del portal para este cliente específico. Lea "
+":ref:`acls` para una mayor explicación sobre administradores de clientes "
+"restringidos."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:113
+msgid ""
+"**List of Rating profiles**: this subsection allows managing the rating "
+"profiles that will be used to bill its outgoing calls."
+msgstr ""
+"**Lista de perfiles de tarifas**: esta subsección permite gestionar los "
+"perfiles de tarifas que se utilizarán para facturar sus llamadas "
+"salientes."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:115
+msgid ""
+"No outgoing call will be allowed for this client unless an active rating "
+"profiles that can bill the specific call."
+msgstr ""
+"No se permitirá ninguna llamada saliente para este cliente a menos que "
+"haya un perfil de tarifas activo que pueda facturar la llamada "
+"específica."
+

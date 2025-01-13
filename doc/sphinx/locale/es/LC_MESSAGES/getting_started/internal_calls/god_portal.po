@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../getting_started/internal_calls/god_portal.rst:3
+msgid "Global Configuration"
+msgstr "Configuración Global"
+
+#: ../../getting_started/internal_calls/god_portal.rst:5
+msgid ""
+"Any of the 2 Public IP addresses configured during the installation will "
+"work to access the web portal. Default credentials are **admin / "
+"changeme**."
+msgstr ""
+"Cualquiera de las 2 direcciones IP públicas configuradas durante la instalación "
+"funcionará para acceder al portal web. Las credenciales predeterminadas son **admin / "
+"changeme**."
+
+#: ../../getting_started/internal_calls/god_portal.rst:9
+msgid ""
+"In this section will reference global administrator configuration "
+"options, available in the menu (**Main management**) of the web portal "
+"(only visible to God Admins):"
+msgstr ""
+"En esta sección se hará referencia a las opciones de configuración del administrador global, "
+"disponibles en el menú (**Gestión principal**) del portal web "
+"(solo visible para los administradores God):"
+
+#: ../../getting_started/internal_calls/god_portal.rst:14
+msgid "Emulate the Demo brand"
+msgstr "Emular la marca Demo"
+
+#: ../../getting_started/internal_calls/god_portal.rst:16
+msgid ""
+"As mentioned above, the initial installation will have an already created"
+" brand called DemoBrand, that will be used for our goal: to have 2 "
+"telephones registered that can call each other."
+msgstr ""
+"Como se mencionó anteriormente, la instalación inicial tendrá una marca ya creada "
+"llamada DemoBrand, que se utilizará para nuestro objetivo: tener 2 "
+"teléfonos registrados que puedan llamarse entre sí."
+
+#: ../../getting_started/internal_calls/god_portal.rst:20
+msgid ""
+"Before going to the next section, is quite important to understand how "
+"the **emulation** works."
+msgstr ""
+"Antes de pasar a la siguiente sección, es bastante importante entender cómo "
+"funciona la **emulación**."
+
+#: ../../getting_started/internal_calls/god_portal.rst:23
+msgid ""
+"As global operator, you have access to the menu **Global Configuration** "
+"only visible to *God* administrators."
+msgstr ""
+"Como operador global, tienes acceso al menú **Configuración Global** "
+"solo visible para los administradores *God*."
+
+#: ../../getting_started/internal_calls/god_portal.rst:26
+msgid ""
+"Apart from that menu, you will also have access to the **Brand "
+"Configuration** and **Client configuration** blocks."
+msgstr ""
+"Aparte de ese menú, también tendrás acceso a los bloques de **Configuración de Marca** "
+"y **Configuración de Cliente**."
+
+#: ../../getting_started/internal_calls/god_portal.rst:29
+msgid "Last two blocks have a red button in the right side."
+msgstr "Los dos últimos bloques tienen un botón rojo en el lado derecho."
+
+#: ../../getting_started/internal_calls/god_portal.rst:31
+msgid ""
+"When pressed, a popup will be displayed that lists all existing brands / "
+"clients."
+msgstr ""
+"Al presionarlo, se mostrará un popup que lista todas las marcas / "
+"clientes existentes."
+
+#: ../../getting_started/internal_calls/god_portal.rst:33
+msgid "After selecting the DemoBrand brand, the icon will change."
+msgstr "Después de seleccionar la marca DemoBrand, el icono cambiará."
+
+#: ../../getting_started/internal_calls/god_portal.rst:35
+msgid ""
+"The upper right corner of the portal will also display the brand that is "
+"being emulated."
+msgstr ""
+"La esquina superior derecha del portal también mostrará la marca que se "
+"está emulando."
+
+#: ../../getting_started/internal_calls/god_portal.rst:39
+msgid "What emulation means"
+msgstr "Qué significa la emulación"
+
+#: ../../getting_started/internal_calls/god_portal.rst:41
+msgid ""
+"Basically, that **everything in the menu 'Brand configuration' will be "
+"relative to the chosen brand** and is **exactly** the same menu entries "
+"that the brand operator will see using its brand portal."
+msgstr ""
+"Básicamente, que **todo en el menú 'Configuración de Marca' será "
+"relativo a la marca elegida** y es **exactamente** las mismas entradas de menú "
+"que el operador de la marca verá usando su portal de marca."
+
+#: ../../getting_started/internal_calls/god_portal.rst:45
+msgid ""
+"Ok, ok, maybe exactly is not totally accurate. The global operator is "
+"able to see some fields in some screens that other admins can't (i.e. On "
+"Client edit screen, fields like 'Media relays' or 'Application server' "
+"are only configurable by the global operator."
+msgstr ""
+"Ok, ok, tal vez exactamente no sea totalmente preciso. El operador global "
+"puede ver algunos campos en algunas pantallas que otros administradores no pueden (por ejemplo, en "
+"la pantalla de edición del Cliente, campos como 'Relés de medios' o 'Servidor de aplicaciones' "
+"solo son configurables por el operador global."
+

@@ -1,0 +1,421 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/brand/clients/retail.rst:5
+msgid "Retail"
+msgstr "Retail"
+
+#: ../../administration_portal/brand/clients/retail.rst:7
+msgid ""
+"Retail clients are even a more lightweight client type than *Residential "
+"clients*."
+msgstr ""
+"Los clientes Retail son un tipo de cliente aún más ligero que los *clientes residenciales*."
+
+#: ../../administration_portal/brand/clients/retail.rst:9
+msgid "They just provide a SIP trunking service that include these features:"
+msgstr "Solo proporcionan un servicio de troncal SIP que incluye estas características:"
+
+#: ../../administration_portal/brand/clients/retail.rst:11
+msgid "Configure one or more retail accounts (SIP devices)."
+msgstr "Configurar una o más cuentas retail (dispositivos SIP)."
+
+#: ../../administration_portal/brand/clients/retail.rst:12
+msgid "Setup one or more DDIs."
+msgstr "Configurar uno o más DDI."
+
+#: ../../administration_portal/brand/clients/retail.rst:13
+msgid "**Place external calls** showing one of those DDIs."
+msgstr "**Realizar llamadas externas** mostrando uno de esos DDI."
+
+#: ../../administration_portal/brand/clients/retail.rst:14
+msgid "**Receive external calls** to their DDIs."
+msgstr "**Recibir llamadas externas** a sus DDI."
+
+#: ../../administration_portal/brand/clients/retail.rst:15
+msgid "Record calls."
+msgstr "Grabar llamadas."
+
+#: ../../administration_portal/brand/clients/retail.rst:17
+msgid ""
+"No users, no extensions, no internal calls, no hunt groups, no IVRs, no "
+"voicemail... just **incoming and outgoing external calls**."
+msgstr ""
+"Sin usuarios, sin extensiones, sin llamadas internas, sin grupos de búsqueda, sin IVR, sin "
+"correo de voz... solo **llamadas externas entrantes y salientes**."
+
+#: ../../administration_portal/brand/clients/retail.rst:20
+msgid ""
+"Retail clients and their accounts **MUST use Brand's SIP domain in their "
+"SIP messages**."
+msgstr ""
+"Los clientes Retail y sus cuentas **DEBEN usar el dominio SIP de la marca en sus "
+"mensajes SIP**."
+
+#: ../../administration_portal/brand/clients/retail.rst:25
+msgid "Differences between retail and residential clients"
+msgstr "Diferencias entre clientes retail y residenciales"
+
+#: ../../administration_portal/brand/clients/retail.rst:27
+msgid ""
+"There is an important key difference between these two clients: **retail "
+"client calls do not traverse any application server**."
+msgstr ""
+"Hay una diferencia clave importante entre estos dos clientes: **las llamadas de clientes retail no atraviesan ningún servidor de aplicaciones**."
+
+#: ../../administration_portal/brand/clients/retail.rst:30
+msgid "As a result:"
+msgstr "Como resultado:"
+
+#: ../../administration_portal/brand/clients/retail.rst:32
+msgid "No virtual faxing service for retail clients."
+msgstr "No hay servicio de fax virtual para clientes retail."
+
+#: ../../administration_portal/brand/clients/retail.rst:34
+msgid "No voicemail service for retail clients."
+msgstr "No hay servicio de correo de voz para clientes retail."
+
+#: ../../administration_portal/brand/clients/retail.rst:36
+msgid "But they also have benefits that make them ideal for some situations:"
+msgstr "Pero también tienen beneficios que los hacen ideales para algunas situaciones:"
+
+#: ../../administration_portal/brand/clients/retail.rst:38
+msgid "No application server traverse, much less load for the platform."
+msgstr "No hay travesía de servidor de aplicaciones, mucha menos carga para la plataforma."
+
+#: ../../administration_portal/brand/clients/retail.rst:40
+msgid "Call transcoding as a feature."
+msgstr "Transcodificación de llamadas como una característica."
+
+#: ../../administration_portal/brand/clients/retail.rst:42
+msgid "Routing tags for different call routing for same destinations."
+msgstr "Etiquetas de enrutamiento para diferentes enrutamientos de llamadas para los mismos destinos."
+
+#: ../../administration_portal/brand/clients/retail.rst:44
+msgid ""
+"Residential devices are force to talk the codec selected in their "
+"configuration (just one). Retail clients, on the other hand, can talk in "
+"the codecs they offer in their SDP and in the codecs selected in "
+"IvozProvider: IvozProvider will make transcoding when necessary."
+msgstr ""
+"Los dispositivos residenciales están obligados a usar el códec seleccionado en su "
+"configuración (solo uno). Los clientes retail, por otro lado, pueden usar los "
+"códecs que ofrecen en su SDP y los códecs seleccionados en "
+"IvozProvider: IvozProvider hará la transcodificación cuando sea necesario."
+
+#: ../../administration_portal/brand/clients/retail.rst:48
+msgid ""
+"Use retail client type unless you need any of the services provided by "
+"application servers (fax or voicemails)."
+msgstr ""
+"Usa el tipo de cliente retail a menos que necesites alguno de los servicios proporcionados por "
+"servidores de aplicaciones (fax o correos de voz)."
+
+#: ../../administration_portal/brand/clients/retail.rst:51
+msgid "Adding/Editing retail clients"
+msgstr "Agregar/Editar clientes retail"
+
+#: ../../administration_portal/brand/clients/retail.rst:53
+msgid ""
+"Some fields described below may not be visible depending on enabled "
+"features."
+msgstr ""
+"Algunos campos descritos a continuación pueden no ser visibles dependiendo de las "
+"funcionalidades habilitadas."
+
+#: ../../administration_portal/brand/clients/retail.rst:55
+msgid "These are the fields shown when **adding** a new retail client:"
+msgstr "Estos son los campos mostrados al **agregar** un nuevo cliente retail:"
+
+#: ../../administration_portal/brand/clients/retail.rst:58
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../administration_portal/brand/clients/retail.rst:58
+msgid "Used to reference this particular client."
+msgstr "Usado para referenciar a este cliente en particular."
+
+#: ../../administration_portal/brand/clients/retail.rst:61
+msgid "Billing method"
+msgstr "Método de facturación"
+
+#: ../../administration_portal/brand/clients/retail.rst:61
+msgid ""
+"To choose among postpaid, prepaid and pseudo-prepaid. 'none' disables "
+"billing."
+msgstr ""
+"Para elegir entre pospago, prepago y pseudo-prepago. 'ninguno' desactiva "
+"la facturación."
+
+#: ../../administration_portal/brand/clients/retail.rst:64
+msgid "Language"
+msgstr "Idioma"
+
+#: ../../administration_portal/brand/clients/retail.rst:64
+msgid "Used to choose the language of played locutions."
+msgstr "Usado para elegir el idioma de las locuciones reproducidas."
+
+#: ../../administration_portal/brand/clients/retail.rst:67
+msgid "Country code"
+msgstr "Código de país"
+
+#: ../../administration_portal/brand/clients/retail.rst:67
+msgid "Default country code for DDIs."
+msgstr "Código de país predeterminado para los DDI."
+
+#: ../../administration_portal/brand/clients/retail.rst:70
+msgid "Default timezone"
+msgstr "Zona horaria predeterminada"
+
+#: ../../administration_portal/brand/clients/retail.rst:70
+msgid "Used for showing call registries dates."
+msgstr "Usado para mostrar las fechas de los registros de llamadas."
+
+#: ../../administration_portal/brand/clients/retail.rst:74
+msgid "Currency"
+msgstr "Moneda"
+
+#: ../../administration_portal/brand/clients/retail.rst:73
+msgid ""
+"Chosen currency will be used in price calculation, invoices, balance "
+"movements and remaining money operations of this client."
+msgstr ""
+"La moneda elegida se usará en el cálculo de precios, facturas, movimientos de saldo "
+"y operaciones de dinero restante de este cliente."
+
+#: ../../administration_portal/brand/clients/retail.rst:77
+msgid "Numeric transformation"
+msgstr "Transformación numérica"
+
+#: ../../administration_portal/brand/clients/retail.rst:77
+msgid ""
+"Describes the way the client will \"talk\" and the way the client wants "
+"to be \"talked\"."
+msgstr ""
+"Describe la forma en que el cliente \"hablará\" y la forma en que el cliente quiere "
+"ser \"hablado\"."
+
+#: ../../administration_portal/brand/clients/retail.rst:80
+msgid "Max calls"
+msgstr "Máximo de llamadas"
+
+#: ../../administration_portal/brand/clients/retail.rst:80
+msgid "Limits both incoming and outgoing external calls (0 for unlimited)."
+msgstr "Limita tanto las llamadas externas entrantes como salientes (0 para ilimitado)."
+
+#: ../../administration_portal/brand/clients/retail.rst:83
+msgid "Filter by IP address"
+msgstr "Filtrar por dirección IP"
+
+#: ../../administration_portal/brand/clients/retail.rst:83
+msgid ""
+"If set, the platform will only allow calls coming from allowed IP/ranges "
+"or countries."
+msgstr ""
+"Si se establece, la plataforma solo permitirá llamadas provenientes de IP/rangos "
+"o países permitidos."
+
+#: ../../administration_portal/brand/clients/retail.rst:86
+msgid "GeoIP allowed countries"
+msgstr "Países permitidos por GeoIP"
+
+#: ../../administration_portal/brand/clients/retail.rst:86
+msgid ""
+"If *Filter by IP address* is enabled, traffic from selected countries "
+"will be allowed."
+msgstr ""
+"Si *Filtrar por dirección IP* está habilitado, se permitirá el tráfico de los países "
+"seleccionados."
+
+#: ../../administration_portal/brand/clients/retail.rst:90
+msgid "Max daily usage"
+msgstr "Uso máximo diario"
+
+#: ../../administration_portal/brand/clients/retail.rst:89
+msgid ""
+"Limits external outbound calls when this limit is reached within a day. "
+"At midnight counters are reset and accounts are re-enabled."
+msgstr ""
+"Limita las llamadas externas salientes cuando se alcanza este límite dentro de un día. "
+"A medianoche se restablecen los contadores y se reactivan las cuentas."
+
+#: ../../administration_portal/brand/clients/retail.rst:95
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: ../../administration_portal/brand/clients/retail.rst:93
+msgid ""
+"A notification email will be sent to given address when configured max "
+"daily usage is reached. Leave empty to avoid notification."
+msgstr ""
+"Se enviará un correo electrónico de notificación a la dirección dada cuando se alcance el uso máximo "
+"diario configurado. Dejar vacío para evitar la notificación."
+
+#: ../../administration_portal/brand/clients/retail.rst:97
+msgid "When **editing** a client, these additional fields can be configured:"
+msgstr "Al **editar** un cliente, se pueden configurar estos campos adicionales:"
+
+#: ../../administration_portal/brand/clients/retail.rst:101
+msgid "Invoice data"
+msgstr "Datos de la factura"
+
+#: ../../administration_portal/brand/clients/retail.rst:100
+msgid ""
+"All the fields in this group will be included in invoices generated for "
+"this client. This section also allows showing/hiding billing details to "
+"client's portal, such as Invoices, Rating Profiles and Price of external "
+"calls."
+msgstr ""
+"Todos los campos de este grupo se incluirán en las facturas generadas para "
+"este cliente. Esta sección también permite mostrar/ocultar detalles de facturación en "
+"el portal del cliente, como Facturas, Perfiles de Tarifas y Precio de llamadas externas."
+
+#: ../../administration_portal/brand/clients/retail.rst:104
+msgid "Outgoing DDI"
+msgstr "DDI saliente"
+
+#: ../../administration_portal/brand/clients/retail.rst:104
+msgid ""
+"Fallback DDI for external outgoing calls (can be overridden at "
+"residential device level)."
+msgstr ""
+"DDI de respaldo para llamadas externas salientes (puede ser anulado a nivel de "
+"dispositivo residencial)."
+
+#: ../../administration_portal/brand/clients/retail.rst:108
+msgid "Routing tags"
+msgstr "Etiquetas de enrutamiento"
+
+#: ../../administration_portal/brand/clients/retail.rst:107
+msgid ""
+"This field allows enabling routing tags for this specific client. Call "
+"preceded with this routing tags will be rated and routed differently."
+msgstr ""
+"Este campo permite habilitar etiquetas de enrutamiento para este cliente específico. Las llamadas "
+"precedidas por estas etiquetas de enrutamiento se valorarán y enrutará de manera diferente."
+
+#: ../../administration_portal/brand/clients/retail.rst:112
+msgid "Audio transcoding"
+msgstr "Transcodificación de audio"
+
+#: ../../administration_portal/brand/clients/retail.rst:111
+msgid ""
+"This field allows enabling codecs for this specific client. This codecs "
+"will be added to the ones offered by the client in its SDP."
+msgstr ""
+"Este campo permite habilitar códecs para este cliente específico. Estos códecs "
+"se agregarán a los ofrecidos por el cliente en su SDP."
+
+#: ../../administration_portal/brand/clients/retail.rst:117
+msgid "Allow Client to remove recordings"
+msgstr "Permitir al cliente eliminar grabaciones"
+
+#: ../../administration_portal/brand/clients/retail.rst:115
+msgid ""
+"Shown only if *Recording* feature is enabled for client, shows/hides "
+"recording removal button on client *Call Recordings* section."
+msgstr ""
+"Se muestra solo si la función *Grabación* está habilitada para el cliente, muestra/oculta "
+"el botón de eliminación de grabaciones en la sección *Grabaciones de llamadas* del cliente."
+
+#: ../../administration_portal/brand/clients/retail.rst:119
+msgid ""
+"Selecting codecs in **Audio transcoding** may lead to uneeded "
+"transcoding. Selecting ALL codecs is always a horrible idea. Do not "
+"select any codec unless this client does not support an specific codec "
+"that is compulsory for a needed destination/carrier."
+msgstr ""
+"Seleccionar códecs en **Transcodificación de audio** puede llevar a una transcodificación innecesaria. "
+"Seleccionar TODOS los códecs siempre es una idea horrible. No "
+"selecciones ningún códec a menos que este cliente no admita un códec específico "
+"que sea obligatorio para un destino/carrier necesario."
+
+#: ../../administration_portal/brand/clients/retail.rst:123
+msgid ""
+"Apart from these fields, main operator (*aka* God) will also see a "
+"**Platform data** group that allows:"
+msgstr ""
+"Aparte de estos campos, el operador principal (*también conocido como* Dios) también verá un "
+"grupo de **Datos de la plataforma** que permite:"
+
+#: ../../administration_portal/brand/clients/retail.rst:125
+msgid "Choosing an specific media relay set for the client."
+msgstr "Elegir un conjunto específico de retransmisión de medios para el cliente."
+
+#: ../../administration_portal/brand/clients/retail.rst:127
+msgid ""
+"For outgoing calls, platform will use the CLID provided by the client as "
+"long as it is considered valid, otherwise fallback DDI will be used. The "
+"platform will consider as valid any CLID that matches one of the client's"
+" DDIs."
+msgstr ""
+"Para llamadas salientes, la plataforma usará el CLID proporcionado por el cliente siempre "
+"que se considere válido, de lo contrario se usará el DDI de respaldo. La "
+"plataforma considerará válido cualquier CLID que coincida con uno de los DDI del cliente."
+
+#: ../../administration_portal/brand/clients/retail.rst:131
+msgid "Additional subsections"
+msgstr "Subsecciones adicionales"
+
+#: ../../administration_portal/brand/clients/retail.rst:133
+msgid "Each entry in this table has these additional options:"
+msgstr "Cada entrada en esta tabla tiene estas opciones adicionales:"
+
+#: ../../administration_portal/brand/clients/retail.rst:135
+msgid ""
+"**List of authorized sources**: if *Filter by IP address* is enabled, "
+"this subsection allows adding addresses or network ranges."
+msgstr ""
+"**Lista de fuentes autorizadas**: si *Filtrar por dirección IP* está habilitado, "
+"esta subsección permite agregar direcciones o rangos de red."
+
+#: ../../administration_portal/brand/clients/retail.rst:137
+msgid ""
+"No outgoing call will be allowed if *Filter by IP address* is enabled and"
+" the corresponding list is empty."
+msgstr ""
+"No se permitirá ninguna llamada saliente si *Filtrar por dirección IP* está habilitado y "
+"la lista correspondiente está vacía."
+
+#: ../../administration_portal/brand/clients/retail.rst:139
+msgid ""
+"**List of client admins**: this subsection allows managing portal "
+"credentials for this specific client. Read :ref:`acls` for further "
+"explanation about restricted client administrators."
+msgstr ""
+"**Lista de administradores de clientes**: esta subsección permite gestionar las credenciales del portal "
+"para este cliente específico. Lea :ref:`controles de acceso <acls>` para una mayor "
+"explicación sobre administradores de clientes restringidos."
+
+#: ../../administration_portal/brand/clients/retail.rst:142
+msgid ""
+"**List of Rating profiles**: this subsection allows managing the rating "
+"profiles that will be used to bill its outgoing calls."
+msgstr ""
+"**Lista de perfiles de tarifas**: esta subsección permite gestionar los perfiles de tarifas "
+"que se utilizarán para facturar sus llamadas salientes."
+
+#: ../../administration_portal/brand/clients/retail.rst:144
+msgid ""
+"No outgoing call will be allowed for this client unless an active rating "
+"profiles that can bill the specific call."
+msgstr ""
+"No se permitirá ninguna llamada saliente para este cliente a menos que haya un perfil de tarifas activo "
+"que pueda facturar la llamada específica."
+

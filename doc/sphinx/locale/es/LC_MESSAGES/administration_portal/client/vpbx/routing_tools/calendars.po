@@ -1,0 +1,277 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:5
+msgid "Calendars"
+msgstr "Calendarios"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:7
+msgid ""
+"Calenders are used to define what days are considered as holiday. Like "
+"schedules, multiples calendars can be combined."
+msgstr ""
+"Los calendarios se utilizan para definir qué días se consideran festivos. Al igual que los horarios, se pueden combinar múltiples calendarios."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:11
+msgid "Calendar Holidays"
+msgstr "Festivos del calendario"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:13
+msgid ""
+"Calendar creation process only requires a name. Once created, we can add "
+"what days will be holidays using the buttons in its row:"
+msgstr ""
+"El proceso de creación del calendario solo requiere un nombre. Una vez creado, podemos agregar qué días serán festivos usando los botones en su fila:"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:18
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:18
+msgid "Unique name to identify this holiday date"
+msgstr "Nombre único para identificar esta fecha festiva"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:21
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:71
+msgid "Locution"
+msgstr "Locución"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:21
+msgid "Override default External call filter holiday locution"
+msgstr "Sobrescribir la locución festiva predeterminada del filtro de llamadas externas"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:24
+msgid "Event Date"
+msgstr "Fecha del evento"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:24
+msgid "Day of the calendar to be marked as holiday"
+msgstr "Día del calendario que se marcará como festivo"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:27
+msgid "Whole day event"
+msgstr "Evento de todo el día"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:27
+msgid "Enable this to create an event that lasts all the day"
+msgstr "Habilite esto para crear un evento que dure todo el día"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:30
+msgid "Time In/Time out"
+msgstr "Hora de inicio/fin"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:30
+msgid ""
+"For not whole day events, specify the time interval the event will be "
+"active"
+msgstr ""
+"Para eventos que no duran todo el día, especifique el intervalo de tiempo en que el evento estará activo"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:33
+msgid "Routing options"
+msgstr "Opciones de enrutamiento"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:33
+msgid "Override default External call filter holiday routing"
+msgstr "Sobrescribir el enrutamiento festivo predeterminado del filtro de llamadas externas"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:35
+msgid ""
+"Calendars logic is opposite to Schedulers: If a day is not defined as "
+"holiday in any of the calendars, it will considered a normal day and no "
+"filtering will be applied."
+msgstr ""
+"La lógica de los calendarios es opuesta a la de los horarios: Si un día no está definido como festivo en ninguno de los calendarios, se considerará un día normal y no se aplicará ningún filtro."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:39
+msgid ""
+"Holidays without special locutions will apply the external call filter "
+"holiday locution."
+msgstr ""
+"Los festivos sin locuciones especiales aplicarán la locución festiva del filtro de llamadas externas."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:42
+msgid ""
+"Holidays without special routing will apply the external call filter "
+"holiday routing."
+msgstr ""
+"Los festivos sin enrutamiento especial aplicarán el enrutamiento festivo del filtro de llamadas externas."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:45
+msgid ""
+"In addition, once a date has been created, there is the possibility of "
+"importing more dates from a file. This option is found in the date list "
+"menu and is called *Import from CSV*. Also a range of dates may be added "
+"with *Add Holiday date range* menu option."
+msgstr ""
+"Además, una vez creada una fecha, existe la posibilidad de importar más fechas desde un archivo. Esta opción se encuentra en el menú de la lista de fechas y se llama *Importar desde CSV*. También se puede agregar un rango de fechas con la opción de menú *Agregar rango de fechas festivas*."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:53
+msgid "Special schedules"
+msgstr "Horarios especiales"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:55
+msgid ""
+"Calendars can also be used to override some time periods with a different"
+" schedule. This can be handy if vPBX has a summer schedule or other types"
+" of schedule based events."
+msgstr ""
+"Los calendarios también se pueden usar para sobrescribir algunos períodos de tiempo con un horario diferente. Esto puede ser útil si vPBX tiene un horario de verano u otros tipos de eventos basados en horarios."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:58
+msgid ""
+"Special schedules can define a custom Scheduler and override External "
+"Call filters configurations:"
+msgstr ""
+"Los horarios especiales pueden definir un programador personalizado y sobrescribir las configuraciones de los filtros de llamadas externas:"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:61
+msgid "Start Date"
+msgstr "Fecha de inicio"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:61
+msgid "Since when the schedules will override the filters configuration"
+msgstr "Desde cuándo los horarios sobrescribirán la configuración de los filtros"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:64
+msgid "End Date"
+msgstr "Fecha de fin"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:64
+msgid "Last day of the period (included)"
+msgstr "Último día del período (incluido)"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:67
+msgid "Schedules"
+msgstr "Horarios"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:67
+msgid "Schedules that will be used in the defined period"
+msgstr "Horarios que se utilizarán en el período definido"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:70
+msgid ""
+"In case of Out of schedule, this locution that will be played. Leave "
+"empty to use External call filter's locution."
+msgstr ""
+"En caso de fuera de horario, esta locución se reproducirá. Dejar vacío para usar la locución del filtro de llamadas externas."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:74
+msgid "Route options"
+msgstr "Opciones de ruta"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:74
+msgid "Override default external call filter Out of schedule options"
+msgstr "Sobrescribir las opciones predeterminadas del filtro de llamadas externas fuera de horario"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:77
+msgid "Difference between non-whole day event and special schedules"
+msgstr "Diferencia entre evento de no todo el día y horarios especiales"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:79
+msgid ""
+"In order to understand the difference between these two features it is "
+"important to know the order of call filter logic:"
+msgstr ""
+"Para entender la diferencia entre estas dos características, es importante conocer el orden de la lógica del filtro de llamadas:"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:81
+msgid "**1. Is current day marked as holiday?**"
+msgstr "**1. ¿Está marcado el día actual como festivo?**"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:83
+msgid ""
+"This is where non-whole day event applies, making the answer to the "
+"question above possitive during defined period."
+msgstr ""
+"Aquí es donde se aplica el evento de no todo el día, haciendo que la respuesta a la pregunta anterior sea positiva durante el período definido."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:85
+msgid ""
+"Yes: apply holiday logic defined in the calendar event or in External "
+"Call Filter."
+msgstr ""
+"Sí: aplicar la lógica festiva definida en el evento del calendario o en el filtro de llamadas externas."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:87
+msgid "No: proceed to question 2."
+msgstr "No: proceder a la pregunta 2."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:89
+msgid "**2. Is current time marked as out-of-schedule?**"
+msgstr "**2. ¿Está marcada la hora actual como fuera de horario?**"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:91
+msgid ""
+"This is where special schedules applies, overriding schedules of External"
+" Call Filter with the one defined in calendar period."
+msgstr ""
+"Aquí es donde se aplican los horarios especiales, sobrescribiendo los horarios del filtro de llamadas externas con el definido en el período del calendario."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:94
+msgid ""
+"Yes: apply out-of-schedule logic defined in the special schedules or in "
+"External Call Filter."
+msgstr ""
+"Sí: aplicar la lógica fuera de horario definida en los horarios especiales o en el filtro de llamadas externas."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:96
+msgid "No: proceed with standard logic."
+msgstr "No: proceder con la lógica estándar."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:99
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:100
+msgid "Configuration of a given day:"
+msgstr "Configuración de un día dado:"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:102
+msgid "Non-whole day event: 8:00-15:00"
+msgstr "Evento de no todo el día: 8:00-15:00"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:104
+msgid "Special schedule: 13:00-17:00"
+msgstr "Horario especial: 13:00-17:00"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:106
+msgid "Cases:"
+msgstr "Casos:"
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:108
+msgid "Call at 7:00: out of schedule due to special schedule."
+msgstr "Llamada a las 7:00: fuera de horario debido a horario especial."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:110
+msgid "Call at 9:00: holiday logic due to non-whole day event."
+msgstr "Llamada a las 9:00: lógica festiva debido a evento de no todo el día."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:112
+msgid "Call at 14:00: holiday logic due to non-whole day event."
+msgstr "Llamada a las 14:00: lógica festiva debido a evento de no todo el día."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:114
+msgid "Call at 16:00: normal logic."
+msgstr "Llamada a las 16:00: lógica normal."
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:116
+msgid "Call at 18:00: out of schedule due to special schedule."
+msgstr "Llamada a las 18:00: fuera de horario debido a horario especial."
+

@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/platform/antiflood_banned_ips.rst:5
+msgid "Antiflood banned IPs"
+msgstr "IPs bloqueadas por Antiflood"
+
+#: ../../administration_portal/platform/antiflood_banned_ips.rst:7
+msgid ""
+"Addresses listed here have been banned at least once by *Antiflooding* "
+"mechanism."
+msgstr "Las direcciones enumeradas aquí han sido bloqueadas al menos una vez por el mecanismo de *Antiflooding*."
+
+#: ../../administration_portal/platform/antiflood_banned_ips.rst:9
+msgid ""
+"**IPs are only blocked during 5 minutes**. Entries with *Last time "
+"banned* older than 5 minutes are not currently banned."
+msgstr "**Las IPs solo se bloquean durante 5 minutos**. Las entradas con *Último bloqueo* de más de 5 minutos no están actualmente bloqueadas."
+
+#: ../../administration_portal/platform/antiflood_banned_ips.rst:12
+msgid "See :ref:`SIP antiflooding` for further information."
+msgstr "Vea :ref:`Antiflooding SIP <SIP antiflooding>` para más información."
+
