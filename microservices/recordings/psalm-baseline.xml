@@ -42,12 +42,16 @@
     <InternalMethod occurrences="1">
       <code>persistDto</code>
     </InternalMethod>
-    <PossiblyNullArgument occurrences="5">
+    <PossiblyNullArgument occurrences="9">
+      <code>$billableCall-&gt;getCallid()</code>
       <code>$callee</code>
       <code>$caller</code>
+      <code>$callid</code>
+      <code>$callid</code>
       <code>$recorder</code>
       <code>$recorder</code>
       <code>$recorder</code>
+      <code>$recordingDto-&gt;getCallid()</code>
     </PossiblyNullArgument>
   </file>
 </files>
