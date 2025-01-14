@@ -1,13 +1,13 @@
 {
   "consumer": {
-    "name": "platform-consumer-Web-portals"
+    "name": "platform-consumer-BrandPortals"
   },
   "provider": {
-    "name": "platform-provider-Web-portals"
+    "name": "platform-provider-BrandPortals"
   },
   "interactions": [
     {
-      "description": "add Web portals",
+      "description": "add Brand Portal",
       "providerState": "",
       "request": {
         "method": "POST",
@@ -15,15 +15,16 @@
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzY0NTMxMzUsImV4cCI6MTY3NjQ1NjczNSwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6Imlyb250ZWMifQ.KahLJTPea7OLraAjnq9UxKKwBrqPOG7z6QSl0CtpKNTrXY2jgZavKztq64KWm-9j9ym98LRTI7Acj-MtWUqYiB11p8OFL3fQk0B9EmX-Thfk_z9UFT_oXNnzoXT4BZzyF0hDo9kedR1j4SPoVNug4WG7Lkx_-MV2Qz2PbsV-BF-Y3kb0QtGz5vtEWxLYGrCq7cEhGRsakHFAOxu2Z0Kdj5gDUFTaKR5G96fymnfWph1PmIRwyCCWAyUVMTpobMLbauJtEKTXiav6H7lE4RU5hSI7R20sScy75FDc9NQcelmGlFMOmMwMgri_xouvwtIg3O4tMKputyzyD-GbgOt0vRiLACf5jcqPrq0b5p6cKuVTdxzmUBpRWaGCvS4tdHVuMqlsdL9WCQDygxB4osoUqws06rEdUIfDWjVAtmygPAR3JDI6QE1cocw6B7-sDfpFfyxpSYwWGEhwLC1E9djsIdHYioYq_iCCE_jBy2pC5JEwMouiwbrfrDkxGHwKhC_1qeugdWjrUiyMufihOvjqBeGt7nCAvY0CGgygJ4Opnv4Rz2ueFbJJbHy1fZx6b5XxY2gWQymDyRjeZBs7hyz4X8yeWPsYDLce0jY5rKHOIBFJAEqHO2Ce97daE2I0WZR6Of2E6eLtpeT5zx_kfPGzN-qEvjj-42YD_Y2XWNokSWU",
-          "content-length": "109",
+          "content-length": "121",
           "content-type": "application/json"
         },
         "body": {
-          "urlType": "god",
+          "urlType": "brand",
           "name": "Platform brand Portal",
           "color": "#000000",
           "url": "https://post-example.com",
-          "logo": ""
+          "logo": "",
+          "brand": 2
         },
         "query": ""
       },
@@ -54,7 +55,7 @@
       }
     },
     {
-      "description": "edit Web portals",
+      "description": "edit Brand Portal",
       "providerState": "",
       "request": {
         "method": "PUT",
@@ -62,11 +63,11 @@
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzY0NTMxMzUsImV4cCI6MTY3NjQ1NjczNSwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6Imlyb250ZWMifQ.KahLJTPea7OLraAjnq9UxKKwBrqPOG7z6QSl0CtpKNTrXY2jgZavKztq64KWm-9j9ym98LRTI7Acj-MtWUqYiB11p8OFL3fQk0B9EmX-Thfk_z9UFT_oXNnzoXT4BZzyF0hDo9kedR1j4SPoVNug4WG7Lkx_-MV2Qz2PbsV-BF-Y3kb0QtGz5vtEWxLYGrCq7cEhGRsakHFAOxu2Z0Kdj5gDUFTaKR5G96fymnfWph1PmIRwyCCWAyUVMTpobMLbauJtEKTXiav6H7lE4RU5hSI7R20sScy75FDc9NQcelmGlFMOmMwMgri_xouvwtIg3O4tMKputyzyD-GbgOt0vRiLACf5jcqPrq0b5p6cKuVTdxzmUBpRWaGCvS4tdHVuMqlsdL9WCQDygxB4osoUqws06rEdUIfDWjVAtmygPAR3JDI6QE1cocw6B7-sDfpFfyxpSYwWGEhwLC1E9djsIdHYioYq_iCCE_jBy2pC5JEwMouiwbrfrDkxGHwKhC_1qeugdWjrUiyMufihOvjqBeGt7nCAvY0CGgygJ4Opnv4Rz2ueFbJJbHy1fZx6b5XxY2gWQymDyRjeZBs7hyz4X8yeWPsYDLce0jY5rKHOIBFJAEqHO2Ce97daE2I0WZR6Of2E6eLtpeT5zx_kfPGzN-qEvjj-42YD_Y2XWNokSWU",
-          "content-length": "152",
+          "content-length": "164",
           "content-type": "application/json"
         },
         "body": {
-          "urlType": "god",
+          "urlType": "brand",
           "name": "Updated Portal",
           "color": "#000000",
           "url": "https://updated-example.com",
@@ -74,7 +75,8 @@
             "fileSize": null,
             "mimeType": null,
             "baseName": null
-          }
+          },
+          "brand": 1
         },
         "query": ""
       },
@@ -96,26 +98,15 @@
           },
           "brand": 1,
           "company": null
-        }
-      }
-    },
-    {
-      "description": "delete Web portals",
-      "providerState": "",
-      "request": {
-        "method": "DELETE",
-        "path": "/api/platform/web_portals/2",
-        "headers": {
-          "accept": "application/json, text/plain, */*",
-          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzY0NTMxMzUsImV4cCI6MTY3NjQ1NjczNSwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6Imlyb250ZWMifQ.KahLJTPea7OLraAjnq9UxKKwBrqPOG7z6QSl0CtpKNTrXY2jgZavKztq64KWm-9j9ym98LRTI7Acj-MtWUqYiB11p8OFL3fQk0B9EmX-Thfk_z9UFT_oXNnzoXT4BZzyF0hDo9kedR1j4SPoVNug4WG7Lkx_-MV2Qz2PbsV-BF-Y3kb0QtGz5vtEWxLYGrCq7cEhGRsakHFAOxu2Z0Kdj5gDUFTaKR5G96fymnfWph1PmIRwyCCWAyUVMTpobMLbauJtEKTXiav6H7lE4RU5hSI7R20sScy75FDc9NQcelmGlFMOmMwMgri_xouvwtIg3O4tMKputyzyD-GbgOt0vRiLACf5jcqPrq0b5p6cKuVTdxzmUBpRWaGCvS4tdHVuMqlsdL9WCQDygxB4osoUqws06rEdUIfDWjVAtmygPAR3JDI6QE1cocw6B7-sDfpFfyxpSYwWGEhwLC1E9djsIdHYioYq_iCCE_jBy2pC5JEwMouiwbrfrDkxGHwKhC_1qeugdWjrUiyMufihOvjqBeGt7nCAvY0CGgygJ4Opnv4Rz2ueFbJJbHy1fZx6b5XxY2gWQymDyRjeZBs7hyz4X8yeWPsYDLce0jY5rKHOIBFJAEqHO2Ce97daE2I0WZR6Of2E6eLtpeT5zx_kfPGzN-qEvjj-42YD_Y2XWNokSWU"
         },
-        "body": "",
-        "query": ""
-      },
-      "response": {
-        "status": 204,
-        "headers": {},
-        "body": ""
+        "matchingRules": {
+          "$.body.name": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          }
+        }
       }
     }
   ],

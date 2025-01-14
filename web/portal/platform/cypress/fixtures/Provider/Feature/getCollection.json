@@ -1,0 +1,102 @@
+{
+    "body": [
+        {
+            "iden": "billing",
+            "id": 6,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        },
+        {
+            "iden": "conferences",
+            "id": 5,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        },
+        {
+            "iden": "faxes",
+            "id": 3,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        },
+        {
+            "iden": "friends",
+            "id": 4,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        },
+        {
+            "iden": "invoices",
+            "id": 7,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        },
+        {
+            "iden": "progress",
+            "id": 8,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        },
+        {
+            "iden": "queues",
+            "id": 1,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        },
+        {
+            "iden": "recordings",
+            "id": 2,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        },
+        {
+            "iden": "retail",
+            "id": 9,
+            "name": {
+                "en": "en",
+                "es": "es",
+                "ca": "ca",
+                "it": "it"
+            }
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/platform/features?_page=1",
+        "x-last-page": "/api/platform/features?_page=1",
+        "x-next-page": "/api/platform/features?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}

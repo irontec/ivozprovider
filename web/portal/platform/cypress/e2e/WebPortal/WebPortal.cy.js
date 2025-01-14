@@ -1,4 +1,4 @@
-import WebPortalCollection from '../../fixtures/WebPortal/getCollection.json';
+import WebPortalCollection from '../../fixtures/Provider/WebPortal/getCollection.json';
 import {
   deleteteWebPortals,
   postWebPortals,

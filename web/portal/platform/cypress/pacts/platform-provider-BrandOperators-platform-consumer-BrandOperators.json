@@ -1,29 +1,32 @@
 {
   "consumer": {
-    "name": "platform-consumer-Web-portals"
+    "name": "platform-consumer-BrandOperators"
   },
   "provider": {
-    "name": "platform-provider-Web-portals"
+    "name": "platform-provider-BrandOperators"
   },
   "interactions": [
     {
-      "description": "add Web portals",
+      "description": "add Brand Operator",
       "providerState": "",
       "request": {
         "method": "POST",
-        "path": "/api/platform/web_portals",
+        "path": "/api/platform/administrators",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzY0NTMxMzUsImV4cCI6MTY3NjQ1NjczNSwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6Imlyb250ZWMifQ.KahLJTPea7OLraAjnq9UxKKwBrqPOG7z6QSl0CtpKNTrXY2jgZavKztq64KWm-9j9ym98LRTI7Acj-MtWUqYiB11p8OFL3fQk0B9EmX-Thfk_z9UFT_oXNnzoXT4BZzyF0hDo9kedR1j4SPoVNug4WG7Lkx_-MV2Qz2PbsV-BF-Y3kb0QtGz5vtEWxLYGrCq7cEhGRsakHFAOxu2Z0Kdj5gDUFTaKR5G96fymnfWph1PmIRwyCCWAyUVMTpobMLbauJtEKTXiav6H7lE4RU5hSI7R20sScy75FDc9NQcelmGlFMOmMwMgri_xouvwtIg3O4tMKputyzyD-GbgOt0vRiLACf5jcqPrq0b5p6cKuVTdxzmUBpRWaGCvS4tdHVuMqlsdL9WCQDygxB4osoUqws06rEdUIfDWjVAtmygPAR3JDI6QE1cocw6B7-sDfpFfyxpSYwWGEhwLC1E9djsIdHYioYq_iCCE_jBy2pC5JEwMouiwbrfrDkxGHwKhC_1qeugdWjrUiyMufihOvjqBeGt7nCAvY0CGgygJ4Opnv4Rz2ueFbJJbHy1fZx6b5XxY2gWQymDyRjeZBs7hyz4X8yeWPsYDLce0jY5rKHOIBFJAEqHO2Ce97daE2I0WZR6Of2E6eLtpeT5zx_kfPGzN-qEvjj-42YD_Y2XWNokSWU",
-          "content-length": "109",
+          "content-length": "146",
           "content-type": "application/json"
         },
         "body": {
-          "urlType": "god",
-          "name": "Platform brand Portal",
-          "color": "#000000",
-          "url": "https://post-example.com",
-          "logo": ""
+          "pass": "changeme",
+          "email": "post-test@example.com",
+          "restricted": "0",
+          "timezone": 2,
+          "username": "post-test",
+          "name": "post",
+          "lastname": "test",
+          "brand": 1
         },
         "query": ""
       },
@@ -33,18 +36,18 @@
           "content-type": "application/json; charset=utf-8"
         },
         "body": {
-          "url": "https://post-example.com",
-          "urlType": "brand",
-          "name": "Platform brand Portal",
-          "color": "#000000",
-          "id": 7,
-          "logo": {
-            "fileSize": null,
-            "mimeType": null,
-            "baseName": null
-          },
+          "username": "post-test",
+          "pass": "*****",
+          "email": "post-test@example.com",
+          "active": true,
+          "restricted": false,
+          "name": "post",
+          "lastname": "test",
+          "canImpersonate": true,
+          "id": 16,
           "brand": 1,
-          "company": null
+          "company": null,
+          "timezone": 2
         },
         "matchingRules": {
           "$.body.id": {
@@ -54,27 +57,28 @@
       }
     },
     {
-      "description": "edit Web portals",
+      "description": "edit Brand Operator",
       "providerState": "",
       "request": {
         "method": "PUT",
-        "path": "/api/platform/web_portals/2",
+        "path": "/api/platform/administrators/4",
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzY0NTMxMzUsImV4cCI6MTY3NjQ1NjczNSwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6Imlyb250ZWMifQ.KahLJTPea7OLraAjnq9UxKKwBrqPOG7z6QSl0CtpKNTrXY2jgZavKztq64KWm-9j9ym98LRTI7Acj-MtWUqYiB11p8OFL3fQk0B9EmX-Thfk_z9UFT_oXNnzoXT4BZzyF0hDo9kedR1j4SPoVNug4WG7Lkx_-MV2Qz2PbsV-BF-Y3kb0QtGz5vtEWxLYGrCq7cEhGRsakHFAOxu2Z0Kdj5gDUFTaKR5G96fymnfWph1PmIRwyCCWAyUVMTpobMLbauJtEKTXiav6H7lE4RU5hSI7R20sScy75FDc9NQcelmGlFMOmMwMgri_xouvwtIg3O4tMKputyzyD-GbgOt0vRiLACf5jcqPrq0b5p6cKuVTdxzmUBpRWaGCvS4tdHVuMqlsdL9WCQDygxB4osoUqws06rEdUIfDWjVAtmygPAR3JDI6QE1cocw6B7-sDfpFfyxpSYwWGEhwLC1E9djsIdHYioYq_iCCE_jBy2pC5JEwMouiwbrfrDkxGHwKhC_1qeugdWjrUiyMufihOvjqBeGt7nCAvY0CGgygJ4Opnv4Rz2ueFbJJbHy1fZx6b5XxY2gWQymDyRjeZBs7hyz4X8yeWPsYDLce0jY5rKHOIBFJAEqHO2Ce97daE2I0WZR6Of2E6eLtpeT5zx_kfPGzN-qEvjj-42YD_Y2XWNokSWU",
-          "content-length": "152",
+          "content-length": "197",
           "content-type": "application/json"
         },
         "body": {
-          "urlType": "god",
-          "name": "Updated Portal",
-          "color": "#000000",
-          "url": "https://updated-example.com",
-          "logo": {
-            "fileSize": null,
-            "mimeType": null,
-            "baseName": null
-          }
+          "pass": "1234",
+          "email": "modified@example.com",
+          "active": "0",
+          "restricted": "1",
+          "canImpersonate": "0",
+          "timezone": 2,
+          "username": "newUserName",
+          "name": "Updated admin name",
+          "lastname": "a lastname",
+          "brand": 1
         },
         "query": ""
       },
@@ -84,38 +88,27 @@
           "content-type": "application/json"
         },
         "body": {
-          "url": "https://updated-example.com",
-          "urlType": "god",
-          "name": "Updated Portal",
-          "color": "#000000",
-          "id": 2,
-          "logo": {
-            "fileSize": null,
-            "mimeType": null,
-            "baseName": null
-          },
+          "username": "newUserName",
+          "pass": "*****",
+          "email": "modified@example.com",
+          "active": false,
+          "restricted": true,
+          "name": "Updated admin name",
+          "lastname": "a lastname",
+          "canImpersonate": false,
+          "id": 1,
           "brand": 1,
-          "company": null
-        }
-      }
-    },
-    {
-      "description": "delete Web portals",
-      "providerState": "",
-      "request": {
-        "method": "DELETE",
-        "path": "/api/platform/web_portals/2",
-        "headers": {
-          "accept": "application/json, text/plain, */*",
-          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzY0NTMxMzUsImV4cCI6MTY3NjQ1NjczNSwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6Imlyb250ZWMifQ.KahLJTPea7OLraAjnq9UxKKwBrqPOG7z6QSl0CtpKNTrXY2jgZavKztq64KWm-9j9ym98LRTI7Acj-MtWUqYiB11p8OFL3fQk0B9EmX-Thfk_z9UFT_oXNnzoXT4BZzyF0hDo9kedR1j4SPoVNug4WG7Lkx_-MV2Qz2PbsV-BF-Y3kb0QtGz5vtEWxLYGrCq7cEhGRsakHFAOxu2Z0Kdj5gDUFTaKR5G96fymnfWph1PmIRwyCCWAyUVMTpobMLbauJtEKTXiav6H7lE4RU5hSI7R20sScy75FDc9NQcelmGlFMOmMwMgri_xouvwtIg3O4tMKputyzyD-GbgOt0vRiLACf5jcqPrq0b5p6cKuVTdxzmUBpRWaGCvS4tdHVuMqlsdL9WCQDygxB4osoUqws06rEdUIfDWjVAtmygPAR3JDI6QE1cocw6B7-sDfpFfyxpSYwWGEhwLC1E9djsIdHYioYq_iCCE_jBy2pC5JEwMouiwbrfrDkxGHwKhC_1qeugdWjrUiyMufihOvjqBeGt7nCAvY0CGgygJ4Opnv4Rz2ueFbJJbHy1fZx6b5XxY2gWQymDyRjeZBs7hyz4X8yeWPsYDLce0jY5rKHOIBFJAEqHO2Ce97daE2I0WZR6Of2E6eLtpeT5zx_kfPGzN-qEvjj-42YD_Y2XWNokSWU"
+          "company": null,
+          "timezone": 2
         },
-        "body": "",
-        "query": ""
-      },
-      "response": {
-        "status": 204,
-        "headers": {},
-        "body": ""
+        "matchingRules": {
+          "$.body.name": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          }
+        }
       }
     }
   ],

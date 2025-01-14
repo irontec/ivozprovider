@@ -1,0 +1,30 @@
+{
+    "request": {
+        "url": "https://updated-example.com",
+        "name": "Updated Portal"
+    },
+    "response": {
+        "body": {
+            "url": "https://updated-example.com",
+            "urlType": "god",
+            "name": "Updated Portal",
+            "color": "#000000",
+            "id": 2,
+            "logo": {
+                "fileSize": null,
+                "mimeType": null,
+                "baseName": null
+            },
+            "brand": 1,
+            "company": null
+        }
+    },
+    "matchingRules": {
+        "$.body.name": {
+            "match": "type"
+        },
+        "$.body.description": {
+            "match": "type"
+        }
+    }
+}

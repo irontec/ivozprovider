@@ -1,0 +1,19 @@
+{
+    "body": [
+        {
+            "ip": "8.8.8.8",
+            "blocker": "antiflood",
+            "aor": "aor",
+            "lastTimeBanned": "2020-03-10 11:00:00",
+            "id": 1
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/platform/banned_addresses?_page=1",
+        "x-last-page": "/api/platform/banned_addresses?_page=1",
+        "x-next-page": "/api/platform/banned_addresses?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}

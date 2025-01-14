@@ -1,0 +1,69 @@
+{
+  "request": {
+    "name": "api_brand_modified",
+    "domainUsers": "sip-api.irontec.com",
+    "recordingsLimitMB": 0,
+    "recordingsLimitEmail": "",
+    "invoice": {
+      "nif": "1234",
+      "postalAddress": "",
+      "postalCode": "48960",
+      "town": "",
+      "province": "",
+      "country": "",
+      "registryData": ""
+    }
+  },
+  "response": {
+    "body": {
+      "name": "api_brand_modified",
+      "domainUsers": "sip-api.irontec.com",
+      "maxCalls": 0,
+      "id": 2,
+      "logo": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      },
+      "invoice": {
+        "nif": "1234",
+        "postalAddress": "",
+        "postalCode": "48960",
+        "town": "",
+        "province": "",
+        "country": "",
+        "registryData": ""
+      },
+      "language": 1,
+      "defaultTimezone": 1,
+      "currency": 2,
+      "voicemailNotificationTemplate": null,
+      "faxNotificationTemplate": null,
+      "invoiceNotificationTemplate": null,
+      "callCsvNotificationTemplate": null,
+      "maxDailyUsageNotificationTemplate": null,
+      "features": [
+        2
+      ],
+      "proxyTrunks": [
+        2
+      ],
+      "applicationServerSets": [
+        0,
+        1
+      ],
+      "mediaRelaySets": [
+        0,
+        1
+      ]
+    }
+  },
+  "matchingRules": {
+    "$.body.name": {
+      "match": "type"
+    },
+    "$.body.description": {
+      "match": "type"
+    }
+  }
+}

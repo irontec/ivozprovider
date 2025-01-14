@@ -1,0 +1,40 @@
+{
+    "body": [
+        {
+            "domain": "127.0.0.1",
+            "pointsTo": "proxyusers",
+            "id": 3,
+            "brandName": "DemoBrand",
+            "companyName": "DemoCompany"
+        },
+        {
+            "domain": "retail.irontec.com",
+            "pointsTo": "proxyusers",
+            "id": 6,
+            "brandName": "",
+            "companyName": ""
+        },
+        {
+            "domain": "sip.irontec.com",
+            "pointsTo": "proxyusers",
+            "id": 4,
+            "brandName": "Irontec_e2e",
+            "companyName": ""
+        },
+        {
+            "domain": "test.irontec.com",
+            "pointsTo": "proxyusers",
+            "id": 5,
+            "brandName": "DemoBrand",
+            "companyName": "Irontec Test Company"
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/platform/domains?_page=1",
+        "x-last-page": "/api/platform/features?_page=1",
+        "x-next-page": "/api/platform/domains?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}
