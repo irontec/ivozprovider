@@ -1,0 +1,66 @@
+{
+    "body": [
+        {
+            "username": "brand",
+            "email": "",
+            "active": true,
+            "restricted": false,
+            "name": "",
+            "lastname": "",
+            "id": 4
+        },
+        {
+            "username": "Tremaine8",
+            "email": "",
+            "active": true,
+            "restricted": false,
+            "name": "",
+            "lastname": "",
+            "id": 8
+        },
+        {
+            "username": "Jaida93",
+            "email": "",
+            "active": true,
+            "restricted": false,
+            "name": "",
+            "lastname": "",
+            "id": 9
+        },
+        {
+            "username": "Ivah80",
+            "email": "",
+            "active": true,
+            "restricted": false,
+            "name": "",
+            "lastname": "",
+            "id": 10
+        },
+        {
+            "username": "Leland99",
+            "email": "",
+            "active": true,
+            "restricted": false,
+            "name": "",
+            "lastname": "",
+            "id": 11
+        },
+        {
+            "username": "Leopold.Pouros75",
+            "email": "",
+            "active": false,
+            "restricted": false,
+            "name": "",
+            "lastname": "",
+            "id": 12
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/platform/administrators?_page=1",
+        "x-last-page": "/api/platform/administrators?_page=1",
+        "x-next-page": "/api/platform/administrators?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}

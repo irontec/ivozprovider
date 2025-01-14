@@ -1,0 +1,30 @@
+{
+    "body": [
+        {
+            "name": "ExtraIP",
+            "ip": "127.0.0.3",
+            "advertisedIp": "138.0.0.3",
+            "id": 2
+        },
+        {
+            "name": "ip_for_delete_process",
+            "ip": "10.50.23.146",
+            "advertisedIp": null,
+            "id": 3
+        },
+        {
+            "name": "proxytrunks",
+            "ip": "127.0.0.1",
+            "advertisedIp": "138.0.0.1",
+            "id": 1
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/platform/proxy_trunks?_page=1",
+        "x-last-page": "/api/platform/proxy_trunks?_page=1",
+        "x-next-page": "/api/platform/proxy_trunks?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}

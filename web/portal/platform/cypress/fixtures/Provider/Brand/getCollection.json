@@ -1,0 +1,90 @@
+{
+    "body": [
+        {
+            "name": "DemoBrand",
+            "domainUsers": "",
+            "id": 1,
+            "logo": {
+                "fileSize": null,
+                "mimeType": null,
+                "baseName": null
+            },
+            "invoice": {
+                "nif": "",
+                "postalCode": ""
+            },
+            "features": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            ],
+            "proxyTrunks": [
+                1
+            ],
+            "applicationServerSets": [
+                0,
+                1
+            ],
+            "mediaRelaySets": [
+                0,
+                1
+            ]
+        },
+        {
+            "name": "Irontec_e2e",
+            "domainUsers": "sip.irontec.com",
+            "id": 2,
+            "logo": {
+                "fileSize": null,
+                "mimeType": null,
+                "baseName": null
+            },
+            "invoice": {
+                "nif": "",
+                "postalCode": ""
+            },
+            "features": [],
+            "proxyTrunks": [],
+            "applicationServerSets": [
+                0
+            ],
+            "mediaRelaySets": [
+                0
+            ]
+        },
+        {
+            "name": "TestBrand",
+            "domainUsers": "sip.irontec.com",
+            "id": 3,
+            "logo": {
+                "fileSize": null,
+                "mimeType": null,
+                "baseName": null
+            },
+            "invoice": {
+                "nif": "",
+                "postalCode": ""
+            },
+            "features": [],
+            "proxyTrunks": [],
+            "applicationServerSets": [
+                0
+            ],
+            "mediaRelaySets": [
+                0
+            ]
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/platform/brands?_page=1",
+        "x-last-page": "/api/platform/brands?_page=1",
+        "x-next-page": "/api/platform/brands?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}

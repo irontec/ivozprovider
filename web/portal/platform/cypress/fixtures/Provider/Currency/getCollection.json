@@ -1,0 +1,45 @@
+{
+    "body":[
+        {
+            "iden": "EUR",
+            "symbol": "€",
+            "id": 1,
+            "name": {
+                "en": "Euro",
+                "es": "Euro",
+                "ca": "Euro",
+                "it": "Euro"
+            }
+        },
+        {
+            "iden": "GBP",
+            "symbol": "£",
+            "id": 3,
+            "name": {
+                "en": "Pound",
+                "es": "Libra",
+                "ca": "Libra",
+                "it": "Pound"
+            }
+        },
+        {
+            "iden": "USD",
+            "symbol": "$",
+            "id": 2,
+            "name": {
+                "en": "Dollar",
+                "es": "Dóllar",
+                "ca": "Dollar",
+                "it": "Dollar"
+            }
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/platform/currencies?_page=1",
+        "x-last-page": "/api/platform/currencies?_page=1",
+        "x-next-page": "/api/platform/currencies?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}
