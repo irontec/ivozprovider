@@ -15,7 +15,6 @@ Feature: Update web portals
           "urlType": "god",
           "name": "Updated Portal",
           "color": "#000000",
-          "id": 1,
           "logo": {
               "fileSize": null,
               "mimeType": null,

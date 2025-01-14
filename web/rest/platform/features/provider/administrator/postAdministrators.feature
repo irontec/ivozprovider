@@ -19,7 +19,6 @@ Feature: Create administrators
           "name": "post",
           "lastname": "test",
           "canImpersonate": false,
-          "id": 1,
           "brand": null,
           "company": null,
           "timezone": 145
