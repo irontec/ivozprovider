@@ -1,4 +1,12 @@
 # Changelog
+## 4.3.0
+* Endpoints:
+    - /users:
+        - Added `email` as a new filter parameter.
+* Models:
+    - User-collection:
+        - Added `email` property.
+
 ## 4.2.0
 * Endpoints
   - /holiday_dates/mass_import:
@@ -153,7 +161,7 @@
     - /extensions/mass_import:
       - Added [POST] endpoint
     - /holiday_dates/mass_import
-      - Added [POST] endpoint 
+      - Added [POST] endpoint
     - /rating_profiles/{id}/simulate_call
       - Added [POST] endpoint
 * Models:
@@ -347,7 +355,7 @@
 ## 3.0.0
 * Disclaimer: The API schema will not be considered stable until version 3.1 and may receive new breaking changes
 * Endpoints:
-  - Extracted every user endpoint to it's own API 
+  - Extracted every user endpoint to it's own API
   - Added not equal [neq] filters
   - Added exits[fldName] filters
   - Fixed downloadable file spec
@@ -381,7 +389,7 @@
   - /holiday_dates:
     - Renamed voiceMailUser filter parameter to voicemail
   - /hunt_group_members:
-    - Added endpoint 
+    - Added endpoint
   - /hunt_groups:
     - Renamed noAnswerVoiceMailUser filter parameter to noAnswerVoicemail
   - /hunt_groups/{id}/users_available:
@@ -406,7 +414,7 @@
     - Removed voicemailLocution filter parameter
   - /voicemail_messages
     - Added [GET|DELETE] endpoint
-  - /voicemail_messages/{id}/metadatafile: 
+  - /voicemail_messages/{id}/metadatafile:
     - Added [GET] method
   - /voicemail_messages/{id}/recordingfile:
     - Added [GET] method
@@ -629,7 +637,7 @@
     - Added name.en[end|exact|exists|partial|start] filter parameters
     - Added name.es[end|exact|exists|partial|start] filter parameters
     - Added name.it[end|exact|exists|partial|start] filter parameters
-    - Added _order[name.ca], _order[name.en], _order[name.es] and _order[name.it] querystring arguments 
+    - Added _order[name.ca], _order[name.en], _order[name.es] and _order[name.it] querystring arguments
 
   - /music_on_holds:
     - Removed originalFile filter parameter
@@ -905,9 +913,9 @@
 ## 2.17.2
 * Endpoints:
     - /call_forward_settings:
-        - Removed noAnswerTimeout, noAnswerTimeout[between], noAnswerTimeout[gt], noAnswerTimeout[gte], 
+        - Removed noAnswerTimeout, noAnswerTimeout[between], noAnswerTimeout[gt], noAnswerTimeout[gte],
           noAnswerTimeout[lt] and noAnswerTimeout[lte] filter parameters
-        - Removed numberValue, numberValue[end], numberValue[exact], numberValue[exists], numberValue[partial] 
+        - Removed numberValue, numberValue[end], numberValue[exact], numberValue[exists], numberValue[partial]
           and numberValue[start] filter parameters
         - Removed _order[noAnswerTimeout] and _order[numberValue] querystring arguments
     - /countries:
@@ -1042,10 +1050,10 @@ string search parameters are now deprecated and they'll be removed on next major
 * Models:
     - ConditionalRoutesCondition:
         - Added ConditionalRoutesCondition-withInverseRelationships model for [PUT] and [POST] operations which exposes matchListIds, scheduleIds, calendarIds and routeLockIds array properties
-        - Added matchListIds, scheduleIds, calendarIds and routeLockIds array properties to ConditionalRoutesCondition-detailed model 
+        - Added matchListIds, scheduleIds, calendarIds and routeLockIds array properties to ConditionalRoutesCondition-detailed model
     - ExternalCallFilter:
         - Added ExternalCallFilter-withInverseRelationships model for [PUT] and [POST] operations which exposes scheduleIds, calendarIds, whiteListIds and blackListIds array properties
-        - Added scheduleIds, calendarIds, whiteListIds and blackListIds array properties to ExternalCallFilter-detailed model 
+        - Added scheduleIds, calendarIds, whiteListIds and blackListIds array properties to ExternalCallFilter-detailed model
     - RegistrationStatus:
         - Renamed to RegistrationStatus-status in order to avoid name collisions
     - ExternalCallFilter:
@@ -1059,14 +1067,14 @@ string search parameters are now deprecated and they'll be removed on next major
 
 ## 2.12
 * Endpoints:
-    - Removed filter parameters not present on response models (except for foreign keys) 
-    - Added [exists] filter modificator (company[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
+    - Removed filter parameters not present on response models (except for foreign keys)
+    - Added [exists] filter modificator (company[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions
   - Removed endpoints:
     - /residential_devices [POST]
     - /residential_devices/{id} [DELETE]
     - /retail_accounts [POST]
     - /retail_accounts/{id} [DELETE]
-    
+
 * Models:
     - Not nullable company attributes have been deprecated, will be removed in 2.13, as they can be resolved automatically. Value will be automatically set if the attribute is not found in the payload, otherwise, will maintain the user's value.
     - Added Catalan and Italian to each multi language field group
@@ -1084,7 +1092,7 @@ string search parameters are now deprecated and they'll be removed on next major
     - RatingProfile:
         - Added required attribute: ratingPlanGroup
     - User:
-        - Marked tokenKey attribute as deprecated (will be removed in 2.12)   
+        - Marked tokenKey attribute as deprecated (will be removed in 2.12)
 
 ## 2.11.1
 * Endpoints:
@@ -1106,7 +1114,7 @@ string search parameters are now deprecated and they'll be removed on next major
     - removed param [POST and PUT]: EncodedFile
   - /music_on_holds:
     - removed param [POST and PUT]: EncodedFile
-    
+
 * Models:
   - BillableCall:
     - added attribute on collection model: id

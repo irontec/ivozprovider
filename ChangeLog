@@ -1,3 +1,45 @@
+Tue, 13 Jan 2025 08:30:36 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.3.0 released
+
+    * Portals:
+        - Fixed a bug displaying portal logos with special characters in filenames #2780
+        - Fixed a bug displaying brand features in client creation screen #2822
+        - Fixed terminal status hint for SIP ALG registrations #2811
+        - Fixed Call CSV Schedulers available fields based on client features #2821
+        - Added validations of email fields #2776
+        - Added new API endpoint to retrieve Users API tokens #2817
+        - Added new option to impersonate as users #2835
+        - Added support for downloading multiple recording files #2796
+        - Added new platform infrastructure section to group Application Servers in Sets #2784
+        - Added support for assigning Media Relay Sets to Companies #2784
+        - Added support for assigning Application Server Sets to Companies #2784
+
+    * Application Server:
+        - Fixed a bug with incorrect calling order in Linear Queues #2794
+
+    * Microservices:
+        - Fixed a bug updating Current Daily Usage in clients #2812
+
+    * Proxies:
+        - Fixed a bug handling 302 Moved from WSS clients #2819
+        - Avoided short callid collisions #2785
+
+    * Schema:
+        - Added new entity Application Server Sets #2784
+
+    * Other:
+        - Added additional Cypress tests in platform, brand, client and user portals
+        - Fixed standalone ISO install missing packages
+        - Added spanish translation to documentation
+
+    * Security:
+        - build(deps): bump express from 4.19.2 to 4.21.0 in /web/portal #2767
+        - build(deps): bump body-parser from 1.20.2 to 1.20.3 in /web/portal #2769
+        - build(deps): bump vite from 3.2.10 to 3.2.11 in /web/portal #2774
+        - build(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /web/portal #2823
+
+
 Fri, 13 Sep 2024 09:17:20 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.2.0 released
@@ -255,7 +297,7 @@ Tue, 28 Nov 2023 13:33:23 +0100 IvozProvider Team <vozip+ivozprovider@irontec.co
     * Other
         - Brand new realtime active calls microservice written in go that replaces the old one written in openswoole
 
-    Tue, 03 Oct 2023 09:39:40 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Tue, 03 Oct 2023 09:39:40 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * Ivozprovider 3.3.0 released
 
