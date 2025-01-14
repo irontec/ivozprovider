@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 
 class CarrierDto extends CarrierDtoAbstract
 {

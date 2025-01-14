@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:6
+msgid "Authorized IP ranges"
+msgstr "Rangos de IP autorizados"
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:8
+msgid ""
+":ref:`Virtual PBX clients <vPBX clients>`, :ref:`retail clients` and "
+":ref:`residential clients` can add IP addresses or ranges (in CIDR "
+"format) with the combination of **Filter by IP address** field and **List"
+" of authorized sources** subsection."
+msgstr ""
+":ref:`Clientes de PBX Virtual <vPBX clients>`, :ref:`clientes minoristas <retail clients>` y "
+":ref:`clientes residenciales <residential clients>` pueden agregar direcciones IP o rangos (en formato CIDR) "
+"con la combinación del campo **Filtrar por dirección IP** y la subsección **Lista de fuentes autorizadas**."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:11
+msgid ""
+"On :ref:`wholesale clients` there is no **Filter by IP address** field as"
+" this type of clients are authenticated by IP, making filling **List of "
+"wholesale addresses** mandatory."
+msgstr ""
+"En :ref:`clientes mayoristas <wholesale clients>` no hay campo **Filtrar por dirección IP** ya que "
+"este tipo de clientes se autentican por IP, haciendo obligatorio completar la **Lista de "
+"direcciones mayoristas**."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:14
+msgid ""
+"When **Filter by IP address** is enabled, users won't be allowed to "
+"connect from another network, even if they have valid SIP credentials."
+msgstr ""
+"Cuando **Filtrar por dirección IP** está habilitado, los usuarios no podrán "
+"conectarse desde otra red, incluso si tienen credenciales SIP válidas."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:17
+msgid ""
+"Enabling **Filter by IP address** and leaving blank both **GeoIP "
+"countries** and **List of authorized sources** will prevent all calls."
+msgstr ""
+"Habilitar **Filtrar por dirección IP** y dejar en blanco tanto **Países GeoIP** "
+"como **Lista de fuentes autorizadas** evitará todas las llamadas."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:20
+msgid ""
+"Addresses listed in :ref:`IP filter blocked addresses` gives a clue of "
+"legitimate sources that should be added in **List of authorized sources**"
+" subsection."
+msgstr ""
+"Las direcciones listadas en :ref:`direcciones bloqueadas por el filtro IP <IP filter blocked addresses>` dan una pista de "
+"fuentes legítimas que deberían agregarse en la subsección **Lista de fuentes autorizadas**."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:26
+msgid "Roadwarrior users"
+msgstr "Usuarios itinerantes"
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:28
+msgid ""
+"Some vPBX clients have roadwarrior users that travel often and connect "
+"from external networks, forcing Clients to disable the IP filter security"
+" mechanism."
+msgstr ""
+"Algunos clientes de vPBX tienen usuarios itinerantes que viajan con frecuencia y se conectan "
+"desde redes externas, obligando a los Clientes a deshabilitar el mecanismo de seguridad del filtro IP."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:31
+msgid ""
+"To solve this issue, there is a user option called **Calls from non-"
+"granted IPs** that enables these users to call from non-granted IPs while"
+" remaining users' credentials are still protected with IP filter "
+"mechanism."
+msgstr ""
+"Para resolver este problema, hay una opción de usuario llamada **Llamadas desde IPs no autorizadas** "
+"que permite a estos usuarios llamar desde IPs no autorizadas mientras las credenciales de los demás usuarios "
+"siguen protegidas con el mecanismo de filtro IP."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:35
+msgid ""
+"When users like these call from non-granted IPs, their amount of "
+"concurrent outgoing calls are limited to 1, 2 or 3 to avoid being a "
+"security breach."
+msgstr ""
+"Cuando usuarios como estos llaman desde IPs no autorizadas, su cantidad de "
+"llamadas salientes concurrentes se limita a 1, 2 o 3 para evitar ser una "
+"brecha de seguridad."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:38
+msgid ""
+"Only **generated calls** (both internals and externals) are limited, "
+"received calls are not affected by this setting."
+msgstr ""
+"Solo las **llamadas generadas** (tanto internas como externas) están limitadas, "
+"las llamadas recibidas no se ven afectadas por esta configuración."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:41
+msgid "To sum up, with this feature:"
+msgstr "En resumen, con esta característica:"
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:43
+msgid ""
+"There are users that are allowed to make a fixed amount of calls from "
+"non-granted IPs."
+msgstr ""
+"Hay usuarios que tienen permitido hacer una cantidad fija de llamadas desde "
+"IPs no autorizadas."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:46
+msgid "These calls from non-granted IPs are counted and limited."
+msgstr "Estas llamadas desde IPs no autorizadas son contadas y limitadas."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:49
+msgid "Example 1 - Client without IP check"
+msgstr "Ejemplo 1 - Cliente sin verificación de IP"
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:50
+msgid ""
+"It doesn't matter if the user is allowed to make calls from non-granted "
+"IPs, as there are no non-granted IPs."
+msgstr ""
+"No importa si el usuario tiene permitido hacer llamadas desde IPs no autorizadas, "
+"ya que no hay IPs no autorizadas."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:54
+msgid "Example 2 - Client with IP check"
+msgstr "Ejemplo 2 - Cliente con verificación de IP"
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:55
+msgid ""
+"If the user is calling from one of the allowed IPs, it doesn't matter if "
+"the user is allowed to make calls from non-granted IPs: this calls are "
+"not counted nor limited."
+msgstr ""
+"Si el usuario está llamando desde una de las IPs permitidas, no importa si "
+"el usuario tiene permitido hacer llamadas desde IPs no autorizadas: estas llamadas "
+"no se cuentan ni se limitan."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:59
+msgid ""
+"If the user is NOT calling from one of the allowed IPs, it is verified "
+"the amount of calls that this user is allowed to make. If the user is "
+"allowed to make calls from non-granted IPs and has not exceeded his "
+"limit, the call is granted and counted."
+msgstr ""
+"Si el usuario NO está llamando desde una de las IPs permitidas, se verifica "
+"la cantidad de llamadas que este usuario tiene permitido hacer. Si el usuario tiene "
+"permitido hacer llamadas desde IPs no autorizadas y no ha excedido su "
+"límite, la llamada es concedida y contada."
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:64
+msgid ""
+"To sum up, if **Calls from non-granted IPs** is set to *None* the user "
+"must fulfill the IP policy of the client."
+msgstr ""
+"En resumen, si **Llamadas desde IPs no autorizadas** está configurado en *Ninguna*, el usuario "
+"debe cumplir con la política de IP del cliente."
+

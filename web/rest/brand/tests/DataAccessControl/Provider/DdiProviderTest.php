@@ -64,6 +64,11 @@ class DdiProviderTest extends KernelTestCase
                             'transformationRuleSet',
                             'in',
                             'TransformationRuleSetRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
+                        ],
+                        [
+                            'mediaRelaySet',
+                            'in',
+                            'MediaRelaySetRepository([["id","IN",["mediaRelaySetsRelBrandRepository.getMediaRelaySetIdsByBrandAdmin(user)"]]])'
                         ]
                     ]
                 ]

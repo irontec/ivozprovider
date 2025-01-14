@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../basic_concepts/installation/debian_install.rst:3
+msgid "Debian packages install"
+msgstr "Instalación de paquetes Debian"
+
+#: ../../basic_concepts/installation/debian_install.rst:5
+msgid ""
+"IvozProvider is designed to be installed and updated using Debian "
+"packages. More exactly, the current release is ready to be installed on "
+"`Debian Bookworm 12 <https://www.debian.org/releases/bookworm>`_."
+msgstr ""
+"IvozProvider está diseñado para ser instalado y actualizado utilizando "
+"paquetes Debian. Más exactamente, la versión actual está lista para ser "
+"instalada en `Debian Bookworm 12 <https://www.debian.org/releases/bookworm>`_."
+
+#: ../../basic_concepts/installation/debian_install.rst:9
+msgid ""
+"It's recommended to use one of the `official installation guides "
+"<https://www.debian.org/releases/bookworm/installmanual>`_ to install the"
+" minimum base system. The rest of required  dependencies will be "
+"installed automatically with IvozProvider meta packages."
+msgstr ""
+"Se recomienda utilizar una de las `guías de instalación oficiales "
+"<https://www.debian.org/releases/bookworm/installmanual>`_ para instalar "
+"el sistema base mínimo. El resto de las dependencias requeridas se "
+"instalarán automáticamente con los metapaquetes de IvozProvider."
+
+#: ../../basic_concepts/installation/debian_install.rst:14
+msgid ""
+"No matter if you are installing a :ref:`StandAlone install` or a "
+":ref:`Distributed install`, it's required to configure Irontec debian "
+"repositories."
+msgstr ""
+"No importa si está instalando una :ref:`instalación StandAlone` o una "
+":ref:`instalación distribuida`, es necesario configurar los repositorios "
+"debian de Irontec."
+
+#: ../../basic_concepts/installation/debian_install.rst:20
+msgid "APT Repository configuration"
+msgstr "Configuración del repositorio APT"
+
+#: ../../basic_concepts/installation/debian_install.rst:27
+msgid "Optionally, we can add the repository key to check signed packages:"
+msgstr ""
+"Opcionalmente, podemos agregar la clave del repositorio para verificar "
+"los paquetes firmados:"
+
+#: ../../basic_concepts/installation/debian_install.rst:38
+msgid "Installing profile package"
+msgstr "Instalación del paquete de perfil"
+
+#: ../../basic_concepts/installation/debian_install.rst:40
+msgid ""
+"Once the repositories are configured, it will be required to select the "
+"proper metapackage depending on the type of installation."
+msgstr ""
+"Una vez configurados los repositorios, será necesario seleccionar el "
+"metapaquete adecuado según el tipo de instalación."
+
+#: ../../basic_concepts/installation/debian_install.rst:44
+msgid "For a :ref:`StandAlone install`:"
+msgstr "Para una :ref:`instalación StandAlone`:"
+
+#: ../../basic_concepts/installation/debian_install.rst:44
+msgid "ivozprovider"
+msgstr "ivozprovider"
+
+#: ../../basic_concepts/installation/debian_install.rst:51
+msgid ""
+"For a :ref:`Distributed install`: one of the profile packages depending "
+"on the role the machine will perform."
+msgstr ""
+"Para una :ref:`instalación distribuida`: uno de los paquetes de perfil "
+"dependiendo del rol que desempeñará la máquina."
+
+#: ../../basic_concepts/installation/debian_install.rst:54
+msgid "ivozprovider-profile-data"
+msgstr "ivozprovider-profile-data"
+
+#: ../../basic_concepts/installation/debian_install.rst:55
+msgid "ivozprovider-profile-proxy"
+msgstr "ivozprovider-profile-proxy"
+
+#: ../../basic_concepts/installation/debian_install.rst:56
+msgid "ivozprovider-profile-portal"
+msgstr "ivozprovider-profile-portal"
+
+#: ../../basic_concepts/installation/debian_install.rst:57
+msgid "ivozprovider-profile-as"
+msgstr "ivozprovider-profile-as"
+
+#: ../../basic_concepts/installation/debian_install.rst:59
+msgid ""
+"Distributed installation require a couple manual configuration based on "
+"the roles that are performing. Take into account that distributed "
+"installation process is not documented yet. You can refer to "
+"`documentation request "
+"<https://github.com/irontec/ivozprovider/issues/271>`_ for more "
+"information."
+msgstr ""
+"La instalación distribuida requiere un par de configuraciones manuales "
+"basadas en los roles que están desempeñando. Tenga en cuenta que el "
+"proceso de instalación distribuida aún no está documentado. Puede "
+"consultar la `solicitud de documentación "
+"<https://github.com/irontec/ivozprovider/issues/271>`_ para obtener más "
+"información."
+
+#: ../../basic_concepts/installation/debian_install.rst:66
+msgid "Finish the installation"
+msgstr "Terminar la instalación"
+
+#: ../../basic_concepts/installation/debian_install.rst:67
+msgid ""
+"Standalone installation have a menu that can be used to configure the "
+"basic services used in IvozProvider. Most of the services are "
+"automatically configured to work in the same machine with the default "
+"values."
+msgstr ""
+"La instalación StandAlone tiene un menú que se puede usar para configurar "
+"los servicios básicos utilizados en IvozProvider. La mayoría de los "
+"servicios se configuran automáticamente para funcionar en la misma "
+"máquina con los valores predeterminados."
+
+#: ../../basic_concepts/installation/debian_install.rst:71
+msgid "This menu allows:"
+msgstr "Este menú permite:"
+
+#: ../../basic_concepts/installation/debian_install.rst:73
+msgid "Configure IP address(es) for SIP proxies"
+msgstr "Configurar dirección(es) IP para proxies SIP"
+
+#: ../../basic_concepts/installation/debian_install.rst:74
+msgid "Default platform language"
+msgstr "Idioma predeterminado de la plataforma"
+
+#: ../../basic_concepts/installation/debian_install.rst:75
+msgid "Administrator MySQL database password"
+msgstr "Contraseña de la base de datos MySQL del administrador"
+
+#: ../../basic_concepts/installation/debian_install.rst:77
+msgid "It's possible to change any of this values anytime by running:"
+msgstr ""
+"Es posible cambiar cualquiera de estos valores en cualquier momento "
+"ejecutando:"
+
+#: ../../basic_concepts/installation/debian_install.rst:84
+msgid ""
+"Any of the public IP addresses configured during the installation will "
+"work to access the web portal. Default credentials are **admin / "
+"changeme**."
+msgstr ""
+"Cualquiera de las direcciones IP públicas configuradas durante la "
+"instalación funcionará para acceder al portal web. Las credenciales "
+"predeterminadas son **admin / changeme**."
+
+#: ../../basic_concepts/installation/debian_install.rst:88
+msgid ""
+"You must reboot your machine after a package installation in order to "
+"start all required services."
+msgstr ""
+"Debe reiniciar su máquina después de una instalación de paquetes para "
+"iniciar todos los servicios requeridos."
+

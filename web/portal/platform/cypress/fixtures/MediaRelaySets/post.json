@@ -1,0 +1,22 @@
+{
+  "request": {
+    "name": "New",
+    "description": "New media relay set"
+  },
+  "response": {
+    "body": {
+      "name": "New",
+      "description": "New media relay set",
+      "id": 3
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

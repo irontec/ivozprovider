@@ -7,8 +7,10 @@ use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Domain\Service\StoragePathResolverCollection;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
+use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrandInterface;
 
 class BrandDtoAssembler implements CustomDtoAssemblerInterface
 {
@@ -70,6 +72,32 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
 
         $dto->setProxyTrunks(
             $proxyTrunksIds
+        );
+
+        $applicationServerSetIds = array_map(
+            function (ApplicationServerSetsRelBrandInterface $applicationServerRelBrand): int {
+                return $applicationServerRelBrand
+                    ->getApplicationServerSet()
+                    ->getId() ?? -1;
+            },
+            $entity->getRelApplicationServerSets()
+        );
+
+        $dto->setApplicationServerSets(
+            $applicationServerSetIds
+        );
+
+        $mediaRelaySetIds = array_map(
+            function (MediaRelaySetsRelBrandInterface $mediaRelaySetRelBrand): int {
+                return $mediaRelaySetRelBrand
+                    ->getMediaRelaySet()
+                    ->getId() ?? -1;
+            },
+            $entity->getRelMediaRelaySets()
+        );
+
+        $dto->setMediaRelaySets(
+            $mediaRelaySetIds
         );
 
         return $dto;

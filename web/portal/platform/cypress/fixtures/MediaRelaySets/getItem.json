@@ -1,0 +1,16 @@
+{
+  "body": {
+    "setid": 1,
+    "url": "udp:127.0.0.1:22222",
+    "weight": 3,
+    "disabled": true,
+    "stamp": "2020-01-01 01:00:00",
+    "description": "rtpengine01-updated",
+    "id": 1,
+    "mediaRelaySet": 1
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

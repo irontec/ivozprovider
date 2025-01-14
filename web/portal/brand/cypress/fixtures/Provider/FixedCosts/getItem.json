@@ -1,0 +1,12 @@
+{
+  "body": {
+    "name": "Monitoring",
+    "description": "Something",
+    "cost": 1,
+    "id": 1
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

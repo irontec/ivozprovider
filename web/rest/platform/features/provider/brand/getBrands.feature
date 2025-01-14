@@ -38,6 +38,14 @@ Feature: Manage brands
               ],
               "proxyTrunks": [
                   1
+              ],
+              "applicationServerSets": [
+                  0,
+                  1
+              ],
+              "mediaRelaySets": [
+                  0,
+                  1
               ]
           },
           {
@@ -54,7 +62,35 @@ Feature: Manage brands
                   "postalCode": ""
               },
               "features": [],
-              "proxyTrunks": []
+              "proxyTrunks": [],
+              "applicationServerSets": [
+                  0
+              ],
+              "mediaRelaySets": [
+                  0
+              ]
+          },
+          {
+              "name": "TestBrand",
+              "domainUsers": "sip.irontec.com",
+              "id": 3,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "invoice": {
+                  "nif": "",
+                  "postalCode": ""
+              },
+              "features": [],
+              "proxyTrunks": [],
+              "applicationServerSets": [
+                  0
+              ],
+              "mediaRelaySets": [
+                  0
+              ]
           }
       ]
       """
@@ -135,6 +171,14 @@ Feature: Manage brands
               7
           ],
           "proxyTrunks": [
+              1
+          ],
+          "applicationServerSets": [
+              0,
+              1
+          ],
+          "mediaRelaySets": [
+              0,
               1
           ]
       }

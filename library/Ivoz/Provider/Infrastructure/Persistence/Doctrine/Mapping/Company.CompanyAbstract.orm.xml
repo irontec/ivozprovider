@@ -5,7 +5,7 @@
       <unique-constraint name="domain_unique" columns="domain_users"/>
       <unique-constraint name="company_name_brand" columns="name,brandId"/>
     </unique-constraints>
-    <embedded name="invoicing" class="Ivoz\Provider\Domain\Model\Company\Invoicing" use-column-prefix="false" />
+    <embedded name="invoicing" class="Ivoz\Provider\Domain\Model\Company\Invoicing" use-column-prefix="false"/>
     <field name="type" type="string" column="type" length="25" nullable="false">
       <options>
         <option name="fixed"/>
@@ -109,11 +109,6 @@
         <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="mediaRelaySets" target-entity="Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface" fetch="LAZY">
-      <join-columns>
-        <join-column name="mediaRelaySetsId" referenced-column-name="id" on-delete="SET NULL"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="defaultTimezone" target-entity="Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface" fetch="LAZY">
       <join-columns>
         <join-column name="defaultTimezoneId" referenced-column-name="id" on-delete="SET NULL"/>
@@ -129,14 +124,9 @@
         <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="applicationServer" target-entity="Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface" fetch="LAZY">
-      <join-columns>
-        <join-column name="applicationServerId" referenced-column-name="id" on-delete="SET NULL"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="country" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="countryId" referenced-column-name="id" on-delete="CASCADE" nullable="" />
+        <join-column name="countryId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
     <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\CurrencyInterface" fetch="LAZY">
@@ -192,6 +182,16 @@
     <many-to-one field="corporation" target-entity="Ivoz\Provider\Domain\Model\Corporation\CorporationInterface" fetch="LAZY">
       <join-columns>
         <join-column name="corporationId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="applicationServerSet" target-entity="Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="applicationServerSetId" referenced-column-name="id" on-delete="RESTRICT" nullable="0"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="mediaRelaySet" target-entity="Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="mediaRelaySetId" referenced-column-name="id" on-delete="RESTRICT" nullable="0"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

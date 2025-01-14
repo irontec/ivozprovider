@@ -8,8 +8,9 @@ use Doctrine\Persistence\ObjectRepository;
 interface DispatcherRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param int $id
-     * @return null|DispatcherInterface
+     * @return DispatcherInterface[]
      */
-    public function findOneByApplicationServerId($id);
+    public function findByApplicationServerId(int $id): array;
+
+    public function findOneByApplicationServerSetRelApplicationServer(int $id): ?DispatcherInterface;
 }

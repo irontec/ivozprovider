@@ -1,0 +1,31 @@
+{
+  "body": [
+    {
+      "number": "1",
+      "inDate": "2018-01-01 01:00:00",
+      "outDate": "2018-01-31 23:59:59",
+      "total": 0.272,
+      "taxRate": 21,
+      "totalWithTax": 0.33,
+      "status": "processing",
+      "id": 1,
+      "pdf": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      },
+      "invoiceTemplate": 1,
+      "company": 1,
+      "scheduler": null,
+      "currency": "€"
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/invoices?_page=1",
+    "x-last-page": "/api/brand/invoices?_page=1",
+    "x-next-page": "/api/brand/invoices?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

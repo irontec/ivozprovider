@@ -1,0 +1,37 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/client/index.rst:3
+msgid "Client Configuration"
+msgstr "Configuración del Cliente"
+
+#: ../../administration_portal/client/index.rst:5
+msgid "Currently, there are 4 different types of client in IvozProvider."
+msgstr "Actualmente, hay 4 tipos diferentes de clientes en IvozProvider."
+
+#: ../../administration_portal/client/index.rst:7
+msgid "Each of them is thoroughly described in the following sections:"
+msgstr "Cada uno de ellos se describe detalladamente en las siguientes secciones:"
+
+#: ../../administration_portal/client/index.rst:19
+msgid ""
+"Client types are order from the most feature-full to the most lightweight"
+" one."
+msgstr "Los tipos de clientes están ordenados desde el más completo en funciones hasta el más ligero."
+

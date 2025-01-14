@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerAbstract">
+      <unique-constraints>
+          <unique-constraint name="application_server_set_rel" columns="applicationServerId,applicationServerSetId"/>
+      </unique-constraints>
+      <many-to-one field="applicationServer" target-entity="Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="applicationServerId" referenced-column-name="id" on-delete="RESTRICT" nullable="false"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="applicationServerSet" target-entity="Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface" inversed-by="relApplicationServers" fetch="LAZY">
+      <join-columns>
+        <join-column name="applicationServerSetId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

@@ -11296,6 +11296,13 @@
                 ],
                 "parameters": [
                     {
+                        "name": "_userId",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Search for unassigned user extensions"
+                    },
+                    {
                         "name": "_includeId",
                         "in": "query",
                         "type": "integer",
@@ -18880,6 +18887,76 @@
                         "required": false,
                         "type": "string",
                         "description": "Use a time zone of choice instead of the token user one (Applies to both input and output)"
+                    }
+                ]
+            }
+        },
+        "/invoices/{id}": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getInvoiceItem",
+                "summary": "Retrieves a Invoice resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_timezone",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Use a time zone of choice instead of the token user one (Applies to both input and output)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Invoice resource response",
+                        "schema": {
+                            "$ref": "#/definitions/Invoice-detailed"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/invoices/{id}/pdf": {
+            "get": {
+                "produces": [
+                    "application/octet-stream"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "#/definitions/Invoice_Pdf",
+                        "schema": {
+                            "type": "file"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "/invoice_pdfInvoiceItem",
+                "summary": "Retrieves a Invoice resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
                     }
                 ]
             }
@@ -33178,6 +33255,12 @@
                 },
                 "parameters": [
                     {
+                        "name": "active",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "bossAssistant",
                         "in": "query",
                         "required": false,
@@ -33227,6 +33310,54 @@
                     },
                     {
                         "name": "callAcl[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[email]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -33310,12 +33441,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "lastname[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "lastname[start]",
                         "in": "query",
                         "required": false,
@@ -33329,6 +33454,12 @@
                     },
                     {
                         "name": "lastname[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "lastname[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33476,6 +33607,26 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[active]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[email]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "enum": [
@@ -36240,8 +36391,10 @@
                     "type": "string"
                 },
                 "email": {
+                    "default": "",
                     "maxLength": 140,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "lastExecution": {
@@ -36343,8 +36496,10 @@
                     "type": "string"
                 },
                 "email": {
+                    "default": "",
                     "maxLength": 140,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "lastExecution": {
@@ -36408,8 +36563,10 @@
                     "type": "string"
                 },
                 "email": {
+                    "default": "",
                     "maxLength": 140,
                     "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "lastExecution": {
@@ -41324,6 +41481,73 @@
                 },
                 "currency": {
                     "description": "Invoice currency",
+                    "type": "string"
+                }
+            }
+        },
+        "Invoice-detailed": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "maxLength": 30,
+                    "description": "",
+                    "type": "string"
+                },
+                "inDate": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                },
+                "outDate": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                },
+                "taxRate": {
+                    "format": "float",
+                    "description": "",
+                    "type": "number"
+                },
+                "totalWithTax": {
+                    "format": "float",
+                    "description": "",
+                    "type": "number"
+                },
+                "statusMsg": {
+                    "maxLength": 140,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "pdf": {
+                    "$ref": "#/definitions/Invoice_Pdf"
+                },
+                "currency": {
+                    "description": "Invoice currency",
+                    "type": "string"
+                }
+            }
+        },
+        "Invoice_Pdf": {
+            "type": "object",
+            "properties": {
+                "fileSize": {
+                    "minimum": 0,
+                    "description": "",
+                    "type": "integer"
+                },
+                "mimeType": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "baseName": {
+                    "maxLength": 255,
+                    "description": "",
                     "type": "string"
                 }
             }
@@ -46426,7 +46650,8 @@
             "type": "object",
             "required": [
                 "name",
-                "lastname"
+                "lastname",
+                "active"
             ],
             "properties": {
                 "id": {
@@ -46455,6 +46680,17 @@
                 "outgoingDdi": {
                     "description": "",
                     "type": "integer"
+                },
+                "email": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
+                "active": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
                 },
                 "status": {
                     "description": "Registration status",
@@ -47176,26 +47412,6 @@
                     "type": "string"
                 },
                 "title": {
-                    "description": "",
-                    "type": "string"
-                }
-            }
-        },
-        "Invoice_Pdf": {
-            "type": "object",
-            "properties": {
-                "fileSize": {
-                    "minimum": 0,
-                    "description": "",
-                    "type": "integer"
-                },
-                "mimeType": {
-                    "maxLength": 80,
-                    "description": "",
-                    "type": "string"
-                },
-                "baseName": {
-                    "maxLength": 255,
                     "description": "",
                     "type": "string"
                 }

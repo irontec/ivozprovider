@@ -1,0 +1,32 @@
+{
+  "request": {
+    "name": "testPostAps",
+    "distributeMethod": "rr",
+    "description": "Test create application server set",
+    "applicationServers": [
+      3,
+      1
+    ]
+  },
+  "response": {
+    "body": {
+      "name": "testPostAps",
+      "distributeMethod": "rr",
+      "description": "Test create application server set",
+      "id": 3,
+      "applicationServers": [
+        3,
+        1
+      ]
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

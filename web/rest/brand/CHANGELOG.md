@@ -1,4 +1,32 @@
 # Changelog
+## 4.3.0
+* Endpoints:
+    - /application_server_sets
+      - Added [GET] endpoint to retrieve a collection of ApplicationServerSet resources.
+      - Added [POST] endpoint to create a new ApplicationServerSet resource.
+    - /application_server_sets/{id}
+      - Added [GET] endpoint to retrieve a specific ApplicationServerSet resource.
+      - Added [PUT] endpoint to update an ApplicationServerSet resource.
+      - Added [DELETE] endpoint to delete an ApplicationServerSet resource.
+    - /media_relay_sets
+      - Added [GET] endpoint to retrieve a collection of MediaRelaySet resources.
+      - Added [POST] endpoint to create a new MediaRelaySet resource.
+    - /media_relay_sets/{id}
+      - Added [GET] endpoint to retrieve a specific MediaRelaySet resource.
+      - Added [PUT] endpoint to update a MediaRelaySet resource.
+      - Added [DELETE] endpoint to delete a MediaRelaySet resource.
+* Models:
+    - ApplicationServerSet:
+        - New model added to support management of application server configurations.
+    - MediaRelaySet:
+        - New model added to support management of media relay configurations.
+    - Carrier:
+        - Added mediaRelaySet property as a required field.
+    - DdiProvider:
+        - Added mediaRelaySet property as a required field.
+    - Company:
+        - Added applicationServerSet and mediaRelaySet properties as required fields.
+
 ## 4.2.0
 * Endpoints
   - /web_portals
@@ -367,7 +395,7 @@
     - Added invoicing.province filter parameters
     - Added invoicing.town filter parameters
     - Added multiContact filter parameter
-    - Added rtpEncryption filter parameter- 
+    - Added rtpEncryption filter parameter-
     - Added _order[multiContact] querystring argument
     - Added _order[rtpEncryption] querystring argument
   - /routing_patterns:
@@ -706,7 +734,7 @@
         - Set currency as required
     - Brand-detailed:
         - Set currency as required
-    
+
 ## 2.18.1
 * Endpoints:
     - /brands:
@@ -833,7 +861,7 @@
 ## 2.17.2
 * Endpoints:
     - /countries:
-        - Added name.ca[end], name.ca[exact], name.ca[exists], name.ca[partial] and name.ca[start] filter parameters 
+        - Added name.ca[end], name.ca[exact], name.ca[exists], name.ca[partial] and name.ca[start] filter parameters
         - Added name.it[end], name.it[exact], name.it[exists], name.it[partial] and name.ca[start] filter parameters
         - Added _order[name.ca] and _order[name.it] querystring arguments
     - /currencies:
@@ -896,7 +924,7 @@ string search parameters are now deprecated and they'll be removed on next major
     - "company[]=1&company[]=2": company equals 1 or 2
 
 * Endpoints:
-    - Added [DELETE] /banned_addresses/antibruteforce/{id} 
+    - Added [DELETE] /banned_addresses/antibruteforce/{id}
 
 * Models:
     - BannedAddress-collection
@@ -938,7 +966,7 @@ string search parameters are now deprecated and they'll be removed on next major
         - Set transport property as nullable
     - RetailAccount:
         - Set transport property as nullable
- 
+
 ## 2.15
 * Endpoints:
     - Added [GET] /administrator_rel_public_entities
@@ -976,7 +1004,7 @@ string search parameters are now deprecated and they'll be removed on next major
         - Added proxyTrunk property
     - Company:
         - Set transformationRuleSet property as required
-        - Added maxDailyUsage property 
+        - Added maxDailyUsage property
     - DdiProvider:
         - Set transformationRuleSet property as required
         - Added proxyTrunk property
@@ -1053,7 +1081,7 @@ string search parameters are now deprecated and they'll be removed on next major
     - OutgoingRouting:
         - Added "block" to routingMode accepted values
         - Added DdiProviderRegistrationStatus and DdiProviderRegistration-detailedCollection models
-   
+
 ## 2.12.1
 * Endpoints:
     - /ddi_provider_registrations
@@ -1061,7 +1089,7 @@ string search parameters are now deprecated and they'll be removed on next major
 * Models:
     - Company:
         - Added Company-withFeatures model for [PUT] and [POST] operations which exposes featureIds array property
-        - Added featureIds array property to Company-detailed model 
+        - Added featureIds array property to Company-detailed model
     - DdiProviderRegistration:
         - Removed DdiProviderRegistration-detailed model
         - Added DdiProviderRegistrationStatus and DdiProviderRegistration-detailedCollection models
@@ -1076,8 +1104,8 @@ string search parameters are now deprecated and they'll be removed on next major
 
 ## 2.12
 * Endpoints:
-    - Removed filter parameters not present on response models (except for foreign keys) 
-    - Added [exists] filter modificator (brand[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
+    - Removed filter parameters not present on response models (except for foreign keys)
+    - Added [exists] filter modificator (brand[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions
 * Models:
     - Not nullable brand attributes have been deprecated, will be removed in 2.13, as they can be resolved automatically. Value will be automatically set if the attribute is not found in the payload, otherwise, will maintain the user's value.
     - Added Catalan and Italian to each multi language field group
@@ -1090,7 +1118,7 @@ string search parameters are now deprecated and they'll be removed on next major
     - /retail_accounts/status
     - /terminals/status
   - Removed endpoints:
-    - /my/rating_plan_prices 
+    - /my/rating_plan_prices
   - /residential_devices
     - Added param [GET]: _pagination
   - /retail_accounts
@@ -1099,7 +1127,7 @@ string search parameters are now deprecated and they'll be removed on next major
     - Added param [GET]: friend
 * Models:
     - UsersCdr:
-        - added attributes: friend  
+        - added attributes: friend
 
 ## 2.11.1
 * Endpoints:

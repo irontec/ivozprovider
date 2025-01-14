@@ -54,7 +54,7 @@ abstract class DdiProviderAbstract
     /**
      * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySets = null;
+    protected $mediaRelaySet = null;
 
     /**
      * Constructor
@@ -144,7 +144,7 @@ abstract class DdiProviderAbstract
             ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
-            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
+            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
 
         $self->initChangelog();
 
@@ -174,7 +174,7 @@ abstract class DdiProviderAbstract
             ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
-            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
+            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
 
         return $this;
     }
@@ -190,7 +190,7 @@ abstract class DdiProviderAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth))
-            ->setMediaRelaySets(MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth));
+            ->setMediaRelaySet(MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth));
     }
 
     /**
@@ -204,7 +204,7 @@ abstract class DdiProviderAbstract
             'brandId' => self::getBrand()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
             'proxyTrunkId' => self::getProxyTrunk()?->getId(),
-            'mediaRelaySetsId' => self::getMediaRelaySets()?->getId()
+            'mediaRelaySetId' => self::getMediaRelaySet()?->getId()
         ];
     }
 
@@ -272,15 +272,15 @@ abstract class DdiProviderAbstract
         return $this->proxyTrunk;
     }
 
-    protected function setMediaRelaySets(?MediaRelaySetInterface $mediaRelaySets = null): static
+    protected function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): static
     {
-        $this->mediaRelaySets = $mediaRelaySets;
+        $this->mediaRelaySet = $mediaRelaySet;
 
         return $this;
     }
 
-    public function getMediaRelaySets(): ?MediaRelaySetInterface
+    public function getMediaRelaySet(): ?MediaRelaySetInterface
     {
-        return $this->mediaRelaySets;
+        return $this->mediaRelaySet;
     }
 }

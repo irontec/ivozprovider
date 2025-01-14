@@ -71,6 +71,18 @@ class ProviderExtension extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
+        $item5 = $this->createEntityInstance(Extension::class);
+        (function () use ($fixture) {
+            $this->setNumber("988");
+            $this->setRouteType('user');
+            $this->setUser($fixture->getReference('_reference_ProviderUser3'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+        })->call($item5);
+
+        $this->addReference('_reference_ProviderExtension5', $item5);
+        $this->sanitizeEntityValues($item5);
+        $manager->persist($item5);
+
         $manager->flush();
     }
 

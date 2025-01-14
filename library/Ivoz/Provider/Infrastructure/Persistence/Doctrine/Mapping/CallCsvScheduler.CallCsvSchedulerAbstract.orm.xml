@@ -31,6 +31,7 @@
     <field name="email" type="string" column="email" length="140" nullable="false">
       <options>
         <option name="fixed"/>
+        <option name="default"/>
       </options>
     </field>
     <field name="lastExecution" type="datetime" column="lastExecution" nullable="true"/>

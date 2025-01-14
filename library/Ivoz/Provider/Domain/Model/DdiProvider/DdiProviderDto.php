@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
+
 class DdiProviderDto extends DdiProviderDtoAbstract
 {
     /**

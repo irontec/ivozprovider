@@ -1,0 +1,50 @@
+{
+    "request": {
+        "type": "pattern",
+        "priority": 2,
+        "weight": 1,
+        "routingMode": "lcr",
+        "prefix": null,
+        "forceClid": false,
+        "clid": null,
+        "company": 2,
+        "carrier": 1,
+        "routingPattern": 1,
+        "routingPatternGroup": null,
+        "clidCountry": null,
+        "carrierIds": [
+            1
+        ]
+    },
+    "response": {
+        "body": {
+            "type": "pattern",
+            "priority": 2,
+            "weight": 1,
+            "routingMode": "lcr",
+            "prefix": null,
+            "stopper": false,
+            "forceClid": false,
+            "clid": null,
+            "id": 3,
+            "company": 2,
+            "carrier": null,
+            "routingPattern": 1,
+            "routingPatternGroup": null,
+            "routingTag": null,
+            "clidCountry": null,
+            "carrierIds": [
+                1
+            ]
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 201
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

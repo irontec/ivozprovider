@@ -1,0 +1,98 @@
+{
+    "request": {
+        "type": "wholesale",
+        "name": "Renamed Wholesale",
+        "maxCalls": 2000,
+        "maxDailyUsage": 1000001,
+        "currentDayUsage": 153,
+        "maxDailyUsageEmail": null,
+        "onDemandRecord": 0,
+        "allowRecordingRemoval": true,
+        "onDemandRecordCode": "",
+        "externallyextraopts": null,
+        "billingMethod": "postpaid",
+        "balance": 0,
+        "showInvoices": false,
+        "id": 5,
+        "invoicing": {
+            "nif": "12345689-Z",
+            "postalAddress": "",
+            "postalCode": "",
+            "town": "",
+            "province": "",
+            "countryName": ""
+        },
+        "language": 2,
+        "defaultTimezone": 3,
+        "country": 1,
+        "currency": null,
+        "outgoingDdi": null,
+        "outgoingDdiRule": null,
+        "faxNotificationTemplate": null,
+        "invoiceNotificationTemplate": null,
+        "callCsvNotificationTemplate": null,
+        "maxDailyUsageNotificationTemplate": null,
+        "accessCredentialNotificationTemplate": null,
+        "corporation": null,
+        "geoIpAllowedCountries": [],
+        "routingTagIds": [],
+        "codecIds": []
+    },
+    "response": {
+        "body": {
+            "type": "wholesale",
+            "name": "Renamed Wholesale",
+            "domainUsers": "wholesale.irontec.com",
+            "maxCalls": 2000,
+            "maxDailyUsage": 1000001,
+            "currentDayUsage": 153,
+            "maxDailyUsageEmail": null,
+            "ipfilter": true,
+            "onDemandRecord": 0,
+            "allowRecordingRemoval": true,
+            "onDemandRecordCode": "",
+            "externallyextraopts": null,
+            "billingMethod": "postpaid",
+            "balance": 0,
+            "showInvoices": false,
+            "id": 5,
+            "invoicing": {
+                "nif": "12345689-Z",
+                "postalAddress": "",
+                "postalCode": "",
+                "town": "",
+                "province": "",
+                "countryName": ""
+            },
+            "language": 1,
+            "defaultTimezone": 145,
+            "country": 68,
+            "currency": null,
+            "transformationRuleSet": 1,
+            "outgoingDdi": null,
+            "outgoingDdiRule": null,
+            "voicemailNotificationTemplate": 1,
+            "faxNotificationTemplate": null,
+            "invoiceNotificationTemplate": null,
+            "callCsvNotificationTemplate": null,
+            "maxDailyUsageNotificationTemplate": null,
+            "accessCredentialNotificationTemplate": null,
+            "corporation": null,
+            "applicationServerSet": 1,
+            "mediaRelaySet": 0,
+            "featureIds": [],
+            "geoIpAllowedCountries": [],
+            "routingTagIds": [],
+            "codecIds": []
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

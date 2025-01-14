@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandAbstract">
+        <unique-constraints>
+            <unique-constraint name="applicationServerSet_brand" columns="applicationServerSetId,brandId"/>
+        </unique-constraints>
+        <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="relApplicationServerSets" fetch="LAZY">
+            <join-columns>
+                <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="applicationServerSet" target-entity="Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="applicationServerSetId" referenced-column-name="id" on-delete="RESTRICT" nullable="false"/>
+            </join-columns>
+        </many-to-one>
+    </mapped-superclass>
+</doctrine-mapping>

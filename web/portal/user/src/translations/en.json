@@ -28,6 +28,7 @@
   "Direction": "Direction",
   "Disposition": "Disposition",
   "Do Not Disturb": "Do Not Disturb",
+  "Download": "Download",
   "Downloading": "Download",
   "Duration": "Duration",
   "Email": "Email",
@@ -118,7 +119,7 @@
   "Voicemail send mail": "Voicemail send mail",
   "Voicemail_one": "Voicemail",
   "Voicemail_other": "Voicemails",
-  "Welcome to <br />Ivoz Provider vPBX user portal": "Bienvenido al <br />Portal de usuario de IvozProvider",
+  "Welcome to <br />Ivoz Provider vPBX user portal": "Welcome to <br />Ivoz Provider vPBX user portal",
   "Yes": "Yes",
   "You are about to resend this fax": "You are about to resend this fax."
 }

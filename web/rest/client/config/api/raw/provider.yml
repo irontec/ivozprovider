@@ -709,6 +709,11 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
         tags:
           - Provider
         parameters:
+          - name: _userId
+            in: query
+            type: integer
+            required: false
+            description: 'Search for unassigned user extensions'
           - name: _includeId
             in: query
             type: integer
@@ -1228,7 +1233,8 @@ Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember:
       - huntGroup
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
-  itemOperations: []
+  itemOperations:
+    get: ~
   collectionOperations:
     get: ~
   attributes:

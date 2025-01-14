@@ -19,6 +19,8 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrandInterface;
 
 /**
 * @codeCoverageIgnore
@@ -87,6 +89,20 @@ trait BrandTrait
     protected $outgoingRoutings;
 
     /**
+     * @var Collection<array-key, ApplicationServerSetsRelBrandInterface> & Selectable<array-key, ApplicationServerSetsRelBrandInterface>
+     * ApplicationServerSetsRelBrandInterface mappedBy brand
+     * orphanRemoval
+     */
+    protected $relApplicationServerSets;
+
+    /**
+     * @var Collection<array-key, MediaRelaySetsRelBrandInterface> & Selectable<array-key, MediaRelaySetsRelBrandInterface>
+     * MediaRelaySetsRelBrandInterface mappedBy brand
+     * orphanRemoval
+     */
+    protected $relMediaRelaySets;
+
+    /**
      * Constructor
      */
     protected function __construct()
@@ -101,6 +117,8 @@ trait BrandTrait
         $this->musicsOnHold = new ArrayCollection();
         $this->matchLists = new ArrayCollection();
         $this->outgoingRoutings = new ArrayCollection();
+        $this->relApplicationServerSets = new ArrayCollection();
+        $this->relMediaRelaySets = new ArrayCollection();
     }
 
     abstract protected function sanitizeValues(): void;
@@ -204,6 +222,26 @@ trait BrandTrait
                 $outgoingRoutings
             );
             $self->replaceOutgoingRoutings($replacement);
+        }
+
+        $relApplicationServerSets = $dto->getRelApplicationServerSets();
+        if (!is_null($relApplicationServerSets)) {
+
+            /** @var Collection<array-key, ApplicationServerSetsRelBrandInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relApplicationServerSets
+            );
+            $self->replaceRelApplicationServerSets($replacement);
+        }
+
+        $relMediaRelaySets = $dto->getRelMediaRelaySets();
+        if (!is_null($relMediaRelaySets)) {
+
+            /** @var Collection<array-key, MediaRelaySetsRelBrandInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relMediaRelaySets
+            );
+            $self->replaceRelMediaRelaySets($replacement);
         }
 
         $self->sanitizeValues();
@@ -312,6 +350,26 @@ trait BrandTrait
                 $outgoingRoutings
             );
             $this->replaceOutgoingRoutings($replacement);
+        }
+
+        $relApplicationServerSets = $dto->getRelApplicationServerSets();
+        if (!is_null($relApplicationServerSets)) {
+
+            /** @var Collection<array-key, ApplicationServerSetsRelBrandInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relApplicationServerSets
+            );
+            $this->replaceRelApplicationServerSets($replacement);
+        }
+
+        $relMediaRelaySets = $dto->getRelMediaRelaySets();
+        if (!is_null($relMediaRelaySets)) {
+
+            /** @var Collection<array-key, MediaRelaySetsRelBrandInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relMediaRelaySets
+            );
+            $this->replaceRelMediaRelaySets($replacement);
         }
         $this->sanitizeValues();
 
@@ -1092,5 +1150,173 @@ trait BrandTrait
         }
 
         return $this->outgoingRoutings->toArray();
+    }
+
+    public function addRelApplicationServerSet(ApplicationServerSetsRelBrandInterface $relApplicationServerSet): BrandInterface
+    {
+        $this->relApplicationServerSets->add($relApplicationServerSet);
+
+        return $this;
+    }
+
+    public function removeRelApplicationServerSet(ApplicationServerSetsRelBrandInterface $relApplicationServerSet): BrandInterface
+    {
+        $this->relApplicationServerSets->removeElement($relApplicationServerSet);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, ApplicationServerSetsRelBrandInterface> $relApplicationServerSets
+     */
+    public function replaceRelApplicationServerSets(Collection $relApplicationServerSets): BrandInterface
+    {
+        foreach ($relApplicationServerSets as $entity) {
+            $entity->setBrand($this);
+        }
+
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
+        foreach ($this->relApplicationServerSets as $key => $entity) {
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($relApplicationServerSets as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($relApplicationServerSets[$newKey]);
+                    $match = true;
+                    break;
+                }
+            }
+
+            if (!$match) {
+                $this->relApplicationServerSets->remove($key);
+            }
+        }
+
+        foreach ($relApplicationServerSets as $entity) {
+            $this->addRelApplicationServerSet($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array<array-key, ApplicationServerSetsRelBrandInterface>
+     */
+    public function getRelApplicationServerSets(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->relApplicationServerSets->matching($criteria)->toArray();
+        }
+
+        return $this->relApplicationServerSets->toArray();
+    }
+
+    public function addRelMediaRelaySet(MediaRelaySetsRelBrandInterface $relMediaRelaySet): BrandInterface
+    {
+        $this->relMediaRelaySets->add($relMediaRelaySet);
+
+        return $this;
+    }
+
+    public function removeRelMediaRelaySet(MediaRelaySetsRelBrandInterface $relMediaRelaySet): BrandInterface
+    {
+        $this->relMediaRelaySets->removeElement($relMediaRelaySet);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, MediaRelaySetsRelBrandInterface> $relMediaRelaySets
+     */
+    public function replaceRelMediaRelaySets(Collection $relMediaRelaySets): BrandInterface
+    {
+        foreach ($relMediaRelaySets as $entity) {
+            $entity->setBrand($this);
+        }
+
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
+        foreach ($this->relMediaRelaySets as $key => $entity) {
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($relMediaRelaySets as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($relMediaRelaySets[$newKey]);
+                    $match = true;
+                    break;
+                }
+            }
+
+            if (!$match) {
+                $this->relMediaRelaySets->remove($key);
+            }
+        }
+
+        foreach ($relMediaRelaySets as $entity) {
+            $this->addRelMediaRelaySet($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array<array-key, MediaRelaySetsRelBrandInterface>
+     */
+    public function getRelMediaRelaySets(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->relMediaRelaySets->matching($criteria)->toArray();
+        }
+
+        return $this->relMediaRelaySets->toArray();
     }
 }

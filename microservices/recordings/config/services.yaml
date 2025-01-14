@@ -17,11 +17,24 @@ services:
                             # fetching services directly from the container via $container->get() won't work.
                             # The best practice is to be explicit about your dependencies anyway.
 
+    Service\:
+        resource: '/opt/irontec/ivozprovider/microservices/recordings/src/Service/*'
+        tags: [{ name: 'domain.service'}]
+
+    Service\RawRecordingsGetter:
+        public: true
+        arguments:
+            $rawRecordingsDir: '%raw_recordings_dir%'
+            $logger: '@monolog.logger.recordings'
+
     Service\Encoder:
         public: true
         arguments:
             $rawRecordingsDir: '%raw_recordings_dir%'
             $logger: '@monolog.logger.recordings'
+
+    Service\RawRecordingProcessor:
+        public: true
 
     EncoderController:
         class: "EncoderController"
@@ -29,3 +42,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+when@test:
+    services:
+        _defaults:
+            autowire: true
+            autoconfigure: true
+            public: true
+
+        Service\FileUnlinker: ~
+
+        DataFixtures\:
+            resource: '../../../library/DataFixtures/*'

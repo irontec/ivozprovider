@@ -43,7 +43,7 @@ These are the configurable settings of *Residential devices*:
 Basic configuration
 *******************
     Name
-        Name of the **residential device**. This name must be unique in the whole brand so 
+        Name of the **residential device**. This name must be unique in the whole brand so
         it's recommended to use some kind of sequential identifier. This will also be used
         in SIP messages (sent **From User**).
 
@@ -144,8 +144,9 @@ At the other end of a device can be any kind of SIP entity. This section takes
 as example an Asterisk PBX system using SIP channel driver that wants to connect
 to IvozProvider.
 
+***************
 Device register
-----------------
+***************
 
 If the system can not be directly access, Asterisk will have to register in the
 platform (like a terminal will do).
@@ -156,8 +157,9 @@ Configuration will be something like this:
 
     register => residentialDeviceName:residentialDevicePassword@ivozprovider-brand.sip-domain.com
 
+***********
 Device peer
-------------
+***********
 
 .. code-block:: none
 

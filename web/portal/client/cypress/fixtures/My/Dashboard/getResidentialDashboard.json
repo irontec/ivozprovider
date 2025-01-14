@@ -1,0 +1,31 @@
+{
+    "body": {
+        "client": {
+            "name": "residentialClient",
+            "nif": "",
+            "postalCode": "",
+            "domainUsers": "",
+            "maxCalls": 10
+        },
+        "latestBillableCalls": [],
+        "latestUsers": [],
+        "latestResidentialDevices": [
+            {
+                "name": "Zelma",
+                "outgoingDdi": "",
+                "description": "Assumenda excepturi eum ratione."
+            }
+        ],
+        "latestRetailAccounts": [],
+        "userNum": null,
+        "extensionNum": null,
+        "ddiNum": 1,
+        "residentialDeviceNum": 1,
+        "voiceMailNum": 1,
+        "retailsAccountNum": null
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

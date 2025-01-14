@@ -64,6 +64,9 @@ export const testPbx = (props: TestCompanyProps) => {
     case 'retail':
       _testRetailCompany(testCompanyProps);
       break;
+    case 'wholesale':
+      _testWholesaleCompany(testCompanyProps);
+      break;
     default:
       break;
   }
@@ -228,6 +231,63 @@ const _testRetailCompany = (props: TestCompanyProps) => {
       ...['externallyextraopts', 'maxDailyUsageNotificationTemplate']
     );
   }
+
+  const form = _.omit(company, removeFields);
+  cy.fillTheForm(form);
+};
+
+const _testWholesaleCompany = (props: TestCompanyProps) => {
+  const {
+    mode,
+    hasBillingFeature,
+    hasInvoicingFeature,
+    hasRecordingFeature,
+    removeFields,
+    request,
+  } = props;
+  const company = request;
+
+  if (mode === MODE.NEW) {
+    removeFields.push(
+      ...[
+        'ipfilter',
+        'featureIds',
+        'codecIds',
+        'onDemandRecord',
+        'allowRecordingRemoval',
+        'voicemailNotificationTemplate',
+        'faxNotificationTemplate',
+        'invoiceNotificationTemplate',
+        'callCsvNotificationTemplate',
+        'maxDailyUsageNotificationTemplate',
+        'accessCredentialNotificationTemplate',
+        'externallyextraopts',
+        'showInvoices',
+        'invoicing',
+        'onDemandRecord',
+        'onDemandRecordCode',
+        'allowRecordingRemoval',
+      ]
+    );
+  }
+
+  if (!hasRecordingFeature) {
+    removeFields.push(
+      ...['onDemandRecord', 'onDemandRecordCode', 'allowRecordingRemoval']
+    );
+  }
+
+  if (!hasInvoicingFeature) {
+    removeFields.push('invoicing', 'invoiceNotificationTemplate');
+  }
+
+  if (!hasBillingFeature) {
+    removeFields.push(
+      ...['externallyextraopts', 'maxDailyUsageNotificationTemplate']
+    );
+  }
+
+  removeFields.push('applicationServerSet');
 
   const form = _.omit(company, removeFields);
   cy.fillTheForm(form);

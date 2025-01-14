@@ -19,6 +19,17 @@ describe('in Companies', () => {
     cy.get('table').should('contain', CompaniesCollection.body[0].id);
   });
 
+  it('Impersonate enabled', () => {
+    cy.usePactWait(['getWebPortals'])
+      .its('response.statusCode')
+      .should('eq', 200);
+
+    cy.get('svg[data-testid="AdminPanelSettingsIcon"]')
+      .first()
+      .parent('button')
+      .should('not.be.disabled');
+  });
+
   ///////////////////////
   // POST
   ///////////////////////

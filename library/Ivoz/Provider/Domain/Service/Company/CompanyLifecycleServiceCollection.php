@@ -19,7 +19,6 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
     public static $bindedBaseServices = [
         "pre_persist" =>
         [
-            \Ivoz\Provider\Domain\Service\Company\SanitizeEmptyValues::class => 10,
             \Ivoz\Provider\Domain\Service\Company\SanitizeBillingMethod::class => 200,
         ],
         "post_persist" =>

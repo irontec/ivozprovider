@@ -126,4 +126,17 @@ class DdiProviderDoctrineRepository extends ServiceEntityRepository implements D
 
         return $response;
     }
+
+    /**
+     * @return DdiProviderInterface[]
+     */
+    public function findByMediaRelaySetIdAndBrandId(int $mediaRelaySetId, int $brandId): array
+    {
+        return $this->findBy(
+            [
+               'mediaRelaySet' => $mediaRelaySetId,
+               'brand' => $brandId
+            ]
+        );
+    }
 }

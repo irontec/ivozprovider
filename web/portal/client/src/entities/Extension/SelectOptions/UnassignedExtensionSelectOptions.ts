@@ -7,6 +7,7 @@ import { ExtensionPropertyList } from '../ExtensionProperties';
 
 type CustomPropsType = {
   _includeId: number;
+  _userId: number;
 };
 
 const UnassignedExtensionSelectOptions: SelectOptionsType<CustomPropsType> = (
@@ -19,6 +20,12 @@ const UnassignedExtensionSelectOptions: SelectOptionsType<CustomPropsType> = (
   const _includeId = customProps?._includeId;
   if (_includeId) {
     params._includeId = _includeId;
+  }
+
+  const _userId = customProps?._userId;
+
+  if (_userId) {
+    params._userId = _userId;
   }
 
   return fetchAllPages({

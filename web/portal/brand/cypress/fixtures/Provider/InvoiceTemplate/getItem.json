@@ -1,0 +1,15 @@
+{
+  "body": {
+    "name": "Default",
+    "description": "Something",
+    "template": "Template",
+    "templateHeader": "Template header",
+    "templateFooter": "Template footer",
+    "id": 1,
+    "global": false
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

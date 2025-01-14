@@ -7,6 +7,69 @@
   },
   "interactions": [
     {
+      "description": "Impersonate enabled",
+      "providerState": "",
+      "request": {
+        "method": "GET",
+        "path": "/api/brand/web_portals",
+        "headers": {
+          "accept": "application/json",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ"
+        },
+        "body": "",
+        "query": "_order%5Bid%5D=ASC&urlType=admin&_pagination=false"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json",
+          "x-first-page": "/api/brand/web_portals?_page=1",
+          "x-last-page": "/api/brand/web_portals?_page=1",
+          "x-next-page": "/api/brand/web_portals?_page=1",
+          "x-total-items": "3",
+          "x-total-pages": "1"
+        },
+        "body": [
+          {
+            "url": "https://client-ivozprovider.irontec.com",
+            "urlType": "admin",
+            "name": "Irontec Ivozprovider Client Admin Portal",
+            "id": 3,
+            "logo": {
+              "fileSize": 10,
+              "mimeType": "image/jpeg",
+              "baseName": "client-logo.jpeg"
+            },
+            "company": null
+          },
+          {
+            "url": "https://users-ivozprovider.irontec.com",
+            "urlType": "user",
+            "name": "Irontec Ivozprovider User Admin Portal",
+            "id": 4,
+            "logo": {
+              "fileSize": 10,
+              "mimeType": "image/jpeg",
+              "baseName": "user-logo.jpeg"
+            },
+            "company": null
+          },
+          {
+            "url": "https://users2-ivozprovider.irontec.com",
+            "urlType": "user",
+            "name": "Irontec Ivozprovider User Admin Portal",
+            "id": 6,
+            "logo": {
+              "fileSize": 10,
+              "mimeType": "image/jpeg",
+              "baseName": "user-logo.jpeg"
+            },
+            "company": 1
+          }
+        ]
+      }
+    },
+    {
       "description": "add Virtual Pbx Companies",
       "providerState": "",
       "request": {
@@ -15,7 +78,7 @@
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
-          "content-length": "318",
+          "content-length": "361",
           "content-type": "application/json"
         },
         "body": {
@@ -29,6 +92,8 @@
           "country": 1,
           "currency": null,
           "corporation": null,
+          "applicationServerSet": 0,
+          "mediaRelaySet": 0,
           "featureIds": [],
           "geoIpAllowedCountries": [],
           "name": "API company",
@@ -87,7 +152,9 @@
             1
           ],
           "routingTagIds": [],
-          "codecIds": []
+          "codecIds": [],
+          "applicationServerSet": 0,
+          "mediaRelaySet": 0
         },
         "matchingRules": {
           "$.body.id": {
@@ -105,7 +172,7 @@
         "headers": {
           "accept": "application/json, text/plain, */*",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
-          "content-length": "841",
+          "content-length": "884",
           "content-type": "application/json"
         },
         "body": {
@@ -130,6 +197,8 @@
           "maxDailyUsageNotificationTemplate": 2,
           "accessCredentialNotificationTemplate": 1,
           "corporation": 1,
+          "applicationServerSet": 1,
+          "mediaRelaySet": 0,
           "featureIds": [
             1,
             2,
@@ -204,7 +273,9 @@
             1
           ],
           "routingTagIds": [],
-          "codecIds": []
+          "codecIds": [],
+          "applicationServerSet": 1,
+          "mediaRelaySet": 0
         }
       }
     }

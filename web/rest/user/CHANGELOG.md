@@ -1,4 +1,12 @@
 # Changelog
+## 4.3.0
+* Endpoints:
+    - /token/exchange:
+        - Added [POST] endpoint to exchange a token for a new one.
+* Models:
+    - Token:
+        - New model added to support token exchange functionality.
+
 ## 4.2.0
 * Endpoints
  - /recordings:
@@ -147,4 +155,4 @@
 
 ## 3.0.0
 * Disclaimer: The API schema will not be considered stable until version 3.1 and may receive new breaking changes
-* These methods and models have been extracted from the client API 
+* These methods and models have been extracted from the client API

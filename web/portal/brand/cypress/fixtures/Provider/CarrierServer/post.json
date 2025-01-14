@@ -1,0 +1,48 @@
+{
+    "request": {
+        "ip": "127.0.0.2",
+        "hostname": "newhost.net",
+        "port": 5060,
+        "uriScheme": 2,
+        "transport": 1,
+        "sendPAI": false,
+        "sendRPID": false,
+        "authNeeded": "no",
+        "authUser": null,
+        "authPassword": "*****",
+        "sipProxy": "127.0.0.3",
+        "outboundProxy": null,
+        "fromUser": "",
+        "fromDomain": "",
+        "carrier": 1
+    },
+    "response": {
+        "body": {
+            "ip": null,
+            "hostname": "127.0.0.3",
+            "port": 5060,
+            "uriScheme": 2,
+            "transport": 1,
+            "sendPAI": false,
+            "sendRPID": false,
+            "authNeeded": "no",
+            "authUser": null,
+            "authPassword": "*****",
+            "sipProxy": "127.0.0.3",
+            "outboundProxy": null,
+            "fromUser": "",
+            "fromDomain": "",
+            "id": 3,
+            "carrier": 1
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 201
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

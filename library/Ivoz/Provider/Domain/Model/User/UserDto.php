@@ -89,6 +89,8 @@ class UserDto extends UserDtoAbstract
                 'terminalId' => 'terminal',
                 'extensionId' => 'extension',
                 'outgoingDdiId' => 'outgoingDdi',
+                'email' => 'email',
+                'active' => 'active',
                 'status' => [[
                     'contact',
                     'received',

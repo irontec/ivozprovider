@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../api_rest/introduction.rst:3
+msgid "Introduction to IvozProvider API"
+msgstr "Introducción a la API de IvozProvider"
+
+#: ../../api_rest/introduction.rst:5
+msgid ""
+"Ivoz Provider offers three `hypermedia "
+"<https://en.wikipedia.org/wiki/HATEOAS>`_-driven REST APIs, one for each "
+"admin role. The three of them have been built over `OpenAPI Specification"
+" <https://www.openapis.org/>`_, a community-driven open specification "
+"within the OpenAPI Initiative, a Linux Foundation Collaborative Project. "
+"This initiative is supported by some leading tech companies such as "
+"Adobe, Google, IBM, Microsoft and `more "
+"<https://www.openapis.org/membership/members)>`_."
+msgstr ""
+"Ivoz Provider ofrece tres APIs REST impulsadas por `hipermedia "
+"<https://en.wikipedia.org/wiki/HATEOAS>`_, una para cada rol de "
+"administrador. Las tres se han construido sobre la `Especificación OpenAPI"
+" <https://www.openapis.org/>`_, una especificación abierta impulsada por la comunidad "
+"dentro de la Iniciativa OpenAPI, un Proyecto Colaborativo de la Fundación Linux. "
+"Esta iniciativa cuenta con el apoyo de algunas empresas tecnológicas líderes como "
+"Adobe, Google, IBM, Microsoft y `más "
+"<https://www.openapis.org/membership/members)>`_."
+
+#: ../../api_rest/introduction.rst:10
+msgid "We support the features below:"
+msgstr "Soportamos las siguientes características:"
+
+#: ../../api_rest/introduction.rst:12
+msgid "Nice human-readable specification, including a sandbox"
+msgstr "Especificación legible para humanos, incluyendo un entorno de pruebas"
+
+#: ../../api_rest/introduction.rst:13
+msgid "JSON Web Token (JWT) based authentication"
+msgstr "Autenticación basada en JSON Web Token (JWT)"
+
+#: ../../api_rest/introduction.rst:14
+msgid "Request and response content type negotiation"
+msgstr "Negociación del tipo de contenido de solicitud y respuesta"
+
+#: ../../api_rest/introduction.rst:15
+msgid "Result pagination"
+msgstr "Paginación de resultados"
+
+#: ../../api_rest/introduction.rst:16
+msgid "Response property filters"
+msgstr "Filtros de propiedades de respuesta"
+
+#: ../../api_rest/introduction.rst:17
+msgid "Result filters"
+msgstr "Filtros de resultados"
+
+#: ../../api_rest/introduction.rst:18
+msgid "Result ordering"
+msgstr "Ordenación de resultados"
+
+#: ../../api_rest/introduction.rst:19
+msgid "Security layer: Resource and record access control"
+msgstr "Capa de seguridad: Control de acceso a recursos y registros"
+

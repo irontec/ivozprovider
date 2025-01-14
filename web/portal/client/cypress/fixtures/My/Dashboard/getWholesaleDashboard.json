@@ -1,0 +1,25 @@
+{
+    "body": {
+        "client": {
+            "name": "Abner",
+            "nif": "",
+            "postalCode": "",
+            "domainUsers": "",
+            "maxCalls": 10
+        },
+        "latestBillableCalls": [],
+        "latestUsers": [],
+        "latestResidentialDevices": [],
+        "latestRetailAccounts": [],
+        "userNum": null,
+        "extensionNum": null,
+        "ddiNum": null,
+        "residentialDeviceNum": null,
+        "voiceMailNum": null,
+        "retailsAccountNum": null
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

@@ -6,6 +6,8 @@ ci
 core
 data
 doc
+docker
+feature
 iso
 kamailio
 kamtrunks

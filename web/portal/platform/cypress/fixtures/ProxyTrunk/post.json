@@ -1,0 +1,24 @@
+{
+  "request": {
+    "name": "proxyTrunkPlatform1",
+    "ip": "0.0.0.0",
+    "advertisedIp": "127.1.2.3"
+  },
+  "response": {
+    "body": {
+      "name": "proxyTrunkPlatform1",
+      "ip": "0.0.0.0",
+      "advertisedIp": "127.1.2.3",
+      "id": 4
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

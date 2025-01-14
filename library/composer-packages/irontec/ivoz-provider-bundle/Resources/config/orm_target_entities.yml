@@ -329,3 +329,11 @@ doctrine:
         Ivoz\Core\Domain\Model\Commandlog\Commandlog
       Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface:
         Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUser
+      Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface:
+        Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet
+      Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServerInterface:
+        Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServer
+      Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrandInterface:
+        Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrand
+      Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandInterface:
+        Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrand

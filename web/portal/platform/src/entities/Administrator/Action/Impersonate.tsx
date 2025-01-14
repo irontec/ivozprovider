@@ -25,7 +25,8 @@ const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
   const customData = useStoreState(
     (state) => state.list.customData
   ) as WebPortalPropertiesList;
-
+  const profile = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const canImpersonate = profile?.canImpersonate;
   if (!row) {
     return null;
   }
@@ -33,16 +34,24 @@ const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
   const { username, active } = row;
   const isActionDisabled = customData === undefined || !active;
 
-  if (isActionDisabled) {
+  if (isActionDisabled || !canImpersonate) {
     return (
       <>
         {variant === 'text' && (
           <MoreMenuItem disabled={true}>{_('Impersonate')}</MoreMenuItem>
         )}
         {variant === 'icon' && (
-          <StyledTableRowCustomCta disabled={true}>
-            <AdminPanelSettingsIcon />
-          </StyledTableRowCustomCta>
+          <Tooltip
+            title={_('Impersonate')}
+            placement='bottom-start'
+            enterTouchDelay={0}
+          >
+            <span>
+              <StyledTableRowCustomCta disabled={true}>
+                <AdminPanelSettingsIcon />
+              </StyledTableRowCustomCta>
+            </span>
+          </Tooltip>
         )}
       </>
     );

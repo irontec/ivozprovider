@@ -1,0 +1,18 @@
+{
+  "request": {
+    "ip": "127.0.0.2",
+    "advertisedIp": "138.0.0.2"
+  },
+  "response": {
+    "body": {
+      "name": "proxyusers",
+      "ip": "127.0.0.2",
+      "advertisedIp": "138.0.0.2",
+      "id": 2
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

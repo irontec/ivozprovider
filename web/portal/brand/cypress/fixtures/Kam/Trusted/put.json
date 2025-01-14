@@ -1,0 +1,29 @@
+{
+  "request": {
+    "srcIp": "194.30.6.88",
+    "proto": "any",
+    "fromPattern": null,
+    "ruriPattern": null,
+    "tag": "1",
+    "description": "new desc",
+    "priority": 1,
+    "company": 1
+  },
+  "response": {
+    "body": {
+      "srcIp": "127.0.1.2",
+      "proto": "any",
+      "fromPattern": null,
+      "ruriPattern": null,
+      "tag": "1",
+      "description": "desc",
+      "priority": 0,
+      "id": 2,
+      "company": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  }
+}

@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Provider\Domain\Model\Feature\Feature;
@@ -52,19 +53,19 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
 
     protected function sanitizeValues(): void
     {
-        $relFeatues = $this->getRelFeatures();
-        $featuesThatRequireDomainUser = array_filter(
-            $relFeatues,
-            function ($relFeatue) {
+        $relFeatures = $this->getRelFeatures();
+        $featuresThatRequireDomainUser = array_filter(
+            $relFeatures,
+            function ($relFeature) {
 
-                $targetFeatues = [
+                $targetFeatures = [
                     Feature::RESIDENTIAL_IDEN,
                     Feature::RETAIL_IDEN
                 ];
 
                 return in_array(
-                    $relFeatue->getFeature()->getIden(),
-                    $targetFeatues,
+                    $relFeature->getFeature()->getIden(),
+                    $targetFeatures,
                     true
                 );
             }
@@ -72,7 +73,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
 
         $domainUsers = $this->getDomainUsers();
 
-        if (count($featuesThatRequireDomainUser) && !$domainUsers) {
+        if (count($featuresThatRequireDomainUser) && !$domainUsers) {
             throw new \DomainException('SIP domain is required');
         }
     }

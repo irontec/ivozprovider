@@ -35,7 +35,8 @@
         },
         "psr-4": {
             "": "src/",
-            "Ivoz\\": "../../library/Ivoz"
+            "Ivoz\\": "../../library/Ivoz",
+            "DataFixtures\\": "../../library/DataFixtures"
         }
     },
     "autoload-dev": {
@@ -54,13 +55,14 @@
     },
     "require": {
         "friendsofphp/proxy-manager-lts": "^1.0",
-        "irontec/ivoz-provider-bundle": "^2.0",
+        "irontec/ivoz-provider-bundle": "^3.0",
         "irontec/replacements": "^1.0",
         "irontec/zend-mp3": "^1.8",
         "symfony/flex": "^1.9",
         "symfony/process": "^5.4"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "vimeo/psalm": "^4.0"
     },
     "extra": {

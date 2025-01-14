@@ -1,0 +1,145 @@
+{
+  "consumer": {
+    "name": "brand-consumer-Carriers-Carrier-Server"
+  },
+  "provider": {
+    "name": "brand-provider-Carriers-Carrier-Server"
+  },
+  "interactions": [
+    {
+      "description": "add Carrier Server",
+      "providerState": "",
+      "request": {
+        "method": "POST",
+        "path": "/api/brand/carrier_servers",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
+          "content-length": "163",
+          "content-type": "application/json"
+        },
+        "body": {
+          "uriScheme": 1,
+          "transport": 1,
+          "sendPAI": true,
+          "sendRPID": false,
+          "authNeeded": "no",
+          "sipProxy": "127.0.0.3",
+          "outboundProxy": "",
+          "fromUser": "",
+          "fromDomain": "",
+          "carrier": 2
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "ip": null,
+          "hostname": "127.0.0.3",
+          "port": 5060,
+          "uriScheme": 2,
+          "transport": 1,
+          "sendPAI": false,
+          "sendRPID": false,
+          "authNeeded": "no",
+          "authUser": null,
+          "authPassword": "*****",
+          "sipProxy": "127.0.0.3",
+          "outboundProxy": null,
+          "fromUser": "",
+          "fromDomain": "",
+          "id": 3,
+          "carrier": 1
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "edit Carrier Server",
+      "providerState": "",
+      "request": {
+        "method": "PUT",
+        "path": "/api/brand/carrier_servers/1",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ",
+          "content-length": "164",
+          "content-type": "application/json"
+        },
+        "body": {
+          "uriScheme": 1,
+          "transport": 1,
+          "sendPAI": false,
+          "sendRPID": false,
+          "authNeeded": "no",
+          "sipProxy": "127.0.0.1",
+          "outboundProxy": "",
+          "fromUser": "",
+          "fromDomain": "",
+          "carrier": 1
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "ip": null,
+          "hostname": "127.0.0.1",
+          "port": 5060,
+          "uriScheme": 2,
+          "transport": 2,
+          "sendPAI": false,
+          "sendRPID": false,
+          "authNeeded": "no",
+          "authUser": null,
+          "authPassword": "*****",
+          "sipProxy": "127.0.0.1",
+          "outboundProxy": null,
+          "fromUser": "",
+          "fromDomain": "",
+          "id": 1,
+          "carrier": 1
+        }
+      }
+    },
+    {
+      "description": "delete Carrier Server",
+      "providerState": "",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/brand/carrier_servers/1",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ"
+        },
+        "body": "",
+        "query": ""
+      },
+      "response": {
+        "status": 204,
+        "headers": {},
+        "body": ""
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    },
+    "client": {
+      "name": "pact-cypress-adapter",
+      "version": "1.3.0"
+    }
+  }
+}

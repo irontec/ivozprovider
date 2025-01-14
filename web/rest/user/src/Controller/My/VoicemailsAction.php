@@ -2,20 +2,27 @@
 
 namespace Controller\My;
 
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailRepository;
-use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUser;
-use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class VoicemailsAction
 {
+    use FilterCollectionTrait;
+
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private VoicemailRepository $voicemailRepository
+        private VoicemailRepository $voicemailRepository,
+        CollectionExtensionList $collectionExtensions,
+        RequestStack $requestStack
     ) {
+        $this->collectionExtensions = $collectionExtensions;
+        $this->request = $requestStack->getCurrentRequest();
     }
 
     public function __invoke()
@@ -29,20 +36,18 @@ class VoicemailsAction
         /** @var UserInterface $user */
         $user = $token->getUser();
 
-        $relVoicemails = array_map(
-            function (VoicemailRelUserInterface $voicemailRelUser): VoicemailInterface {
-                return $voicemailRelUser->getVoicemail();
-            },
-            $user->getVoicemailRelUsers()
-        );
-
-        $ownVoicemail = $this
+        $qb = $this
             ->voicemailRepository
-            ->getVoicemailsByUser($user);
+            ->prepareAndJoinByUser($user);
 
-        return array_merge(
-            $ownVoicemail,
-            $relVoicemails
+        $response = $this->applyCollectionExtensions(
+            $qb,
+            Voicemail::class,
+            'get_my_voicemails'
         );
+
+        return $response instanceof Paginator
+            ? $response->getIterator()
+            : new \ArrayIterator([...$response]);
     }
 }

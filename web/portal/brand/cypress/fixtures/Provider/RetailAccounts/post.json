@@ -1,0 +1,49 @@
+{
+  "request": {
+    "name": "postRetailAccount",
+    "description": "demo description",
+    "directConnectivity": "yes",
+    "transport": "udp",
+    "ip": "1.2.3.4",
+    "port": 1024,
+    "password": "3N-8g6zuXP",
+    "fromDomain": null,
+    "ddiIn": "yes",
+    "t38Passthrough": "no",
+    "company": 1,
+    "transformationRuleSet": null,
+    "outgoingDdi": null,
+    "proxyUser": 1
+},
+  "response": {
+    "body": {
+      "name": "postRetailAccount",
+      "description": "demo description",
+      "transport": "udp",
+      "ip": "1.2.3.4",
+      "port": 1024,
+      "password": "3N-8g6zuXP",
+      "fromDomain": null,
+      "directConnectivity": "yes",
+      "ddiIn": "yes",
+      "t38Passthrough": "no",
+      "rtpEncryption": false,
+      "multiContact": true,
+      "ruriDomain": null,
+      "id": 7,
+      "company": 1,
+      "transformationRuleSet": null,
+      "outgoingDdi": null,
+      "proxyUser": 1
+  },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

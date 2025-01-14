@@ -84,7 +84,8 @@ class ExtensionRepositoryTest extends KernelTestCase
         $includedIds = [1];
         $extensions = $repository->findUnassignedByCompanyId(
             1,
-            $includedIds
+            $includedIds,
+            null
         );
 
         $this->assertIsArray($extensions);

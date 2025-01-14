@@ -1,0 +1,38 @@
+{
+  "request": {
+    "username": "UpdatedDDIRegistrationUsername",
+    "domain": "UpdatedDDIRegistrationDomain",
+    "realm": "UpdatedDDIRegistrationRealm",
+    "authUsername": "UpdatedDDIRegistrationAuthUsername",
+    "authPassword": "UpdatedDDIRegistrationAuthPassword",
+    "authProxy": "sip:UpdatedDDIRegistrationAuthProxy",
+    "expires": 36005,
+    "multiDdi": true,
+    "contactUsername": "",
+    "ddiProvider": 1
+  },
+  "response": {
+    "body": {
+      "username": "UpdatedDDIRegistrationUsername",
+      "domain": "UpdatedDDIRegistrationDomain",
+      "realm": "UpdatedDDIRegistrationRealm",
+      "authUsername": "UpdatedDDIRegistrationAuthUsername",
+      "authPassword": "UpdatedDDIRegistrationAuthPassword",
+      "authProxy": "sip:UpdatedDDIRegistrationAuthProxy",
+      "expires": 36005,
+      "multiDdi": true,
+      "contactUsername": "",
+      "id": 1,
+      "ddiProvider": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

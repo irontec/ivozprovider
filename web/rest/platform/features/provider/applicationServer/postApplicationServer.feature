@@ -12,7 +12,7 @@ Feature: Create application servers
       """
       {
         "ip": "127.2.2.2",
-        "name": "test002"
+        "name": "test003"
       }
       """
      Then the response status code should be 201
@@ -22,15 +22,15 @@ Feature: Create application servers
       """
       {
           "ip": "127.2.2.2",
-          "name": "test002",
-          "id": 3
+          "name": "test003",
+          "id": 5
       }
       """
 
   Scenario: Retrieve created application server
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "application_servers/3"
+      And I send a "GET" request to "application_servers/5"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -38,7 +38,7 @@ Feature: Create application servers
       """
       {
           "ip": "127.2.2.2",
-          "name": "test002",
-          "id": 3
+          "name": "test003",
+          "id": 5
       }
       """

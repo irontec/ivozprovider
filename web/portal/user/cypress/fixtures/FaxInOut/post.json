@@ -1,0 +1,34 @@
+{
+  "request": {
+    "fax": 1,
+    "dst": "34688888881",
+    "dstCountry": 1,
+    "type": "Out"
+  },
+  "response": {
+    "body": {
+      "src": null,
+      "dst": "34688888881",
+      "type": "Out",
+      "pages": null,
+      "status": "pending",
+      "id": 5,
+      "file": {
+        "fileSize": 20,
+        "mimeType": "text/plain; charset=us-ascii",
+        "baseName": "uploadable"
+      },
+      "fax": 1,
+      "dstCountry": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

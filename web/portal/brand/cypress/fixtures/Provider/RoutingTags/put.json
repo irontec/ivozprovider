@@ -1,0 +1,22 @@
+{
+    "request": {
+        "name": "TagName",
+        "tag": "090#"
+    },
+    "response": {
+        "body": {
+            "name": "TagName",
+            "tag": "090#",
+            "id": 1
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 200
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

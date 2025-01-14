@@ -1,0 +1,22 @@
+{
+    "request": {
+        "name": "Mine",
+        "tag": "00#"
+    },
+    "response": {
+        "body": {
+            "name": "Mine",
+            "tag": "00#",
+            "id": 2
+        },
+        "headers": {
+            "content-type": "application/json; charset=utf-8"
+        },
+        "statusCode": 201
+    },
+    "matchingRules": {
+        "$.body.id": {
+            "match": "type"
+        }
+    }
+}

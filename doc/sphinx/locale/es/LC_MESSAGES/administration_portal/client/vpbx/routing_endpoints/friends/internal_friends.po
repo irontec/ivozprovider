@@ -1,0 +1,200 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:4
+msgid "Internal friends"
+msgstr "Friends internos"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:6
+msgid ""
+"Internal friends allows a vPBX client to call to **Extensions** of "
+"another vPBX client in the same :ref:`Corporation <corporations>`."
+msgstr ""
+"Los friends internos permiten a un cliente vPBX llamar a **Extensiones** de "
+"otro cliente vPBX en la misma :ref:`Corporación <corporations>`."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:8
+msgid "Only extensions in :ref:`Extensions <extensions>` section."
+msgstr "Solo extensiones en la sección :ref:`Extensiones <extensions>`."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:10
+msgid ""
+"If calling to an extension in another vPBX causes an external call, it is"
+" allowed:"
+msgstr ""
+"Si llamar a una extensión en otro vPBX causa una llamada externa, está "
+"permitido:"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:12
+msgid "Calling to a user with an external call forwarding settings."
+msgstr "Llamar a un usuario con configuraciones de desvío de llamadas externas."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:14
+msgid "Calling to an extension routed to an external number."
+msgstr "Llamar a una extensión enrutada a un número externo."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:16
+msgid ""
+"Calling to an extension routed to a IVR with an option pointing an "
+"external number."
+msgstr ""
+"Llamar a una extensión enrutada a un IVR con una opción que apunte a un "
+"número externo."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:18
+msgid "Etc."
+msgstr "Etc."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:21
+msgid "What kind of calls can be routed through an *internal friend*?"
+msgstr "¿Qué tipo de llamadas se pueden enrutar a través de un *friend interno*?"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:23
+msgid ""
+"IvozProvider will route any call matching an Extension in vpbx client "
+"connected by the internal friend."
+msgstr ""
+"IvozProvider enrutar cualquier llamada que coincida con una Extensión en el cliente vpbx "
+"conectado por el friend interno."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:26
+msgid "Configuration of internal friends"
+msgstr "Configuración de friends internos"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:28
+msgid "These are the configurable settings of *internal friends*:"
+msgstr "Estos son los ajustes configurables de *friends internos*:"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:31
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:31
+msgid "Optional. Extra information for this **friend**."
+msgstr "Opcional. Información adicional para este **friend**."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:36
+msgid "Priority"
+msgstr "Prioridad"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:34
+msgid ""
+"Used to solve conflicts while routing calls through **friends**. If a "
+"call destination **matches** more than one friend regular expression the "
+"call will be routed through the friend with **less priority value**."
+msgstr ""
+"Se utiliza para resolver conflictos al enrutar llamadas a través de **friends**. Si un "
+"destino de llamada **coincide** con más de una expresión regular de friend, la "
+"llamada se enruta a través del friend con **menor valor de prioridad**."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:39
+msgid "Connectivity mode"
+msgstr "Modo de conectividad"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:39
+msgid "Choose \"IntervPBX\" for internal friends."
+msgstr "Elija \"IntervPBX\" para friends internos."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:42
+msgid "Target Client"
+msgstr "Cliente destino"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:42
+msgid ""
+"vPBX client inside the same :ref:`corporation <corporations>` you want to"
+" connect."
+msgstr ""
+"Cliente vPBX dentro de la misma :ref:`corporación <corporations>` que desea "
+"conectar."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:45
+msgid "Fallback Outgoing DDI"
+msgstr "DDI de salida alternativo"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:45
+msgid ""
+"If called extension causes an external call, this DDI will be used as "
+"source number."
+msgstr ""
+"Si la extensión llamada causa una llamada externa, este DDI se utilizará como "
+"número de origen."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:49
+msgid "Always apply transformations"
+msgstr "Aplicar siempre transformaciones"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:48
+msgid ""
+"Numbers listed in Extensions section of both source and destination "
+"client will be considered as internal and won't traverse numeric "
+"transformation rules. Enable this setting to force Numeric Transformation"
+" rules even on these numbers."
+msgstr ""
+"Los números listados en la sección de Extensiones tanto del cliente de origen como de destino "
+"se considerarán internos y no atravesarán las reglas de transformación numérica. "
+"Habilite esta configuración para forzar las reglas de Transformación Numérica "
+"incluso en estos números."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:51
+msgid ""
+"Calls to *friends* are considered internal. That means that ACLs won't be"
+" checked when calling a friend, no matter if the origin of the call is a "
+"user or another friend."
+msgstr ""
+"Las llamadas a *friends* se consideran internas. Eso significa que no se verificarán las ACL "
+"al llamar a un friend, sin importar si el origen de la llamada es un "
+"usuario u otro friend."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:56
+msgid "Summary of internal friends"
+msgstr "Resumen de friends internos"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:58
+msgid "These are key points to understand *internal friends*:"
+msgstr "Estos son puntos clave para entender los *friends internos*:"
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:60
+msgid ""
+"They have been designed to allow users from a vPBX to call to extensions "
+"(normally users) of another vPBX of the same :ref:`corporation "
+"<corporations>`."
+msgstr ""
+"Han sido diseñados para permitir que los usuarios de un vPBX llamen a extensiones "
+"(normalmente usuarios) de otro vPBX de la misma :ref:`corporación <corporations>`."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:63
+msgid "Usually they will allow user-user calls."
+msgstr "Normalmente permitirán llamadas de usuario a usuario."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:65
+msgid ""
+"You cannot use an internal friend to generate external calls paid by the "
+"other client."
+msgstr ""
+"No puede usar un friend interno para generar llamadas externas pagadas por el "
+"otro cliente."
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:67
+msgid ""
+"But external calls may happen if extensions are pointed to external "
+"numbers (controlled external calls)."
+msgstr ""
+"Pero pueden ocurrir llamadas externas si las extensiones están apuntadas a números "
+"externos (llamadas externas controladas)."
+

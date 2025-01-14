@@ -1,0 +1,20 @@
+{
+  "body": {
+    "iden": "Destinations",
+    "fqdn": "Ivoz\\Provider\\Domain\\Model\\Destination\\Destination",
+    "platform": true,
+    "brand": true,
+    "client": false,
+    "id": 81,
+    "name": {
+      "en": "Destinations",
+      "es": "Destinations",
+      "ca": "Destinations",
+      "it": "Destinations"
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

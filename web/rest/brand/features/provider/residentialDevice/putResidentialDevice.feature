@@ -12,7 +12,7 @@ Feature: Update residential device
       """
       {
           "name": "updatedResidentialDevice",
-          "description": "",
+          "description": "demo description",
           "transport": "udp",
           "ip": "1.2.3.4",
           "port": 1024,
@@ -23,7 +23,6 @@ Feature: Update residential device
           "ddiIn": "yes",
           "maxCalls": 1,
           "t38Passthrough": "no",
-          "id": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null,
@@ -37,7 +36,7 @@ Feature: Update residential device
       """
       {
           "name": "updatedResidentialDevice",
-          "description": "",
+          "description": "demo description",
           "transport": "udp",
           "ip": "1.2.3.4",
           "port": 1024,

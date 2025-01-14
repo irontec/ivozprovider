@@ -21,7 +21,7 @@
             "id": 2
         },
         {
-            "startTime": "match:regexp(/\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}/)",
+            "startTime": "2018-11-22 17:55:49",
             "duration": 3600,
             "direction": "outbound",
             "caller": "103",

@@ -12,7 +12,7 @@ Feature: Update residential devices
       """
       {
           "name": "readOnlyResidentialDevice",
-          "description": "",
+          "description": "som desc",
           "transport": "udp",
           "ip": "127.10.10.10",
           "port": "1024",
@@ -35,7 +35,7 @@ Feature: Update residential devices
       """
       {
           "name": "residentialDevice",
-          "description": "",
+          "description": "som desc",
           "transport": "udp",
           "ip": null,
           "port": null,

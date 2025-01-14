@@ -48,7 +48,7 @@ templates_path = ['_templates']
 
 # Put localized texts here
 locale_dirs = ['locale']
-gettext_compact = True
+gettext_compact = False
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -73,7 +73,7 @@ author = 'Irontec'
 # built documents.
 #
 # The short X.Y version.
-version = "4.2"
+version = "4.3"
 
 # The full version, including alpha/beta/rc tags.
 release = 'tempest'
@@ -277,7 +277,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'IvozProvider.tex', 'IvozProvider 4.2 Documentation',
+    (master_doc, 'IvozProvider.tex', 'IvozProvider 4.3 Documentation',
      'Irontec', 'manual'),
 ]
 

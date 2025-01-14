@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stop on first error
+set -e
+
 # Move to webapp dir
 cd $(dirname "$(realpath -se "$0")")/..
 

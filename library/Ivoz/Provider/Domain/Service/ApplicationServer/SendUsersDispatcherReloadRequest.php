@@ -2,15 +2,17 @@
 
 namespace Ivoz\Provider\Domain\Service\ApplicationServer;
 
+use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherRepository;
 use Ivoz\Kam\Domain\Service\UsersClientInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 
 class SendUsersDispatcherReloadRequest implements ApplicationServerLifecycleEventHandlerInterface
 {
-    public const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
 
     public function __construct(
-        private UsersClientInterface $usersGearmanClient
+        private UsersClientInterface $usersClient,
+        private DispatcherRepository $dispatcherRepository,
     ) {
     }
 
@@ -26,6 +28,28 @@ class SendUsersDispatcherReloadRequest implements ApplicationServerLifecycleEven
      */
     public function execute(ApplicationServerInterface $applicationServer)
     {
-        $this->usersGearmanClient->reloadDispatcher();
+        if ($applicationServer->isNew()) {
+            return;
+        }
+
+        if ($applicationServer->hasBeenDeleted()) {
+            return;
+        }
+
+        $updatedAddress = $applicationServer->hasChanged('ip');
+        if (!$updatedAddress) {
+            return;
+        }
+
+        $dispatchers = $this->dispatcherRepository
+            ->findByApplicationServerId(
+                $applicationServer->getId() ?? -1,
+            );
+
+        if (empty($dispatchers)) {
+            return;
+        }
+
+        $this->usersClient->reloadDispatcher();
     }
 }

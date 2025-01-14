@@ -1,5 +1,7 @@
 import { EntityValues } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  marshaller as defaultMarshaller,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
@@ -284,7 +286,7 @@ const properties: CompanyProperties = {
     },
   },
   applicationServer: {
-    label: _('Application Server'),
+    label: _('Application Server', { count: 1 }),
     default: '__null__',
     null: _('Unassigned'),
   },
@@ -364,6 +366,25 @@ const properties: CompanyProperties = {
     null: _('Not configured'),
     default: '__null__',
   },
+  applicationServerSet: {
+    label: _('Application Server Set', { count: 1 }),
+    default: '__auto__',
+  },
+  mediaRelaySet: {
+    label: _('Media Relay Set', { count: 1 }),
+    default: '__auto__',
+  },
+};
+
+type MarshallerType = typeof defaultMarshaller;
+const marshaller: MarshallerType = (values, properties) => {
+  const isWholesale = values.type === 'wholesale';
+
+  if (isWholesale) {
+    values.applicationServerSet = 0;
+  }
+
+  return defaultMarshaller(values, properties);
 };
 
 const Company: EntityInterface = {
@@ -376,7 +397,7 @@ const Company: EntityInterface = {
   defaultOrderBy: '',
   toStr: (row: CompanyPropertyList<EntityValues>) => `${row.name}`,
   properties,
-
+  marshaller: marshaller,
   columns: [
     'name',
     'invoicing.nif',

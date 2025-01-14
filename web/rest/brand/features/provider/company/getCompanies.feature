@@ -28,6 +28,8 @@ Feature: Retrieve companies
               },
               "outgoingDdi": null,
               "corporation": 1,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
               "domainName": "127.0.0.1",
               "currencySymbol": "€",
               "currentDayMaxUsage": "Unavailable",
@@ -57,6 +59,8 @@ Feature: Retrieve companies
               },
               "outgoingDdi": null,
               "corporation": 1,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
               "domainName": "test.irontec.com",
               "currencySymbol": "€",
               "currentDayMaxUsage": "Unavailable",
@@ -80,6 +84,8 @@ Feature: Retrieve companies
               },
               "outgoingDdi": null,
               "corporation": null,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
               "domainName": "retail.irontec.com",
               "currencySymbol": "€",
               "currentDayMaxUsage": "Unavailable",
@@ -103,6 +109,8 @@ Feature: Retrieve companies
               },
               "outgoingDdi": null,
               "corporation": null,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
               "domainName": "retail.irontec.com",
               "currencySymbol": "€",
               "currentDayMaxUsage": "Unavailable",
@@ -128,6 +136,8 @@ Feature: Retrieve companies
               },
               "outgoingDdi": null,
               "corporation": null,
+              "applicationServerSet": 0,
+              "mediaRelaySet": 0,
               "domainName": null,
               "currencySymbol": "€",
               "currentDayMaxUsage": "Unavailable",
@@ -255,6 +265,18 @@ Feature: Retrieve companies
               "name": "Irontec Test Corporation",
               "description": "Irontec Test Desc Corporation",
               "id": 1
+          },
+          "applicationServerSet": {
+              "name": "BlueApSet",
+              "distributeMethod": "hash",
+              "description": "An Application Server Set",
+              "id": 1,
+              "applicationServers": null
+          },
+          "mediaRelaySet": {
+              "name": "Default",
+              "description": "Default media relay set",
+              "id": 0
           },
           "domainName": "127.0.0.1",
           "featureIds": [

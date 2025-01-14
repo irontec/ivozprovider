@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+export APP_ENV=test
+
+pushd /opt/irontec/ivozprovider/microservices/recordings
+
+    if [ "$1" != "--skip-db" ]; then
+        # Prepare dataset
+        bin/prepare-test-db
+    fi
+
+    # Run tests
+    ../../schema/vendor/bin/phpunit
+popd

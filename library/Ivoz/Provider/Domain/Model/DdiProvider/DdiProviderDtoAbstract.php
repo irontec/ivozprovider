@@ -52,7 +52,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySets = null;
+    private $mediaRelaySet = null;
 
     /**
      * @var DdiProviderRegistrationDto[] | null
@@ -85,7 +85,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet',
             'proxyTrunkId' => 'proxyTrunk',
-            'mediaRelaySetsId' => 'mediaRelaySets'
+            'mediaRelaySetId' => 'mediaRelaySet'
         ];
     }
 
@@ -101,7 +101,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'proxyTrunk' => $this->getProxyTrunk(),
-            'mediaRelaySets' => $this->getMediaRelaySets(),
+            'mediaRelaySet' => $this->getMediaRelaySet(),
             'ddiProviderRegistrations' => $this->getDdiProviderRegistrations(),
             'ddiProviderAddresses' => $this->getDdiProviderAddresses()
         ];
@@ -249,30 +249,30 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setMediaRelaySets(?MediaRelaySetDto $mediaRelaySets): static
+    public function setMediaRelaySet(?MediaRelaySetDto $mediaRelaySet): static
     {
-        $this->mediaRelaySets = $mediaRelaySets;
+        $this->mediaRelaySet = $mediaRelaySet;
 
         return $this;
     }
 
-    public function getMediaRelaySets(): ?MediaRelaySetDto
+    public function getMediaRelaySet(): ?MediaRelaySetDto
     {
-        return $this->mediaRelaySets;
+        return $this->mediaRelaySet;
     }
 
-    public function setMediaRelaySetsId(?int $id): static
+    public function setMediaRelaySetId(?int $id): static
     {
         $value = !is_null($id)
             ? new MediaRelaySetDto($id)
             : null;
 
-        return $this->setMediaRelaySets($value);
+        return $this->setMediaRelaySet($value);
     }
 
-    public function getMediaRelaySetsId(): ?int
+    public function getMediaRelaySetId(): ?int
     {
-        if ($dto = $this->getMediaRelaySets()) {
+        if ($dto = $this->getMediaRelaySet()) {
             return $dto->getId();
         }
 

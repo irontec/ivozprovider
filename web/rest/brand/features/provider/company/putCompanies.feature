@@ -51,7 +51,9 @@ Feature: Update company
           ],
           "geoIpAllowedCountries": [
             1
-          ]
+          ],
+          "mediaRelaySet": 1,
+          "applicationServerSet": 1
       }
       """
      Then the response status code should be 200
@@ -98,6 +100,8 @@ Feature: Update company
           "maxDailyUsageNotificationTemplate": 2,
           "accessCredentialNotificationTemplate": 5,
           "corporation": 1,
+          "applicationServerSet": 1,
+          "mediaRelaySet": 1,
           "featureIds": [
               3
           ],
@@ -106,5 +110,89 @@ Feature: Update company
           ],
           "routingTagIds": [],
           "codecIds": []
+      }
+      """
+
+  @createSchema
+  Scenario: Update a company with unrelated application server set
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/companies/1" with body:
+      """
+      {
+        "applicationServerSet": 3
+      }
+      """
+     Then the response status code should be 403
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+      And the JSON should be like:
+      """
+      {
+        "detail": "Rejected request during security check"
+      }
+      """
+
+  @createSchema
+  Scenario: Update a company with unrelated media relay set
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/companies/1" with body:
+      """
+      {
+        "mediaRelaySet": 2
+      }
+      """
+     Then the response status code should be 403
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+      And the JSON should be like:
+      """
+      {
+        "detail": "Rejected request during security check"
+      }
+      """
+
+  @createSchema
+  Scenario: Update a company with null application server set
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/companies/1" with body:
+      """
+      {
+        "applicationServerSet": null
+      }
+      """
+     Then the response status code should be 400
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+      And the JSON should be like:
+      """
+      {
+        "detail": "getApplicationServerSet value is null, but non null value was expected."
+      }
+      """
+
+  @createSchema
+  Scenario: Update a company with null media relay set
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/companies/1" with body:
+      """
+      {
+        "mediaRelaySet": null
+      }
+      """
+     Then the response status code should be 400
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+      And the JSON should be like:
+      """
+      {
+        "detail": "getMediaRelaySet value is null, but non null value was expected."
       }
       """

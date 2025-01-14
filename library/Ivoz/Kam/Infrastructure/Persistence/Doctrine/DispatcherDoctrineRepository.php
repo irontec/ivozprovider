@@ -7,6 +7,7 @@ use Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher;
 use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherInterface;
 use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Ivoz\Provider\Domain\Model\ApplicationServerSetRelApplicationServer\ApplicationServerSetRelApplicationServer;
 
 /**
  * DispatcherDoctrineRepository
@@ -22,14 +23,27 @@ class DispatcherDoctrineRepository extends ServiceEntityRepository implements Di
     }
 
     /**
-     * @param int $id
-     * @return null|DispatcherInterface
+     * @return DispatcherInterface[]
      */
-    public function findOneByApplicationServerId($id)
+    public function findByApplicationServerId(int $id): array
+    {
+        $qb = $this->createQueryBuilder('self')
+            ->select('self')
+            ->leftJoin(
+                'self.applicationServerSetRelApplicationServer',
+                'rel'
+            )
+            ->where('rel.applicationServer = :applicationServer')
+            ->setParameter('applicationServer', $id);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findOneByApplicationServerSetRelApplicationServer(int $id): ?DispatcherInterface
     {
         /** @var DispatcherInterface $response */
         $response = $this->findOneBy([
-            'applicationServer' => $id
+            'applicationServerSetRelApplicationServer' => $id
         ]);
 
         return $response;

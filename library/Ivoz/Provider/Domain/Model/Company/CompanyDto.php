@@ -3,10 +3,12 @@
 namespace Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet;
 use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecDto;
 use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryDto;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagDto;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 
 class CompanyDto extends CompanyDtoAbstract
 {
@@ -101,7 +103,6 @@ class CompanyDto extends CompanyDtoAbstract
             $response['codecIds'] = $this->codecIds;
             $response['accountStatus'] = $this->accountStatus;
             $response['currentDayMaxUsage'] = $this->currentDayMaxUsage;
-            $response['accountStatus'] = $this->accountStatus;
         }
 
         return $response;
@@ -292,6 +293,8 @@ class CompanyDto extends CompanyDtoAbstract
                 $response['currencySymbol'] = 'currencySymbol';
                 $response['currentDayMaxUsage'] = 'currentDayMaxUsage';
                 $response['accountStatus'] = 'accountStatus';
+                $response['applicationServerSetId'] = 'applicationServerSetId';
+                $response['mediaRelaySet'] = 'mediaRelaySet';
             }
         } else {
             $response = parent::getPropertyMap($context);
@@ -318,6 +321,8 @@ class CompanyDto extends CompanyDtoAbstract
             $response['routingTagIds'] = 'routingTagIds';
             $response['codecIds'] = 'codecIds';
             $response['corporationId'] = 'corporation';
+            $response['applicationServerSetId'] = 'applicationServerSet';
+            $response['mediaRelaySetId'] = 'mediaRelaySet';
 
             return self::filterFieldsForBrandAdmin($response);
         }
@@ -387,6 +392,8 @@ class CompanyDto extends CompanyDtoAbstract
             'currentDayMaxUsage',
             'accountStatus',
             'currencySymbol',
+            'applicationServerSetId',
+            'mediaRelaySetId'
         ];
 
         return array_filter(

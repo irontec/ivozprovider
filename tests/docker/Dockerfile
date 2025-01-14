@@ -66,6 +66,9 @@ RUN npm install -g swagger-cli
 # Install gherking fromatter
 RUN pip install --break-system-packages reformat-gherkin
 
+# Allow access to environment variables. Needed for testing DB
+RUN sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php/8.2/cli/php.ini
+
 # Create jenkins user (configurable)
 ARG UNAME=jenkins
 ARG UID=108

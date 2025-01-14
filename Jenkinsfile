@@ -26,11 +26,35 @@ pipeline {
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
         SYMFONY_PHPUNIT_VERSION = "9.5.3"
         DOCKER_TAG = getDockerTag()
+        BRANCH_NAME = getBranchName()
         BASE_BRANCH = getBaseBranch()
         JIRA_TICKET = getJiraTicket()
     }
 
     stages {
+        stage('Pull Request') {
+            agent any
+            when {
+                expression {
+                    env.BRANCH_NAME.startsWith("PROVIDER-")
+                }
+            }
+            steps {
+                // Update Jira Ticket Custom fields
+                script {
+                    // customfield_10126 - Merge Request
+                    // customfield_10159 - Branch
+                    def fields = [
+                        fields: [
+                            customfield_10126: env.JOB_BASE_NAME,
+                            customfield_10159: env.CHANGE_BRANCH,
+                        ]
+                    ]
+                    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
+                }
+            }
+        }
+
         // --------------------------------------------------------------------
         // Image stage
         // --------------------------------------------------------------------
@@ -71,6 +95,7 @@ pipeline {
                     expression { hasLabel("ci-force-tests-back") }
                     expression { hasLabel("ci-force-tests") }
                     expression { hasCommitTag("core:") }
+                    expression { hasCommitTag("doc:") }
                     expression { hasCommitTag("schema:") }
                     expression { hasCommitTag("microservices/") }
                     expression { hasCommitTag("rest/") }
@@ -189,6 +214,7 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api --skip-db'
+                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-sync-api-spec platform'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -206,6 +232,7 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api --skip-db'
+                                sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-sync-api-spec brand'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -223,6 +250,7 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api --skip-db'
+                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-sync-api-spec client'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -240,6 +268,7 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/user/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/user/bin/test-api --skip-db'
+                                sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-sync-api-spec user'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -651,11 +680,6 @@ pipeline {
                         println "No functional reviewer assigned."
                     }
 
-                    // Link issue Pull Request field with current branch
-                    // customfield_10126 - Pull Request
-                    def fields = [fields: [customfield_10126: env.JOB_BASE_NAME]]
-                    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
-
                     // Validated - 10325
                     def status = issue.data.fields.status
                     println "Issue Status: ${status.name} (${status.id})"
@@ -679,6 +703,77 @@ pipeline {
                             pullRequest.review('REQUEST_CHANGES', 'Functional review required')
                         } else {
                             pullRequest.review('APPROVE')
+                        }
+                    }
+                }
+            }
+            post {
+                success { notifySuccessGithub() }
+                failure { notifyFailureGithub() }
+                unstable { notifyUnstableGithub() }
+            }
+        }
+
+        // --------------------------------------------------------------------
+        // Mergeability validation
+        // --------------------------------------------------------------------
+        stage ('mergeability') {
+            steps {
+                script {
+                    // Check we're validating a Merge request
+                    if (!env.CHANGE_TARGET) {
+                        echo "Not a merge request branch. Merge checks not required."
+                        return
+                    }
+
+                    // Check Merge request has a Jira ticket associated
+                    if (!env.JIRA_TICKET) {
+                        failure "No ticket associated. Can not validate mergeability."
+                    }
+
+                    // Fetch issue data from Jira
+                    def issue = jiraGetIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET
+
+                    // Merge validations for feature subtask
+                    isSubtask = issue.data.fields.issuetype.subtask
+                    if (isSubtask) {
+                        // Get parent task
+                        def task = issue.data.fields.parent
+                        echo "${env.JIRA_TICKET} is a subtask part of a feature task."
+
+                        // Check the target branch is an feature branch
+                        if (!env.CHANGE_TARGET.startsWith(task.key)) {
+                            unstable "Target branch ${env.CHANGE_TARGET} is not an feature branch. Merge will be blocked until all previous task are merged"
+                        }
+
+                        // Validate parent status - Validated - 10325
+                        def status = task.fields.status
+                        if (status.id != "10325") {
+                            unstable "Feature not yet validated. Merge is blocked."
+                        }
+
+                        // Validate feature branch is properly rebased
+                        try {
+                            sh "git merge-base --is-ancestor origin/master origin/${env.CHANGE_TARGET}"
+                        } catch (Exception e) {
+                            unstable "Feature branch ${env.CHANGE_TARGET} is not properly rebased. Merge is blocked."
+                        }
+                    } else {
+                        echo "${env.JIRA_TICKET} is a task. Checking subtasks..."
+
+                        // Check the target branch is master
+                        if (env.CHANGE_TARGET != "bleeding") {
+                            unstable "Target branch ${env.CHANGE_TARGET} is not an bleeding branch."
+                        }
+
+                        // Check all subtask has been merged
+                        def subtasks = issue.data.fields.subtasks
+                        subtasks.each { subtask ->
+                            def status = subtask.fields.status
+                            // Validate child status - Done - 10002
+                            if (status.id != "10002") {
+                                unstable "Subtask ${subtask.key} is not completed (Status: ${status.name})."
+                            }
                         }
                     }
                 }
@@ -723,6 +818,10 @@ boolean hasCommitTag(String module) {
     returnStatus: true,
     script: "git log --oneline origin/${env.CHANGE_TARGET}...${env.GIT_COMMIT} | grep ${module}"
   ) == 0
+}
+
+void getBranchName() {
+    return env.CHANGE_BRANCH ?: env.GIT_BRANCH
 }
 
 void getBaseBranch() {

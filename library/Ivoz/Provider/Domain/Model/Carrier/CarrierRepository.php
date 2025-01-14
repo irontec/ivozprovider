@@ -40,4 +40,9 @@ interface CarrierRepository extends ObjectRepository, Selectable
 
 
     public function countByBrand(int $brandId): int;
+
+    /**
+     * @return CarrierInterface[]
+     */
+    public function findByMediaRelaySetIdAndBrandId(int $mediaRelaySetId, int $brandId): array;
 }

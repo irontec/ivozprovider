@@ -1,0 +1,29 @@
+{
+    "body": {
+        "ip": null,
+        "hostname": "127.0.0.1",
+        "port": 5060,
+        "uriScheme": 1,
+        "transport": 1,
+        "sendPAI": false,
+        "sendRPID": false,
+        "authNeeded": "no",
+        "authUser": null,
+        "authPassword": "*****",
+        "sipProxy": "127.0.0.1",
+        "outboundProxy": null,
+        "fromUser": "",
+        "fromDomain": "",
+        "id": 1,
+        "carrier": {
+            "description": "CarrierDescription",
+            "name": "CarrierName",
+            "id": 1,
+            "transformationRuleSet": 1
+        }
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

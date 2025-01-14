@@ -1,0 +1,24 @@
+{
+  "body": [
+    {
+      "name": "Default",
+      "description": "Something",
+      "id": 1,
+      "global": false
+    },
+    {
+      "name": "Generic",
+      "description": "Generic invoice template",
+      "id": 2,
+      "global": true
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/invoice_templates?_page=1",
+    "x-last-page": "/api/brand/invoice_templates?_page=1",
+    "x-next-page": "/api/brand/invoice_templates?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

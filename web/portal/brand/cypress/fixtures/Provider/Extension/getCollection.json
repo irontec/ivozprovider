@@ -1,0 +1,48 @@
+{
+    "body": [
+        {
+            "number": "101",
+            "routeType": "user",
+            "numberValue": null,
+            "friendValue": null,
+            "id": 1,
+            "user": 1,
+            "numberCountry": null
+        },
+        {
+            "number": "102",
+            "routeType": "user",
+            "numberValue": null,
+            "friendValue": null,
+            "id": 2,
+            "user": 2,
+            "numberCountry": null
+        },
+        {
+            "number": "12346",
+            "routeType": "number",
+            "numberValue": "946006060",
+            "friendValue": null,
+            "id": 3,
+            "user": null,
+            "numberCountry": 68
+        },
+        {
+            "number": "987",
+            "routeType": null,
+            "numberValue": null,
+            "friendValue": null,
+            "id": 4,
+            "user": null,
+            "numberCountry": null
+        }
+    ],
+    "headers": {
+        "x-first-page": "/api/brand/extensions?_page=1",
+        "x-last-page": "/api/brand/extensions?_page=1",
+        "x-next-page": "/api/brand/extensions?_page=1",
+        "x-total-items": "1",
+        "x-total-pages": "1"
+    },
+    "statusCode": 200
+}

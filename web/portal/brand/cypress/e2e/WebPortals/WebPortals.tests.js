@@ -59,7 +59,7 @@ export const deleteWebPortal = () => {
     statusCode: 204,
   }).as('deleteClients');
 
-  const deleteIcon = cy.get('td svg[data-testid="DeleteIcon"]').first().click();
+  cy.get('td svg[data-testid="DeleteIcon"]').first().click();
   cy.contains('Remove element');
   cy.get('div.MuiDialog-container button')
     .filter(':visible')

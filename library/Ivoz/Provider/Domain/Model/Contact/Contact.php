@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Contact;
 
+use Ivoz\Core\Domain\Assert\Assertion;
+
 /**
  * Contact
  */
@@ -45,5 +47,14 @@ class Contact extends ContactAbstract implements ContactInterface
             ? $mobilePhoneCountry->getCountryCode() . $mobilePhone
             : null;
         $this->setMobilePhoneE164($mobilePhoneE164);
+    }
+
+    protected function setEmail(?string $email = null): static
+    {
+        if (!empty($email)) {
+            Assertion::email($email);
+        }
+
+        return parent::setEmail($email);
     }
 }

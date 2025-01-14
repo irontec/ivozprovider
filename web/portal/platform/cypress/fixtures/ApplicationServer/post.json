@@ -1,0 +1,22 @@
+{
+  "request": {
+    "ip": "127.2.2.2",
+    "name": "test003"
+  },
+  "response": {
+    "body": {
+      "ip": "127.2.2.2",
+      "name": "test003",
+      "id": 5
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

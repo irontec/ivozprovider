@@ -69,12 +69,9 @@ describe('Voicemail', () => {
 
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
-    const { enabled, sendMail, attachSound, locution } = editVoicemail.request;
+    const { ...rest } = editVoicemail.request;
     cy.fillTheForm({
-      enabled,
-      sendMail,
-      attachSound,
-      locution,
+      ...rest,
     });
 
     cy.contains('Voicemails');

@@ -1,0 +1,55 @@
+{
+  "request": {
+    "name": "testResidentialDevice",
+    "description": "demo description",
+    "directConnectivity": "yes",
+    "transport": "udp",
+    "ip": "1.2.3.4",
+    "port": 1024,
+    "password": "qq6G+As2M7",
+    "fromDomain": null,
+    "t38Passthrough": "no",
+    "company": 1,
+    "transformationRuleSet": null,
+    "outgoingDdi": null,
+    "language": null,
+    "proxyUser": 1,
+    "allow": "alaw",
+    "ddiIn": "yes",
+    "maxCalls": 1
+  },
+  "response": {
+    "body": {
+      "name": "testResidentialDevice",
+      "description": "demo description",
+      "transport": "udp",
+      "ip": "1.2.3.4",
+      "port": 1024,
+      "password": "qq6G+As2M7",
+      "allow": "alaw",
+      "fromDomain": null,
+      "directConnectivity": "yes",
+      "ddiIn": "yes",
+      "maxCalls": 1,
+      "t38Passthrough": "no",
+      "rtpEncryption": false,
+      "multiContact": true,
+      "ruriDomain": null,
+      "id": 7,
+      "company": 1,
+      "transformationRuleSet": null,
+      "outgoingDdi": null,
+      "language": null,
+      "proxyUser": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

@@ -14,6 +14,7 @@ import { CallCsvSchedulerPropertyList } from './CallCsvSchedulerProperties';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { useCompanyDdis } from './hook/useCompanyDdis';
 import { useCompanyFaxes } from './hook/useCompanyFaxes';
+import { useCompanyFeatures } from './hook/useCompanyFeatures';
 import { useCompanyFriends } from './hook/useCompanyFriends';
 import { useCompanyResidentialDevice } from './hook/useCompanyResidentialDevice';
 import { useCompanyRetailAccount } from './hook/useCompanyRetailAccount';
@@ -35,6 +36,19 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
   const newProperties: CallCsvSchedulerPropertyList<ScalarProperty> = {
     ...properties,
   };
+
+  const formik = useFormHandler(props);
+  const clientType = formik.values.companyType;
+  const companyId = formik.values[clientType];
+
+  const retailId =
+    formik.values.companyType === ClientTypes.retail
+      ? formik.values.retail
+      : null;
+  const residentialId =
+    formik.values.companyType === ClientTypes.residential
+      ? formik.values.residential
+      : null;
 
   const companyType = {
     ...properties.companyType,
@@ -66,34 +80,40 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
   if (!hasVpbxFeature) {
     delete companyType.enum?.vpbx;
   }
+
   newProperties.companyType = companyType;
 
+  const customEndpointType =
+    clientType === ClientTypes.residential
+      ? properties.residentialEndpointType
+      : properties.endpointType;
+
   const endpointType = {
-    ...properties.endpointType,
-    enum: { ...properties.endpointType.enum },
+    ...customEndpointType,
+    enum: { ...customEndpointType.enum },
   } as ScalarProperty;
-  const hasFaxesFeature = aboutMe?.features.includes(ClientFeatures.faxes);
+
+  const companyFeatures = useCompanyFeatures(companyId, clientType);
+
+  const hasFaxesFeature = companyFeatures.includes(ClientFeatures.faxes);
   if (!hasFaxesFeature) {
     delete endpointType.enum?.fax;
   }
-  const hasFriendsFeature = aboutMe?.features.includes(ClientFeatures.friends);
+
+  const hasFriendsFeature = companyFeatures.includes(ClientFeatures.friends);
   if (!hasFriendsFeature) {
     delete endpointType.enum?.friend;
   }
-  newProperties.endpointType = endpointType;
+
+  if (clientType === ClientTypes.vpbx) {
+    newProperties.endpointType = endpointType;
+  }
+
+  if (clientType === ClientTypes.residential) {
+    newProperties.residentialEndpointType = endpointType;
+  }
 
   entityService.replaceProperties(newProperties);
-
-  const formik = useFormHandler(props);
-  const companyId = formik.values[formik.values.companyType];
-  const retailId =
-    formik.values.companyType === ClientTypes.retail
-      ? formik.values.retail
-      : null;
-  const residentialId =
-    formik.values.companyType === ClientTypes.residential
-      ? formik.values.residential
-      : null;
 
   const ddi = useCompanyDdis(companyId);
   const user = useCompanyUsers(companyId);

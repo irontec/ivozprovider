@@ -1,0 +1,23 @@
+{
+  "body": {
+    "restricted": false,
+    "vpbx": false,
+    "residential": false,
+    "retail": true,
+    "wholesale": false,
+    "billingInfo": false,
+    "defaultCountryId": 3,
+    "acls": [],
+    "features": [
+      "queues",
+      "recordings",
+      "faxes",
+      "friends",
+      "conferences"
+    ]
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

@@ -1,0 +1,17 @@
+{
+    "body": {
+        "restricted": false,
+        "vpbx": false,
+        "residential": false,
+        "retail": false,
+        "wholesale": true,
+        "billingInfo": false,
+        "defaultCountryId": 70,
+        "acls": [],
+        "features": []
+    },
+    "headers": {
+        "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+}

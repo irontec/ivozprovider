@@ -42,7 +42,24 @@ class DispatcherRepositoryTest extends KernelTestCase
             ->getRepository(Dispatcher::class);
 
         $result = $repository
-            ->findOneByApplicationServerId(1);
+            ->findByApplicationServerId(1);
+
+        $this->assertCount(2, $result);
+        $this->assertInstanceOf(
+            Dispatcher::class,
+            $result[0]
+        );
+    }
+
+    public function it_finds_by_applicationServerSetRelApplicationServerId()
+    {
+        /** @var DispatcherRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Dispatcher::class);
+
+        $result = $repository
+            ->findOneByApplicationServerSetRelApplicationServer(1);
 
         $this->assertInstanceOf(
             DispatcherInterface::class,

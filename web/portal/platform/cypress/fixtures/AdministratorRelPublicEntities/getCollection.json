@@ -1,0 +1,117 @@
+{
+  "body": [
+    {
+      "create": false,
+      "read": true,
+      "update": false,
+      "delete": false,
+      "id": 245,
+      "administrator": {
+        "username": "utcAdmin",
+        "pass": "*****",
+        "email": "utc@irontec.com",
+        "active": true,
+        "restricted": true,
+        "name": "Admin in UTC timezone",
+        "lastname": "Admin Lastname",
+        "canImpersonate": true,
+        "id": 5,
+        "brand": null,
+        "company": null,
+        "timezone": null
+      },
+      "publicEntity": {
+        "iden": "BillableCalls",
+        "fqdn": "Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall",
+        "platform": true,
+        "brand": true,
+        "client": true,
+        "id": 2,
+        "name": {
+          "en": "BillableCalls",
+          "es": "BillableCalls",
+          "ca": "BillableCalls",
+          "it": "BillableCalls"
+        }
+      }
+    },
+    {
+      "create": false,
+      "read": true,
+      "update": false,
+      "delete": false,
+      "id": 133,
+      "administrator": {
+        "username": "restrictedBrandAdmin",
+        "pass": "*****",
+        "email": "restrictedAdmin@irontec.com",
+        "active": true,
+        "restricted": true,
+        "name": "RestrictedAdmin",
+        "lastname": "Lastname",
+        "canImpersonate": true,
+        "id": 6,
+        "brand": 1,
+        "company": null,
+        "timezone": 145
+      },
+      "publicEntity": {
+        "iden": "BillableCalls",
+        "fqdn": "Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall",
+        "platform": true,
+        "brand": true,
+        "client": true,
+        "id": 2,
+        "name": {
+          "en": "BillableCalls",
+          "es": "BillableCalls",
+          "ca": "BillableCalls",
+          "it": "BillableCalls"
+        }
+      }
+    },
+    {
+      "create": false,
+      "read": true,
+      "update": false,
+      "delete": false,
+      "id": 271,
+      "administrator": {
+        "username": "restrictedPlatformAdministrator",
+        "pass": "*****",
+        "email": "utc@irontec.com",
+        "active": true,
+        "restricted": true,
+        "name": "Admin in UTC timezone",
+        "lastname": "Admin Lastname",
+        "canImpersonate": false,
+        "id": 13,
+        "brand": null,
+        "company": null,
+        "timezone": null
+      },
+      "publicEntity": {
+        "iden": "BillableCalls",
+        "fqdn": "Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall",
+        "platform": true,
+        "brand": true,
+        "client": true,
+        "id": 2,
+        "name": {
+          "en": "BillableCalls",
+          "es": "BillableCalls",
+          "ca": "BillableCalls",
+          "it": "BillableCalls"
+        }
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/platform/administrator_rel_public_entities?_page=1",
+    "x-last-page": "/api/platform/administrator_rel_public_entities?_page=1",
+    "x-next-page": "/api/platform/administrator_rel_public_entities?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

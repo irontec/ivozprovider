@@ -37,7 +37,6 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
     const search = location.search;
     const glue = search.includes('?') ? '&' : '?';
 
-    debugger;
     apiDownload({
       path: `${UsersCdr.path + search + glue}_pagination=false`,
       params: {},
