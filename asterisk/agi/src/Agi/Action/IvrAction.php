@@ -67,8 +67,26 @@ class IvrAction
             $welcomeLocution = $ivr->getWelcomeLocution();
         }
 
-        // Play locution and expect user press
-        $userPressed = $this->agi->readLocution($welcomeLocution, $ivr->getTimeout(), $ivr->getMaxDigits());
+        // Set IVR configuration variables for dialplan
+        $this->agi->setVariable("IVR_ID", $ivr->getId());
+        $this->agi->setVariable("IVR_NAME", $ivr->getName());
+        $this->agi->setVariable("IVR_LOCUTION", $this->agi->getLocutionPath($welcomeLocution));
+        $this->agi->setVariable("IVR_TIMEOUT", $ivr->getTimeout());
+        $this->agi->setVariable("IVR_MAXDIGITS", $ivr->getMaxDigits());
+
+        // Jump to diaplan to request user data
+        $this->agi->redirect('call-ivr-pressed');
+    }
+
+    public function processUserEnteredData(string $userPressed): void
+    {
+        $ivr = $this->ivr;
+
+        if (is_null($ivr)) {
+            $this->agi->error("IVR is not properly defined. Check configuration.");
+            return;
+        }
+
         $this->agi->verbose("IVR: User entered: %s", $userPressed);
 
         // User prefer Human interaction
