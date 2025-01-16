@@ -1,0 +1,12 @@
+{
+  "body": {
+    "name": "CallCsv notification",
+    "type": "callCsv",
+    "id": 2,
+    "brand": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}
