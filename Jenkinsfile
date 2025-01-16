@@ -42,12 +42,12 @@ pipeline {
             steps {
                 // Update Jira Ticket Custom fields
                 script {
-                    // customfield_10126 - Merge Request
-                    // customfield_10159 - Branch
+                    // customfield_10165 - Pull Request
+                    // customfield_10166 - Branch
                     def fields = [
                         fields: [
-                            customfield_10126: env.JOB_BASE_NAME,
-                            customfield_10159: env.CHANGE_BRANCH,
+                            customfield_10165: env.JOB_BASE_NAME,
+                            customfield_10166: env.CHANGE_BRANCH,
                         ]
                     ]
                     jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
@@ -672,9 +672,9 @@ pipeline {
 
                     def issue = jiraGetIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET
 
-                    // Functional Reviewer - 10105
-                    if (issue.data.fields.customfield_10105) {
-                        println "Functional Reviewer: ${issue.data.fields.customfield_10105.displayName}"
+                    // Functional Reviewer - 10168
+                    if (issue.data.fields.customfield_10168) {
+                        println "Functional Reviewer: ${issue.data.fields.customfield_10168.displayName}"
                         pullRequest.addLabel('functional-review')
                     } else {
                         println "No functional reviewer assigned."
@@ -685,7 +685,7 @@ pipeline {
                     println "Issue Status: ${status.name} (${status.id})"
 
                     // For Issues with Functional reviewer
-                    if (issue.data.fields.customfield_10105) {
+                    if (issue.data.fields.customfield_10168) {
                         // Not validated
                         if (status.id != "10325") {
                             // Ensure the PR is not already marked as changed requested
