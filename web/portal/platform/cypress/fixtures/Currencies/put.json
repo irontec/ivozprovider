@@ -1,0 +1,29 @@
+{
+  "request": {
+    "iden": "AUD",
+    "symbol": "$",
+    "name": {
+      "en": "Australia Dólar",
+      "es": "Australia Dólar",
+      "ca": "Australia Dólar",
+      "it": "Australia Dólar"
+    }
+  },
+  "response": {
+    "body": {
+      "iden": "AUD",
+      "symbol": "$",
+      "id": 3,
+      "name": {
+        "en": "Australia Dólar",
+        "es": "Australia Dólar",
+        "ca": "Australia Dólar",
+        "it": "Australia Dólar"
+      }
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
