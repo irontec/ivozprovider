@@ -1,5 +1,5 @@
-import newInvoiceTemplate from '../../fixtures/InvoiceTemplate/post.json';
-import editInvoiceTemplate from '../../fixtures/InvoiceTemplate/put.json';
+import newInvoiceTemplate from '../../../fixtures/InvoiceTemplate/post.json';
+import editInvoiceTemplate from '../../../fixtures/InvoiceTemplate/put.json';
 
 export const postInvoiceTemplate = () => {
   cy.usePactIntercept(
