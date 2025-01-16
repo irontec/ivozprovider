@@ -1,0 +1,30 @@
+{
+  "request": {
+    "defaultCode": "98",
+    "extraArgs": true
+  },
+  "response": {
+    "body": {
+      "iden": "DirectPickUp",
+      "defaultCode": "98",
+      "extraArgs": true,
+      "id": 1,
+      "name": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      }
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
