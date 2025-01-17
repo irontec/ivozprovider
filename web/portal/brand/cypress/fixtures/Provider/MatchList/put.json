@@ -1,0 +1,15 @@
+{
+  "request": {
+    "name": "updatedMatchlist"
+  },
+  "response": {
+    "body": {
+      "name": "updatedMatchlist",
+      "id": 3
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

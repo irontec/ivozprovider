@@ -1,0 +1,30 @@
+{
+  "request": {
+    "description": "new brand test",
+    "type": "number",
+    "regexp": null,
+    "numbervalue": "946002059",
+    "matchList": 3,
+    "numberCountry": 1
+  },
+  "response": {
+    "body": {
+      "description": "new brand test",
+      "type": "number",
+      "regexp": null,
+      "numbervalue": "946002059",
+      "id": 3,
+      "matchList": 3,
+      "numberCountry": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
