@@ -1,5 +1,5 @@
-import newWebPortal from '../../fixtures/Provider/WebPortals/post.json';
-import editWebPortal from '../../fixtures/Provider/WebPortals/put.json';
+import newWebPortal from '../../../fixtures/Provider/WebPortals/post.json';
+import editWebPortal from '../../../fixtures/Provider/WebPortals/put.json';
 
 export const postWebPortal = () => {
   cy.usePactIntercept(

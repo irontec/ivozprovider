@@ -1,4 +1,4 @@
-import WebPortalsCollection from '../../fixtures/Provider/WebPortals/getCollection.json';
+import WebPortalsCollection from '../../../fixtures/Provider/WebPortals/getCollection.json';
 import {
   deleteWebPortal,
   postWebPortal,
@@ -18,18 +18,18 @@ describe('in WebPortals', () => {
     cy.get('table').should('contain', WebPortalsCollection.body[0].name);
   });
 
-  ///////////////////////
+  //////////////////////
   // POST
-  ///////////////////////
+  //////////////////////
   it('add WebPortal', postWebPortal);
 
-  ///////////////////////////////
+  //////////////////////
   // PUT
-  ///////////////////////////////
+  //////////////////////
   it('edit WebPortal', putWebPortal);
 
-  ///////////////////////
+  //////////////////////
   // DELETE
-  ///////////////////////
+  //////////////////////
   it('delete WebPortal', deleteWebPortal);
 });
