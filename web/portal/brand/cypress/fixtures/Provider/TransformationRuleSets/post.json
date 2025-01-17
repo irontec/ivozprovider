@@ -1,0 +1,45 @@
+{
+  "request": {
+    "description": "New transformation for Usansolocity",
+    "internationalCode": "00",
+    "trunkPrefix": "",
+    "areaCode": "",
+    "nationalLen": 9,
+    "generateRules": false,
+    "name": {
+      "en": "usansolocity",
+      "es": "usansolo",
+      "ca": "usansolo",
+      "it": "usansolo"
+    },
+    "country": 1
+  },
+  "response": {
+    "body": {
+      "description": "New transformation for Usansolocity",
+      "internationalCode": "00",
+      "trunkPrefix": "",
+      "areaCode": "",
+      "nationalLen": 9,
+      "generateRules": false,
+      "id": 4,
+      "name": {
+        "en": "usansolocity",
+        "es": "usansolo",
+        "ca": "usansolo",
+        "it": "usansolo"
+      },
+      "country": 1,
+      "editable": true
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

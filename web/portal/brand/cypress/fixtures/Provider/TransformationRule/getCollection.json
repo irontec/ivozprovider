@@ -1,0 +1,60 @@
+{
+  "body": [
+    {
+      "type": "callerout",
+      "description": "From e164 to special national",
+      "priority": 3,
+      "matchExpr": "^\\+34([0-9]+)$",
+      "replaceExpr": "\u0001",
+      "id": 1
+    },
+    {
+      "type": "calleeout",
+      "description": "From e164 to special national",
+      "priority": 3,
+      "matchExpr": "^\\+34([0-9]+)$",
+      "replaceExpr": "\u0001",
+      "id": 2
+    },
+    {
+      "type": "calleeout",
+      "description": "From e164 to special national (Generic Transformation Ruleset)",
+      "priority": 3,
+      "matchExpr": "^\\+34([0-9]+)$",
+      "replaceExpr": "\u0001",
+      "id": 9
+    },
+    {
+      "type": "callerin",
+      "description": "From special national to e164",
+      "priority": 4,
+      "matchExpr": "^([0-9]+)$",
+      "replaceExpr": "+34\u0001",
+      "id": 3
+    },
+    {
+      "type": "calleein",
+      "description": "From special national to e164",
+      "priority": 4,
+      "matchExpr": "^([0-9]+)$",
+      "replaceExpr": "+34\u0001",
+      "id": 4
+    },
+    {
+      "type": "calleein",
+      "description": "From special national to e164 (Generic Transformation Ruleset)",
+      "priority": 4,
+      "matchExpr": "^([0-9]+)$",
+      "replaceExpr": "+34\u0001",
+      "id": 10
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/transformation_rules?_page=1",
+    "x-last-page": "/api/brand/transformation_rules?_page=1",
+    "x-next-page": "/api/brand/transformation_rules?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
