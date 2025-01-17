@@ -1,0 +1,22 @@
+{
+  "request": {
+    "code": "11",
+    "service": 4
+  },
+  "response": {
+    "body": {
+      "code": "11",
+      "id": 5,
+      "service": 4
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
