@@ -1,12 +1,18 @@
 {
   "body": [
     {
-        "fromName": "IvozProvider Notification",
-        "fromAddress": "no-reply@ivozprovider.com",
-        "id": 1,
-        "language": 1
+      "fromName": "IvozProvider Notification",
+      "fromAddress": "no-reply@ivozprovider.com",
+      "id": 2,
+      "language": 1
+    },
+    {
+      "fromName": "IvozProvider Notification",
+      "fromAddress": "no-reply@ivozprovider.com",
+      "id": 3,
+      "language": 2
     }
-],
+  ],
   "headers": {
     "x-first-page": "/api/brand/notification_template_contents?_page=1",
     "x-last-page": "/api/brand/notification_template_contents?_page=1",
