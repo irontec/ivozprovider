@@ -40,6 +40,10 @@ services:
         class: "EncoderController"
         public: true
 
+    Service\RecordingEndedChecker:
+        arguments:
+            $recorderCmd: '/^rtpengine-rec/'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 when@test:
@@ -53,3 +57,8 @@ when@test:
 
         DataFixtures\:
             resource: '../../../library/DataFixtures/*'
+
+        Service\RecordingEndedChecker:
+            public: true
+            arguments:
+                $recorderCmd: 'php'

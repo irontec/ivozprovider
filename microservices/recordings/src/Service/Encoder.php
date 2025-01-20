@@ -20,11 +20,6 @@ class Encoder
     const RECORDING_SIZE_MIN = 512;
 
     /**
-     * Recording created this seconds ago will be ignored
-     */
-    const RECORDING_AGE_MIN = 180;
-
-    /**
      * @var array{
      *     deleted: int,
      *     skipped: int,
@@ -47,7 +42,8 @@ class Encoder
         private Logger $logger,
         private RawRecordingProcessor $rawRecordingProcessor,
         private RawRecordingsGetter $fileGetter,
-        private FileUnlinker $fileUnlinker
+        private FileUnlinker $fileUnlinker,
+        private RecordingEndedChecker $recordingEndedChecker,
     ) {
     }
 
@@ -344,15 +340,15 @@ class Encoder
 
     private function isProcessableFile(RawRecordingInfo $rawRecordingInfo): bool
     {
-        $isTooRecent = $rawRecordingInfo->getAge() <= self::RECORDING_AGE_MIN;
+        $isRecordingEnded = $this
+            ->recordingEndedChecker
+            ->execute($rawRecordingInfo->getFullName());
 
-        if ($isTooRecent) {
+        if (!$isRecordingEnded) {
             $this->logger->info(sprintf(
-                "[Recordings] Ignoring too young file %s [%d sec]\n",
-                $rawRecordingInfo->getFileName(),
-                $rawRecordingInfo->getAge()
+                "[Recordings] Recording is not completed: %s\n",
+                $rawRecordingInfo->getFileName()
             ));
-
             $this->stats['skipped']++;
 
             return false;

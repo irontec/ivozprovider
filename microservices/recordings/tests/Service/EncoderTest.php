@@ -14,6 +14,7 @@ use Service\FileUnlinker;
 use Service\RawRecordingInfoFactory;
 use Service\RawRecordingProcessor;
 use Service\RawRecordingsGetter;
+use Service\RecordingEndedChecker;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class EncoderTest extends KernelTestCase
@@ -36,6 +37,7 @@ class EncoderTest extends KernelTestCase
         $this->logger->setHandlers([$this->testHandler]);
         $this->setUpMockFileUnlinker();
         $this->setUpMockRecordingsGetter();
+        $this->setUpMockRecordingEndedChecker();
         $this->setUpMockRecordingProcessor();
         $this->setUpMockEntityTools();
     }
@@ -56,7 +58,6 @@ class EncoderTest extends KernelTestCase
             RawRecordingInfoFactory::class,
             [
                 'getFileSize',
-                'getFileAge',
             ],
         );
 
@@ -108,7 +109,7 @@ class EncoderTest extends KernelTestCase
                 "[Recordings][8edac669] Checking file c00269fa-a64b-8297bdde-309cd49f%4010.10.1.125-fc5cee56dc74-mix.wav\n",
                 "[Recordings][8edac669] Encoding to 8edac669.mp3\n",
                 "[Recordings][8edac669] Create Recordings entry with id 1000\n",
-                "[Recordings] Ignoring too young file too-young-file-name-mix.wav [9 sec]\n",
+                "[Recordings] Recording is not completed: still-recording-file-name-mix.wav\n",
                 "[Recordings] Deleting empty file too-small-file-name-mix.wav\n",
                 "[Recordings] Total 5 processed: 2 successful, 0 error, 1 deleted, 2 skipped.\n",
             ],
@@ -137,13 +138,30 @@ class EncoderTest extends KernelTestCase
     {
         $mock = $this->getMockBuilder(RawRecordingInfo::class)
             ->setConstructorArgs([$file])
-            ->onlyMethods(['getSize', 'getAge'])
+            ->onlyMethods(['getSize'])
             ->getMock();
 
         $mock->method('getSize')->willReturn($size);
-        $mock->method('getAge')->willReturn($age);
 
         return $mock;
+    }
+
+    private function setUpMockRecordingEndedChecker(): void
+    {
+        $mockRecordingEndedChecker = $this->createMock(
+            RecordingEndedChecker::class
+        );
+
+        $mockRecordingEndedChecker->expects($this->exactly(5))
+            ->method('execute')
+            ->willReturnCallback(
+                fn($file) => $file != '/recordings/still-recording-file-name-mix.wav'
+            );
+
+        $this->serviceContainer->set(
+            'Service\RecordingEndedChecker',
+            $mockRecordingEndedChecker,
+        );
     }
 
     private function setUpMockRecordingsGetter(): void
@@ -152,32 +170,27 @@ class EncoderTest extends KernelTestCase
             new RawRecordingInfo(
                 '/recordings/a5631aae-aa41-017cc7c8-eb38-4bbd-9318-524a274f7102-fc5cee56dc01-mix.wav',
                 '017cc7c8-eb38-4bbd-9318-524a274f7102',
-                Encoder::RECORDING_SIZE_MIN + 1,
-                Encoder::RECORDING_AGE_MIN + 1
+                Encoder::RECORDING_SIZE_MIN + 1
             ),
             new RawRecordingInfo(
                 '/recordings/4e0466c8-a64b-34676896565-fc5cee56dc74-mix.wav',
                 '34676896565',
-                Encoder::RECORDING_SIZE_MIN + 1,
-                Encoder::RECORDING_AGE_MIN + 1
+                Encoder::RECORDING_SIZE_MIN + 1
             ),
             new RawRecordingInfo(
                 '/recordings/c00269fa-a64b-8297bdde-309cd49f%4010.10.1.125-fc5cee56dc74-mix.wav',
                 '8297bdde-309cd49f@10.10.1.125',
-                Encoder::RECORDING_SIZE_MIN + 1,
-                Encoder::RECORDING_AGE_MIN + 1
+                Encoder::RECORDING_SIZE_MIN + 1
             ),
             new RawRecordingInfo(
-                '/recordings/too-young-file-name-mix.wav',
+                '/recordings/still-recording-file-name-mix.wav',
                 'file',
-                Encoder::RECORDING_SIZE_MIN + 1,
-                Encoder::RECORDING_AGE_MIN - 1
+                Encoder::RECORDING_SIZE_MIN + 1
             ),
             new RawRecordingInfo(
                 '/recordings/too-small-file-name-mix.wav',
                 'file',
-                Encoder::RECORDING_SIZE_MIN - 1,
-                Encoder::RECORDING_AGE_MIN + 1
+                Encoder::RECORDING_SIZE_MIN - 1
             ),
         ];
 
