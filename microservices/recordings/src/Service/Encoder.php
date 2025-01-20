@@ -20,11 +20,6 @@ class Encoder
     const RECORDING_SIZE_MIN = 512;
 
     /**
-     * Recording created this seconds ago will be ignored
-     */
-    const RECORDING_AGE_MIN = 10;
-
-    /**
      * @var array{
      *     deleted: int,
      *     skipped: int,

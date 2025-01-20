@@ -11,7 +11,6 @@ class RawRecordingInfo
         protected string $fullFileName,
         protected string $callid,
         protected int $size,
-        protected int $age,
     ) {
         $this->fileName = basename($fullFileName);
         $this->hashid = substr(md5($callid), 0, 8);
@@ -40,10 +39,5 @@ class RawRecordingInfo
     public function getSize(): int
     {
         return $this->size;
-    }
-
-    public function getAge(): int
-    {
-        return $this->age;
     }
 }

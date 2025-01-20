@@ -21,17 +21,11 @@ class RawRecordingInfoFactory
             $fullFileName,
             $callid,
             $this->getFileSize($fullFileName),
-            $this->getFileAge($fullFileName),
         );
     }
 
     protected function getFileSize(string $fullFileName): int
     {
         return (int)filesize($fullFileName);
-    }
-
-    protected function getFileAge(string $fullFileName): int
-    {
-        return time() - filemtime($fullFileName);
     }
 }
