@@ -96,6 +96,9 @@ services:
     Dialplan\HuntGroupMember:
         arguments: ~
 
+    Dialplan\IvrStatus:
+        arguments: ~
+
     Dialplan\Queues:
         arguments: ~
 
