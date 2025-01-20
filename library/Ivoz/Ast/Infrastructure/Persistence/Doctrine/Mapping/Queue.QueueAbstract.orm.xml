@@ -73,7 +73,7 @@
     </field>
     <many-to-one field="queue" target-entity="Ivoz\Provider\Domain\Model\Queue\QueueInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="queueId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="queueId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

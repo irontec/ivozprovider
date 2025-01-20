@@ -11,12 +11,12 @@
     </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="services" fetch="LAZY">
       <join-columns>
-        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="service" target-entity="Ivoz\Provider\Domain\Model\Service\ServiceInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="serviceId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="serviceId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

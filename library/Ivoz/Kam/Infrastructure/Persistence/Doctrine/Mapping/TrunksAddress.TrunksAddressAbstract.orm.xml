@@ -31,7 +31,7 @@
     </field>
     <one-to-one field="ddiProviderAddress" target-entity="Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface" inversed-by="trunksAddress" fetch="LAZY">
       <join-columns>
-        <join-column name="ddiProviderAddressId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="ddiProviderAddressId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </one-to-one>
   </mapped-superclass>

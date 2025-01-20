@@ -44,7 +44,7 @@
     </field>
     <many-to-one field="terminalManufacturer" target-entity="Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="TerminalManufacturerId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="TerminalManufacturerId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

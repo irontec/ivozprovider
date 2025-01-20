@@ -63,27 +63,27 @@
     </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="friendId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="friendId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="kamUsersCdr" target-entity="Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="kamUsersCdrId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="kamUsersCdrId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

@@ -30,7 +30,7 @@
     </field>
     <one-to-one field="destination" target-entity="Ivoz\Provider\Domain\Model\Destination\DestinationInterface" inversed-by="tpDestination" fetch="LAZY">
       <join-columns>
-        <join-column name="destinationId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="destinationId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </one-to-one>
   </mapped-superclass>

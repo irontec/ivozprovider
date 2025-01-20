@@ -42,7 +42,7 @@
     </field>
     <one-to-one field="ratingPlan" target-entity="Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface" inversed-by="tpRatingPlan" fetch="LAZY">
       <join-columns>
-        <join-column name="ratingPlanId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="ratingPlanId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </one-to-one>
   </mapped-superclass>

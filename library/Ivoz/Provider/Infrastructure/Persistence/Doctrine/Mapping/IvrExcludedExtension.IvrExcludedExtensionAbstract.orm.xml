@@ -6,12 +6,12 @@
     </unique-constraints>
     <many-to-one field="ivr" target-entity="Ivoz\Provider\Domain\Model\Ivr\IvrInterface" inversed-by="excludedExtensions" fetch="LAZY">
       <join-columns>
-        <join-column name="ivrId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="ivrId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="extensionId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="extensionId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

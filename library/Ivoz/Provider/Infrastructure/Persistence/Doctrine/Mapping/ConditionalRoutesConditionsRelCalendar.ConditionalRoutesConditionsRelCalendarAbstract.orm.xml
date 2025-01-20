@@ -3,12 +3,12 @@
   <mapped-superclass name="Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarAbstract" table="conditional_routes_conditions_rel_calendar_abstract">
     <many-to-one field="condition" target-entity="Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface" inversed-by="relCalendars" fetch="LAZY">
       <join-columns>
-        <join-column name="conditionId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="conditionId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="calendar" target-entity="Ivoz\Provider\Domain\Model\Calendar\CalendarInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="calendarId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="calendarId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

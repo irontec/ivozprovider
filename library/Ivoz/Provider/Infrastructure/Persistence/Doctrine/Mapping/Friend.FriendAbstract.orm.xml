@@ -132,42 +132,42 @@
     </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="friends" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\DomainInterface" inversed-by="friends" fetch="LAZY">
       <join-columns>
-        <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="callAcl" target-entity="Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="callAclId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="callAclId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="outgoingDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="outgoingDdiId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="outgoingDdiId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\LanguageInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="interCompany" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="interCompanyId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+        <join-column name="interCompanyId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="proxyUser" target-entity="Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="proxyUserId" referenced-column-name="id" on-delete="SET NULL" on-update="RESTRICT" nullable="1"/>
+        <join-column name="proxyUserId" referenced-column-name="id" on-delete="SET NULL" on-update="RESTRICT" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

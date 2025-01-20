@@ -55,12 +55,12 @@
     </field>
     <many-to-one field="ratingPlanGroup" target-entity="Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface" inversed-by="ratingPlan" fetch="LAZY">
       <join-columns>
-        <join-column name="ratingPlanGroupId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="ratingPlanGroupId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="destinationRateGroup" target-entity="Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="destinationRateGroupId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="destinationRateGroupId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

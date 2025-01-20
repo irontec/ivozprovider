@@ -43,22 +43,22 @@
     </field>
     <one-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" inversed-by="contact" fetch="LAZY">
       <join-columns>
-        <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+        <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
       </join-columns>
     </one-to-one>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="contacts" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="workPhoneCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="workPhoneCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="workPhoneCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="mobilePhoneCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="mobilePhoneCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="mobilePhoneCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

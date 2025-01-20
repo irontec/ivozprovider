@@ -6,12 +6,12 @@
     </unique-constraints>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="relProxyTrunks" fetch="LAZY">
       <join-columns>
-        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="proxyTrunk" target-entity="Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="proxyTrunkId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="proxyTrunkId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>
