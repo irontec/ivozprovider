@@ -3,12 +3,12 @@
   <mapped-superclass name="Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListAbstract" table="external_call_filter_black_list_abstract">
     <many-to-one field="filter" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface" inversed-by="blackLists" fetch="LAZY">
       <join-columns>
-        <join-column name="filterId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="filterId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="matchlist" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchListInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="matchListId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="matchListId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

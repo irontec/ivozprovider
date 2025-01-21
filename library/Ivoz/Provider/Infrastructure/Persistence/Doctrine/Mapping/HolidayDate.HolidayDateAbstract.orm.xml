@@ -27,27 +27,27 @@
     </field>
     <many-to-one field="calendar" target-entity="Ivoz\Provider\Domain\Model\Calendar\CalendarInterface" inversed-by="holidayDates" fetch="LAZY">
       <join-columns>
-        <join-column name="calendarId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="calendarId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="locution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="locutionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="locutionId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="voicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="voicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="voicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

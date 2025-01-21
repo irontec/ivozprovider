@@ -37,7 +37,7 @@
     </field>
     <many-to-one field="fax" target-entity="Ivoz\Provider\Domain\Model\Fax\FaxInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="faxId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="faxId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="dstCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">

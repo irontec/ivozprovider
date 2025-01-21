@@ -117,12 +117,12 @@
     </many-to-one>
     <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="ddiId" referenced-column-name="id" on-delete="set null" nullable="1"/>
+        <join-column name="ddiId" referenced-column-name="id" on-delete="set null" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="ddiProviderId" referenced-column-name="id" on-delete="set null" nullable="1"/>
+        <join-column name="ddiProviderId" referenced-column-name="id" on-delete="set null" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

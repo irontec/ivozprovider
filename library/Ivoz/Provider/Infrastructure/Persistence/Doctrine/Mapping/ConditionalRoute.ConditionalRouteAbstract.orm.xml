@@ -24,7 +24,7 @@
     </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="ivr" target-entity="Ivoz\Provider\Domain\Model\Ivr\IvrInterface" fetch="LAZY">

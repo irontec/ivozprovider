@@ -71,7 +71,7 @@
 <!--        <cascade-persist/>-->
 <!--      </cascade>-->
       <join-columns>
-        <join-column name="carrierServerId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+        <join-column name="carrierServerId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
       </join-columns>
     </one-to-one>
   </mapped-superclass>

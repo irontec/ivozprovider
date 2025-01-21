@@ -92,52 +92,52 @@
     </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="periodicAnnounceLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="periodicAnnounceLocutionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="periodicAnnounceLocutionId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="timeoutLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="timeoutLocutionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="timeoutLocutionId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="timeoutExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="timeoutExtensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="timeoutExtensionId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="timeoutVoicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="timeoutVoicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="timeoutVoicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="fullLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="fullLocutionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="fullLocutionId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="fullExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="fullExtensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="fullExtensionId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="fullVoicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="fullVoicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="fullVoicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="timeoutNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="timeoutNumberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="timeoutNumberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="fullNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="fullNumberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="fullNumberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

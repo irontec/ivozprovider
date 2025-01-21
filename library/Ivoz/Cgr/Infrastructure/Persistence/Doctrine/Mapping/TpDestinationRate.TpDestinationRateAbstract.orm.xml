@@ -59,7 +59,7 @@
     </field>
     <one-to-one field="destinationRate" target-entity="Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface" inversed-by="tpDestinationRate" fetch="LAZY">
       <join-columns>
-        <join-column name="destinationRateId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="destinationRateId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </one-to-one>
   </mapped-superclass>

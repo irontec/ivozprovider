@@ -116,17 +116,17 @@
     </many-to-one>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="companies" fetch="LAZY">
       <join-columns>
-        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\DomainInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="country" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="countryId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="countryId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\CurrencyInterface" fetch="LAZY">
@@ -146,52 +146,52 @@
     </many-to-one>
     <many-to-one field="outgoingDdiRule" target-entity="Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="outgoingDdiRuleId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="outgoingDdiRuleId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="voicemailNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="vmNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="vmNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="faxNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="faxNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="faxNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="invoiceNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="invoiceNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="invoiceNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="callCsvNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="callCsvNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="callCsvNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="maxDailyUsageNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="maxDailyUsageNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="maxDailyUsageNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="accessCredentialNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="accessCredentialNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="accessCredentialNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="corporation" target-entity="Ivoz\Provider\Domain\Model\Corporation\CorporationInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="corporationId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="corporationId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="applicationServerSet" target-entity="Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="applicationServerSetId" referenced-column-name="id" on-delete="RESTRICT" nullable="0"/>
+        <join-column name="applicationServerSetId" referenced-column-name="id" on-delete="RESTRICT" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="mediaRelaySet" target-entity="Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="mediaRelaySetId" referenced-column-name="id" on-delete="RESTRICT" nullable="0"/>
+        <join-column name="mediaRelaySetId" referenced-column-name="id" on-delete="RESTRICT" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

@@ -6,12 +6,12 @@
     </unique-constraints>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="relFeatures" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="feature" target-entity="Ivoz\Provider\Domain\Model\Feature\FeatureInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="featureId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="featureId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

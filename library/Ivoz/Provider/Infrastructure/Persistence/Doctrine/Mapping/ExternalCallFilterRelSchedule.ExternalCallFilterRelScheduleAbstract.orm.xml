@@ -3,12 +3,12 @@
   <mapped-superclass name="Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleAbstract" table="external_call_filter_rel_schedule_abstract">
     <many-to-one field="filter" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface" inversed-by="schedules" fetch="LAZY">
       <join-columns>
-        <join-column name="filterId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="filterId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="schedule" target-entity="Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="scheduleId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="scheduleId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

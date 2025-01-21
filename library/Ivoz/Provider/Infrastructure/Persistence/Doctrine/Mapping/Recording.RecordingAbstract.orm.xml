@@ -46,12 +46,12 @@
     </many-to-one>
     <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" inversed-by="recordings" fetch="LAZY">
       <join-columns>
-        <join-column name="ddiId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="ddiId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" inversed-by="recordings" fetch="LAZY">
       <join-columns>
-        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

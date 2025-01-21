@@ -26,12 +26,12 @@
     </field>
     <many-to-one field="administrator" target-entity="Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface" inversed-by="relPublicEntities" fetch="LAZY">
       <join-columns>
-        <join-column name="administratorId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="administratorId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="publicEntity" target-entity="Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface" fetch="EAGER">
       <join-columns>
-        <join-column name="publicEntityId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="publicEntityId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>
