@@ -5,6 +5,7 @@ import ApplicationServer from '../../fixtures/ApplicationServer/getCollection.js
 import ApplicationServerSet from '../../fixtures/ApplicationServerSets/getCollection.json';
 import CountriesCollection from '../../fixtures/Countries/getCollection.json';
 import CurrenciesCollection from '../../fixtures/Currencies/getCollection.json';
+import ExternalCalls from '../../fixtures/ExternalCalls/getCollection.json';
 import InvoiceTemplateCollection from '../../fixtures/InvoiceTemplate/getCollection.json';
 import LanguagesCollection from '../../fixtures/Language/getCollection.json';
 import MediaRelaySetsCollection from '../../fixtures/MediaRelaySets/getCollection.json';
@@ -198,5 +199,13 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/platform/banned_addresses*', {
       ...BannedAddressCollection,
     }).as('getDomains');
+
+    cy.intercept('GET', '**/api/platform/application_servers*', {
+      ...ApplicationServer,
+    }).as('getApplicationServers');
+
+    cy.intercept('GET', '**/api/platform/billable_calls*', {
+      ...ExternalCalls,
+    }).as('getExternalCalls');
   }
 );

@@ -1,0 +1,11 @@
+{
+  "body": {
+    "success": true,
+    "errorMsg": "",
+    "failed": 0
+  },
+  "statusCode": 200,
+  "headers": {
+    "Content-Type": "application/json; charset=utf-8"
+  }
+}
