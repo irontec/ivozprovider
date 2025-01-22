@@ -3,12 +3,17 @@ import AdministratorRelPublicEntitiesCollection from '../../fixtures/Administrat
 import apiSpec from '../../fixtures/apiSpec.json';
 import ApplicationServer from '../../fixtures/ApplicationServer/getCollection.json';
 import ApplicationServerSet from '../../fixtures/ApplicationServerSets/getCollection.json';
+import CountriesCollection from '../../fixtures/Countries/getCollection.json';
+import CurrenciesCollection from '../../fixtures/Currencies/getCollection.json';
 import InvoiceTemplateCollection from '../../fixtures/InvoiceTemplate/getCollection.json';
+import LanguagesCollection from '../../fixtures/Language/getCollection.json';
 import MediaRelaySetsCollection from '../../fixtures/MediaRelaySets/getCollection.json';
 import ActiveCallsItem from '../../fixtures/My/ActiveCalls/getActiveCalls.json';
 import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
+import NotificationTemplatesCollection from '../../fixtures/NotificationTemplate/getCollection.json';
+import NotificationTemplatesContentCollection from '../../fixtures/NotificationTemplateContent/getCollection.json';
 import BannedAddressCollection from '../../fixtures/Provider/BannedAddress/getCollection.json';
 import BrandCollection from '../../fixtures/Provider/Brand/getCollection.json';
 import BrandOperatorCollection from '../../fixtures/Provider/BrandOperator/getCollection.json';
@@ -22,6 +27,8 @@ import WebPortal from '../../fixtures/Provider/WebPortal/getCollection.json';
 import ProxyUserCollection from '../../fixtures/ProxyUser/getCollection.json';
 import PublicEntitiesCollection from '../../fixtures/PublicEntities/getCollection.json';
 import RtpengineCollection from '../../fixtures/Rtpengine/getCollection.json';
+import ServicesCollection from '../../fixtures/Services/getCollection.json';
+import SpecialNumbersCollection from '../../fixtures/SpecialNumber/getCollection.json';
 import TerminalManufacturerCollection from '../../fixtures/TerminalManufacturer/getCollection.json';
 import TimezonesCollection from '../../fixtures/Timezones/getTimezones.json';
 import UserCollection from '../../fixtures/Users/getCollection.json';
@@ -68,18 +75,66 @@ Cypress.Commands.add(
       ...AdministratorRelPublicEntitiesCollection,
     }).as('getAdministratorRelPublicEntities');
 
-    cy.intercept('GET', '**/api/platform/public_entities?*', {
-      ...PublicEntitiesCollection,
-    }).as('getPublicEntities');
+    cy.intercept('GET', '**/api/platform/services?*', {
+      ...ServicesCollection,
+    }).as('getServices');
+
+    cy.intercept('GET', '**/api/platform/currencies?*', {
+      ...CurrenciesCollection,
+    }).as('getCurrencies');
+
+    cy.intercept('GET', '**/api/platform/notification_templates?*', {
+      ...NotificationTemplatesCollection,
+    }).as('getNotificationTemplates');
+
+    cy.intercept('GET', '**/api/platform/notification_template_contents?*', {
+      ...NotificationTemplatesContentCollection,
+    }).as('getNotificationTemplateContents');
+
+    cy.intercept('GET', '**/api/platform/languages?*', {
+      ...LanguagesCollection,
+    }).as('getLanguages');
+
+    cy.intercept('GET', '**/api/platform/special_numbers?*', {
+      ...SpecialNumbersCollection,
+    }).as('getSpecialNumbers');
+
+    cy.intercept('GET', '**/api/platform/countries?*', {
+      ...CountriesCollection,
+    }).as('getCountries');
+
     cy.intercept('GET', '**/api/platform/my/theme', {
       ...ThemeItem,
     }).as('getMyTheme');
+
     cy.intercept('GET', '**/api/platform/my/profile', { ...ProfileItem }).as(
       'getMyProfile'
     );
+
     cy.intercept('GET', '**/api/platform/my/dashboard', {
       ...DashboardItem,
     }).as('getMyDashboard');
+
+    cy.intercept('GET', '**/api/platform/my/active_calls', {
+      ...ActiveCallsItem,
+    }).as('getMyActiveCalls');
+
+    cy.intercept('GET', '**/api/platform/public_entities?*', {
+      ...PublicEntitiesCollection,
+    }).as('getPublicEntities');
+
+    cy.intercept('GET', '**/api/platform/my/theme', {
+      ...ThemeItem,
+    }).as('getMyTheme');
+
+    cy.intercept('GET', '**/api/platform/my/profile', { ...ProfileItem }).as(
+      'getMyProfile'
+    );
+
+    cy.intercept('GET', '**/api/platform/my/dashboard', {
+      ...DashboardItem,
+    }).as('getMyDashboard');
+
     cy.intercept('GET', '**/api/platform/timezones*', {
       ...TimezonesCollection,
     }).as('getTimezones');

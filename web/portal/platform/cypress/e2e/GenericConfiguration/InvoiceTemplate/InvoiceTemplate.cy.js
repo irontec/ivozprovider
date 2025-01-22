@@ -1,4 +1,4 @@
-import InvoiceTemplateCollection from '../../fixtures/InvoiceTemplate/getCollection.json';
+import InvoiceTemplateCollection from '../../../fixtures/InvoiceTemplate/getCollection.json';
 import {
   deleteteInvoiceTemplate,
   postInvoiceTemplate,
