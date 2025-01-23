@@ -1,13 +1,11 @@
 {
   "request": {
-    "name": "New fax notification",
-    "type": "fax"
+    "name": "newMatchlist"
   },
   "response": {
     "body": {
-      "name": "New fax notification",
-      "type": "fax",
-      "id": 6
+      "name": "newMatchlist",
+      "id": 4
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

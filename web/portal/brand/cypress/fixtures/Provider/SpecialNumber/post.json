@@ -1,13 +1,15 @@
 {
   "request": {
-    "name": "New fax notification",
-    "type": "fax"
+    "number": "010",
+    "disableCDR": 1,
+    "country": 1
   },
   "response": {
     "body": {
-      "name": "New fax notification",
-      "type": "fax",
-      "id": 6
+      "number": "010",
+      "disableCDR": 1,
+      "id": 3,
+      "country": 1
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

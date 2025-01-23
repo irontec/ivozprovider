@@ -1,0 +1,16 @@
+{
+  "body": [
+    {
+      "name": "testBrandMatchlist",
+      "id": 3
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/match_lists?_page=1",
+    "x-last-page": "/api/brand/match_lists?_page=1",
+    "x-next-page": "/api/brand/match_lists?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

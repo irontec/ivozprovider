@@ -1,0 +1,30 @@
+{
+  "request": {
+    "type": "callerout",
+    "description": "From e164 to usansolocity",
+    "priority": 10,
+    "matchExpr": "^\\+34([0-9]+)$",
+    "replaceExpr": "\u0001",
+    "transformationRuleSet": 1
+  },
+  "response": {
+    "body": {
+      "type": "callerout",
+      "description": "From e164 to usansolocity",
+      "priority": 10,
+      "matchExpr": "^\\+34([0-9]+)$",
+      "replaceExpr": "\u0001",
+      "id": 11,
+      "transformationRuleSet": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

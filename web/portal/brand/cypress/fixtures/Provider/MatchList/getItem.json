@@ -1,8 +1,7 @@
 {
   "body": {
-    "name": "Voicemail notification",
-    "type": "voicemail",
-    "id": 1
+    "name": "testBrandMatchlist",
+    "id": 3
   },
   "headers": {
     "content-type": "application/json; charset=utf-8"

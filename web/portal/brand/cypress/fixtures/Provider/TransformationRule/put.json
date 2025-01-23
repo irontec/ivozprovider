@@ -1,0 +1,25 @@
+{
+  "request": {
+    "type": "callerin",
+    "description": "Updated",
+    "priority": 5,
+    "matchExpr": "^([0-9]+)$",
+    "replaceExpr": "+34\u0001",
+    "transformationRuleSet": 1
+  },
+  "response": {
+    "body": {
+      "type": "callerin",
+      "description": "Updated",
+      "priority": 5,
+      "matchExpr": "^([0-9]+)$",
+      "replaceExpr": "+34\u0001",
+      "id": 1,
+      "transformationRuleSet": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

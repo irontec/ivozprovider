@@ -1,13 +1,15 @@
 {
   "request": {
-    "name": "New fax notification",
-    "type": "voicemail"
+    "number": "016",
+    "disableCDR": 0,
+    "country": 1
   },
   "response": {
     "body": {
-      "name": "New fax notification",
-      "type": "voicemail",
-      "id": 1
+      "number": "016",
+      "disableCDR": 0,
+      "id": 1,
+      "country": 1
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

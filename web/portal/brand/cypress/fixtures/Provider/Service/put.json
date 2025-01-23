@@ -1,17 +1,22 @@
 {
   "request": {
-    "name": "New fax notification",
-    "type": "voicemail"
+    "code": "95",
+    "service": 2
   },
   "response": {
     "body": {
-      "name": "New fax notification",
-      "type": "voicemail",
-      "id": 1
+      "code": "95",
+      "id": 1,
+      "service": 2
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"
     },
     "statusCode": 200
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
   }
 }
