@@ -10,6 +10,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
 import customAction from './Action';
+import List from './List';
 import { UserProperties, UserPropertyList } from './UserProperties';
 
 type marshallerType = typeof defaultMarshaller;
@@ -259,6 +260,7 @@ const user: EntityInterface = {
 
     return module.default;
   },
+  List,
   validator,
   marshaller,
 };
