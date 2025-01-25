@@ -1,0 +1,25 @@
+{
+  "body": [
+    {
+      "sentTo": "",
+      "inDate": "2019-05-31 02:00:00",
+      "outDate": "2019-06-01 01:59:59",
+      "createdOn": "2019-06-01 07:59:59",
+      "id": 1,
+      "csv": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      },
+      "callCsvScheduler": 1
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/call_csv_reports?_page=1",
+    "x-last-page": "/api/brand/call_csv_reports?_page=1",
+    "x-next-page": "/api/brand/call_csv_reports?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

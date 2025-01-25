@@ -1,0 +1,51 @@
+{
+  "request": {
+    "name": "updated name",
+    "unit": "week",
+    "frequency": 1,
+    "callDirection": "outbound",
+    "email": "something@domain.net",
+    "nextExecution": "2019-12-02 09:00:00",
+    "callCsvNotificationTemplate": 1,
+    "ddi": null,
+    "carrier": 1,
+    "retailAccount": null,
+    "residentialDevice": null,
+    "user": null,
+    "fax": null,
+    "friend": null,
+    "ddiProvider": null
+  },
+  "response": {
+    "body": {
+      "name": "updated name",
+      "unit": "week",
+      "frequency": 1,
+      "callDirection": "outbound",
+      "email": "something@domain.net",
+      "lastExecution": "2018-12-01 09:00:00",
+      "lastExecutionError": "",
+      "nextExecution": "2019-12-02 09:00:00",
+      "id": 1,
+      "company": null,
+      "callCsvNotificationTemplate": 1,
+      "ddi": null,
+      "carrier": 1,
+      "retailAccount": null,
+      "residentialDevice": null,
+      "user": null,
+      "fax": null,
+      "friend": null,
+      "ddiProvider": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
