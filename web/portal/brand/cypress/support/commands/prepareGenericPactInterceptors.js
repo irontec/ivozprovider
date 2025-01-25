@@ -10,6 +10,8 @@ import ApplicationServerSetsCollection from '../../fixtures/Provider/Application
 import BannedAddressesCollection from '../../fixtures/Provider/BannedAddress/getCollection.json';
 import BillableCallsCollection from '../../fixtures/Provider/BillableCalls/getCollection.json';
 import BrandServiceCollection from '../../fixtures/Provider/BrandService/getCollection.json';
+import CallCsvReportCollection from '../../fixtures/Provider/CallCsvReport/getCollection.json';
+import CallCsvSchedulersCollection from '../../fixtures/Provider/CallCsvScheduler/getCollection.json';
 import CarriersCollection from '../../fixtures/Provider/Carriers/getCollection.json';
 import CarrierServerCollection from '../../fixtures/Provider/CarrierServer/getCollection.json';
 import CodecsCollection from '../../fixtures/Provider/Codecs/getCollection.json';
@@ -347,5 +349,13 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/match_list_patterns?*', {
       ...MatchListPatternsCollection,
     }).as('getMatchListPatterns');
+
+    cy.intercept('GET', '**/api/brand/call_csv_schedulers?*', {
+      ...CallCsvSchedulersCollection,
+    }).as('getCallCsvSchedulers');
+
+    cy.intercept('GET', '**/api/brand/call_csv_reports?*', {
+      ...CallCsvReportCollection,
+    }).as('getCallCsvSchedulers');
   }
 );
