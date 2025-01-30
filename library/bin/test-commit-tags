@@ -7,7 +7,7 @@ cd $(dirname $(realpath $0))/../../
 BASE_BRANCH=${1:-origin/bleeding}
 
 # Get the list of commits
-COMMITS=$(git --no-pager log --format=%s ${BASE_BRANCH}..HEAD | grep -v ^$)
+COMMITS=$(git --no-pager log --no-merges --format=%s ${BASE_BRANCH}..HEAD | grep -v ^$)
 
 # Check we have at least some commits
 if [ -z "$COMMITS" ]; then
