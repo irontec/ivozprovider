@@ -55,6 +55,13 @@
         <option name="default">yes</option>
       </options>
     </field>
+    <field name="mwiSubscribeReplacesUnsolicited" type="string" length="5" column="mwi_subscribe_replaces_unsolicited" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
+        <option name="default">yes</option>
+      </options>
+    </field>
     <field name="directMediaMethod" type="string" length="25" column="direct_media_method" nullable="true">
       <options>
         <option name="fixed"/>
