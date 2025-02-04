@@ -71,6 +71,13 @@ abstract class PsEndpointAbstract
     protected $directMedia = 'yes';
 
     /**
+     * @var string
+     * column: mwi_subscribe_replaces_unsolicited
+     * comment: enum:yes|no
+     */
+    protected $mwiSubscribeReplacesUnsolicited = 'yes';
+
+    /**
      * @var ?string
      * column: direct_media_method
      * comment: enum:update|invite|reinvite
@@ -211,6 +218,7 @@ abstract class PsEndpointAbstract
         string $context,
         string $disallow,
         string $allow,
+        string $mwiSubscribeReplacesUnsolicited,
         string $oneHundredRel,
         string $t38Udptl,
         string $t38UdptlEc,
@@ -223,6 +231,7 @@ abstract class PsEndpointAbstract
         $this->setContext($context);
         $this->setDisallow($disallow);
         $this->setAllow($allow);
+        $this->setMwiSubscribeReplacesUnsolicited($mwiSubscribeReplacesUnsolicited);
         $this->setOneHundredRel($oneHundredRel);
         $this->setT38Udptl($t38Udptl);
         $this->setT38UdptlEc($t38UdptlEc);
@@ -301,6 +310,8 @@ abstract class PsEndpointAbstract
         Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
         $allow = $dto->getAllow();
         Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $mwiSubscribeReplacesUnsolicited = $dto->getMwiSubscribeReplacesUnsolicited();
+        Assertion::notNull($mwiSubscribeReplacesUnsolicited, 'getMwiSubscribeReplacesUnsolicited value is null, but non null value was expected.');
         $oneHundredRel = $dto->getOneHundredRel();
         Assertion::notNull($oneHundredRel, 'getOneHundredRel value is null, but non null value was expected.');
         $t38Udptl = $dto->getT38Udptl();
@@ -321,6 +332,7 @@ abstract class PsEndpointAbstract
             $context,
             $disallow,
             $allow,
+            $mwiSubscribeReplacesUnsolicited,
             $oneHundredRel,
             $t38Udptl,
             $t38UdptlEc,
@@ -373,6 +385,8 @@ abstract class PsEndpointAbstract
         Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
         $allow = $dto->getAllow();
         Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $mwiSubscribeReplacesUnsolicited = $dto->getMwiSubscribeReplacesUnsolicited();
+        Assertion::notNull($mwiSubscribeReplacesUnsolicited, 'getMwiSubscribeReplacesUnsolicited value is null, but non null value was expected.');
         $oneHundredRel = $dto->getOneHundredRel();
         Assertion::notNull($oneHundredRel, 'getOneHundredRel value is null, but non null value was expected.');
         $t38Udptl = $dto->getT38Udptl();
@@ -397,6 +411,7 @@ abstract class PsEndpointAbstract
             ->setDisallow($disallow)
             ->setAllow($allow)
             ->setDirectMedia($dto->getDirectMedia())
+            ->setMwiSubscribeReplacesUnsolicited($mwiSubscribeReplacesUnsolicited)
             ->setDirectMediaMethod($dto->getDirectMediaMethod())
             ->setMailboxes($dto->getMailboxes())
             ->setNamedPickupGroup($dto->getNamedPickupGroup())
@@ -436,6 +451,7 @@ abstract class PsEndpointAbstract
             ->setDisallow(self::getDisallow())
             ->setAllow(self::getAllow())
             ->setDirectMedia(self::getDirectMedia())
+            ->setMwiSubscribeReplacesUnsolicited(self::getMwiSubscribeReplacesUnsolicited())
             ->setDirectMediaMethod(self::getDirectMediaMethod())
             ->setMailboxes(self::getMailboxes())
             ->setNamedPickupGroup(self::getNamedPickupGroup())
@@ -473,6 +489,7 @@ abstract class PsEndpointAbstract
             'disallow' => self::getDisallow(),
             'allow' => self::getAllow(),
             'direct_media' => self::getDirectMedia(),
+            'mwi_subscribe_replaces_unsolicited' => self::getMwiSubscribeReplacesUnsolicited(),
             'direct_media_method' => self::getDirectMediaMethod(),
             'mailboxes' => self::getMailboxes(),
             'named_pickup_group' => self::getNamedPickupGroup(),
@@ -623,6 +640,28 @@ abstract class PsEndpointAbstract
     public function getDirectMedia(): ?string
     {
         return $this->directMedia;
+    }
+
+    protected function setMwiSubscribeReplacesUnsolicited(string $mwiSubscribeReplacesUnsolicited): static
+    {
+        Assertion::maxLength($mwiSubscribeReplacesUnsolicited, 5, 'mwiSubscribeReplacesUnsolicited value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $mwiSubscribeReplacesUnsolicited,
+            [
+                PsEndpointInterface::MWISUBSCRIBEREPLACESUNSOLICITED_YES,
+                PsEndpointInterface::MWISUBSCRIBEREPLACESUNSOLICITED_NO,
+            ],
+            'mwiSubscribeReplacesUnsolicitedvalue "%s" is not an element of the valid values: %s'
+        );
+
+        $this->mwiSubscribeReplacesUnsolicited = $mwiSubscribeReplacesUnsolicited;
+
+        return $this;
+    }
+
+    public function getMwiSubscribeReplacesUnsolicited(): string
+    {
+        return $this->mwiSubscribeReplacesUnsolicited;
     }
 
     protected function setDirectMediaMethod(?string $directMediaMethod = null): static
