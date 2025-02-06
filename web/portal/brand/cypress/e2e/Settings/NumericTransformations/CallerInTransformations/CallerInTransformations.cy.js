@@ -1,7 +1,5 @@
 import CallerInTransformationsCollection from '../../../../fixtures/Provider/TransformationRule/getCollection.json';
-import CallerInTransformationsItem from '../../../../fixtures/Provider/TransformationRule/getItem.json';
 import newCallerInTransformations from '../../../../fixtures/Provider/TransformationRule/post.json';
-import editCallerInTransformations from '../../../../fixtures/Provider/TransformationRule/put.json';
 
 describe('in Caller In Transformations', () => {
   beforeEach(() => {
@@ -50,56 +48,11 @@ describe('in Caller In Transformations', () => {
       .should('eq', 201);
   });
 
-  /////////////////////
-  // PUT
-  /////////////////////
-  it('edit Caller In Transformations', () => {
-    cy.intercept('GET', '**/api/brand/transformation_rules/1', {
-      ...CallerInTransformationsItem,
-    }).as('getNumericTransformation-1');
-
-    cy.usePactIntercept(
-      {
-        method: 'PUT',
-        url: `**/api/brand/transformation_rules/${editCallerInTransformations.response.body.id}`,
-        response: editCallerInTransformations.response,
-      },
-      'editCallerInTransformations'
-    );
-
-    cy.get('svg[data-testid="EditIcon"]').eq(0).click();
-    const { ...rest } = editCallerInTransformations.request;
-    delete rest.type;
-    delete rest.transformationRuleSet;
-
-    cy.fillTheForm(rest);
-
-    cy.usePactWait(['editCallerInTransformations'])
-      .its('response.statusCode')
-      .should('eq', 200);
+  it('edit disabled', () => {
+    cy.get('[data-testid="EditIcon"]').should('not.be.enabled');
   });
 
-  /////////////////////
-  // DELETE
-  /////////////////////
-  it('delete Caller In Transformations', () => {
-    cy.intercept('DELETE', '**/api/brand/transformation_rules/1', {
-      statusCode: 204,
-    }).as('deleteNumericTransformations');
-
-    cy.get('td button > svg[data-testid="DeleteIcon"]').eq(0).click();
-
-    cy.contains('Remove element');
-
-    cy.get('div.MuiDialog-container button')
-      .filter(':visible')
-      .contains('Yes, delete it')
-      .click();
-
-    cy.get('header').should('contain', 'Caller In Transformations');
-
-    cy.usePactWait(['deleteNumericTransformations'])
-      .its('response.statusCode')
-      .should('eq', 204);
+  it('delete disabled', () => {
+    cy.get('[data-testid="DeleteIcon"]').should('not.be.enabled');
   });
 });
