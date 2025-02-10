@@ -131,6 +131,11 @@
       <code>$ivozVoicemailMessage</code>
     </ParamNameMismatch>
   </file>
+  <file src="Ivoz/Ast/Domain/Service/VoicemailMessage/VoicemailMessageLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Ast/Infrastructure/Persistence/Doctrine/VoicemailMessageDoctrineRepository.php">
     <MixedArgument occurrences="1">
       <code>$results</code>

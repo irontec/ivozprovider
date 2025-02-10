@@ -60,6 +60,11 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
+    private $mwiSubscribeReplacesUnsolicited = 'yes';
+
+    /**
+     * @var string|null
+     */
     private $directMediaMethod = 'update';
 
     /**
@@ -190,6 +195,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'disallow' => 'disallow',
             'allow' => 'allow',
             'directMedia' => 'directMedia',
+            'mwiSubscribeReplacesUnsolicited' => 'mwiSubscribeReplacesUnsolicited',
             'directMediaMethod' => 'directMediaMethod',
             'mailboxes' => 'mailboxes',
             'namedPickupGroup' => 'namedPickupGroup',
@@ -229,6 +235,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'disallow' => $this->getDisallow(),
             'allow' => $this->getAllow(),
             'directMedia' => $this->getDirectMedia(),
+            'mwiSubscribeReplacesUnsolicited' => $this->getMwiSubscribeReplacesUnsolicited(),
             'directMediaMethod' => $this->getDirectMediaMethod(),
             'mailboxes' => $this->getMailboxes(),
             'namedPickupGroup' => $this->getNamedPickupGroup(),
@@ -361,6 +368,18 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     public function getDirectMedia(): ?string
     {
         return $this->directMedia;
+    }
+
+    public function setMwiSubscribeReplacesUnsolicited(string $mwiSubscribeReplacesUnsolicited): static
+    {
+        $this->mwiSubscribeReplacesUnsolicited = $mwiSubscribeReplacesUnsolicited;
+
+        return $this;
+    }
+
+    public function getMwiSubscribeReplacesUnsolicited(): ?string
+    {
+        return $this->mwiSubscribeReplacesUnsolicited;
     }
 
     public function setDirectMediaMethod(?string $directMediaMethod): static

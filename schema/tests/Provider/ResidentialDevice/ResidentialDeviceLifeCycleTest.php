@@ -138,6 +138,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
                 'allow' => 'alaw',
                 'mailboxes' => 'residential7@company1',
                 'direct_media' => 'yes',
+                'mwi_subscribe_replaces_unsolicited' => 'yes',
                 'direct_media_method' => 'invite',
                 'send_diversion' => 'yes',
                 'send_pai' => 'yes',
