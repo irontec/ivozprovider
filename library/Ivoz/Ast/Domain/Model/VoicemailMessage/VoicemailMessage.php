@@ -31,6 +31,15 @@ class VoicemailMessage extends VoicemailMessageAbstract implements VoicemailMess
         return $this->id;
     }
 
+    public function getMailbox(): string
+    {
+        return sprintf(
+            "%s@%s",
+            $this->getMailboxuser(),
+            $this->getMailboxcontext()
+        );
+    }
+
     public function getVoicemailMessageFilePattern(): string
     {
         return sprintf(

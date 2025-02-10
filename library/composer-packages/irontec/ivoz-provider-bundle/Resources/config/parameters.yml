@@ -15,6 +15,9 @@ parameters:
     ari_user: ivozariuser
     ari_password: ivozarisecret
     ari_port: 8088
+    ami_user: ivozamiuser
+    ami_password: ivozamisecret
+    ami_port: 5038
     local_storage_path: /opt/irontec/ivozprovider/storage
     raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/
     default_prov_template_path: /opt/irontec/ivozprovider/microservices/provision/templates/

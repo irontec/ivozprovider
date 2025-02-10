@@ -25,6 +25,8 @@ interface VoicemailMessageInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
+    public function getMailbox(): string;
+
     public function getVoicemailMessageFilePattern(): string;
 
     public function getRecordingFileBaseName(): string;
