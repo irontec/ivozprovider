@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: "composer"
+    directory: "/library"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-type: "all"
+    versioning-strategy: "auto"
+    commit-message:
+      prefix: "composer"
+
+  - package-ecosystem: "npm"
+    directory: "/web/portal"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-type: "all"
+    versioning-strategy: "auto"
+    commit-message:
+      prefix: "npm"
