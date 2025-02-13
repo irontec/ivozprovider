@@ -8,7 +8,7 @@ updates:
       - dependency-type: "all"
     versioning-strategy: "auto"
     commit-message:
-      prefix: "composer"
+      prefix: "core"
 
   - package-ecosystem: "npm"
     directory: "/web/portal"
@@ -18,4 +18,4 @@ updates:
       - dependency-type: "all"
     versioning-strategy: "auto"
     commit-message:
-      prefix: "npm"
+      prefix: "portal"
