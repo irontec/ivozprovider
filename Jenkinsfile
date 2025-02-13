@@ -726,6 +726,12 @@ pipeline {
                         return
                     }
 
+                    // This merge request is from a security alarm
+                    if (env.BRANCH_NAME.startsWith("dependabot")) {
+                        echo "Security alarm branch. Merge checks not required."
+                        return
+                    }
+
                     // Check Merge request has a Jira ticket associated
                     if (!env.JIRA_TICKET) {
                         failure "No ticket associated. Can not validate mergeability."
