@@ -84,7 +84,7 @@ RUN composer install --prefer-dist --no-progress
 # Get yarn dependencies and store them in the image
 RUN mkdir -p /opt/irontec/ivozprovider/web/portal/
 WORKDIR /opt/irontec/ivozprovider/web/portal/
-COPY --chown=$UNAME web/portal/package.json web/portal/yarn.lock ./
+COPY web/portal/package.json web/portal/yarn.lock ./
 RUN yarn install
 
 WORKDIR /opt/irontec/ivozprovider/

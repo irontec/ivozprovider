@@ -24,7 +24,7 @@ jobs:
           docker buildx build \
             --cache-from=type=registry,ref=ghcr.io/${{ github.repository }}/testing-base:cache \
             --cache-to=type=registry,ref=ghcr.io/${{ github.repository }}/testing-base:cache,mode=max \
-            --tag ghcr.io/${{ github.repository }}/testing-base:${{github.sha }} \
+            --tag ghcr.io/${{ github.repository }}/testing-base:${{ github.sha }} \
             --file tests/docker/Dockerfile \
             --push .
 
@@ -33,6 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/${{ github.repository }}/testing-base:${{ github.sha }}
+      options: --volume ${{ github.workspace }}:/opt/irontec/ivozprovider
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
