@@ -1,0 +1,41 @@
+name: Static Analysis
+
+on: [push, pull_request]
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        run: |
+          docker buildx create --use
+          docker buildx build \
+            --cache-from=type=registry,ref=ghcr.io/${{ github.repository }}/testing-base:cache \
+            --cache-to=type=registry,ref=ghcr.io/${{ github.repository }}/testing-base:cache,mode=max \
+            --tag ghcr.io/${{ github.repository }}/testing-base:${{github.sha }} \
+            --file tests/docker/Dockerfile \
+            --push .
+
+  phpspec:
+    needs: image
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository }}/testing-base:${{ github.sha }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Run phpspec tests
+        run: /opt/irontec/ivozprovider/library/bin/test-phpspec

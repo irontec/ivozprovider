@@ -69,15 +69,6 @@ RUN pip install --break-system-packages reformat-gherkin
 # Allow access to environment variables. Needed for testing DB
 RUN sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php/8.2/cli/php.ini
 
-# Create jenkins user (configurable)
-ARG UNAME=jenkins
-ARG UID=108
-ARG GID=117
-RUN groupadd -g $GID $UNAME \
-    && useradd -m -u $UID -g $GID -s /bin/bash $UNAME \
-    && chown $UNAME:$UNAME /opt/
-USER $UNAME
-
 # Install phpunit 6.5.14
 RUN mkdir -p /opt/phpunit/ \
     && wget https://github.com/sebastianbergmann/phpunit/archive/6.5.14.zip -O /opt/phpunit/phpunit.zip \
@@ -86,17 +77,14 @@ RUN mkdir -p /opt/phpunit/ \
 # Get dependencies
 RUN mkdir -p /opt/irontec/ivozprovider/library/
 WORKDIR /opt/irontec/ivozprovider/library
-COPY --chown=$UNAME library/composer-packages composer-packages
-COPY --chown=$UNAME library/composer.json library/composer.lock .
-RUN composer install --no-cache --prefer-dist --no-progress \
-    && mv vendor /opt/library-vendor
+COPY library/composer-packages composer-packages
+COPY library/composer.json library/composer.lock ./
+RUN composer install --prefer-dist --no-progress
 
 # Get yarn dependencies and store them in the image
 RUN mkdir -p /opt/irontec/ivozprovider/web/portal/
 WORKDIR /opt/irontec/ivozprovider/web/portal/
-COPY --chown=$UNAME web/portal/package.json web/portal/yarn.lock .
-RUN yarn --cache-folder /opt/cache/yarn install \
-    && mv node_modules /opt/web-node_modules \
-    && rm -fr /opt/cache/yarn
+COPY --chown=$UNAME web/portal/package.json web/portal/yarn.lock ./
+RUN yarn install
 
 WORKDIR /opt/irontec/ivozprovider/
