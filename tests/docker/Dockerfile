@@ -58,8 +58,6 @@ RUN apt update \
         localepurge \
     && npm install -g swagger-cli \
     && pip install --break-system-packages reformat-gherkin \
-    && wget https://github.com/sebastianbergmann/phpunit/archive/6.5.14.zip -O /opt/phpunit/phpunit.zip \
-    && unzip /opt/phpunit/phpunit.zip -d /opt/phpunit/ \
     && sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php/8.2/cli/php.ini \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
