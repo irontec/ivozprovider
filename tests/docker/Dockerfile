@@ -74,17 +74,4 @@ RUN mkdir -p /opt/phpunit/ \
     && wget https://github.com/sebastianbergmann/phpunit/archive/6.5.14.zip -O /opt/phpunit/phpunit.zip \
     && unzip /opt/phpunit/phpunit.zip -d /opt/phpunit/
 
-# Get dependencies
-RUN mkdir -p /opt/irontec/ivozprovider/library/
-WORKDIR /opt/irontec/ivozprovider/library
-COPY library/composer-packages composer-packages
-COPY library/composer.json library/composer.lock ./
-RUN composer install --prefer-dist --no-progress
-
-# Get yarn dependencies and store them in the image
-RUN mkdir -p /opt/irontec/ivozprovider/web/portal/
-WORKDIR /opt/irontec/ivozprovider/web/portal/
-COPY web/portal/package.json web/portal/yarn.lock ./
-RUN yarn install
-
 WORKDIR /opt/irontec/ivozprovider/

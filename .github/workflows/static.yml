@@ -38,5 +38,17 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: /opt/irontec/ivozprovider/library/vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress
+
+
       - name: Run phpspec tests
         run: /opt/irontec/ivozprovider/library/bin/test-phpspec
