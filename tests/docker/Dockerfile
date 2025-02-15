@@ -5,14 +5,14 @@ LABEL MAINTAINER="Ivan Alonso <kaian@irontec.com>"
 
 RUN echo 'deb [trusted=yes] http://packages.irontec.com/debian tempest main extra' >> /etc/apt/sources.list
 
-# Generic environment configuraiton
+# Generic environment configuration
 ENV DEBIAN_FRONTEND=noninteractive
 ENV CYPRESS_INSTALL_BINARY="https://packages.irontec.com/misc/cypress-10.11.0-linux-amd64.zip"
 ENV CYPRESS_CACHE_FOLDER="/opt/cache/cypress/"
 
-# Packages from standard repository
+# Install packages and clean up
 RUN apt update \
-    && apt install --assume-yes --force-yes \
+    && apt install --no-install-recommends --assume-yes \
         gettext \
         composer \
         make \
@@ -56,22 +56,13 @@ RUN apt update \
         libxrender1 \
         libssl1.1 \
         localepurge \
-    && apt clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && localepurge
-
-# Install node tools for testing
-RUN npm install -g swagger-cli
-
-# Install gherking fromatter
-RUN pip install --break-system-packages reformat-gherkin
-
-# Allow access to environment variables. Needed for testing DB
-RUN sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php/8.2/cli/php.ini
-
-# Install phpunit 6.5.14
-RUN mkdir -p /opt/phpunit/ \
+    && npm install -g swagger-cli \
+    && pip install --break-system-packages reformat-gherkin \
     && wget https://github.com/sebastianbergmann/phpunit/archive/6.5.14.zip -O /opt/phpunit/phpunit.zip \
-    && unzip /opt/phpunit/phpunit.zip -d /opt/phpunit/
+    && unzip /opt/phpunit/phpunit.zip -d /opt/phpunit/ \
+    && sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php/8.2/cli/php.ini \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && localepurge
 
 WORKDIR /opt/irontec/ivozprovider/

@@ -1,6 +1,13 @@
-name: Static Analysis
+name: Backend
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - bleeding
+      - tempest
+  pull_request:
+    paths:
+      - '**.php'
 
 jobs:
   image:
