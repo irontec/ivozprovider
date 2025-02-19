@@ -100,6 +100,7 @@ class SyncFromCsv
 
                     if ($ddi->isNew()) {
                         $user->setOutgoingDdi($ddi);
+                        $ddi->setUser($user);
                     }
 
                     $entities[] = $ddi;
