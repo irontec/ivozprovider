@@ -94,6 +94,7 @@ pipeline {
                 anyOf {
                     expression { hasLabel("ci-force-tests-back") }
                     expression { hasLabel("ci-force-tests") }
+                    expression { hasCommitTag("agi:") }
                     expression { hasCommitTag("core:") }
                     expression { hasCommitTag("doc:") }
                     expression { hasCommitTag("schema:") }
