@@ -29,6 +29,13 @@ pipeline {
         BRANCH_NAME = getBranchName()
         BASE_BRANCH = getBaseBranch()
         JIRA_TICKET = getJiraTicket()
+        HASH_BACK = getCurrentHash("asterisk/agi library microservices schema web/rest")
+        HASH_FRONT_PLATFORM = getCurrentHash("web/portal/platform")
+        HASH_FRONT_BRAND = getCurrentHash("web/portal/brand")
+        HASH_FRONT_CLIENT = getCurrentHash("web/portal/client")
+        HASH_FRONT_USER = getCurrentHash("web/portal/user")
+        HASH_FILE = "${JENKINS_HOME}/jobs/${JOB_NAME}/../cached_pipelines.txt"
+        MAX_HASHES = 400
     }
 
     stages {
@@ -70,6 +77,7 @@ pipeline {
                 }
             }
         }
+
         // --------------------------------------------------------------------
         // Generic Project pipeline tests
         // --------------------------------------------------------------------
@@ -86,22 +94,57 @@ pipeline {
                 sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps'
             }
         }
+
+        // --------------------------------------------------------------------
+        // Check if tests are required for current sources
+        // --------------------------------------------------------------------
+        stage('Cached Pipeline') {
+            agent any
+            when {
+                not {
+                    anyOf {
+                        expression { hasLabel("ci-force-tests-back") }
+                        expression { hasLabel("ci-force-tests-front") }
+                        expression { hasLabel("ci-force-tests") }
+                        branch "bleeding"
+                    }
+                }
+            }
+            steps {
+                script {
+                    env.CACHED_PIPELINE_BACK = isHashTested(env.HASH_BACK)
+                    echo "Back Hash ${env.HASH_BACK} tested before? ${env.CACHED_PIPELINE_BACK}"
+                    env.CACHED_PIPELINE_FRONT_PLATFORM = isHashTested(env.HASH_FRONT_PLATFORM)
+                    echo "Front Platform Hash ${env.HASH_FRONT_PLATFORM} tested before? ${env.CACHED_PIPELINE_FRONT_PLATFORM}"
+                    env.CACHED_PIPELINE_FRONT_BRAND = isHashTested(env.HASH_FRONT_BRAND)
+                    echo "Front Brand Hash ${env.HASH_FRONT_BRAND} tested before? ${env.CACHED_PIPELINE_FRONT_BRAND}"
+                    env.CACHED_PIPELINE_FRONT_CLIENT = isHashTested(env.HASH_FRONT_CLIENT)
+                    echo "Front Client Hash ${env.HASH_FRONT_CLIENT} tested before? ${env.CACHED_PIPELINE_FRONT_CLIENT}"
+                    env.CACHED_PIPELINE_FRONT_USER = isHashTested(env.HASH_FRONT_USER)
+                    echo "Front User Hash ${env.HASH_FRONT_USER} tested before? ${env.CACHED_PIPELINE_FRONT_USER}"
+                }
+            }
+        }
+
         // --------------------------------------------------------------------
         // Backend Testing stage
         // --------------------------------------------------------------------
         stage('Backend') {
             when {
-                anyOf {
-                    expression { hasLabel("ci-force-tests-back") }
-                    expression { hasLabel("ci-force-tests") }
-                    expression { hasCommitTag("agi:") }
-                    expression { hasCommitTag("core:") }
-                    expression { hasCommitTag("doc:") }
-                    expression { hasCommitTag("schema:") }
-                    expression { hasCommitTag("microservices/") }
-                    expression { hasCommitTag("rest/") }
-                    branch "bleeding"
-                    branch "tempest"
+                allOf {
+                    expression { env.CACHED_PIPELINE_BACK != "true" }
+                    anyOf {
+                        expression { hasLabel("ci-force-tests-back") }
+                        expression { hasLabel("ci-force-tests") }
+                        expression { hasCommitTag("agi:") }
+                        expression { hasCommitTag("core:") }
+                        expression { hasCommitTag("doc:") }
+                        expression { hasCommitTag("schema:") }
+                        expression { hasCommitTag("microservices/") }
+                        expression { hasCommitTag("rest/") }
+                        branch "bleeding"
+                        branch "tempest"
+                    }
                 }
             }
             stages {
@@ -383,13 +426,21 @@ pipeline {
         // --------------------------------------------------------------------
         stage('Frontend') {
             when {
-                anyOf {
-                    expression { hasLabel("ci-force-tests-front") }
-                    expression { hasLabel("ci-force-tests") }
-                    expression { hasCommitTag("portal") }
-                    expression { hasCommitTag("rest/") }
-                    branch "bleeding"
-                    branch "tempest"
+                allOf {
+                    anyOf {
+                        expression { env.CACHED_PIPELINE_FRONT_PLATFORM != "true" }
+                        expression { env.CACHED_PIPELINE_FRONT_BRAND != "true" }
+                        expression { env.CACHED_PIPELINE_FRONT_CLIENT != "true" }
+                        expression { env.CACHED_PIPELINE_FRONT_USER != "true" }
+                    }
+                    anyOf {
+                        expression { hasLabel("ci-force-tests-front") }
+                        expression { hasLabel("ci-force-tests") }
+                        expression { hasCommitTag("portal") }
+                        expression { hasCommitTag("rest/") }
+                        branch "bleeding"
+                        branch "tempest"
+                    }
                 }
             }
             stages {
@@ -409,14 +460,17 @@ pipeline {
                     parallel {
                         stage('web-platform') {
                             when {
-                                anyOf {
-                                    expression { hasLabel("ci-force-tests-front") }
-                                    expression { hasLabel("ci-force-tests") }
-                                    expression { hasCommitTag("portal:") }
-                                    expression { hasCommitTag("portal/platform:") }
-                                    expression { hasCommitTag("rest/platform:") }
-                                    branch "bleeding"
-                                    branch "tempest"
+                                allOf {
+                                    expression { env.CACHED_PIPELINE_FRONT_PLATFORM != "true" }
+                                    anyOf {
+                                        expression { hasLabel("ci-force-tests-front") }
+                                        expression { hasLabel("ci-force-tests") }
+                                        expression { hasCommitTag("portal:") }
+                                        expression { hasCommitTag("portal/platform:") }
+                                        expression { hasCommitTag("rest/platform:") }
+                                        branch "bleeding"
+                                        branch "tempest"
+                                    }
                                 }
                             }
                             stages {
@@ -460,14 +514,17 @@ pipeline {
                         }
                         stage('web-brand') {
                             when {
-                                anyOf {
-                                    expression { hasLabel("ci-force-tests-front") }
-                                    expression { hasLabel("ci-force-tests") }
-                                    expression { hasCommitTag("portal:") }
-                                    expression { hasCommitTag("portal/brand:") }
-                                    expression { hasCommitTag("rest/brand:") }
-                                    branch "bleeding"
-                                    branch "tempest"
+                                allOf {
+                                    expression { env.CACHED_PIPELINE_FRONT_BRAND != "true" }
+                                    anyOf {
+                                        expression { hasLabel("ci-force-tests-front") }
+                                        expression { hasLabel("ci-force-tests") }
+                                        expression { hasCommitTag("portal:") }
+                                        expression { hasCommitTag("portal/brand:") }
+                                        expression { hasCommitTag("rest/brand:") }
+                                        branch "bleeding"
+                                        branch "tempest"
+                                    }
                                 }
                             }
                             stages {
@@ -511,14 +568,17 @@ pipeline {
                         }
                         stage('web-client') {
                             when {
-                                anyOf {
-                                    expression { hasLabel("ci-force-tests-front") }
-                                    expression { hasLabel("ci-force-tests") }
-                                    expression { hasCommitTag("portal:") }
-                                    expression { hasCommitTag("portal/client:") }
-                                    expression { hasCommitTag("rest/client:") }
-                                    branch "bleeding"
-                                    branch "tempest"
+                                allOf {
+                                    expression { env.CACHED_PIPELINE_FRONT_CLIENT != "true" }
+                                    anyOf {
+                                        expression { hasLabel("ci-force-tests-front") }
+                                        expression { hasLabel("ci-force-tests") }
+                                        expression { hasCommitTag("portal:") }
+                                        expression { hasCommitTag("portal/client:") }
+                                        expression { hasCommitTag("rest/client:") }
+                                        branch "bleeding"
+                                        branch "tempest"
+                                    }
                                 }
                             }
                             stages {
@@ -562,14 +622,17 @@ pipeline {
                         }
                         stage('web-user') {
                             when {
-                                anyOf {
-                                    expression { hasLabel("ci-force-tests-front") }
-                                    expression { hasLabel("ci-force-tests") }
-                                    expression { hasCommitTag("portal:") }
-                                    expression { hasCommitTag("portal/user:") }
-                                    expression { hasCommitTag("rest/user:") }
-                                    branch "bleeding"
-                                    branch "tempest"
+                                allOf {
+                                    expression { env.CACHED_PIPELINE_FRONT_USER != "true" }
+                                    anyOf {
+                                        expression { hasLabel("ci-force-tests-front") }
+                                        expression { hasLabel("ci-force-tests") }
+                                        expression { hasCommitTag("portal:") }
+                                        expression { hasCommitTag("portal/user:") }
+                                        expression { hasCommitTag("rest/user:") }
+                                        branch "bleeding"
+                                        branch "tempest"
+                                    }
                                 }
                             }
                             stages {
@@ -801,6 +864,13 @@ pipeline {
         fixed { notifyFixedMattermost() }
         unstable { script { currentBuild.result = 'ABORTED' } }
         always { cleanWs() }
+        success {
+            saveTestedHash(env.HASH_BACK)
+            saveTestedHash(env.HASH_FRONT_PLATFORM)
+            saveTestedHash(env.HASH_FRONT_BRAND)
+            saveTestedHash(env.HASH_FRONT_CLIENT)
+            saveTestedHash(env.HASH_FRONT_USER)
+        }
     }
 }
 
@@ -881,4 +951,34 @@ void notifyFixedMattermost() {
             message: ":thumbsup_all: Branch ${env.GIT_BRANCH} tests fixed :thumbsup_all: - (<${env.BUILD_URL}|Open>)"
         ])
     }
+}
+
+def getCurrentHash(dir) {
+    return sh(script: "find ${dir} -type f -not -path './.git/*' -exec sha256sum {} + | sort | sha256sum | awk '{print \$1}'", returnStdout: true).trim()
+}
+
+def isHashTested(hash) {
+    if (!fileExists(env.HASH_FILE)) {
+        return false
+    }
+    def hashes = readFile(env.HASH_FILE).split("\n")
+    return hashes.contains(hash)
+}
+
+def saveTestedHash(hash) {
+    if (isHashTested(hash)) {
+        echo "Hash ${hash} already saved cache file."
+        return
+    }
+
+    def hashes = fileExists(env.HASH_FILE) ? readFile(env.HASH_FILE).split("\n") as List : []
+
+    if (hashes.size() >= env.MAX_HASHES.toInteger()) {
+        hashes.remove(0)
+    }
+
+    hashes.add(hash)
+
+    writeFile(file: env.HASH_FILE, text: hashes.join("\n"))
+    echo "Saved new tested hash: ${hash}. Total hashes stored: ${hashes.size()}"
 }
