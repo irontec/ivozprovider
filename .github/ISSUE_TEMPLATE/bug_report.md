@@ -10,7 +10,7 @@ Please use this template only for bug reports.
 
 Be sure you have read the project FAQ before submitting an issue.
 
-  * https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md
+  * https://github.com/irontec/ivozprovider/blob/main/FAQ.md
 
 If you have trouble with your environment or a user question, please post them in ivozprovider-users group
 

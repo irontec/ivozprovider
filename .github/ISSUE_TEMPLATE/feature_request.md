@@ -10,7 +10,7 @@ Please use this template only for feature and enhancement requests.
 
 Be sure you have read the project FAQ before submitting an issue.
 
-  * https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md
+  * https://github.com/irontec/ivozprovider/blob/main/FAQ.md
 
 Expecially the section related to feature requests.
 
