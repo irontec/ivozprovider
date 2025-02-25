@@ -88,7 +88,7 @@ interested in improving the software, consider sponsoring any missing feature.
 Free projects are usually managed by small developers teams, so we highly appreciate all contributions. There are all
 kind of different tasks you can contribute, from coding to documenting or translating.
 
-If you're opening a Pull request in Github, take a look to [development docs](https://github.com/irontec/ivozprovider/tree/bleeding/doc/dev/en)
+If you're opening a Pull request in Github, take a look to [development docs](https://github.com/irontec/ivozprovider/tree/main/doc/dev/en)
 for commits and branches naming. Also, try to listen to provided suggestions from project developers: they strive to
 make the software as good as possible.
 

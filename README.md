@@ -54,7 +54,7 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/ar
 | tempest | 4.3.0 |  [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-4.3~4.3.0-tempest-amd64.iso)  | |
 
 
-You can read about differences between releases [here](https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md#what-release-should-i-use).
+You can read about differences between releases [here](https://github.com/irontec/ivozprovider/blob/main/FAQ.md#what-release-should-i-use).
 
 ## Documentation
 
@@ -70,7 +70,7 @@ You can browse online documentation in different formats:
 
 Any feedback is also welcomed at [#ivozprovider irc channel](https://kiwiirc.com/nextclient/irc.libera.chat/#ivozprovider) at irc.libera.chat
 
-You can read frequently asked questions [here](https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md).
+You can read frequently asked questions [here](https://github.com/irontec/ivozprovider/blob/main/FAQ.md).
 
 For environment or functional questions, use [ivozprovider-users](https://groups.google.com/forum/#!forum/ivozprovider-users) group.
 
