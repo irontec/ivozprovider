@@ -106,7 +106,7 @@ pipeline {
                         expression { hasLabel("ci-force-tests-back") }
                         expression { hasLabel("ci-force-tests-front") }
                         expression { hasLabel("ci-force-tests") }
-                        branch "bleeding"
+                        branch "main"
                     }
                 }
             }
@@ -142,7 +142,7 @@ pipeline {
                         expression { hasCommitTag("schema:") }
                         expression { hasCommitTag("microservices/") }
                         expression { hasCommitTag("rest/") }
-                        branch "bleeding"
+                        branch "main"
                         branch "tempest"
                     }
                 }
@@ -392,7 +392,7 @@ pipeline {
                                     expression { hasLabel("ci-force-tests") }
                                     expression { hasLabel("ci-force-tests-back") }
                                     expression { hasCommitTag("schema:") }
-                                    branch "bleeding"
+                                    branch "main"
                                     branch "tempest"
                                 }
                             }
@@ -438,7 +438,7 @@ pipeline {
                         expression { hasLabel("ci-force-tests") }
                         expression { hasCommitTag("portal") }
                         expression { hasCommitTag("rest/") }
-                        branch "bleeding"
+                        branch "main"
                         branch "tempest"
                     }
                 }
@@ -468,7 +468,7 @@ pipeline {
                                         expression { hasCommitTag("portal:") }
                                         expression { hasCommitTag("portal/platform:") }
                                         expression { hasCommitTag("rest/platform:") }
-                                        branch "bleeding"
+                                        branch "main"
                                         branch "tempest"
                                     }
                                 }
@@ -522,7 +522,7 @@ pipeline {
                                         expression { hasCommitTag("portal:") }
                                         expression { hasCommitTag("portal/brand:") }
                                         expression { hasCommitTag("rest/brand:") }
-                                        branch "bleeding"
+                                        branch "main"
                                         branch "tempest"
                                     }
                                 }
@@ -576,7 +576,7 @@ pipeline {
                                         expression { hasCommitTag("portal:") }
                                         expression { hasCommitTag("portal/client:") }
                                         expression { hasCommitTag("rest/client:") }
-                                        branch "bleeding"
+                                        branch "main"
                                         branch "tempest"
                                     }
                                 }
@@ -630,7 +630,7 @@ pipeline {
                                         expression { hasCommitTag("portal:") }
                                         expression { hasCommitTag("portal/user:") }
                                         expression { hasCommitTag("rest/user:") }
-                                        branch "bleeding"
+                                        branch "main"
                                         branch "tempest"
                                     }
                                 }
@@ -832,8 +832,8 @@ pipeline {
                         echo "${env.JIRA_TICKET} is a task. Checking subtasks..."
 
                         // Check the target branch is master
-                        if (env.CHANGE_TARGET != "bleeding") {
-                            unstable "Target branch ${env.CHANGE_TARGET} is not an bleeding branch."
+                        if (env.CHANGE_TARGET != "main") {
+                            unstable "Target branch ${env.CHANGE_TARGET} is not an main branch."
                         }
 
                         // Check all subtask has been merged
@@ -934,7 +934,7 @@ void notifyUnstableGithub() {
 }
 
 void notifyFailureMattermost() {
-    if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'tempest') {
+    if (env.GIT_BRANCH == 'main' || env.GIT_BRANCH == 'tempest') {
         mattermostSend([
             channel: "#comms-provider",
             color: "#FF0000",
@@ -944,7 +944,7 @@ void notifyFailureMattermost() {
 }
 
 void notifyFixedMattermost() {
-    if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'tempest') {
+    if (env.GIT_BRANCH == 'main' || env.GIT_BRANCH == 'tempest') {
         mattermostSend([
             channel: "#comms-provider",
             color: "#008000",
