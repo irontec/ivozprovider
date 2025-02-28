@@ -38,7 +38,7 @@
   "Assistant": "Asistente",
   "Authentication Settings": "Opciones de Autenticación",
   "Avoid PCRE regular expressions here: use [0-9] instead of \\d.": "Evitar las expresiones regulares PCRE: utilizar [0-9] en lugar de \\d.",
-  "Awkward NAT detected (<0 /> Contact, <1 /> Received)": "NAT extraño detectado (<0 /> Contacto, <1 /> Recivido)",
+  "Awkward NAT detected (<0 /> Contact, <1 /> Received)": "NAT extraño detectado (<0 /> Contacto, <1 /> Recibido)",
   "Balance": "Saldo",
   "Basic Configuration": "Configuración Básica",
   "Basic Info": "Configuración Básica",
