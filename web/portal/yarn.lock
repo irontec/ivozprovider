@@ -781,10 +781,10 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@irontec/ivoz-ui@^1.7.4":
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-1.7.4.tgz#94bbd5ac91cec9fd2f3072523e40b09c223171eb"
-  integrity sha512-Fnc2tJECLkEYd4dhBqYqPzaGOGhMPZ+QlbUcBlhvlI9bfuszAX6X2c/EJWt3j40jpolG+TIp1JSqgMBG00ka/g==
+"@irontec/ivoz-ui@^1.7.7":
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-1.7.7.tgz#7659fbf5dbaf45101ce6ff0b9ba4cbfb0b1b8da9"
+  integrity sha512-A2HWakkKT3375xOshIr69tCa/59dEETyWJVEk355rRqTjm4hWLVMgsKP+p8A4hnddPbTmmmzc3YGYk6zcttEHw==
   dependencies:
     "@date-io/date-fns" "^2.10.8"
     "@types/react-color" "^3.0.12"
