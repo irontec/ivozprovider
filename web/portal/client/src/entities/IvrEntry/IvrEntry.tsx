@@ -114,6 +114,7 @@ const IvrEntry: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'IVREntries',
   },
+  defaultOrderBy: '',
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
 
