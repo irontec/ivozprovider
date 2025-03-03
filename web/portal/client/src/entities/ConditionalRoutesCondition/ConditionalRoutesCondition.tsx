@@ -210,6 +210,7 @@ const ConditionalRoutesCondition: EntityInterface = {
     'routeType',
     'target',
   ],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ConditionalRoutesConditions',
