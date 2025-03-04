@@ -32,10 +32,11 @@ describe('Location', () => {
 
     cy.get('[aria-label=Add]').click();
 
-    const { name, description } = newLocation.request;
+    const { name, description, userIds } = newLocation.request;
     cy.fillTheForm({
       name,
       description,
+      userIds,
     });
 
     cy.get('header').should('contain', 'Locations');
@@ -64,10 +65,11 @@ describe('Location', () => {
 
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
-    const { name, description } = editLocation.request;
+    const { name, description, userIds } = editLocation.request;
     cy.fillTheForm({
       name,
       description,
+      userIds,
     });
 
     cy.contains('Locations');
