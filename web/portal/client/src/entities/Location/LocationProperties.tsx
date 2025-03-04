@@ -7,6 +7,7 @@ import {
 export type LocationPropertyList<T> = {
   name?: T;
   description?: T;
+  userIds?: T;
 };
 
 export type LocationProperties = LocationPropertyList<Partial<PropertySpec>>;
