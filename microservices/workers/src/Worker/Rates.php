@@ -114,10 +114,24 @@ class Rates
             $header = implode(',', $importerArguments['columns']) . "\n";
             $csvContents = $header . $csvContents;
 
-            $csvLines = $serializer->decode(
+            $unfilterdCsvLines = $serializer->decode(
                 $csvContents,
                 'csv'
             );
+
+            if (!is_array($unfilterdCsvLines)) {
+                $unfilterdCsvLines = [];
+            }
+
+            $csvLines = array_map(
+                function (array $line): array {
+                    unset($line['ignore']);
+                    /** $line array<string, string> */
+                    return $line;
+                },
+                $unfilterdCsvLines,
+            );
+
             $destinationRates = [];
             $destinations = [];
 
@@ -139,6 +153,7 @@ class Rates
 
             $parsedPrefixes = [];
 
+            /** @var array<string,string> $line */
             foreach ($csvLines as $k => $line) {
                 $lineNum++;
 
@@ -323,6 +338,7 @@ class Rates
                 ->destinationRepository
                 ->getPrefixArrayByBrandId($brandId);
 
+            /** @var array<string,string> $line */
             foreach ($csvLines as $line) {
                 $prefix = $line['destinationPrefix'];
 
