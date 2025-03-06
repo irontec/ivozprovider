@@ -126,8 +126,6 @@ class TemplateRenderer
         if (!$tmpFilePath) {
             throw new \RuntimeException('Unable to create tmp file');
         }
-        $tmpFilePath .= '.php';
-
         $handle = fopen($tmpFilePath, 'w');
         if (!$handle) {
             throw new \RuntimeException('Unable to open tmp file');
