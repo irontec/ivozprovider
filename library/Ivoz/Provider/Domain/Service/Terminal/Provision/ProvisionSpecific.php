@@ -166,6 +166,10 @@ class ProvisionSpecific
                 $fixedFileName = $fixedUrlSegments[0] . $fileNameMac . $fixedUrlSegments[1];
             }
 
+            $fixedFileName = $this->extractFileName(
+                $fixedFileName
+            );
+
             if (strtolower($fixedSpecificUrl) === strtolower($fixedFileName)) {
                 $extensionMismatch = ($fileExtension !== $specificUrlExtension);
                 if (!empty($specificUrlExtension) && $extensionMismatch) {
