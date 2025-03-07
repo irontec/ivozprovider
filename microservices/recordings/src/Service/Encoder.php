@@ -7,6 +7,7 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrDto;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrRepository;
 use Model\RawRecordingInfo;
@@ -389,5 +390,25 @@ class Encoder
         );
 
         $this->logger->info($summary);
+    }
+
+    private function increaseUsersCdrNumRecordings(UsersCdrInterface $usersCdr) {
+        $currentNumRecordings = $usersCdr->getNumRecordings();
+
+        /** @var UsersCdrDto $usersCdrDto */
+        $usersCdrDto = $this
+            ->entityTools
+            ->entityToDto($usersCdr);
+
+        $usersCdrDto->setNumRecordings(
+            $currentNumRecordings + 1,
+        );
+
+        $this
+            ->usersCdrRepository
+            ->persistDto(
+                $usersCdrDto,
+                $usersCdr,
+            );
     }
 }
