@@ -61,6 +61,13 @@
         <option name="default">answered</option>
       </options>
     </field>
+    <field name="numRecordings" type="integer" column="numRecordings" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
