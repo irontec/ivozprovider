@@ -41,7 +41,8 @@ class UsersCdrStub
             ->setBrandId(1)
             ->setCompanyId(1)
             ->setUserId(1)
-            ->setKamUsersCdrId(2);
+            ->setKamUsersCdrId(2)
+            ->setNumRecordings(1);
 
         $this->append($dto);
 
