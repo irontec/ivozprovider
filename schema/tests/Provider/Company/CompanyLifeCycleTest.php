@@ -20,6 +20,7 @@ use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotification;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile;
 use Ivoz\Provider\Domain\Model\Recording\Recording;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Provider\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest;
 use Ivoz\Provider\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -155,6 +156,7 @@ class CompanyLifeCycleTest extends KernelTestCase
             /** orm_soft_delete end */
             Company::class,
             Domain::class,
+            UsersCdr::class,
         ]);
     }
 

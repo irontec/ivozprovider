@@ -2,12 +2,11 @@
 
 namespace Tests\Provider\Recording;
 
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
-use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
+use Ivoz\Provider\Domain\Model\Recording\Recording;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
+use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Ivoz\Provider\Domain\Model\Recording\RecordingRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 
@@ -15,99 +14,95 @@ class RecordingLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-    /**
-     * @return RatingPlanDto
-     */
-    protected function createDto()
+    protected function createDto(): RecordingDto
     {
         $recordingDto = new RecordingDto();
-        $recordingDto->
+        $recordingDto
+            ->setUsersCdrId(3)
+            ->setCompanyId(1);
 
-        return $ratingPlanDto;
+        return $recordingDto;
     }
 
-    /**
-     * @return RatingPlan
-     */
-    protected function addRatingPlan()
+    protected function addRecording(): Recording
     {
-        $ratingPlanDto = $this->createDto();
+        $recordingDto = $this->createDto();
 
-        /** @var RatingPlan $ratingPlan */
-        $ratingPlan = $this->entityTools
-            ->persistDto($ratingPlanDto, null, true);
+        /** @var Recording $recording */
+        $recording = $this->entityTools
+            ->persistDto($recordingDto, null, true);
 
-        return $ratingPlan;
+        return $recording;
     }
 
-    protected function updateRatingPlan($id = 1)
+    protected function updateRecording($id = 1)
     {
-        $ratingPlanRepository = $this->em
-            ->getRepository(RatingPlan::class);
+        $recordingRepository = $this->em
+            ->getRepository(Recording::class);
 
-        $ratingPlan = $ratingPlanRepository->find($id);
+        $recording = $recordingRepository->find($id);
 
-        /** @var RatingPlanDto $ratingPlanDto */
-        $ratingPlanDto = $this->entityTools->entityToDto($ratingPlan);
+        /** @var RecordingDto $recordingDto */
+        $recordingDto = $this->entityTools->entityToDto($recording);
 
-        $ratingPlanDto
-            ->setTimeIn(new \DateTime('2020-11-11 11:11:11'))
-            ->setTimingType(RatingPlanInterface::TIMINGTYPE_CUSTOM)
-            ->setDestinationRateGroupId(2);
+        $recordingDto
+            ->setCallee('555993344');
 
         return $this
             ->entityTools
-            ->persistDto($ratingPlanDto, $ratingPlan, true);
+            ->persistDto($recordingDto, $recording, true);
     }
 
-    protected function removeRatingPlan()
+    protected function removeRecording()
     {
-        $ratingPlanRepository = $this->em
-            ->getRepository(RatingPlan::class);
+        /** @var RecordingRepository $recordingRepository */
+        $recordingRepository = $this->em
+            ->getRepository(Recording::class);
 
-        $ratingPlan = $ratingPlanRepository->find(1);
+        /** @var RecordingInterface $recording */
+        $recording = $recordingRepository->find(2);
 
         $this
             ->entityTools
-            ->remove($ratingPlan);
+            ->remove($recording);
     }
 
     /**
      * @test
      */
-    public function it_persists_ratingPlans()
+    public function it_persists_recording()
     {
-        $ratingPlan = $this->em
-            ->getRepository(RatingPlan::class);
-        $fixtureRatingPlans = $ratingPlan->findAll();
+        /** @var RecordingRepository $recordingRepository */
+        $recordingRepository = $this->em
+            ->getRepository(Recording::class);
 
-        $this->addRatingPlan();
+        $expectedCount = count(
+            $recordingRepository->findAll()
+        );
 
-        $brands = $ratingPlan->findAll();
-        $this->assertCount(count($fixtureRatingPlans) + 1, $brands);
+        $recording = $this->addRecording();
 
+        $recordings = $recordingRepository->findAll();
 
-        //////////////////////////////
-        ///
-        //////////////////////////////
+        $this->assertCount($expectedCount + 1, $recordings);
+
 
         $this->it_triggers_lifecycle_services();
-        $this->it_creates_tp_rating_plan();
+        $this->it_updates_users_cdrs_num_count(1);
     }
 
-    protected function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services(): void
     {
         $this->assetChangedEntities([
-            RatingPlan::class,
-            TpRatingPlan::class,
-            TpTiming::class,
+            UsersCdr::class,
+            Recording::class,
         ]);
     }
 
-    protected function it_creates_tp_rating_plan()
+    protected function it_updates_users_cdrs_num_count(int $expectedNumCount): void
     {
         $changelogEntries = $this->getChangelogByClass(
-            TpRatingPlan::class
+            UsersCdr::class
         );
 
         $this->assertCount(1, $changelogEntries);
@@ -116,17 +111,8 @@ class RecordingLifeCycleTest extends KernelTestCase
         $this->assertChangedSubset(
             $changelog,
             [
-                'tpid' => 'b1',
-                'tag' => 'b1rp2',
-                'destrates_tag' => 'b1dr1',
-                'timing_tag' => 'b1tm2',
-                'weight' => 9.0,
-                'ratingPlanId' => 2,
-                'id' => 2,
+                "numRecordings" => $expectedNumCount,
             ],
-            [
-                'created_at'
-            ]
         );
     }
 
@@ -135,39 +121,10 @@ class RecordingLifeCycleTest extends KernelTestCase
      */
     public function it_triggers_update_lifecycle_services()
     {
-        $this->updateRatingPlan();
+        $this->updateRecording();
         $this->assetChangedEntities([
-            RatingPlan::class,
-            TpRatingPlan::class,
-            TpTiming::class,
+            Recording::class,
         ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_updates_tp_rating_plan()
-    {
-        $rp = $this->addRatingPlan();
-        $this->resetChangelog();
-
-        $this->updateRatingPlan(
-            $rp->getId()
-        );
-
-        $changelogEntries = $this->getChangelogByClass(
-            TpRatingPlan::class
-        );
-
-        $this->assertCount(1, $changelogEntries);
-        $changelog = $changelogEntries[0];
-
-        $this->assertEquals(
-            $changelog->getData(),
-            [
-                'destrates_tag' => 'b1dr2',
-            ]
-        );
     }
 
     /**
@@ -175,10 +132,12 @@ class RecordingLifeCycleTest extends KernelTestCase
      */
     public function it_triggers_remove_lifecycle_services()
     {
-        $this->removeRatingPlan();
+        $this->removeRecording();
+
         $this->assetChangedEntities([
-            RatingPlan::class,
-            TpRatingPlan::class
+            Recording::class,
+            UsersCdr::class,
         ]);
+        $this->it_updates_users_cdrs_num_count(0);
     }
 }
