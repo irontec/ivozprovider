@@ -90,20 +90,34 @@ const Dashboard = (props: DashboardProps) => {
     return null;
   }
 
-  const total = activeCalls.total || 0;
-  const inbound =
-    total === 0 ? '50%' : `${Math.round((activeCalls.inbound / total) * 100)}%`;
-  const outbound =
-    total === 0
-      ? '50%'
-      : `${Math.round((activeCalls.outbound / total) * 100)}%`;
+  const circleActiveCallsData = (props: ActiveCalls): CircleProps => {
+    const { inbound, outbound, total } = props;
 
-  const circleProps: CircleProps = {
-    data: [
-      { key: 'inbound', color: '#89b58a', percentage: inbound },
-      { key: 'outbound', color: '#dad9bb', percentage: outbound },
-    ],
+    const inboundPercentage = (inbound / total) * 100;
+    const outboundPercentage = (outbound / total) * 100;
+
+    const circleProps: CircleProps = { data: [] };
+
+    if (inboundPercentage) {
+      circleProps.data.push({
+        key: 'inbound',
+        color: '#dad9bb',
+        percentage: `${inboundPercentage}%`,
+      });
+    }
+
+    if (outboundPercentage) {
+      circleProps.data.push({
+        key: 'outbound',
+        color: '#89b58a',
+        percentage: `${outboundPercentage}%`,
+      });
+    }
+
+    return circleProps;
   };
+
+  const circleProps: CircleProps = circleActiveCallsData(activeCalls);
 
   return (
     <section className={className}>
