@@ -82,6 +82,8 @@ interface UsersCdrInterface extends LoggableEntityInterface
 
     public function getDisposition(): ?string;
 
+    public function getNumRecordings(): int;
+
     public function getCompany(): ?CompanyInterface;
 
     public function getUser(): ?UserInterface;

@@ -8,6 +8,7 @@ class UsersCdrDto extends UsersCdrDtoAbstract
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
+                'numRecordings' => 'numRecordings',
                 'startTime' => 'startTime',
                 'owner' => 'owner',
                 'direction' => 'direction',
