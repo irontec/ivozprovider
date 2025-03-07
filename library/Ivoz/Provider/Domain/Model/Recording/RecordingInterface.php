@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Recording;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
@@ -70,6 +71,8 @@ interface RecordingInterface extends EntityInterface, FileContainerInterface
     public function getRecorder(): ?string;
 
     public function getRecordedFile(): RecordedFile;
+
+    public function getUsersCdr(): ?UsersCdrInterface;
 
     public function setCompany(CompanyInterface $company): static;
 
