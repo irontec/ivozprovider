@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Recording;
 
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
@@ -72,6 +73,11 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     private $recordedFileBaseName = null;
 
     /**
+     * @var UsersCdrDto | null
+     */
+    private $usersCdr = null;
+
+    /**
      * @var CompanyDto | null
      */
     private $company = null;
@@ -114,6 +120,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
                 'mimeType',
                 'baseName',
             ],
+            'usersCdrId' => 'usersCdr',
             'companyId' => 'company',
             'ddiId' => 'ddi',
             'userId' => 'user'
@@ -139,6 +146,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
                 'mimeType' => $this->getRecordedFileMimeType(),
                 'baseName' => $this->getRecordedFileBaseName(),
             ],
+            'usersCdr' => $this->getUsersCdr(),
             'company' => $this->getCompany(),
             'ddi' => $this->getDdi(),
             'user' => $this->getUser()
@@ -291,6 +299,36 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     public function getRecordedFileBaseName(): ?string
     {
         return $this->recordedFileBaseName;
+    }
+
+    public function setUsersCdr(?UsersCdrDto $usersCdr): static
+    {
+        $this->usersCdr = $usersCdr;
+
+        return $this;
+    }
+
+    public function getUsersCdr(): ?UsersCdrDto
+    {
+        return $this->usersCdr;
+    }
+
+    public function setUsersCdrId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new UsersCdrDto($id)
+            : null;
+
+        return $this->setUsersCdr($value);
+    }
+
+    public function getUsersCdrId(): ?int
+    {
+        if ($dto = $this->getUsersCdr()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 
     public function setCompany(?CompanyDto $company): static
