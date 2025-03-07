@@ -11,6 +11,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Basic Configuration'),
       fields: ['name', 'description'],
     },
+    {
+      legend: '',
+      fields: ['userIds'],
+    },
   ];
 
   return <DefaultEntityForm {...props} groups={groups} />;

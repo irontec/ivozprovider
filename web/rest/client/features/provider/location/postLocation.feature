@@ -12,7 +12,10 @@ Feature: Create locations
       """
       {
           "name": "newLocation",
-          "description": "New location from rest API"
+          "description": "New location from rest API",
+          "userIds": [
+            2
+          ]
       }
       """
      Then the response status code should be 201
@@ -23,7 +26,10 @@ Feature: Create locations
       {
           "name": "newLocation",
           "description": "New location from rest API",
-          "id": 2
+          "id": 2,
+          "userIds": [
+            2
+          ]
       }
       """
 
@@ -39,6 +45,9 @@ Feature: Create locations
       {
           "name": "newLocation",
           "description": "New location from rest API",
-          "id": 2
+          "id": 2,
+          "userIds": [
+            2
+          ]
       }
       """

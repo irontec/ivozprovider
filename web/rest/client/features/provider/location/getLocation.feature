@@ -22,6 +22,7 @@ Feature: Retrieve locations
       ]
       """
 
+  @createSchema
   Scenario: Retrieve certain locations json
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
@@ -34,6 +35,10 @@ Feature: Retrieve locations
       {
           "name": "testLocation",
           "description": "Test Location description",
-          "id": 1
+          "id": 1,
+          "userIds": [
+              2,
+              3
+          ]
       }
       """

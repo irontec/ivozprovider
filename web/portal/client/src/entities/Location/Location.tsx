@@ -12,6 +12,12 @@ const properties: LocationProperties = {
   description: {
     label: _('Description'),
   },
+  userIds: {
+    label: _('User', { count: 2 }),
+    type: 'array',
+    $ref: '#/definitions/User',
+    helpText: _('A user can only be linked to a single location'),
+  },
 };
 
 const columns = ['name', 'description'];
@@ -38,6 +44,11 @@ const location: EntityInterface = {
   },
   Form: async () => {
     const module = await import('./Form');
+
+    return module.default;
+  },
+  foreignKeyResolver: async () => {
+    const module = await import('./ForeignKeyResolver');
 
     return module.default;
   },

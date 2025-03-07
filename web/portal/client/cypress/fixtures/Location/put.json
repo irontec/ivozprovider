@@ -2,13 +2,19 @@
   "request": {
     "name": "updatesLocation",
     "description": "Test Location description",
-    "id": 1
+    "id": 1,
+    "userIds": [
+      2
+    ]
   },
   "response": {
     "body": {
       "name": "updatesLocation",
       "description": "Test Location description",
-      "id": 1
+      "id": 1,
+      "userIds": [
+        2
+      ]
     },
     "headers": {
       "content-type": "application/json; charset=utf-8"

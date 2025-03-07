@@ -2,8 +2,20 @@
 
 namespace Ivoz\Provider\Domain\Model\Location;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+
 class LocationDto extends LocationDtoAbstract
 {
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int"
+     * )
+     */
+    protected array $userIds = [];
+
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -22,6 +34,7 @@ class LocationDto extends LocationDtoAbstract
 
         if ($role === 'ROLE_COMPANY_ADMIN') {
             unset($response['companyId']);
+            $response['userIds'] = 'userIds';
         }
 
         return $response;
@@ -38,5 +51,33 @@ class LocationDto extends LocationDtoAbstract
             $contextProperties,
             $data
         );
+    }
+
+    /**
+     * @return array<array-key, mixed>
+     */
+    public function normalize(string $context, string $role = ''): array
+    {
+        $response = parent::normalize($context, $role);
+
+        $response['userIds'] = $this->userIds;
+
+        return $response;
+    }
+
+    /**
+     * @param int[] $userIds
+     */
+    public function setUserIds(array $userIds): void
+    {
+        $this->userIds = $userIds;
+
+        $users = [];
+        foreach ($userIds as $id) {
+            $dto = new UserDto($id);
+            $users[] = $dto;
+        }
+
+        $this->setUsers($users);
     }
 }

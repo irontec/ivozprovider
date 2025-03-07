@@ -42836,6 +42836,13 @@
                     "description": "",
                     "type": "integer",
                     "readOnly": true
+                },
+                "userIds": {
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 }
             }
         },
@@ -42882,6 +42889,13 @@
                     "description": "",
                     "type": "integer",
                     "readOnly": true
+                },
+                "userIds": {
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 }
             }
         },
