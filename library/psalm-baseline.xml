@@ -3909,13 +3909,15 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Recording/RecordingAbstract.php">
-    <MixedArgument occurrences="6">
+    <MixedArgument occurrences="8">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUsersCdr())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUsersCdr())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -5333,6 +5335,11 @@
     </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Service/RatingProfile/RatingProfileLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/Recording/RecordingLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
