@@ -71,6 +71,15 @@ export const deleteCompany = () => {
 };
 
 export const postWebPortal = () => {
+  cy.usePactIntercept(
+    {
+      method: 'GET',
+      url: '**/api/brand/companies/1',
+      response: CompaniesItem,
+    },
+    'getCompanies-1'
+  );
+
   cy.contains('Virtual PBXs').click();
 
   cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();

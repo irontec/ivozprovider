@@ -30,6 +30,7 @@
         "outgoingDdiRule": 1,
         "voicemailNotificationTemplate": 1,
         "faxNotificationTemplate": null,
+        "location": 1,
         "featureIds": [
             1
         ],

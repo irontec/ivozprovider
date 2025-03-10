@@ -110,6 +110,7 @@ const _testVpbxCompany = (props: TestCompanyProps) => {
         'onDemandRecord',
         'onDemandRecordCode',
         'allowRecordingRemoval',
+        'location',
       ]
     );
   }
