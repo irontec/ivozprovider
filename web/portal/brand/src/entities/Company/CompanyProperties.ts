@@ -59,6 +59,7 @@ export type CompanyPropertyList<T> = {
   impersonationUrl?: T;
   applicationServerSet?: T;
   mediaRelaySet?: T;
+  location?: T;
 };
 
 export type CompanyProperties = CompanyPropertyList<Partial<PropertySpec>>;
