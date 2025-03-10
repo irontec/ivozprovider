@@ -4,8 +4,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity 
-        repository-class="Ivoz\Provider\Infrastructure\Persistence\Doctrine\SurvivalDevicesDoctrineRepository" 
-        name="Ivoz\Provider\Domain\Model\SurvivalDevices\SurvivalDevices" 
+        repository-class="Ivoz\Provider\Infrastructure\Persistence\Doctrine\SurvivalDeviceDoctrineRepository" 
+        name="Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDevice" 
         table="SurvivalDevices" 
         change-tracking-policy="DEFERRED_EXPLICIT"
     >
