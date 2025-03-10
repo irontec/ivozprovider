@@ -609,6 +609,7 @@
   "User_one": "User",
   "User_other": "Users",
   "Username": "Username",
+  "Users who do not have a specific location will be linked to this location.": "A user can only be linked to a single location",
   "Version": "Version",
   "Video": "Video",
   "Views": "Views",

@@ -686,6 +686,7 @@
   "User_one": "Usuari",
   "User_other": "Usuaris",
   "Username": "Nom d'usuari",
+  "Users who do not have a specific location will be linked to this location.": "Un usuari només pot estar vinculat a una única ubicació",
   "Version": "Versió",
   "Video": "Vídeo",
   "Views": "Vistes",
