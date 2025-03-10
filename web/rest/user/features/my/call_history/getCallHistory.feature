@@ -65,6 +65,7 @@ Feature: Retrieve call history
               "callee": "+34676896561",
               "owner": null,
               "disposition": "answered",
+              "numRecordings": 0,
               "id": 1
           },
           {
@@ -75,6 +76,7 @@ Feature: Retrieve call history
               "callee": "+34676896561",
               "owner": null,
               "disposition": "answered",
+              "numRecordings": 1,
               "id": 2
           }
       ]
