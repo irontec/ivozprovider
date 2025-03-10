@@ -144,6 +144,7 @@ Feature: Retrieve features rel brand
               "corporation": 1,
               "applicationServerSet": 1,
               "mediaRelaySet": 0,
+              "location": null,
               "featureIds": [],
               "geoIpAllowedCountries": [],
               "routingTagIds": [],
