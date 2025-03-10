@@ -65,6 +65,7 @@ Feature: Retrieve users
           "owner": null,
           "callid": "9297bdde-309cd48f@10.10.1.123",
           "disposition": "answered",
+          "numRecordings": 0,
           "id": 1,
           "user": {
               "name": "Alice",
