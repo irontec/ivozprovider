@@ -824,7 +824,7 @@ pipeline {
 
                         // Validate feature branch is properly rebased
                         try {
-                            sh "git merge-base --is-ancestor origin/master origin/${env.CHANGE_TARGET}"
+                            sh "git merge-base --is-ancestor origin/main origin/${env.CHANGE_TARGET}"
                         } catch (Exception e) {
                             unstable "Feature branch ${env.CHANGE_TARGET} is not properly rebased. Merge is blocked."
                         }
