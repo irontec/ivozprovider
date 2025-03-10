@@ -1,13 +1,13 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\SurvivalDevices;
+namespace Ivoz\Provider\Domain\Model\SurvivalDevice;
 
 /**
- * SurvivalDevices
+ * SurvivalDevice
  */
-class SurvivalDevices extends SurvivalDevicesAbstract implements SurvivalDevicesInterface
+class SurvivalDevice extends SurvivalDeviceAbstract implements SurvivalDeviceInterface
 {
-    use SurvivalDevicesTrait;
+    use SurvivalDeviceTrait;
 
     /**
      * @codeCoverageIgnore

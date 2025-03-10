@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ivoz\Provider\Domain\Model\SurvivalDevices;
+namespace Ivoz\Provider\Domain\Model\SurvivalDevice;
 
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
@@ -10,7 +10,7 @@ use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 /**
 * @codeCoverageIgnore
 */
-trait SurvivalDevicesTrait
+trait SurvivalDeviceTrait
 {
     /**
      * @var ?int
@@ -30,7 +30,7 @@ trait SurvivalDevicesTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param SurvivalDevicesDto $dto
+     * @param SurvivalDeviceDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -50,7 +50,7 @@ trait SurvivalDevicesTrait
 
     /**
      * @internal use EntityTools instead
-     * @param SurvivalDevicesDto $dto
+     * @param SurvivalDeviceDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -66,7 +66,7 @@ trait SurvivalDevicesTrait
     /**
      * @internal use EntityTools instead
      */
-    public function toDto(int $depth = 0): SurvivalDevicesDto
+    public function toDto(int $depth = 0): SurvivalDeviceDto
     {
         $dto = parent::toDto($depth);
         return $dto

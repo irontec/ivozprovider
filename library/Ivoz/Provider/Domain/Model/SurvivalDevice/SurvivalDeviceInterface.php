@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\SurvivalDevices;
+namespace Ivoz\Provider\Domain\Model\SurvivalDevice;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -9,9 +9,9 @@ use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
-* SurvivalDevicesInterface
+* SurvivalDeviceInterface
 */
-interface SurvivalDevicesInterface extends LoggableEntityInterface
+interface SurvivalDeviceInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -28,25 +28,25 @@ interface SurvivalDevicesInterface extends LoggableEntityInterface
     /**
      * @param int | null $id
      */
-    public static function createDto($id = null): SurvivalDevicesDto;
+    public static function createDto($id = null): SurvivalDeviceDto;
 
     /**
      * @internal use EntityTools instead
-     * @param null|SurvivalDevicesInterface $entity
+     * @param null|SurvivalDeviceInterface $entity
      */
-    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?SurvivalDevicesDto;
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?SurvivalDeviceDto;
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param SurvivalDevicesDto $dto
+     * @param SurvivalDeviceDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
     /**
      * @internal use EntityTools instead
      */
-    public function toDto(int $depth = 0): SurvivalDevicesDto;
+    public function toDto(int $depth = 0): SurvivalDeviceDto;
 
     public function getName(): string;
 

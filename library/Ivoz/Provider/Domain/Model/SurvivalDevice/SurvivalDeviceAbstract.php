@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ivoz\Provider\Domain\Model\SurvivalDevices;
+namespace Ivoz\Provider\Domain\Model\SurvivalDevice;
 
 use Assert\Assertion;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
@@ -13,10 +13,10 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
-* SurvivalDevicesAbstract
+* SurvivalDeviceAbstract
 * @codeCoverageIgnore
 */
-abstract class SurvivalDevicesAbstract
+abstract class SurvivalDeviceAbstract
 {
     use ChangelogTrait;
 
@@ -88,13 +88,13 @@ abstract class SurvivalDevicesAbstract
         $this->setDescription($description);
     }
 
-    abstract public function getId(): null|string|int;
+    abstract public function getId(): null|int;
 
     public function __toString(): string
     {
         return sprintf(
             "%s#%s",
-            "SurvivalDevices",
+            "SurvivalDevice",
             (string) $this->getId()
         );
     }
@@ -109,22 +109,22 @@ abstract class SurvivalDevicesAbstract
     /**
      * @param int | null $id
      */
-    public static function createDto($id = null): SurvivalDevicesDto
+    public static function createDto($id = null): SurvivalDeviceDto
     {
-        return new SurvivalDevicesDto($id);
+        return new SurvivalDeviceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param null|SurvivalDevicesInterface $entity
+     * @param null|SurvivalDeviceInterface $entity
      */
-    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?SurvivalDevicesDto
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?SurvivalDeviceDto
     {
         if (!$entity) {
             return null;
         }
 
-        Assertion::isInstanceOf($entity, SurvivalDevicesInterface::class);
+        Assertion::isInstanceOf($entity, SurvivalDeviceInterface::class);
 
         if ($depth < 1) {
             return static::createDto($entity->getId());
@@ -142,13 +142,13 @@ abstract class SurvivalDevicesAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param SurvivalDevicesDto $dto
+     * @param SurvivalDeviceDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
-        Assertion::isInstanceOf($dto, SurvivalDevicesDto::class);
+        Assertion::isInstanceOf($dto, SurvivalDeviceDto::class);
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
         $proxy = $dto->getProxy();
@@ -189,13 +189,13 @@ abstract class SurvivalDevicesAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param SurvivalDevicesDto $dto
+     * @param SurvivalDeviceDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
-        Assertion::isInstanceOf($dto, SurvivalDevicesDto::class);
+        Assertion::isInstanceOf($dto, SurvivalDeviceDto::class);
 
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
@@ -233,7 +233,7 @@ abstract class SurvivalDevicesAbstract
     /**
      * @internal use EntityTools instead
      */
-    public function toDto(int $depth = 0): SurvivalDevicesDto
+    public function toDto(int $depth = 0): SurvivalDeviceDto
     {
         return self::createDto()
             ->setName(self::getName())

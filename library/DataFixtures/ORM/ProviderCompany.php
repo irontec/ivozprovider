@@ -244,7 +244,6 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             ProviderNotificationTemplate::class,
             ProviderCorporation::class,
             ProviderApplicationServerSet::class,
-            ProviderMediaRelaySet::class
         );
     }
 }

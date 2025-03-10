@@ -1,16 +1,16 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\SurvivalDevices;
+namespace Ivoz\Provider\Domain\Model\SurvivalDevice;
 
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 /**
-* SurvivalDevicesDtoAbstract
+* SurvivalDeviceDtoAbstract
 * @codeCoverageIgnore
 */
-abstract class SurvivalDevicesDtoAbstract implements DataTransferObjectInterface
+abstract class SurvivalDeviceDtoAbstract implements DataTransferObjectInterface
 {
     use DtoNormalizer;
 
