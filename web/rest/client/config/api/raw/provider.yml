@@ -2359,3 +2359,14 @@ Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr:
         - 'application/json'
         - 'application/ld+json'
         - 'text/csv'
+
+Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDevice:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    post: ~
+ 
+
+  

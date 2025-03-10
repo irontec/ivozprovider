@@ -337,3 +337,5 @@ doctrine:
         Ivoz\Provider\Domain\Model\MediaRelaySetsRelBrand\MediaRelaySetsRelBrand
       Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrandInterface:
         Ivoz\Provider\Domain\Model\ApplicationServerSetsRelBrand\ApplicationServerSetsRelBrand
+      Ivoz\Provider\Domain\Model\SurvivalDevices\SurvivalDevicesInterface:
+        Ivoz\Provider\Domain\Model\SurvivalDevices\SurvivalDevices
