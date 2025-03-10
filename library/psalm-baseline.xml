@@ -1903,7 +1903,7 @@
     </UnnecessaryVarAnnotation>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyAbstract.php">
-    <MixedArgument occurrences="36">
+    <MixedArgument occurrences="38">
       <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
       <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
@@ -1928,6 +1928,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getInvoiceNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocation())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocation())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
