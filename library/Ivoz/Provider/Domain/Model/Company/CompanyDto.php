@@ -323,7 +323,6 @@ class CompanyDto extends CompanyDtoAbstract
             $response['corporationId'] = 'corporation';
             $response['applicationServerSetId'] = 'applicationServerSet';
             $response['mediaRelaySetId'] = 'mediaRelaySet';
-
             return self::filterFieldsForBrandAdmin($response);
         }
 
@@ -393,7 +392,8 @@ class CompanyDto extends CompanyDtoAbstract
             'accountStatus',
             'currencySymbol',
             'applicationServerSetId',
-            'mediaRelaySetId'
+            'mediaRelaySetId',
+            'locationId',
         ];
 
         return array_filter(
