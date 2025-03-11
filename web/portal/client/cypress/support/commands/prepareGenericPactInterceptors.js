@@ -58,6 +58,7 @@ import RoutingTagCollection from '../../fixtures/RoutingTag/getCollection.json';
 import ScheduleCollection from '../../fixtures/Schedule/getCollection.json';
 import ServiceCollection from '../../fixtures/Service/getCollection.json';
 import ServiceUnassignedCollection from '../../fixtures/Service/getUnassignedCollection.json';
+import SurvivalDeviceCollection from '../../fixtures/SurvivalDevice/getCollection.json';
 import TerminalCollection from '../../fixtures/Terminal/getCollection.json';
 import TerminalUnassignedCollection from '../../fixtures/Terminal/getUnassignedCollection.json';
 import TerminalModelCollection from '../../fixtures/TerminalModel/getCollection.json';
@@ -375,5 +376,9 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/client/invoices?*', {
       ...InvoiceCollection,
     }).as('getInvoices');
+
+    cy.intercept('GET', '**/api/client/survival_devices?*', {
+      ...SurvivalDeviceCollection,
+    }).as('getSurvivalDevices');
   }
 );
