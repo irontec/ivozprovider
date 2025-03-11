@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f783a49de3630f04c92f2c6b71e7d21",
+    "content-hash": "e24acb9c4987733bb79d55222c08cbaa",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2010,11 +2010,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "3.0",
+            "version": "3.2",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "714ba3de39b4b73b9a01cfe6f7f57c7d7d6c30f1"
+                "reference": "49c6b5906b2f1e7e789d18e457b315084e2a008b"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -3233,11 +3233,11 @@
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "v2.5.2",
+            "version": "v2.5.4",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/cache-contracts",
-                "reference": "64be4a7acb83b6f2bf6de9a02cee6dad41277ebc"
+                "reference": "517c3a3619dadfa6952c4651767fcadffb4df65e"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -4784,14 +4784,14 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.28.0",
+            "version": "v1.31.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-ctype",
-                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb"
+                "reference": "a3cc8b044a6ea513310cbd48ef7333b384945638"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "provide": {
                 "ext-ctype": "*"
@@ -4801,9 +4801,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -5100,14 +5097,14 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.28.0",
+            "version": "v1.31.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
-                "reference": "42292d99c55abe617799667f454222c54c60e229"
+                "reference": "85181ba99b2345b0ef10ce42ecac37612d9fd341"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "provide": {
                 "ext-mbstring": "*"
@@ -5117,9 +5114,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -5217,20 +5211,17 @@
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.28.0",
+            "version": "v1.31.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php73",
-                "reference": "fe2f306d1d9d346a7fee353d0d5012e401e984b5"
+                "reference": "0f68c03565dcaaf25a890667542e8bd75fe7e5bb"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -5275,20 +5266,17 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.28.0",
+            "version": "v1.31.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php80",
-                "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5"
+                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -5337,20 +5325,17 @@
         },
         {
             "name": "symfony/polyfill-php81",
-            "version": "v1.25.0",
+            "version": "v1.31.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php81",
-                "reference": "5de4ba2d41b15f9bd0e19b2ab9674135813ec98f"
+                "reference": "4a4cfc2d253c21a5ad0e53071df248ed48c6ce5c"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.23-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -5395,11 +5380,11 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.4.28",
+            "version": "v5.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/process",
-                "reference": "45261e1fccad1b5447a8d7a8e67aa7b4a9798b7b"
+                "reference": "5d1662fb32ebc94f17ddb8d635454a776066733d"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6078,11 +6063,11 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.5.2",
+            "version": "v2.5.4",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/service-contracts",
-                "reference": "4b426aac47d6427cc1a1d0f7e2ac724627f5966c"
+                "reference": "f37b419f7aea2e9abf10abd261832cace12e3300"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6140,11 +6125,11 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v5.4.5",
+            "version": "v5.4.45",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/stopwatch",
-                "reference": "4d04b5c24f3c9a1a168a131f6cbe297155bc0d30"
+                "reference": "fb2c199cf302eb207f8c23e7ee174c1c31a5c004"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6293,11 +6278,11 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v5.4.7",
+            "version": "v5.4.45",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/translation",
-                "reference": "e1eb790575202ee3ac2659f55b93b05853726f8e"
+                "reference": "98f26acc99341ca4bab345fb14d7b1d7cb825bed"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6369,11 +6354,11 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v2.5.2",
+            "version": "v2.5.4",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/translation-contracts",
-                "reference": "136b19dd05cdf0709db6537d058bcab6dd6e2dbe"
+                "reference": "450d4172653f38818657022252f9d81be89ee9a8"
             },
             "require": {
                 "php": ">=7.2.5"
@@ -6594,11 +6579,11 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v5.4.7",
+            "version": "v5.4.48",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/validator",
-                "reference": "f6402ff65e23b7a701d6938809c6451a8a125a8b"
+                "reference": "883667679d93d6c30f1b7490d669801712d3be2f"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6614,19 +6599,18 @@
                 "doctrine/annotations": "<1.13",
                 "doctrine/cache": "<1.11",
                 "doctrine/lexer": "<1.1",
-                "phpunit/phpunit": "<5.4.3",
                 "symfony/dependency-injection": "<4.4",
                 "symfony/expression-language": "<5.1",
                 "symfony/http-kernel": "<4.4",
                 "symfony/intl": "<4.4",
                 "symfony/property-info": "<5.3",
-                "symfony/translation": "<4.4",
+                "symfony/translation": "<5.4.35|>=6.0,<6.3.12|>=6.4,<6.4.3",
                 "symfony/yaml": "<4.4"
             },
             "require-dev": {
-                "doctrine/annotations": "^1.13",
+                "doctrine/annotations": "^1.13|^2",
                 "doctrine/cache": "^1.11|^2.0",
-                "egulias/email-validator": "^2.1.10|^3",
+                "egulias/email-validator": "^2.1.10|^3|^4",
                 "symfony/cache": "^4.4|^5.0|^6.0",
                 "symfony/config": "^4.4|^5.0|^6.0",
                 "symfony/console": "^4.4|^5.0|^6.0",
@@ -6638,9 +6622,9 @@
                 "symfony/http-kernel": "^4.4|^5.0|^6.0",
                 "symfony/intl": "^4.4|^5.0|^6.0",
                 "symfony/mime": "^4.4|^5.0|^6.0",
-                "symfony/property-access": "^4.4|^5.0|^6.0",
+                "symfony/property-access": "^5.4|^6.0",
                 "symfony/property-info": "^5.3|^6.0",
-                "symfony/translation": "^4.4|^5.0|^6.0",
+                "symfony/translation": "^5.4.35|~6.3.12|^6.4.3",
                 "symfony/yaml": "^4.4|^5.0|^6.0"
             },
             "suggest": {
@@ -6661,7 +6645,8 @@
                     "Symfony\\Component\\Validator\\": ""
                 },
                 "exclude-from-classmap": [
-                    "/Tests/"
+                    "/Tests/",
+                    "/Resources/bin/"
                 ]
             },
             "license": [
@@ -6806,11 +6791,11 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v5.4.3",
+            "version": "v5.4.45",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/yaml",
-                "reference": "e80f87d2c9495966768310fc531b487ce64237a2"
+                "reference": "a454d47278cc16a5db371fe73ae66a78a633371e"
             },
             "require": {
                 "php": ">=7.2.5",
