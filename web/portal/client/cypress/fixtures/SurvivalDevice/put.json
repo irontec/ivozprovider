@@ -1,0 +1,31 @@
+{
+  "request": {
+    "name": "Survival Test 1-1",
+    "proxy": "55555",
+    "outboundProxy": "66666",
+    "udpPort": 5065,
+    "tcpPort": 5065,
+    "tlsPort": 5066,
+    "wssPort": 10085,
+    "description": "new survival device 1-1",
+    "id": 1
+  },
+  "response": {
+    "body": {
+      "name": "Survival Test 1-1",
+      "proxy": "55555",
+      "outboundProxy": "66666",
+      "udpPort": 5065,
+      "tcpPort": 5065,
+      "tlsPort": 5066,
+      "wssPort": 10085,
+      "description": "new survival device 1-1",
+      "id": 1,
+      "company": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
