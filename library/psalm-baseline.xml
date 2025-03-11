@@ -4163,6 +4163,18 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/SurvivalDevice/SurvivalDeviceAbstract.php">
+    <MixedArgument occurrences="2">
+      <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($company)</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/SurvivalDevice/SurvivalDeviceTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/Terminal/Terminal.php">
     <ImplicitToStringCast occurrences="1">
       <code>$this-&gt;getDomain()</code>
