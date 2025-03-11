@@ -380,6 +380,10 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: entities.Location,
           isAccessible: (aboutMe) => aboutMe.vpbx,
         },
+        {
+          entity: entities.SurvivalDevice,
+          isAccessible: (aboutMe) => aboutMe.vpbx,
+        },
       ],
     },
     {
