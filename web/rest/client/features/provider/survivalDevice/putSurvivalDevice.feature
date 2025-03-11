@@ -18,8 +18,7 @@ Feature: Update survival devices
         "tcpPort": 5065,
         "tlsPort": 5066,
         "wssPort": 10085,
-        "description": "new survival device 1-1",
-        "company": 1
+        "description": "new survival device 1-1"
       }
       """
      Then the response status code should be 200
