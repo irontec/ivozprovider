@@ -1,4 +1,8 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
   ChildDecoratorType,
   OrderDirection,
@@ -61,8 +65,34 @@ const columns = [
   'disposition',
 ];
 
-export const ChildDecorator: ChildDecoratorType = () => {
-  return null;
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  const recording = routeMapItem.entity;
+  const isDetailedPath =
+    routeMapItem.route === `${recording.path}/:id/detailed`;
+  const isUpdatePath = routeMapItem.route === `${recording.path}/:id/update`;
+  const isDeletePath = routeMapItem.route === `${recording.path}/:id`;
+
+  if (isDetailedPath || isUpdatePath || isDeletePath) {
+    return null;
+  }
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === recording.iden
+  ) {
+    if (row.numRecordings < 1) {
+      return (
+        <ChildEntityLink
+          row={row}
+          routeMapItem={routeMapItem}
+          disabled={true}
+        />
+      );
+    }
+  }
+
+  return DefaultChildDecorator(props);
 };
 
 const usersCdr: EntityInterface = {
