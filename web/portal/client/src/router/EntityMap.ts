@@ -437,7 +437,13 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.UsersCdr,
           isAccessible: (aboutMe) => aboutMe.vpbx,
-          children: [...Object.values(entities.UsersCdr.customActions)],
+          children: [
+            {
+              entity: entities.Recording,
+              filterBy: 'usersCdr',
+            },
+          ],
+          ...Object.values(entities.UsersCdr.customActions),
         },
         {
           entity: entities.ActiveCalls,

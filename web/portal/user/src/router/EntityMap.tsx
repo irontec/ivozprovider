@@ -57,13 +57,15 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      entity: {
-        ...entities.UsersCdr,
-        acl: {
-          ...entities.UsersCdr.acl,
-          detail: false,
+      entity: entities.UsersCdr,
+      children: [
+        {
+          entity: {
+            ...entities.Recording,
+          },
+          filterBy: 'usersCdr',
         },
-      },
+      ],
     },
     {
       entity: {

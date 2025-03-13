@@ -39,6 +39,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <many-to-one field="usersCdr" target-entity="Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface">
+      <join-columns>
+        <join-column name="usersCdrId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="recordings" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>

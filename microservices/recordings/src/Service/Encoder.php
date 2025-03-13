@@ -7,6 +7,7 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrDto;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrRepository;
 use Model\RawRecordingInfo;
@@ -108,6 +109,11 @@ class Encoder
             if (is_null($recordingDto)) {
                 return null;
             }
+
+            $recordingDto
+                ->setUsersCdrId(
+                    $accCdr->getId()
+                );
         } else {
             // This should not even be possible
             $this->logger->error(sprintf(
