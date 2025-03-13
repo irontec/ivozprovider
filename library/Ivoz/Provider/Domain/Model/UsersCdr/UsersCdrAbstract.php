@@ -76,6 +76,11 @@ abstract class UsersCdrAbstract
     protected $disposition = 'answered';
 
     /**
+     * @var int
+     */
+    protected $numRecordings = 0;
+
+    /**
      * @var ?CompanyInterface
      */
     protected $company = null;
@@ -105,10 +110,12 @@ abstract class UsersCdrAbstract
      */
     protected function __construct(
         \DateTimeInterface|string $startTime,
-        float $duration
+        float $duration,
+        int $numRecordings
     ) {
         $this->setStartTime($startTime);
         $this->setDuration($duration);
+        $this->setNumRecordings($numRecordings);
     }
 
     abstract public function getId(): null|string|int;
@@ -176,10 +183,13 @@ abstract class UsersCdrAbstract
         Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $numRecordings = $dto->getNumRecordings();
+        Assertion::notNull($numRecordings, 'getNumRecordings value is null, but non null value was expected.');
 
         $self = new static(
             $startTime,
-            $duration
+            $duration,
+            $numRecordings
         );
 
         $self
@@ -215,6 +225,8 @@ abstract class UsersCdrAbstract
         Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $numRecordings = $dto->getNumRecordings();
+        Assertion::notNull($numRecordings, 'getNumRecordings value is null, but non null value was expected.');
 
         $this
             ->setStartTime($startTime)
@@ -226,6 +238,7 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setBrandId($dto->getBrandId())
             ->setDisposition($dto->getDisposition())
+            ->setNumRecordings($numRecordings)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
@@ -250,6 +263,7 @@ abstract class UsersCdrAbstract
             ->setCallid(self::getCallid())
             ->setBrandId(self::getBrandId())
             ->setDisposition(self::getDisposition())
+            ->setNumRecordings(self::getNumRecordings())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setUser(User::entityToDto(self::getUser(), $depth))
             ->setFriend(Friend::entityToDto(self::getFriend(), $depth))
@@ -272,6 +286,7 @@ abstract class UsersCdrAbstract
             'callid' => self::getCallid(),
             'brandId' => self::getBrandId(),
             'disposition' => self::getDisposition(),
+            'numRecordings' => self::getNumRecordings(),
             'companyId' => self::getCompany()?->getId(),
             'userId' => self::getUser()?->getId(),
             'friendId' => self::getFriend()?->getId(),
@@ -443,6 +458,20 @@ abstract class UsersCdrAbstract
     public function getDisposition(): ?string
     {
         return $this->disposition;
+    }
+
+    protected function setNumRecordings(int $numRecordings): static
+    {
+        Assertion::greaterOrEqualThan($numRecordings, 0, 'numRecordings provided "%s" is not greater or equal than "%s".');
+
+        $this->numRecordings = $numRecordings;
+
+        return $this;
+    }
+
+    public function getNumRecordings(): int
+    {
+        return $this->numRecordings;
     }
 
     protected function setCompany(?CompanyInterface $company = null): static

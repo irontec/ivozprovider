@@ -66,6 +66,11 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var int|null
      */
+    private $numRecordings = 0;
+
+    /**
+     * @var int|null
+     */
     private $id = null;
 
     /**
@@ -117,6 +122,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callid' => 'callid',
             'brandId' => 'brandId',
             'disposition' => 'disposition',
+            'numRecordings' => 'numRecordings',
             'id' => 'id',
             'companyId' => 'company',
             'userId' => 'user',
@@ -141,6 +147,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callid' => $this->getCallid(),
             'brandId' => $this->getBrandId(),
             'disposition' => $this->getDisposition(),
+            'numRecordings' => $this->getNumRecordings(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'user' => $this->getUser(),
@@ -269,6 +276,18 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     public function getDisposition(): ?string
     {
         return $this->disposition;
+    }
+
+    public function setNumRecordings(int $numRecordings): static
+    {
+        $this->numRecordings = $numRecordings;
+
+        return $this;
+    }
+
+    public function getNumRecordings(): ?int
+    {
+        return $this->numRecordings;
     }
 
     /**

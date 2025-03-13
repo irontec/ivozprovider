@@ -16,6 +16,7 @@ use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern;
 use Ivoz\Provider\Domain\Model\Service\Service;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -104,7 +105,8 @@ class BrandLifeCycleTest extends KernelTestCase
             ApplicationServerSetsRelBrand::class,
             MediaRelaySetsRelBrand::class,
             DdiProvider::class,
-            Carrier::class
+            Carrier::class,
+            UsersCdr::class,
         ]);
     }
 
