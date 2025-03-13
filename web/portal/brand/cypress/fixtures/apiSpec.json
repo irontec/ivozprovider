@@ -8018,6 +8018,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "domainUsers[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "domainUsers[neq]",
                         "in": "query",
                         "required": false,
@@ -8034,18 +8046,6 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "exists[balance]",
@@ -8138,6 +8138,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.countryName[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.countryName[neq]",
                         "in": "query",
                         "required": false,
@@ -8156,12 +8162,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.countryName[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.nif",
                         "in": "query",
                         "required": false,
@@ -8169,6 +8169,12 @@
                     },
                     {
                         "name": "invoicing.nif[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8192,12 +8198,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.nif[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalAddress",
                         "in": "query",
                         "required": false,
@@ -8205,18 +8205,6 @@
                     },
                     {
                         "name": "invoicing.postalAddress[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8234,6 +8222,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalAddress[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalCode",
                         "in": "query",
                         "required": false,
@@ -8241,12 +8241,6 @@
                     },
                     {
                         "name": "invoicing.postalCode[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalCode[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8265,6 +8259,12 @@
                     },
                     {
                         "name": "invoicing.postalCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8318,6 +8318,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.town[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
@@ -8336,12 +8342,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.town[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "language",
                         "in": "query",
                         "required": false,
@@ -8355,6 +8355,24 @@
                     },
                     {
                         "name": "language[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "location",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location[exists]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -8444,6 +8462,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
@@ -8457,12 +8481,6 @@
                     },
                     {
                         "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8534,6 +8552,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "type[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "type[start]",
                         "in": "query",
                         "required": false,
@@ -8547,12 +8571,6 @@
                     },
                     {
                         "name": "type[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "type[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -17459,6 +17477,12 @@
                     },
                     {
                         "name": "company.language",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "company.location",
                         "in": "query",
                         "required": false,
                         "type": "integer"
@@ -27593,6 +27617,12 @@
                         "type": "integer"
                     },
                     {
+                        "name": "company.location",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.maxCalls",
                         "in": "query",
                         "required": false,
@@ -27803,12 +27833,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
@@ -27822,6 +27846,12 @@
                     },
                     {
                         "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -28589,6 +28619,12 @@
                         "type": "integer"
                     },
                     {
+                        "name": "company.location",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.maxCalls",
                         "in": "query",
                         "required": false,
@@ -28691,12 +28727,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[neq]",
                         "in": "query",
                         "required": false,
@@ -28715,6 +28745,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "directConnectivity",
                         "in": "query",
                         "required": false,
@@ -28722,6 +28758,12 @@
                     },
                     {
                         "name": "directConnectivity[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "directConnectivity[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -28740,12 +28782,6 @@
                     },
                     {
                         "name": "directConnectivity[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "directConnectivity[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -28823,6 +28859,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -28836,12 +28878,6 @@
                     },
                     {
                         "name": "name[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -32276,6 +32312,12 @@
                         "type": "integer"
                     },
                     {
+                        "name": "company.location",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.maxCalls",
                         "in": "query",
                         "required": false,
@@ -32432,6 +32474,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
@@ -32445,12 +32493,6 @@
                     },
                     {
                         "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -38484,6 +38526,10 @@
                     "description": "",
                     "type": "integer"
                 },
+                "location": {
+                    "description": "",
+                    "type": "integer"
+                },
                 "featureIds": {
                     "description": "Active feature ids",
                     "type": "array",
@@ -38826,6 +38872,9 @@
                 },
                 "mediaRelaySet": {
                     "$ref": "#/definitions/MediaRelaySet"
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
                 },
                 "domainName": {
                     "readOnly": true,

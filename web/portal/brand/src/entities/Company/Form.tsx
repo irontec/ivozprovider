@@ -92,6 +92,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
         'defaultTimezone',
         'transformationRuleSet',
         'currency',
+        edit && isVpbx && 'location',
       ],
     },
     isRetail && {

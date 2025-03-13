@@ -235,6 +235,7 @@ Feature: Create companies
               "description": "Default media relay set",
               "id": 0
           },
+          "location": null,
           "domainName": "api.irontec.com",
           "featureIds": [
               1

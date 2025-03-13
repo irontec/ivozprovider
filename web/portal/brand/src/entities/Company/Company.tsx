@@ -374,6 +374,14 @@ const properties: CompanyProperties = {
     label: _('Media Relay Set', { count: 1 }),
     default: '__auto__',
   },
+  location: {
+    label: _('Location', { count: 1 }),
+    null: _('Unassigned'),
+    default: '__null__',
+    helpText: _(
+      'Users who do not have a specific location will be linked to this location.'
+    ),
+  },
 };
 
 type MarshallerType = typeof defaultMarshaller;

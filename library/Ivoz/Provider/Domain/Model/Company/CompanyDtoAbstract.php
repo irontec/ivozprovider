@@ -17,6 +17,7 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto;
 use Ivoz\Provider\Domain\Model\Corporation\CorporationDto;
 use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetDto;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto;
+use Ivoz\Provider\Domain\Model\Location\LocationDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\Contact\ContactDto;
@@ -255,6 +256,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $mediaRelaySet = null;
 
     /**
+     * @var LocationDto | null
+     */
+    private $location = null;
+
+    /**
      * @var ExtensionDto[] | null
      */
     private $extensions = null;
@@ -383,7 +389,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'accessCredentialNotificationTemplateId' => 'accessCredentialNotificationTemplate',
             'corporationId' => 'corporation',
             'applicationServerSetId' => 'applicationServerSet',
-            'mediaRelaySetId' => 'mediaRelaySet'
+            'mediaRelaySetId' => 'mediaRelaySet',
+            'locationId' => 'location'
         ];
     }
 
@@ -438,6 +445,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'corporation' => $this->getCorporation(),
             'applicationServerSet' => $this->getApplicationServerSet(),
             'mediaRelaySet' => $this->getMediaRelaySet(),
+            'location' => $this->getLocation(),
             'extensions' => $this->getExtensions(),
             'ddis' => $this->getDdis(),
             'friends' => $this->getFriends(),
@@ -1305,6 +1313,36 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getMediaRelaySetId(): ?int
     {
         if ($dto = $this->getMediaRelaySet()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setLocation(?LocationDto $location): static
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function getLocation(): ?LocationDto
+    {
+        return $this->location;
+    }
+
+    public function setLocationId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new LocationDto($id)
+            : null;
+
+        return $this->setLocation($value);
+    }
+
+    public function getLocationId(): ?int
+    {
+        if ($dto = $this->getLocation()) {
             return $dto->getId();
         }
 

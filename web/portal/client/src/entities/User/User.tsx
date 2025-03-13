@@ -89,7 +89,7 @@ const properties: UserProperties = {
   },
   location: {
     label: _('Location', { count: 1 }),
-    null: _('Unassigned'),
+    null: _("Client's default"),
     default: '__null__',
   },
   terminal: {

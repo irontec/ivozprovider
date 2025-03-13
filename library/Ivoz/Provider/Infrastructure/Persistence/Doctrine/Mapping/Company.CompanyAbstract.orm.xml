@@ -194,5 +194,10 @@
         <join-column name="mediaRelaySetId" referenced-column-name="id" on-delete="RESTRICT" nullable="false"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="location" target-entity="Ivoz\Provider\Domain\Model\Location\LocationInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="locationId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
   </mapped-superclass>
 </doctrine-mapping>
