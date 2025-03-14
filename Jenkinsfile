@@ -752,21 +752,7 @@ pipeline {
                     if (issue.data.fields.customfield_10168) {
                         // Not validated
                         if (status.id != "10325") {
-                            // Ensure the PR is not already marked as changed requested
-                            def lastFuncReviewStatus
-                            for (review in pullRequest.reviews) {
-                                if (review.user == "ironArt3mis") {
-                                    lastFuncReviewStatus = review.state
-                                }
-                            }
-                            // PR already marked as review requested
-                            if (lastFuncReviewStatus == "CHANGES_REQUESTED") {
-                                echo "This PR is already marked as functional review required"
-                                return
-                            }
-                            pullRequest.review('REQUEST_CHANGES', 'Functional review required')
-                        } else {
-                            pullRequest.review('APPROVE')
+                            unstable "Changes not yet validated. Functional review required."
                         }
                     }
                 }
@@ -774,55 +760,42 @@ pipeline {
             post {
                 success { notifySuccessGithub() }
                 failure { notifyFailureGithub() }
-                unstable { notifyUnstableGithub() }
             }
         }
 
-        // --------------------------------------------------------------------
-        // Mergeability validation
-        // --------------------------------------------------------------------
         stage ('mergeability') {
             steps {
                 script {
-                    // Check we're validating a Merge request
                     if (!env.CHANGE_TARGET) {
                         echo "Not a merge request branch. Merge checks not required."
                         return
                     }
 
-                    // This merge request is from a security alarm
                     if (env.BRANCH_NAME.startsWith("dependabot")) {
                         echo "Security alarm branch. Merge checks not required."
                         return
                     }
 
-                    // Check Merge request has a Jira ticket associated
                     if (!env.JIRA_TICKET) {
                         failure "No ticket associated. Can not validate mergeability."
                     }
 
-                    // Fetch issue data from Jira
                     def issue = jiraGetIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET
 
-                    // Merge validations for feature subtask
                     isSubtask = issue.data.fields.issuetype.subtask
                     if (isSubtask) {
-                        // Get parent task
                         def task = issue.data.fields.parent
                         echo "${env.JIRA_TICKET} is a subtask part of a feature task."
 
-                        // Check the target branch is an feature branch
                         if (!env.CHANGE_TARGET.startsWith(task.key)) {
                             unstable "Target branch ${env.CHANGE_TARGET} is not an feature branch. Merge will be blocked until all previous task are merged"
                         }
 
-                        // Validate parent status - Validated - 10325
                         def status = task.fields.status
                         if (status.id != "10325") {
                             unstable "Feature not yet validated. Merge is blocked."
                         }
 
-                        // Validate feature branch is properly rebased
                         try {
                             sh "git merge-base --is-ancestor origin/main origin/${env.CHANGE_TARGET}"
                         } catch (Exception e) {
@@ -831,16 +804,13 @@ pipeline {
                     } else {
                         echo "${env.JIRA_TICKET} is a task. Checking subtasks..."
 
-                        // Check the target branch is master
                         if (env.CHANGE_TARGET != "main") {
                             unstable "Target branch ${env.CHANGE_TARGET} is not an main branch."
                         }
 
-                        // Check all subtask has been merged
                         def subtasks = issue.data.fields.subtasks
                         subtasks.each { subtask ->
                             def status = subtask.fields.status
-                            // Validate child status - Done - 10002
                             if (status.id != "10002") {
                                 unstable "Subtask ${subtask.key} is not completed (Status: ${status.name})."
                             }
@@ -851,7 +821,6 @@ pipeline {
             post {
                 success { notifySuccessGithub() }
                 failure { notifyFailureGithub() }
-                unstable { notifyUnstableGithub() }
             }
         }
     }
@@ -862,9 +831,18 @@ pipeline {
     post {
         failure { notifyFailureMattermost() }
         fixed { notifyFixedMattermost() }
-        unstable { script { currentBuild.result = 'ABORTED' } }
+        unstable {
+            script { currentBuild.rawBuild.@result = hudson.model.Result.SUCCESS }
+            githubMarkChangesRequested()
+            saveTestedHash(env.HASH_BACK)
+            saveTestedHash(env.HASH_FRONT_PLATFORM)
+            saveTestedHash(env.HASH_FRONT_BRAND)
+            saveTestedHash(env.HASH_FRONT_CLIENT)
+            saveTestedHash(env.HASH_FRONT_USER)
+        }
         always { cleanWs() }
         success {
+            githubMarkApproved()
             saveTestedHash(env.HASH_BACK)
             saveTestedHash(env.HASH_FRONT_PLATFORM)
             saveTestedHash(env.HASH_FRONT_BRAND)
@@ -950,6 +928,44 @@ void notifyFixedMattermost() {
             color: "#008000",
             message: ":thumbsup_all: Branch ${env.GIT_BRANCH} tests fixed :thumbsup_all: - (<${env.BUILD_URL}|Open>)"
         ])
+    }
+}
+
+def githubMarkApproved() {
+    if (env.CHANGE_ID) {
+        // Check last status of bot review
+        def lastFuncReviewStatus
+        for (review in pullRequest.reviews) {
+            if (review.user == "ironArt3mis") {
+                lastFuncReviewStatus = review.state
+            }
+        }
+
+        // If PR was previously rejected approve it
+        if (lastFuncReviewStatus == "CHANGES_REQUESTED") {
+            pullRequest.review('APPROVE')
+        }
+    }
+}
+
+def githubMarkChangesRequested()
+{
+    if (env.CHANGE_ID) {
+        // Check last status of bot review
+        def lastFuncReviewStatus
+        for (review in pullRequest.reviews) {
+            if (review.user == "ironArt3mis") {
+                lastFuncReviewStatus = review.state
+            }
+        }
+
+        // PR already marked as review requested
+        if (lastFuncReviewStatus == "CHANGES_REQUESTED") {
+            echo "This PR is already marked as not ready to merge"
+            return
+        }
+
+        pullRequest.review('REQUEST_CHANGES', 'This PR is not ready to merge.')
     }
 }
 
