@@ -31338,6 +31338,416 @@
                 }
             }
         },
+        "/survival_devices": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getSurvivalDeviceCollection",
+                "summary": "Retrieves the collection of SurvivalDevice resources.",
+                "responses": {
+                    "200": {
+                        "description": "SurvivalDevice collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SurvivalDevice-collection"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "description[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exists[description]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "proxy",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "proxy[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "proxy[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "proxy[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "proxy[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "proxy[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[description]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[proxy]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_itemsPerPage",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of items per page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "_page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "_pagination",
+                        "in": "query",
+                        "required": false,
+                        "description": "Enable or disable pagination",
+                        "type": "boolean"
+                    },
+                    {
+                        "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: _properties[]={propertyName}&_properties[]={anotherPropertyName}&_properties[{nestedPropertyParent}][]={nestedProperty}",
+                        "name": "_properties[]",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false,
+                        "collectionFormat": "multi"
+                    }
+                ]
+            },
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "postSurvivalDeviceCollection",
+                "summary": "Creates a SurvivalDevice resource.",
+                "responses": {
+                    "201": {
+                        "description": "SurvivalDevice resource created",
+                        "schema": {
+                            "$ref": "#/definitions/SurvivalDevice"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "survivalDevice",
+                        "in": "body",
+                        "description": "The new SurvivalDevice resource",
+                        "schema": {
+                            "$ref": "#/definitions/SurvivalDevice"
+                        }
+                    }
+                ]
+            }
+        },
+        "/survival_devices/{id}": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "getSurvivalDeviceItem",
+                "summary": "Retrieves a SurvivalDevice resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "SurvivalDevice resource response",
+                        "schema": {
+                            "$ref": "#/definitions/SurvivalDevice-detailed"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "put": {
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "putSurvivalDeviceItem",
+                "summary": "Replaces the SurvivalDevice resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "survivalDevice",
+                        "in": "body",
+                        "description": "The updated SurvivalDevice resource",
+                        "schema": {
+                            "$ref": "#/definitions/SurvivalDevice"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "SurvivalDevice resource updated",
+                        "schema": {
+                            "$ref": "#/definitions/SurvivalDevice"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "deleteSurvivalDeviceItem",
+                "summary": "Removes the SurvivalDevice resource.",
+                "responses": {
+                    "204": {
+                        "description": "SurvivalDevice resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_rmAlso[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
         "/terminal_models": {
             "get": {
                 "produces": [
@@ -46271,6 +46681,176 @@
                     "description": "",
                     "example": "",
                     "type": "string"
+                }
+            }
+        },
+        "SurvivalDevice": {
+            "type": "object",
+            "required": [
+                "name",
+                "proxy",
+                "udpPort",
+                "tcpPort",
+                "tlsPort",
+                "wssPort",
+                "company"
+            ],
+            "properties": {
+                "name": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "proxy": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "outboundProxy": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "udpPort": {
+                    "default": 5060,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "5060",
+                    "type": "integer"
+                },
+                "tcpPort": {
+                    "default": 5060,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "5060",
+                    "type": "integer"
+                },
+                "tlsPort": {
+                    "default": 5061,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "5061",
+                    "type": "integer"
+                },
+                "wssPort": {
+                    "default": 10081,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "10081",
+                    "type": "integer"
+                },
+                "description": {
+                    "maxLength": 1024,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "company": {
+                    "description": "",
+                    "type": "integer"
+                }
+            }
+        },
+        "SurvivalDevice-collection": {
+            "type": "object",
+            "required": [
+                "name",
+                "proxy"
+            ],
+            "properties": {
+                "name": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "proxy": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 1024,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                }
+            }
+        },
+        "SurvivalDevice-detailed": {
+            "type": "object",
+            "required": [
+                "name",
+                "proxy",
+                "udpPort",
+                "tcpPort",
+                "tlsPort",
+                "wssPort",
+                "company"
+            ],
+            "properties": {
+                "name": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "proxy": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "outboundProxy": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "udpPort": {
+                    "default": 5060,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "5060",
+                    "type": "integer"
+                },
+                "tcpPort": {
+                    "default": 5060,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "5060",
+                    "type": "integer"
+                },
+                "tlsPort": {
+                    "default": 5061,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "5061",
+                    "type": "integer"
+                },
+                "wssPort": {
+                    "default": 10081,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "10081",
+                    "type": "integer"
+                },
+                "description": {
+                    "maxLength": 1024,
+                    "description": "",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "company": {
+                    "$ref": "#/definitions/Company"
                 }
             }
         },

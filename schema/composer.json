@@ -63,7 +63,7 @@
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.5.8",
         "irontec/ivoz-dev-tools": "^6.0",
-        "irontec/ivoz-provider-bundle": "^3.0",
+        "irontec/ivoz-provider-bundle": "^3.2",
         "irontec/replacements": "^1.0",
         "symfony/flex": "^1.9",
         "symfony/maker-bundle": "^1.2"
