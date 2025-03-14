@@ -47,17 +47,9 @@ pipeline {
                 }
             }
             steps {
-                // Update Jira Ticket Custom fields
                 script {
-                    // customfield_10165 - Pull Request
-                    // customfield_10166 - Branch
-                    def fields = [
-                        fields: [
-                            customfield_10165: env.JOB_BASE_NAME,
-                            customfield_10166: env.CHANGE_BRANCH,
-                        ]
-                    ]
-                    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
+                    jiraUpdateCustomFields()
+                    githubUpdatePullRequestTitle()
                 }
             }
         }
@@ -967,6 +959,26 @@ def githubMarkChangesRequested()
 
         pullRequest.review('REQUEST_CHANGES', 'This PR is not ready to merge.')
     }
+}
+
+def githubUpdatePullRequestTitle()
+{
+    def title = pullRequest.title
+    if (!title.startsWith("[${env.JIRA_TICKET}]")) {
+        pullRequest.title = "[${env.JIRA_TICKET}] " + title
+    }
+}
+
+def jiraUpdateCustomFields() {
+    // customfield_10165 - Pull Request
+    // customfield_10166 - Branch
+    def fields = [
+        fields: [
+            customfield_10165: env.JOB_BASE_NAME,
+            customfield_10166: env.CHANGE_BRANCH,
+        ]
+    ]
+    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
 }
 
 def getCurrentHash(dir) {
