@@ -10,6 +10,7 @@ import EntityInterface, {
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PlayLessonIcon from '@mui/icons-material/PlayLesson';
 
+import { getLocalizedUrl } from '../../utils/getLocalizedUrl';
 import {
   MediaRelaySetProperties,
   MediaRelaySetPropertyList,
@@ -55,11 +56,21 @@ const ChildDecorator: ChildDecoratorType = (props) => {
 
   return DefaultChildDecorator(props);
 };
+// const getDynamicLink = (): string => {
+//   const i18nInstance = getI18n();
+//   const language = i18nInstance.language.substring(0, 2);
+
+//   return `/doc/${language}/administration_portal/platform/infrastructure/media_relay_sets.html`;
+// };
 
 const MediaRelaySet: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PlayLessonIcon,
-  link: '/doc/en/administration_portal/platform/infrastructure/media_relay_sets.html',
+  get link() {
+    return getLocalizedUrl(
+      '/doc/${language}/administration_portal/platform/infrastructure/media_relay_sets.html'
+    );
+  },
   iden: 'MediaRelaySet',
   title: _('Media Relay Set', { count: 2 }),
   path: '/media_relay_sets',
