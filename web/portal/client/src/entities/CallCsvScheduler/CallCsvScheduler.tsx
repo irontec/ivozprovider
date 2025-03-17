@@ -150,7 +150,7 @@ export const unmarshaller = (
 const CallCsvScheduler: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplications,
-  link: '/doc/en/administration_portal/client/vpbx/calls/call_csv_schedulers.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/calls/call_csv_schedulers.html',
   iden: 'CallCsvScheduler',
   title: _('Call CSV scheduler', { count: 2 }),
   path: '/call_csv_schedulers',

@@ -98,7 +98,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const usersCdr: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ChatBubbleOutlineIcon,
-  link: '/doc/en/administration_portal/client/vpbx/calls/call_registry.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/calls/call_registry.html',
   iden: 'UsersCdr',
   title: _('Call registry', { count: 2 }),
   path: '/users_cdrs',

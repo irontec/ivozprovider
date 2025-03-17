@@ -8,7 +8,7 @@ import { getI18n } from 'react-i18next';
 const companyService: EntityInterface = {
   ...defaultEntityBehavior,
   icon: MiscellaneousServicesIcon,
-  link: '/doc/en/administration_portal/client/vpbx/services.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/services.html',
   iden: 'Service',
   title: _('Service', { count: 2 }),
   path: '/services',

@@ -9,7 +9,7 @@ import { WebPortalPropertyList } from './WebPortalProperties';
 const WebPortal: EntityInterface = {
   ...defaultEntityBehavior,
   icon: InsertLinkIcon,
-  link: '/doc/en/administration_portal/brand/settings/client_portals.html',
+  link: '/doc/${language}/administration_portal/brand/settings/client_portals.html',
   iden: 'WebPortal',
   title: _('Administration Portal', { count: 2 }),
   path: '/web_portals',

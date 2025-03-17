@@ -18,7 +18,7 @@ const properties: MusicOnHoldProperties = {
 const musicOnHold: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AudiotrackIcon,
-  link: '/doc/en/administration_portal/client/vpbx/multimedia/music_on_hold.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/multimedia/music_on_hold.html',
   iden: 'MusicOnHold',
   title: _('Music on hold', { count: 2 }),
   path: '/music_on_holds',
