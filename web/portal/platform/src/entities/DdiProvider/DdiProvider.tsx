@@ -33,7 +33,7 @@ const properties: DdiProviderProperties = {
 const DdiProvider: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
-  link: '/doc/en/administration_portal/brand/providers/ddi_providers.html',
+  link: '/doc/${language}/administration_portal/brand/providers/ddi_providers.html',
   iden: 'DdiProvider',
   title: _('DDI Provider', { count: 2 }),
   path: '/ddi_providers',

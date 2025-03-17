@@ -11,7 +11,7 @@ const properties: CompanyProperties = {};
 const Company: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
-  link: '/doc/en/administration_portal/brand/clients/virtual_pbx.html',
+  link: '/doc/${language}/administration_portal/brand/clients/virtual_pbx.html',
   iden: 'Company',
   title: _('Client', { count: 2 }),
   path: '/companies',

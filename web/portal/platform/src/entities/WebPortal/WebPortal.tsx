@@ -33,7 +33,7 @@ const properties: WebPortalProperties = {
 const WebPortal: EntityInterface = {
   ...defaultEntityBehavior,
   icon: InsertLinkIcon,
-  link: '/doc/en/administration_portal/platform/portals.html',
+  link: '/doc/${language}/administration_portal/platform/portals.html',
   iden: 'WebPortal',
   title: _('Platform Portal', { count: 2 }),
   path: '/web_portals',

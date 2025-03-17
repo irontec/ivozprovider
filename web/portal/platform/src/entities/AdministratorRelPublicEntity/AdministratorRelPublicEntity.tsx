@@ -53,7 +53,7 @@ const properties: AdministratorRelPublicEntityProperties = {
 const AdministratorRelPublicEntity: EntityInterface = {
   ...defaultEntityBehavior,
   icon: KeyIcon,
-  link: '/doc/en/api_rest/acls.html',
+  link: '/doc/${language}/api_rest/acls.html',
   iden: 'AdministratorRelPublicEntity',
   title: _('Administrator access privilege', { count: 2 }),
   path: '/administrator_rel_public_entities',
