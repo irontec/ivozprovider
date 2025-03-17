@@ -123,7 +123,7 @@ const columnsFunc: EntityColumnsFuncType<AppStore> = (state) => {
 const Carrier: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SwapCallsIcon,
-  link: '/doc/en/administration_portal/brand/providers/carriers.html',
+  link: '/doc/${language}/administration_portal/brand/providers/carriers.html',
   iden: 'Carrier',
   title: _('Carrier', { count: 2 }),
   path: '/carriers',

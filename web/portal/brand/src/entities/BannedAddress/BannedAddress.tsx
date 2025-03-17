@@ -39,7 +39,7 @@ const properties: BannedAddressProperties = {
 const BannedAddress: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DoDisturbOnIcon,
-  link: '/doc/en/administration_portal/brand/views/ipfilter_blocked_addresses.html',
+  link: '/doc/${language}/administration_portal/brand/views/ipfilter_blocked_addresses.html',
   iden: 'BannedAddress',
   title: _('Banned IP address', { count: 2 }),
   path: '/banned_addresses',

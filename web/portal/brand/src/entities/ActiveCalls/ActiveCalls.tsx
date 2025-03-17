@@ -31,7 +31,7 @@ const activeCalls: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: CellTowerIcon,
   columns: ['Company', 'Direction', 'Carrier', 'DdiProvider'],
-  link: '/doc/en/administration_portal/brand/calls/active_calls.html',
+  link: '/doc/${language}/administration_portal/brand/calls/active_calls.html',
   iden: 'ActiveCalls',
   title: _('Active call', { count: 2 }),
   path: '/active_calls',

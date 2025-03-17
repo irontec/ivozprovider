@@ -21,7 +21,7 @@ const properties: MatchListProperties = {
 const MatchList: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FormatListNumberedIcon,
-  link: '/doc/en/administration_portal/brand/settings/generic_match_lists.html',
+  link: '/doc/${language}/administration_portal/brand/settings/generic_match_lists.html',
   iden: 'MatchList',
   title: _('Generic Match List', { count: 2 }),
   path: '/match_lists',

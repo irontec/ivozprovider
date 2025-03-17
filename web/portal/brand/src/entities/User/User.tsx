@@ -219,7 +219,7 @@ const properties: UserProperties = {
 const User: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PersonIcon,
-  link: '/doc/en/administration_portal/brand/views/users.html',
+  link: '/doc/${language}/administration_portal/brand/views/users.html',
   iden: 'User',
   title: _('User', { count: 2 }),
   path: '/users',

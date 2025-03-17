@@ -387,7 +387,7 @@ const validator: EntityValidator = (values, properties, visualToggles) => {
 const CallCsvScheduler: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CalendarMonthIcon,
-  link: '/doc/en/administration_portal/brand/calls/call_csv_schedulers.html',
+  link: '/doc/${language}/administration_portal/brand/calls/call_csv_schedulers.html',
   iden: 'CallCsvScheduler',
   title: _('Call CSV Scheduler', { count: 2 }),
   path: '/call_csv_schedulers',
