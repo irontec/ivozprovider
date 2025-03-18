@@ -21,7 +21,7 @@ const properties: DomainProperties = {
 const Domain: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SipIcon,
-  link: '/doc/en/administration_portal/platform/sip_domains.html',
+  link: '/doc/${language}/administration_portal/platform/sip_domains.html',
   iden: 'Domain',
   title: _('SIP domain', { count: 2 }),
   path: '/domains',

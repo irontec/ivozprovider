@@ -24,7 +24,7 @@ const properties: TerminalManufacturerProperties = {
 const TerminalManufacturer: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CallIcon,
-  link: '/doc/en/administration_portal/platform/terminal_manufacturers.html',
+  link: '/doc/${language}/administration_portal/platform/terminal_manufacturers.html',
   iden: 'TerminalManufacturer',
   title: _('Terminal Manufacturer', { count: 2 }),
   path: '/terminal_manufacturers',

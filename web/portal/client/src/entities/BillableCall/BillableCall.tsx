@@ -82,7 +82,7 @@ const columns = (store: IvozStoreState) => {
 const billableCall: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: ChatBubbleIcon,
-  link: '/doc/en/administration_portal/client/vpbx/calls/external_calls.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/calls/external_calls.html',
   iden: 'BillableCall',
   title: _('External call', { count: 2 }),
   path: '/billable_calls',

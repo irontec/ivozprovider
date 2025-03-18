@@ -48,7 +48,7 @@ const columns = ['name', 'outgoingDdi', 'sendByEmail', 'email'];
 const fax: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FaxIcon,
-  link: '/doc/en/administration_portal/client/vpbx/faxes.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/faxes.html',
   iden: 'Fax',
   title: _('Fax', { count: 2 }),
   path: '/faxes',

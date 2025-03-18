@@ -33,7 +33,7 @@ const properties: RoutingPatternProperties = {
 const RoutingPattern: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FlagIcon,
-  link: '/doc/en/administration_portal/brand/routing/routing_patterns.html',
+  link: '/doc/${language}/administration_portal/brand/routing/routing_patterns.html',
   iden: 'RoutingPattern',
   title: _('Routing Pattern', { count: 2 }),
   path: '/routing_patterns',

@@ -6,7 +6,7 @@ import Company from '../Company/Company';
 const Wholesale = {
   ...Company,
   icon: ShoppingCartIcon,
-  link: '/doc/en/administration_portal/brand/clients/wholesale.html',
+  link: '/doc/${language}/administration_portal/brand/clients/wholesale.html',
   title: _('Wholesale', { count: 2 }),
   localPath: '/wholesale',
   columns: [

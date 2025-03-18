@@ -185,7 +185,7 @@ const properties: DdiProperties = {
 const ddi: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DialpadIcon,
-  link: '/doc/en/administration_portal/brand/views/ddis.html',
+  link: '/doc/${language}/administration_portal/brand/views/ddis.html',
   iden: 'Ddi',
   title: _('DDI', { count: 2 }),
   path: '/ddis',

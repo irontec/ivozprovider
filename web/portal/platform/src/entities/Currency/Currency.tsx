@@ -26,7 +26,7 @@ const properties: CurrencyProperties = {
 const Currency: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
-  link: '/doc/en/administration_portal/platform/currencies.html',
+  link: '/doc/${language}/administration_portal/platform/currencies.html',
   iden: 'Currency',
   title: _('Currency', { count: 2 }),
   path: '/currencies',

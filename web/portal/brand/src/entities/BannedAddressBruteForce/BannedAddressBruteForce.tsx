@@ -7,7 +7,7 @@ import Actions from './Action';
 
 const BannedAddressBruteForce: EntityInterface = {
   ...BannedAddress,
-  link: '/doc/en/administration_portal/brand/views/bruteforce_attacks.html',
+  link: '/doc/${language}/administration_portal/brand/views/bruteforce_attacks.html',
   icon: WhatshotIcon,
   title: _('Brute-force attack', { count: 2 }),
   localPath: '/brute_force',

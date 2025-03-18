@@ -29,7 +29,7 @@ const properties: RoutingPatternGroupProperties = {
 const RoutingPatternGroup: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FlagCircleIcon,
-  link: '/doc/en/administration_portal/brand/routing/routing_patterns_groups.html',
+  link: '/doc/${language}/administration_portal/brand/routing/routing_patterns_groups.html',
   iden: 'RoutingPatternGroup',
   title: _('Routing pattern group', { count: 2 }),
   path: '/routing_pattern_groups',

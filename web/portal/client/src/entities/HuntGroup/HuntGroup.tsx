@@ -128,7 +128,7 @@ const properties: HuntGroupProperties = {
 const huntGroup: EntityInterface = {
   ...defaultEntityBehavior,
   icon: GroupsIcon,
-  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/hunt_groups.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/routing_endpoints/hunt_groups.html',
   iden: 'HuntGroup',
   title: _('Hunt Group', { count: 2 }),
   path: '/hunt_groups',

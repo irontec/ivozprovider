@@ -333,7 +333,7 @@ export const marshaller = (
 const Friend: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FavoriteIcon,
-  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/friends/index.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/routing_endpoints/friends/index.html',
   iden: 'Friend',
   title: _('Friend', { count: 2 }),
   path: '/friends',

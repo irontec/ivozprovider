@@ -60,7 +60,7 @@ const properties: DestinationRateProperties = {
 const DestinationRate: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PaymentsIcon,
-  link: '/doc/en/administration_portal/brand/billing/destination_rates.html',
+  link: '/doc/${language}/administration_portal/brand/billing/destination_rates.html',
   iden: 'DestinationRate',
   title: _('Rate', { count: 2 }),
   path: '/destination_rates',

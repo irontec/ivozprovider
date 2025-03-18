@@ -35,7 +35,7 @@ const properties: BalanceMovementProperties = {
 const BalanceMovement: EntityInterface = {
   ...defaultEntityBehavior,
   icon: TimelineIcon,
-  link: '/doc/en/administration_portal/brand/billing/prepaid_balances.html#balance-movements-list',
+  link: '/doc/${language}/administration_portal/brand/billing/prepaid_balances.html#balance-movements-list',
   iden: 'BalanceMovement',
   title: _('Balance Movement', { count: 2 }),
   path: '/balance_movements',

@@ -31,7 +31,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.Administrator,
             title: _('Brand operator', { count: 2 }),
-            link: '/doc/en/administration_portal/platform/brands.html#brand-operators',
+            link: '/doc/${language}/administration_portal/platform/brands.html#brand-operators',
           },
           filterBy: 'brand',
           children: [
@@ -49,7 +49,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.WebPortal,
             title: _('Brand Portal', { count: 2 }),
-            link: '/doc/en/administration_portal/platform/brands.html#brand-portals',
+            link: '/doc/${language}/administration_portal/platform/brands.html#brand-portals',
           },
           filterBy: 'brand',
           fixedValues: {

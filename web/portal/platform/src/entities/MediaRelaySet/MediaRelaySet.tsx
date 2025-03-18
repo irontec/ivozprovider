@@ -59,7 +59,7 @@ const ChildDecorator: ChildDecoratorType = (props) => {
 const MediaRelaySet: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PlayLessonIcon,
-  link: '/doc/en/administration_portal/platform/infrastructure/media_relay_sets.html',
+  link: '/doc/${language}/administration_portal/platform/infrastructure/media_relay_sets.html',
   iden: 'MediaRelaySet',
   title: _('Media Relay Set', { count: 2 }),
   path: '/media_relay_sets',

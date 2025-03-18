@@ -141,7 +141,7 @@ const columns = ['name', 'locution', 'routetype', 'target'];
 const ConditionalRoute: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SwitchCameraIcon,
-  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/conditional_routes.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/routing_endpoints/conditional_routes.html',
   iden: 'ConditionalRoute',
   title: _('Conditional Route', { count: 2 }),
   path: '/conditional_routes',

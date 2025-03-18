@@ -47,7 +47,7 @@ const properties: InvoiceNumberSequenceProperties = {
 const InvoiceNumberSequence: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FormatListNumberedIcon,
-  link: '/doc/en/administration_portal/brand/invoicing/invoice_number_sequences.html',
+  link: '/doc/${language}/administration_portal/brand/invoicing/invoice_number_sequences.html',
   iden: 'InvoiceNumberSequence',
   title: _('Invoice number sequence', { count: 2 }),
   path: '/invoice_number_sequences',

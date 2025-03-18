@@ -80,7 +80,7 @@ const properties: BrandProperties = {
 const Brand: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AlbumIcon,
-  link: '/doc/en/administration_portal/platform/brands.html',
+  link: '/doc/${language}/administration_portal/platform/brands.html',
   iden: 'Brand',
   title: _('Brand', { count: 2 }),
   path: '/brands',

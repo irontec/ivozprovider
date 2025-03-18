@@ -76,7 +76,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const SpecialNumber: EntityInterface = {
   ...defaultEntityBehavior,
   icon: MilitaryTechIcon,
-  link: '/doc/en/administration_portal/brand/settings/special_numbers.html',
+  link: '/doc/${language}/administration_portal/brand/settings/special_numbers.html',
   iden: 'SpecialNumber',
   title: _('Special Number', { count: 2 }),
   path: '/special_numbers',

@@ -82,7 +82,7 @@ const properties: DdiProviderRegistrationProperties = {
 const DdiProviderRegistration: EntityInterface = {
   ...defaultEntityBehavior,
   icon: InsertLinkIcon,
-  link: '/doc/en/administration_portal/brand/providers/ddi_providers.html#ddi-provider-registrations',
+  link: '/doc/${language}/administration_portal/brand/providers/ddi_providers.html#ddi-provider-registrations',
   iden: 'DdiProviderRegistration',
   title: _('DDI Provider Registration', { count: 2 }),
   path: '/ddi_provider_registrations',

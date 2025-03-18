@@ -224,7 +224,7 @@ const properties: ResidentialDeviceProperties = {
 const ResidentialDevice: EntityInterface = {
   ...defaultEntityBehavior,
   icon: RoofingIcon,
-  link: '/doc/en/administration_portal/brand/views/residential_devices.html',
+  link: '/doc/${language}/administration_portal/brand/views/residential_devices.html',
   iden: 'ResidentialDevice',
   title: _('Residential Device', { count: 2 }),
   path: '/residential_devices',

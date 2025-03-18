@@ -147,7 +147,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const Administrator: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AdminPanelSettingsIcon,
-  link: '/doc/en/administration_portal/platform/main_operators.html',
+  link: '/doc/${language}/administration_portal/platform/main_operators.html',
   iden: 'Administrator',
   title: _('Main operator', { count: 2 }),
   path: '/administrators',
