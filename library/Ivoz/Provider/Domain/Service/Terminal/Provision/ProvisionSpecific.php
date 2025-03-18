@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Ivoz\Provider\Domain\Service\TerminalModel\TemplateRenderer;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 
 class ProvisionSpecific
 {
@@ -74,10 +75,11 @@ class ProvisionSpecific
             $argsDto[$key] = $this->entityTools->entityToDto($entity);
         }
 
-        return $this->renderTemplate(
-            $terminalModel,
-            $argsDto
-        );
+        $renderedTemplate = $this->renderTemplate($terminalModel, $argsDto);
+
+        $this->updateProvisionDate($terminal);
+
+        return $renderedTemplate;
     }
 
     /**
@@ -195,5 +197,13 @@ class ProvisionSpecific
         }
 
         return pathinfo($route, PATHINFO_FILENAME);
+    }
+
+    private function updateProvisionDate(TerminalInterface $terminal): void
+    {
+        /** @var TerminalDto $terminalDto */
+        $terminalDto = $this->entityTools->entityToDto($terminal);
+        $terminalDto->setLastProvisionDate(new \DateTime('now', new \DateTimeZone('UTC')));
+        $this->entityTools->persistDto($terminalDto, $terminal, false);
     }
 }
