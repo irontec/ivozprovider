@@ -249,3 +249,11 @@ post_friend:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Friend\Friend'
     _api_collection_operation_name: 'post_friend'
     _api_receive: false
+
+get_users_for_isbc:
+  path: '/users_for_isbc'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\UsersForIsbcAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\User\User'
+    _api_collection_operation_name: 'get_user'
