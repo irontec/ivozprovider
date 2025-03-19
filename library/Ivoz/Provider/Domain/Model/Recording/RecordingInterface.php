@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 
@@ -85,6 +86,8 @@ interface RecordingInterface extends EntityInterface, FileContainerInterface
     public function setUser(?UserInterface $user = null): static;
 
     public function getUser(): ?UserInterface;
+
+    public function getBillableCall(): ?BillableCallInterface;
 
     /**
      * @return void
