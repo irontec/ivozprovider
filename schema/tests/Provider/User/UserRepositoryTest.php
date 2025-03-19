@@ -29,6 +29,7 @@ class UserRepositoryTest extends KernelTestCase
         $this->it_searchs_one_by_email();
         $this->it_searchs_one_by_terminnal_id();
         $this->it_counts_companies();
+        $this->it_finds_by_location();
     }
 
     public function it_finds_by_bossAssistantId()
@@ -193,8 +194,45 @@ class UserRepositoryTest extends KernelTestCase
         $count = $repository->count([]);
 
         $this->assertEquals(
-            3,
+            4,
             $count
+        );
+    }
+
+    public function it_finds_by_location()
+    {
+        /** @var UserRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(User::class);
+
+        $usersByLocation1 = $repository->findByLocationAndBrand(1, 1);
+        $this->assertCount(
+            1,
+            $usersByLocation1,
+        );
+
+        $this->assertEquals(
+            'Joe',
+            $usersByLocation1[0]->getName(),
+        );
+
+        $usersByLocation2 = $repository->findByLocationAndBrand(2, 1);
+        $this->assertCount(
+            1,
+            $usersByLocation2,
+        );
+
+
+        $this->assertEquals(
+            'Charlie',
+            $usersByLocation2[0]->getName(),
+        );
+
+        $allUsers = $repository->findByLocationAndBrand(null, 1);
+        $this->assertCount(
+            2,
+            $allUsers
         );
     }
 }

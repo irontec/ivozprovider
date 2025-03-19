@@ -66,7 +66,7 @@ class UserLifeCycleTest extends KernelTestCase
 
         $userDto
             ->setName('UpdatedTest')
-            ->setExtensionId(3);
+            ->setExtensionId(4);
 
         return $this
             ->entityTools
