@@ -45,6 +45,7 @@ Feature: Update billable calls
           "endpointId": null,
           "endpointName": null,
           "direction": "outbound",
+          "numRecordings": 0,
           "id": 2,
           "brand": 1,
           "company": 1,
