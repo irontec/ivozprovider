@@ -1642,6 +1642,28 @@ Ivoz\Provider\Domain\Model\User\User:
   itemOperations: []
   collectionOperations:
     get: ~
+    get_users_for_isbc:
+      method: 'GET'
+      path: '/get_users_for_isbc'
+      route_name: 'get_users_for_isbc'
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: location
+            in: query
+            type: integer
+            required: false
+            description: 'Filter for user location or client location if null'
+        responses:
+          200:
+            description: 'Users retrieved successfully'
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/User'
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     order:
