@@ -45,6 +45,17 @@ Feature: Retrieve users
                 "status": []
             },
             {
+                "name": "Charlie",
+                "lastname": "smith",
+                "email": "charlie@democompany.com",
+                "active": true,
+                "id": 4,
+                "terminal": 5,
+                "extension": 5,
+                "outgoingDdi": null,
+                "status": []
+            },
+            {
                 "name": "Joe",
                 "lastname": "Doe",
                 "email": "joe@democompany.com",
@@ -77,55 +88,33 @@ Feature: Retrieve users
           "active": true,
           "maxCalls": 1,
           "externalIpCalls": "0",
+          "rejectCallMethod": "rfc",
+          "multiContact": true,
           "gsQRCode": false,
           "id": 1,
           "callAcl": null,
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
           "transformationRuleSet": {
-              "description": "Brand 1 transformation for Spain",
-              "internationalCode": "00",
-              "trunkPrefix": "",
-              "areaCode": "",
-              "nationalLen": 9,
-              "generateRules": false,
-              "id": 1,
-              "name": {
-                  "en": "Brand 1 transformation for Spain",
-                  "es": "Marca 1 tansformacion para España",
-                  "ca": "Marca 1 tansformacion para España",
-                  "it": "Brand 1 transformation for Spain"
-              },
-              "country": 68
+              "description": "Brand 1 transformation for Spain"
           },
           "language": null,
           "terminal": {
-              "name": "alice",
-              "disallow": "all",
-              "allowAudio": "alaw",
-              "allowVideo": null,
-              "directMediaMethod": "invite",
-              "password": "AUfVkn498_",
-              "mac": null,
-              "lastProvisionDate": null,
-              "t38Passthrough": "no",
-              "id": 1,
-              "terminalModel": 1
+              "name": "alice"
           },
           "extension": null,
           "timezone": {
-              "tz": "Europe/Madrid",
-              "comment": "mainland",
-              "id": 145,
-              "label": {
-                  "en": "en",
-                  "es": "es"
-              },
-              "country": 68
+              "tz": "Europe/Madrid"
           },
-          "outgoingDdi": "~",
+          "outgoingDdi": {
+              "ddi": "121"
+          },
           "outgoingDdiRule": null,
+          "location": null,
           "voicemail": null,
-          "pickupGroupIds": []
+          "contact": null,
+          "pickupGroupIds": [
+              1
+          ]
       }
       """

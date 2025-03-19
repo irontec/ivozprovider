@@ -46,6 +46,12 @@ Feature: Retrieve terminals status
               "id": 4,
               "domainName": "127.0.0.1",
               "status": []
+          },
+          {
+              "name": "testTerminal5",
+              "id": 5,
+              "domainName": "127.0.0.1",
+              "status": []
           }
       ]
       """

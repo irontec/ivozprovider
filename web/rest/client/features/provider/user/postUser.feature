@@ -51,8 +51,10 @@ Feature: Create users
           "active": true,
           "maxCalls": 1,
           "externalIpCalls": "0",
+          "rejectCallMethod": "rfc",
+          "multiContact": true,
           "gsQRCode": false,
-          "id": 4,
+          "id": 5,
           "callAcl": {
               "name": "testACL",
               "defaultPolicy": "allow",
@@ -77,7 +79,9 @@ Feature: Create users
               "country": 68
           },
           "language": null,
-          "terminal": "~",
+          "terminal": {
+              "name": "testTerminal"
+          },
           "extension": null,
           "timezone": {
               "tz": "Europe/Madrid",
@@ -93,7 +97,9 @@ Feature: Create users
           },
           "outgoingDdi": null,
           "outgoingDdiRule": null,
+          "location": null,
           "voicemail": null,
+          "contact": null,
           "pickupGroupIds": [
               1
           ]
@@ -103,7 +109,7 @@ Feature: Create users
   Scenario: Retrieve created user
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "/users/4"
+      And I send a "GET" request to "/users/5"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -120,7 +126,7 @@ Feature: Create users
           "maxCalls": 1,
           "externalIpCalls": "0",
           "gsQRCode": false,
-          "id": 4,
+          "id": 5,
           "callAcl": {
               "name": "testACL",
               "defaultPolicy": "allow",

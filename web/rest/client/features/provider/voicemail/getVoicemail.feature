@@ -150,6 +150,7 @@ Feature: Retrieve voicemails
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               }
-          }
+          },
+          "relUserIds": []
       }
       """

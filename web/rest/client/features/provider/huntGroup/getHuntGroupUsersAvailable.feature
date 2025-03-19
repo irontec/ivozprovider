@@ -35,6 +35,17 @@ Feature: Retrieve hunt groups available users
                 "extension": 2,
                 "outgoingDdi": null,
                 "status": []
+            },
+            {
+                "name": "Charlie",
+                "lastname": "smith",
+                "email": "charlie@democompany.com",
+                "active": true,
+                "id": 4,
+                "terminal": 5,
+                "extension": 5,
+                "outgoingDdi": null,
+                "status": []
             }
       ]
       """

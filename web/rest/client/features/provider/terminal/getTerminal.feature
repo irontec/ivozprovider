@@ -57,6 +57,15 @@ Feature: Retrieve terminals
               "domain": 3,
               "terminalModel": 2,
               "status": []
+          },
+          {
+              "name": "testTerminal5",
+              "mac": "1122334455cc",
+              "lastProvisionDate": null,
+              "id": 5,
+              "domain": 3,
+              "terminalModel": 1,
+              "status": []
           }
       ]
       """
