@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 
@@ -71,4 +72,9 @@ interface UserRepository extends ObjectRepository, Selectable
      * @return UserInterface[]
      */
     public function findLatestAddedByCompany(int $companyId): array;
+
+    /**
+     * @return UserInterface[]
+     */
+    public function findByLocationAndBrand(?int $locationId, int $brandId): array;
 }

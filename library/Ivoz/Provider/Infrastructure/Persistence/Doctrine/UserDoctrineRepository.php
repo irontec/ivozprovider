@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -272,5 +273,24 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
             ->getQuery()
             ->getResult();
         return $result;
+    }
+
+    /**
+     * @return UserInterface[]
+     */
+    public function findByLocationAndBrand(?int $locationId, int $brandId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $qb->innerJoin('self.company', 'company')
+            ->where('company.brand = :brand AND self.extension IS NOT NULL AND self.terminal IS NOT NULL')
+            ->setParameter('brand', $brandId);
+
+        if (!is_null($locationId)) {
+            $qb->andWhere('self.location = :location OR (self.location IS NULL AND company.location = :company_location)')
+               ->setParameter('location', $locationId)
+               ->setParameter('company_location', $locationId);
+        }
+
+        return $qb->getQuery()->getResult();
     }
 }
