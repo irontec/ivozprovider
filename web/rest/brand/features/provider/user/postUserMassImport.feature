@@ -49,6 +49,19 @@ Feature: Create users
               "status": []
           },
           {
+              "name": "Charlie",
+              "lastname": "smith",
+              "email": "charlie@democompany.com",
+              "active": true,
+              "id": 4,
+              "company": 1,
+              "terminal": 5,
+              "extension": 5,
+              "outgoingDdi": null,
+              "location": null,
+              "status": []
+          },
+          {
               "name": "Joe",
               "lastname": "Doe",
               "email": "joe@democompany.com",
@@ -181,6 +194,19 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "status": []
           },
           {
+              "name": "Charlie",
+              "lastname": "smith",
+              "email": "charlie@democompany.com",
+              "active": true,
+              "id": 4,
+              "company": 1,
+              "terminal": 5,
+              "extension": 5,
+              "outgoingDdi": null,
+              "location": null,
+              "status": []
+          },
+          {
               "name": "Joe",
               "lastname": "Doe",
               "email": "joe@democompany.com",
@@ -198,10 +224,10 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "lastname": "Doe",
               "email": "jon@irontec.com",
               "active": false,
-              "id": 5,
+              "id": 6,
               "company": 1,
-              "terminal": 6,
-              "extension": 7,
+              "terminal": 7,
+              "extension": 8,
               "outgoingDdi": 5,
               "location": null,
               "status": []
@@ -211,15 +237,16 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "lastname": "Lastname",
               "email": "name@irontec.com",
               "active": false,
-              "id": 4,
+              "id": 5,
               "company": 1,
-              "terminal": 5,
-              "extension": 6,
+              "terminal": 6,
+              "extension": 7,
               "outgoingDdi": 4,
               "location": null,
               "status": []
           }
       ]
+
       """
 
 	Scenario: Retrieve the ddi json list

@@ -18,6 +18,11 @@ Feature: Retrieve locations
             "name": "testLocation",
             "description": "Test Location description",
             "id": 1
+        },
+        {
+            "name": "altLocation",
+            "description": "Alternative Location description",
+            "id": 2
         }
       ]
       """

@@ -102,7 +102,7 @@ Feature: Update company
           "corporation": 1,
           "applicationServerSet": 1,
           "mediaRelaySet": 1,
-          "location": null,
+          "location": 2,
           "featureIds": [
               3
           ],

@@ -39,7 +39,7 @@ Feature: Retrieve extensions
             "friendValue": null,
             "id": 3,
             "user": null,
-            "numberCountry": 68
+            "numberCountry": 70
         },
         {
             "number": "987",
@@ -57,6 +57,15 @@ Feature: Retrieve extensions
             "friendValue": null,
             "id": 5,
             "user": 3,
+            "numberCountry": null
+        },
+        {
+            "number": "989",
+            "routeType": "user",
+            "numberValue": null,
+            "friendValue": null,
+            "id": 6,
+            "user": 4,
             "numberCountry": null
         }
       ]

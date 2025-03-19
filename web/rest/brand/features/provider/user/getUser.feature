@@ -49,6 +49,19 @@ Feature: Retrieve users
               "status": []
           },
           {
+              "name": "Charlie",
+              "lastname": "smith",
+              "email": "charlie@democompany.com",
+              "active": true,
+              "id": 4,
+              "company": 1,
+              "terminal": 5,
+              "extension": 5,
+              "outgoingDdi": null,
+              "location": null,
+              "status": []
+          },
+          {
               "name": "Joe",
               "lastname": "Doe",
               "email": "joe@democompany.com",
