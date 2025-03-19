@@ -16,6 +16,16 @@ Feature: Manage voicemail rel users
       }
       """
      Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+          "id": 2,
+          "user": 2,
+          "voicemail": 2
+      }
+      """
 
   Scenario: Retrieve created voicemail rel users json
     Given I add Company Authorization header
@@ -27,7 +37,7 @@ Feature: Manage voicemail rel users
       And the JSON should be equal to:
       """
       {
-          "id": 2,
+           "id": 2,
           "user": {
               "name": "Bob",
               "lastname": "Bobson",
@@ -68,7 +78,6 @@ Feature: Manage voicemail rel users
               "company": 4,
               "locution": null
           }
-
       }
       """
 

@@ -54,6 +54,7 @@ Feature: Create pick up rel users
               "voicemail": null,
               "contact": null
           }
+
       }
       """
 
