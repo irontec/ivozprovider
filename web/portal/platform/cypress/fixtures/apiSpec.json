@@ -15222,6 +15222,13 @@
                     "example": "outbound",
                     "type": "string"
                 },
+                "numRecordings": {
+                    "default": 0,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "integer"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -15255,7 +15262,8 @@
             "required": [
                 "startTime",
                 "duration",
-                "direction"
+                "direction",
+                "numRecordings"
             ]
         },
         "BillableCall-collection": {
@@ -15464,6 +15472,13 @@
                     "example": "outbound",
                     "type": "string"
                 },
+                "numRecordings": {
+                    "default": 0,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "integer"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -15491,7 +15506,8 @@
             "required": [
                 "startTime",
                 "duration",
-                "direction"
+                "direction",
+                "numRecordings"
             ]
         },
         "BillableCall-rating": {
