@@ -33,7 +33,9 @@ const Impersonate = (props: ActionItemProps) => {
   const { row, entityService, variant = 'icon' } = props;
   const { email, active } = row;
   const token = useStoreState((state) => state.auth.token);
-  const queryString = `token=${token}&email=${email}`;
+
+  const urlSafeEmail = encodeURIComponent(email);
+  const queryString = `token=${token}&email=${urlSafeEmail}`;
   const customData = useStoreState(
     (state) => state.list.customData as WebPortalPropertiesList | undefined
   );
