@@ -77,7 +77,7 @@ const voicemail: EntityInterface = {
   icon: MailIcon,
   iden: 'Voicemail',
   title: _('Voicemail', { count: 2 }),
-  path: '/my/voicemails',
+  path: '/voicemails',
 
   acl: {
     ...defaultEntityBehavior.acl,
