@@ -1,0 +1,15 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider
+    # Update with correct permissions
+    find -type f -name "*.php" ! -path "./asterisk/agi/*" ! -path "./libray/vendor/*" -exec chmod 644 {} \;
+
+    # Check if any file has been affected by the change
+    if git status --porcelain | grep -q ".*\.php"; then
+        echo "The following files have incorrect permissions:"
+        git status --porcelain | grep ".*\.php" | awk '{print $2}'
+        exit 1
+    fi
+popd
+
+exit 0
