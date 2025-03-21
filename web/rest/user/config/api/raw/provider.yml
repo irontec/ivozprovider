@@ -115,13 +115,11 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
         parameters: []
     get_my_voicemails:
       method: 'GET'
-      path: '/my/voicemails'
+      path: '/voicemails'
       route_name: 'get_my_voicemails'
       swagger_context:
         produces:
-        - 'application/json'
-        tags:
-        - My        
+        - 'application/json' 
         responses:
           200:
             description: 'Voicemails retrieved successfully'

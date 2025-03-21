@@ -197,7 +197,7 @@ get_my_active_calls:
     _api_receive: false
 
 get_my_voicemails:
-  path: '/my/voicemails'
+  path: '/voicemails'
   methods: ['GET']
   defaults:
     _controller: Controller\My\VoicemailsAction
