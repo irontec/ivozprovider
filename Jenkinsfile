@@ -83,6 +83,7 @@ pipeline {
             }
             steps {
                 sh "/opt/irontec/ivozprovider/library/bin/test-commit-tags origin/${env.BASE_BRANCH}"
+                sh "/opt/irontec/ivozprovider/library/bin/test-file-perms"
                 sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps'
             }
         }
