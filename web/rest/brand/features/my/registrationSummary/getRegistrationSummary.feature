@@ -12,8 +12,8 @@ Feature: Retrieve registration summary
       """
       {
           "active": 4,
-          "total": 6,
-          "percent": 67
+          "total": 7,
+          "percent": 57
       }
       """
 
@@ -28,7 +28,7 @@ Feature: Retrieve registration summary
       """
       {
           "active": 2,
-          "total": 4,
-          "percent": 50
+          "total": 5,
+          "percent": 40
       }
       """

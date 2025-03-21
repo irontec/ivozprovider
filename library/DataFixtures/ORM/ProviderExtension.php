@@ -2,16 +2,22 @@
 
 namespace DataFixtures\ORM;
 
+use DataFixtures\FixtureHelperTrait;
+use DataFixtures\Stub\Provider\ExtensionStub;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 
-class ProviderExtension extends Fixture implements DependentFixtureInterface
+class ProviderExtension extends Fixture
 {
-    use \DataFixtures\FixtureHelperTrait;
+    use FixtureHelperTrait;
 
+    public function __construct(
+        private ExtensionStub $extensionStub,
+    ) {
+    }
     /**
      * {@inheritDoc}
      */
@@ -21,77 +27,16 @@ class ProviderExtension extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Extension::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $item1 = $this->createEntityInstance(Extension::class);
-        (function () use ($fixture) {
-            $this->setNumber("101");
-            $this->setRouteType("user");
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
-            $this->setUser($fixture->getReference('_reference_ProviderUser1'));
-            $this->setNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
-        })->call($item1);
+        $entities = $this->extensionStub->getAll();
 
-        $this->addReference('_reference_ProviderExtension1', $item1);
-        $this->sanitizeEntityValues($item1);
-        $manager->persist($item1);
-
-        $item2 = $this->createEntityInstance(Extension::class);
-        (function () use ($fixture) {
-            $this->setNumber("102");
-            $this->setRouteType("user");
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
-            $this->setUser($fixture->getReference('_reference_ProviderUser2'));
-            $this->setNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
-        })->call($item2);
-
-        $this->addReference('_reference_ProviderExtension2', $item2);
-        $this->sanitizeEntityValues($item2);
-        $manager->persist($item2);
-
-        $item3 = $this->createEntityInstance(Extension::class);
-        (function () use ($fixture) {
-            $this->setNumber("12346");
-            $this->setRouteType("number");
-            $this->setNumberValue("946006060");
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
-            $this->setNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
-        })->call($item3);
-
-        $this->addReference('_reference_ProviderExtension3', $item3);
-        $this->sanitizeEntityValues($item3);
-        $manager->persist($item3);
-
-        $item4 = $this->createEntityInstance(Extension::class);
-        (function () use ($fixture) {
-            $this->setNumber("987");
-            $this->setRouteType(null);
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
-        })->call($item4);
-
-        $this->addReference('_reference_ProviderExtension4', $item4);
-        $this->sanitizeEntityValues($item4);
-        $manager->persist($item4);
-
-        $item5 = $this->createEntityInstance(Extension::class);
-        (function () use ($fixture) {
-            $this->setNumber("988");
-            $this->setRouteType('user');
-            $this->setUser($fixture->getReference('_reference_ProviderUser3'));
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
-        })->call($item5);
-
-        $this->addReference('_reference_ProviderExtension5', $item5);
-        $this->sanitizeEntityValues($item5);
-        $manager->persist($item5);
+        foreach ($entities as $entity) {
+            $this->addReference(
+                '_reference_ProviderExtension' . $entity->getId(),
+                $entity
+            );
+            $manager->persist($entity);
+        }
 
         $manager->flush();
-    }
-
-    public function getDependencies()
-    {
-        return array(
-            ProviderCountry::class,
-            ProviderCompany::class,
-            ProviderUser::class
-        );
     }
 }

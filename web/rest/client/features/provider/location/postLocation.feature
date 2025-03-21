@@ -26,9 +26,9 @@ Feature: Create locations
       {
           "name": "newLocation",
           "description": "New location from rest API",
-          "id": 2,
+          "id": 3,
           "userIds": [
-            2
+              2
           ]
       }
       """
@@ -36,7 +36,7 @@ Feature: Create locations
   Scenario: Retrieve created location
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "locations/2"
+      And I send a "GET" request to "locations/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -45,7 +45,7 @@ Feature: Create locations
       {
           "name": "newLocation",
           "description": "New location from rest API",
-          "id": 2,
+          "id": 3,
           "userIds": [
             2
           ]
