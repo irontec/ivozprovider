@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Move to rest api dir
+cd $(dirname "$(realpath -se "$0")")/..
+
+# Generate requested API spec
+bin/console api:swagger:export > public/apiSpec.json
+if [ -n "$(git status --short public/apiSpec.json)" ]; then
+    echo "API spec is not up to date."
+    git status --short public/apiSpec.json
+    exit 1
+fi
+
+sed -i '/"deprecated":/d' public/apiSpec.json
+swagger-cli validate public/apiSpec.json
+if [ $? -ne 0 ]; then
+    echo "API spec is not valid."
+    exit 1
+fi
+
+echo "No changes found in API spec file"
+exit 0
