@@ -28,6 +28,7 @@ portal/client
 portal/platform
 portal/user
 proxy
+rest
 rest/brand
 rest/client
 rest/platform
