@@ -251,7 +251,6 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api --skip-db'
-                                sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-sync-api-spec platform'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -269,7 +268,6 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api --skip-db'
-                                sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-sync-api-spec brand'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -287,7 +285,6 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api --skip-db'
-                                sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-sync-api-spec client'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -305,7 +302,6 @@ pipeline {
                             steps {
                                 sh '/opt/irontec/ivozprovider/web/rest/user/bin/test-api-spec'
                                 sh '/opt/irontec/ivozprovider/web/rest/user/bin/test-api --skip-db'
-                                sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-sync-api-spec user'
                             }
                             post {
                                 success { notifySuccessGithub() }
@@ -491,7 +487,6 @@ pipeline {
                                             docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
                                                 docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}")
                                                     .inside("--env CYPRESS_APP_DOMAIN='http://server/platform/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
-                                                    sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-sync-api-spec platform'
                                                     sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-pact'
                                                 }
                                             }
@@ -545,7 +540,6 @@ pipeline {
                                             docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
                                                 docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}")
                                                     .inside("--env CYPRESS_APP_DOMAIN='http://server/brand/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
-                                                    sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-sync-api-spec brand'
                                                     sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-pact'
                                                 }
                                             }
@@ -599,7 +593,6 @@ pipeline {
                                             docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
                                                 docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}")
                                                     .inside("--env CYPRESS_APP_DOMAIN='http://server/client/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
-                                                    sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-sync-api-spec client'
                                                     sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-pact'
                                                 }
                                             }
@@ -653,7 +646,6 @@ pipeline {
                                             docker.image('ivozprovider-testing-httpd').withRun('-v "${WORKSPACE}":/opt/irontec/ivozprovider') { c ->
                                                 docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}")
                                                     .inside("--env CYPRESS_APP_DOMAIN='http://server/user/' --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:server") {
-                                                    sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-sync-api-spec user'
                                                     sh '/opt/irontec/ivozprovider/web/portal/user/bin/test-pact'
                                                 }
                                             }
