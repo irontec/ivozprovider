@@ -1,9 +1,1 @@
-#!/bin/bash
-
-set -e
-
-pushd /opt/irontec/ivozprovider/web/rest/client
-    bin/console api:swagger:export > public/swagger.json
-    sed -i '/"deprecated":/d' public/swagger.json
-    swagger-cli validate public/swagger.json
-popd
+../../scripts/test-api-spec
