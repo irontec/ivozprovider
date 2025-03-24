@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Location;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDeviceDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 
 /**
@@ -36,6 +37,11 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
     private $company = null;
 
     /**
+     * @var SurvivalDeviceDto | null
+     */
+    private $survivalDevice = null;
+
+    /**
      * @var UserDto[] | null
      */
     private $users = null;
@@ -58,7 +64,8 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'description' => 'description',
             'id' => 'id',
-            'companyId' => 'company'
+            'companyId' => 'company',
+            'survivalDeviceId' => 'survivalDevice'
         ];
     }
 
@@ -72,6 +79,7 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
             'description' => $this->getDescription(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
+            'survivalDevice' => $this->getSurvivalDevice(),
             'users' => $this->getUsers()
         ];
 
@@ -152,6 +160,36 @@ abstract class LocationDtoAbstract implements DataTransferObjectInterface
     public function getCompanyId(): ?int
     {
         if ($dto = $this->getCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setSurvivalDevice(?SurvivalDeviceDto $survivalDevice): static
+    {
+        $this->survivalDevice = $survivalDevice;
+
+        return $this;
+    }
+
+    public function getSurvivalDevice(): ?SurvivalDeviceDto
+    {
+        return $this->survivalDevice;
+    }
+
+    public function setSurvivalDeviceId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new SurvivalDeviceDto($id)
+            : null;
+
+        return $this->setSurvivalDevice($value);
+    }
+
+    public function getSurvivalDeviceId(): ?int
+    {
+        if ($dto = $this->getSurvivalDevice()) {
             return $dto->getId();
         }
 
