@@ -3,6 +3,7 @@
     "name": "testLocation",
     "description": "Test Location description",
     "id": 1,
+    "survivalDevice": null,
     "userIds": [
       1
     ]
