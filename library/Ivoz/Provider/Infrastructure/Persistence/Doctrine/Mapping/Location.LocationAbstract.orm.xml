@@ -16,5 +16,10 @@
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="survivalDevice" target-entity="Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDeviceInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="survivalDeviceId" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
   </mapped-superclass>
 </doctrine-mapping>
