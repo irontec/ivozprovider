@@ -34,6 +34,7 @@ use Ivoz\Provider\Domain\Model\Fax\Fax;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
@@ -107,6 +108,7 @@ class BrandLifeCycleTest extends KernelTestCase
             DdiProvider::class,
             Carrier::class,
             UsersCdr::class,
+            BillableCall::class,
         ]);
     }
 
