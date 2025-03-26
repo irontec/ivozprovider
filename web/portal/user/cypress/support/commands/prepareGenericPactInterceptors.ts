@@ -64,7 +64,7 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...CountryCollection,
   }).as('getCountry');
 
-  cy.intercept('GET', '**/api/user/my/voicemails?*', {
+  cy.intercept('GET', '**/api/user/voicemails?*', {
     ...VoicemailCollection,
   }).as('getVoicemail');
 
