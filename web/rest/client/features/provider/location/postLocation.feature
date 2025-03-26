@@ -27,6 +27,7 @@ Feature: Create locations
           "name": "newLocation",
           "description": "New location from rest API",
           "id": 2,
+          "survivalDevice": null,
           "userIds": [
             2
           ]
