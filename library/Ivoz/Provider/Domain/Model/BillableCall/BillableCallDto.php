@@ -37,6 +37,7 @@ class BillableCallDto extends BillableCallDtoAbstract
 
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
+                'numRecordings' => 'numRecordings',
                 'startTime' => 'startTime',
                 'direction' => 'direction',
                 'duration' => 'duration',

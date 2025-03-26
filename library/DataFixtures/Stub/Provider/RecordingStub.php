@@ -43,7 +43,8 @@ class RecordingStub
             ->setRecordedFileBaseName("fb504426-4e3c-11ef-af02-fc5cee56dc74.0.mp3")
             ->setCompanyId(1)
             ->setUserId(1)
-            ->setUsersCdrId(2);
+            ->setUsersCdrId(2)
+            ->setBillableCallId(2);
 
         $this->append($dto);
 
