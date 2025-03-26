@@ -19,10 +19,12 @@ class RecordingLifecycleServiceCollection implements LifecycleServiceCollectionI
     public static $bindedBaseServices = [
         "post_persist" =>
         [
+            \Ivoz\Provider\Domain\Service\BillableCall\UpdateByRecording::class => 200,
             \Ivoz\Provider\Domain\Service\UsersCdr\UpdateByRecording::class => 200,
         ],
         "post_remove" =>
         [
+            \Ivoz\Provider\Domain\Service\BillableCall\UpdateByRecording::class => 200,
             \Ivoz\Provider\Domain\Service\UsersCdr\UpdateByRecording::class => 200,
         ],
     ];
