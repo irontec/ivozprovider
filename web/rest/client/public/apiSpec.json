@@ -21213,6 +21213,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description[partial]",
                         "in": "query",
                         "required": false,
@@ -21237,13 +21243,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[start]",
+                        "name": "exists[description]",
                         "in": "query",
                         "required": false,
-                        "type": "string"
+                        "type": "boolean"
                     },
                     {
-                        "name": "exists[description]",
+                        "name": "exists[survivalDevice]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -21273,12 +21279,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
@@ -21295,6 +21295,30 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "survivalDevice",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "survivalDevice[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "survivalDevice[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "enum": [
@@ -43317,6 +43341,10 @@
                     "type": "integer",
                     "readOnly": true
                 },
+                "survivalDevice": {
+                    "description": "",
+                    "type": "integer"
+                },
                 "userIds": {
                     "description": "",
                     "type": "array",
@@ -43346,6 +43374,10 @@
                     "maxLength": 500,
                     "description": "",
                     "type": "string"
+                },
+                "survivalDevice": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -43369,6 +43401,9 @@
                     "description": "",
                     "type": "integer",
                     "readOnly": true
+                },
+                "survivalDevice": {
+                    "$ref": "#/definitions/SurvivalDevice"
                 },
                 "userIds": {
                     "description": "",

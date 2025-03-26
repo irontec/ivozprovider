@@ -54,6 +54,11 @@ const survivalDevice: EntityInterface = {
 
     return module.default;
   },
+  selectOptions: async () => {
+    const module = await import('./SelectOptions');
+
+    return module.default;
+  },
 };
 
 export default survivalDevice;

@@ -75,13 +75,6 @@ class SurvivalDevice extends SurvivalDeviceAbstract implements SurvivalDeviceInt
             return;
         }
 
-        $emptyOutboundProxy = empty(
-            trim($outboundProxy)
-        );
-        if ($emptyOutboundProxy) {
-            throw new \DomainException('Outbound Proxy cannot be empty.');
-        }
-
         $sipProxyIncludesPort = strpos($this->getProxy(), ':') !== false;
         if ($sipProxyIncludesPort) {
             throw new \DomainException('When Outbound Proxy is used, SIP Proxy must not include a port.', 70003);

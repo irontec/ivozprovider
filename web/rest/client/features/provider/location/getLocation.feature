@@ -17,7 +17,8 @@ Feature: Retrieve locations
           {
               "name": "testLocation",
               "description": "Test Location description",
-              "id": 1
+              "id": 1,
+              "survivalDevice": null
           }
       ]
       """
@@ -36,6 +37,7 @@ Feature: Retrieve locations
           "name": "testLocation",
           "description": "Test Location description",
           "id": 1,
+          "survivalDevice": null,
           "userIds": [
               2,
               3

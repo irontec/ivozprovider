@@ -9,6 +9,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDeviceInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
@@ -67,6 +68,8 @@ interface LocationInterface extends LoggableEntityInterface
     public function getDescription(): ?string;
 
     public function getCompany(): CompanyInterface;
+
+    public function getSurvivalDevice(): ?SurvivalDeviceInterface;
 
     public function addUser(UserInterface $user): LocationInterface;
 

@@ -3313,9 +3313,11 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Location/LocationAbstract.php">
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="4">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getSurvivalDevice())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getSurvivalDevice())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>

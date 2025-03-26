@@ -18,9 +18,13 @@ const properties: LocationProperties = {
     $ref: '#/definitions/User',
     helpText: _('A user can only be linked to a single location'),
   },
+  survivalDevice: {
+    null: _('Unassigned'),
+    label: _('Survival Device', { count: 2 }),
+  },
 };
 
-const columns = ['name', 'description'];
+const columns = ['name', 'survivalDevice', 'description'];
 
 const location: EntityInterface = {
   ...defaultEntityBehavior,
@@ -44,11 +48,6 @@ const location: EntityInterface = {
   },
   Form: async () => {
     const module = await import('./Form');
-
-    return module.default;
-  },
-  foreignKeyResolver: async () => {
-    const module = await import('./ForeignKeyResolver');
 
     return module.default;
   },

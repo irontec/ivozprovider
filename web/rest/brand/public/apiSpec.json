@@ -20819,6 +20819,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "survivalDevice",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "enum": [
                             "ASC",
                             "DESC"
@@ -42445,6 +42451,10 @@
                     "maxLength": 500,
                     "description": "",
                     "type": "string"
+                },
+                "survivalDevice": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },

@@ -10,7 +10,9 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDeviceInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDevice;
 
 /**
 * LocationAbstract
@@ -34,6 +36,11 @@ abstract class LocationAbstract
      * @var CompanyInterface
      */
     protected $company;
+
+    /**
+     * @var ?SurvivalDeviceInterface
+     */
+    protected $survivalDevice = null;
 
     /**
      * Constructor
@@ -116,7 +123,8 @@ abstract class LocationAbstract
 
         $self
             ->setDescription($dto->getDescription())
-            ->setCompany($fkTransformer->transform($company));
+            ->setCompany($fkTransformer->transform($company))
+            ->setSurvivalDevice($fkTransformer->transform($dto->getSurvivalDevice()));
 
         $self->initChangelog();
 
@@ -141,7 +149,8 @@ abstract class LocationAbstract
         $this
             ->setName($name)
             ->setDescription($dto->getDescription())
-            ->setCompany($fkTransformer->transform($company));
+            ->setCompany($fkTransformer->transform($company))
+            ->setSurvivalDevice($fkTransformer->transform($dto->getSurvivalDevice()));
 
         return $this;
     }
@@ -154,7 +163,8 @@ abstract class LocationAbstract
         return self::createDto()
             ->setName(self::getName())
             ->setDescription(self::getDescription())
-            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setSurvivalDevice(SurvivalDevice::entityToDto(self::getSurvivalDevice(), $depth));
     }
 
     /**
@@ -165,7 +175,8 @@ abstract class LocationAbstract
         return [
             'name' => self::getName(),
             'description' => self::getDescription(),
-            'companyId' => self::getCompany()->getId()
+            'companyId' => self::getCompany()->getId(),
+            'survivalDeviceId' => self::getSurvivalDevice()?->getId()
         ];
     }
 
@@ -209,5 +220,17 @@ abstract class LocationAbstract
     public function getCompany(): CompanyInterface
     {
         return $this->company;
+    }
+
+    protected function setSurvivalDevice(?SurvivalDeviceInterface $survivalDevice = null): static
+    {
+        $this->survivalDevice = $survivalDevice;
+
+        return $this;
+    }
+
+    public function getSurvivalDevice(): ?SurvivalDeviceInterface
+    {
+        return $this->survivalDevice;
     }
 }
