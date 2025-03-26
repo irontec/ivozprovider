@@ -27,6 +27,7 @@ class LocationDto extends LocationDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'description' => 'description',
+                'survivalDevice' => 'survivalDevice',
             ];
         }
 
