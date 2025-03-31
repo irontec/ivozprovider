@@ -12,12 +12,6 @@ export type NotificationTemplateContentPropertyList<T> = {
   bodyType?: T;
   id?: T;
   notificationTemplate?: T;
-  voicemailVariables?: T;
-  faxVariables?: T;
-  invoiceVariables?: T;
-  lowBalanceVariables?: T;
-  callCsvVariables?: T;
-  maxDailyUsageVariables?: T;
   language?: T;
 };
 
