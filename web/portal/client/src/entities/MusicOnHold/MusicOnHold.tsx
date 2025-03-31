@@ -13,6 +13,11 @@ const properties: MusicOnHoldProperties = {
     label: _('Uploaded file'),
     type: 'file',
   },
+  encodedFile: {
+    label: _('File for play'),
+    type: 'file',
+    readOnly: true,
+  },
 };
 
 const musicOnHold: EntityInterface = {
@@ -27,6 +32,11 @@ const musicOnHold: EntityInterface = {
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'MusicOnHold',
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

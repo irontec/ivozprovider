@@ -22,6 +22,11 @@ const properties: LocutionProperties = {
     ),
     component: RecordingExtension,
   },
+  encodedFile: {
+    label: _('File for play'),
+    type: 'file',
+    readOnly: true,
+  },
   status: {
     label: _('Status'),
     readOnly: true,

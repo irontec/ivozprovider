@@ -7,6 +7,7 @@ import {
 export type MusicOnHoldPropertyList<T> = {
   name?: T;
   originalFile?: T;
+  encodedFile?: T;
 };
 
 export type MusicOnHoldProperties = MusicOnHoldPropertyList<
