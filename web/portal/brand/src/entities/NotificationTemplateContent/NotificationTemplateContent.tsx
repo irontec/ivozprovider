@@ -26,37 +26,6 @@ const properties: NotificationTemplateContentProperties = {
     ),
     required: true,
   },
-  voicemailVariables: {
-    label: _('Substitution variables'),
-    maxLength: 255,
-    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
-    //@TODO massive helpText
-  },
-  faxVariables: {
-    label: _('Substitution variables'),
-    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
-    //@TODO massive helpText
-  },
-  invoiceVariables: {
-    label: _('Substitution variables'),
-    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
-    //@TODO massive helpText
-  },
-  lowBalanceVariables: {
-    label: _('Substitution variables'),
-    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
-    //@TODO massive helpText
-  },
-  callCsvVariables: {
-    label: _('Substitution variables'),
-    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
-    //@TODO massive helpText
-  },
-  maxDailyUsageVariables: {
-    label: _('Substitution variables'),
-    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
-    //@TODO massive helpText
-  },
   subject: {
     label: _('Subject'),
     maxLength: 255,
