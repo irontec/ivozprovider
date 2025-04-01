@@ -1708,12 +1708,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "callForwardType[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "callForwardType[start]",
                         "in": "query",
                         "required": false,
@@ -1727,6 +1721,12 @@
                     },
                     {
                         "name": "callForwardType[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callForwardType[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -2156,6 +2156,12 @@
                         "in": "query",
                         "required": false,
                         "type": "integer"
+                    },
+                    {
+                        "name": "user.useDefaultLocation",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "user.voicemail",
@@ -6958,6 +6964,7 @@
                 "rejectCallMethod",
                 "multiContact",
                 "gsQRCode",
+                "useDefaultLocation",
                 "voicemail"
             ],
             "properties": {
@@ -7041,6 +7048,12 @@
                     "default": 0,
                     "description": "",
                     "example": "0",
+                    "type": "boolean"
+                },
+                "useDefaultLocation": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
                     "type": "boolean"
                 },
                 "id": {
