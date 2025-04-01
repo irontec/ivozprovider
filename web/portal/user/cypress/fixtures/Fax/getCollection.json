@@ -8,9 +8,9 @@
     }
   ],
   "headers": {
-    "x-first-page": "/api/user/my/faxes?_page=1",
-    "x-last-page": "/api/user/my/faxes?_page=1",
-    "x-next-page": "/api/user/my/faxes?_page=1",
+    "x-first-page": "/api/user/faxes?_page=1",
+    "x-last-page": "/api/user/faxes?_page=1",
+    "x-next-page": "/api/user/faxes?_page=1",
     "x-total-items": "1",
     "x-total-pages": "1"
   },
