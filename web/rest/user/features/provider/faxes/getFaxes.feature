@@ -7,7 +7,7 @@ Feature: Retrieve faxes
   Scenario: Retrieve the faxes json list
     Given I add User Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "/my/faxes"
+      And I send a "GET" request to "/faxes"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -48,5 +48,5 @@ Feature: Retrieve faxes
   Scenario: Retrieve a certain faxes item without permissions
     Given I add User Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "/my/faxes/2"
+      And I send a "GET" request to "/faxes/2"
      Then the response status code should be 404
