@@ -47,6 +47,7 @@ Feature: Retrieve users
       ]
       """
 
+  @createSchema
   Scenario: Retrieve a specific Users Cdr element
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
@@ -80,6 +81,7 @@ Feature: Retrieve users
               "rejectCallMethod": "rfc",
               "multiContact": true,
               "gsQRCode": false,
+              "useDefaultLocation": true,
               "id": 1,
               "callAcl": null,
               "bossAssistant": null,
