@@ -378,8 +378,7 @@ Ivoz\Provider\Domain\Model\Fax\Fax:
   itemOperations:
     get: ~
   collectionOperations:
-    get:
-      path: '/my/faxes'
+    get: ~
   attributes:
     access_control: '"ROLE_COMPANY_USER" in roles'
     order:
