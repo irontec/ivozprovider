@@ -53,9 +53,6 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         // If this extension was pointing to a user (that used it as screen extension) and
         // now points to a different user/element, set user screen extension to null
         if ($originalValue && ($originalValue != $currentValue)) {
-            /**
-             * @var UserInterface | null $prevUser
-             */
             $prevUser = $this->userRepository->find($originalValue);
 
             if (!$prevUser) {
