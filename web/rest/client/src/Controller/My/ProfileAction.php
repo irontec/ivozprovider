@@ -66,6 +66,7 @@ class ProfileAction
             type: $type,
             showBillingInfo: $showBillingInfo,
             defaultCountryId: $company->getCountry()->getId() ?? 0,
+            defaultLocationId: $company->getLocation()?->getId(),
             adminRelPublicEntities: $adminRelPublicEntities,
             features: $features
         );
