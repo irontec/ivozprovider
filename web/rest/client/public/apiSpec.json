@@ -17272,12 +17272,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "routeType[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "routeType[start]",
                         "in": "query",
                         "required": false,
@@ -17291,6 +17285,12 @@
                     },
                     {
                         "name": "routeType[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "routeType[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -17492,6 +17492,12 @@
                         "in": "query",
                         "required": false,
                         "type": "integer"
+                    },
+                    {
+                        "name": "user.useDefaultLocation",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "user.voicemail",
@@ -25220,6 +25226,12 @@
                         "type": "integer"
                     },
                     {
+                        "name": "user.useDefaultLocation",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "user.voicemail",
                         "in": "query",
                         "required": false,
@@ -25837,6 +25849,12 @@
                         "in": "query",
                         "required": false,
                         "type": "integer"
+                    },
+                    {
+                        "name": "user.useDefaultLocation",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "user.voicemail",
@@ -44403,6 +44421,10 @@
                     "description": "",
                     "type": "integer"
                 },
+                "defaultLocationId": {
+                    "description": "",
+                    "type": "integer"
+                },
                 "acls": {
                     "description": "",
                     "type": "array",
@@ -47651,6 +47673,7 @@
                 "rejectCallMethod",
                 "multiContact",
                 "gsQRCode",
+                "useDefaultLocation",
                 "voicemail",
                 "contact"
             ],
@@ -47735,6 +47758,12 @@
                     "default": 0,
                     "description": "",
                     "example": "0",
+                    "type": "boolean"
+                },
+                "useDefaultLocation": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
                     "type": "boolean"
                 },
                 "id": {
@@ -47864,6 +47893,7 @@
                 "rejectCallMethod",
                 "multiContact",
                 "gsQRCode",
+                "useDefaultLocation",
                 "voicemail",
                 "contact"
             ],
@@ -47948,6 +47978,12 @@
                     "default": 0,
                     "description": "",
                     "example": "0",
+                    "type": "boolean"
+                },
+                "useDefaultLocation": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
                     "type": "boolean"
                 },
                 "id": {
