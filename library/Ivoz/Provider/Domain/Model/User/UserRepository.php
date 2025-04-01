@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\User;
 
-use Doctrine\Common\Collections\Selectable;
-use Doctrine\Persistence\ObjectRepository;
+use Ivoz\Core\Domain\Service\Repository\RepositoryInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 
-interface UserRepository extends ObjectRepository, Selectable
+/**
+ * @extends RepositoryInterface<UserInterface, UserDto>
+ */
+interface UserRepository extends RepositoryInterface
 {
     /**
      * @param int $id
@@ -71,4 +73,9 @@ interface UserRepository extends ObjectRepository, Selectable
      * @return UserInterface[]
      */
     public function findLatestAddedByCompany(int $companyId): array;
+
+    /**
+     * @return UserInterface[]
+     */
+    public function findByCompanyUsingDefaultLocation(int $companyId): array;
 }
