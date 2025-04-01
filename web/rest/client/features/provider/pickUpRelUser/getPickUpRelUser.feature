@@ -33,6 +33,7 @@ Feature: Retrieve pick up rel users
                   "rejectCallMethod": "rfc",
                   "multiContact": true,
                   "gsQRCode": false,
+                  "useDefaultLocation": true,
                   "id": 1,
                   "callAcl": null,
                   "bossAssistant": null,
@@ -44,7 +45,7 @@ Feature: Retrieve pick up rel users
                   "timezone": 145,
                   "outgoingDdi": 3,
                   "outgoingDdiRule": null,
-                  "location": null,
+                  "location": 1,
                   "voicemail": null,
                   "contact": null
               }
@@ -80,6 +81,7 @@ Feature: Retrieve pick up rel users
               "rejectCallMethod": "rfc",
               "multiContact": true,
               "gsQRCode": false,
+              "useDefaultLocation": true,
               "id": 1,
               "callAcl": null,
               "bossAssistant": null,
@@ -91,7 +93,7 @@ Feature: Retrieve pick up rel users
               "timezone": 145,
               "outgoingDdi": 3,
               "outgoingDdiRule": null,
-              "location": null,
+              "location": 1,
               "voicemail": null,
               "contact": null
           }

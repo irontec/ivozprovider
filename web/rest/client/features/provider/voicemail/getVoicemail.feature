@@ -114,7 +114,7 @@ Feature: Retrieve voicemails
               "timezone": 145,
               "outgoingDdi": 3,
               "outgoingDdiRule": null,
-              "location": null,
+              "location": 1,
               "voicemail": null,
               "contact": null
           },

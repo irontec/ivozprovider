@@ -41,6 +41,7 @@ Feature: Manage voicemail rel users
               "rejectCallMethod": "rfc",
               "multiContact": true,
               "gsQRCode": false,
+              "useDefaultLocation": false,
               "id": 2,
               "callAcl": null,
               "bossAssistant": 1,
@@ -68,7 +69,6 @@ Feature: Manage voicemail rel users
               "company": 4,
               "locution": null
           }
-
       }
       """
 

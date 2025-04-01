@@ -15,6 +15,12 @@ Feature: Retrieve locations
       """
       [
           {
+              "name": "altLocation",
+              "description": "Alternative Location description",
+              "id": 2,
+              "survivalDevice": null
+          },
+          {
               "name": "testLocation",
               "description": "Test Location description",
               "id": 1,
@@ -39,6 +45,7 @@ Feature: Retrieve locations
           "id": 1,
           "survivalDevice": null,
           "userIds": [
+              1,
               2,
               3
           ]
