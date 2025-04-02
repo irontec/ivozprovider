@@ -120,5 +120,13 @@
         <join-column name="ddiProviderId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
+    <field name="numRecordings" type="integer" column="numRecordings" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <unique-constraints/>
   </mapped-superclass>
 </doctrine-mapping>
