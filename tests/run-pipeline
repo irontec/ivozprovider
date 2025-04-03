@@ -1,0 +1,597 @@
+#!/bin/bash
+
+DOCKER_UID=$( id -u )
+DOCKER_GID=$( id -g )
+DEPS=()
+SKIP_DEPS=0
+QUIET=0
+
+function print_message() {
+    if [[ $QUIET -eq 0 ]]; then
+        echo -e "[\e[1;32m*\e[0m] \e[1;37m$1\e[0m"
+    fi
+}
+
+function print_error() {
+    if [[ $QUIET -eq 0 ]]; then
+        echo -e "[\e[1;31m!\e[0m] \e[1;31m$1\e[0m"
+    fi
+}
+
+function build_testing_base_docker_image() {
+    print_message "Building ivozprovider-testing-base image..."
+    docker build \
+        --build-arg UID=$DOCKER_UID \
+        --build-arg GID=$DOCKER_GID \
+        --tag ivozprovider-testing-base \
+        --file tests/docker/Dockerfile \
+        .
+}
+
+function start_testing_mysql_docker() {
+    if [ -n "$(docker ps --filter 'name=ivozprovider-testing-mysql' --format '{{.ID}}')" ]; then
+        print_message "Stopping existing mysql container"
+        docker stop ivozprovider-testing-mysql
+    fi
+
+    print_message "Starting percona/percona-server:8.0 image..."
+
+    # start mysql container
+    docker run \
+        --rm \
+        --detach \
+        --tty \
+        --env "MYSQL_ROOT_PASSWORD=changeme" \
+        --name ivozprovider-testing-mysql \
+        percona/percona-server:8.0 \
+        --default-authentication-plugin=mysql_native_password
+
+    # wait for mysql to be ready
+    while ! docker exec ivozprovider-testing-mysql mysqladmin ping -hlocalhost --silent; do sleep 1; done
+}
+
+function stop_testing_mysql_docker() {
+    print_message "Stopping mysql container..."
+    docker stop ivozprovider-testing-mysql
+}
+
+
+function build_testing_httpd_docker_image() {
+    print_message "Building ivozprovider-testing-httpd image"
+    pushd tests/httpd
+    docker build \
+        --tag ivozprovider-testing-httpd \
+        --file Dockerfile \
+        .
+    popd
+}
+
+function start_testing_httpd_docker() {
+    if [ -n "$(docker ps --filter 'name=ivozprovider-testing-httpd' --format '{{.ID}}')" ]; then
+        print_message "Stopping existing httpd container..."
+        docker stop ivozprovider-testing-httpd
+    fi
+
+    if [[ $SKIP_DEPS -eq 0 ]]; then
+        # Ensure testing base docker image is built
+        build_testing_httpd_docker_image
+    fi
+
+    print_message "Starting ivozprovider-testing-httpd image..."
+
+    # start httpd container
+    docker run \
+        --rm \
+        --detach \
+        --tty \
+        --name ivozprovider-testing-httpd \
+        --volume $PWD:/opt/irontec/ivozprovider \
+        ivozprovider-testing-httpd
+}
+
+function stop_testing_httpd_docker() {
+    print_message "Stopping ivozprovider-testing-httpd container..."
+    docker stop ivozprovider-testing-httpd
+}
+
+function run_docker_command() {
+    print_message "Running $@"
+    docker run \
+        --user $DOCKER_UID:$DOCKER_GID \
+        --tty \
+        --rm \
+        --interactive \
+        --volume $PWD:/opt/irontec/ivozprovider \
+        $@
+}
+
+function run_dependencies() {
+    # Run all previous dependencies
+    if [[ $SKIP_DEPS -eq 0 ]]; then
+        # Ensure testing base docker image is built
+        build_testing_base_docker_image
+
+        IFS=$'\n'
+        for DEP in ${DEPS[@]}; do
+            run_docker_command ivozprovider-testing-base $DEP
+        done
+        IFS=$' \t\n'
+    fi
+}
+
+function run_testing_base() {
+    run_dependencies
+    run_docker_command ivozprovider-testing-base $@
+
+    if [ $? -eq 0 ]; then
+        print_message "Test ended successfully..."
+        return 0
+    else
+        print_error "Test ended with errors"
+        return 1
+    fi
+}
+
+function run_testing_base_raw() {
+    run_dependencies
+    run_docker_command $@
+
+    if [ $? -eq 0 ]; then
+        print_message "Test ended successfully"
+        return 0
+    else
+        print_error "Test ended with errors"
+        return 1
+    fi
+}
+
+
+function library_bin_test-app-console() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-app-console
+}
+
+function library_bin_test-app-dependencies() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-app-dependencies
+}
+
+function library_bin_test-phpstan() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-phpstan
+}
+
+function library_bin_test-psalm() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-psalm
+}
+
+function library_bin_test-psalm-update-baseline() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-psalm-update-baseline
+}
+
+function library_bin_test-codestyle() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-codestyle --full
+}
+
+function library_bin_test-codestyle-gherkin() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-codestyle-gherkin
+}
+
+function library_bin_test-i18n() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-i18n
+}
+
+function library_bin_test-phpspec() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-phpspec
+}
+
+function web_rest_platform_bin_test-api-spec() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/web/rest/platform/bin/test-api-spec
+}
+
+function web_rest_platform_bin_test-api() {
+    DEPS=(
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps"
+        "/opt/irontec/ivozprovider/library/bin/cache-rm"
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-fixtures"
+        "/opt/irontec/ivozprovider/web/rest/platform/bin/generate-keys --test"
+    )
+    run_testing_base /opt/irontec/ivozprovider/web/rest/platform/bin/test-api --skip-db
+}
+
+function web_rest_brand_bin_test-api-spec() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/web/rest/brand/bin/test-api-spec
+}
+
+function web_rest_brand_bin_test-api() {
+    DEPS=(
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps"
+        "/opt/irontec/ivozprovider/library/bin/cache-rm"
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-fixtures"
+        "/opt/irontec/ivozprovider/web/rest/platform/bin/generate-keys --test"
+    )
+    run_testing_base /opt/irontec/ivozprovider/web/rest/brand/bin/test-api --skip-db
+}
+
+function web_rest_client_bin_test-api-spec() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/web/rest/client/bin/test-api-spec
+}
+
+function web_rest_client_bin_test-api() {
+    DEPS=(
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps"
+        "/opt/irontec/ivozprovider/library/bin/cache-rm"
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-fixtures"
+        "/opt/irontec/ivozprovider/web/rest/platform/bin/generate-keys --test"
+    )
+    run_testing_base /opt/irontec/ivozprovider/web/rest/client/bin/test-api --skip-db
+}
+
+function web_rest_user_bin_test-api-spec() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/web/rest/user/bin/test-api-spec
+}
+
+function web_rest_user_bin_test-api() {
+    DEPS=(
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps"
+        "/opt/irontec/ivozprovider/library/bin/cache-rm"
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-fixtures"
+        "/opt/irontec/ivozprovider/web/rest/platform/bin/generate-keys --test"
+    )
+    run_testing_base /opt/irontec/ivozprovider/web/rest/user/bin/test-api --skip-db
+}
+
+function microservices_realtime_tests_test-build.sh() {
+    run_testing_base /opt/irontec/ivozprovider/microservices/realtime/tests/test-build.sh
+}
+
+function microservices_realtime_tests_test-codestyle.sh() {
+    run_testing_base /opt/irontec/ivozprovider/microservices/realtime/tests/test-codestyle.sh
+}
+
+function schema_bin_test-orm() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/schema/bin/test-orm
+}
+
+function schema_bin_test-generators() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run")
+    run_testing_base /opt/irontec/ivozprovider/schema/bin/test-generators
+}
+
+function schema_bin_test-schema() {
+    # Start sidecar mysql container
+    start_testing_mysql_docker
+
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+
+    run_testing_base_raw \
+        --env MYSQL_PWD=changeme \
+        --link ivozprovider-testing-mysql:data.ivozprovider.local \
+        ivozprovider-testing-base \
+        /opt/irontec/ivozprovider/schema/bin/test-schema
+
+    stop_testing_mysql_docker
+}
+
+function schema_bin_test-duplicate-keys() {
+    # Start sidecar mysql container
+    start_testing_mysql_docker
+
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+
+    run_testing_base_raw \
+        --env MYSQL_PWD=changeme \
+        --link ivozprovider-testing-mysql:data.ivozprovider.local \
+        ivozprovider-testing-base \
+        /opt/irontec/ivozprovider/schema/bin/test-duplicate-keys
+
+    stop_testing_mysql_docker
+}
+
+function web_portal_test() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-node-modules")
+    run_testing_base /opt/irontec/ivozprovider/web/portal/$1/bin/$2
+}
+
+function web_portal_test_cypress() {
+
+    start_testing_httpd_docker
+
+    DEPS=(
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-node-modules"
+        "/opt/irontec/ivozprovider/web/portal/$1/bin/test-build"
+    )
+
+    run_testing_base_raw \
+        --env CYPRESS_APP_DOMAIN="http://server/$1/" \
+        --link ivozprovider-testing-httpd:server \
+        ivozprovider-testing-base \
+        /opt/irontec/ivozprovider/web/portal/$1/bin/test-pact
+
+    stop_testing_httpd_docker
+}
+
+function web_portal_open_cypress() {
+
+    start_testing_httpd_docker
+
+    DEPS=(
+        "/opt/irontec/ivozprovider/tests/docker/bin/prepare-node-modules"
+        "/opt/irontec/ivozprovider/web/portal/$1/bin/test-build"
+    )
+
+    if ! command -v xhost &> /dev/null; then
+        print_error "xhost command not found. Please install it and try again"
+        exit 1
+    fi
+
+    xhost +
+
+    run_testing_base_raw \
+        --env DISPLAY=$DISPLAY \
+        --volume /tmp/.X11-unix:/tmp/.X11-unix \
+        --env CYPRESS_APP_DOMAIN="http://server/$1/" \
+        --link ivozprovider-testing-httpd:server \
+        ivozprovider-testing-base \
+        /opt/irontec/ivozprovider/web/portal/$1/bin/test-cy-open
+
+    stop_testing_httpd_docker
+}
+
+function web_portal_platform_bin_test-lint() {
+    web_portal_test platform test-lint
+}
+
+function web_portal_platform_bin_test-i18n() {
+    web_portal_test platform test-i18n
+}
+
+function web_portal_platform_bin_test-build() {
+    web_portal_test platform test-build
+}
+
+function web_portal_platform_bin_test-pact() {
+    web_portal_test_cypress platform test-pact
+}
+
+function web_portal_platform_bin_test-cy-open() {
+    web_portal_open_cypress platform test-cy-open
+}
+
+function web_portal_brand_bin_test-lint() {
+    web_portal_test brand test-lint
+}
+
+function web_portal_brand_bin_test-i18n() {
+    web_portal_test brand test-i18n
+}
+
+function web_portal_brand_bin_test-build() {
+    web_portal_test brand test-build
+}
+
+function web_portal_brand_bin_test-pact() {
+    web_portal_test_cypress brand test-pact
+}
+
+function web_portal_brand_bin_test-cy-open() {
+    web_portal_open_cypress brand test-cy-open
+}
+
+function web_portal_client_bin_test-lint() {
+    web_portal_test client test-lint
+}
+
+function web_portal_client_bin_test-i18n() {
+    web_portal_test client test-i18n
+}
+
+function web_portal_client_bin_test-build() {
+    web_portal_test client test-build
+}
+
+function web_portal_client_bin_test-pact() {
+    web_portal_test_cypress client test-pact
+}
+
+function web_portal_client_bin_test-cy-open() {
+    web_portal_open_cypress client test-cy-open
+}
+
+function web_portal_user_bin_test-lint() {
+    web_portal_test user test-lint
+}
+
+function web_portal_user_bin_test-i18n() {
+    web_portal_test user test-i18n
+}
+
+function web_portal_user_bin_test-build() {
+    web_portal_test user test-build
+}
+
+function web_portal_user_bin_test-pact() {
+    web_portal_test_cypress user test-pact
+}
+
+function web_portal_user_bin_test-cy-open() {
+    web_portal_open_cypress user test-cy-open
+}
+
+function library_bin_test-commit-tags() {
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-commit-tags origin/main
+}
+
+function library_bin_test-file-perms() {
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-file-perms
+}
+
+function Backend_tests() {
+    options=(
+        "library/bin/test-app-console"
+        "library/bin/test-app-dependencies"
+        "library/bin/test-phpstan"
+        "library/bin/test-psalm"
+        "library/bin/test-psalm-update-baseline"
+        "library/bin/test-codestyle"
+        "library/bin/test-codestyle-gherkin"
+        "library/bin/test-i18n"
+        "library/bin/test-phpspec"
+        "web/rest/platform/bin/test-api-spec"
+        "web/rest/platform/bin/test-api"
+        "web/rest/brand/bin/test-api-spec"
+        "web/rest/brand/bin/test-api"
+        "web/rest/client/bin/test-api-spec"
+        "web/rest/client/bin/test-api"
+        "web/rest/user/bin/test-api-spec"
+        "web/rest/user/bin/test-api"
+        "microservices/realtime/tests/test-build.sh"
+        "microservices/realtime/tests/test-codestyle.sh"
+        "schema/bin/test-orm"
+        "schema/bin/test-generators"
+        "schema/bin/test-schema"
+        "schema/bin/test-duplicate-keys"
+    )
+
+    run_menu_selected "${options[@]}"
+}
+
+function Frontend_tests() {
+    options=(
+        "web/portal/platform/bin/test-lint"
+        "web/portal/platform/bin/test-i18n"
+        "web/portal/platform/bin/test-build"
+        "web/portal/platform/bin/test-pact"
+        "web/portal/platform/bin/test-cy-open"
+        "web/portal/brand/bin/test-lint"
+        "web/portal/brand/bin/test-i18n"
+        "web/portal/brand/bin/test-build"
+        "web/portal/brand/bin/test-pact"
+        "web/portal/brand/bin/test-cy-open"
+        "web/portal/client/bin/test-lint"
+        "web/portal/client/bin/test-i18n"
+        "web/portal/client/bin/test-build"
+        "web/portal/client/bin/test-pact"
+        "web/portal/client/bin/test-cy-open"
+        "web/portal/user/bin/test-lint"
+        "web/portal/user/bin/test-i18n"
+        "web/portal/user/bin/test-build"
+        "web/portal/user/bin/test-pact"
+        "web/portal/user/bin/test-cy-open"
+    )
+
+    run_menu_selected "${options[@]}"
+}
+
+function Generic_tests() {
+    options=(
+        "library/bin/test-commit-tags"
+        "library/bin/test-file-perms"
+    )
+
+    run_menu_selected "${options[@]}"
+}
+
+function Run_testing_container_shell() {
+    run_testing_base /bin/bash
+}
+
+function run_menu_selected()
+{
+    options=$1
+    for i in "${!options[@]}"; do
+        echo -e "\e[1;32m$((i + 1)))\e[0m \e[1;37m${options[$i]}\e[0m"
+    done
+
+    read -p "Enter the number or name of the test to run: " choice
+    if [[ "$choice" =~ ^[0-9]+$ && "$choice" -ge 1 && "$choice" -le "${#options[@]}" ]]; then
+        opt="${options[$((choice - 1))]}"
+        ${opt//[ \/]/_}
+    elif [[ " ${options[*]} " == *" $choice "* ]]; then
+        ${choice//[ \/]/_}
+    else
+        echo "Invalid option"
+    fi
+}
+
+function help() {
+    echo -e "\e[1;37mUsage:\e[0m \e[1;32mrun-pipeline [options] [tests...]\e[0m"
+    echo
+    echo -e "\e[1;37mOptions:\e[0m"
+    echo -e "  \e[1;32m-h, --help\e[0m       \e[1;37mShow this help message and exit\e[0m"
+    echo -e "  \e[1;32m-s, --skip-deps\e[0m  \e[1;37mSkip running dependencies\e[0m"
+    echo -e "  \e[1;32m-q, --quiet\e[0m      \e[1;37mSuppress script output messages\e[0m"
+    echo
+    echo -e "\e[1;37mTests:\e[0m"
+    echo -e "  \e[1;37mProvide one or more tests to run (full path to test)\e[0m"
+}
+
+function main() {
+    # Change to project root directory
+    cd $(dirname "$(realpath "$0")")/.. || exit 1
+
+    # Parse options using getopt
+    PARSED_OPTIONS=$(getopt -o hsq --long help,skip-deps,quiet -- "$@")
+    if [ $? -ne 0 ]; then
+        echo "Error parsing options"
+        exit 1
+    fi
+    eval set -- "$PARSED_OPTIONS"
+
+    while true; do
+        case "$1" in
+            -h|--help)
+                help
+                exit 0
+                ;;
+            -s|--skip-deps)
+                SKIP_DEPS=1
+                shift
+                ;;
+            -q|--quiet)
+                QUIET=1
+                shift
+                ;;
+            --)
+                shift
+                break
+                ;;
+            *)
+                echo "Invalid option: $1"
+                exit 1
+                ;;
+        esac
+    done
+
+    # Remaining arguments are considered tests
+    TESTS="$@"
+    if [ -n "$TESTS" ]; then
+        for TEST in $TESTS; do
+            ${TEST//\//_}
+        done
+        exit 0
+    fi
+
+    # Otherwise, prompt for user input
+    options=(
+        "Backend tests"
+        "Frontend tests"
+        "Generic tests"
+        "Run testing container shell"
+    )
+
+    run_menu_selected "${options[@]}"
+}
+
+main $@
