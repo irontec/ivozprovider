@@ -8,6 +8,7 @@ export type LocutionPropertyList<T> = {
   name?: T;
   originalFile?: T;
   recordingExtension?: T;
+  encodedFile?: T;
   status?: T;
 };
 
