@@ -28,6 +28,7 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
             \Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCompany::class => 20,
             \Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices::class => 30,
             \Ivoz\Provider\Domain\Service\Administrator\CreatedByCompany::class => 200,
+            \Ivoz\Provider\Domain\Service\User\UpdateByCompany::class => 200,
         ],
         "post_remove" =>
         [

@@ -4,12 +4,15 @@ import {
   FieldsetGroups,
   Form as DefaultEntityForm,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 import { foreignKeyGetter } from './ForeignKeyGetter';
+import useDefaultLocation from './hooks/useDefaultLocation';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
+  const { entityService, properties, row, match } = props;
+  const edit = props.edit || false;
 
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -18,7 +21,13 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
-  const edit = props.edit || false;
+  const formik = useFormHandler(props);
+  const usingDefaultLocation = useDefaultLocation(edit, formik);
+
+  const readOnlyProperties = {
+    location: usingDefaultLocation,
+  };
+
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Personal data'),
@@ -26,7 +35,13 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     edit && {
       legend: _('Geographic Configuration'),
-      fields: ['language', 'timezone', 'transformationRuleSet', 'location'],
+      fields: [
+        'language',
+        'timezone',
+        'transformationRuleSet',
+        'useDefaultLocation',
+        'location',
+      ],
     },
     edit && {
       legend: _('Login Info'),
@@ -60,7 +75,15 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
   ];
 
-  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+  return (
+    <DefaultEntityForm
+      {...props}
+      formik={formik}
+      fkChoices={fkChoices}
+      groups={groups}
+      readOnlyProperties={readOnlyProperties}
+    />
+  );
 };
 
 export default Form;

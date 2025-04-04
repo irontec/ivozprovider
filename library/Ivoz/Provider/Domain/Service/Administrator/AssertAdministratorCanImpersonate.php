@@ -63,7 +63,6 @@ class AssertAdministratorCanImpersonate
     private function validateTargetUser(
         UserInterface $targetUser
     ): void {
-        /** @var UserInterface|null $user */
         $user = $this->userRepository->find($targetUser->getId());
 
         if ($user === null) {

@@ -31,6 +31,7 @@ export type UserPropertyList<T> = {
   gsQRCode?: T;
   multiContact?: T;
   statusIcon?: T;
+  useDefaultLocation?: T;
 };
 
 export type UserProperties = UserPropertyList<Partial<PropertySpec>>;

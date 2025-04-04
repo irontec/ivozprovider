@@ -97,6 +97,8 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
                 throw new \DomainException('Active users must have a password');
             }
         }
+
+        $this->sanitizeLocation();
     }
 
     protected function sanitizeNew(): void
@@ -104,6 +106,21 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         if ($this->getEmail() && $this->getPass()) {
             $this->setActive(true);
         }
+    }
+
+    protected function sanitizeLocation(): void
+    {
+        $useDefaultLocation = $this->getUseDefaultLocation();
+
+        if (!$useDefaultLocation) {
+            return;
+        }
+
+        $defaultLocation = $this
+            ->getCompany()
+            ->getLocation();
+
+        $this->setLocation($defaultLocation);
     }
 
     /**

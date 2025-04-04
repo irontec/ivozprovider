@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
+use Ivoz\Provider\Domain\Model\Contact\Contact;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Fax\Fax;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
@@ -21,6 +22,9 @@ use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile;
 use Ivoz\Provider\Domain\Model\Recording\Recording;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Ast\Domain\Model\Voicemail\Voicemail as AstVoicemail;
 use Ivoz\Provider\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest;
 use Ivoz\Provider\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -92,7 +96,11 @@ class CompanyLifeCycleTest extends KernelTestCase
             Company::class,
             Domain::class,
             PsEndpoint::class, // Domain lifecycle
-            MaxUsageNotification::class
+            MaxUsageNotification::class,
+            User::class,
+            Voicemail::class,
+            Contact::class,
+            AstVoicemail::class
         ]);
     }
 
@@ -372,6 +380,7 @@ class CompanyLifeCycleTest extends KernelTestCase
             ->setMaxDailyUsageEmail('no-replay@domain.net')
             ->setMaxDailyUsage(2)
             ->setCurrentDayUsage(3)
+            ->setLocationId(1)
             ->setMaxDailyUsageNotificationTemplateId(3);
 
         return $this

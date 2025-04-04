@@ -58,6 +58,7 @@ Feature: Update users
           "rejectCallMethod": "rfc",
           "multiContact": true,
           "gsQRCode": false,
+          "useDefaultLocation": true,
           "id": 1,
           "callAcl": null,
           "bossAssistant": null,

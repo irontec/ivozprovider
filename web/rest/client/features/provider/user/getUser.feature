@@ -123,9 +123,12 @@ Feature: Retrieve users
               },
               "country": 68
           },
-          "outgoingDdi": "~",
           "outgoingDdiRule": null,
+          "location": null,
           "voicemail": null,
-          "pickupGroupIds": []
+          "contact": null,
+          "pickupGroupIds": [
+              1
+          ]
       }
       """

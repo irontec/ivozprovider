@@ -87,9 +87,17 @@ const properties: UserProperties = {
     default: '__null__',
     null: _("Client's default"),
   },
+  useDefaultLocation: {
+    label: _('Use default location'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '0',
+  },
   location: {
     label: _('Location', { count: 1 }),
-    null: _("Client's default"),
+    null: _('Unassigned'),
     default: '__null__',
   },
   terminal: {
