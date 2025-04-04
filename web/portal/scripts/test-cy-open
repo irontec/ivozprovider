@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Stop on first error
+set -e
+
+# Move to webapp dir
+cd $(dirname "$(realpath -se "$0")")/..
+
+# Install required dependencies
+yarn install
+
+# start cypress
+LANG=en_US.UTF-8 yarn run cy:open
+
+exit 0
