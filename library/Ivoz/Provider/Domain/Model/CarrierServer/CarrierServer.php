@@ -34,7 +34,6 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
     {
         $this->sanitizeBrandByCarrier();
         $this->sanitizeAuth();
-        $this->sanitizeProxyLogic();
     }
 
     protected function sanitizeBrandByCarrier(): void
@@ -59,33 +58,6 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
             $this->setAuthUser(null);
             $this->setAuthPassword(null);
         }
-    }
-
-    protected function sanitizeProxyLogic(): void
-    {
-        $sip_proxy = explode(':', $this->getSipProxy());
-        $hostname = array_shift($sip_proxy);
-        $port = array_shift($sip_proxy);
-        if ($this->getOutboundProxy()) {
-            $outbound_proxy = explode(':', $this->getOutboundProxy());
-            $ip = array_shift($outbound_proxy);
-            $obPort = array_shift($outbound_proxy);
-            if (!is_null($port)) {
-                throw new \DomainException('When Outbound Proxy is used, SIP Proxy must not include a port.', 70003);
-            }
-            $port = $obPort;
-        } else {
-            $ip = null;
-            $this->setOutboundProxy(null);
-        }
-        if (!is_numeric($port) or !$port) {
-            $port = 5060;
-        }
-
-        // Save validated values
-        $this->setHostname($hostname);
-        $this->setIp($ip);
-        $this->setPort($port);
     }
 
     /**
@@ -121,15 +93,78 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
 
     protected function setSipProxy(?string $sipProxy = null): static
     {
-        if (! $sipProxy) {
-            throw new \DomainException('Sip Proxy cannot be null');
-        }
-
-        $sipProxy = trim($sipProxy);
-        if ($sipProxy === "") {
+        if (!$sipProxy || trim($sipProxy) === '') {
             throw new \DomainException('Sip Proxy cannot be empty');
         }
-
+    
+        $sipProxy = trim($sipProxy);
+    
+        if (str_contains($sipProxy, ' ')) {
+            throw new \DomainException('Sip Proxy cannot contain spaces');
+        }
+    
+        $parts = explode(':', $sipProxy);
+    
+        if (count($parts) > 2) {
+            throw new \DomainException('Sip Proxy cannot contain more than one colon');
+        }
+    
+        [$host, $port] = $parts + [1 => null];
+    
+        $this->validateHost($host);
+    
+        if ($port !== null) {
+            Assertion::between((int)trim($port), 1, 65535, 'Invalid port in SIP proxy');
+        }
+    
         return parent::setSipProxy($sipProxy);
+    }
+    
+    private function validateHost(string $host): void
+    {
+        if (preg_match('/^(\d{1,3}\.){3}\d{1,3}$/', $host)) {
+            Assertion::ipv4($host, 'Invalid IP in SIP proxy');
+        } else {
+            if (str_contains($host, ':')) {
+                throw new \DomainException('Domain cannot contain colons');
+            }
+    
+            if (!str_contains($host, '.')) {
+                throw new \DomainException('Domain must contain at least one dot (.)');
+            }
+    
+            if (str_ends_with($host, '.')) {
+                throw new \DomainException('Domain must not end with a dot (.)');
+            }
+        }
+    }
+
+    protected function setOutboundProxy(?string $outboundProxy = null): static
+    {
+        $outboundProxy = trim((string)$outboundProxy);
+
+        if ($outboundProxy === '') {
+            throw new \DomainException('Outbound proxy cannot be empty');
+        }
+
+        if (str_contains($outboundProxy, ' ')) {
+            throw new \DomainException('Outbound proxy cannot contain spaces');
+        }
+
+        $colonCount = substr_count($outboundProxy, ':');
+
+        if ($colonCount > 1) {
+            throw new \DomainException('Outbound proxy cannot contain more than one colon');
+        }
+
+        if ($colonCount === 1) {
+            [$ip, $port] = explode(':', $outboundProxy, 2);
+            Assertion::ipv4($ip);
+            Assertion::between((int)$port, 1, 65535, 'Invalid port in outbound proxy');
+        } else {
+            Assertion::ipv4($outboundProxy);
+        }
+
+        return parent::setOutboundProxy($outboundProxy);
     }
 }
