@@ -24,7 +24,7 @@ Feature: Create users
               "terminal": 1,
               "extension": null,
               "outgoingDdi": 3,
-              "location": null,
+              "location": 1,
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.106:5060",
@@ -156,7 +156,7 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "terminal": 1,
               "extension": null,
               "outgoingDdi": 3,
-              "location": null,
+              "location": 1,
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.106:5060",
@@ -203,7 +203,7 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "terminal": 6,
               "extension": 7,
               "outgoingDdi": 5,
-              "location": null,
+              "location": 1,
               "status": []
           },
           {
@@ -216,7 +216,7 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "terminal": 5,
               "extension": 6,
               "outgoingDdi": 4,
-              "location": null,
+              "location": 1,
               "status": []
           }
       ]

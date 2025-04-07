@@ -24,7 +24,7 @@ Feature: Retrieve users
               "terminal": 1,
               "extension": null,
               "outgoingDdi": 3,
-              "location": null,
+              "location": 1,
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.106:5060",

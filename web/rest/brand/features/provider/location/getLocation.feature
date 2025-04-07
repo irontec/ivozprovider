@@ -19,6 +19,12 @@ Feature: Retrieve locations
             "description": "Test Location description",
             "id": 1,
             "survivalDevice": null
+        },
+        {
+            "name": "altLocation",
+            "description": "Alternative Location description",
+            "id": 2,
+            "survivalDevice": null
         }
       ]
       """
