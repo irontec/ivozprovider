@@ -139,6 +139,12 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.BillableCall,
           filterBy: 'ddi',
+          children: [
+            {
+              entity: entities.Recording,
+              filterBy: 'billableCall',
+            },
+          ],
         },
         {
           entity: entities.Recording,
@@ -153,6 +159,12 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.BillableCall,
           filterBy: 'ddi',
+          children: [
+            {
+              entity: entities.Recording,
+              filterBy: 'billableCall',
+            },
+          ],
         },
         {
           entity: entities.Recording,
@@ -454,7 +466,13 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.BillableCall,
-          children: [...Object.values(entities.BillableCall.customActions)],
+          children: [
+            {
+              entity: entities.Recording,
+              filterBy: 'billableCall',
+            },
+          ],
+          ...Object.values(entities.BillableCall.customActions),
         },
         {
           entity: entities.CallCsvScheduler,
