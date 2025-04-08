@@ -1,11 +1,17 @@
-import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { isEntityItem } from '@irontec/ivoz-ui';
+import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
+import DefaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface, {
+  ChildDecoratorType,
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import { IvozStoreState } from 'store';
 
+import Recording from '../Recording/Recording';
 import Actions from './Action';
 import { BillableCallProperties } from './BillableCallProperties';
 
@@ -79,6 +85,22 @@ const columns = (store: IvozStoreState) => {
   return response.filter((column) => column !== false) as Array<string>;
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  const isRecordingPath =
+    isEntityItem(routeMapItem) && routeMapItem.entity.iden === Recording.iden;
+  const callHasRecordings = row.numRecordings > 0;
+
+  if (isRecordingPath && !callHasRecordings) {
+    return (
+      <ChildEntityLink row={row} routeMapItem={routeMapItem} disabled={true} />
+    );
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const billableCall: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: ChatBubbleIcon,
@@ -105,6 +127,7 @@ const billableCall: EntityInterface = {
   },
   defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
+  ChildDecorator,
 };
 
 export default billableCall;
