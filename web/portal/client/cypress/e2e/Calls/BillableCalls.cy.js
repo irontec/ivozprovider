@@ -25,4 +25,10 @@ describe('BillableCalls', () => {
     cy.get('svg[data-testid="PanoramaIcon"]').first().click();
     cy.contains('Basic Information');
   });
+
+  it('Link recordigns', () => {
+    cy.get('table svg[data-testid="SettingsVoiceIcon"]').eq(0).click();
+
+    cy.get('header').should('contain', 'Recordings');
+  });
 });
