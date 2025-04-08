@@ -406,18 +406,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "endpointName[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "endpointName[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "endpointName[neq]",
                         "in": "query",
                         "required": false,
@@ -430,10 +418,22 @@
                         "type": "string"
                     },
                     {
+                        "name": "endpointName[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "endpointName[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "endpointName[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "endpointType",
@@ -443,12 +443,6 @@
                     },
                     {
                         "name": "endpointType[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "endpointType[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -476,6 +470,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "endpointType[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "exists[callee]",
@@ -533,6 +533,48 @@
                     },
                     {
                         "name": "id[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "numRecordings",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "numRecordings[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "numRecordings[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "numRecordings[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "numRecordings[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "numRecordings[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "numRecordings[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -719,6 +761,16 @@
                             "DESC"
                         ],
                         "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[numRecordings]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -36603,6 +36655,13 @@
                     "example": "outbound",
                     "type": "string"
                 },
+                "numRecordings": {
+                    "default": 0,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "integer"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -36616,17 +36675,26 @@
             "required": [
                 "startTime",
                 "duration",
-                "direction"
+                "direction",
+                "numRecordings"
             ]
         },
         "BillableCall-collection": {
             "type": "object",
             "required": [
+                "numRecordings",
                 "startTime",
                 "direction",
                 "duration"
             ],
             "properties": {
+                "numRecordings": {
+                    "default": 0,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "integer"
+                },
                 "startTime": {
                     "default": "2000-01-01 00:00:00",
                     "format": "date-time",
@@ -36783,6 +36851,13 @@
                     "example": "outbound",
                     "type": "string"
                 },
+                "numRecordings": {
+                    "default": 0,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "integer"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -36795,7 +36870,8 @@
             "required": [
                 "startTime",
                 "duration",
-                "direction"
+                "direction",
+                "numRecordings"
             ]
         },
         "Calendar": {

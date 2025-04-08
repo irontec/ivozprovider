@@ -139,6 +139,7 @@ class BillableCallDto extends BillableCallDtoAbstract
             'direction',
             'id',
             'ddiId',
+            'numRecordings',
         ];
 
         return array_filter(
