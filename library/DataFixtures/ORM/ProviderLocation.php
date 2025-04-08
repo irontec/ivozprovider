@@ -2,17 +2,22 @@
 
 namespace DataFixtures\ORM;
 
+use DataFixtures\Stub\Provider\LocationStub;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\Location\Location;
 use Ivoz\Provider\Domain\Model\Location\EncodedFile;
 use Ivoz\Provider\Domain\Model\Location\OriginalFile;
 
-class ProviderLocation extends Fixture implements DependentFixtureInterface
+class ProviderLocation extends Fixture
 {
     use \DataFixtures\FixtureHelperTrait;
+
+    public function __construct(
+        private LocationStub $locationStub,
+    ) {
+    }
 
     /**
      * {@inheritDoc}
@@ -23,24 +28,19 @@ class ProviderLocation extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Location::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $item1 = $this->createEntityInstance(Location::class);
-        (function () use ($fixture) {
-            $this->setName("testLocation");
-            $this->setDescription("Test Location description");
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
-        })->call($item1);
+        $manager
+            ->getClassMetadata(Location::class)
+            ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $this->addReference('_reference_ProviderLocation1', $item1);
-        $this->sanitizeEntityValues($item1);
-        $manager->persist($item1);
+        $entities = $this->locationStub->getAll();
+        foreach ($entities as $entity) {
+            $this->addReference(
+                '_reference_ProviderLocation' . $entity->getId(),
+                $entity
+            );
+            $manager->persist($entity);
+        }
 
         $manager->flush();
-    }
-
-    public function getDependencies()
-    {
-        return array(
-            ProviderCompany::class
-        );
     }
 }

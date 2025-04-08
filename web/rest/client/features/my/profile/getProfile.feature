@@ -16,9 +16,9 @@ Feature: Retrieve active calls
           "residential": false,
           "retail": false,
           "wholesale": false,
-          "wholesale": false,
           "billingInfo": true,
           "defaultCountryId": 68,
+          "defaultLocationId": 1,
           "acls": [],
           "features": [
               "queues",
@@ -47,6 +47,7 @@ Feature: Retrieve active calls
           "wholesale": false,
           "billingInfo": false,
           "defaultCountryId": 68,
+          "defaultLocationId": null,
           "acls": [],
           "features": []
       }
@@ -69,6 +70,7 @@ Feature: Retrieve active calls
           "wholesale": false,
           "billingInfo": true,
           "defaultCountryId": 68,
+          "defaultLocationId": null,
           "acls": [],
           "features": []
       }
@@ -91,6 +93,7 @@ Feature: Retrieve active calls
           "wholesale": false,
           "billingInfo": true,
           "defaultCountryId": 68,
+          "defaultLocationId": 1,
           "acls": [
               {
                   "iden": "_RatingPlanPrices",

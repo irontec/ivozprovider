@@ -111,7 +111,7 @@ Feature: Retrieve friends status
               "corporation": 1,
               "applicationServerSet": 1,
               "mediaRelaySet": 0,
-              "location": null,
+              "location": 1,
               "featureIds": [],
               "geoIpAllowedCountries": [],
               "routingTagIds": [],

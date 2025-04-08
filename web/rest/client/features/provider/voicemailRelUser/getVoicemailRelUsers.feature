@@ -22,6 +22,7 @@ Feature: Manage voicemail rel users
       ]
       """
 
+  @createSchema
   Scenario: Retrieve certain voicemail rel users json
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
@@ -46,6 +47,7 @@ Feature: Manage voicemail rel users
               "rejectCallMethod": "rfc",
               "multiContact": true,
               "gsQRCode": false,
+              "useDefaultLocation": true,
               "id": 1,
               "callAcl": null,
               "bossAssistant": null,
@@ -57,7 +59,7 @@ Feature: Manage voicemail rel users
               "timezone": 145,
               "outgoingDdi": 3,
               "outgoingDdiRule": null,
-              "location": null,
+              "location": 1,
               "voicemail": null,
               "contact": null
           },

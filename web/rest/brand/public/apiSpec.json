@@ -46674,6 +46674,7 @@
                 "rejectCallMethod",
                 "multiContact",
                 "gsQRCode",
+                "useDefaultLocation",
                 "company"
             ],
             "properties": {
@@ -46757,6 +46758,12 @@
                     "default": 0,
                     "description": "",
                     "example": "0",
+                    "type": "boolean"
+                },
+                "useDefaultLocation": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
                     "type": "boolean"
                 },
                 "id": {

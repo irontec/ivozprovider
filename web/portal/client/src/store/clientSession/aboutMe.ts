@@ -27,6 +27,7 @@ export interface AboutMe {
   billingInfo: boolean;
   restricted: boolean;
   defaultCountryId: number;
+  defaultLocationId: number;
   acls: Array<EntityAcl>;
   features: Array<string>;
 }

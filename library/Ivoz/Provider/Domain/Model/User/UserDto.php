@@ -147,6 +147,7 @@ class UserDto extends UserDtoAbstract
 
         if ($role === 'ROLE_COMPANY_ADMIN') {
             unset($response['companyId']);
+            $response['useDefaultLocation'] = 'useDefaultLocation';
         }
 
         if (in_array($context, self::CONTEXTS_WITH_PICKUP_GROUPS, true)) {
