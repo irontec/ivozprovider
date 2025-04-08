@@ -12,7 +12,8 @@
       "endpointName": null,
       "direction": "outbound",
       "id": 1,
-      "ddi": 1
+      "ddi": 1,
+      "numRecordings": 1
     },
     {
       "callid": "017cc7c8-eb38-4bbd-9318-524a274f7001",
@@ -26,7 +27,8 @@
       "endpointName": null,
       "direction": "outbound",
       "id": 2,
-      "ddi": 1
+      "ddi": 1,
+      "numRecordings": 0
     },
     {
       "callid": "017cc7c8-eb38-4bbd-9318-524a274f7002",
@@ -40,7 +42,8 @@
       "endpointName": null,
       "direction": "outbound",
       "id": 3,
-      "ddi": 1
+      "ddi": 1,
+      "numRecordings": 0
     },
     {
       "callid": "017cc7c8-eb38-4bbd-9318-524a274f7003",
@@ -54,7 +57,8 @@
       "endpointName": null,
       "direction": "outbound",
       "id": 4,
-      "ddi": 1
+      "ddi": 1,
+      "numRecordings": 0
     },
     {
       "callid": "017cc7c8-eb38-4bbd-9318-524a274f7004",
@@ -68,7 +72,8 @@
       "endpointName": null,
       "direction": "outbound",
       "id": 5,
-      "ddi": 1
+      "ddi": 1,
+      "numRecordings": 0
     }
   ]
 }
