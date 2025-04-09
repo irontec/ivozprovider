@@ -31,7 +31,6 @@ class SurvivalDevice extends SurvivalDeviceAbstract implements SurvivalDeviceInt
 
     protected function sanitizeValues(): void
     {
-        $this->sanitizeProxyLogic();
     }
 
     protected function setUdpPort(int $udpPort): static
@@ -58,26 +57,64 @@ class SurvivalDevice extends SurvivalDeviceAbstract implements SurvivalDeviceInt
         return parent::setWssPort($wssPort);
     }
 
-    protected function setProxy(string $proxy): static
+    protected function setProxy(?string $proxy): static
     {
-        $proxy = trim($proxy);
-        if (empty($proxy)) {
+        $proxy = trim((string)$proxy);
+
+        if ($proxy === '') {
             throw new \DomainException('Proxy cannot be empty');
+        }
+
+        if (str_contains($proxy, ' ')) {
+            throw new \DomainException('Proxy cannot contain spaces');
+        }
+
+        if (preg_match('/^(\d{1,3}\.){3}\d{1,3}$/', $proxy)) {
+            Assertion::ipv4($proxy, FILTER_FLAG_IPV4);
+            return parent::setProxy($proxy);
+        }
+
+        if (str_contains($proxy, ':')) {
+            throw new \DomainException('Domain cannot contain colons');
+        }
+
+        if (!str_contains($proxy, '.')) {
+            throw new \DomainException('Domain must contain at least one dot (.)');
+        }
+
+        if (str_ends_with($proxy, '.')) {
+            throw new \DomainException('Domain must not end with a dot (.)');
         }
 
         return parent::setProxy($proxy);
     }
 
-    protected function sanitizeProxyLogic(): void
+    protected function setOutboundProxy(?string $outboundProxy = null): static
     {
-        $outboundProxy = $this->getOutboundProxy();
-        if (is_null($outboundProxy)) {
-            return;
+        $outboundProxy = trim((string)$outboundProxy);
+
+        if ($outboundProxy === '') {
+            throw new \DomainException('Outbound proxy cannot be empty');
         }
 
-        $sipProxyIncludesPort = strpos($this->getProxy(), ':') !== false;
-        if ($sipProxyIncludesPort) {
-            throw new \DomainException('When Outbound Proxy is used, SIP Proxy must not include a port.', 70003);
+        if (str_contains($outboundProxy, ' ')) {
+            throw new \DomainException('Outbound proxy cannot contain spaces');
         }
+
+        $colonCount = substr_count($outboundProxy, ':');
+
+        if ($colonCount > 1) {
+            throw new \DomainException('Outbound proxy cannot contain more than one colon');
+        }
+
+        if ($colonCount === 1) {
+            [$ip, $port] = explode(':', $outboundProxy, 2);
+            Assertion::ipv4($ip);
+            Assertion::between((int)$port, 1, 65535, 'Invalid port in outbound proxy');
+        } else {
+            Assertion::ipv4($outboundProxy);
+        }
+
+        return parent::setOutboundProxy($outboundProxy);
     }
 }
