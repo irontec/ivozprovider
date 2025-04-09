@@ -97,6 +97,7 @@ class CallCsvSchedulerDoctrineRepository extends ServiceEntityRepository impleme
         $criteria = CriteriaHelper::fromArray([
             ['id', 'neq', $callCsvScheduler->getId()],
             ['company', 'eq', $callCsvScheduler->getCompany()->getId()],
+            ['brand', 'isNull'],
             ['name', 'eq', $callCsvScheduler->getName()]
         ]);
 
