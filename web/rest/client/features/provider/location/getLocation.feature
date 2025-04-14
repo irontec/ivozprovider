@@ -24,7 +24,7 @@ Feature: Retrieve locations
               "name": "testLocation",
               "description": "Test Location description",
               "id": 1,
-              "survivalDevice": null
+              "survivalDevice": 1
           }
       ]
       """
@@ -43,7 +43,18 @@ Feature: Retrieve locations
           "name": "testLocation",
           "description": "Test Location description",
           "id": 1,
-          "survivalDevice": null,
+          "survivalDevice": {
+              "name": "survival test 1",
+              "proxy": "23123",
+              "outboundProxy": "43322",
+              "udpPort": 5060,
+              "tcpPort": 5060,
+              "tlsPort": 5061,
+              "wssPort": 10081,
+              "description": "new survival device 1",
+              "id": 1,
+              "company": 1
+          },
           "userIds": [
               1,
               2,
