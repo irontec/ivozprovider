@@ -324,14 +324,14 @@ class Encoder
             return $billableCalls;
         }
 
-        $usersCdrs = $this
+        $usersCdr = $this
             ->usersCdrRepository
-            ->findByCallid(
+            ->findLastByCallid(
                 $rawRecordingInfo->getCallid()
             );
 
-        if (!empty($usersCdrs)) {
-            return $usersCdrs;
+        if (!is_null($usersCdr)) {
+            return [ $usersCdr ];
         }
 
         $this->stats['skipped']++;
