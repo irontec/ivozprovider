@@ -37,6 +37,7 @@ class BillableCallDto extends BillableCallDtoAbstract
 
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
+                'numRecordings' => 'numRecordings',
                 'startTime' => 'startTime',
                 'direction' => 'direction',
                 'duration' => 'duration',
@@ -64,6 +65,7 @@ class BillableCallDto extends BillableCallDtoAbstract
         if ($role === 'ROLE_SUPER_ADMIN') {
             unset($response['destinationId']);
             unset($response['ratingPlanGroupId']);
+            unset($response['numRecordings']);
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -138,6 +140,7 @@ class BillableCallDto extends BillableCallDtoAbstract
             'direction',
             'id',
             'ddiId',
+            'numRecordings',
         ];
 
         return array_filter(

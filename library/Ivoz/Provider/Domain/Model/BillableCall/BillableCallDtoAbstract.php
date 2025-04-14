@@ -100,6 +100,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @var int|null
      */
+    private $numRecordings = 0;
+
+    /**
+     * @var int|null
+     */
     private $id = null;
 
     /**
@@ -177,6 +182,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'endpointId' => 'endpointId',
             'endpointName' => 'endpointName',
             'direction' => 'direction',
+            'numRecordings' => 'numRecordings',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -211,6 +217,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'endpointId' => $this->getEndpointId(),
             'endpointName' => $this->getEndpointName(),
             'direction' => $this->getDirection(),
+            'numRecordings' => $this->getNumRecordings(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
@@ -418,6 +425,18 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     public function getDirection(): ?string
     {
         return $this->direction;
+    }
+
+    public function setNumRecordings(int $numRecordings): static
+    {
+        $this->numRecordings = $numRecordings;
+
+        return $this;
+    }
+
+    public function getNumRecordings(): ?int
+    {
+        return $this->numRecordings;
     }
 
     /**

@@ -3911,9 +3911,11 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Recording/RecordingAbstract.php">
-    <MixedArgument occurrences="8">
+    <MixedArgument occurrences="10">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBillableCall())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBillableCall())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
