@@ -5,9 +5,6 @@
       <index name="trunksCdr_start_time_idx" columns="start_time"/>
       <index name="trunksCdr_parsed_idx" columns="parsed"/>
     </indexes>
-    <unique-constraints>
-      <unique-constraint name="trunksCdr_callid_direction" columns="callid,direction"/>
-    </unique-constraints>
     <field name="startTime" type="datetime" column="start_time" nullable="false">
       <options>
         <option name="default">2000-01-01 00:00:00</option>
