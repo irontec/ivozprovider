@@ -20,6 +20,7 @@ class LocationStub
         $dto = (new LocationDto(1))
             ->setName("testLocation")
             ->setDescription("Test Location description")
+            ->setSurvivalDeviceId(1)
             ->setCompanyId(1);
 
         $this->append($dto);

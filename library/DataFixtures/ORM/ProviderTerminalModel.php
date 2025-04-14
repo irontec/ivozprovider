@@ -39,13 +39,7 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
 
 
         $item2 = $this->createEntityInstance(TerminalModel::class);
-        $specificTemplateContent = file_get_contents(
-            '/opt/irontec/ivozprovider'
-            . '/microservices/provision/templates'
-            . '/provisioning/YealinkT21P_E2/specific.cfg',
-            true
-        );
-        (function () use ($fixture, $specificTemplateContent) {
+        (function () use ($fixture) {
             $this->setIden("YealinkT21P_E2");
             $this->setName("YealinkT21P_E2");
             $this->setDescription('');
@@ -65,7 +59,26 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
                 security.trust_certificates = 0
                 TPL
             );
-            $this->setSpecificTemplate($specificTemplateContent);
+            $this->setSpecificTemplate(
+                <<<TPL
+                #!version:1.0.0.1
+                account.1.user_name = <?php echo \$this->terminal->getName() . "\n" ; ?>
+                account.1.auth_name = <?php echo \$this->terminal->getName() . "\n"; ?>
+                account.1.password = <?php echo \$this->terminal->getPassword() . "\n"; ?>
+                account.1.display_name = <?php echo \$this->user->getName() . "\n"; ?>
+                account.1.label = <?php echo \$this->user->getName() . "\n"; ?>
+                account.1.sip_server_host = <?php echo \$this->company->getDomainUsers() . "\n"; ?>
+                account.1.sip_server_port = 5060
+
+                lang.gui = <?php echo \$this->language->getNameEn() . "\n"; ?>
+                lang.wui = <?php echo \$this->language->getNameEn() . "\n"; ?>
+
+                <?php if (isset(\$this->survivalDevice)) { ?>
+                account.1.sip_server.2.host = <?php echo \$this->survivalDevice->getProxy() . "\n"; ?>
+                account.1.sip_server.2.port = <?php echo \$this->survivalDevice->getWssPort() . "\n"; ?>
+                <?php } ?>
+                TPL
+            );
             $this->setSpecificUrlPattern("{mac}");
             $this->setTerminalManufacturer($fixture->getReference('_reference_ProviderTerminalManufacturerTerminalManufacturer2'));
         })->call($item2);
