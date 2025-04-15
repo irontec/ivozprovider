@@ -170,6 +170,7 @@ trait DomainTrait
 
     public function addFriend(FriendInterface $friend): DomainInterface
     {
+        $friend->setDomain($this);
         $this->friends->add($friend);
 
         return $this;
@@ -177,7 +178,7 @@ trait DomainTrait
 
     public function removeFriend(FriendInterface $friend): DomainInterface
     {
-        $this->friends->removeElement($friend);
+        $friend->setDomain(null);
 
         return $this;
     }
@@ -229,7 +230,7 @@ trait DomainTrait
             }
 
             if (!$match) {
-                $this->friends->remove($key);
+                $this->friends[$key]?->setDomain(null);
             }
         }
 
@@ -245,15 +246,25 @@ trait DomainTrait
      */
     public function getFriends(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, FriendInterface> $friends */
+    $friends = $this->friends->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('domain', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->friends->matching($criteria)->toArray();
+            return $friends->matching($criteria)->toArray();
         }
 
-        return $this->friends->toArray();
+        return $friends->toArray();
     }
 
     public function addResidentialDevice(ResidentialDeviceInterface $residentialDevice): DomainInterface
     {
+        $residentialDevice->setDomain($this);
         $this->residentialDevices->add($residentialDevice);
 
         return $this;
@@ -261,7 +272,7 @@ trait DomainTrait
 
     public function removeResidentialDevice(ResidentialDeviceInterface $residentialDevice): DomainInterface
     {
-        $this->residentialDevices->removeElement($residentialDevice);
+        $residentialDevice->setDomain(null);
 
         return $this;
     }
@@ -313,7 +324,7 @@ trait DomainTrait
             }
 
             if (!$match) {
-                $this->residentialDevices->remove($key);
+                $this->residentialDevices[$key]?->setDomain(null);
             }
         }
 
@@ -329,15 +340,25 @@ trait DomainTrait
      */
     public function getResidentialDevices(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, ResidentialDeviceInterface> $residentialDevices */
+    $residentialDevices = $this->residentialDevices->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('domain', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->residentialDevices->matching($criteria)->toArray();
+            return $residentialDevices->matching($criteria)->toArray();
         }
 
-        return $this->residentialDevices->toArray();
+        return $residentialDevices->toArray();
     }
 
     public function addTerminal(TerminalInterface $terminal): DomainInterface
     {
+        $terminal->setDomain($this);
         $this->terminals->add($terminal);
 
         return $this;
@@ -345,7 +366,7 @@ trait DomainTrait
 
     public function removeTerminal(TerminalInterface $terminal): DomainInterface
     {
-        $this->terminals->removeElement($terminal);
+        $terminal->setDomain(null);
 
         return $this;
     }
@@ -397,7 +418,7 @@ trait DomainTrait
             }
 
             if (!$match) {
-                $this->terminals->remove($key);
+                $this->terminals[$key]?->setDomain(null);
             }
         }
 
@@ -413,10 +434,19 @@ trait DomainTrait
      */
     public function getTerminals(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, TerminalInterface> $terminals */
+    $terminals = $this->terminals->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('domain', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->terminals->matching($criteria)->toArray();
+            return $terminals->matching($criteria)->toArray();
         }
 
-        return $this->terminals->toArray();
+        return $terminals->toArray();
     }
 }

@@ -184,6 +184,7 @@ trait TerminalTrait
 
     public function addUser(UserInterface $user): TerminalInterface
     {
+        $user->setTerminal($this);
         $this->users->add($user);
 
         return $this;
@@ -191,7 +192,7 @@ trait TerminalTrait
 
     public function removeUser(UserInterface $user): TerminalInterface
     {
-        $this->users->removeElement($user);
+        $user->setTerminal(null);
 
         return $this;
     }
@@ -243,7 +244,7 @@ trait TerminalTrait
             }
 
             if (!$match) {
-                $this->users->remove($key);
+                $this->users[$key]?->setTerminal(null);
             }
         }
 
@@ -259,10 +260,19 @@ trait TerminalTrait
      */
     public function getUsers(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, UserInterface> $users */
+    $users = $this->users->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('terminal', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->users->matching($criteria)->toArray();
+            return $users->matching($criteria)->toArray();
         }
 
-        return $this->users->toArray();
+        return $users->toArray();
     }
 }

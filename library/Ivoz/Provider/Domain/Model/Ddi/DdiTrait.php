@@ -114,6 +114,7 @@ trait DdiTrait
 
     public function addRecording(RecordingInterface $recording): DdiInterface
     {
+        $recording->setDdi($this);
         $this->recordings->add($recording);
 
         return $this;
@@ -121,7 +122,7 @@ trait DdiTrait
 
     public function removeRecording(RecordingInterface $recording): DdiInterface
     {
-        $this->recordings->removeElement($recording);
+        $recording->setDdi(null);
 
         return $this;
     }
@@ -173,7 +174,7 @@ trait DdiTrait
             }
 
             if (!$match) {
-                $this->recordings->remove($key);
+                $this->recordings[$key]?->setDdi(null);
             }
         }
 
@@ -189,10 +190,19 @@ trait DdiTrait
      */
     public function getRecordings(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, RecordingInterface> $recordings */
+    $recordings = $this->recordings->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('ddi', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->recordings->matching($criteria)->toArray();
+            return $recordings->matching($criteria)->toArray();
         }
 
-        return $this->recordings->toArray();
+        return $recordings->toArray();
     }
 }
