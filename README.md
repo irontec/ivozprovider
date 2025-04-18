@@ -32,18 +32,18 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
    - Provides database and shared storage for the rest of machines
    - Powered by [Percona Server 8.0](https://www.percona.com/software/mysql-database/percona-server)
 
-And [many others](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_inside.html) open source projects.
+And [many others](https://irontec.github.io/ivozprovider/en/basic_concepts/intro/what_is_inside.html) open source projects.
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
 
 #### Cloud Service
-IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
+IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/basic_concepts/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
 
 ## Installation
 
-There are [several ways](https://irontec.github.io/ivozprovider/en/artemis/basic_concepts/installation/index.html) to install IvozProvider.
+There are [several ways](https://irontec.github.io/ivozprovider/en/basic_concepts/installation/index.html) to install IvozProvider.
 
-If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/artemis/basic_concepts/installation/install_types.html#standalone-install) installation, we recommend using one of auto-install CDs based on Debian Bookworm 12 amd64.
+If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/basic_concepts/installation/install_types.html#standalone-install) installation, we recommend using one of auto-install CDs based on Debian Bookworm 12 amd64.
 
 
 | Release | Version                    |                                                                 ISO Link                                                                 |
