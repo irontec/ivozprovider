@@ -10,8 +10,8 @@ for API in platform brand client user; do
         sudo chmod 777 -R var
         sudo setfacl -dR -m u:docker:rwX -m u:www-data:rwX -m u:root:rwX var
         sudo setfacl  -R -m u:docker:rwX -m u:www-data:rwX -m u:root:rwX var
-        bin/console cache:clear
-        bin/console cache:warmup
+        rm -rf var/cache/*
+        bin/console cache:warmup &
     popd
 done
 
