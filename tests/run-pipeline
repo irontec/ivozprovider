@@ -161,6 +161,11 @@ function library_bin_test-phpstan() {
     run_testing_base /opt/irontec/ivozprovider/library/bin/test-phpstan
 }
 
+function library_bin_test-phpstan-update-baseline() {
+    DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
+    run_testing_base /opt/irontec/ivozprovider/library/bin/test-phpstan-update-baseline
+}
+
 function library_bin_test-psalm() {
     DEPS=("/opt/irontec/ivozprovider/tests/docker/bin/prepare-composer-deps")
     run_testing_base /opt/irontec/ivozprovider/library/bin/test-psalm
@@ -442,6 +447,7 @@ function Backend_tests() {
         "library/bin/test-app-console"
         "library/bin/test-app-dependencies"
         "library/bin/test-phpstan"
+        "library/bin/test-phpstan-update-baseline"
         "library/bin/test-psalm"
         "library/bin/test-psalm-update-baseline"
         "library/bin/test-codestyle"
