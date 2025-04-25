@@ -6,7 +6,7 @@ describe('in Brands', () => {
     cy.prepareGenericPactInterceptors('Brands');
     cy.before();
 
-    cy.get('svg[data-testid="AlbumIcon"]').first().click();
+    cy.get('svg[data-testid="OfflinePinIcon"]').first().click();
 
     cy.get('header').should('contain', 'Brands');
 
