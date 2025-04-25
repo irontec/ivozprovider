@@ -4,9 +4,9 @@ import routeMapParser, {
   RouteMap,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import DialpadIcon from '@mui/icons-material/Dialpad';
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
-import SwapCallsIcon from '@mui/icons-material/SwapCalls';
+import StorageIcon from '@mui/icons-material/Storage';
 
 import entities from '../entities';
 import { AboutMe } from '../store/clientSession/aboutMe';
@@ -122,7 +122,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Infrastructure'),
-      icon: SwapCallsIcon,
+      icon: StorageIcon,
       children: [
         {
           entity: entities.ProxyUser,
@@ -149,7 +149,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Calls'),
-      icon: DialpadIcon,
+      icon: PhoneInTalkIcon,
       children: [
         {
           entity: entities.ActiveCalls,
