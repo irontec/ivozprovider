@@ -22,6 +22,7 @@ export type BillableCallPropertyList<T> = {
   endpointId?: T;
   endpointName?: T;
   ddiProvider?: T;
+  numRecordings?: T;
 };
 
 export type BillableCallProperties = BillableCallPropertyList<
