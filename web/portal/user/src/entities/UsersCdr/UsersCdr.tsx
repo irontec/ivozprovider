@@ -8,7 +8,7 @@ import EntityInterface, {
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import RingVolumeIcon from '@mui/icons-material/RingVolume';
 
 import Actions from './Action';
 import Duration from './Field/Duration';
@@ -96,7 +96,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 
 const UsersCdr: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: ChatBubbleIcon,
+  icon: RingVolumeIcon,
   iden: 'UsersCdr',
   title: _('Call', { count: 2 }),
   path: '/my/call_history',
