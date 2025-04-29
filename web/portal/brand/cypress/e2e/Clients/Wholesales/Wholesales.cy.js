@@ -7,7 +7,7 @@ describe('in Wholesales Companies', () => {
     cy.prepareGenericPactInterceptors('wholesale');
     cy.before();
 
-    cy.get('svg[data-testid="MapsHomeWorkIcon"]').first().click();
+    cy.get('svg[data-testid="BusinessIcon"]').first().click();
     cy.contains('Wholesales').click();
 
     cy.get('header').should('contain', 'Wholesales');

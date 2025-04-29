@@ -8,7 +8,7 @@ describe('in Routing Tags', () => {
     cy.prepareGenericPactInterceptors('RoutingTag');
     cy.before();
 
-    cy.get('svg[data-testid="DirectionsIcon"]').first().click();
+    cy.get('svg[data-testid="CallSplitIcon"]').first().click();
     cy.contains('Routing Tags').click();
 
     cy.get('header').should('contain', 'Routing Tags');

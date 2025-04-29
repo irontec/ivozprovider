@@ -7,7 +7,7 @@ describe('in OutgoingRouting', () => {
     cy.prepareGenericPactInterceptors('OutgoingRouting');
     cy.before();
 
-    cy.get('svg[data-testid="DirectionsIcon"]').first().click();
+    cy.get('svg[data-testid="CallSplitIcon"]').first().click();
     cy.contains('Outgoing Routing').click();
 
     cy.get('header').should('contain', 'Outgoing Routings');
