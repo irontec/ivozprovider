@@ -4,14 +4,14 @@ import routeMapParser, {
   RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import BusinessIcon from '@mui/icons-material/Business';
+import CallSplitIcon from '@mui/icons-material/CallSplit';
 import DescriptionIcon from '@mui/icons-material/Description';
-import DirectionsIcon from '@mui/icons-material/Directions';
-import EngineeringIcon from '@mui/icons-material/Engineering';
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
-import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+import RecentActorsIcon from '@mui/icons-material/RecentActors';
+import RingVolumeIcon from '@mui/icons-material/RingVolume';
+import RoomPreferencesIcon from '@mui/icons-material/RoomPreferences';
 import SettingsIcon from '@mui/icons-material/Settings';
-import TtyIcon from '@mui/icons-material/Tty';
 import WalletIcon from '@mui/icons-material/Wallet';
 
 import entities from '../entities';
@@ -42,7 +42,7 @@ const getEntityMap = (): ExtendedRouteMap => {
   const map: ExtendedRouteMap = [
     {
       label: _('Clients'),
-      icon: MapsHomeWorkIcon,
+      icon: BusinessIcon,
       children: [
         {
           entity: entities.VirtualPbx,
@@ -284,7 +284,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Routing'),
-      icon: DirectionsIcon,
+      icon: CallSplitIcon,
       children: [
         {
           entity: entities.OutgoingRouting,
@@ -490,7 +490,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Client configurations'),
-      icon: EngineeringIcon,
+      icon: RoomPreferencesIcon,
       children: [
         {
           entity: entities.ResidentialDevice,
@@ -512,7 +512,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Views'),
-      icon: LocalLibraryIcon,
+      icon: RecentActorsIcon,
       children: [
         {
           entity: {
@@ -559,7 +559,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Calls'),
-      icon: TtyIcon,
+      icon: RingVolumeIcon,
       children: [
         {
           entity: entities.ActiveCalls,
