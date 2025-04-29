@@ -8,6 +8,7 @@ use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 
 /**
 * RecordingDtoAbstract
@@ -92,6 +93,11 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
      */
     private $user = null;
 
+    /**
+     * @var BillableCallDto | null
+     */
+    private $billableCall = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -123,7 +129,8 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
             'usersCdrId' => 'usersCdr',
             'companyId' => 'company',
             'ddiId' => 'ddi',
-            'userId' => 'user'
+            'userId' => 'user',
+            'billableCallId' => 'billableCall'
         ];
     }
 
@@ -149,7 +156,8 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
             'usersCdr' => $this->getUsersCdr(),
             'company' => $this->getCompany(),
             'ddi' => $this->getDdi(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'billableCall' => $this->getBillableCall()
         ];
 
         if (!$hideSensitiveData) {
@@ -415,6 +423,36 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     public function getUserId(): ?int
     {
         if ($dto = $this->getUser()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setBillableCall(?BillableCallDto $billableCall): static
+    {
+        $this->billableCall = $billableCall;
+
+        return $this;
+    }
+
+    public function getBillableCall(): ?BillableCallDto
+    {
+        return $this->billableCall;
+    }
+
+    public function setBillableCallId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new BillableCallDto($id)
+            : null;
+
+        return $this->setBillableCall($value);
+    }
+
+    public function getBillableCallId(): ?int
+    {
+        if ($dto = $this->getBillableCall()) {
             return $dto->getId();
         }
 

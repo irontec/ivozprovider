@@ -59,5 +59,10 @@
         <join-column name="userId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="billableCall" target-entity="Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface">
+      <join-columns>
+        <join-column name="billableCallId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
+      </join-columns>
+    </many-to-one>
   </mapped-superclass>
 </doctrine-mapping>

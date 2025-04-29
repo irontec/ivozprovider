@@ -16,6 +16,7 @@ class RecordingDto extends RecordingDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'usersCdr' => 'usersCdrId',
+                'billableCall' => 'billableCallId',
                 'callid' => 'callid',
                 'calldate' => 'calldate',
                 'type' => 'type',

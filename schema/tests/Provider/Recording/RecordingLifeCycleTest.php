@@ -2,6 +2,7 @@
 
 namespace Tests\Provider\Recording;
 
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Provider\Domain\Model\Recording\Recording;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
@@ -19,6 +20,7 @@ class RecordingLifeCycleTest extends KernelTestCase
         $recordingDto = new RecordingDto();
         $recordingDto
             ->setUsersCdrId(3)
+            ->setBillableCallId(3)
             ->setCompanyId(1);
 
         return $recordingDto;
@@ -89,6 +91,7 @@ class RecordingLifeCycleTest extends KernelTestCase
 
         $this->it_triggers_lifecycle_services();
         $this->it_updates_users_cdrs_num_count(1);
+        $this->it_updates_billable_call_num_count(1);
     }
 
     protected function it_triggers_lifecycle_services(): void
@@ -96,6 +99,7 @@ class RecordingLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             UsersCdr::class,
             Recording::class,
+            BillableCall::class,
         ]);
     }
 
@@ -103,6 +107,23 @@ class RecordingLifeCycleTest extends KernelTestCase
     {
         $changelogEntries = $this->getChangelogByClass(
             UsersCdr::class
+        );
+
+        $this->assertCount(1, $changelogEntries);
+        $changelog = $changelogEntries[0];
+
+        $this->assertChangedSubset(
+            $changelog,
+            [
+                "numRecordings" => $expectedNumCount,
+            ],
+        );
+    }
+
+    protected function it_updates_billable_call_num_count(int $expectedNumCount): void
+    {
+        $changelogEntries = $this->getChangelogByClass(
+            BillableCall::class
         );
 
         $this->assertCount(1, $changelogEntries);
@@ -137,7 +158,9 @@ class RecordingLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             Recording::class,
             UsersCdr::class,
+            BillableCall::class,
         ]);
         $this->it_updates_users_cdrs_num_count(0);
+        $this->it_updates_billable_call_num_count(0);
     }
 }
