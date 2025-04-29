@@ -6,6 +6,7 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
@@ -167,6 +168,7 @@ class CompanyLifeCycleTest extends KernelTestCase
             Company::class,
             Domain::class,
             UsersCdr::class,
+            BillableCall::class,
         ]);
     }
 

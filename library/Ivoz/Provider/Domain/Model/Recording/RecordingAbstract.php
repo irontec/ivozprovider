@@ -15,10 +15,12 @@ use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 
 /**
 * RecordingAbstract
@@ -91,6 +93,11 @@ abstract class RecordingAbstract
      * inversedBy recordings
      */
     protected $user = null;
+
+    /**
+     * @var ?BillableCallInterface
+     */
+    protected $billableCall = null;
 
     /**
      * Constructor
@@ -198,7 +205,8 @@ abstract class RecordingAbstract
             ->setUsersCdr($fkTransformer->transform($dto->getUsersCdr()))
             ->setCompany($fkTransformer->transform($company))
             ->setDdi($fkTransformer->transform($dto->getDdi()))
-            ->setUser($fkTransformer->transform($dto->getUser()));
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setBillableCall($fkTransformer->transform($dto->getBillableCall()));
 
         $self->initChangelog();
 
@@ -242,7 +250,8 @@ abstract class RecordingAbstract
             ->setUsersCdr($fkTransformer->transform($dto->getUsersCdr()))
             ->setCompany($fkTransformer->transform($company))
             ->setDdi($fkTransformer->transform($dto->getDdi()))
-            ->setUser($fkTransformer->transform($dto->getUser()));
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setBillableCall($fkTransformer->transform($dto->getBillableCall()));
 
         return $this;
     }
@@ -266,7 +275,8 @@ abstract class RecordingAbstract
             ->setUsersCdr(UsersCdr::entityToDto(self::getUsersCdr(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setDdi(Ddi::entityToDto(self::getDdi(), $depth))
-            ->setUser(User::entityToDto(self::getUser(), $depth));
+            ->setUser(User::entityToDto(self::getUser(), $depth))
+            ->setBillableCall(BillableCall::entityToDto(self::getBillableCall(), $depth));
     }
 
     /**
@@ -288,7 +298,8 @@ abstract class RecordingAbstract
             'usersCdrId' => self::getUsersCdr()?->getId(),
             'companyId' => self::getCompany()->getId(),
             'ddiId' => self::getDdi()?->getId(),
-            'userId' => self::getUser()?->getId()
+            'userId' => self::getUser()?->getId(),
+            'billableCallId' => self::getBillableCall()?->getId()
         ];
     }
 
@@ -475,5 +486,17 @@ abstract class RecordingAbstract
     public function getUser(): ?UserInterface
     {
         return $this->user;
+    }
+
+    protected function setBillableCall(?BillableCallInterface $billableCall = null): static
+    {
+        $this->billableCall = $billableCall;
+
+        return $this;
+    }
+
+    public function getBillableCall(): ?BillableCallInterface
+    {
+        return $this->billableCall;
     }
 }

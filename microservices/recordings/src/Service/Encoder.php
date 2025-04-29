@@ -104,6 +104,10 @@ class Encoder
             if (is_null($recordingDto)) {
                 return null;
             }
+            $recordingDto
+                ->setBillableCallId(
+                    $accCdr->getId()
+                );
         } elseif ($accCdr instanceof UsersCdrInterface) {
             $recordingDto = $this->getRecordingFromUserCdr($accCdr);
             if (is_null($recordingDto)) {
