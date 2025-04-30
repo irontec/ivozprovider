@@ -15,6 +15,7 @@ class UserDto extends UserDtoAbstract
     public const CONTEXT_MY_PROFILE = 'myProfile';
     public const CONTEXT_PUT_MY_PROFILE = 'updateMyProfile';
     public const CONTEXT_WITH_PICKUP_GROUPS = 'withPickupGroups';
+    public const CONTEXT_DETAILED_USERS = 'detailedUsers';
 
     public const CONTEXT_TYPES = [
         self::CONTEXT_COLLECTION,
@@ -22,7 +23,8 @@ class UserDto extends UserDtoAbstract
         self::CONTEXT_DETAILED,
         self::CONTEXT_MY_PROFILE,
         self::CONTEXT_PUT_MY_PROFILE,
-        self::CONTEXT_WITH_PICKUP_GROUPS
+        self::CONTEXT_WITH_PICKUP_GROUPS,
+        self::CONTEXT_DETAILED_USERS
     ];
 
     public const CONTEXTS_WITH_PICKUP_GROUPS = [
@@ -140,6 +142,18 @@ class UserDto extends UserDtoAbstract
             ];
         }
 
+        if ($context === self::CONTEXT_DETAILED_USERS) {
+            return [
+                'id' => 'id',
+                'name' => 'name',
+                'lastname' => 'lastname',
+                'email' => 'email',
+                'extension' => 'extension',
+                'terminal' => 'terminal',
+                'location' => 'location',
+            ];
+        }
+
         $response = parent::getPropertyMap(...func_get_args());
         if ($role !== 'ROLE_COMPANY_ADMIN') {
             $response['oldPass'] = 'oldPass';
@@ -209,7 +223,7 @@ class UserDto extends UserDtoAbstract
 
     /**
      * @param int[] $pickupGroupIds
-s     */
+     */
     public function setPickupGroupIds(array $pickupGroupIds): void
     {
         $this->pickupGroupIds = $pickupGroupIds;

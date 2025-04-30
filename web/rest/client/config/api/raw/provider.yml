@@ -2167,6 +2167,13 @@ Ivoz\Provider\Domain\Model\User\User:
               type: string
             collectionFormat: 'multi'
             description: "Allows you to reduce the response to contain only the properties you need"
+    
+    get_users_detailed:
+      method: 'GET'
+      path: '/users/detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_DETAILED_USERS
+      depth: 1
+
     post:
       operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_WITH_PICKUP_GROUPS
       depth: 1
