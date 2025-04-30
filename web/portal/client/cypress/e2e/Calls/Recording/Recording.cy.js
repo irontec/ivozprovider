@@ -8,7 +8,7 @@ describe('Recording', () => {
 
     cy.contains('Calls').click();
     cy.contains('Call registries').click();
-    cy.get('svg[data-testid="SettingsVoiceIcon"]')
+    cy.get('svg[data-testid="RecordVoiceOverIcon"]')
       .first()
       .click({ force: true });
     cy.get('header').should('contain', 'Recordings');

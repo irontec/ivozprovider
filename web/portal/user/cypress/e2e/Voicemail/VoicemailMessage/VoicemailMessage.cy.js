@@ -10,7 +10,7 @@ describe('Voicemail Message', () => {
       ...VoicemailItem,
     }).as('getVoicemail-1');
 
-    cy.get('svg[data-testid="MailIcon"]').first().click();
+    cy.get('svg[data-testid="VoicemailIcon"]').first().click();
     cy.get('svg[data-testid="FormatListBulletedIcon"]').first().click();
 
     cy.get('table').should('contain', VoicemailMessageCollection.body[0].id);

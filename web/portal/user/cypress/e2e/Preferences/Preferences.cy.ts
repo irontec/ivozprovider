@@ -5,7 +5,7 @@ describe('Preferences', () => {
     cy.prepareGenericPactInterceptors('Preference');
     cy.before();
 
-    cy.get('svg[data-testid="SettingsIcon"]').first().click();
+    cy.get('svg[data-testid="ManageAccountsIcon"]').first().click();
     cy.get('header').should('contain', 'My Preferences');
   });
 
