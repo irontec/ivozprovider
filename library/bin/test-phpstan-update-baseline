@@ -3,3 +3,13 @@
 pushd /opt/irontec/ivozprovider/library/bin
   ./test-phpstan --generate-baseline
 popd
+
+pushd /opt/irontec/ivozprovider
+    if [ -n "$(git status --porcelain *phpstan-baseline.neon)" ]; then
+        echo "=============================================================================="
+        echo "Changes detected in following baselines:"
+        git status --porcelain *phpstan-baseline.neon
+        echo "=============================================================================="
+        exit 1
+    fi
+popd

@@ -1,11 +1,9 @@
 #!/bin/bash
 
-set -e
-
 HOME=/opt/irontec/ivozprovider
 cd $HOME
 
-APPS=$(find $HOME -name composer.json ! -path '*/vendor/*' ! -path '*/composer-packages/*' ! -path "*/schema/*" -printf "%h\n")
+APPS=$(find $HOME -maxdepth 3 -name composer.json ! -path '*/vendor/*' ! -path '*/composer-packages/*' ! -path "*/schema/*" -printf "%h\n" | sort)
 
 for APP in $APPS; do
     [ -d "$APP/Ivoz" ] && TARGET="Ivoz" || TARGET="src"
@@ -20,6 +18,14 @@ for APP in $APPS; do
         --no-progress \
         --autoload-file ${APP}/vendor/autoload.php \
         --configuration ${APP}/phpstan.neon \
-        ${TARGET} $1
+        ${TARGET} $1 2>/dev/null
+
+    if [ $? -ne 0 ] && [ "$1" != "--generate-baseline" ]; then
+        echo "=========================================="
+        echo "PHPStan failed in $APP"
+        echo "=========================================="
+        exit 1
+    fi
+
     popd
 done
