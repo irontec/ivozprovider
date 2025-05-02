@@ -1786,11 +1786,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$port of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerAbstract\\:\\:setPort\\(\\) expects int\\|null, int\\|string given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServer.php
-
-		-
 			message: "#^Parameter \\#2 \\$string of function explode expects string, string\\|null given\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServer.php
