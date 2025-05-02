@@ -5,7 +5,7 @@ describe('in Brute force attacks', () => {
     cy.prepareGenericPactInterceptors('Brute-force-attacks');
     cy.before();
 
-    cy.get('svg[data-testid="LocalLibraryIcon"]').first().click();
+    cy.get('svg[data-testid="RecentActorsIcon"]').first().click();
     cy.contains('Brute-force attacks').click();
 
     cy.get('header').should('contain', 'Brute-force attacks');

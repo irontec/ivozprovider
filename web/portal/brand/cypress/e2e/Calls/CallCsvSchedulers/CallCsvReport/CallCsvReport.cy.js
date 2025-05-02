@@ -6,7 +6,7 @@ describe('in Call CSV Schedulers', () => {
     cy.prepareGenericPactInterceptors('Call-Csv-Report');
     cy.before();
 
-    cy.get(`svg[data-testid="TtyIcon"]`).click();
+    cy.get(`svg[data-testid="RingVolumeIcon"]`).click();
     cy.contains('Call CSV Schedulers').click();
     cy.get(`svg[data-testid="SummarizeIcon"]`).click();
 

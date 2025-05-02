@@ -8,7 +8,7 @@ describe('in RetailAccounts', () => {
     cy.prepareGenericPactInterceptors('RetailAccount');
     cy.before();
 
-    cy.get('svg[data-testid="EngineeringIcon"]').first().click();
+    cy.get('svg[data-testid="RoomPreferencesIcon"]').first().click();
     cy.contains('Retail Accounts').click();
 
     cy.get('header').should('contain', 'Retail Accounts');
