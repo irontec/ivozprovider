@@ -12,8 +12,8 @@ Feature: Update survival devices
       """
       {
         "name": "Survival Test 1-1",
-        "proxy": "55555",
-        "outboundProxy": "66666",
+        "proxy": "survival1.test.com",
+        "outboundProxy": "192.168.1.100:5060",
         "udpPort": 5065,
         "tcpPort": 5065,
         "tlsPort": 5066,
@@ -28,8 +28,8 @@ Feature: Update survival devices
       """
       {
           "name": "Survival Test 1-1",
-          "proxy": "55555",
-          "outboundProxy": "66666",
+          "proxy": "survival1.test.com",
+          "outboundProxy": "192.168.1.100:5060",
           "udpPort": 5065,
           "tcpPort": 5065,
           "tlsPort": 5066,

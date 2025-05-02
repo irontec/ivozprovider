@@ -45,8 +45,8 @@ Feature: Retrieve locations
           "id": 1,
           "survivalDevice": {
               "name": "survival test 1",
-              "proxy": "23123",
-              "outboundProxy": "43322",
+              "proxy": "survival1.test.com",
+              "outboundProxy": "192.168.1.100:5060",
               "udpPort": 5060,
               "tcpPort": 5060,
               "tlsPort": 5061,
