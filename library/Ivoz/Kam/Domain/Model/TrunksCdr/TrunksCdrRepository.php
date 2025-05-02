@@ -35,16 +35,4 @@ interface TrunksCdrRepository extends ObjectRepository, Selectable
      * @psalm-suppress PossiblyUnusedReturnValue
      */
     public function resetOrphanCgrids(array $cgrids): int;
-
-    /**
-     * @param string $callid
-     * @return TrunksCdrInterface[]
-     */
-    public function findByCallid($callid);
-
-    /**
-     * @param string $callid
-     * @return TrunksCdrInterface | null
-     */
-    public function findOneByCallid($callid);
 }

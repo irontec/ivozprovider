@@ -18,8 +18,6 @@ class TrunksCdrRepositoryTest extends KernelTestCase
     public function test_runner()
     {
         $this->its_instantiable();
-        $this->it_finds_by_callid();
-        $this->it_finds_one_by_callid();
         $this->it_finds_unparsedCalls();
         $this->it_resets_parsed_calls();
         $this->it_get_cgrids_by_billableCalls();
@@ -36,43 +34,6 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             TrunksCdrRepository::class,
             $repository
-        );
-    }
-
-    public function it_finds_by_callid()
-    {
-        /** @var TrunksCdrRepository $repository */
-        $repository = $this
-            ->em
-            ->getRepository(TrunksCdr::class);
-
-        $result = $repository
-            ->findByCallid('017cc7c8-eb38-4bbd-9318-524a274f7000');
-
-        $this->assertCount(
-            1,
-            $result
-        );
-
-        $this->assertInstanceOf(
-            TrunksCdrInterface::class,
-            $result[0]
-        );
-    }
-
-    public function it_finds_one_by_callid()
-    {
-        /** @var TrunksCdrRepository $repository */
-        $repository = $this
-            ->em
-            ->getRepository(TrunksCdr::class);
-
-        $result = $repository
-            ->findOneByCallid('017cc7c8-eb38-4bbd-9318-524a274f7000');
-
-        $this->assertInstanceOf(
-            TrunksCdrInterface::class,
-            $result
         );
     }
 
