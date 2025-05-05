@@ -27,7 +27,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "@pactflow/pact-cypress-adapter": "https://github.com/mmadariaga/pact-cypress-adapter.git#1eb5ff0cf3db957b9bb5a24b6342f4c34b52290d",
+    "@pactflow/pact-cypress-adapter": "https://github.com/irontec/pact-cypress-adapter.git#1eb5ff0cf3db957b9bb5a24b6342f4c34b52290d",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
