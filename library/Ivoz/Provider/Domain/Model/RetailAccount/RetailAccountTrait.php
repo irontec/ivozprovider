@@ -212,6 +212,7 @@ trait RetailAccountTrait
 
     public function addDdi(DdiInterface $ddi): RetailAccountInterface
     {
+        $ddi->setRetailAccount($this);
         $this->ddis->add($ddi);
 
         return $this;
@@ -219,7 +220,7 @@ trait RetailAccountTrait
 
     public function removeDdi(DdiInterface $ddi): RetailAccountInterface
     {
-        $this->ddis->removeElement($ddi);
+        $ddi->setRetailAccount(null);
 
         return $this;
     }
@@ -271,7 +272,7 @@ trait RetailAccountTrait
             }
 
             if (!$match) {
-                $this->ddis->remove($key);
+                $this->ddis[$key]?->setRetailAccount(null);
             }
         }
 
@@ -287,11 +288,20 @@ trait RetailAccountTrait
      */
     public function getDdis(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, DdiInterface> $ddis */
+        $ddis = $this->ddis->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('retailAccount', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->ddis->matching($criteria)->toArray();
+            return $ddis->matching($criteria)->toArray();
         }
 
-        return $this->ddis->toArray();
+        return $ddis->toArray();
     }
 
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): RetailAccountInterface

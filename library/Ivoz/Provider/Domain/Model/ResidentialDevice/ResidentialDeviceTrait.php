@@ -247,6 +247,7 @@ trait ResidentialDeviceTrait
 
     public function addDdi(DdiInterface $ddi): ResidentialDeviceInterface
     {
+        $ddi->setResidentialDevice($this);
         $this->ddis->add($ddi);
 
         return $this;
@@ -254,7 +255,7 @@ trait ResidentialDeviceTrait
 
     public function removeDdi(DdiInterface $ddi): ResidentialDeviceInterface
     {
-        $this->ddis->removeElement($ddi);
+        $ddi->setResidentialDevice(null);
 
         return $this;
     }
@@ -306,7 +307,7 @@ trait ResidentialDeviceTrait
             }
 
             if (!$match) {
-                $this->ddis->remove($key);
+                $this->ddis[$key]?->setResidentialDevice(null);
             }
         }
 
@@ -322,11 +323,20 @@ trait ResidentialDeviceTrait
      */
     public function getDdis(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, DdiInterface> $ddis */
+        $ddis = $this->ddis->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('residentialDevice', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->ddis->matching($criteria)->toArray();
+            return $ddis->matching($criteria)->toArray();
         }
 
-        return $this->ddis->toArray();
+        return $ddis->toArray();
     }
 
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): ResidentialDeviceInterface
