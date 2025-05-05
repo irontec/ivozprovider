@@ -38,34 +38,6 @@ class UsersCdrDoctrineRepository extends ServiceEntityRepository implements User
             ->getSingleScalarResult();
     }
 
-    /**
-     * @param string $callid
-     * @return UsersCdrInterface[]
-     */
-    public function findByCallid($callid)
-    {
-        /** @var UsersCdrInterface[] $response */
-        $response = $this->findBy([
-            'callid' => $callid
-        ]);
-
-        return $response;
-    }
-
-    /**
-     * @param string $callid
-     * @return UsersCdrInterface | null
-     */
-    public function findOneByCallid($callid)
-    {
-        /** @var UsersCdrInterface $response */
-        $response = $this->findOneBy([
-            'callid' => $callid
-        ]);
-
-        return $response;
-    }
-
     public function countInboundCallsInLastMonthByUser(int $userId): int
     {
         $qb = $this->createQueryBuilder('self');

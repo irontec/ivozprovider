@@ -19,8 +19,6 @@ class UsersCdrRepositoryTest extends KernelTestCase
     {
         $this->its_instantiable();
         $this->it_counts_by_userId();
-        $this->it_finds_by_callid();
-        $this->it_finds_one_by_callid();
         $this->it_counts_inbound_calls_by_userId();
         $this->it_counts_outbound_calls_by_userId();
         $this->it_finds_unparsedCalls();
@@ -51,43 +49,6 @@ class UsersCdrRepositoryTest extends KernelTestCase
 
         $this->AssertEquals(
             3,
-            $result
-        );
-    }
-
-    public function it_finds_by_callid()
-    {
-        /** @var UsersCdrRepository $repository */
-        $repository = $this
-            ->em
-            ->getRepository(UsersCdr::class);
-
-        $result = $repository
-            ->findByCallid('9297bdde-309cd48f@10.10.1.123');
-
-        $this->assertCount(
-            1,
-            $result
-        );
-
-        $this->assertInstanceOf(
-            UsersCdrInterface::class,
-            $result[0]
-        );
-    }
-
-    public function it_finds_one_by_callid()
-    {
-        /** @var UsersCdrRepository $repository */
-        $repository = $this
-            ->em
-            ->getRepository(UsersCdr::class);
-
-        $result = $repository
-            ->findOneByCallid('9297bdde-309cd48f@10.10.1.123');
-
-        $this->assertInstanceOf(
-            UsersCdrInterface::class,
             $result
         );
     }

@@ -15,18 +15,6 @@ interface UsersCdrRepository extends ObjectRepository, Selectable
     public function countByUserId($userId): int;
 
     /**
-     * @param string $callid
-     * @return UsersCdrInterface[]
-     */
-    public function findByCallid($callid);
-
-    /**
-     * @param string $callid
-     * @return UsersCdrInterface | null
-     */
-    public function findOneByCallid($callid);
-
-    /**
      * * @param int $userId
      */
     public function countInboundCallsInLastMonthByUser(int $userId): int;

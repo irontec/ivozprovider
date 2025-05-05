@@ -32,34 +32,6 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
     }
 
     /**
-     * @inheritdoc
-     * @see TrunksCdrRepository::findByCallid
-     */
-    public function findByCallid($callid)
-    {
-        /** @var TrunksCdrInterface[] $response */
-        $response = $this->findBy([
-            'callid' => $callid
-        ]);
-
-        return $response;
-    }
-
-    /**
-     * @inheritdoc
-     * @see TrunksCdrRepository::findOneByCallid
-     */
-    public function findOneByCallid($callid)
-    {
-        /** @var TrunksCdrInterface $response */
-        $response = $this->findOneBy([
-            'callid' => $callid
-        ]);
-
-        return $response;
-    }
-
-    /**
      * This method expects results to be marked as parsed as soon as they're used:
      * a.k.a it does not apply any query offset, just a limit
      *
