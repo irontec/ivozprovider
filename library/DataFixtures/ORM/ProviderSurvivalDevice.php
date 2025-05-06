@@ -23,8 +23,8 @@ class ProviderSurvivalDevice extends Fixture implements DependentFixtureInterfac
 
         (function () use ($fixture) {
             $this->setName("survival test 1");
-            $this->setProxy("23123");
-            $this->setOutboundProxy("43322");
+            $this->setProxy("survival1.test.com");
+            $this->setOutboundProxy("192.168.1.100:5060");
             $this->setUdpPort(5060);
             $this->setTcpPort(5060);
             $this->setTlsPort(5061);
@@ -39,8 +39,8 @@ class ProviderSurvivalDevice extends Fixture implements DependentFixtureInterfac
         $item2 = $this->createEntityInstance(SurvivalDevice::class);
         (function () use ($fixture) {
             $this->setName("survival test 2");
-            $this->setProxy("56789");
-            $this->setOutboundProxy("67890");
+            $this->setProxy("survival2.test.com");
+            $this->setOutboundProxy("192.168.1.100:5070");
             $this->setUdpPort(5070);
             $this->setTcpPort(5071);
             $this->setTlsPort(5062);
@@ -55,8 +55,8 @@ class ProviderSurvivalDevice extends Fixture implements DependentFixtureInterfac
         $item3 = $this->createEntityInstance(SurvivalDevice::class);
         (function () use ($fixture) {
             $this->setName("Survival Test 3");
-            $this->setProxy("98765");
-            $this->setOutboundProxy("54321");
+            $this->setProxy("survival3.test.com");
+            $this->setOutboundProxy("192.168.1.100:5080");
             $this->setUdpPort(5080);
             $this->setTcpPort(5081);
             $this->setTlsPort(5063);
@@ -71,8 +71,8 @@ class ProviderSurvivalDevice extends Fixture implements DependentFixtureInterfac
         $item4 = $this->createEntityInstance(SurvivalDevice::class);
         (function () use ($fixture) {
             $this->setName("Survival Test 4");
-            $this->setProxy("11223");
-            $this->setOutboundProxy("44556");
+            $this->setProxy("survival4.test.com");
+            $this->setOutboundProxy("192.168.1.100:5090");
             $this->setUdpPort(5090);
             $this->setTcpPort(5091);
             $this->setTlsPort(5064);

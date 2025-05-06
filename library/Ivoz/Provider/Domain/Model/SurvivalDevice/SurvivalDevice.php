@@ -61,11 +61,70 @@ class SurvivalDevice extends SurvivalDeviceAbstract implements SurvivalDeviceInt
     protected function setProxy(string $proxy): static
     {
         $proxy = trim($proxy);
-        if (empty($proxy)) {
-            throw new \DomainException('Proxy cannot be empty');
-        }
+
+        Assertion::notEmpty($proxy, 'Proxy cannot be empty');
+
+        Assertion::false(
+            str_contains($proxy, ' '),
+            'Sip Proxy cannot contain spaces'
+        );
+
+        $isIpLike = (bool) preg_match('/^\d{1,3}(\.\d{1,3}){3}$/', $proxy);
+
+        $isHostName = preg_match(
+            '~^(?=.{1,253}$)(?!\-)([\pL\pN\pM]+(-[\pL\pN\pM]+)*\.)+[\pL\pN\pM]{2,}$~ixuD',
+            $proxy
+        );
+
+        $isIPv4 = (bool) filter_var($proxy, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+
+        $isValidHost = ($isHostName && !$isIpLike) || $isIPv4;
+
+        Assertion::true(
+            $isValidHost,
+            'Sip Proxy must be a valid host name or IPv4 address'
+        );
 
         return parent::setProxy($proxy);
+    }
+
+    protected function setOutboundProxy(?string $outboundProxy = null): static
+    {
+        if (empty($outboundProxy)) {
+            return parent::setOutboundProxy(null);
+        }
+
+        $outboundProxy = trim($outboundProxy);
+
+        $sipOutboundProxyParts = explode(':', $outboundProxy);
+
+        Assertion::true(
+            count($sipOutboundProxyParts) <= 2,
+            'Outbound Proxy cannot contain more than one colon'
+        );
+
+        if (count($sipOutboundProxyParts) === 2) {
+            $port = $sipOutboundProxyParts[1];
+
+            Assertion::integerish($port, 'Outbound Proxy port must be an integer-like value');
+            $port = (int) $port;
+
+            Assertion::between(
+                $port,
+                1,
+                65535,
+                'Outbound Proxy port must be a number between 1 and 65535'
+            );
+        }
+
+        $ip = $sipOutboundProxyParts[0];
+        $isIp = (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+        Assertion::true(
+            $isIp,
+            'Outbound Proxy must be a valid IPv4 address'
+        );
+
+        return parent::setOutboundProxy($outboundProxy);
     }
 
     protected function sanitizeProxyLogic(): void
