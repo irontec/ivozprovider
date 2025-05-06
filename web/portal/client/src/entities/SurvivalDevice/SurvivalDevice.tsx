@@ -12,9 +12,11 @@ const properties: SurvivalDeviceProperties = {
   },
   proxy: {
     label: _('Proxy'),
+    helpText: _('IP or domain'),
   },
   outboundProxy: {
     label: _('Outbound Proxy'),
+    helpText: _('Send to IP[:PORT] instead of SIP Proxy address'),
   },
   description: {
     label: _('Description'),
