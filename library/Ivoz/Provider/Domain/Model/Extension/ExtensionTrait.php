@@ -114,6 +114,7 @@ trait ExtensionTrait
 
     public function addUser(UserInterface $user): ExtensionInterface
     {
+        $user->setExtension($this);
         $this->users->add($user);
 
         return $this;
@@ -121,7 +122,7 @@ trait ExtensionTrait
 
     public function removeUser(UserInterface $user): ExtensionInterface
     {
-        $this->users->removeElement($user);
+        $user->setExtension(null);
 
         return $this;
     }
@@ -173,7 +174,7 @@ trait ExtensionTrait
             }
 
             if (!$match) {
-                $this->users->remove($key);
+                $this->users[$key]?->setExtension(null);
             }
         }
 
@@ -189,10 +190,19 @@ trait ExtensionTrait
      */
     public function getUsers(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, UserInterface> $users */
+        $users = $this->users->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('extension', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->users->matching($criteria)->toArray();
+            return $users->matching($criteria)->toArray();
         }
 
-        return $this->users->toArray();
+        return $users->toArray();
     }
 }

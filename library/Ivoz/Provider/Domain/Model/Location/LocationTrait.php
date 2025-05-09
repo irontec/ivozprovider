@@ -114,6 +114,7 @@ trait LocationTrait
 
     public function addUser(UserInterface $user): LocationInterface
     {
+        $user->setLocation($this);
         $this->users->add($user);
 
         return $this;
@@ -121,7 +122,7 @@ trait LocationTrait
 
     public function removeUser(UserInterface $user): LocationInterface
     {
-        $this->users->removeElement($user);
+        $user->setLocation(null);
 
         return $this;
     }
@@ -173,7 +174,7 @@ trait LocationTrait
             }
 
             if (!$match) {
-                $this->users->remove($key);
+                $this->users[$key]?->setLocation(null);
             }
         }
 
@@ -189,10 +190,19 @@ trait LocationTrait
      */
     public function getUsers(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, UserInterface> $users */
+        $users = $this->users->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('location', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->users->matching($criteria)->toArray();
+            return $users->matching($criteria)->toArray();
         }
 
-        return $this->users->toArray();
+        return $users->toArray();
     }
 }
