@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 import store, { useStoreActions, useStoreState } from 'store';
 
+import { AppConstants } from '../src/config/AppConstants';
 import { StyledAppApiLoading } from './App.styles';
 import AppRoutesGuard from './router/AppRoutesGuard';
 import { languagesList } from './translations/languages';
@@ -33,6 +34,11 @@ export default function App(): JSX.Element {
     (actions) => actions.userStatus.status.load
   );
   const loggedIn = useStoreState((state) => state.auth.loggedIn);
+  const setVersion = useStoreActions((actions) => actions.aboutInfo.setVersion);
+  const setCommit = useStoreActions((actions) => actions.aboutInfo.setCommit);
+  const setLastUpdated = useStoreActions(
+    (actions) => actions.aboutInfo.setLastUpdated
+  );
 
   useTranslation();
 
@@ -40,7 +46,18 @@ export default function App(): JSX.Element {
     if (loggedIn && token && !aboutMe) {
       loadProfile();
     }
-  }, [loggedIn, token, aboutMe, loadProfile]);
+    setVersion(AppConstants.VERSION);
+    setCommit(AppConstants.COMMIT);
+    setLastUpdated(AppConstants.LAST_UPDATED);
+  }, [
+    loggedIn,
+    token,
+    aboutMe,
+    loadProfile,
+    setVersion,
+    setCommit,
+    setLastUpdated,
+  ]);
 
   useEffect(() => {
     setLanguages(languagesList);
