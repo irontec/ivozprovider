@@ -1,7 +1,7 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import ShortcutIcon from '@mui/icons-material/Shortcut';
+import NumbersIcon from '@mui/icons-material/Numbers';
 
 import CustomActions from './Action';
 import {
@@ -137,7 +137,7 @@ const columns = ['number', 'routeType', 'target'];
 
 const extension: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: ShortcutIcon,
+  icon: NumbersIcon,
   link: '/doc/${language}/administration_portal/client/vpbx/extensions.html',
   iden: 'Extension',
   title: _('Extension', { count: 2 }),

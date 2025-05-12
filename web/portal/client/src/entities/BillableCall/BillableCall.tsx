@@ -8,7 +8,7 @@ import EntityInterface, {
   OrderDirection,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import { IvozStoreState } from 'store';
 
 import Recording from '../Recording/Recording';
@@ -103,7 +103,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 
 const billableCall: EntityInterface = {
   ...DefaultEntityBehavior,
-  icon: ChatBubbleIcon,
+  icon: PhoneInTalkIcon,
   link: '/doc/${language}/administration_portal/client/vpbx/calls/external_calls.html',
   iden: 'BillableCall',
   title: _('External call', { count: 2 }),

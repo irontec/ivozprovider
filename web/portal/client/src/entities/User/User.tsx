@@ -6,7 +6,7 @@ import EntityInterface, {
   EntityValidatorResponse,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import PersonIcon from '@mui/icons-material/Person';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
 import customAction from './Action';
@@ -239,7 +239,7 @@ const columns = [
 
 const user: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: PersonIcon,
+  icon: PeopleAltIcon,
   link: '/doc/${language}/administration_portal/client/vpbx/users.html',
   iden: 'User',
   title: _('User', { count: 2 }),
