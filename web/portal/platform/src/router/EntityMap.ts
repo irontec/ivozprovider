@@ -4,8 +4,8 @@ import routeMapParser, {
   RouteMap,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
+import RingVolumeIcon from '@mui/icons-material/RingVolume';
 import StorageIcon from '@mui/icons-material/Storage';
 
 import entities from '../entities';
@@ -149,7 +149,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Calls'),
-      icon: PhoneInTalkIcon,
+      icon: RingVolumeIcon,
       children: [
         {
           entity: entities.ActiveCalls,
