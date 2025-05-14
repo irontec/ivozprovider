@@ -1,7 +1,7 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import PhoneIcon from '@mui/icons-material/Phone';
+import FaxIcon from '@mui/icons-material/Fax';
 
 import Status from '../RetailAccount/Field/Status';
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
@@ -99,7 +99,7 @@ const properties: TerminalProperties = {
 
 const terminal: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: PhoneIcon,
+  icon: FaxIcon,
   link: '/doc/${language}/administration_portal/client/vpbx/terminals.html',
   iden: 'Terminal',
   title: _('Terminal', { count: 2 }),

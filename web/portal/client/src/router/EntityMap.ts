@@ -5,10 +5,10 @@ import routeMapParser, {
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AltRouteIcon from '@mui/icons-material/AltRoute';
-import DialpadIcon from '@mui/icons-material/Dialpad';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import PlayLessonIcon from '@mui/icons-material/PlayLesson';
-import PlumbingIcon from '@mui/icons-material/Plumbing';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import RingVolumeIcon from '@mui/icons-material/RingVolume';
+import RoomPreferencesIcon from '@mui/icons-material/RoomPreferences';
 import WalletIcon from '@mui/icons-material/Wallet';
 
 import entities from '../entities';
@@ -313,7 +313,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Routing tools'),
-      icon: PlumbingIcon,
+      icon: ConstructionIcon,
       isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
@@ -361,7 +361,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('User configuration'),
-      icon: ManageAccountsIcon,
+      icon: RoomPreferencesIcon,
       isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
@@ -400,7 +400,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Multimedia'),
-      icon: PlayLessonIcon,
+      icon: LibraryMusicIcon,
       isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
@@ -448,7 +448,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Calls'),
-      icon: DialpadIcon,
+      icon: RingVolumeIcon,
       children: [
         {
           entity: entities.UsersCdr,

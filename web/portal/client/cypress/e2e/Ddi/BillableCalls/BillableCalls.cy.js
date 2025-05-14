@@ -12,7 +12,7 @@ describe('Ddi ExternalCalls', () => {
 
     cy.get('table').should('contain', DdiCollection.body[0].ddie164);
 
-    cy.get('svg[data-testid="ChatBubbleIcon"]').first().click();
+    cy.get('svg[data-testid="PhoneInTalkIcon"]').first().click();
   });
 
   it('View details', () => {

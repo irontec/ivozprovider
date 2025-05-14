@@ -8,7 +8,7 @@ import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import ChecklistIcon from '@mui/icons-material/Checklist';
 
 import { MatchListProperties } from './MatchListProperties';
 
@@ -50,7 +50,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 
 const MatchList: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: FormatListBulletedIcon,
+  icon: ChecklistIcon,
   link: '/doc/${language}/administration_portal/client/vpbx/routing_tools/match_lists.html',
   iden: 'MatchList',
   title: _('Match List', { count: 2 }),

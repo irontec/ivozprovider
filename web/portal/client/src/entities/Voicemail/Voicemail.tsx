@@ -9,7 +9,7 @@ import EntityInterface, {
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import MailIcon from '@mui/icons-material/Mail';
+import VoicemailIcon from '@mui/icons-material/Voicemail';
 
 import VoicemailMessage from '../VoicemailMessage/VoicemailMessage';
 import { VoicemailProperties } from './VoicemailProperties';
@@ -114,7 +114,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 
 const Voicemail: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: MailIcon,
+  icon: VoicemailIcon,
   link: '/doc/${language}/administration_portal/client/vpbx/voicemails.html',
   iden: 'Voicemail',
   title: _('Voicemail', { count: 2 }),
