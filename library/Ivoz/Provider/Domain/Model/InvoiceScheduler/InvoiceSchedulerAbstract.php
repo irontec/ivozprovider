@@ -69,6 +69,11 @@ abstract class InvoiceSchedulerAbstract
     protected $taxRate = null;
 
     /**
+     * @var int
+     */
+    protected $errorCount = 0;
+
+    /**
      * @var ?InvoiceTemplateInterface
      */
     protected $invoiceTemplate = null;
@@ -95,12 +100,14 @@ abstract class InvoiceSchedulerAbstract
         string $name,
         string $unit,
         int $frequency,
-        string $email
+        string $email,
+        int $errorCount
     ) {
         $this->setName($name);
         $this->setUnit($unit);
         $this->setFrequency($frequency);
         $this->setEmail($email);
+        $this->setErrorCount($errorCount);
     }
 
     abstract public function getId(): null|string|int;
@@ -172,6 +179,8 @@ abstract class InvoiceSchedulerAbstract
         Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
         $email = $dto->getEmail();
         Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $errorCount = $dto->getErrorCount();
+        Assertion::notNull($errorCount, 'getErrorCount value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $company = $dto->getCompany();
@@ -181,7 +190,8 @@ abstract class InvoiceSchedulerAbstract
             $name,
             $unit,
             $frequency,
-            $email
+            $email,
+            $errorCount
         );
 
         $self
@@ -217,6 +227,8 @@ abstract class InvoiceSchedulerAbstract
         Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
         $email = $dto->getEmail();
         Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $errorCount = $dto->getErrorCount();
+        Assertion::notNull($errorCount, 'getErrorCount value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $company = $dto->getCompany();
@@ -231,6 +243,7 @@ abstract class InvoiceSchedulerAbstract
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setTaxRate($dto->getTaxRate())
+            ->setErrorCount($errorCount)
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
             ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($company))
@@ -253,6 +266,7 @@ abstract class InvoiceSchedulerAbstract
             ->setLastExecutionError(self::getLastExecutionError())
             ->setNextExecution(self::getNextExecution())
             ->setTaxRate(self::getTaxRate())
+            ->setErrorCount(self::getErrorCount())
             ->setInvoiceTemplate(InvoiceTemplate::entityToDto(self::getInvoiceTemplate(), $depth))
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -273,6 +287,7 @@ abstract class InvoiceSchedulerAbstract
             'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
             'taxRate' => self::getTaxRate(),
+            'errorCount' => self::getErrorCount(),
             'invoiceTemplateId' => self::getInvoiceTemplate()?->getId(),
             'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany()->getId(),
@@ -425,6 +440,20 @@ abstract class InvoiceSchedulerAbstract
     public function getTaxRate(): ?float
     {
         return $this->taxRate;
+    }
+
+    protected function setErrorCount(int $errorCount): static
+    {
+        Assertion::greaterOrEqualThan($errorCount, 0, 'errorCount provided "%s" is not greater or equal than "%s".');
+
+        $this->errorCount = $errorCount;
+
+        return $this;
+    }
+
+    public function getErrorCount(): int
+    {
+        return $this->errorCount;
     }
 
     protected function setInvoiceTemplate(?InvoiceTemplateInterface $invoiceTemplate = null): static
