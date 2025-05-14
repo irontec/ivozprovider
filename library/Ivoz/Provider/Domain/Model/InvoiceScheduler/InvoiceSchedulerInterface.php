@@ -95,6 +95,8 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     public function getTaxRate(): ?float;
 
+    public function getErrorCount(): int;
+
     public function getInvoiceTemplate(): ?InvoiceTemplateInterface;
 
     public function getBrand(): BrandInterface;
