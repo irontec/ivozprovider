@@ -20,7 +20,7 @@ function setup_bind()
     sed -r -i "s/(jobs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
 
     # Restart Local DNS
-    /bin/systemctl restart bind9
+    /bin/systemctl restart named
 }
 
 function setup_mysql()

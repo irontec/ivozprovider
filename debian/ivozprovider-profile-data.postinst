@@ -34,7 +34,7 @@ function setup_bind()
     sed -r -i "s/(hep             IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
 
     # Restart Local DNS
-    /bin/systemctl start bind9
+    /bin/systemctl start named
 }
 
 function setup_mysql_access()
