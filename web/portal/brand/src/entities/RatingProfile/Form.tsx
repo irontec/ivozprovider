@@ -20,10 +20,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const Retail = store.getState().entities.entities.Retail;
   const Wholesale = store.getState().entities.entities.Wholesale;
 
-  const isRetailPath =
-    match.pattern.path.indexOf(Retail.localPath || '_') === 0;
-  const isWholesalePath =
-    match.pattern.path.indexOf(Wholesale.localPath || '_') === 0;
+  const isRetailPath = match.pattern.path.includes(Retail.localPath || '_');
+  const isWholesalePath = match.pattern.path.includes(
+    Wholesale.localPath || '_'
+  );
 
   const groups: Array<FieldsetGroups | false> = [
     {
