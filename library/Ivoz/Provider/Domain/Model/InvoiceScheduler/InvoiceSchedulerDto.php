@@ -23,6 +23,9 @@ class InvoiceSchedulerDto extends InvoiceSchedulerDtoAbstract
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        $result = parent::getPropertyMap(...func_get_args());
+        unset($result['errorCount']);
+
+        return $result;
     }
 }

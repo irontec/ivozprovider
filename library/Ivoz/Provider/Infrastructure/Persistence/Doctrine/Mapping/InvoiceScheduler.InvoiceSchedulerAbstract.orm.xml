@@ -35,6 +35,12 @@
     </field>
     <field name="nextExecution" type="datetime" column="nextExecution" nullable="true"/>
     <field name="taxRate" type="decimal" column="taxRate" precision="10" scale="3" nullable="true"/>
+    <field name="errorCount" type="smallint" column="errorCount" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
     <many-to-one field="invoiceTemplate" target-entity="Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface" fetch="LAZY">
       <join-columns>
         <join-column name="invoiceTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>

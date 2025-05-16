@@ -98,7 +98,8 @@ class NextExecutionResolverSpec extends ObjectBehavior
             $scheduler,
             [
                 'getNextExecution' => new \DateTime(),
-                'getInterval' => new \DateInterval('P1W')
+                'getInterval' => new \DateInterval('P1W'),
+                'getErrorCount' => 0,
             ]
         );
 
@@ -123,14 +124,45 @@ class NextExecutionResolverSpec extends ObjectBehavior
             ->willReturn($schedulerDto)
             ->shouldBeCalled();
 
-
-
         $this
             ->entityTools
             ->updateEntityByDto(
                 $scheduler->reveal(),
                 $schedulerDto
             )->shouldBeCalled();
+
+        $this->execute(
+            $scheduler
+        );
+    }
+
+    function it_not_updates_next_execution_if_error_count_gt_zero()
+    {
+        $schedulerDto = $this->getTestDouble(InvoiceSchedulerDto::class);
+        $schedulerDto
+            ->setNextExecution(
+                Argument::type(\DateTime::class)
+            )
+            ->shouldNotBeCalled();
+
+        $scheduler = $this->getTestDouble(InvoiceScheduler::class);
+        $this->getterProphecy(
+            $scheduler,
+            [
+                'getNextExecution' => new \DateTime(),
+                'getErrorCount' => 1,
+            ]
+        );
+
+        $scheduler
+            ->hasChanged('lastExecution')
+            ->willReturn(false)
+            ->shouldNotBeCalled();
+
+        $scheduler
+            ->hasChanged('nextExecution')
+            ->willReturn(false)
+            ->shouldNotBeCalled();
 
         $this->execute(
             $scheduler

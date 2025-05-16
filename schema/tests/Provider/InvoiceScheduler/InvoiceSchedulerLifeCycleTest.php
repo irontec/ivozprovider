@@ -137,6 +137,7 @@ class InvoiceSchedulerLifeCycleTest extends KernelTestCase
                 'email',
                 'nextExecution',
                 'taxRate',
+                'errorCount',
                 'brandId',
                 'companyId',
                 'id',

@@ -8,6 +8,8 @@ use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 
 class SetExecutionError
 {
+    private const MAX_RETRIES_ON_ERROR = 3;
+
     public function __construct(
         private EntityTools $entityTools,
     ) {
@@ -28,8 +30,27 @@ class SetExecutionError
             ->entityTools
             ->entityToDto($scheduler);
 
+        $maxRetriesReached = $scheduler->getErrorCount() >= self::MAX_RETRIES_ON_ERROR;
+        $mustResetError = is_null($error) || $maxRetriesReached;
+
+        $errorCount = $mustResetError
+            ? 0
+            : $scheduler->getErrorCount() + 1;
+
         $invoiceSchedulerDto
-            ->setLastExecutionError($error);
+            ->setErrorCount(
+                $errorCount,
+            );
+
+        $cleanError = !$maxRetriesReached && $errorCount > 0;
+        $errorMsg = $cleanError
+            ? null
+            : $error;
+
+        $invoiceSchedulerDto
+            ->setLastExecutionError(
+                $errorMsg,
+            );
 
         $this->entityTools->updateEntityByDto(
             $scheduler,

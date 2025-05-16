@@ -61,6 +61,11 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var int|null
      */
+    private $errorCount = 0;
+
+    /**
+     * @var int|null
+     */
     private $id = null;
 
     /**
@@ -111,6 +116,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
             'lastExecutionError' => 'lastExecutionError',
             'nextExecution' => 'nextExecution',
             'taxRate' => 'taxRate',
+            'errorCount' => 'errorCount',
             'id' => 'id',
             'invoiceTemplateId' => 'invoiceTemplate',
             'brandId' => 'brand',
@@ -133,6 +139,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
             'lastExecutionError' => $this->getLastExecutionError(),
             'nextExecution' => $this->getNextExecution(),
             'taxRate' => $this->getTaxRate(),
+            'errorCount' => $this->getErrorCount(),
             'id' => $this->getId(),
             'invoiceTemplate' => $this->getInvoiceTemplate(),
             'brand' => $this->getBrand(),
@@ -249,6 +256,18 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     public function getTaxRate(): ?float
     {
         return $this->taxRate;
+    }
+
+    public function setErrorCount(int $errorCount): static
+    {
+        $this->errorCount = $errorCount;
+
+        return $this;
+    }
+
+    public function getErrorCount(): ?int
+    {
+        return $this->errorCount;
     }
 
     /**
