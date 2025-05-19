@@ -59,15 +59,18 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         return $response;
     }
 
-    /**
-     * @return BillableCall[]
-     */
-    public function findByCallid(string $callid)
+    public function findLastByCallidAndDirection(string $callid, string $direction): ?BillableCallInterface
     {
-        /** @var BillableCall[] $response */
-        $response = $this->findBy([
-            'callid' => $callid
-        ]);
+        /** @var BillableCall $response */
+        $response = $this->findOneBy(
+            [
+            'callid' => $callid,
+            'direction' => $direction,
+            ],
+            [
+            'startTime' => 'DESC',
+            ]
+        );
 
         return $response;
     }
