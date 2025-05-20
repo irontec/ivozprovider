@@ -41,6 +41,11 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
             return;
         }
 
+        $hasErrors = $scheduler->getErrorCount() > 0;
+        if ($hasErrors) {
+            return;
+        }
+
         $this->updateNextExecution($scheduler);
     }
 }
