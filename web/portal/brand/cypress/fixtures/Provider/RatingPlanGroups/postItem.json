@@ -1,0 +1,43 @@
+{
+  "request": {
+    "name": {
+      "en": "New",
+      "es": "Nuevo",
+      "ca": "Nou",
+      "it": "Nouvo"
+    },
+    "description": {
+      "en": "New Rating plan",
+      "es": "Nuevo Rating plan",
+      "ca": "Nou Rating plan",
+      "it": "Nouvo Rating plan"
+    }
+  },
+  "response": {
+    "body": {
+      "id": 3,
+      "name": {
+        "en": "New",
+        "es": "Nuevo",
+        "ca": "Nou",
+        "it": "Nouvo"
+      },
+      "description": {
+        "en": "New Rating plan",
+        "es": "Nuevo Rating plan",
+        "ca": "Nou Rating plan",
+        "it": "Nouvo Rating plan"
+      },
+      "currency": null
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

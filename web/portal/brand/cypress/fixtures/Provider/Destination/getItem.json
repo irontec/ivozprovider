@@ -1,0 +1,16 @@
+{
+  "body": {
+    "prefix": "+94600",
+    "id": 1,
+    "name": {
+      "en": "Bilbao",
+      "es": "Bilbao",
+      "ca": "Bilbao",
+      "it": "Bilbao"
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

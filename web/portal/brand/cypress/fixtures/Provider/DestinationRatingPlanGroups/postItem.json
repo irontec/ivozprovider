@@ -1,0 +1,24 @@
+{
+  "request": {
+    "body": {
+      "name": {
+        "en": "New",
+        "es": "Nuevo",
+        "ca": "Nou",
+        "it": "Nouvo"
+      },
+      "description": {
+        "en": "New Rating plan",
+        "es": "Nuevo Rating plan",
+        "ca": "Nou Rating plan",
+        "it": "Nouvo Rating plan"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  }
+}
