@@ -1,0 +1,23 @@
+{
+    "response": {
+      "body": {
+      "id": 1,
+      "name": {
+        "en": "Something",
+        "es": "Algo",
+        "ca": "Algo mes",
+        "it": "Più"
+      },
+      "description": {
+        "en": "en",
+        "es": "es",
+        "ca": "ca",
+        "it": "it"
+      }
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

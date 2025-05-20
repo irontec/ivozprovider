@@ -1,0 +1,73 @@
+{
+  "request": {
+    "name": {
+      "en": "Updated Standard",
+      "es": "Standard Actualizado",
+      "it": "Standard",
+      "ca": "Standard Actualizado"
+    },
+    "description": {
+      "en": "New Description",
+      "es": "New Description",
+      "it": "New Description",
+      "ca": "New Description"
+    },
+    "currency": 2,
+    "importerArguments": {
+      "scape": null,
+      "columns": [
+        "destinationPrefix",
+        "destinationName",
+        "connectionCharge",
+        "rateCost",
+        "rateIncrement"
+      ],
+      "delimiter": ",",
+      "enclosure": "\"",
+      "ignoreFirst": false
+    }
+  },
+  "response": {
+    "body": {
+      "status": "waiting",
+      "lastExecutionError": null,
+      "deductibleConnectionFee": false,
+      "id": 2,
+      "name": {
+        "en": "Updated Standard",
+        "es": "Standard Actualizado",
+        "ca": "Standard Actualizado",
+        "it": "Standard"
+      },
+      "description": {
+        "en": "New Description",
+        "es": "New Description",
+        "ca": "New Description",
+        "it": "New Description"
+      },
+      "file": {
+        "fileSize": 84,
+        "mimeType": "text/plain; charset=us-ascii",
+        "baseName": "prices.csv",
+        "importerArguments": {
+          "scape": null,
+          "columns": [
+            "destinationPrefix",
+            "destinationName",
+            "connectionCharge",
+            "rateCost",
+            "rateIncrement"
+          ],
+          "delimiter": ",",
+          "enclosure": "\"",
+          "ignoreFirst": false
+        }
+      },
+      "currency": 2
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

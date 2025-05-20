@@ -1,0 +1,24 @@
+{
+  "body": [
+    {
+      "weight": 10,
+      "timingType": "always",
+      "timeIn": "00:00:00",
+      "monday": true,
+      "tuesday": true,
+      "wednesday": true,
+      "thursday": true,
+      "friday": true,
+      "saturday": true,
+      "sunday": true,
+      "id": 1,
+      "ratingPlanGroup": 1,
+      "destinationRateGroup": 1
+    }
+  ],
+  "matchingRules": {
+    "$.body.id": {
+      "match": "true"
+    }
+  }
+}

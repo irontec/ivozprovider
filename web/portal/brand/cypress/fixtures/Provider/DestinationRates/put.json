@@ -1,0 +1,24 @@
+{
+  "request": {
+    "cost": 3.1,
+    "connectFee": 0.50,
+    "rateIncrement": "1s",
+    "groupIntervalStart": "1s",
+    "id": 1
+  },
+  "response": {
+    "body": {
+      "cost": 3.1,
+      "connectFee": 0.5,
+      "rateIncrement": "1s",
+      "groupIntervalStart": "1s",
+      "id": 1,
+      "destinationRateGroup": 1,
+      "destination": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

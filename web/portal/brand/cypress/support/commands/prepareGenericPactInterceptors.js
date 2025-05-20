@@ -24,6 +24,9 @@ import DdiProvidersCollection from '../../fixtures/Provider/DdiProviders/getColl
 import DdiProvidersAddressesCollection from '../../fixtures/Provider/DdiProviders/getProviderAddressesCollection.json';
 import DdiProvidersRegistrationsCollection from '../../fixtures/Provider/DdiProviders/getProviderRegistrationsCollection.json';
 import DdisCollection from '../../fixtures/Provider/Ddis/getCollection.json';
+import DestinationCollection from '../../fixtures/Provider/Destination/getCollection.json';
+import DestinationRateGroupCollection from '../../fixtures/Provider/DestinationRateGroup/getCollection.json';
+import DestinationRatesCollection from '../../fixtures/Provider/DestinationRates/getCollection.json';
 import DomainsCollection from '../../fixtures/Provider/Domains/getCollection.json';
 import ExtensionsCollection from '../../fixtures/Provider/Extension/getCollection.json';
 import FeaturesCollection from '../../fixtures/Provider/Features/getCollection.json';
@@ -46,6 +49,7 @@ import OutgoingDdiRulesCollection from '../../fixtures/Provider/OutgoingDdiRules
 import OutgoingRoutingCollection from '../../fixtures/Provider/OutgoingRoutings/getCollection.json';
 import ProxyTrunksCollection from '../../fixtures/Provider/ProxyTrunks/getCollection.json';
 import ProxyUsersCollection from '../../fixtures/Provider/ProxyUsers/getCollection.json';
+import RatingPlanCollection from '../../fixtures/Provider/RatingPlan/getCollections.json';
 import RatingPlanGroupCollection from '../../fixtures/Provider/RatingPlanGroups/getCollections.json';
 import RatingProfilesCollection from '../../fixtures/Provider/RatingProfile/getCollection.json';
 import ResidentialDevicesCollection from '../../fixtures/Provider/ResidentialDevices/getCollection.json';
@@ -357,5 +361,21 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/call_csv_reports?*', {
       ...CallCsvReportCollection,
     }).as('getCallCsvSchedulers');
+
+    cy.intercept('GET', '**/api/brand/rating_plans*', {
+      ...RatingPlanCollection,
+    }).as('getRatingPlan');
+
+    cy.intercept('GET', '**/api/brand/destination_rate_groups*', {
+      ...DestinationRateGroupCollection,
+    }).as('getDestinationRateGroup');
+
+    cy.intercept('GET', '**/api/brand/destination_rates*', {
+      ...DestinationRatesCollection,
+    }).as('getDestinationRateGroup');
+
+    cy.intercept('GET', '**/api/brand/destinations*', {
+      ...DestinationCollection,
+    }).as('getDestination');
   }
 );
