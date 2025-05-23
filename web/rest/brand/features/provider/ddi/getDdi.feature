@@ -57,6 +57,7 @@ Feature: Retrieve ddis
           "ddi": "123",
           "ddie164": "+34123",
           "description": "Description for DDI 123",
+          "useDdiProviderRoutingTag": true,
           "id": 1,
           "company": "~",
           "ddiProvider": {
@@ -79,6 +80,7 @@ Feature: Retrieve ddis
                   "es": "Europa",
                   "ca": "Europa"
               }
-          }
+          },
+          "routingTag": null
       }
       """

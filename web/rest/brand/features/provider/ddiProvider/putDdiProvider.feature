@@ -14,7 +14,8 @@ Feature: Update ddi providers
           "description": "UpdateDDIProviderDescription",
           "name": "UpdateDDIProviderName",
           "proxyTrunk": 1,
-          "transformationRuleSet": 1
+          "transformationRuleSet": 1,
+          "routingTag": 2
       }
       """
      Then the response status code should be 200
@@ -28,7 +29,8 @@ Feature: Update ddi providers
             "id": 1,
             "transformationRuleSet": 1,
             "proxyTrunk": 1,
-            "mediaRelaySet": 0
+            "mediaRelaySet": 0,
+            "routingTag": 2
         }
       """
 

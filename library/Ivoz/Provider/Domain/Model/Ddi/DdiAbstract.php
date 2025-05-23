@@ -24,6 +24,7 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom;
@@ -39,6 +40,7 @@ use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag;
 
 /**
 * DdiAbstract
@@ -92,6 +94,11 @@ abstract class DdiAbstract
      * comment: enum:inout|out
      */
     protected $type = 'inout';
+
+    /**
+     * @var bool
+     */
+    protected $useDdiProviderRoutingTag = true;
 
     /**
      * @var ?CompanyInterface
@@ -172,16 +179,23 @@ abstract class DdiAbstract
     protected $retailAccount = null;
 
     /**
+     * @var ?RoutingTagInterface
+     */
+    protected $routingTag = null;
+
+    /**
      * Constructor
      */
     protected function __construct(
         string $ddi,
         string $recordCalls,
-        string $type
+        string $type,
+        bool $useDdiProviderRoutingTag
     ) {
         $this->setDdi($ddi);
         $this->setRecordCalls($recordCalls);
         $this->setType($type);
+        $this->setUseDdiProviderRoutingTag($useDdiProviderRoutingTag);
     }
 
     abstract public function getId(): null|string|int;
@@ -251,13 +265,16 @@ abstract class DdiAbstract
         Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
         $type = $dto->getType();
         Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $useDdiProviderRoutingTag = $dto->getUseDdiProviderRoutingTag();
+        Assertion::notNull($useDdiProviderRoutingTag, 'getUseDdiProviderRoutingTag value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
             $ddi,
             $recordCalls,
-            $type
+            $type,
+            $useDdiProviderRoutingTag
         );
 
         $self
@@ -280,7 +297,8 @@ abstract class DdiAbstract
             ->setCountry($fkTransformer->transform($dto->getCountry()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
-            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         $self->initChangelog();
 
@@ -303,6 +321,8 @@ abstract class DdiAbstract
         Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
         $type = $dto->getType();
         Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $useDdiProviderRoutingTag = $dto->getUseDdiProviderRoutingTag();
+        Assertion::notNull($useDdiProviderRoutingTag, 'getUseDdiProviderRoutingTag value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
@@ -315,6 +335,7 @@ abstract class DdiAbstract
             ->setRouteType($dto->getRouteType())
             ->setFriendValue($dto->getFriendValue())
             ->setType($type)
+            ->setUseDdiProviderRoutingTag($useDdiProviderRoutingTag)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
@@ -329,7 +350,8 @@ abstract class DdiAbstract
             ->setCountry($fkTransformer->transform($dto->getCountry()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
-            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         return $this;
     }
@@ -348,6 +370,7 @@ abstract class DdiAbstract
             ->setRouteType(self::getRouteType())
             ->setFriendValue(self::getFriendValue())
             ->setType(self::getType())
+            ->setUseDdiProviderRoutingTag(self::getUseDdiProviderRoutingTag())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setConferenceRoom(ConferenceRoom::entityToDto(self::getConferenceRoom(), $depth))
@@ -362,7 +385,8 @@ abstract class DdiAbstract
             ->setCountry(Country::entityToDto(self::getCountry(), $depth))
             ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
             ->setConditionalRoute(ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
-            ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth));
+            ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth))
+            ->setRoutingTag(RoutingTag::entityToDto(self::getRoutingTag(), $depth));
     }
 
     /**
@@ -379,6 +403,7 @@ abstract class DdiAbstract
             'routeType' => self::getRouteType(),
             'friendValue' => self::getFriendValue(),
             'type' => self::getType(),
+            'useDdiProviderRoutingTag' => self::getUseDdiProviderRoutingTag(),
             'companyId' => self::getCompany()?->getId(),
             'brandId' => self::getBrand()->getId(),
             'conferenceRoomId' => self::getConferenceRoom()?->getId(),
@@ -393,7 +418,8 @@ abstract class DdiAbstract
             'countryId' => self::getCountry()?->getId(),
             'residentialDeviceId' => self::getResidentialDevice()?->getId(),
             'conditionalRouteId' => self::getConditionalRoute()?->getId(),
-            'retailAccountId' => self::getRetailAccount()?->getId()
+            'retailAccountId' => self::getRetailAccount()?->getId(),
+            'routingTagId' => self::getRoutingTag()?->getId()
         ];
     }
 
@@ -551,6 +577,18 @@ abstract class DdiAbstract
     public function getType(): string
     {
         return $this->type;
+    }
+
+    protected function setUseDdiProviderRoutingTag(bool $useDdiProviderRoutingTag): static
+    {
+        $this->useDdiProviderRoutingTag = $useDdiProviderRoutingTag;
+
+        return $this;
+    }
+
+    public function getUseDdiProviderRoutingTag(): bool
+    {
+        return $this->useDdiProviderRoutingTag;
     }
 
     public function setCompany(?CompanyInterface $company = null): static
@@ -731,5 +769,17 @@ abstract class DdiAbstract
     public function getRetailAccount(): ?RetailAccountInterface
     {
         return $this->retailAccount;
+    }
+
+    protected function setRoutingTag(?RoutingTagInterface $routingTag = null): static
+    {
+        $this->routingTag = $routingTag;
+
+        return $this;
+    }
+
+    public function getRoutingTag(): ?RoutingTagInterface
+    {
+        return $this->routingTag;
     }
 }

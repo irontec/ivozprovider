@@ -22,6 +22,7 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -131,6 +132,8 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function getType(): string;
 
+    public function getUseDdiProviderRoutingTag(): bool;
+
     public function setCompany(?CompanyInterface $company = null): static;
 
     public function getCompany(): ?CompanyInterface;
@@ -166,6 +169,8 @@ interface DdiInterface extends LoggableEntityInterface
     public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
     public function getRetailAccount(): ?RetailAccountInterface;
+
+    public function getRoutingTag(): ?RoutingTagInterface;
 
     public function addRecording(RecordingInterface $recording): DdiInterface;
 

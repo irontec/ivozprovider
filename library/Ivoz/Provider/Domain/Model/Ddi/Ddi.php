@@ -75,6 +75,10 @@ class Ddi extends DdiAbstract implements DdiInterface
         if ($this->getType() === DdiInterface::TYPE_OUT) {
             $this->setDdiProvider(null);
         }
+
+        if ($this->getUseDdiProviderRoutingTag()) {
+            $this->setRoutingTag(null);
+        }
     }
 
     /**

@@ -531,6 +531,17 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
             in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
         - company:
             isNull: ~
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+      - and:
+        - brand:
+            eq: "user.getBrand().getId()"
+      - or:
+        - inheritedOrNull:
+            ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
+      - or:
+        - inheritedOrNull:
+            routingTag: 'Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag'
     swagger_context:
       required:
       - brand
@@ -558,6 +569,9 @@ Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
         - inherited:
             mediaRelaySet: 'Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet'
+      - or:
+        - inheritedOrNull:
+            routingTag: 'Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag'
     swagger_context:
       required:
       - brand

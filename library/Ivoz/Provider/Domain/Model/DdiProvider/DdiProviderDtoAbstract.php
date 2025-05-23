@@ -8,6 +8,7 @@ use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto;
 use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto;
 
@@ -55,6 +56,11 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     private $mediaRelaySet = null;
 
     /**
+     * @var RoutingTagDto | null
+     */
+    private $routingTag = null;
+
+    /**
      * @var DdiProviderRegistrationDto[] | null
      */
     private $ddiProviderRegistrations = null;
@@ -85,7 +91,8 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet',
             'proxyTrunkId' => 'proxyTrunk',
-            'mediaRelaySetId' => 'mediaRelaySet'
+            'mediaRelaySetId' => 'mediaRelaySet',
+            'routingTagId' => 'routingTag'
         ];
     }
 
@@ -102,6 +109,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'proxyTrunk' => $this->getProxyTrunk(),
             'mediaRelaySet' => $this->getMediaRelaySet(),
+            'routingTag' => $this->getRoutingTag(),
             'ddiProviderRegistrations' => $this->getDdiProviderRegistrations(),
             'ddiProviderAddresses' => $this->getDdiProviderAddresses()
         ];
@@ -273,6 +281,36 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     public function getMediaRelaySetId(): ?int
     {
         if ($dto = $this->getMediaRelaySet()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setRoutingTag(?RoutingTagDto $routingTag): static
+    {
+        $this->routingTag = $routingTag;
+
+        return $this;
+    }
+
+    public function getRoutingTag(): ?RoutingTagDto
+    {
+        return $this->routingTag;
+    }
+
+    public function setRoutingTagId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new RoutingTagDto($id)
+            : null;
+
+        return $this->setRoutingTag($value);
+    }
+
+    public function getRoutingTagId(): ?int
+    {
+        if ($dto = $this->getRoutingTag()) {
             return $dto->getId();
         }
 

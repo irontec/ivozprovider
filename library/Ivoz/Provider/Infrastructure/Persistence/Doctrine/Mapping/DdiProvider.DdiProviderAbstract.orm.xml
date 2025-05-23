@@ -35,5 +35,10 @@
         <join-column name="mediaRelaySetId" referenced-column-name="id" on-delete="RESTRICT" nullable="true"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="routingTag" target-entity="Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="routingTagId" referenced-column-name="id" on-delete="RESTRICT" nullable="true"/>
+      </join-columns>
+    </many-to-one>
   </mapped-superclass>
 </doctrine-mapping>
