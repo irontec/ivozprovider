@@ -36,6 +36,19 @@ class ProviderRoutingTag extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        $item2 = $this->createEntityInstance(RoutingTag::class);
+        (function () use ($fixture) {
+            $this->setName("Routing Tag Two");
+            $this->setTag('234#');
+            $this->setBrand(
+                $fixture->getReference('_reference_ProviderBrand1')
+            );
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderRoutingTag2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
+
         $manager->flush();
     }
 
