@@ -39,6 +39,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'type',
         'ddiProvider',
         'description',
+        'useDdiProviderRoutingTag',
+        'routingTag',
       ],
     },
   ];
