@@ -31,7 +31,7 @@ Feature: Update locations
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/locations/1" with body:
+      And I send a "PUT" request to "/locations/2" with body:
       """
       {
         "userIds": [
@@ -46,12 +46,13 @@ Feature: Update locations
       And the JSON should be like:
       """
       {
-          "name": "testLocation",
-          "description": "Test Location description",
-          "id": 1,
+          "name": "altLocation",
+          "description": "Alternative Location description",
+          "id": 2,
+          "survivalDevice": null,
           "userIds": [
-            1,
-            2
+              1,
+              2
           ]
       }
       """
@@ -59,13 +60,16 @@ Feature: Update locations
   Scenario: Retrieve certain user json
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "users/3"
+      And I send a "GET" request to "users/1"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
+      And the JSON should be equal to:
       """
       {
-        "location": null
+        "useDefaultLocation": false,
+        "location": {
+           "id": 1
+        }
       }
       """

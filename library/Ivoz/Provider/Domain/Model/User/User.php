@@ -110,6 +110,15 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
 
     protected function sanitizeLocation(): void
     {
+        $mustResetUseDefaultLocation =
+            !$this->hasChanged('useDefaultLocation')
+            && $this->hasChanged('locationId');
+
+        if ($mustResetUseDefaultLocation) {
+            $this->setUseDefaultLocation(false);
+            return;
+        }
+
         $useDefaultLocation = $this->getUseDefaultLocation();
 
         if (!$useDefaultLocation) {
