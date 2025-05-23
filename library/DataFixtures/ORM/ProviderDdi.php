@@ -51,6 +51,7 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setDdiProvider($fixture->getReference('_reference_ProviderDdiProvider1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
+            $this->setRoutingTag($fixture->getReference('_reference_ProviderRoutingTag1'));
         })->call($item2);
 
         $this->addReference('_reference_ProviderDdi2', $item2);
@@ -83,7 +84,8 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
             ProviderCompany::class,
             ProviderBrand::class,
             ProviderDdiProvider::class,
-            ProviderCountry::class
+            ProviderCountry::class,
+            ProviderRoutingTag::class,
         );
     }
 }

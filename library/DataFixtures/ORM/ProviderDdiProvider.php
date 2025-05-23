@@ -29,6 +29,7 @@ class ProviderDdiProvider extends Fixture implements DependentFixtureInterface
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setProxyTrunk($fixture->getReference('_reference_ProviderProxyTrunk1'));
             $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
+            $this->setRoutingTag($fixture->getReference('_reference_ProviderRoutingTag2'));
         })->call($item1);
 
         $this->addReference('_reference_ProviderDdiProvider1', $item1);
@@ -45,6 +46,7 @@ class ProviderDdiProvider extends Fixture implements DependentFixtureInterface
             ProviderTransformationRuleSet::class,
             ProviderProxyTrunk::class,
             ProviderMediaRelaySet::class,
+            ProviderRoutingTag::class,
         );
     }
 }
