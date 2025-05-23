@@ -10,6 +10,7 @@ class RawRecordingInfo
     public function __construct(
         protected string $fullFileName,
         protected string $callid,
+        protected string $direction,
         protected int $size,
     ) {
         $this->fileName = basename($fullFileName);
@@ -39,5 +40,10 @@ class RawRecordingInfo
     public function getSize(): int
     {
         return $this->size;
+    }
+
+    public function getDirection(): string
+    {
+        return $this->direction;
     }
 }

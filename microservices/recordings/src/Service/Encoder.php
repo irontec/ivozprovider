@@ -71,18 +71,16 @@ class Encoder
                 $rawRecordingInfo->getFileName()
             ));
 
-            $kamAccCdrs = $this->getAccCdrs($rawRecordingInfo);
+            $kamAccCdr = $this->getAccCdr($rawRecordingInfo);
 
-            if (empty($kamAccCdrs)) {
+            if (is_null($kamAccCdr)) {
                 continue;
             }
 
-            foreach ($kamAccCdrs as $kamAccCdr) {
-                $recordingDto = $this->processAccCdr($kamAccCdr, $rawRecordingInfo);
+            $recordingDto = $this->processAccCdr($kamAccCdr, $rawRecordingInfo);
 
-                if (!is_null($recordingDto)) {
-                    $this->storeRecording($recordingDto);
-                }
+            if (!is_null($recordingDto)) {
+                $this->storeRecording($recordingDto);
             }
 
             $this->fileUnlinker->execute(
@@ -313,29 +311,28 @@ class Encoder
             . '.mp3';
     }
 
-    /**
-     * @return UsersCdrInterface[]|BillableCallInterface[]
-     */
-    private function getAccCdrs(RawRecordingInfo $rawRecordingInfo): array
+    private function getAccCdr(RawRecordingInfo $rawRecordingInfo): null|UsersCdrInterface|BillableCallInterface
     {
-        $billableCalls = $this
+        $billableCall = $this
             ->billableCallRepository
-            ->findByCallid(
-                $rawRecordingInfo->getCallid()
+            ->findLastByCallidAndDirection(
+                $rawRecordingInfo->getCallid(),
+                $rawRecordingInfo->getDirection(),
             );
 
-        if (!empty($billableCalls)) {
-            return $billableCalls;
+        if (!is_null($billableCall)) {
+            return $billableCall;
         }
 
         $usersCdr = $this
             ->usersCdrRepository
-            ->findLastByCallid(
-                $rawRecordingInfo->getCallid()
+            ->findLastByCallidAndDirection(
+                $rawRecordingInfo->getCallid(),
+                $rawRecordingInfo->getDirection(),
             );
 
         if (!is_null($usersCdr)) {
-            return [ $usersCdr ];
+            return $usersCdr;
         }
 
         $this->stats['skipped']++;
@@ -345,7 +342,7 @@ class Encoder
             $rawRecordingInfo->getCallid(),
         ));
 
-        return [];
+        return null;
     }
 
     private function isProcessableFile(RawRecordingInfo $rawRecordingInfo): bool

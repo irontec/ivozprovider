@@ -68,16 +68,16 @@ class EncoderTest extends KernelTestCase
         $this->assertNull($wrongFileInfo);
 
         $rawRecordingInfo = $rawRecordingInfoFactory->createRawRecordingInfo(
-            '/recordings/ok-file-with-callid-name-mix.wav',
+            '/recordings/ok-outbound-with-callid-name-mix.wav',
         );
 
         $this->assertNotNull($rawRecordingInfo);
         $this->assertEquals(
-            'ok-file-with-callid-name-mix.wav',
+            'ok-outbound-with-callid-name-mix.wav',
             $rawRecordingInfo->getFileName(),
         );
         $this->assertEquals(
-            '/recordings/ok-file-with-callid-name-mix.wav',
+            '/recordings/ok-outbound-with-callid-name-mix.wav',
             $rawRecordingInfo->getFullName(),
         );
         $this->assertEquals(
@@ -100,16 +100,16 @@ class EncoderTest extends KernelTestCase
         $this->assertEquals(
             [
                 "[Recordings] Processing 5 files in recording dir /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/\n",
-                "[Recordings][459f55f7] Checking file a5631aae-aa41-017cc7c8-eb38-4bbd-9318-524a274f7102-fc5cee56dc01-mix.wav\n",
+                "[Recordings][459f55f7] Checking file trunks-outbound-017cc7c8-eb38-4bbd-9318-524a274f7102-fc5cee56dc01-mix.wav\n",
                 "[Recordings][459f55f7] +34123 [Ddi#1] has no +34633646464 recording enabled, but recording will be processed.\n",
                 "[Recordings][459f55f7] Encoding to 459f55f7.mp3\n",
                 "[Recordings][459f55f7] Create Recordings entry with id 1000\n",
-                "[Recordings][5c772f5b] Checking file 4e0466c8-a64b-34676896565-fc5cee56dc74-mix.wav\n",
+                "[Recordings][5c772f5b] Checking file users-inbound-34676896565-fc5cee56dc74-mix.wav\n",
                 "[Recordings][5c772f5b] Call with id = 34676896565 has not yet finished!\n",
-                "[Recordings][8edac669] Checking file c00269fa-a64b-8297bdde-309cd49f%4010.10.1.125-fc5cee56dc74-mix.wav\n",
+                "[Recordings][8edac669] Checking file trunks-outbound-8297bdde-309cd49f%4010.10.1.125-fc5cee56dc74-mix.wav\n",
                 "[Recordings][8edac669] Encoding to 8edac669.mp3\n",
                 "[Recordings][8edac669] Create Recordings entry with id 1000\n",
-                "[Recordings] Recording is not completed: still-recording-file-name-mix.wav\n",
+                "[Recordings] Recording is not completed: users-inbound-still-recording-file-name-mix.wav\n",
                 "[Recordings] Deleting empty file too-small-file-name-mix.wav\n",
                 "[Recordings] Total 5 processed: 2 successful, 0 error, 1 deleted, 2 skipped.\n",
             ],
@@ -155,7 +155,7 @@ class EncoderTest extends KernelTestCase
         $mockRecordingEndedChecker->expects($this->exactly(5))
             ->method('execute')
             ->willReturnCallback(
-                fn($file) => $file != '/recordings/still-recording-file-name-mix.wav'
+                fn($file) => $file != '/recordings/users-inbound-still-recording-file-name-mix.wav'
             );
 
         $this->serviceContainer->set(
@@ -168,28 +168,33 @@ class EncoderTest extends KernelTestCase
     {
         $files = [
             new RawRecordingInfo(
-                '/recordings/a5631aae-aa41-017cc7c8-eb38-4bbd-9318-524a274f7102-fc5cee56dc01-mix.wav',
+                '/recordings/trunks-outbound-017cc7c8-eb38-4bbd-9318-524a274f7102-fc5cee56dc01-mix.wav',
                 '017cc7c8-eb38-4bbd-9318-524a274f7102',
+                'outbound',
                 Encoder::RECORDING_SIZE_MIN + 1
             ),
             new RawRecordingInfo(
-                '/recordings/4e0466c8-a64b-34676896565-fc5cee56dc74-mix.wav',
+                '/recordings/users-inbound-34676896565-fc5cee56dc74-mix.wav',
                 '34676896565',
+                'inbound',
                 Encoder::RECORDING_SIZE_MIN + 1
             ),
             new RawRecordingInfo(
-                '/recordings/c00269fa-a64b-8297bdde-309cd49f%4010.10.1.125-fc5cee56dc74-mix.wav',
+                '/recordings/trunks-outbound-8297bdde-309cd49f%4010.10.1.125-fc5cee56dc74-mix.wav',
                 '8297bdde-309cd49f@10.10.1.125',
+                'outbound',
                 Encoder::RECORDING_SIZE_MIN + 1
             ),
             new RawRecordingInfo(
-                '/recordings/still-recording-file-name-mix.wav',
+                '/recordings/users-inbound-still-recording-file-name-mix.wav',
                 'file',
+                'inbound',
                 Encoder::RECORDING_SIZE_MIN + 1
             ),
             new RawRecordingInfo(
                 '/recordings/too-small-file-name-mix.wav',
                 'file',
+                'outbound',
                 Encoder::RECORDING_SIZE_MIN - 1
             ),
         ];

@@ -45,7 +45,10 @@ class UsersCdrRepositoryTest extends KernelTestCase
             ->getRepository(UsersCdr::class);
 
         $cdr = $repository
-            ->findLastByCallid('9297bdde-309cd48f@10.10.1.124');
+            ->findLastByCallidAndDirection(
+                '9297bdde-309cd48f@10.10.1.124',
+                UsersCdrInterface::DIRECTION_OUTBOUND
+            );
 
         $this->assertInstanceOf(
             UsersCdrInterface::class,

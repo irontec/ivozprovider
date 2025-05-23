@@ -38,12 +38,13 @@ class UsersCdrDoctrineRepository extends DoctrineRepository implements UsersCdrR
         ]);
     }
 
-    public function findLastByCallid(string $callid): ?UsersCdrInterface
+    public function findLastByCallidAndDirection(string $callid, string $direction): ?UsersCdrInterface
     {
         /** @var UsersCdr $response */
         $response = $this->findOneBy(
             [
-            'callid' => $callid
+            'callid' => $callid,
+            'direction' => $direction,
             ],
             [
             'startTime' => 'desc'
