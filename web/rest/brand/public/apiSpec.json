@@ -11260,12 +11260,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[neq]",
                         "in": "query",
                         "required": false,
@@ -11279,6 +11273,12 @@
                     },
                     {
                         "name": "description[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11338,6 +11338,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -11356,12 +11362,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "proxyTrunk",
                         "in": "query",
                         "required": false,
@@ -11375,6 +11375,24 @@
                     },
                     {
                         "name": "proxyTrunk[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "routingTag",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "routingTag[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "routingTag[exists]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -11713,6 +11731,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "ddi[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "ddi[start]",
                         "in": "query",
                         "required": false,
@@ -11726,12 +11750,6 @@
                     },
                     {
                         "name": "ddi[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "ddi[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11861,6 +11879,24 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "routingTag",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "routingTag[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "routingTag[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "enum": [
@@ -39455,7 +39491,8 @@
             "type": "object",
             "required": [
                 "ddi",
-                "type"
+                "type",
+                "useDdiProviderRoutingTag"
             ],
             "properties": {
                 "ddi": {
@@ -39485,6 +39522,12 @@
                     "example": "inout",
                     "type": "string"
                 },
+                "useDdiProviderRoutingTag": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
+                    "type": "boolean"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -39499,6 +39542,10 @@
                     "type": "integer"
                 },
                 "country": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "routingTag": {
                     "description": "",
                     "type": "integer"
                 }
@@ -39549,7 +39596,8 @@
             "type": "object",
             "required": [
                 "ddi",
-                "type"
+                "type",
+                "useDdiProviderRoutingTag"
             ],
             "properties": {
                 "ddi": {
@@ -39579,6 +39627,12 @@
                     "example": "inout",
                     "type": "string"
                 },
+                "useDdiProviderRoutingTag": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
+                    "type": "boolean"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -39592,6 +39646,9 @@
                 },
                 "country": {
                     "$ref": "#/definitions/Country"
+                },
+                "routingTag": {
+                    "$ref": "#/definitions/RoutingTag"
                 }
             }
         },
@@ -39629,6 +39686,10 @@
                     "type": "integer"
                 },
                 "mediaRelaySet": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "routingTag": {
                     "description": "",
                     "type": "integer"
                 }
@@ -39702,6 +39763,9 @@
                 },
                 "mediaRelaySet": {
                     "$ref": "#/definitions/MediaRelaySet"
+                },
+                "routingTag": {
+                    "$ref": "#/definitions/RoutingTag"
                 }
             }
         },

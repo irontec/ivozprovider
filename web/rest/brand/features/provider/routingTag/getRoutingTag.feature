@@ -15,6 +15,11 @@ Feature: Retrieve routing tag
       """
       [
           {
+              "name": "Routing Tag Two",
+              "tag": "234#",
+              "id": 2
+          },
+          {
               "name": "TagName",
               "tag": "123#",
               "id": 1

@@ -4,7 +4,7 @@ Feature: Create routing tags
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create a routing tags
+  Scenario: Create a routing tag
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
@@ -24,14 +24,14 @@ Feature: Create routing tags
       {
           "name": "Mine",
           "tag": "00#",
-          "id": 2
+          "id": 3
       }
       """
 
-  Scenario: Retrieve created routing pattern
+  Scenario: Retrieve created routing tag
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "routing_tags/2"
+      And I send a "GET" request to "routing_tags/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -40,6 +40,6 @@ Feature: Create routing tags
       {
           "name": "Mine",
           "tag": "00#",
-          "id": 2
+          "id": 3
       }
       """
