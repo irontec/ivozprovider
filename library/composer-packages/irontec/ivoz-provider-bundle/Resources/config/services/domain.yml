@@ -9,6 +9,8 @@ services:
 
   Ivoz\Kam\Domain\Service\TrunksLcrRule\CreateByOutgoingRoutingAndRoutingPattern: ~
 
+  # Ivoz\Provider\Domain\Service\Location\UpdateUsersWhenLocationIsDeleted: ~
+
   Ivoz\Provider\Domain\Service\Invoice\Generator:
     arguments:
       $logger: '@logger'
