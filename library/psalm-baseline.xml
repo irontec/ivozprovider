@@ -2327,7 +2327,7 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Ddi/DdiAbstract.php">
-    <MixedArgument occurrences="30">
+    <MixedArgument occurrences="32">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
@@ -2356,6 +2356,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getRetailAccount())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getRetailAccount())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getRoutingTag())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getRoutingTag())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
     </MixedArgument>
@@ -2377,13 +2379,15 @@
     </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderAbstract.php">
-    <MixedArgument occurrences="8">
+    <MixedArgument occurrences="10">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getRoutingTag())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getRoutingTag())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
     </MixedArgument>
