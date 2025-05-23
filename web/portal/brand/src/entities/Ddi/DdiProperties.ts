@@ -28,6 +28,8 @@ export type DdiPropertyList<T> = {
   target?: T;
   ddiProvider?: T;
   company?: T;
+  useDdiProviderRoutingTag?: T;
+  routingTag?: T;
 };
 
 export type DdiProperties = DdiPropertyList<Partial<PropertySpec>>;
