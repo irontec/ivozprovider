@@ -16641,6 +16641,7 @@
                 "ddi",
                 "recordCalls",
                 "type",
+                "useDdiProviderRoutingTag",
                 "brand"
             ],
             "properties": {
@@ -16709,6 +16710,12 @@
                     "description": "",
                     "example": "inout",
                     "type": "string"
+                },
+                "useDdiProviderRoutingTag": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
+                    "type": "boolean"
                 },
                 "id": {
                     "description": "",
