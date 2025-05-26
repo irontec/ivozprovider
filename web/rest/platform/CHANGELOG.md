@@ -1,4 +1,12 @@
 # Changelog
+## 4.4.0
+* Models:
+    - Ddi:
+        - Added required field `useDdiProviderRoutingTag`.
+    - Company:
+        - Fields `applicationServerSet` and `mediaRelaySet` are now required.
+    - Carrier and DdiProvider:
+        - Added `mediaRelaySet` field.
 ## 4.3.0
 * Endpoints:
     - /application_server_sets

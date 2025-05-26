@@ -1,4 +1,19 @@
 # Changelog
+## 4.4.0
+* Endpoints:
+    - /users/detailed:
+        - Added [GET] endpoint to retrieve a detailed collection of User resources.
+    - /survival_devices and /survival_devices/{id}:
+        - Added endpoints to manage SurvivalDevice resources ([GET], [POST], [PUT], [DELETE]).
+* Models:
+    - BillableCall, BillableCall-collection, BillableCall-detailed:
+        - Added required field `numRecordings`.
+    - UsersCdr, UsersCdr-collection, UsersCdr-detailed:
+        - Added required field `numRecordings`.
+    - User, User-collection, User-detailed:
+        - No required fields changed, but now available in /users/detailed.
+    - SurvivalDevice, SurvivalDevice-collection, SurvivalDevice-detailed:
+        - Added new models for SurvivalDevice resources.
 ## 4.3.0
 * Endpoints:
     - /users:
