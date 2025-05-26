@@ -29,10 +29,12 @@ Feature: Create ddis
           "ddie164": "+34321",
           "description": "Description for 321",
           "type": "inout",
+          "useDdiProviderRoutingTag": true,
           "id": 4,
           "company": 1,
           "ddiProvider": 1,
-          "country": 68
+          "country": 68,
+          "routingTag": null
       }
       """
 
@@ -49,6 +51,7 @@ Feature: Create ddis
           "ddi": "321",
           "ddie164": "+34321",
           "description": "Description for 321",
+          "useDdiProviderRoutingTag": true,
           "id": 4,
           "company": "~",
           "ddiProvider": {
@@ -71,6 +74,7 @@ Feature: Create ddis
                   "es": "Europa",
                   "ca": "Europa"
               }
-          }
+          },
+          "routingTag": null
       }
       """

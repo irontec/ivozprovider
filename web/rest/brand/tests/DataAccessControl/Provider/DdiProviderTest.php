@@ -69,8 +69,22 @@ class DdiProviderTest extends KernelTestCase
                             'mediaRelaySet',
                             'in',
                             'MediaRelaySetRepository([["id","IN",["mediaRelaySetsRelBrandRepository.getMediaRelaySetIdsByBrandAdmin(user)"]]])'
+                        ],
+                    ],
+                ],
+                [
+                    'or' => [
+                        [
+                            'routingTag',
+                            'in',
+                            'RoutingTagRepository([["brand","eq","user.getBrand().getId()"]])'
+                        ],
+                        [
+                            'routingTag',
+                            'isNull',
+                            null
                         ]
-                    ]
+                    ],
                 ]
             ]
         );

@@ -97,7 +97,9 @@ class DdiDto extends DdiDtoAbstract
             'companyId',
             'ddiProviderId',
             'type',
-            'countryId'
+            'countryId',
+            'useDdiProviderRoutingTag',
+            'routingTagId',
         ];
 
         return self::filterFields($response, $allowedFields);

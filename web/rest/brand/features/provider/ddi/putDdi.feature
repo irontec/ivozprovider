@@ -15,7 +15,9 @@ Feature: Update ddi
           "id": 1,
           "company": 1,
           "ddiProvider": 1,
-          "country": 68
+          "country": 68,
+          "useDdiProviderRoutingTag": true,
+          "routingTag": 1
       }
       """
      Then the response status code should be 200
@@ -28,9 +30,11 @@ Feature: Update ddi
           "ddie164": "+34128",
           "description": "Description for DDI 123",
           "type": "inout",
+          "useDdiProviderRoutingTag": true,
           "id": 1,
           "company": 1,
           "ddiProvider": 1,
-          "country": 68
+          "country": 68,
+          "routingTag": null
       }
       """

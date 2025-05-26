@@ -12,6 +12,7 @@ export type DdiProviderPropertyList<T> = {
   proxyTrunk?: T;
   mediaRelaySets?: T;
   mediaRelaySet?: T;
+  routingTag?: T;
 };
 
 export type DdiProviderProperties = DdiProviderPropertyList<
