@@ -11,3 +11,4 @@ ports.cfg
 ports.cfg.dev
 pushservers.cfg
 siptrace.cfg
+presence_blocker.cfg
