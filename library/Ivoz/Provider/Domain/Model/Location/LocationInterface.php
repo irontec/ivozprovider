@@ -3,12 +3,12 @@
 namespace Ivoz\Provider\Domain\Model\Location;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDeviceInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
@@ -29,6 +29,8 @@ interface LocationInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getId(): ?int;
+
+    public function addUser(UserInterface $user): LocationInterface;
 
     /**
      * @param int | null $id
@@ -61,24 +63,14 @@ interface LocationInterface extends LoggableEntityInterface
 
     public function getSurvivalDevice(): ?SurvivalDeviceInterface;
 
-    public function addUser(UserInterface $user): LocationInterface;
+    public function traitAddUser(UserInterface $user): LocationInterface;
 
     public function removeUser(UserInterface $user): LocationInterface;
 
     /**
      * @param Collection<array-key, UserInterface> $users
      */
-    public function traitReplaceUsers(Collection $users): LocationInterface;
-
-    /**
-     * @param Collection<array-key, UserInterface> $users
-     */
     public function replaceUsers(Collection $users): LocationInterface;
-
-    /**
-     * @return array<array-key, UserInterface>
-     */
-    public function traitGetUsers(?Criteria $criteria = null): array;
 
     /**
      * @return array<array-key, UserInterface>

@@ -123,6 +123,11 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         $this->setLocation($defaultLocation);
     }
 
+    public function setUseDefaultLocation(bool $useDefaultLocation): static
+    {
+        return parent::setUseDefaultLocation($useDefaultLocation);
+    }
+
     /**
      * @inheritdoc
      */
