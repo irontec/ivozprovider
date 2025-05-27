@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Reglas DDI de salida</title>
+    
+    <link rel="stylesheet" href="../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="pick_up_groups.xhtml" title="Grupos de captura"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="index.xhtml" title="Configuración de usuario"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.xhtml" >Clientes vPBX</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.xhtml" accesskey="U">Configuración de usuario</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="outgoing-ddi-rules">
+<span id="outgoingddi-rules"></span><h1>Reglas DDI de salida</h1>
+<p>La mayoría de las entidades que llaman en IvozProvider requieren un DDI de salida cuando realizan llamadas a números externos. Esto incluye: Usuarios, Friends, Faxes, Cuentas Retail, etc.</p>
+<p>Pero hay algunos casos en los que un solo DDI de salida no es suficiente, y el DDI presentado depende del número llamado o de un prefijo dado. Para archivar esta selección dinámica de DDI de salida, puedes usar las reglas de DDI de salida.</p>
+<div class="section" id="outgoing-ddi-based-on-destination">
+<h2>DDI de salida basado en destino</h2>
+<p>Para las reglas basadas en destino, primero necesitarías agrupar los números de destino en <a class="reference internal" href="../routing_tools/match_lists.xhtml#match-lists"><span class="std std-ref">Listas de coincidencia</span></a>.</p>
+<p>Para este ejemplo, crearemos una lista de coincidencia de móviles corporativos con todos los números móviles de los trabajadores de nuestro cliente. Cuando llamemos a esos números, mantendremos el DDI de salida original asignado al usuario, y para el resto de los casos, forzaremos el DDI al DDI de salida principal del cliente.</p>
+<p class="rubric">Crear una nueva regla DDI de salida</p>
+<p>La pantalla principal de creación define la acción que se llevará a cabo cuando ninguna regla coincida con el destino marcado, por lo que aquí definimos forzar el DDI principal del cliente.</p>
+<p class="rubric">Asignar acciones de listas de reglas</p>
+<p>Ahora agregamos una nueva regla que coincidirá con nuestros móviles para que el DDI de salida del usuario se mantenga sin cambios.</p>
+<p class="rubric">Asignar regla a los llamantes</p>
+<p>Por último, tenemos que configurar quién usará esta regla para cambiar dinámicamente su número de presentación. Podemos hacer esto en la <strong>pantalla de edición del cliente</strong> o en la <strong>pantalla de edición de usuarios</strong>.</p>
+<p>En este caso, el Usuario presentará el DDI 777777777 al llamar a móviles corporativos y 666666666 al llamar al resto de los números externos.</p>
+</div>
+<div class="section" id="outgoing-ddi-based-on-prefix">
+<h2>DDI de salida basado en prefijo</h2>
+<p>Las reglas de DDI de salida también se pueden usar para cambiar el DDI de salida predeterminado basado en un prefijo de llamada.</p>
+<p class="rubric">Crear una nueva regla DDI de salida</p>
+<p>La pantalla principal de creación define la acción que se llevará a cabo cuando ninguna regla coincida con el destino marcado, mantendremos el DDI original si no se usa ningún prefijo.</p>
+<p class="rubric">Asignar un patrón de prefijo</p>
+<p>Ahora agregamos una nueva regla con prefijo (digamos 111) y acción para forzar el DDI a 666666666.</p>
+<p>En este caso, el Usuario presentará el DDI 666666666 al llamar a cualquier destino con el prefijo 111 y 777777777 cuando no use ningún prefijo.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">El prefijo <strong>debe</strong> tener este formato: de 1 a 3 dígitos terminados con el símbolo *.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

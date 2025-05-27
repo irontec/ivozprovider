@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Enrutamientos Salientes</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="routing_patterns.xhtml" title="Patrones de enrutamiento"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="index.xhtml" title="Enrutamiento"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Configuración de Marca</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Enrutamiento</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="outgoing-routings">
+<span id="routes-weights"></span><span id="id1"></span><h1>Enrutamientos Salientes</h1>
+<p>Esta es la sección principal en la que se definen las políticas de enrutamiento.</p>
+<p>Estos son los campos que definen un enrutamiento saliente:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Cliente</dt>
+<dd><p class="first last">¿Debe esta ruta aplicarse a todos los clientes o solo a un cliente específico?</p>
+</dd>
+<dt>Etiqueta de Enrutamiento</dt>
+<dd><p class="first last">Las etiquetas de enrutamiento permiten a los clientes llamar al mismo destino a través de diferentes transportistas. Este campo hace que la ruta sea válida para una sola etiqueta de enrutamiento (o para ninguna).</p>
+</dd>
+<dt>Destino de la llamada</dt>
+<dd><p class="first last">Este grupo permite seleccionar si esta ruta se aplica solo a un patrón de destino, un grupo o faxes.</p>
+</dd>
+<dt>Tipo de ruta</dt>
+<dd><p class="first last">Hay tres tipos de rutas: estática, LCR y bloque. En <em>estática</em>, solo se selecciona un transportista. En <em>LCR</em>, se pueden seleccionar varios transportistas. En <em>bloque</em>, no se selecciona ningún transportista ya que la llamada será rechazada.</p>
+</dd>
+<dt>Prioridad</dt>
+<dd><p class="first last">Si una llamada coincide con varias rutas, se realizará utilizando la ruta saliente con menor prioridad, siempre que esté disponible.</p>
+</dd>
+<dt>Peso</dt>
+<dd><p class="first last">Si una llamada coincide con varias rutas con igual prioridad, el peso determinará la proporción de llamadas que utilizarán una ruta u otra.</p>
+</dd>
+<dt>Detenedor</dt>
+<dd><p class="first last">Si una llamada coincide con una ruta marcada como detenedor, se ignorarán las rutas coincidentes con mayor prioridad. <strong>Las rutas coincidentes con la MISMA prioridad SÍ se aplicarán</strong>.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="section" id="routing-selection-logic">
+<h2>Lógica de selección de enrutamiento</h2>
+<p>Cuando un cliente A llama a un destino B:</p>
+<ol class="arabic simple">
+<li><p class="first">Se seleccionan rutas <em>Aplicar a todos los clientes</em> con el patrón de destino B.</p>
+</li>
+<li><p class="first">Se seleccionan rutas <em>Aplicar a todos los clientes</em> con grupo que contiene el destino B.</p>
+</li>
+<li><p class="first">Se seleccionan rutas <em>Específicas del cliente A</em> con el patrón de destino B.</p>
+</li>
+<li><p class="first">Se seleccionan rutas <em>Específicas del cliente A</em> con grupo que contiene el destino B.</p>
+</li>
+<li><p class="first">Todas estas rutas se ordenan utilizando <em>Prioridad</em> (se aplica primero la menor prioridad).</p>
+</li>
+<li><p class="first">Si se ha seleccionado alguna ruta de bloqueo, la llamada se rechaza.</p>
+</li>
+<li><p class="first">La ruta con menor prioridad (por ejemplo, prio Y) marcada como <em>Detenedor</em> (si la hay), provocará el descarte de rutas con prioridad mayor que Y+1.</p>
+</li>
+<li><p class="first">La llamada se enrutarán utilizando las rutas que queden después de este proceso, la prioridad determinará el proceso de conmutación por error, que determinará el equilibrio de carga (ver abajo).</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Como se describe arriba <strong>Todas las rutas de clientes se aplican a todos los clientes</strong>, incluso si tienen rutas coincidentes específicas:</p>
+<ul class="last simple">
+<li><p class="first">Utilice rutas de prioridad y detenedores para lograr la estrategia de enrutamiento <em>Clientes con rutas específicas no usan rutas de todos los clientes</em>.</p>
+</li>
+<li><p class="first">Si desea lograr la estrategia de enrutamiento <em>Fallback para todos los clientes</em>, asegúrese de usar valores de alta prioridad.</p>
+</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Las rutas específicas de fax se aplicarán primero tanto para los faxes enviados a través de fax virtual (ver <a class="reference internal" href="../../client/vpbx/faxes.xhtml#faxes"><span class="std std-ref">Faxes</span></a>) o dispositivos compatibles con T.38. Si no se encuentra una ruta específica de fax para un fax determinado, las rutas se aplicarán como para una llamada de voz normal a ese destino.</p>
+</div>
+<div class="section" id="load-balancing">
+<h3>Equilibrio de carga</h3>
+<p>La prioridad y el peso son parámetros clave para lograr dos características interesantes también: <strong>equilibrio de carga</strong> y <strong>rutas de conmutación por error</strong>.</p>
+<p><em>Equilibrio de carga</em> nos permite distribuir llamadas que coinciden con el mismo patrón utilizando varias rutas salientes válidas.</p>
+<ul class="simple">
+<li><p class="first">Ejemplo 1</p>
+<ul>
+<li><p class="first">Ruta A: prioridad 1, peso 1</p>
+</li>
+<li><p class="first">Ruta B: prioridad 1, peso 1</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Las llamadas que coincidan con estas rutas usarán la ruta A para el %50 de las llamadas y la ruta B para el %50 de las llamadas.</p>
+<ul class="simple">
+<li><p class="first">Ejemplo 2</p>
+<ul>
+<li><p class="first">Ruta A: prioridad 1, peso 1</p>
+</li>
+<li><p class="first">Ruta B: prioridad 1, peso 2</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Las llamadas que coincidan con estas rutas usarán la ruta A para el %33 de las llamadas y la ruta B para el %66 de las llamadas.</p>
+</div>
+<div class="section" id="failover-routes">
+<h3>Rutas de conmutación por error</h3>
+<p>La ruta de conmutación por error nos permite usar otra ruta cuando la ruta principal falla.</p>
+<ul class="simple">
+<li><p class="first">Ejemplo</p>
+<ul>
+<li><p class="first">Ruta A: prioridad 1, peso 1</p>
+</li>
+<li><p class="first">Ruta B: prioridad 2, peso 1</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Todas las llamadas que coincidan con estas rutas intentarán usar la ruta A. En caso de que la llamada falle, la llamada se realizará utilizando la ruta B.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Aunque los ejemplos dados usan dos rutas, se pueden encadenar más rutas y se pueden combinar estrategias de conmutación por error y equilibrio de carga.</p>
+</div>
+</div>
+</div>
+<div class="section" id="lcr-routes">
+<h2>Rutas LCR</h2>
+<p>Las rutas LCR (<em>Enrutamiento de Menor Costo</em>) pueden seleccionar más de un transportista. Siempre que se use una ruta LCR, la plataforma calculará el costo de la llamada para ese destino dado (para una duración de 5 minutos) y los ordenará en orden ascendente.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Los transportistas que no pueden calcular el costo para un destino dado son silenciosamente ignorados (no se utilizan).</p>
+</div>
+<div class="section" id="lcr-and-static-routes-combined">
+<h3>Rutas LCR y estáticas combinadas</h3>
+<p>El proceso de elección de transportista puede combinar rutas estáticas y LCR:</p>
+<ol class="arabic simple">
+<li><p class="first">Las rutas estáticas resultan en un transportista con la prioridad y el peso de la ruta.</p>
+</li>
+<li><p class="first">Las rutas LCR resultan en <em>n</em> transportistas, ordenados por costo de llamada, todos ellos con la prioridad y el peso de la ruta.</p>
+</li>
+<li><p class="first">Los transportistas se ordenan utilizando la prioridad (orden ascendente).</p>
+</li>
+<li><p class="first">El peso del transportista se utiliza para el equilibrio de carga entre transportistas con la misma prioridad.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="blocking-routes">
+<h2>Rutas de bloqueo</h2>
+<p>Las rutas de bloqueo son rutas <em>Detenedor</em> ya que siempre que se apliquen, la llamada es rechazada y no se evalúa ninguna otra ruta.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Usando estas rutas, es fácil hacer un grupo con prefijos de llamadas no deseadas y rechazar todas las llamadas a esos destinos para cada cliente (o para un cliente en particular).</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

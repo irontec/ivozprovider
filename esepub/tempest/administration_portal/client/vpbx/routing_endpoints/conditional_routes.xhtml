@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Rutas condicionales</title>
+    
+    <link rel="stylesheet" href="../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="friends/index.xhtml" title="Friends"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="queues.xhtml" title="Colas"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.xhtml" >Clientes vPBX</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.xhtml" accesskey="U">Items enrutables</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<span id="conditional-routes"></span><span id="id2"></span><h1>Rutas condicionales</h1>
+<p>Las rutas condicionales permiten cambiar la lógica de una llamada dependiendo de:</p>
+<ul class="simple">
+<li><p class="first">Quién está llamando.</p>
+</li>
+<li><p class="first">A qué hora está llamando.</p>
+</li>
+<li><p class="first">Qué día está llamando.</p>
+</li>
+<li><p class="first">Estado de los bloqueos de ruta seleccionados.</p>
+</li>
+</ul>
+<p>Estas rutas son elegibles en tres secciones:</p>
+<ul class="simple">
+<li>DDIs</li>
+<li><p class="first">Extensiones</p>
+</li>
+<li><p class="first">Opciones personalizadas de IVR</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Las secciones restantes podrían usar rutas condicionales creando una extensión que apunte primero a una ruta condicional y enrutando a esta extensión.</p>
+</div>
+<div class="section" id="creating-a-conditional-route">
+<h2>Creando una ruta condicional</h2>
+<p>Primero creamos una ruta condicional en la sección <strong>Rutas condicionales</strong>.</p>
+<p>Al crearla definimos qué se debe hacer con una llamada que no cumpla con ninguna de las reglas agregadas a continuación.</p>
+</div>
+<div class="section" id="adding-rules">
+<h2>Agregando reglas</h2>
+<p>Una vez creada, necesitamos agregar reglas, por ejemplo:</p>
+<ul class="simple">
+<li><p class="first">Llamadas de Japón y Alemania recibidas por la mañana a un usuario específico</p>
+</li>
+<li><p class="first">Llamadas de Japón y Alemania recibidas por la tarde a otro usuario</p>
+</li>
+<li><p class="first">Anular el IVR de recepción para los días de verano</p>
+</li>
+</ul>
+</div>
+<div class="section" id="evaluating-conditional-routes">
+<h2>Evaluando rutas condicionales</h2>
+<ul class="simple">
+<li><p class="first">Las reglas se evalúan siguiendo el parámetro métrico. Una vez que una regla coincide, se aplica su lógica.</p>
+</li>
+<li><p class="first">Las reglas pueden tener de 1 a 4 criterios:</p>
+<ul>
+<li><p class="first">Ninguna, una o más listas de coincidencia (pre-creadas, ver <a class="reference internal" href="../routing_tools/match_lists.xhtml#match-lists"><span class="std std-ref">Listas de coincidencia</span></a>)</p>
+</li>
+<li><p class="first">Ninguna, uno o más horarios (pre-creados, ver <a class="reference internal" href="../routing_tools/schedules.xhtml#schedules"><span class="std std-ref">Horarios</span></a>)</p>
+</li>
+<li><p class="first">Ninguno, uno o más calendarios (pre-creados, ver <a class="reference internal" href="../routing_tools/calendars.xhtml#calendars"><span class="std std-ref">Calendarios</span></a>)</p>
+</li>
+<li><p class="first">Ninguno, uno o más bloqueos de ruta (pre-creados, ver <a class="reference internal" href="../routing_tools/route_locks.xhtml#id1"><span class="std std-ref">Candados de ruta</span></a>)</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Estos 4 criterios se combinan (aplicando una lógica AND).</p>
+</li>
+<li><p class="first">Si se cumplen todos los criterios utilizados en una regla, se aplica su lógica.</p>
+</li>
+</ul>
+<p>Así es como se evalúa cada criterio:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Criterio de lista de coincidencia</dt>
+<dd><p class="first last">Si el número del llamante coincide con alguna de las listas de coincidencia seleccionadas, este criterio se considera cumplido.</p>
+</dd>
+<dt>Criterio de horario</dt>
+<dd><p class="first last">Si la hora actual está incluida en alguno de los horarios seleccionados, este criterio se considera cumplido.</p>
+</dd>
+<dt>Criterio de calendario</dt>
+<dd><ul class="first last simple">
+<li><p class="first">Si el día actual está marcado como festivo en alguno de los calendarios seleccionados, este criterio se considera cumplido.</p>
+</li>
+<li><p class="first">Si el día actual está marcado como festivo parcial en alguno de los calendarios seleccionados y la hora actual está incluida en su intervalo, este criterio se considera cumplido.</p>
+</li>
+</ul>
+</dd>
+<dt>Criterio de bloqueo</dt>
+<dd><p class="first last">Si uno de los bloqueos de ruta seleccionados está abierto, este criterio se considera cumplido.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last"><a class="reference internal" href="../routing_tools/calendars.xhtml#special-schedules"><span class="std std-ref">Horarios especiales</span></a> vinculados a los calendarios seleccionados no se tienen en cuenta.</p>
+</div>
+</div>
+<div class="section" id="ddi-routed-to-a-conditional-route">
+<h2>DDI enrutado a una ruta condicional</h2>
+<p>Imagina este escenario: el DDI tiene un filtro de llamadas externas y está enrutado a la nueva ruta condicional.</p>
+<p>Cuando se recibe una llamada:</p>
+<ul class="simple">
+<li><p class="first">Se evalúa el filtro de llamadas externas:</p>
+<ul>
+<li><p class="first">Si el día actual está marcado en algún calendario, se aplica la lógica de festivo.</p>
+</li>
+<li><p class="first">Si la hora actual no está dentro de ningún intervalo de tiempo, se aplica la lógica fuera de horario.</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Si no se han aplicado las lógicas del filtro de llamadas externas, se evalúa la ruta condicional.</p>
+</li>
+</ul>
+<div class="admonition attention">
+<p class="first admonition-title">Atención</p>
+<p class="last">La ruta condicional no está destinada a reemplazar el filtro de llamadas externas. Primero se evalúa el filtro, luego la ruta condicional.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

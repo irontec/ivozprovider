@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Colas</title>
+    
+    <link rel="stylesheet" href="../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="conditional_routes.xhtml" title="Rutas condicionales"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="hunt_groups.xhtml" title="Grupos de búsqueda"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.xhtml" >Clientes vPBX</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.xhtml" accesskey="U">Items enrutables</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="queues">
+<span id="id1"></span><h1>Colas</h1>
+<p>El comportamiento de colas fácil se incluyó en IvozProvider en la versión 1.3. Es un enfoque simple con <strong>el único objetivo de proporcionar la capacidad de manejar más llamadas que usuarios atendiéndolas</strong>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Colas y callcenter son términos cercanos pero diferentes. <strong>IvozProvider no es un producto adecuado para callcenters</strong>, ya que no proporciona características avanzadas que son cruciales para ellos (informes, visualización en tiempo real, estadísticas relacionadas con colas, etc.).</p>
+</div>
+<p><strong>En instalaciones distribuidas</strong> el uso de Colas solo es compatible con una asignación estática o distribución &#8216;basada en hash&#8217; (ver <strong>Método de distribución</strong> <a class="reference internal" href="../../../brand/clients/virtual_pbx.xhtml#virtual-pbx"><span class="std std-ref">aquí</span></a>).</p>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Los operadores de marca pueden elegir qué Clientes tienen colas (ver <strong>Características</strong> en <a class="reference internal" href="../../../../getting_started/internal_calls/brand_portal.xhtml#brand-configuration"><span class="std std-ref">Configuración de Marca</span></a> y <a class="reference internal" href="../../../../getting_started/internal_calls/client_portal.xhtml#client-configuration"><span class="std std-ref">Configuración del Cliente</span></a>).</p>
+</div>
+<div class="section" id="queue-configuration">
+<h2>Configuración de la cola</h2>
+<p>Estos son los ajustes relacionados con una cola:</p>
+<div class="section" id="basic-configuration">
+<h3>Configuración básica</h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Usar para referenciar esta cola. Caracteres permitidos: a-z, A-Z, 0-9, guion bajo y &#8216;-&#8216;.</p>
+</dd>
+<dt>Peso</dt>
+<dd><p class="first last">Prioriza las llamadas a un agente que atiende llamadas en dos (o más) colas. Cuanto mayor sea, más priorizado será.</p>
+</dd>
+<dt>Estrategia</dt>
+<dd><p class="first last">¿Cómo entregará la cola las llamadas? ¿Llamando a todos los agentes, llamando a uno aleatorio?</p>
+</dd>
+<dt>Nombre para mostrar</dt>
+<dd><p class="first last">Este valor se mostrará en los terminales llamados</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="members-configuration">
+<h3>Configuración de miembros</h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Segundos de llamada del miembro</dt>
+<dd><p class="first last">Define cuánto durará una llamada a un agente.</p>
+</dd>
+<dt>Segundos de descanso del miembro</dt>
+<dd><p class="first last">Segundos entre llamadas para un agente.</p>
+</dd>
+<dt>Prevenir llamadas perdidas</dt>
+<dd><p class="first last">Cuando &#8216;Sí&#8217;, las llamadas nunca generarán una llamada perdida. Cuando &#8216;No&#8217;, las llamadas perdidas se evitarán solo para colas RingAll si alguien responde.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="announce">
+<h3>Anunciar</h3>
+<blockquote>
+<div><p>Seleccione una locución y su frecuencia. El llamante en espera escuchará esta locución.</p>
+<dl class="docutils">
+<dt>Locución de anuncio periódico</dt>
+<dd><p class="first last">Locución reproducida periódicamente a las llamadas que están en cola.</p>
+</dd>
+<dt>Anunciar posición</dt>
+<dd><p class="first last">Anunciar la posición en la cola a los usuarios en espera cuando ingresan a la cola y después de la frecuencia definida.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="timeout-configuration">
+<h3>Configuración de tiempo de espera</h3>
+<blockquote>
+<div><blockquote>
+<div><p>Limita el tiempo que una llamada puede esperar en una cola y el comportamiento siguiente.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Tiempo máximo de espera</dt>
+<dd><p class="first last">Si ningún miembro de la cola responde antes de estos segundos, se activará la lógica de tiempo de espera de la cola. Dejar vacío para desactivar.</p>
+</dd>
+</dl>
+<p>Locución</p>
+<dl class="docutils">
+<dt>Configuración completa de la cola</dt>
+<dd><p class="first last">Limita la cantidad de personas esperando en una llamada y el comportamiento cuando se alcanza este límite.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Aparte de crear una cola, tienes que asignar usuarios a ella. Estos usuarios tendrán una <strong>penalización: un usuario no será seleccionado para entregar una llamada si cualquier usuario con una penalización menor está disponible</strong>.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Una llamada puede ser enviada a una cola seleccionándola en los selectores de &#8220;Tipo de ruta&#8221; disponibles en múltiples secciones de IvozProvider (extensión a cola, DDI a cola, etc.)</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p>Al configurar una cola, puedes prevenir llamadas perdidas en los miembros llamados con la configuración <strong>Prevenir llamadas perdidas</strong>:</p>
+<ul class="last simple">
+<li><p class="first"><strong>Sí</strong>: las llamadas generadas por la cola nunca generarán llamadas perdidas en los miembros llamados.</p>
+</li>
+<li><p class="first"><strong>No</strong>: El comportamiento de esta configuración depende de la estrategia de la cola:</p>
+</li>
+<li><p class="first"><strong>RingAll</strong>: las llamadas generadas por la cola generarán llamadas perdidas en los miembros llamados solo si ninguno de ellos responde la llamada.</p>
+</li>
+<li><p class="first"><strong>Tipos restantes</strong>: las llamadas generadas por la cola generarán llamadas perdidas en cada miembro llamado que no responda la llamada.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="queue-strategy">
+<h2>Estrategia de la cola</h2>
+<p>La estrategia de la cola <strong>siempre se aplica a los miembros con penalización actual</strong> comenzando con el valor de penalización más pequeño y solo pasando a la siguiente penalización si todos los miembros de la actual están ocupados o no disponibles.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Llamar a todos</dt>
+<dd><p class="first last">La llamada hará que todos los miembros de la prioridad actual durante un tiempo predefinido.</p>
+</dd>
+<dt>Menos reciente</dt>
+<dd><p class="first last">La llamada <em>saltará</em> de un miembro a otro en un orden predefinido basado en la última vez que el miembro atendió una llamada. Los miembros cuya última llamada sea más antigua serán llamados primero.</p>
+</dd>
+<dt>Menos llamadas</dt>
+<dd><p class="first last">La llamada <em>saltará</em> de un miembro a otro en un orden predefinido basado en el número de llamadas atendidas. Los miembros que hayan atendido menos llamadas serán llamados primero.</p>
+</dd>
+<dt>Aleatorio</dt>
+<dd><p class="first last">La llamada <em>saltará</em> de un miembro a otro en un orden aleatorio, sonando durante el tiempo configurado.</p>
+</dd>
+<dt>Memoria de Round Robin</dt>
+<dd><p class="first last">La llamada <em>saltará</em> de un miembro a otro en un orden predefinido comenzando después del último miembro que atendió una llamada.</p>
+</dd>
+<dt>Lineal</dt>
+<dd><p class="first last">La llamada <em>saltará</em> de un miembro a otro en un orden predefinido basado en el tiempo de creación del miembro.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Una penalización dada nunca será llamada hasta que todos los usuarios con menor prioridad estén en llamada.</p>
+</div>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">Las colas <em>lineales</em> son especiales: una cola no lineal no puede convertirse en lineal.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

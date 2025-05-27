@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Caso de Uso</title>
+    
+    <link rel="stylesheet" href="../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="acls.xhtml" title="ACLs"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="integrations.xhtml" title="Integraciones de terceros"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="use-case">
+<span id="id1"></span><h1>Caso de Uso</h1>
+<p>Pongamos un pequeño caso de uso como ejemplo: Un administrador de la plataforma quiere obtener las empresas de una marca específica (las empresas solo se exponen en la API de Marca). La operación sería:</p>
+<p class="rubric">En la API de la plataforma (<a class="reference external" href="https://your-domain/api/platform">https://your-domain/api/platform</a>)</p>
+<ol class="arabic simple">
+<li><p class="first">Iniciar sesión (solicitar un token) como administrador god en /admin_login</p>
+</li>
+<li><p class="first">Buscar la marca objetivo en /brands</p>
+</li>
+</ol>
+<p class="rubric">En la API de Marca (<a class="reference external" href="https://brand-domain/api/brand">https://brand-domain/api/brand</a>)</p>
+<ol class="arabic simple">
+<li><p class="first">Suplantar como administrador de marca en Auth&gt; /token/exchange (requiere un token god y el Id de la marca. También puedes suplantar por el nombre de usuario de un administrador de marca en lugar de un id de marca)</p>
+</li>
+<li><p class="first">Solicitar las empresas de la marca usando el endpoint /companies</p>
+</li>
+</ol>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

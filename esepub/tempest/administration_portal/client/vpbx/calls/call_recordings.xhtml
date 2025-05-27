@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Grabaciones de llamadas</title>
+    
+    <link rel="stylesheet" href="../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../../residential/index.xhtml" title="Clientes Residenciales"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="call_csv_schedulers.xhtml" title="Programadores de CSV de llamadas"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.xhtml" >Clientes vPBX</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.xhtml" accesskey="U">Llamadas</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="call-recordings">
+<span id="id1"></span><h1>Grabaciones de llamadas</h1>
+<div class="admonition attention">
+<p class="first admonition-title">Atención</p>
+<p class="last">Tenga en cuenta que la legislación local puede exigir anunciar que la llamada está siendo grabada (a veces a ambas partes). Debe incluir un aviso de grabación en sus locuciones de bienvenida para los DDIs con grabación automática habilitada.</p>
+</div>
+<p>IvozProvider admite dos formas diferentes de grabar llamadas:</p>
+<ul class="simple">
+<li><p class="first"><strong>Grabaciones automáticas</strong> para las llamadas entrantes/salientes que usan un <a class="reference internal" href="../../../brand/views/ddis.xhtml#ddis"><span class="std std-ref">DDI externo</span></a>.</p>
+</li>
+<li><p class="first"><strong>Grabaciones bajo demanda</strong> solicitadas por un usuario durante una llamada.</p>
+</li>
+</ul>
+<div class="section" id="automatic-ddi-recordings">
+<h2>Grabaciones automáticas de DDI</h2>
+<p>En este tipo de grabación, <strong>se grabará toda la conversación</strong>: desde el inicio hasta que termine.</p>
+<p>Dos escenarios diferentes:</p>
+<ul class="simple">
+<li><p class="first"><strong>Llamadas entrantes a un DDI</strong>: La llamada continuará hasta que el marcador externo cuelgue (sin importar con quién esté hablando).</p>
+</li>
+<li><p class="first"><strong>Llamadas salientes usando un DDI</strong> como <a class="reference internal" href="../../../brand/views/ddis.xhtml#ddis"><span class="std std-ref">DDI saliente</span></a>: la grabación continuará mientras el destino externo permanezca en la conversación.</p>
+</li>
+</ul>
+<div class="admonition attention">
+<p class="first admonition-title">Atención</p>
+<p class="last">Tenga en cuenta que la llamada se grabará mientras la entidad externa esté presente, incluso si la llamada se transfiere entre varios usuarios de la plataforma.</p>
+</div>
+<p class="rubric">Grabar todas las llamadas de un DDI</p>
+<p>Para habilitar esta función, edite el DDI y configure el campo en la sección de datos de grabación:</p>
+<p>Hay 4 opciones disponibles:</p>
+<ul class="simple">
+<li><p class="first">Deshabilitar grabaciones</p>
+</li>
+<li><p class="first">Habilitar grabaciones entrantes</p>
+</li>
+<li><p class="first">Habilitar grabaciones salientes</p>
+</li>
+<li><p class="first">Habilitar todas las grabaciones de llamadas</p>
+</li>
+</ul>
+</div>
+<div class="section" id="on-demand-recordings">
+<h2>Grabaciones bajo demanda</h2>
+<p>Las grabaciones <em>bajo demanda</em> deben ser habilitadas por el <em>administrador de la marca</em> para los clientes que lo soliciten. Esto se puede hacer en la pantalla de edición del cliente:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">A diferencia de los <a class="reference internal" href="../services.xhtml#services"><span class="std std-ref">Servicios</span></a> mencionados en la sección anterior, la grabación bajo demanda se activa dentro de una conversación.</p>
+</div>
+<p>A diferencia de las automáticas, la grabación bajo demanda se puede detener utilizando el mismo proceso que las inició.</p>
+<div class="section" id="activated-using-the-record-key">
+<h3>Activado usando la tecla <em>Grabar</em></h3>
+<p>Algunos terminales (por ejemplo, <em>Yealink</em>) admiten el envío de un mensaje <a class="reference external" href="https://tools.ietf.org/html/rfc6086">SIP INFO</a><span class="link-target"> [https://tools.ietf.org/html/rfc6086]</span> durante la conversación con un encabezado especial <em>Grabar</em> (ver <a class="reference external" href="http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf">referencia</a><span class="link-target"> [http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf]</span>). Esto no es un estándar para el protocolo, pero siendo Yealink uno de los fabricantes compatibles con la solución, incluimos este tipo de grabación bajo demanda.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Para estas solicitudes de grabación, el código configurado no importa pero el cliente aún debe tener habilitadas las grabaciones bajo demanda.</p>
+</div>
+<p>Para iniciar o detener este tipo de grabaciones, simplemente presione la tecla Grabar en el terminal y el sistema manejará el mensaje enviado.</p>
+</div>
+<div class="section" id="activated-using-dtmf-codes">
+<h3>Activado usando códigos <em>DTMF</em></h3>
+<p>El enfoque más tradicional para esta función es presionar una combinación de teclas durante la llamada. Se reproducirá una notificación y la grabación comenzará o se detendrá. Esta combinación se envía al sistema utilizando <a class="reference external" href="https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos">tonos DTMF</a><span class="link-target"> [https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos]</span> utilizando el mismo flujo de audio que la conversación (como se menciona en <a class="reference external" href="https://tools.ietf.org/html/rfc4733">RFC 4733</a><span class="link-target"> [https://tools.ietf.org/html/rfc4733]</span>).</p>
+<p>IvozProvider admite este tipo de activación de grabación bajo demanda pero con una desventaja importante. Para capturar estos códigos, la pbx debe procesar cada paquete de audio para detectar el código, evitando el flujo directo de medios entre los puntos finales.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Habilitar este modo de grabación afecta en gran medida el rendimiento de la plataforma. Úselo bajo su propio riesgo.</p>
+</div>
+</div>
+</div>
+<div class="section" id="recordings-list">
+<h2>Lista de grabaciones</h2>
+<p>El <em>administrador del cliente</em> puede acceder a todas las grabaciones en la sección <strong>Configuración del cliente</strong> &gt; <strong>Llamadas</strong> &gt; <strong>Grabaciones de llamadas</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Las grabaciones se pueden escuchar desde la <em>web</em> o descargar en formato MP3.</p>
+</li>
+<li><p class="first">Si la grabación se ha iniciado bajo demanda, también incluirá al usuario que la solicitó.</p>
+</li>
+</ul>
+</div></blockquote>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">El botón de eliminación de grabaciones se muestra solo si <strong>Permitir al cliente eliminar grabaciones</strong> está habilitado para el cliente en <em>Configuración del cliente</em>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>
