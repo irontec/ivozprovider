@@ -126,6 +126,10 @@ Feature: Retrieve users
           "outgoingDdi": "~",
           "outgoingDdiRule": null,
           "voicemail": null,
-          "pickupGroupIds": []
+          "pickupGroupIds": [],
+          "useDefaultLocation": true,
+          "location": {
+            "id": 1
+          }
       }
       """

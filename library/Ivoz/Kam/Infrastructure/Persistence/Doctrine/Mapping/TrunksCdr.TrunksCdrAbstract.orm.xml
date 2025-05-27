@@ -5,9 +5,6 @@
       <index name="trunksCdr_start_time_idx" columns="start_time"/>
       <index name="trunksCdr_parsed_idx" columns="parsed"/>
     </indexes>
-    <unique-constraints>
-      <unique-constraint name="trunksCdr_callid_direction" columns="callid,direction"/>
-    </unique-constraints>
     <field name="startTime" type="datetime" column="start_time" nullable="false">
       <options>
         <option name="default">2000-01-01 00:00:00</option>
@@ -117,12 +114,12 @@
     </many-to-one>
     <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="ddiId" referenced-column-name="id" on-delete="set null" nullable="1"/>
+        <join-column name="ddiId" referenced-column-name="id" on-delete="set null" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="ddiProviderId" referenced-column-name="id" on-delete="set null" nullable="1"/>
+        <join-column name="ddiProviderId" referenced-column-name="id" on-delete="set null" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

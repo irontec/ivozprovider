@@ -64,6 +64,8 @@ interface UserInterface extends LoggableEntityInterface
 
     public function unserialize($serialized);
 
+    public function setUseDefaultLocation(bool $useDefaultLocation): static;
+
     /**
      * @inheritdoc
      */
@@ -205,6 +207,8 @@ interface UserInterface extends LoggableEntityInterface
     public function getMultiContact(): bool;
 
     public function getGsQRCode(): bool;
+
+    public function getUseDefaultLocation(): bool;
 
     public function getCompany(): CompanyInterface;
 

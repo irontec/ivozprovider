@@ -1,7 +1,7 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 
 import Status from '../RetailAccount/Field/Status';
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
@@ -270,8 +270,8 @@ const properties: ResidentialDeviceProperties = {
 
 const residentialDevice: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: SettingsApplications,
-  link: '/doc/en/administration_portal/client/residential/residential_devices.html',
+  icon: MapsHomeWorkIcon,
+  link: '/doc/${language}/administration_portal/client/residential/residential_devices.html',
   iden: 'ResidentialDevice',
   title: _('Residential Device', { count: 2 }),
   path: '/residential_devices',

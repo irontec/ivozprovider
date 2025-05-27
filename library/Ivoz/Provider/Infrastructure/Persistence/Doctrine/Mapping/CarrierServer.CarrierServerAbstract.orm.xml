@@ -76,12 +76,12 @@
     </field>
     <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\CarrierInterface" inversed-by="servers" fetch="LAZY">
       <join-columns>
-        <join-column name="carrierId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="carrierId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

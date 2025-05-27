@@ -8,6 +8,7 @@ export default ({ mode }) => {
     const basePath = path.resolve(__dirname, './src');
     const env = loadEnv(mode, process.cwd());
     const base = '/brand/';
+    const targetUrl = process.env.BACKEND_URL || 'https://127.0.0.1/';
 
     return defineConfig({
         base,
@@ -29,7 +30,7 @@ export default ({ mode }) => {
             port: 3000,
             proxy: {
                 '/api': {
-                     target: 'https://127.0.0.1/',
+                     target: targetUrl,
                      changeOrigin: true,
                      secure: false,
                      ws: true,

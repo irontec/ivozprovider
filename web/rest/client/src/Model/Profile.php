@@ -56,6 +56,12 @@ class Profile
     private $defaultCountryId;
 
     /**
+     * @var ?int
+     * @AttributeDefinition(type="int")
+     */
+     private $defaultLocationId;
+
+    /**
      * @var ProfileAcl[]
      * @AttributeDefinition(
      *     type="array",
@@ -82,6 +88,7 @@ class Profile
         string $type,
         ?bool $showBillingInfo,
         int $defaultCountryId,
+        ?int $defaultLocationId,
         array $adminRelPublicEntities,
         array $features
     ) {
@@ -89,6 +96,7 @@ class Profile
         $this->setType($type);
         $this->billingInfo = $showBillingInfo ?? false;
         $this->defaultCountryId = $defaultCountryId;
+        $this->defaultLocationId = $defaultLocationId;
 
         foreach ($adminRelPublicEntities as $adminRelPublicEntity) {
             $this->addAcl(
@@ -134,6 +142,11 @@ class Profile
     public function getDefaultCountryId(): int
     {
         return $this->defaultCountryId;
+    }
+
+    public function getDefaultLocationId(): ?int
+    {
+        return $this->defaultLocationId;
     }
 
     /**

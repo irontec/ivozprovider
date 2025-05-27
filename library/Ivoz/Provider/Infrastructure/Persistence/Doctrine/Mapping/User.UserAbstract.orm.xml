@@ -75,9 +75,15 @@
         <option name="unsigned">1</option>
       </options>
     </field>
+    <field name="useDefaultLocation" type="boolean" column="useDefaultLocation" nullable="false">
+      <options>
+        <option name="default">1</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="callAcl" target-entity="Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface" fetch="LAZY">

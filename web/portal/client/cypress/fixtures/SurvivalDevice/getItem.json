@@ -1,0 +1,34 @@
+{
+  "body": {
+    "name": "survival test 1",
+    "proxy": "23123",
+    "outboundProxy": "43322",
+    "udpPort": 5060,
+    "tcpPort": 5060,
+    "tlsPort": 5061,
+    "wssPort": 10081,
+    "description": "new survival device 1",
+    "id": 1,
+    "company": {
+      "type": "vpbx",
+      "name": "DemoCompany",
+      "domainUsers": "127.0.0.1",
+      "onDemandRecordCode": "",
+      "balance": 1.2,
+      "id": 1,
+      "invoicing": {
+        "nif": "12345678A"
+      },
+      "language": 1,
+      "defaultTimezone": 145,
+      "country": 68,
+      "transformationRuleSet": 1,
+      "outgoingDdi": null,
+      "outgoingDdiRule": null
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

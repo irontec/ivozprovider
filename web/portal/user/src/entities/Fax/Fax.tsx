@@ -69,7 +69,7 @@ const fax: EntityInterface = {
   icon: FaxIcon,
   iden: 'Fax',
   title: _('Fax', { count: 2 }),
-  path: '/my/faxes',
+  path: '/faxes',
   toStr: (row: FaxPropertyList<string>) => `${row.name}`,
   properties,
   columns,

@@ -45,6 +45,7 @@ const properties: NotificationTemplateContentProperties = {
 const NotificationTemplateContent: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SubjectIcon,
+  link: '/doc/${language}/administration_portal/platform/default_notification_templates.html',
   iden: 'NotificationTemplateContent',
   title: _('Notification Template Content', { count: 2 }),
   path: '/notification_template_contents',

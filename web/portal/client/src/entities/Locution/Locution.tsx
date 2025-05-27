@@ -22,6 +22,11 @@ const properties: LocutionProperties = {
     ),
     component: RecordingExtension,
   },
+  encodedFile: {
+    label: _('File for play'),
+    type: 'file',
+    readOnly: true,
+  },
   status: {
     label: _('Status'),
     readOnly: true,
@@ -37,7 +42,7 @@ const properties: LocutionProperties = {
 const locution: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CampaignIcon,
-  link: '/doc/en/administration_portal/client/vpbx/multimedia/locutions.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/multimedia/locutions.html',
   iden: 'Locution',
   title: _('Locution', { count: 2 }),
   path: '/locutions',

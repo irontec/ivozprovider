@@ -6,6 +6,7 @@ import CompanyDdiSelectOptions from '../Ddi/SelectOptions/CompanyDdiSelectOption
 import { ResidentialFeatureSelectOptions } from '../Feature/SelectOptions';
 import RetailFeatureSelectOptions from '../Feature/SelectOptions/RetailFeatureSelectOptions';
 import FeatureSelectOptions from '../Feature/SelectOptions/SelectOptions';
+import CompanyLocationSelectOptions from '../Location/SelectOptions/CompanyLocationSelectOptions';
 import {
   AccessCredentialSelectOptions,
   CallCsvSelectOptions,
@@ -68,6 +69,20 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
       },
       cancelToken,
     });
+  }
+
+  if (isVpbx && row?.id) {
+    promises[promises.length] = CompanyLocationSelectOptions(
+      {
+        callback: (options) => {
+          response.location = options;
+        },
+        cancelToken,
+      },
+      {
+        companyId: row?.id as number,
+      }
+    );
   }
 
   const isResidential = match.pathname.includes(

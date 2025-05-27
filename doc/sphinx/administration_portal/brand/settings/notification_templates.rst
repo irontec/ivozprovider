@@ -79,6 +79,102 @@ Configurable fields of each content:
 .. hint:: There is no need to create all content languages. If custom notification has some languages not defined the
         default contents will be used for that notification type.
 
+****************************************
+Using variables in notification contents
+****************************************
+
+You can use variables in the subject and body of the email. Each notification type has its own set of variables
+that can be used. The variables are replaced with the corresponding value before sending the email notification.
+
+- **Voicemail Notifications**
+
+    .. list-table::
+         :widths: 20 80
+         :header-rows: 0
+
+         * - ``${VM_NAME}``
+           - Voicemail User name
+         * - ``${VM_DATE}``
+           - Received date
+         * - ``${VM_DUR}``
+           - Voicemail duration
+         * - ``${VM_CIDNAME}``
+           - Caller name
+         * - ``${VM_CIDNUM}``
+           - Caller number
+         * - ``${VM_MSGNUM}``
+           - Voicemail Number
+
+- **Fax Notifications**
+
+    .. list-table::
+         :widths: 20 80
+         :header-rows: 0
+
+         * - ``${FAX_NAME}``
+           - Virtual Fax name
+         * - ``${FAX_PDFNAME}``
+           - Fax PDF filename
+         * - ``${FAX_PAGES}``
+           - Fax PDF page count
+         * - ``${FAX_SRC}``
+           - Origin number
+         * - ``${FAX_DST}``
+           - Received DDI number
+         * - ``${FAX_DATE}``
+           - Received Date
+
+- **Invoice Notifications**
+
+    .. list-table::
+         :widths: 20 80
+         :header-rows: 0
+
+         * - ``${INVOICE_COMPANY}``
+           - Company name
+         * - ``${INVOICE_DATE_IN}``
+           - Start date
+         * - ``${INVOICE_DATE_OUT}``
+           - End date
+         * - ``${INVOICE_AMOUNT}``
+           - Total amount with taxes
+         * - ``${INVOICE_CURRENCY}``
+           - Currency
+
+- **Low Balance Notifications**
+
+    .. list-table::
+         :widths: 20 80
+         :header-rows: 0
+
+         * - ``${BALANCE_NAME}``
+           - Company or carrier name
+         * - ``${BALANCE_AMOUNT}``
+           - Current balance amount
+
+- **Call CSV Notifications**
+
+    .. list-table::
+         :widths: 20 80
+         :header-rows: 0
+
+         * - ``${CALLCSV_COMPANY}``
+           - Company name
+         * - ``${CALLCSV_DATE_IN}``
+           - Start date
+         * - ``${CALLCSV_DATE_OUT}``
+           - End date
+
+- **Max Daily Usage Notifications**
+
+    .. list-table::
+         :widths: 20 80
+         :header-rows: 0
+
+         * - ``${MAXDAILYUSAGE_COMPANY}``
+           - Company name
+         * - ``${MAXDAILYUSAGE_AMOUNT}``
+           - Company max daily usage
 
 ******************************
 Assigning templates to clients

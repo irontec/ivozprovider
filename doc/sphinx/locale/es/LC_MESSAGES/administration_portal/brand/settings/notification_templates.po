@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"POT-Creation-Date: 2025-03-31 07:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,11 +209,231 @@ msgstr ""
 "no tiene algunos idiomas definidos, se usarán los contenidos predeterminados para ese "
 "tipo de notificación."
 
-#: ../../administration_portal/brand/settings/notification_templates.rst:85
+#: ../../administration_portal/brand/settings/notification_templates.rst:84
+msgid "Using variables in notification contents"
+msgstr "Agregando contenido de notificación"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:86
+msgid ""
+"You can use variables in the subject and body of the email. Each "
+"notification type has its own set of variables that can be used. The "
+"variables are replaced with the corresponding value before sending the "
+"email notification."
+msgstr ""
+"Puedes usar variables en el asunto y el cuerpo del correo electrónico. "
+"Cada tipo de notificación tiene su propio conjunto de variables que se "
+"pueden usar. Las variables se reemplazan con el valor correspondiente "
+"antes de enviar la notificación por correo electrónico."
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:89
+msgid "**Voicemail Notifications**"
+msgstr "**Notificaciones de Buzón de Voz**"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:95
+msgid "``${VM_NAME}``"
+msgstr "``${VM_NAME}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:96
+msgid "Voicemail User name"
+msgstr "Nombre del usuario del buzón de voz"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:97
+msgid "``${VM_DATE}``"
+msgstr "``${VM_DATE}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:98
+msgid "Received date"
+msgstr "Fecha de recepción"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:99
+msgid "``${VM_DUR}``"
+msgstr "``${VM_DUR}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:100
+msgid "Voicemail duration"
+msgstr "Duración del buzón de voz"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:101
+msgid "``${VM_CIDNAME}``"
+msgstr "``${VM_CIDNAME}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:102
+msgid "Caller name"
+msgstr "Nombre del llamante"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:103
+msgid "``${VM_CIDNUM}``"
+msgstr "``${VM_CIDNUM}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:104
+msgid "Caller number"
+msgstr "Número del llamante"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:105
+msgid "``${VM_MSGNUM}``"
+msgstr "``${VM_MSGNUM}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:106
+msgid "Voicemail Number"
+msgstr "Número del buzón de voz"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:108
+msgid "**Fax Notifications**"
+msgstr "**Notificaciones de Fax**"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:114
+msgid "``${FAX_NAME}``"
+msgstr "``${FAX_NAME}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:115
+msgid "Virtual Fax name"
+msgstr "Nombre del fax virtual"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:116
+msgid "``${FAX_PDFNAME}``"
+msgstr "``${FAX_PDFNAME}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:117
+msgid "Fax PDF filename"
+msgstr "Nombre del archivo PDF del fax"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:118
+msgid "``${FAX_PAGES}``"
+msgstr "``${FAX_PAGES}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:119
+msgid "Fax PDF page count"
+msgstr "Número de páginas del PDF del fax"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:120
+msgid "``${FAX_SRC}``"
+msgstr "``${FAX_SRC}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:121
+msgid "Origin number"
+msgstr "Número de origen"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:122
+msgid "``${FAX_DST}``"
+msgstr "``${FAX_DST}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:123
+msgid "Received DDI number"
+msgstr "Número DDI recibido"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:124
+msgid "``${FAX_DATE}``"
+msgstr "``${FAX_DATE}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:125
+msgid "Received Date"
+msgstr "Fecha de recepción"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:127
+msgid "**Invoice Notifications**"
+msgstr "**Notificaciones de Factura**"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:133
+msgid "``${INVOICE_COMPANY}``"
+msgstr "``${INVOICE_COMPANY}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:134
+#: ../../administration_portal/brand/settings/notification_templates.rst:162
+#: ../../administration_portal/brand/settings/notification_templates.rst:175
+msgid "Company name"
+msgstr "Nombre de la empresa"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:135
+msgid "``${INVOICE_DATE_IN}``"
+msgstr "``${INVOICE_DATE_IN}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:136
+#: ../../administration_portal/brand/settings/notification_templates.rst:164
+msgid "Start date"
+msgstr "Fecha de inicio"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:137
+msgid "``${INVOICE_DATE_OUT}``"
+msgstr "``${INVOICE_DATE_OUT}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:138
+#: ../../administration_portal/brand/settings/notification_templates.rst:166
+msgid "End date"
+msgstr "Fecha de fin"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:139
+msgid "``${INVOICE_AMOUNT}``"
+msgstr "``${INVOICE_AMOUNT}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:140
+msgid "Total amount with taxes"
+msgstr "Monto total con impuestos"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:141
+msgid "``${INVOICE_CURRENCY}``"
+msgstr "``${INVOICE_CURRENCY}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:142
+msgid "Currency"
+msgstr "Moneda"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:144
+msgid "**Low Balance Notifications**"
+msgstr "**Notificaciones de Saldo Bajo**"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:150
+msgid "``${BALANCE_NAME}``"
+msgstr "``${BALANCE_NAME}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:151
+msgid "Company or carrier name"
+msgstr "Nombre de la empresa o del operador"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:152
+msgid "``${BALANCE_AMOUNT}``"
+msgstr "``${BALANCE_AMOUNT}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:153
+msgid "Current balance amount"
+msgstr "Monto actual del saldo"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:155
+msgid "**Call CSV Notifications**"
+msgstr "**Notificaciones de CSV de Llamadas**"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:161
+msgid "``${CALLCSV_COMPANY}``"
+msgstr "``${CALLCSV_COMPANY}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:163
+msgid "``${CALLCSV_DATE_IN}``"
+msgstr "``${CALLCSV_DATE_IN}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:165
+msgid "``${CALLCSV_DATE_OUT}``"
+msgstr "``${CALLCSV_DATE_OUT}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:168
+msgid "**Max Daily Usage Notifications**"
+msgstr "**Notificaciones de Uso Máximo Diario**"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:174
+msgid "``${MAXDAILYUSAGE_COMPANY}``"
+msgstr "``${MAXDAILYUSAGE_COMPANY}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:176
+msgid "``${MAXDAILYUSAGE_AMOUNT}``"
+msgstr "``${MAXDAILYUSAGE_AMOUNT}``"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:177
+msgid "Company max daily usage"
+msgstr "Uso máximo diario de la empresa"
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:181
 msgid "Assigning templates to clients"
 msgstr "Asignando plantillas a clientes"
 
-#: ../../administration_portal/brand/settings/notification_templates.rst:87
+#: ../../administration_portal/brand/settings/notification_templates.rst:183
 msgid ""
 "Once the notification has been configured for the desired languages, "
 "Brand administrator can assign it to the client that will use it. This "

@@ -65,6 +65,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setCorporation($fixture->getReference('_reference_Corporation1'));
             $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet1'));
             $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
+            $this->setLocation($fixture->getReference('_reference_ProviderLocation1'));
         })->call($item1);
 
         $this->addReference('_reference_ProviderCompany1', $item1);
@@ -244,7 +245,8 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             ProviderNotificationTemplate::class,
             ProviderCorporation::class,
             ProviderApplicationServerSet::class,
-            ProviderMediaRelaySet::class
+            ProviderMediaRelaySet::class,
+            ProviderLocation::class,
         );
     }
 }

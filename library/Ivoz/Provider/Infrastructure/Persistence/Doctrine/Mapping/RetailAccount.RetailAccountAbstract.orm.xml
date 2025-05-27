@@ -77,17 +77,17 @@
     </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="residentialDevices" fetch="LAZY">
       <join-columns>
-        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\DomainInterface" inversed-by="residentialDevices" fetch="LAZY">
       <join-columns>
-        <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface" fetch="LAZY">
@@ -102,7 +102,7 @@
     </many-to-one>
     <many-to-one field="proxyUser" target-entity="Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="proxyUserId" referenced-column-name="id" on-delete="SET NULL" on-update="RESTRICT" nullable="1"/>
+        <join-column name="proxyUserId" referenced-column-name="id" on-delete="SET NULL" on-update="RESTRICT" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

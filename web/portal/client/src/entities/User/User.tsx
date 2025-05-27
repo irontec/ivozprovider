@@ -6,10 +6,11 @@ import EntityInterface, {
   EntityValidatorResponse,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import PersonIcon from '@mui/icons-material/Person';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
 import customAction from './Action';
+import List from './List';
 import { UserProperties, UserPropertyList } from './UserProperties';
 
 type marshallerType = typeof defaultMarshaller;
@@ -85,6 +86,14 @@ const properties: UserProperties = {
     label: _('Numeric transformation'),
     default: '__null__',
     null: _("Client's default"),
+  },
+  useDefaultLocation: {
+    label: _('Use default location'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '0',
   },
   location: {
     label: _('Location', { count: 1 }),
@@ -230,8 +239,8 @@ const columns = [
 
 const user: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: PersonIcon,
-  link: '/doc/en/administration_portal/client/vpbx/users.html',
+  icon: PeopleAltIcon,
+  link: '/doc/${language}/administration_portal/client/vpbx/users.html',
   iden: 'User',
   title: _('User', { count: 2 }),
   path: '/users',
@@ -259,6 +268,7 @@ const user: EntityInterface = {
 
     return module.default;
   },
+  List,
   validator,
   marshaller,
 };

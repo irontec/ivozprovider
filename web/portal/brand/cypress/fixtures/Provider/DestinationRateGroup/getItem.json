@@ -1,0 +1,29 @@
+{
+  "body": {
+    "status": "inProgress",
+    "lastExecutionError": null,
+    "id": 1,
+    "name": {
+      "en": "Standard",
+      "es": "Standard",
+      "ca": "Standard",
+      "it": "Standard"
+    },
+    "description": {
+      "en": "",
+      "es": "",
+      "ca": ""
+    },
+    "file": {
+      "fileSize": null,
+      "mimeType": null,
+      "baseName": null,
+      "importerArguments": []
+    },
+    "currency": null
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

@@ -1,7 +1,7 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
+import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
 import Actions from './Action';
 import { RecordingProperties } from './RecordingProperties';
@@ -32,8 +32,8 @@ const columns = ['calldate', 'caller', 'callee', 'duration'];
 
 const recording: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: SettingsVoiceIcon,
-  link: '/doc/en/administration_portal/client/vpbx/calls/call_recordings.html',
+  icon: RecordVoiceOverIcon,
+  link: '/doc/${language}/administration_portal/client/vpbx/calls/call_recordings.html',
   iden: 'Recording',
   title: _('Recording', { count: 2 }),
   path: '/recordings',

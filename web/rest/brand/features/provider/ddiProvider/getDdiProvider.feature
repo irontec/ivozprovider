@@ -53,6 +53,7 @@ Feature: Retrieve ddi providers
               },
               "country": 68,
               "editable": true
-          }
+          },
+          "routingTag": "~"
       }
       """

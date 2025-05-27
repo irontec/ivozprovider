@@ -36,12 +36,16 @@ const properties: DdiProviderProperties = {
     null: _('Use client’s set'),
     default: '__auto__',
   },
+  routingTag: {
+    label: _('Routing Tag', { count: 1 }),
+    null: _('Unassigned'),
+  },
 };
 
 const DdiProvider: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DynamicFormIcon,
-  link: '/doc/en/administration_portal/brand/providers/ddi_providers.html',
+  link: '/doc/${language}/administration_portal/brand/providers/ddi_providers.html',
   iden: 'DdiProvider',
   title: _('DDI Provider', { count: 2 }),
   path: '/ddi_providers',

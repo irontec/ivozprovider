@@ -75,6 +75,7 @@ const huntGroupMember: EntityInterface = {
   toStr: (row: HuntGroupMemberPropertyList<string>) => `${row.id}`,
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'HuntGroupMembers',

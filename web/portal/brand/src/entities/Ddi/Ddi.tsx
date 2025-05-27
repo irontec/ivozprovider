@@ -136,6 +136,7 @@ const properties: DdiProperties = {
   },
   country: {
     label: _('Country', { count: 1 }),
+    required: true,
   },
   language: {
     label: _('Language', { count: 1 }),
@@ -180,12 +181,37 @@ const properties: DdiProperties = {
       },
     },
   },
+  useDdiProviderRoutingTag: {
+    label: _('Routing Tag', { count: 1 }),
+    default: 1,
+    enum: {
+      '0': _('Use custom Routing Tag'),
+      '1': _('Use DDI Provider Routing Tag'),
+    },
+    helpText: _(
+      'Route calls presenting this DDI as source number using outbound routes with routing tag of linked to its DDI Provider.'
+    ),
+    visualToggle: {
+      '1': {
+        show: [],
+        hide: ['routingTag'],
+      },
+      '0': {
+        show: ['routingTag'],
+        hide: [],
+      },
+    },
+  },
+  routingTag: {
+    label: _('Custom Routing Tag'),
+    null: _('Unassigned'),
+  },
 };
 
 const ddi: EntityInterface = {
   ...defaultEntityBehavior,
   icon: DialpadIcon,
-  link: '/doc/en/administration_portal/brand/views/ddis.html',
+  link: '/doc/${language}/administration_portal/brand/views/ddis.html',
   iden: 'Ddi',
   title: _('DDI', { count: 2 }),
   path: '/ddis',

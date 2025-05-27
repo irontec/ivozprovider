@@ -1786,11 +1786,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$port of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerAbstract\\:\\:setPort\\(\\) expects int\\|null, int\\|string given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServer.php
-
-		-
 			message: "#^Parameter \\#2 \\$string of function explode expects string, string\\|null given\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServer.php
@@ -3499,16 +3494,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserInterface\\:\\:unserialize\\(\\) has parameter \\$serialized with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserInterface.php
-
-		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserRepository\\:\\:getBrandUsersIdsOrderByTerminalExpireDate\\(\\) return type has no value type specified in iterable type array\\.$#"

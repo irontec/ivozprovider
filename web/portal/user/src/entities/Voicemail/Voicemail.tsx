@@ -6,7 +6,7 @@ import EntityInterface, {
   ChildDecoratorType,
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import MailIcon from '@mui/icons-material/Mail';
+import VoicemailIcon from '@mui/icons-material/Voicemail';
 
 import {
   VoicemailProperties,
@@ -74,10 +74,10 @@ const columns = ['name', 'email', 'enabled'];
 
 const voicemail: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: MailIcon,
+  icon: VoicemailIcon,
   iden: 'Voicemail',
   title: _('Voicemail', { count: 2 }),
-  path: '/my/voicemails',
+  path: '/voicemails',
 
   acl: {
     ...defaultEntityBehavior.acl,

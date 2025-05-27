@@ -1,0 +1,18 @@
+{
+  "body": {
+    "description": "brand test desc",
+    "type": "number",
+    "regexp": null,
+    "numbervalue": "946002055",
+    "id": 2,
+    "matchList": {
+      "name": "testBrandMatchlist",
+      "id": 3
+    },
+    "numberCountry": "~"
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

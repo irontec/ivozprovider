@@ -1,0 +1,10 @@
+{
+  "body": {
+    "name": "testBrandMatchlist",
+    "id": 3
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

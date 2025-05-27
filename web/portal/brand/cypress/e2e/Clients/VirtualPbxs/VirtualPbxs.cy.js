@@ -11,7 +11,7 @@ describe('in Companies', () => {
     cy.prepareGenericPactInterceptors('vpbx');
     cy.before();
 
-    cy.get('svg[data-testid="MapsHomeWorkIcon"]').first().click();
+    cy.get('svg[data-testid="BusinessIcon"]').first().click();
     cy.contains('Virtual PBXs').click();
 
     cy.get('header').should('contain', 'Virtual PBXs');

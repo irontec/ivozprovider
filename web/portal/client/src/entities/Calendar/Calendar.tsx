@@ -34,7 +34,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const calendar: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CalendarTodayIcon,
-  link: '/doc/en/administration_portal/client/vpbx/routing_tools/calendars.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/routing_tools/calendars.html',
   iden: 'Calendar',
   title: _('Calendar', { count: 2 }),
   path: '/calendars',

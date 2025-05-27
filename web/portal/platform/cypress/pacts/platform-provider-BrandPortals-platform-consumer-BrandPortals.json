@@ -1,0 +1,122 @@
+{
+  "consumer": {
+    "name": "platform-consumer-BrandPortals"
+  },
+  "provider": {
+    "name": "platform-provider-BrandPortals"
+  },
+  "interactions": [
+    {
+      "description": "add Brand Portal",
+      "providerState": "",
+      "request": {
+        "method": "POST",
+        "path": "/api/platform/web_portals",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzY0NTMxMzUsImV4cCI6MTY3NjQ1NjczNSwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6Imlyb250ZWMifQ.KahLJTPea7OLraAjnq9UxKKwBrqPOG7z6QSl0CtpKNTrXY2jgZavKztq64KWm-9j9ym98LRTI7Acj-MtWUqYiB11p8OFL3fQk0B9EmX-Thfk_z9UFT_oXNnzoXT4BZzyF0hDo9kedR1j4SPoVNug4WG7Lkx_-MV2Qz2PbsV-BF-Y3kb0QtGz5vtEWxLYGrCq7cEhGRsakHFAOxu2Z0Kdj5gDUFTaKR5G96fymnfWph1PmIRwyCCWAyUVMTpobMLbauJtEKTXiav6H7lE4RU5hSI7R20sScy75FDc9NQcelmGlFMOmMwMgri_xouvwtIg3O4tMKputyzyD-GbgOt0vRiLACf5jcqPrq0b5p6cKuVTdxzmUBpRWaGCvS4tdHVuMqlsdL9WCQDygxB4osoUqws06rEdUIfDWjVAtmygPAR3JDI6QE1cocw6B7-sDfpFfyxpSYwWGEhwLC1E9djsIdHYioYq_iCCE_jBy2pC5JEwMouiwbrfrDkxGHwKhC_1qeugdWjrUiyMufihOvjqBeGt7nCAvY0CGgygJ4Opnv4Rz2ueFbJJbHy1fZx6b5XxY2gWQymDyRjeZBs7hyz4X8yeWPsYDLce0jY5rKHOIBFJAEqHO2Ce97daE2I0WZR6Of2E6eLtpeT5zx_kfPGzN-qEvjj-42YD_Y2XWNokSWU",
+          "content-length": "121",
+          "content-type": "application/json"
+        },
+        "body": {
+          "urlType": "brand",
+          "name": "Platform brand Portal",
+          "color": "#000000",
+          "url": "https://post-example.com",
+          "logo": "",
+          "brand": 2
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "url": "https://post-example.com",
+          "urlType": "brand",
+          "name": "Platform brand Portal",
+          "color": "#000000",
+          "id": 7,
+          "logo": {
+            "fileSize": null,
+            "mimeType": null,
+            "baseName": null
+          },
+          "brand": 1,
+          "company": null
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "edit Brand Portal",
+      "providerState": "",
+      "request": {
+        "method": "PUT",
+        "path": "/api/platform/web_portals/2",
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzY0NTMxMzUsImV4cCI6MTY3NjQ1NjczNSwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6Imlyb250ZWMifQ.KahLJTPea7OLraAjnq9UxKKwBrqPOG7z6QSl0CtpKNTrXY2jgZavKztq64KWm-9j9ym98LRTI7Acj-MtWUqYiB11p8OFL3fQk0B9EmX-Thfk_z9UFT_oXNnzoXT4BZzyF0hDo9kedR1j4SPoVNug4WG7Lkx_-MV2Qz2PbsV-BF-Y3kb0QtGz5vtEWxLYGrCq7cEhGRsakHFAOxu2Z0Kdj5gDUFTaKR5G96fymnfWph1PmIRwyCCWAyUVMTpobMLbauJtEKTXiav6H7lE4RU5hSI7R20sScy75FDc9NQcelmGlFMOmMwMgri_xouvwtIg3O4tMKputyzyD-GbgOt0vRiLACf5jcqPrq0b5p6cKuVTdxzmUBpRWaGCvS4tdHVuMqlsdL9WCQDygxB4osoUqws06rEdUIfDWjVAtmygPAR3JDI6QE1cocw6B7-sDfpFfyxpSYwWGEhwLC1E9djsIdHYioYq_iCCE_jBy2pC5JEwMouiwbrfrDkxGHwKhC_1qeugdWjrUiyMufihOvjqBeGt7nCAvY0CGgygJ4Opnv4Rz2ueFbJJbHy1fZx6b5XxY2gWQymDyRjeZBs7hyz4X8yeWPsYDLce0jY5rKHOIBFJAEqHO2Ce97daE2I0WZR6Of2E6eLtpeT5zx_kfPGzN-qEvjj-42YD_Y2XWNokSWU",
+          "content-length": "164",
+          "content-type": "application/json"
+        },
+        "body": {
+          "urlType": "brand",
+          "name": "Updated Portal",
+          "color": "#000000",
+          "url": "https://updated-example.com",
+          "logo": {
+            "fileSize": null,
+            "mimeType": null,
+            "baseName": null
+          },
+          "brand": 1
+        },
+        "query": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "url": "https://updated-example.com",
+          "urlType": "god",
+          "name": "Updated Portal",
+          "color": "#000000",
+          "id": 2,
+          "logo": {
+            "fileSize": null,
+            "mimeType": null,
+            "baseName": null
+          },
+          "brand": 1,
+          "company": null
+        },
+        "matchingRules": {
+          "$.body.name": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    },
+    "client": {
+      "name": "pact-cypress-adapter",
+      "version": "1.3.0"
+    }
+  }
+}

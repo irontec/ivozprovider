@@ -1,17 +1,17 @@
 {
-    "request": {
-        "name": "New fax notification",
-        "type": "voicemail"
+  "request": {
+    "name": "New fax notification",
+    "type": "voicemail"
+  },
+  "response": {
+    "body": {
+      "name": "New fax notification",
+      "type": "voicemail",
+      "id": 1
     },
-    "response": {
-        "body": {
-            "name": "New fax notification",
-            "type": "voicemail",
-            "id": 1
-        },
-        "headers": {
-            "content-type": "application/json; charset=utf-8"
-        },
-        "statusCode": 200
-    }
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
 }

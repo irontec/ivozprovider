@@ -64,7 +64,7 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...CountryCollection,
   }).as('getCountry');
 
-  cy.intercept('GET', '**/api/user/my/voicemails?*', {
+  cy.intercept('GET', '**/api/user/voicemails?*', {
     ...VoicemailCollection,
   }).as('getVoicemail');
 
@@ -80,7 +80,7 @@ Cypress.Commands.add('prepareGenericPactInterceptors', (pactContextName) => {
     ...RecordingCollection,
   }).as('getRecording');
 
-  cy.intercept('GET', '**/api/user/my/faxes?*', {
+  cy.intercept('GET', '**/api/user/faxes?*', {
     ...FaxCollection,
   }).as('getFax');
 

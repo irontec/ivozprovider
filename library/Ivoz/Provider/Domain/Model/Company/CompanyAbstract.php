@@ -23,6 +23,7 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterfac
 use Ivoz\Provider\Domain\Model\Corporation\CorporationInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
+use Ivoz\Provider\Domain\Model\Location\LocationInterface;
 use Ivoz\Provider\Domain\Model\Language\Language;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -36,6 +37,7 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\Corporation\Corporation;
 use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
+use Ivoz\Provider\Domain\Model\Location\Location;
 
 /**
 * CompanyAbstract
@@ -238,6 +240,11 @@ abstract class CompanyAbstract
     protected $mediaRelaySet;
 
     /**
+     * @var ?LocationInterface
+     */
+    protected $location = null;
+
+    /**
      * Constructor
      */
     protected function __construct(
@@ -405,7 +412,8 @@ abstract class CompanyAbstract
             ->setAccessCredentialNotificationTemplate($fkTransformer->transform($dto->getAccessCredentialNotificationTemplate()))
             ->setCorporation($fkTransformer->transform($dto->getCorporation()))
             ->setApplicationServerSet($fkTransformer->transform($applicationServerSet))
-            ->setMediaRelaySet($fkTransformer->transform($mediaRelaySet));
+            ->setMediaRelaySet($fkTransformer->transform($mediaRelaySet))
+            ->setLocation($fkTransformer->transform($dto->getLocation()));
 
         $self->initChangelog();
 
@@ -503,7 +511,8 @@ abstract class CompanyAbstract
             ->setAccessCredentialNotificationTemplate($fkTransformer->transform($dto->getAccessCredentialNotificationTemplate()))
             ->setCorporation($fkTransformer->transform($dto->getCorporation()))
             ->setApplicationServerSet($fkTransformer->transform($applicationServerSet))
-            ->setMediaRelaySet($fkTransformer->transform($mediaRelaySet));
+            ->setMediaRelaySet($fkTransformer->transform($mediaRelaySet))
+            ->setLocation($fkTransformer->transform($dto->getLocation()));
 
         return $this;
     }
@@ -555,7 +564,8 @@ abstract class CompanyAbstract
             ->setAccessCredentialNotificationTemplate(NotificationTemplate::entityToDto(self::getAccessCredentialNotificationTemplate(), $depth))
             ->setCorporation(Corporation::entityToDto(self::getCorporation(), $depth))
             ->setApplicationServerSet(ApplicationServerSet::entityToDto(self::getApplicationServerSet(), $depth))
-            ->setMediaRelaySet(MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth));
+            ->setMediaRelaySet(MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth))
+            ->setLocation(Location::entityToDto(self::getLocation(), $depth));
     }
 
     /**
@@ -605,7 +615,8 @@ abstract class CompanyAbstract
             'accessCredentialNotificationTemplateId' => self::getAccessCredentialNotificationTemplate()?->getId(),
             'corporationId' => self::getCorporation()?->getId(),
             'applicationServerSetId' => self::getApplicationServerSet()->getId(),
-            'mediaRelaySetId' => self::getMediaRelaySet()->getId()
+            'mediaRelaySetId' => self::getMediaRelaySet()->getId(),
+            'locationId' => self::getLocation()?->getId()
         ];
     }
 
@@ -1124,5 +1135,17 @@ abstract class CompanyAbstract
     public function getMediaRelaySet(): MediaRelaySetInterface
     {
         return $this->mediaRelaySet;
+    }
+
+    protected function setLocation(?LocationInterface $location = null): static
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function getLocation(): ?LocationInterface
+    {
+        return $this->location;
     }
 }

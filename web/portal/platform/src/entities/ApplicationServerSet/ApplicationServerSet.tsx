@@ -80,7 +80,7 @@ const validator: EntityValidator = (values, properties, visualToggle) => {
 const ApplicationServerSet: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
-  link: '/doc/en/administration_portal/platform/infrastructure/application_server_sets.html',
+  link: '/doc/${language}/administration_portal/platform/infrastructure/application_server_sets.html',
   iden: 'ApplicationServerSet',
   title: _('Application Server Set', { count: 2 }),
   path: '/application_server_sets',

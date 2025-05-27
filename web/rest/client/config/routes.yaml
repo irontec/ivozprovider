@@ -232,3 +232,6 @@ post_fax_resend:
     _controller: Controller\Provider\PostFaxResendAction
     _api_receive: false
 
+get_users_detailed:
+  path: '/users/detailed'
+  methods: ['GET']

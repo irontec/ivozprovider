@@ -1,0 +1,21 @@
+{
+  "body": {
+    "fromName": "IvozProvider Notification",
+    "fromAddress": "no-reply@ivozprovider.com",
+    "subject": "test subject",
+    "body": "test body",
+    "bodyType": "text/plain",
+    "id": 2,
+    "notificationTemplate": {
+      "name": "CallCsv notification",
+      "type": "callCsv",
+      "id": 2,
+      "brand": null
+    },
+    "language": "~"
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

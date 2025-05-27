@@ -1,0 +1,24 @@
+{
+  "request": {
+    "number": "+342654",
+    "duration": 20
+  },
+  "response": {
+    "body": {
+      "plan": "Something",
+      "callDate": "2023-01-24 10:51:44",
+      "duration": 20,
+      "patternName": "Dest3 (+346)",
+      "connectionCharge": 0,
+      "intervalStart": "0",
+      "rate": 0.0025,
+      "ratePeriod": 1,
+      "totalCost": 0.15,
+      "currencySymbol": "€"
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

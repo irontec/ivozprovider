@@ -1,4 +1,6 @@
-import { EntityValues } from '@irontec/ivoz-ui';
+import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
+import DeleteRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/DeleteRowButton';
+import EditRowButton from '@irontec/ivoz-ui/components/List/Content/CTA/EditRowButton';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -9,7 +11,6 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import MoveDownIcon from '@mui/icons-material/MoveDown';
 import { useStoreState } from 'store';
 
-import { TransformationRuleSetPropertyList } from '../TransformationRuleSet/TransformationRuleSetProperties';
 import {
   TransformationRuleProperties,
   TransformationRulePropertyList,
@@ -50,14 +51,39 @@ const properties: TransformationRuleProperties = {
 };
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { row } = props;
-  const parent = useStoreState(
-    (state) =>
-      state.list.parentRow as TransformationRuleSetPropertyList<
-        string | number | boolean
-      >
-  );
-  row.editable = parent?.editable;
+  const { routeMapItem, row, entityService } = props;
+  const parent = useStoreState((state) => state.list.parentRow);
+  const isRestricted = parent?.editable === false;
+
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === TransformationRule.iden
+  ) {
+    const isUpdatePath =
+      routeMapItem.route === `${TransformationRule.path}/:id/update`;
+    const isDeletePath =
+      routeMapItem.route === `${TransformationRule.path}/:id`;
+
+    if (isRestricted && isUpdatePath) {
+      return (
+        <EditRowButton
+          row={row}
+          disabled={true}
+          path={routeMapItem.route ?? ''}
+        />
+      );
+    }
+
+    if (isRestricted && isDeletePath) {
+      return (
+        <DeleteRowButton
+          row={row}
+          entityService={entityService}
+          disabled={true}
+        />
+      );
+    }
+  }
 
   return DefaultChildDecorator(props);
 };

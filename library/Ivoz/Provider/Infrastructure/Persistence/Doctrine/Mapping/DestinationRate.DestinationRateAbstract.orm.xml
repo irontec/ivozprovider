@@ -19,12 +19,12 @@
     </field>
     <many-to-one field="destinationRateGroup" target-entity="Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface" inversed-by="destinationRates" fetch="LAZY">
       <join-columns>
-        <join-column name="destinationRateGroupId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="destinationRateGroupId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="destination" target-entity="Ivoz\Provider\Domain\Model\Destination\DestinationInterface" inversed-by="destinationRates" fetch="LAZY">
       <join-columns>
-        <join-column name="destinationId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="destinationId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

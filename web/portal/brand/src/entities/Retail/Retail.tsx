@@ -14,7 +14,7 @@ const Retail = {
     },
   },
   icon: ShoppingBasketIcon,
-  link: '/doc/en/administration_portal/brand/clients/retail.html',
+  link: '/doc/${language}/administration_portal/brand/clients/retail.html',
   title: _('Retail', { count: 2 }),
   localPath: '/retail',
   columns: [

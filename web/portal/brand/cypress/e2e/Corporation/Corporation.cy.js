@@ -8,7 +8,7 @@ describe('in Corporations', () => {
     cy.prepareGenericPactInterceptors('Corporation');
     cy.before();
 
-    cy.get('svg[data-testid="EngineeringIcon"]').first().click();
+    cy.get('svg[data-testid="RoomPreferencesIcon"]').first().click();
     cy.contains('Corporations').click();
 
     cy.get('header').should('contain', 'Corporations');

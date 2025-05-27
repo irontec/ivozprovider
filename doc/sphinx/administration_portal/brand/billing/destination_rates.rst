@@ -149,7 +149,7 @@ this process much easier:
 .. error:: Single quotes are not supported.
 
 You can find a sample CSV for importing `here <https://raw.githubusercontent.com/
-irontec/ivozprovider/bleeding/web/portal/brand/samples/billing/pricesSample.csv>`_.
+irontec/ivozprovider/main/web/portal/brand/samples/billing/pricesSample.csv>`_.
 
 
 The order of the columns should be:

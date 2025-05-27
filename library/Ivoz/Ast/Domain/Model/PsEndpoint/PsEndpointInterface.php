@@ -20,6 +20,10 @@ interface PsEndpointInterface extends LoggableEntityInterface
 
     public const DIRECTMEDIA_NO = 'no';
 
+    public const MWISUBSCRIBEREPLACESUNSOLICITED_YES = 'yes';
+
+    public const MWISUBSCRIBEREPLACESUNSOLICITED_NO = 'no';
+
     public const DIRECTMEDIAMETHOD_UPDATE = 'update';
 
     public const DIRECTMEDIAMETHOD_INVITE = 'invite';
@@ -109,6 +113,8 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getAllow(): string;
 
     public function getDirectMedia(): ?string;
+
+    public function getMwiSubscribeReplacesUnsolicited(): string;
 
     public function getDirectMediaMethod(): ?string;
 

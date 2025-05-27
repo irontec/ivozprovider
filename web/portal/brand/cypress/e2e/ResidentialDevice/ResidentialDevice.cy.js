@@ -8,7 +8,7 @@ describe('in ResidentialDevices', () => {
     cy.prepareGenericPactInterceptors('ResidentialDevice');
     cy.before();
 
-    cy.get('svg[data-testid="EngineeringIcon"]').first().click();
+    cy.get('svg[data-testid="RoomPreferencesIcon"]').first().click();
     cy.contains('Residential Devices').click();
 
     cy.get('header').should('contain', 'Residential Devices');

@@ -105,6 +105,11 @@ abstract class UserAbstract
     protected $gsQRCode = false;
 
     /**
+     * @var bool
+     */
+    protected $useDefaultLocation = true;
+
+    /**
      * @var CompanyInterface
      */
     protected $company;
@@ -180,7 +185,8 @@ abstract class UserAbstract
         string $externalIpCalls,
         string $rejectCallMethod,
         bool $multiContact,
-        bool $gsQRCode
+        bool $gsQRCode,
+        bool $useDefaultLocation
     ) {
         $this->setName($name);
         $this->setLastname($lastname);
@@ -192,6 +198,7 @@ abstract class UserAbstract
         $this->setRejectCallMethod($rejectCallMethod);
         $this->setMultiContact($multiContact);
         $this->setGsQRCode($gsQRCode);
+        $this->setUseDefaultLocation($useDefaultLocation);
     }
 
     abstract public function getId(): null|string|int;
@@ -275,6 +282,8 @@ abstract class UserAbstract
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
         $gsQRCode = $dto->getGsQRCode();
         Assertion::notNull($gsQRCode, 'getGsQRCode value is null, but non null value was expected.');
+        $useDefaultLocation = $dto->getUseDefaultLocation();
+        Assertion::notNull($useDefaultLocation, 'getUseDefaultLocation value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
@@ -288,7 +297,8 @@ abstract class UserAbstract
             $externalIpCalls,
             $rejectCallMethod,
             $multiContact,
-            $gsQRCode
+            $gsQRCode,
+            $useDefaultLocation
         );
 
         $self
@@ -342,6 +352,8 @@ abstract class UserAbstract
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
         $gsQRCode = $dto->getGsQRCode();
         Assertion::notNull($gsQRCode, 'getGsQRCode value is null, but non null value was expected.');
+        $useDefaultLocation = $dto->getUseDefaultLocation();
+        Assertion::notNull($useDefaultLocation, 'getUseDefaultLocation value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
@@ -358,6 +370,7 @@ abstract class UserAbstract
             ->setRejectCallMethod($rejectCallMethod)
             ->setMultiContact($multiContact)
             ->setGsQRCode($gsQRCode)
+            ->setUseDefaultLocation($useDefaultLocation)
             ->setCompany($fkTransformer->transform($company))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setBossAssistant($fkTransformer->transform($dto->getBossAssistant()))
@@ -392,6 +405,7 @@ abstract class UserAbstract
             ->setRejectCallMethod(self::getRejectCallMethod())
             ->setMultiContact(self::getMultiContact())
             ->setGsQRCode(self::getGsQRCode())
+            ->setUseDefaultLocation(self::getUseDefaultLocation())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setCallAcl(CallAcl::entityToDto(self::getCallAcl(), $depth))
             ->setBossAssistant(User::entityToDto(self::getBossAssistant(), $depth))
@@ -424,6 +438,7 @@ abstract class UserAbstract
             'rejectCallMethod' => self::getRejectCallMethod(),
             'multiContact' => self::getMultiContact(),
             'gsQRCode' => self::getGsQRCode(),
+            'useDefaultLocation' => self::getUseDefaultLocation(),
             'companyId' => self::getCompany()->getId(),
             'callAclId' => self::getCallAcl()?->getId(),
             'bossAssistantId' => self::getBossAssistant()?->getId(),
@@ -618,6 +633,18 @@ abstract class UserAbstract
     public function getGsQRCode(): bool
     {
         return $this->gsQRCode;
+    }
+
+    protected function setUseDefaultLocation(bool $useDefaultLocation): static
+    {
+        $this->useDefaultLocation = $useDefaultLocation;
+
+        return $this;
+    }
+
+    public function getUseDefaultLocation(): bool
+    {
+        return $this->useDefaultLocation;
     }
 
     protected function setCompany(CompanyInterface $company): static

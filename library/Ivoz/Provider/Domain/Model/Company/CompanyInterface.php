@@ -20,6 +20,7 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterfac
 use Ivoz\Provider\Domain\Model\Corporation\CorporationInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSetInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
+use Ivoz\Provider\Domain\Model\Location\LocationInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -298,6 +299,8 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getApplicationServerSet(): ApplicationServerSetInterface;
 
     public function getMediaRelaySet(): MediaRelaySetInterface;
+
+    public function getLocation(): ?LocationInterface;
 
     public function addExtension(ExtensionInterface $extension): CompanyInterface;
 

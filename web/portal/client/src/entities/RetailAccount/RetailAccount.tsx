@@ -1,7 +1,7 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import StoreIcon from '@mui/icons-material/Store';
 
 import Password from '../Terminal/Field/Password';
 import Status from './Field/Status';
@@ -155,8 +155,8 @@ const properties: RetailAccountProperties = {
 
 const retailAccount: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: SettingsApplications,
-  link: '/doc/en/administration_portal/client/retail/retail_accounts.html',
+  icon: StoreIcon,
+  link: '/doc/${language}/administration_portal/client/retail/retail_accounts.html',
   iden: 'RetailAccount',
   title: _('Retail Account', { count: 2 }),
   path: '/retail_accounts',

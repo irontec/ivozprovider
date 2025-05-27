@@ -20,7 +20,7 @@ const properties: PickUpGroupProperties = {
 const pickUpGroup: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PhoneCallbackIcon,
-  link: '/doc/en/administration_portal/client/vpbx/user_configuration/pick_up_groups.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/user_configuration/pick_up_groups.html',
   iden: 'PickUpGroup',
   title: _('Pickup group', { count: 2 }),
   path: '/pick_up_groups',

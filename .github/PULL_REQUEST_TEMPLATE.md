@@ -1,5 +1,5 @@
 <!--
-  - All pull requests must be done against bleeding branch.
+  - All pull requests must be done against main branch.
   - All provided code must be GPLv3 license compatible.
 -->
 
@@ -9,7 +9,7 @@
 - [ ] Breaking change
 
 #### Checklist:
-- [ ] Commits are named and have tag following [commit rules](https://github.com/irontec/ivozprovider/blob/bleeding/doc/dev/en/commits.md)
+- [ ] Commits are named and have tag following [commit rules](https://github.com/irontec/ivozprovider/blob/main/doc/dev/en/commits.md)
 - [ ] Commits are split per component (schema, portal/platform, kamusers, agis, ..)
 - [ ] Changes have been tested locally
 - [ ] Fixes an existing issue (Fixes #XXXX) <!-- Replace XXXX with issue id -->

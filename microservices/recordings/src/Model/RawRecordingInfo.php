@@ -10,8 +10,8 @@ class RawRecordingInfo
     public function __construct(
         protected string $fullFileName,
         protected string $callid,
+        protected string $direction,
         protected int $size,
-        protected int $age,
     ) {
         $this->fileName = basename($fullFileName);
         $this->hashid = substr(md5($callid), 0, 8);
@@ -42,8 +42,8 @@ class RawRecordingInfo
         return $this->size;
     }
 
-    public function getAge(): int
+    public function getDirection(): string
     {
-        return $this->age;
+        return $this->direction;
     }
 }

@@ -49,12 +49,12 @@
     </many-to-one>
     <many-to-one field="routingPatternGroupsRelPattern" target-entity="Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="routingPatternGroupsRelPatternId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+        <join-column name="routingPatternGroupsRelPatternId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="outgoingRouting" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" inversed-by="lcrRules" fetch="LAZY">
       <join-columns>
-        <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

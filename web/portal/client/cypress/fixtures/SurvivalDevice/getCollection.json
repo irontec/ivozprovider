@@ -1,0 +1,36 @@
+{
+  "body": [
+    {
+      "name": "survival test 1",
+      "proxy": "23123",
+      "description": "new survival device 1",
+      "id": 1
+    },
+    {
+      "name": "survival test 2",
+      "proxy": "56789",
+      "description": "new survival device 2",
+      "id": 2
+    },
+    {
+      "name": "Survival Test 3",
+      "proxy": "98765",
+      "description": "new survival device 3",
+      "id": 3
+    },
+    {
+      "name": "Survival Test 4",
+      "proxy": "11223",
+      "description": "new survival device 4",
+      "id": 4
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/survival_devices?_page=1",
+    "x-last-page": "/api/client/survival_devices?_page=1",
+    "x-next-page": "/api/client/survival_devices?_page=1",
+    "x-total-items": "4",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

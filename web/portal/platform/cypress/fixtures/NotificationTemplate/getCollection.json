@@ -1,0 +1,32 @@
+{
+  "body": [
+    {
+      "name": "Access Credentials",
+      "type": "accessCredentials",
+      "id": 5
+    },
+    {
+      "name": "CallCsv notification",
+      "type": "callCsv",
+      "id": 2
+    },
+    {
+      "name": "Invoice notification",
+      "type": "invoice",
+      "id": 4
+    },
+    {
+      "name": "Max daily usage notification",
+      "type": "maxDailyUsage",
+      "id": 3
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/platform/notification_templates?_page=1",
+    "x-last-page": "/api/platform/notification_templates?_page=1",
+    "x-next-page": "/api/platform/notification_templates?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

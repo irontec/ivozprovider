@@ -13,7 +13,7 @@
     </field>
     <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface" inversed-by="ddiProviderAddresses" fetch="LAZY">
       <join-columns>
-        <join-column name="ddiProviderId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="ddiProviderId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

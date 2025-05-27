@@ -7,6 +7,7 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrDto;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrRepository;
 use Model\RawRecordingInfo;
@@ -18,11 +19,6 @@ class Encoder
      * Recordings below this size in bytes will be skipped
      */
     const RECORDING_SIZE_MIN = 512;
-
-    /**
-     * Recording created this seconds ago will be ignored
-     */
-    const RECORDING_AGE_MIN = 180;
 
     /**
      * @var array{
@@ -47,7 +43,8 @@ class Encoder
         private Logger $logger,
         private RawRecordingProcessor $rawRecordingProcessor,
         private RawRecordingsGetter $fileGetter,
-        private FileUnlinker $fileUnlinker
+        private FileUnlinker $fileUnlinker,
+        private RecordingEndedChecker $recordingEndedChecker,
     ) {
     }
 
@@ -74,18 +71,16 @@ class Encoder
                 $rawRecordingInfo->getFileName()
             ));
 
-            $kamAccCdrs = $this->getAccCdrs($rawRecordingInfo);
+            $kamAccCdr = $this->getAccCdr($rawRecordingInfo);
 
-            if (empty($kamAccCdrs)) {
+            if (is_null($kamAccCdr)) {
                 continue;
             }
 
-            foreach ($kamAccCdrs as $kamAccCdr) {
-                $recordingDto = $this->processAccCdr($kamAccCdr, $rawRecordingInfo);
+            $recordingDto = $this->processAccCdr($kamAccCdr, $rawRecordingInfo);
 
-                if (!is_null($recordingDto)) {
-                    $this->storeRecording($recordingDto);
-                }
+            if (!is_null($recordingDto)) {
+                $this->storeRecording($recordingDto);
             }
 
             $this->fileUnlinker->execute(
@@ -107,11 +102,20 @@ class Encoder
             if (is_null($recordingDto)) {
                 return null;
             }
+            $recordingDto
+                ->setBillableCallId(
+                    $accCdr->getId()
+                );
         } elseif ($accCdr instanceof UsersCdrInterface) {
             $recordingDto = $this->getRecordingFromUserCdr($accCdr);
             if (is_null($recordingDto)) {
                 return null;
             }
+
+            $recordingDto
+                ->setUsersCdrId(
+                    $accCdr->getId()
+                );
         } else {
             // This should not even be possible
             $this->logger->error(sprintf(
@@ -307,29 +311,28 @@ class Encoder
             . '.mp3';
     }
 
-    /**
-     * @return UsersCdrInterface[]|BillableCallInterface[]
-     */
-    private function getAccCdrs(RawRecordingInfo $rawRecordingInfo): array
+    private function getAccCdr(RawRecordingInfo $rawRecordingInfo): null|UsersCdrInterface|BillableCallInterface
     {
-        $billableCalls = $this
+        $billableCall = $this
             ->billableCallRepository
-            ->findByCallid(
-                $rawRecordingInfo->getCallid()
+            ->findLastByCallidAndDirection(
+                $rawRecordingInfo->getCallid(),
+                $rawRecordingInfo->getDirection(),
             );
 
-        if (!empty($billableCalls)) {
-            return $billableCalls;
+        if (!is_null($billableCall)) {
+            return $billableCall;
         }
 
-        $usersCdrs = $this
+        $usersCdr = $this
             ->usersCdrRepository
-            ->findByCallid(
-                $rawRecordingInfo->getCallid()
+            ->findLastByCallidAndDirection(
+                $rawRecordingInfo->getCallid(),
+                $rawRecordingInfo->getDirection(),
             );
 
-        if (!empty($usersCdrs)) {
-            return $usersCdrs;
+        if (!is_null($usersCdr)) {
+            return $usersCdr;
         }
 
         $this->stats['skipped']++;
@@ -339,20 +342,20 @@ class Encoder
             $rawRecordingInfo->getCallid(),
         ));
 
-        return [];
+        return null;
     }
 
     private function isProcessableFile(RawRecordingInfo $rawRecordingInfo): bool
     {
-        $isTooRecent = $rawRecordingInfo->getAge() <= self::RECORDING_AGE_MIN;
+        $isRecordingEnded = $this
+            ->recordingEndedChecker
+            ->execute($rawRecordingInfo->getFullName());
 
-        if ($isTooRecent) {
+        if (!$isRecordingEnded) {
             $this->logger->info(sprintf(
-                "[Recordings] Ignoring too young file %s [%d sec]\n",
-                $rawRecordingInfo->getFileName(),
-                $rawRecordingInfo->getAge()
+                "[Recordings] Recording is not completed: %s\n",
+                $rawRecordingInfo->getFileName()
             ));
-
             $this->stats['skipped']++;
 
             return false;

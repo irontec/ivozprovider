@@ -15,7 +15,7 @@ const CompanyBalances = {
     iden: 'Companies',
   },
   icon: CurrencyYenIcon,
-  link: '/doc/en/administration_portal/brand/billing/prepaid_balances.html',
+  link: '/doc/${language}/administration_portal/brand/billing/prepaid_balances.html',
   title: _('Prepaid Balance', { count: 2 }),
   localPath: '/prepaid_balance',
   columns: ['typeIcon', 'name', 'billingMethod', 'balance'],

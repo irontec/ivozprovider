@@ -1,0 +1,32 @@
+{
+  "body": [
+    {
+      "code": "94",
+      "id": 1,
+      "service": 1
+    },
+    {
+      "code": "95",
+      "id": 2,
+      "service": 2
+    },
+    {
+      "code": "93",
+      "id": 3,
+      "service": 3
+    },
+    {
+      "code": "93",
+      "id": 4,
+      "service": 5
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/brand_services?_page=1",
+    "x-last-page": "/api/brand/brand_services?_page=1",
+    "x-next-page": "/api/brand/brand_services?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

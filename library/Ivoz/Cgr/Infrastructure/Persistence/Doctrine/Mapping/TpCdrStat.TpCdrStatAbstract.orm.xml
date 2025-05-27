@@ -165,7 +165,7 @@
     </field>
     <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\CarrierInterface" inversed-by="tpCdrStats" fetch="LAZY">
       <join-columns>
-        <join-column name="carrierId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="carrierId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

@@ -42,6 +42,31 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
       required:
       - company
 
+Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
+  itemOperations: []
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      name: ASC
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - brand:
+              eq: "user.getBrand().getId()"
+        - urlType:
+              in: ['"client"', '"user"']
+      - or:
+        - company:
+            eq: "user.getCompany().getId()"
+        - company:
+            isNull: ~
+    swagger_context:
+      required:
+      - brand
+      - urlType
+
 Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
@@ -2142,6 +2167,13 @@ Ivoz\Provider\Domain\Model\User\User:
               type: string
             collectionFormat: 'multi'
             description: "Allows you to reduce the response to contain only the properties you need"
+    
+    get_users_detailed:
+      method: 'GET'
+      path: '/users/detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_DETAILED_USERS
+      depth: 1
+
     post:
       operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_WITH_PICKUP_GROUPS
       depth: 1
@@ -2334,3 +2366,27 @@ Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr:
         - 'application/json'
         - 'application/ld+json'
         - 'text/csv'
+
+Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDevice:
+  attributes:
+    pagination_client_enabled: true
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+  itemOperations: ~
+  collectionOperations: ~
+ 
+
+  

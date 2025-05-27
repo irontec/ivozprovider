@@ -17,7 +17,7 @@ describe('Fax', () => {
   // GET
   ///////////////////////////////
   it('get Fax Detail', () => {
-    cy.intercept('GET', '**/api/user/my/faxes/1', {
+    cy.intercept('GET', '**/api/user/faxes/1', {
       ...FaxItem,
     }).as('getFaxIn-1');
 

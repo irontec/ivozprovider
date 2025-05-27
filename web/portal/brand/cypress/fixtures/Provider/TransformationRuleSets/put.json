@@ -1,0 +1,40 @@
+{
+  "request": {
+    "description": "Desc",
+    "internationalCode": "00",
+    "trunkPrefix": "",
+    "areaCode": "",
+    "nationalLen": 9,
+    "generateRules": false,
+    "name": {
+      "en": "updated name",
+      "es": "nombre actualizado",
+      "ca": "nombre actualizado",
+      "it": "nome aggiornato"
+    },
+    "country": 1
+  },
+  "response": {
+    "body": {
+      "description": "Desc",
+      "internationalCode": "00",
+      "trunkPrefix": "",
+      "areaCode": "",
+      "nationalLen": 9,
+      "generateRules": false,
+      "id": 1,
+      "name": {
+        "en": "updated name",
+        "es": "nombre actualizado",
+        "ca": "nombre actualizado",
+        "it": "nome aggiornato"
+      },
+      "country": 1,
+      "editable": true
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}

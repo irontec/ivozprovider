@@ -58,6 +58,7 @@ Feature: Update users
           "rejectCallMethod": "rfc",
           "multiContact": true,
           "gsQRCode": false,
+          "useDefaultLocation": true,
           "id": 1,
           "callAcl": null,
           "bossAssistant": null,
@@ -69,7 +70,7 @@ Feature: Update users
           "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "location": null,
+          "location": 1,
           "voicemail": null,
           "contact": null,
           "pickupGroupIds": [

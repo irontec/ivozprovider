@@ -24,7 +24,7 @@ const properties: ProxyUserProperties = {
 const ProxyUser: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SchemaIcon,
-  link: '/doc/en/administration_portal/platform/infrastructure/proxy_users.html',
+  link: '/doc/${language}/administration_portal/platform/infrastructure/proxy_users.html',
   iden: 'ProxyUser',
   title: _('Proxy User', { count: 2 }),
   path: '/proxy_users',

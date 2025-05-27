@@ -37,7 +37,7 @@ const properties: ServiceProperties = {
 const Service: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PlumbingIcon,
-  link: '/doc/en/administration_portal/brand/settings/generic_services.html',
+  link: '/doc/${language}/administration_portal/brand/settings/generic_services.html',
   iden: 'Service',
   title: _('Service', { count: 2 }),
   path: '/services',

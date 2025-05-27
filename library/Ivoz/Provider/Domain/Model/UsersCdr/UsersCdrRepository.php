@@ -11,8 +11,5 @@ interface UsersCdrRepository extends RepositoryInterface
 {
     public function findByKamUsersCdrId(int $id): ?UsersCdrInterface;
 
-    /**
-     * @return UsersCdrInterface[]
-     */
-    public function findByCallid(string $callid);
+    public function findLastByCallidAndDirection(string $callid, string $direction): ?UsersCdrInterface;
 }

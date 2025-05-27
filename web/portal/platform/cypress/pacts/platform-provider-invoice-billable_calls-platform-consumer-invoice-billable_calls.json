@@ -1,0 +1,86 @@
+{
+  "consumer": {
+    "name": "platform-consumer-invoice-billable_calls"
+  },
+  "provider": {
+    "name": "platform-provider-invoice-billable_calls"
+  },
+  "interactions": [
+    {
+      "description": "View details",
+      "providerState": "",
+      "request": {
+        "method": "GET",
+        "path": "/api/platform/billable_calls/105",
+        "headers": {
+          "accept": "application/json",
+          "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzY0NTMxMzUsImV4cCI6MTY3NjQ1NjczNSwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJ1c2VybmFtZSI6Imlyb250ZWMifQ.KahLJTPea7OLraAjnq9UxKKwBrqPOG7z6QSl0CtpKNTrXY2jgZavKztq64KWm-9j9ym98LRTI7Acj-MtWUqYiB11p8OFL3fQk0B9EmX-Thfk_z9UFT_oXNnzoXT4BZzyF0hDo9kedR1j4SPoVNug4WG7Lkx_-MV2Qz2PbsV-BF-Y3kb0QtGz5vtEWxLYGrCq7cEhGRsakHFAOxu2Z0Kdj5gDUFTaKR5G96fymnfWph1PmIRwyCCWAyUVMTpobMLbauJtEKTXiav6H7lE4RU5hSI7R20sScy75FDc9NQcelmGlFMOmMwMgri_xouvwtIg3O4tMKputyzyD-GbgOt0vRiLACf5jcqPrq0b5p6cKuVTdxzmUBpRWaGCvS4tdHVuMqlsdL9WCQDygxB4osoUqws06rEdUIfDWjVAtmygPAR3JDI6QE1cocw6B7-sDfpFfyxpSYwWGEhwLC1E9djsIdHYioYq_iCCE_jBy2pC5JEwMouiwbrfrDkxGHwKhC_1qeugdWjrUiyMufihOvjqBeGt7nCAvY0CGgygJ4Opnv4Rz2ueFbJJbHy1fZx6b5XxY2gWQymDyRjeZBs7hyz4X8yeWPsYDLce0jY5rKHOIBFJAEqHO2Ce97daE2I0WZR6Of2E6eLtpeT5zx_kfPGzN-qEvjj-42YD_Y2XWNokSWU"
+        },
+        "body": "",
+        "query": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json",
+          "x-first-page": "/api/platform/billable_calls?_page=1",
+          "x-last-page": "/api/platform/billable_calls?_page=1",
+          "x-next-page": "/api/platform/billable_calls?_page=1",
+          "x-total-items": "1",
+          "x-total-pages": "1"
+        },
+        "body": [
+          {
+            "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
+            "startTime": "2019-01-01 09:01:44",
+            "duration": 0,
+            "caller": "+34633646464",
+            "callee": "+34633656565",
+            "cost": null,
+            "price": 1,
+            "endpointType": null,
+            "endpointId": null,
+            "endpointName": null,
+            "direction": "outbound",
+            "id": 105,
+            "brand": 1,
+            "company": 5,
+            "carrier": 1,
+            "invoice": null,
+            "ddi": 1,
+            "ddiProvider": null
+          },
+          {
+            "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
+            "startTime": "2019-01-01 09:01:43",
+            "duration": 0,
+            "caller": "+34633646464",
+            "callee": "+34633656565",
+            "cost": null,
+            "price": 1,
+            "endpointType": null,
+            "endpointId": null,
+            "endpointName": null,
+            "direction": "outbound",
+            "id": 104,
+            "brand": 1,
+            "company": 5,
+            "carrier": 1,
+            "invoice": null,
+            "ddi": 1,
+            "ddiProvider": null
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    },
+    "client": {
+      "name": "pact-cypress-adapter",
+      "version": "1.3.0"
+    }
+  }
+}

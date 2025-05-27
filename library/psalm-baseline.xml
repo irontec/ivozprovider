@@ -131,6 +131,11 @@
       <code>$ivozVoicemailMessage</code>
     </ParamNameMismatch>
   </file>
+  <file src="Ivoz/Ast/Domain/Service/VoicemailMessage/VoicemailMessageLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Ast/Infrastructure/Persistence/Doctrine/VoicemailMessageDoctrineRepository.php">
     <MixedArgument occurrences="1">
       <code>$results</code>
@@ -1840,9 +1845,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CarrierServer/CarrierServer.php">
-    <InvalidScalarArgument occurrences="1">
-      <code>$port</code>
-    </InvalidScalarArgument>
     <MethodSignatureMismatch occurrences="1">
       <code>CarrierServer</code>
     </MethodSignatureMismatch>
@@ -1898,7 +1900,7 @@
     </UnnecessaryVarAnnotation>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyAbstract.php">
-    <MixedArgument occurrences="36">
+    <MixedArgument occurrences="38">
       <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
       <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
@@ -1923,6 +1925,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getInvoiceNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocation())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocation())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
@@ -2323,7 +2327,7 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Ddi/DdiAbstract.php">
-    <MixedArgument occurrences="30">
+    <MixedArgument occurrences="32">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
@@ -2352,6 +2356,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getRetailAccount())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getRetailAccount())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getRoutingTag())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getRoutingTag())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
     </MixedArgument>
@@ -2373,13 +2379,15 @@
     </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderAbstract.php">
-    <MixedArgument occurrences="8">
+    <MixedArgument occurrences="10">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMediaRelaySet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getProxyTrunk())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getRoutingTag())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getRoutingTag())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
     </MixedArgument>
@@ -3306,9 +3314,11 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Location/LocationAbstract.php">
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="4">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getSurvivalDevice())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getSurvivalDevice())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -3902,13 +3912,17 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Recording/RecordingAbstract.php">
-    <MixedArgument occurrences="6">
+    <MixedArgument occurrences="10">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBillableCall())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getBillableCall())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUsersCdr())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUsersCdr())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -4150,6 +4164,18 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/SurvivalDevice/SurvivalDeviceAbstract.php">
+    <MixedArgument occurrences="2">
+      <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($company)</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/SurvivalDevice/SurvivalDeviceTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
@@ -5326,6 +5352,11 @@
     </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Service/RatingProfile/RatingProfileLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/Recording/RecordingLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>

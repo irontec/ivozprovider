@@ -46,6 +46,10 @@ Dialplan/HuntGroupMember:
   path: '/Dialplan/HuntGroupMember'
   controller: 'kernel:handleRequestAction'
 
+Dialplan/IvrStatus:
+  path: '/Dialplan/IvrStatus'
+  controller: 'kernel:handleRequestAction'
+
 Dialplan/Queues:
   path: '/Dialplan/Queues'
   controller: 'kernel:handleRequestAction'

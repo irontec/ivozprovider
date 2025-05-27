@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
@@ -74,6 +75,10 @@ class Ddi extends DdiAbstract implements DdiInterface
         if ($this->getType() === DdiInterface::TYPE_OUT) {
             $this->setDdiProvider(null);
         }
+
+        if ($this->getUseDdiProviderRoutingTag()) {
+            $this->setRoutingTag(null);
+        }
     }
 
     /**
@@ -137,6 +142,11 @@ class Ddi extends DdiAbstract implements DdiInterface
         }
 
         return $this;
+    }
+
+    public function setUser(?UserInterface $user = null): static
+    {
+        return parent::setUser($user);
     }
 
     /**

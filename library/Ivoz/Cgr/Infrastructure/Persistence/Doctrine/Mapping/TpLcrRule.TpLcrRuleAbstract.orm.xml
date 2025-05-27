@@ -79,7 +79,7 @@
     </field>
     <one-to-one field="outgoingRouting" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" inversed-by="tpLcrRule" fetch="LAZY">
       <join-columns>
-        <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+        <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
       </join-columns>
     </one-to-one>
   </mapped-superclass>

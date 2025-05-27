@@ -1,0 +1,37 @@
+{
+    "request": {
+        "username": "newUserName",
+        "pass": "1234",
+        "email": "modified@example.com",
+        "active": false,
+        "restricted": true,
+        "name": "Updated admin name",
+        "lastname": "a lastname",
+        "canImpersonate": false,
+        "brand": 1
+    },
+    "response": {
+        "body": {
+            "username": "newUserName",
+            "pass": "*****",
+            "email": "modified@example.com",
+            "active": false,
+            "restricted": true,
+            "name": "Updated admin name",
+            "lastname": "a lastname",
+            "canImpersonate": false,
+            "id": 1,
+            "brand": 1,
+            "company": null,
+            "timezone": 2
+        }
+    },
+    "matchingRules": {
+        "$.body.name": {
+            "match": "type"
+        },
+        "$.body.description": {
+            "match": "type"
+        }
+    }
+}

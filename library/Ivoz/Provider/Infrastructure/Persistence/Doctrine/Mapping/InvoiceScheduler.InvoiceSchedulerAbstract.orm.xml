@@ -35,24 +35,30 @@
     </field>
     <field name="nextExecution" type="datetime" column="nextExecution" nullable="true"/>
     <field name="taxRate" type="decimal" column="taxRate" precision="10" scale="3" nullable="true"/>
+    <field name="errorCount" type="smallint" column="errorCount" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
     <many-to-one field="invoiceTemplate" target-entity="Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="invoiceTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="invoiceTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="numberSequence" target-entity="Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="invoiceNumberSequenceId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="invoiceNumberSequenceId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

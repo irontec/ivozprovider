@@ -28,7 +28,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'ip',
         'port',
         'ruriDomain',
-        'multiContact',
       ],
     },
     {

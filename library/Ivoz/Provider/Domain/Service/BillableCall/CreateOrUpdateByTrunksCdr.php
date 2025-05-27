@@ -144,8 +144,6 @@ class CreateOrUpdateByTrunksCdr
         }
 
         if ($trunksCdrDto->getUserId()) {
-
-            /** @var UserInterface|null $user */
             $user = $this->userRepository->find(
                 $trunksCdrDto->getUserId()
             );

@@ -5,10 +5,10 @@ import routeMapParser, {
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AltRouteIcon from '@mui/icons-material/AltRoute';
-import DialpadIcon from '@mui/icons-material/Dialpad';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import PlayLessonIcon from '@mui/icons-material/PlayLesson';
-import PlumbingIcon from '@mui/icons-material/Plumbing';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import RingVolumeIcon from '@mui/icons-material/RingVolume';
+import RoomPreferencesIcon from '@mui/icons-material/RoomPreferences';
 import WalletIcon from '@mui/icons-material/Wallet';
 
 import entities from '../entities';
@@ -139,6 +139,12 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.BillableCall,
           filterBy: 'ddi',
+          children: [
+            {
+              entity: entities.Recording,
+              filterBy: 'billableCall',
+            },
+          ],
         },
         {
           entity: entities.Recording,
@@ -153,6 +159,12 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.BillableCall,
           filterBy: 'ddi',
+          children: [
+            {
+              entity: entities.Recording,
+              filterBy: 'billableCall',
+            },
+          ],
         },
         {
           entity: entities.Recording,
@@ -301,7 +313,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Routing tools'),
-      icon: PlumbingIcon,
+      icon: ConstructionIcon,
       isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
@@ -349,7 +361,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('User configuration'),
-      icon: ManageAccountsIcon,
+      icon: RoomPreferencesIcon,
       isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
@@ -380,11 +392,15 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: entities.Location,
           isAccessible: (aboutMe) => aboutMe.vpbx,
         },
+        {
+          entity: entities.SurvivalDevice,
+          isAccessible: (aboutMe) => aboutMe.vpbx,
+        },
       ],
     },
     {
       label: _('Multimedia'),
-      icon: PlayLessonIcon,
+      icon: LibraryMusicIcon,
       isAccessible: (aboutMe) => !aboutMe.residential,
       children: [
         {
@@ -432,19 +448,31 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Calls'),
-      icon: DialpadIcon,
+      icon: RingVolumeIcon,
       children: [
         {
           entity: entities.UsersCdr,
           isAccessible: (aboutMe) => aboutMe.vpbx,
-          children: [...Object.values(entities.UsersCdr.customActions)],
+          children: [
+            {
+              entity: entities.Recording,
+              filterBy: 'usersCdr',
+            },
+          ],
+          ...Object.values(entities.UsersCdr.customActions),
         },
         {
           entity: entities.ActiveCalls,
         },
         {
           entity: entities.BillableCall,
-          children: [...Object.values(entities.BillableCall.customActions)],
+          children: [
+            {
+              entity: entities.Recording,
+              filterBy: 'billableCall',
+            },
+          ],
+          ...Object.values(entities.BillableCall.customActions),
         },
         {
           entity: entities.CallCsvScheduler,

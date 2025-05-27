@@ -1,0 +1,18 @@
+{
+  "body": [
+    {
+      "number": "016",
+      "disableCDR": 1,
+      "id": 1,
+      "country": 68
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/platform/special_numbers?_page=1",
+    "x-last-page": "/api/platform/special_numbers?_page=1",
+    "x-next-page": "/api/platform/special_numbers?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

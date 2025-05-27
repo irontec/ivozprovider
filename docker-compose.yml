@@ -87,6 +87,7 @@ services:
     user: "${UID:-1000}:${GID:-1000}"
     environment:
       - NODE_ENV=development
+      - BACKEND_URL=http://backend.ivozprovider.local/
     volumes:
       - .:/opt/irontec/ivozprovider
       - ../ivoz-ui/:/opt/ivoz-ui
@@ -110,6 +111,7 @@ services:
     user: "${UID:-1000}:${GID:-1000}"
     environment:
       - NODE_ENV=development
+      - BACKEND_URL=http://backend.ivozprovider.local/
     volumes:
       - .:/opt/irontec/ivozprovider
       - ../ivoz-ui/:/opt/ivoz-ui
@@ -133,6 +135,7 @@ services:
     user: "${UID:-1000}:${GID:-1000}"
     environment:
       - NODE_ENV=development
+      - BACKEND_URL=http://backend.ivozprovider.local/
     volumes:
       - .:/opt/irontec/ivozprovider
       - ../ivoz-ui/:/opt/ivoz-ui
@@ -156,6 +159,7 @@ services:
     user: "${UID:-1000}:${GID:-1000}"
     environment:
       - NODE_ENV=development
+      - BACKEND_URL=http://backend.ivozprovider.local/
     volumes:
       - .:/opt/irontec/ivozprovider
       - ../ivoz-ui/:/opt/ivoz-ui

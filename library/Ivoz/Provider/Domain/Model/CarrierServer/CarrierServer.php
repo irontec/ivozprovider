@@ -78,14 +78,15 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
             $ip = null;
             $this->setOutboundProxy(null);
         }
-        if (!is_numeric($port) or !$port) {
-            $port = 5060;
-        }
 
         // Save validated values
         $this->setHostname($hostname);
         $this->setIp($ip);
-        $this->setPort($port);
+        $this->setPort(
+            is_numeric($port)
+            ? (int) $port
+            : null
+        );
     }
 
     /**
@@ -119,17 +120,107 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
         return parent::setAuthPassword($authPassword);
     }
 
+    protected function setPort(?int $port = null): static
+    {
+        $port = $port ?? 5060;
+
+        Assertion::between(
+            $port,
+            1,
+            65535,
+            'Port must be a number between 1 and 65535'
+        );
+
+        return parent::setPort($port);
+    }
+
     protected function setSipProxy(?string $sipProxy = null): static
     {
-        if (! $sipProxy) {
-            throw new \DomainException('Sip Proxy cannot be null');
-        }
+        Assertion::notNull($sipProxy, 'Sip Proxy cannot be null');
 
         $sipProxy = trim($sipProxy);
-        if ($sipProxy === "") {
-            throw new \DomainException('Sip Proxy cannot be empty');
+
+        Assertion::notEmpty($sipProxy, 'Sip Proxy cannot be empty');
+
+        Assertion::false(
+            str_contains($sipProxy, ' '),
+            'Sip Proxy cannot contain spaces'
+        );
+
+        $sipProxyParts = explode(':', $sipProxy);
+
+        if (count($sipProxyParts) === 2) {
+            $port = $sipProxyParts[1];
+            Assertion::integerish($port, 'Port must be an integer-like value');
+            $port = (int) $port;
+            Assertion::between(
+                $port,
+                1,
+                65535,
+                'Port in Sip Proxy must be a number between 1 and 65535'
+            );
         }
 
+        Assertion::true(
+            count($sipProxyParts) <= 2,
+            'Sip Proxy cannot contain more than one colon'
+        );
+
+        $host = $sipProxyParts[0];
+
+        $isIpLike = (bool) preg_match('/^\d{1,3}(\.\d{1,3}){3}$/', $host);
+        $isHostName = preg_match(
+            '~^(?=.{1,253}$)(?!\-)([\pL\pN\pM]+(-[\pL\pN\pM]+)*\.)+[\pL\pN\pM]{2,}$~ixuD',
+            $host
+        );
+        $isIPv4 = (bool) filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+
+        $isValidHost = ($isHostName && !$isIpLike) || $isIPv4;
+
+        Assertion::true(
+            $isValidHost,
+            'Sip Proxy must be a valid host name or IPv4 address'
+        );
+
         return parent::setSipProxy($sipProxy);
+    }
+
+    protected function setOutboundProxy(?string $outboundProxy = null): static
+    {
+        if (empty($outboundProxy)) {
+            return parent::setOutboundProxy(null);
+        }
+
+        $outboundProxy = trim($outboundProxy);
+
+        $sipOutboundProxyParts = explode(':', $outboundProxy);
+
+        Assertion::true(
+            count($sipOutboundProxyParts) <= 2,
+            'Outbound Proxy cannot contain more than one colon'
+        );
+
+        if (count($sipOutboundProxyParts) === 2) {
+            $port = $sipOutboundProxyParts[1];
+
+            Assertion::integerish($port, 'Outbound Proxy port must be an integer-like value');
+            $port = (int) $port;
+
+            Assertion::between(
+                $port,
+                1,
+                65535,
+                'Outbound Proxy port must be a number between 1 and 65535'
+            );
+        }
+
+        $host = $sipOutboundProxyParts[0];
+        $isIp = (bool) filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+        Assertion::true(
+            $isIp,
+            'Outbound Proxy must be a valid IPv4 address'
+        );
+
+        return parent::setOutboundProxy($outboundProxy);
     }
 }

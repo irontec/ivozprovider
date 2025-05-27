@@ -5,7 +5,7 @@ describe('in Banned Address', () => {
     cy.prepareGenericPactInterceptors('Banned-Addresses');
     cy.before();
 
-    cy.get('svg[data-testid="LocalLibraryIcon"]').first().click();
+    cy.get('svg[data-testid="RecentActorsIcon"]').first().click();
     cy.contains('Banned IP addresses').click();
 
     cy.get('header').should('contain', 'Banned IP addresses');

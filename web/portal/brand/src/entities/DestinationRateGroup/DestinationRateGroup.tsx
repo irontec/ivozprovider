@@ -64,7 +64,7 @@ const properties: DestinationRateGroupProperties = {
 const DestinationRateGroup: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PointOfSaleIcon,
-  link: '/doc/en/administration_portal/brand/billing/destination_rates.html',
+  link: '/doc/${language}/administration_portal/brand/billing/destination_rates.html',
   iden: 'DestinationRateGroup',
   title: _('Destination rate', { count: 2 }),
   path: '/destination_rate_groups',

@@ -1,0 +1,24 @@
+{
+  "request": {
+    "number": "010",
+    "disableCDR": 1,
+    "country": 1
+  },
+  "response": {
+    "body": {
+      "number": "010",
+      "disableCDR": 1,
+      "id": 3,
+      "country": 1
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

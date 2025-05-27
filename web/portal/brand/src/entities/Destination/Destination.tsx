@@ -29,7 +29,7 @@ const properties: DestinationProperties = {
 const Destination: EntityInterface = {
   ...defaultEntityBehavior,
   icon: LanguageIcon,
-  link: '/doc/en/administration_portal/brand/billing/destinations.html',
+  link: '/doc/${language}/administration_portal/brand/billing/destinations.html',
   iden: 'Destination',
   title: _('Destination', { count: 2 }),
   path: '/destinations',

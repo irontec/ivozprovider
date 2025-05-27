@@ -15,13 +15,21 @@ Feature: Retrieve locations
       """
       [
           {
+              "name": "altLocation",
+              "description": "Alternative Location description",
+              "id": 2,
+              "survivalDevice": null
+          },
+          {
               "name": "testLocation",
               "description": "Test Location description",
-              "id": 1
+              "id": 1,
+              "survivalDevice": 1
           }
       ]
       """
 
+  @createSchema
   Scenario: Retrieve certain locations json
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
@@ -34,6 +42,23 @@ Feature: Retrieve locations
       {
           "name": "testLocation",
           "description": "Test Location description",
-          "id": 1
+          "id": 1,
+          "survivalDevice": {
+              "name": "survival test 1",
+              "proxy": "survival1.test.com",
+              "outboundProxy": "192.168.1.100:5060",
+              "udpPort": 5060,
+              "tcpPort": 5060,
+              "tlsPort": 5061,
+              "wssPort": 10081,
+              "description": "new survival device 1",
+              "id": 1,
+              "company": 1
+          },
+          "userIds": [
+              1,
+              2,
+              3
+          ]
       }
       """

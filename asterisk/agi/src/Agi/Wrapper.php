@@ -203,18 +203,16 @@ class Wrapper
     }
 
     /**
-     * Read DTMF digits while playing a locution
+     * Get Locution path in storage
      *
      * @param LocutionInterface | null $locution
-     * @param int $timeout
-     * @param int $maxdigits
      *
      * @return string
      */
-    public function readLocution(LocutionInterface $locution = null, $timeout = 0, $maxdigits = 0)
+    public function getLocutionPath(LocutionInterface $locution = null)
     {
         if (!$locution) {
-            return $this->read("", $timeout, $maxdigits);
+            return "";
         }
 
         $this->locutionPathResolver->setOriginalFileName(
@@ -226,14 +224,11 @@ class Wrapper
             ->getFilePath($locution);
 
         if (!file_exists($file)) {
-            $this->error("Locution $file not found in filesystem.");
-            return $this->read("", $timeout, $maxdigits);
+            return "";
         }
 
-        // Remove extension for Read application
-        $filename = pathinfo($file, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($file, PATHINFO_FILENAME);
-
-        return $this->read($filename, $timeout, $maxdigits);
+        // Remove extension for Locution application
+        return pathinfo($file, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($file, PATHINFO_FILENAME);
     }
 
     public function read($filename = "", $timeout = 0, $maxdigits = 0)

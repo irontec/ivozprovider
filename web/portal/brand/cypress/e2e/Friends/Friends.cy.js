@@ -8,7 +8,7 @@ describe('in Friends', () => {
     cy.prepareGenericPactInterceptors('Friend');
     cy.before();
 
-    cy.get('svg[data-testid="EngineeringIcon"]').first().click();
+    cy.get('svg[data-testid="RoomPreferencesIcon"]').first().click();
     cy.contains('Friends').click();
 
     cy.get('header').should('contain', 'Friends');

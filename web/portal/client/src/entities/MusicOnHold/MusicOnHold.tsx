@@ -13,12 +13,17 @@ const properties: MusicOnHoldProperties = {
     label: _('Uploaded file'),
     type: 'file',
   },
+  encodedFile: {
+    label: _('File for play'),
+    type: 'file',
+    readOnly: true,
+  },
 };
 
 const musicOnHold: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AudiotrackIcon,
-  link: '/doc/en/administration_portal/client/vpbx/multimedia/music_on_hold.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/multimedia/music_on_hold.html',
   iden: 'MusicOnHold',
   title: _('Music on hold', { count: 2 }),
   path: '/music_on_holds',
@@ -27,6 +32,11 @@ const musicOnHold: EntityInterface = {
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'MusicOnHold',
+  },
+  Form: async () => {
+    const module = await import('./Form');
+
+    return module.default;
   },
 };
 

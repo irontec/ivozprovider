@@ -14,7 +14,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: '',
-      fields: ['originalFile'],
+      fields: ['originalFile', edit && 'encodedFile'],
     },
     {
       legend: '',

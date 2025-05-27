@@ -96,12 +96,12 @@
     </field>
     <one-to-one field="ddiProviderRegistration" target-entity="Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface" inversed-by="trunksUacreg" fetch="LAZY">
       <join-columns>
-        <join-column name="ddiProviderRegistrationId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="ddiProviderRegistrationId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </one-to-one>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

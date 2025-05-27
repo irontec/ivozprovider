@@ -9,6 +9,9 @@ import AdministratorCollection from '../../fixtures/Provider/Administrator/getCo
 import ApplicationServerSetsCollection from '../../fixtures/Provider/ApplicationServerSets/getCollection.json';
 import BannedAddressesCollection from '../../fixtures/Provider/BannedAddress/getCollection.json';
 import BillableCallsCollection from '../../fixtures/Provider/BillableCalls/getCollection.json';
+import BrandServiceCollection from '../../fixtures/Provider/BrandService/getCollection.json';
+import CallCsvReportCollection from '../../fixtures/Provider/CallCsvReport/getCollection.json';
+import CallCsvSchedulersCollection from '../../fixtures/Provider/CallCsvScheduler/getCollection.json';
 import CarriersCollection from '../../fixtures/Provider/Carriers/getCollection.json';
 import CarrierServerCollection from '../../fixtures/Provider/CarrierServer/getCollection.json';
 import CodecsCollection from '../../fixtures/Provider/Codecs/getCollection.json';
@@ -21,6 +24,9 @@ import DdiProvidersCollection from '../../fixtures/Provider/DdiProviders/getColl
 import DdiProvidersAddressesCollection from '../../fixtures/Provider/DdiProviders/getProviderAddressesCollection.json';
 import DdiProvidersRegistrationsCollection from '../../fixtures/Provider/DdiProviders/getProviderRegistrationsCollection.json';
 import DdisCollection from '../../fixtures/Provider/Ddis/getCollection.json';
+import DestinationCollection from '../../fixtures/Provider/Destination/getCollection.json';
+import DestinationRateGroupCollection from '../../fixtures/Provider/DestinationRateGroup/getCollection.json';
+import DestinationRatesCollection from '../../fixtures/Provider/DestinationRates/getCollection.json';
 import DomainsCollection from '../../fixtures/Provider/Domains/getCollection.json';
 import ExtensionsCollection from '../../fixtures/Provider/Extension/getCollection.json';
 import FeaturesCollection from '../../fixtures/Provider/Features/getCollection.json';
@@ -33,13 +39,17 @@ import InvoiceTemplateCollection from '../../fixtures/Provider/InvoiceTemplate/g
 import InvoiceCollection from '../../fixtures/Provider/Invoicing/getCollection.json';
 import LanguagesCollection from '../../fixtures/Provider/Languages/getCollection.json';
 import LocationsCollection from '../../fixtures/Provider/Location/getCollection.json';
+import MatchListsCollection from '../../fixtures/Provider/MatchList/getCollection.json';
+import MatchListPatternsCollection from '../../fixtures/Provider/MatchListPattern/getCollection.json';
 import MediaRelaySetsColection from '../../fixtures/Provider/MediaRelaySets/getCollection.json';
+import MusicOnHoldCollection from '../../fixtures/Provider/MusicOnHold/getCollection.json';
 import NotificationTemplateContentsCollection from '../../fixtures/Provider/NotificationTemplateContents/getCollection.json';
 import NotificationTemplatesCollection from '../../fixtures/Provider/NotificationTemplates/getCollection.json';
 import OutgoingDdiRulesCollection from '../../fixtures/Provider/OutgoingDdiRules/getCollection.json';
 import OutgoingRoutingCollection from '../../fixtures/Provider/OutgoingRoutings/getCollection.json';
 import ProxyTrunksCollection from '../../fixtures/Provider/ProxyTrunks/getCollection.json';
 import ProxyUsersCollection from '../../fixtures/Provider/ProxyUsers/getCollection.json';
+import RatingPlanCollection from '../../fixtures/Provider/RatingPlan/getCollections.json';
 import RatingPlanGroupCollection from '../../fixtures/Provider/RatingPlanGroups/getCollections.json';
 import RatingProfilesCollection from '../../fixtures/Provider/RatingProfile/getCollection.json';
 import ResidentialDevicesCollection from '../../fixtures/Provider/ResidentialDevices/getCollection.json';
@@ -47,8 +57,12 @@ import RetailAccountsCollection from '../../fixtures/Provider/RetailAccounts/get
 import RoutingPatternGroupsCollection from '../../fixtures/Provider/RoutingPatternGroups/getCollection.json';
 import RoutingPatternsCollection from '../../fixtures/Provider/RoutingPatterns/getCollection.json';
 import RoutingTagsCollection from '../../fixtures/Provider/RoutingTags/getCollection.json';
+import ServiceCollection from '../../fixtures/Provider/Service/getCollection.json';
+import ServiceUnassignedCollection from '../../fixtures/Provider/Service/getUnassignedServicesCollection.json';
+import SpecialNumbersCollection from '../../fixtures/Provider/SpecialNumber/getCollection.json';
 import TerminalsCollection from '../../fixtures/Provider/Terminal/getCollection.json';
 import TimezonesCollection from '../../fixtures/Provider/Timezones/getCollection.json';
+import TransformationRuleCollection from '../../fixtures/Provider/TransformationRule/getCollection.json';
 import TransformationRuleSetsCollection from '../../fixtures/Provider/TransformationRuleSets/getCollection.json';
 import UserCollection from '../../fixtures/Provider/Users/getCollection.json';
 import WebPortalCollection from '../../fixtures/Provider/WebPortals/getCollection.json';
@@ -175,6 +189,10 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/transformation_rule_sets?*', {
       ...TransformationRuleSetsCollection,
     }).as('getTransformationRuleSets');
+
+    cy.intercept('GET', '**/api/brand/transformation_rules?*', {
+      ...TransformationRuleCollection,
+    }).as('getTransformationRule');
 
     cy.intercept('GET', '**/api/brand/my/theme', {
       ...ThemeItem,
@@ -307,5 +325,57 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/extensions*', {
       ...ExtensionsCollection,
     }).as('getExtensions');
+
+    cy.intercept('GET', '**/api/brand/special_numbers?*', {
+      ...SpecialNumbersCollection,
+    }).as('getSpecialNumbers');
+
+    cy.intercept('GET', '**/api/brand/music_on_holds?*', {
+      ...MusicOnHoldCollection,
+    }).as('getMusicsOnHold');
+
+    cy.intercept('GET', '**/api/brand/brand_services?*', {
+      ...BrandServiceCollection,
+    }).as('getSpecialNumbers');
+
+    cy.intercept('GET', '**/api/brand/services?*', {
+      ...ServiceCollection,
+    }).as('getService');
+
+    cy.intercept('GET', '**/api/brand/services/unassigned?*', {
+      ...ServiceUnassignedCollection,
+    }).as('getServiceUnassigned');
+
+    cy.intercept('GET', '**/api/brand/match_lists?*', {
+      ...MatchListsCollection,
+    }).as('getMatchListsCollection');
+
+    cy.intercept('GET', '**/api/brand/match_list_patterns?*', {
+      ...MatchListPatternsCollection,
+    }).as('getMatchListPatterns');
+
+    cy.intercept('GET', '**/api/brand/call_csv_schedulers?*', {
+      ...CallCsvSchedulersCollection,
+    }).as('getCallCsvSchedulers');
+
+    cy.intercept('GET', '**/api/brand/call_csv_reports?*', {
+      ...CallCsvReportCollection,
+    }).as('getCallCsvSchedulers');
+
+    cy.intercept('GET', '**/api/brand/rating_plans*', {
+      ...RatingPlanCollection,
+    }).as('getRatingPlan');
+
+    cy.intercept('GET', '**/api/brand/destination_rate_groups*', {
+      ...DestinationRateGroupCollection,
+    }).as('getDestinationRateGroup');
+
+    cy.intercept('GET', '**/api/brand/destination_rates*', {
+      ...DestinationRatesCollection,
+    }).as('getDestinationRateGroup');
+
+    cy.intercept('GET', '**/api/brand/destinations*', {
+      ...DestinationCollection,
+    }).as('getDestination');
   }
 );

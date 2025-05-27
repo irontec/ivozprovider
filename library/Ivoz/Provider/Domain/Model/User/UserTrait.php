@@ -745,6 +745,7 @@ trait UserTrait
 
     public function addRecording(RecordingInterface $recording): UserInterface
     {
+        $recording->setUser($this);
         $this->recordings->add($recording);
 
         return $this;
@@ -752,7 +753,7 @@ trait UserTrait
 
     public function removeRecording(RecordingInterface $recording): UserInterface
     {
-        $this->recordings->removeElement($recording);
+        $recording->setUser(null);
 
         return $this;
     }
@@ -804,7 +805,7 @@ trait UserTrait
             }
 
             if (!$match) {
-                $this->recordings->remove($key);
+                $this->recordings[$key]?->setUser(null);
             }
         }
 
@@ -820,10 +821,19 @@ trait UserTrait
      */
     public function getRecordings(Criteria $criteria = null): array
     {
+        /** @var ArrayCollection<int, RecordingInterface> $recordings */
+        $recordings = $this->recordings->matching(
+            Criteria::create()
+                ->where(
+                    Criteria::expr()
+                        ->neq('user', null)
+                ),
+        );
+
         if (!is_null($criteria)) {
-            return $this->recordings->matching($criteria)->toArray();
+            return $recordings->matching($criteria)->toArray();
         }
 
-        return $this->recordings->toArray();
+        return $recordings->toArray();
     }
 }

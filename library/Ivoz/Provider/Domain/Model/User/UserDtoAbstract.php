@@ -93,6 +93,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $gsQRCode = false;
 
     /**
+     * @var bool|null
+     */
+    private $useDefaultLocation = true;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -224,6 +229,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'rejectCallMethod' => 'rejectCallMethod',
             'multiContact' => 'multiContact',
             'gsQRCode' => 'gsQRCode',
+            'useDefaultLocation' => 'useDefaultLocation',
             'id' => 'id',
             'companyId' => 'company',
             'callAclId' => 'callAcl',
@@ -260,6 +266,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'rejectCallMethod' => $this->getRejectCallMethod(),
             'multiContact' => $this->getMultiContact(),
             'gsQRCode' => $this->getGsQRCode(),
+            'useDefaultLocation' => $this->getUseDefaultLocation(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'callAcl' => $this->getCallAcl(),
@@ -439,6 +446,18 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getGsQRCode(): ?bool
     {
         return $this->gsQRCode;
+    }
+
+    public function setUseDefaultLocation(bool $useDefaultLocation): static
+    {
+        $this->useDefaultLocation = $useDefaultLocation;
+
+        return $this;
+    }
+
+    public function getUseDefaultLocation(): ?bool
+    {
+        return $this->useDefaultLocation;
     }
 
     /**

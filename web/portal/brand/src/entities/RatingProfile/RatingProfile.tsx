@@ -35,7 +35,7 @@ const properties: RatingProfileProperties = {
 const RatingProfile: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PriceChangeIcon,
-  link: '/doc/en/administration_portal/brand/billing/rating_plans.html#assigning-rating-plans-to-clients',
+  link: '/doc/${language}/administration_portal/brand/billing/rating_plans.html#assigning-rating-plans-to-clients',
   iden: 'RatingProfile',
   title: _('Rating Profile', { count: 2 }),
   path: '/rating_profiles',

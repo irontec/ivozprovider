@@ -11,12 +11,16 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Recording\RecordedFile;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 
 /**
 * RecordingAbstract
@@ -68,6 +72,11 @@ abstract class RecordingAbstract
     protected $recordedFile;
 
     /**
+     * @var ?UsersCdrInterface
+     */
+    protected $usersCdr = null;
+
+    /**
      * @var CompanyInterface
      * inversedBy recordings
      */
@@ -84,6 +93,11 @@ abstract class RecordingAbstract
      * inversedBy recordings
      */
     protected $user = null;
+
+    /**
+     * @var ?BillableCallInterface
+     */
+    protected $billableCall = null;
 
     /**
      * Constructor
@@ -188,9 +202,11 @@ abstract class RecordingAbstract
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
+            ->setUsersCdr($fkTransformer->transform($dto->getUsersCdr()))
             ->setCompany($fkTransformer->transform($company))
             ->setDdi($fkTransformer->transform($dto->getDdi()))
-            ->setUser($fkTransformer->transform($dto->getUser()));
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setBillableCall($fkTransformer->transform($dto->getBillableCall()));
 
         $self->initChangelog();
 
@@ -231,9 +247,11 @@ abstract class RecordingAbstract
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
             ->setRecordedFile($recordedFile)
+            ->setUsersCdr($fkTransformer->transform($dto->getUsersCdr()))
             ->setCompany($fkTransformer->transform($company))
             ->setDdi($fkTransformer->transform($dto->getDdi()))
-            ->setUser($fkTransformer->transform($dto->getUser()));
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setBillableCall($fkTransformer->transform($dto->getBillableCall()));
 
         return $this;
     }
@@ -254,9 +272,11 @@ abstract class RecordingAbstract
             ->setRecordedFileFileSize(self::getRecordedFile()->getFileSize())
             ->setRecordedFileMimeType(self::getRecordedFile()->getMimeType())
             ->setRecordedFileBaseName(self::getRecordedFile()->getBaseName())
+            ->setUsersCdr(UsersCdr::entityToDto(self::getUsersCdr(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setDdi(Ddi::entityToDto(self::getDdi(), $depth))
-            ->setUser(User::entityToDto(self::getUser(), $depth));
+            ->setUser(User::entityToDto(self::getUser(), $depth))
+            ->setBillableCall(BillableCall::entityToDto(self::getBillableCall(), $depth));
     }
 
     /**
@@ -275,9 +295,11 @@ abstract class RecordingAbstract
             'recordedFileFileSize' => self::getRecordedFile()->getFileSize(),
             'recordedFileMimeType' => self::getRecordedFile()->getMimeType(),
             'recordedFileBaseName' => self::getRecordedFile()->getBaseName(),
+            'usersCdrId' => self::getUsersCdr()?->getId(),
             'companyId' => self::getCompany()->getId(),
             'ddiId' => self::getDdi()?->getId(),
-            'userId' => self::getUser()?->getId()
+            'userId' => self::getUser()?->getId(),
+            'billableCallId' => self::getBillableCall()?->getId()
         ];
     }
 
@@ -418,6 +440,18 @@ abstract class RecordingAbstract
         return $this;
     }
 
+    protected function setUsersCdr(?UsersCdrInterface $usersCdr = null): static
+    {
+        $this->usersCdr = $usersCdr;
+
+        return $this;
+    }
+
+    public function getUsersCdr(): ?UsersCdrInterface
+    {
+        return $this->usersCdr;
+    }
+
     public function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
@@ -452,5 +486,17 @@ abstract class RecordingAbstract
     public function getUser(): ?UserInterface
     {
         return $this->user;
+    }
+
+    protected function setBillableCall(?BillableCallInterface $billableCall = null): static
+    {
+        $this->billableCall = $billableCall;
+
+        return $this;
+    }
+
+    public function getBillableCall(): ?BillableCallInterface
+    {
+        return $this->billableCall;
     }
 }

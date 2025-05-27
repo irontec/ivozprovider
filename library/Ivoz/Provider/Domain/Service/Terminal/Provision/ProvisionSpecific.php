@@ -8,8 +8,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Ivoz\Provider\Domain\Service\TerminalModel\TemplateRenderer;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
+use PHPUnit\Util\Exception;
 
 class ProvisionSpecific
 {
@@ -51,6 +54,7 @@ class ProvisionSpecific
         $brand = $company->getBrand();
         /** @var TerminalModelInterface $terminalModel */
         $terminalModel = $terminal->getTerminalModel();
+        $survivalDevice = $user->getLocation()?->getSurvivalDevice();
 
         if ($expectedTerminalModel && $expectedTerminalModel !== $terminalModel) {
             throw new \DomainException('Terminal model missmatch');
@@ -64,8 +68,12 @@ class ProvisionSpecific
             'brand' => $brand,
             'extension' => $extension,
             'language' => $language,
-            'company' => $company
+            'company' => $company,
         ];
+
+        if ($survivalDevice) {
+            $args['survivalDevice'] = $survivalDevice;
+        }
 
         /** @var array<string, DataTransferObjectInterface> $argsDto */
         $argsDto = [];
@@ -73,11 +81,11 @@ class ProvisionSpecific
         foreach ($args as $key => $entity) {
             $argsDto[$key] = $this->entityTools->entityToDto($entity);
         }
+        $renderedTemplate = $this->renderTemplate($terminalModel, $argsDto);
 
-        return $this->renderTemplate(
-            $terminalModel,
-            $argsDto
-        );
+        $this->updateProvisionDate($terminal);
+
+        return $renderedTemplate;
     }
 
     /**
@@ -166,6 +174,10 @@ class ProvisionSpecific
                 $fixedFileName = $fixedUrlSegments[0] . $fileNameMac . $fixedUrlSegments[1];
             }
 
+            $fixedFileName = $this->extractFileName(
+                $fixedFileName
+            );
+
             if (strtolower($fixedSpecificUrl) === strtolower($fixedFileName)) {
                 $extensionMismatch = ($fileExtension !== $specificUrlExtension);
                 if (!empty($specificUrlExtension) && $extensionMismatch) {
@@ -191,5 +203,13 @@ class ProvisionSpecific
         }
 
         return pathinfo($route, PATHINFO_FILENAME);
+    }
+
+    private function updateProvisionDate(TerminalInterface $terminal): void
+    {
+        /** @var TerminalDto $terminalDto */
+        $terminalDto = $this->entityTools->entityToDto($terminal);
+        $terminalDto->setLastProvisionDate(new \DateTime('now', new \DateTimeZone('UTC')));
+        $this->entityTools->persistDto($terminalDto, $terminal, false);
     }
 }

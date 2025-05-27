@@ -1,3 +1,4 @@
+import VoicemailItem from '../../../fixtures/Voicemail/getItem.json';
 import VoicemailMessageCollection from '../../../fixtures/VoicemailMessage/getCollection.json';
 
 describe('Voicemail Message', () => {
@@ -5,10 +6,11 @@ describe('Voicemail Message', () => {
     cy.prepareGenericPactInterceptors('Voicemail-VoicemailMessage');
     cy.before();
 
-    cy.contains('Voicemails').click();
+    cy.intercept('GET', '**/api/user/voicemails/1', {
+      ...VoicemailItem,
+    }).as('getVoicemail-1');
 
-    cy.get('header').should('contain', 'Voicemails');
-
+    cy.get('svg[data-testid="VoicemailIcon"]').first().click();
     cy.get('svg[data-testid="FormatListBulletedIcon"]').first().click();
 
     cy.get('table').should('contain', VoicemailMessageCollection.body[0].id);
@@ -18,7 +20,7 @@ describe('Voicemail Message', () => {
   // DELETE
   ///////////////////////
   it('delete Voicemail Message', () => {
-    cy.intercept('DELETE', '**/api/user/voicemail_messages/*', {
+    cy.intercept('DELETE', '**/api/user/voicemail_messages/2', {
       statusCode: 204,
     }).as('deleteVoicemailMessage');
 

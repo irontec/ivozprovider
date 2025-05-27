@@ -4,10 +4,10 @@
 cd $(dirname $(realpath $0))/../../
 
 # Base Branch of current feature branch
-BASE_BRANCH=${1:-origin/bleeding}
+BASE_BRANCH=${1:-origin/main}
 
 # Get the list of commits
-COMMITS=$(git --no-pager log --format=%s ${BASE_BRANCH}..HEAD | grep -v ^$)
+COMMITS=$(git --no-pager log --no-merges --format=%s ${BASE_BRANCH}..HEAD | grep -v ^$)
 
 # Check we have at least some commits
 if [ -z "$COMMITS" ]; then
@@ -34,7 +34,7 @@ done
 
 if [ $ERROR -ne 0 ]; then
     echo
-    echo "Check https://github.com/irontec/ivozprovider/tree/bleeding/doc/dev/AcceptedCommitTagsList.txt for a complete accepted tag list"
+    echo "Check https://github.com/irontec/ivozprovider/tree/main/doc/dev/AcceptedCommitTagsList.txt for a complete accepted tag list"
 else
     echo "All commit tags are valid"
 fi

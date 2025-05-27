@@ -20,6 +20,9 @@ Feature: Specific Provision
 
     lang.gui = es
     lang.wui = es
+
+    account.1.sip_server.2.host = survival1.test.com
+    account.1.sip_server.2.port = 10081
     """
 
   Scenario: Specific provision without subpath
@@ -38,6 +41,9 @@ Feature: Specific Provision
 
     lang.gui = es
     lang.wui = es
+
+    account.1.sip_server.2.host = survival1.test.com
+    account.1.sip_server.2.port = 10081
     """
 
   Scenario: Request unknown terminal MAC

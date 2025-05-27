@@ -1,0 +1,42 @@
+{
+  "body": [
+    {
+      "prefix": "+94600",
+      "id": 1,
+      "name": {
+        "en": "Bilbao",
+        "es": "Bilbao",
+        "ca": "Bilbao",
+        "it": "Bilbao"
+      }
+    },
+    {
+      "prefix": "+94602",
+      "id": 3,
+      "name": {
+        "en": "Dest3",
+        "es": "Dest3",
+        "ca": "Dest3",
+        "it": "Dest3"
+      }
+    },
+    {
+      "prefix": "+94601",
+      "id": 2,
+      "name": {
+        "en": "Usansolocity",
+        "es": "Usansolocity",
+        "ca": "Usansolocity",
+        "it": "Usansolocity"
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/destinations?_page=1",
+    "x-last-page": "/api/brand/destinations?_page=1",
+    "x-next-page": "/api/brand/destinations?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

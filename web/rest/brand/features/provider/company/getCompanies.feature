@@ -278,6 +278,12 @@ Feature: Retrieve companies
               "description": "Default media relay set",
               "id": 0
           },
+          "location": {
+              "name": "testLocation",
+              "description": "Test Location description",
+              "id": 1,
+              "company": 1
+          },
           "domainName": "127.0.0.1",
           "featureIds": [
               1,

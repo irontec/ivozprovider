@@ -188,7 +188,7 @@ const columns = [
 const ivr: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
-  link: '/doc/en/administration_portal/client/vpbx/routing_endpoints/ivrs.html',
+  link: '/doc/${language}/administration_portal/client/vpbx/routing_endpoints/ivrs.html',
   iden: 'Ivr',
   title: _('IVR', { count: 2 }),
   path: '/ivrs',

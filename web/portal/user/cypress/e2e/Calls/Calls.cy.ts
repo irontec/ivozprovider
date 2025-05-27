@@ -5,7 +5,7 @@ describe('Calls', () => {
     cy.prepareGenericPactInterceptors('User-Calls');
     cy.before();
 
-    cy.get('svg[data-testid="ChatBubbleIcon"]').first().click();
+    cy.get('svg[data-testid="RingVolumeIcon"]').first().click();
 
     cy.get('table').should('contain', MyCallHistoryCollection.body[0].id);
   });

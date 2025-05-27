@@ -3,11 +3,12 @@
 namespace Ivoz\Provider\Domain\Model\Location;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDeviceInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
@@ -28,6 +29,8 @@ interface LocationInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getId(): ?int;
+
+    public function addUser(UserInterface $user): LocationInterface;
 
     /**
      * @param int | null $id
@@ -58,7 +61,9 @@ interface LocationInterface extends LoggableEntityInterface
 
     public function getCompany(): CompanyInterface;
 
-    public function addUser(UserInterface $user): LocationInterface;
+    public function getSurvivalDevice(): ?SurvivalDeviceInterface;
+
+    public function traitAddUser(UserInterface $user): LocationInterface;
 
     public function removeUser(UserInterface $user): LocationInterface;
 

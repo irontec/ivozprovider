@@ -3,12 +3,12 @@
   <mapped-superclass name="Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecAbstract" table="company_rel_codec_abstract">
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="relCodecs" fetch="LAZY">
       <join-columns>
-        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="codec" target-entity="Ivoz\Provider\Domain\Model\Codec\CodecInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="codecId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="codecId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

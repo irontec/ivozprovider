@@ -7,7 +7,7 @@ describe('in Residential Companies', () => {
     cy.prepareGenericPactInterceptors('retail');
     cy.before();
 
-    cy.get('svg[data-testid="MapsHomeWorkIcon"]').first().click();
+    cy.get('svg[data-testid="BusinessIcon"]').first().click();
     cy.contains('Retails').click();
 
     cy.get('header').should('contain', 'Retails');

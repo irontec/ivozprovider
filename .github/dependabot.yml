@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: "composer"
+    directory: "/library"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "core"
+    open-pull-requests-limit: 0
+
+
+  - package-ecosystem: "npm"
+    directory: "/web/portal"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "portal"
+    open-pull-requests-limit: 0

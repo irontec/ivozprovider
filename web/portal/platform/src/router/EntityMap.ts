@@ -4,9 +4,9 @@ import routeMapParser, {
   RouteMap,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import DialpadIcon from '@mui/icons-material/Dialpad';
 import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
-import SwapCallsIcon from '@mui/icons-material/SwapCalls';
+import RingVolumeIcon from '@mui/icons-material/RingVolume';
+import StorageIcon from '@mui/icons-material/Storage';
 
 import entities from '../entities';
 import { AboutMe } from '../store/clientSession/aboutMe';
@@ -31,7 +31,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.Administrator,
             title: _('Brand operator', { count: 2 }),
-            link: '/doc/en/administration_portal/platform/brands.html#brand-operators',
+            link: '/doc/${language}/administration_portal/platform/brands.html#brand-operators',
           },
           filterBy: 'brand',
           children: [
@@ -49,7 +49,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: {
             ...entities.WebPortal,
             title: _('Brand Portal', { count: 2 }),
-            link: '/doc/en/administration_portal/platform/brands.html#brand-portals',
+            link: '/doc/${language}/administration_portal/platform/brands.html#brand-portals',
           },
           filterBy: 'brand',
           fixedValues: {
@@ -122,7 +122,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Infrastructure'),
-      icon: SwapCallsIcon,
+      icon: StorageIcon,
       children: [
         {
           entity: entities.ProxyUser,
@@ -149,7 +149,7 @@ const getEntityMap = (): ExtendedRouteMap => {
     },
     {
       label: _('Calls'),
-      icon: DialpadIcon,
+      icon: RingVolumeIcon,
       children: [
         {
           entity: entities.ActiveCalls,

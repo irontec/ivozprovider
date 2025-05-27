@@ -34,6 +34,7 @@
         },
         "body": {
           "url": "https://post-example.com",
+          "urlType": "brand",
           "name": "Platform brand Portal",
           "color": "#000000",
           "id": 7,
@@ -42,6 +43,7 @@
             "mimeType": null,
             "baseName": null
           },
+          "brand": 1,
           "company": null
         },
         "matchingRules": {
@@ -79,10 +81,11 @@
       "response": {
         "status": 200,
         "headers": {
-          "content-type": "application/json; charset=utf-8"
+          "content-type": "application/json"
         },
         "body": {
           "url": "https://updated-example.com",
+          "urlType": "god",
           "name": "Updated Portal",
           "color": "#000000",
           "id": 2,
@@ -91,6 +94,7 @@
             "mimeType": null,
             "baseName": null
           },
+          "brand": 1,
           "company": null
         }
       }

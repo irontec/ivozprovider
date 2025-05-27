@@ -5,7 +5,7 @@ describe('in Users', () => {
     cy.prepareGenericPactInterceptors('Users');
     cy.before();
 
-    cy.get('svg[data-testid="LocalLibraryIcon"]').first().click();
+    cy.get('svg[data-testid="RecentActorsIcon"]').first().click();
     cy.contains('Users').click();
 
     cy.get('header').should('contain', 'Users');

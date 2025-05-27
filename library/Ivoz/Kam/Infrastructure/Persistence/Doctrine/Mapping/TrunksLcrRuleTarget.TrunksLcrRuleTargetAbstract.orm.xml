@@ -23,17 +23,17 @@
     </field>
     <many-to-one field="rule" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="rule_id" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="rule_id" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="gw" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="gw_id" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="gw_id" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="outgoingRouting" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" inversed-by="lcrRuleTargets" fetch="LAZY">
       <join-columns>
-        <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

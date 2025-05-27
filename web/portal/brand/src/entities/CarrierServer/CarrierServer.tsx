@@ -107,7 +107,7 @@ const properties: CarrierServerProperties = {
 const CarrierServer: EntityInterface = {
   ...defaultEntityBehavior,
   icon: StorageIcon,
-  link: '/doc/en/administration_portal/brand/providers/carriers.html#carrier-servers',
+  link: '/doc/${language}/administration_portal/brand/providers/carriers.html#carrier-servers',
   iden: 'CarrierServer',
   title: _('Carrier server', { count: 2 }),
   path: '/carrier_servers',

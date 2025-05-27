@@ -13,10 +13,12 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag;
 
 /**
 * DdiProviderAbstract
@@ -55,6 +57,11 @@ abstract class DdiProviderAbstract
      * @var ?MediaRelaySetInterface
      */
     protected $mediaRelaySet = null;
+
+    /**
+     * @var ?RoutingTagInterface
+     */
+    protected $routingTag = null;
 
     /**
      * Constructor
@@ -144,7 +151,8 @@ abstract class DdiProviderAbstract
             ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
-            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
+            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         $self->initChangelog();
 
@@ -174,7 +182,8 @@ abstract class DdiProviderAbstract
             ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
-            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
+            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         return $this;
     }
@@ -190,7 +199,8 @@ abstract class DdiProviderAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth))
-            ->setMediaRelaySet(MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth));
+            ->setMediaRelaySet(MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth))
+            ->setRoutingTag(RoutingTag::entityToDto(self::getRoutingTag(), $depth));
     }
 
     /**
@@ -204,7 +214,8 @@ abstract class DdiProviderAbstract
             'brandId' => self::getBrand()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
             'proxyTrunkId' => self::getProxyTrunk()?->getId(),
-            'mediaRelaySetId' => self::getMediaRelaySet()?->getId()
+            'mediaRelaySetId' => self::getMediaRelaySet()?->getId(),
+            'routingTagId' => self::getRoutingTag()?->getId()
         ];
     }
 
@@ -282,5 +293,17 @@ abstract class DdiProviderAbstract
     public function getMediaRelaySet(): ?MediaRelaySetInterface
     {
         return $this->mediaRelaySet;
+    }
+
+    protected function setRoutingTag(?RoutingTagInterface $routingTag = null): static
+    {
+        $this->routingTag = $routingTag;
+
+        return $this;
+    }
+
+    public function getRoutingTag(): ?RoutingTagInterface
+    {
+        return $this->routingTag;
     }
 }

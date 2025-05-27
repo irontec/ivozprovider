@@ -47,6 +47,7 @@ Feature: Retrieve users
       ]
       """
 
+  @createSchema
   Scenario: Retrieve a specific Users Cdr element
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
@@ -65,6 +66,7 @@ Feature: Retrieve users
           "owner": null,
           "callid": "9297bdde-309cd48f@10.10.1.123",
           "disposition": "answered",
+          "numRecordings": 0,
           "id": 1,
           "user": {
               "name": "Alice",
@@ -79,6 +81,7 @@ Feature: Retrieve users
               "rejectCallMethod": "rfc",
               "multiContact": true,
               "gsQRCode": false,
+              "useDefaultLocation": true,
               "id": 1,
               "callAcl": null,
               "bossAssistant": null,
@@ -90,7 +93,7 @@ Feature: Retrieve users
               "timezone": 145,
               "outgoingDdi": 3,
               "outgoingDdiRule": null,
-              "location": null,
+              "location": 1,
               "voicemail": null,
               "contact": null
           },

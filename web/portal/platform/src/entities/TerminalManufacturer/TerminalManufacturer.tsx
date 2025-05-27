@@ -2,7 +2,7 @@ import { EntityValue } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import CallIcon from '@mui/icons-material/Call';
+import FaxIcon from '@mui/icons-material/Fax';
 
 import {
   TerminalManufacturerProperties,
@@ -23,8 +23,8 @@ const properties: TerminalManufacturerProperties = {
 
 const TerminalManufacturer: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: CallIcon,
-  link: '/doc/en/administration_portal/platform/terminal_manufacturers.html',
+  icon: FaxIcon,
+  link: '/doc/${language}/administration_portal/platform/terminal_manufacturers.html',
   iden: 'TerminalManufacturer',
   title: _('Terminal Manufacturer', { count: 2 }),
   path: '/terminal_manufacturers',

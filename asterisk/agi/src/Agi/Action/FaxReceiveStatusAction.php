@@ -141,13 +141,20 @@ class FaxReceiveStatusAction
             $company = $fax->getCompany();
             $brand = $company->getBrand();
 
+            // Convert dates to company timezone
+            $faxInDate = $faxIn->getCalldate();
+            $companyDefaultTimezone = $company->getDefaultTimezone();
+            if ($companyDefaultTimezone) {
+                $faxInDate->setTimezone(new \DateTimeZone($companyDefaultTimezone->getTz()));
+            }
+
             // Get faxdata values for mail message body and subject
             $substitution = array(
                     '${FAX_NAME}'       => $fax->getName(),
                     '${FAX_PDFNAME}'    => $faxIn->getPages(),
                     '${FAX_SRC}'        => $faxIn->getSrc(),
                     '${FAX_DST}'        => $faxIn->getDst(),
-                    '${FAX_DATE}'       => $faxIn->getCalldate()->format('Y-m-d H:i:s'),
+                    '${FAX_DATE}'       => $faxInDate->format('Y-m-d H:i:s'),
                     '${FAX_PAGES}'      => $faxIn->getPages(),
             );
 

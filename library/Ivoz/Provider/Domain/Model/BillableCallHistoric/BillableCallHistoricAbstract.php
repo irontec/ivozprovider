@@ -115,6 +115,11 @@ abstract class BillableCallHistoricAbstract
     protected $direction = 'outbound';
 
     /**
+     * @var int
+     */
+    protected $numRecordings = 0;
+
+    /**
      * @var ?BrandInterface
      */
     protected $brand = null;
@@ -163,9 +168,11 @@ abstract class BillableCallHistoricAbstract
      * Constructor
      */
     protected function __construct(
-        float $duration
+        float $duration,
+        int $numRecordings
     ) {
         $this->setDuration($duration);
+        $this->setNumRecordings($numRecordings);
     }
 
     abstract public function getId(): null|string|int;
@@ -231,9 +238,12 @@ abstract class BillableCallHistoricAbstract
         Assertion::isInstanceOf($dto, BillableCallHistoricDto::class);
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $numRecordings = $dto->getNumRecordings();
+        Assertion::notNull($numRecordings, 'getNumRecordings value is null, but non null value was expected.');
 
         $self = new static(
-            $duration
+            $duration,
+            $numRecordings
         );
 
         $self
@@ -278,6 +288,8 @@ abstract class BillableCallHistoricAbstract
 
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $numRecordings = $dto->getNumRecordings();
+        Assertion::notNull($numRecordings, 'getNumRecordings value is null, but non null value was expected.');
 
         $this
             ->setCallid($dto->getCallid())
@@ -295,6 +307,7 @@ abstract class BillableCallHistoricAbstract
             ->setEndpointId($dto->getEndpointId())
             ->setEndpointName($dto->getEndpointName())
             ->setDirection($dto->getDirection())
+            ->setNumRecordings($numRecordings)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
@@ -329,6 +342,7 @@ abstract class BillableCallHistoricAbstract
             ->setEndpointId(self::getEndpointId())
             ->setEndpointName(self::getEndpointName())
             ->setDirection(self::getDirection())
+            ->setNumRecordings(self::getNumRecordings())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth))
@@ -361,6 +375,7 @@ abstract class BillableCallHistoricAbstract
             'endpointId' => self::getEndpointId(),
             'endpointName' => self::getEndpointName(),
             'direction' => self::getDirection(),
+            'numRecordings' => self::getNumRecordings(),
             'brandId' => self::getBrand()?->getId(),
             'companyId' => self::getCompany()?->getId(),
             'carrierId' => self::getCarrier()?->getId(),
@@ -630,6 +645,20 @@ abstract class BillableCallHistoricAbstract
     public function getDirection(): ?string
     {
         return $this->direction;
+    }
+
+    protected function setNumRecordings(int $numRecordings): static
+    {
+        Assertion::greaterOrEqualThan($numRecordings, 0, 'numRecordings provided "%s" is not greater or equal than "%s".');
+
+        $this->numRecordings = $numRecordings;
+
+        return $this;
+    }
+
+    public function getNumRecordings(): int
+    {
+        return $this->numRecordings;
     }
 
     protected function setBrand(?BrandInterface $brand = null): static

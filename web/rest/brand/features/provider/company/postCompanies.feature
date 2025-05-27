@@ -200,10 +200,12 @@ Feature: Create companies
               "ddie164": "+34123",
               "description": "Description for DDI 123",
               "type": "inout",
+              "useDdiProviderRoutingTag": true,
               "id": 1,
               "company": 1,
               "ddiProvider": 1,
-              "country": 68
+              "country": 68,
+              "routingTag": null
           },
           "outgoingDdiRule": {
               "name": "testRule",
@@ -235,6 +237,7 @@ Feature: Create companies
               "description": "Default media relay set",
               "id": 0
           },
+          "location": null,
           "domainName": "api.irontec.com",
           "featureIds": [
               1

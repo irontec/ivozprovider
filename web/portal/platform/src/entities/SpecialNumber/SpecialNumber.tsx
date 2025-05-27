@@ -50,7 +50,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 const SpecialNumber: EntityInterface = {
   ...defaultEntityBehavior,
   icon: MilitaryTechIcon,
-  link: '/doc/en/administration_portal/platform/global_special_numbers.html',
+  link: '/doc/${language}/administration_portal/platform/global_special_numbers.html',
   iden: 'SpecialNumber',
   title: _('Global Special Number', { count: 2 }),
   path: '/special_numbers',

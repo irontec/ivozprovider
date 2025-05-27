@@ -65,12 +65,12 @@
     </field>
     <many-to-one field="ratingProfile" target-entity="Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface" inversed-by="tpRatingProfiles" fetch="LAZY">
       <join-columns>
-        <join-column name="ratingProfileId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+        <join-column name="ratingProfileId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="outgoingRoutingRelCarrier" target-entity="Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface" inversed-by="tpRatingProfiles" fetch="LAZY">
       <join-columns>
-        <join-column name="outgoingRoutingRelCarrierId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+        <join-column name="outgoingRoutingRelCarrierId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

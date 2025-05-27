@@ -1,0 +1,52 @@
+{
+  "body": [
+    {
+      "iden": "ca",
+      "id": 3,
+      "name": {
+        "en": "ca",
+        "es": "ca",
+        "ca": "ca",
+        "it": "ca"
+      }
+    },
+    {
+      "iden": "en",
+      "id": 2,
+      "name": {
+        "en": "en",
+        "es": "en",
+        "ca": "en",
+        "it": "en"
+      }
+    },
+    {
+      "iden": "es",
+      "id": 1,
+      "name": {
+        "en": "es",
+        "es": "es",
+        "ca": "es",
+        "it": "es"
+      }
+    },
+    {
+      "iden": "it",
+      "id": 4,
+      "name": {
+        "en": "it",
+        "es": "it",
+        "ca": "it",
+        "it": "it"
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/platform/languages?_page=1",
+    "x-last-page": "/api/platform/languages?_page=1",
+    "x-next-page": "/api/platform/languages?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

@@ -1,4 +1,4 @@
-<img src="doc/images/logoprovider.png" width="350"> ![stable](https://raster.shields.io/badge/latest-4.3-blue.png) ![release](https://raster.shields.io/badge/release-tempest-14b9bc.png)
+<img src="doc/images/logoprovider.png" width="350"> ![stable](https://raster.shields.io/badge/latest-4.4-blue.png) ![release](https://raster.shields.io/badge/release-tempest-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
@@ -32,18 +32,18 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
    - Provides database and shared storage for the rest of machines
    - Powered by [Percona Server 8.0](https://www.percona.com/software/mysql-database/percona-server)
 
-And [many others](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_inside.html) open source projects.
+And [many others](https://irontec.github.io/ivozprovider/en/basic_concepts/intro/what_is_inside.html) open source projects.
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
 
 #### Cloud Service
-IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
+IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/basic_concepts/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
 
 ## Installation
 
-There are [several ways](https://irontec.github.io/ivozprovider/en/artemis/basic_concepts/installation/index.html) to install IvozProvider.
+There are [several ways](https://irontec.github.io/ivozprovider/en/basic_concepts/installation/index.html) to install IvozProvider.
 
-If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/artemis/basic_concepts/installation/install_types.html#standalone-install) installation, we recommend using one of auto-install CDs based on Debian Bookworm 12 amd64.
+If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/basic_concepts/installation/install_types.html#standalone-install) installation, we recommend using one of auto-install CDs based on Debian Bookworm 12 amd64.
 
 
 | Release | Version                    |                                                                 ISO Link                                                                 |
@@ -51,10 +51,10 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/ar
 | oasis | 1.7 |     [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-amd64.iso)     |
 | artemis | 2.23.0 | [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-2.23~2.23.0-artemis-amd64.iso) | |
 | halliday | 3.4.1 | [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-3.4~3.4.1-halliday-amd64.iso)  | |
-| tempest | 4.3.0 |  [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-4.3~4.3.0-tempest-amd64.iso)  | |
+| tempest | 4.4.0 |  [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-4.4~4.4.0-tempest-amd64.iso)  | |
 
 
-You can read about differences between releases [here](https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md#what-release-should-i-use).
+You can read about differences between releases [here](https://github.com/irontec/ivozprovider/blob/main/FAQ.md#what-release-should-i-use).
 
 ## Documentation
 
@@ -70,7 +70,7 @@ You can browse online documentation in different formats:
 
 Any feedback is also welcomed at [#ivozprovider irc channel](https://kiwiirc.com/nextclient/irc.libera.chat/#ivozprovider) at irc.libera.chat
 
-You can read frequently asked questions [here](https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md).
+You can read frequently asked questions [here](https://github.com/irontec/ivozprovider/blob/main/FAQ.md).
 
 For environment or functional questions, use [ivozprovider-users](https://groups.google.com/forum/#!forum/ivozprovider-users) group.
 

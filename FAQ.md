@@ -35,8 +35,9 @@ with detailed information of every section.
 Current stable release is called artemis. Stable releases have frozen features, so they won't evolve too much in time.
 This provides the required stability that telephony solutions demands.
 
-If you're interested in testing newest features, you can use halliday release. Take into account that halliday release is
-not yet considered stable and bugs can arise, so use it at your own risk.
+Halliday release has ended as a transition release without extensive battle testing, so we discourage its usage.
+
+If you're interested in testing the newest features, you can use Tempest release. Keep in mind that Tempest release is actively being developed and some bugs may arise, so use it at your own risk.
 
 ### Can I use IvozProvider without public IP address?
 
@@ -88,7 +89,7 @@ interested in improving the software, consider sponsoring any missing feature.
 Free projects are usually managed by small developers teams, so we highly appreciate all contributions. There are all
 kind of different tasks you can contribute, from coding to documenting or translating.
 
-If you're opening a Pull request in Github, take a look to [development docs](https://github.com/irontec/ivozprovider/tree/bleeding/doc/dev/en)
+If you're opening a Pull request in Github, take a look to [development docs](https://github.com/irontec/ivozprovider/tree/main/doc/dev/en)
 for commits and branches naming. Also, try to listen to provided suggestions from project developers: they strive to
 make the software as good as possible.
 

@@ -6,7 +6,7 @@ describe('CallForwardSetting', () => {
     cy.prepareGenericPactInterceptors('User-Recording');
     cy.before();
 
-    cy.get('svg[data-testid="SettingsVoiceIcon"]').first().click();
+    cy.get('svg[data-testid="RecordVoiceOverIcon"]').first().click();
 
     cy.get('table').should('contain', RecordingCollection.body[0].duration);
   });

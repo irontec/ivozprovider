@@ -6,12 +6,12 @@
     </unique-constraints>
     <many-to-one field="routingPattern" target-entity="Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface" inversed-by="relPatternGroups" fetch="LAZY">
       <join-columns>
-        <join-column name="routingPatternId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="routingPatternId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="routingPatternGroup" target-entity="Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface" inversed-by="relPatterns" fetch="LAZY">
       <join-columns>
-        <join-column name="routingPatternGroupId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+        <join-column name="routingPatternGroupId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

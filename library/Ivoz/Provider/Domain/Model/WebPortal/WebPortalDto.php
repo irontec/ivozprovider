@@ -33,7 +33,7 @@ class WebPortalDto extends WebPortalDtoAbstract
             $response = parent::getPropertyMap(...func_get_args());
         }
 
-        if ($role === 'ROLE_BRAND_ADMIN') {
+        if ($role === 'ROLE_BRAND_ADMIN' || $role === 'ROLE_COMPANY_ADMIN') {
             unset($response['brandId']);
             $response['companyId'] = 'company';
         }

@@ -115,13 +115,11 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
         parameters: []
     get_my_voicemails:
       method: 'GET'
-      path: '/my/voicemails'
+      path: '/voicemails'
       route_name: 'get_my_voicemails'
       swagger_context:
         produces:
-        - 'application/json'
-        tags:
-        - My        
+        - 'application/json' 
         responses:
           200:
             description: 'Voicemails retrieved successfully'
@@ -142,8 +140,11 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
     access_control: '"ROLE_COMPANY_USER" in roles'
     read_access_control:
       ROLE_COMPANY_USER:
-        user:
-          eq: "user.getId()"
+        - or:
+          - user:
+              eq: "user.getId()"
+          - id:
+              in: "voicemailRelUserRepository.getVoicemailIdsByUser(user)"
     swagger_context:
       required:
       - company
@@ -377,8 +378,7 @@ Ivoz\Provider\Domain\Model\Fax\Fax:
   itemOperations:
     get: ~
   collectionOperations:
-    get:
-      path: '/my/faxes'
+    get: ~
   attributes:
     access_control: '"ROLE_COMPANY_USER" in roles'
     order:

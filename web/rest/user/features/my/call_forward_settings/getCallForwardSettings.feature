@@ -99,6 +99,7 @@ Feature: Retrieve call forward settings
             "rejectCallMethod": "rfc",
             "multiContact": true,
             "gsQRCode": false,
+            "useDefaultLocation": true,
             "id": 1,
             "bossAssistant": null,
             "extension": null,

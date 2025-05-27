@@ -19,6 +19,7 @@ use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 
 /**
@@ -68,6 +69,11 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
      * @var string|null
      */
     private $type = 'inout';
+
+    /**
+     * @var bool|null
+     */
+    private $useDdiProviderRoutingTag = true;
 
     /**
      * @var int|null
@@ -150,6 +156,11 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     private $retailAccount = null;
 
     /**
+     * @var RoutingTagDto | null
+     */
+    private $routingTag = null;
+
+    /**
      * @var RecordingDto[] | null
      */
     private $recordings = null;
@@ -177,6 +188,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'routeType' => 'routeType',
             'friendValue' => 'friendValue',
             'type' => 'type',
+            'useDdiProviderRoutingTag' => 'useDdiProviderRoutingTag',
             'id' => 'id',
             'companyId' => 'company',
             'brandId' => 'brand',
@@ -192,7 +204,8 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'countryId' => 'country',
             'residentialDeviceId' => 'residentialDevice',
             'conditionalRouteId' => 'conditionalRoute',
-            'retailAccountId' => 'retailAccount'
+            'retailAccountId' => 'retailAccount',
+            'routingTagId' => 'routingTag'
         ];
     }
 
@@ -210,6 +223,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'routeType' => $this->getRouteType(),
             'friendValue' => $this->getFriendValue(),
             'type' => $this->getType(),
+            'useDdiProviderRoutingTag' => $this->getUseDdiProviderRoutingTag(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'brand' => $this->getBrand(),
@@ -226,6 +240,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'residentialDevice' => $this->getResidentialDevice(),
             'conditionalRoute' => $this->getConditionalRoute(),
             'retailAccount' => $this->getRetailAccount(),
+            'routingTag' => $this->getRoutingTag(),
             'recordings' => $this->getRecordings()
         ];
 
@@ -337,6 +352,18 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     public function getType(): ?string
     {
         return $this->type;
+    }
+
+    public function setUseDdiProviderRoutingTag(bool $useDdiProviderRoutingTag): static
+    {
+        $this->useDdiProviderRoutingTag = $useDdiProviderRoutingTag;
+
+        return $this;
+    }
+
+    public function getUseDdiProviderRoutingTag(): ?bool
+    {
+        return $this->useDdiProviderRoutingTag;
     }
 
     /**
@@ -798,6 +825,36 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     public function getRetailAccountId(): ?int
     {
         if ($dto = $this->getRetailAccount()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setRoutingTag(?RoutingTagDto $routingTag): static
+    {
+        $this->routingTag = $routingTag;
+
+        return $this;
+    }
+
+    public function getRoutingTag(): ?RoutingTagDto
+    {
+        return $this->routingTag;
+    }
+
+    public function setRoutingTagId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new RoutingTagDto($id)
+            : null;
+
+        return $this->setRoutingTag($value);
+    }
+
+    public function getRoutingTagId(): ?int
+    {
+        if ($dto = $this->getRoutingTag()) {
             return $dto->getId();
         }
 

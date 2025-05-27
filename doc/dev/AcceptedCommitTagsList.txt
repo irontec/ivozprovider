@@ -8,6 +8,7 @@ data
 doc
 docker
 feature
+gh
 iso
 kamailio
 kamtrunks
@@ -27,6 +28,7 @@ portal/client
 portal/platform
 portal/user
 proxy
+rest
 rest/brand
 rest/client
 rest/platform

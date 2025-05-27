@@ -1,0 +1,47 @@
+{
+  "request": {
+    "name": {
+      "en": "New DR",
+      "es": "New DR",
+      "ca": "New DR",
+      "it": "New DR"
+    },
+    "description": {
+      "en": "New DR",
+      "es": "New DR",
+      "ca": "New DR",
+      "it": "New DR"
+    },
+    "currency": "1",
+    "file": {
+      "fileSize": null,
+      "mimeType": null,
+      "baseName": null
+    },
+    "importerArguments": {
+      "scape": null,
+      "columns": [
+        "destinationPrefix",
+        "destinationName",
+        "connectionCharge",
+        "rateCost",
+        "rateIncrement"
+      ],
+      "delimiter": ",",
+      "enclosure": "\"",
+      "ignoreFirst": false
+    },
+    "currency": 1
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

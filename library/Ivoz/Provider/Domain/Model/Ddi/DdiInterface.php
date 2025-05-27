@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
@@ -13,7 +14,6 @@ use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
 use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
@@ -22,6 +22,7 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -87,6 +88,8 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function setRouteType(?string $routeType = null): static;
 
+    public function setUser(?UserInterface $user = null): static;
+
     /**
      * @return string
      */
@@ -129,6 +132,8 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function getType(): string;
 
+    public function getUseDdiProviderRoutingTag(): bool;
+
     public function setCompany(?CompanyInterface $company = null): static;
 
     public function getCompany(): ?CompanyInterface;
@@ -164,6 +169,8 @@ interface DdiInterface extends LoggableEntityInterface
     public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
     public function getRetailAccount(): ?RetailAccountInterface;
+
+    public function getRoutingTag(): ?RoutingTagInterface;
 
     public function addRecording(RecordingInterface $recording): DdiInterface;
 

@@ -2,7 +2,7 @@ import { EntityValue } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import AlbumIcon from '@mui/icons-material/Album';
+import OfflinePinIcon from '@mui/icons-material/OfflinePin';
 
 import Actions from './Action';
 import { BrandProperties, BrandPropertyList } from './BrandProperties';
@@ -79,8 +79,8 @@ const properties: BrandProperties = {
 
 const Brand: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AlbumIcon,
-  link: '/doc/en/administration_portal/platform/brands.html',
+  icon: OfflinePinIcon,
+  link: '/doc/${language}/administration_portal/platform/brands.html',
   iden: 'Brand',
   title: _('Brand', { count: 2 }),
   path: '/brands',

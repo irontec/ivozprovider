@@ -1,0 +1,56 @@
+{
+  "body":       [
+    {
+      "status": "inProgress",
+      "id": 2,
+      "name": {
+        "en": "Fallback",
+        "es": "Fallback",
+        "ca": "Fallback",
+        "it": "Fallback"
+      },
+      "description": {
+        "en": "",
+        "es": "",
+        "ca": "",
+        "it": ""
+      },
+      "file": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      },
+      "currency": null
+    },
+    {
+      "status": "inProgress",
+      "id": 1,
+      "name": {
+        "en": "Standard",
+        "es": "Standard",
+        "ca": "Standard",
+        "it": "Standard"
+      },
+      "description": {
+        "en": "",
+        "es": "",
+        "ca": "",
+        "it": ""
+      },
+      "file": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null
+      },
+      "currency": null
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/destination_rates_groups?_page=1",
+    "x-last-page": "/api/brand/destination_rate_groups?_page=1",
+    "x-next-page": "/api/brand/destination_rate_groups?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
