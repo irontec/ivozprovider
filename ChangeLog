@@ -1,3 +1,57 @@
+Mon, 26 May 2025 11:25:43 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.4.0 released
+
+    * Portals:
+        - Fixed a bug where user impersonation was not using User portal URL #2874
+        - Fixed a bug while impersonating a user with email address with special characters #2931
+        - Reviewed all menu icons in all portals #2951 #2952 #2953
+        - Added a new section in Billable Calls to access its recordings #2922
+        - Added a new section in Users CDRs to access its recordings #2909
+        - Added about dialog for all portals #2956
+        - Fixed a bug that prevented some entities to be assigned to restricted Administators #2913
+        - Section documentation URLs links will now redirect to current portal language docs
+        - Display encoded Locution and Music on hold on client portal #2936
+        - Disabled multi delete in Brand and Clients screens #2970
+        - Improved Breadcrumbs to display more information #2904
+
+    * Application Server:
+        - Updated asterisk version to 20.14.0
+        - Improved IVRs to request data in asterisk dialplan instead of inside AGIs #2866
+        - Added MWI subscription support #2878
+        - Fixed a bug with incorrect timezone in fax email notifications #2900
+
+    * Microservices:
+        - Recordings: Fixed a bug where recordings were being marked as completed too early #2869
+        - Recordings: Fixed a bug where recordings were being associated with the wrong CDR #2968
+        - Provision: Fixed a bug while checking specific provisioning terminal MAC address #2912
+        - Provision: Added logic to include Survival device information in terminal provisioning #2945
+        - Invoicer: Added automatic retries after failed invoice creation #2965
+
+    * Proxies:
+        - Removed call-id lengthen logics designed to avoid call-id conflicts #2954
+        - Added routing tag to DDI and DDI Provider to allow routing based on presentation #2972
+        - Improved rtpengine kernel module compilation to support multiple installed kernels
+
+    * Schema:
+        - Call-Ids are no longer unique in Billable Calls and Users CDRs #2946
+        - Added new entity Survival Device to store information of secondary SIP proxy #2918
+
+    * Other
+        - Added additional Cypress tests in platform, brand, client and user portals
+
+    * Security:
+        - Version bump symfony/yaml from 5.4.3 to 5.4.45 in /library #2873
+        - Version bump sebastian/type from 3.0.0 to 3.2.1 in /library #2884
+        - Version bump symfony/stopwatch from 5.4.5 to 5.4.45 in /library #2889
+        - Version bump symfony/process from 5.4.28 to 5.4.47 in /library #2892
+        - Version bump symfony/validator from 5.4.7 to 5.4.48 in /library #2893
+        - Version bump clean-css from 5.3.1 to 5.3.3 in /web/portal #2890
+        - Version bump axios from 0.28.0 to 1.8.2 in /web/portal #2915
+        - Version bump @babel/helpers from 7.18.9 to 7.26.10 in /web/portal #2925
+        - Version bump @babel/runtime from 7.18.3 to 7.26.10 in /web/portal #2926
+
+
 Tue, 13 Jan 2025 08:30:36 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.3.0 released

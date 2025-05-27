@@ -1,4 +1,14 @@
 # Changelog
+## 4.4.0
+* Models:
+    - User:
+        - Added required field `useDefaultLocation`.
+    - UsersCdr, UsersCdr-collection, UsersCdr-detailed:
+        - Added required field `numRecordings`.
+    - Recording, Recording-collection, Recording-detailed:
+        - Added required field `usersCdr` and `user` properties.
+    - Voicemail-detailed:
+        - Added `relUserIds` property.
 ## 4.3.0
 * Endpoints:
     - /token/exchange:
