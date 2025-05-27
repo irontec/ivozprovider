@@ -7,6 +7,12 @@
 #!define WITH_PRESENCE_BLOCKER
 # -- enables/disables presence (global / domain / aor)
 
+#!define WITH_PRESENCE_SUBCONTROL
+# -- prevents early sub renewals
+
+#!define WITH_PRESENCE_DLGBAN
+# -- bans failing subscription dialogs for 12 hours
+
 #
 # 4 key types (value: yes / no)
 # - 'all' special keyword, sets behaviour for all domains, no matter remaining keys
