@@ -37,6 +37,7 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
             $this->setTerminal($fixture->getReference('_reference_ProviderTerminal1'));
             $this->setOutgoingDdi($fixture->getReference('_reference_ProviderDdi3'));
             $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+            $this->setLocation($fixture->getReference('_reference_ProviderLocation1'));
             $this->setUseDefaultLocation(true);
         })->call($item1);
 
