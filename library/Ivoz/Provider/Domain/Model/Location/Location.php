@@ -13,8 +13,7 @@ use phpDocumentor\Reflection\Types\Expression;
 class Location extends LocationAbstract implements LocationInterface
 {
     use LocationTrait {
-        replaceUsers as traitReplaceUsers;
-        getUsers as traitGetUsers;
+        addUser as traitAddUser;
     }
 
     /**
@@ -34,5 +33,11 @@ class Location extends LocationAbstract implements LocationInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function addUser(UserInterface $user): LocationInterface
+    {
+        $user->setUseDefaultLocation(false);
+        return $this->traitAddUser($user);
     }
 }

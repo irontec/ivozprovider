@@ -64,6 +64,8 @@ interface UserInterface extends LoggableEntityInterface
 
     public function unserialize($serialized);
 
+    public function setUseDefaultLocation(bool $useDefaultLocation): static;
+
     /**
      * @inheritdoc
      */
