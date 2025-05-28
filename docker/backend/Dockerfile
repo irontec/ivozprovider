@@ -40,6 +40,7 @@ RUN apt-get update && \
         iproute2 \
         apache2 \
         acl \
+        rsyslog \
     && apt-get clean
 
 ################################################################################
@@ -74,6 +75,11 @@ RUN /usr/sbin/a2ensite -q 060-ivozprovider-api.conf
 ENV PHP_IDE_CONFIG="serverName=ivozprovider-backend"
 RUN rm -f /etc/php/8.2/fpm/conf.d/20-xdebug.ini
 ADD docker/backend/xdebug.ini /etc/php/8.2/fpm/conf.d/20-xdebug.ini
+
+################################################################################
+# rsyslog configuration
+################################################################################
+ADD docker/backend/10-docker-fpm-stderr.conf /etc/rsyslog.d/10-docker-fpm-stderr.conf
 
 ################################################################################
 # Internal docker user configuration
