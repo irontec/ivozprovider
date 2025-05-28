@@ -27,6 +27,7 @@ schema/bin/console doctrine:migrations:migrate -n
 
 ## Services
 sudo service apache2 start
+sudo /usr/sbin/rsyslogd
 
 # Run FPM service
 sudo /usr/sbin/php-fpm8.2 --fpm-config /etc/php/8.2/fpm/php-fpm.conf --nodaemonize --force-stderr
