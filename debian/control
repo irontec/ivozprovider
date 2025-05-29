@@ -251,7 +251,8 @@ Package: ivozprovider-recordings
 Architecture: all
 Priority: optional
 Depends: ivozprovider-common-library (=${binary:Version}),
-    ffmpeg
+    ffmpeg,
+    lsof
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Recordings - Symfony microservice
  Recordings Microservice for encoding storage recordings
