@@ -13,6 +13,9 @@
 #!define WITH_PRESENCE_DLGBAN
 # -- bans failing subscription dialogs for 12 hours
 
+#!define WITH_PRESENCE_SUBBAN
+# -- bans non-existent subscriptions for 12 hours
+
 #
 # 4 key types (value: yes / no)
 # - 'all' special keyword, sets behaviour for all domains, no matter remaining keys
