@@ -1,0 +1,30 @@
+#!/bin/bash
+set -e
+
+# Move to webapp dir
+cd $(dirname "$(realpath -se "$0")")/..
+
+VERSION=$(jq -r '.version' package.json)
+COMMIT=$(git rev-parse --short HEAD)
+COMMIT_DATE_ISO=$(git show -s --format=%cI HEAD)
+
+DATE_OBJ=$(date -d "$COMMIT_DATE_ISO" "+%d/%m/%Y")
+LAST_UPDATED="$DATE_OBJ"
+
+CONTENT="// This file is auto-generated during build time. Do not edit manually.
+
+export enum AppConstants {
+  VERSION = '${VERSION}',
+  COMMIT = '${COMMIT}',
+  LAST_UPDATED = '${LAST_UPDATED}',
+}
+"
+
+OUTPUT_PATH="src/config/AppConstants.ts"
+mkdir -p "$(dirname "$OUTPUT_PATH")"
+echo "$CONTENT" > "$OUTPUT_PATH"
+
+echo "✅ Generated AppConstants.ts with version info:"
+echo "Version: $VERSION"
+echo "Commit: $COMMIT"
+echo "Last Updated: $LAST_UPDATED"
