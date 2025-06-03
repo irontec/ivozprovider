@@ -1,6 +1,6 @@
 {
   "name": "user",
-  "version": "0.0.1",
+  "version": "4.3.0",
   "private": true,
   "homepage": "/user",
   "scripts": {
