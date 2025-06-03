@@ -1,6 +1,6 @@
 {
   "name": "user",
-  "version": "0.0.1",
+  "version": "4.3.0",
   "private": true,
   "homepage": "/user",
   "scripts": {
@@ -8,6 +8,7 @@
     "lint:check": "prettier --check src/**/*.tsx src/**/*.ts src/**/*.js",
     "lint": "eslint --fix src cypress --ext .js,.ts,.tsx",
     "build": "bin/build",
+    "version-info": "bin/generate-version-info",
     "i18n": "i18next src/**/*.{jsx,tsx,ts} -c i18next-parser.config.mjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
