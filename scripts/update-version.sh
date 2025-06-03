@@ -49,5 +49,8 @@ sed -i "s/\(server_header=\"Server: Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR\
 sed -i "s/\(user_agent_header=\"User-Agent: Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR\"/" kamailio/trunks/config/kamailio.cfg
 sed -i "s/\(user_agent_header=\"User-Agent: Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR\"/" kamailio/users/config/kamailio.cfg
 
+# Update portals versions
+for PORTAL in platform brand client user;do pushd web/portal/$PORTAL; npm version $VERSION; popd; done
+
 # Done!
 echo "All versions bumped to $VERSION"

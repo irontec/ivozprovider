@@ -25,10 +25,10 @@ build_webrest: build_library
 
 build_webportals:
 	cd web/portal ; yarnpkg install
-	cd web/portal/platform; yarnpkg build
-	cd web/portal/brand; yarnpkg build
-	cd web/portal/client ; yarnpkg build
-	cd web/portal/user; yarnpkg build
+	cd web/portal/platform; yarnpkg version-info; yarnpkg build
+	cd web/portal/brand; yarnpkg version-info; yarnpkg build
+	cd web/portal/client ; yarnpkg version-info; yarnpkg build
+	cd web/portal/user; yarnpkg version-info; yarnpkg build
 
 build_microservices: build_library
 	cd microservices/balances; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
