@@ -7,7 +7,7 @@
   },
   "interactions": [
     {
-      "description": "View CallForwardSetting",
+      "description": "View Recording",
       "providerState": "",
       "request": {
         "method": "GET",
@@ -48,7 +48,7 @@
       }
     },
     {
-      "description": "delete CallForwardSetting",
+      "description": "Delete Recording",
       "providerState": "",
       "request": {
         "method": "DELETE",
