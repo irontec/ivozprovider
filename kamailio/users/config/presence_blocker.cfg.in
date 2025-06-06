@@ -1,0 +1,56 @@
+# Adding a file like this (without .in) and restarting kamusers
+# enables some protection mechanisms against abusive usage of
+# presence service
+#
+# Edit this file to include desired configuration and rename to same name without .in before restarting kamusers.
+
+#!define WITH_PRESENCE_BLOCKER
+# -- enables/disables presence (global / domain / aor)
+
+#!define WITH_PRESENCE_SUBCONTROL
+# -- prevents early sub renewals
+
+#!define WITH_PRESENCE_DLGBAN
+# -- bans failing subscription dialogs for 12 hours
+
+#!define WITH_PRESENCE_SUBBAN
+# -- bans non-existent subscriptions for 12 hours
+
+#
+# 4 key types (value: yes / no)
+# - 'all' special keyword, sets behaviour for all domains, no matter remaining keys
+# - 'default' special keyword, sets behaviour when 'all', domain and aor are not set (missing equals 'yes')
+# - 'aor-specific' sets behaviour for an aor when 'all' is not set
+# - 'domain-specific' sets behaviour for a domain when 'all' is not set
+#
+# Sample commands:
+#
+# -- Disable presence for all clients
+# kamcmd-proxyusers htable.sets presence all no
+# -- Enable presence for all clients
+# kamcmd-proxyusers htable.sets presence all yes
+# -- Disable 'all' keyword
+# kamcmd-proxyusers htable.delete presence all
+#
+# -- Add/Modify
+# kamcmd-proxyusers htable.sets presence default no
+# kamcmd-proxyusers htable.sets presence example.domain.og yes
+# kamcmd-proxyusers htable.sets presence user1@example.domain.og no
+# -- Empty htable
+# kamcmd-proxyusers htable.flush presence
+# -- Delete one key
+# kamcmd-proxyusers htable.delete presence default
+# kamcmd-proxyusers htable.delete presence example.domain.og
+# kamcmd-proxyusers htable.delete presence user1@example.domain.og
+# -- Dump htable content
+# kamcmd-proxyusers htable.dump presence
+#
+
+route[PRESENCE_BLOCKER_DEFAULTS] {
+    # Presence dynamic enabler/disabler default values
+    # $sht(presence=>all) = 'no';
+    # $sht(presence=>sample.domain.org) = 'no';
+    # $sht(presence=>user@sample.domain.org) = 'no';
+    $sht(presence=>default) = 'yes';
+}
+
