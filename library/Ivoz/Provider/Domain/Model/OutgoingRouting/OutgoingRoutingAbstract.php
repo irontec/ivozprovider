@@ -75,6 +75,11 @@ abstract class OutgoingRoutingAbstract
     protected $clid = null;
 
     /**
+     * @var bool
+     */
+    protected $disableDiversion = false;
+
+    /**
      * @var BrandInterface
      * inversedBy outgoingRoutings
      */
@@ -120,11 +125,13 @@ abstract class OutgoingRoutingAbstract
     protected function __construct(
         int $priority,
         int $weight,
-        bool $stopper
+        bool $stopper,
+        bool $disableDiversion
     ) {
         $this->setPriority($priority);
         $this->setWeight($weight);
         $this->setStopper($stopper);
+        $this->setDisableDiversion($disableDiversion);
     }
 
     abstract public function getId(): null|string|int;
@@ -194,13 +201,16 @@ abstract class OutgoingRoutingAbstract
         Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
         $stopper = $dto->getStopper();
         Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $disableDiversion = $dto->getDisableDiversion();
+        Assertion::notNull($disableDiversion, 'getDisableDiversion value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
             $priority,
             $weight,
-            $stopper
+            $stopper,
+            $disableDiversion
         );
 
         $self
@@ -238,6 +248,8 @@ abstract class OutgoingRoutingAbstract
         Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
         $stopper = $dto->getStopper();
         Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $disableDiversion = $dto->getDisableDiversion();
+        Assertion::notNull($disableDiversion, 'getDisableDiversion value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
@@ -250,6 +262,7 @@ abstract class OutgoingRoutingAbstract
             ->setStopper($stopper)
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
+            ->setDisableDiversion($disableDiversion)
             ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
@@ -275,6 +288,7 @@ abstract class OutgoingRoutingAbstract
             ->setStopper(self::getStopper())
             ->setForceClid(self::getForceClid())
             ->setClid(self::getClid())
+            ->setDisableDiversion(self::getDisableDiversion())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth))
@@ -298,6 +312,7 @@ abstract class OutgoingRoutingAbstract
             'stopper' => self::getStopper(),
             'forceClid' => self::getForceClid(),
             'clid' => self::getClid(),
+            'disableDiversion' => self::getDisableDiversion(),
             'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany()?->getId(),
             'carrierId' => self::getCarrier()?->getId(),
@@ -440,6 +455,18 @@ abstract class OutgoingRoutingAbstract
     public function getClid(): ?string
     {
         return $this->clid;
+    }
+
+    protected function setDisableDiversion(bool $disableDiversion): static
+    {
+        $this->disableDiversion = $disableDiversion;
+
+        return $this;
+    }
+
+    public function getDisableDiversion(): bool
+    {
+        return $this->disableDiversion;
     }
 
     public function setBrand(BrandInterface $brand): static
