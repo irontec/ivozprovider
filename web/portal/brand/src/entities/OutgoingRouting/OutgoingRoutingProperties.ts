@@ -23,6 +23,7 @@ export type OutgoingRoutingPropertyList<T> = {
   clidCountry?: T;
   carrierIds?: T;
   carriers?: T;
+  disableDiversion?: T;
 };
 
 export type OutgoingRoutingProperties = OutgoingRoutingPropertyList<
