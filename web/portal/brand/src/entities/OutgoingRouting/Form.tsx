@@ -58,7 +58,13 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     edit && {
       legend: _('Numeric transformation', { count: 1 }),
-      fields: ['prefix', 'forceClid', 'clidCountry', 'clid'],
+      fields: [
+        'prefix',
+        'forceClid',
+        'clidCountry',
+        'clid',
+        'disableDiversion',
+      ],
     },
   ];
 
