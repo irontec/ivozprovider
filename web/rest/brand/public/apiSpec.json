@@ -43328,6 +43328,12 @@
                     "description": "",
                     "type": "string"
                 },
+                "disableDiversion": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -43368,7 +43374,8 @@
             "required": [
                 "priority",
                 "weight",
-                "stopper"
+                "stopper",
+                "disableDiversion"
             ]
         },
         "OutgoingRouting-collection": {
@@ -43516,6 +43523,12 @@
                     "description": "",
                     "type": "string"
                 },
+                "disableDiversion": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -43550,7 +43563,8 @@
             "required": [
                 "priority",
                 "weight",
-                "stopper"
+                "stopper",
+                "disableDiversion"
             ]
         },
         "Profile": {
