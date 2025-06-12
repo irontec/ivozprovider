@@ -228,6 +228,8 @@
   "Direct connectivity": "Conectividad Directa",
   "Direction": "Dirección",
   "Disable CDR": "Deshabilitar CDR",
+  "Disable Diversion": "Deshabilitar diversion",
+  "Disable diversion header and copy its content to PAI/RPID/From": "Deshabilita la cabecera diversion y copia su contenido a PAI/RPID/From",
   "Disabled": "Deshabilitado",
   "Disallowed audio codecs": "Codecs audio rechazados",
   "Disk usage": "Uso de disco",
