@@ -65,6 +65,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     private $clid = null;
 
     /**
+     * @var bool|null
+     */
+    private $disableDiversion = false;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -147,6 +152,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'stopper' => 'stopper',
             'forceClid' => 'forceClid',
             'clid' => 'clid',
+            'disableDiversion' => 'disableDiversion',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -173,6 +179,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'stopper' => $this->getStopper(),
             'forceClid' => $this->getForceClid(),
             'clid' => $this->getClid(),
+            'disableDiversion' => $this->getDisableDiversion(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
@@ -295,6 +302,18 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     public function getClid(): ?string
     {
         return $this->clid;
+    }
+
+    public function setDisableDiversion(bool $disableDiversion): static
+    {
+        $this->disableDiversion = $disableDiversion;
+
+        return $this;
+    }
+
+    public function getDisableDiversion(): ?bool
+    {
+        return $this->disableDiversion;
     }
 
     /**

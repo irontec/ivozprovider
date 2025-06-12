@@ -7,6 +7,7 @@
         "prefix": null,
         "forceClid": false,
         "clid": null,
+        "disableDiversion": 0,
         "company": 2,
         "carrier": 1,
         "routingPattern": 2,
@@ -30,7 +31,8 @@
             "routingPatternGroup": null,
             "routingTag": 1,
             "clidCountry": null,
-            "carrierIds": []
+            "carrierIds": [],
+            "disableDiversion": 0
         },
         "headers": {
             "content-type": "application/json; charset=utf-8"

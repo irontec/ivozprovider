@@ -115,6 +115,8 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
 
     public function getClid(): ?string;
 
+    public function getDisableDiversion(): bool;
+
     public function setBrand(BrandInterface $brand): static;
 
     public function getBrand(): BrandInterface;
