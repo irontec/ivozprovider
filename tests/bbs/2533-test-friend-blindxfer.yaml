@@ -1,0 +1,34 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to friend blind transfered to charlie
+    timeout: 20
+    sessions:
+      - alice:
+          - wait: 2
+          - call:
+              dest: 2001
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+      - friend:
+          - register:
+              <<: *friend_cred
+          - waitfor: INCOMING
+          - answer
+          - wait
+          - blindxfer: 1003
+          - waitfor: TRANSFER_ACCEPTED
+          - waitfor: TRANSFER_OK
+          - hangup
+          - waitfor: DISCONNCTD
+      - callee_charlie:
+          - register:
+              <<: *charlie_cred
+          - waitfor: INCOMING
+          - wait: 1
+          - answer
+          - waitfor: CONFIRMED
+          - wait: 5
+          - hangup
+          - waitfor: DISCONNCTD
