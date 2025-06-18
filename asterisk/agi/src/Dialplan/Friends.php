@@ -85,8 +85,16 @@ class Friends extends RouteHandlerAbstract
      */
     public function process()
     {
-        // Get identified Enpoint name
-        $endpointName = $this->agi->getEndpoint();
+        // Get Refer information
+        $transferred = $this->agi->getVariable("SIPTRANSFER");
+        if (!empty($transferred)) {
+            // Get transferer endpoint name
+            $endpointName = $this->agi->getVariable("DIALEDPEERNUMBER");
+        } else {
+            /** Normal call from User's terminal  */
+            // Get endpoint name from channel
+            $endpointName = $this->agi->getEndpoint();
+        }
 
         // Get friend from the endpoint.
         $friend = $this->endpointResolver->getFriendFromEndpoint($endpointName);
