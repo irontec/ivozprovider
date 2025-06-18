@@ -56,15 +56,7 @@ const properties: OutgoingRoutingProperties = {
     },
     visualToggle: {
       static: {
-        show: [
-          'carrier',
-          'prefix',
-          'forceClid',
-          'clidCountry',
-          'clid',
-          'weight',
-          'priority',
-        ],
+        show: ['carrier', 'prefix', 'forceClid', 'weight', 'priority'],
         hide: ['carrierIds'],
       },
       lcr: {
@@ -162,6 +154,12 @@ const properties: OutgoingRoutingProperties = {
   carriers: {
     label: _('Carrier', { count: 1 }),
     //@TODO IvozProvider_Klear_Ghost_OutgoingRouting::getCarriers
+  },
+  disableDiversion: {
+    label: _('Disable Diversion'),
+    helpText: _(
+      'Disable diversion header and copy its content to PAI/RPID/From'
+    ),
   },
 };
 
