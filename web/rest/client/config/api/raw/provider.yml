@@ -2,7 +2,6 @@
 ## Raw
 ########################################
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
-  # custom normalizer: Service\BillableCallNormalizer
   itemOperations:
     get: ~
   collectionOperations:
@@ -1258,6 +1257,7 @@ Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember:
       - huntGroup
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
+  custom normalizer: Service\InvoiceNormalizer
   itemOperations:
     get: ~
   collectionOperations:
