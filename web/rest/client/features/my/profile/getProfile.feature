@@ -68,7 +68,7 @@ Feature: Retrieve active calls
           "residential": false,
           "retail": true,
           "wholesale": false,
-          "billingInfo": true,
+          "billingInfo": false,
           "defaultCountryId": 68,
           "defaultLocationId": null,
           "acls": [],
