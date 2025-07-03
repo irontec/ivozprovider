@@ -123,7 +123,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setIpfilter(true);
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
-            $this->setShowInvoices(true);
+            $this->setShowInvoices(false);
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
