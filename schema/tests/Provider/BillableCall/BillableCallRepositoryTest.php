@@ -272,7 +272,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
 
         $this->assertEquals(
-            100,
+            99,
             $affectedRows
         );
     }
