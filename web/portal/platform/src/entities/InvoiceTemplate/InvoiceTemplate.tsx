@@ -75,6 +75,7 @@ const InvoiceTemplate: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default InvoiceTemplate;

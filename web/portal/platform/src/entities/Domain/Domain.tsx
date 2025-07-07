@@ -36,6 +36,7 @@ const Domain: EntityInterface = {
     update: false,
     delete: false,
   },
+  defaultOrderBy: '',
 };
 
 export default Domain;

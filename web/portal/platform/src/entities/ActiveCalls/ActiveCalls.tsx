@@ -48,6 +48,7 @@ const activeCalls: EntityInterface = {
     delete: false,
     iden: '_ActiveCalls',
   },
+  defaultOrderBy: '',
 };
 
 export default activeCalls;

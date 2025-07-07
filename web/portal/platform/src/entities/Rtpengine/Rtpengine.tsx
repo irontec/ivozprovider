@@ -47,6 +47,7 @@ const Rtpengine: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default Rtpengine;
