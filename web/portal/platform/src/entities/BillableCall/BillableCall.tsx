@@ -1,8 +1,6 @@
 import { EntityValue } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface, {
-  OrderDirection,
-} from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
@@ -100,7 +98,6 @@ const BillableCall: EntityInterface = {
   path: '/billable_calls',
   toStr: (row: BillableCallPropertyList<EntityValue>) => row.callid as string,
   properties,
-  defaultOrderDirection: OrderDirection.desc,
   columns: [
     'startTime',
     'brand',
@@ -137,6 +134,7 @@ const BillableCall: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default BillableCall;

@@ -143,6 +143,7 @@ const Brand: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default Brand;
