@@ -1,5 +1,4 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
@@ -9,20 +8,27 @@ const CompanySelectOptions: SelectOptionsType = ({
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
   const Company = entities.Company;
+  const getAction = store.getActions().api.get;
 
-  return defaultEntityBehavior.fetchFks(
-    `${Company.path}?_order[name]=ASC`,
-    ['id', 'name'],
-    (data) => {
+  return getAction({
+    path: `${Company.path}?_order[name]=ASC`,
+    params: {
+      _pagination: false,
+      _itemsPerPage: 5000,
+      _properties: ['id', 'name'],
+    },
+    successCallback: async (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id, label: item.name });
+        options.push({
+          id: item.id,
+          label: item.name,
+        });
       }
-
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default CompanySelectOptions;
