@@ -40,8 +40,9 @@ Feature: Retrieve dashboard
                   "maxCalls": 0
               }
           ],
-          "brandNumber": "match:type(2)",
-          "clientNumber": "match:type(5)",
-          "userNumber": "match:type(1)"
+          "brandNumber": 3,
+          "clientNumber": 6,
+          "userNumber": 3,
+          "productName": "Platform text"
       }
       """

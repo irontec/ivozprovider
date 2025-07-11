@@ -27,6 +27,7 @@ Feature: Create web portals
           "urlType": "brand",
           "name": "Platform brand Portal",
           "color": "#000000",
+          "productName": "Ivoz Provider",
           "id": 7,
           "logo": {
               "fileSize": null,
@@ -96,6 +97,7 @@ This is file content
           "urlType": "brand",
           "name": "Platform brand Portal",
           "color": "#000000",
+          "productName": "Ivoz Provider",
           "id": 7,
           "logo": {
               "fileSize": 20,
