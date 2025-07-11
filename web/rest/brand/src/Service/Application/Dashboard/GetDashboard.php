@@ -16,10 +16,11 @@ class GetDashboard
         private CompanyRepository $clientRepository,
         private DdiRepository $ddiRepository,
         private CarrierRepository $carrierRepository,
+        private ProductNameFactory $productNameFactory,
     ) {
     }
 
-    public function execute(AdministratorInterface $admin): Dashboard
+    public function execute(AdministratorInterface $admin, string $hostname): Dashboard
     {
         $brand = $admin->getBrand();
         if (!$brand) {
@@ -52,12 +53,15 @@ class GetDashboard
             $brandId
         );
 
+        $productName = $this->productNameFactory->execute($hostname);
+
         return new Dashboard(
             $dashboardBrand,
             $dashboardClients,
             $clientNum,
             $ddiNum,
-            $carrierNum
+            $carrierNum,
+            $productName
         );
     }
 }
