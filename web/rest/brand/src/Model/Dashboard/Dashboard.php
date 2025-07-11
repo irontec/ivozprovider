@@ -46,6 +46,12 @@ class Dashboard
     protected $carrierNum;
 
     /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
+    protected $productName;
+
+    /**
      * @param DashboardClient[] $recentActivity
      */
     public function __construct(
@@ -53,13 +59,15 @@ class Dashboard
         array $recentActivity,
         int $clientNum,
         int $ddiNum,
-        int $carrierNum
+        int $carrierNum,
+        string $productName = 'Ivoz Provider'
     ) {
         $this->brand = $brand;
         $this->recentActivity = $recentActivity;
         $this->clientNum = $clientNum;
         $this->ddiNum = $ddiNum;
         $this->carrierNum = $carrierNum;
+        $this->productName = $productName;
     }
 
     public function getBrand(): DashboardBrand
@@ -88,5 +96,10 @@ class Dashboard
     public function getCarrierNum(): int
     {
         return $this->carrierNum;
+    }
+
+    public function getProductName(): string
+    {
+        return $this->productName;
     }
 }
