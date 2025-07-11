@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useStoreActions } from 'store';
+import { useStoreActions, useStoreState } from 'store';
 
 import DialpadIcon from './DialpadIcon';
 import IconUsersDashboard from './IconUsers';
@@ -50,6 +50,7 @@ interface DashboardData {
   carrierNum: number;
   clientNum: number;
   ddiNum: number;
+  productName: string;
 }
 
 interface ActiveCalls {
@@ -65,6 +66,7 @@ const Dashboard = (props: DashboardProps) => {
   const [activeCalls, setActiveCalls] = useState<ActiveCalls | null>(null);
   const apiGet = useStoreActions((store) => store.api.get);
   const [, cancelToken] = useCancelToken();
+  const theme = useStoreState((state) => state.theme);
 
   useEffect(() => {
     apiGet({
@@ -125,7 +127,10 @@ const Dashboard = (props: DashboardProps) => {
         <div className='card-container'>
           <div>
             <h3>
-              {_('Welcome to <br />Ivoz Provider brand administrator portal')}
+              {_(
+                'Welcome to <br />{{productName}} brand administrator portal',
+                { productName: data.productName }
+              )}
             </h3>
             <p>
               {_('In this portal you can add clients, carriers and much more.')}

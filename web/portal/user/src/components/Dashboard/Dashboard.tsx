@@ -20,6 +20,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStoreActions } from 'store';
 
+import useWebTheme from '../Header/useWebTheme';
 import ForwardingCallIcon from './ForwardingIconCall';
 import IncomingCallIcon from './IncomingCallIcon';
 import OutgoingCallIcon from './OutgoingCallIcon';
@@ -62,6 +63,7 @@ const Dashboard = (props: DashboardProps) => {
 
   const apiGet = useStoreActions((store) => store.api.get);
   const [, cancelToken] = useCancelToken();
+  const webTheme = useWebTheme();
 
   useEffect(() => {
     apiGet({
@@ -139,7 +141,11 @@ const Dashboard = (props: DashboardProps) => {
       <div className='card welcome'>
         <div className='card-container'>
           <div>
-            <h3>{_('Welcome to <br />Ivoz Provider vPBX user portal')}</h3>
+            <h3>
+              {_('Welcome to <br />{{productName}} vPBX user portal', {
+                productName: webTheme.productName || 'Ivoz Provider',
+              })}
+            </h3>
             <p>
               {_(
                 'In this portal you can see and modify your configuration, list your calls and much more.'

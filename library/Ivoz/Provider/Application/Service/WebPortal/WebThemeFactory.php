@@ -66,6 +66,7 @@ class WebThemeFactory
             $publicLogoUrl,
             $webPortal->getColor(),
             $webPortal->getName() ?? '',
+            $webPortal->getProductName(),
         );
     }
 }

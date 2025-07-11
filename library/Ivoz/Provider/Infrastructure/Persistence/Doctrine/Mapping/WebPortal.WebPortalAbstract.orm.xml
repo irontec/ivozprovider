@@ -28,6 +28,12 @@
         <option name="default">#000000</option>
       </options>
     </field>
+    <field name="productName" type="string" column="productName" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">Ivoz Provider</option>
+      </options>
+    </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="urls" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>

@@ -4,14 +4,17 @@ namespace Service\Domain\Dashboard;
 
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Model\Dashboard\Dashboard;
+use Service\Application\Dashboard\ProductNameFactory;
+use Symfony\Component\HttpFoundation\Request;
 
 class GetDashboard
 {
-    public function __construct()
-    {
+    public function __construct(
+        private ProductNameFactory $productNameFactory
+    ) {
     }
 
-    public function execute(UserInterface $user): Dashboard
+    public function execute(UserInterface $user, Request $request): Dashboard
     {
         $extension = $user->getExtension();
 
@@ -32,13 +35,17 @@ class GetDashboard
             ? ''
             : $outgoingDdi->getDdi();
 
+        // Get productName from WebPortal for user
+        $productName = $this->productNameFactory->getProductNameFromRequest($request);
+
         return new Dashboard(
             $name,
             $lastName,
             $extensionNumber,
             $terminalName,
             $email ?? '',
-            $outgoingDdiToStr
+            $outgoingDdiToStr,
+            $productName
         );
     }
 }
