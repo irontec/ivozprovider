@@ -13,6 +13,7 @@ Feature: Retrieve active calls
           "name": "Irontec Ivozprovider Client Admin Portal",
           "logo": "https://client-ivozprovider.irontec.com/api/client/my/logo/3/client-logo.jpeg",
           "color": "#000000",
-          "title": "Irontec Ivozprovider Client Admin Portal"
+          "title": "Irontec Ivozprovider Client Admin Portal",
+          "productName": "Client text"
       }
       """
