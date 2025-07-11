@@ -16,10 +16,11 @@ class GetDashboard
         private BrandRepository $brandRepository,
         private CompanyRepository $clientRepository,
         private UserRepository $userRepository,
+        private ProductNameFactory $productNameFactory,
     ) {
     }
 
-    public function execute(AdministratorInterface $admin): Dashboard
+    public function execute(AdministratorInterface $admin, string $hostname): Dashboard
     {
         $latestBrands = $this->brandRepository->getLatest(5);
         $dashboardBrands = [];
@@ -34,12 +35,15 @@ class GetDashboard
         $clientNum = $this->clientRepository->count([]);
         $userNum = $this->userRepository->count([]);
 
+        $productName = $this->productNameFactory->execute($hostname);
+
         return new Dashboard(
             $dashboardAdmin,
             $dashboardBrands,
             $brandNum,
             $clientNum,
-            $userNum
+            $userNum,
+            $productName
         );
     }
 }
