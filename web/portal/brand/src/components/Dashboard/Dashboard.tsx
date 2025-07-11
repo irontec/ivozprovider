@@ -50,6 +50,7 @@ interface DashboardData {
   carrierNum: number;
   clientNum: number;
   ddiNum: number;
+  productName: string;
 }
 
 interface ActiveCalls {
@@ -125,7 +126,10 @@ const Dashboard = (props: DashboardProps) => {
         <div className='card-container'>
           <div>
             <h3>
-              {_('Welcome to <br />Ivoz Provider brand administrator portal')}
+              {_(
+                'Welcome to <br />{{productName}} brand administrator portal',
+                { productName: data.productName }
+              )}
             </h3>
             <p>
               {_('In this portal you can add clients, carriers and much more.')}
