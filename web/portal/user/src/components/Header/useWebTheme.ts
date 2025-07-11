@@ -5,6 +5,7 @@ interface WebTheme {
   logo: string;
   name: string;
   theme: string;
+  productName: string;
 }
 
 const useWebTheme = (): WebTheme => {
@@ -14,6 +15,7 @@ const useWebTheme = (): WebTheme => {
     logo: '',
     name: '',
     theme: '',
+    productName: '',
   });
 
   useEffect(() => {

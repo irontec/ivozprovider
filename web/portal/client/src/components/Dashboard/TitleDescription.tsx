@@ -4,10 +4,16 @@ import { useStoreState } from 'store';
 
 export const TitleDescription = (): JSX.Element => {
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const theme = useStoreState((state) => state.theme);
+
   if (aboutMe?.wholesale) {
     return (
       <div>
-        <h3>{_('Welcome to </br> Ivoz Provider wholesale client portal')}</h3>
+        <h3>
+          {_('Welcome to </br> {{productName}} wholesale client portal', {
+            productName: theme.productName,
+          })}
+        </h3>
         <p>
           {_(
             'In this portal you can add wholesale accounts, manage Rating Profiles and much more.'
@@ -23,7 +29,11 @@ export const TitleDescription = (): JSX.Element => {
   if (aboutMe?.retail) {
     return (
       <div>
-        <h3>{_('Welcome to </br> Ivoz Provider retail client portal')}</h3>
+        <h3>
+          {_('Welcome to </br> {{productName}} retail client portal', {
+            productName: theme.productName,
+          })}
+        </h3>
         <p>
           {_(
             'In this portal you can add retail accounts, manage DDIs and much more.'
@@ -39,7 +49,11 @@ export const TitleDescription = (): JSX.Element => {
   if (aboutMe?.residential) {
     return (
       <div>
-        <h3>{_('Welcome to </br> Ivoz Provider residential client portal')}</h3>
+        <h3>
+          {_('Welcome to </br> {{productName}} residential client portal', {
+            productName: theme.productName,
+          })}
+        </h3>
         <p>
           {_(
             'In this portal you can add residential accounts, manage DDis and much more.'
@@ -54,7 +68,11 @@ export const TitleDescription = (): JSX.Element => {
 
   return (
     <div>
-      <h3>{_('Welcome to </br> Ivoz Provider vPBX client portal')}</h3>
+      <h3>
+        {_('Welcome to </br> {{productName}} vPBX client portal', {
+          productName: theme.productName,
+        })}
+      </h3>
       <p>
         {_(
           'In this portal you can add users, extensions, huntgroups and much more.'
