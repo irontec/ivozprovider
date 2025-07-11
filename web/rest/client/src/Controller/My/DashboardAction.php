@@ -6,6 +6,7 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Model\Dashboard\Dashboard;
 use Service\Application\Dashboard\GetDashboard;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class DashboardAction
@@ -16,7 +17,7 @@ class DashboardAction
     ) {
     }
 
-    public function __invoke(): Dashboard
+    public function __invoke(Request $request): Dashboard
     {
         $token =  $this->tokenStorage->getToken();
 
@@ -30,7 +31,8 @@ class DashboardAction
         }
 
         $result = $this->getDashboard->execute(
-            $admin
+            $admin,
+            $request->getHost()
         );
 
         return $result;
