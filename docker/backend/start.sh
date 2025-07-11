@@ -25,6 +25,9 @@ fi
 pushd schema && composer install --no-interaction && popd
 schema/bin/console doctrine:migrations:migrate -n
 
+# Add xdebug to /etc/hosts
+/sbin/ip route | sudo awk '/default/ { print $3 "      xdebug" }' >> /etc/hosts
+
 ## Services
 sudo service apache2 start
 sudo /usr/sbin/rsyslogd
