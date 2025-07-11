@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Model\Dashboard\Dashboard;
 use Model\Dashboard\DashboardAdmin;
 use Model\Dashboard\DashboardBrand;
+use Symfony\Component\HttpFoundation\Request;
 
 class GetDashboard
 {
@@ -16,10 +17,11 @@ class GetDashboard
         private BrandRepository $brandRepository,
         private CompanyRepository $clientRepository,
         private UserRepository $userRepository,
+        private ProductNameFactory $productNameFactory,
     ) {
     }
 
-    public function execute(AdministratorInterface $admin): Dashboard
+    public function execute(AdministratorInterface $admin, Request $request): Dashboard
     {
         $latestBrands = $this->brandRepository->getLatest(5);
         $dashboardBrands = [];
@@ -34,12 +36,15 @@ class GetDashboard
         $clientNum = $this->clientRepository->count([]);
         $userNum = $this->userRepository->count([]);
 
+        $productName = $this->productNameFactory->getProductNameFromRequest($request);
+
         return new Dashboard(
             $dashboardAdmin,
             $dashboardBrands,
             $brandNum,
             $clientNum,
-            $userNum
+            $userNum,
+            $productName
         );
     }
 }
