@@ -19,7 +19,7 @@ class GetVpbxInfo
     ) {
     }
 
-    public function execute(CompanyInterface $company): Dashboard
+    public function execute(CompanyInterface $company, string $productName = 'Ivoz Provider'): Dashboard
     {
         $client = DashboardClient::fromCompany($company);
 
@@ -58,7 +58,8 @@ class GetVpbxInfo
             userNum: $userNum,
             extensionNum: $extensionNum,
             ddiNum: $ddiNum,
-            latestUsers: $dashboardLatestUsers
+            latestUsers: $dashboardLatestUsers,
+            productName: $productName
         );
 
         return $dashboard;
