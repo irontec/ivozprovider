@@ -70,6 +70,7 @@ This is file content
         "urlType": "admin",
         "name": "Irontec Ivozprovider Client Admin Portal",
         "color": "#000000",
+        "productName": "Client text",
         "id": 3,
         "logo": {
             "fileSize": 20,
