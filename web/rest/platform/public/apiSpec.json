@@ -16586,6 +16586,10 @@
                 "userNumber": {
                     "description": "",
                     "type": "integer"
+                },
+                "productName": {
+                    "description": "",
+                    "type": "string"
                 }
             }
         },
@@ -18895,7 +18899,8 @@
             "required": [
                 "url",
                 "urlType",
-                "color"
+                "color",
+                "productName"
             ],
             "properties": {
                 "url": {
@@ -18926,6 +18931,13 @@
                     "maxLength": 10,
                     "description": "",
                     "example": "#000000",
+                    "type": "string"
+                },
+                "productName": {
+                    "default": "Ivoz Provider",
+                    "maxLength": 64,
+                    "description": "",
+                    "example": "Ivoz Provider",
                     "type": "string"
                 },
                 "id": {
@@ -18995,7 +19007,8 @@
             "required": [
                 "url",
                 "urlType",
-                "color"
+                "color",
+                "productName"
             ],
             "properties": {
                 "url": {
@@ -19026,6 +19039,13 @@
                     "maxLength": 10,
                     "description": "",
                     "example": "#000000",
+                    "type": "string"
+                },
+                "productName": {
+                    "default": "Ivoz Provider",
+                    "maxLength": 64,
+                    "description": "",
+                    "example": "Ivoz Provider",
                     "type": "string"
                 },
                 "id": {
@@ -19080,6 +19100,10 @@
                     "type": "string"
                 },
                 "title": {
+                    "description": "",
+                    "type": "string"
+                },
+                "productName": {
                     "description": "",
                     "type": "string"
                 }
