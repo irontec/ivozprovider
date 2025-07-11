@@ -46,6 +46,7 @@ export interface DashboardData {
   residentialDeviceNum?: number;
   voiceMailNum?: number;
   retailsAccountNum?: number;
+  productName?: string;
 }
 
 export interface CardFactoryProps {
