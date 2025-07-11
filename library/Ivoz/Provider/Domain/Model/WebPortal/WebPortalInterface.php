@@ -78,6 +78,8 @@ interface WebPortalInterface extends LoggableEntityInterface, FileContainerInter
 
     public function getColor(): string;
 
+    public function getProductName(): string;
+
     public function getLogo(): Logo;
 
     public function setBrand(?BrandInterface $brand = null): static;
