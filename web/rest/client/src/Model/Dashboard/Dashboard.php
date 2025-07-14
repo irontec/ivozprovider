@@ -93,6 +93,12 @@ class Dashboard
     protected $retailsAccountNum;
 
     /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
+    protected $productName;
+
+    /**
      * @param DashboardBillableCall[] $latestBillableCalls
      * @param DashboardUser[] $latestUsers
      * @param DashboardResidentialDevice[] $latestResidentialDevices
@@ -110,6 +116,7 @@ class Dashboard
         int $residentialDeviceNum = null,
         int $voiceMailNum = null,
         int $retailsAccountNum = null,
+        string $productName = 'Ivoz Provider'
     ) {
         $this->client = $client;
         $this->latestBillableCalls = $latestBillableCalls;
@@ -122,6 +129,7 @@ class Dashboard
         $this->residentialDeviceNum = $residentialDeviceNum;
         $this->voiceMailNum = $voiceMailNum;
         $this->retailsAccountNum = $retailsAccountNum;
+        $this->productName = $productName;
     }
 
 
@@ -196,5 +204,10 @@ class Dashboard
     public function getRetailsAccountNum(): ?int
     {
         return $this->retailsAccountNum;
+    }
+
+    public function getProductName(): string
+    {
+        return $this->productName;
     }
 }

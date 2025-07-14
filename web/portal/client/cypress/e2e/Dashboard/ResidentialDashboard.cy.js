@@ -8,9 +8,10 @@ describe('Dashboard Residential', () => {
     });
     cy.before();
 
+    // El productName ahora es dinámico, así que verificamos que contenga "residential client portal"
     cy.get('.welcome .card-container div h3').should(
       'contain',
-      ' Ivoz Provider residential client portal'
+      'residential client portal'
     );
   });
 

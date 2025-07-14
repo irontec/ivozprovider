@@ -8,9 +8,10 @@ describe('Dashboard Retail', () => {
     });
     cy.before();
 
+    // El productName ahora es dinámico, así que verificamos que contenga "retail client portal"
     cy.get('.welcome .card-container div h3').should(
       'contain',
-      ' Ivoz Provider retail client portal'
+      'retail client portal'
     );
   });
 

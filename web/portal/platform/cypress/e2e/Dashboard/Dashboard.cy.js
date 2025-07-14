@@ -5,9 +5,10 @@ describe('Dashboard', () => {
     cy.prepareGenericPactInterceptors('Dashobard');
     cy.before();
 
-    cy.get('.welcome .card-container div h3').should(
+    // El productName ahora es dinámico, así que verificamos que contenga "global administrator portal"
+    cy.get('.welcome .card-container').should(
       'contain',
-      ' Ivoz Provider global administrator portal'
+      'global administrator portal'
     );
   });
 

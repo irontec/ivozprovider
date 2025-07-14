@@ -17,7 +17,7 @@ class GetRetailInfo
     ) {
     }
 
-    public function execute(CompanyInterface $company): Dashboard
+    public function execute(CompanyInterface $company, string $productName = 'Ivoz Provider'): Dashboard
     {
         $client = DashboardClient::fromCompany($company);
 
@@ -49,7 +49,8 @@ class GetRetailInfo
             client: $client,
             latestRetailAccounts: $dashboardRetailAccounts,
             ddiNum: $ddiNum,
-            retailsAccountNum: $retailsAccountNum
+            retailsAccountNum: $retailsAccountNum,
+            productName: $productName
         );
 
 

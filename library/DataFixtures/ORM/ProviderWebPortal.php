@@ -28,6 +28,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setUrlType("god");
             $this->setName("Platform Administration Portal");
             $this->logo = new Logo(10, 'image/jpeg', 'logo.jpeg');
+            $this->setProductName("Platform text");
         })->call($item1);
 
         $this->addReference('_reference_ProviderWebPortal1', $item1);
@@ -41,6 +42,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setName("Irontec Ivozprovider Brand Admin Portal");
             $this->logo = new Logo(10, 'image/jpeg', 'brand-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setProductName("Brand text");
         })->call($item2);
 
         $this->addReference('_reference_ProviderWebPortal2', $item2);
@@ -55,6 +57,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setName("Irontec Ivozprovider Client Admin Portal");
             $this->logo = new Logo(10, 'image/jpeg', 'client-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setProductName("Client text");
         })->call($item3);
 
         $this->addReference('_reference_ProviderWebPortal3', $item3);
@@ -68,6 +71,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setName("Irontec Ivozprovider User Admin Portal");
             $this->logo = new Logo(10, 'image/jpeg', 'user-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setProductName("User text");
         })->call($item4);
 
         $this->addReference('_reference_ProviderWebPortal4', $item4);
@@ -81,6 +85,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->setUrlType("god");
             $this->setName("No logo");
             $this->logo = new Logo(null, null, null);
+            $this->setProductName("No logo text");
         })->call($item5);
 
         $this->addReference('_reference_ProviderWebPortal5', $item5);
@@ -95,6 +100,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
             $this->logo = new Logo(10, 'image/jpeg', 'user-logo.jpeg');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setProductName("Client2 text");
         })->call($item6);
 
         $this->addReference('_reference_ProviderWebPortal6', $item6);
