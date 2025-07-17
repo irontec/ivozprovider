@@ -60,6 +60,7 @@ const NotificationTemplate: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default NotificationTemplate;

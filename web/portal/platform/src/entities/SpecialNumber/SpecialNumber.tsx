@@ -77,6 +77,7 @@ const SpecialNumber: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default SpecialNumber;
