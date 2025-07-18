@@ -75,6 +75,44 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
+        /** @var DdiInterface $item4 */
+        $item4 = $this->createEntityInstance(Ddi::class);
+        (function () use ($fixture) {
+            $this->setDdi("125");
+            $this->setDdie164("+34125");
+            $this->setDisplayName("");
+            $this->setFriendValue("");
+            $this->setRouteType("locution");
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setDdiProvider($fixture->getReference('_reference_ProviderDdiProvider1'));
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
+            $this->setLocution($fixture->getReference('_reference_ProviderLocution1'));
+        })->call($item4);
+
+        $this->addReference('_reference_ProviderDdi4', $item4);
+        $this->sanitizeEntityValues($item4);
+        $manager->persist($item4);
+
+        /** @var DdiInterface $item5 */
+        $item5 = $this->createEntityInstance(Ddi::class);
+        (function () use ($fixture) {
+            $this->setDdi("126");
+            $this->setDdie164("+34126");
+            $this->setDisplayName("");
+            $this->setFriendValue("");
+            $this->setRouteType("locution");
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setDdiProvider($fixture->getReference('_reference_ProviderDdiProvider1'));
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
+            // No locution assigned - direct hangup
+        })->call($item5);
+
+        $this->addReference('_reference_ProviderDdi5', $item5);
+        $this->sanitizeEntityValues($item5);
+        $manager->persist($item5);
+
         $manager->flush();
     }
 
@@ -86,6 +124,7 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
             ProviderDdiProvider::class,
             ProviderCountry::class,
             ProviderRoutingTag::class,
+            ProviderLocution::class,
         );
     }
 }
