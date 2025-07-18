@@ -20,6 +20,7 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto;
+use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 
 /**
@@ -161,6 +162,11 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     private $routingTag = null;
 
     /**
+     * @var LocutionDto | null
+     */
+    private $locution = null;
+
+    /**
      * @var RecordingDto[] | null
      */
     private $recordings = null;
@@ -205,7 +211,8 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'residentialDeviceId' => 'residentialDevice',
             'conditionalRouteId' => 'conditionalRoute',
             'retailAccountId' => 'retailAccount',
-            'routingTagId' => 'routingTag'
+            'routingTagId' => 'routingTag',
+            'locutionId' => 'locution'
         ];
     }
 
@@ -241,6 +248,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'conditionalRoute' => $this->getConditionalRoute(),
             'retailAccount' => $this->getRetailAccount(),
             'routingTag' => $this->getRoutingTag(),
+            'locution' => $this->getLocution(),
             'recordings' => $this->getRecordings()
         ];
 
@@ -855,6 +863,36 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     public function getRoutingTagId(): ?int
     {
         if ($dto = $this->getRoutingTag()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setLocution(?LocutionDto $locution): static
+    {
+        $this->locution = $locution;
+
+        return $this;
+    }
+
+    public function getLocution(): ?LocutionDto
+    {
+        return $this->locution;
+    }
+
+    public function setLocutionId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new LocutionDto($id)
+            : null;
+
+        return $this->setLocution($value);
+    }
+
+    public function getLocutionId(): ?int
+    {
+        if ($dto = $this->getLocution()) {
             return $dto->getId();
         }
 
