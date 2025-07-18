@@ -57,7 +57,8 @@ Feature: Create IVR excluded extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           }
       }
       """
@@ -107,7 +108,8 @@ Feature: Create IVR excluded extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           }
       }
       """

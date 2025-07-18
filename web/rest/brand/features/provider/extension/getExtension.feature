@@ -58,6 +58,24 @@ Feature: Retrieve extensions
             "id": 5,
             "user": 3,
             "numberCountry": null
+        },
+        {
+            "number": "998",
+            "routeType": "locution",
+            "numberValue": null,
+            "friendValue": null,
+            "id": 7,
+            "user": null,
+            "numberCountry": null
+        },
+        {
+            "number": "999",
+            "routeType": "locution",
+            "numberValue": null,
+            "friendValue": null,
+            "id": 6,
+            "user": null,
+            "numberCountry": null
         }
       ]
       """
