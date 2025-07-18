@@ -19,7 +19,7 @@ Feature: Retrieve Ddis
               "ddie164": "+34123",
               "description": "Description for DDI 123",
               "routeType": null,
-              "friendValue": "",
+              "friendValue": null,
               "id": 1,
               "conferenceRoom": null,
               "language": null,
@@ -32,7 +32,50 @@ Feature: Retrieve Ddis
               "country": 68,
               "residentialDevice": null,
               "conditionalRoute": null,
-              "retailAccount": null
+              "retailAccount": null,
+              "locution": null
+          },
+          {
+              "ddi": "125",
+              "ddie164": "+34125",
+              "description": null,
+              "routeType": "locution",
+              "friendValue": null,
+              "id": 4,
+              "conferenceRoom": null,
+              "language": null,
+              "queue": null,
+              "externalCallFilter": null,
+              "user": null,
+              "ivr": null,
+              "huntGroup": null,
+              "fax": null,
+              "country": 68,
+              "residentialDevice": null,
+              "conditionalRoute": null,
+              "retailAccount": null,
+              "locution": 1
+          },
+          {
+              "ddi": "126",
+              "ddie164": "+34126",
+              "description": null,
+              "routeType": "locution",
+              "friendValue": null,
+              "id": 5,
+              "conferenceRoom": null,
+              "language": null,
+              "queue": null,
+              "externalCallFilter": null,
+              "user": null,
+              "ivr": null,
+              "huntGroup": null,
+              "fax": null,
+              "country": 68,
+              "residentialDevice": null,
+              "conditionalRoute": null,
+              "retailAccount": null,
+              "locution": null
           }
       ]
       """
@@ -53,7 +96,7 @@ Feature: Retrieve Ddis
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
-          "friendValue": "",
+          "friendValue": null,
           "id": 1,
           "conferenceRoom": null,
           "language": null,
@@ -70,16 +113,19 @@ Feature: Retrieve Ddis
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe"
               }
           },
           "residentialDevice": null,
           "conditionalRoute": null,
-          "retailAccount": null
+          "retailAccount": null,
+          "locution": null
       }
       """

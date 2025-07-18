@@ -27,7 +27,8 @@ Feature: Retrieve extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "102",
@@ -42,7 +43,8 @@ Feature: Retrieve extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "12346",
@@ -57,7 +59,8 @@ Feature: Retrieve extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": 68,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "987",
@@ -72,7 +75,8 @@ Feature: Retrieve extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "988",
@@ -87,7 +91,40 @@ Feature: Retrieve extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
+          },
+          {
+              "number": "998",
+              "routeType": "locution",
+              "numberValue": null,
+              "friendValue": null,
+              "id": 7,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null,
+              "voicemail": null,
+              "locution": null
+          },
+          {
+              "number": "999",
+              "routeType": "locution",
+              "numberValue": null,
+              "friendValue": null,
+              "id": 6,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null,
+              "voicemail": null,
+              "locution": 1
           }
       ]
       """

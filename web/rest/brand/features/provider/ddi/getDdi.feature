@@ -40,6 +40,24 @@ Feature: Retrieve ddis
               "company": 4,
               "ddiProvider": 1,
               "country": 68
+          },
+          {
+              "ddi": "125",
+              "ddie164": "+34125",
+              "description": null,
+              "id": 4,
+              "company": 1,
+              "ddiProvider": 1,
+              "country": 68
+          },
+          {
+              "ddi": "126",
+              "ddie164": "+34126",
+              "description": null,
+              "id": 5,
+              "company": 1,
+              "ddiProvider": 1,
+              "country": 68
           }
       ]
       """
