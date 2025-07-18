@@ -79,6 +79,12 @@ class Ddi extends DdiAbstract implements DdiInterface
         if ($this->getUseDdiProviderRoutingTag()) {
             $this->setRoutingTag(null);
         }
+
+        $this->sanitizeRouteValues();
+
+        if ($this->getRouteType() !== 'locution') {
+            $this->setLocution(null);
+        }
     }
 
     /**
@@ -130,6 +136,7 @@ class Ddi extends DdiAbstract implements DdiInterface
             'friend'        => 'friendValue',
             'conferenceRoom' => 'conferenceRoom',
             'queue'         => 'queue',
+            'locution'      => 'locution',
         );
 
         foreach ($nullableFields as $type => $fieldName) {

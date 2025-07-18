@@ -49,6 +49,7 @@ class DdiDto extends DdiDtoAbstract
                 'residentialDeviceId' => 'residentialDevice',
                 'conditionalRouteId' => 'conditionalRoute',
                 'retailAccountId' => 'retailAccount',
+                'locutionId' => 'locution',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -127,7 +128,8 @@ class DdiDto extends DdiDtoAbstract
             'countryId',
             'residentialDeviceId',
             'conditionalRouteId',
-            'retailAccountId'
+            'retailAccountId',
+            'locutionId',
         ];
 
         return self::filterFields($response, $allowedFields);
