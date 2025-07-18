@@ -25,6 +25,7 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom;
@@ -41,6 +42,7 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag;
+use Ivoz\Provider\Domain\Model\Locution\Locution;
 
 /**
 * DdiAbstract
@@ -80,7 +82,7 @@ abstract class DdiAbstract
 
     /**
      * @var ?string
-     * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail
+     * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail|locution
      */
     protected $routeType = null;
 
@@ -182,6 +184,11 @@ abstract class DdiAbstract
      * @var ?RoutingTagInterface
      */
     protected $routingTag = null;
+
+    /**
+     * @var ?LocutionInterface
+     */
+    protected $locution = null;
 
     /**
      * Constructor
@@ -298,7 +305,8 @@ abstract class DdiAbstract
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
-            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
+            ->setLocution($fkTransformer->transform($dto->getLocution()));
 
         $self->initChangelog();
 
@@ -351,7 +359,8 @@ abstract class DdiAbstract
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
-            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
+            ->setLocution($fkTransformer->transform($dto->getLocution()));
 
         return $this;
     }
@@ -386,7 +395,8 @@ abstract class DdiAbstract
             ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
             ->setConditionalRoute(ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
             ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth))
-            ->setRoutingTag(RoutingTag::entityToDto(self::getRoutingTag(), $depth));
+            ->setRoutingTag(RoutingTag::entityToDto(self::getRoutingTag(), $depth))
+            ->setLocution(Locution::entityToDto(self::getLocution(), $depth));
     }
 
     /**
@@ -419,7 +429,8 @@ abstract class DdiAbstract
             'residentialDeviceId' => self::getResidentialDevice()?->getId(),
             'conditionalRouteId' => self::getConditionalRoute()?->getId(),
             'retailAccountId' => self::getRetailAccount()?->getId(),
-            'routingTagId' => self::getRoutingTag()?->getId()
+            'routingTagId' => self::getRoutingTag()?->getId(),
+            'locutionId' => self::getLocution()?->getId()
         ];
     }
 
@@ -526,6 +537,7 @@ abstract class DdiAbstract
                     DdiInterface::ROUTETYPE_CONDITIONAL,
                     DdiInterface::ROUTETYPE_RESIDENTIAL,
                     DdiInterface::ROUTETYPE_RETAIL,
+                    DdiInterface::ROUTETYPE_LOCUTION,
                 ],
                 'routeTypevalue "%s" is not an element of the valid values: %s'
             );
@@ -781,5 +793,17 @@ abstract class DdiAbstract
     public function getRoutingTag(): ?RoutingTagInterface
     {
         return $this->routingTag;
+    }
+
+    protected function setLocution(?LocutionInterface $locution = null): static
+    {
+        $this->locution = $locution;
+
+        return $this;
+    }
+
+    public function getLocution(): ?LocutionInterface
+    {
+        return $this->locution;
     }
 }
