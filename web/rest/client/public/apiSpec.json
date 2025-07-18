@@ -10024,19 +10024,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "ddie164[start]",
+                        "name": "ddie164[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "ddie164[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "ddie164[neq]",
+                        "name": "ddie164[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10052,6 +10046,12 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "ddie164[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "description",
@@ -10078,6 +10078,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "description[neq]",
                         "in": "query",
                         "required": false,
@@ -10088,12 +10094,6 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "description[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "exists[conditionalRoute]",
@@ -10246,18 +10246,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "friendValue[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "friendValue[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "friendValue[partial]",
                         "in": "query",
                         "required": false,
@@ -10265,6 +10253,18 @@
                     },
                     {
                         "name": "friendValue[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "friendValue[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "friendValue[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10331,6 +10331,24 @@
                     },
                     {
                         "name": "language[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "locution",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "locution[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "locution[exists]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -10986,6 +11004,24 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "locution",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "locution[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "locution[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "number",
                         "in": "query",
                         "required": false,
@@ -11028,6 +11064,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "numberValue[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "numberValue[end]",
                         "in": "query",
                         "required": false,
@@ -11046,19 +11088,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "numberValue[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "number[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "number[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11077,6 +11107,12 @@
                     },
                     {
                         "name": "number[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "number[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -19677,6 +19713,12 @@
                         "type": "integer"
                     },
                     {
+                        "name": "extension.locution",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "extension.number",
                         "in": "query",
                         "required": false,
@@ -24302,6 +24344,12 @@
                         "type": "integer"
                     },
                     {
+                        "name": "forcedDdi.locution",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "forcedDdi.queue",
                         "in": "query",
                         "required": false,
@@ -24440,6 +24488,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "prefix[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "prefix[end]",
                         "in": "query",
                         "required": false,
@@ -24453,12 +24507,6 @@
                     },
                     {
                         "name": "prefix[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "prefix[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -40696,7 +40744,8 @@
                         "queue",
                         "conditional",
                         "residential",
-                        "retail"
+                        "retail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -40760,6 +40809,10 @@
                 "retailAccount": {
                     "description": "",
                     "type": "integer"
+                },
+                "locution": {
+                    "description": "",
+                    "type": "integer"
                 }
             },
             "required": [
@@ -40811,7 +40864,8 @@
                         "queue",
                         "conditional",
                         "residential",
-                        "retail"
+                        "retail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -40913,7 +40967,8 @@
                         "queue",
                         "conditional",
                         "residential",
-                        "retail"
+                        "retail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -40965,6 +41020,9 @@
                 },
                 "retailAccount": {
                     "$ref": "#/definitions/RetailAccount"
+                },
+                "locution": {
+                    "$ref": "#/definitions/Locution"
                 }
             },
             "required": [
@@ -41010,7 +41068,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -41062,6 +41121,10 @@
                 "voicemail": {
                     "description": "",
                     "type": "integer"
+                },
+                "locution": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -41091,7 +41154,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -41162,7 +41226,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -41206,6 +41271,9 @@
                 },
                 "voicemail": {
                     "$ref": "#/definitions/Voicemail"
+                },
+                "locution": {
+                    "$ref": "#/definitions/Locution"
                 }
             }
         },
