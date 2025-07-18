@@ -83,6 +83,29 @@ class ProviderExtension extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
 
+        $item6 = $this->createEntityInstance(Extension::class);
+        (function () use ($fixture) {
+            $this->setNumber("999");
+            $this->setRouteType('locution');
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setLocution($fixture->getReference('_reference_ProviderLocution1'));
+        })->call($item6);
+
+        $this->addReference('_reference_ProviderExtension6', $item6);
+        $this->sanitizeEntityValues($item6);
+        $manager->persist($item6);
+
+        $item7 = $this->createEntityInstance(Extension::class);
+        (function () use ($fixture) {
+            $this->setNumber("998");
+            $this->setRouteType('locution');
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+        })->call($item7);
+
+        $this->addReference('_reference_ProviderExtension7', $item7);
+        $this->sanitizeEntityValues($item7);
+        $manager->persist($item7);
+
         $manager->flush();
     }
 
@@ -91,7 +114,8 @@ class ProviderExtension extends Fixture implements DependentFixtureInterface
         return array(
             ProviderCountry::class,
             ProviderCompany::class,
-            ProviderUser::class
+            ProviderUser::class,
+            ProviderLocution::class
         );
     }
 }
