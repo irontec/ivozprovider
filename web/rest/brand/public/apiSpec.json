@@ -40597,7 +40597,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -40658,7 +40659,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -40706,7 +40708,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
