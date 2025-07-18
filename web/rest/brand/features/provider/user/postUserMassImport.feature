@@ -100,6 +100,24 @@ Feature: Create users
               "company": 4,
               "ddiProvider": 1,
               "country": 68
+          },
+          {
+              "ddi": "125",
+              "ddie164": "+34125",
+              "description": null,
+              "id": 4,
+              "company": 1,
+              "ddiProvider": 1,
+              "country": 68
+          },
+          {
+              "ddi": "126",
+              "ddie164": "+34126",
+              "description": null,
+              "id": 5,
+              "company": 1,
+              "ddiProvider": 1,
+              "country": 68
           }
       ]
       """
@@ -201,8 +219,8 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "id": 5,
               "company": 1,
               "terminal": 6,
-              "extension": 7,
-              "outgoingDdi": 5,
+              "extension": 9,
+              "outgoingDdi": 7,
               "location": 1,
               "status": []
           },
@@ -214,8 +232,8 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "id": 4,
               "company": 1,
               "terminal": 5,
-              "extension": 6,
-              "outgoingDdi": 4,
+              "extension": 8,
+              "outgoingDdi": 6,
               "location": 1,
               "status": []
           }
@@ -260,10 +278,28 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "country": 68
           },
           {
+              "ddi": "125",
+              "ddie164": "+34125",
+              "description": null,
+              "id": 4,
+              "company": 1,
+              "ddiProvider": 1,
+              "country": 68
+          },
+          {
+              "ddi": "126",
+              "ddie164": "+34126",
+              "description": null,
+              "id": 5,
+              "company": 1,
+              "ddiProvider": 1,
+              "country": 68
+          },
+          {
               "ddi": "946002050",
               "ddie164": "+34946002050",
               "description": null,
-              "id": 4,
+              "id": 6,
               "company": 1,
               "ddiProvider": 1,
               "country": 68
@@ -272,7 +308,7 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "ddi": "946002051",
               "ddie164": "+34946002051",
               "description": null,
-              "id": 5,
+              "id": 7,
               "company": 1,
               "ddiProvider": 1,
               "country": 68

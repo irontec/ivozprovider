@@ -44,7 +44,7 @@ Feature: Update Ddis
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
-          "friendValue": "",
+          "friendValue": null,
           "id": 1,
           "conferenceRoom": null,
           "language": null,
@@ -57,6 +57,7 @@ Feature: Update Ddis
           "country": 68,
           "residentialDevice": null,
           "conditionalRoute": null,
-          "retailAccount": null
+          "retailAccount": null,
+          "locution": null
       }
       """
