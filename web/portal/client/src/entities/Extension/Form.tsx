@@ -43,6 +43,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'queue',
         'conditionalRoute',
         'voicemail',
+        'locution',
       ],
     },
   ];
