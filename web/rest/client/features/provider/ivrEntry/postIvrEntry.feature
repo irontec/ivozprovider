@@ -108,7 +108,8 @@ Feature: Create IVR entries
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           "voicemail": null,
           "conditionalRoute": null,

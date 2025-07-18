@@ -18,6 +18,7 @@ use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
@@ -27,6 +28,7 @@ use Ivoz\Provider\Domain\Model\Queue\Queue;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\Locution\Locution;
 
 /**
 * ExtensionAbstract
@@ -43,7 +45,7 @@ abstract class ExtensionAbstract
 
     /**
      * @var ?string
-     * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional|voicemail
+     * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional|voicemail|locution
      */
     protected $routeType = null;
 
@@ -102,6 +104,11 @@ abstract class ExtensionAbstract
      * @var ?VoicemailInterface
      */
     protected $voicemail = null;
+
+    /**
+     * @var ?LocutionInterface
+     */
+    protected $locution = null;
 
     /**
      * Constructor
@@ -194,7 +201,8 @@ abstract class ExtensionAbstract
             ->setQueue($fkTransformer->transform($dto->getQueue()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
-            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()));
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
+            ->setLocution($fkTransformer->transform($dto->getLocution()));
 
         $self->initChangelog();
 
@@ -229,7 +237,8 @@ abstract class ExtensionAbstract
             ->setQueue($fkTransformer->transform($dto->getQueue()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
-            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()));
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
+            ->setLocution($fkTransformer->transform($dto->getLocution()));
 
         return $this;
     }
@@ -252,7 +261,8 @@ abstract class ExtensionAbstract
             ->setQueue(Queue::entityToDto(self::getQueue(), $depth))
             ->setConditionalRoute(ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth))
-            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth));
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth))
+            ->setLocution(Locution::entityToDto(self::getLocution(), $depth));
     }
 
     /**
@@ -273,7 +283,8 @@ abstract class ExtensionAbstract
             'queueId' => self::getQueue()?->getId(),
             'conditionalRouteId' => self::getConditionalRoute()?->getId(),
             'numberCountryId' => self::getNumberCountry()?->getId(),
-            'voicemailId' => self::getVoicemail()?->getId()
+            'voicemailId' => self::getVoicemail()?->getId(),
+            'locutionId' => self::getLocution()?->getId()
         ];
     }
 
@@ -307,6 +318,7 @@ abstract class ExtensionAbstract
                     ExtensionInterface::ROUTETYPE_QUEUE,
                     ExtensionInterface::ROUTETYPE_CONDITIONAL,
                     ExtensionInterface::ROUTETYPE_VOICEMAIL,
+                    ExtensionInterface::ROUTETYPE_LOCUTION,
                 ],
                 'routeTypevalue "%s" is not an element of the valid values: %s'
             );
@@ -460,5 +472,17 @@ abstract class ExtensionAbstract
     public function getVoicemail(): ?VoicemailInterface
     {
         return $this->voicemail;
+    }
+
+    protected function setLocution(?LocutionInterface $locution = null): static
+    {
+        $this->locution = $locution;
+
+        return $this;
+    }
+
+    public function getLocution(): ?LocutionInterface
+    {
+        return $this->locution;
     }
 }

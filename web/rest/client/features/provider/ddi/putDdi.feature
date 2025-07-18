@@ -57,6 +57,7 @@ Feature: Update Ddis
           "country": 68,
           "residentialDevice": null,
           "conditionalRoute": null,
-          "retailAccount": null
+          "retailAccount": null,
+          "locution": null
       }
       """

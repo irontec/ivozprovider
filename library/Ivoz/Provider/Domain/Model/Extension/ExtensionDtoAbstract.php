@@ -13,6 +13,7 @@ use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
+use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 
 /**
 * ExtensionDtoAbstract
@@ -93,6 +94,11 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     private $voicemail = null;
 
     /**
+     * @var LocutionDto | null
+     */
+    private $locution = null;
+
+    /**
      * @var UserDto[] | null
      */
     private $users = null;
@@ -125,7 +131,8 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
             'queueId' => 'queue',
             'conditionalRouteId' => 'conditionalRoute',
             'numberCountryId' => 'numberCountry',
-            'voicemailId' => 'voicemail'
+            'voicemailId' => 'voicemail',
+            'locutionId' => 'locution'
         ];
     }
 
@@ -149,6 +156,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
             'conditionalRoute' => $this->getConditionalRoute(),
             'numberCountry' => $this->getNumberCountry(),
             'voicemail' => $this->getVoicemail(),
+            'locution' => $this->getLocution(),
             'users' => $this->getUsers()
         ];
 
@@ -493,6 +501,36 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     public function getVoicemailId(): ?int
     {
         if ($dto = $this->getVoicemail()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setLocution(?LocutionDto $locution): static
+    {
+        $this->locution = $locution;
+
+        return $this;
+    }
+
+    public function getLocution(): ?LocutionDto
+    {
+        return $this->locution;
+    }
+
+    public function setLocutionId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new LocutionDto($id)
+            : null;
+
+        return $this->setLocution($value);
+    }
+
+    public function getLocutionId(): ?int
+    {
+        if ($dto = $this->getLocution()) {
             return $dto->getId();
         }
 

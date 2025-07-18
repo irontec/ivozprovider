@@ -23,6 +23,7 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -59,6 +60,8 @@ interface DdiInterface extends LoggableEntityInterface
     public const ROUTETYPE_RESIDENTIAL = 'residential';
 
     public const ROUTETYPE_RETAIL = 'retail';
+
+    public const ROUTETYPE_LOCUTION = 'locution';
 
     public const TYPE_INOUT = 'inout';
 
@@ -171,6 +174,8 @@ interface DdiInterface extends LoggableEntityInterface
     public function getRetailAccount(): ?RetailAccountInterface;
 
     public function getRoutingTag(): ?RoutingTagInterface;
+
+    public function getLocution(): ?LocutionInterface;
 
     public function addRecording(RecordingInterface $recording): DdiInterface;
 

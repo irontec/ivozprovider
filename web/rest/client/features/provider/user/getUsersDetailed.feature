@@ -14,7 +14,7 @@ Feature: Retrieve users detailed list
       And the JSON should be equal to:
       """
       [
-            {
+          {
                 "name": "Alice",
                 "lastname": "Allison",
                 "email": "alice@democompany.com",
@@ -41,8 +41,8 @@ Feature: Retrieve users detailed list
                     "survivalDevice": 1,
                     "userIds": []
                 }
-            },
-            {
+          },
+          {
                 "name": "Bob",
                 "lastname": "Bobson",
                 "email": "bob@democompany.com",
@@ -69,8 +69,8 @@ Feature: Retrieve users detailed list
                     "survivalDevice": 1,
                     "userIds": []
                 }
-            },
-            {
+          },
+          {
                 "name": "Joe",
                 "lastname": "Doe",
                 "email": "joe@democompany.com",
@@ -102,7 +102,8 @@ Feature: Retrieve users detailed list
                     "queue": null,
                     "conditionalRoute": null,
                     "numberCountry": null,
-                    "voicemail": null
+                    "voicemail": null,
+                    "locution": null
                 },
                 "location": {
                     "name": "testLocation",
@@ -111,6 +112,6 @@ Feature: Retrieve users detailed list
                     "survivalDevice": 1,
                     "userIds": []
                 }
-            }
+          }
       ]
       """

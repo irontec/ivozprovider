@@ -26,6 +26,7 @@ const allRoutableFields = [
   'residentialDevice',
   'conditionalRoute',
   'retailAccount',
+  'locution',
 ];
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
@@ -84,6 +85,7 @@ const properties: DdiProperties = {
       residential: _('Residential Device', { count: 1 }),
       conditional: _('Conditional Route', { count: 1 }),
       retail: _('Retail Account', { count: 1 }),
+      locution: _('Voiceover and hang up'),
     },
     null: _('Unassigned'),
     visualToggle: {
@@ -129,6 +131,10 @@ const properties: DdiProperties = {
       },
       retail: {
         show: ['retailAccount'],
+        hide: allRoutableFields,
+      },
+      locution: {
+        show: ['locution'],
         hide: allRoutableFields,
       },
     },
@@ -186,6 +192,10 @@ const properties: DdiProperties = {
   },
   retailAccount: {
     label: _('Retail Account', { count: 1 }),
+  },
+  locution: {
+    label: _('Voiceover and hang up', { count: 1 }),
+    null: _('Direct hangup'),
   },
   target: {
     label: _('Target'),
