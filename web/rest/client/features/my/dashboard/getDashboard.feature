@@ -42,8 +42,8 @@ Feature: Retrieve dashboard
           "latestResidentialDevices": [],
           "latestRetailAccounts": [],
           "userNum": 3,
-          "extensionNum": 5,
-          "ddiNum": 1,
+          "extensionNum": 7,
+          "ddiNum": 3,
           "residentialDeviceNum": null,
           "voiceMailNum": null,
           "retailsAccountNum": null

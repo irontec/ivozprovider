@@ -33,6 +33,46 @@ Feature: Retrieve Ddis
               "residentialDevice": null,
               "conditionalRoute": null,
               "retailAccount": null
+          },
+          {
+              "ddi": "125",
+              "ddie164": "+34125",
+              "description": null,
+              "routeType": "locution",
+              "friendValue": null,
+              "id": 4,
+              "conferenceRoom": null,
+              "language": null,
+              "queue": null,
+              "externalCallFilter": null,
+              "user": null,
+              "ivr": null,
+              "huntGroup": null,
+              "fax": null,
+              "country": 68,
+              "residentialDevice": null,
+              "conditionalRoute": null,
+              "retailAccount": null
+          },
+          {
+              "ddi": "126",
+              "ddie164": "+34126",
+              "description": null,
+              "routeType": "locution",
+              "friendValue": null,
+              "id": 5,
+              "conferenceRoom": null,
+              "language": null,
+              "queue": null,
+              "externalCallFilter": null,
+              "user": null,
+              "ivr": null,
+              "huntGroup": null,
+              "fax": null,
+              "country": 68,
+              "residentialDevice": null,
+              "conditionalRoute": null,
+              "retailAccount": null
           }
       ]
       """

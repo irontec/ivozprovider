@@ -50,7 +50,8 @@ Feature: Retrieve ivr excluded extensions
                   "queue": null,
                   "conditionalRoute": null,
                   "numberCountry": null,
-                  "voicemail": null
+                  "voicemail": null,
+                  "locution": null
               }
           }
       ]
@@ -101,7 +102,8 @@ Feature: Retrieve ivr excluded extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           }
       }
       """
