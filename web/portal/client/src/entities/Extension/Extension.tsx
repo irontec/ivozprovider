@@ -21,6 +21,7 @@ const allRoutableFields = [
   'friendValue',
   'queue',
   'conditionalRoute',
+  'locution',
 ];
 
 const properties: ExtensionProperties = {
@@ -41,6 +42,7 @@ const properties: ExtensionProperties = {
       queue: _('Queue', { count: 1 }),
       conditional: _('Conditional Route', { count: 1 }),
       voicemail: _('Voicemail', { count: 1 }),
+      locution: _('Voiceover and hang up'),
     },
     default: '__null__',
     null: _('Unassigned'),
@@ -85,6 +87,10 @@ const properties: ExtensionProperties = {
         show: ['voicemail'],
         hide: allRoutableFields,
       },
+      locution: {
+        show: ['locution'],
+        hide: allRoutableFields,
+      },
     },
   },
   numberCountry: {
@@ -126,6 +132,10 @@ const properties: ExtensionProperties = {
   voicemail: {
     label: _('Voicemail', { count: 1 }),
     required: true,
+  },
+  locution: {
+    label: _('Voiceover and hang up'),
+    null: _('Direct hangup'),
   },
   target: {
     label: _('Target'),
