@@ -28,6 +28,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'conditionalRoute',
         'conferenceRoom',
         'queue',
+        'locution',
       ]
     );
   }
@@ -75,6 +76,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'residentialDevice',
         'conditionalRoute',
         'retailAccount',
+        'locution',
       ],
     },
     {
