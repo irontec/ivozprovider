@@ -130,6 +130,7 @@ class Ddi extends DdiAbstract implements DdiInterface
             'friend'        => 'friendValue',
             'conferenceRoom' => 'conferenceRoom',
             'queue'         => 'queue',
+            'locution'      => 'locution',
         );
 
         foreach ($nullableFields as $type => $fieldName) {

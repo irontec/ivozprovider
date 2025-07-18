@@ -127,7 +127,8 @@ class DdiDto extends DdiDtoAbstract
             'countryId',
             'residentialDeviceId',
             'conditionalRouteId',
-            'retailAccountId'
+            'retailAccountId',
+            'locutionId',
         ];
 
         return self::filterFields($response, $allowedFields);
