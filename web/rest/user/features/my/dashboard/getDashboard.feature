@@ -16,6 +16,7 @@ Feature: Retrieve dashboard
           "extension": "",
           "terminal": "alice",
           "email": "alice@democompany.com",
-          "outgoingDdi": "121"
+          "outgoingDdi": "121",
+          "productName": "User text"
       }
       """

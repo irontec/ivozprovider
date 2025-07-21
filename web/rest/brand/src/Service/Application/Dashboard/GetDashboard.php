@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
 use Model\Dashboard\Dashboard;
 use Model\Dashboard\DashboardBrand;
 use Model\Dashboard\DashboardClient;
+use Symfony\Component\HttpFoundation\Request;
 
 class GetDashboard
 {
@@ -16,10 +17,11 @@ class GetDashboard
         private CompanyRepository $clientRepository,
         private DdiRepository $ddiRepository,
         private CarrierRepository $carrierRepository,
+        private ProductNameFactory $productNameFactory,
     ) {
     }
 
-    public function execute(AdministratorInterface $admin): Dashboard
+    public function execute(AdministratorInterface $admin, Request $request): Dashboard
     {
         $brand = $admin->getBrand();
         if (!$brand) {
@@ -52,12 +54,15 @@ class GetDashboard
             $brandId
         );
 
+        $productName = $this->productNameFactory->execute($request);
+
         return new Dashboard(
             $dashboardBrand,
             $dashboardClients,
             $clientNum,
             $ddiNum,
-            $carrierNum
+            $carrierNum,
+            $productName
         );
     }
 }
