@@ -394,10 +394,6 @@ Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
-    read_access_control:
-      ROLE_SUPER_ADMIN:
-        platform:
-          eq: 1
 Ivoz\Provider\Domain\Model\PublicEntity\Name: ~
 
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
