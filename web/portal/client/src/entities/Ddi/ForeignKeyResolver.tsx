@@ -80,6 +80,9 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
       case 'retail':
         remapFk(data[idx], 'retailAccount', 'target');
         break;
+      case 'locution':
+        remapFk(data[idx], 'locution', 'target');
+        break;
       default:
         // eslint-disable-next-line no-console
         console.error(`Unkown route type ${data[idx].routeType}`);
@@ -97,6 +100,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     delete data[idx].queue;
     delete data[idx].conditionalRoute;
     delete data[idx].retailAccount;
+    delete data[idx].locution;
   }
 
   return data;

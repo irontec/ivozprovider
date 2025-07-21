@@ -18,6 +18,7 @@ export type ExtensionPropertyList<T> = {
   queue?: T;
   conditionalRoute?: T;
   voicemail?: T;
+  locution?: T;
   target?: T;
 };
 
