@@ -46,6 +46,7 @@ const TerminalManufacturer: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default TerminalManufacturer;

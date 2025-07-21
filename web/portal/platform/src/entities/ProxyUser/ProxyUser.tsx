@@ -78,6 +78,7 @@ const ProxyUser: EntityInterface = {
     return module.default;
   },
   marshaller,
+  defaultOrderBy: '',
 };
 
 export default ProxyUser;

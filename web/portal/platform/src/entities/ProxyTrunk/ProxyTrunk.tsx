@@ -87,6 +87,7 @@ const ProxyTrunk: EntityInterface = {
     return module.default;
   },
   marshaller,
+  defaultOrderBy: '',
 };
 
 export default ProxyTrunk;

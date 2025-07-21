@@ -64,7 +64,7 @@ Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      lastTimeBanned: DESC
+      ip: ASC
     read_access_control:
       ROLE_SUPER_ADMIN:
         brand:
@@ -414,12 +414,16 @@ Ivoz\Provider\Domain\Model\Service\Service:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      iden: ASC
 Ivoz\Provider\Domain\Model\Service\Name: ~
 Ivoz\Provider\Domain\Model\Service\Description: ~
 
 Ivoz\Provider\Domain\Model\SpecialNumber\SpecialNumber:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      country: ASC
     read_access_control:
       ROLE_SUPER_ADMIN:
         brand:
@@ -429,7 +433,7 @@ Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      iden: ASC
+      name: ASC
 
 Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
   itemOperations:
