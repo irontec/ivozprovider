@@ -3,6 +3,7 @@
 namespace Service\Behat;
 
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
+use Behat\Gherkin\Node\PyStringNode;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Ivoz\Api\Behat\Context\FeatureContext as BaseFeatureContext;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -117,6 +118,34 @@ class FeatureContext extends BaseFeatureContext
             $filePath,
             'random data'
         );
+    }
+
+    /**
+     * @Then the JSON should contain:
+     */
+    public function theJsonShouldContain(PyStringNode $string): void
+    {
+        $expected = json_decode($string->getRaw(), true);
+        $actual = json_decode($this->getSession()->getPage()->getContent(), true);
+
+        if (!is_array($expected)) {
+            throw new \Exception("Expected JSON is not an array");
+        }
+
+        if (!is_array($actual)) {
+            throw new \Exception("Actual response is not a valid JSON array");
+        }
+
+        /** @var mixed $value */
+        foreach ($expected as $key => $value) {
+            if (!array_key_exists($key, $actual)) {
+                throw new \Exception("Key '$key' not found in response");
+            }
+
+            if ($actual[$key] !== $value) {
+                throw new \Exception("Expected '$key' to be '$value', but got '{$actual[$key]}'");
+            }
+        }
     }
 
     /**
