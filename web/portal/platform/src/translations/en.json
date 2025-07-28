@@ -156,6 +156,7 @@
   "Postal code": "Postal code",
   "Preview": "Preview",
   "Price": "Price",
+  "Product Name": "Product Name",
   "Province": "Province",
   "Proxy Trunk_one": "Proxy Trunk",
   "Proxy Trunk_other": "Proxies Trunk",
@@ -211,7 +212,8 @@
   "Voicemail_one": "Voicemail",
   "Voicemail_other": "Voicemails",
   "Weight": "Weight",
-  "Welcome to <br /> Ivoz Provider global administrator portal": "Welcome to <br /> Ivoz Provider global administrator portal",
+  "Welcome to <br /> {{productName}} global administrator portal": "Welcome to <br /> {{productName}} global administrator portal",
+  "Will be shown in Dashboard": "Will be shown in Dashboard",
   "Will be shown on page footer": "Will be shown on page footer",
   "Yes": "Yes"
 }
