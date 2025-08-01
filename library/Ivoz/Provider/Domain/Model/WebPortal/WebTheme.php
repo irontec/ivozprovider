@@ -35,16 +35,24 @@ class WebTheme
      */
     protected $title;
 
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
+    protected $productName;
+
     public function __construct(
         string $brandName,
         string $logo,
         string $color,
         string $title,
+        string $productName,
     ) {
         $this->name = $brandName;
         $this->logo = $logo;
         $this->color = $color;
         $this->title = $title;
+        $this->productName = $productName;
     }
 
 
@@ -89,5 +97,15 @@ class WebTheme
     public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
+
+    public function getProductName(): string
+    {
+        return $this->productName;
+    }
+
+    public function setProductName(string $productName): void
+    {
+        $this->productName = $productName;
     }
 }

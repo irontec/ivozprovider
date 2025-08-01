@@ -135,7 +135,7 @@
   "Voicemail_many": "Bústies de veu",
   "Voicemail_one": "Bústia de veu",
   "Voicemail_other": "Bústies de veu",
-  "Welcome to <br />Ivoz Provider vPBX user portal": "Benvingut a <br /> Portal d'usuari del proveïdor d'Ivoz VPBX",
+  "Welcome to <br />{{productName}} vPBX user portal": "Benvingut a <br /> Portal d'usuari del {{productName}} VPBX",
   "Yes": "Sí",
   "You are about to resend this fax": "Esteu a punt de tornar a enviar aquest fax."
 }

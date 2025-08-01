@@ -16,11 +16,12 @@ class GetDashboard
         private GetWholeSaleInfo $getWholeSaleInfo,
         private GetVpbxInfo $getVpbxInfo,
         private GetResidentialInfo $getResidentialInfo,
-        private GetRetailInfo $getRetailInfo
+        private GetRetailInfo $getRetailInfo,
+        private ProductNameFactory $productNameFactory
     ) {
     }
 
-    public function execute(AdministratorInterface $admin): Dashboard
+    public function execute(AdministratorInterface $admin, string $hostName): Dashboard
     {
         $company = $admin->getCompany();
 
@@ -33,20 +34,22 @@ class GetDashboard
         $isResidential = $company->getType() === CompanyInterface::TYPE_RESIDENTIAL;
         $isVpbx = $company->getType() === CompanyInterface::TYPE_VPBX;
 
+        $productName = $this->productNameFactory->execute($hostName);
+
         if ($isWholeSale) {
-            return $this->getWholeSaleInfo->execute($company);
+            return $this->getWholeSaleInfo->execute($company, $productName);
         }
 
         if ($isResidential) {
-            return $this->getResidentialInfo->execute($company);
+            return $this->getResidentialInfo->execute($company, $productName);
         }
 
         if ($isRetail) {
-            return $this->getRetailInfo->execute($company);
+            return $this->getRetailInfo->execute($company, $productName);
         }
 
         if ($isVpbx) {
-            return $this->getVpbxInfo->execute($company);
+            return $this->getVpbxInfo->execute($company, $productName);
         }
 
         throw new \DomainException(

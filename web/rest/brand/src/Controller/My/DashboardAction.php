@@ -31,7 +31,8 @@ class DashboardAction
         }
 
         return $this->getDashboard->execute(
-            $admin
+            $admin,
+            $request->getHost()
         );
     }
 }
