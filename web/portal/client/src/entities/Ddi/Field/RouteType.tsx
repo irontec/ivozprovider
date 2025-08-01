@@ -49,6 +49,7 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
     delete enumValues.ivr;
     delete enumValues.huntGroup;
     delete enumValues.conditional;
+    delete enumValues.locution;
   }
 
   if (!aboutMe.residential) {

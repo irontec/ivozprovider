@@ -45,6 +45,10 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
     ...modifiedProperty.enum,
   };
 
+  if (!aboutMe.vpbx) {
+    delete enumValues.locution;
+  }
+
   const companyFeatures = aboutMe.features;
   const conditionalFeatures: Record<string, string> = {
     queues: 'queue',

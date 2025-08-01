@@ -111,7 +111,8 @@ Feature: Retrieve users
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           }
       }
       """

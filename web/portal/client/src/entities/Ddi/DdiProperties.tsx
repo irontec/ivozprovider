@@ -24,6 +24,7 @@ export type DdiPropertyList<T> = {
   queue?: T;
   conditionalRoute?: T;
   retailAccount?: T;
+  locution?: T;
   target?: T;
 };
 

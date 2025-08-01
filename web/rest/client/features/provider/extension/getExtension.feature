@@ -88,6 +88,36 @@ Feature: Retrieve extensions
               "conditionalRoute": null,
               "numberCountry": null,
               "voicemail": null
+          },
+          {
+              "number": "998",
+              "routeType": "locution",
+              "numberValue": null,
+              "friendValue": null,
+              "id": 7,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null,
+              "voicemail": null
+          },
+          {
+              "number": "999",
+              "routeType": "locution",
+              "numberValue": null,
+              "friendValue": null,
+              "id": 6,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null,
+              "voicemail": null
           }
       ]
       """
