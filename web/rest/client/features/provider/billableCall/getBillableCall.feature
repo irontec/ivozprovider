@@ -15,21 +15,6 @@ Feature: Retrieve billable calls
       """
       [
           {
-              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
-              "startTime": "2019-01-01 09:00:00",
-              "duration": 0,
-              "caller": "+34633646464",
-              "callee": "+34633656565",
-              "price": 1,
-              "endpointType": null,
-              "endpointId": null,
-              "endpointName": null,
-              "direction": "outbound",
-              "numRecordings": 0,
-              "id": 1,
-              "ddi": 1
-          },
-          {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7001",
               "startTime": "2019-01-01 09:00:01",
               "duration": 0,
@@ -88,6 +73,21 @@ Feature: Retrieve billable calls
               "numRecordings": 0,
               "id": 5,
               "ddi": 1
+          },
+          {
+              "callid": "017cc7c8-eb38-4bbd-9318-524a274f7005",
+              "startTime": "2019-01-01 09:00:05",
+              "duration": 0,
+              "caller": "+34633646464",
+              "callee": "+34633656565",
+              "price": 1,
+              "endpointType": null,
+              "endpointId": null,
+              "endpointName": null,
+              "direction": "outbound",
+              "numRecordings": 0,
+              "id": 6,
+              "ddi": 1
           }
       ]
       """
@@ -95,15 +95,15 @@ Feature: Retrieve billable calls
   Scenario: Retrieve certain billable call json
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "billable_calls/1"
+      And I send a "GET" request to "billable_calls/2"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
       {
-          "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
-          "startTime": "2019-01-01 09:00:00",
+          "callid": "017cc7c8-eb38-4bbd-9318-524a274f7001",
+          "startTime": "2019-01-01 09:00:01",
           "duration": 0,
           "caller": "+34633646464",
           "callee": "+34633656565",
@@ -114,7 +114,8 @@ Feature: Retrieve billable calls
           "endpointId": null,
           "endpointName": null,
           "direction": "outbound",
-          "id": 1,
+          "numRecordings": 1,
+          "id": 2,
           "ddi": "~"
       }
       """
@@ -128,7 +129,6 @@ Feature: Retrieve billable calls
       And the streamed response should be equal to:
       """
       callid,startTime,duration,caller,callee,price,endpointType,endpointId,endpointName,direction,numRecordings,id,ddi
-      017cc7c8-eb38-4bbd-9318-524a274f7000,"2019-01-01 09:00:00",0,+34633646464,+34633656565,1,,,,outbound,0,1,1
       017cc7c8-eb38-4bbd-9318-524a274f7001,"2019-01-01 09:00:01",0,+34633646464,+34633656565,1,,,,outbound,1,2,1
       017cc7c8-eb38-4bbd-9318-524a274f7002,"2019-01-01 09:00:02",0,+34633646464,+34633656565,1,,,,outbound,0,3,1
       017cc7c8-eb38-4bbd-9318-524a274f7003,"2019-01-01 09:00:03",0,+34633646464,+34633656565,1,,,,outbound,0,4,1
@@ -229,3 +229,12 @@ Feature: Retrieve billable calls
       017cc7c8-eb38-4bbd-9318-524a274f7098,"2019-01-01 09:01:38",0,+34633646464,+34633656565,1,,,,outbound,0,99,1
       017cc7c8-eb38-4bbd-9318-524a274f7099,"2019-01-01 09:01:39",0,+34633646464,+34633656565,1,,,,outbound,0,100,1
       """
+
+  Scenario: Price fields are null when showInvoices is false (Retail Company)
+    Given I add Retail Company Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "billable_calls/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON node "price" should be null
