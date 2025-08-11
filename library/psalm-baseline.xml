@@ -2327,7 +2327,7 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Ddi/DdiAbstract.php">
-    <MixedArgument occurrences="32">
+    <MixedArgument occurrences="34">
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
@@ -2350,6 +2350,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getIvr())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocution())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getQueue())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getQueue())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
@@ -2548,7 +2550,7 @@
     </UnnecessaryVarAnnotation>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Extension/ExtensionAbstract.php">
-    <MixedArgument occurrences="18">
+    <MixedArgument occurrences="20">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getConditionalRoute())</code>
@@ -2559,6 +2561,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getHuntGroup())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getIvr())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getIvr())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocution())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getQueue())</code>
