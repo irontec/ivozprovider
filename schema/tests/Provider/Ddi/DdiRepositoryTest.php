@@ -120,7 +120,7 @@ class DdiRepositoryTest extends KernelTestCase
         $count = $repository->countByBrand(1);
 
         $this->assertEquals(
-            3,
+            5,
             $count
         );
     }
