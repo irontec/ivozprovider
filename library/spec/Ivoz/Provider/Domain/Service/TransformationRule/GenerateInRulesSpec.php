@@ -218,7 +218,7 @@ class GenerateInRulesSpec extends ObjectBehavior
             ->setDescription("From international to e164")
             ->setPriority(1)
             ->setMatchExpr('^(\+|00)([0-9]+)$')
-            ->setReplaceExpr('+\2');
+            ->setReplaceExpr('\\+([0-9]+)');
 
         $this->setExpectedOutcome($internationalToE164);
     }
@@ -232,7 +232,7 @@ class GenerateInRulesSpec extends ObjectBehavior
             ->setDescription("From out of area national to e164")
             ->setPriority(2)
             ->setMatchExpr('^' . $trunkPrefix . '([0-9]{9})$')
-            ->setReplaceExpr('34\1');
+            ->setReplaceExpr('34([0-9]{9})');
 
         $this->setExpectedOutcome($nationalToE164, $shouldHappen);
     }
@@ -248,7 +248,7 @@ class GenerateInRulesSpec extends ObjectBehavior
             ->setDescription("From within area national to e164")
             ->setPriority(3)
             ->setMatchExpr('^([0-9]{' . $nationalSubscriberLen . '})$')
-            ->setReplaceExpr('34' . $areaCode . '\1');
+            ->setReplaceExpr('34' . $areaCode . '([0-9]{' . $nationalSubscriberLen . '})');
 
         $this->setExpectedOutcome($nationalToE164, $shouldHappen);
     }
@@ -262,7 +262,7 @@ class GenerateInRulesSpec extends ObjectBehavior
             ->setDescription("From national to e164")
             ->setPriority(5)
             ->setMatchExpr('^([0-9]+)$')
-            ->setReplaceExpr('34\1');
+            ->setReplaceExpr('34([0-9]+)');
 
         $this->setExpectedOutcome($nationalToE164);
     }
