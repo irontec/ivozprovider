@@ -27,7 +27,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From e164 to special national");
             $this->setPriority(3);
             $this->setMatchExpr("^\+34([0-9]+)\$");
-            $this->setReplaceExpr("\1");
+            $this->setReplaceExpr("([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
         })->call($item195);
 
@@ -41,7 +41,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From e164 to special national");
             $this->setPriority(3);
             $this->setMatchExpr("^\+34([0-9]+)\$");
-            $this->setReplaceExpr("\1");
+            $this->setReplaceExpr("([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
         })->call($item832);
 
@@ -55,7 +55,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From special national to e164");
             $this->setPriority(4);
             $this->setMatchExpr("^([0-9]+)\$");
-            $this->setReplaceExpr("+34\1");
+            $this->setReplaceExpr("\\+34([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
         })->call($item1724);
 
@@ -69,7 +69,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From special national to e164");
             $this->setPriority(4);
             $this->setMatchExpr("^([0-9]+)\$");
-            $this->setReplaceExpr("+34\1");
+            $this->setReplaceExpr("\\+34([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
         })->call($item2361);
 
@@ -83,7 +83,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From special national to e164");
             $this->setPriority(4);
             $this->setMatchExpr("^([0-9]+)\$");
-            $this->setReplaceExpr("+34\1");
+            $this->setReplaceExpr("\\+34([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet253'));
         })->call($item2550);
 
@@ -97,7 +97,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From special national to e164");
             $this->setPriority(4);
             $this->setMatchExpr("^([0-9]+)\$");
-            $this->setReplaceExpr("+34\1");
+            $this->setReplaceExpr("\\+34([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet253'));
         })->call($item2552);
 
@@ -111,7 +111,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From e164 to special national");
             $this->setPriority(3);
             $this->setMatchExpr("^\+34([0-9]+)\$");
-            $this->setReplaceExpr("\1");
+            $this->setReplaceExpr("([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet253'));
         })->call($item2553);
 
@@ -125,7 +125,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From e164 to special national");
             $this->setPriority(3);
             $this->setMatchExpr("^\+34([0-9]+)\$");
-            $this->setReplaceExpr("\1");
+            $this->setReplaceExpr("([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet253'));
         })->call($item2555);
 
@@ -140,7 +140,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From e164 to special national (Generic Transformation Ruleset)");
             $this->setPriority(3);
             $this->setMatchExpr("^\+34([0-9]+)\$");
-            $this->setReplaceExpr("\1");
+            $this->setReplaceExpr("([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet120'));
         })->call($item1201);
 
@@ -154,7 +154,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
             $this->setDescription("From special national to e164 (Generic Transformation Ruleset)");
             $this->setPriority(4);
             $this->setMatchExpr("^([0-9]+)\$");
-            $this->setReplaceExpr("+34\1");
+            $this->setReplaceExpr("\\+34([0-9]+)");
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet120'));
         })->call($item1202);
 
