@@ -40543,6 +40543,10 @@
                 "retailsAccountNum": {
                     "description": "",
                     "type": "integer"
+                },
+                "productName": {
+                    "description": "",
+                    "type": "string"
                 }
             }
         },
@@ -49765,6 +49769,10 @@
                     "type": "string"
                 },
                 "title": {
+                    "description": "",
+                    "type": "string"
+                },
+                "productName": {
                     "description": "",
                     "type": "string"
                 }
