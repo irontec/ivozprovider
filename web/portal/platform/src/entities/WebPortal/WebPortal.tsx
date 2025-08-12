@@ -28,6 +28,11 @@ const properties: WebPortalProperties = {
     label: _('Logo'),
     type: 'file',
   },
+  productName: {
+    label: _('Product Name'),
+    maxLength: 64,
+    helpText: _(`Will be shown in Dashboard`),
+  },
 };
 
 const WebPortal: EntityInterface = {
