@@ -43,6 +43,11 @@ const properties: WebPortalProperties = {
     required: false,
     null: _('Generic'),
   },
+  productName: {
+    label: _('Product Name'),
+    maxLength: 64,
+    helpText: _(`Will be shown in Dashboard`),
+  },
 };
 
 const WebPortal: EntityInterface = {

@@ -38,7 +38,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: '',
-      fields: ['color', 'logo'],
+      fields: ['color', 'logo', 'productName'],
     },
   ];
 
