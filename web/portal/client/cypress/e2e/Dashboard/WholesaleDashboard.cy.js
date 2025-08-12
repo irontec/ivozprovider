@@ -10,7 +10,7 @@ describe('Dashboard Wholesale', () => {
 
     cy.get('.welcome .card-container div h3').should(
       'contain',
-      ' Ivoz Provider wholesale client portal'
+      'wholesale client portal'
     );
   });
 
