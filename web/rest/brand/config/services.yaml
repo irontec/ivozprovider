@@ -75,6 +75,14 @@ services:
         resource: '../src/Controller/Provider/*'
         tags: ['controller.service_arguments']
 
+    DataProvider\TerminalStatusDataProvider:
+        arguments:
+            $terminalRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal")'
+            $terminalDtoAssembler: '@Ivoz\Provider\Domain\Assembler\Terminal\TerminalDtoAssembler'
+            $requestStack: '@request_stack'
+        tags:
+            - { name: api_platform.collection_data_provider, priority: 10 }
+
 when@test:
     services:
         _defaults:
