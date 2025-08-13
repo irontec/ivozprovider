@@ -21,6 +21,7 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 
 class RouterAction
 {
@@ -41,6 +42,7 @@ class RouterAction
     const Residential    = 'residential';
     const Retail         = 'retail';
     const Conditional    = 'conditional';
+    const Locution       = 'locution';
 
     /**
      * @var Wrapper
@@ -133,6 +135,11 @@ class RouterAction
     protected $routeConditional;
 
     /**
+     * @var LocutionInterface
+     */
+    protected $routeLocution;
+
+    /**
      * @var CompanyServiceInterface
      */
     protected $routeService;
@@ -207,6 +214,11 @@ class RouterAction
      */
     protected $voicemailAction;
 
+    /**
+     * @var LocutionAction
+     */
+    protected $locutionAction;
+
     public function __construct(
         Wrapper $agi,
         ChannelInfo $channelInfo,
@@ -223,7 +235,8 @@ class RouterAction
         ResidentialCallAction $residentialCallAction,
         RetailCallAction $retailCallAction,
         ServiceAction $serviceAction,
-        VoicemailAction $voiceMailAction
+        VoicemailAction $voiceMailAction,
+        LocutionAction $locutionAction
     ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
@@ -241,6 +254,7 @@ class RouterAction
         $this->retailCallAction = $retailCallAction;
         $this->serviceAction = $serviceAction;
         $this->voicemailAction = $voiceMailAction;
+        $this->locutionAction = $locutionAction;
     }
 
     public function setRouteType(string $routeType = null)
@@ -341,6 +355,12 @@ class RouterAction
         return $this;
     }
 
+    public function setRouteLocution(LocutionInterface $routeLocution = null)
+    {
+        $this->routeLocution = $routeLocution;
+        return $this;
+    }
+
     public function route()
     {
         // Handle based on configured route type
@@ -386,6 +406,9 @@ class RouterAction
                 break;
             case RouterAction::Service:
                 $this->routeService();
+                break;
+            case RouterAction::Locution:
+                $this->routeToLocution();
                 break;
             default:
                 $this->agi->notice("No configured route type");
@@ -496,6 +519,13 @@ class RouterAction
     {
         $this->serviceAction
             ->setService($this->routeService)
+            ->process();
+    }
+
+    protected function routeToLocution()
+    {
+        $this->locutionAction
+            ->setLocution($this->routeLocution)
             ->process();
     }
 }
