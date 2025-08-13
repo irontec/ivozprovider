@@ -15,6 +15,7 @@ Feature: Update web portals
           "urlType": "god",
           "name": "Updated Portal",
           "color": "#000000",
+          "productName": "Edit Ivoz Provider",
           "logo": {
               "fileSize": null,
               "mimeType": null,
@@ -32,6 +33,7 @@ Feature: Update web portals
           "urlType": "god",
           "name": "Updated Portal",
           "color": "#000000",
+          "productName": "Edit Ivoz Provider",
           "id": 2,
           "logo": {
               "fileSize": null,

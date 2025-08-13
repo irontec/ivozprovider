@@ -33,6 +33,7 @@ Feature: Create web portals
           "urlType": "user",
           "name": "Platform user Portal",
           "color": "#000000",
+          "productName": "Ivoz Provider",
           "id": 7,
           "logo": {
               "fileSize": null,

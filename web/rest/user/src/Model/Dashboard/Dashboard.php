@@ -47,13 +47,20 @@ class Dashboard
      */
     protected $outgoingDdi = '';
 
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
+    protected $productName;
+
     public function __construct(
         string $userName,
         string $userLastName,
         string $extension,
         string $terminal,
         string $email,
-        string $outgoingDdi
+        string $outgoingDdi,
+        string $productName = 'Ivoz Provider'
     ) {
 
         $this->userName = $userName;
@@ -62,6 +69,7 @@ class Dashboard
         $this->terminal = $terminal;
         $this->email = $email;
         $this->outgoingDdi = $outgoingDdi;
+        $this->productName = $productName;
     }
 
     public function getUserName(): string
@@ -92,5 +100,10 @@ class Dashboard
     public function getOutgoingDdi(): string
     {
         return $this->outgoingDdi;
+    }
+
+    public function getProductName(): string
+    {
+        return $this->productName;
     }
 }

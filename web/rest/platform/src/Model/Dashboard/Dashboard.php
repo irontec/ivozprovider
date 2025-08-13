@@ -3,7 +3,6 @@
 namespace Model\Dashboard;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
-use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 
 /**
  * @codeCoverageIgnore
@@ -47,6 +46,12 @@ class Dashboard
     protected $userNumber;
 
     /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
+    protected $productName;
+
+    /**
      * @param DashboardBrand[] $recentActivity
      */
     public function __construct(
@@ -54,13 +59,15 @@ class Dashboard
         array $recentActivity,
         int $brandNumber,
         int $clientNumber,
-        int $userNumber
+        int $userNumber,
+        string $productName = 'Ivoz Provider'
     ) {
         $this->admin = $admin;
         $this->recentActivity = $recentActivity;
         $this->brandNumber = $brandNumber;
         $this->clientNumber = $clientNumber;
         $this->userNumber = $userNumber;
+        $this->productName = $productName;
     }
 
     public function getAdmin(): DashboardAdmin
@@ -89,5 +96,10 @@ class Dashboard
     public function getUserNumber(): int
     {
         return $this->userNumber;
+    }
+
+    public function getProductName(): string
+    {
+        return $this->productName;
     }
 }

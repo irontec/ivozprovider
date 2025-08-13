@@ -16,7 +16,7 @@ class GetWholeSaleInfo
     ) {
     }
 
-    public function execute(CompanyInterface $company): Dashboard
+    public function execute(CompanyInterface $company, string $productName = 'Ivoz Provider'): Dashboard
     {
         $client = DashboardClient::fromCompany($company);
 
@@ -34,7 +34,8 @@ class GetWholeSaleInfo
 
         return new Dashboard(
             client: $client,
-            latestBillableCalls: $dashboardBillableCalls
+            latestBillableCalls: $dashboardBillableCalls,
+            productName: $productName
         );
     }
 }
