@@ -4,6 +4,7 @@ namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -35,9 +36,8 @@ class PutProfileAction
             []
         );
 
-        if (!isset($data['oldPass'])) {
-            // We cannot set this at domain level because klear doesn't send oldPass
-            unset($data['pass']);
+        if (isset($data['pass']) && !isset($data['oldPass'])) {
+            throw new BadRequestHttpException('oldPass is required when changing password');
         }
 
         return $this->denormalizer->denormalize(

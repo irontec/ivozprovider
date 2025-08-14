@@ -31,7 +31,6 @@ class UserAssembler implements CustomEntityAssemblerInterface
         if ($oldPass && !password_verify($oldPass, $user->getPass())) {
             throw new \DomainException('Invalid password');
         }
-        // There is not oldPass validation in klear, so, we can't do any further validation
 
         $user->updateFromDto($userDto, $fkTransformer);
     }
