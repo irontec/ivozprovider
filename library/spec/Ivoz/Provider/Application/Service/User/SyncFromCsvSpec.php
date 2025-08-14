@@ -178,7 +178,10 @@ EOCSV;
 
     function it_propagates_factory_exceptions()
     {
-        $this->prepreExecution();
+        $this->user = $this->getTestDouble(UserInterface::class);
+        $this->terminal = $this->getTestDouble(TerminalInterface::class);
+        $this->extension = $this->getTestDouble(ExtensionInterface::class);
+        $this->ddi = $this->getTestDouble(DdiInterface::class);
 
         $this
             ->userFactory
@@ -214,6 +217,21 @@ EOE;
             UserInterface::class
         );
 
+        $userDto = $this->getTestDouble(
+            \Ivoz\Provider\Domain\Model\User\UserDto::class
+        );
+
+        $this
+            ->entityTools
+            ->entityToDto($this->user)
+            ->willReturn($userDto);
+
+        $this
+            ->entityTools
+            ->persistDto($userDto, $this->user, false)
+            ->shouldBeCalled()
+            ->willReturn($this->user);
+
         $this
             ->userFactory
             ->fromMassProvisioningCsv(
@@ -229,6 +247,14 @@ EOE;
         // Terminal
         $this->terminal = $this->getTestDouble(
             TerminalInterface::class
+        );
+
+        $this->getterProphecy(
+            $this->terminal,
+            [
+                'getId' => 123,
+            ],
+            false
         );
 
         $this
@@ -247,6 +273,14 @@ EOE;
         // Extension
         $this->extension = $this->getTestDouble(
             ExtensionInterface::class
+        );
+
+        $this->getterProphecy(
+            $this->extension,
+            [
+                'getId' => 456,
+            ],
+            false
         );
 
         $this
@@ -268,13 +302,29 @@ EOE;
             DdiInterface::class
         );
 
+        $ddiDto = $this->getTestDouble(
+            \Ivoz\Provider\Domain\Model\Ddi\DdiDto::class
+        );
+
         $this->getterProphecy(
             $this->ddi,
             [
                 'isNew' => true,
+                'getId' => 789,
             ],
             false
         );
+
+        $this
+            ->entityTools
+            ->entityToDto($this->ddi)
+            ->willReturn($ddiDto);
+
+        $this
+            ->entityTools
+            ->persistDto($ddiDto, $this->ddi, false)
+            ->shouldBeCalled()
+            ->willReturn($this->ddi);
 
         $this
             ->ddiFactory
