@@ -33,7 +33,7 @@ class GenerateInRules
             ->setDescription("From international to e164")
             ->setPriority(1)
             ->setMatchExpr('^(\+|' . $internationalCode . ')([0-9]+)$')
-            ->setReplaceExpr('+\2');
+            ->setReplaceExpr('\\+([0-9]+)');
 
         $this->entityPersister->persistDto($ruleDto);
 
@@ -45,7 +45,7 @@ class GenerateInRules
                 ->setDescription("From out of area national to e164")
                 ->setPriority(2)
                 ->setMatchExpr('^' . $trunkPrefix . '([0-9]{' . $nationalLen . '})$')
-                ->setReplaceExpr($countryCode . '\1');
+                ->setReplaceExpr(preg_quote($countryCode ?? '', '/') . '([0-9]{' . $nationalLen . '})');
 
             $this->entityPersister->persistDto($ruleDto);
         }
@@ -58,7 +58,7 @@ class GenerateInRules
                 ->setDescription("From within area national to e164")
                 ->setPriority(3)
                 ->setMatchExpr('^([0-9]{' . $nationalSubscriberLen . '})$')
-                ->setReplaceExpr($countryCode . $areaCode . '\1');
+                ->setReplaceExpr(preg_quote($countryCode ?? '', '/') . preg_quote($areaCode ?? '', '/') . '([0-9]{' . $nationalSubscriberLen . '})');
 
             $this->entityPersister->persistDto($ruleDto);
         }
@@ -70,7 +70,7 @@ class GenerateInRules
             ->setDescription("From national to e164")
             ->setPriority(5)
             ->setMatchExpr("^([0-9]+)$")
-            ->setReplaceExpr($countryCode . '\1');
+            ->setReplaceExpr(preg_quote($countryCode ?? '', '/') . '([0-9]+)');
 
         $this->entityPersister->persistDto($ruleDto);
     }

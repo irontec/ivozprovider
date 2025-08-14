@@ -19,7 +19,7 @@ Feature: Retrieve transformation rules
               "description": "From e164 to special national",
               "priority": 3,
               "matchExpr": "^\\+34([0-9]+)$",
-              "replaceExpr": "\u0001",
+              "replaceExpr": "([0-9]+)",
               "id": 1
           },
           {
@@ -27,7 +27,7 @@ Feature: Retrieve transformation rules
               "description": "From e164 to special national",
               "priority": 3,
               "matchExpr": "^\\+34([0-9]+)$",
-              "replaceExpr": "\u0001",
+              "replaceExpr": "([0-9]+)",
               "id": 2
           },
           {
@@ -35,7 +35,7 @@ Feature: Retrieve transformation rules
               "description": "From e164 to special national (Generic Transformation Ruleset)",
               "priority": 3,
               "matchExpr": "^\\+34([0-9]+)$",
-              "replaceExpr": "\u0001",
+              "replaceExpr": "([0-9]+)",
               "id": 9
           },
           {
@@ -43,7 +43,7 @@ Feature: Retrieve transformation rules
               "description": "From special national to e164",
               "priority": 4,
               "matchExpr": "^([0-9]+)$",
-              "replaceExpr": "+34\u0001",
+              "replaceExpr": "\\+34([0-9]+)",
               "id": 3
           },
           {
@@ -51,7 +51,7 @@ Feature: Retrieve transformation rules
               "description": "From special national to e164",
               "priority": 4,
               "matchExpr": "^([0-9]+)$",
-              "replaceExpr": "+34\u0001",
+              "replaceExpr": "\\+34([0-9]+)",
               "id": 4
           },
           {
@@ -59,7 +59,7 @@ Feature: Retrieve transformation rules
               "description": "From special national to e164 (Generic Transformation Ruleset)",
               "priority": 4,
               "matchExpr": "^([0-9]+)$",
-              "replaceExpr": "+34\u0001",
+              "replaceExpr": "\\+34([0-9]+)",
               "id": 10
           }
       ]
@@ -79,7 +79,7 @@ Feature: Retrieve transformation rules
           "description": "From special national to e164",
           "priority": 4,
           "matchExpr": "^([0-9]+)$",
-          "replaceExpr": "+34\u0001",
+          "replaceExpr": "\\+34([0-9]+)",
           "id": 4,
           "transformationRuleSet": {
               "description": "Brand 1 transformation for Spain",

@@ -15,7 +15,7 @@ Feature: Update transformation rules
           "description": "Updated",
           "priority": 5,
           "matchExpr": "^([0-9]+)$",
-          "replaceExpr": "+34\u0001",
+          "replaceExpr": "([0-9]+)",
           "transformationRuleSet": 1
       }
       """
@@ -29,7 +29,7 @@ Feature: Update transformation rules
           "description": "Updated",
           "priority": 5,
           "matchExpr": "^([0-9]+)$",
-          "replaceExpr": "+34\u0001",
+          "replaceExpr": "([0-9]+)",
           "id": 4,
           "transformationRuleSet": 1
       }

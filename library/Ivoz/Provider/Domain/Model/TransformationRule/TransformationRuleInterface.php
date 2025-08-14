@@ -40,6 +40,11 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     public function setMatchExpr(?string $matchExpr = null): static;
 
     /**
+     * {@inheritDoc}
+     */
+    public function setReplaceExpr(?string $replaceExpr = null): static;
+
+    /**
      * @param int | null $id
      */
     public static function createDto($id = null): TransformationRuleDto;

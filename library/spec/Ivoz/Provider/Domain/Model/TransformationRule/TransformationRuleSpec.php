@@ -56,4 +56,58 @@ class TransformationRuleSpec extends ObjectBehavior
             ->shouldNotThrow('\Exception')
             ->during('setMatchExpr', ['^([0-9+]{1,4})$']);
     }
+
+    function it_validates_capture_groups_in_replace_expression()
+    {
+        $this->setMatchExpr('([0-9]+)');
+        $this->setReplaceExpr('prefix\\1suffix');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$this->toDto(), new \spec\DtoToEntityFakeTransformer()]);
+
+        $this->setReplaceExpr('prefix\\2suffix');
+
+        $this
+            ->shouldThrow('\InvalidArgumentException')
+            ->during('updateFromDto', [$this->toDto(), new \spec\DtoToEntityFakeTransformer()]);
+    }
+
+    function it_validates_multiple_capture_groups()
+    {
+        $this->setMatchExpr('([0-9]+)-([a-z]+)');
+        $this->setReplaceExpr('\\1_\\2');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$this->toDto(), new \spec\DtoToEntityFakeTransformer()]);
+
+        $this->setReplaceExpr('\\2-\\1');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$this->toDto(), new \spec\DtoToEntityFakeTransformer()]);
+
+        $this->setReplaceExpr('\\3');
+
+        $this
+            ->shouldThrow('\InvalidArgumentException')
+            ->during('updateFromDto', [$this->toDto(), new \spec\DtoToEntityFakeTransformer()]);
+    }
+
+    function it_accepts_replace_expression_without_backreferences()
+    {
+        $this->setMatchExpr('([0-9]+)');
+        $this->setReplaceExpr('fixed_string');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$this->toDto(), new \spec\DtoToEntityFakeTransformer()]);
+
+        $this->setReplaceExpr('123456');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$this->toDto(), new \spec\DtoToEntityFakeTransformer()]);
+    }
 }
