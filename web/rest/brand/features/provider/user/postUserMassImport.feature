@@ -130,9 +130,9 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
 		And the JSON should be equal to:
     """
       {
-          "success": true,
-          "errorMsg": "",
-          "failed": 0
+          "success": false,
+          "errorMsg": "1 => Duplicated value found",
+          "failed": 1
       }
     """
 
@@ -194,28 +194,15 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "status": []
           },
           {
-              "name": "John",
-              "lastname": "Doe",
-              "email": "jon@irontec.com",
-              "active": false,
-              "id": 5,
-              "company": 1,
-              "terminal": 6,
-              "extension": 7,
-              "outgoingDdi": 5,
-              "location": 1,
-              "status": []
-          },
-          {
               "name": "Name",
               "lastname": "Lastname",
               "email": "name@irontec.com",
               "active": false,
               "id": 4,
               "company": 1,
-              "terminal": 5,
-              "extension": 6,
-              "outgoingDdi": 4,
+              "terminal": null,
+              "extension": null,
+              "outgoingDdi": null,
               "location": 1,
               "status": []
           }
@@ -256,24 +243,6 @@ John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,20
               "description": null,
               "id": 2,
               "company": 4,
-              "ddiProvider": 1,
-              "country": 68
-          },
-          {
-              "ddi": "946002050",
-              "ddie164": "+34946002050",
-              "description": null,
-              "id": 4,
-              "company": 1,
-              "ddiProvider": 1,
-              "country": 68
-          },
-          {
-              "ddi": "946002051",
-              "ddie164": "+34946002051",
-              "description": null,
-              "id": 5,
-              "company": 1,
               "ddiProvider": 1,
               "country": 68
           }
