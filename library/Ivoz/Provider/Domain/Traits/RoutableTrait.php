@@ -27,8 +27,8 @@ trait RoutableTrait
         'extension',
         'conditional',
         'fax',
-        Feature::RESIDENTIAL_IDEN,
-        Feature::RETAIL_IDEN
+        'residential',
+        'retail'
     ];
 
     /**
@@ -88,14 +88,14 @@ trait RoutableTrait
                 }
                 return $this->{$voicemailGetter}()->getName();
 
-            case Feature::RESIDENTIAL_IDEN:
+            case 'residential':
                 $residentialGetter = 'get' . $prefix . 'ResidentialDevice';
                 if (!$this->{$residentialGetter}()) {
                     return "";
                 }
                 return $this->{$residentialGetter}()->getName();
 
-            case Feature::RETAIL_IDEN:
+            case 'retail':
                 $retailGetter = 'get' . $prefix . 'RetailAccount';
                 if (!$this->{$retailGetter}()) {
                     return "";
@@ -162,6 +162,17 @@ trait RoutableTrait
                     $this->{$setter}(null);
                 }
             }
+        }
+    }
+
+    protected function sanitizeRouteLocution(): void
+    {
+        if (!method_exists($this, 'getRouteType') || !method_exists($this, 'setLocution')) {
+            return;
+        }
+
+        if ($this->getRouteType() !== 'locution') {
+            $this->setLocution(null);
         }
     }
 }
