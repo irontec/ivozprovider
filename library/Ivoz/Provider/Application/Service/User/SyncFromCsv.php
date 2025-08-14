@@ -12,6 +12,7 @@ use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalFactory;
 use Ivoz\Provider\Domain\Service\User\CsvStaticValidator;
 use Ivoz\Provider\Domain\Service\User\UserFactory;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 
 class SyncFromCsv
 {
@@ -72,6 +73,7 @@ class SyncFromCsv
                 );
                 $entities = [$user];
 
+                $terminal = null;
                 $notEmptyTerminalArgs = count(array_filter($terminalArgs)) > 0;
                 if ($notEmptyTerminalArgs) {
                     $terminal = $this->terminalFactory->fromMassProvisioningCsv(
@@ -82,6 +84,7 @@ class SyncFromCsv
                     $entities[] = $terminal;
                 }
 
+                $extension = null;
                 if ($extensionArg) {
                     $extension = $this->extensionFactory->fromMassProvisioningCsv(
                         (int) $company->getId(),
@@ -92,6 +95,7 @@ class SyncFromCsv
                     $entities[] = $extension;
                 }
 
+                $ddi = null;
                 $notEmptyDdiArgs = count(array_filter($outboundDdiArgs)) > 0;
                 if ($notEmptyDdiArgs) {
                     $ddi = $this->ddiFactory->fromMassProvisioningCsv(
@@ -99,24 +103,37 @@ class SyncFromCsv
                         ...$outboundDdiArgs
                     );
 
-                    if ($ddi->isNew()) {
-                        $user->setOutgoingDdi($ddi);
-
-                        $ddi->setUser($user);
-                        $ddi->setRouteType(DdiInterface::ROUTETYPE_USER);
-                    }
-
                     $entities[] = $ddi;
                 }
 
-                $user
-                    ->setTerminal($terminal ?? null)
-                    ->setExtension($extension ?? null)
-                    ->setOutgoingDdi($ddi ?? null);
+                $this->entityTools->persist($user);
 
-                $this->entityTools->persistFromArray(
-                    $entities
-                );
+                $entitiesToPersist = array_values(array_filter($entities, function ($entity) use ($user) {
+                    return $entity !== $user;
+                }));
+
+                if (!empty($entitiesToPersist)) {
+                    $this->entityTools->persistFromArray($entitiesToPersist);
+                }
+
+                /** @var UserDto $userDto */
+                $userDto = $this->entityTools->entityToDto($user);
+                $userDto
+                    ->setTerminalId($terminal !== null ? $terminal->getId() : null)
+                    ->setExtensionId($extension !== null ? $extension->getId() : null)
+                    ->setOutgoingDdiId($ddi !== null && $ddi->isNew() ? $ddi->getId() : null);
+
+                $user = $this->entityTools->persistDto($userDto, $user, false);
+
+                if ($ddi && $ddi->isNew()) {
+                    /** @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddiDto */
+                    $ddiDto = $this->entityTools->entityToDto($ddi);
+                    $ddiDto
+                        ->setUserId((int) $user->getId())
+                        ->setRouteType(DdiInterface::ROUTETYPE_USER);
+
+                    $this->entityTools->persistDto($ddiDto, $ddi, false);
+                }
             } catch (\Exception $e) {
                 $errors[$k + 1] = $e->getMessage();
                 continue;
