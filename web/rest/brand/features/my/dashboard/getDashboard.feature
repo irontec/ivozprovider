@@ -52,7 +52,7 @@ Feature: Retrieve dashboard
               }
           ],
           "clientNum": 5,
-          "ddiNum": 3,
+          "ddiNum": 5,
           "carrierNum": 2,
           "productName": "Brand text"
       }

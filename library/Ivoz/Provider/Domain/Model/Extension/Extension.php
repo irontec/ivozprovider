@@ -52,6 +52,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues();
+        $this->sanitizeRouteLocution();
     }
 
     public function setUser(?UserInterface $user = null): static

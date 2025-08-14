@@ -27,7 +27,8 @@ Feature: Retrieve extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "988",
@@ -42,7 +43,8 @@ Feature: Retrieve extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           }
       ]
       """
@@ -71,7 +73,8 @@ Feature: Retrieve extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           }
       ]
       """

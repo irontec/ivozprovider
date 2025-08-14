@@ -16693,7 +16693,8 @@
                         "queue",
                         "conditional",
                         "residential",
-                        "retail"
+                        "retail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
