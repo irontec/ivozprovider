@@ -17,6 +17,10 @@ class TransformationRuleLifecycleServiceCollection implements LifecycleServiceCo
 
     /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\TransformationRule\ValidateRegexCaptureGroups::class => 200,
+        ],
         "on_commit" =>
         [
             \Ivoz\Provider\Domain\Service\TransformationRule\SendUsersDialplanReloadRequest::class => 100,
