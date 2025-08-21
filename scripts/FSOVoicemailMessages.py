@@ -70,7 +70,7 @@ try:
                            config['message']['callerid'],
                            config['message']['origtime'],
                            config['message']['duration'],
-                           '',
+                           'AUDMAGIC',
                            config['message']['flag'],
                            config['message']['category'],
                            user,
