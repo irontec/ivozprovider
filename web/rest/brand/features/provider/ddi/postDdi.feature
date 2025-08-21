@@ -30,7 +30,7 @@ Feature: Create ddis
           "description": "Description for 321",
           "type": "inout",
           "useDdiProviderRoutingTag": true,
-          "id": 4,
+          "id": 6,
           "company": 1,
           "ddiProvider": 1,
           "country": 68,
@@ -48,32 +48,26 @@ Feature: Create ddis
       And the JSON should be like:
       """
       {
-          "ddi": "321",
-          "ddie164": "+34321",
-          "description": "Description for 321",
+          "ddi": "125",
+          "ddie164": "+34125",
+          "description": null,
+          "type": "inout",
           "useDdiProviderRoutingTag": true,
           "id": 4,
-          "company": "~",
+          "company": {
+              "id": 1
+          },
           "ddiProvider": {
               "description": "DDIProviderDescription",
               "name": "DDIProviderName",
               "id": 1,
-              "transformationRuleSet": 1
+              "transformationRuleSet": 1,
+              "proxyTrunk": 1,
+              "mediaRelaySet": 0,
+              "routingTag": 2
           },
           "country": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "Espa\u00f1a",
-                  "ca": "Espa\u00f1a"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
+              "id": 68
           },
           "routingTag": null
       }
