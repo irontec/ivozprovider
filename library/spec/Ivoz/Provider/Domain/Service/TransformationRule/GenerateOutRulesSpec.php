@@ -232,7 +232,7 @@ class GenerateOutRulesSpec extends ObjectBehavior
             ->setDescription("From e164 to out of area national")
             ->setPriority(2)
             ->setMatchExpr('^\\34([0-9]{9})$')
-            ->setReplaceExpr('34\1');
+            ->setReplaceExpr('0\1');
 
         $this->setExpectedOutcome($nationalToE164, $shouldHappen);
     }

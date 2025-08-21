@@ -56,4 +56,67 @@ class TransformationRuleSpec extends ObjectBehavior
             ->shouldNotThrow('\Exception')
             ->during('setMatchExpr', ['^([0-9+]{1,4})$']);
     }
+
+    function it_validates_capture_groups_in_replace_expression()
+    {
+        $dto = new TransformationRuleDto();
+        $dto->setType('callerin')
+            ->setDescription('Description')
+            ->setMatchExpr('([0-9]+)')
+            ->setReplaceExpr('prefix\1suffix');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$dto, new \spec\DtoToEntityFakeTransformer()]);
+
+        $dto->setReplaceExpr('prefix\2suffix');
+
+        $this
+            ->shouldThrow('\DomainException')
+            ->during('updateFromDto', [$dto, new \spec\DtoToEntityFakeTransformer()]);
+    }
+
+    function it_validates_multiple_capture_groups()
+    {
+        $dto = new TransformationRuleDto();
+        $dto->setType('callerin')
+            ->setDescription('Description')
+            ->setMatchExpr('([0-9]+)-([a-z]+)')
+            ->setReplaceExpr('\1_\2');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$dto, new \spec\DtoToEntityFakeTransformer()]);
+
+        $dto->setReplaceExpr('\2-\1');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$dto, new \spec\DtoToEntityFakeTransformer()]);
+
+        $dto->setReplaceExpr('\3');
+
+        $this
+            ->shouldThrow('\DomainException')
+            ->during('updateFromDto', [$dto, new \spec\DtoToEntityFakeTransformer()]);
+    }
+
+    function it_accepts_replace_expression_without_backreferences()
+    {
+        $dto = new TransformationRuleDto();
+        $dto->setType('callerin')
+            ->setDescription('Description')
+            ->setMatchExpr('([0-9]+)')
+            ->setReplaceExpr('fixed_string');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$dto, new \spec\DtoToEntityFakeTransformer()]);
+
+        $dto->setReplaceExpr('123456');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->during('updateFromDto', [$dto, new \spec\DtoToEntityFakeTransformer()]);
+    }
 }
