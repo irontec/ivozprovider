@@ -72,47 +72,50 @@ class SyncFromCsv
                 );
                 $entities = [$user];
 
-                $notEmptyTerminalArgs = count(array_filter($terminalArgs)) > 0;
-                if ($notEmptyTerminalArgs) {
-                    $terminal = $this->terminalFactory->fromMassProvisioningCsv(
+                $missingTerminalArgs = count($terminalArgs) !== 4;
+                $terminal = $missingTerminalArgs
+                    ? null
+                    : $this->terminalFactory->fromMassProvisioningCsv(
                         (int) $company->getId(),
                         ...$terminalArgs
                     );
-
+                if ($terminal) {
                     $entities[] = $terminal;
                 }
 
-                if ($extensionArg) {
-                    $extension = $this->extensionFactory->fromMassProvisioningCsv(
+                $extension = $extensionArg
+                    ? $this->extensionFactory->fromMassProvisioningCsv(
                         (int) $company->getId(),
                         $extensionArg,
                         $user
-                    );
-
+                    )
+                    : null;
+                if ($extension) {
                     $entities[] = $extension;
                 }
 
-                $notEmptyDdiArgs = count(array_filter($outboundDdiArgs)) > 0;
-                if ($notEmptyDdiArgs) {
-                    $ddi = $this->ddiFactory->fromMassProvisioningCsv(
+                $missingDdiArgs = count($outboundDdiArgs) !== 3;
+                $ddi = $missingDdiArgs
+                    ? null
+                    : $this->ddiFactory->fromMassProvisioningCsv(
                         $company,
                         ...$outboundDdiArgs
                     );
-
-                    if ($ddi->isNew()) {
-                        $user->setOutgoingDdi($ddi);
-
-                        $ddi->setUser($user);
-                        $ddi->setRouteType(DdiInterface::ROUTETYPE_USER);
-                    }
-
+                if ($ddi?->isNew()) {
+                    $ddi->setUser($user);
+                    $ddi->setRouteType(DdiInterface::ROUTETYPE_USER);
+                }
+                if ($ddi) {
                     $entities[] = $ddi;
                 }
 
                 $user
-                    ->setTerminal($terminal ?? null)
-                    ->setExtension($extension ?? null)
-                    ->setOutgoingDdi($ddi ?? null);
+                    ->setTerminal($terminal)
+                    ->setExtension($extension);
+
+                if ($ddi?->isNew()) {
+                    $user->setOutgoingDdi($ddi);
+                }
 
                 $this->entityTools->persistFromArray(
                     $entities
