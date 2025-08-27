@@ -22,7 +22,7 @@ class TransformationRuleLifeCycleTest extends KernelTestCase
             ->setDescription('From e164 to special national')
             ->setPriority(3)
             ->setMatchExpr('^\+349([0-9]+)\$')
-            ->setReplaceExpr('\1')
+            ->setReplaceExpr('([0-9]+)')
             ->setTransformationRuleSetId(1);
 
         return $transformationRuleDto;
@@ -126,5 +126,98 @@ class TransformationRuleLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             TransformationRule::class
         ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_validates_invalid_regex_pattern()
+    {
+        $this->expectException(\Exception::class);
+
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('Invalid regex test')
+            ->setPriority(1)
+            ->setMatchExpr('[A-Z+')
+            ->setReplaceExpr('test')
+            ->setTransformationRuleSetId(1);
+
+        $this->entityTools->persistDto($transformationRuleDto, null, true);
+    }
+
+    /**
+     * @test
+     */
+    public function it_validates_backreference_without_capture_groups()
+    {
+        $this->expectException(\Exception::class);
+
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('Backreference without capture groups')
+            ->setPriority(1)
+            ->setMatchExpr('[0-9]+')
+            ->setReplaceExpr('prefix_\\1_suffix')
+            ->setTransformationRuleSetId(1);
+
+        $this->entityTools->persistDto($transformationRuleDto, null, true);
+    }
+
+    /**
+     * @test
+     */
+    public function it_validates_backreference_exceeds_capture_groups()
+    {
+        $this->expectException(\Exception::class);
+
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('Backreference exceeds capture groups')
+            ->setPriority(1)
+            ->setMatchExpr('^([0-9]+)-([a-z]+)$')
+            ->setReplaceExpr('\\1_\\2_\\3')
+            ->setTransformationRuleSetId(1);
+
+        $this->entityTools->persistDto($transformationRuleDto, null, true);
+    }
+
+    /**
+     * @test
+     */
+    public function it_allows_valid_backreferences()
+    {
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('Valid backreferences')
+            ->setPriority(1)
+            ->setMatchExpr('^([0-9]+)-([a-z]+)-([A-Z]+)$')
+            ->setReplaceExpr('([A-Z]+)_([a-z]+)_([0-9]+)')
+            ->setTransformationRuleSetId(1);
+
+        $result = $this->entityTools->persistDto($transformationRuleDto, null, true);
+        $this->assertNotNull($result);
+    }
+
+    /**
+     * @test
+     */
+    public function it_allows_replace_without_backreferences()
+    {
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('No backreferences')
+            ->setPriority(1)
+            ->setMatchExpr('[0-9]+')
+            ->setReplaceExpr('[a-z]+')
+            ->setTransformationRuleSetId(1);
+
+        $result = $this->entityTools->persistDto($transformationRuleDto, null, true);
+        $this->assertNotNull($result);
     }
 }
