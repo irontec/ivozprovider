@@ -53,3 +53,13 @@ Feature: Retrieve terminals status
           }
       ]
       """
+
+  @createSchema
+  Scenario: Retrieve the terminals status json list without pagination
+    Given I add Brand Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "terminals/status?_pagination=false"
+     Then the response status code should be 200
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the response should contain "127.0.0.1"
+      And the response should contain "alice"
