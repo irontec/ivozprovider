@@ -47,7 +47,7 @@ That address must be present in your network interfaces in order to bind service
 ### I have trouble with my environment!
 
 We don't provide any kind of free support for installations. If you have trouble, you can contact our sales department
-at comercial@irontec.com or ask in [ivozprovider-users](https://groups.google.com/forum/#!forum/ivozprovider-users) group.
+at comms.clientes@irontec.com or ask in [ivozprovider-users](https://groups.google.com/forum/#!forum/ivozprovider-users) group.
 
 If by any chance you receive support in the group or #ivozprovider Libera.Chat IRC channel by any developer, it's most
 probably provided during spare time, so be thankful for the people giving part of their time.
@@ -61,7 +61,7 @@ in Github project. We appreciate well documented bug reports that help to improv
 
 If you have a feature request that you think it would be helpful for others, don't hesitate to open an issue in github
 project. Take into account that we're a small development team and features won't be scheduled unless someone pays
-for them. If you're interested in sponsoring a feature, please contact with our sales department at comercial@irontec.com
+for them. If you're interested in sponsoring a feature, please contact with our sales department at comms.clientes@irontec.com
 Otherwise, the feature won't be implemented unless one of our clients finds it useful.
 
 ### What language should I use while reporting?
@@ -73,7 +73,7 @@ grammatical errors, but we think it's the best way to share knowledge and inform
 
 Currently there is no documentation for distributed installations. This requires quite some time and we are a small team with
 lots of tasks scheduled. If you need advice or support for distributed installations, please contact our sales department at
-comercial@irontec.com so we can schedule it properly.
+comms.clientes@irontec.com so we can schedule it properly.
 
 ### This solution is not useful without this feature
 
