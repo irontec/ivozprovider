@@ -349,7 +349,7 @@ class Encoder
     {
         $isRecordingEnded = $this
             ->recordingEndedChecker
-            ->execute($rawRecordingInfo->getFullName());
+            ->execute($rawRecordingInfo->getFileName());
 
         if (!$isRecordingEnded) {
             $this->logger->info(sprintf(
