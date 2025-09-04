@@ -19,7 +19,8 @@ parameters:
     ami_password: ivozamisecret
     ami_port: 5038
     local_storage_path: /opt/irontec/ivozprovider/storage
-    raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/
+    raw_recordings_dir: '%local_storage_path%/ivozprovider_model_recordings.originalfile/'
+    incoming_recordings_dir: '%local_storage_path%/ivozprovider_model_recordings.spool/'
     default_prov_template_path: /opt/irontec/ivozprovider/microservices/provision/templates/
     sentinels:
         - { host: 'cache.ivozprovider.local', port: '26379' }
