@@ -155,7 +155,7 @@ class EncoderTest extends KernelTestCase
         $mockRecordingEndedChecker->expects($this->exactly(5))
             ->method('execute')
             ->willReturnCallback(
-                fn($file) => $file != '/recordings/users-inbound-still-recording-file-name-mix.wav'
+                fn($file) => $file != 'users-inbound-still-recording-file-name-mix.wav'
             );
 
         $this->serviceContainer->set(
