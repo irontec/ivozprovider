@@ -767,6 +767,13 @@ pipeline {
 
                     def issue = jiraGetIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET
 
+                    def currentVersion = issue.data.fields.fixVersions[0];
+                    if (currentVersion && !currentVersion.name.contains('current')) {
+                        unstable "Pull request fixedVersions (${currentVersion.name}) is not current version. Merge is blocked."
+                    } else {
+                        echo "Fixed Version: ${currentVersion.name}"
+                    }
+
                     isSubtask = issue.data.fields.issuetype.subtask
                     if (isSubtask) {
                         def task = issue.data.fields.parent
