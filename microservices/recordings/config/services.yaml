@@ -42,7 +42,7 @@ services:
 
     Service\RecordingEndedChecker:
         arguments:
-            $recorderCmd: '/^rtpengine-rec/'
+            $recorderIncomingPath: '%incoming_recordings_dir%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
@@ -61,4 +61,4 @@ when@test:
         Service\RecordingEndedChecker:
             public: true
             arguments:
-                $recorderCmd: 'php'
+                $recorderIncomingPath: '/tmp'
