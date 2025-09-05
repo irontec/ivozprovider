@@ -11,6 +11,10 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Service\Ddi\DdiFactory;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalFactory;
@@ -37,8 +41,9 @@ class SyncFromCsvSpec extends ObjectBehavior
 
     private $company;
     private $csv = <<<EOCSV
-Name,Lastname,name@irontec.com,terminalName,Z7+KJn8m3k,YealinkT21P_E2,a00000000052,2002,ES,946002050,as002
+Ivan,Alonso,kaian+mass@irontec.com,CBTTerminal,hbcHBC234*,,,22219,,944048182,
 John,Doe,jon@irontec.com,terminalName,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,2003,ES,946002051,as002
+
 EOCSV;
 
     public function let()
@@ -101,9 +106,9 @@ EOCSV;
             ->userFactory
             ->fromMassProvisioningCsv(
                 $this->company->getId(),
-                'Name',
-                'Lastname',
-                'name@irontec.com'
+                'Ivan',
+                'Alonso',
+                'kaian+mass@irontec.com'
             )
             ->shouldBeCalled()
             ->willReturn(
@@ -121,10 +126,10 @@ EOCSV;
             ->terminalFactory
             ->fromMassProvisioningCsv(
                 $this->company->getId(),
-                'terminalName',
-                'Z7+KJn8m3k',
-                'YealinkT21P_E2',
-                'a00000000052'
+                'CBTTerminal',
+                'hbcHBC234*',
+                '',
+                ''
             )
             ->shouldBeCalled()
             ->willReturn(
@@ -142,10 +147,7 @@ EOCSV;
             ->extensionFactory
             ->fromMassProvisioningCsv(
                 $this->company->getId(),
-                '2002',
-                Argument::type(UserInterface::class),
-                null,
-                null,
+                '22219',
                 null
             )
             ->shouldBeCalled()
@@ -164,9 +166,9 @@ EOCSV;
             ->ddiFactory
             ->fromMassProvisioningCsv(
                 Argument::type(CompanyInterface::class),
-                'ES',
-                '946002050',
-                'as002'
+                '',
+                '944048182',
+                ''
             )
             ->shouldBeCalled()
             ->willReturn(
@@ -205,6 +207,85 @@ EOE;
                 'execute',
                 [$this->company, $this->csv]
             );
+    }
+
+
+    function it_creates_complete_user_with_all_relationships_via_dto_pattern()
+    {
+        $this->prepreExecution();
+
+        $userDto = $this->getTestDouble(UserDto::class);
+        $terminalDto = $this->getTestDouble(TerminalDto::class);
+        $extensionDto = $this->getTestDouble(ExtensionDto::class);
+        $ddiDto = $this->getTestDouble(DdiDto::class);
+
+        $userDto
+            ->setTerminal($terminalDto)
+            ->shouldBeCalled()
+            ->willReturn($userDto);
+
+        $userDto
+            ->setExtension($extensionDto)
+            ->shouldBeCalled()
+            ->willReturn($userDto);
+
+        $userDto
+            ->setOutgoingDdi($ddiDto)
+            ->shouldBeCalled()
+            ->willReturn($userDto);
+
+        $ddiDto
+            ->setRouteType(Argument::any())
+            ->shouldBeCalled()
+            ->willReturn($ddiDto);
+
+        $this
+            ->entityTools
+            ->entityToDto($this->user)
+            ->willReturn($userDto)
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->entityToDto($this->terminal)
+            ->willReturn($terminalDto)
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->entityToDto($this->extension)
+            ->willReturn($extensionDto)
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->entityToDto($this->ddi)
+            ->willReturn($ddiDto)
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->persist($this->terminal)
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->persist($this->extension)
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->persistDto($ddiDto, $this->ddi, false)
+            ->shouldBeCalled()
+            ->willReturn($this->ddi);
+
+        $this
+            ->entityTools
+            ->persistDto($userDto, $this->user, false)
+            ->shouldBeCalled()
+            ->willReturn($this->user);
+
+        $this->execute($this->company, $this->csv);
     }
 
     private function prepreExecution()
@@ -287,5 +368,43 @@ EOE;
             ->willReturn(
                 $this->ddi
             );
+
+        $this
+            ->entityTools
+            ->entityToDto($this->user)
+            ->willReturn(
+                $this->getTestDouble(UserDto::class)
+            );
+
+        $this
+            ->entityTools
+            ->entityToDto($this->terminal)
+            ->willReturn(
+                $this->getTestDouble(TerminalDto::class)
+            );
+
+        $this
+            ->entityTools
+            ->entityToDto($this->extension)
+            ->willReturn(
+                $this->getTestDouble(ExtensionDto::class)
+            );
+
+        $this
+            ->entityTools
+            ->entityToDto($this->ddi)
+            ->willReturn(
+                $this->getTestDouble(DdiDto::class)
+            );
+
+        $this
+            ->entityTools
+            ->persist(Argument::any())
+            ->willReturn(Argument::any());
+
+        $this
+            ->entityTools
+            ->persistDto(Argument::any(), Argument::any(), Argument::any())
+            ->willReturn(Argument::any());
     }
 }
