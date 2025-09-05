@@ -76,8 +76,9 @@ class ExtensionFactory
             $extension
         );
 
-        $extension
-            ->setUser($user);
+        if ($user !== null) {
+            $extension->setUser($user);
+        }
 
         return $extension;
     }

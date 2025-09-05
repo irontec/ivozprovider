@@ -12,6 +12,7 @@ use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalFactory;
 use Ivoz\Provider\Domain\Service\User\CsvStaticValidator;
 use Ivoz\Provider\Domain\Service\User\UserFactory;
+use Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByUser;
 
 class SyncFromCsv
 {
@@ -70,52 +71,76 @@ class SyncFromCsv
                     (int) $company->getId(),
                     ...$userArgs
                 );
-                $entities = [$user];
 
+                $terminal = null;
                 $notEmptyTerminalArgs = count(array_filter($terminalArgs)) > 0;
                 if ($notEmptyTerminalArgs) {
                     $terminal = $this->terminalFactory->fromMassProvisioningCsv(
                         (int) $company->getId(),
                         ...$terminalArgs
                     );
-
-                    $entities[] = $terminal;
                 }
 
+                $extension = null;
                 if ($extensionArg) {
                     $extension = $this->extensionFactory->fromMassProvisioningCsv(
                         (int) $company->getId(),
                         $extensionArg,
-                        $user
+                        null
                     );
-
-                    $entities[] = $extension;
                 }
 
+                $ddi = null;
                 $notEmptyDdiArgs = count(array_filter($outboundDdiArgs)) > 0;
                 if ($notEmptyDdiArgs) {
                     $ddi = $this->ddiFactory->fromMassProvisioningCsv(
                         $company,
                         ...$outboundDdiArgs
                     );
-
-                    if ($ddi->isNew()) {
-                        $user->setOutgoingDdi($ddi);
-
-                        $ddi->setUser($user);
-                        $ddi->setRouteType(DdiInterface::ROUTETYPE_USER);
-                    }
-
-                    $entities[] = $ddi;
                 }
 
-                $user
-                    ->setTerminal($terminal ?? null)
-                    ->setExtension($extension ?? null)
-                    ->setOutgoingDdi($ddi ?? null);
+                if ($terminal !== null) {
+                    $this->entityTools->persist($terminal);
+                }
 
-                $this->entityTools->persistFromArray(
-                    $entities
+                if ($extension !== null) {
+                    $this->entityTools->persist($extension);
+                }
+
+                if ($ddi !== null && $ddi->isNew()) {
+                    /** @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddiDto */
+                    $ddiDto = $this->entityTools->entityToDto($ddi);
+                    $ddiDto->setRouteType(DdiInterface::ROUTETYPE_USER);
+                    $this->entityTools->persistDto($ddiDto, $ddi, false);
+                } elseif ($ddi !== null) {
+                    $this->entityTools->persist($ddi);
+                }
+
+                /** @var \Ivoz\Provider\Domain\Model\User\UserDto $userDto */
+                $userDto = $this->entityTools->entityToDto($user);
+
+                if ($terminal !== null) {
+                    /** @var \Ivoz\Provider\Domain\Model\Terminal\TerminalDto $terminalDto */
+                    $terminalDto = $this->entityTools->entityToDto($terminal);
+                    $userDto->setTerminal($terminalDto);
+                }
+
+                if ($extension !== null) {
+                    /** @var \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extensionDto */
+                    $extensionDto = $this->entityTools->entityToDto($extension);
+                    $userDto->setExtension($extensionDto);
+                }
+
+                if ($ddi !== null) {
+                    /** @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddiDto */
+                    $ddiDto = $this->entityTools->entityToDto($ddi);
+                    $userDto->setOutgoingDdi($ddiDto);
+                }
+
+                $this->entityTools->persistDto(
+                    $userDto,
+                    $user,
+                    false
                 );
             } catch (\Exception $e) {
                 $errors[$k + 1] = $e->getMessage();
