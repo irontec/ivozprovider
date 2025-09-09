@@ -97,6 +97,7 @@ const DestinationRate: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default DestinationRate;

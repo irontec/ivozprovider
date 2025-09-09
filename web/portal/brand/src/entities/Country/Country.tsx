@@ -37,6 +37,7 @@ const country: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default country;

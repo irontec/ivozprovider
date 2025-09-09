@@ -88,6 +88,7 @@ const MatchListPattern: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default MatchListPattern;

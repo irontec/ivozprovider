@@ -40,6 +40,7 @@ const ProxyUser: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default ProxyUser;

@@ -119,7 +119,7 @@ const Invoice: EntityInterface = {
   iden: 'Invoice',
   title: _('Invoice', { count: 2 }),
   path: '/invoices',
-  defaultOrderBy: 'inDate',
+  defaultOrderBy: '',
   defaultOrderDirection: OrderDirection.desc,
   toStr: (row: InvoicePropertyList<EntityValues>) => `${row.number}`,
   properties,

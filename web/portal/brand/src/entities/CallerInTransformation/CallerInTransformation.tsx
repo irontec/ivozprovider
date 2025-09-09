@@ -7,6 +7,7 @@ const CallerInTransformation: EntityInterface = {
   ...TransformationRule,
   localPath: `${TransformationRule.path}_callerin`,
   title: _('Caller In Transformation', { count: 2 }),
+  defaultOrderBy: '',
 };
 
 export default CallerInTransformation;

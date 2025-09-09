@@ -40,6 +40,7 @@ const Language: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default Language;

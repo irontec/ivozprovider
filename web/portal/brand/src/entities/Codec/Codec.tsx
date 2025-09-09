@@ -42,6 +42,7 @@ const Codec: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default Codec;

@@ -182,6 +182,7 @@ const Administrator: EntityInterface = {
   },
   validator,
   marshaller,
+  defaultOrderBy: '',
 };
 
 export default Administrator;

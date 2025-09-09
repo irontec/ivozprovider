@@ -44,6 +44,7 @@ const ApplicationServerSet: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default ApplicationServerSet;

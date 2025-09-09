@@ -114,6 +114,7 @@ const DdiProviderRegistration: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default DdiProviderRegistration;

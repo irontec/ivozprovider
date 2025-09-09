@@ -27,6 +27,7 @@ const Extension: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Extensions',
   },
+  defaultOrderBy: '',
 };
 
 export default Extension;

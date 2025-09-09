@@ -115,6 +115,7 @@ const FixedCostsRelInvoiceScheduler: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default FixedCostsRelInvoiceScheduler;

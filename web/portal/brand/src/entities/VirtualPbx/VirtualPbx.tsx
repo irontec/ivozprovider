@@ -9,6 +9,7 @@ const VirtualPbx = {
   link: '/doc/${language}/administration_portal/brand/clients/virtual_pbx.html',
   title: _('Virtual PBX', { count: 2 }),
   localPath: '/vPbx',
+  defaultOrderBy: '',
 };
 
 export default VirtualPbx;

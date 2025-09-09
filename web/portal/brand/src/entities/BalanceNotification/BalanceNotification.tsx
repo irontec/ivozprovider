@@ -78,6 +78,7 @@ const BalanceNotification: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default BalanceNotification;

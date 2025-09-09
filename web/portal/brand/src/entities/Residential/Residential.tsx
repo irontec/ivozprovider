@@ -28,6 +28,7 @@ const Residential: EntityInterface = {
     'outgoingDdi',
     'featureIds',
   ],
+  defaultOrderBy: '',
 };
 
 export default Residential;

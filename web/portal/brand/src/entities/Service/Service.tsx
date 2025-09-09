@@ -72,6 +72,7 @@ const Service: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default Service;

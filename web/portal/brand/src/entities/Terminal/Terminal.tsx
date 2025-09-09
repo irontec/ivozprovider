@@ -24,6 +24,7 @@ const Terminal: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'Terminals',
   },
+  defaultOrderBy: '',
 };
 
 export default Terminal;
