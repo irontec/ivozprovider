@@ -144,7 +144,7 @@ Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      lastTimeBanned: DESC
+      ip: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -215,6 +215,9 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
           eq: "user.getBrand().getId()"
 
 Ivoz\Provider\Domain\Model\Brand\Invoice:
+  attributes:
+    order:
+      company: ASC
 Ivoz\Provider\Domain\Model\Brand\Logo:
 Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification:
   attributes:
@@ -246,7 +249,7 @@ Ivoz\Provider\Domain\Model\BrandService\BrandService:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      service: ASC
+      service.iden: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -268,6 +271,7 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
+      company: ASC
       name: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
@@ -439,6 +443,7 @@ Ivoz\Provider\Domain\Model\Company\Company:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
       name: ASC
+      type: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -830,7 +835,7 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      company: ASC
+      company.name: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -901,6 +906,7 @@ Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
       name: ASC
+      company: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -1204,7 +1210,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      priority: ASC
+      company: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -1386,6 +1392,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
+      name: ASC
       company: ASC
     pagination_client_enabled: true
     read_access_control:
@@ -1420,6 +1427,7 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
     pagination_client_enabled: true
     order:
       company: ASC
+      name: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -1505,7 +1513,7 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      prefix: ASC
+      name.en: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -1563,7 +1571,7 @@ Ivoz\Provider\Domain\Model\SpecialNumber\SpecialNumber:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      number: ASC
+      country: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
       - or:
@@ -1619,7 +1627,6 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      brand: DESC
       name.en: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
@@ -1642,6 +1649,7 @@ Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
       description: ASC
+      priority: ASC
     read_access_control:
       inherited:
         transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
