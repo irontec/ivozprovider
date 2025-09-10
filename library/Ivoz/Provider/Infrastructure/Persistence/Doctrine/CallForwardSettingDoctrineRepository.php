@@ -61,7 +61,10 @@ class CallForwardSettingDoctrineRepository extends ServiceEntityRepository imple
                 $qb->expr()->eq('self.user', $user->getId())
             )
             ->leftJoin('self.extension', 'e')
-            ->leftJoin('self.voicemail', 'v');
+            ->leftJoin('self.voicemail', 'v')
+            ->orderBy('self.enabled', 'DESC')
+            ->addOrderBy('self.callTypeFilter', 'ASC')
+            ->addOrderBy('self.callForwardType', 'ASC');
 
         return $response;
     }
