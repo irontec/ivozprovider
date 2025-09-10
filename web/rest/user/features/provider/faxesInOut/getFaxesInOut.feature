@@ -15,19 +15,6 @@ Feature: Retrieve faxes in outs
       """
       [
           {
-              "calldate": "2018-01-01 01:00:00",
-              "src": "34688888888",
-              "dst": "34688888881",
-              "type": "In",
-              "status": "error",
-              "id": 1,
-              "file": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              }
-          },
-          {
               "calldate": "2018-01-02 01:00:00",
               "src": "34688888888",
               "dst": "34688888881",
@@ -47,6 +34,19 @@ Feature: Retrieve faxes in outs
               "type": "Out",
               "status": "error",
               "id": 3,
+              "file": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              }
+          },
+          {
+              "calldate": "2018-01-01 01:00:00",
+              "src": "34688888888",
+              "dst": "34688888881",
+              "type": "In",
+              "status": "error",
+              "id": 1,
               "file": {
                   "fileSize": null,
                   "mimeType": null,
