@@ -16,8 +16,8 @@ Feature: Retrieve hunt groups rel users
       [
           {
               "timeoutTime": 1,
-              "priority": 1,
-              "id": 1,
+              "priority": 2,
+              "id": 2,
               "huntGroup": {
                   "name": "testHuntGroup",
                   "description": "desc",
@@ -31,8 +31,7 @@ Feature: Retrieve hunt groups rel users
                   "noAnswerExtension": null,
                   "noAnswerVoicemail": null,
                   "noAnswerNumberCountry": null
-              },
-              "routeType": "user"
+              }
           }
       ]
       """
