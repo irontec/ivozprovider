@@ -133,6 +133,7 @@ const HolidayDate: EntityInterface = {
     'routeType',
     'target',
   ],
+  defaultOrderBy: '',
   toStr: (row) => row.name as string,
   acl: {
     ...defaultEntityBehavior.acl,

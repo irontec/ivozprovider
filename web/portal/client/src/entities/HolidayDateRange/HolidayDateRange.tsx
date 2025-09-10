@@ -128,6 +128,7 @@ const HolidayDateRange: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default HolidayDateRange;

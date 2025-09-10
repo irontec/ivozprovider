@@ -20,6 +20,7 @@ const country: EntityInterface = {
   path: '/countries',
   toStr: (row: CountryPropertyList<EntityValue>) => row.countryCode as string,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Countries',

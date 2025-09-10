@@ -42,7 +42,7 @@ const CallCsvReport: EntityInterface = {
     iden: 'CallCsvReports',
   },
   toStr: (row: EntityValues) => row?.name as string | '',
-  defaultOrderBy: 'id',
+  defaultOrderBy: '',
   defaultOrderDirection: OrderDirection.desc,
   columns: ['csv', 'inDate', 'outDate', 'createdOn', 'sentTo'],
 };

@@ -55,6 +55,7 @@ const MatchListPattern: EntityInterface = {
   path: '/match_list_patterns',
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'MatchListPatterns',

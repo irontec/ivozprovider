@@ -15,6 +15,7 @@ const ConditionalRoutesCondition: EntityInterface = {
   },
   toStr: (row: EntityValues) => `${row.id}`,
   properties: {},
+  defaultOrderBy: '',
 };
 
 export default ConditionalRoutesCondition;

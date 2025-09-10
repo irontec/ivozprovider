@@ -65,6 +65,7 @@ const Company: EntityInterface = {
   path: '/companies',
   toStr: (row: CompanyPropertyList<EntityValue>) => (row?.name as string) || '',
   properties,
+  defaultOrderBy: '',
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

@@ -10,6 +10,7 @@ const language: EntityInterface = {
   iden: 'Language',
   title: _('Language', { count: 2 }),
   path: '/languages',
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Languages',

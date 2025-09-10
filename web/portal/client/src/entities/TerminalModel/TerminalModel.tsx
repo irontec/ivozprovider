@@ -25,6 +25,7 @@ const terminalModel: EntityInterface = {
   path: '/terminal_models',
   toStr: (row: TerminalModelPropertyList<string>) => `${row.name}`,
   properties,
+  defaultOrderBy: '',
   acl,
   selectOptions: async () => {
     const module = await import('./SelectOptions');

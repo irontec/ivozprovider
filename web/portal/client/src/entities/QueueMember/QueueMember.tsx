@@ -37,6 +37,7 @@ const QueueMember: EntityInterface = {
   path: '/queue_members',
   toStr: (row: QueueMemberPropertyList<string>) => `${row.id}`,
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'QueueMembers',

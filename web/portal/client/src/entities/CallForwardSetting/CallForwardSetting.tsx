@@ -165,6 +165,7 @@ const CallForwardSetting: EntityInterface = {
   title: _('Call forward setting', { count: 2 }),
   path: '/call_forward_settings',
   properties,
+  defaultOrderBy: '',
   columns: [
     'enabled',
     'callTypeFilter',
