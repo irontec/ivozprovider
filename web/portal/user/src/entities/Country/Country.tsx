@@ -25,6 +25,7 @@ const country: EntityInterface = {
     return (row.name as EntityValues)[language] as string;
   },
   properties,
+  defaultOrderBy: '',
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

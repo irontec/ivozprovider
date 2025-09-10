@@ -16,6 +16,7 @@ const FaxesIn: EntityInterface = {
     );
   },
   localPath: '/faxes_in',
+  defaultOrderBy: '',
   acl: {
     ...FaxesInOut.acl,
     create: false,
