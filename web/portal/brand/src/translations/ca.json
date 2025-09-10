@@ -445,6 +445,7 @@
   "Next execution": "Següent execució",
   "No": "No",
   "No carriers": "Sense carriers",
+  "No rating plan group can rate a call to introduced destination": "Cap pla de preu pot tarificar una trucada a aquesta destinació",
   "No routing tag": "Sense etiqueta de ruta",
   "No terminal assigned": "No s'ha assignat cap terminal",
   "None": "Cap",
