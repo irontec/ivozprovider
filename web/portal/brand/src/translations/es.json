@@ -445,6 +445,7 @@
   "Next execution": "Próxima ejecución",
   "No": "No",
   "No carriers": "Sin Operadores",
+  "No rating plan group can rate a call to introduced destination": "Ningún plan de precio puede tarificar una llamada a ese destino.",
   "No routing tag": "Sin etiqueta de enrutado",
   "No terminal assigned": "Sin terminal asignado",
   "None": "Ninguna",

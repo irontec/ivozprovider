@@ -10,8 +10,9 @@ import {
 } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
 import {
   ActionFunctionComponent,
-  GlobalActionItemProps,
+  ActionItemProps,
   isSingleRowAction,
+  MultiSelectActionItemProps,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import { StyledTextField } from '@irontec/ivoz-ui/services/form/Field/TextField/TextField.styles';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
@@ -47,14 +48,25 @@ type SimulateCallResponseType = {
 };
 
 const SimulateCall: ActionFunctionComponent = (
-  props: GlobalActionItemProps
+  props: MultiSelectActionItemProps | ActionItemProps
 ) => {
+  const {
+    selectedValues = [],
+    rows = [],
+    variant = 'icon',
+  } = props as MultiSelectActionItemProps;
+  const { row } = props as ActionItemProps;
+  const isSingleRow = isSingleRowAction(props);
+
   /* eslint-disable react-hooks/rules-of-hooks */
-  if (isSingleRowAction(props)) {
+  if (isSingleRow) {
     return <span className='display-none'></span>;
   }
 
-  const { rows, variant = 'icon' } = props;
+  const selectedIds =
+    selectedValues.length > 0
+      ? selectedValues
+      : rows.map((row) => row.id.toString());
 
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
@@ -86,11 +98,12 @@ const SimulateCall: ActionFunctionComponent = (
   };
 
   const handleUpdate = () => {
+    setCost(undefined);
     const promises = [];
-    for (const row of rows) {
+    for (const id of selectedIds) {
       promises.push(
         apiPost({
-          path: `${RatingPlanGroup.path}/${row.id}/simulate_call`,
+          path: `${RatingPlanGroup.path}/${id}/simulate_call`,
           values: {
             number: phoneNumber,
             duration,
@@ -101,15 +114,33 @@ const SimulateCall: ActionFunctionComponent = (
       );
     }
 
-    Promise.all(promises)
-      .then((values) => {
-        setCost(values.map((row) => row.data as SimulateCallResponseType));
-      })
-      .catch((error) => {
-        console.error('error', error);
-        setError(true);
-        setErrorMsg(error.data.detail || error.data.title);
+    Promise.allSettled(promises).then((results) => {
+      const successfulResults: SimulateCallResponseType[] = [];
+      const errorMessages: string[] = [];
+
+      results.forEach((result, index) => {
+        if (result.status === 'fulfilled') {
+          successfulResults.push(result.value.data);
+        } else {
+          const errorDetail = result.reason?.data?.detail;
+          if (errorDetail) {
+            errorMessages.push(`Plan ID ${selectedIds[index]}: ${errorDetail}`);
+          }
+        }
       });
+
+      if (successfulResults.length > 0) {
+        setCost(successfulResults);
+        setError(false);
+        setErrorMsg('');
+      } else if (errorMessages.length > 0) {
+        setError(true);
+        setErrorMsg(
+          _('No rating plan group can rate a call to introduced destination')
+        );
+        setCost(undefined);
+      }
+    });
   };
 
   const boxStyles = {
@@ -146,84 +177,80 @@ const SimulateCall: ActionFunctionComponent = (
             {_('Simulate call')} {cost ? `(${phoneNumber})` : ''}
           </DialogTitle>
           <DialogContent sx={{ textAlign: 'left!important' }}>
-            {!error && (
-              <>
-                {!cost && (
-                  <Box>
-                    <Box sx={boxStyles}>
-                      <StyledTextField
-                        type='text'
-                        required={true}
-                        label={_('Phone number')}
-                        placeholder='+34987654321'
-                        value={phoneNumber}
-                        onChange={(event) => {
-                          const { value } = event.target;
-                          setPhoneNumber(value);
-                        }}
-                        hasChanged={false}
-                      />
-                    </Box>
-                    <Box sx={boxStyles}>
-                      <StyledTextField
-                        type='number'
-                        required={true}
-                        label={_('Duration (seconds)')}
-                        value={duration}
-                        onChange={(event) => {
-                          const { value } = event.target;
-                          setDuration(parseInt(value, 10));
-                        }}
-                        hasChanged={false}
-                      />
-                    </Box>
-                  </Box>
-                )}
-                {cost && (
-                  <Box>
-                    <StyledTable size='small'>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>{_('Plan')}</TableCell>
-                          <TableCell>{_('Start time')}</TableCell>
-                          <TableCell>{_('Duration')}</TableCell>
-                          <TableCell>{_('Destination')}</TableCell>
-                          <TableCell>{_('Connection fee')}</TableCell>
-                          <TableCell>{_('Interval start')}</TableCell>
-                          <TableCell>{_('Price')}</TableCell>
-                          <TableCell>{_('Total')}</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {cost.map((row, idx) => {
-                          const rate = row.rate
-                            ? `${row.rate} ${row.currencySymbol} / ${row.ratePeriod}`
-                            : '';
+            {!error && !cost && (
+              <Box>
+                <Box sx={boxStyles}>
+                  <StyledTextField
+                    type='text'
+                    required={true}
+                    label={_('Phone number')}
+                    placeholder='+34987654321'
+                    value={phoneNumber}
+                    onChange={(event) => {
+                      const { value } = event.target;
+                      setPhoneNumber(value);
+                    }}
+                    hasChanged={false}
+                  />
+                </Box>
+                <Box sx={boxStyles}>
+                  <StyledTextField
+                    type='number'
+                    required={true}
+                    label={_('Duration (seconds)')}
+                    value={duration}
+                    onChange={(event) => {
+                      const { value } = event.target;
+                      setDuration(parseInt(value, 10));
+                    }}
+                    hasChanged={false}
+                  />
+                </Box>
+              </Box>
+            )}
+            {cost && cost.length > 0 && (
+              <Box>
+                <StyledTable size='small'>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>{_('Plan')}</TableCell>
+                      <TableCell>{_('Start time')}</TableCell>
+                      <TableCell>{_('Duration')}</TableCell>
+                      <TableCell>{_('Destination')}</TableCell>
+                      <TableCell>{_('Connection fee')}</TableCell>
+                      <TableCell>{_('Interval start')}</TableCell>
+                      <TableCell>{_('Price')}</TableCell>
+                      <TableCell>{_('Total')}</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {cost.map((row, idx) => {
+                      const rate = row.rate
+                        ? `${row.rate} ${row.currencySymbol} / ${row.ratePeriod}`
+                        : '';
 
-                          return (
-                            <TableRow key={idx}>
-                              <TableCell>{row.plan}</TableCell>
-                              <TableCell>{row.callDate}</TableCell>
-                              <TableCell>{row.duration}</TableCell>
-                              <TableCell>{row.patternName}</TableCell>
-                              <TableCell>
-                                {row.connectionCharge} {row.currencySymbol}
-                              </TableCell>
-                              <TableCell>{row.intervalStart}</TableCell>
-                              <TableCell>
-                                {rate} {rate ? _('Seconds') : ''}
-                              </TableCell>
-                              <TableCell>
-                                {row.totalCost} {row.currencySymbol}
-                              </TableCell>
-                            </TableRow>
-                          );
-                        })}
-                      </TableBody>
-                    </StyledTable>
-                  </Box>
-                )}
-              </>
+                      return (
+                        <TableRow key={idx}>
+                          <TableCell>{row.plan}</TableCell>
+                          <TableCell>{row.callDate}</TableCell>
+                          <TableCell>{row.duration}</TableCell>
+                          <TableCell>{row.patternName}</TableCell>
+                          <TableCell>
+                            {row.connectionCharge} {row.currencySymbol}
+                          </TableCell>
+                          <TableCell>{row.intervalStart}</TableCell>
+                          <TableCell>
+                            {rate} {rate ? _('Seconds') : ''}
+                          </TableCell>
+                          <TableCell>
+                            {row.totalCost} {row.currencySymbol}
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  </TableBody>
+                </StyledTable>
+              </Box>
             )}
             {error && <ErrorMessageComponent message={errorMsg} />}
           </DialogContent>
