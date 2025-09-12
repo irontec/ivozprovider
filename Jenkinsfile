@@ -6,7 +6,7 @@ pipeline {
     // Pipeline options
     // ------------------------------------------------------------------------
     options {
-        timeout(time: 25, unit: 'MINUTES')
+        timeout(time: 60, unit: 'MINUTES')
         timestamps()
         disableConcurrentBuilds()
         buildDiscarder(
