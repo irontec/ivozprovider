@@ -1060,19 +1060,11 @@
     </ImplementedReturnTypeMismatch>
   </file>
   <file src="Ivoz/Provider/Application/Service/User/SyncFromCsv.php">
-    <MixedArgument occurrences="2">
-      <code>$terminalArgs</code>
-      <code>$userArgs</code>
-    </MixedArgument>
-    <PossiblyInvalidArgument occurrences="4">
+    <PossiblyInvalidArgument occurrences="3">
       <code>$fields</code>
       <code>$fields</code>
       <code>$fields</code>
-      <code>$outboundDdiArgs</code>
     </PossiblyInvalidArgument>
-    <PossiblyNullArgument occurrences="1">
-      <code>$outboundDdiArgs</code>
-    </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Assembler/Brand/BrandAssembler.php">
     <ParamNameMismatch occurrences="2">
