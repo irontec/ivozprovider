@@ -504,6 +504,8 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Friend,
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientFeatures.friends),
         },
         {
           entity: entities.Corporation,
