@@ -2,15 +2,20 @@
 
 namespace spec\Ivoz\Provider\Application\Service\User;
 
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Service\User\CsvStaticValidator;
 use Ivoz\Provider\Application\Service\User\SyncFromCsv;
 use Ivoz\Provider\Domain\Model\Company\Company;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
-use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\Terminal\Terminal;
+use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Service\Ddi\DdiFactory;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalFactory;
@@ -25,20 +30,24 @@ class SyncFromCsvSpec extends ObjectBehavior
 
     private $userFactory;
     private $user;
+    private $userDto;
     private $terminalFactory;
     private $terminal;
+    private $terminalDto;
     private $extensionFactory;
     private $extension;
+    private $extensionDto;
     private $ddiFactory;
     private $ddi;
+    private $ddiDto;
 
     private $entityTools;
     private $csvStaticValidator;
 
     private $company;
     private $csv = <<<EOCSV
-Name,Lastname,name@irontec.com,terminalName,Z7+KJn8m3k,YealinkT21P_E2,a00000000052,2002,ES,946002050,as002
-John,Doe,jon@irontec.com,terminalName,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,2003,ES,946002051,as002
+Name,Lastname,name@irontec.com,terminalName,Z7+KJn8m3k,YealinkT21P_E2,a00000000052,2002,,946002050,DDIProviderName
+
 EOCSV;
 
     public function let()
@@ -49,7 +58,7 @@ EOCSV;
         );
 
         $this->userFactory = $this->getTestDouble(
-            UserFactory::class
+            UserFactory::class,
         );
 
         $this->terminalFactory = $this->getTestDouble(
@@ -93,113 +102,28 @@ EOCSV;
         $this->execute($this->company, $this->csv);
     }
 
-    function it_calls_user_factory()
-    {
-        $this->prepreExecution();
-
-        $this
-            ->userFactory
-            ->fromMassProvisioningCsv(
-                $this->company->getId(),
-                'Name',
-                'Lastname',
-                'name@irontec.com'
-            )
-            ->shouldBeCalled()
-            ->willReturn(
-                $this->user
-            );
-
-        $this->execute($this->company, $this->csv);
-    }
-
-    function it_calls_terminal_factory()
-    {
-        $this->prepreExecution();
-
-        $this
-            ->terminalFactory
-            ->fromMassProvisioningCsv(
-                $this->company->getId(),
-                'terminalName',
-                'Z7+KJn8m3k',
-                'YealinkT21P_E2',
-                'a00000000052'
-            )
-            ->shouldBeCalled()
-            ->willReturn(
-                $this->terminal
-            );
-
-        $this->execute($this->company, $this->csv);
-    }
-
-    function it_calls_extension_factory()
-    {
-        $this->prepreExecution();
-
-        $this
-            ->extensionFactory
-            ->fromMassProvisioningCsv(
-                $this->company->getId(),
-                '2002',
-                Argument::type(UserInterface::class),
-                null,
-                null,
-                null
-            )
-            ->shouldBeCalled()
-            ->willReturn(
-                $this->extension
-            );
-
-        $this->execute($this->company, $this->csv);
-    }
-
-    function it_calls_ddi_factory()
-    {
-        $this->prepreExecution();
-
-        $this
-            ->ddiFactory
-            ->fromMassProvisioningCsv(
-                Argument::type(CompanyInterface::class),
-                'ES',
-                '946002050',
-                'as002'
-            )
-            ->shouldBeCalled()
-            ->willReturn(
-                $this->ddi
-            );
-
-        $this->execute($this->company, $this->csv);
-    }
-
     function it_propagates_factory_exceptions()
     {
-        $this->prepreExecution();
-
         $this
             ->userFactory
             ->fromMassProvisioningCsv(
-                $this->company->getId(),
-                Argument::any(),
-                Argument::any(),
-                Argument::any()
+                companyId: Argument::any(),
+                name: Argument::any(),
+                lastName: Argument::any(),
+                email: Argument::any(),
             )
             ->willThrow(
                 new \Exception('Error message')
             );
 
+
         $expectedErrorMsg = <<<EOE
 1 => Error message
-2 => Error message
 EOE;
 
         $this
             ->shouldThrow(
-                new \Exception($expectedErrorMsg, 2)
+                new \Exception($expectedErrorMsg, 1)
             )
             ->during(
                 'execute',
@@ -209,83 +133,104 @@ EOE;
 
     private function prepreExecution()
     {
-        // User
-        $this->user = $this->getTestDouble(
-            UserInterface::class
-        );
+        $this->user = $this->getTestDouble(User::class);
+        $this->userDto = $this->getTestDouble(UserDto::class);
+        $this->terminal = $this->getTestDouble(Terminal::class);
+        $this->terminalDto = $this->getTestDouble(TerminalDto::class);
+        $this->extension = $this->getTestDouble(Extension::class);
+        $this->extensionDto = $this->getTestDouble(ExtensionDto::class);
+        $this->ddi = $this->getTestDouble(Ddi::class);
+        $this->ddiDto = $this->getTestDouble(DdiDto::class);
 
-        $this
-            ->userFactory
+        $this->userFactory
             ->fromMassProvisioningCsv(
-                Argument::any(),
-                Argument::any(),
-                Argument::any(),
-                Argument::any()
+                companyId: $this->company->getId(),
+                name: 'Name',
+                lastName: 'Lastname',
+                email: 'name@irontec.com',
             )
-            ->willReturn(
-                $this->user
-            );
+            ->willReturn($this->user);
 
-        // Terminal
-        $this->terminal = $this->getTestDouble(
-            TerminalInterface::class
-        );
-
-        $this
-            ->terminalFactory
+        $this->terminalFactory
             ->fromMassProvisioningCsv(
-                Argument::any(),
-                Argument::any(),
-                Argument::any(),
-                Argument::any(),
-                Argument::any()
+                companyId: $this->company->getId(),
+                name: 'terminalName',
+                password: 'Z7+KJn8m3k',
+                model: 'YealinkT21P_E2',
+                mac: 'a00000000052',
             )
-            ->willReturn(
-                $this->terminal
-            );
+            ->shouldBeCalled(1)
+            ->willReturn($this->terminal);
 
-        // Extension
-        $this->extension = $this->getTestDouble(
-            ExtensionInterface::class
-        );
-
-        $this
-            ->extensionFactory
+        $this->extensionFactory
             ->fromMassProvisioningCsv(
-                Argument::any(),
-                Argument::any(),
-                Argument::any(),
-                Argument::any(),
-                Argument::any(),
-                Argument::any()
+                companyId: $this->company->getId(),
+                extensionNumber: '2002',
             )
-            ->willReturn(
-                $this->extension
-            );
+            ->shouldBeCalled(2)
+            ->willReturn($this->extension);
 
-        // Ddi
-        $this->ddi = $this->getTestDouble(
-            DdiInterface::class
-        );
-
-        $this->getterProphecy(
-            $this->ddi,
-            [
-                'isNew' => true,
-            ],
-            false
-        );
-
-        $this
-            ->ddiFactory
+        $this->ddiFactory
             ->fromMassProvisioningCsv(
-                Argument::any(),
-                Argument::any(),
-                Argument::any(),
-                Argument::any()
+                $this->company,
+                countryCode: '',
+                ddiNumber: '946002050',
+                ddiProviderName: 'DDIProviderName'
             )
-            ->willReturn(
-                $this->ddi
-            );
+            ->shouldBeCalled(2)
+            ->willReturn($this->ddi);
+
+        $this->entityTools
+            ->entityToDto($this->user)
+            ->willReturn($this->userDto)
+            ->shouldBeCalled(1);
+
+        $this->entityTools
+            ->entityToDto($this->terminal)
+            ->willReturn($this->terminalDto)
+            ->shouldBeCalled(1);
+
+        $this->entityTools
+            ->entityToDto($this->extension)
+            ->willReturn($this->extensionDto)
+            ->shouldBeCalled(1);
+
+        $this->entityTools
+            ->entityToDto($this->ddi)
+            ->willReturn($this->ddiDto)
+            ->shouldBeCalled(1);
+
+        $this->entityTools
+            ->persistDto($this->userDto, $this->user)
+            ->willReturn($this->user)
+            ->shouldBeCalled(1);
+
+        $endpoint = $this->getTestDouble(PsEndpointInterface::class);
+        $endpointDto = $this->getTestDouble(PsEndpointDto::class);
+
+        $this->user
+            ->getEndpoint()
+            ->willReturn($endpoint)
+            ->shouldBeCalled(1);
+
+        $this->user
+            ->getExtensionNumber()
+            ->willReturn('2002')
+            ->shouldBeCalled(1);
+
+        $this->user
+            ->getFullName()
+            ->willReturn('Name Lastname')
+            ->shouldBeCalled(1);
+
+        $this->entityTools
+            ->entityToDto($endpoint)
+            ->willReturn($endpointDto)
+            ->shouldBeCalled(1);
+
+        $this->entityTools
+            ->persistDto($endpointDto, $endpoint)
+            ->willReturn($endpoint)
+            ->shouldBeCalled(1);
     }
 }

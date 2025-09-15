@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use PhpSpec\ObjectBehavior;
@@ -123,6 +124,13 @@ class ExtensionFactorySpec extends ObjectBehavior
                 Argument::type(ExtensionInterface::class)
             )
             ->willReturn(new ExtensionDto());
+
+        $this
+            ->entityTools
+            ->entityToDto(
+                Argument::type(User::class)
+            )
+            ->willReturn(new UserDto());
 
         $this
             ->entityTools
