@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Service\Extension;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
@@ -69,15 +70,20 @@ class ExtensionFactory
             $extensionDto->setNumberValue($number);
         }
 
+        $userDto = $user
+            ? $this->entityTools->entityToDto(
+                $user
+            )
+            : null;
+
+        /** @var UserDto $userDto */
+        $extensionDto->setUser($userDto);
 
         /** @var ExtensionInterface $extension */
         $extension = $this->entityTools->dtoToEntity(
             $extensionDto,
             $extension
         );
-
-        $extension
-            ->setUser($user);
 
         return $extension;
     }

@@ -5,8 +5,14 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Application\Service\User;
 
 use Ivoz\Core\Domain\Service\EntityTools;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Service\Ddi\DdiFactory;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalFactory;
@@ -27,10 +33,8 @@ class SyncFromCsv
 
     /**
      * @throws \Exception
-     *
-     * @return void
      */
-    public function execute(CompanyInterface $company, string $csv)
+    public function execute(CompanyInterface $company, string $csv): void
     {
         $rows = explode(
             PHP_EOL,
@@ -60,63 +64,95 @@ class SyncFromCsv
 
         $errors = [];
         foreach ($rows as $k => $fields) {
-            $userArgs = array_splice($fields, 0, 3);
-            $terminalArgs = array_splice($fields, 0, 4);
+            /** @var array<string> $userArgs */
+            $userArgs = array_pad(
+                array_splice($fields, 0, 3),
+                3,
+                '',
+            );
+            /** @var array<string> $terminalArgs */
+            $terminalArgs = array_pad(
+                array_splice($fields, 0, 4),
+                4,
+                '',
+            );
             $extensionArg = array_shift($fields);
-            $outboundDdiArgs = $fields;
+            /** @var array<string> $outboundDdiArgs */
+            $outboundDdiArgs = array_pad((array) $fields, 2, '');
 
             try {
                 $user = $this->userFactory->fromMassProvisioningCsv(
-                    (int) $company->getId(),
-                    ...$userArgs
+                    companyId: (int) $company->getId(),
+                    name: $userArgs[0],
+                    lastName: $userArgs[1],
+                    email: $userArgs[2],
                 );
-                $entities = [$user];
 
-                $notEmptyTerminalArgs = count(array_filter($terminalArgs)) > 0;
-                if ($notEmptyTerminalArgs) {
+                /** @var UserDto $userDto */
+                $userDto = $this->entityTools->entityToDto($user);
+
+                $hasAllTerminalArgs = !empty($terminalArgs[0]) && !empty($terminalArgs[1]);
+                if ($hasAllTerminalArgs) {
                     $terminal = $this->terminalFactory->fromMassProvisioningCsv(
-                        (int) $company->getId(),
-                        ...$terminalArgs
+                        companyId: (int) $company->getId(),
+                        name: $terminalArgs[0],
+                        password: $terminalArgs[1],
+                        model: $terminalArgs[2],
+                        mac: $terminalArgs[3],
                     );
 
-                    $entities[] = $terminal;
+                    /** @var TerminalDto $terminalDto */
+                    $terminalDto = $this->entityTools->entityToDto($terminal);
+                    $userDto->setTerminal($terminalDto);
                 }
 
                 if ($extensionArg) {
                     $extension = $this->extensionFactory->fromMassProvisioningCsv(
-                        (int) $company->getId(),
-                        $extensionArg,
-                        $user
+                        companyId:(int) $company->getId(),
+                        extensionNumber: $extensionArg,
                     );
 
-                    $entities[] = $extension;
+                    /** @var ExtensionDto $extensionDto */
+                    $extensionDto = $this->entityTools->entityToDto($extension);
+                    $userDto->setExtension($extensionDto);
                 }
 
-                $notEmptyDdiArgs = count(array_filter($outboundDdiArgs)) > 0;
-                if ($notEmptyDdiArgs) {
+                $hasAllDdiArgs = !empty($outboundDdiArgs[1]);
+                if ($hasAllDdiArgs) {
                     $ddi = $this->ddiFactory->fromMassProvisioningCsv(
                         $company,
-                        ...$outboundDdiArgs
+                        countryCode: $outboundDdiArgs[0],
+                        ddiNumber: $outboundDdiArgs[1],
+                        ddiProviderName: $outboundDdiArgs[2]
                     );
 
-                    if ($ddi->isNew()) {
-                        $user->setOutgoingDdi($ddi);
-
-                        $ddi->setUser($user);
-                        $ddi->setRouteType(DdiInterface::ROUTETYPE_USER);
-                    }
-
-                    $entities[] = $ddi;
+                    /** @var DdiDto $ddiDto */
+                    $ddiDto = $this->entityTools->entityToDto($ddi);
+                    $ddiDto->setRouteType(DdiInterface::ROUTETYPE_USER);
+                    $userDto->setOutgoingDdi($ddiDto);
                 }
 
-                $user
-                    ->setTerminal($terminal ?? null)
-                    ->setExtension($extension ?? null)
-                    ->setOutgoingDdi($ddi ?? null);
-
-                $this->entityTools->persistFromArray(
-                    $entities
+                /** @var UserInterface $persistedUser */
+                $persistedUser = $this->entityTools->persistDto(
+                    $userDto,
+                    $user,
                 );
+
+                $endpoint = $persistedUser->getEndpoint();
+                if (!$endpoint) {
+                    continue;
+                }
+
+                $extensionNumber = $persistedUser->getExtensionNumber();
+                if (!$extensionNumber) {
+                    continue;
+                }
+
+                $callerId = sprintf('%s <%s>', $persistedUser->getFullName(), $extensionNumber);
+                /** @var PsEndpointDto $endpointDto */
+                $endpointDto = $this->entityTools->entityToDto($endpoint);
+                $endpointDto->setCallerid($callerId);
+                $this->entityTools->persistDto($endpointDto, $endpoint);
             } catch (\Exception $e) {
                 $errors[$k + 1] = $e->getMessage();
                 continue;

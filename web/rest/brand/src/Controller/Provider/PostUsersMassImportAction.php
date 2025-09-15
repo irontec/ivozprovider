@@ -11,6 +11,7 @@ use Model\UsersMassImport;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PostUsersMassImportAction
 {
@@ -51,9 +52,12 @@ class PostUsersMassImportAction
             );
         }
 
-        $csv = file_get_contents(
-            $request->files->get('csv')
-        );
+        /** @var UploadedFile|null $csvFile */
+        $csvFile = $request->files->get('csv');
+        if (!$csvFile) {
+            throw new ResourceClassNotFoundException('CSV file not found');
+        }
+        $csv = file_get_contents($csvFile->getPathname());
 
         $errorMsg = '';
         $rowsFailed = 0;

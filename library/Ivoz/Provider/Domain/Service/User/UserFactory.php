@@ -22,7 +22,7 @@ class UserFactory
         int $companyId,
         string $name,
         string $lastName,
-        string $email = null
+        string $email,
     ): UserInterface {
 
         $user = $this
