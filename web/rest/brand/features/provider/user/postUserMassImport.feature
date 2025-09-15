@@ -137,8 +137,8 @@ Content-Disposition: form-data; name="company"
 Content-Disposition: form-data; name="csv"; filename="massImport.csv"
 Content-Type: text/csv
 
-Name,Lastname,name@irontec.com,terminalName,Z7+KJn8m3k,YealinkT21P_E2,a00000000052,2002,ES,946002050,DDIProviderName
-John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,2003,ES,946002051,DDIProviderName
+Name,Lastname,name@irontec.com,terminalName,Z7+KJn8m3k,YealinkT21P_E2,a00000000052,2002,,946002050,DDIProviderName
+John,Doe,jon@irontec.com,terminalName2,Y8+LQn8m3k,YealinkT21P_E2,a00000000053,2003,,946002051,DDIProviderName
 ------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8--
 
     """
