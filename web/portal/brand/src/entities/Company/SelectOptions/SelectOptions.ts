@@ -14,7 +14,7 @@ const CompanySelectOptions: SelectOptionsType = ({
     path: `${Company.path}?_order[name]=ASC`,
     params: {
       _pagination: false,
-      _itemsPerPage: 5000,
+      _itemsPerPage: 10000,
       _properties: ['id', 'name'],
     },
     successCallback: async (data) => {
