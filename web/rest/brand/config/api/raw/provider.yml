@@ -1599,6 +1599,7 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
     get_status_collection:
       method: 'GET'
       path: 'terminals/status'
+      controller: 'Controller\Provider\TerminalStatusAction'
       operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Terminal\TerminalDto::CONTEXT_STATUS
       normalization_context:
         groups: [
