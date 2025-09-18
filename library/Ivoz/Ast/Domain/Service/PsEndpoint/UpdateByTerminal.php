@@ -7,6 +7,7 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleEventHandlerInterface;
 
@@ -71,19 +72,13 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
             $endpointDto->setDirectMedia('yes');
         }
 
-        /** @var PsEndpointInterface $endpoint */
-        $endpoint = $this
-            ->entityTools
-            ->persistDto(
+        /** @var TerminalDto $terminalDto */
+        $terminalDto = $this->entityTools->entityToDto($terminal);
+        $terminalDto->setPsEndpoint(
                 $endpointDto,
-                $endpoint,
-                true
-            );
-
-        $terminal
-            ->setPsEndpoint($endpoint);
+        );
 
         $this->entityTools
-            ->persist($terminal);
+            ->persistDto($terminalDto);
     }
 }

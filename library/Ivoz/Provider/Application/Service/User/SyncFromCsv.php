@@ -147,12 +147,6 @@ class SyncFromCsv
                 if (!$extensionNumber) {
                     continue;
                 }
-
-                $callerId = sprintf('%s <%s>', $persistedUser->getFullName(), $extensionNumber);
-                /** @var PsEndpointDto $endpointDto */
-                $endpointDto = $this->entityTools->entityToDto($endpoint);
-                $endpointDto->setCallerid($callerId);
-                $this->entityTools->persistDto($endpointDto, $endpoint);
             } catch (\Exception $e) {
                 $errors[$k + 1] = $e->getMessage();
                 continue;
