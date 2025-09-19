@@ -65,7 +65,7 @@ const properties: IvrEntryProperties = {
         hide: toggleFlds,
       },
     },
-    null: _('Unassigned'),
+    null: _('Hang up'),
     default: '__null__',
   },
   numberCountry: {
