@@ -87,7 +87,7 @@ const properties: DdiProperties = {
       retail: _('Retail Account', { count: 1 }),
       locution: _('Locution', { count: 1 }),
     },
-    null: _('Unassigned'),
+    null: _('Hang up'),
     visualToggle: {
       __null__: {
         show: [],

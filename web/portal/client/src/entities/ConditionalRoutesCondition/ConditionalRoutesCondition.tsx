@@ -74,7 +74,7 @@ const properties: ConditionalRoutesConditionProperties = {
   routeType: {
     label: _('Route type'),
     component: RouteType,
-    null: _('Unassigned'),
+    null: _('Hang up'),
     default: '__null__',
     enum: {
       user: _('User', { count: 1 }),
