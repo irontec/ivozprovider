@@ -47,6 +47,30 @@ days will be holidays using the buttons in its row:
    is called *Import from CSV*.
    Also a range of dates may be added with *Add Holiday date range* menu option.
 
+CSV Import Format
+~~~~~~~~~~~~~~~~~
+
+This option is found in the date list menu and is called *Import from CSV*.
+
+The CSV file for importing holidays must contain the following columns *(Fields marked with * are required
+)*:
+
+    Name*
+        Name of the holiday
+    Date*
+        Event date in YYYY-MM-DD format
+
+The columns must be separated by semicolons (;) and strings must be enclosed in double quotes (""). The escape character is backslash (\\).
+
+.. rubric:: Example CSV file
+
+.. code-block:: none
+
+    "New Year's Eve","2024-12-31"
+    "New Year's Day","2025-01-01"
+    "Labor Day","2025-05-01"
+    "\"Special\" Holiday","2025-12-26"
+
 .. _special schedules:
 
 Special schedules
@@ -114,4 +138,3 @@ Cases:
     - Call at 16:00: normal logic.
 
     - Call at 18:00: out of schedule due to special schedule.
-
