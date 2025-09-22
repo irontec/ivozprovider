@@ -6,7 +6,7 @@ use Assert\Assertion;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
-use Ivoz\Core\Domain\Model\Mailer\Attachment;
+use Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
@@ -78,6 +78,7 @@ class Sender extends RouteHandlerAbstract
         );
 
         // Get provider voicemail
+        /** @var VoicemailInterface $astVoicemail */
         $voicemail = $astVoicemail->getVoicemail();
 
         // No voicemail, this should not happen
