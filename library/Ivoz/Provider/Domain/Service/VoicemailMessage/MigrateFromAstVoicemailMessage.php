@@ -31,6 +31,10 @@ class MigrateFromAstVoicemailMessage
             $mailboxContext,
         );
 
+        if (!$astVoicemail) {
+            return;
+        }
+
         /** @var VoicemailInterface $voicemail */
         $voicemail = $astVoicemail->getVoicemail();
 
