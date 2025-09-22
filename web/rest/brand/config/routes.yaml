@@ -69,15 +69,6 @@ get_my_active_calls_realtime_filter:
     _api_item_operation_name: 'get_my_active_calls_realtime_filter'
     _api_receive: false
 
-post_users_mass_import:
-  path: '/users/mass_import'
-  methods: ['POST', 'GET']
-  defaults:
-    _controller: Controller\Provider\PostUsersMassImportAction
-    _api_resource_class: 'Model\UsersMassImport'
-    _api_item_operation_name: 'post_users_mass_import'
-    _api_collection_operation_name: 'post_users_mass_import'
-    _api_receive: false
 
 put_billable_call_rate_by_callid:
   path: '/billable_calls/{callid}/rate'
