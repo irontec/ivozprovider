@@ -1,6 +1,5 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 const ResidentialSelectOptions: SelectOptionsType = ({
@@ -9,13 +8,17 @@ const ResidentialSelectOptions: SelectOptionsType = ({
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
   const Company = entities.Company;
+  const getAction = store.getActions().api.get;
 
-  return fetchAllPages({
-    endpoint: `${Company.path}?type=residential&_order[name]=ASC`,
+  return getAction({
+    path: `${Company.path}?type=residential&_order[name]=ASC`,
     params: {
+      _pagination: false,
+      _itemsPerPage: 10000,
+
       _properties: ['id', 'name', 'company'],
     },
-    setter: async (data) => {
+    successCallback: async (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({
@@ -23,7 +26,6 @@ const ResidentialSelectOptions: SelectOptionsType = ({
           label: item.name,
         });
       }
-
       callback(options);
     },
     cancelToken,
