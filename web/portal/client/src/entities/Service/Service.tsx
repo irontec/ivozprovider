@@ -12,6 +12,7 @@ const companyService: EntityInterface = {
   iden: 'Service',
   title: _('Service', { count: 2 }),
   path: '/services',
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Services',

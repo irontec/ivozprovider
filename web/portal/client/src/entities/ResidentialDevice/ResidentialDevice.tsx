@@ -277,6 +277,7 @@ const residentialDevice: EntityInterface = {
   path: '/residential_devices',
   properties,
   columns: ['name', 'domain', 'description', 'statusIcon'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ResidentialDevices',

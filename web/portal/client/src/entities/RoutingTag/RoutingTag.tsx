@@ -28,6 +28,7 @@ const routingTag: EntityInterface = {
   },
   properties,
   columns,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RoutingTags',

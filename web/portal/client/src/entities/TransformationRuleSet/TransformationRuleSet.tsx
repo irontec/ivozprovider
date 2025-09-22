@@ -10,6 +10,7 @@ const transformationRuleSet: EntityInterface = {
   iden: 'TransformationRuleSet',
   title: _('Transformation RuleSet', { count: 2 }),
   path: '/transformation_rule_sets',
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'TransformationRuleSets',

@@ -15,26 +15,6 @@ Feature: Retrieve users
       """
       [
           {
-              "startTime": "2018-11-22 17:54:49",
-              "duration": 3600,
-              "direction": "outbound",
-              "caller": "102",
-              "callee": "+34676896561",
-              "owner": null,
-              "disposition": "answered",
-              "id": 1
-          },
-          {
-              "startTime": "2018-11-22 17:54:49",
-              "duration": 3600,
-              "direction": "outbound",
-              "caller": "102",
-              "callee": "+34676896561",
-              "owner": null,
-              "disposition": "answered",
-              "id": 2
-          },
-          {
               "startTime": "match:regexp(/\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}/)",
               "duration": 3600,
               "direction": "outbound",
@@ -42,7 +22,30 @@ Feature: Retrieve users
               "callee": "+34676896564",
               "owner": null,
               "disposition": "answered",
+              "numRecordings": 0,
               "id": 3
+          },
+          {
+              "startTime": "2018-11-22 17:54:49",
+              "duration": 3600,
+              "direction": "outbound",
+              "caller": "102",
+              "callee": "+34676896561",
+              "owner": null,
+              "disposition": "answered",
+              "numRecordings": 1,
+              "id": 2
+          },
+          {
+              "startTime": "2018-11-22 17:54:49",
+              "duration": 3600,
+              "direction": "outbound",
+              "caller": "102",
+              "callee": "+34676896561",
+              "owner": null,
+              "disposition": "answered",
+              "numRecordings": 0,
+              "id": 1
           }
       ]
       """

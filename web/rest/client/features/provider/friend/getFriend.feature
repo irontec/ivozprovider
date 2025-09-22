@@ -15,16 +15,6 @@ Feature: Retrieve friends
       """
       [
           {
-              "name": "testFriend",
-              "description": "",
-              "priority": 1,
-              "directConnectivity": "yes",
-              "id": 1,
-              "company": 1,
-              "domain": 3,
-              "interCompany": null
-          },
-          {
               "name": "InterCompany1_3",
               "description": "",
               "priority": 2,
@@ -33,6 +23,16 @@ Feature: Retrieve friends
               "company": 1,
               "domain": 3,
               "interCompany": 3
+          },
+          {
+              "name": "testFriend",
+              "description": "",
+              "priority": 1,
+              "directConnectivity": "yes",
+              "id": 1,
+              "company": 1,
+              "domain": 3,
+              "interCompany": null
           }
       ]
       """

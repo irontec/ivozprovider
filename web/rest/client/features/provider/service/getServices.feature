@@ -15,6 +15,24 @@ Feature: Retrieve services
       """
       [
           {
+              "iden": "CloseLock",
+              "defaultCode": "30",
+              "extraArgs": true,
+              "id": 5,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
+          },
+          {
               "iden": "DirectPickUp",
               "defaultCode": "94",
               "extraArgs": true,
@@ -55,24 +73,6 @@ Feature: Retrieve services
               "defaultCode": "93",
               "extraArgs": true,
               "id": 3,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              },
-              "description": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              }
-          },
-          {
-              "iden": "CloseLock",
-              "defaultCode": "30",
-              "extraArgs": true,
-              "id": 5,
               "name": {
                   "en": "en",
                   "es": "es",

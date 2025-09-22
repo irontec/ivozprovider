@@ -11,6 +11,7 @@ const ratingPlanGroup: EntityInterface = {
   iden: 'RatingPlanGroup',
   title: _('Rating plan', { count: 2 }),
   path: '/rating_plan_groups',
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RatingPlanGroups',

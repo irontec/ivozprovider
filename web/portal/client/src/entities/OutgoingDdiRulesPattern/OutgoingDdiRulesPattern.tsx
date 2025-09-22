@@ -88,6 +88,7 @@ const OutgoingDdiRulesPattern: EntityInterface = {
   path: '/outgoing_ddi_rules_patterns',
   properties,
   columns: ['priority', 'type', 'rule', 'action', 'forcedDdiStr'],
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'OutgoingDDIRulesPatterns',

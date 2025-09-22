@@ -29,7 +29,7 @@ const activeCalls: EntityInterface = {
     delete: false,
     iden: 'BillableCalls',
   },
-  defaultOrderBy: 'startTime',
+  defaultOrderBy: '',
   defaultOrderDirection: OrderDirection.desc,
 };
 
