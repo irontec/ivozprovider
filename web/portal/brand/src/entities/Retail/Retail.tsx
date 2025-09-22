@@ -31,6 +31,7 @@ const Retail = {
 
     return module.foreignKeyGetter;
   },
+  defaultOrderBy: '',
 };
 
 export default Retail;

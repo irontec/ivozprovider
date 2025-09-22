@@ -13,6 +13,7 @@ const BannedAddressBruteForce: EntityInterface = {
   localPath: '/brute_force',
   columns: ['company', 'aor', 'ip', 'lastTimeBanned', 'description'],
   customActions: Actions,
+  defaultOrderBy: '',
 };
 
 export default BannedAddressBruteForce;

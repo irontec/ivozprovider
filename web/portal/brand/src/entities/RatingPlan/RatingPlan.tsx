@@ -127,6 +127,7 @@ const RatingPlan: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default RatingPlan;

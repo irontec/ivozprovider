@@ -16,6 +16,7 @@ const Wholesale = {
     'routingTagIds',
     'codecIds',
   ],
+  defaultOrderBy: '',
 };
 
 export default Wholesale;

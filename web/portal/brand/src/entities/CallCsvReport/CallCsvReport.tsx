@@ -75,6 +75,7 @@ const CallCsvReport: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default CallCsvReport;

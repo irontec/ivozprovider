@@ -48,6 +48,7 @@ const PublicEntity: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default PublicEntity;

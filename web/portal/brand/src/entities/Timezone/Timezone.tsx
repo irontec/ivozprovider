@@ -20,6 +20,7 @@ const timezone: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default timezone;

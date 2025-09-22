@@ -255,6 +255,7 @@ const ResidentialDevice: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default ResidentialDevice;

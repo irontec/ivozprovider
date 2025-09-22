@@ -60,6 +60,7 @@ const RoutingPatternGroup: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default RoutingPatternGroup;

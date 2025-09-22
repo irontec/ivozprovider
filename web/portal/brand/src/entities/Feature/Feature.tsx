@@ -55,6 +55,7 @@ const Feature: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default Feature;

@@ -59,6 +59,7 @@ const ProxyTrunk: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default ProxyTrunk;

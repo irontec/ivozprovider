@@ -86,6 +86,7 @@ const NotificationTemplateContent: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default NotificationTemplateContent;

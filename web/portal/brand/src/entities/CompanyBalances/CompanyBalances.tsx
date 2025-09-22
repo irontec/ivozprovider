@@ -20,6 +20,7 @@ const CompanyBalances = {
   localPath: '/prepaid_balance',
   columns: ['typeIcon', 'name', 'billingMethod', 'balance'],
   customActions: Actions,
+  defaultOrderBy: '',
 };
 
 export default CompanyBalances;

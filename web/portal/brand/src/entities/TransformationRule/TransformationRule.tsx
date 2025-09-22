@@ -122,6 +122,7 @@ const TransformationRule: EntityInterface = {
     return module.default;
   },
   ChildDecorator,
+  defaultOrderBy: '',
 };
 
 export default TransformationRule;

@@ -57,6 +57,7 @@ const DdiProviderAddress: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default DdiProviderAddress;
