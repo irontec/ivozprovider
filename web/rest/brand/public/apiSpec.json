@@ -34959,54 +34959,6 @@
                 ]
             }
         },
-        "/users/mass_import": {
-            "post": {
-                "consumes": [
-                    "multipart/form-data"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Provider"
-                ],
-                "parameters": [
-                    {
-                        "name": "company",
-                        "in": "formData",
-                        "type": "integer",
-                        "required": true,
-                        "description": "Company Id"
-                    },
-                    {
-                        "name": "csv",
-                        "in": "formData",
-                        "type": "file",
-                        "required": true,
-                        "description": "*name, *lastname, email, terminal name,terminal password, terminal model, mac, extension, ddi country, ddi number, ddi provider"
-                    }
-                ],
-                "operationId": "post_users_mass_importUsersMassImportCollection",
-                "summary": "Creates a UsersMassImport resource.",
-                "responses": {
-                    "201": {
-                        "description": "UsersMassImport resource created",
-                        "schema": {
-                            "$ref": "#/definitions/UsersMassImport"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid input"
-                    },
-                    "404": {
-                        "description": "Resource not found"
-                    },
-                    "422": {
-                        "description": "Unprocessable entity"
-                    }
-                }
-            }
-        },
         "/users_addresses": {
             "get": {
                 "produces": [
@@ -47050,23 +47002,6 @@
                 },
                 "company": {
                     "$ref": "#/definitions/Company"
-                }
-            }
-        },
-        "UsersMassImport": {
-            "type": "object",
-            "properties": {
-                "success": {
-                    "description": "",
-                    "type": "boolean"
-                },
-                "errorMsg": {
-                    "description": "",
-                    "type": "string"
-                },
-                "failed": {
-                    "description": "",
-                    "type": "integer"
                 }
             }
         },
