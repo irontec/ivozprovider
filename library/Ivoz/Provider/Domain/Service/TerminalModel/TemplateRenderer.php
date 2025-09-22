@@ -99,9 +99,7 @@ class TemplateRenderer
                 public function run()
                 {
                     error_reporting(error_reporting() & ~E_NOTICE);
-                    ?>
-                    [__TEMPLATE_BODY__]
-                    <?php
+                    ?>[__TEMPLATE_BODY__]<?php
                 }
             }
 
