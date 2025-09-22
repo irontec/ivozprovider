@@ -206,11 +206,11 @@ Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEn
     access_control: '"ROLE_SUPER_ADMIN" in roles'
     order:
       publicEntity: ASC
-    read_access_control:
-      ROLE_SUPER_ADMIN:
-        inherited:
-          administrator: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
-          publicEntity:  'Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity'
+    # read_access_control:
+    #   ROLE_SUPER_ADMIN:
+    #     inherited:
+    #       administrator: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+    #       publicEntity:  'Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity'
 
 Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
   attributes:
