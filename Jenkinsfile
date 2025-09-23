@@ -29,7 +29,7 @@ pipeline {
         BRANCH_NAME = getBranchName()
         BASE_BRANCH = getBaseBranch()
         JIRA_TICKET = getJiraTicket()
-        HASH_BACK = getCurrentHash("asterisk/agi library microservices schema web/rest")
+        HASH_BACK = getCurrentHash("asterisk/agi doc library microservices schema web/rest")
         HASH_FRONT_PLATFORM = getCurrentHash("web/portal/platform")
         HASH_FRONT_BRAND = getCurrentHash("web/portal/brand")
         HASH_FRONT_CLIENT = getCurrentHash("web/portal/client")
