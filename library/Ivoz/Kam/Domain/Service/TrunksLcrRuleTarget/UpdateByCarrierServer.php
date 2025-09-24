@@ -37,8 +37,8 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
     public function execute(CarrierServerInterface $carrierServer)
     {
         $isNew = $carrierServer->isNew();
-        $isDeleted = $carrierServer->hasBeenDeleted();
-        if (!$isDeleted && !$isNew) {
+
+        if (!$isNew) {
             return;
         }
 

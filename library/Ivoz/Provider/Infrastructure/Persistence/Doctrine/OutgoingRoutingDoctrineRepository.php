@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingRepository;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -42,5 +43,18 @@ class OutgoingRoutingDoctrineRepository extends ServiceEntityRepository implemen
             $routingPattern->getOutgoingRoutings(),
             $query->getResult()
         );
+    }
+
+    /**
+     * @return OutgoingRoutingInterface[]
+     */
+    public function findByCarrier(int $carrierId): array
+    {
+        /** @var OutgoingRouting[] $response */
+        $response = $this->findBy([
+            "carrier" => $carrierId
+        ]);
+
+        return $response;
     }
 }

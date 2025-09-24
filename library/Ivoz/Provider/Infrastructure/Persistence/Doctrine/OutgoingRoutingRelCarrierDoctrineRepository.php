@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierRepository;
+use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -20,5 +21,18 @@ class OutgoingRoutingRelCarrierDoctrineRepository extends ServiceEntityRepositor
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, OutgoingRoutingRelCarrier::class);
+    }
+
+    /**
+     * @return OutgoingRoutingRelCarrierInterface[]
+     */
+    public function findByCarrier(int $carrierId): array
+    {
+        /** @var OutgoingRoutingRelCarrier[] $response */
+        $response = $this->findBy([
+            "carrier" => $carrierId
+        ]);
+
+        return $response;
     }
 }

@@ -211,8 +211,7 @@ class CarrierServerLifeCycleTest extends KernelTestCase
     {
         $this->removeCarrierServer();
         $this->assetChangedEntities([
-            CarrierServer::class,
-            TrunksLcrRuleTarget::class
+            CarrierServer::class
         ]);
     }
 }

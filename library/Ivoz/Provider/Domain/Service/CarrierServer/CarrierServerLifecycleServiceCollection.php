@@ -22,6 +22,10 @@ class CarrierServerLifecycleServiceCollection implements LifecycleServiceCollect
             \Ivoz\Kam\Domain\Service\TrunksLcrGateway\UpdateByCarrierServer::class => 10,
             \Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\UpdateByCarrierServer::class => 20,
         ],
+        "pre_remove" =>
+        [
+            \Ivoz\Provider\Domain\Service\CarrierServer\DeleteProtection::class => 200,
+        ],
         "post_remove" =>
         [
             \Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\UpdateByCarrierServer::class => 200,
