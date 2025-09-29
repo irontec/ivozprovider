@@ -15,6 +15,16 @@ Feature: Retrieve public entities
       """
       [
           {
+              "iden": "_RatingPlanPrices",
+              "id": 1,
+              "name": {
+                  "en": "_RatingPlanPrices",
+                  "es": "_RatingPlanPrices",
+                  "ca": "_RatingPlanPrices",
+                  "it": "_RatingPlanPrices"
+              }
+          },
+          {
               "iden": "BillableCalls",
               "id": 2,
               "name": {
@@ -25,43 +35,33 @@ Feature: Retrieve public entities
               }
           },
           {
-              "iden": "Companies",
-              "id": 11,
+              "iden": "Calendars",
+              "id": 3,
               "name": {
-                  "en": "Companies",
-                  "es": "Companies",
-                  "ca": "Companies",
-                  "it": "Companies"
+                  "en": "Calendars",
+                  "es": "Calendars",
+                  "ca": "Calendars",
+                  "it": "Calendars"
               }
           },
           {
-              "iden": "Countries",
-              "id": 20,
+              "iden": "CalendarPeriods",
+              "id": 4,
               "name": {
-                  "en": "Countries",
-                  "es": "Countries",
-                  "ca": "Countries",
-                  "it": "Countries"
+                  "en": "CalendarPeriods",
+                  "es": "CalendarPeriods",
+                  "ca": "CalendarPeriods",
+                  "it": "CalendarPeriods"
               }
           },
           {
-              "iden": "Features",
-              "id": 30,
+              "iden": "CalendarPeriodsRelSchedules",
+              "id": 5,
               "name": {
-                  "en": "Features",
-                  "es": "Features",
-                  "ca": "Features",
-                  "it": "Features"
-              }
-          },
-          {
-              "iden": "Invoices",
-              "id": 37,
-              "name": {
-                  "en": "Invoices",
-                  "es": "Invoices",
-                  "ca": "Invoices",
-                  "it": "Invoices"
+                  "en": "CalendarPeriodsRelSchedules",
+                  "es": "CalendarPeriodsRelSchedules",
+                  "ca": "CalendarPeriodsRelSchedules",
+                  "it": "CalendarPeriodsRelSchedules"
               }
           }
       ]
