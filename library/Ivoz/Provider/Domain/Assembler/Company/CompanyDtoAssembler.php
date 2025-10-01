@@ -31,15 +31,6 @@ class CompanyDtoAssembler implements CustomDtoAssemblerInterface
 
         $dto = $entity->toDto($depth);
 
-        $featureIds = array_map(
-            function (FeaturesRelCompanyInterface $relFeature) {
-                return (int)$relFeature
-                    ->getFeature()
-                    ->getId();
-            },
-            $entity->getRelFeatures()
-        );
-
         $domain = $entity->getDomain();
         if ($domain) {
             $dto->setDomainName(
@@ -47,48 +38,74 @@ class CompanyDtoAssembler implements CustomDtoAssemblerInterface
             );
         }
 
-        $geoIpAllowedCountryIds = array_map(
-            function (CompanyRelGeoIPCountryInterface $relCountry) {
-                return (int)$relCountry
-                    ->getCountry()
-                    ->getId();
-            },
-            $entity->getRelCountries()
-        );
+        $skipRelationalFields = in_array($context, [
+            'collection',
+            CompanyDto::CONTEXT_BALANCES,
+            CompanyDto::CONTEXT_DAILY_USAGE
+        ], true);
 
-        $routingTagIds = array_map(
-            function (CompanyRelRoutingTagInterface $relRoutingTag) {
-                return (int)$relRoutingTag
-                    ->getRoutingTag()
-                    ->getId();
-            },
-            $entity->getRelRoutingTags()
-        );
-
-        $codecIds = array_map(
-            function (CompanyRelCodecInterface $relRelCodec) {
-                return (int)$relRelCodec
-                    ->getCodec()
-                    ->getId();
-            },
-            $entity->getRelCodecs()
-        );
-
-        $dto
-            ->setFeatureIds(
-                $featureIds
-            )
-            ->setGeoIpAllowedCountries(
-                $geoIpAllowedCountryIds
-            )
-            ->setRoutingTagIds(
-                $routingTagIds
-            )
-            ->setCodecIds(
-                $codecIds
+        if (!$skipRelationalFields) {
+            $featureIds = array_map(
+                function (FeaturesRelCompanyInterface $relFeature) {
+                    return (int)$relFeature
+                        ->getFeature()
+                        ->getId();
+                },
+                $entity->getRelFeatures()
             );
 
-        if ($context === 'collection') {
+            $geoIpAllowedCountryIds = array_map(
+                function (CompanyRelGeoIPCountryInterface $relCountry) {
+                    return (int)$relCountry
+                        ->getCountry()
+                        ->getId();
+                },
+                $entity->getRelCountries()
+            );
+
+            $routingTagIds = array_map(
+                function (CompanyRelRoutingTagInterface $relRoutingTag) {
+                    return (int)$relRoutingTag
+                        ->getRoutingTag()
+                        ->getId();
+                },
+                $entity->getRelRoutingTags()
+            );
+
+            $codecIds = array_map(
+                function (CompanyRelCodecInterface $relRelCodec) {
+                    return (int)$relRelCodec
+                    ->getCodec()
+                    ->getId();
+                },
+                $entity->getRelCodecs()
+            );
+
+            $dto
+                ->setFeatureIds(
+                    $featureIds
+                )
+                ->setGeoIpAllowedCountries(
+                    $geoIpAllowedCountryIds
+                )
+                ->setRoutingTagIds(
+                    $routingTagIds
+                )
+                ->setCodecIds(
+                    $codecIds
+                );
+        }
+
+        if ($context === CompanyDto::CONTEXT_BALANCES) {
+            $dto->setCurrencySymbol(
+                $entity->getCurrencySymbol()
+            );
+
+            $this->setAccountStatus(
+                $entity,
+                $dto
+            );
+        } elseif ($context === CompanyDto::CONTEXT_DAILY_USAGE) {
             $dto->setCurrencySymbol(
                 $entity->getCurrencySymbol()
             );
