@@ -52,11 +52,7 @@ Feature: Retrieve features rel brand
                   "faxNotificationTemplate": null,
                   "invoiceNotificationTemplate": null,
                   "callCsvNotificationTemplate": null,
-                  "maxDailyUsageNotificationTemplate": 2,
-                  "featureIds": [],
-                  "geoIpAllowedCountries": [],
-                  "routingTagIds": [],
-                  "codecIds": []
+                  "maxDailyUsageNotificationTemplate": 2
               },
               "feature": {
                   "iden": "queues",
@@ -144,11 +140,7 @@ Feature: Retrieve features rel brand
               "corporation": 1,
               "applicationServerSet": 1,
               "mediaRelaySet": 0,
-              "location": 1,
-              "featureIds": [],
-              "geoIpAllowedCountries": [],
-              "routingTagIds": [],
-              "codecIds": []
+              "location": 1
           },
           "feature": {
               "iden": "queues",

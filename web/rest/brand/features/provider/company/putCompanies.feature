@@ -102,15 +102,7 @@ Feature: Update company
           "corporation": 1,
           "applicationServerSet": 1,
           "mediaRelaySet": 1,
-          "location": 1,
-          "featureIds": [
-              3
-          ],
-          "geoIpAllowedCountries": [
-              1
-          ],
-          "routingTagIds": [],
-          "codecIds": []
+          "location": 1
       }
       """
 
