@@ -91,14 +91,6 @@ Feature: Create companies
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
-          "featureIds": [
-              1
-          ],
-          "geoIpAllowedCountries": [
-              1
-          ],
-          "routingTagIds": [],
-          "codecIds": [],
           "applicationServerSet": 0,
           "mediaRelaySet": 0
       }
@@ -238,15 +230,7 @@ Feature: Create companies
               "id": 0
           },
           "location": null,
-          "domainName": "api.irontec.com",
-          "featureIds": [
-              1
-          ],
-          "geoIpAllowedCountries": [
-              1
-          ],
-          "routingTagIds": [],
-          "codecIds": []
+          "domainName": "api.irontec.com"
       }
       """
 
@@ -350,16 +334,6 @@ Feature: Create companies
           "accessCredentialNotificationTemplate": null,
           "corporation": null,
           "applicationServerSet": 1,
-          "mediaRelaySet": 1,
-          "featureIds": [
-              1
-          ],
-          "geoIpAllowedCountries": [
-              1
-          ],
-          "routingTagIds": [
-              1
-          ],
-          "codecIds": []
+          "mediaRelaySet": 1
       }
       """

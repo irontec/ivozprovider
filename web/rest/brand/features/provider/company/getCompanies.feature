@@ -19,7 +19,7 @@ Feature: Retrieve companies
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
               "maxDailyUsage": 2,
-              "currentDayUsage": -1,
+              "currentDayUsage": 1,
               "billingMethod": "prepaid",
               "balance": 1.2,
               "id": 1,
@@ -27,30 +27,14 @@ Feature: Retrieve companies
                   "nif": "12345678A"
               },
               "outgoingDdi": null,
-              "corporation": 1,
-              "applicationServerSet": 1,
-              "mediaRelaySet": 0,
-              "domainName": "127.0.0.1",
-              "currencySymbol": "€",
-              "currentDayMaxUsage": "Unavailable",
-              "accountStatus": "Unavailable",
-              "featureIds": [
-                  1,
-                  2,
-                  3,
-                  4,
-                  5
-              ],
-              "geoIpAllowedCountries": [],
-              "routingTagIds": [],
-              "codecIds": []
+              "domainName": "127.0.0.1"
           },
           {
               "type": "vpbx",
               "name": "Irontec Test Company",
               "domainUsers": "test.irontec.com",
               "maxDailyUsage": 1000000,
-              "currentDayUsage": -1,
+              "currentDayUsage": 0,
               "billingMethod": "postpaid",
               "balance": 0,
               "id": 2,
@@ -58,24 +42,14 @@ Feature: Retrieve companies
                   "nif": "12345678-Z"
               },
               "outgoingDdi": null,
-              "corporation": 1,
-              "applicationServerSet": 1,
-              "mediaRelaySet": 0,
-              "domainName": "test.irontec.com",
-              "currencySymbol": "€",
-              "currentDayMaxUsage": "Unavailable",
-              "accountStatus": "Unavailable",
-              "featureIds": [],
-              "geoIpAllowedCountries": [],
-              "routingTagIds": [],
-              "codecIds": []
+              "domainName": "test.irontec.com"
           },
           {
               "type": "residential",
               "name": "Residential Company",
               "domainUsers": null,
               "maxDailyUsage": 1000000,
-              "currentDayUsage": -1,
+              "currentDayUsage": 0,
               "billingMethod": "postpaid",
               "balance": 0,
               "id": 4,
@@ -83,24 +57,14 @@ Feature: Retrieve companies
                   "nif": "12345679-Z"
               },
               "outgoingDdi": null,
-              "corporation": null,
-              "applicationServerSet": 1,
-              "mediaRelaySet": 0,
-              "domainName": "retail.irontec.com",
-              "currencySymbol": "€",
-              "currentDayMaxUsage": "Unavailable",
-              "accountStatus": "Unavailable",
-              "featureIds": [],
-              "geoIpAllowedCountries": [],
-              "routingTagIds": [],
-              "codecIds": []
+              "domainName": "retail.irontec.com"
           },
           {
               "type": "retail",
               "name": "Retail Company",
               "domainUsers": null,
               "maxDailyUsage": 1000000,
-              "currentDayUsage": -1,
+              "currentDayUsage": 0,
               "billingMethod": "postpaid",
               "balance": 0,
               "id": 3,
@@ -108,26 +72,14 @@ Feature: Retrieve companies
                   "nif": "12345679-Z"
               },
               "outgoingDdi": null,
-              "corporation": null,
-              "applicationServerSet": 1,
-              "mediaRelaySet": 0,
-              "domainName": "retail.irontec.com",
-              "currencySymbol": "€",
-              "currentDayMaxUsage": "Unavailable",
-              "accountStatus": "Unavailable",
-              "featureIds": [],
-              "geoIpAllowedCountries": [],
-              "routingTagIds": [
-                  1
-              ],
-              "codecIds": []
+              "domainName": "retail.irontec.com"
           },
           {
               "type": "wholesale",
               "name": "Wholesale Company",
               "domainUsers": "wholesale.irontec.com",
               "maxDailyUsage": 1000000,
-              "currentDayUsage": -1,
+              "currentDayUsage": 0,
               "billingMethod": "postpaid",
               "balance": 0,
               "id": 5,
@@ -135,17 +87,7 @@ Feature: Retrieve companies
                   "nif": "12345689-Z"
               },
               "outgoingDdi": null,
-              "corporation": null,
-              "applicationServerSet": 0,
-              "mediaRelaySet": 0,
-              "domainName": null,
-              "currencySymbol": "€",
-              "currentDayMaxUsage": "Unavailable",
-              "accountStatus": "Unavailable",
-              "featureIds": [],
-              "geoIpAllowedCountries": [],
-              "routingTagIds": [],
-              "codecIds": []
+              "domainName": null
           }
       ]
       """
@@ -284,16 +226,6 @@ Feature: Retrieve companies
               "id": 1,
               "company": 1
           },
-          "domainName": "127.0.0.1",
-          "featureIds": [
-              1,
-              2,
-              3,
-              4,
-              5
-          ],
-          "geoIpAllowedCountries": [],
-          "routingTagIds": [],
-          "codecIds": []
+          "domainName": "127.0.0.1"
       }
       """
