@@ -431,7 +431,6 @@ const CallCsvScheduler: EntityInterface = {
   },
   marshaller,
   unmarshaller,
-  defaultOrderBy: '',
 };
 
 export default CallCsvScheduler;
