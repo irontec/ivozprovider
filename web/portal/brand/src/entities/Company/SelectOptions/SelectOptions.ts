@@ -1,23 +1,26 @@
 import { DropdownChoices } from '@irontec/ivoz-ui';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import {
+  DynamicSelectOptionsArgs,
+  SelectOptionsType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import { fetchFilteredPage } from '@irontec/ivoz-ui/helpers/fetchFilteredPage';
 import store from 'store';
 
-const CompanySelectOptions: SelectOptionsType = ({
-  callback,
-  cancelToken,
-}): Promise<unknown> => {
+const CompanySelectOptions: SelectOptionsType<DynamicSelectOptionsArgs> = (
+  { callback, cancelToken },
+  customProps
+): Promise<unknown> => {
   const entities = store.getState().entities.entities;
   const Company = entities.Company;
-  const getAction = store.getActions().api.get;
 
-  return getAction({
-    path: `${Company.path}?_order[name]=ASC`,
+  return fetchFilteredPage({
+    endpoint: `${Company.path}?_order[name]=ASC`,
     params: {
-      _pagination: false,
-      _itemsPerPage: 10000,
       _properties: ['id', 'name'],
+      'name[partial]': customProps?.searchTerm ?? '',
+      id: customProps?.id,
     },
-    successCallback: async (data) => {
+    setter: async (data) => {
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({
