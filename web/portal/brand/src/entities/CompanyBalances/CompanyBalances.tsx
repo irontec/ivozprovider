@@ -6,6 +6,7 @@ import Actions from './Action';
 
 const CompanyBalances = {
   ...Company,
+  path: '/companies/balances',
   acl: {
     read: true,
     create: false,
