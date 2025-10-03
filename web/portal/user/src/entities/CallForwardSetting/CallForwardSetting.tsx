@@ -91,6 +91,7 @@ const CallForwardSetting: EntityInterface = {
   toStr: (row: CallForwardSettingPropertyList<string>) => `${row.id}`,
   properties,
   columns,
+  defaultOrderBy: '',
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
 

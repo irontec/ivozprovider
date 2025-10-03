@@ -57,6 +57,7 @@ const Account: EntityInterface = {
   ...User,
   icon: AccountCircleIcon,
   localPath: '/my/account',
+  defaultOrderBy: '',
   acl: {
     ...User.acl,
     create: false,

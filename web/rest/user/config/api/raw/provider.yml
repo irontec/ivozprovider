@@ -45,6 +45,10 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
         - My
   attributes:
     access_control: '"ROLE_COMPANY_USER" in roles'
+    order:
+      enabled: ASC
+      callTypeFilter: ASC
+      callForwardType: ASC
 
 Ivoz\Provider\Domain\Model\Country\Name:
 Ivoz\Provider\Domain\Model\Country\Zone:
@@ -157,6 +161,8 @@ Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
     get: ~
   attributes:
     access_control: '"ROLE_COMPANY_USER" in roles'
+    order:
+      calldate: DESC
     read_access_control:
       ROLE_COMPANY_USER:
         - or:
@@ -286,6 +292,8 @@ Ivoz\Provider\Domain\Model\WebPortal\WebTheme:
 
 Ivoz\Provider\Domain\Model\UsersCdr\UsersCdr:
   attributes:
+    order:
+      startTime: DESC
     pagination_client_enabled: true
     access_control: '"ROLE_COMPANY_USER" in roles'
     read_access_control:
@@ -359,7 +367,7 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
   attributes:
     access_control: '"ROLE_COMPANY_USER" in roles'
     order:
-      calldate: ASC
+      calldate: DESC
     read_access_control:
       inherited:
         fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
