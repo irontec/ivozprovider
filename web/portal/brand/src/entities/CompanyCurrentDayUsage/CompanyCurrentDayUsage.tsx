@@ -54,6 +54,7 @@ const ListDecorator: ListDecoratorType = (props) => {
 
 const CompanyCurrentDayUsage = {
   ...Company,
+  path: '/companies/dailyUsage',
   acl: {
     read: true,
     write: false,
