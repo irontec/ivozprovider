@@ -10,6 +10,7 @@ const timezone: EntityInterface = {
   iden: 'Timezones',
   title: _('Timezone', { count: 2 }),
   path: '/timezones',
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Timezones',

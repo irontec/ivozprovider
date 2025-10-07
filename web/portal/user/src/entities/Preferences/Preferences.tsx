@@ -8,6 +8,7 @@ const Preferences: EntityInterface = {
   ...User,
   icon: ManageAccountsIcon,
   localPath: '/my/preferences',
+  defaultOrderBy: '',
   acl: {
     ...User.acl,
     create: false,

@@ -15,18 +15,18 @@ Feature: Retrieve voicemail messages
       """
       [
           {
-              "calldate": "2022-03-31 14:08:43",
-              "folder": "INBOX",
-              "caller": "Alice <101>",
-              "duration": 4,
-              "id": 1
-          },
-          {
               "calldate": "2022-04-01 14:31:52",
               "folder": "INBOX",
               "caller": "Alice <101>",
               "duration": 21,
               "id": 4
+          },
+          {
+              "calldate": "2022-03-31 14:08:43",
+              "folder": "INBOX",
+              "caller": "Alice <101>",
+              "duration": 4,
+              "id": 1
           }
       ]
       """
