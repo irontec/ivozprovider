@@ -1,4 +1,4 @@
-<img src="doc/images/logoprovider.png" width="350"> ![stable](https://raster.shields.io/badge/latest-4.4-blue.png) ![release](https://raster.shields.io/badge/release-tempest-14b9bc.png)
+<img src="doc/images/logoprovider.png" width="350"> ![stable](https://raster.shields.io/badge/latest-4.5-blue.png) ![release](https://raster.shields.io/badge/release-tempest-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
@@ -51,7 +51,7 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/ba
 | oasis | 1.7 |     [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-amd64.iso)     |
 | artemis | 2.23.0 | [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-2.23~2.23.0-artemis-amd64.iso) | |
 | halliday | 3.4.1 | [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-3.4~3.4.1-halliday-amd64.iso)  | |
-| tempest | 4.4.0 |  [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-4.4~4.4.0-tempest-amd64.iso)  | |
+| tempest | 4.5.0 |  [![iso http](doc/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-4.5~4.5.0-tempest-amd64.iso)  | |
 
 
 You can read about differences between releases [here](https://github.com/irontec/ivozprovider/blob/main/FAQ.md#what-release-should-i-use).
