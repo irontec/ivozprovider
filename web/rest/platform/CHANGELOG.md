@@ -1,4 +1,17 @@
 # Changelog
+## 4.5.0
+* Models:
+    - Dashboard:
+        - Added `productName` property.
+    - Ddi:
+        - Added "locution" to routeType enum values.
+    - WebPortal:
+        - Added `productName` as a required field with default value "Ivoz Provider".
+    - WebPortal-detailed:
+        - Added `productName` as a required field with default value "Ivoz Provider".
+    - WebTheme:
+        - Added `productName` property.
+
 ## 4.4.0
 * Models:
     - Ddi:

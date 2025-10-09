@@ -1,4 +1,22 @@
 # Changelog
+## 4.5.0
+* Endpoints:
+    - /companies/balances:
+        - Added [GET] endpoint to retrieve company balance information.
+    - /companies/dailyUsage:
+        - Added [GET] endpoint to retrieve company daily usage information.
+* Models:
+    - Dashboard:
+        - Added `productName` property.
+    - OutgoingRouting:
+        - Added `disableDiversion` as a required field with default value 0.
+    - OutgoingRouting-collection:
+        - Added `disableDiversion` as a required field with default value 0.
+    - WebPortal:
+        - Added `productName` as a required field with default value "Ivoz Provider".
+    - WebPortal-detailed:
+        - Added `productName` as a required field with default value "Ivoz Provider".
+
 ## 4.4.0
 * Models:
     - Ddi:

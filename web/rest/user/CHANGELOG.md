@@ -1,4 +1,13 @@
 # Changelog
+## 4.5.0
+* Models:
+    - Dashboard:
+        - Added `productName` property.
+    - Extension:
+        - Added "locution" to routeType enum values.
+    - WebTheme:
+        - Added `productName` property.
+
 ## 4.4.0
 * Models:
     - User:
