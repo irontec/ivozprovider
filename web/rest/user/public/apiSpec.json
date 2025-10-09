@@ -6225,6 +6225,10 @@
                 "outgoingDdi": {
                     "description": "",
                     "type": "string"
+                },
+                "productName": {
+                    "description": "",
+                    "type": "string"
                 }
             }
         },
@@ -6249,7 +6253,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -7727,6 +7732,10 @@
                     "type": "string"
                 },
                 "title": {
+                    "description": "",
+                    "type": "string"
+                },
+                "productName": {
                     "description": "",
                     "type": "string"
                 }

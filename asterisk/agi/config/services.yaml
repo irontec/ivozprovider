@@ -235,3 +235,7 @@ services:
     Agi\Action\VoicemailAction:
         lazy: true
         arguments: ~
+
+    Agi\Action\LocutionAction:
+        lazy: true
+        arguments: ~

@@ -127,4 +127,103 @@ class TransformationRuleLifeCycleTest extends KernelTestCase
             TransformationRule::class
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function it_validates_invalid_regex_pattern()
+    {
+        $this->expectExceptionMessageMatches(
+            '/"\/\\[A-Z\\+\/" is not a valid regexp/'
+        );
+
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('Invalid regex test')
+            ->setPriority(1)
+            ->setMatchExpr('[A-Z+')
+            ->setReplaceExpr('test')
+            ->setTransformationRuleSetId(1);
+
+        $this->entityTools->persistDto($transformationRuleDto, null, true);
+    }
+
+    /**
+     * @test
+     */
+    public function it_validates_backreference_without_capture_groups()
+    {
+        $this->expectExceptionMessageMatches(
+            '/Replace expression contains backreference \\\\1 but match expression only has 0 capture groups/'
+        );
+
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('Backreference without capture groups')
+            ->setPriority(1)
+            ->setMatchExpr('[0-9]+')
+            ->setReplaceExpr('prefix_\1_suffix')
+            ->setTransformationRuleSetId(1);
+
+        $this->entityTools->persistDto($transformationRuleDto, null, true);
+    }
+
+    /**
+     * @test
+     */
+    public function it_validates_backreference_exceeds_capture_groups()
+    {
+        $this->expectExceptionMessageMatches(
+            '/Replace expression contains backreference \\\\3 but match expression only has 2 capture groups/'
+        );
+
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('Backreference exceeds capture groups')
+            ->setPriority(1)
+            ->setMatchExpr('^([0-9]+)-([a-z]+)$')
+            ->setReplaceExpr('\\1_\\2_\\3')
+            ->setTransformationRuleSetId(1);
+
+        $this->entityTools->persistDto($transformationRuleDto, null, true);
+    }
+
+    /**
+     * @test
+     */
+    public function it_allows_valid_backreferences()
+    {
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('Valid backreferences')
+            ->setPriority(1)
+            ->setMatchExpr('^([0-9]+)-([a-z]+)-([A-Z]+)$')
+            ->setReplaceExpr('\3_\2_\1')
+            ->setTransformationRuleSetId(1);
+
+        $result = $this->entityTools->persistDto($transformationRuleDto, null, true);
+        $this->assertNotNull($result);
+    }
+
+    /**
+     * @test
+     */
+    public function it_allows_replace_without_backreferences()
+    {
+        $transformationRuleDto = new TransformationRuleDto();
+        $transformationRuleDto
+            ->setType('callerout')
+            ->setDescription('No backreferences')
+            ->setPriority(1)
+            ->setMatchExpr('([0-9]+)')
+            ->setReplaceExpr('nobackreferences')
+            ->setTransformationRuleSetId(1);
+
+        $result = $this->entityTools->persistDto($transformationRuleDto, null, true);
+        $this->assertNotNull($result);
+    }
 }

@@ -84,6 +84,7 @@ const AdministratorRelPublicEntity: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default AdministratorRelPublicEntity;

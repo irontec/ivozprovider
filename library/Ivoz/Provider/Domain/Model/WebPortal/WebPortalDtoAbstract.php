@@ -36,6 +36,11 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     private $color = '#000000';
 
     /**
+     * @var string|null
+     */
+    private $productName = 'Ivoz Provider';
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -84,6 +89,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
             'urlType' => 'urlType',
             'name' => 'name',
             'color' => 'color',
+            'productName' => 'productName',
             'id' => 'id',
             'logo' => [
                 'fileSize',
@@ -105,6 +111,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
             'urlType' => $this->getUrlType(),
             'name' => $this->getName(),
             'color' => $this->getColor(),
+            'productName' => $this->getProductName(),
             'id' => $this->getId(),
             'logo' => [
                 'fileSize' => $this->getLogoFileSize(),
@@ -175,6 +182,18 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     public function getColor(): ?string
     {
         return $this->color;
+    }
+
+    public function setProductName(string $productName): static
+    {
+        $this->productName = $productName;
+
+        return $this;
+    }
+
+    public function getProductName(): ?string
+    {
+        return $this->productName;
     }
 
     /**

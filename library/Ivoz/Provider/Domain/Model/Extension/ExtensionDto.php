@@ -31,6 +31,7 @@ class ExtensionDto extends ExtensionDtoAbstract
                 'queueId' => 'queue',
                 'conditionalRouteId' => 'conditionalRoute',
                 'voicemailId' => 'voicemail',
+                'locutionId' => 'locution',
                 'numberCountryId' => 'numberCountry'
             ];
         }

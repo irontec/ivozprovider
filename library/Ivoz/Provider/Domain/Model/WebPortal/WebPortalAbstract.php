@@ -45,6 +45,11 @@ abstract class WebPortalAbstract
     protected $color = '#000000';
 
     /**
+     * @var string
+     */
+    protected $productName = 'Ivoz Provider';
+
+    /**
      * @var Logo
      */
     protected $logo;
@@ -67,11 +72,13 @@ abstract class WebPortalAbstract
         string $url,
         string $urlType,
         string $color,
+        string $productName,
         Logo $logo
     ) {
         $this->setUrl($url);
         $this->setUrlType($urlType);
         $this->setColor($color);
+        $this->setProductName($productName);
         $this->logo = $logo;
     }
 
@@ -142,6 +149,8 @@ abstract class WebPortalAbstract
         Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
         $color = $dto->getColor();
         Assertion::notNull($color, 'getColor value is null, but non null value was expected.');
+        $productName = $dto->getProductName();
+        Assertion::notNull($productName, 'getProductName value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -153,6 +162,7 @@ abstract class WebPortalAbstract
             $url,
             $urlType,
             $color,
+            $productName,
             $logo
         );
 
@@ -182,6 +192,8 @@ abstract class WebPortalAbstract
         Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
         $color = $dto->getColor();
         Assertion::notNull($color, 'getColor value is null, but non null value was expected.');
+        $productName = $dto->getProductName();
+        Assertion::notNull($productName, 'getProductName value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -194,6 +206,7 @@ abstract class WebPortalAbstract
             ->setUrlType($urlType)
             ->setName($dto->getName())
             ->setColor($color)
+            ->setProductName($productName)
             ->setLogo($logo)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()));
@@ -211,6 +224,7 @@ abstract class WebPortalAbstract
             ->setUrlType(self::getUrlType())
             ->setName(self::getName())
             ->setColor(self::getColor())
+            ->setProductName(self::getProductName())
             ->setLogoFileSize(self::getLogo()->getFileSize())
             ->setLogoMimeType(self::getLogo()->getMimeType())
             ->setLogoBaseName(self::getLogo()->getBaseName())
@@ -228,6 +242,7 @@ abstract class WebPortalAbstract
             'urlType' => self::getUrlType(),
             'name' => self::getName(),
             'color' => self::getColor(),
+            'productName' => self::getProductName(),
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),
@@ -302,6 +317,20 @@ abstract class WebPortalAbstract
     public function getColor(): string
     {
         return $this->color;
+    }
+
+    protected function setProductName(string $productName): static
+    {
+        Assertion::maxLength($productName, 64, 'productName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->productName = $productName;
+
+        return $this;
+    }
+
+    public function getProductName(): string
+    {
+        return $this->productName;
     }
 
     public function getLogo(): Logo

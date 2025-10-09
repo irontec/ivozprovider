@@ -38,11 +38,11 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
     /**
      * @param string $mailbox
      * @param string $context
-     * @return VoicemailInterface
+     * @return ?VoicemailInterface
      */
-    public function findByMailboxAndContext($mailbox, $context)
+    public function findByMailboxAndContext($mailbox, $context): ?VoicemailInterface
     {
-        /** @var VoicemailInterface $response */
+        /** @var ?VoicemailInterface $response */
         $response = $this->findOneBy([
             'mailbox' => $mailbox,
             'context' => $context

@@ -10,6 +10,7 @@ const FeaturesRelCompany: EntityInterface = {
   iden: 'FeaturesRelCompany',
   title: _('Feature', { count: 2 }),
   path: '/features_rel_companies',
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'FeaturesRelCompanies',

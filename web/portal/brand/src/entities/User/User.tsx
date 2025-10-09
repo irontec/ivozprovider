@@ -261,6 +261,7 @@ const User: EntityInterface = {
   },
   validator,
   marshaller,
+  defaultOrderBy: '',
 };
 
 export default User;

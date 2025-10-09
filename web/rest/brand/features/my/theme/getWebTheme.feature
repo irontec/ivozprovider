@@ -13,6 +13,7 @@ Feature: Retrieve active calls
           "name": "Irontec Ivozprovider Brand Admin Portal",
           "logo": "https://brand-ivozprovider.irontec.com/api/brand/my/logo/2/brand-logo.jpeg",
           "color": "#000000",
-          "title": "Irontec Ivozprovider Brand Admin Portal"
+          "title": "Irontec Ivozprovider Brand Admin Portal",
+          "productName": "Brand text"
       }
       """

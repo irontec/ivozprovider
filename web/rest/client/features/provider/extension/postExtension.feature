@@ -35,7 +35,7 @@ Feature: Create extensions
           "routeType": "user",
           "numberValue": null,
           "friendValue": null,
-          "id": 6,
+          "id": 8,
           "ivr": null,
           "huntGroup": null,
           "conferenceRoom": null,
@@ -43,7 +43,100 @@ Feature: Create extensions
           "queue": null,
           "conditionalRoute": null,
           "numberCountry": null,
-          "voicemail": null
+          "voicemail": null,
+          "locution": null
+      }
+      """
+
+  @createSchema
+  Scenario: Create an extension with locution route type and no locution selected
+    Given I add Company Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/extensions" with body:
+      """
+      {
+          "number": "113",
+          "routeType": "locution",
+          "numberValue": null,
+          "friendValue": null,
+          "ivr": null,
+          "huntGroup": null,
+          "conferenceRoom": null,
+          "user": null,
+          "queue": null,
+          "conditionalRoute": null,
+          "numberCountry": null,
+          "voicemail": null,
+          "locution": null
+      }
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+          "number": "113",
+          "routeType": "locution",
+          "numberValue": null,
+          "friendValue": null,
+          "id": 8,
+          "ivr": null,
+          "huntGroup": null,
+          "conferenceRoom": null,
+          "user": null,
+          "queue": null,
+          "conditionalRoute": null,
+          "numberCountry": null,
+          "voicemail": null,
+          "locution": null
+      }
+      """
+
+  @createSchema
+  Scenario: Create an extension with locution route type
+    Given I add Company Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/extensions" with body:
+      """
+      {
+          "number": "112",
+          "routeType": "locution",
+          "numberValue": null,
+          "friendValue": null,
+          "ivr": null,
+          "huntGroup": null,
+          "conferenceRoom": null,
+          "user": null,
+          "queue": null,
+          "conditionalRoute": null,
+          "numberCountry": null,
+          "voicemail": null,
+          "locution": 1
+      }
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+          "number": "112",
+          "routeType": "locution",
+          "numberValue": null,
+          "friendValue": null,
+          "id": 8,
+          "ivr": null,
+          "huntGroup": null,
+          "conferenceRoom": null,
+          "user": null,
+          "queue": null,
+          "conditionalRoute": null,
+          "numberCountry": null,
+          "voicemail": null,
+          "locution": 1
       }
       """
 
@@ -57,46 +150,33 @@ Feature: Create extensions
       And the JSON should be like:
       """
       {
-          "number": "111",
-          "routeType": "user",
+          "number": "999",
+          "routeType": "locution",
           "numberValue": null,
           "friendValue": null,
           "id": 6,
           "ivr": null,
           "huntGroup": null,
           "conferenceRoom": null,
-          "user": {
-              "name": "Alice",
-              "lastname": "Allison",
-              "email": "alice@democompany.com",
-              "pass": "*****",
-              "doNotDisturb": false,
-              "isBoss": false,
-              "active": true,
-              "maxCalls": 1,
-              "externalIpCalls": "0",
-              "rejectCallMethod": "rfc",
-              "multiContact": true,
-              "gsQRCode": false,
-              "useDefaultLocation": true,
-              "id": 1,
-              "callAcl": null,
-              "bossAssistant": null,
-              "bossAssistantWhiteList": null,
-              "transformationRuleSet": 1,
-              "language": null,
-              "terminal": 1,
-              "extension": 6,
-              "timezone": 145,
-              "outgoingDdi": 3,
-              "outgoingDdiRule": null,
-              "location": 1,
-              "voicemail": null,
-              "contact": null
-          },
+          "user": null,
           "queue": null,
           "conditionalRoute": null,
           "numberCountry": null,
-          "voicemail": null
+          "voicemail": null,
+          "locution": {
+              "name": "testLocution",
+              "status": null,
+              "id": 1,
+              "encodedFile": {
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
+              },
+              "originalFile": {
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
+              }
+          }
       }
       """

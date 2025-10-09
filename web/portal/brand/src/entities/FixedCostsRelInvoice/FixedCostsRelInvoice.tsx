@@ -57,6 +57,7 @@ const FixedCostsRelInvoice: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default FixedCostsRelInvoice;

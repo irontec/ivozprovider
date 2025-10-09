@@ -35,6 +35,7 @@ interface DashboardData {
   outgoingDdi: string;
   extension: string;
   terminal: string;
+  productName: string;
 }
 
 interface LastMonthCalls {
@@ -139,7 +140,11 @@ const Dashboard = (props: DashboardProps) => {
       <div className='card welcome'>
         <div className='card-container'>
           <div>
-            <h3>{_('Welcome to <br />Ivoz Provider vPBX user portal')}</h3>
+            <h3>
+              {_('Welcome to <br />{{productName}} vPBX user portal', {
+                productName: data.productName,
+              })}
+            </h3>
             <p>
               {_(
                 'In this portal you can see and modify your configuration, list your calls and much more.'

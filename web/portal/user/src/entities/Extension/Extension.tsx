@@ -12,6 +12,7 @@ const extension: EntityInterface = {
   iden: 'Extension',
   title: _('Extension', { count: 2 }),
   path: '/my/company_extensions',
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Extension',

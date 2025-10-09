@@ -10,7 +10,7 @@ describe('Dashboard Residential', () => {
 
     cy.get('.welcome .card-container div h3').should(
       'contain',
-      ' Ivoz Provider residential client portal'
+      'residential client portal'
     );
   });
 

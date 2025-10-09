@@ -21,6 +21,7 @@ const CalendarPeriod: EntityInterface = {
   title: _('Calendar Period Schedule', { count: 2 }),
   path: '/calendar_periods_rel_schedules',
   properties,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'CalendarPeriodsRelSchedules',

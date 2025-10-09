@@ -37,7 +37,7 @@
     <field name="routeType" type="string" column="routeType" length="25" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">[enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail]</option>
+        <option name="comment">[enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail|locution]</option>
       </options>
     </field>
     <field name="friendValue" type="string" column="friendValue" length="25" nullable="true">
@@ -135,6 +135,11 @@
     <many-to-one field="routingTag" target-entity="Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface" fetch="LAZY">
       <join-columns>
         <join-column name="routingTagId" referenced-column-name="id" on-delete="RESTRICT" nullable="true"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="locution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="locutionId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

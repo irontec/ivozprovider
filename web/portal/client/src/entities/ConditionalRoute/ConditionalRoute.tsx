@@ -45,7 +45,7 @@ const properties: ConditionalRouteProperties = {
       conferenceRoom: _('Conference room', { count: 1 }),
       extension: _('Extension', { count: 1 }),
     },
-    null: _('Unassigned'),
+    null: _('Hang up'),
     default: '__null__',
     visualToggle: {
       __null__: {

@@ -119,7 +119,7 @@
   "Voicemail send mail": "Voicemail send mail",
   "Voicemail_one": "Voicemail",
   "Voicemail_other": "Voicemails",
-  "Welcome to <br />Ivoz Provider vPBX user portal": "Welcome to <br />Ivoz Provider vPBX user portal",
+  "Welcome to <br />{{productName}} vPBX user portal": "Welcome to <br />{{productName}} vPBX user portal",
   "Yes": "Yes",
   "You are about to resend this fax": "You are about to resend this fax."
 }

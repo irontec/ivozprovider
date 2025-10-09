@@ -15,6 +15,26 @@ Feature: Retrieve retail accounts
       """
       [
           {
+              "name": "testRetailAccount",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 1,
+              "domain": 6,
+              "company": 3,
+              "status": [
+                  {
+                      "contact": "sip:yealinktest@10.10.1.109:5060",
+                      "publicContact": false,
+                      "received": "sip:212.64.172.26:5060",
+                      "publicReceived": true,
+                      "expires": "2031-01-01 00:59:59",
+                      "userAgent": "Yealink SIP-T23G 44.80.0.130"
+                  }
+              ]
+          },
+          {
               "name": "testRetailAccount2",
               "description": "",
               "directConnectivity": "no",
@@ -57,26 +77,6 @@ Feature: Retrieve retail accounts
               "domain": 6,
               "company": 1,
               "status": []
-          },
-          {
-              "name": "testRetailAccount",
-              "description": "",
-              "directConnectivity": "no",
-              "rtpEncryption": false,
-              "multiContact": true,
-              "id": 1,
-              "domain": 6,
-              "company": 3,
-              "status": [
-                  {
-                      "contact": "sip:yealinktest@10.10.1.109:5060",
-                      "publicContact": false,
-                      "received": "sip:212.64.172.26:5060",
-                      "publicReceived": true,
-                      "expires": "2031-01-01 00:59:59",
-                      "userAgent": "Yealink SIP-T23G 44.80.0.130"
-                  }
-              ]
           },
           {
               "name": "testRetailAccount6",

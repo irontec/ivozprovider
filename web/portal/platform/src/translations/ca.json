@@ -187,6 +187,7 @@
   "Postal code": "Codi postal",
   "Preview": "Preview",
   "Price": "Preu",
+  "Product Name": "Nom del producte",
   "Province": "Província",
   "Proxy Trunk_many": "Proxies Trunk",
   "Proxy Trunk_one": "Proxy Trunk",
@@ -254,7 +255,8 @@
   "Voicemail_one": "Bústia de veu",
   "Voicemail_other": "Bústies de veu",
   "Weight": "Pes",
-  "Welcome to <br /> Ivoz Provider global administrator portal": "Bienvenido al portal de <br />administración global de Ivoz Provider",
+  "Welcome to <br /> {{productName}} global administrator portal": "Benvingut al portal <br />administració global de {{productName}}",
+  "Will be shown in Dashboard": "Es mostrarà al panell",
   "Will be shown on page footer": "Es mostrarà al peu de pàgina",
   "Yes": "Sí"
 }

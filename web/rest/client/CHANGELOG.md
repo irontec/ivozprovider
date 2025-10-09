@@ -1,4 +1,46 @@
 # Changelog
+## 4.5.0
+* Endpoints:
+    - /conditional_routes:
+        - Added locution, locution[] and locution[exists] filter parameters.
+        - Added exists[locution] filter parameter.
+    - /ddi_providers:
+        - Added locution, locution[] and locution[exists] filter parameters.
+        - Added exists[locution] filter parameter.
+    - /extensions:
+        - Added extension.locution filter parameter.
+    - /friends:
+        - Added forcedDdi.locution filter parameter.
+    - /hunt_groups:
+        - Added locution, locution[] and locution[exists] filter parameters.
+        - Added exists[locution] filter parameter.
+    - /outgoing_routings:
+        - Added locution, locution[] and locution[exists] filter parameters.
+        - Added exists[locution] filter parameter.
+    - /queues:
+        - Added locution, locution[] and locution[exists] filter parameters.
+        - Added exists[locution] filter parameter.
+* Models:
+    - Dashboard:
+        - Added `productName` property.
+    - WebTheme:
+        - Added `productName` property.
+    - ConditionalRoute, ConditionalRoute-collection, ConditionalRoute-detailed:
+        - Added `locution` property.
+        - Added "locution" to routeType enum values.
+    - DdiProvider, DdiProvider-collection, DdiProvider-detailed:
+        - Added `locution` property.
+        - Added "locution" to routeType enum values.
+    - HuntGroup, HuntGroup-collection, HuntGroup-detailed:
+        - Added `locution` property.
+        - Added "locution" to routeType enum values.
+    - OutgoingRouting, OutgoingRouting-collection, OutgoingRouting-detailed:
+        - Added `locution` property.
+        - Added "locution" to routeType enum values.
+    - Queue, Queue-collection, Queue-detailed:
+        - Added `locution` property.
+        - Added "locution" to routeType enum values.
+
 ## 4.4.0
 * Endpoints:
     - /users/detailed:

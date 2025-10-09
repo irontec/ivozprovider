@@ -75,9 +75,6 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Controller/My/PutProfileAction.php">
-    <MixedArrayAccess occurrences="1">
-      <code>$data['pass']</code>
-    </MixedArrayAccess>
     <MixedAssignment occurrences="1">
       <code>$data</code>
     </MixedAssignment>

@@ -7754,12 +7754,6 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "accountStatus",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "applicationServerSet",
                         "in": "query",
                         "required": false,
@@ -7910,12 +7904,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "currencySymbol",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "currency[]",
                         "in": "query",
                         "required": false,
@@ -7926,12 +7914,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "currentDayMaxUsage",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "currentDayUsage",
@@ -8018,6 +8000,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "domainUsers[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "domainUsers[end]",
                         "in": "query",
                         "required": false,
@@ -8036,25 +8030,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "domainUsers[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "exists[balance]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "exists[corporation]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -8138,12 +8114,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.countryName[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.countryName[neq]",
                         "in": "query",
                         "required": false,
@@ -8157,6 +8127,12 @@
                     },
                     {
                         "name": "invoicing.countryName[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8282,6 +8258,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.province[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.province[neq]",
                         "in": "query",
                         "required": false,
@@ -8300,12 +8282,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.province[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.town",
                         "in": "query",
                         "required": false,
@@ -8313,12 +8289,6 @@
                     },
                     {
                         "name": "invoicing.town[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.town[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8340,6 +8310,1541 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "location",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "maxDailyUsage",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "maxDailyUsage[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "outgoingDdi[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "transformationRuleSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "voicemailNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "voicemailNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "voicemailNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[balance]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[billingMethod]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[currentDayUsage]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[domainUsers]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.countryName]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.nif]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.postalAddress]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.postalCode]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.province]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.town]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[maxDailyUsage]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[type]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_itemsPerPage",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of items per page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "_page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: _properties[]={propertyName}&_properties[]={anotherPropertyName}&_properties[{nestedPropertyParent}][]={nestedProperty}",
+                        "name": "_properties[]",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false,
+                        "collectionFormat": "multi"
+                    }
+                ]
+            },
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/ld+json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "postCompanyCollection",
+                "summary": "Creates a Company resource.",
+                "responses": {
+                    "201": {
+                        "description": "Company resource created",
+                        "schema": {
+                            "$ref": "#/definitions/Company"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "company",
+                        "in": "body",
+                        "description": "The new Company resource",
+                        "schema": {
+                            "$ref": "#/definitions/Company"
+                        }
+                    }
+                ]
+            }
+        },
+        "/companies/balances": {
+            "get": {
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "get_companies_balancesCompanyCollection",
+                "produces": [
+                    "application/json",
+                    "application/ld+json",
+                    "text/csv",
+                    "application/xml",
+                    "text/xml",
+                    "text/html",
+                    "application/octet-stream"
+                ],
+                "summary": "Retrieves the collection of Company resources.",
+                "responses": {
+                    "200": {
+                        "description": "Company collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Company-balances"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "accessCredentialNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "accessCredentialNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "accessCredentialNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "accountStatus",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "balance[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "corporation",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "corporation[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "corporation[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currencySymbol",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "defaultTimezone",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "defaultTimezone[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "defaultTimezone[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "domainUsers",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "domainUsers[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exists[balance]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[domainUsers]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "faxNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "faxNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "faxNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoiceNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoiceNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoiceNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "location",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "outgoingDdi[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "transformationRuleSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "voicemailNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "voicemailNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "voicemailNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[balance]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[billingMethod]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[domainUsers]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[type]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "_itemsPerPage",
+                        "in": "query",
+                        "required": false,
+                        "description": "The number of items per page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "_page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: _properties[]={propertyName}&_properties[]={anotherPropertyName}&_properties[{nestedPropertyParent}][]={nestedProperty}",
+                        "name": "_properties[]",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false,
+                        "collectionFormat": "multi"
+                    }
+                ]
+            }
+        },
+        "/companies/corporate/unassigned": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "parameters": [
+                    {
+                        "name": "_includeId",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Ensure certain company id is included"
+                    }
+                ],
+                "operationId": "get_companies_corporate_unassignedCompanyCollection",
+                "summary": "Retrieves the collection of Company resources.",
+                "responses": {
+                    "200": {
+                        "description": "Company collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Company"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/dailyUsage": {
+            "get": {
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "get_companies_daily_usageCompanyCollection",
+                "produces": [
+                    "application/json",
+                    "application/ld+json",
+                    "text/csv",
+                    "application/xml",
+                    "text/xml",
+                    "text/html",
+                    "application/octet-stream"
+                ],
+                "summary": "Retrieves the collection of Company resources.",
+                "responses": {
+                    "200": {
+                        "description": "Company collection response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Company-dailyUsage"
+                            }
+                        },
+                        "headers": {
+                            "X-Total-Items": {
+                                "type": "integer"
+                            },
+                            "X-Total-Pages": {
+                                "type": "integer"
+                            },
+                            "X-First-Page": {
+                                "type": "string"
+                            },
+                            "X-Next-Page": {
+                                "type": "string"
+                            },
+                            "X-Last-Page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "accessCredentialNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "accessCredentialNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "accessCredentialNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "accountStatus",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "billingMethod[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "corporation",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "corporation[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "corporation[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currencySymbol",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "currentDayMaxUsage",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "currentDayUsage[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "defaultTimezone",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "defaultTimezone[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "defaultTimezone[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "domainUsers",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "domainUsers[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exists[currentDayUsage]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[domainUsers]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "faxNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "faxNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "faxNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoiceNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoiceNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoiceNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "language",
@@ -8598,16 +10103,6 @@
                             "ASC",
                             "DESC"
                         ],
-                        "name": "_order[balance]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "enum": [
-                            "ASC",
-                            "DESC"
-                        ],
                         "name": "_order[billingMethod]",
                         "in": "query",
                         "required": false,
@@ -8639,66 +10134,6 @@
                             "DESC"
                         ],
                         "name": "_order[id]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "enum": [
-                            "ASC",
-                            "DESC"
-                        ],
-                        "name": "_order[invoicing.countryName]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "enum": [
-                            "ASC",
-                            "DESC"
-                        ],
-                        "name": "_order[invoicing.nif]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "enum": [
-                            "ASC",
-                            "DESC"
-                        ],
-                        "name": "_order[invoicing.postalAddress]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "enum": [
-                            "ASC",
-                            "DESC"
-                        ],
-                        "name": "_order[invoicing.postalCode]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "enum": [
-                            "ASC",
-                            "DESC"
-                        ],
-                        "name": "_order[invoicing.province]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "enum": [
-                            "ASC",
-                            "DESC"
-                        ],
-                        "name": "_order[invoicing.town]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8759,97 +10194,6 @@
                         "collectionFormat": "multi"
                     }
                 ]
-            },
-            "post": {
-                "consumes": [
-                    "application/json",
-                    "application/ld+json"
-                ],
-                "produces": [
-                    "application/json",
-                    "application/ld+json"
-                ],
-                "tags": [
-                    "Provider"
-                ],
-                "operationId": "postCompanyCollection",
-                "summary": "Creates a Company resource.",
-                "responses": {
-                    "201": {
-                        "description": "Company resource created",
-                        "schema": {
-                            "$ref": "#/definitions/Company"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid input"
-                    },
-                    "404": {
-                        "description": "Resource not found"
-                    },
-                    "422": {
-                        "description": "Unprocessable entity"
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "company",
-                        "in": "body",
-                        "description": "The new Company resource",
-                        "schema": {
-                            "$ref": "#/definitions/Company"
-                        }
-                    }
-                ]
-            }
-        },
-        "/companies/corporate/unassigned": {
-            "get": {
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Provider"
-                ],
-                "parameters": [
-                    {
-                        "name": "_includeId",
-                        "in": "query",
-                        "type": "integer",
-                        "required": false,
-                        "description": "Ensure certain company id is included"
-                    }
-                ],
-                "operationId": "get_companies_corporate_unassignedCompanyCollection",
-                "summary": "Retrieves the collection of Company resources.",
-                "responses": {
-                    "200": {
-                        "description": "Company collection response",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Company"
-                            }
-                        },
-                        "headers": {
-                            "X-Total-Items": {
-                                "type": "integer"
-                            },
-                            "X-Total-Pages": {
-                                "type": "integer"
-                            },
-                            "X-First-Page": {
-                                "type": "string"
-                            },
-                            "X-Next-Page": {
-                                "type": "string"
-                            },
-                            "X-Last-Page": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                }
             }
         },
         "/companies/{id}": {
@@ -38571,34 +39915,72 @@
                 "location": {
                     "description": "",
                     "type": "integer"
+                }
+            }
+        },
+        "Company-balances": {
+            "type": "object",
+            "required": [
+                "name",
+                "type",
+                "billingMethod"
+            ],
+            "properties": {
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
                 },
-                "featureIds": {
-                    "description": "Active feature ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
+                "name": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
                 },
-                "geoIpAllowedCountries": {
-                    "description": "Country ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
+                "type": {
+                    "default": "vpbx",
+                    "enum": [
+                        "vpbx",
+                        "retail",
+                        "wholesale",
+                        "residential"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "vpbx",
+                    "type": "string"
                 },
-                "routingTagIds": {
-                    "description": "Routing tag ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
+                "billingMethod": {
+                    "default": "postpaid",
+                    "enum": [
+                        "postpaid",
+                        "prepaid",
+                        "pseudoprepaid",
+                        "none"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "postpaid",
+                    "type": "string"
                 },
-                "codecIds": {
-                    "description": "Codec ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
+                "currencySymbol": {
+                    "description": "Currency symbol",
+                    "type": "string"
+                },
+                "accountStatus": {
+                    "description": "Active, inactive or unavailable",
+                    "type": "string"
+                },
+                "domainUsers": {
+                    "maxLength": 190,
+                    "description": "",
+                    "type": "string"
+                },
+                "balance": {
+                    "default": 0,
+                    "format": "float",
+                    "description": "",
+                    "example": "0.0000",
+                    "type": "number"
                 }
             }
         },
@@ -38608,9 +39990,7 @@
                 "name",
                 "type",
                 "billingMethod",
-                "maxDailyUsage",
-                "applicationServerSet",
-                "mediaRelaySet"
+                "maxDailyUsage"
             ],
             "properties": {
                 "id": {
@@ -38682,6 +40062,75 @@
                     "description": "",
                     "type": "integer"
                 },
+                "applicationServerSetId": {
+                    "description": ""
+                },
+                "domainName": {
+                    "readOnly": true,
+                    "description": "Registration domain",
+                    "type": "string"
+                }
+            }
+        },
+        "Company-dailyUsage": {
+            "type": "object",
+            "required": [
+                "name",
+                "type",
+                "billingMethod",
+                "maxDailyUsage"
+            ],
+            "properties": {
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "name": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "type": {
+                    "default": "vpbx",
+                    "enum": [
+                        "vpbx",
+                        "retail",
+                        "wholesale",
+                        "residential"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "vpbx",
+                    "type": "string"
+                },
+                "billingMethod": {
+                    "default": "postpaid",
+                    "enum": [
+                        "postpaid",
+                        "prepaid",
+                        "pseudoprepaid",
+                        "none"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "postpaid",
+                    "type": "string"
+                },
+                "currentDayUsage": {
+                    "default": 0,
+                    "format": "float",
+                    "description": "",
+                    "example": "0.0000",
+                    "type": "number"
+                },
+                "maxDailyUsage": {
+                    "default": 1000000,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "1000000",
+                    "type": "integer"
+                },
                 "currencySymbol": {
                     "description": "Currency symbol",
                     "type": "string"
@@ -38694,50 +40143,10 @@
                     "description": "Active, inactive or unavailable",
                     "type": "string"
                 },
-                "applicationServerSet": {
+                "domainUsers": {
+                    "maxLength": 190,
                     "description": "",
-                    "type": "integer"
-                },
-                "domainName": {
-                    "readOnly": true,
-                    "description": "Registration domain",
                     "type": "string"
-                },
-                "featureIds": {
-                    "description": "Active feature ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "geoIpAllowedCountries": {
-                    "description": "Country ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "routingTagIds": {
-                    "description": "Routing tag ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "codecIds": {
-                    "description": "Codec ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "corporation": {
-                    "description": "",
-                    "type": "integer"
-                },
-                "mediaRelaySet": {
-                    "description": "",
-                    "type": "integer"
                 }
             }
         },
@@ -38922,34 +40331,6 @@
                     "readOnly": true,
                     "description": "Registration domain",
                     "type": "string"
-                },
-                "featureIds": {
-                    "description": "Active feature ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "geoIpAllowedCountries": {
-                    "description": "Country ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "routingTagIds": {
-                    "description": "Routing tag ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "codecIds": {
-                    "description": "Codec ids",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
                 }
             }
         },
@@ -39434,6 +40815,10 @@
                 "carrierNum": {
                     "description": "",
                     "type": "integer"
+                },
+                "productName": {
+                    "description": "",
+                    "type": "string"
                 }
             }
         },
@@ -40593,7 +41978,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -40654,7 +42040,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -40702,7 +42089,8 @@
                         "friend",
                         "queue",
                         "conditional",
-                        "voicemail"
+                        "voicemail",
+                        "locution"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -43328,6 +44716,12 @@
                     "description": "",
                     "type": "string"
                 },
+                "disableDiversion": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -43368,7 +44762,8 @@
             "required": [
                 "priority",
                 "weight",
-                "stopper"
+                "stopper",
+                "disableDiversion"
             ]
         },
         "OutgoingRouting-collection": {
@@ -43516,6 +44911,12 @@
                     "description": "",
                     "type": "string"
                 },
+                "disableDiversion": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -43550,7 +44951,8 @@
             "required": [
                 "priority",
                 "weight",
-                "stopper"
+                "stopper",
+                "disableDiversion"
             ]
         },
         "Profile": {
@@ -47054,7 +48456,8 @@
             "required": [
                 "url",
                 "urlType",
-                "color"
+                "color",
+                "productName"
             ],
             "properties": {
                 "url": {
@@ -47085,6 +48488,13 @@
                     "maxLength": 10,
                     "description": "",
                     "example": "#000000",
+                    "type": "string"
+                },
+                "productName": {
+                    "default": "Ivoz Provider",
+                    "maxLength": 64,
+                    "description": "",
+                    "example": "Ivoz Provider",
                     "type": "string"
                 },
                 "id": {
@@ -47155,7 +48565,8 @@
             "required": [
                 "url",
                 "urlType",
-                "color"
+                "color",
+                "productName"
             ],
             "properties": {
                 "url": {
@@ -47186,6 +48597,13 @@
                     "maxLength": 10,
                     "description": "",
                     "example": "#000000",
+                    "type": "string"
+                },
+                "productName": {
+                    "default": "Ivoz Provider",
+                    "maxLength": 64,
+                    "description": "",
+                    "example": "Ivoz Provider",
                     "type": "string"
                 },
                 "id": {
@@ -47237,6 +48655,10 @@
                     "type": "string"
                 },
                 "title": {
+                    "description": "",
+                    "type": "string"
+                },
+                "productName": {
                     "description": "",
                     "type": "string"
                 }

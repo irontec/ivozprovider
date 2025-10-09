@@ -15,6 +15,7 @@ use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
@@ -40,6 +41,8 @@ interface ExtensionInterface extends LoggableEntityInterface
     public const ROUTETYPE_CONDITIONAL = 'conditional';
 
     public const ROUTETYPE_VOICEMAIL = 'voicemail';
+
+    public const ROUTETYPE_LOCUTION = 'locution';
 
     /**
      * @codeCoverageIgnore
@@ -137,6 +140,8 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getNumberCountry(): ?CountryInterface;
 
     public function getVoicemail(): ?VoicemailInterface;
+
+    public function getLocution(): ?LocutionInterface;
 
     public function addUser(UserInterface $user): ExtensionInterface;
 

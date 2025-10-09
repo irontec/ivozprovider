@@ -72,6 +72,9 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
       case 'voicemail':
         remapFk(data[idx], 'voicemail', 'target');
         break;
+      case 'locution':
+        remapFk(data[idx], 'locution', 'target');
+        break;
       case null:
         data[idx].target = '';
         break;
@@ -92,6 +95,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     delete data[idx].queue;
     delete data[idx].conditionalRoute;
     delete data[idx].voicemail;
+    delete data[idx].locution;
   }
 
   return data;

@@ -7,6 +7,7 @@ const CalleeInTransformation: EntityInterface = {
   ...TransformationRule,
   localPath: `${TransformationRule.path}_calleein`,
   title: _('Callee In Transformation', { count: 2 }),
+  defaultOrderBy: '',
 };
 
 export default CalleeInTransformation;

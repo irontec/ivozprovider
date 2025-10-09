@@ -58,6 +58,7 @@ const BrandService: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default BrandService;

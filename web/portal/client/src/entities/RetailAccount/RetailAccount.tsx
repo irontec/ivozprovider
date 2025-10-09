@@ -163,6 +163,7 @@ const retailAccount: EntityInterface = {
   properties,
   columns: ['name', 'domain', 'description', 'statusIcon'],
   toStr: (row: RetailAccountPropertyList<string>) => `${row.name}`,
+  defaultOrderBy: '',
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RetailAccounts',

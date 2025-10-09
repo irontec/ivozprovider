@@ -70,6 +70,7 @@ const BalanceMovement: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default BalanceMovement;

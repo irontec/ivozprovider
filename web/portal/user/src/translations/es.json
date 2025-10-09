@@ -135,7 +135,7 @@
   "Voicemail_many": "Buzones de voz",
   "Voicemail_one": "Buzón de voz",
   "Voicemail_other": "Buzones de voz",
-  "Welcome to <br />Ivoz Provider vPBX user portal": "Bienvenido al <br /> Portal de usuario de Ivoz Provider",
+  "Welcome to <br />{{productName}} vPBX user portal": "Bienvenido al <br /> Portal de usuario de {{productName}}",
   "Yes": "Sí",
   "You are about to resend this fax": "Está a punto de reenviar este fax."
 }

@@ -58,6 +58,10 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
                 if ($i < 2) {
                     $this->setDdiProvider($fixture->getReference('_reference_ProviderDdiProvider1'));
                 }
+
+                if ($i === 0) {
+                    $this->setCompany($fixture->getReference('_reference_ProviderCompany3'));
+                }
             })->call($item);
 
             $this->addReference('_reference_ProviderBillableCall' . $i, $item);

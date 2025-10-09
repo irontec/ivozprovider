@@ -7,6 +7,7 @@ const CallerOutTransformation: EntityInterface = {
   ...TransformationRule,
   localPath: `${TransformationRule.path}_callerout`,
   title: _('Caller Out Transformation', { count: 2 }),
+  defaultOrderBy: '',
 };
 
 export default CallerOutTransformation;

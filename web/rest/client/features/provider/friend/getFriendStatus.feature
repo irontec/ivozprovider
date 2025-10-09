@@ -15,6 +15,12 @@ Feature: Retrieve friends status
       """
       [
           {
+              "name": "InterCompany1_3",
+              "id": 3,
+              "domainName": "127.0.0.1",
+              "status": []
+          },
+          {
               "name": "testFriend",
               "id": 1,
               "domainName": "127.0.0.1",
@@ -27,12 +33,6 @@ Feature: Retrieve friends status
                       "userAgent": "Yealink SIP-T23G 44.80.0.130"
                   }
               ]
-          },
-          {
-              "name": "InterCompany1_3",
-              "id": 3,
-              "domainName": "127.0.0.1",
-              "status": []
           }
       ]
       """

@@ -81,7 +81,7 @@ const Dashboard = (props: DashboardProps) => {
     <section className={className}>
       <div className='card welcome'>
         <div className='card-container'>
-          <TitleDescription />
+          <TitleDescription productName={data.productName} />
           <img src='assets/img/dashboard-welcome.svg' />
         </div>
       </div>

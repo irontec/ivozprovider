@@ -19,7 +19,7 @@ class GetResidentialInfo
     ) {
     }
 
-    public function execute(CompanyInterface $company): Dashboard
+    public function execute(CompanyInterface $company, string $productName = 'Ivoz Provider'): Dashboard
     {
         $client = DashboardClient::fromCompany($company);
 
@@ -58,7 +58,8 @@ class GetResidentialInfo
             residentialDeviceNum: $residentialDeviceNum,
             ddiNum: $ddiNum,
             voiceMailNum: $voiceMailNum,
-            latestResidentialDevices: $dashboardResidentialDevices
+            latestResidentialDevices: $dashboardResidentialDevices,
+            productName: $productName
         );
 
 

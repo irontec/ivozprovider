@@ -9,6 +9,8 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Model\Dashboard\Dashboard;
 use Model\Dashboard\DashboardAdmin;
 use Model\Dashboard\DashboardBrand;
+use Ivoz\Provider\Application\Service\WebPortal\ProductNameResolver;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
 
 class GetDashboard
 {
@@ -16,10 +18,11 @@ class GetDashboard
         private BrandRepository $brandRepository,
         private CompanyRepository $clientRepository,
         private UserRepository $userRepository,
+        private ProductNameResolver $productNameResolver,
     ) {
     }
 
-    public function execute(AdministratorInterface $admin): Dashboard
+    public function execute(AdministratorInterface $admin, string $hostname): Dashboard
     {
         $latestBrands = $this->brandRepository->getLatest(5);
         $dashboardBrands = [];
@@ -34,12 +37,18 @@ class GetDashboard
         $clientNum = $this->clientRepository->count([]);
         $userNum = $this->userRepository->count([]);
 
+        $productName = $this->productNameResolver->execute(
+            $hostname,
+            WebPortalInterface::URLTYPE_GOD
+        );
+
         return new Dashboard(
             $dashboardAdmin,
             $dashboardBrands,
             $brandNum,
             $clientNum,
-            $userNum
+            $userNum,
+            $productName
         );
     }
 }

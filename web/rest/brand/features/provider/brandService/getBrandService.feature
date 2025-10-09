@@ -15,6 +15,11 @@ Feature: Retrieve brandService
       """
       [
           {
+              "code": "93",
+              "id": 4,
+              "service": 5
+          },
+          {
               "code": "94",
               "id": 1,
               "service": 1
@@ -28,11 +33,6 @@ Feature: Retrieve brandService
               "code": "93",
               "id": 3,
               "service": 3
-          },
-          {
-              "code": "93",
-              "id": 4,
-              "service": 5
           }
       ]
       """

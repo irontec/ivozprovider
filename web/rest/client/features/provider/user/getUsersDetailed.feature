@@ -102,7 +102,8 @@ Feature: Retrieve users detailed list
                     "queue": null,
                     "conditionalRoute": null,
                     "numberCountry": null,
-                    "voicemail": null
+                    "voicemail": null,
+                    "locution": null
                 },
                 "location": {
                     "name": "testLocation",

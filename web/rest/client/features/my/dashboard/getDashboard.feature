@@ -42,11 +42,12 @@ Feature: Retrieve dashboard
           "latestResidentialDevices": [],
           "latestRetailAccounts": [],
           "userNum": 3,
-          "extensionNum": 5,
-          "ddiNum": 1,
+          "extensionNum": 7,
+          "ddiNum": 3,
           "residentialDeviceNum": null,
           "voiceMailNum": null,
-          "retailsAccountNum": null
+          "retailsAccountNum": null,
+          "productName": "Client text"
       }
       """
 
@@ -87,7 +88,8 @@ Feature: Retrieve dashboard
           "ddiNum": 1,
           "residentialDeviceNum": null,
           "voiceMailNum": null,
-          "retailsAccountNum": 2
+          "retailsAccountNum": 2,
+          "productName": "Client text"
       }
       """
 
@@ -128,7 +130,8 @@ Feature: Retrieve dashboard
           "ddiNum": 1,
           "residentialDeviceNum": 2,
           "voiceMailNum": 1,
-          "retailsAccountNum": null
+          "retailsAccountNum": null,
+          "productName": "Client text"
       }
       """
 
@@ -183,6 +186,7 @@ Feature: Retrieve dashboard
           "ddiNum": null,
           "residentialDeviceNum": null,
           "voiceMailNum": null,
-          "retailsAccountNum": null
+          "retailsAccountNum": null,
+          "productName": "Client text"
       }
       """

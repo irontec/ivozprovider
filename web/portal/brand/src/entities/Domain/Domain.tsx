@@ -22,6 +22,7 @@ const Domain: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default Domain;

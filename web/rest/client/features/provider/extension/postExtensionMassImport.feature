@@ -58,7 +58,8 @@ Extension,CountryPrefix,Number,CountryCode
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "102",
@@ -73,7 +74,8 @@ Extension,CountryPrefix,Number,CountryCode
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "12346",
@@ -88,42 +90,13 @@ Extension,CountryPrefix,Number,CountryCode
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": 68,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "200",
               "routeType": "number",
               "numberValue": "944048184",
-              "friendValue": null,
-              "id": 6,
-              "ivr": null,
-              "huntGroup": null,
-              "conferenceRoom": null,
-              "user": null,
-              "queue": null,
-              "conditionalRoute": null,
-              "numberCountry": 68,
-              "voicemail": null
-          },
-          {
-              "number": "201",
-              "routeType": "number",
-              "numberValue": "944048185",
-              "friendValue": null,
-              "id": 7,
-              "ivr": null,
-              "huntGroup": null,
-              "conferenceRoom": null,
-              "user": null,
-              "queue": null,
-              "conditionalRoute": null,
-              "numberCountry": 68,
-              "voicemail": null
-          },
-          {
-              "number": "202",
-              "routeType": "number",
-              "numberValue": "944048186",
               "friendValue": null,
               "id": 8,
               "ivr": null,
@@ -133,12 +106,13 @@ Extension,CountryPrefix,Number,CountryCode
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": 68,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
-              "number": "203",
+              "number": "201",
               "routeType": "number",
-              "numberValue": "944048187",
+              "numberValue": "944048185",
               "friendValue": null,
               "id": 9,
               "ivr": null,
@@ -147,13 +121,14 @@ Extension,CountryPrefix,Number,CountryCode
               "user": null,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": 38,
-              "voicemail": null
+              "numberCountry": 68,
+              "voicemail": null,
+              "locution": null
           },
           {
-              "number": "204",
+              "number": "202",
               "routeType": "number",
-              "numberValue": "944048188",
+              "numberValue": "944048186",
               "friendValue": null,
               "id": 10,
               "ivr": null,
@@ -162,8 +137,41 @@ Extension,CountryPrefix,Number,CountryCode
               "user": null,
               "queue": null,
               "conditionalRoute": null,
+              "numberCountry": 68,
+              "voicemail": null,
+              "locution": null
+          },
+          {
+              "number": "203",
+              "routeType": "number",
+              "numberValue": "944048187",
+              "friendValue": null,
+              "id": 11,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": 38,
+              "voicemail": null,
+              "locution": null
+          },
+          {
+              "number": "204",
+              "routeType": "number",
+              "numberValue": "944048188",
+              "friendValue": null,
+              "id": 12,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
               "numberCountry": 233,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "987",
@@ -178,7 +186,8 @@ Extension,CountryPrefix,Number,CountryCode
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           {
               "number": "988",
@@ -193,7 +202,40 @@ Extension,CountryPrefix,Number,CountryCode
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
+          },
+          {
+              "number": "998",
+              "routeType": "locution",
+              "numberValue": null,
+              "friendValue": null,
+              "id": 7,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null,
+              "voicemail": null,
+              "locution": null
+          },
+          {
+              "number": "999",
+              "routeType": "locution",
+              "numberValue": null,
+              "friendValue": null,
+              "id": 6,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null,
+              "voicemail": null,
+              "locution": 1
           }
       ]
       """

@@ -66,6 +66,7 @@ class ExtensionAction
             ->setRouteQueue($extension->getQueue())
             ->setRouteConditional($extension->getConditionalRoute())
             ->setRouteVoicemail($extension->getVoicemail())
+            ->setRouteLocution($extension->getLocution())
             ->route();
     }
 }

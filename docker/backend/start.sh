@@ -25,8 +25,12 @@ fi
 pushd schema && composer install --no-interaction && popd
 schema/bin/console doctrine:migrations:migrate -n
 
+# Add xdebug to /etc/hosts
+/sbin/ip route | sudo awk '/default/ { print $3 "      xdebug" }' >> /etc/hosts
+
 ## Services
 sudo service apache2 start
+sudo /usr/sbin/rsyslogd
 
 # Run FPM service
 sudo /usr/sbin/php-fpm8.2 --fpm-config /etc/php/8.2/fpm/php-fpm.conf --nodaemonize --force-stderr

@@ -154,6 +154,7 @@ class DdiAction
             ->setRouteQueue($ddi->getQueue())
             ->setRouteResidential($ddi->getResidentialDevice())
             ->setRouteConditional($ddi->getConditionalRoute())
+            ->setRouteLocution($ddi->getLocution())
             ->route();
     }
 }

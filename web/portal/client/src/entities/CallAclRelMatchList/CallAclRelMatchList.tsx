@@ -35,6 +35,7 @@ const CallAclRelMatchList: EntityInterface = {
   },
   path: '/call_acl_rel_match_lists',
   properties,
+  defaultOrderBy: '',
   Form: async () => {
     const module = await import('./Form');
 

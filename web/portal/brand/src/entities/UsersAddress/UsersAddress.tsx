@@ -74,6 +74,7 @@ const UsersAddress: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default UsersAddress;

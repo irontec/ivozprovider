@@ -52,6 +52,7 @@ const Currency: EntityInterface = {
 
     return module.default;
   },
+  defaultOrderBy: '',
 };
 
 export default Currency;

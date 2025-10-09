@@ -6,7 +6,7 @@ pipeline {
     // Pipeline options
     // ------------------------------------------------------------------------
     options {
-        timeout(time: 25, unit: 'MINUTES')
+        timeout(time: 60, unit: 'MINUTES')
         timestamps()
         disableConcurrentBuilds()
         buildDiscarder(
@@ -29,7 +29,7 @@ pipeline {
         BRANCH_NAME = getBranchName()
         BASE_BRANCH = getBaseBranch()
         JIRA_TICKET = getJiraTicket()
-        HASH_BACK = getCurrentHash("asterisk/agi library microservices schema web/rest")
+        HASH_BACK = getCurrentHash("asterisk/agi doc library microservices schema web/rest")
         HASH_FRONT_PLATFORM = getCurrentHash("web/portal/platform")
         HASH_FRONT_BRAND = getCurrentHash("web/portal/brand")
         HASH_FRONT_CLIENT = getCurrentHash("web/portal/client")
@@ -787,6 +787,13 @@ pipeline {
                             unstable "Feature branch ${env.CHANGE_TARGET} is not properly rebased. Merge is blocked."
                         }
                     } else {
+                        def currentVersion = issue.data.fields.fixVersions[0];
+                        if (currentVersion && !currentVersion.name.contains('current')) {
+                            unstable "Pull request fixedVersions (${currentVersion.name}) is not current version. Merge is blocked."
+                        } else {
+                            echo "Fixed Version: ${currentVersion.name}"
+                        }
+
                         echo "${env.JIRA_TICKET} is a task. Checking subtasks..."
 
                         if (env.CHANGE_TARGET != "main") {

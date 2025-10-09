@@ -61,6 +61,14 @@ class BillableCallNormalizer implements NormalizerInterface
             $response['price'] = null;
         }
 
+        if (isset($response['cost'])) {
+            $response['cost'] = null;
+        }
+
+        if (isset($response['priceDetails'])) {
+            $response['priceDetails'] = null;
+        }
+
         return $response;
     }
 }

@@ -15,12 +15,12 @@ Feature: Retrieve callForwardSetting
       """
       [
           {
-              "callTypeFilter": "internal",
-              "callForwardType": "inconditional",
+              "callTypeFilter": "external",
+              "callForwardType": "busy",
               "targetType": "number",
               "numberValue": "946002053",
               "enabled": true,
-              "id": 1,
+              "id": 3,
               "user": 1,
               "extension": null,
               "voicemail": null,
@@ -48,11 +48,11 @@ Feature: Retrieve callForwardSetting
           },
           {
               "callTypeFilter": "external",
-              "callForwardType": "busy",
+              "callForwardType": "userNotRegistered",
               "targetType": "number",
-              "numberValue": "946002053",
+              "numberValue": "946002054",
               "enabled": true,
-              "id": 3,
+              "id": 4,
               "user": 1,
               "extension": null,
               "voicemail": null,
@@ -63,12 +63,12 @@ Feature: Retrieve callForwardSetting
               "ddi": null
           },
           {
-              "callTypeFilter": "external",
-              "callForwardType": "userNotRegistered",
+              "callTypeFilter": "internal",
+              "callForwardType": "inconditional",
               "targetType": "number",
-              "numberValue": "946002054",
+              "numberValue": "946002053",
               "enabled": true,
-              "id": 4,
+              "id": 1,
               "user": 1,
               "extension": null,
               "voicemail": null,

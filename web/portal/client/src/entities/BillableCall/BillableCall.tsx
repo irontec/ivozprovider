@@ -125,7 +125,7 @@ const billableCall: EntityInterface = {
 
     return module.default;
   },
-  defaultOrderBy: 'startTime',
+  defaultOrderBy: '',
   defaultOrderDirection: OrderDirection.desc,
   ChildDecorator,
 };

@@ -47,6 +47,7 @@ const User: EntityInterface = {
   toStr: (row: UserPropertyList<string>) => `${row.id}`,
   properties,
   columns,
+  defaultOrderBy: '',
   Form: async () => {
     const module = await import('./Form');
 
