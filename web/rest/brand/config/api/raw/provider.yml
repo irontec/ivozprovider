@@ -384,6 +384,22 @@ Ivoz\Provider\Domain\Model\Company\Company:
     get: ~
     put: ~
     delete: ~
+    get_company_balances:
+      method: 'GET'
+      path: '/companies/{id}/balances'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Company\CompanyDto::CONTEXT_BALANCES
+      normalization_context:
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\Company\CompanyDto::CONTEXT_BALANCES
+        ]
+    get_company_daily_usage:
+      method: 'GET'
+      path: '/companies/{id}/dailyUsage'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Company\CompanyDto::CONTEXT_DAILY_USAGE
+      normalization_context:
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\Company\CompanyDto::CONTEXT_DAILY_USAGE
+        ]
     post_company_modify_balance:
       method: 'POST'
       path: '/companies/{id}/modify_balance'
