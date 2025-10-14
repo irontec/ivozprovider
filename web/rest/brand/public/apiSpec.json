@@ -8000,6 +8000,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "domainUsers[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "domainUsers[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "domainUsers[start]",
                         "in": "query",
                         "required": false,
@@ -8018,19 +8030,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "domainUsers[exists]",
+                        "name": "exists[balance]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
                     },
                     {
-                        "name": "domainUsers[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "exists[balance]",
+                        "name": "exists[corporation]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -8114,6 +8120,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.countryName[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.countryName[neq]",
                         "in": "query",
                         "required": false,
@@ -8127,12 +8139,6 @@
                     },
                     {
                         "name": "invoicing.countryName[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.countryName[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8186,18 +8192,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalAddress[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalAddress[end]",
                         "in": "query",
                         "required": false,
@@ -8205,6 +8199,18 @@
                     },
                     {
                         "name": "invoicing.postalAddress[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8294,6 +8300,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.town[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
@@ -8307,12 +8319,6 @@
                     },
                     {
                         "name": "invoicing.town[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.town[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8438,6 +8444,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -8451,12 +8463,6 @@
                     },
                     {
                         "name": "name[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8831,6 +8837,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "accessCredentialNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "accessCredentialNotificationTemplate.type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "accessCredentialNotificationTemplate[]",
                         "in": "query",
                         "required": false,
@@ -8843,13 +8861,31 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "accountStatus",
+                        "name": "allowRecordingRemoval",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "applicationServerSet",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "applicationServerSet",
+                        "name": "applicationServerSet.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet.distributeMethod",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet.name",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8921,12 +8957,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "billingMethod[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "billingMethod[start]",
                         "in": "query",
                         "required": false,
@@ -8945,7 +8975,25 @@
                         "type": "string"
                     },
                     {
+                        "name": "billingMethod[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "callCsvNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate.type",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8969,6 +9017,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "corporation.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "corporation.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "corporation[]",
                         "in": "query",
                         "required": false,
@@ -8987,6 +9047,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "country.code",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country.countryCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "country[]",
                         "in": "query",
                         "required": false,
@@ -8999,7 +9071,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "currencySymbol",
+                        "name": "currency.iden",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency.symbol",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9017,7 +9095,73 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "currentDayUsage",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "currentDayUsage[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentDayUsage[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "defaultTimezone",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "defaultTimezone.comment",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "defaultTimezone.country",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "defaultTimezone.tz",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9077,7 +9221,43 @@
                         "type": "string"
                     },
                     {
+                        "name": "exists[accessCredentialNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[balance]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[callCsvNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[corporation]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[currency]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[currentDayUsage]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[defaultTimezone]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -9089,7 +9269,151 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "exists[externallyextraopts]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[faxNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[invoiceNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[ipfilter]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[language]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[location]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[maxDailyUsageEmail]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[maxDailyUsageNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[onDemandRecordCode]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[onDemandRecord]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[outgoingDdiRule]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[outgoingDdi]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[showInvoices]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[transformationRuleSet]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[voicemailNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "externallyextraopts",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "externallyextraopts[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "faxNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "faxNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "faxNotificationTemplate.type",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9125,6 +9449,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoiceNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoiceNotificationTemplate.type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoiceNotificationTemplate[]",
                         "in": "query",
                         "required": false,
@@ -9137,7 +9473,265 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "invoicing.countryName",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ipfilter",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "ipfilter[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "label.ca",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "label.en",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "label.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "label.it",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language.iden",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9161,6 +9755,24 @@
                         "type": "string"
                     },
                     {
+                        "name": "location.company",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "location.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "location[]",
                         "in": "query",
                         "required": false,
@@ -9173,7 +9785,109 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "maxCalls",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "maxCalls[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate.type",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9191,7 +9905,55 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "maxDailyUsage[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsage[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "mediaRelaySet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet.name",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9209,7 +9971,37 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.ca",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.en",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9233,7 +10025,91 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[neq]",
+                        "name": "onDemandRecord",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "onDemandRecordCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "onDemandRecord[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "onDemandRecord[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9245,7 +10121,85 @@
                         "type": "string"
                     },
                     {
+                        "name": "outgoingDdi.company",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdi.country",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdi.ddi",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi.ddiProvider",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdi.ddie164",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi.routingTag",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdi.type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi.useDdiProviderRoutingTag",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "outgoingDdiRule",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule.company",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdiRule.defaultAction",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule.forcedDdi",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdiRule.name",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9275,7 +10229,67 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "showInvoices",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "showInvoices[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "transformationRuleSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet.areaCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet.country",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "transformationRuleSet.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet.editable",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "transformationRuleSet.generateRules",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "transformationRuleSet.internationalCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet.nationalLen",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "transformationRuleSet.trunkPrefix",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9305,6 +10319,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "type[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "type[start]",
                         "in": "query",
                         "required": false,
@@ -9323,13 +10343,19 @@
                         "type": "string"
                     },
                     {
-                        "name": "type[neq]",
+                        "name": "voicemailNotificationTemplate",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "voicemailNotificationTemplate",
+                        "name": "voicemailNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "voicemailNotificationTemplate.type",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9345,6 +10371,40 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "zone.ca",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.en",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.it",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[allowRecordingRemoval]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "enum": [
@@ -9371,7 +10431,27 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[currentDayUsage]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[domainUsers]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[externallyextraopts]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9391,7 +10471,137 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[invoicing.countryName]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.nif]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.postalAddress]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.postalCode]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.province]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.town]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[ipfilter]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[maxCalls]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[maxDailyUsageEmail]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[maxDailyUsage]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[name]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[onDemandRecordCode]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[onDemandRecord]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[showInvoices]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9535,6 +10745,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "accessCredentialNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "accessCredentialNotificationTemplate.type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "accessCredentialNotificationTemplate[]",
                         "in": "query",
                         "required": false,
@@ -9547,10 +10769,10 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "accountStatus",
+                        "name": "allowRecordingRemoval",
                         "in": "query",
                         "required": false,
-                        "type": "string"
+                        "type": "boolean"
                     },
                     {
                         "name": "applicationServerSet",
@@ -9559,7 +10781,73 @@
                         "type": "string"
                     },
                     {
+                        "name": "applicationServerSet.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet.distributeMethod",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationServerSet.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "applicationServerSet[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "balance[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "balance[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9572,12 +10860,6 @@
                     },
                     {
                         "name": "billingMethod[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "billingMethod[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9601,7 +10883,25 @@
                         "type": "string"
                     },
                     {
+                        "name": "billingMethod[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "callCsvNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callCsvNotificationTemplate.type",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9625,6 +10925,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "corporation.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "corporation.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "corporation[]",
                         "in": "query",
                         "required": false,
@@ -9643,6 +10955,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "country.code",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country.countryCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "country[]",
                         "in": "query",
                         "required": false,
@@ -9655,7 +10979,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "currencySymbol",
+                        "name": "currency.iden",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency.symbol",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9671,12 +11001,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "currentDayMaxUsage",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "currentDayUsage",
@@ -9733,6 +11057,24 @@
                         "type": "string"
                     },
                     {
+                        "name": "defaultTimezone.comment",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "defaultTimezone.country",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "defaultTimezone.tz",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "defaultTimezone[]",
                         "in": "query",
                         "required": false,
@@ -9757,6 +11099,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "domainUsers[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "domainUsers[end]",
                         "in": "query",
                         "required": false,
@@ -9775,19 +11129,43 @@
                         "type": "string"
                     },
                     {
-                        "name": "domainUsers[start]",
+                        "name": "exists[accessCredentialNotificationTemplate]",
                         "in": "query",
                         "required": false,
-                        "type": "string"
+                        "type": "boolean"
                     },
                     {
-                        "name": "domainUsers[partial]",
+                        "name": "exists[balance]",
                         "in": "query",
                         "required": false,
-                        "type": "string"
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[callCsvNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[corporation]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[currency]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "exists[currentDayUsage]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[defaultTimezone]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -9799,7 +11177,151 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "exists[externallyextraopts]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[faxNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[invoiceNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[ipfilter]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[language]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[location]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[maxDailyUsageEmail]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[maxDailyUsageNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[onDemandRecordCode]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[onDemandRecord]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[outgoingDdiRule]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[outgoingDdi]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[showInvoices]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[transformationRuleSet]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[voicemailNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "externallyextraopts",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "externallyextraopts[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "externallyextraopts[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "faxNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "faxNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "faxNotificationTemplate.type",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9835,6 +11357,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoiceNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoiceNotificationTemplate.type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoiceNotificationTemplate[]",
                         "in": "query",
                         "required": false,
@@ -9847,7 +11381,265 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "invoicing.countryName",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.nif[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ipfilter",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "ipfilter[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "label.ca",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "label.en",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "label.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "label.it",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language.iden",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9871,6 +11663,24 @@
                         "type": "string"
                     },
                     {
+                        "name": "location.company",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "location.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "location.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "location[]",
                         "in": "query",
                         "required": false,
@@ -9883,13 +11693,109 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "maxCalls",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "maxCalls[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxCalls[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "maxDailyUsage",
                         "in": "query",
                         "required": false,
                         "type": "integer"
                     },
                     {
+                        "name": "maxDailyUsageEmail",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "maxDailyUsageNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageNotificationTemplate.type",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9949,6 +11855,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "mediaRelaySet.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mediaRelaySet.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "mediaRelaySet[]",
                         "in": "query",
                         "required": false,
@@ -9956,6 +11874,30 @@
                     },
                     {
                         "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.ca",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.en",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9991,13 +11933,181 @@
                         "type": "string"
                     },
                     {
+                        "name": "onDemandRecord",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "onDemandRecordCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "onDemandRecord[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "onDemandRecord[gt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[gte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[lt]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[lte]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[between]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecord[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "outgoingDdi",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
+                        "name": "outgoingDdi.company",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdi.country",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdi.ddi",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi.ddiProvider",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdi.ddie164",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi.routingTag",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdi.type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdi.useDdiProviderRoutingTag",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "outgoingDdiRule",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule.company",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdiRule.defaultAction",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "outgoingDdiRule.forcedDdi",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "outgoingDdiRule.name",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10027,7 +12137,67 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "showInvoices",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "showInvoices[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "transformationRuleSet",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet.areaCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet.country",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "transformationRuleSet.description",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet.editable",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "transformationRuleSet.generateRules",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "transformationRuleSet.internationalCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transformationRuleSet.nationalLen",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "transformationRuleSet.trunkPrefix",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10087,6 +12257,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "voicemailNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "voicemailNotificationTemplate.type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "voicemailNotificationTemplate[]",
                         "in": "query",
                         "required": false,
@@ -10097,6 +12279,50 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "zone.ca",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.en",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.it",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[allowRecordingRemoval]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[balance]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "enum": [
@@ -10133,7 +12359,107 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[externallyextraopts]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.countryName]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.nif]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.postalAddress]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.postalCode]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.province]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[invoicing.town]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[ipfilter]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[maxCalls]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[maxDailyUsageEmail]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10154,6 +12480,36 @@
                             "DESC"
                         ],
                         "name": "_order[name]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[onDemandRecordCode]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[onDemandRecord]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[showInvoices]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10303,6 +12659,80 @@
                         "type": "string"
                     }
                 ]
+            }
+        },
+        "/companies/{id}/balances": {
+            "get": {
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "get_company_balancesCompanyItem",
+                "produces": [
+                    "application/json",
+                    "application/ld+json",
+                    "text/csv",
+                    "application/xml",
+                    "text/xml",
+                    "text/html",
+                    "application/octet-stream"
+                ],
+                "summary": "Retrieves a Company resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Company resource response",
+                        "schema": {
+                            "$ref": "#/definitions/Company-balances"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/companies/{id}/dailyUsage": {
+            "get": {
+                "tags": [
+                    "Provider"
+                ],
+                "operationId": "get_company_daily_usageCompanyItem",
+                "produces": [
+                    "application/json",
+                    "application/ld+json",
+                    "text/csv",
+                    "application/xml",
+                    "text/xml",
+                    "text/html",
+                    "application/octet-stream"
+                ],
+                "summary": "Retrieves a Company resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Company resource response",
+                        "schema": {
+                            "$ref": "#/definitions/Company-dailyUsage"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
             }
         },
         "/companies/{id}/modify_balance": {
@@ -39915,27 +42345,52 @@
                 "location": {
                     "description": "",
                     "type": "integer"
+                },
+                "featureIds": {
+                    "description": "Active feature ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "geoIpAllowedCountries": {
+                    "description": "Country ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "routingTagIds": {
+                    "description": "Routing tag ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "codecIds": {
+                    "description": "Codec ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 }
             }
         },
         "Company-balances": {
             "type": "object",
             "required": [
-                "name",
                 "type",
-                "billingMethod"
+                "name",
+                "maxCalls",
+                "maxDailyUsage",
+                "allowRecordingRemoval",
+                "billingMethod",
+                "country",
+                "transformationRuleSet",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
-                "id": {
-                    "description": "",
-                    "type": "integer",
-                    "readOnly": true
-                },
-                "name": {
-                    "maxLength": 80,
-                    "description": "",
-                    "type": "string"
-                },
                 "type": {
                     "default": "vpbx",
                     "enum": [
@@ -39947,6 +42402,70 @@
                     "maxLength": 25,
                     "description": "",
                     "example": "vpbx",
+                    "type": "string"
+                },
+                "name": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "domainUsers": {
+                    "maxLength": 190,
+                    "description": "",
+                    "type": "string"
+                },
+                "maxCalls": {
+                    "default": 0,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "integer"
+                },
+                "maxDailyUsage": {
+                    "default": 1000000,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "1000000",
+                    "type": "integer"
+                },
+                "currentDayUsage": {
+                    "default": 0,
+                    "format": "float",
+                    "description": "",
+                    "example": "0.0000",
+                    "type": "number"
+                },
+                "maxDailyUsageEmail": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
+                "ipfilter": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
+                    "type": "boolean"
+                },
+                "onDemandRecord": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "integer"
+                },
+                "allowRecordingRemoval": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
+                    "type": "boolean"
+                },
+                "onDemandRecordCode": {
+                    "maxLength": 3,
+                    "description": "",
+                    "type": "string"
+                },
+                "externallyextraopts": {
+                    "maxLength": 65535,
+                    "description": "",
                     "type": "string"
                 },
                 "billingMethod": {
@@ -39962,25 +42481,105 @@
                     "example": "postpaid",
                     "type": "string"
                 },
-                "currencySymbol": {
-                    "description": "Currency symbol",
-                    "type": "string"
-                },
-                "accountStatus": {
-                    "description": "Active, inactive or unavailable",
-                    "type": "string"
-                },
-                "domainUsers": {
-                    "maxLength": 190,
-                    "description": "",
-                    "type": "string"
-                },
                 "balance": {
                     "default": 0,
                     "format": "float",
                     "description": "",
                     "example": "0.0000",
                     "type": "number"
+                },
+                "showInvoices": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "invoicing": {
+                    "$ref": "#/definitions/Company_Invoicing"
+                },
+                "language": {
+                    "$ref": "#/definitions/Language"
+                },
+                "defaultTimezone": {
+                    "$ref": "#/definitions/Timezone"
+                },
+                "country": {
+                    "$ref": "#/definitions/Country"
+                },
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "transformationRuleSet": {
+                    "$ref": "#/definitions/TransformationRuleSet"
+                },
+                "outgoingDdi": {
+                    "$ref": "#/definitions/Ddi"
+                },
+                "outgoingDdiRule": {
+                    "$ref": "#/definitions/OutgoingDdiRule"
+                },
+                "voicemailNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "faxNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "invoiceNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "callCsvNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "maxDailyUsageNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "accessCredentialNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "corporation": {
+                    "$ref": "#/definitions/Corporation"
+                },
+                "applicationServerSet": {
+                    "$ref": "#/definitions/ApplicationServerSet"
+                },
+                "mediaRelaySet": {
+                    "$ref": "#/definitions/MediaRelaySet"
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
+                "featureIds": {
+                    "description": "Active feature ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "geoIpAllowedCountries": {
+                    "description": "Country ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "routingTagIds": {
+                    "description": "Routing tag ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "codecIds": {
+                    "description": "Codec ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 }
             }
         },
@@ -39990,7 +42589,9 @@
                 "name",
                 "type",
                 "billingMethod",
-                "maxDailyUsage"
+                "maxDailyUsage",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
                 "id": {
@@ -40062,35 +42663,68 @@
                     "description": "",
                     "type": "integer"
                 },
-                "applicationServerSetId": {
-                    "description": ""
+                "applicationServerSet": {
+                    "description": "",
+                    "type": "integer"
                 },
                 "domainName": {
                     "readOnly": true,
                     "description": "Registration domain",
                     "type": "string"
+                },
+                "featureIds": {
+                    "description": "Active feature ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "geoIpAllowedCountries": {
+                    "description": "Country ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "routingTagIds": {
+                    "description": "Routing tag ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "codecIds": {
+                    "description": "Codec ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "corporation": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "mediaRelaySet": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
         "Company-dailyUsage": {
             "type": "object",
             "required": [
-                "name",
                 "type",
+                "name",
+                "maxCalls",
+                "maxDailyUsage",
+                "allowRecordingRemoval",
                 "billingMethod",
-                "maxDailyUsage"
+                "country",
+                "transformationRuleSet",
+                "applicationServerSet",
+                "mediaRelaySet"
             ],
             "properties": {
-                "id": {
-                    "description": "",
-                    "type": "integer",
-                    "readOnly": true
-                },
-                "name": {
-                    "maxLength": 80,
-                    "description": "",
-                    "type": "string"
-                },
                 "type": {
                     "default": "vpbx",
                     "enum": [
@@ -40102,6 +42736,70 @@
                     "maxLength": 25,
                     "description": "",
                     "example": "vpbx",
+                    "type": "string"
+                },
+                "name": {
+                    "maxLength": 80,
+                    "description": "",
+                    "type": "string"
+                },
+                "domainUsers": {
+                    "maxLength": 190,
+                    "description": "",
+                    "type": "string"
+                },
+                "maxCalls": {
+                    "default": 0,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "integer"
+                },
+                "maxDailyUsage": {
+                    "default": 1000000,
+                    "minimum": 0,
+                    "description": "",
+                    "example": "1000000",
+                    "type": "integer"
+                },
+                "currentDayUsage": {
+                    "default": 0,
+                    "format": "float",
+                    "description": "",
+                    "example": "0.0000",
+                    "type": "number"
+                },
+                "maxDailyUsageEmail": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
+                "ipfilter": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
+                    "type": "boolean"
+                },
+                "onDemandRecord": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "integer"
+                },
+                "allowRecordingRemoval": {
+                    "default": 1,
+                    "description": "",
+                    "example": "1",
+                    "type": "boolean"
+                },
+                "onDemandRecordCode": {
+                    "maxLength": 3,
+                    "description": "",
+                    "type": "string"
+                },
+                "externallyextraopts": {
+                    "maxLength": 65535,
+                    "description": "",
                     "type": "string"
                 },
                 "billingMethod": {
@@ -40117,36 +42815,105 @@
                     "example": "postpaid",
                     "type": "string"
                 },
-                "currentDayUsage": {
+                "balance": {
                     "default": 0,
                     "format": "float",
                     "description": "",
                     "example": "0.0000",
                     "type": "number"
                 },
-                "maxDailyUsage": {
-                    "default": 1000000,
-                    "minimum": 0,
+                "showInvoices": {
+                    "default": 0,
                     "description": "",
-                    "example": "1000000",
-                    "type": "integer"
+                    "example": "0",
+                    "type": "boolean"
                 },
-                "currencySymbol": {
-                    "description": "Currency symbol",
-                    "type": "string"
-                },
-                "currentDayMaxUsage": {
-                    "description": "Active, inactive or unavailable",
-                    "type": "string"
-                },
-                "accountStatus": {
-                    "description": "Active, inactive or unavailable",
-                    "type": "string"
-                },
-                "domainUsers": {
-                    "maxLength": 190,
+                "id": {
                     "description": "",
-                    "type": "string"
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "invoicing": {
+                    "$ref": "#/definitions/Company_Invoicing"
+                },
+                "language": {
+                    "$ref": "#/definitions/Language"
+                },
+                "defaultTimezone": {
+                    "$ref": "#/definitions/Timezone"
+                },
+                "country": {
+                    "$ref": "#/definitions/Country"
+                },
+                "currency": {
+                    "$ref": "#/definitions/Currency"
+                },
+                "transformationRuleSet": {
+                    "$ref": "#/definitions/TransformationRuleSet"
+                },
+                "outgoingDdi": {
+                    "$ref": "#/definitions/Ddi"
+                },
+                "outgoingDdiRule": {
+                    "$ref": "#/definitions/OutgoingDdiRule"
+                },
+                "voicemailNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "faxNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "invoiceNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "callCsvNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "maxDailyUsageNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "accessCredentialNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "corporation": {
+                    "$ref": "#/definitions/Corporation"
+                },
+                "applicationServerSet": {
+                    "$ref": "#/definitions/ApplicationServerSet"
+                },
+                "mediaRelaySet": {
+                    "$ref": "#/definitions/MediaRelaySet"
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
+                "featureIds": {
+                    "description": "Active feature ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "geoIpAllowedCountries": {
+                    "description": "Country ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "routingTagIds": {
+                    "description": "Routing tag ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "codecIds": {
+                    "description": "Codec ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 }
             }
         },
@@ -40331,6 +43098,34 @@
                     "readOnly": true,
                     "description": "Registration domain",
                     "type": "string"
+                },
+                "featureIds": {
+                    "description": "Active feature ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "geoIpAllowedCountries": {
+                    "description": "Country ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "routingTagIds": {
+                    "description": "Routing tag ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "codecIds": {
+                    "description": "Codec ids",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 }
             }
         },
