@@ -28,8 +28,6 @@ import { CurrencyPropertyList } from 'entities/Currency/CurrencyProperties';
 import { useEffect, useState } from 'react';
 import { useStoreActions } from 'store';
 
-import CompanyBalances from '../CompanyBalances';
-
 const amountChoices = [
   { id: '+', label: '+', operation: 'increment' },
   { id: '-', label: '-', operation: 'decrement' },
@@ -55,7 +53,7 @@ const BalanceOperations: ActionFunctionComponent = (props: ActionItemProps) => {
 
   useEffect(() => {
     apiGet({
-      path: `${CompanyBalances.path}/${row.id}`,
+      path: `/companies/${row.id}/balances`,
       params: {},
       successCallback: async (value: CompanyPropertyList<EntityValues>) => {
         const { symbol } = value.currency as CurrencyPropertyList<EntityValues>;
@@ -84,7 +82,7 @@ const BalanceOperations: ActionFunctionComponent = (props: ActionItemProps) => {
       ?.operation as string;
 
     apiPost({
-      path: `${CompanyBalances.path}/${row.id}/modify_balance`,
+      path: `/companies/${row.id}/modify_balance`,
       values: {
         operation,
         amount: amountValue,
