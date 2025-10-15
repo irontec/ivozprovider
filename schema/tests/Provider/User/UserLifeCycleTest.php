@@ -156,4 +156,36 @@ class UserLifeCycleTest extends KernelTestCase
             Extension::class,
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function it_throws_exception_on_empty_name()
+    {
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage('Name cannot be empty');
+
+        $userDto = $this->getUserDto();
+        $userDto->setName('');
+
+        $this
+            ->entityTools
+            ->persistDto($userDto, null, true);
+    }
+
+    /**
+     * @test
+     */
+    public function it_throws_exception_on_empty_lastname()
+    {
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage('Lastname cannot be empty');
+
+        $userDto = $this->getUserDto();
+        $userDto->setLastname('');
+
+        $this
+            ->entityTools
+            ->persistDto($userDto, null, true);
+    }
 }

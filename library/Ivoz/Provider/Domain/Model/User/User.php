@@ -387,6 +387,24 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         return parent::setEmail($email);
     }
 
+    protected function setName(string $name): static
+    {
+        if ($name === '') {
+            throw new DomainException('Name cannot be empty');
+        }
+
+        return parent::setName($name);
+    }
+
+    protected function setLastname(string $lastname): static
+    {
+        if ($lastname === '') {
+            throw new DomainException('Lastname cannot be empty');
+        }
+
+        return parent::setLastname($lastname);
+    }
+
     private function getCompanyTimezone(): ?TimezoneInterface
     {
         return $this
