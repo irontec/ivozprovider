@@ -58,14 +58,6 @@ Feature: Create companies
           "type": "vpbx",
           "name": "API company",
           "domainUsers": "api.irontec.com",
-          "invoicing": {
-            "nif": "1234",
-            "postalAddress": "abc",
-            "postalCode": "4848",
-            "town": "Usansolocity",
-            "province": "some",
-            "countryName": "country"
-          },
           "maxCalls": 0,
           "maxDailyUsage": 100,
           "currentDayUsage": 0,
@@ -79,6 +71,14 @@ Feature: Create companies
           "balance": 0,
           "showInvoices": false,
           "id": 7,
+          "invoicing": {
+              "nif": "1234",
+              "postalAddress": "abc",
+              "postalCode": "4848",
+              "town": "Usansolocity",
+              "province": "some",
+              "countryName": "country"
+          },
           "language": 1,
           "defaultTimezone": 1,
           "country": 1,
@@ -91,8 +91,19 @@ Feature: Create companies
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
+          "accessCredentialNotificationTemplate": null,
+          "corporation": null,
           "applicationServerSet": 0,
-          "mediaRelaySet": 0
+          "mediaRelaySet": 0,
+          "location": null,
+          "featureIds": [
+              1
+          ],
+          "geoIpAllowedCountries": [
+              1
+          ],
+          "routingTagIds": [],
+          "codecIds": []
       }
       """
 
@@ -230,7 +241,15 @@ Feature: Create companies
               "id": 0
           },
           "location": null,
-          "domainName": "api.irontec.com"
+          "domainName": "api.irontec.com",
+          "featureIds": [
+              1
+          ],
+          "geoIpAllowedCountries": [
+              1
+          ],
+          "routingTagIds": [],
+          "codecIds": []
       }
       """
 
