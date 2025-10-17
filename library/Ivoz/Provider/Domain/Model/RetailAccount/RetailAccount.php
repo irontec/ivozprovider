@@ -65,13 +65,31 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
             $this->setProxyUser(null);
         }
 
-        if ($this->getIp() && !$this->getPort()) {
-            throw new \DomainException('Invalid empty port');
+        $this->validateIpPortRuriCombination();
+    }
+
+    /**
+     * @throws \DomainException when invalid combination is detected
+     */
+    private function validateIpPortRuriCombination(): void
+    {
+        $hasIp = !empty($this->getIp());
+        $hasPort = !empty($this->getPort());
+        $hasRURI = !empty($this->getRuriDomain());
+
+        if ($hasIp && $hasPort) {
+            return;
+        }
+        $exceptionMessage = 'Either ip + port or ruri must be provided. Port is required when ip is provided';
+        if ($hasRURI && !$hasIp) {
+            return;
         }
 
-        if ($this->getPort() && !$this->getIp()) {
-            throw new \DomainException('Invalid empty IP');
+        if (!$hasIp && !$hasPort) {
+            return;
         }
+
+        throw new \DomainException($exceptionMessage);
     }
 
     /**

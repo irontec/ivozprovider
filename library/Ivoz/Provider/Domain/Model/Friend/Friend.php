@@ -74,13 +74,7 @@ class Friend extends FriendAbstract implements FriendInterface
             $this->setProxyUser(null);
         }
 
-        if ($this->getIp() && !$this->getPort()) {
-            throw new \DomainException('Invalid empty port');
-        }
-
-        if ($this->getPort() && !$this->getIp()) {
-            throw new \DomainException('Invalid empty IP');
-        }
+        $this->validateIpPortRuriCombination();
 
         if ($this->isRegisterConnectivity() && !$this->getPassword()) {
             throw new \DomainException('Password cannot be empty for register friends');
@@ -108,6 +102,30 @@ class Friend extends FriendAbstract implements FriendInterface
                 ->getCompany()
                 ->getDomain()
         );
+    }
+
+    /**
+     * @throws \DomainException when invalid combination is detected
+     */
+    private function validateIpPortRuriCombination(): void
+    {
+        $hasIp = !empty($this->getIp());
+        $hasPort = !empty($this->getPort());
+        $hasRURI = !empty($this->getRuriDomain());
+
+        if ($hasIp && $hasPort) {
+            return;
+        }
+        $exceptionMessage = 'Either ip + port or ruri must be provided. Port is required when ip is provided';
+        if ($hasRURI && !$hasIp) {
+            return;
+        }
+
+        if (!$hasIp && !$hasPort) {
+            return;
+        }
+
+        throw new \DomainException($exceptionMessage);
     }
 
     /**
