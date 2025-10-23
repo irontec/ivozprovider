@@ -10,11 +10,9 @@ import { OutgoingDdiRulesPatternProperties } from './OutgoingDdiRulesPatternProp
 const properties: OutgoingDdiRulesPatternProperties = {
   outgoingDdiRule: {
     label: _('Outgoing DDI Rule Pattern', { count: 1 }),
-    //required: true
   },
   type: {
     label: _('Type'),
-    //required: true
     enum: {
       prefix: _('Prefix'),
       destination: _('Destination'),
@@ -33,19 +31,15 @@ const properties: OutgoingDdiRulesPatternProperties = {
   prefix: {
     label: _('Prefix'),
     pattern: new RegExp('^[0-9]{1,3}[*]$'),
-    //required: true
-    //default: true
     helpText: _('From 1 to 3 digits ended by * symbol'),
   },
   matchList: {
     label: _('Match List', { count: 1 }),
-    //required: true
     null: _('Unassigned'),
     default: '__null__',
   },
   action: {
     label: _('Action'),
-    // required: true
     enum: {
       keep: _('Keep Original DDI'),
       force: _('Force DDI'),
