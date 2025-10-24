@@ -105,3 +105,31 @@ Feature: Update retail accounts
       }
       """
      Then the response status code should be 400
+
+  @createSchema
+  Scenario: Update a retail account with ruriDomain and port without IP
+    Given I add Retail Company Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/retail_accounts/6" with body:
+      """
+      {
+        "directConnectivity": "yes",
+        "ip": null,
+        "port": "5070",
+        "ruriDomain": "proxy.example.com"
+      }
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
+      {
+        "id": 6,
+        "directConnectivity": "yes",
+        "ip": null,
+        "port": 5070,
+        "ruriDomain": "proxy.example.com"
+      }
+      """
