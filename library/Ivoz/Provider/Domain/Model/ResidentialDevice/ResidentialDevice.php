@@ -72,13 +72,28 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
             $this->setProxyUser(null);
         }
 
-        if ($this->getIp() && !$this->getPort()) {
-            throw new \DomainException('Invalid empty port');
+        $this->validateIpPortRuriCombination();
+    }
+
+    private function validateIpPortRuriCombination(): void
+    {
+        $hasIp = !empty($this->getIp());
+        $hasPort = !empty($this->getPort());
+        $hasRURI = !empty($this->getRuriDomain());
+
+        if (!$hasIp && !$hasPort && !$hasRURI) {
+            return;
         }
 
-        if ($this->getPort() && !$this->getIp()) {
-            throw new \DomainException('Invalid empty IP');
+        if ($hasIp && $hasPort) {
+            return;
         }
+
+        if ($hasRURI && !$hasIp) {
+            return;
+        }
+
+        throw new \DomainException('Invalid field combination: use uri, port+uri, ip+port, or ip+port+uri');
     }
 
     /**
