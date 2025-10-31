@@ -152,7 +152,7 @@ class ProvisionSpecific
                 $terminalModel->getSpecificUrlPattern()
             );
             $specificUrlExtension = $this->extractFileExtension(
-                $specificUrlPattern
+                $terminalModel->getSpecificUrlPattern()
             );
             $fixedUrlSegments = explode('{mac}', strtolower($specificUrl), 2);
             $fixedSpecificUrl = str_ireplace('{mac}', (string) $candidate->getMac(), $specificUrl);
@@ -191,8 +191,12 @@ class ProvisionSpecific
         return null;
     }
 
-    protected function extractFileExtension(string $route): string
+    protected function extractFileExtension(string|null $route): string
     {
+        if (is_null($route)) {
+            return '';
+        }
+
         return pathinfo($route, PATHINFO_EXTENSION);
     }
 
