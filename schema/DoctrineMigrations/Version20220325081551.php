@@ -24,7 +24,7 @@ final class Version20220325081551 extends LoggableMigration
         $this->addSql('ALTER TABLE BalanceNotifications CHANGE threshold threshold NUMERIC(10, 4) DEFAULT \'0.0000\'');
         $this->addSql('ALTER TABLE Carriers CHANGE balance balance NUMERIC(10, 4) DEFAULT \'0.0000\'');
         $this->addSql('ALTER TABLE Companies CHANGE balance balance NUMERIC(10, 4) DEFAULT \'0.0000\', CHANGE currentDayUsage currentDayUsage NUMERIC(10, 4) DEFAULT \'0.0000\'');
-        $this->addSql('ALTER TABLE FixedCosts CHANGE description description VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE FixedCosts CHANGE description description VARCHAR(1024) DEFAULT NULL');
         $this->addSql('ALTER TABLE RatingPlans CHANGE weight weight NUMERIC(8, 2) DEFAULT \'10.00\' NOT NULL');
         $this->addSql('ALTER TABLE Recordings CHANGE duration duration DOUBLE PRECISION DEFAULT \'0.00\' NOT NULL');
         $this->addSql('ALTER TABLE kam_users_location CHANGE q q DOUBLE PRECISION DEFAULT \'1.00\' NOT NULL');
