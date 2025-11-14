@@ -78,6 +78,26 @@ Feature: Retrieve dashboard
                   "description": ""
               },
               {
+                  "name": "testRetailAccount5",
+                  "outgoingDdi": "",
+                  "description": ""
+              },
+              {
+                  "name": "testRetailAccount4",
+                  "outgoingDdi": "",
+                  "description": ""
+              },
+              {
+                  "name": "testRetailAccount3",
+                  "outgoingDdi": "",
+                  "description": ""
+              },
+              {
+                  "name": "testRetailAccount2",
+                  "outgoingDdi": "",
+                  "description": ""
+              },
+              {
                   "name": "testRetailAccount",
                   "outgoingDdi": "",
                   "description": ""
@@ -88,7 +108,7 @@ Feature: Retrieve dashboard
           "ddiNum": 1,
           "residentialDeviceNum": null,
           "voiceMailNum": null,
-          "retailsAccountNum": 2,
+          "retailsAccountNum": 6,
           "productName": "Client text"
       }
       """
@@ -119,7 +139,17 @@ Feature: Retrieve dashboard
                   "description": ""
               },
               {
-                  "name": "residentialDevice6",
+                  "name": "residentialDevice2",
+                  "outgoingDdi": "",
+                  "description": ""
+              },
+              {
+                  "name": "residentialDevice3",
+                  "outgoingDdi": "",
+                  "description": ""
+              },
+              {
+                  "name": "residentialDevice4",
                   "outgoingDdi": "",
                   "description": ""
               }
@@ -128,7 +158,7 @@ Feature: Retrieve dashboard
           "userNum": null,
           "extensionNum": null,
           "ddiNum": 1,
-          "residentialDeviceNum": 2,
+          "residentialDeviceNum": 6,
           "voiceMailNum": 1,
           "retailsAccountNum": null,
           "productName": "Client text"

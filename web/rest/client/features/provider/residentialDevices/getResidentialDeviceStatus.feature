@@ -37,6 +37,34 @@ Feature: Retrieve residential devices status
               ]
           },
           {
+              "name": "residentialDevice2",
+              "directConnectivity": "no",
+              "id": 2,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "residentialDevice3",
+              "directConnectivity": "no",
+              "id": 3,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "residentialDevice4",
+              "directConnectivity": "no",
+              "id": 4,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "residentialDevice5",
+              "directConnectivity": "no",
+              "id": 5,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
               "name": "residentialDevice6",
               "directConnectivity": "yes",
               "id": 6,

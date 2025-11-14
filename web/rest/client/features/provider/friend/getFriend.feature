@@ -15,14 +15,14 @@ Feature: Retrieve friends
       """
       [
           {
-              "name": "InterCompany1_3",
+              "name": "InterCompany1_2",
               "description": "",
               "priority": 2,
               "directConnectivity": "intervpbx",
-              "id": 3,
+              "id": 2,
               "company": 1,
               "domain": 3,
-              "interCompany": 3
+              "interCompany": 2
           },
           {
               "name": "testFriend",

@@ -32,6 +32,38 @@ Feature: Retrieve retail accounts status
               ]
           },
           {
+              "name": "testRetailAccount2",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 2,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "testRetailAccount3",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 3,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "testRetailAccount4",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 4,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "testRetailAccount5",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 5,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
               "name": "testRetailAccount6",
               "description": "",
               "directConnectivity": "yes",
