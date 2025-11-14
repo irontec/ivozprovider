@@ -1,10 +1,7 @@
 import { EmbeddableProperty, EntityValidatorResponse } from '@irontec/ivoz-ui';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import {
-  OutlinedButton,
-  SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import {
   ActionFunctionComponent,
@@ -13,32 +10,13 @@ import {
 import { FileUploadFactory } from '@irontec/ivoz-ui/services/form/FormFieldFactory/Factory/FileUploadFactory';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
-import {
-  Box,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  styled,
-  Tooltip,
-} from '@mui/material';
+import { Box, Tooltip } from '@mui/material';
 import Papa from 'papaparse';
 import { useEffect, useState } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 
 import DestinationRateGroup from '../DestinationRateGroup';
 import ImportRatesMappingTable from './ImportRatesMappingTable';
-
-export const StyledDialog = styled(Dialog)(() => {
-  return {
-    '& .MuiPaper-root': {
-      maxWidth: '90%',
-    },
-    '&.width .MuiPaper-root': {
-      width: '90%',
-    },
-  };
-});
 
 const ImportRates: ActionFunctionComponent = (props: ActionItemProps) => {
   const { row, entityService, variant = 'icon' } = props;
@@ -137,6 +115,22 @@ const ImportRates: ActionFunctionComponent = (props: ActionItemProps) => {
     return null;
   }
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined' as const,
+      autoFocus: false,
+    },
+    {
+      label: step === 1 ? _('Continue') : _('Send'),
+      onClick: step === 1 ? handleNext : handleSubmit,
+      variant: 'solid' as const,
+      autoFocus: true,
+      disabled: step === 1 ? !fileUploaded : false,
+    },
+  ];
+
   return (
     <>
       <a onClick={handleClickOpen}>
@@ -153,71 +147,49 @@ const ImportRates: ActionFunctionComponent = (props: ActionItemProps) => {
           </Tooltip>
         )}
       </a>
-      <StyledDialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-        className={step === 1 ? '' : 'width'}
-      >
-        <Box>
-          <DialogTitle id='alert-dialog-title'>{_('Import Rates')}</DialogTitle>
-          <DialogContent>
-            <Box sx={step !== 1 ? { display: 'none' } : {}}>
-              <FileUploadFactory
-                fld='file'
-                property={{ ...fileProperty, label: '' } as EmbeddableProperty}
-                choices={null}
-                disabled={false}
-                hasChanged={false}
-                entityService={entityService}
-                formik={formik}
-                changeHandler={formik.handleChange}
-                handleBlur={formik.handleBlur}
+      {open && (
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Import Rates')}
+          description={step === 1 ? _('Import file in CSV format') : undefined}
+          buttons={customButtons}
+        >
+          <Box sx={step !== 1 ? { display: 'none' } : {}}>
+            <FileUploadFactory
+              fld='file'
+              property={{ ...fileProperty, label: '' } as EmbeddableProperty}
+              choices={null}
+              disabled={false}
+              hasChanged={false}
+              entityService={entityService}
+              formik={formik}
+              changeHandler={formik.handleChange}
+              handleBlur={formik.handleBlur}
+            />
+          </Box>
+          {step === 2 && (
+            <Box sx={{ textAlign: 'left' }}>
+              <p>{_('Import file. Set column configuration and continue.')}</p>
+              <p>{_('Fields with * are required.')}</p>
+              <ul>
+                <li>{_('Destination Name*: Rate Name')}</li>
+                <li>{_('Prefix*: Prefix with + sign')}</li>
+                <li>{_('Per minute charge*: Per minute charge')}</li>
+                <li>{_('Connection charge*: Connection charge')}</li>
+                <li>{_('Charge period*: Charge period')}</li>
+              </ul>
+              <ImportRatesMappingTable
+                csv={csv}
+                columns={columns}
+                setColumns={setColumns}
+                ignoreFirstLine={ignoreFirstLine}
+                setIgnoreFirstLine={setIgnoreFirstLine}
               />
             </Box>
-            {step === 2 && (
-              <Box sx={{ textAlign: 'left' }}>
-                <p>
-                  {_('Import file. Set column configuration and continue.')}
-                </p>
-                <p>{_('Fields with * are required.')}</p>
-                <ul>
-                  <li>{_('Destination Name*: Rate Name')}</li>
-                  <li>{_('Prefix*: Prefix with + sign')}</li>
-                  <li>{_('Per minute charge*: Per minute charge')}</li>
-                  <li>{_('Connection charge*: Connection charge')}</li>
-                  <li>{_('Charge period*: Charge period')}</li>
-                </ul>
-                <ImportRatesMappingTable
-                  csv={csv}
-                  columns={columns}
-                  setColumns={setColumns}
-                  ignoreFirstLine={ignoreFirstLine}
-                  setIgnoreFirstLine={setIgnoreFirstLine}
-                />
-              </Box>
-            )}
-          </DialogContent>
-          <DialogActions>
-            <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
-            {step === 1 && (
-              <SolidButton
-                onClick={handleNext}
-                autoFocus
-                disabled={!fileUploaded}
-              >
-                {_('Continue')}
-              </SolidButton>
-            )}
-            {step === 2 && (
-              <SolidButton onClick={handleSubmit} autoFocus>
-                {_('Send')}
-              </SolidButton>
-            )}
-          </DialogActions>
-        </Box>
-      </StyledDialog>
+          )}
+        </Modal>
+      )}
     </>
   );
 };
