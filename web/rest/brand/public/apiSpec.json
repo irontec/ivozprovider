@@ -45291,7 +45291,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "maxLength": 255,
+                    "maxLength": 1024,
                     "description": "",
                     "type": "string"
                 },
@@ -45324,7 +45324,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "maxLength": 255,
+                    "maxLength": 1024,
                     "description": "",
                     "type": "string"
                 },
@@ -45347,7 +45347,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "maxLength": 255,
+                    "maxLength": 1024,
                     "description": "",
                     "type": "string"
                 },
