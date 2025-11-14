@@ -2,24 +2,14 @@ import DialogContentBody from '@irontec/ivoz-ui/components/Dialog/DialogContentB
 import ErrorMessageComponent from '@irontec/ivoz-ui/components/ErrorMessageComponent';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import {
-  OutlinedButton,
-  SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import {
   ActionFunctionComponent,
   ActionItemProps,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import EmojiFlagsIcon from '@mui/icons-material/EmojiFlags';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  FormHelperText,
-  Tooltip,
-} from '@mui/material';
+import { FormHelperText, Tooltip } from '@mui/material';
 import { useState } from 'react';
 import { useStoreActions } from 'store';
 
@@ -58,6 +48,22 @@ const Unban: ActionFunctionComponent = (props: ActionItemProps) => {
     setError(false);
   };
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined' as const,
+      autoFocus: false,
+    },
+    {
+      label: _('Accept'),
+      onClick: handleSubmit,
+      variant: 'solid' as const,
+      autoFocus: true,
+      disabled: !error,
+    },
+  ];
+
   return (
     <>
       <a onClick={handleClickOpen}>
@@ -79,29 +85,24 @@ const Unban: ActionFunctionComponent = (props: ActionItemProps) => {
         )}
       </a>
       {open && (
-        <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle>{_('Unban address')}</DialogTitle>
-          <DialogContent sx={{ textAlign: 'left!important' }}>
-            {!error && (
-              <DialogContentBody
-                child={
-                  <FormHelperText>
-                    {_('Unban IP <strong>{{ip}}</strong>', { ip: row.ip })}
-                  </FormHelperText>
-                }
-              />
-            )}
-            {error && <ErrorMessageComponent message={errorMsg} />}
-          </DialogContent>
-          <DialogActions>
-            <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
-            {!error && (
-              <SolidButton autoFocus onClick={handleSubmit}>
-                {_('Accept')}
-              </SolidButton>
-            )}
-          </DialogActions>
-        </Dialog>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Unban address')}
+          buttons={customButtons}
+          keepMounted={true}
+        >
+          {!error && (
+            <DialogContentBody
+              child={
+                <FormHelperText>
+                  {_('Unban IP <strong>{{ip}}</strong>', { ip: row.ip })}
+                </FormHelperText>
+              }
+            />
+          )}
+          {error && <ErrorMessageComponent message={errorMsg} />}
+        </Modal>
       )}
     </>
   );

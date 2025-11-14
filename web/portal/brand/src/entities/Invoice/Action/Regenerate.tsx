@@ -1,23 +1,13 @@
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import {
-  OutlinedButton,
-  SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import {
   ActionFunctionComponent,
   ActionItemProps,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ReplayIcon from '@mui/icons-material/Replay';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Tooltip,
-} from '@mui/material';
+import { Tooltip } from '@mui/material';
 import { useState } from 'react';
 import { useStoreActions } from 'store';
 
@@ -57,6 +47,21 @@ const Regenerate: ActionFunctionComponent = (props: ActionItemProps) => {
     });
   };
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined' as const,
+      autoFocus: false,
+    },
+    {
+      label: _('Send'),
+      onClick: handleSend,
+      variant: 'solid' as const,
+      autoFocus: true,
+    },
+  ];
+
   return (
     <>
       {variant === 'text' && (
@@ -75,31 +80,18 @@ const Regenerate: ActionFunctionComponent = (props: ActionItemProps) => {
           </StyledTableRowCustomCta>
         </Tooltip>
       )}
-
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-      >
-        <DialogTitle id='alert-dialog-title'>
-          {_('Regenerate invoice?')}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id='alert-dialog-description'>
-            {_(
-              "You're about to regenerate invoice <strong>{{number}}</strong>",
-              { number: row.number }
-            )}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
-          <SolidButton onClick={handleSend} autoFocus>
-            {_('Send')}
-          </SolidButton>
-        </DialogActions>
-      </Dialog>
+      {open && (
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Regenerate invoice?')}
+          description={_(
+            "You're about to regenerate invoice <strong>{{number}}</strong>",
+            { number: row.number }
+          )}
+          buttons={customButtons}
+        ></Modal>
+      )}
     </>
   );
 };

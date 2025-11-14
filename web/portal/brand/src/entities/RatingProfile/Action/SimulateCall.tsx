@@ -4,10 +4,7 @@ import {
   StyledTable,
   StyledTableRowCustomCta,
 } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import {
-  OutlinedButton,
-  SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import {
   ActionFunctionComponent,
   ActionItemProps,
@@ -19,10 +16,6 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import {
   Box,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
   TableBody,
   TableCell,
   TableHead,
@@ -122,10 +115,14 @@ const SimulateCall: ActionFunctionComponent = (
         if (result.status === 'fulfilled') {
           successfulResults.push(result.value.data);
         } else {
-          const errorDetail = result.reason?.data?.detail;
-          if (errorDetail) {
-            errorMessages.push(`Plan ID ${selectedIds[index]}: ${errorDetail}`);
-          }
+          const errorDetail =
+            result.reason?.data?.detail ||
+            result.reason?.data?.title ||
+            result.reason?.message ||
+            result.reason?.data?.message ||
+            'Unknown error';
+
+          errorMessages.push(`Plan ID ${selectedIds[index]}: ${errorDetail}`);
         }
       });
 
@@ -135,19 +132,31 @@ const SimulateCall: ActionFunctionComponent = (
         setErrorMsg('');
       } else if (errorMessages.length > 0) {
         setError(true);
-        setErrorMsg(
-          _('No rating plan group can rate a call to introduced destination')
-        );
+        setErrorMsg(errorMessages.join('; '));
+        setCost(undefined);
+      } else {
+        setError(true);
+        setErrorMsg(_('An error occurred while simulating the call'));
         setCost(undefined);
       }
     });
   };
 
-  const boxStyles = {
-    display: 'flex',
-    alignItems: 'center',
-    alignContent: 'center',
-  };
+  const customButtons = [
+    {
+      label: cost ? _('Close') : _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined' as const,
+      autoFocus: false,
+    },
+    {
+      label: _('Accept'),
+      onClick: handleUpdate,
+      variant: 'solid' as const,
+      autoFocus: true,
+      disabled: !!cost || error || !phoneNumber || !duration,
+    },
+  ];
 
   return (
     <>
@@ -172,99 +181,91 @@ const SimulateCall: ActionFunctionComponent = (
         )}
       </a>
       {open && (
-        <Dialog open={open} onClose={handleClose} maxWidth='lg' keepMounted>
-          <DialogTitle>
-            {_('Simulate call')} {cost ? `(${phoneNumber})` : ''}
-          </DialogTitle>
-          <DialogContent sx={{ textAlign: 'left!important' }}>
-            {!error && !cost && (
-              <Box>
-                <Box sx={boxStyles}>
-                  <StyledTextField
-                    type='text'
-                    required={true}
-                    label={_('Phone number')}
-                    placeholder='+34987654321'
-                    value={phoneNumber}
-                    onChange={(event) => {
-                      const { value } = event.target;
-                      setPhoneNumber(value);
-                    }}
-                    hasChanged={false}
-                  />
-                </Box>
-                <Box sx={boxStyles}>
-                  <StyledTextField
-                    type='number'
-                    required={true}
-                    label={_('Duration (seconds)')}
-                    value={duration}
-                    onChange={(event) => {
-                      const { value } = event.target;
-                      setDuration(parseInt(value, 10));
-                    }}
-                    hasChanged={false}
-                  />
-                </Box>
-              </Box>
-            )}
-            {cost && cost.length > 0 && (
-              <Box>
-                <StyledTable size='small'>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>{_('Plan')}</TableCell>
-                      <TableCell>{_('Start time')}</TableCell>
-                      <TableCell>{_('Duration')}</TableCell>
-                      <TableCell>{_('Destination')}</TableCell>
-                      <TableCell>{_('Connection fee')}</TableCell>
-                      <TableCell>{_('Interval start')}</TableCell>
-                      <TableCell>{_('Price')}</TableCell>
-                      <TableCell>{_('Total')}</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {cost.map((row, idx) => {
-                      const rate = row.rate
-                        ? `${row.rate} ${row.currencySymbol} / ${row.ratePeriod}`
-                        : '';
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={
+            <>
+              {_('Simulate call')} {cost ? `(${phoneNumber})` : ''}
+            </>
+          }
+          buttons={customButtons}
+          keepMounted={true}
+          sx={{ textAlign: 'left' }}
+        >
+          {!error && !cost && (
+            <>
+              <StyledTextField
+                type='text'
+                required={true}
+                label={_('Phone number')}
+                placeholder='+34987654321'
+                value={phoneNumber}
+                onChange={(event) => {
+                  const { value } = event.target;
+                  setPhoneNumber(value);
+                }}
+                hasChanged={false}
+              />
+              <StyledTextField
+                type='number'
+                required={true}
+                label={_('Duration (seconds)')}
+                value={duration}
+                onChange={(event) => {
+                  const { value } = event.target;
+                  setDuration(parseInt(value, 10));
+                }}
+                hasChanged={false}
+              />
+            </>
+          )}
+          {cost && cost.length > 0 && (
+            <Box>
+              <StyledTable size='small'>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>{_('Plan')}</TableCell>
+                    <TableCell>{_('Start time')}</TableCell>
+                    <TableCell>{_('Duration')}</TableCell>
+                    <TableCell>{_('Destination')}</TableCell>
+                    <TableCell>{_('Connection fee')}</TableCell>
+                    <TableCell>{_('Interval start')}</TableCell>
+                    <TableCell>{_('Price')}</TableCell>
+                    <TableCell>{_('Total')}</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {cost.map((row, idx) => {
+                    const rate = row.rate
+                      ? `${row.rate} ${row.currencySymbol} / ${row.ratePeriod}`
+                      : '';
 
-                      return (
-                        <TableRow key={idx}>
-                          <TableCell>{row.plan}</TableCell>
-                          <TableCell>{row.callDate}</TableCell>
-                          <TableCell>{row.duration}</TableCell>
-                          <TableCell>{row.patternName}</TableCell>
-                          <TableCell>
-                            {row.connectionCharge} {row.currencySymbol}
-                          </TableCell>
-                          <TableCell>{row.intervalStart}</TableCell>
-                          <TableCell>
-                            {rate} {rate ? _('Seconds') : ''}
-                          </TableCell>
-                          <TableCell>
-                            {row.totalCost} {row.currencySymbol}
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </StyledTable>
-              </Box>
-            )}
-            {error && <ErrorMessageComponent message={errorMsg} />}
-          </DialogContent>
-          <DialogActions>
-            <OutlinedButton onClick={handleClose}>
-              {cost ? _('Close') : _('Cancel')}
-            </OutlinedButton>
-            {!error && !cost && (
-              <SolidButton onClick={handleUpdate} autoFocus>
-                {_('Accept')}
-              </SolidButton>
-            )}
-          </DialogActions>
-        </Dialog>
+                    return (
+                      <TableRow key={idx}>
+                        <TableCell>{row.plan}</TableCell>
+                        <TableCell>{row.callDate}</TableCell>
+                        <TableCell>{row.duration}</TableCell>
+                        <TableCell>{row.patternName}</TableCell>
+                        <TableCell>
+                          {row.connectionCharge} {row.currencySymbol}
+                        </TableCell>
+                        <TableCell>{row.intervalStart}</TableCell>
+                        <TableCell>
+                          {rate} {rate ? _('Seconds') : ''}
+                        </TableCell>
+                        <TableCell>
+                          {row.totalCost} {row.currencySymbol}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </StyledTable>
+            </Box>
+          )}
+          {error && <ErrorMessageComponent message={errorMsg} />}
+        </Modal>
       )}
     </>
   );

@@ -2,10 +2,7 @@ import { EntityValues } from '@irontec/ivoz-ui';
 import ErrorMessageComponent from '@irontec/ivoz-ui/components/ErrorMessageComponent';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import {
-  OutlinedButton,
-  SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import {
   ActionFunctionComponent,
   ActionItemProps,
@@ -14,13 +11,7 @@ import {
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Tooltip,
-} from '@mui/material';
+import { Tooltip } from '@mui/material';
 import { useState } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 
@@ -123,6 +114,21 @@ const UpdateLicenses: ActionFunctionComponent = (
     );
   }
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined' as const,
+      autoFocus: false,
+    },
+    {
+      label: _('Accept'),
+      onClick: handleUpdate,
+      variant: 'solid' as const,
+      autoFocus: true,
+    },
+  ];
+
   return (
     <>
       <a className={disabled ? 'disabled' : ''} onClick={handleClickOpen}>
@@ -146,30 +152,25 @@ const UpdateLicenses: ActionFunctionComponent = (
         )}
       </a>
       {open && (
-        <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle>{_('Rerate calls', { count: 2 })}</DialogTitle>
-          <DialogContent sx={{ textAlign: 'left!important' }}>
-            {!error && (
-              <>
-                <p>
-                  {_("You're about to rerate {{callNum}} call", {
-                    callNum: selectedValues.length,
-                    count: selectedValues.length,
-                  })}
-                </p>
-              </>
-            )}
-            {error && <ErrorMessageComponent message={errorMsg} />}
-          </DialogContent>
-          <DialogActions>
-            <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
-            {!error && (
-              <SolidButton onClick={handleUpdate} autoFocus>
-                {_('Accept')}
-              </SolidButton>
-            )}
-          </DialogActions>
-        </Dialog>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Rerate calls', { count: 2 })}
+          buttons={customButtons}
+          keepMounted={true}
+        >
+          {!error && (
+            <>
+              <p>
+                {_("You're about to rerate {{callNum}} call", {
+                  callNum: selectedValues.length,
+                  count: selectedValues.length,
+                })}
+              </p>
+            </>
+          )}
+          {error && <ErrorMessageComponent message={errorMsg} />}
+        </Modal>
       )}
     </>
   );
