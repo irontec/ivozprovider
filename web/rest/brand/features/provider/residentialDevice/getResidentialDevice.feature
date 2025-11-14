@@ -15,50 +15,6 @@ Feature: Retrieve residential devices
       """
       [
           {
-              "name": "residentialDevice2",
-              "description": "",
-              "directConnectivity": "no",
-              "rtpEncryption": false,
-              "multiContact": true,
-              "id": 2,
-              "domain": 6,
-              "company": 1,
-              "status": []
-          },
-          {
-              "name": "residentialDevice3",
-              "description": "",
-              "directConnectivity": "no",
-              "rtpEncryption": false,
-              "multiContact": true,
-              "id": 3,
-              "domain": 6,
-              "company": 1,
-              "status": []
-          },
-          {
-              "name": "residentialDevice4",
-              "description": "",
-              "directConnectivity": "no",
-              "rtpEncryption": false,
-              "multiContact": true,
-              "id": 4,
-              "domain": 6,
-              "company": 1,
-              "status": []
-          },
-          {
-              "name": "residentialDevice5",
-              "description": "",
-              "directConnectivity": "no",
-              "rtpEncryption": false,
-              "multiContact": true,
-              "id": 5,
-              "domain": 6,
-              "company": 1,
-              "status": []
-          },
-          {
               "name": "residentialDevice",
               "description": "",
               "directConnectivity": "no",
@@ -83,6 +39,50 @@ Feature: Retrieve residential devices
                       "userAgent": "Yealink SIP-T23G 44.80.0.130"
                   }
               ]
+          },
+          {
+              "name": "residentialDevice2",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 2,
+              "domain": 6,
+              "company": 4,
+              "status": []
+          },
+          {
+              "name": "residentialDevice3",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 3,
+              "domain": 6,
+              "company": 4,
+              "status": []
+          },
+          {
+              "name": "residentialDevice4",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 4,
+              "domain": 6,
+              "company": 4,
+              "status": []
+          },
+          {
+              "name": "residentialDevice5",
+              "description": "",
+              "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 5,
+              "domain": 6,
+              "company": 4,
+              "status": []
           },
           {
               "name": "residentialDevice6",

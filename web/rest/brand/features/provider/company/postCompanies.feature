@@ -70,7 +70,7 @@ Feature: Create companies
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
-          "id": 7,
+          "id": 8,
           "invoicing": {
               "nif": "1234",
               "postalAddress": "abc",
@@ -118,28 +118,28 @@ Feature: Create companies
       """
       {
           "type": "vpbx",
-          "name": "API company",
-          "domainUsers": "api.irontec.com",
+          "name": "Unassigned Test Company",
+          "domainUsers": "unassigned.irontec.com",
           "maxCalls": 0,
-          "maxDailyUsage": 100,
+          "maxDailyUsage": 1000000,
           "currentDayUsage": 0,
           "maxDailyUsageEmail": null,
           "ipfilter": true,
           "onDemandRecord": 0,
           "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
-          "externallyextraopts": "",
+          "externallyextraopts": null,
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
           "id": 7,
           "invoicing": {
-              "nif": "1234",
-              "postalAddress": "abc",
-              "postalCode": "4848",
-              "town": "Usansolocity",
-              "province": "some",
-              "countryName": "country"
+              "nif": "12345677-Z",
+              "postalAddress": "",
+              "postalCode": "",
+              "town": "",
+              "province": "",
+              "countryName": ""
           },
           "language": {
               "iden": "es",
@@ -152,26 +152,26 @@ Feature: Create companies
               }
           },
           "defaultTimezone": {
-              "tz": "Europe/Andorra",
-              "comment": "",
-              "id": 1,
+              "tz": "Europe/Madrid",
+              "comment": "mainland",
+              "id": 145,
               "label": {
-                  "en": "",
-                  "es": "",
-                  "ca": "",
-                  "it": ""
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
-              "country": 1
+              "country": 68
           },
           "country": {
-              "code": "AD",
-              "countryCode": "+376",
-              "id": 1,
+              "code": "ES",
+              "countryCode": "+34",
+              "id": 68,
               "name": {
-                  "en": "Andorra",
-                  "es": "Andorra",
-                  "ca": "Andorra",
-                  "it": "Andorra"
+                  "en": "Spain",
+                  "es": "España",
+                  "ca": "España",
+                  "it": "Spagna"
               },
               "zone": {
                   "en": "Europe",
@@ -198,25 +198,8 @@ Feature: Create companies
               "country": 68,
               "editable": true
           },
-          "outgoingDdi": {
-              "ddi": "123",
-              "ddie164": "+34123",
-              "description": "Description for DDI 123",
-              "type": "inout",
-              "useDdiProviderRoutingTag": true,
-              "id": 1,
-              "company": 1,
-              "ddiProvider": 1,
-              "country": 68,
-              "routingTag": null
-          },
-          "outgoingDdiRule": {
-              "name": "testRule",
-              "defaultAction": "keep",
-              "id": 1,
-              "company": 1,
-              "forcedDdi": null
-          },
+          "outgoingDdi": null,
+          "outgoingDdiRule": null,
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",
@@ -227,12 +210,16 @@ Feature: Create companies
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null,
           "accessCredentialNotificationTemplate": null,
-          "corporation": null,
+          "corporation": {
+              "name": "Irontec Test Corporation",
+              "description": "Irontec Test Desc Corporation",
+              "id": 1
+          },
           "applicationServerSet": {
-              "name": "default",
+              "name": "BlueApSet",
               "distributeMethod": "hash",
-              "description": "Default application server set",
-              "id": 0,
+              "description": "An Application Server Set",
+              "id": 1,
               "applicationServers": null
           },
           "mediaRelaySet": {
@@ -241,13 +228,9 @@ Feature: Create companies
               "id": 0
           },
           "location": null,
-          "domainName": "api.irontec.com",
-          "featureIds": [
-              1
-          ],
-          "geoIpAllowedCountries": [
-              1
-          ],
+          "domainName": "trunks.ivozprovider.local",
+          "featureIds": [],
+          "geoIpAllowedCountries": [],
           "routingTagIds": [],
           "codecIds": []
       }
@@ -329,7 +312,7 @@ Feature: Create companies
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
-          "id": 7,
+          "id": 8,
           "invoicing": {
               "nif": "1234",
               "postalAddress": "abc",
@@ -353,6 +336,17 @@ Feature: Create companies
           "accessCredentialNotificationTemplate": null,
           "corporation": null,
           "applicationServerSet": 1,
-          "mediaRelaySet": 1
+          "mediaRelaySet": 1,
+          "location": null,
+          "featureIds": [
+              1
+          ],
+          "geoIpAllowedCountries": [
+              1
+          ],
+          "routingTagIds": [
+              1
+          ],
+          "codecIds": []
       }
       """

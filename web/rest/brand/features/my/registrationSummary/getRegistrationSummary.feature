@@ -12,8 +12,8 @@ Feature: Retrieve registration summary
       """
       {
           "active": 4,
-          "total": 6,
-          "percent": 67
+          "total": 14,
+          "percent": 29
       }
       """
 

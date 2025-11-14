@@ -86,20 +86,19 @@ Feature: Create friends
           "transport": "tls",
           "ip": "129.1.2.3",
           "port": 5060,
-          "password": "",
+          "password": "ZEF7t5n+b4",
           "priority": 2,
           "allow": "alaw",
           "fromDomain": "",
-          "directConnectivity": "intervpbx",
+          "directConnectivity": "yes",
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null,
-          "interCompany": 2,
-          "company": 3,
-          "ruriDomain": "test.example.com"
+          "company": 2,
+          "proxyUser": 1
       }
       """
      Then the response status code should be 201
@@ -108,15 +107,15 @@ Feature: Create friends
       And the JSON should be equal to:
       """
       {
-          "name": "InterCompany2_3",
+          "name": "beWatterMyFriend",
           "description": "something",
           "priority": 3,
-          "directConnectivity": "intervpbx",
-          "id": 5,
-          "company": 3,
-          "domain": 6,
-          "interCompany": 2,
-          "proxyUser": null
+          "directConnectivity": "yes",
+          "id": 4,
+          "company": 2,
+          "domain": 5,
+          "interCompany": null,
+          "proxyUser": 1
       }
       """
 
@@ -132,35 +131,13 @@ Feature: Create friends
       """
       [
           {
-              "name": "InterCompany1_3",
+              "name": "InterCompany1_2",
               "description": "",
               "priority": 2,
               "directConnectivity": "intervpbx",
               "id": 3,
-              "company": 1,
-              "domain": 3,
-              "interCompany": 3,
-              "proxyUser": null
-          },
-          {
-              "name": "InterCompany2_3",
-              "description": "",
-              "priority": 1,
-              "directConnectivity": "intervpbx",
-              "id": 4,
               "company": 2,
               "domain": 5,
-              "interCompany": 3,
-              "proxyUser": null
-          },
-          {
-              "name": "InterCompany1_3",
-              "description": "",
-              "priority": 2,
-              "directConnectivity": "intervpbx",
-              "id": 2,
-              "company": 3,
-              "domain": 6,
               "interCompany": 1,
               "proxyUser": null
           }

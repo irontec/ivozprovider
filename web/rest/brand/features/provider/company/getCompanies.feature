@@ -111,6 +111,28 @@ Feature: Retrieve companies
               "codecIds": []
           },
           {
+              "type": "vpbx",
+              "name": "Unassigned Test Company",
+              "domainUsers": "unassigned.irontec.com",
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": 0,
+              "billingMethod": "postpaid",
+              "balance": 0,
+              "id": 7,
+              "invoicing": {
+                  "nif": "12345677-Z"
+              },
+              "outgoingDdi": null,
+              "corporation": 1,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
+              "domainName": "trunks.ivozprovider.local",
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
+          },
+          {
               "type": "wholesale",
               "name": "Wholesale Company",
               "domainUsers": "wholesale.irontec.com",
