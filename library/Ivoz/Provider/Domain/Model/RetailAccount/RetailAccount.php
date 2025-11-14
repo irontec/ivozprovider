@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * RetailAccount
@@ -202,5 +203,14 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
         $ddis = $this->getDdis($criteria);
 
         return array_shift($ddis);
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_RETAIL) {
+            throw new \DomainException('RetailAccount can only be associated with retail companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

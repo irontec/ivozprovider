@@ -34,7 +34,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
             ->setDirectConnectivity('yes')
             ->setProxyUserId(1)
             ->setBrandId(1)
-            ->setCompanyId(1);
+            ->setCompanyId(4);
 
         return $residentialDeviceDto;
     }
@@ -130,13 +130,13 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         $this->assertEquals(
             $changelog->getData(),
             [
-                'sorcery_id' => 'b1c1r7_testResidentialDevice',
+                'sorcery_id' => 'b1c4r7_testResidentialDevice',
                 'from_domain' => 'retail.irontec.com',
-                'aors' => 'b1c1r7_testResidentialDevice',
+                'aors' => 'b1c4r7_testResidentialDevice',
                 'context' => 'residential',
                 'disallow' => 'all' ,
                 'allow' => 'alaw',
-                'mailboxes' => 'residential7@company1',
+                'mailboxes' => 'residential7@company4',
                 'direct_media' => 'yes',
                 'mwi_subscribe_replaces_unsolicited' => 'yes',
                 'direct_media_method' => 'invite',

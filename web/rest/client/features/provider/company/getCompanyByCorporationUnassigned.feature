@@ -16,12 +16,12 @@ Feature: Retrieve companies
       [
           {
               "type": "vpbx",
-              "name": "Irontec Test Company",
-              "id": 2,
+              "name": "Unassigned Test Company",
+              "id": 7,
               "invoicing": {
-                  "nif": "12345678-Z"
+                  "nif": "12345677-Z"
               },
-              "domainName": "test.irontec.com"
+              "domainName": "trunks.ivozprovider.local"
           }
       ]
       """

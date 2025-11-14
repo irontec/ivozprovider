@@ -21,6 +21,12 @@ Feature: Retrieve dashboard
           },
           "recentActivity": [
               {
+                  "name": "Unassigned Test Company",
+                  "type": "vpbx",
+                  "domainUsers": "unassigned.irontec.com",
+                  "maxCalls": 0
+              },
+              {
                   "name": "Wholesale Company",
                   "type": "wholesale",
                   "domainUsers": "wholesale.irontec.com",
@@ -43,15 +49,9 @@ Feature: Retrieve dashboard
                   "type": "vpbx",
                   "domainUsers": "test.irontec.com",
                   "maxCalls": 0
-              },
-              {
-                  "name": "DemoCompany",
-                  "type": "vpbx",
-                  "domainUsers": "127.0.0.1",
-                  "maxCalls": 0
               }
           ],
-          "clientNum": 5,
+          "clientNum": 6,
           "ddiNum": 5,
           "carrierNum": 2,
           "productName": "Brand text"

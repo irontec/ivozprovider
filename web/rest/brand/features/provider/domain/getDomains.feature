@@ -25,6 +25,10 @@ Feature: Retrieve domains
           {
               "domain": "test.irontec.com",
               "id": 5
+          },
+          {
+              "domain": "trunks.ivozprovider.local",
+              "id": 2
           }
       ]
       """

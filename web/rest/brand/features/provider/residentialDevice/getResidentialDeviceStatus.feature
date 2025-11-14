@@ -15,38 +15,6 @@ Feature: Retrieve residential devices status
       """
       [
           {
-              "name": "residentialDevice2",
-              "directConnectivity": "no",
-              "id": 2,
-              "company": 1,
-              "domainName": "retail.irontec.com",
-              "status": []
-          },
-          {
-              "name": "residentialDevice3",
-              "directConnectivity": "no",
-              "id": 3,
-              "company": 1,
-              "domainName": "retail.irontec.com",
-              "status": []
-          },
-          {
-              "name": "residentialDevice4",
-              "directConnectivity": "no",
-              "id": 4,
-              "company": 1,
-              "domainName": "retail.irontec.com",
-              "status": []
-          },
-          {
-              "name": "residentialDevice5",
-              "directConnectivity": "no",
-              "id": 5,
-              "company": 1,
-              "domainName": "retail.irontec.com",
-              "status": []
-          },
-          {
               "name": "residentialDevice",
               "directConnectivity": "no",
               "id": 1,
@@ -68,6 +36,38 @@ Feature: Retrieve residential devices status
                       "userAgent": "Yealink SIP-T23G 44.80.0.130"
                   }
               ]
+          },
+          {
+              "name": "residentialDevice2",
+              "directConnectivity": "no",
+              "id": 2,
+              "company": 4,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "residentialDevice3",
+              "directConnectivity": "no",
+              "id": 3,
+              "company": 4,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "residentialDevice4",
+              "directConnectivity": "no",
+              "id": 4,
+              "company": 4,
+              "domainName": "retail.irontec.com",
+              "status": []
+          },
+          {
+              "name": "residentialDevice5",
+              "directConnectivity": "no",
+              "id": 5,
+              "company": 4,
+              "domainName": "retail.irontec.com",
+              "status": []
           },
           {
               "name": "residentialDevice6",

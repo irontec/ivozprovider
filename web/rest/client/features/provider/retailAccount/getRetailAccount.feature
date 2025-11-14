@@ -32,6 +32,38 @@ Feature: Retrieve retail accounts
               ]
           },
           {
+              "name": "testRetailAccount2",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 2,
+              "domain": 6,
+              "status": []
+          },
+          {
+              "name": "testRetailAccount3",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 3,
+              "domain": 6,
+              "status": []
+          },
+          {
+              "name": "testRetailAccount4",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 4,
+              "domain": 6,
+              "status": []
+          },
+          {
+              "name": "testRetailAccount5",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 5,
+              "domain": 6,
+              "status": []
+          },
+          {
               "name": "testRetailAccount6",
               "description": "",
               "directConnectivity": "yes",
@@ -39,7 +71,6 @@ Feature: Retrieve retail accounts
               "domain": 6,
               "status": []
           }
-
       ]
       """
 

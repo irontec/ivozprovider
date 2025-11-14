@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern;
 
@@ -375,5 +376,14 @@ class Friend extends FriendAbstract implements FriendInterface
         }
 
         return sprintf("InterCompany%d_%d", $companyOneId, $companyTwoId);
+    }
+
+    public function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Friend can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

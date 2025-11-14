@@ -70,7 +70,7 @@ class ResidentialDeviceRepositoryTest extends KernelTestCase
             ->em
             ->getRepository(ResidentialDevice::class);
 
-        $num = $repository->countRegistrableDevicesByCompanies([1]);
+        $num = $repository->countRegistrableDevicesByCompanies([4]);
 
         $this->assertIsInt(
             $num
@@ -83,7 +83,7 @@ class ResidentialDeviceRepositoryTest extends KernelTestCase
             ->em
             ->getRepository(ResidentialDevice::class);
 
-        $residentialDevices = $repository->findLastAddedByCompanyId(1);
+        $residentialDevices = $repository->findLastAddedByCompanyId(4);
 
         $this->assertIsArray(
             $residentialDevices

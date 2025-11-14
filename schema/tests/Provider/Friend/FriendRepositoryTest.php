@@ -87,10 +87,11 @@ class FriendRepositoryTest extends KernelTestCase
             ->getRepository(Friend::class);
 
         $friends = $repository->findByCompanyAndInterCompany(
-            3,
-            1
+            1,
+            2
         );
 
+        $this->assertNotEmpty($friends);
         $this->assertInstanceOf(
             Friend::class,
             $friends[0]

@@ -4,10 +4,10 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
@@ -149,6 +149,8 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function getOutgoingDdi(): ?DdiInterface;
 
+    public function setCompany(CompanyInterface $company): static;
+
     /**
      * @param int | null $id
      */
@@ -215,8 +217,6 @@ interface FriendInterface extends LoggableEntityInterface
     public function getRuriDomain(): ?string;
 
     public function getTrustSDP(): bool;
-
-    public function setCompany(CompanyInterface $company): static;
 
     public function getCompany(): CompanyInterface;
 

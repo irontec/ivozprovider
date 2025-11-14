@@ -15,14 +15,14 @@ Feature: Retrieve friends status
       """
       [
           {
-              "name": "InterCompany1_3",
+              "name": "InterCompany1_2",
               "description": "",
               "priority": 2,
               "directConnectivity": "intervpbx",
-              "id": 3,
+              "id": 2,
               "company": 1,
               "domain": 3,
-              "interCompany": 3,
+              "interCompany": 2,
               "proxyUser": null
           },
           {
@@ -37,13 +37,13 @@ Feature: Retrieve friends status
               "proxyUser": 1
           },
           {
-              "name": "InterCompany1_3",
+              "name": "InterCompany1_2",
               "description": "",
               "priority": 2,
               "directConnectivity": "intervpbx",
-              "id": 2,
-              "company": 3,
-              "domain": 6,
+              "id": 3,
+              "company": 2,
+              "domain": 5,
               "interCompany": 1,
               "proxyUser": null
           }

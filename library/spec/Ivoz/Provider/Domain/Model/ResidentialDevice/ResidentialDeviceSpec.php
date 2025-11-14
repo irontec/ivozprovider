@@ -64,6 +64,10 @@ class ResidentialDeviceSpec extends ObjectBehavior
             ->getBrand()
             ->willReturn($brand);
 
+        $company
+            ->getType()
+            ->willReturn(CompanyInterface::TYPE_RESIDENTIAL);
+
         $proxyUser
             ->getId()
             ->willReturn(1);

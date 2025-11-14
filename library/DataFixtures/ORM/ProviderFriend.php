@@ -46,8 +46,8 @@ class ProviderFriend extends Fixture implements DependentFixtureInterface
             $this->setName("testFriend2");
             $this->setDirectConnectivity("intervpbx");
             $this->setPriority(2);
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany3'));
-            $this->setInterCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setInterCompany($fixture->getReference('_reference_ProviderCompany2'));
         })->call($item2);
 
         $this->addReference('_reference_ProviderFriend2', $item2);
@@ -59,8 +59,8 @@ class ProviderFriend extends Fixture implements DependentFixtureInterface
             $this->setName("testFriend3");
             $this->setDirectConnectivity("intervpbx");
             $this->setPriority(2);
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
-            $this->setInterCompany($fixture->getReference('_reference_ProviderCompany3'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany2'));
+            $this->setInterCompany($fixture->getReference('_reference_ProviderCompany1'));
         })->call($item3);
 
         $this->addReference('_reference_ProviderFriend3', $item3);
