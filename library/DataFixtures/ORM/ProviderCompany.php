@@ -229,6 +229,37 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item6);
         $manager->persist($item6);
 
+        $item7 = $this->createEntityInstance(Company::class);
+        (function () use ($fixture) {
+
+            $invoicing = new Invoicing(
+                nif: '12345677-Z',
+            );
+
+            $this->setName("Unassigned Test Company");
+            $this->setDomainUsers("unassigned.irontec.com");
+            $this->setMaxCalls(0);
+            $this->setIpfilter(true);
+            $this->setBillingMethod("postpaid");
+            $this->setOnDemandRecord(0);
+            $this->setOnDemandRecordCode("");
+            $this->invoicing = $invoicing;
+            $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
+            $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setDomain($fixture->getReference('_reference_ProviderDomain2'));
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
+            $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
+            $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
+            $this->setCorporation($fixture->getReference('_reference_Corporation1'));
+            $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet1'));
+            $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
+        })->call($item7);
+
+        $this->addReference('_reference_ProviderCompany7', $item7);
+        $this->sanitizeEntityValues($item7);
+        $manager->persist($item7);
+
         $manager->flush();
     }
 
