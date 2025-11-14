@@ -102,7 +102,7 @@ class BrandSoftDeleteTest extends KernelTestCase
             Company::class
         );
 
-        $this->assertCount(5, $changelog);
+        $this->assertCount(6, $changelog);
 
         for ($i = 0; $i < count($changelog); $i++) {
             $this->assertEquals(

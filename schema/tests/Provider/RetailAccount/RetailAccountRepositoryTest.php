@@ -71,7 +71,7 @@ class RetailAccountRepositoryTest extends KernelTestCase
             ->em
             ->getRepository(RetailAccount::class);
 
-        $num = $repository->countRegistrableDevicesByCompanies([1]);
+        $num = $repository->countRegistrableDevicesByCompanies([3]);
 
         $this->assertIsInt(
             $num
@@ -85,7 +85,7 @@ class RetailAccountRepositoryTest extends KernelTestCase
             ->em
             ->getRepository(RetailAccount::class);
 
-        $retailAccounts = $repository->findLatestByCompanyId(1);
+        $retailAccounts = $repository->findLatestByCompanyId(3);
 
 
         $this->assertIsArray(
@@ -93,7 +93,7 @@ class RetailAccountRepositoryTest extends KernelTestCase
         );
 
         $this->assertCount(
-            4,
+            6,
             $retailAccounts
         );
     }
