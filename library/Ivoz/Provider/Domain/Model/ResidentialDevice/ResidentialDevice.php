@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
@@ -264,5 +265,14 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
 
 
         return array_shift($ddis);
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_RESIDENTIAL) {
+            throw new \DomainException('ResidentialDevice can only be associated with residential companies');
+        }
+
+        return parent::setCompany($company);
     }
 }
