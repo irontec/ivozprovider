@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Calendarios</title>
+    
+    <link rel="stylesheet" href="../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="schedules.xhtml" title="Horarios"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="external_call_filters.xhtml" title="Filtros de llamadas externas"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.xhtml" >Clientes vPBX</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.xhtml" accesskey="U">Herramientas de encaminamiento</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="calendars">
+<span id="id1"></span><h1>Calendarios</h1>
+<p>Los calendarios se utilizan para definir qué días se consideran festivos. Al igual que los horarios, se pueden combinar múltiples calendarios.</p>
+<div class="section" id="calendar-holidays">
+<h2>Festivos del calendario</h2>
+<p>El proceso de creación del calendario solo requiere un nombre. Una vez creado, podemos agregar qué días serán festivos usando los botones en su fila:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Nombre único para identificar esta fecha festiva</p>
+</dd>
+<dt>Locución</dt>
+<dd><p class="first last">Sobrescribir la locución festiva predeterminada del filtro de llamadas externas</p>
+</dd>
+<dt>Fecha del evento</dt>
+<dd><p class="first last">Día del calendario que se marcará como festivo</p>
+</dd>
+<dt>Evento de todo el día</dt>
+<dd><p class="first last">Habilite esto para crear un evento que dure todo el día</p>
+</dd>
+<dt>Hora de inicio/fin</dt>
+<dd><p class="first last">Para eventos que no duran todo el día, especifique el intervalo de tiempo en que el evento estará activo</p>
+</dd>
+<dt>Opciones de enrutamiento</dt>
+<dd><p class="first last">Sobrescribir el enrutamiento festivo predeterminado del filtro de llamadas externas</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">La lógica de los calendarios es opuesta a la de los horarios: Si un día no está definido como festivo en ninguno de los calendarios, se considerará un día normal y no se aplicará ningún filtro.</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Los festivos sin locuciones especiales aplicarán la locución festiva del filtro de llamadas externas.</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Los festivos sin enrutamiento especial aplicarán el enrutamiento festivo del filtro de llamadas externas.</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Además, una vez creada una fecha, existe la posibilidad de importar más fechas desde un archivo. Esta opción se encuentra en el menú de la lista de fechas y se llama <em>Importar desde CSV</em>. También se puede agregar un rango de fechas con la opción de menú <em>Agregar rango de fechas festivas</em>.</p>
+</div>
+<div class="section" id="csv-import-format">
+<h3>Formato de importación CSV</h3>
+<p>Esta opción se encuentra en el menú de la lista de fechas y se llama <em>Importar desde CSV</em>.</p>
+<p>El archivo CSV para importar los festivos debe contener las siguientes columnas (Campos marcados con * son requeridos):</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre*</dt>
+<dd><p class="first last">Nombre del festivo</p>
+</dd>
+<dt>Fecha*</dt>
+<dd><p class="first last">Fecha del evento en formato YYYY-MM-DD</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Las columnas deben estar separadas por puntos y comas (;) y las cadenas deben estar encerradas en comillas dobles (&#8220;&#8221;). El carácter de escape es la barra invertida (\).</p>
+<p class="rubric">Ejemplo de fichero CSV</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>&quot;New Year&#39;s Eve&quot;,&quot;2024-12-31&quot;
+&quot;New Year&#39;s Day&quot;,&quot;2025-01-01&quot;
+&quot;Labor Day&quot;,&quot;2025-05-01&quot;
+&quot;\&quot;Special\&quot; Holiday&quot;,&quot;2025-12-26&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="special-schedules">
+<span id="id2"></span><h2>Horarios especiales</h2>
+<p>Los calendarios también se pueden usar para sobrescribir algunos períodos de tiempo con un horario diferente. Esto puede ser útil si vPBX tiene un horario de verano u otros tipos de eventos basados en horarios.</p>
+<p>Los horarios especiales pueden definir un programador personalizado y sobrescribir las configuraciones de los filtros de llamadas externas:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Fecha de inicio</dt>
+<dd><p class="first last">Desde cuándo los horarios sobrescribirán la configuración de los filtros</p>
+</dd>
+<dt>Fecha de fin</dt>
+<dd><p class="first last">Último día del período (incluido)</p>
+</dd>
+<dt>Horarios</dt>
+<dd><p class="first last">Horarios que se utilizarán en el período definido</p>
+</dd>
+<dt>Locución</dt>
+<dd><p class="first last">En caso de fuera de horario, esta locución se reproducirá. Dejar vacío para usar la locución del filtro de llamadas externas.</p>
+</dd>
+<dt>Opciones de ruta</dt>
+<dd><p class="first last">Sobrescribir las opciones predeterminadas del filtro de llamadas externas fuera de horario</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="difference-between-non-whole-day-event-and-special-schedules">
+<h2>Diferencia entre evento de no todo el día y horarios especiales</h2>
+<p>Para entender la diferencia entre estas dos características, es importante conocer el orden de la lógica del filtro de llamadas:</p>
+<p><strong>1. ¿Está marcado el día actual como festivo?</strong></p>
+<p>Aquí es donde se aplica el evento de no todo el día, haciendo que la respuesta a la pregunta anterior sea positiva durante el período definido.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Sí: aplicar la lógica festiva definida en el evento del calendario o en el filtro de llamadas externas.</p>
+</li>
+<li><p class="first">No: proceder a la pregunta 2.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>2. ¿Está marcada la hora actual como fuera de horario?</strong></p>
+<p>Aquí es donde se aplican los horarios especiales, sobrescribiendo los horarios del filtro de llamadas externas con el definido en el período del calendario.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Sí: aplicar la lógica fuera de horario definida en los horarios especiales o en el filtro de llamadas externas.</p>
+</li>
+<li><p class="first">No: proceder con la lógica estándar.</p>
+</li>
+</ul>
+</div></blockquote>
+<p class="rubric">Ejemplo</p>
+<p>Configuración de un día dado:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Evento de no todo el día: 8:00-15:00</p>
+</li>
+<li><p class="first">Horario especial: 13:00-17:00</p>
+</li>
+</ul>
+</div></blockquote>
+<p>Casos:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Llamada a las 7:00: fuera de horario debido a horario especial.</p>
+</li>
+<li><p class="first">Llamada a las 9:00: lógica festiva debido a evento de no todo el día.</p>
+</li>
+<li><p class="first">Llamada a las 14:00: lógica festiva debido a evento de no todo el día.</p>
+</li>
+<li><p class="first">Llamada a las 16:00: lógica normal.</p>
+</li>
+<li><p class="first">Llamada a las 18:00: fuera de horario debido a horario especial.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

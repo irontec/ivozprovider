@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Llamadas activas</title>
+    
+    <link rel="stylesheet" href="../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="external_calls.xhtml" title="Llamadas externas"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="portals.xhtml" title="Portales de Plataforma"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.xhtml" accesskey="U">Configuración de la Plataforma</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="call-state">
+<span id="active-calls"></span><span id="id1"></span><h1>Llamadas activas</h1>
+<p>Esta sección permite al operador principal y al operador de marca ver <strong>llamadas externas activas actuales</strong>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Las llamadas internas no se enumerarán.</p>
+</div>
+<p>Estas son las columnas mostradas:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Duración</dt>
+<dd><p class="first last">Muestra la duración del establecimiento de la llamada durante el establecimiento y la duración de la llamada durante la llamada en curso. También muestra la dirección (entrante/saliente) y la información del estado de la llamada, como se explica a continuación.</p>
+</dd>
+<dt>Marca</dt>
+<dd><p class="first last">Marca que realiza una llamada dada (solo se muestra a nivel principal).</p>
+</dd>
+<dt>Cliente</dt>
+<dd><p class="first last">Cliente que realiza una llamada dada.</p>
+</dd>
+<dt>Llamante</dt>
+<dd><p class="first last">Número de origen de la llamada en E.164.</p>
+</dd>
+<dt>Llamado</dt>
+<dd><p class="first last">Número de destino de la llamada en E.164.</p>
+</dd>
+<dt>Operador</dt>
+<dd><p class="first last">Operador/Proveedor de DDI utilizado en una llamada dada.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="section" id="id2">
+<h2>Estado de la llamada</h2>
+<p>El estado de la llamada sigue la <a class="reference external" href="https://tools.ietf.org/html/rfc4235#section-3.7.1">Máquina de Estado de Diálogo propuesta en RFC4235</a><span class="link-target"> [https://tools.ietf.org/html/rfc4235#section-3.7.1]</span>:</p>
+<ul>
+<li><p class="first"><strong>Intentando</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">INVITE enviado, alguien está intentando hacer una nueva llamada.</p>
+</li>
+<li><p class="first">Mostrado como <em>Configuración de Llamada</em> en esta sección.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>En proceso</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Respuesta provisional de los proxies intermedios recibida (generalmente 100 Trying).</p>
+</li>
+<li><p class="first">Este estado se ignora en esta sección.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Temprano</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Respuesta provisional de la parte final recibida (generalmente 180 Ringing).</p>
+</li>
+<li><p class="first">Mostrado como <em>Sonando</em> en esta sección.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Confirmado</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">200 OK recibido, llamada confirmada, partes hablando.</p>
+</li>
+<li><p class="first">Mostrado como <em>En llamada</em> en esta sección.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Terminada</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">BYE/CANCEL/respuesta de error (&gt;300) recibida, llamada terminada.</p>
+</li>
+<li><p class="first">La llamada desaparece para mostrar este estado.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p class="rubric">Ejemplo 1: Llamada exitosa</p>
+<p>Una llamada exitosa atraviesa estos estados:</p>
+<ul class="simple">
+<li><p class="first">Intentando -&gt; En proceso (opcional) -&gt; Temprano (opcional) -&gt; Confirmado -&gt; Terminada</p>
+</li>
+</ul>
+<p>Eso se codificará en esta sección como:</p>
+<ul class="simple">
+<li><p class="first">Configuración de Llamada -&gt; Sonando (opcional) -&gt; En llamada -&gt; La llamada desaparece</p>
+</li>
+</ul>
+<p class="rubric">Ejemplo 2: Llamada no exitosa</p>
+<p>Una llamada no exitosa atraviesa estos estados:</p>
+<ul class="simple">
+<li><p class="first">Intentando -&gt; En proceso (opcional) -&gt; Temprano (opcional) -&gt; Terminada</p>
+</li>
+</ul>
+<p>Eso se mostrará en esta sección como:</p>
+<ul class="simple">
+<li><p class="first">Configuración de Llamada -&gt; Sonando (opcional) -&gt; La llamada desaparece</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Marcas</title>
+    
+    <link rel="stylesheet" href="../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="main_operators.xhtml" title="Operadores de Plataforma"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="index.xhtml" title="Configuración de la Plataforma"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.xhtml" accesskey="U">Configuración de la Plataforma</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="brands">
+<span id="id1"></span><h1>Marcas</h1>
+<p>El <em>operador principal</em> es responsable de crear y gestionar las marcas de la plataforma a través de esta sección.</p>
+<p>Estos son los campos que se muestran cuando se crea una nueva marca:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Establece el nombre para esta marca.</p>
+</dd>
+<dt>NIF</dt>
+<dd><p class="first last">Número utilizado en las facturas de esta marca.</p>
+</dd>
+<dt>Logo</dt>
+<dd><p class="first last">Utilizado como logo predeterminado en facturas y en portales (si no especifican otro logo).</p>
+</dd>
+<dt>Datos Facturación</dt>
+<dd><p class="first last">Datos incluidos en las facturas creadas por esta marca.</p>
+</dd>
+<dt>Dominio SIP</dt>
+<dd><p class="first last">Introducido en 1.4. Dominio que apunta al proxy SIP de Usuarios utilizado por todas las Cuentas Retail y Dispositivos Residenciales de esta marca.</p>
+</dd>
+<dt>Grabaciones</dt>
+<dd><p class="first last">Configura un límite para el tamaño de las grabaciones de esta marca. Se envía una notificación a la dirección configurada cuando se alcanza el 80% y las grabaciones más antiguas se rotan cuando se alcanza el tamaño configurado.</p>
+</dd>
+<dt>Funcionalidades</dt>
+<dd><p class="first last">Introducido en 1.3, permite al operador principal elegir las funcionalidades de la marca creada. Una configuración equivalente está disponible en Clientes, para elegir entre las que el operador principal dio a su Marca. Las secciones relacionadas se ocultan en consecuencia.</p>
+</dd>
+<dt>Límite llamadas</dt>
+<dd><p class="first last">Limita tanto las llamadas generadas por el usuario como las recibidas <strong>externas</strong> a este valor (0 para ilimitado).</p>
+</dd>
+<dt>Localización</dt>
+<dd><p class="first last">Define la Zona Horaria, Idioma y Divisa predeterminados para los clientes de esta marca.</p>
+</dd>
+<dt>Notificaciones</dt>
+<dd><p class="first last">Configure las <a class="reference internal" href="../brand/settings/notification_templates.xhtml#id1"><span class="std std-ref">Plantillas de Notificación</span></a> de correo electrónico para usar en esta marca. Los clientes configurados para usar notificaciones genéricas usarán las notificaciones configuradas de la marca. Si la marca no tiene notificaciones configuradas, se usarán las <a class="reference internal" href="default_notification_templates.xhtml#id1"><span class="std std-ref">Plantillas de Notificación por Defecto</span></a>.</p>
+</dd>
+<dt>ProxyTrunks</dt>
+<dd><p class="first last">Seleccione qué direcciones de ProxyTrunks pueden ser utilizadas por esta marca. Lea <a class="reference internal" href="infrastructure/proxy_trunks.xhtml#proxy-trunks"><span class="std std-ref">Proxies de Salida</span></a> para más detalles. No es posible desasignar una dirección utilizada en cualquier <a class="reference internal" href="../brand/providers/carriers.xhtml#carriers"><span class="std std-ref">operador</span></a> o <a class="reference internal" href="../brand/providers/ddi_providers.xhtml#ddi-providers"><span class="std std-ref">proveedor de DDI</span></a>.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Algunas funcionalidades están relacionadas con la marca y no pueden ser asignadas a los clientes. Otras también están relacionadas con los clientes y permiten al operador de la marca asignarlas a sus clientes.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Deshabilitar la facturación oculta todas las secciones relacionadas y asume que un elemento externo establecerá un precio para las llamadas (se necesita un módulo de tarificación externo, ¡pregunte por él!).</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Deshabilitar las facturas oculta las secciones relacionadas, asumiendo que utilizará una herramienta externa para generarlas.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">El dominio SIP solo es visible para las Marcas con funcionalidades Retail o Residenciales habilitadas.</p>
+</div>
+<div class="section" id="brand-operators">
+<span id="id2"></span><h2>Operadores de Marca</h2>
+<p>La subsección <strong>Listado de operadores de marca</strong> permite añadir/editar/eliminar credenciales para el acceso al portal de la marca.</p>
+<p>Lea <a class="reference internal" href="../../api_rest/acls.xhtml#acls"><span class="std std-ref">ACLs</span></a> para más información sobre administradores de marca restringidos.</p>
+</div>
+<div class="section" id="brand-portals">
+<span id="id3"></span><h2>Portales de Marca</h2>
+<p>La subsección <strong>Listado de portales de marca</strong> permite gestionar las URLs para acceder a los diferentes portales web disponibles para una marca dada.</p>
+<p>Vea <a class="reference internal" href="../brand/settings/client_portals.xhtml#id1"><span class="std std-ref">Portales de Clientes</span></a> para más información.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Las URLs se asignan a las marcas. Esto significa que a través de una URL dada se puede adivinar la marca, pero no el cliente. Como resultado, el dominio de colisión de nombres de usuario estará a nivel de marca (no pueden existir dos administradores de clientes con el mismo nombre de usuario dentro de una marca).</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>
