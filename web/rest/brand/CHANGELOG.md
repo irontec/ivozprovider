@@ -1,4 +1,9 @@
 # Changelog
+## 4.5.1
+* Models
+    - FixedCost
+        - Changed description maxLength from 255 to 1024
+
 ## 4.5.0
 * Endpoints:
     - /companies/balances:

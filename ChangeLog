@@ -1,3 +1,28 @@
+Mon, 14 Nov 2025 10:37:00 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.5.1 released
+
+    Portals:
+        - Fixed AccountStatus display in Daily Usage screen (#3036)
+
+    Core
+        - Added dedicated endpoints for balances and dailyUsage for better performance (#3030)
+        - Added empty lastname validation in User mass import (#3029)
+        - Fixed a bug that allowed some entities to be assigned to wrong Company types (#3039)
+
+    Kamailio
+        - Added support for R-URI domain and port without IP in DirectConnectivity endpoints (#3032)
+
+    Provisioning
+        - Fixed specificUrlPattern logic in terminal provisioning (#3034)
+
+    Schema:
+        - Increased FixedCosts description field to 1024 characters (#3037)
+
+    Misc
+        - Added shared library support in CI pipeline (#3031)
+
+
 Thu, 09 Oct 2025 10:09:18 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.5.0 released
