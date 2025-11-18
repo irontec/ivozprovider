@@ -38,6 +38,38 @@ Feature: Retrieve residential devices
               ]
           },
           {
+              "name": "residentialDevice2",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 2,
+              "domain": 6,
+              "status": []
+          },
+          {
+              "name": "residentialDevice3",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 3,
+              "domain": 6,
+              "status": []
+          },
+          {
+              "name": "residentialDevice4",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 4,
+              "domain": 6,
+              "status": []
+          },
+          {
+              "name": "residentialDevice5",
+              "description": "",
+              "directConnectivity": "no",
+              "id": 5,
+              "domain": 6,
+              "status": []
+          },
+          {
               "name": "residentialDevice6",
               "description": "",
               "directConnectivity": "yes",

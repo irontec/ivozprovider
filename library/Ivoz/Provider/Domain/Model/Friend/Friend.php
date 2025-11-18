@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern;
 
@@ -74,13 +75,7 @@ class Friend extends FriendAbstract implements FriendInterface
             $this->setProxyUser(null);
         }
 
-        if ($this->getIp() && !$this->getPort()) {
-            throw new \DomainException('Invalid empty port');
-        }
-
-        if ($this->getPort() && !$this->getIp()) {
-            throw new \DomainException('Invalid empty IP');
-        }
+        $this->validateIpPortRuriCombination();
 
         if ($this->isRegisterConnectivity() && !$this->getPassword()) {
             throw new \DomainException('Password cannot be empty for register friends');
@@ -108,6 +103,27 @@ class Friend extends FriendAbstract implements FriendInterface
                 ->getCompany()
                 ->getDomain()
         );
+    }
+
+    private function validateIpPortRuriCombination(): void
+    {
+        $hasIp = !empty($this->getIp());
+        $hasPort = !empty($this->getPort());
+        $hasRURI = !empty($this->getRuriDomain());
+
+        if (!$hasIp && !$hasPort && !$hasRURI) {
+            return;
+        }
+
+        if ($hasIp && $hasPort) {
+            return;
+        }
+
+        if ($hasRURI && !$hasIp) {
+            return;
+        }
+
+        throw new \DomainException('Invalid field combination: use uri, port+uri, ip+port, or ip+port+uri');
     }
 
     /**
@@ -360,5 +376,14 @@ class Friend extends FriendAbstract implements FriendInterface
         }
 
         return sprintf("InterCompany%d_%d", $companyOneId, $companyTwoId);
+    }
+
+    public function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Friend can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

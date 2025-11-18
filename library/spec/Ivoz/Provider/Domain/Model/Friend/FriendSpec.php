@@ -46,6 +46,7 @@ class FriendSpec extends ObjectBehavior
             [
                 'getId' => 1,
                 'getDomain' => $domain,
+                'getType' => CompanyInterface::TYPE_VPBX,
             ]
         );
 

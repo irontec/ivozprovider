@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * RetailAccount
@@ -65,13 +66,28 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
             $this->setProxyUser(null);
         }
 
-        if ($this->getIp() && !$this->getPort()) {
-            throw new \DomainException('Invalid empty port');
+        $this->validateIpPortRuriCombination();
+    }
+
+    private function validateIpPortRuriCombination(): void
+    {
+        $hasIp = !empty($this->getIp());
+        $hasPort = !empty($this->getPort());
+        $hasRURI = !empty($this->getRuriDomain());
+
+        if (!$hasIp && !$hasPort && !$hasRURI) {
+            return;
         }
 
-        if ($this->getPort() && !$this->getIp()) {
-            throw new \DomainException('Invalid empty IP');
+        if ($hasIp && $hasPort) {
+            return;
         }
+
+        if ($hasRURI && !$hasIp) {
+            return;
+        }
+
+        throw new \DomainException('Invalid field combination: use uri, port+uri, ip+port, or ip+port+uri');
     }
 
     /**
@@ -187,5 +203,14 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
         $ddis = $this->getDdis($criteria);
 
         return array_shift($ddis);
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_RETAIL) {
+            throw new \DomainException('RetailAccount can only be associated with retail companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

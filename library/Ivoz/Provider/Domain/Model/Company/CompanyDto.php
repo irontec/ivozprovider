@@ -15,13 +15,6 @@ class CompanyDto extends CompanyDtoAbstract
     public const CONTEXT_BALANCES = 'balances';
     public const CONTEXT_DAILY_USAGE = 'dailyUsage';
 
-    private const CONTEXTS_WITHOUT_EXTRA_FIELDS = [
-        self::CONTEXT_COLLECTION,
-        self::CONTEXT_BALANCES,
-        self::CONTEXT_DAILY_USAGE,
-        self::CONTEXT_SIMPLE
-    ];
-
     /**
      * @var string
      * @AttributeDefinition(
@@ -115,6 +108,11 @@ class CompanyDto extends CompanyDtoAbstract
                 $response['currentDayMaxUsage'] = $this->currentDayMaxUsage;
                 $response['currentDayUsage'] = $this->getCurrentDayUsage();
                 $response['accountStatus'] = $this->accountStatus;
+            } else {
+                $response['featureIds'] = $this->featureIds;
+                $response['geoIpAllowedCountries'] = $this->geoIpAllowedCountries;
+                $response['routingTagIds'] = $this->routingTagIds;
+                $response['codecIds'] = $this->codecIds;
             }
         }
 
@@ -285,37 +283,7 @@ class CompanyDto extends CompanyDtoAbstract
      */
     public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null): array
     {
-        if ($context === self::CONTEXT_BALANCES) {
-            $response = [
-                'id' => 'id',
-                'name' => 'name',
-                'type' => 'type',
-                'billingMethod' => 'billingMethod',
-                'currencySymbol' => 'currencySymbol',
-                'accountStatus' => 'accountStatus',
-            ];
-
-            if ($role === 'ROLE_BRAND_ADMIN') {
-                $response['domainUsers'] = 'domainUsers';
-                $response['balance'] = 'balance';
-            }
-        } elseif ($context === self::CONTEXT_DAILY_USAGE) {
-            $response = [
-                'id' => 'id',
-                'name' => 'name',
-                'type' => 'type',
-                'billingMethod' => 'billingMethod',
-                'currentDayUsage' => 'currentDayUsage',
-                'maxDailyUsage' => 'maxDailyUsage',
-                'currencySymbol' => 'currencySymbol',
-                'currentDayMaxUsage' => 'currentDayMaxUsage',
-                'accountStatus' => 'accountStatus',
-            ];
-
-            if ($role === 'ROLE_BRAND_ADMIN') {
-                $response['domainUsers'] = 'domainUsers';
-            }
-        } elseif ($context === self::CONTEXT_COLLECTION) {
+        if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
                 'name' => 'name',
@@ -355,12 +323,14 @@ class CompanyDto extends CompanyDtoAbstract
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
-            if (in_array($context, self::CONTEXTS_WITHOUT_EXTRA_FIELDS, true)) {
-                unset($response['featureIds']);
-                unset($response['geoIpAllowedCountries']);
-                unset($response['routingTagIds']);
-                unset($response['codecIds']);
-            }
+            $response['featureIds'] = 'featureIds';
+            $response['geoIpAllowedCountries'] = 'geoIpAllowedCountries';
+            $response['routingTagIds'] = 'routingTagIds';
+            $response['codecIds'] = 'codecIds';
+            $response['corporationId'] = 'corporation';
+            $response['applicationServerSetId'] = 'applicationServerSet';
+            $response['mediaRelaySetId'] = 'mediaRelaySet';
+            $response['accountStatus'] = 'accountStatus';
             return self::filterFieldsForBrandAdmin($response);
         }
 
@@ -375,13 +345,6 @@ class CompanyDto extends CompanyDtoAbstract
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
-        $response['featureIds'] = $this->featureIds;
-        $response['geoIpAllowedCountries'] = $this->geoIpAllowedCountries;
-        $response['routingTagIds'] = $this->routingTagIds;
-        $response['codecIds'] = $this->codecIds;
-        $response['currencySymbol'] = $this->currencySymbol;
-        $response['currentDayMaxUsage'] = $this->currentDayMaxUsage;
-        $response['accountStatus'] = $this->accountStatus;
 
         return $response;
     }
@@ -426,15 +389,13 @@ class CompanyDto extends CompanyDtoAbstract
             'maxDailyUsage',
             'maxDailyUsageEmail',
             'maxDailyUsageNotificationTemplateId',
-            'currentDayUsage',
+            'currentDayUsage' => 'currentDayUsage',
             'domainName',
             'corporationId',
-            'currentDayMaxUsage',
-            'accountStatus',
-            'currencySymbol',
             'applicationServerSetId',
             'mediaRelaySetId',
             'locationId',
+            'accountStatus',
         ];
 
         return array_filter(
@@ -463,7 +424,8 @@ class CompanyDto extends CompanyDtoAbstract
             'outgoingDdiId',
             'outgoingDdiRuleId',
             'domainName',
-            'corporationId'
+            'corporationId',
+            'accountStatus',
         ];
 
         $response = array_filter(

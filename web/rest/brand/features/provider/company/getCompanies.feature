@@ -13,7 +13,7 @@ Feature: Retrieve companies
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
       """
-         [
+      [
           {
               "type": "vpbx",
               "name": "DemoCompany",
@@ -27,7 +27,20 @@ Feature: Retrieve companies
                   "nif": "12345678A"
               },
               "outgoingDdi": null,
-              "domainName": "127.0.0.1"
+              "corporation": 1,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
+              "domainName": "127.0.0.1",
+              "featureIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+              ],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           {
               "type": "vpbx",
@@ -42,7 +55,14 @@ Feature: Retrieve companies
                   "nif": "12345678-Z"
               },
               "outgoingDdi": null,
-              "domainName": "test.irontec.com"
+              "corporation": 1,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
+              "domainName": "test.irontec.com",
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           {
               "type": "residential",
@@ -57,7 +77,14 @@ Feature: Retrieve companies
                   "nif": "12345679-Z"
               },
               "outgoingDdi": null,
-              "domainName": "retail.irontec.com"
+              "corporation": null,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
+              "domainName": "retail.irontec.com",
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           {
               "type": "retail",
@@ -72,7 +99,38 @@ Feature: Retrieve companies
                   "nif": "12345679-Z"
               },
               "outgoingDdi": null,
-              "domainName": "retail.irontec.com"
+              "corporation": null,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
+              "domainName": "retail.irontec.com",
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [
+                  1
+              ],
+              "codecIds": []
+          },
+          {
+              "type": "vpbx",
+              "name": "Unassigned Test Company",
+              "domainUsers": "unassigned.irontec.com",
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": 0,
+              "billingMethod": "postpaid",
+              "balance": 0,
+              "id": 7,
+              "invoicing": {
+                  "nif": "12345677-Z"
+              },
+              "outgoingDdi": null,
+              "corporation": 1,
+              "applicationServerSet": 1,
+              "mediaRelaySet": 0,
+              "domainName": "trunks.ivozprovider.local",
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           {
               "type": "wholesale",
@@ -87,7 +145,14 @@ Feature: Retrieve companies
                   "nif": "12345689-Z"
               },
               "outgoingDdi": null,
-              "domainName": null
+              "corporation": null,
+              "applicationServerSet": 0,
+              "mediaRelaySet": 0,
+              "domainName": null,
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           }
       ]
       """
@@ -226,6 +291,16 @@ Feature: Retrieve companies
               "id": 1,
               "company": 1
           },
-          "domainName": "127.0.0.1"
+          "domainName": "127.0.0.1",
+          "featureIds": [
+              1,
+              2,
+              3,
+              4,
+              5
+          ],
+          "geoIpAllowedCountries": [],
+          "routingTagIds": [],
+          "codecIds": []
       }
       """

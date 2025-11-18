@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
@@ -72,13 +73,28 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
             $this->setProxyUser(null);
         }
 
-        if ($this->getIp() && !$this->getPort()) {
-            throw new \DomainException('Invalid empty port');
+        $this->validateIpPortRuriCombination();
+    }
+
+    private function validateIpPortRuriCombination(): void
+    {
+        $hasIp = !empty($this->getIp());
+        $hasPort = !empty($this->getPort());
+        $hasRURI = !empty($this->getRuriDomain());
+
+        if (!$hasIp && !$hasPort && !$hasRURI) {
+            return;
         }
 
-        if ($this->getPort() && !$this->getIp()) {
-            throw new \DomainException('Invalid empty IP');
+        if ($hasIp && $hasPort) {
+            return;
         }
+
+        if ($hasRURI && !$hasIp) {
+            return;
+        }
+
+        throw new \DomainException('Invalid field combination: use uri, port+uri, ip+port, or ip+port+uri');
     }
 
     /**
@@ -249,5 +265,14 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
 
 
         return array_shift($ddis);
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_RESIDENTIAL) {
+            throw new \DomainException('ResidentialDevice can only be associated with residential companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

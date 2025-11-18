@@ -41,7 +41,7 @@ Feature: Retrieve retail accounts status
               "rtpEncryption": false,
               "multiContact": true,
               "id": 2,
-              "company": 1,
+              "company": 3,
               "domainName": "retail.irontec.com",
               "status": []
           },
@@ -52,7 +52,7 @@ Feature: Retrieve retail accounts status
               "rtpEncryption": false,
               "multiContact": true,
               "id": 3,
-              "company": 1,
+              "company": 3,
               "domainName": "retail.irontec.com",
               "status": []
           },
@@ -63,7 +63,7 @@ Feature: Retrieve retail accounts status
               "rtpEncryption": false,
               "multiContact": true,
               "id": 4,
-              "company": 1,
+              "company": 3,
               "domainName": "retail.irontec.com",
               "status": []
           },
@@ -74,7 +74,7 @@ Feature: Retrieve retail accounts status
               "rtpEncryption": false,
               "multiContact": true,
               "id": 5,
-              "company": 1,
+              "company": 3,
               "domainName": "retail.irontec.com",
               "status": []
           },

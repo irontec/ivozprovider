@@ -75,17 +75,29 @@ Feature: Manage companies
               "domainName": null
           },
           {
-                "type": "wholesale",
-                "name": "Wholesale Argentina",
-                "maxDailyUsage": 1000000,
-                "currentDayUsage": 0,
-                "billingMethod": "postpaid",
-                "id": 6,
-                "invoicing": {
-                    "nif": "12345699-Z"
-                },
-                "domainName": null
-            }
+              "type": "wholesale",
+              "name": "Wholesale Argentina",
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": 0,
+              "billingMethod": "postpaid",
+              "id": 6,
+              "invoicing": {
+                  "nif": "12345699-Z"
+              },
+              "domainName": null
+          },
+          {
+              "type": "vpbx",
+              "name": "Unassigned Test Company",
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": 0,
+              "billingMethod": "postpaid",
+              "id": 7,
+              "invoicing": {
+                  "nif": "12345677-Z"
+              },
+              "domainName": "trunks.ivozprovider.local"
+          }
       ]
       """
 

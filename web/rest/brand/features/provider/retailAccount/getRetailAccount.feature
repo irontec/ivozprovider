@@ -42,7 +42,7 @@ Feature: Retrieve retail accounts
               "multiContact": true,
               "id": 2,
               "domain": 6,
-              "company": 1,
+              "company": 3,
               "status": []
           },
           {
@@ -53,7 +53,7 @@ Feature: Retrieve retail accounts
               "multiContact": true,
               "id": 3,
               "domain": 6,
-              "company": 1,
+              "company": 3,
               "status": []
           },
           {
@@ -64,7 +64,7 @@ Feature: Retrieve retail accounts
               "multiContact": true,
               "id": 4,
               "domain": 6,
-              "company": 1,
+              "company": 3,
               "status": []
           },
           {
@@ -75,7 +75,7 @@ Feature: Retrieve retail accounts
               "multiContact": true,
               "id": 5,
               "domain": 6,
-              "company": 1,
+              "company": 3,
               "status": []
           },
           {

@@ -21,7 +21,7 @@ Feature: Create retail accounts
           "directConnectivity": "yes",
           "ddiIn": "yes",
           "t38Passthrough": "no",
-          "company": 1,
+          "company": 3,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "proxyUser": 1
@@ -47,7 +47,7 @@ Feature: Create retail accounts
           "multiContact": true,
           "ruriDomain": null,
           "id": 7,
-          "company": 1,
+          "company": 3,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "proxyUser": 1

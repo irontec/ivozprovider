@@ -1,3 +1,5 @@
+@Library('jenkins-pipeline-library@0.0.2') _
+
 pipeline {
 
     agent any
@@ -23,8 +25,14 @@ pipeline {
     // Environment configuration
     // ------------------------------------------------------------------------
     environment {
+        // Shared library configuration (Provider-specific)
+        GITHUB_CONTEXT_PREFIX = 'ivozprovider-testing'
+        MATTERMOST_CHANNEL = '#comms-provider'
+
+        // Application configuration
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
         SYMFONY_PHPUNIT_VERSION = "9.5.3"
+
         DOCKER_TAG = getDockerTag()
         BRANCH_NAME = getBranchName()
         BASE_BRANCH = getBaseBranch()
@@ -702,44 +710,13 @@ pipeline {
                 failure { notifyFailureGithub() }
             }
         }
-        //
         // --------------------------------------------------------------------
-        // Functional Testing stage
+        // Functional validation
         // --------------------------------------------------------------------
-        stage('functional') {
+        stage ('functional') {
             steps {
                 script {
-                    if (!env.JIRA_TICKET) {
-                        echo "No ticket associated."
-                        return
-                    }
-
-                    if (!env.CHANGE_ID) {
-                        echo "Not a Pull request."
-                        return
-                    }
-
-                    def issue = jiraGetIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET
-
-                    // Functional Reviewer - 10168
-                    if (issue.data.fields.customfield_10168) {
-                        println "Functional Reviewer: ${issue.data.fields.customfield_10168.displayName}"
-                        pullRequest.addLabel('functional-review')
-                    } else {
-                        println "No functional reviewer assigned."
-                    }
-
-                    // Validated - 10325
-                    def status = issue.data.fields.status
-                    println "Issue Status: ${status.name} (${status.id})"
-
-                    // For Issues with Functional reviewer
-                    if (issue.data.fields.customfield_10168) {
-                        // Not validated
-                        if (status.id != "10325") {
-                            unstable "Changes not yet validated. Functional review required."
-                        }
-                    }
+                    validateFunctionalReview()
                 }
             }
             post {
@@ -748,66 +725,13 @@ pipeline {
             }
         }
 
+        // --------------------------------------------------------------------
+        // Mergeability validation
+        // --------------------------------------------------------------------
         stage ('mergeability') {
             steps {
                 script {
-                    if (!env.CHANGE_TARGET) {
-                        echo "Not a merge request branch. Merge checks not required."
-                        return
-                    }
-
-                    if (env.BRANCH_NAME.startsWith("dependabot")) {
-                        echo "Security alarm branch. Merge checks not required."
-                        return
-                    }
-
-                    if (!env.JIRA_TICKET) {
-                        failure "No ticket associated. Can not validate mergeability."
-                    }
-
-                    def issue = jiraGetIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET
-
-                    isSubtask = issue.data.fields.issuetype.subtask
-                    if (isSubtask) {
-                        def task = issue.data.fields.parent
-                        echo "${env.JIRA_TICKET} is a subtask part of a feature task."
-
-                        if (!env.CHANGE_TARGET.startsWith(task.key)) {
-                            unstable "Target branch ${env.CHANGE_TARGET} is not an feature branch. Merge will be blocked until all previous task are merged"
-                        }
-
-                        def status = task.fields.status
-                        if (status.id != "10325") {
-                            unstable "Feature not yet validated. Merge is blocked."
-                        }
-
-                        try {
-                            sh "git merge-base --is-ancestor origin/main origin/${env.CHANGE_TARGET}"
-                        } catch (Exception e) {
-                            unstable "Feature branch ${env.CHANGE_TARGET} is not properly rebased. Merge is blocked."
-                        }
-                    } else {
-                        def currentVersion = issue.data.fields.fixVersions[0];
-                        if (currentVersion && !currentVersion.name.contains('current')) {
-                            unstable "Pull request fixedVersions (${currentVersion.name}) is not current version. Merge is blocked."
-                        } else {
-                            echo "Fixed Version: ${currentVersion.name}"
-                        }
-
-                        echo "${env.JIRA_TICKET} is a task. Checking subtasks..."
-
-                        if (env.CHANGE_TARGET != "main") {
-                            unstable "Target branch ${env.CHANGE_TARGET} is not an main branch."
-                        }
-
-                        def subtasks = issue.data.fields.subtasks
-                        subtasks.each { subtask ->
-                            def status = subtask.fields.status
-                            if (status.id != "10002") {
-                                unstable "Subtask ${subtask.key} is not completed (Status: ${status.name})."
-                            }
-                        }
-                    }
+                    validateMergeability()
                 }
             }
             post {
@@ -821,8 +745,17 @@ pipeline {
     // Pipeline post-actions
     // ------------------------------------------------------------------------
     post {
-        failure { notifyFailureMattermost() }
-        fixed { notifyFixedMattermost() }
+        failure {
+            notifyFailureMattermost()
+        }
+        success {
+            githubMarkApproved()
+            saveTestedHash(env.HASH_BACK)
+            saveTestedHash(env.HASH_FRONT_PLATFORM)
+            saveTestedHash(env.HASH_FRONT_BRAND)
+            saveTestedHash(env.HASH_FRONT_CLIENT)
+            saveTestedHash(env.HASH_FRONT_USER)
+        }
         unstable {
             script { currentBuild.rawBuild.@result = hudson.model.Result.SUCCESS }
             githubMarkChangesRequested()
@@ -832,181 +765,16 @@ pipeline {
             saveTestedHash(env.HASH_FRONT_CLIENT)
             saveTestedHash(env.HASH_FRONT_USER)
         }
-        always { cleanWs() }
-        success {
-            githubMarkApproved()
-            saveTestedHash(env.HASH_BACK)
-            saveTestedHash(env.HASH_FRONT_PLATFORM)
-            saveTestedHash(env.HASH_FRONT_BRAND)
-            saveTestedHash(env.HASH_FRONT_CLIENT)
-            saveTestedHash(env.HASH_FRONT_USER)
+        fixed {
+            notifyFixedMattermost()
+        }
+        always {
+            cleanWs()
         }
     }
 }
 
 // -----------------------------------------------------------------------------
-// Helper Functions
+// All helper functions have been moved to the shared library:
+// https://github.com/irontec/jenkins-pipeline-library
 // -----------------------------------------------------------------------------
-void getJiraTicket() {
-    def matcher = "${env.CHANGE_BRANCH}" =~ /^(?<jira>\w+-\d+)-.*$/
-    if (matcher.matches()) {
-        return matcher.group("jira")
-    } else {
-        return ""
-    }
-}
-
-boolean hasLabel(String label) {
-    return env.CHANGE_ID && pullRequest.labels.contains(label)
-}
-
-boolean hasCommitTag(String module) {
-  return env.CHANGE_TARGET && sh(
-    returnStatus: true,
-    script: "git log --oneline origin/${env.CHANGE_TARGET}...${env.GIT_COMMIT} | grep ${module}"
-  ) == 0
-}
-
-void getBranchName() {
-    return env.CHANGE_BRANCH ?: env.GIT_BRANCH
-}
-
-void getBaseBranch() {
-    return env.CHANGE_TARGET ?: env.GIT_BRANCH
-}
-
-void getDockerTag() {
-    return env.CHANGE_ID ?: env.GIT_BRANCH
-}
-
-void notifySuccessGithub() {
-    githubNotify([
-        context: "ivozprovider-testing-${STAGE_NAME}",
-        description: "Finished",
-        status: "SUCCESS"
-    ])
-}
-
-void notifyFailureGithub() {
-    githubNotify([
-        context: "ivozprovider-testing-${STAGE_NAME}",
-        description: "Finished",
-        status: "FAILURE"
-    ])
-}
-
-void notifyUnstableGithub() {
-    githubNotify([
-        context: "ivozprovider-testing-${STAGE_NAME}",
-        description: "Cancelled",
-        status: "ERROR"
-    ])
-}
-
-void notifyFailureMattermost() {
-    if (env.GIT_BRANCH == 'main' || env.GIT_BRANCH == 'tempest') {
-        mattermostSend([
-            channel: "#comms-provider",
-            color: "#FF0000",
-            message: ":red_circle: Branch ${env.GIT_BRANCH} tests failed :red_circle: - (<${env.BUILD_URL}|Open>)"
-        ])
-    }
-}
-
-void notifyFixedMattermost() {
-    if (env.GIT_BRANCH == 'main' || env.GIT_BRANCH == 'tempest') {
-        mattermostSend([
-            channel: "#comms-provider",
-            color: "#008000",
-            message: ":thumbsup_all: Branch ${env.GIT_BRANCH} tests fixed :thumbsup_all: - (<${env.BUILD_URL}|Open>)"
-        ])
-    }
-}
-
-def githubMarkApproved() {
-    if (env.CHANGE_ID) {
-        // Check last status of bot review
-        def lastFuncReviewStatus
-        for (review in pullRequest.reviews) {
-            if (review.user == "ironArt3mis") {
-                lastFuncReviewStatus = review.state
-            }
-        }
-
-        // If PR was previously rejected approve it
-        if (lastFuncReviewStatus == "CHANGES_REQUESTED") {
-            pullRequest.review('APPROVE')
-        }
-    }
-}
-
-def githubMarkChangesRequested()
-{
-    if (env.CHANGE_ID) {
-        // Check last status of bot review
-        def lastFuncReviewStatus
-        for (review in pullRequest.reviews) {
-            if (review.user == "ironArt3mis") {
-                lastFuncReviewStatus = review.state
-            }
-        }
-
-        // PR already marked as review requested
-        if (lastFuncReviewStatus == "CHANGES_REQUESTED") {
-            echo "This PR is already marked as not ready to merge"
-            return
-        }
-
-        pullRequest.review('REQUEST_CHANGES', 'This PR is not ready to merge.')
-    }
-}
-
-def githubUpdatePullRequestTitle()
-{
-    def title = pullRequest.title
-    if (!title.startsWith("[${env.JIRA_TICKET}]")) {
-        pullRequest.title = "[${env.JIRA_TICKET}] " + title
-    }
-}
-
-def jiraUpdateCustomFields() {
-    // customfield_10165 - Pull Request
-    // customfield_10166 - Branch
-    def fields = [
-        fields: [
-            customfield_10165: env.JOB_BASE_NAME,
-            customfield_10166: env.CHANGE_BRANCH,
-        ]
-    ]
-    jiraEditIssue site: 'irontec.atlassian.net', idOrKey: env.JIRA_TICKET, issue: fields
-}
-
-def getCurrentHash(dir) {
-    return sh(script: "find ${dir} -type f -not -path './.git/*' -exec sha256sum {} + | sort | sha256sum | awk '{print \$1}'", returnStdout: true).trim()
-}
-
-def isHashTested(hash) {
-    if (!fileExists(env.HASH_FILE)) {
-        return false
-    }
-    def hashes = readFile(env.HASH_FILE).split("\n")
-    return hashes.contains(hash)
-}
-
-def saveTestedHash(hash) {
-    if (isHashTested(hash)) {
-        echo "Hash ${hash} already saved cache file."
-        return
-    }
-
-    def hashes = fileExists(env.HASH_FILE) ? readFile(env.HASH_FILE).split("\n") as List : []
-
-    if (hashes.size() >= env.MAX_HASHES.toInteger()) {
-        hashes.remove(0)
-    }
-
-    hashes.add(hash)
-
-    writeFile(file: env.HASH_FILE, text: hashes.join("\n"))
-    echo "Saved new tested hash: ${hash}. Total hashes stored: ${hashes.size()}"
-}

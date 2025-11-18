@@ -15,8 +15,8 @@ Feature: Retrieve friends status
       """
       [
           {
-              "name": "InterCompany1_3",
-              "id": 3,
+              "name": "InterCompany1_2",
+              "id": 2,
               "company": 1,
               "domainName": "127.0.0.1",
               "status": []
@@ -37,10 +37,10 @@ Feature: Retrieve friends status
               ]
           },
           {
-              "name": "InterCompany1_3",
-              "id": 2,
-              "company": 3,
-              "domainName": "retail.irontec.com",
+              "name": "InterCompany1_2",
+              "id": 3,
+              "company": 2,
+              "domainName": "test.irontec.com",
               "status": []
           }
       ]

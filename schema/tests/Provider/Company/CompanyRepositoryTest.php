@@ -185,7 +185,7 @@ class CompanyRepositoryTest extends KernelTestCase
         $count = $repository->count([]);
 
         $this->assertEquals(
-            6,
+            7,
             $count
         );
     }
@@ -200,7 +200,7 @@ class CompanyRepositoryTest extends KernelTestCase
         $count = $repository->countByBrand(1);
 
         $this->assertEquals(
-            5,
+            6,
             $count
         );
     }

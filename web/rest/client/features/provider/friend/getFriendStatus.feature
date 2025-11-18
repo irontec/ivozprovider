@@ -15,8 +15,8 @@ Feature: Retrieve friends status
       """
       [
           {
-              "name": "InterCompany1_3",
-              "id": 3,
+              "name": "InterCompany1_2",
+              "id": 2,
               "domainName": "127.0.0.1",
               "status": []
           },

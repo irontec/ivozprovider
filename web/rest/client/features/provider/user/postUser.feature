@@ -11,9 +11,9 @@ Feature: Create users
       And I send a "POST" request to "/users" with body:
       """
       {
-          "name": "Test",
-          "lastname": "",
-          "email": "test@irontec.com",
+          "name": "Fernando",
+          "lastname": "Lopez",
+          "email": "fernando@irontec.com",
           "pass": "1234",
           "doNotDisturb": false,
           "isBoss": false,
@@ -42,9 +42,9 @@ Feature: Create users
       And the JSON should be like:
       """
       {
-          "name": "Test",
-          "lastname": "",
-          "email": "test@irontec.com",
+          "name": "Fernando",
+          "lastname": "Lopez",
+          "email": "fernando@irontec.com",
           "pass": "*****",
           "doNotDisturb": false,
           "isBoss": false,
@@ -110,9 +110,9 @@ Feature: Create users
       And the JSON should be like:
       """
       {
-          "name": "Test",
-          "lastname": "",
-          "email": "test@irontec.com",
+          "name": "Fernando",
+          "lastname": "Lopez",
+          "email": "fernando@irontec.com",
           "pass": "*****",
           "doNotDisturb": false,
           "isBoss": false,

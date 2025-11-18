@@ -28,7 +28,7 @@ class RetailAccountLifeCycleTest extends KernelTestCase
             ->setDirectConnectivity('yes')
             ->setProxyUserId(1)
             ->setBrandId(1)
-            ->setCompanyId(1);
+            ->setCompanyId(3);
 
         return $retailAccountDto;
     }
