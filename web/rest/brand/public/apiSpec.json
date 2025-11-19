@@ -7139,6 +7139,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "hasServers",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "id[exact]",
                         "in": "query",
                         "required": false,
@@ -41771,6 +41777,10 @@
                 },
                 "status": {
                     "$ref": "#/definitions/CarrierStatus"
+                },
+                "hasServers": {
+                    "description": "Has servers",
+                    "type": "boolean"
                 }
             }
         },
