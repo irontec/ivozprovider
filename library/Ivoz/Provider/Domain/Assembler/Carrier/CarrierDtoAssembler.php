@@ -37,11 +37,15 @@ class CarrierDtoAssembler implements CustomDtoAssemblerInterface
                 (int)$entity->getId()
             );
 
+        $hasServers = count($carrierServers) > 0;
+
         $carrierDto->addStatus(
             new CarrierStatus(
-                count($carrierServers) > 0
+                $hasServers
             )
         );
+
+        $carrierDto->setHasServers($hasServers);
 
         foreach ($carrierServers as $carrierServer) {
             $status = $this->statusFromLcrGatewayInfo->execute(
