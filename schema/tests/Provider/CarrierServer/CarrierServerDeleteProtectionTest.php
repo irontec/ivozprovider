@@ -69,19 +69,6 @@ class CarrierServerDeleteProtectionTest extends KernelTestCase
         $usedCarrier = $this->entityTools
             ->persistDto($carrierDto, null, true);
 
-        $outgoingRoutingDto = new OutgoingRoutingDto();
-        $outgoingRoutingDto
-            ->setType('pattern')
-            ->setPriority(999)
-            ->setWeight(1)
-            ->setBrandId(1)
-            ->setRoutingMode('static')
-            ->setCarrierId($usedCarrier->getId());
-
-        /** @var OutgoingRouting $outgoingRouting */
-        $outgoingRouting = $this->entityTools
-            ->persistDto($outgoingRoutingDto, null, true);
-
         $carrierServerDto = new CarrierServerDto();
         $carrierServerDto
             ->setHostname('used-carrier.example.com')
@@ -96,9 +83,22 @@ class CarrierServerDeleteProtectionTest extends KernelTestCase
         $carrierServer = $this->entityTools
             ->persistDto($carrierServerDto, null, true);
 
+        $this->em->refresh($usedCarrier);
+
+        $outgoingRoutingDto = new OutgoingRoutingDto();
+        $outgoingRoutingDto
+            ->setType('pattern')
+            ->setPriority(999)
+            ->setWeight(1)
+            ->setBrandId(1)
+            ->setRoutingMode('static')
+            ->setCarrierId($usedCarrier->getId());
+
+        $this->entityTools->persistDto($outgoingRoutingDto, null, true);
+
         $this->expectException(\DomainException::class);
         $this->expectExceptionMessage(
-            'Cannot delete the last CarrierServer from a Carrier that is being used in outgoing routes'
+            'Cannot delete the last CarrierServer from a Carrier that is being used in outgoing routes. At least one CarrierServer must remain.'
         );
 
         $this->entityTools->remove($carrierServer);
