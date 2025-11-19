@@ -3,6 +3,8 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
+import { CarrierProperties } from '../CarrierProperties';
+
 const CarrierSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
@@ -12,10 +14,13 @@ const CarrierSelectOptions: SelectOptionsType = ({
 
   return defaultEntityBehavior.fetchFks(
     `${Carrier.path}?_order[name]=ASC`,
-    ['id', 'name'],
+    ['id', 'name', 'hasServers'],
     (data) => {
+      const carriersWithServers = data.filter(
+        (carrier: CarrierProperties) => carrier.hasServers
+      );
       const options: DropdownChoices = [];
-      for (const item of data) {
+      for (const item of carriersWithServers) {
         options.push({ id: item.id, label: item.name });
       }
 

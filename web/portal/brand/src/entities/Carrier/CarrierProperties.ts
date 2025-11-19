@@ -17,6 +17,7 @@ export type CarrierPropertyList<T> = {
   asr?: T;
   statusIcon?: T;
   mediaRelaySet?: T;
+  hasServers?: T;
 };
 
 export type CarrierProperties = CarrierPropertyList<Partial<PropertySpec>>;
