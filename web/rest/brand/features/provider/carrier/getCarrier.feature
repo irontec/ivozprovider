@@ -24,7 +24,8 @@ Feature: Retrieve carriers
               "proxyTrunk": 2,
               "status": {
                   "registered": false
-              }
+              },
+              "hasServers": false
           },
           {
               "description": "CarrierDescription",
@@ -36,7 +37,8 @@ Feature: Retrieve carriers
               "proxyTrunk": 1,
               "status": {
                   "registered": false
-              }
+              },
+              "hasServers": true
           }
       ]
       """
