@@ -1,9 +1,6 @@
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import {
-  OutlinedButton,
-  SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import {
   ActionFunctionComponent,
   ActionItemProps,
@@ -11,15 +8,7 @@ import {
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
-import {
-  Box,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Tooltip,
-} from '@mui/material';
-import { styled } from '@mui/styles';
+import { Box, Tooltip } from '@mui/material';
 import FileUpload from 'components/FileUpload';
 import Papa from 'papaparse';
 import { useEffect, useState } from 'react';
@@ -33,17 +22,6 @@ type ImporterResults = {
   success: number;
   failed: number;
 };
-
-export const StyledDialog = styled(Dialog)(() => {
-  return {
-    '& .MuiPaper-root': {
-      maxWidth: '90%',
-    },
-    '&.width .MuiPaper-root': {
-      width: '90%',
-    },
-  };
-});
 
 const fileToBlob = (file: File): Blob => {
   return file.slice(0, file.size, file.type);
@@ -177,6 +155,22 @@ const Import: ActionFunctionComponent = (props: ActionItemProps) => {
     return <div>{_('All lines have been imported')}</div>;
   };
 
+  const customButtons = [
+    {
+      label: step === 3 ? _('Close') : _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined' as const,
+      autoFocus: false,
+    },
+    {
+      label: step === 2 ? _('Send') : _('Continue'),
+      onClick: step === 2 ? handleSubmit : handleNext,
+      variant: 'solid' as const,
+      autoFocus: true,
+      disabled: file === null,
+    },
+  ];
+
   return (
     <>
       <a onClick={handleClickOpen}>
@@ -195,78 +189,48 @@ const Import: ActionFunctionComponent = (props: ActionItemProps) => {
           </Tooltip>
         )}
       </a>
-      <StyledDialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-        className={step === 1 ? '' : 'width'}
-      >
-        <Box>
-          <DialogTitle id='alert-dialog-title'>
-            {_('Import Holiday Dates')}
-          </DialogTitle>
-          <DialogContent>
-            <Box sx={step !== 1 ? { display: 'none' } : {}}>
-              <FileUpload onFileSelect={setFile} />
+      {open && (
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Import Holiday Dates')}
+          buttons={customButtons}
+          keepMounted={true}
+        >
+          <Box sx={step !== 1 ? { display: 'none' } : {}}>
+            <FileUpload onFileSelect={setFile} />
+          </Box>
+          {step === 2 && (
+            <Box sx={{ textAlign: 'left' }}>
+              <p>{_('Fields with * are required.')}</p>
+              <ul>
+                <li>{_('Name*: Holiday name')}</li>
+                <li>{_('Date*: Event date')}</li>
+              </ul>
+              <p>
+                {_(
+                  'The columns must be separated by semicolons (;) and the strings enclosed in double quotes (""). The escape character is the backslash (\\).)'
+                )}
+              </p>
+              <p>{_('For example')}:</p>
+              <p>&quot;{_('New year`s eve')}&quot;, &quot;2024-12-31&quot;</p>
+              <ImportHolidayDatesMappingTable
+                csv={csv}
+                columns={columns}
+                setColumns={setColumns}
+                ignoreFirstLine={ignoreFirstLine}
+                setIgnoreFirstLine={setIgnoreFirstLine}
+              />
             </Box>
-            {step === 2 && (
-              <Box sx={{ textAlign: 'left' }}>
-                <p>{_('Fields with * are required.')}</p>
-                <ul>
-                  <li>{_('Name*: Holiday name')}</li>
-                  <li>{_('Date*: Event date')}</li>
-                </ul>
-                <p>
-                  {_(
-                    'The columns must be separated by semicolons (;) and the strings enclosed in double quotes (""). The escape character is the backslash (\\).)'
-                  )}
-                </p>
-                <p>{_('For example')}:</p>
-                <p>&quot;{_('New year`s eve')}&quot;, &quot;2024-12-31&quot;</p>
-                <ImportHolidayDatesMappingTable
-                  csv={csv}
-                  columns={columns}
-                  setColumns={setColumns}
-                  ignoreFirstLine={ignoreFirstLine}
-                  setIgnoreFirstLine={setIgnoreFirstLine}
-                />
-              </Box>
-            )}
-            {step === 3 && (
-              <Box sx={{ textAlign: 'left' }}>
-                <p>{_('Result')}</p>
-                {showResults(result)}
-              </Box>
-            )}
-          </DialogContent>
-          <DialogActions>
-            {step === 1 && (
-              <>
-                <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
-                <SolidButton
-                  onClick={handleNext}
-                  autoFocus
-                  disabled={file === null}
-                >
-                  {_('Continue')}
-                </SolidButton>
-              </>
-            )}
-            {step === 2 && (
-              <>
-                <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
-                <SolidButton onClick={handleSubmit} autoFocus>
-                  {_('Send')}
-                </SolidButton>
-              </>
-            )}
-            {step === 3 && (
-              <OutlinedButton onClick={handleClose}>Close</OutlinedButton>
-            )}
-          </DialogActions>
-        </Box>
-      </StyledDialog>
+          )}
+          {step === 3 && (
+            <Box sx={{ textAlign: 'left' }}>
+              <p>{_('Result')}</p>
+              {showResults(result)}
+            </Box>
+          )}
+        </Modal>
+      )}
     </>
   );
 };

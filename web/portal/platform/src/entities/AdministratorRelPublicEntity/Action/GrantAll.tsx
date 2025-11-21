@@ -1,3 +1,4 @@
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import { ApiError } from '@irontec/ivoz-ui';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
@@ -102,6 +103,22 @@ const GrantAll: ActionFunctionComponent = (
     return <span className='display-none'></span>;
   }
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined',
+      autoFocus: false,
+    },
+    {
+      label: _('Accept'),
+      onClick: handleUpdate,
+      variant: 'solid',
+      autoFocus: true,
+      disabled: error,
+    }
+  ];
+
   return (
     <>
       <span className={disabled ? 'disabled' : ''} onClick={handleClickOpen}>
@@ -123,24 +140,13 @@ const GrantAll: ActionFunctionComponent = (
         )}
       </span>
       {open && (
-        <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle id='alert-dialog-title'>
-            {_('Grant Write Access')}
-          </DialogTitle>
-          <DialogContent sx={{ textAlign: 'center!important' }}>
-            {_(
-              'Do you really want to grant write access to selected entities?'
-            )}
-          </DialogContent>
-          <DialogActions>
-            <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
-            {!error && (
-              <SolidButton onClick={handleUpdate} autoFocus>
-                {_('Accept')}
-              </SolidButton>
-            )}
-          </DialogActions>
-        </Dialog>
+        <Modal 
+          open={open} 
+          onClose={handleClose} 
+          title={_('Grant Write Access')} 
+          buttons={customButtons}
+          description={_('Do you really want to grant write access to selected entities?')}
+        />
       )}
     </>
   );
