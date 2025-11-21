@@ -2,7 +2,7 @@ import DialogContentBody from '@irontec/ivoz-ui/components/Dialog/DialogContentB
 import ErrorMessageComponent from '@irontec/ivoz-ui/components/ErrorMessageComponent';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import { OutlinedButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import {
   ActionFunctionComponent,
   isSingleRowAction,
@@ -10,13 +10,7 @@ import {
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Tooltip,
-} from '@mui/material';
+import { Tooltip } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
 import { useStoreActions } from 'store';
@@ -79,6 +73,15 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
     return <span className='display-none'></span>;
   }
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined',
+      autoFocus: false,
+    },
+  ];
+
   return (
     <>
       <a onClick={handleClickOpen}>
@@ -100,16 +103,15 @@ const Export: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
         )}
       </a>
       {open && (
-        <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle>Downloading</DialogTitle>
-          <DialogContent sx={{ textAlign: 'left!important' }}>
-            {!error && <DialogContentBody child={<CircularProgress />} />}
-            {error && <ErrorMessageComponent message={errorMsg} />}
-          </DialogContent>
-          <DialogActions>
-            <OutlinedButton onClick={handleClose}>Cancel</OutlinedButton>
-          </DialogActions>
-        </Dialog>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Downloading')}
+          buttons={customButtons}
+        >
+          {!error && <DialogContentBody child={<CircularProgress />} />}
+          {error && <ErrorMessageComponent message={errorMsg} />}
+        </Modal>
       )}
     </>
   );

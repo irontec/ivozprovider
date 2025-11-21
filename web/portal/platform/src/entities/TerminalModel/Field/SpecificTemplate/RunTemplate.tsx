@@ -1,21 +1,20 @@
-import { OutlinedButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import useCurrentPathMatch from '@irontec/ivoz-ui/hooks/useCurrentPathMatch';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { PlayCircleOutline } from '@mui/icons-material';
 import ErrorIcon from '@mui/icons-material/Error';
-import {
-  Box,
-  CircularProgress,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import { useStoreActions } from 'store';
 
 import TerminalModel from '../../TerminalModel';
-import StyledTemplateAction from '../TemplateAction.styles';
+import {
+  StyledErrorContainer,
+  StyledMacInputContainer,
+  StyledTemplateAction,
+  StyledTextArea,
+  StyledTextAreaContainer,
+} from '../TemplateAction.styles';
 import { PropsType } from './SpecificTemplate';
 
 const RunTemplate = (props: PropsType): JSX.Element => {
@@ -61,83 +60,64 @@ const RunTemplate = (props: PropsType): JSX.Element => {
       });
   };
 
+  const customButtons = [
+    {
+      label: result ? _('Close') : _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined',
+      autoFocus: false,
+    },
+    {
+      label: _('Exec'),
+      onClick: handleExec,
+      variant: 'solid',
+      autoFocus: true,
+      disabled: !mac || errorMsg,
+    },
+  ];
+
   return (
     <>
       <StyledTemplateAction onClick={handleOpen}>
         <PlayCircleOutline /> {_('Test template')}
       </StyledTemplateAction>
       {open && (
-        <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle>{_('Test template')}</DialogTitle>
-          <DialogContent sx={{ textAlign: 'left!important' }}>
-            {!errorMsg && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                {running && <CircularProgress />}
-                {!result && !running && (
-                  <span>
-                    {_('This template is going to be tested')}
-                    <br />
-                    <textarea
-                      style={{
-                        width: '500px',
-                        height: '250px',
-                      }}
-                      defaultValue={formik?.initialValues.specificTemplate}
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Test template')}
+          buttons={customButtons}
+          keepMounted={true}
+        >
+          {!errorMsg && (
+            <>
+              {running && <CircularProgress />}
+              {!running && (
+                <>
+                  <span>{_('This template is going to be tested')}</span>
+                  <StyledTextAreaContainer>
+                    <StyledTextArea
+                      defaultValue={
+                        result ? result : formik?.initialValues.specificTemplate
+                      }
                       readOnly={true}
                     />
-                    <br />
-                    MAC: <input type='text' name='mac' onChange={onChange} />
-                  </span>
-                )}
-                {result && (
-                  <span>
-                    <textarea
-                      style={{
-                        width: '500px',
-                        height: '250px',
-                      }}
-                      defaultValue={result}
-                      readOnly={true}
-                    />
-                  </span>
-                )}
-              </Box>
-            )}
-            {errorMsg && (
-              <span>
-                <ErrorIcon
-                  sx={{
-                    verticalAlign: 'bottom',
-                  }}
-                />
-                {errorMsg ?? 'There was a problem'}
-              </span>
-            )}
-          </DialogContent>
-          <DialogActions>
-            {!result && (
-              <OutlinedButton disabled={!mac} onClick={handleExec}>
-                {_('Exec')}
-              </OutlinedButton>
-            )}
-            {!result && (
-              <OutlinedButton onClick={handleClose}>
-                {_('Cancel')}
-              </OutlinedButton>
-            )}
-            {result && (
-              <OutlinedButton onClick={handleClose}>
-                {_('Close')}
-              </OutlinedButton>
-            )}
-          </DialogActions>
-        </Dialog>
+                    <StyledMacInputContainer>
+                      <span>MAC:</span>
+                      <input type='text' name='mac' onChange={onChange} />
+                    </StyledMacInputContainer>
+                  </StyledTextAreaContainer>
+                </>
+              )}
+            </>
+          )}
+          {errorMsg && (
+            <StyledErrorContainer>
+              <ErrorIcon />
+              {errorMsg ?? 'There was a problem'}
+            </StyledErrorContainer>
+          )}
+        </Modal>
       )}
     </>
   );

@@ -1,21 +1,17 @@
-import { OutlinedButton } from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import useCurrentPathMatch from '@irontec/ivoz-ui/hooks/useCurrentPathMatch';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ErrorIcon from '@mui/icons-material/Error';
 import RestorePageIcon from '@mui/icons-material/RestorePage';
-import {
-  Box,
-  CircularProgress,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { useStoreActions } from 'store';
 
 import TerminalModel from '../../TerminalModel';
-import StyledTemplateAction from '../TemplateAction.styles';
+import {
+  StyledErrorContainer,
+  StyledTemplateAction,
+} from '../TemplateAction.styles';
 import { PropsType } from './SpecificTemplate';
 
 const Restore = (props: PropsType): JSX.Element => {
@@ -55,44 +51,42 @@ const Restore = (props: PropsType): JSX.Element => {
       });
   };
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined',
+      autoFocus: false,
+    },
+    {
+      label: _('Restore'),
+      onClick: handleRestore,
+      variant: 'solid',
+      autoFocus: true,
+    },
+  ];
+
   return (
     <>
       <StyledTemplateAction onClick={handleOpen}>
         <RestorePageIcon /> {_('Restore default template')}
       </StyledTemplateAction>
       {open && (
-        <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle>{_('Restore default template?')}</DialogTitle>
-          <DialogContent sx={{ textAlign: 'left!important' }}>
-            {!errorMsg && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                {restoring && <CircularProgress />}
-              </Box>
-            )}
-            {errorMsg && (
-              <span>
-                <ErrorIcon
-                  sx={{
-                    verticalAlign: 'bottom',
-                  }}
-                />
-                {errorMsg ?? 'There was a problem'}
-              </span>
-            )}
-          </DialogContent>
-          <DialogActions>
-            <OutlinedButton onClick={handleRestore}>
-              {_('Restore')}
-            </OutlinedButton>
-            <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
-          </DialogActions>
-        </Dialog>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Restore default template?')}
+          buttons={customButtons}
+          keepMounted={true}
+        >
+          {!errorMsg && <>{restoring && <CircularProgress />}</>}
+          {errorMsg && (
+            <StyledErrorContainer>
+              <ErrorIcon />
+              {errorMsg ?? 'There was a problem'}
+            </StyledErrorContainer>
+          )}
+        </Modal>
       )}
     </>
   );

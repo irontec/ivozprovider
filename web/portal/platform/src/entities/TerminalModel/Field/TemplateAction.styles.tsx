@@ -1,6 +1,6 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 
-const StyledTemplateAction = styled('span')(() => {
+export const StyledTemplateAction = styled('span')(() => {
   return {
     cursor: 'pointer',
     paddingRight: '10px',
@@ -10,4 +10,38 @@ const StyledTemplateAction = styled('span')(() => {
   };
 });
 
-export default StyledTemplateAction;
+export const StyledTextAreaContainer = styled(Box)(() => {
+  return {
+    width: '450px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: '20px',
+  };
+});
+
+export const StyledTextArea = styled('textarea')(() => {
+  return {
+    width: '100%',
+    height: '250px',
+    boxSizing: 'border-box',
+  };
+});
+
+export const StyledMacInputContainer = styled(Box)(() => {
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
+  };
+});
+
+export const StyledErrorContainer = styled(Box)(() => {
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '5px',
+  };
+});

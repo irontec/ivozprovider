@@ -1,10 +1,7 @@
 import { ApiError } from '@irontec/ivoz-ui';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import {
-  OutlinedButton,
-  SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import {
   ActionFunctionComponent,
   isSingleRowAction,
@@ -12,13 +9,7 @@ import {
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Tooltip,
-} from '@mui/material';
+import { Tooltip } from '@mui/material';
 import { useState } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 
@@ -102,6 +93,22 @@ const RevokeAll: ActionFunctionComponent = (
     return <span className='display-none'></span>;
   }
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined',
+      autoFocus: false,
+    },
+    {
+      label: _('Accept'),
+      onClick: handleUpdate,
+      variant: 'solid',
+      autoFocus: true,
+      disabled: error,
+    },
+  ];
+
   return (
     <>
       <span className={disabled ? 'disabled' : ''} onClick={handleClickOpen}>
@@ -123,22 +130,15 @@ const RevokeAll: ActionFunctionComponent = (
         )}
       </span>
       {open && (
-        <Dialog open={open} onClose={handleClose} keepMounted>
-          <DialogTitle id='alert-dialog-title'>
-            {_('Revoke Access')}
-          </DialogTitle>
-          <DialogContent sx={{ textAlign: 'center!important' }}>
-            {_('Do you really want to revoke access to selected entities?')}
-          </DialogContent>
-          <DialogActions>
-            <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
-            {!error && (
-              <SolidButton onClick={handleUpdate} autoFocus>
-                {_('Accept')}
-              </SolidButton>
-            )}
-          </DialogActions>
-        </Dialog>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Revoke Access')}
+          buttons={customButtons}
+          description={_(
+            'Do you really want to revoke access to selected entities?'
+          )}
+        />
       )}
     </>
   );
