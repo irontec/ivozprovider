@@ -55,7 +55,6 @@ const SimulateCall: ActionFunctionComponent = (
     rows = [],
     variant = 'icon',
   } = props as MultiSelectActionItemProps;
-  const { row } = props as ActionItemProps;
   const isSingleRow = isSingleRowAction(props);
 
   /* eslint-disable react-hooks/rules-of-hooks */
