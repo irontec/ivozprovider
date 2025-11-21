@@ -1,3 +1,4 @@
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
 import {
@@ -56,6 +57,21 @@ const Resend: ActionFunctionComponent = (props: ActionItemProps) => {
     });
   };
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined',
+      autoFocus: false,
+    },
+    {
+      label: _('Resend'),
+      onClick: handleSend,
+      variant: 'solid',
+      autoFocus: true,
+    }
+  ];
+
   return (
     <>
       {variant === 'text' && (
@@ -74,26 +90,15 @@ const Resend: ActionFunctionComponent = (props: ActionItemProps) => {
           </span>
         </Tooltip>
       )}
-
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-      >
-        <DialogTitle id='alert-dialog-title'>{_('Resend fax?')}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id='alert-dialog-description'>
-            {_('You are about to resend this fax')}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
-          <SolidButton onClick={handleSend} autoFocus>
-            {_('Resend')}
-          </SolidButton>
-        </DialogActions>
-      </Dialog>
+      {open && (
+        <Modal 
+          open={open} 
+          onClose={handleClose} 
+          title={_('Resend fax?')} 
+          buttons={customButtons}
+          description={_('You are about to resend this fax')}
+        />
+      )}
     </>
   );
 };
