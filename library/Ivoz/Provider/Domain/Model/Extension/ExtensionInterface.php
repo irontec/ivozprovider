@@ -4,10 +4,10 @@ namespace Ivoz\Provider\Domain\Model\Extension;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
@@ -90,6 +90,8 @@ interface ExtensionInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
+    public function setCompany(CompanyInterface $company): static;
+
     /**
      * @param int | null $id
      */
@@ -120,8 +122,6 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getNumberValue(): ?string;
 
     public function getFriendValue(): ?string;
-
-    public function setCompany(CompanyInterface $company): static;
 
     public function getCompany(): CompanyInterface;
 

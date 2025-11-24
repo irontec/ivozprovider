@@ -3,10 +3,10 @@
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
@@ -76,6 +76,8 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function setMac(?string $mac = null): static;
 
+    public function setCompany(CompanyInterface $company): static;
+
     /**
      * @param int | null $id
      */
@@ -118,8 +120,6 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getT38Passthrough(): string;
 
     public function getRtpEncryption(): bool;
-
-    public function setCompany(CompanyInterface $company): static;
 
     public function getCompany(): CompanyInterface;
 
