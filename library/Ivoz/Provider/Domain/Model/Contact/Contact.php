@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Contact;
 
 use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * Contact
@@ -56,5 +57,14 @@ class Contact extends ContactAbstract implements ContactInterface
         }
 
         return parent::setEmail($email);
+    }
+
+    public function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Contact can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

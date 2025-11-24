@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
@@ -87,5 +87,14 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
         }
 
         return true;
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('HuntGroup can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Locution;
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * Locution
@@ -69,5 +70,14 @@ class Locution extends LocutionAbstract implements FileContainerInterface, Locut
             $this->setStatus('pending');
         }
         $this->_addTmpFile($fldName, $file);
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Locution can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

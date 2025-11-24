@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Queue;
 
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
@@ -126,5 +127,14 @@ class Queue extends QueueAbstract implements QueueInterface
         }
 
         return parent::setMaxlen($maxlen);
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Queue can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

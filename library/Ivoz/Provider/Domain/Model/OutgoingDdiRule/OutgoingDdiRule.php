@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface;
 
@@ -127,5 +128,14 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
         }
 
         return $finalDdi;
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('OutgoingDdiRule can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }
