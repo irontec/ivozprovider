@@ -5,11 +5,11 @@ namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
 * MusicOnHoldInterface
@@ -57,6 +57,8 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
      */
     public function addTmpFile(string $fldName, TempFile $file);
 
+    public function setCompany(?CompanyInterface $company = null): static;
+
     /**
      * @param int | null $id
      */
@@ -91,8 +93,6 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
     public function setBrand(?BrandInterface $brand = null): static;
 
     public function getBrand(): ?BrandInterface;
-
-    public function setCompany(?CompanyInterface $company = null): static;
 
     public function getCompany(): ?CompanyInterface;
 
