@@ -44,6 +44,10 @@ class TerminalSpec extends ObjectBehavior
             ->willReturn(1);
 
         $company
+            ->getType()
+            ->willReturn(CompanyInterface::TYPE_VPBX);
+
+        $company
             ->getDomain()
             ->willReturn($domain);
 

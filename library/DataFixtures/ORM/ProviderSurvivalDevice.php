@@ -62,7 +62,7 @@ class ProviderSurvivalDevice extends Fixture implements DependentFixtureInterfac
             $this->setTlsPort(5063);
             $this->setWssPort(10083);
             $this->setDescription("new survival device 3");
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany3'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
         })->call($item3);
         $this->addReference('__reference_SurvivalDevice3', $item3);
         $this->sanitizeEntityValues($item3);
@@ -78,7 +78,7 @@ class ProviderSurvivalDevice extends Fixture implements DependentFixtureInterfac
             $this->setTlsPort(5064);
             $this->setWssPort(10084);
             $this->setDescription("new survival device 4");
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany4'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
         })->call($item4);
         $this->addReference('__reference_SurvivalDevice4', $item4);
         $this->sanitizeEntityValues($item4);

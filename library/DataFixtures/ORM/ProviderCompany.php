@@ -2,6 +2,7 @@
 
 namespace DataFixtures\ORM;
 
+use DataFixtures\Stub\Provider\CompanyStub;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -14,6 +15,11 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
+    public function __construct(
+        private CompanyStub $companyStub,
+    ) {
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -23,55 +29,11 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Company::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        /** @var CompanyInterface $item1 */
-        $item1 = $this->createEntityInstance(Company::class);
-        (function () use ($fixture) {
-
-            $invoicing = new Invoicing(
-                nif: '12345678A',
-                postalAddress: 'Company Address',
-                postalCode: '54321',
-                town: 'Company Town',
-                province: 'Company Province',
-                countryName: 'Company Country',
-            );
-
-            $this->setName("DemoCompany");
-            $this->setDomainUsers("127.0.0.1");
-            $this->setMaxCalls(0);
-            $this->setIpfilter(false);
-            $this->setOnDemandRecord(0);
-            $this->setOnDemandRecordCode("");
-            $this->setExternallyextraopts("");
-            $this->setRecordingsLimitEmail("");
-            $this->setBillingMethod("prepaid");
-            $this->setBalance(1.2);
-            $this->setMaxDailyUsageEmail('no-replay@domain.net');
-            $this->setMaxDailyUsage(2);
-            $this->setCurrentDayUsage(1);
-            $this->setShowInvoices(true);
-            $this->setMaxDailyUsageNotificationTemplate(
-                $fixture->getReference('_reference_ProviderNotificationTemplate2')
-            );
-            $this->invoicing = $invoicing;
-            $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
-            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
-            $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
-            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
-            $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
-            $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
-            $this->setAccessCredentialNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate5'));
-            $this->setCorporation($fixture->getReference('_reference_Corporation1'));
-            $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet1'));
-            $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));
-            $this->setLocation($fixture->getReference('_reference_ProviderLocation1'));
-        })->call($item1);
-
-        $this->addReference('_reference_ProviderCompany1', $item1);
-
-        $this->sanitizeEntityValues($item1);
-        $manager->persist($item1);
+        $entities = $this->companyStub->getAll();
+        foreach ($entities as $entity) {
+            $this->addReference('_reference_ProviderCompany' . $entity->getId(), $entity);
+            $manager->persist($entity);
+        }
 
         $item2 = $this->createEntityInstance(Company::class);
         (function () use ($fixture) {
@@ -277,7 +239,6 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             ProviderCorporation::class,
             ProviderApplicationServerSet::class,
             ProviderMediaRelaySet::class,
-            ProviderLocation::class,
         );
     }
 }

@@ -56,6 +56,7 @@ class ScheduleSpec extends ObjectBehavior
         $company = $this->getTestDouble(
             CompanyInterface::class
         );
+        $company->getType()->willReturn(CompanyInterface::TYPE_VPBX);
 
         $transformer = new DtoToEntityFakeTransformer([
             [$companyDto, $company->reveal()]
