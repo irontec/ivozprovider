@@ -1242,7 +1242,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      company: ASC
+      priority: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
