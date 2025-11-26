@@ -1,6 +1,9 @@
 import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  DynamicAutocompleteGetterTypeArgs,
+  SelectOptionsType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import RoofingIcon from '@mui/icons-material/Roofing';
 
@@ -239,6 +242,13 @@ const ResidentialDevice: EntityInterface = {
     const module = await import('./SelectOptions');
 
     return module.default;
+  },
+  dynamicAutocompleteGetters: async (
+    props: DynamicAutocompleteGetterTypeArgs
+  ): Promise<Record<string, SelectOptionsType>> => {
+    const module = await import('./DynamicAutocompleteGetters');
+
+    return module.default(props);
   },
   foreignKeyResolver: async () => {
     const module = await import('./ForeignKeyResolver');
