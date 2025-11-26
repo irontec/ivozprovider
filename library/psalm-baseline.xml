@@ -1956,11 +1956,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodec.php">
-    <MethodSignatureMismatch occurrences="1">
-      <code>CompanyRelCodec</code>
-    </MethodSignatureMismatch>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodecAbstract.php">
     <MixedArgument occurrences="4">
       <code>$fkTransformer-&gt;transform($codec)</code>
@@ -2542,9 +2537,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Extension/Extension.php">
-    <MethodSignatureMismatch occurrences="1">
-      <code>Extension</code>
-    </MethodSignatureMismatch>
     <UnnecessaryVarAnnotation occurrences="1">
       <code>\Ivoz\Provider\Domain\Model\User\UserInterface[]</code>
     </UnnecessaryVarAnnotation>
