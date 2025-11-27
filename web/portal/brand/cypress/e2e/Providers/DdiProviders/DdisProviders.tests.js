@@ -74,7 +74,7 @@ export const deleteDdiProviders = () => {
   cy.get('li.MuiMenuItem-root').contains('Delete').click();
 
   cy.contains('Remove element');
-  cy.get('div.MuiDialog-container button')
+  cy.get('[role="dialog"]')
     .filter(':visible')
     .contains('Yes, delete it')
     .click();

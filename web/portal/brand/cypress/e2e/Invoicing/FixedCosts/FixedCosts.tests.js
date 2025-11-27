@@ -55,7 +55,7 @@ export const deleteteFixedCosts = () => {
   cy.get('td svg[data-testid="DeleteIcon"]').first().click();
 
   cy.contains('Remove element');
-  cy.get('div.MuiDialog-container button')
+  cy.get('[role="dialog"]')
     .filter(':visible')
     .contains('Yes, delete it')
     .click();
