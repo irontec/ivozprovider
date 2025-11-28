@@ -20,6 +20,9 @@ class QueueSpec extends ObjectBehavior
     public function let(
         CompanyInterface $company
     ) {
+        $company->getId()->willReturn(1);
+        $company->getType()->willReturn(CompanyInterface::TYPE_VPBX);
+
         $companyDto = new CompanyDto();
         $this->dto = new QueueDto();
         $this->dto

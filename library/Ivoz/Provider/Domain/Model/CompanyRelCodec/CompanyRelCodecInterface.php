@@ -3,10 +3,10 @@
 namespace Ivoz\Provider\Domain\Model\CompanyRelCodec;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Codec\CodecInterface;
 
 /**
@@ -26,6 +26,8 @@ interface CompanyRelCodecInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getId(): ?int;
+
+    public function setCompany(?CompanyInterface $company = null): static;
 
     /**
      * @param int | null $id
@@ -49,8 +51,6 @@ interface CompanyRelCodecInterface extends LoggableEntityInterface
      * @internal use EntityTools instead
      */
     public function toDto(int $depth = 0): CompanyRelCodecDto;
-
-    public function setCompany(?CompanyInterface $company = null): static;
 
     public function getCompany(): ?CompanyInterface;
 

@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * Calendar
@@ -65,5 +66,14 @@ class Calendar extends CalendarAbstract implements CalendarInterface
         $holidayDates = $this->getHolidayDates($criteria);
 
         return array_shift($holidayDates);
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Calendar can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

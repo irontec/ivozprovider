@@ -14,7 +14,19 @@ Feature: Retrieve survival devices
       And the JSON should be equal to:
       """
       [
-        {
+          {
+              "name": "Survival Test 3",
+              "proxy": "survival3.test.com",
+              "description": "new survival device 3",
+              "id": 3
+          },
+          {
+              "name": "Survival Test 4",
+              "proxy": "survival4.test.com",
+              "description": "new survival device 4",
+              "id": 4
+          },
+          {
               "name": "survival test 1",
               "proxy": "survival1.test.com",
               "description": "new survival device 1",

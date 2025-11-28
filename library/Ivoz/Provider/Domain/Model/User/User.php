@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\User;
 
 use DomainException;
 use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
@@ -423,5 +424,14 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             $this->getLastname(),
             $this->getExtensionNumber()
         );
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('User can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

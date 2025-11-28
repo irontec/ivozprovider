@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\ConferenceRoom;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+
 /**
  * ConferenceRoom
  */
@@ -50,5 +52,14 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
         if (!$this->getPinProtected()) {
             $this->setPinCode(null);
         }
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('ConferenceRoom can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

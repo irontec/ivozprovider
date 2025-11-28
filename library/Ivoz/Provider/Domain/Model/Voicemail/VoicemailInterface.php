@@ -4,12 +4,12 @@ namespace Ivoz\Provider\Domain\Model\Voicemail;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\VoicemailRelUser\VoicemailRelUserInterface;
 use Doctrine\Common\Collections\Collection;
@@ -58,6 +58,8 @@ interface VoicemailInterface extends LoggableEntityInterface
      */
     public function getLanguage(): ?LanguageInterface;
 
+    public function setCompany(CompanyInterface $company): static;
+
     /**
      * @param int | null $id
      */
@@ -98,8 +100,6 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static;
 
     public function getResidentialDevice(): ?ResidentialDeviceInterface;
-
-    public function setCompany(CompanyInterface $company): static;
 
     public function getCompany(): CompanyInterface;
 

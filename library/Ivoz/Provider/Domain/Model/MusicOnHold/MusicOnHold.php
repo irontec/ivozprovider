@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * MusicOnHold
@@ -97,5 +98,14 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
             $this->setStatus('pending');
         }
         $this->_addTmpFile($fldName, $file);
+    }
+
+    public function setCompany(?CompanyInterface $company = null): static
+    {
+        if ($company && $company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('MusicOnHold can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

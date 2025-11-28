@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\SurvivalDevice;
 
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * SurvivalDevice
@@ -138,5 +139,14 @@ class SurvivalDevice extends SurvivalDeviceAbstract implements SurvivalDeviceInt
         if ($sipProxyIncludesPort) {
             throw new \DomainException('When Outbound Proxy is used, SIP Proxy must not include a port.', 70003);
         }
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('SurvivalDevice can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

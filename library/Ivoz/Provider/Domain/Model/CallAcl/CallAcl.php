@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\CallAcl;
 
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * CallAcl
@@ -59,5 +60,14 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
         }
 
         return 'allow' === $defaultPolicy;
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('CallAcl can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

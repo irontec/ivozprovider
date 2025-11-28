@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoute;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
@@ -68,5 +69,14 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
         return
             $this->getNumberCountry()->getCountryCode() .
             $this->getNumberValue();
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('ConditionalRoute can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

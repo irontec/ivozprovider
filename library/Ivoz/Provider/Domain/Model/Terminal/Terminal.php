@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * Terminal
@@ -170,5 +171,14 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         }
 
         return parent::setMac($mac);
+    }
+
+    public function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Terminal can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }
