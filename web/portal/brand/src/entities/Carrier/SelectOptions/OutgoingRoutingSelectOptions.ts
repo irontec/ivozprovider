@@ -1,9 +1,8 @@
-import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const CalculateCostSelectOptions: SelectOptionsType = ({
+const OutgoingRoutingSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
@@ -11,18 +10,13 @@ const CalculateCostSelectOptions: SelectOptionsType = ({
   const Carrier = entities.Carrier;
 
   return defaultEntityBehavior.fetchFks(
-    `${Carrier.path}?_order[name]=ASC&calculateCost=1`,
-    ['id', 'name'],
+    `${Carrier.path}?_order[name]=ASC`,
+    ['id', 'name', 'hasServers', 'calculateCost'],
     (data) => {
-      const options: DropdownChoices = [];
-      for (const item of data) {
-        options.push({ id: item.id, label: item.name });
-      }
-
-      callback(options);
+      callback(data);
     },
     cancelToken
   );
 };
 
-export default CalculateCostSelectOptions;
+export default OutgoingRoutingSelectOptions;

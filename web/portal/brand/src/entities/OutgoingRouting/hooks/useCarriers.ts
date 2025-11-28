@@ -1,7 +1,8 @@
 import useCancelToken from '@irontec/ivoz-ui/hooks/useCancelToken';
 import { useEffect, useState } from 'react';
 
-import { CalculateCostSelectOptions } from '../../Carrier/SelectOptions';
+import { CarrierProperties } from '../../Carrier/CarrierProperties';
+import OutgoingRoutingSelectOptions from '../../Carrier/SelectOptions/OutgoingRoutingSelectOptions';
 
 export const useCarriers = (routingMode: string) => {
   const [carriers, setCarriers] = useState<Record<number, string> | null>(null);
@@ -10,13 +11,17 @@ export const useCarriers = (routingMode: string) => {
   useEffect(() => {
     setCarriers(null);
 
-    if (routingMode !== 'lcr') {
-      return;
-    }
-
-    CalculateCostSelectOptions({
-      callback: (options) => {
-        setCarriers(options || []);
+    OutgoingRoutingSelectOptions({
+      callback: (data) => {
+        const options: Record<number, string> = {};
+        for (const item of data as CarrierProperties[]) {
+          const validOption =
+            item.hasServers && (routingMode === 'static' || item.calculateCost);
+          if (validOption) {
+            options[item.id as number] = item.name as string;
+          }
+        }
+        setCarriers(options);
       },
       cancelToken,
     });
