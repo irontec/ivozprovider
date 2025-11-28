@@ -74,7 +74,7 @@ export const deleteBrand = () => {
     .eq(0)
     .type(BrandItem.body.name);
 
-  cy.get('div.MuiDialog-container button')
+  cy.get('[role="dialog"]')
     .filter(':visible')
     .contains('Yes, delete it')
     .click({ force: true });

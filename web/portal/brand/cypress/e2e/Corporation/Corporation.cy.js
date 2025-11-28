@@ -90,7 +90,7 @@ describe('in Corporations', () => {
 
     cy.contains('Remove element');
 
-    cy.get('div.MuiDialog-container button')
+    cy.get('[role="dialog"]')
       .filter(':visible')
       .contains('Yes, delete it')
       .click();

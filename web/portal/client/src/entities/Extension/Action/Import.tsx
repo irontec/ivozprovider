@@ -1,23 +1,13 @@
 import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import { StyledTableRowCustomCta } from '@irontec/ivoz-ui/components/List/Content/Table/ContentTable.styles';
-import {
-  OutlinedButton,
-  SolidButton,
-} from '@irontec/ivoz-ui/components/shared/Button/Button.styles';
+import Modal from '@irontec/ivoz-ui/components/shared/Modal/Modal';
 import {
   ActionFunctionComponent,
   MultiSelectActionItemProps,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import {
-  Box,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Tooltip,
-} from '@mui/material';
+import { Dialog, Tooltip } from '@mui/material';
 import { styled } from '@mui/styles';
 import { useState } from 'react';
 import { useStoreActions, useStoreState } from 'store';
@@ -84,6 +74,21 @@ const Import: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
     return <span className='display-none'></span>;
   }
 
+  const customButtons = [
+    {
+      label: _('Cancel'),
+      onClick: handleClose,
+      variant: 'outlined' as const,
+      autoFocus: false,
+    },
+    {
+      label: _('Send'),
+      onClick: handleSubmit,
+      variant: 'solid' as const,
+      autoFocus: true,
+    },
+  ];
+
   return (
     <>
       <a onClick={handleClickOpen}>
@@ -102,28 +107,17 @@ const Import: ActionFunctionComponent = (props: MultiSelectActionItemProps) => {
           </Tooltip>
         )}
       </a>
-      <StyledDialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-      >
-        <Box>
-          <DialogTitle id='alert-dialog-title'>
-            {_('Import Extensions')}
-          </DialogTitle>
-          <DialogContent>
-            <FileUpload onFileSelect={handleFileSelect} />
-          </DialogContent>
-          <DialogActions>
-            <OutlinedButton onClick={handleClose}>{_('Cancel')}</OutlinedButton>
-
-            <SolidButton onClick={handleSubmit} autoFocus>
-              {_('Send')}
-            </SolidButton>
-          </DialogActions>
-        </Box>
-      </StyledDialog>
+      {open && (
+        <Modal
+          open={open}
+          onClose={handleClose}
+          title={_('Import Extensions')}
+          buttons={customButtons}
+          keepMounted={true}
+        >
+          <FileUpload onFileSelect={handleFileSelect} />
+        </Modal>
+      )}
     </>
   );
 };

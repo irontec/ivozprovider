@@ -106,7 +106,7 @@ describe('in ApplicationServerSet', () => {
     cy.get('tbody').get('[data-testid="DeleteIcon"]').eq(2).click();
 
     cy.contains('Remove element');
-    cy.get('div.MuiDialog-container button')
+    cy.get('[role="dialog"]')
       .filter(':visible')
       .contains('Yes, delete it')
       .click();
