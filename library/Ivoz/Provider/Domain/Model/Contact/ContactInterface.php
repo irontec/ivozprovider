@@ -3,11 +3,11 @@
 namespace Ivoz\Provider\Domain\Model\Contact;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 
 /**
@@ -27,6 +27,8 @@ interface ContactInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getId(): ?int;
+
+    public function setCompany(CompanyInterface $company): static;
 
     /**
      * @param int | null $id
@@ -70,8 +72,6 @@ interface ContactInterface extends LoggableEntityInterface
     public function setUser(?UserInterface $user = null): static;
 
     public function getUser(): ?UserInterface;
-
-    public function setCompany(CompanyInterface $company): static;
 
     public function getCompany(): CompanyInterface;
 

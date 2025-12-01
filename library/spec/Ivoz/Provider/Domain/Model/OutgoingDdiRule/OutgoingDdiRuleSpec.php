@@ -30,6 +30,10 @@ class OutgoingDdiRuleSpec extends ObjectBehavior
     function let(
         CompanyInterface $company
     ) {
+        $company->getId()->willReturn(1);
+        $company->getType()->willReturn(CompanyInterface::TYPE_VPBX);
+        $company->getOutgoingDdi()->willReturn(null);
+
         $this->dto = $dto = new OutgoingDdiRuleDto();
 
         $companyDto = new CompanyDto();

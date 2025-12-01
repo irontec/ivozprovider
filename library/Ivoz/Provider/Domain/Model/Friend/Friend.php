@@ -386,4 +386,19 @@ class Friend extends FriendAbstract implements FriendInterface
 
         return parent::setCompany($company);
     }
+
+    protected function setInterCompany(?CompanyInterface $interCompany = null): static
+    {
+        if (is_null($interCompany)) {
+            return parent::setInterCompany(null);
+        }
+
+        $isValidCompanyType = $interCompany->getType() === CompanyInterface::TYPE_VPBX;
+
+        if (!$isValidCompanyType) {
+            throw new \DomainException('Friend interCompany can only be associated with vpbx companies');
+        }
+
+        return parent::setInterCompany($interCompany);
+    }
 }

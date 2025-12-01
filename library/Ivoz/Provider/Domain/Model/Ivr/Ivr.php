@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
@@ -114,5 +115,14 @@ class Ivr extends IvrAbstract implements IvrInterface
     public function getErrorTarget(): ?string
     {
         return $this->getTarget("Error");
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Ivr can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

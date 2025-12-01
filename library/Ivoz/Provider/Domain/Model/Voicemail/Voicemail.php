@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Voicemail;
 
 use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 
 /**
@@ -114,5 +115,18 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
         }
 
         return parent::setEmail($email);
+    }
+
+    public function setCompany(CompanyInterface $company): static
+    {
+        $isValidCompanyType =
+            $company->getType() === CompanyInterface::TYPE_VPBX ||
+            $company->getType() === CompanyInterface::TYPE_RESIDENTIAL;
+
+        if (!$isValidCompanyType) {
+            throw new \DomainException('Voicemail can only be associated with vpbx or residential companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

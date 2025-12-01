@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Schedule;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+
 /**
  * Schedule
  */
@@ -58,5 +60,14 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
         $isOnSchedule = ($time >= $timeIn && $time < $timeOut);
 
         return $isOnSchedule;
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Schedule can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

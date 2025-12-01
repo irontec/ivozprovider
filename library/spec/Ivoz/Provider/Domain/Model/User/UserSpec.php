@@ -31,6 +31,7 @@ class UserSpec extends ObjectBehavior
             CompanyInterface::class,
             true
         );
+        $this->company->getType()->willReturn(CompanyInterface::TYPE_VPBX);
 
         $this->timezone = $this->getTestDouble(
             TimezoneInterface::class,

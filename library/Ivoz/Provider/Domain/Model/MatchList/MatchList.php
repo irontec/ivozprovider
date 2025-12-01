@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface;
 
 /**
@@ -62,5 +63,23 @@ class MatchList extends MatchListAbstract implements MatchListInterface
         }
 
         return false;
+    }
+
+    protected function setCompany(CompanyInterface $company = null): static
+    {
+        if (is_null($company)) {
+            return parent::setCompany(null);
+        }
+
+        $companyType = $company->getType();
+        $isValidCompanyType =
+            $companyType === CompanyInterface::TYPE_VPBX ||
+            $companyType === CompanyInterface::TYPE_RESIDENTIAL;
+
+        if (!$isValidCompanyType) {
+            throw new \DomainException('MatchList can only be associated with vpbx or residential companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

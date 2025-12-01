@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Extension;
 
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
@@ -123,5 +124,14 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
         return
             $this->getNumberCountry()->getCountryCode() .
             $this->getNumberValue();
+    }
+
+    public function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Extension can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }
