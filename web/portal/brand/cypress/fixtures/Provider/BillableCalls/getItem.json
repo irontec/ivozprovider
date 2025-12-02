@@ -15,14 +15,17 @@
     "endpointName": null,
     "direction": "outbound",
     "id": 1,
-    "company": "~",
+    "company": {
+      "id": 1,
+      "name": "Company 1"
+    },
     "carrier": "~",
     "destination": null,
     "ratingPlanGroup": null,
     "invoice": "~",
     "ddi": "~",
     "ddiProvider": "~"
-},
+  },
   "headers": {
     "content-type": "application/json; charset=utf-8"
   },
