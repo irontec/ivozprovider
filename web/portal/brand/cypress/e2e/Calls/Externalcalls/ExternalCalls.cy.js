@@ -27,6 +27,12 @@ describe('in BillableCalls', () => {
     cy.usePactWait(['getBillableCall-105'])
       .its('response.statusCode')
       .should('eq', 200);
+
+    cy.usePactWait(['getCompanies'])
+      .its('response.statusCode')
+      .should('eq', 200);
+
+    cy.get('input[name="company"]').should('have.value', 'DemoCompany');
   });
 
   it('export to CSV', () => {
