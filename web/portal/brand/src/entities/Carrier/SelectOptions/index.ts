@@ -1,6 +1,6 @@
-import CalculateCostSelectOptions from './CalculateCostSelectOptions';
+import OutgoingRoutingSelectOptions from './OutgoingRoutingSelectOptions';
 import CarrierSelectOptions from './SelectOptions';
 
-export { CalculateCostSelectOptions, CarrierSelectOptions };
+export { CarrierSelectOptions, OutgoingRoutingSelectOptions };
 
 export default CarrierSelectOptions;

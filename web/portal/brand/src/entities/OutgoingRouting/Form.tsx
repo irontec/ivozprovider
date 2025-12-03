@@ -36,6 +36,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   fkChoices = {
     ...fkChoices,
+    carrier: carriers,
     carrierIds: carriers,
   };
 

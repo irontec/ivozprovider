@@ -10,7 +10,8 @@
             "proxyTrunk": 2,
             "status": {
                 "registered": false
-            }
+            },
+            "hasServers": false
         },
         {
             "description": "CarrierDescription",
@@ -22,7 +23,8 @@
             "proxyTrunk": 1,
             "status": {
                 "registered": false
-            }
+            },
+            "hasServers": true
         }
     ],
     "headers": {
