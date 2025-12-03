@@ -11,46 +11,151 @@
       "providerState": "",
       "request": {
         "method": "GET",
-        "path": "/api/brand/billable_calls/105",
+        "path": "/api/brand/companies",
         "headers": {
           "accept": "application/json",
           "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzU5ODA2MjAsImV4cCI6MTY3NTk4NDIyMCwicm9sZXMiOlsiUk9MRV9CUkFORF9BRE1JTiJdLCJ1c2VybmFtZSI6ImJyYW5kIn0.Sa-LdjAzOp2Q9d4__VyS9SA0z-caFuClUY7hVGxR0LqGjOwQdj7d-y3_3F381lRumS4FZbanE6KEWA8vdpE9mwdGN5yMXDqngyLuDzZaEUjrC2EHR_fujBpexJC3ZBn7_ew-gwRjsqcAmVfwo35LlzKGka0Df403cJGC-nIvAgfB8c74GgEowEe2wIPLO9rBMSA4f4a5BdNOhV-kH7bGtbnTguldYwR1kIT_touQjEPKVeA_iTes-7rfBeCmv3SLyv7nM0P2X78Xnf5cMQSxtWrkPSB4-siOOi6nrEdnGxmLxiqJ4w9RP0WRUEPAb5qzJMUodnZtAA2_yb38Rj1v-kzG_MXv9j3mkxBfKe1pMNIxml915D95_xquxDk05HKOkjz5cFdIuPxuOQBF3L6ExpRXrF_h1Hu8UIovn8EYxsRWnzxFMVrntroUWVAT3ZiSAA3pZqThAFyGDyZ1FZTgEqe3QHOUllHF1446WLj6LX9nG5zkWGfT1gQ-9INuZftUkfzZKH-E5lbN6VuLWCqsWuL6Nv8ErbH6EYxEQROLgjny1Rfl_nPyJD2xx_4iE-6C-Smzv6_uRGeKCTgTNxJtUkCiau6obRR8U1SRAxXvR-YL7MnnUCrtGFcGlUIcbVLU7Uklr-Qxctc6D_Hu_aeCdn4MvjR5LPGGq1NyM4VvhaQ"
         },
         "body": "",
-        "query": ""
+        "query": "id%5B%5D=5&_pagination=false&_itemsPerPage=1000"
       },
       "response": {
         "status": 200,
         "headers": {
-          "content-type": "application/json; charset=utf-8"
+          "content-type": "application/json",
+          "x-first-page": "/api/brand/companies?_page=1",
+          "x-last-page": "/api/brand/companies?_page=1",
+          "x-next-page": "/api/brand/companies?_page=1",
+          "x-total-items": "1",
+          "x-total-pages": "1"
         },
-        "body": {
-          "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
-          "startTime": "2019-01-01 09:00:00",
-          "duration": 0,
-          "caller": "+34633646464",
-          "callee": "+34633656565",
-          "cost": null,
-          "price": 1,
-          "carrierName": null,
-          "destinationName": null,
-          "ratingPlanName": null,
-          "endpointType": null,
-          "endpointId": null,
-          "endpointName": null,
-          "direction": "outbound",
-          "id": 1,
-          "company": {
+        "body": [
+          {
+            "type": "vpbx",
+            "name": "DemoCompany",
+            "domainUsers": "127.0.0.1",
+            "maxDailyUsage": 2,
+            "currentDayUsage": -1,
+            "billingMethod": "prepaid",
+            "balance": 1.2,
             "id": 1,
-            "name": "Company 1"
+            "invoicing": {
+              "nif": "12345678A"
+            },
+            "outgoingDdi": null,
+            "corporation": 1,
+            "domainName": "127.0.0.1",
+            "currencySymbol": "€",
+            "currentDayMaxUsage": "Unavailable",
+            "accountStatus": "Unavailable",
+            "featureIds": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "geoIpAllowedCountries": [],
+            "routingTagIds": [],
+            "codecIds": []
           },
-          "carrier": "~",
-          "destination": null,
-          "ratingPlanGroup": null,
-          "invoice": "~",
-          "ddi": "~",
-          "ddiProvider": "~"
-        }
+          {
+            "type": "vpbx",
+            "name": "Irontec Test Company",
+            "domainUsers": "test.irontec.com",
+            "maxDailyUsage": 1000000,
+            "currentDayUsage": -1,
+            "billingMethod": "postpaid",
+            "balance": 0,
+            "id": 2,
+            "invoicing": {
+              "nif": "12345678-Z"
+            },
+            "outgoingDdi": null,
+            "corporation": 1,
+            "domainName": "test.irontec.com",
+            "currencySymbol": "€",
+            "currentDayMaxUsage": "Unavailable",
+            "accountStatus": "Unavailable",
+            "featureIds": [],
+            "geoIpAllowedCountries": [],
+            "routingTagIds": [],
+            "codecIds": []
+          },
+          {
+            "type": "residential",
+            "name": "Residential Company",
+            "domainUsers": null,
+            "maxDailyUsage": 1000000,
+            "currentDayUsage": -1,
+            "billingMethod": "postpaid",
+            "balance": 0,
+            "id": 4,
+            "invoicing": {
+              "nif": "12345679-Z"
+            },
+            "outgoingDdi": null,
+            "corporation": null,
+            "domainName": "retail.irontec.com",
+            "currencySymbol": "€",
+            "currentDayMaxUsage": "Unavailable",
+            "accountStatus": "Unavailable",
+            "featureIds": [],
+            "geoIpAllowedCountries": [],
+            "routingTagIds": [],
+            "codecIds": []
+          },
+          {
+            "type": "retail",
+            "name": "Retail Company",
+            "domainUsers": null,
+            "maxDailyUsage": 1000000,
+            "currentDayUsage": -1,
+            "billingMethod": "postpaid",
+            "balance": 0,
+            "id": 3,
+            "invoicing": {
+              "nif": "12345679-Z"
+            },
+            "outgoingDdi": null,
+            "corporation": null,
+            "domainName": "retail.irontec.com",
+            "currencySymbol": "€",
+            "currentDayMaxUsage": "Unavailable",
+            "accountStatus": "Unavailable",
+            "featureIds": [],
+            "geoIpAllowedCountries": [],
+            "routingTagIds": [
+              1
+            ],
+            "codecIds": []
+          },
+          {
+            "type": "wholesale",
+            "name": "Wholesale Company",
+            "domainUsers": "wholesale.irontec.com",
+            "maxDailyUsage": 1000000,
+            "currentDayUsage": -1,
+            "billingMethod": "postpaid",
+            "balance": 0,
+            "id": 5,
+            "invoicing": {
+              "nif": "12345689-Z"
+            },
+            "outgoingDdi": null,
+            "corporation": null,
+            "applicationServerSet": 1,
+            "mediaRelaySet": 0,
+            "domainName": null,
+            "currencySymbol": "€",
+            "currentDayMaxUsage": "Unavailable",
+            "accountStatus": "Unavailable",
+            "featureIds": [],
+            "geoIpAllowedCountries": [],
+            "routingTagIds": [],
+            "codecIds": []
+          }
+        ]
       }
     }
   ],
