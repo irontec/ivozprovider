@@ -1,13 +1,17 @@
-import { EntityValues } from '@irontec/ivoz-ui';
+import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
 import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
   marshaller as defaultMarshaller,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 
 import Actions from './Action';
 import { CompanyProperties, CompanyPropertyList } from './CompanyProperties';
+import DeleteButtonWithWarning from './DeleteButtonWithWarning';
 import TypeIcon from './Field/TypeIcon';
 import List from './List';
 
@@ -395,6 +399,22 @@ const marshaller: MarshallerType = (values, properties) => {
   return defaultMarshaller(values, properties);
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row, entityService } = props;
+
+  if (isEntityItem(routeMapItem) && routeMapItem.entity.iden === Company.iden) {
+    const isDeletePath = routeMapItem.route === `${Company.path}/:id`;
+
+    if (isDeletePath) {
+      return (
+        <DeleteButtonWithWarning row={row} entityService={entityService} />
+      );
+    }
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const Company: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
@@ -436,6 +456,7 @@ const Company: EntityInterface = {
     return module.default;
   },
   dynamicSelectOptions: true,
+  ChildDecorator: ChildDecorator,
 };
 
 export default Company;
