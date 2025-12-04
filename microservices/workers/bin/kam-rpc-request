@@ -19,3 +19,5 @@ $kernel->terminate($request, $response);
 if ($response->getStatusCode() >= 300) {
     die(1);
 }
+
+sleep(3);
