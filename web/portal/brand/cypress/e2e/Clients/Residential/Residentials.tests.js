@@ -58,13 +58,17 @@ export const deleteCompany = () => {
   cy.contains('Residentials').click();
 
   cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
-  cy.get('li.MuiMenuItem-root').contains('Delete').click();
+  cy.contains('button', 'Delete').click();
+
+  cy.contains('Warning');
+  cy.get('[role="dialog"]').filter(':visible').contains('Continue').click();
+  cy.get('[role="dialog"] input[type="text"]').type('DemoCompany');
 
   cy.contains('Remove element');
   cy.get('[role="dialog"]')
     .filter(':visible')
     .contains('Yes, delete it')
-    .click({ force: true });
+    .click();
 
   cy.get('header').should('contain', 'Residentials');
 };

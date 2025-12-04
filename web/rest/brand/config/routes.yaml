@@ -249,3 +249,12 @@ post_friend:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Friend\Friend'
     _api_collection_operation_name: 'post_friend'
     _api_receive: false
+
+post_ddis_unlink:
+  path: '/ddis/unlink'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Ddi\UnlinkDdisAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    _api_collection_operation_name: 'post_ddis_unlink'
+    _api_receive: false

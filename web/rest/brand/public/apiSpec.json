@@ -15806,6 +15806,52 @@
                 ]
             }
         },
+        "/ddis/unlink": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "parameters": [
+                    {
+                        "name": "ddiIds",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        "description": "Array of DDI IDs to unlink"
+                    }
+                ],
+                "operationId": "post_ddis_unlinkDdiCollection",
+                "summary": "Creates a Ddi resource.",
+                "responses": {
+                    "201": {
+                        "description": "Ddi resource created",
+                        "schema": {
+                            "$ref": "#/definitions/Ddi"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            }
+        },
         "/ddis/{id}": {
             "get": {
                 "produces": [
