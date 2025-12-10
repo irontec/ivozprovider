@@ -1,0 +1,883 @@
+#!/usr/bin/env python3
+"""
+Script to get account balance information from cgrates
+Connects to trunks.ivozprovider.local:2012 using JSON-RPC
+"""
+
+import configparser
+import getopt
+import json
+import socket
+import sys
+
+try:
+    import pymysql
+    MYSQL_AVAILABLE = True
+except ImportError:
+    MYSQL_AVAILABLE = False
+
+class CGRatesRPC:
+    def __init__(self, host, port):
+        self.host = host
+        self.port = port
+        self.request_id = 1
+        
+    def _send_request(self, method, params, debug=False):
+        """Sends a JSON-RPC request and receives the response
+        
+        Go's JSON-RPC protocol uses JSON followed by newline, not length prefix
+        """
+        # Create JSON-RPC message according to Go net/rpc/jsonrpc format
+        request = {
+            "method": method,
+            "params": [params],  # Go jsonrpc expects params as array
+            "id": self.request_id
+        }
+        self.request_id += 1
+        
+        # Convert to JSON and add newline
+        json_request = json.dumps(request) + '\n'
+        message = json_request.encode('utf-8')
+        
+        if debug:
+            print(f"DEBUG: Sending request: {json_request}", file=sys.stderr)
+        
+        # Connect and send
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            sock.connect((self.host, self.port))
+            sock.sendall(message)
+            
+            # Receive response (Go JSON-RPC sends JSON followed by newline)
+            # Read until we find the newline
+            response_data = b''
+            while True:
+                chunk = sock.recv(4096)
+                if not chunk:
+                    break
+                response_data += chunk
+                if b'\n' in response_data:
+                    # Separate the first complete response
+                    parts = response_data.split(b'\n', 1)
+                    response_data = parts[0]
+                    break
+            
+            if not response_data:
+                raise Exception("No response received from server")
+            
+            # Decode JSON
+            response = json.loads(response_data.decode('utf-8'))
+            
+            # Check for errors
+            if 'error' in response and response['error']:
+                error_msg = response['error']
+                if isinstance(error_msg, dict):
+                    error_msg = error_msg.get('message', str(error_msg))
+                raise Exception(f"RPC Error: {error_msg}")
+            
+            # Verify we have result
+            if 'result' not in response:
+                raise Exception(f"Response without 'result': {response}")
+            
+            return response.get('result')
+        finally:
+            sock.close()
+    
+    def get_accounts(self, tenant, account_ids=None, offset=0, limit=0, debug=False):
+        """Gets accounts using ApierV2.GetAccounts
+        
+        Args:
+            tenant: Required tenant (format: bX, where X is the brandId)
+            account_ids: Optional list of specific account IDs
+            offset: Offset for pagination
+            limit: Result limit for pagination
+            debug: If True, shows debug information
+        """
+        params = {
+            'Tenant': tenant  # Tenant is required
+        }
+        if account_ids:
+            params['AccountIds'] = account_ids
+        if offset > 0:
+            params['Offset'] = offset
+        if limit > 0:
+            params['Limit'] = limit
+        
+        if debug:
+            print(f"DEBUG: Parameters to send: {params}", file=sys.stderr)
+            print(f"DEBUG: Tenant in params: '{params['Tenant']}' (type: {type(params['Tenant'])}, length: {len(params['Tenant'])})", file=sys.stderr)
+            
+        return self._send_request("ApierV2.GetAccounts", params, debug=debug)
+    
+    def set_account_action_trigger(self, tenant, account, unique_id, threshold_value, debug=False):
+        """Sets ActionTrigger ThresholdValue using ApierV1.SetAccountActionTriggers
+        
+        Args:
+            tenant: Tenant (format: bX, where X is the brandId)
+            account: Account ID (format: cX or crY)
+            unique_id: UniqueID of the ActionTrigger to update
+            threshold_value: New ThresholdValue to set
+            debug: If True, shows debug information
+        """
+        params = {
+            'Tenant': tenant,
+            'Account': account,
+            'UniqueID': unique_id,
+            'ThresholdValue': threshold_value
+        }
+        
+        if debug:
+            print(f"DEBUG: Setting ActionTrigger ThresholdValue: {params}", file=sys.stderr)
+            
+        return self._send_request("ApierV1.SetAccountActionTriggers", params, debug=debug)
+
+
+def filter_accounts_by_tenant(accounts, tenant):
+    """Filters accounts to show only those that belong exactly to the specified tenant
+    
+    Account ID has the format 'tenant:account', so we split by ':'
+    and verify that the first part is exactly equal to the requested tenant.
+    This prevents 'b13' from passing when 'b1' is requested.
+    """
+    if not tenant:
+        return accounts
+    
+    filtered = []
+    
+    for account in accounts:
+        account_id = account.get('ID', '')
+        # Split by ':' and verify that the first part is exactly the tenant
+        if ':' in account_id:
+            account_tenant = account_id.split(':', 1)[0]
+            if account_tenant == tenant:
+                filtered.append(account)
+        # If it doesn't have ':', it might be a different format, we include it for safety
+        elif account_id == tenant:
+            filtered.append(account)
+    
+    return filtered
+
+
+def extract_account_number(account_id):
+    """Extracts the number from the account ID for sorting
+    
+    For companies (cX): returns X as int
+    For carriers (crY): returns Y as int
+    If it cannot extract the number, returns 0
+    """
+    if ':' in account_id:
+        account_part = account_id.split(':', 1)[1]
+    else:
+        account_part = account_id
+    
+    # Carriers: format crY
+    if account_part.startswith('cr') and len(account_part) > 2:
+        try:
+            return int(account_part[2:])
+        except ValueError:
+            return 0
+    # Companies: format cX (but NOT cr)
+    elif account_part.startswith('c') and len(account_part) > 1 and not account_part.startswith('cr'):
+        try:
+            return int(account_part[1:])
+        except ValueError:
+            return 0
+    
+    return 0
+
+
+def filter_accounts_by_type(accounts, account_type):
+    """Filters accounts by type: 'carriers' (crY) or 'companies' (cX)
+    
+    Args:
+        accounts: List of accounts
+        account_type: 'carriers' for crY or 'companies' for cX
+    """
+    if not account_type:
+        return accounts
+    
+    filtered = []
+    
+    for account in accounts:
+        account_id = account.get('ID', '')
+        # Format is 'tenant:account', we need the account part
+        if ':' in account_id:
+            account_part = account_id.split(':', 1)[1]
+        else:
+            account_part = account_id
+        
+        # Check the type
+        if account_type == 'carriers':
+            # Carriers: start with 'cr' followed by numbers
+            if account_part.startswith('cr') and len(account_part) > 2:
+                # Verify that after 'cr' there are only numbers
+                try:
+                    int(account_part[2:])
+                    filtered.append(account)
+                except ValueError:
+                    pass
+        elif account_type == 'companies':
+            # Companies: start with 'c' followed by numbers (but NOT 'cr')
+            if account_part.startswith('c') and len(account_part) > 1:
+                # Verify that it does NOT start with 'cr' and that after 'c' there are only numbers
+                if not account_part.startswith('cr'):
+                    try:
+                        int(account_part[1:])
+                        filtered.append(account)
+                    except ValueError:
+                        pass
+    
+    # Sort by account number (companies or carriers)
+    filtered.sort(key=lambda acc: extract_account_number(acc.get('ID', '')))
+    
+    return filtered
+
+
+def read_database_config():
+    """Reads database configuration from /etc/mysql/conf.d/kamailio.cnf"""
+    config_file = '/etc/mysql/conf.d/kamailio.cnf'
+    try:
+        config = configparser.ConfigParser()
+        config.read(config_file)
+        
+        if 'kamailio' not in config:
+            raise Exception(f"Section [kamailio] not found in {config_file}")
+        
+        db_config = {
+            'host': config.get('kamailio', 'host', fallback='localhost'),
+            'user': config.get('kamailio', 'user', fallback='root'),
+            'password': config.get('kamailio', 'password', fallback=''),
+            'database': config.get('kamailio', 'database', fallback='ivozprovider'),
+            'port': config.getint('kamailio', 'port', fallback=3306),
+        }
+        
+        return db_config
+    except FileNotFoundError:
+        raise Exception(f"Database configuration file not found: {config_file}")
+    except Exception as e:
+        raise Exception(f"Error reading database configuration: {e}")
+
+
+def get_max_daily_usage_from_db():
+    """Gets maxDailyUsage values from MariaDB database
+    
+    Returns a dictionary mapping account (e.g., 'b1:c1') to maxDailyUsage value
+    """
+    if not MYSQL_AVAILABLE:
+        raise Exception("pymysql is not available. Install it with: apt-get install python3-pymysql")
+    
+    db_config = read_database_config()
+    
+    try:
+        conn = pymysql.connect(
+            host=db_config['host'],
+            port=db_config['port'],
+            user=db_config['user'],
+            password=db_config['password'],
+            database=db_config['database']
+        )
+        
+        cursor = conn.cursor()
+        query = "SELECT CONCAT('b', brandId, ':c', id) AS account, maxDailyUsage FROM Companies"
+        cursor.execute(query)
+        
+        result = {}
+        for row in cursor.fetchall():
+            account = row[0]
+            max_daily_usage = row[1]
+            result[account] = max_daily_usage
+        
+        cursor.close()
+        conn.close()
+        
+        return result
+    except pymysql.Error as e:
+        raise Exception(f"Database error: {e}")
+    except Exception as e:
+        raise Exception(f"Error querying database: {e}")
+
+
+def format_csv_value(value):
+    """Formats a value for CSV output: rounds to 2 decimal places if numeric, otherwise returns '-'"""
+    if value == '-' or value is None:
+        return '-'
+    try:
+        float_value = float(value)
+        return f"{float_value:.2f}"
+    except (ValueError, TypeError):
+        return '-'
+
+def print_csv_output(accounts, db_max_daily_usage=None, is_carrier_mode=False):
+    """Prints output in CSV format: one line per balance"""
+    # Check if any account is a carrier (format crX) or if we're in carrier mode
+    is_carrier = is_carrier_mode
+    if not is_carrier and accounts:
+        first_account_id = accounts[0].get('ID', '')
+        if ':' in first_account_id:
+            account_part = first_account_id.split(':', 1)[1]
+            if account_part.startswith('cr') and len(account_part) > 2:
+                try:
+                    int(account_part[2:])  # Verify it's cr followed by numbers
+                    is_carrier = True
+                except ValueError:
+                    pass
+    
+    # CSV header - only name and balance for carriers
+    if is_carrier:
+        print("name,balance")
+    elif db_max_daily_usage is not None:
+        print("name,balance,dailyUsage,maxDailyUsage,maxDailyUsageDb")
+    else:
+        print("name,balance,dailyUsage,maxDailyUsage")
+    
+    for account in accounts:
+        account_id = account.get('ID', 'N/A')
+        # Convert format tenant:account to tenantaccount (without :)
+        account_name = account_id.replace(':', '')
+        
+        balance_map = account.get('BalanceMap', {})
+        
+        # For non-carriers, get account-level values (calculated once per account)
+        unit_counters_value = '-'
+        action_triggers_value = '-'
+        db_max_daily_usage_value = '-'
+        
+        if not is_carrier:
+            # Get the first value of the first counter of the first UnitCounters type
+            unit_counters = account.get('UnitCounters', {})
+            if unit_counters:
+                first_counter_type = next(iter(unit_counters.keys()), None)
+                if first_counter_type:
+                    counters_list = unit_counters[first_counter_type]
+                    if counters_list and len(counters_list) > 0:
+                        first_unit_counter = counters_list[0]
+                        counters = first_unit_counter.get('Counters', [])
+                        if counters and len(counters) > 0:
+                            unit_counters_value = counters[0].get('Value', '-')
+            
+            # Get the ThresholdValue of the first ActionTrigger
+            action_triggers = account.get('ActionTriggers', [])
+            if action_triggers and len(action_triggers) > 0:
+                action_triggers_value = action_triggers[0].get('ThresholdValue', '-')
+            
+            # Get maxDailyUsage from database if available
+            if db_max_daily_usage is not None:
+                db_max_daily_usage_value = db_max_daily_usage.get(account_id, '-')
+        
+        # Print one line per balance in the account
+        if balance_map:
+            for balance_type, balances in balance_map.items():
+                for balance in balances:
+                    # Get the value of this specific balance
+                    balance_value = balance.get('Value', '-')
+                    balance_formatted = format_csv_value(balance_value)
+                    
+                    if is_carrier:
+                        # For carriers, only print name and balance
+                        print(f"{account_name},{balance_formatted}")
+                    else:
+                        # For non-carriers, print all columns
+                        daily_usage_formatted = format_csv_value(unit_counters_value)
+                        max_daily_usage_formatted = format_csv_value(action_triggers_value)
+                        db_max_daily_usage_formatted = format_csv_value(db_max_daily_usage_value)
+                        
+                        if db_max_daily_usage is not None:
+                            print(f"{account_name},{balance_formatted},{daily_usage_formatted},{max_daily_usage_formatted},{db_max_daily_usage_formatted}")
+                        else:
+                            print(f"{account_name},{balance_formatted},{daily_usage_formatted},{max_daily_usage_formatted}")
+        else:
+            # If there are no balances, print one line with default values
+            balance_formatted = format_csv_value('-')
+            
+            if is_carrier:
+                print(f"{account_name},{balance_formatted}")
+            else:
+                daily_usage_formatted = format_csv_value(unit_counters_value)
+                max_daily_usage_formatted = format_csv_value(action_triggers_value)
+                db_max_daily_usage_formatted = format_csv_value(db_max_daily_usage_value)
+                
+                if db_max_daily_usage is not None:
+                    print(f"{account_name},{balance_formatted},{daily_usage_formatted},{max_daily_usage_formatted},{db_max_daily_usage_formatted}")
+                else:
+                    print(f"{account_name},{balance_formatted},{daily_usage_formatted},{max_daily_usage_formatted}")
+
+
+def print_balance_info(accounts, db_max_daily_usage=None, mismatches=None, fix_mode=False):
+    """Prints balance information in a readable format"""
+    print(f"Total accounts found: {len(accounts)}\n")
+    
+    for account in accounts:
+        account_id = account.get('ID', 'N/A')
+        print(f"=== Account: {account_id} ===")
+        print(f"AllowNegative: {account.get('AllowNegative', False)}")
+        print(f"Disabled: {account.get('Disabled', False)}")
+        
+        # Show maxDailyUsage from database if available
+        if db_max_daily_usage is not None:
+            db_value = db_max_daily_usage.get(account_id, None)
+            if db_value is not None:
+                print(f"maxDailyUsage (DB): {db_value}")
+                
+                # Get ThresholdValue from first ActionTrigger
+                action_triggers = account.get('ActionTriggers', [])
+                cgrates_value = None
+                if action_triggers and len(action_triggers) > 0:
+                    cgrates_value = action_triggers[0].get('ThresholdValue', None)
+                    print(f"maxDailyUsage (cgrates): {cgrates_value}")
+                    
+                    # Compare values (show match status)
+                    if cgrates_value is not None:
+                        if float(db_value) == float(cgrates_value):
+                            print(f"Values match ✓")
+                        else:
+                            print(f"Values differ ✗")
+                else:
+                    print(f"maxDailyUsage (cgrates): (no ActionTriggers found)")
+            else:
+                print(f"maxDailyUsage (DB): (not found)")
+        
+        balance_map = account.get('BalanceMap', {})
+        if not balance_map:
+            print("No balances")
+        else:
+            print("\nBalances:")
+            for balance_type, balances in balance_map.items():
+                print(f"  Type: {balance_type}")
+                for i, balance in enumerate(balances, 1):
+                    print(f"    Balance {i}:")
+                    print(f"      ID: {balance.get('ID', 'N/A')}")
+                    print(f"      Uuid: {balance.get('Uuid', 'N/A')}")
+                    print(f"      Value: {balance.get('Value', 0)}")
+                    
+                    dest_ids = balance.get('DestinationIDs')
+                    if dest_ids:
+                        print(f"      DestinationIDs: {dest_ids}")
+                    
+                    rating_subject = balance.get('RatingSubject')
+                    if rating_subject:
+                        print(f"      RatingSubject: {rating_subject}")
+                    
+                    categories = balance.get('Categories')
+                    if categories:
+                        print(f"      Categories: {categories}")
+                    
+                    print()
+        
+        # Show UnitCounters.Value
+        unit_counters = account.get('UnitCounters', {})
+        if unit_counters:
+            print("UnitCounters:")
+            for counter_type, counters_list in unit_counters.items():
+                print(f"  Type: {counter_type}")
+                for i, unit_counter in enumerate(counters_list, 1):
+                    print(f"    Counter {i}:")
+                    counters = unit_counter.get('Counters', [])
+                    if counters:
+                        values = [str(counter.get('Value', 0)) for counter in counters]
+                        print(f"      Value: {', '.join(values)}")
+                    else:
+                        print(f"      Value: (empty)")
+            print()
+        else:
+            print("UnitCounters: (empty)")
+        
+        # Show ActionTriggers.ThresholdValue
+        action_triggers = account.get('ActionTriggers', [])
+        if action_triggers:
+            print("ActionTriggers:")
+            for i, trigger in enumerate(action_triggers, 1):
+                trigger_id = trigger.get('ID', 'N/A')
+                threshold_value = trigger.get('ThresholdValue', 0)
+                threshold_type = trigger.get('ThresholdType', 'N/A')
+                print(f"  Trigger {i}:")
+                print(f"    ID: {trigger_id}")
+                print(f"    ThresholdType: {threshold_type}")
+                print(f"    ThresholdValue: {threshold_value}")
+                print()
+        else:
+            print("ActionTriggers: (empty)")
+        
+        print()
+    
+    # Flush stdout to ensure all account information is printed before warnings
+    sys.stdout.flush()
+    
+    # Show mismatches warnings at the end (but only if not in fix mode)
+    if mismatches and not fix_mode:
+        print("", file=sys.stderr)
+        print("WARNINGS:", file=sys.stderr)
+        for mismatch in mismatches:
+            print(f"  {mismatch['account_id']}: ThresholdValue differs! "
+                  f"cgrates={mismatch['current_value']}, DB={mismatch['db_value']}. "
+                  f"Use --fix to update.", file=sys.stderr)
+
+
+def debug_print(message, debug_mode=False):
+    """Prints debug message to stderr if debug_mode is enabled"""
+    if debug_mode:
+        print(f"DEBUG: {message}", file=sys.stderr)
+
+
+def filter_accounts_by_database(accounts, db_max_daily_usage, debug_mode=False):
+    """Filters accounts to only include those that exist in the database
+    
+    Args:
+        accounts: List of accounts to filter
+        db_max_daily_usage: Dictionary mapping account IDs to maxDailyUsage values
+        debug_mode: If True, prints debug messages for filtered accounts
+    
+    Returns:
+        Filtered list of accounts
+    """
+    filtered_accounts = []
+    for account in accounts:
+        account_id = account.get('ID', 'N/A')
+        if account_id in db_max_daily_usage:
+            filtered_accounts.append(account)
+        elif debug_mode:
+            debug_print(f"Account {account_id} not found in database, omitting", debug_mode)
+    return filtered_accounts
+
+
+def print_help():
+    """Shows the script usage help"""
+    help_text = """
+Usage: cgrates-balances [SERVER[:PORT]] [OPTIONS]
+
+Gets account balance information from a cgrates server using JSON-RPC.
+
+Arguments:
+  SERVER[:PORT]        cgrates server and port
+                       Default: trunks.ivozprovider.local:2012
+                       Example: my.server.com:2012
+
+Options:
+  -h, --help           Show this help and exit
+  --tenant TENANT      (REQUIRED) Specifies the tenant to query
+                       Must be bX, where X is the brandId
+                       Example: --tenant b1
+  --account ID         Get information for a specific account
+                       Must be a company id (cX) or a carrier id (crY)
+                       Examples: --account c1 (companyId 1), --account cr1 (carrierId 1)
+  --carriers           Show carrier balances (omitted by default)
+  --fix                Fix ThresholdValue mismatches
+  --json               Show output in JSON format
+  --csv                Show output in CSV format (one line per balance)
+  --debug              Show debug information
+
+Examples:
+  # Get all companies for tenant b1 (default shows companies)
+  ./cgrates-balances --tenant b1
+
+  # Specify another server
+  ./cgrates-balances other.server.com:2012 --tenant b1
+
+  # Get only carriers (format crY, omitted by default)
+  ./cgrates-balances --tenant b1 --carriers
+
+  # Get information for a specific account (companyId 1)
+  ./cgrates-balances --tenant b1 --account c1
+
+  # Get information for a specific account (carrierId 1)
+  ./cgrates-balances --tenant b1 --account cr1
+
+  # View output in JSON format
+  ./cgrates-balances --tenant b1 --json
+
+  # Combine options
+  ./cgrates-balances --tenant b1 --carriers --json
+
+  # View output in CSV format
+  ./cgrates-balances --tenant b1 --csv
+
+  # Compare with database and fix mismatches
+  ./cgrates-balances --tenant b1 --fix
+"""
+    print(help_text.strip())
+
+
+def main():
+    # Server configuration
+    host = "trunks.ivozprovider.local"
+    port = 2012
+    
+    # Options
+    tenant = None  # Required, no default value
+    account_ids = None
+    json_output = False
+    csv_output = False
+    debug_mode = False
+    database_mode = False
+    fix_mode = False
+    account_type = None  # 'carriers' or 'companies'
+    
+    # Parse command line arguments
+    # First, check if the first argument is a server (not starting with -)
+    argv = sys.argv[1:]
+    if argv and not argv[0].startswith('-'):
+        # First argument is server in format host[:port]
+        parts = argv[0].split(':')
+        host = parts[0]
+        if len(parts) > 1:
+            port = int(parts[1])
+        argv = argv[1:]  # Remove server from argv for getopt
+    
+    # Define short and long options
+    shortopts = "h"
+    longopts = ["help", "tenant=", "account=", "carriers", "fix", "json", "csv", "debug"]
+    
+    try:
+        opts, args = getopt.getopt(argv, shortopts, longopts)
+    except getopt.GetoptError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        print("Use -h or --help to see help", file=sys.stderr)
+        sys.exit(1)
+    
+    # Process options
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):
+            print_help()
+            sys.exit(0)
+        elif opt == "--tenant":
+            tenant = arg
+            # Validate format: must be bX where X is a number
+            if not tenant.startswith('b'):
+                print(f"Error: --tenant must start with 'b' followed by a number", file=sys.stderr)
+                print(f"Expected format: bX, where X is the brandId", file=sys.stderr)
+                print(f"Received value: {tenant}", file=sys.stderr)
+                print(f"Example: --tenant b1", file=sys.stderr)
+                sys.exit(1)
+            if len(tenant) <= 1:
+                print(f"Error: --tenant requires a brandId (format: bX, where X is the numeric ID)", file=sys.stderr)
+                print(f"Received value: {tenant}", file=sys.stderr)
+                print(f"Example: --tenant b1", file=sys.stderr)
+                sys.exit(1)
+            try:
+                brand_id = int(tenant[1:])
+            except ValueError:
+                print(f"Error: --tenant requires a brandId (format: bX, where X is the numeric ID)", file=sys.stderr)
+                print(f"Received value: {tenant} (after 'b' there must be a number)", file=sys.stderr)
+                print(f"Example: --tenant b1", file=sys.stderr)
+                sys.exit(1)
+        elif opt == "--account":
+            account_id = arg
+            # Validate format: must be cX or crY
+            if not account_id.startswith('c'):
+                print(f"Error: --account must be a companyId or a carrierId", file=sys.stderr)
+                print(f"Expected format: cX (companyId X) or crY (carrierId Y)", file=sys.stderr)
+                print(f"Received value: {account_id}", file=sys.stderr)
+                print(f"Examples: --account c1 (companyId 1), --account cr1 (carrierId 1)", file=sys.stderr)
+                sys.exit(1)
+            
+            # Verify that after 'c' or 'cr' there are numbers
+            if account_id.startswith('cr'):
+                # Carrier: format crY
+                if len(account_id) <= 2:
+                    print(f"Error: --account requires a carrierId (format: crY, where Y is the numeric ID)", file=sys.stderr)
+                    print(f"Received value: {account_id}", file=sys.stderr)
+                    print(f"Example: --account cr1 (carrierId 1)", file=sys.stderr)
+                    sys.exit(1)
+                try:
+                    carrier_id = int(account_id[2:])
+                except ValueError:
+                    print(f"Error: --account requires a carrierId (format: crY, where Y is the numeric ID)", file=sys.stderr)
+                    print(f"Received value: {account_id} (after 'cr' there must be a number)", file=sys.stderr)
+                    print(f"Example: --account cr1 (carrierId 1)", file=sys.stderr)
+                    sys.exit(1)
+            else:
+                # Company: format cX
+                if len(account_id) <= 1:
+                    print(f"Error: --account requires a companyId (format: cX, where X is the numeric ID)", file=sys.stderr)
+                    print(f"Received value: {account_id}", file=sys.stderr)
+                    print(f"Example: --account c1 (companyId 1)", file=sys.stderr)
+                    sys.exit(1)
+                try:
+                    company_id = int(account_id[1:])
+                except ValueError:
+                    print(f"Error: --account requires a companyId (format: cX, where X is the numeric ID)", file=sys.stderr)
+                    print(f"Received value: {account_id} (after 'c' there must be a number)", file=sys.stderr)
+                    print(f"Example: --account c1 (companyId 1)", file=sys.stderr)
+                    sys.exit(1)
+            account_ids = [account_id]
+        elif opt == "--carriers":
+            account_type = 'carriers'
+        elif opt == "--fix":
+            fix_mode = True
+        elif opt == "--json":
+            json_output = True
+        elif opt == "--csv":
+            csv_output = True
+        elif opt == "--debug":
+            debug_mode = True
+    
+    # Check for unexpected positional arguments
+    if args:
+        print(f"Error: Unexpected arguments: {' '.join(args)}", file=sys.stderr)
+        print("Use -h or --help to see help", file=sys.stderr)
+        sys.exit(1)
+    
+    # Verify that tenant is required
+    if not tenant:
+        print("Error: --tenant is required. Must be bX, where X is the brandId", file=sys.stderr)
+        print("Example: --tenant b1", file=sys.stderr)
+        sys.exit(1)
+    
+    # --database is implicit when not using carriers or when account is a company (cY, not crX)
+    if account_type != 'carriers':
+        # Check if account_ids contains a carrier (crX)
+        has_carrier_account = False
+        if account_ids:
+            has_carrier_account = any(
+                acc_id.startswith('cr') and len(acc_id) > 2 and 
+                acc_id[2:].isdigit() 
+                for acc_id in account_ids
+            )
+        
+        # If no carrier account is specified, --database is implicit
+        if not has_carrier_account:
+            database_mode = True
+    
+    # Verify that --carriers is not used with --fix
+    if account_type == 'carriers':
+        if fix_mode:
+            print("Error: --carriers cannot be used with --fix", file=sys.stderr)
+            sys.exit(1)
+    
+    # Verify that --csv and --fix cannot be used together
+    if csv_output and fix_mode:
+        print("Error: --csv cannot be used with --fix", file=sys.stderr)
+        sys.exit(1)
+    
+    # Verify that --json and --fix cannot be used together
+    if json_output and fix_mode:
+        print("Error: --json cannot be used with --fix", file=sys.stderr)
+        sys.exit(1)
+    
+    # --fix implies --database
+    if fix_mode and not database_mode:
+        database_mode = True
+    
+    # Check if MySQL is available when database operations are required
+    if database_mode and not MYSQL_AVAILABLE:
+        print("Error: Database features require pymysql, but it is not available.", file=sys.stderr)
+        print("Install it with: apt-get install python3-pymysql", file=sys.stderr)
+        sys.exit(1)
+    
+    try:
+        # Connect and get accounts
+        rpc = CGRatesRPC(host, port)
+        debug_print(f"Connecting to {host}:{port}", debug_mode)
+        debug_print(f"Tenant received: '{tenant}' (length: {len(tenant)}, bytes: {tenant.encode('utf-8')})", debug_mode)
+        debug_print(f"Account IDs: {account_ids}", debug_mode)
+        accounts = rpc.get_accounts(tenant=tenant, account_ids=account_ids, debug=debug_mode)
+        
+        # Filter by exact tenant (always, since it's required)
+        accounts = filter_accounts_by_tenant(accounts, tenant)
+        debug_print(f"After filtering by tenant '{tenant}': {len(accounts)} accounts", debug_mode)
+        
+        # If --account, --companies or --carriers is not specified, default to showing companies
+        if not account_ids and not account_type:
+            account_type = 'companies'
+            debug_print("No type specified, using default 'companies'", debug_mode)
+        
+        # Filter by account type (carriers or companies)
+        if account_type:
+            accounts = filter_accounts_by_type(accounts, account_type)
+            debug_print(f"After filtering by type '{account_type}': {len(accounts)} accounts", debug_mode)
+        
+        # Get maxDailyUsage from database (implicit for companies)
+        db_max_daily_usage = None
+        mismatches = []
+        if database_mode:
+            try:
+                db_max_daily_usage = get_max_daily_usage_from_db()
+                debug_print(f"Retrieved {len(db_max_daily_usage)} maxDailyUsage values from database", debug_mode)
+                
+                # Filter accounts to only include those that exist in the database
+                accounts = filter_accounts_by_database(accounts, db_max_daily_usage, debug_mode)
+                debug_print(f"After filtering by database: {len(accounts)} accounts", debug_mode)
+                
+                # Compare values and collect mismatches
+                for account in accounts:
+                    account_id = account.get('ID', 'N/A')
+                    db_value = db_max_daily_usage.get(account_id, None)
+                    if db_value is not None:
+                        action_triggers = account.get('ActionTriggers', [])
+                        if action_triggers and len(action_triggers) > 0:
+                            cgrates_value = action_triggers[0].get('ThresholdValue', None)
+                            if cgrates_value is not None and float(db_value) != float(cgrates_value):
+                                mismatches.append({
+                                    'account_id': account_id,
+                                    'tenant': tenant,
+                                    'account': account_id.split(':', 1)[1] if ':' in account_id else account_id,
+                                    'unique_id': action_triggers[0].get('UniqueID', ''),
+                                    'current_value': cgrates_value,
+                                    'db_value': float(db_value)
+                                })
+            except Exception as e:
+                print(f"Error: {e}", file=sys.stderr)
+                sys.exit(1)
+        
+        # Fix mismatches if --fix flag is set
+        if fix_mode:
+            if mismatches:
+                fixed_count = 0
+                failed_accounts = []
+                for mismatch in mismatches:
+                    try:
+                        debug_print(f"Fixing {mismatch['account_id']}: {mismatch['current_value']} -> {mismatch['db_value']}", debug_mode)
+                        rpc.set_account_action_trigger(
+                            tenant=mismatch['tenant'],
+                            account=mismatch['account'],
+                            unique_id=mismatch['unique_id'],
+                            threshold_value=mismatch['db_value'],
+                            debug=debug_mode
+                        )
+                        fixed_count += 1
+                        print(f"Fixed {mismatch['account_id']}: ThresholdValue updated from {mismatch['current_value']} to {mismatch['db_value']}")
+                    except Exception as e:
+                        failed_accounts.append((mismatch['account_id'], str(e)))
+                        print(f"Error fixing {mismatch['account_id']}: {e}", file=sys.stderr)
+                
+                # Print summary
+                total_count = len(mismatches)
+                failed_count = len(failed_accounts)
+                if failed_count > 0:
+                    print(f"\nSummary: Fixed {fixed_count} out of {total_count} accounts. {failed_count} account(s) failed:", file=sys.stderr)
+                    for account_id, error in failed_accounts:
+                        print(f"  - {account_id}: {error}", file=sys.stderr)
+                    sys.exit(1)
+                else:
+                    print(f"\nSummary: Successfully fixed all {fixed_count} account(s).", file=sys.stderr)
+            else:
+                # No mismatches to fix
+                print("Nothing to fix")
+        else:
+            # Normal output mode (not --fix)
+            if json_output:
+                # Show in JSON format
+                print(json.dumps(accounts, indent=2, ensure_ascii=False))
+            elif csv_output:
+                # Show in CSV format
+                print_csv_output(accounts, db_max_daily_usage, is_carrier_mode=(account_type == 'carriers'))
+                # Flush stdout to ensure CSV is printed before warnings
+                sys.stdout.flush()
+                # Show mismatches warnings after CSV output
+                if mismatches:
+                    print("", file=sys.stderr)
+                    print("WARNINGS:", file=sys.stderr)
+                    for mismatch in mismatches:
+                        print(f"  {mismatch['account_id']}: ThresholdValue differs! "
+                              f"cgrates={mismatch['current_value']}, DB={mismatch['db_value']}. "
+                              f"Use --fix to update.", file=sys.stderr)
+            else:
+                # Show formatted information
+                print_balance_info(accounts, db_max_daily_usage, mismatches, fix_mode)
+            
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
