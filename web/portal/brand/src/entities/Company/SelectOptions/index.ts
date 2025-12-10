@@ -1,4 +1,5 @@
 import CorporationSelectOptions from './CorporationSelectOptions';
+import DdiSelectOptions from './DdiSelectOptions';
 import ResidentialSelectOptions from './ResidentialSelectOptions';
 import RetailSelectOptions from './RetailSelectOptions';
 import CompanySelectOptions from './SelectOptions';
@@ -10,6 +11,7 @@ export default CompanySelectOptions;
 export {
   CompanySelectOptions,
   CorporationSelectOptions,
+  DdiSelectOptions,
   ResidentialSelectOptions,
   RetailSelectOptions,
   VpbxSelectOptions,
