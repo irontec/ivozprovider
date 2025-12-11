@@ -5,10 +5,10 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
@@ -98,6 +98,8 @@ interface DdiInterface extends LoggableEntityInterface
      */
     public function getDdie164(): string;
 
+    public function setCompany(?CompanyInterface $company = null): static;
+
     /**
      * @param int | null $id
      */
@@ -136,8 +138,6 @@ interface DdiInterface extends LoggableEntityInterface
     public function getType(): string;
 
     public function getUseDdiProviderRoutingTag(): bool;
-
-    public function setCompany(?CompanyInterface $company = null): static;
 
     public function getCompany(): ?CompanyInterface;
 

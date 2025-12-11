@@ -1,9 +1,9 @@
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
+import { DdiSelectOptions } from '../Company/SelectOptions';
 import { DdiPropertyList } from './DdiProperties';
 
-/** TODO remove this file unless you need to change default behaviour **/
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
   entityService,
@@ -14,7 +14,14 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     entityService,
     cancelToken,
     response,
-    skip: [],
+    skip: ['company'],
+  });
+
+  promises[promises.length] = DdiSelectOptions({
+    callback: (options) => {
+      response.company = options;
+    },
+    cancelToken,
   });
 
   await Promise.all(promises);

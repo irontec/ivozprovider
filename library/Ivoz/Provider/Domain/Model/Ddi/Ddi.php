@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
@@ -164,5 +165,14 @@ class Ddi extends DdiAbstract implements DdiInterface
         return
             $this->getCountry()->getCountryCode() .
             $this->getDdi();
+    }
+
+    public function setCompany(?CompanyInterface $company = null): static
+    {
+        if ($company && $company->getType() === CompanyInterface::TYPE_WHOLESALE) {
+            throw new \DomainException('Wholesale clients cannot have DDIs');
+        }
+
+        return parent::setCompany($company);
     }
 }
