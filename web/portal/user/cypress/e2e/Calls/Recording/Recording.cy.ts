@@ -1,7 +1,7 @@
 import RecordingCollection from '../../../fixtures/Recording/getCollection.json';
 import RecordingItem from '../../../fixtures/Recording/getItem.json';
 
-describe('CallForwardSetting', () => {
+describe('Recording', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('Calls-Recording');
     cy.before();
@@ -11,7 +11,7 @@ describe('CallForwardSetting', () => {
     cy.get('table').should('contain', RecordingCollection.body[0].duration);
   });
 
-  it('View CallForwardSetting', () => {
+  it('View Recording', () => {
     const recordingId = RecordingItem.body.id;
     cy.usePactIntercept(
       {
@@ -25,10 +25,10 @@ describe('CallForwardSetting', () => {
     cy.usePactIntercept(
       {
         method: 'GET',
-        url: '**api/user/recordings/2/recordedfile',
+        url: `**api/user/recordings/${recordingId}/recordedfile`,
         response: '',
       },
-      'getRecordedFile-2'
+      `getRecordedFile-${recordingId}`
     );
 
     cy.get('svg[data-testid="PanoramaIcon"]').first().click();
@@ -40,7 +40,7 @@ describe('CallForwardSetting', () => {
     cy.get('input[name=callee]');
   });
 
-  it('delete CallForwardSetting', () => {
+  it('Delete Recording', () => {
     cy.intercept('DELETE', '**api/user/recordings/*', {
       statusCode: 204,
     }).as('deleteRecording');
