@@ -357,6 +357,9 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.CompanyCurrentDayUsage,
           isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
+          filterValues: {
+            'billingMethod[neq]': 'none',
+          },
         },
       ],
     },
