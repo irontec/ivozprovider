@@ -62,21 +62,6 @@ Content-Type: text/csv
               "numberCountry": null
           },
           {
-              "name": "Name",
-              "eventDate": "2021-12-21",
-              "wholeDayEvent": true,
-              "timeIn": null,
-              "timeOut": null,
-              "routeType": null,
-              "numberValue": null,
-              "id": 1,
-              "calendar": 1,
-              "locution": null,
-              "extension": null,
-              "voicemail": null,
-              "numberCountry": null
-          },
-          {
               "name": "New year's day",
               "eventDate": "2019-01-01",
               "wholeDayEvent": true,
@@ -100,6 +85,21 @@ Content-Type: text/csv
               "routeType": null,
               "numberValue": null,
               "id": 5,
+              "calendar": 1,
+              "locution": null,
+              "extension": null,
+              "voicemail": null,
+              "numberCountry": null
+          },
+          {
+              "name": "Name",
+              "eventDate": "2021-12-21",
+              "wholeDayEvent": true,
+              "timeIn": null,
+              "timeOut": null,
+              "routeType": null,
+              "numberValue": null,
+              "id": 1,
               "calendar": 1,
               "locution": null,
               "extension": null,
@@ -170,22 +170,7 @@ Content-Type: text/csv
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the JSON should be equal to:
     """
-          [
-          {
-              "name": "Name",
-              "eventDate": "2021-12-21",
-              "wholeDayEvent": true,
-              "timeIn": null,
-              "timeOut": null,
-              "routeType": null,
-              "numberValue": null,
-              "id": 1,
-              "calendar": 1,
-              "locution": null,
-              "extension": null,
-              "voicemail": null,
-              "numberCountry": null
-          },
+    [
           {
               "name": "New year\\'s day",
               "eventDate": "2019-01-01",
@@ -210,6 +195,21 @@ Content-Type: text/csv
               "routeType": null,
               "numberValue": null,
               "id": 4,
+              "calendar": 1,
+              "locution": null,
+              "extension": null,
+              "voicemail": null,
+              "numberCountry": null
+          },
+          {
+              "name": "Name",
+              "eventDate": "2021-12-21",
+              "wholeDayEvent": true,
+              "timeIn": null,
+              "timeOut": null,
+              "routeType": null,
+              "numberValue": null,
+              "id": 1,
               "calendar": 1,
               "locution": null,
               "extension": null,
