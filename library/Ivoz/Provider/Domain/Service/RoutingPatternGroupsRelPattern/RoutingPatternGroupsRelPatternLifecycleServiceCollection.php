@@ -26,6 +26,10 @@ class RoutingPatternGroupsRelPatternLifecycleServiceCollection implements Lifecy
             \Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByRoutingPatternGroupsRelPattern::class => 200,
             \Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\UpdateByRoutingPatternGroupsRelPattern::class => 210,
         ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\SendTrunksLcrReloadRequest::class => 200,
+        ],
     ];
 
     protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
