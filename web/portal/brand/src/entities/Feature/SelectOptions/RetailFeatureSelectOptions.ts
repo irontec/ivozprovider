@@ -1,6 +1,6 @@
+import { fetchAllPages } from '@irontec/ivoz-ui';
 import { PropertyFkChoices } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 import { ClientFeatures, ClientTypes } from '../../Company/ClientFeatures';
