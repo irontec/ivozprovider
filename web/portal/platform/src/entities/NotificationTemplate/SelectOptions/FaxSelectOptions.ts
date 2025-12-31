@@ -1,6 +1,5 @@
-import { DropdownChoices } from '@irontec/ivoz-ui';
+import { DropdownChoices, fetchAllPages } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 const FaxSelectOptions: SelectOptionsType = ({
