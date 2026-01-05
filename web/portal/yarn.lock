@@ -811,6 +811,28 @@
     sync-request "^6.1.0"
     typescript "^4.6.2"
 
+"@irontec/ivoz-ui@https://github.com/irontec/ivoz-ui/raw/refs/heads/rc-artifacts/irontec-ivoz-ui-1.7.17-172-rc1.tgz":
+  version "1.7.17-172-rc1"
+  resolved "https://github.com/irontec/ivoz-ui/raw/refs/heads/rc-artifacts/irontec-ivoz-ui-1.7.17-172-rc1.tgz#4596b85d19a188d88d351805e78c56cefea010c4"
+  dependencies:
+    "@date-io/date-fns" "^2.10.8"
+    "@types/react-color" "^3.0.12"
+    axios "^0.21.1"
+    date-fns "^2.21.1"
+    eslint "^7.11.0"
+    file-saver "^2.0.5"
+    formik "^2.2.6"
+    hoist-non-react-statics "^3.3.2"
+    i18next "^23.10.0"
+    i18next-browser-languagedetector "^7.2.0"
+    i18next-sprintf-postprocessor "^0.2.2"
+    query-string "^7.0.0"
+    react-audio-player "^0.17.0"
+    react-color "^2.19.3"
+    react-i18next "^13.0.0"
+    sync-request "^6.1.0"
+    typescript "^4.6.2"
+
 "@jest/types@^26.6.2":
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/@jest/types/-/types-26.6.2.tgz#bef5a532030e1d88a2f5a6d933f84e97226ed48e"
