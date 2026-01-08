@@ -12,5 +12,8 @@
     "i18n": "i18next cypress src/**/*.{jsx,tsx,ts} -c i18next-parser.config.mjs",
     "cy:run": "cypress run --browser electron",
     "cy:open": "cypress open"
+  },
+  "dependencies": {
+    "@irontec/ivoz-ui": "https://github.com/irontec/ivoz-ui/raw/refs/heads/rc-artifacts/irontec-ivoz-ui-1.7.17-172-rc1.tgz"
   }
 }
