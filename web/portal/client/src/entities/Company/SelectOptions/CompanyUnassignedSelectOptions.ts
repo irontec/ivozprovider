@@ -1,6 +1,9 @@
-import { DropdownArrayChoices, EntityValues } from '@irontec/ivoz-ui';
+import {
+  DropdownArrayChoices,
+  EntityValues,
+  fetchAllPages,
+} from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { fetchAllPages } from '@irontec/ivoz-ui/helpers/fechAllPages';
 import store from 'store';
 
 type CompanySelectOptionsArgs = {
