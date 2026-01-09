@@ -59,6 +59,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @var string|null
      */
+    private $nameEu = null;
+
+    /**
+     * @var string|null
+     */
     private $descriptionEn = null;
 
     /**
@@ -75,6 +80,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
      * @var string|null
      */
     private $descriptionIt = null;
+
+    /**
+     * @var string|null
+     */
+    private $descriptionEu = null;
 
     /**
      * @var int|null
@@ -135,12 +145,14 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
                 'es',
                 'ca',
                 'it',
+                'eu',
             ],
             'description' => [
                 'en',
                 'es',
                 'ca',
                 'it',
+                'eu',
             ],
             'file' => [
                 'fileSize',
@@ -168,12 +180,14 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
                 'it' => $this->getNameIt(),
+                'eu' => $this->getNameEu(),
             ],
             'description' => [
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs(),
                 'ca' => $this->getDescriptionCa(),
                 'it' => $this->getDescriptionIt(),
+                'eu' => $this->getDescriptionEu(),
             ],
             'file' => [
                 'fileSize' => $this->getFileFileSize(),
@@ -299,6 +313,18 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->nameIt;
     }
 
+    public function setNameEu(string $nameEu): static
+    {
+        $this->nameEu = $nameEu;
+
+        return $this;
+    }
+
+    public function getNameEu(): ?string
+    {
+        return $this->nameEu;
+    }
+
     public function setDescriptionEn(string $descriptionEn): static
     {
         $this->descriptionEn = $descriptionEn;
@@ -345,6 +371,18 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     public function getDescriptionIt(): ?string
     {
         return $this->descriptionIt;
+    }
+
+    public function setDescriptionEu(string $descriptionEu): static
+    {
+        $this->descriptionEu = $descriptionEu;
+
+        return $this;
+    }
+
+    public function getDescriptionEu(): ?string
+    {
+        return $this->descriptionEu;
     }
 
     public function setFileFileSize(?int $fileFileSize): static

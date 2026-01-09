@@ -131,6 +131,8 @@ abstract class ServiceAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $descriptionEn = $dto->getDescriptionEn();
         Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
         $descriptionEs = $dto->getDescriptionEs();
@@ -139,6 +141,8 @@ abstract class ServiceAbstract
         Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
         $descriptionIt = $dto->getDescriptionIt();
         Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
+        $descriptionEu = $dto->getDescriptionEu();
+        Assertion::notNull($descriptionEu, 'descriptionEu value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
         $defaultCode = $dto->getDefaultCode();
@@ -150,14 +154,16 @@ abstract class ServiceAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $description = new Description(
             $descriptionEn,
             $descriptionEs,
             $descriptionCa,
-            $descriptionIt
+            $descriptionIt,
+            $descriptionEu
         );
 
         $self = new static(
@@ -193,6 +199,8 @@ abstract class ServiceAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $descriptionEn = $dto->getDescriptionEn();
         Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
         $descriptionEs = $dto->getDescriptionEs();
@@ -201,6 +209,8 @@ abstract class ServiceAbstract
         Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
         $descriptionIt = $dto->getDescriptionIt();
         Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
+        $descriptionEu = $dto->getDescriptionEu();
+        Assertion::notNull($descriptionEu, 'descriptionEu value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
         $defaultCode = $dto->getDefaultCode();
@@ -212,14 +222,16 @@ abstract class ServiceAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $description = new Description(
             $descriptionEn,
             $descriptionEs,
             $descriptionCa,
-            $descriptionIt
+            $descriptionIt,
+            $descriptionEu
         );
 
         $this
@@ -245,10 +257,12 @@ abstract class ServiceAbstract
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
             ->setNameIt(self::getName()->getIt())
+            ->setNameEu(self::getName()->getEu())
             ->setDescriptionEn(self::getDescription()->getEn())
             ->setDescriptionEs(self::getDescription()->getEs())
             ->setDescriptionCa(self::getDescription()->getCa())
-            ->setDescriptionIt(self::getDescription()->getIt());
+            ->setDescriptionIt(self::getDescription()->getIt())
+            ->setDescriptionEu(self::getDescription()->getEu());
     }
 
     /**
@@ -264,10 +278,12 @@ abstract class ServiceAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
+            'nameEu' => self::getName()->getEu(),
             'descriptionEn' => self::getDescription()->getEn(),
             'descriptionEs' => self::getDescription()->getEs(),
             'descriptionCa' => self::getDescription()->getCa(),
-            'descriptionIt' => self::getDescription()->getIt()
+            'descriptionIt' => self::getDescription()->getIt(),
+            'descriptionEu' => self::getDescription()->getEu()
         ];
     }
 

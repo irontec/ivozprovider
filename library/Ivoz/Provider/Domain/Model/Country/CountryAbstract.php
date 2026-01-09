@@ -122,6 +122,8 @@ abstract class CountryAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $zoneEn = $dto->getZoneEn();
         Assertion::notNull($zoneEn, 'zoneEn value is null, but non null value was expected.');
         $zoneEs = $dto->getZoneEs();
@@ -130,6 +132,8 @@ abstract class CountryAbstract
         Assertion::notNull($zoneCa, 'zoneCa value is null, but non null value was expected.');
         $zoneIt = $dto->getZoneIt();
         Assertion::notNull($zoneIt, 'zoneIt value is null, but non null value was expected.');
+        $zoneEu = $dto->getZoneEu();
+        Assertion::notNull($zoneEu, 'zoneEu value is null, but non null value was expected.');
         $code = $dto->getCode();
         Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
 
@@ -137,14 +141,16 @@ abstract class CountryAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $zone = new Zone(
             $zoneEn,
             $zoneEs,
             $zoneCa,
-            $zoneIt
+            $zoneIt,
+            $zoneEu
         );
 
         $self = new static(
@@ -179,6 +185,8 @@ abstract class CountryAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $zoneEn = $dto->getZoneEn();
         Assertion::notNull($zoneEn, 'zoneEn value is null, but non null value was expected.');
         $zoneEs = $dto->getZoneEs();
@@ -187,6 +195,8 @@ abstract class CountryAbstract
         Assertion::notNull($zoneCa, 'zoneCa value is null, but non null value was expected.');
         $zoneIt = $dto->getZoneIt();
         Assertion::notNull($zoneIt, 'zoneIt value is null, but non null value was expected.');
+        $zoneEu = $dto->getZoneEu();
+        Assertion::notNull($zoneEu, 'zoneEu value is null, but non null value was expected.');
         $code = $dto->getCode();
         Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
 
@@ -194,14 +204,16 @@ abstract class CountryAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $zone = new Zone(
             $zoneEn,
             $zoneEs,
             $zoneCa,
-            $zoneIt
+            $zoneIt,
+            $zoneEu
         );
 
         $this
@@ -225,10 +237,12 @@ abstract class CountryAbstract
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
             ->setNameIt(self::getName()->getIt())
+            ->setNameEu(self::getName()->getEu())
             ->setZoneEn(self::getZone()->getEn())
             ->setZoneEs(self::getZone()->getEs())
             ->setZoneCa(self::getZone()->getCa())
-            ->setZoneIt(self::getZone()->getIt());
+            ->setZoneIt(self::getZone()->getIt())
+            ->setZoneEu(self::getZone()->getEu());
     }
 
     /**
@@ -243,10 +257,12 @@ abstract class CountryAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
+            'nameEu' => self::getName()->getEu(),
             'zoneEn' => self::getZone()->getEn(),
             'zoneEs' => self::getZone()->getEs(),
             'zoneCa' => self::getZone()->getCa(),
-            'zoneIt' => self::getZone()->getIt()
+            'zoneIt' => self::getZone()->getIt(),
+            'zoneEu' => self::getZone()->getEu()
         ];
     }
 
