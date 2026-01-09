@@ -115,6 +115,15 @@ class InvoiceDto extends InvoiceDtoAbstract
         return $this->pdfPath;
     }
 
+    public function setPdfBaseName(?string $pdfBaseName): static
+    {
+        if ($pdfBaseName !== null) {
+            $pdfBaseName = str_replace(['/', '\\'], '-', $pdfBaseName);
+        }
+
+        return parent::setPdfBaseName($pdfBaseName);
+    }
+
     public function getCurrency(): ?string
     {
         return $this->currency;
