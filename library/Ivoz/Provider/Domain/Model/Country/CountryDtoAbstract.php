@@ -51,6 +51,11 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
+    private $nameEu = null;
+
+    /**
+     * @var string|null
+     */
     private $zoneEn = '';
 
     /**
@@ -67,6 +72,11 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
      * @var string|null
      */
     private $zoneIt = '';
+
+    /**
+     * @var string|null
+     */
+    private $zoneEu = '';
 
     public function __construct(?int $id = null)
     {
@@ -91,12 +101,14 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
                 'es',
                 'ca',
                 'it',
+                'eu',
             ],
             'zone' => [
                 'en',
                 'es',
                 'ca',
                 'it',
+                'eu',
             ]
         ];
     }
@@ -115,12 +127,14 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
                 'it' => $this->getNameIt(),
+                'eu' => $this->getNameEu(),
             ],
             'zone' => [
                 'en' => $this->getZoneEn(),
                 'es' => $this->getZoneEs(),
                 'ca' => $this->getZoneCa(),
                 'it' => $this->getZoneIt(),
+                'eu' => $this->getZoneEu(),
             ]
         ];
 
@@ -225,6 +239,18 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->nameIt;
     }
 
+    public function setNameEu(string $nameEu): static
+    {
+        $this->nameEu = $nameEu;
+
+        return $this;
+    }
+
+    public function getNameEu(): ?string
+    {
+        return $this->nameEu;
+    }
+
     public function setZoneEn(string $zoneEn): static
     {
         $this->zoneEn = $zoneEn;
@@ -271,5 +297,17 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     public function getZoneIt(): ?string
     {
         return $this->zoneIt;
+    }
+
+    public function setZoneEu(string $zoneEu): static
+    {
+        $this->zoneEu = $zoneEu;
+
+        return $this;
+    }
+
+    public function getZoneEu(): ?string
+    {
+        return $this->zoneEu;
     }
 }

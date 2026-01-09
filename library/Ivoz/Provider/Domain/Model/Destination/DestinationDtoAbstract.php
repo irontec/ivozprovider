@@ -47,6 +47,11 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     private $nameIt = null;
 
     /**
+     * @var string|null
+     */
+    private $nameEu = null;
+
+    /**
      * @var BrandDto | null
      */
     private $brand = null;
@@ -83,6 +88,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
                 'es',
                 'ca',
                 'it',
+                'eu',
             ],
             'brandId' => 'brand',
             'tpDestinationId' => 'tpDestination'
@@ -102,6 +108,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
                 'it' => $this->getNameIt(),
+                'eu' => $this->getNameEu(),
             ],
             'brand' => $this->getBrand(),
             'tpDestination' => $this->getTpDestination(),
@@ -195,6 +202,18 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     public function getNameIt(): ?string
     {
         return $this->nameIt;
+    }
+
+    public function setNameEu(?string $nameEu): static
+    {
+        $this->nameEu = $nameEu;
+
+        return $this;
+    }
+
+    public function getNameEu(): ?string
+    {
+        return $this->nameEu;
     }
 
     public function setBrand(?BrandDto $brand): static

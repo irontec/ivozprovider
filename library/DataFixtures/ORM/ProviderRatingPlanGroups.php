@@ -28,7 +28,7 @@ class ProviderRatingPlanGroups extends Fixture implements DependentFixtureInterf
         /** @var RatingPlanGroup $item1 */
         $item1 = $this->createEntityInstance(RatingPlanGroup::class);
         (function () use ($fixture) {
-            $this->name = new Name('Something', 'Algo', 'Algo mes', 'Più');
+            $this->name = new Name('Something', 'Algo', 'Algo mes', 'Più', 'Più');
             $this->description = new Description('en', 'es', 'ca', 'it');
             $this->setCurrency(
                 $fixture->getReference('_reference_ProviderCurrency1')
@@ -45,7 +45,7 @@ class ProviderRatingPlanGroups extends Fixture implements DependentFixtureInterf
         /** @var RatingPlanGroup $item2 */
         $item2 = $this->createEntityInstance(RatingPlanGroup::class);
         (function () use ($fixture) {
-            $this->name = new Name('Something more', 'Algo más', 'Algo mes', 'Più');
+            $this->name = new Name('Something more', 'Algo más', 'Algo mes', 'Più', 'Più');
             $this->description = new Description('en', 'es', 'ca', 'it');
             $this->setCurrency(
                 $fixture->getReference('_reference_ProviderCurrency1')
