@@ -27,7 +27,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AD");
             $this->setCountryCode("+376");
-            $this->name = new Name('Andorra', 'Andorra', 'Andorra', 'Andorra');
+            $this->name = new Name('Andorra', 'Andorra', 'Andorra', 'Andorra', 'Andorra');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item1);
 
@@ -40,7 +40,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AE");
             $this->setCountryCode("+971");
-            $this->name = new Name('United Arab Emirates', 'Emiratos Árabes Unidos', 'Emiratos Árabes Unidos', 'United Arab Emirates');
+            $this->name = new Name('United Arab Emirates', 'Emiratos Árabes Unidos', 'Emiratos Árabes Unidos', 'United Arab Emirates', 'United Arab Emirates');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item2);
 
@@ -53,7 +53,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AF");
             $this->setCountryCode("+93");
-            $this->name = new Name('Afghanistan', 'Afganistán', 'Afganistán', 'Afghanistan');
+            $this->name = new Name('Afghanistan', 'Afganistán', 'Afganistán', 'Afghanistan', 'Afghanistan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item3);
 
@@ -66,7 +66,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AG");
             $this->setCountryCode("+1268");
-            $this->name = new Name('Antigua and Barbuda', 'Antigua y Barbuda', 'Antigua y Barbuda', 'Antigua and Barbuda');
+            $this->name = new Name('Antigua and Barbuda', 'Antigua y Barbuda', 'Antigua y Barbuda', 'Antigua and Barbuda', 'Antigua and Barbuda');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item4);
 
@@ -79,7 +79,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AI");
             $this->setCountryCode("+1264");
-            $this->name = new Name('Anguilla', 'Anguila', 'Anguila', 'Anguilla');
+            $this->name = new Name('Anguilla', 'Anguila', 'Anguila', 'Anguilla', 'Anguilla');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item5);
 
@@ -92,7 +92,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AL");
             $this->setCountryCode("+355");
-            $this->name = new Name('Albania', 'Albania', 'Albania', 'Albania');
+            $this->name = new Name('Albania', 'Albania', 'Albania', 'Albania', 'Albania');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item6);
 
@@ -105,7 +105,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AM");
             $this->setCountryCode("+374");
-            $this->name = new Name('Armenia', 'Armenia', 'Armenia', 'Armenia');
+            $this->name = new Name('Armenia', 'Armenia', 'Armenia', 'Armenia', 'Armenia');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item7);
 
@@ -118,7 +118,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AO");
             $this->setCountryCode("+244");
-            $this->name = new Name('Angola', 'Angola', 'Angola', 'Angola');
+            $this->name = new Name('Angola', 'Angola', 'Angola', 'Angola', 'Angola');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item8);
 
@@ -131,7 +131,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AQ");
             $this->setCountryCode("+672");
-            $this->name = new Name('Antarctica', 'Antártida', 'Antártida', 'Antarctica');
+            $this->name = new Name('Antarctica', 'Antártida', 'Antártida', 'Antarctica', 'Antarctica');
             $this->zone = new Zone('Antarctica', 'Antarctica', 'Antarctica', 'Antarctica');
         })->call($item9);
 
@@ -144,7 +144,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AR");
             $this->setCountryCode("+54");
-            $this->name = new Name('Argentina', 'Argentina', 'Argentina', 'Argentina');
+            $this->name = new Name('Argentina', 'Argentina', 'Argentina', 'Argentina', 'Argentina');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item10);
 
@@ -157,7 +157,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AS");
             $this->setCountryCode("+1684");
-            $this->name = new Name('American Samoa', 'Samoa Americana', 'Samoa Americana', 'American Samoa');
+            $this->name = new Name('American Samoa', 'Samoa Americana', 'Samoa Americana', 'American Samoa', 'American Samoa');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item11);
 
@@ -170,7 +170,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AT");
             $this->setCountryCode("+43");
-            $this->name = new Name('Austria', 'Austria', 'Austria', 'Austria');
+            $this->name = new Name('Austria', 'Austria', 'Austria', 'Austria', 'Austria');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item12);
 
@@ -183,7 +183,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AU");
             $this->setCountryCode("+61");
-            $this->name = new Name('Australia', 'Australia', 'Australia', 'Australia');
+            $this->name = new Name('Australia', 'Australia', 'Australia', 'Australia', 'Australia');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item13);
 
@@ -196,7 +196,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AW");
             $this->setCountryCode("+297");
-            $this->name = new Name('Aruba', 'Aruba', 'Aruba', 'Aruba');
+            $this->name = new Name('Aruba', 'Aruba', 'Aruba', 'Aruba', 'Aruba');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item14);
 
@@ -209,7 +209,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AX");
             $this->setCountryCode("+358");
-            $this->name = new Name('Åland Islands', 'Islas de Åland', 'Islas de Åland', 'Åland Islands');
+            $this->name = new Name('Åland Islands', 'Islas de Åland', 'Islas de Åland', 'Åland Islands', 'Åland Islands');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item15);
 
@@ -222,7 +222,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("AZ");
             $this->setCountryCode("+994");
-            $this->name = new Name('Azerbaijan', 'Azerbayán', 'Azerbayán', 'Azerbaijan');
+            $this->name = new Name('Azerbaijan', 'Azerbayán', 'Azerbayán', 'Azerbaijan', 'Azerbaijan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item16);
 
@@ -235,7 +235,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BA");
             $this->setCountryCode("+387");
-            $this->name = new Name('Bosnia and Herzegovina', 'Bosnia y Herzegovina', 'Bosnia y Herzegovina', 'Bosnia and Herzegovina');
+            $this->name = new Name('Bosnia and Herzegovina', 'Bosnia y Herzegovina', 'Bosnia y Herzegovina', 'Bosnia and Herzegovina', 'Bosnia and Herzegovina');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item17);
 
@@ -248,7 +248,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BB");
             $this->setCountryCode("+1246");
-            $this->name = new Name('Barbados', 'Barbados', 'Barbados', 'Barbados');
+            $this->name = new Name('Barbados', 'Barbados', 'Barbados', 'Barbados', 'Barbados');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item18);
 
@@ -261,7 +261,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BD");
             $this->setCountryCode("+880");
-            $this->name = new Name('Bangladesh', 'Bangladesh', 'Bangladesh', 'Bangladesh');
+            $this->name = new Name('Bangladesh', 'Bangladesh', 'Bangladesh', 'Bangladesh', 'Bangladesh');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item19);
 
@@ -274,7 +274,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BE");
             $this->setCountryCode("+32");
-            $this->name = new Name('Belgium', 'Bélgica', 'Bélgica', 'Belgium');
+            $this->name = new Name('Belgium', 'Bélgica', 'Bélgica', 'Belgium', 'Belgium');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item20);
 
@@ -287,7 +287,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BF");
             $this->setCountryCode("+226");
-            $this->name = new Name('Burkina Faso', 'Burkina Faso', 'Burkina Faso', 'Burkina Faso');
+            $this->name = new Name('Burkina Faso', 'Burkina Faso', 'Burkina Faso', 'Burkina Faso', 'Burkina Faso');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item21);
 
@@ -300,7 +300,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BG");
             $this->setCountryCode("+359");
-            $this->name = new Name('Bulgaria', 'Bulgaria', 'Bulgaria', 'Bulgaria');
+            $this->name = new Name('Bulgaria', 'Bulgaria', 'Bulgaria', 'Bulgaria', 'Bulgaria');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item22);
 
@@ -313,7 +313,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BH");
             $this->setCountryCode("+973");
-            $this->name = new Name('Bahrain', 'Bahrein', 'Bahrein', 'Bahrain');
+            $this->name = new Name('Bahrain', 'Bahrein', 'Bahrein', 'Bahrain', 'Bahrain');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item23);
 
@@ -326,7 +326,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BI");
             $this->setCountryCode("+257");
-            $this->name = new Name('Burundi', 'Burundi', 'Burundi', 'Burundi');
+            $this->name = new Name('Burundi', 'Burundi', 'Burundi', 'Burundi', 'Burundi');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item24);
 
@@ -339,7 +339,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BJ");
             $this->setCountryCode("+229");
-            $this->name = new Name('Benin', 'Benín', 'Benín', 'Benin');
+            $this->name = new Name('Benin', 'Benín', 'Benín', 'Benin', 'Benin');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item25);
 
@@ -352,7 +352,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BL");
             $this->setCountryCode("+590");
-            $this->name = new Name('Saint Barthélemy', 'San Bartolomé', 'San Bartolomé', 'Saint Barthélemy');
+            $this->name = new Name('Saint Barthélemy', 'San Bartolomé', 'San Bartolomé', 'Saint Barthélemy', 'Saint Barthélemy');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item26);
 
@@ -365,7 +365,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BM");
             $this->setCountryCode("+1441");
-            $this->name = new Name('Bermuda Islands', 'Islas Bermudas', 'Islas Bermudas', 'Bermuda Islands');
+            $this->name = new Name('Bermuda Islands', 'Islas Bermudas', 'Islas Bermudas', 'Bermuda Islands', 'Bermuda Islands');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item27);
 
@@ -378,7 +378,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BN");
             $this->setCountryCode("+673");
-            $this->name = new Name('Brunei', 'Brunéi', 'Brunéi', 'Brunei');
+            $this->name = new Name('Brunei', 'Brunéi', 'Brunéi', 'Brunei', 'Brunei');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item28);
 
@@ -391,7 +391,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BO");
             $this->setCountryCode("+591");
-            $this->name = new Name('Bolivia', 'Bolivia', 'Bolivia', 'Bolivia');
+            $this->name = new Name('Bolivia', 'Bolivia', 'Bolivia', 'Bolivia', 'Bolivia');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item29);
 
@@ -404,7 +404,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BQ");
             $this->setCountryCode("+599");
-            $this->name = new Name('Bonaire', 'Bonaire', 'Bonaire', 'Bonaire');
+            $this->name = new Name('Bonaire', 'Bonaire', 'Bonaire', 'Bonaire', 'Bonaire');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item30);
 
@@ -417,7 +417,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BR");
             $this->setCountryCode("+55");
-            $this->name = new Name('Brazil', 'Brasil', 'Brasil', 'Brazil');
+            $this->name = new Name('Brazil', 'Brasil', 'Brasil', 'Brazil', 'Brazil');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item31);
 
@@ -430,7 +430,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BS");
             $this->setCountryCode("+1242");
-            $this->name = new Name('Bahamas', 'Bahamas', 'Bahamas', 'Bahamas');
+            $this->name = new Name('Bahamas', 'Bahamas', 'Bahamas', 'Bahamas', 'Bahamas');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item32);
 
@@ -443,7 +443,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BT");
             $this->setCountryCode("+975");
-            $this->name = new Name('Bhutan', 'Bhután', 'Bhután', 'Bhutan');
+            $this->name = new Name('Bhutan', 'Bhután', 'Bhután', 'Bhutan', 'Bhutan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item33);
 
@@ -456,7 +456,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BV");
             $this->setCountryCode("+47");
-            $this->name = new Name('Bouvet Island', 'Isla Bouvet', 'Isla Bouvet', 'Bouvet Island');
+            $this->name = new Name('Bouvet Island', 'Isla Bouvet', 'Isla Bouvet', 'Bouvet Island', 'Bouvet Island');
             $this->zone = new Zone('Antarctica', 'Antarctica', 'Antarctica', 'Antarctica');
         })->call($item34);
 
@@ -469,7 +469,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BW");
             $this->setCountryCode("+267");
-            $this->name = new Name('Botswana', 'Botsuana', 'Botsuana', 'Botswana');
+            $this->name = new Name('Botswana', 'Botsuana', 'Botsuana', 'Botswana', 'Botswana');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item35);
 
@@ -482,7 +482,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BY");
             $this->setCountryCode("+375");
-            $this->name = new Name('Belarus', 'Bielorrusia', 'Bielorrusia', 'Belarus');
+            $this->name = new Name('Belarus', 'Bielorrusia', 'Bielorrusia', 'Belarus', 'Belarus');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item36);
 
@@ -495,7 +495,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("BZ");
             $this->setCountryCode("+501");
-            $this->name = new Name('Belize', 'Belice', 'Belice', 'Belize');
+            $this->name = new Name('Belize', 'Belice', 'Belice', 'Belize', 'Belize');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item37);
 
@@ -508,7 +508,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CA");
             $this->setCountryCode("+1");
-            $this->name = new Name('Canada', 'Canadá', 'Canadá', 'Canada');
+            $this->name = new Name('Canada', 'Canadá', 'Canadá', 'Canada', 'Canada');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item38);
 
@@ -521,7 +521,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CC");
             $this->setCountryCode("+61");
-            $this->name = new Name('Cocos (Keeling) Islands', 'Islas Cocos (Keeling)', 'Islas Cocos (Keeling)', 'Cocos (Keeling) Islands');
+            $this->name = new Name('Cocos (Keeling) Islands', 'Islas Cocos (Keeling)', 'Islas Cocos (Keeling)', 'Cocos (Keeling) Islands', 'Cocos (Keeling) Islands');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item39);
 
@@ -534,7 +534,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CD");
             $this->setCountryCode("+243");
-            $this->name = new Name('Congo', 'Congo', 'Congo', 'Congo');
+            $this->name = new Name('Congo', 'Congo', 'Congo', 'Congo', 'Congo');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item40);
 
@@ -547,7 +547,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CF");
             $this->setCountryCode("+236");
-            $this->name = new Name('Central African Republic', 'República Centroafricana', 'República Centroafricana', 'Central African Republic');
+            $this->name = new Name('Central African Republic', 'República Centroafricana', 'República Centroafricana', 'Central African Republic', 'Central African Republic');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item41);
 
@@ -560,7 +560,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CG");
             $this->setCountryCode("+242");
-            $this->name = new Name('Congo', 'Congo', 'Congo', 'Congo');
+            $this->name = new Name('Congo', 'Congo', 'Congo', 'Congo', 'Congo');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item42);
 
@@ -573,7 +573,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CH");
             $this->setCountryCode("+41");
-            $this->name = new Name('Switzerland', 'Suiza', 'Suiza', 'Switzerland');
+            $this->name = new Name('Switzerland', 'Suiza', 'Suiza', 'Switzerland', 'Switzerland');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item43);
 
@@ -586,7 +586,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CI");
             $this->setCountryCode("+225");
-            $this->name = new Name('Ivory Coast', 'Costa de Marfil', 'Costa de Marfil', 'Ivory Coast');
+            $this->name = new Name('Ivory Coast', 'Costa de Marfil', 'Costa de Marfil', 'Ivory Coast', 'Ivory Coast');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item44);
 
@@ -599,7 +599,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CK");
             $this->setCountryCode("+682");
-            $this->name = new Name('Cook Islands', 'Islas Cook', 'Islas Cook', 'Cook Islands');
+            $this->name = new Name('Cook Islands', 'Islas Cook', 'Islas Cook', 'Cook Islands', 'Cook Islands');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item45);
 
@@ -612,7 +612,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CL");
             $this->setCountryCode("+56");
-            $this->name = new Name('Chile', 'Chile', 'Chile', 'Chile');
+            $this->name = new Name('Chile', 'Chile', 'Chile', 'Chile', 'Chile');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item46);
 
@@ -625,7 +625,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CM");
             $this->setCountryCode("+237");
-            $this->name = new Name('Cameroon', 'Camerún', 'Camerún', 'Cameroon');
+            $this->name = new Name('Cameroon', 'Camerún', 'Camerún', 'Cameroon', 'Cameroon');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item47);
 
@@ -638,7 +638,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CN");
             $this->setCountryCode("+86");
-            $this->name = new Name('China', 'China', 'China', 'China');
+            $this->name = new Name('China', 'China', 'China', 'China', 'China');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item48);
 
@@ -651,7 +651,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CO");
             $this->setCountryCode("+57");
-            $this->name = new Name('Colombia', 'Colombia', 'Colombia', 'Colombia');
+            $this->name = new Name('Colombia', 'Colombia', 'Colombia', 'Colombia', 'Colombia');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item49);
 
@@ -664,7 +664,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CR");
             $this->setCountryCode("+506");
-            $this->name = new Name('Costa Rica', 'Costa Rica', 'Costa Rica', 'Costa Rica');
+            $this->name = new Name('Costa Rica', 'Costa Rica', 'Costa Rica', 'Costa Rica', 'Costa Rica');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item50);
 
@@ -677,7 +677,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CU");
             $this->setCountryCode("+53");
-            $this->name = new Name('Cuba', 'Cuba', 'Cuba', 'Cuba');
+            $this->name = new Name('Cuba', 'Cuba', 'Cuba', 'Cuba', 'Cuba');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item51);
 
@@ -690,7 +690,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CV");
             $this->setCountryCode("+238");
-            $this->name = new Name('Cape Verde', 'Cabo Verde', 'Cabo Verde', 'Cape Verde');
+            $this->name = new Name('Cape Verde', 'Cabo Verde', 'Cabo Verde', 'Cape Verde', 'Cape Verde');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item52);
 
@@ -703,7 +703,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CW");
             $this->setCountryCode("+599");
-            $this->name = new Name('Curaçao', 'Curaçao', 'Curaçao', 'Curaçao');
+            $this->name = new Name('Curaçao', 'Curaçao', 'Curaçao', 'Curaçao', 'Curaçao');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item53);
 
@@ -716,7 +716,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CX");
             $this->setCountryCode("+61");
-            $this->name = new Name('Christmas Island', 'Isla de Navidad', 'Isla de Navidad', 'Christmas Island');
+            $this->name = new Name('Christmas Island', 'Isla de Navidad', 'Isla de Navidad', 'Christmas Island', 'Christmas Island');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item54);
 
@@ -729,7 +729,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CY");
             $this->setCountryCode("+357");
-            $this->name = new Name('Cyprus', 'Chipre', 'Chipre', 'Cyprus');
+            $this->name = new Name('Cyprus', 'Chipre', 'Chipre', 'Cyprus', 'Cyprus');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item55);
 
@@ -742,7 +742,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("CZ");
             $this->setCountryCode("+420");
-            $this->name = new Name('Czech Republic', 'República Checa', 'República Checa', 'Czech Republic');
+            $this->name = new Name('Czech Republic', 'República Checa', 'República Checa', 'Czech Republic', 'Czech Republic');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item56);
 
@@ -755,7 +755,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("DE");
             $this->setCountryCode("+49");
-            $this->name = new Name('Germany', 'Alemania', 'Alemania', 'Germany');
+            $this->name = new Name('Germany', 'Alemania', 'Alemania', 'Germany', 'Germany');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item57);
 
@@ -768,7 +768,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("DJ");
             $this->setCountryCode("+253");
-            $this->name = new Name('Djibouti', 'Yibuti', 'Yibuti', 'Djibouti');
+            $this->name = new Name('Djibouti', 'Yibuti', 'Yibuti', 'Djibouti', 'Djibouti');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item58);
 
@@ -781,7 +781,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("DK");
             $this->setCountryCode("+45");
-            $this->name = new Name('Denmark', 'Dinamarca', 'Dinamarca', 'Denmark');
+            $this->name = new Name('Denmark', 'Dinamarca', 'Dinamarca', 'Denmark', 'Denmark');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item59);
 
@@ -794,7 +794,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("DM");
             $this->setCountryCode("+1767");
-            $this->name = new Name('Dominica', 'Dominica', 'Dominica', 'Dominica');
+            $this->name = new Name('Dominica', 'Dominica', 'Dominica', 'Dominica', 'Dominica');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item60);
 
@@ -807,7 +807,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("DO");
             $this->setCountryCode("+1809");
-            $this->name = new Name('Dominican Republic', 'República Dominicana', 'República Dominicana', 'Dominican Republic');
+            $this->name = new Name('Dominican Republic', 'República Dominicana', 'República Dominicana', 'Dominican Republic', 'Dominican Republic');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item61);
 
@@ -820,7 +820,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("DZ");
             $this->setCountryCode("+213");
-            $this->name = new Name('Algeria', 'Algeria', 'Algeria', 'Algeria');
+            $this->name = new Name('Algeria', 'Algeria', 'Algeria', 'Algeria', 'Algeria');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item64);
 
@@ -833,7 +833,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("EC");
             $this->setCountryCode("+593");
-            $this->name = new Name('Ecuador', 'Ecuador', 'Ecuador', 'Ecuador');
+            $this->name = new Name('Ecuador', 'Ecuador', 'Ecuador', 'Ecuador', 'Ecuador');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item65);
 
@@ -846,7 +846,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("EE");
             $this->setCountryCode("+372");
-            $this->name = new Name('Estonia', 'Estonia', 'Estonia', 'Estonia');
+            $this->name = new Name('Estonia', 'Estonia', 'Estonia', 'Estonia', 'Estonia');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item66);
 
@@ -859,7 +859,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("EG");
             $this->setCountryCode("+20");
-            $this->name = new Name('Egypt', 'Egipto', 'Egipto', 'Egypt');
+            $this->name = new Name('Egypt', 'Egipto', 'Egipto', 'Egypt', 'Egypt');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item67);
 
@@ -872,7 +872,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("EH");
             $this->setCountryCode("+212");
-            $this->name = new Name('Western Sahara', 'Sahara Occidental', 'Sahara Occidental', 'Western Sahara');
+            $this->name = new Name('Western Sahara', 'Sahara Occidental', 'Sahara Occidental', 'Western Sahara', 'Western Sahara');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item68);
 
@@ -885,7 +885,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ER");
             $this->setCountryCode("+291");
-            $this->name = new Name('Eritrea', 'Eritrea', 'Eritrea', 'Eritrea');
+            $this->name = new Name('Eritrea', 'Eritrea', 'Eritrea', 'Eritrea', 'Eritrea');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item69);
 
@@ -898,7 +898,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ES");
             $this->setCountryCode("+34");
-            $this->name = new Name('Spain', 'España', 'España', 'Spagna');
+            $this->name = new Name('Spain', 'España', 'España', 'Spagna', 'Spagna');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item70);
 
@@ -911,7 +911,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ET");
             $this->setCountryCode("+251");
-            $this->name = new Name('Ethiopia', 'Etiopía', 'Etiopía', 'Ethiopia');
+            $this->name = new Name('Ethiopia', 'Etiopía', 'Etiopía', 'Ethiopia', 'Ethiopia');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item71);
 
@@ -924,7 +924,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("FI");
             $this->setCountryCode("+358");
-            $this->name = new Name('Finland', 'Finlandia', 'Finlandia', 'Finland');
+            $this->name = new Name('Finland', 'Finlandia', 'Finlandia', 'Finland', 'Finland');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item72);
 
@@ -937,7 +937,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("FJ");
             $this->setCountryCode("+679");
-            $this->name = new Name('Fiji', 'Fiyi', 'Fiyi', 'Fiji');
+            $this->name = new Name('Fiji', 'Fiyi', 'Fiyi', 'Fiji', 'Fiji');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item73);
 
@@ -950,7 +950,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("FK");
             $this->setCountryCode("+500");
-            $this->name = new Name('Falkland Islands (Malvinas)', 'Islas Malvinas', 'Islas Malvinas', 'Falkland Islands (Malvinas)');
+            $this->name = new Name('Falkland Islands (Malvinas)', 'Islas Malvinas', 'Islas Malvinas', 'Falkland Islands (Malvinas)', 'Falkland Islands (Malvinas)');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item74);
 
@@ -963,7 +963,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("FM");
             $this->setCountryCode("+691");
-            $this->name = new Name('Estados Federados de', 'Micronesia', 'Micronesia', 'Estados Federados de');
+            $this->name = new Name('Estados Federados de', 'Micronesia', 'Micronesia', 'Estados Federados de', 'Estados Federados de');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item75);
 
@@ -976,7 +976,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("FO");
             $this->setCountryCode("+298");
-            $this->name = new Name('Faroe Islands', 'Islas Feroe', 'Islas Feroe', 'Faroe Islands');
+            $this->name = new Name('Faroe Islands', 'Islas Feroe', 'Islas Feroe', 'Faroe Islands', 'Faroe Islands');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item76);
 
@@ -989,7 +989,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("FR");
             $this->setCountryCode("+33");
-            $this->name = new Name('France', 'Francia', 'Francia', 'France');
+            $this->name = new Name('France', 'Francia', 'Francia', 'France', 'France');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item77);
 
@@ -1002,7 +1002,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GA");
             $this->setCountryCode("+241");
-            $this->name = new Name('Gabon', 'Gabón', 'Gabón', 'Gabon');
+            $this->name = new Name('Gabon', 'Gabón', 'Gabón', 'Gabon', 'Gabon');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item78);
 
@@ -1015,7 +1015,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GB");
             $this->setCountryCode("+44");
-            $this->name = new Name('United Kingdom', 'Reino Unido', 'Reino Unido', 'United Kingdom');
+            $this->name = new Name('United Kingdom', 'Reino Unido', 'Reino Unido', 'United Kingdom', 'United Kingdom');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item79);
 
@@ -1028,7 +1028,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GD");
             $this->setCountryCode("+1473");
-            $this->name = new Name('Grenada', 'Granada', 'Granada', 'Grenada');
+            $this->name = new Name('Grenada', 'Granada', 'Granada', 'Grenada', 'Grenada');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item80);
 
@@ -1041,7 +1041,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GE");
             $this->setCountryCode("+995");
-            $this->name = new Name('Georgia', 'Georgia', 'Georgia', 'Georgia');
+            $this->name = new Name('Georgia', 'Georgia', 'Georgia', 'Georgia', 'Georgia');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item81);
 
@@ -1054,7 +1054,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GF");
             $this->setCountryCode("+594");
-            $this->name = new Name('French Guiana', 'Guayana Francesa', 'Guayana Francesa', 'French Guiana');
+            $this->name = new Name('French Guiana', 'Guayana Francesa', 'Guayana Francesa', 'French Guiana', 'French Guiana');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item82);
 
@@ -1067,7 +1067,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GG");
             $this->setCountryCode("+44");
-            $this->name = new Name('Guernsey', 'Guernsey', 'Guernsey', 'Guernsey');
+            $this->name = new Name('Guernsey', 'Guernsey', 'Guernsey', 'Guernsey', 'Guernsey');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item83);
 
@@ -1080,7 +1080,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GH");
             $this->setCountryCode("+233");
-            $this->name = new Name('Ghana', 'Ghana', 'Ghana', 'Ghana');
+            $this->name = new Name('Ghana', 'Ghana', 'Ghana', 'Ghana', 'Ghana');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item84);
 
@@ -1093,7 +1093,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GI");
             $this->setCountryCode("+350");
-            $this->name = new Name('Gibraltar', 'Gibraltar', 'Gibraltar', 'Gibraltar');
+            $this->name = new Name('Gibraltar', 'Gibraltar', 'Gibraltar', 'Gibraltar', 'Gibraltar');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item85);
 
@@ -1106,7 +1106,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GL");
             $this->setCountryCode("+299");
-            $this->name = new Name('Greenland', 'Groenlandia', 'Groenlandia', 'Greenland');
+            $this->name = new Name('Greenland', 'Groenlandia', 'Groenlandia', 'Greenland', 'Greenland');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item86);
 
@@ -1119,7 +1119,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GM");
             $this->setCountryCode("+220");
-            $this->name = new Name('Gambia', 'Gambia', 'Gambia', 'Gambia');
+            $this->name = new Name('Gambia', 'Gambia', 'Gambia', 'Gambia', 'Gambia');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item87);
 
@@ -1132,7 +1132,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GN");
             $this->setCountryCode("+224");
-            $this->name = new Name('Guinea', 'Guinea', 'Guinea', 'Guinea');
+            $this->name = new Name('Guinea', 'Guinea', 'Guinea', 'Guinea', 'Guinea');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item88);
 
@@ -1145,7 +1145,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GP");
             $this->setCountryCode("+590");
-            $this->name = new Name('Guadeloupe', 'Guadalupe', 'Guadalupe', 'Guadeloupe');
+            $this->name = new Name('Guadeloupe', 'Guadalupe', 'Guadalupe', 'Guadeloupe', 'Guadeloupe');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item89);
 
@@ -1158,7 +1158,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GQ");
             $this->setCountryCode("+240");
-            $this->name = new Name('Equatorial Guinea', 'Guinea Ecuatorial', 'Guinea Ecuatorial', 'Equatorial Guinea');
+            $this->name = new Name('Equatorial Guinea', 'Guinea Ecuatorial', 'Guinea Ecuatorial', 'Equatorial Guinea', 'Equatorial Guinea');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item90);
 
@@ -1171,7 +1171,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GR");
             $this->setCountryCode("+30");
-            $this->name = new Name('Greece', 'Grecia', 'Grecia', 'Greece');
+            $this->name = new Name('Greece', 'Grecia', 'Grecia', 'Greece', 'Greece');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item91);
 
@@ -1184,7 +1184,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GS");
             $this->setCountryCode("+500");
-            $this->name = new Name('South Georgia and the South Sandwich Islands', 'Islas Georgias del Sur y Sandwich del Sur', 'Islas Georgias del Sur y Sandwich del Sur', 'South Georgia and the South Sandwich Islands');
+            $this->name = new Name('South Georgia and the South Sandwich Islands', 'Islas Georgias del Sur y Sandwich del Sur', 'Islas Georgias del Sur y Sandwich del Sur', 'South Georgia and the South Sandwich Islands', 'South Georgia and the South Sandwich Islands');
             $this->zone = new Zone('Antarctica', 'Antarctica', 'Antarctica', 'Antarctica');
         })->call($item92);
 
@@ -1197,7 +1197,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GT");
             $this->setCountryCode("+502");
-            $this->name = new Name('Guatemala', 'Guatemala', 'Guatemala', 'Guatemala');
+            $this->name = new Name('Guatemala', 'Guatemala', 'Guatemala', 'Guatemala', 'Guatemala');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item93);
 
@@ -1210,7 +1210,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GU");
             $this->setCountryCode("+1671");
-            $this->name = new Name('Guam', 'Guam', 'Guam', 'Guam');
+            $this->name = new Name('Guam', 'Guam', 'Guam', 'Guam', 'Guam');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item94);
 
@@ -1223,7 +1223,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GW");
             $this->setCountryCode("+245");
-            $this->name = new Name('Guinea-Bissau', 'Guinea-Bissau', 'Guinea-Bissau', 'Guinea-Bissau');
+            $this->name = new Name('Guinea-Bissau', 'Guinea-Bissau', 'Guinea-Bissau', 'Guinea-Bissau', 'Guinea-Bissau');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item95);
 
@@ -1236,7 +1236,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("GY");
             $this->setCountryCode("+592");
-            $this->name = new Name('Guyana', 'Guyana', 'Guyana', 'Guyana');
+            $this->name = new Name('Guyana', 'Guyana', 'Guyana', 'Guyana', 'Guyana');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item96);
 
@@ -1249,7 +1249,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("HK");
             $this->setCountryCode("+852");
-            $this->name = new Name('Hong Kong', 'Hong kong', 'Hong kong', 'Hong Kong');
+            $this->name = new Name('Hong Kong', 'Hong kong', 'Hong kong', 'Hong Kong', 'Hong Kong');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item97);
 
@@ -1262,7 +1262,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("HM");
             $this->setCountryCode("+672");
-            $this->name = new Name('Heard Island and McDonald Islands', 'Islas Heard y McDonald', 'Islas Heard y McDonald', 'Heard Island and McDonald Islands');
+            $this->name = new Name('Heard Island and McDonald Islands', 'Islas Heard y McDonald', 'Islas Heard y McDonald', 'Heard Island and McDonald Islands', 'Heard Island and McDonald Islands');
             $this->zone = new Zone('Antarctica', 'Antarctica', 'Antarctica', 'Antarctica');
         })->call($item98);
 
@@ -1275,7 +1275,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("HN");
             $this->setCountryCode("+504");
-            $this->name = new Name('Honduras', 'Honduras', 'Honduras', 'Honduras');
+            $this->name = new Name('Honduras', 'Honduras', 'Honduras', 'Honduras', 'Honduras');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item99);
 
@@ -1288,7 +1288,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("HR");
             $this->setCountryCode("+385");
-            $this->name = new Name('Croatia', 'Croacia', 'Croacia', 'Croatia');
+            $this->name = new Name('Croatia', 'Croacia', 'Croacia', 'Croatia', 'Croatia');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item100);
 
@@ -1301,7 +1301,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("HT");
             $this->setCountryCode("+509");
-            $this->name = new Name('Haiti', 'Haití', 'Haití', 'Haiti');
+            $this->name = new Name('Haiti', 'Haití', 'Haití', 'Haiti', 'Haiti');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item101);
 
@@ -1314,7 +1314,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("HU");
             $this->setCountryCode("+36");
-            $this->name = new Name('Hungary', 'Hungría', 'Hungría', 'Hungary');
+            $this->name = new Name('Hungary', 'Hungría', 'Hungría', 'Hungary', 'Hungary');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item102);
 
@@ -1327,7 +1327,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ID");
             $this->setCountryCode("+62");
-            $this->name = new Name('Indonesia', 'Indonesia', 'Indonesia', 'Indonesia');
+            $this->name = new Name('Indonesia', 'Indonesia', 'Indonesia', 'Indonesia', 'Indonesia');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item103);
 
@@ -1340,7 +1340,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("IE");
             $this->setCountryCode("+353");
-            $this->name = new Name('Ireland', 'Irlanda', 'Irlanda', 'Ireland');
+            $this->name = new Name('Ireland', 'Irlanda', 'Irlanda', 'Ireland', 'Ireland');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item104);
 
@@ -1353,7 +1353,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("IL");
             $this->setCountryCode("+972");
-            $this->name = new Name('Israel', 'Israel', 'Israel', 'Israel');
+            $this->name = new Name('Israel', 'Israel', 'Israel', 'Israel', 'Israel');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item105);
 
@@ -1366,7 +1366,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("IM");
             $this->setCountryCode("+44");
-            $this->name = new Name('Isle of Man', 'Isla de Man', 'Isla de Man', 'Isle of Man');
+            $this->name = new Name('Isle of Man', 'Isla de Man', 'Isla de Man', 'Isle of Man', 'Isle of Man');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item106);
 
@@ -1379,7 +1379,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("IN");
             $this->setCountryCode("+91");
-            $this->name = new Name('India', 'India', 'India', 'India');
+            $this->name = new Name('India', 'India', 'India', 'India', 'India');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item107);
 
@@ -1392,7 +1392,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("IO");
             $this->setCountryCode("+246");
-            $this->name = new Name('British Indian Ocean Territory', 'Territorio Británico del Océano Índico', 'Territorio Británico del Océano Índico', 'British Indian Ocean Territory');
+            $this->name = new Name('British Indian Ocean Territory', 'Territorio Británico del Océano Índico', 'Territorio Británico del Océano Índico', 'British Indian Ocean Territory', 'British Indian Ocean Territory');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item108);
 
@@ -1405,7 +1405,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("IQ");
             $this->setCountryCode("+964");
-            $this->name = new Name('Iraq', 'Irak', 'Irak', 'Iraq');
+            $this->name = new Name('Iraq', 'Irak', 'Irak', 'Iraq', 'Iraq');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item109);
 
@@ -1418,7 +1418,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("IR");
             $this->setCountryCode("+98");
-            $this->name = new Name('Iran', 'Irán', 'Irán', 'Iran');
+            $this->name = new Name('Iran', 'Irán', 'Irán', 'Iran', 'Iran');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item110);
 
@@ -1431,7 +1431,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("IS");
             $this->setCountryCode("+354");
-            $this->name = new Name('Iceland', 'Islandia', 'Islandia', 'Iceland');
+            $this->name = new Name('Iceland', 'Islandia', 'Islandia', 'Iceland', 'Iceland');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item111);
 
@@ -1444,7 +1444,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("IT");
             $this->setCountryCode("+39");
-            $this->name = new Name('Italy', 'Italia', 'Italia', 'Italy');
+            $this->name = new Name('Italy', 'Italia', 'Italia', 'Italy', 'Italy');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item112);
 
@@ -1457,7 +1457,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("JE");
             $this->setCountryCode("+44");
-            $this->name = new Name('Jersey', 'Jersey', 'Jersey', 'Jersey');
+            $this->name = new Name('Jersey', 'Jersey', 'Jersey', 'Jersey', 'Jersey');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item113);
 
@@ -1470,7 +1470,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("JM");
             $this->setCountryCode("+1876");
-            $this->name = new Name('Jamaica', 'Jamaica', 'Jamaica', 'Jamaica');
+            $this->name = new Name('Jamaica', 'Jamaica', 'Jamaica', 'Jamaica', 'Jamaica');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item114);
 
@@ -1483,7 +1483,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("JO");
             $this->setCountryCode("+962");
-            $this->name = new Name('Jordan', 'Jordania', 'Jordania', 'Jordan');
+            $this->name = new Name('Jordan', 'Jordania', 'Jordania', 'Jordan', 'Jordan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item115);
 
@@ -1496,7 +1496,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("JP");
             $this->setCountryCode("+81");
-            $this->name = new Name('Japan', 'Japón', 'Japón', 'Japan');
+            $this->name = new Name('Japan', 'Japón', 'Japón', 'Japan', 'Japan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item116);
 
@@ -1509,7 +1509,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KE");
             $this->setCountryCode("+254");
-            $this->name = new Name('Kenya', 'Kenia', 'Kenia', 'Kenya');
+            $this->name = new Name('Kenya', 'Kenia', 'Kenia', 'Kenya', 'Kenya');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item117);
 
@@ -1522,7 +1522,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KG");
             $this->setCountryCode("+996");
-            $this->name = new Name('Kyrgyzstan', 'Kirgizstán', 'Kirgizstán', 'Kyrgyzstan');
+            $this->name = new Name('Kyrgyzstan', 'Kirgizstán', 'Kirgizstán', 'Kyrgyzstan', 'Kyrgyzstan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item118);
 
@@ -1535,7 +1535,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KH");
             $this->setCountryCode("+855");
-            $this->name = new Name('Cambodia', 'Camboya', 'Camboya', 'Cambodia');
+            $this->name = new Name('Cambodia', 'Camboya', 'Camboya', 'Cambodia', 'Cambodia');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item119);
 
@@ -1548,7 +1548,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KI");
             $this->setCountryCode("+686");
-            $this->name = new Name('Kiribati', 'Kiribati', 'Kiribati', 'Kiribati');
+            $this->name = new Name('Kiribati', 'Kiribati', 'Kiribati', 'Kiribati', 'Kiribati');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item120);
 
@@ -1561,7 +1561,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KM");
             $this->setCountryCode("+269");
-            $this->name = new Name('Comoros', 'Comoras', 'Comoras', 'Comoros');
+            $this->name = new Name('Comoros', 'Comoras', 'Comoras', 'Comoros', 'Comoros');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item121);
 
@@ -1574,7 +1574,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KN");
             $this->setCountryCode("+1869");
-            $this->name = new Name('Saint Kitts and Nevis', 'San Cristóbal y Nieves', 'San Cristóbal y Nieves', 'Saint Kitts and Nevis');
+            $this->name = new Name('Saint Kitts and Nevis', 'San Cristóbal y Nieves', 'San Cristóbal y Nieves', 'Saint Kitts and Nevis', 'Saint Kitts and Nevis');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item122);
 
@@ -1587,7 +1587,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KP");
             $this->setCountryCode("+850");
-            $this->name = new Name('North Korea', 'Corea del Norte', 'Corea del Norte', 'North Korea');
+            $this->name = new Name('North Korea', 'Corea del Norte', 'Corea del Norte', 'North Korea', 'North Korea');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item123);
 
@@ -1600,7 +1600,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KR");
             $this->setCountryCode("+82");
-            $this->name = new Name('South Korea', 'Corea del Sur', 'Corea del Sur', 'South Korea');
+            $this->name = new Name('South Korea', 'Corea del Sur', 'Corea del Sur', 'South Korea', 'South Korea');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item124);
 
@@ -1613,7 +1613,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KW");
             $this->setCountryCode("+965");
-            $this->name = new Name('Kuwait', 'Kuwait', 'Kuwait', 'Kuwait');
+            $this->name = new Name('Kuwait', 'Kuwait', 'Kuwait', 'Kuwait', 'Kuwait');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item125);
 
@@ -1626,7 +1626,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KY");
             $this->setCountryCode("+1345");
-            $this->name = new Name('Cayman Islands', 'Islas Caimán', 'Islas Caimán', 'Cayman Islands');
+            $this->name = new Name('Cayman Islands', 'Islas Caimán', 'Islas Caimán', 'Cayman Islands', 'Cayman Islands');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item126);
 
@@ -1639,7 +1639,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("KZ");
             $this->setCountryCode("+7");
-            $this->name = new Name('Kazakhstan', 'Kazajistán', 'Kazajistán', 'Kazakhstan');
+            $this->name = new Name('Kazakhstan', 'Kazajistán', 'Kazajistán', 'Kazakhstan', 'Kazakhstan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item127);
 
@@ -1652,7 +1652,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LA");
             $this->setCountryCode("+856");
-            $this->name = new Name('Laos', 'Laos', 'Laos', 'Laos');
+            $this->name = new Name('Laos', 'Laos', 'Laos', 'Laos', 'Laos');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item128);
 
@@ -1665,7 +1665,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LB");
             $this->setCountryCode("+961");
-            $this->name = new Name('Lebanon', 'Líbano', 'Líbano', 'Lebanon');
+            $this->name = new Name('Lebanon', 'Líbano', 'Líbano', 'Lebanon', 'Lebanon');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item129);
 
@@ -1678,7 +1678,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LC");
             $this->setCountryCode("+1758");
-            $this->name = new Name('Saint Lucia', 'Santa Lucía', 'Santa Lucía', 'Saint Lucia');
+            $this->name = new Name('Saint Lucia', 'Santa Lucía', 'Santa Lucía', 'Saint Lucia', 'Saint Lucia');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item130);
 
@@ -1691,7 +1691,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LI");
             $this->setCountryCode("+423");
-            $this->name = new Name('Liechtenstein', 'Liechtenstein', 'Liechtenstein', 'Liechtenstein');
+            $this->name = new Name('Liechtenstein', 'Liechtenstein', 'Liechtenstein', 'Liechtenstein', 'Liechtenstein');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item131);
 
@@ -1704,7 +1704,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LK");
             $this->setCountryCode("+94");
-            $this->name = new Name('Sri Lanka', 'Sri lanka', 'Sri lanka', 'Sri Lanka');
+            $this->name = new Name('Sri Lanka', 'Sri lanka', 'Sri lanka', 'Sri Lanka', 'Sri Lanka');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item132);
 
@@ -1717,7 +1717,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LR");
             $this->setCountryCode("+231");
-            $this->name = new Name('Liberia', 'Liberia', 'Liberia', 'Liberia');
+            $this->name = new Name('Liberia', 'Liberia', 'Liberia', 'Liberia', 'Liberia');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item133);
 
@@ -1730,7 +1730,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LS");
             $this->setCountryCode("+266");
-            $this->name = new Name('Lesotho', 'Lesoto', 'Lesoto', 'Lesotho');
+            $this->name = new Name('Lesotho', 'Lesoto', 'Lesoto', 'Lesotho', 'Lesotho');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item134);
 
@@ -1743,7 +1743,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LT");
             $this->setCountryCode("+370");
-            $this->name = new Name('Lithuania', 'Lituania', 'Lituania', 'Lithuania');
+            $this->name = new Name('Lithuania', 'Lituania', 'Lituania', 'Lithuania', 'Lithuania');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item135);
 
@@ -1756,7 +1756,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LU");
             $this->setCountryCode("+352");
-            $this->name = new Name('Luxembourg', 'Luxemburgo', 'Luxemburgo', 'Luxembourg');
+            $this->name = new Name('Luxembourg', 'Luxemburgo', 'Luxemburgo', 'Luxembourg', 'Luxembourg');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item136);
 
@@ -1769,7 +1769,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LV");
             $this->setCountryCode("+371");
-            $this->name = new Name('Latvia', 'Letonia', 'Letonia', 'Latvia');
+            $this->name = new Name('Latvia', 'Letonia', 'Letonia', 'Latvia', 'Latvia');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item137);
 
@@ -1782,7 +1782,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("LY");
             $this->setCountryCode("+218");
-            $this->name = new Name('Libya', 'Libia', 'Libia', 'Libya');
+            $this->name = new Name('Libya', 'Libia', 'Libia', 'Libya', 'Libya');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item138);
 
@@ -1795,7 +1795,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MA");
             $this->setCountryCode("+212");
-            $this->name = new Name('Morocco', 'Marruecos', 'Marruecos', 'Morocco');
+            $this->name = new Name('Morocco', 'Marruecos', 'Marruecos', 'Morocco', 'Morocco');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item139);
 
@@ -1808,7 +1808,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MC");
             $this->setCountryCode("+377");
-            $this->name = new Name('Monaco', 'Mónaco', 'Mónaco', 'Monaco');
+            $this->name = new Name('Monaco', 'Mónaco', 'Mónaco', 'Monaco', 'Monaco');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item140);
 
@@ -1821,7 +1821,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MD");
             $this->setCountryCode("+373");
-            $this->name = new Name('Moldova', 'Moldavia', 'Moldavia', 'Moldova');
+            $this->name = new Name('Moldova', 'Moldavia', 'Moldavia', 'Moldova', 'Moldova');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item141);
 
@@ -1834,7 +1834,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ME");
             $this->setCountryCode("+382");
-            $this->name = new Name('Montenegro', 'Montenegro', 'Montenegro', 'Montenegro');
+            $this->name = new Name('Montenegro', 'Montenegro', 'Montenegro', 'Montenegro', 'Montenegro');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item142);
 
@@ -1847,7 +1847,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MF");
             $this->setCountryCode("+1599");
-            $this->name = new Name('Saint Martin (French part)', 'San Martín (Francia)', 'San Martín (Francia)', 'Saint Martin (French part)');
+            $this->name = new Name('Saint Martin (French part)', 'San Martín (Francia)', 'San Martín (Francia)', 'Saint Martin (French part)', 'Saint Martin (French part)');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item143);
 
@@ -1860,7 +1860,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MG");
             $this->setCountryCode("+261");
-            $this->name = new Name('Madagascar', 'Madagascar', 'Madagascar', 'Madagascar');
+            $this->name = new Name('Madagascar', 'Madagascar', 'Madagascar', 'Madagascar', 'Madagascar');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item144);
 
@@ -1873,7 +1873,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MH");
             $this->setCountryCode("+692");
-            $this->name = new Name('Marshall Islands', 'Islas Marshall', 'Islas Marshall', 'Marshall Islands');
+            $this->name = new Name('Marshall Islands', 'Islas Marshall', 'Islas Marshall', 'Marshall Islands', 'Marshall Islands');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item145);
 
@@ -1886,7 +1886,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MK");
             $this->setCountryCode("+389");
-            $this->name = new Name('Macedonia', 'Macedônia', 'Macedônia', 'Macedonia');
+            $this->name = new Name('Macedonia', 'Macedônia', 'Macedônia', 'Macedonia', 'Macedonia');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item146);
 
@@ -1899,7 +1899,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ML");
             $this->setCountryCode("+223");
-            $this->name = new Name('Mali', 'Mali', 'Mali', 'Mali');
+            $this->name = new Name('Mali', 'Mali', 'Mali', 'Mali', 'Mali');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item147);
 
@@ -1912,7 +1912,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MM");
             $this->setCountryCode("+95");
-            $this->name = new Name('Myanmar', 'Birmania', 'Birmania', 'Myanmar');
+            $this->name = new Name('Myanmar', 'Birmania', 'Birmania', 'Myanmar', 'Myanmar');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item148);
 
@@ -1925,7 +1925,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MN");
             $this->setCountryCode("+976");
-            $this->name = new Name('Mongolia', 'Mongolia', 'Mongolia', 'Mongolia');
+            $this->name = new Name('Mongolia', 'Mongolia', 'Mongolia', 'Mongolia', 'Mongolia');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item149);
 
@@ -1938,7 +1938,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MO");
             $this->setCountryCode("+853");
-            $this->name = new Name('Macao', 'Macao', 'Macao', 'Macao');
+            $this->name = new Name('Macao', 'Macao', 'Macao', 'Macao', 'Macao');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item150);
 
@@ -1951,7 +1951,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MP");
             $this->setCountryCode("+1670");
-            $this->name = new Name('Northern Mariana Islands', 'Islas Marianas del Norte', 'Islas Marianas del Norte', 'Northern Mariana Islands');
+            $this->name = new Name('Northern Mariana Islands', 'Islas Marianas del Norte', 'Islas Marianas del Norte', 'Northern Mariana Islands', 'Northern Mariana Islands');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item151);
 
@@ -1964,7 +1964,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MQ");
             $this->setCountryCode("+596");
-            $this->name = new Name('Martinique', 'Martinica', 'Martinica', 'Martinique');
+            $this->name = new Name('Martinique', 'Martinica', 'Martinica', 'Martinique', 'Martinique');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item152);
 
@@ -1977,7 +1977,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MR");
             $this->setCountryCode("+222");
-            $this->name = new Name('Mauritania', 'Mauritania', 'Mauritania', 'Mauritania');
+            $this->name = new Name('Mauritania', 'Mauritania', 'Mauritania', 'Mauritania', 'Mauritania');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item153);
 
@@ -1990,7 +1990,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MS");
             $this->setCountryCode("+1664");
-            $this->name = new Name('Montserrat', 'Montserrat', 'Montserrat', 'Montserrat');
+            $this->name = new Name('Montserrat', 'Montserrat', 'Montserrat', 'Montserrat', 'Montserrat');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item154);
 
@@ -2003,7 +2003,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MT");
             $this->setCountryCode("+356");
-            $this->name = new Name('Malta', 'Malta', 'Malta', 'Malta');
+            $this->name = new Name('Malta', 'Malta', 'Malta', 'Malta', 'Malta');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item155);
 
@@ -2016,7 +2016,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MU");
             $this->setCountryCode("+230");
-            $this->name = new Name('Mauritius', 'Mauricio', 'Mauricio', 'Mauritius');
+            $this->name = new Name('Mauritius', 'Mauricio', 'Mauricio', 'Mauritius', 'Mauritius');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item156);
 
@@ -2029,7 +2029,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MV");
             $this->setCountryCode("+960");
-            $this->name = new Name('Maldives', 'Islas Maldivas', 'Islas Maldivas', 'Maldives');
+            $this->name = new Name('Maldives', 'Islas Maldivas', 'Islas Maldivas', 'Maldives', 'Maldives');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item157);
 
@@ -2042,7 +2042,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MW");
             $this->setCountryCode("+265");
-            $this->name = new Name('Malawi', 'Malawi', 'Malawi', 'Malawi');
+            $this->name = new Name('Malawi', 'Malawi', 'Malawi', 'Malawi', 'Malawi');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item158);
 
@@ -2055,7 +2055,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MX");
             $this->setCountryCode("+52");
-            $this->name = new Name('Mexico', 'México', 'México', 'Mexico');
+            $this->name = new Name('Mexico', 'México', 'México', 'Mexico', 'Mexico');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item159);
 
@@ -2068,7 +2068,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MY");
             $this->setCountryCode("+60");
-            $this->name = new Name('Malaysia', 'Malasia', 'Malasia', 'Malaysia');
+            $this->name = new Name('Malaysia', 'Malasia', 'Malasia', 'Malaysia', 'Malaysia');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item160);
 
@@ -2081,7 +2081,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("MZ");
             $this->setCountryCode("+258");
-            $this->name = new Name('Mozambique', 'Mozambique', 'Mozambique', 'Mozambique');
+            $this->name = new Name('Mozambique', 'Mozambique', 'Mozambique', 'Mozambique', 'Mozambique');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item161);
 
@@ -2094,7 +2094,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NA");
             $this->setCountryCode("+264");
-            $this->name = new Name('Namibia', 'Namibia', 'Namibia', 'Namibia');
+            $this->name = new Name('Namibia', 'Namibia', 'Namibia', 'Namibia', 'Namibia');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item162);
 
@@ -2107,7 +2107,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NC");
             $this->setCountryCode("+687");
-            $this->name = new Name('New Caledonia', 'Nueva Caledonia', 'Nueva Caledonia', 'New Caledonia');
+            $this->name = new Name('New Caledonia', 'Nueva Caledonia', 'Nueva Caledonia', 'New Caledonia', 'New Caledonia');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item163);
 
@@ -2120,7 +2120,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NE");
             $this->setCountryCode("+227");
-            $this->name = new Name('Niger', 'Niger', 'Niger', 'Niger');
+            $this->name = new Name('Niger', 'Niger', 'Niger', 'Niger', 'Niger');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item164);
 
@@ -2133,7 +2133,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NF");
             $this->setCountryCode("+672");
-            $this->name = new Name('Norfolk Island', 'Isla Norfolk', 'Isla Norfolk', 'Norfolk Island');
+            $this->name = new Name('Norfolk Island', 'Isla Norfolk', 'Isla Norfolk', 'Norfolk Island', 'Norfolk Island');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item165);
 
@@ -2146,7 +2146,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NG");
             $this->setCountryCode("+234");
-            $this->name = new Name('Nigeria', 'Nigeria', 'Nigeria', 'Nigeria');
+            $this->name = new Name('Nigeria', 'Nigeria', 'Nigeria', 'Nigeria', 'Nigeria');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item166);
 
@@ -2159,7 +2159,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NI");
             $this->setCountryCode("+505");
-            $this->name = new Name('Nicaragua', 'Nicaragua', 'Nicaragua', 'Nicaragua');
+            $this->name = new Name('Nicaragua', 'Nicaragua', 'Nicaragua', 'Nicaragua', 'Nicaragua');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item167);
 
@@ -2172,7 +2172,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NL");
             $this->setCountryCode("+31");
-            $this->name = new Name('Netherlands', 'Países Bajos', 'Países Bajos', 'Netherlands');
+            $this->name = new Name('Netherlands', 'Países Bajos', 'Países Bajos', 'Netherlands', 'Netherlands');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item168);
 
@@ -2185,7 +2185,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NO");
             $this->setCountryCode("+47");
-            $this->name = new Name('Norway', 'Noruega', 'Noruega', 'Norway');
+            $this->name = new Name('Norway', 'Noruega', 'Noruega', 'Norway', 'Norway');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item169);
 
@@ -2198,7 +2198,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NP");
             $this->setCountryCode("+977");
-            $this->name = new Name('Nepal', 'Nepal', 'Nepal', 'Nepal');
+            $this->name = new Name('Nepal', 'Nepal', 'Nepal', 'Nepal', 'Nepal');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item170);
 
@@ -2211,7 +2211,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NR");
             $this->setCountryCode("+674");
-            $this->name = new Name('Nauru', 'Nauru', 'Nauru', 'Nauru');
+            $this->name = new Name('Nauru', 'Nauru', 'Nauru', 'Nauru', 'Nauru');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item171);
 
@@ -2224,7 +2224,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NU");
             $this->setCountryCode("+683");
-            $this->name = new Name('Niue', 'Niue', 'Niue', 'Niue');
+            $this->name = new Name('Niue', 'Niue', 'Niue', 'Niue', 'Niue');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item172);
 
@@ -2237,7 +2237,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("NZ");
             $this->setCountryCode("+64");
-            $this->name = new Name('New Zealand', 'Nueva Zelanda', 'Nueva Zelanda', 'New Zealand');
+            $this->name = new Name('New Zealand', 'Nueva Zelanda', 'Nueva Zelanda', 'New Zealand', 'New Zealand');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item173);
 
@@ -2250,7 +2250,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("OM");
             $this->setCountryCode("+968");
-            $this->name = new Name('Oman', 'Omán', 'Omán', 'Oman');
+            $this->name = new Name('Oman', 'Omán', 'Omán', 'Oman', 'Oman');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item174);
 
@@ -2263,7 +2263,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PA");
             $this->setCountryCode("+507");
-            $this->name = new Name('Panama', 'Panamá', 'Panamá', 'Panama');
+            $this->name = new Name('Panama', 'Panamá', 'Panamá', 'Panama', 'Panama');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item175);
 
@@ -2276,7 +2276,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PE");
             $this->setCountryCode("+51");
-            $this->name = new Name('Peru', 'Perú', 'Perú', 'Peru');
+            $this->name = new Name('Peru', 'Perú', 'Perú', 'Peru', 'Peru');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item176);
 
@@ -2289,7 +2289,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PF");
             $this->setCountryCode("+689");
-            $this->name = new Name('French Polynesia', 'Polinesia Francesa', 'Polinesia Francesa', 'French Polynesia');
+            $this->name = new Name('French Polynesia', 'Polinesia Francesa', 'Polinesia Francesa', 'French Polynesia', 'French Polynesia');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item177);
 
@@ -2302,7 +2302,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PG");
             $this->setCountryCode("+675");
-            $this->name = new Name('Papua New Guinea', 'Papúa Nueva Guinea', 'Papúa Nueva Guinea', 'Papua New Guinea');
+            $this->name = new Name('Papua New Guinea', 'Papúa Nueva Guinea', 'Papúa Nueva Guinea', 'Papua New Guinea', 'Papua New Guinea');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item178);
 
@@ -2315,7 +2315,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PH");
             $this->setCountryCode("+63");
-            $this->name = new Name('Philippines', 'Filipinas', 'Filipinas', 'Philippines');
+            $this->name = new Name('Philippines', 'Filipinas', 'Filipinas', 'Philippines', 'Philippines');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item179);
 
@@ -2328,7 +2328,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PK");
             $this->setCountryCode("+92");
-            $this->name = new Name('Pakistan', 'Pakistán', 'Pakistán', 'Pakistan');
+            $this->name = new Name('Pakistan', 'Pakistán', 'Pakistán', 'Pakistan', 'Pakistan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item180);
 
@@ -2341,7 +2341,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PL");
             $this->setCountryCode("+48");
-            $this->name = new Name('Poland', 'Polonia', 'Polonia', 'Poland');
+            $this->name = new Name('Poland', 'Polonia', 'Polonia', 'Poland', 'Poland');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item181);
 
@@ -2354,7 +2354,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PM");
             $this->setCountryCode("+508");
-            $this->name = new Name('Saint Pierre and Miquelon', 'San Pedro y Miquelón', 'San Pedro y Miquelón', 'Saint Pierre and Miquelon');
+            $this->name = new Name('Saint Pierre and Miquelon', 'San Pedro y Miquelón', 'San Pedro y Miquelón', 'Saint Pierre and Miquelon', 'Saint Pierre and Miquelon');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item182);
 
@@ -2367,7 +2367,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PN");
             $this->setCountryCode("+870");
-            $this->name = new Name('Pitcairn Islands', 'Islas Pitcairn', 'Islas Pitcairn', 'Pitcairn Islands');
+            $this->name = new Name('Pitcairn Islands', 'Islas Pitcairn', 'Islas Pitcairn', 'Pitcairn Islands', 'Pitcairn Islands');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item183);
 
@@ -2380,7 +2380,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PR");
             $this->setCountryCode("+1");
-            $this->name = new Name('Puerto Rico', 'Puerto Rico', 'Puerto Rico', 'Puerto Rico');
+            $this->name = new Name('Puerto Rico', 'Puerto Rico', 'Puerto Rico', 'Puerto Rico', 'Puerto Rico');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item184);
 
@@ -2393,7 +2393,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PS");
             $this->setCountryCode("+970");
-            $this->name = new Name('Palestine', 'Palestina', 'Palestina', 'Palestine');
+            $this->name = new Name('Palestine', 'Palestina', 'Palestina', 'Palestine', 'Palestine');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item185);
 
@@ -2406,7 +2406,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PT");
             $this->setCountryCode("+351");
-            $this->name = new Name('Portugal', 'Portugal', 'Portugal', 'Portugal');
+            $this->name = new Name('Portugal', 'Portugal', 'Portugal', 'Portugal', 'Portugal');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item186);
 
@@ -2419,7 +2419,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PW");
             $this->setCountryCode("+680");
-            $this->name = new Name('Palau', 'Palau', 'Palau', 'Palau');
+            $this->name = new Name('Palau', 'Palau', 'Palau', 'Palau', 'Palau');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item187);
 
@@ -2432,7 +2432,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("PY");
             $this->setCountryCode("+595");
-            $this->name = new Name('Paraguay', 'Paraguay', 'Paraguay', 'Paraguay');
+            $this->name = new Name('Paraguay', 'Paraguay', 'Paraguay', 'Paraguay', 'Paraguay');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item188);
 
@@ -2445,7 +2445,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("QA");
             $this->setCountryCode("+974");
-            $this->name = new Name('Qatar', 'Qatar', 'Qatar', 'Qatar');
+            $this->name = new Name('Qatar', 'Qatar', 'Qatar', 'Qatar', 'Qatar');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item189);
 
@@ -2458,7 +2458,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("RE");
             $this->setCountryCode("+262");
-            $this->name = new Name('Réunion', 'Reunión', 'Reunión', 'Réunion');
+            $this->name = new Name('Réunion', 'Reunión', 'Reunión', 'Réunion', 'Réunion');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item190);
 
@@ -2471,7 +2471,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("RO");
             $this->setCountryCode("+40");
-            $this->name = new Name('Romania', 'Rumanía', 'Rumanía', 'Romania');
+            $this->name = new Name('Romania', 'Rumanía', 'Rumanía', 'Romania', 'Romania');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item191);
 
@@ -2484,7 +2484,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("RS");
             $this->setCountryCode("+381");
-            $this->name = new Name('Serbia', 'Serbia', 'Serbia', 'Serbia');
+            $this->name = new Name('Serbia', 'Serbia', 'Serbia', 'Serbia', 'Serbia');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item192);
 
@@ -2497,7 +2497,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("RU");
             $this->setCountryCode("+7");
-            $this->name = new Name('Russia', 'Rusia', 'Rusia', 'Russia');
+            $this->name = new Name('Russia', 'Rusia', 'Rusia', 'Russia', 'Russia');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item193);
 
@@ -2510,7 +2510,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("RW");
             $this->setCountryCode("+250");
-            $this->name = new Name('Rwanda', 'Ruanda', 'Ruanda', 'Rwanda');
+            $this->name = new Name('Rwanda', 'Ruanda', 'Ruanda', 'Rwanda', 'Rwanda');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item194);
 
@@ -2523,7 +2523,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SA");
             $this->setCountryCode("+966");
-            $this->name = new Name('Saudi Arabia', 'Arabia Saudita', 'Arabia Saudita', 'Saudi Arabia');
+            $this->name = new Name('Saudi Arabia', 'Arabia Saudita', 'Arabia Saudita', 'Saudi Arabia', 'Saudi Arabia');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item195);
 
@@ -2536,7 +2536,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SB");
             $this->setCountryCode("+677");
-            $this->name = new Name('Solomon Islands', 'Islas Salomón', 'Islas Salomón', 'Solomon Islands');
+            $this->name = new Name('Solomon Islands', 'Islas Salomón', 'Islas Salomón', 'Solomon Islands', 'Solomon Islands');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item196);
 
@@ -2549,7 +2549,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SC");
             $this->setCountryCode("+248");
-            $this->name = new Name('Seychelles', 'Seychelles', 'Seychelles', 'Seychelles');
+            $this->name = new Name('Seychelles', 'Seychelles', 'Seychelles', 'Seychelles', 'Seychelles');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item197);
 
@@ -2562,7 +2562,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SD");
             $this->setCountryCode("+249");
-            $this->name = new Name('Sudan', 'Sudán', 'Sudán', 'Sudan');
+            $this->name = new Name('Sudan', 'Sudán', 'Sudán', 'Sudan', 'Sudan');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item198);
 
@@ -2575,7 +2575,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SE");
             $this->setCountryCode("+46");
-            $this->name = new Name('Sweden', 'Suecia', 'Suecia', 'Sweden');
+            $this->name = new Name('Sweden', 'Suecia', 'Suecia', 'Sweden', 'Sweden');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item199);
 
@@ -2588,7 +2588,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SG");
             $this->setCountryCode("+65");
-            $this->name = new Name('Singapore', 'Singapur', 'Singapur', 'Singapore');
+            $this->name = new Name('Singapore', 'Singapur', 'Singapur', 'Singapore', 'Singapore');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item200);
 
@@ -2601,7 +2601,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SH");
             $this->setCountryCode("+290");
-            $this->name = new Name('Ascensión y Tristán de Acuña', 'Santa Elena', 'Santa Elena', 'Ascensión y Tristán de Acuña');
+            $this->name = new Name('Ascensión y Tristán de Acuña', 'Santa Elena', 'Santa Elena', 'Ascensión y Tristán de Acuña', 'Ascensión y Tristán de Acuña');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item201);
 
@@ -2614,7 +2614,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SI");
             $this->setCountryCode("+386");
-            $this->name = new Name('Slovenia', 'Eslovenia', 'Eslovenia', 'Slovenia');
+            $this->name = new Name('Slovenia', 'Eslovenia', 'Eslovenia', 'Slovenia', 'Slovenia');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item202);
 
@@ -2627,7 +2627,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SJ");
             $this->setCountryCode("+47");
-            $this->name = new Name('Svalbard and Jan Mayen', 'Svalbard y Jan Mayen', 'Svalbard y Jan Mayen', 'Svalbard and Jan Mayen');
+            $this->name = new Name('Svalbard and Jan Mayen', 'Svalbard y Jan Mayen', 'Svalbard y Jan Mayen', 'Svalbard and Jan Mayen', 'Svalbard and Jan Mayen');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item203);
 
@@ -2640,7 +2640,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SK");
             $this->setCountryCode("+421");
-            $this->name = new Name('Slovakia', 'Eslovaquia', 'Eslovaquia', 'Slovakia');
+            $this->name = new Name('Slovakia', 'Eslovaquia', 'Eslovaquia', 'Slovakia', 'Slovakia');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item204);
 
@@ -2653,7 +2653,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SL");
             $this->setCountryCode("+232");
-            $this->name = new Name('Sierra Leone', 'Sierra Leona', 'Sierra Leona', 'Sierra Leone');
+            $this->name = new Name('Sierra Leone', 'Sierra Leona', 'Sierra Leona', 'Sierra Leone', 'Sierra Leone');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item205);
 
@@ -2666,7 +2666,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SM");
             $this->setCountryCode("+378");
-            $this->name = new Name('San Marino', 'San Marino', 'San Marino', 'San Marino');
+            $this->name = new Name('San Marino', 'San Marino', 'San Marino', 'San Marino', 'San Marino');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item206);
 
@@ -2679,7 +2679,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SN");
             $this->setCountryCode("+221");
-            $this->name = new Name('Senegal', 'Senegal', 'Senegal', 'Senegal');
+            $this->name = new Name('Senegal', 'Senegal', 'Senegal', 'Senegal', 'Senegal');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item207);
 
@@ -2692,7 +2692,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SO");
             $this->setCountryCode("+252");
-            $this->name = new Name('Somalia', 'Somalia', 'Somalia', 'Somalia');
+            $this->name = new Name('Somalia', 'Somalia', 'Somalia', 'Somalia', 'Somalia');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item208);
 
@@ -2705,7 +2705,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SR");
             $this->setCountryCode("+597");
-            $this->name = new Name('Suriname', 'Surinám', 'Surinám', 'Suriname');
+            $this->name = new Name('Suriname', 'Surinám', 'Surinám', 'Suriname', 'Suriname');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item209);
 
@@ -2718,7 +2718,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SS");
             $this->setCountryCode("+211");
-            $this->name = new Name('South Sudan', 'Sudán del Sur', 'Sudán del Sur', 'South Sudan');
+            $this->name = new Name('South Sudan', 'Sudán del Sur', 'Sudán del Sur', 'South Sudan', 'South Sudan');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item210);
 
@@ -2731,7 +2731,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ST");
             $this->setCountryCode("+239");
-            $this->name = new Name('Sao Tome and Principe', 'Santo Tomé y Príncipe', 'Santo Tomé y Príncipe', 'Sao Tome and Principe');
+            $this->name = new Name('Sao Tome and Principe', 'Santo Tomé y Príncipe', 'Santo Tomé y Príncipe', 'Sao Tome and Principe', 'Sao Tome and Principe');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item211);
 
@@ -2744,7 +2744,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SV");
             $this->setCountryCode("+503");
-            $this->name = new Name('El Salvador', 'El Salvador', 'El Salvador', 'El Salvador');
+            $this->name = new Name('El Salvador', 'El Salvador', 'El Salvador', 'El Salvador', 'El Salvador');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item212);
 
@@ -2757,7 +2757,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SX");
             $this->setCountryCode("+1721");
-            $this->name = new Name('Sint Maarten (Dutch part)', 'Sint Maarten (parte neerlandesa)', 'Sint Maarten (parte neerlandesa)', 'Sint Maarten (Dutch part)');
+            $this->name = new Name('Sint Maarten (Dutch part)', 'Sint Maarten (parte neerlandesa)', 'Sint Maarten (parte neerlandesa)', 'Sint Maarten (Dutch part)', 'Sint Maarten (Dutch part)');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item213);
 
@@ -2770,7 +2770,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SY");
             $this->setCountryCode("+963");
-            $this->name = new Name('Syria', 'Siria', 'Siria', 'Syria');
+            $this->name = new Name('Syria', 'Siria', 'Siria', 'Syria', 'Syria');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item214);
 
@@ -2783,7 +2783,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("SZ");
             $this->setCountryCode("+268");
-            $this->name = new Name('Swaziland', 'Swazilandia', 'Swazilandia', 'Swaziland');
+            $this->name = new Name('Swaziland', 'Swazilandia', 'Swazilandia', 'Swaziland', 'Swaziland');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item215);
 
@@ -2796,7 +2796,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TC");
             $this->setCountryCode("+1649");
-            $this->name = new Name('Turks and Caicos Islands', 'Islas Turcas y Caicos', 'Islas Turcas y Caicos', 'Turks and Caicos Islands');
+            $this->name = new Name('Turks and Caicos Islands', 'Islas Turcas y Caicos', 'Islas Turcas y Caicos', 'Turks and Caicos Islands', 'Turks and Caicos Islands');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item216);
 
@@ -2809,7 +2809,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TD");
             $this->setCountryCode("+235");
-            $this->name = new Name('Chad', 'Chad', 'Chad', 'Chad');
+            $this->name = new Name('Chad', 'Chad', 'Chad', 'Chad', 'Chad');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item217);
 
@@ -2822,7 +2822,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TF");
             $this->setCountryCode("+262");
-            $this->name = new Name('French Southern Territories', 'Territorios Australes y Antárticas Franceses', 'Territorios Australes y Antárticas Franceses', 'French Southern Territories');
+            $this->name = new Name('French Southern Territories', 'Territorios Australes y Antárticas Franceses', 'Territorios Australes y Antárticas Franceses', 'French Southern Territories', 'French Southern Territories');
             $this->zone = new Zone('Antarctica', 'Antarctica', 'Antarctica', 'Antarctica');
         })->call($item218);
 
@@ -2835,7 +2835,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TG");
             $this->setCountryCode("+228");
-            $this->name = new Name('Togo', 'Togo', 'Togo', 'Togo');
+            $this->name = new Name('Togo', 'Togo', 'Togo', 'Togo', 'Togo');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item219);
 
@@ -2848,7 +2848,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TH");
             $this->setCountryCode("+66");
-            $this->name = new Name('Thailand', 'Tailandia', 'Tailandia', 'Thailand');
+            $this->name = new Name('Thailand', 'Tailandia', 'Tailandia', 'Thailand', 'Thailand');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item220);
 
@@ -2861,7 +2861,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TJ");
             $this->setCountryCode("+992");
-            $this->name = new Name('Tajikistan', 'Tadjikistán', 'Tadjikistán', 'Tajikistan');
+            $this->name = new Name('Tajikistan', 'Tadjikistán', 'Tadjikistán', 'Tajikistan', 'Tajikistan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item221);
 
@@ -2874,7 +2874,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TK");
             $this->setCountryCode("+690");
-            $this->name = new Name('Tokelau', 'Tokelau', 'Tokelau', 'Tokelau');
+            $this->name = new Name('Tokelau', 'Tokelau', 'Tokelau', 'Tokelau', 'Tokelau');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item222);
 
@@ -2887,7 +2887,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TL");
             $this->setCountryCode("+670");
-            $this->name = new Name('East Timor', 'Timor Oriental', 'Timor Oriental', 'East Timor');
+            $this->name = new Name('East Timor', 'Timor Oriental', 'Timor Oriental', 'East Timor', 'East Timor');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item223);
 
@@ -2900,7 +2900,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TM");
             $this->setCountryCode("+993");
-            $this->name = new Name('Turkmenistan', 'Turkmenistán', 'Turkmenistán', 'Turkmenistan');
+            $this->name = new Name('Turkmenistan', 'Turkmenistán', 'Turkmenistán', 'Turkmenistan', 'Turkmenistan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item224);
 
@@ -2913,7 +2913,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TN");
             $this->setCountryCode("+216");
-            $this->name = new Name('Tunisia', 'Tunez', 'Tunez', 'Tunisia');
+            $this->name = new Name('Tunisia', 'Tunez', 'Tunez', 'Tunisia', 'Tunisia');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item225);
 
@@ -2926,7 +2926,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TO");
             $this->setCountryCode("+676");
-            $this->name = new Name('Tonga', 'Tonga', 'Tonga', 'Tonga');
+            $this->name = new Name('Tonga', 'Tonga', 'Tonga', 'Tonga', 'Tonga');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item226);
 
@@ -2939,7 +2939,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TR");
             $this->setCountryCode("+90");
-            $this->name = new Name('Turkey', 'Turquía', 'Turquía', 'Turkey');
+            $this->name = new Name('Turkey', 'Turquía', 'Turquía', 'Turkey', 'Turkey');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item227);
 
@@ -2952,7 +2952,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TT");
             $this->setCountryCode("+1868");
-            $this->name = new Name('Trinidad and Tobago', 'Trinidad y Tobago', 'Trinidad y Tobago', 'Trinidad and Tobago');
+            $this->name = new Name('Trinidad and Tobago', 'Trinidad y Tobago', 'Trinidad y Tobago', 'Trinidad and Tobago', 'Trinidad and Tobago');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item228);
 
@@ -2965,7 +2965,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TV");
             $this->setCountryCode("+688");
-            $this->name = new Name('Tuvalu', 'Tuvalu', 'Tuvalu', 'Tuvalu');
+            $this->name = new Name('Tuvalu', 'Tuvalu', 'Tuvalu', 'Tuvalu', 'Tuvalu');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item229);
 
@@ -2978,7 +2978,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TW");
             $this->setCountryCode("+886");
-            $this->name = new Name('Taiwan', 'Taiwán', 'Taiwán', 'Taiwan');
+            $this->name = new Name('Taiwan', 'Taiwán', 'Taiwán', 'Taiwan', 'Taiwan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item230);
 
@@ -2991,7 +2991,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("TZ");
             $this->setCountryCode("+255");
-            $this->name = new Name('Tanzania', 'Tanzania', 'Tanzania', 'Tanzania');
+            $this->name = new Name('Tanzania', 'Tanzania', 'Tanzania', 'Tanzania', 'Tanzania');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item231);
 
@@ -3004,7 +3004,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("UA");
             $this->setCountryCode("+380");
-            $this->name = new Name('Ukraine', 'Ucrania', 'Ucrania', 'Ukraine');
+            $this->name = new Name('Ukraine', 'Ucrania', 'Ucrania', 'Ukraine', 'Ukraine');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item232);
 
@@ -3017,7 +3017,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("UG");
             $this->setCountryCode("+256");
-            $this->name = new Name('Uganda', 'Uganda', 'Uganda', 'Uganda');
+            $this->name = new Name('Uganda', 'Uganda', 'Uganda', 'Uganda', 'Uganda');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item233);
 
@@ -3030,7 +3030,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("UM");
             $this->setCountryCode("+1");
-            $this->name = new Name('United States Minor Outlying Islands', 'Islas Ultramarinas Menores de Estados Unidos', 'Islas Ultramarinas Menores de Estados Unidos', 'United States Minor Outlying Islands');
+            $this->name = new Name('United States Minor Outlying Islands', 'Islas Ultramarinas Menores de Estados Unidos', 'Islas Ultramarinas Menores de Estados Unidos', 'United States Minor Outlying Islands', 'United States Minor Outlying Islands');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item234);
 
@@ -3043,7 +3043,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("US");
             $this->setCountryCode("+1");
-            $this->name = new Name('United States of America', 'Estados Unidos de América', 'Estados Unidos de América', 'United States of America');
+            $this->name = new Name('United States of America', 'Estados Unidos de América', 'Estados Unidos de América', 'United States of America', 'United States of America');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item235);
 
@@ -3056,7 +3056,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("UY");
             $this->setCountryCode("+598");
-            $this->name = new Name('Uruguay', 'Uruguay', 'Uruguay', 'Uruguay');
+            $this->name = new Name('Uruguay', 'Uruguay', 'Uruguay', 'Uruguay', 'Uruguay');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item236);
 
@@ -3069,7 +3069,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("UZ");
             $this->setCountryCode("+998");
-            $this->name = new Name('Uzbekistan', 'Uzbekistán', 'Uzbekistán', 'Uzbekistan');
+            $this->name = new Name('Uzbekistan', 'Uzbekistán', 'Uzbekistán', 'Uzbekistan', 'Uzbekistan');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item237);
 
@@ -3082,7 +3082,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("VA");
             $this->setCountryCode("+39");
-            $this->name = new Name('Vatican City State', 'Ciudad del Vaticano', 'Ciudad del Vaticano', 'Vatican City State');
+            $this->name = new Name('Vatican City State', 'Ciudad del Vaticano', 'Ciudad del Vaticano', 'Vatican City State', 'Vatican City State');
             $this->zone = new Zone('Europe', 'Europa', 'Europa', 'Europe');
         })->call($item238);
 
@@ -3095,7 +3095,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("VC");
             $this->setCountryCode("+1784");
-            $this->name = new Name('Saint Vincent and the Grenadines', 'San Vicente y las Granadinas', 'San Vicente y las Granadinas', 'Saint Vincent and the Grenadines');
+            $this->name = new Name('Saint Vincent and the Grenadines', 'San Vicente y las Granadinas', 'San Vicente y las Granadinas', 'Saint Vincent and the Grenadines', 'Saint Vincent and the Grenadines');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item239);
 
@@ -3108,7 +3108,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("VE");
             $this->setCountryCode("+58");
-            $this->name = new Name('Venezuela', 'Venezuela', 'Venezuela', 'Venezuela');
+            $this->name = new Name('Venezuela', 'Venezuela', 'Venezuela', 'Venezuela', 'Venezuela');
             $this->zone = new Zone('South america', 'South america', 'South america', 'South america');
         })->call($item240);
 
@@ -3121,7 +3121,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("VG");
             $this->setCountryCode("+1284");
-            $this->name = new Name('Virgin Islands', 'Islas Vírgenes Británicas', 'Islas Vírgenes Británicas', 'Virgin Islands');
+            $this->name = new Name('Virgin Islands', 'Islas Vírgenes Británicas', 'Islas Vírgenes Británicas', 'Virgin Islands', 'Virgin Islands');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item241);
 
@@ -3134,7 +3134,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("VI");
             $this->setCountryCode("+1340");
-            $this->name = new Name('United States Virgin Islands', 'Islas Vírgenes de los Estados Unidos', 'Islas Vírgenes de los Estados Unidos', 'United States Virgin Islands');
+            $this->name = new Name('United States Virgin Islands', 'Islas Vírgenes de los Estados Unidos', 'Islas Vírgenes de los Estados Unidos', 'United States Virgin Islands', 'United States Virgin Islands');
             $this->zone = new Zone('North america', 'North america', 'North america', 'North america');
         })->call($item242);
 
@@ -3147,7 +3147,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("VN");
             $this->setCountryCode("+84");
-            $this->name = new Name('Vietnam', 'Vietnam', 'Vietnam', 'Vietnam');
+            $this->name = new Name('Vietnam', 'Vietnam', 'Vietnam', 'Vietnam', 'Vietnam');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item243);
 
@@ -3160,7 +3160,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("VU");
             $this->setCountryCode("+678");
-            $this->name = new Name('Vanuatu', 'Vanuatu', 'Vanuatu', 'Vanuatu');
+            $this->name = new Name('Vanuatu', 'Vanuatu', 'Vanuatu', 'Vanuatu', 'Vanuatu');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item244);
 
@@ -3173,7 +3173,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("WF");
             $this->setCountryCode("+681");
-            $this->name = new Name('Wallis and Futuna', 'Wallis y Futuna', 'Wallis y Futuna', 'Wallis and Futuna');
+            $this->name = new Name('Wallis and Futuna', 'Wallis y Futuna', 'Wallis y Futuna', 'Wallis and Futuna', 'Wallis and Futuna');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item245);
 
@@ -3186,7 +3186,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("WS");
             $this->setCountryCode("+685");
-            $this->name = new Name('Samoa', 'Samoa', 'Samoa', 'Samoa');
+            $this->name = new Name('Samoa', 'Samoa', 'Samoa', 'Samoa', 'Samoa');
             $this->zone = new Zone('Oceania', 'Oceania', 'Oceania', 'Oceania');
         })->call($item246);
 
@@ -3199,7 +3199,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("YE");
             $this->setCountryCode("+967");
-            $this->name = new Name('Yemen', 'Yemen', 'Yemen', 'Yemen');
+            $this->name = new Name('Yemen', 'Yemen', 'Yemen', 'Yemen', 'Yemen');
             $this->zone = new Zone('Asia', 'Asia', 'Asia', 'Asia');
         })->call($item247);
 
@@ -3212,7 +3212,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("YT");
             $this->setCountryCode("+262");
-            $this->name = new Name('Mayotte', 'Mayotte', 'Mayotte', 'Mayotte');
+            $this->name = new Name('Mayotte', 'Mayotte', 'Mayotte', 'Mayotte', 'Mayotte');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item248);
 
@@ -3225,7 +3225,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ZA");
             $this->setCountryCode("+27");
-            $this->name = new Name('South Africa', 'Sudáfrica', 'Sudáfrica', 'South Africa');
+            $this->name = new Name('South Africa', 'Sudáfrica', 'Sudáfrica', 'South Africa', 'South Africa');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item249);
 
@@ -3238,7 +3238,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ZM");
             $this->setCountryCode("+260");
-            $this->name = new Name('Zambia', 'Zambia', 'Zambia', 'Zambia');
+            $this->name = new Name('Zambia', 'Zambia', 'Zambia', 'Zambia', 'Zambia');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item250);
 
@@ -3251,7 +3251,7 @@ class ProviderCountry extends Fixture
         (function () use ($fixture) {
             $this->setCode("ZW");
             $this->setCountryCode("+263");
-            $this->name = new Name('Zimbabwe', 'Zimbabue', 'Zimbabue', 'Zimbabwe');
+            $this->name = new Name('Zimbabwe', 'Zimbabue', 'Zimbabue', 'Zimbabwe', 'Zimbabwe');
             $this->zone = new Zone('Africa', 'Africa', 'Africa', 'Africa');
         })->call($item251);
 

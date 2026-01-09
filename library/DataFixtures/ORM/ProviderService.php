@@ -27,7 +27,7 @@ class ProviderService extends Fixture
             $this->setIden("DirectPickUp");
             $this->setDefaultCode("94");
             $this->setExtraArgs(true);
-            $this->name = new Name('en', 'es', 'ca', 'it');
+            $this->name = new Name('en', 'es', 'ca', 'it', 'it');
             $this->description = new Description('en', 'es', 'ca', 'it');
         })->call($item1);
 
@@ -40,7 +40,7 @@ class ProviderService extends Fixture
             $this->setIden("GroupPickUp");
             $this->setDefaultCode("95");
             $this->setExtraArgs(false);
-            $this->name = new Name('en', 'es', 'ca', 'it');
+            $this->name = new Name('en', 'es', 'ca', 'it', 'it');
             $this->description = new Description('en', 'es', 'ca', 'it');
         })->call($item2);
 
@@ -53,7 +53,7 @@ class ProviderService extends Fixture
             $this->setIden("Voicemail");
             $this->setDefaultCode("93");
             $this->setExtraArgs(true);
-            $this->name = new Name('en', 'es', 'ca', 'it');
+            $this->name = new Name('en', 'es', 'ca', 'it', 'it');
             $this->description = new Description('en', 'es', 'ca', 'it');
         })->call($item3);
 
@@ -66,7 +66,7 @@ class ProviderService extends Fixture
             $this->setIden("RecordLocution");
             $this->setDefaultCode("00");
             $this->setExtraArgs(true);
-            $this->name = new Name('en', 'es', 'ca', 'it');
+            $this->name = new Name('en', 'es', 'ca', 'it', 'it');
             $this->description = new Description('en', 'es', 'ca', 'it');
         })->call($item4);
 
@@ -80,7 +80,7 @@ class ProviderService extends Fixture
             $this->setIden("CloseLock");
             $this->setDefaultCode("30");
             $this->setExtraArgs(true);
-            $this->name = new Name('en', 'es', 'ca', 'it');
+            $this->name = new Name('en', 'es', 'ca', 'it', 'it');
             $this->description = new Description('en', 'es', 'ca', 'it');
         })->call($item5);
 

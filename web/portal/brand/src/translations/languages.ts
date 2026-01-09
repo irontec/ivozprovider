@@ -17,4 +17,8 @@ export const languagesList: Languages = [
     name: 'Italiano',
     locale: 'it-IT',
   },
+  {
+    name: 'Euskera',
+    locale: 'eu-ES',
+  },
 ];

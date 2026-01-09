@@ -30,7 +30,7 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
         (function () use ($fixture) {
             $this->setStatus('inProgress');
             $this->setDeductibleConnectionFee(false);
-            $this->name = new Name('Standard', 'Standard', 'Standard', 'Standard');
+            $this->name = new Name('Standard', 'Standard', 'Standard', 'Standard', 'Standard');
             $this->description = new Description('', '', '', '');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->file = new File(null, null, null, []);
@@ -46,7 +46,7 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
         (function () use ($fixture) {
             $this->setStatus('inProgress');
             $this->setDeductibleConnectionFee(false);
-            $this->name = new Name('Fallback', 'Fallback', 'Fallback', 'Fallback');
+            $this->name = new Name('Fallback', 'Fallback', 'Fallback', 'Fallback', 'Fallback');
             $this->description = new Description('', '', '', '');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->file = new File(null, null, null, []);
