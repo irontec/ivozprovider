@@ -37,18 +37,26 @@ final class Description
     private $it;
 
     /**
+     * @var string
+     * column: description_eu
+     */
+    private $eu;
+
+    /**
      * Constructor
      */
     public function __construct(
         string $en,
         string $es,
         string $ca,
-        string $it
+        string $it,
+        string $eu
     ) {
         $this->setEn($en);
         $this->setEs($es);
         $this->setCa($ca);
         $this->setIt($it);
+        $this->setEu($eu);
     }
 
     public function equals(self $description): bool
@@ -62,7 +70,10 @@ final class Description
         if ($this->getCa() !== $description->getCa()) {
             return false;
         }
-        return $this->getIt() === $description->getIt();
+        if ($this->getIt() !== $description->getIt()) {
+            return false;
+        }
+        return $this->getEu() === $description->getEu();
     }
 
     protected function setEn(string $en): static
@@ -119,5 +130,19 @@ final class Description
     public function getIt(): string
     {
         return $this->it;
+    }
+
+    protected function setEu(string $eu): static
+    {
+        Assertion::maxLength($eu, 255, 'eu value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->eu = $eu;
+
+        return $this;
+    }
+
+    public function getEu(): string
+    {
+        return $this->eu;
     }
 }

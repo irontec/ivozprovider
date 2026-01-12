@@ -14,7 +14,7 @@ class CurrencyDto extends CurrencyDtoAbstract
                 'iden' => 'iden',
                 'symbol' => 'symbol',
                 'id' => 'id',
-                'name' => ['en','es','ca','it']
+                'name' => ['en','es','ca','it','eu']
             ];
         }
 
