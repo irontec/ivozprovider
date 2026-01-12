@@ -21,7 +21,8 @@ Feature: Retrieve languages
                   "en": "es",
                   "es": "es",
                   "ca": "es",
-                  "it": "es"
+                  "it": "es",
+                  "eu": "es"
               }
           },
           {
@@ -31,7 +32,8 @@ Feature: Retrieve languages
                   "en": "en",
                   "es": "en",
                   "ca": "en",
-                  "it": "en"
+                  "it": "en",
+                  "eu": "en"
               }
           },
           {
@@ -41,7 +43,8 @@ Feature: Retrieve languages
                   "en": "ca",
                   "es": "ca",
                   "ca": "ca",
-                  "it": "ca"
+                  "it": "ca",
+                  "eu": "ca"
               }
           },
           {
@@ -51,7 +54,19 @@ Feature: Retrieve languages
                   "en": "it",
                   "es": "it",
                   "ca": "it",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "it"
+              }
+          },
+          {
+              "iden": "eu",
+              "id": 5,
+              "name": {
+                  "en": "eu",
+                  "es": "eu",
+                  "ca": "eu",
+                  "it": "eu",
+                  "eu": "eu"
               }
           }
       ]
@@ -73,7 +88,8 @@ Feature: Retrieve languages
               "en": "es",
               "es": "es",
               "ca": "es",
-              "it": "es"
+              "it": "es",
+              "eu": "es"
           }
       }
       """

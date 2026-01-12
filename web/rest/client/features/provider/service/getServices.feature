@@ -23,13 +23,15 @@ Feature: Retrieve services
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           },
           {
@@ -41,13 +43,15 @@ Feature: Retrieve services
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           },
           {
@@ -59,13 +63,15 @@ Feature: Retrieve services
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           },
           {
@@ -77,13 +83,15 @@ Feature: Retrieve services
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           }
       ]
@@ -107,13 +115,15 @@ Feature: Retrieve services
               "en": "en",
               "es": "es",
               "ca": "ca",
-              "it": "it"
+              "it": "it",
+              "eu": "eu"
           },
           "description": {
               "en": "en",
               "es": "es",
               "ca": "ca",
-              "it": "it"
+              "it": "it",
+              "eu": "eu"
           }
       }
       """

@@ -25,7 +25,8 @@ Feature: Retrieve transformation rule sets
                   "en": "Brand 1 transformation for Spain",
                   "es": "Marca 1 tansformacion para España",
                   "ca": "Marca 1 tansformacion para España",
-                  "it": "Brand 1 transformation for Spain"
+                  "it": "Brand 1 transformation for Spain",
+                  "eu": "Brand 1 transformation for Spain"
               }
           },
           {
@@ -39,7 +40,8 @@ Feature: Retrieve transformation rule sets
                   "en": "Generic transformation for Spain",
                   "es": "Generic tansformacion para España",
                   "ca": "Generic tansformacion para España",
-                  "it": "Generic transformation for Spain"
+                  "it": "Generic transformation for Spain",
+                  "eu": "Generic transformation for Spain"
               }
           }
       ]
