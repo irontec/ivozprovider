@@ -8,7 +8,7 @@ Cypress.Commands.add('fillTheForm', (fixture) => {
       continue;
     }
 
-    const multilangValidValues = ['en', 'es', 'ca', 'it'];
+    const multilangValidValues = ['en', 'es', 'ca', 'it', 'eu'];
     const multilangValidForm = multilangValidValues.every((key) =>
       values.hasOwnProperty(key)
     );
