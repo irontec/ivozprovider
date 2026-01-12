@@ -21,7 +21,8 @@ Feature: Create transformation rule sets
               "en": "usansolocity",
               "es": "usansolo",
               "ca": "usansolo",
-              "it": "usansolo"
+              "it": "usansolo",
+              "eu": "usansolo"
           },
           "country": 77
       }
@@ -43,7 +44,8 @@ Feature: Create transformation rule sets
               "en": "usansolocity",
               "es": "usansolo",
               "ca": "usansolo",
-              "it": "usansolo"
+              "it": "usansolo",
+              "eu": "usansolo"
           },
           "country": 77,
           "editable": true

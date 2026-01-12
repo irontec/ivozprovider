@@ -17,13 +17,15 @@ Feature: Create routing patterns
               "en": "Spain",
               "es": "España",
               "ca": "España",
-              "it": "Spagna"
+              "it": "Spagna",
+              "eu": "Spagna"
           },
           "description": {
               "en": "desc en",
               "es": "desc es",
               "ca": "desc ca",
-              "it": "desc it"
+              "it": "desc it",
+              "eu": "desc eu"
           }
       }
       """
@@ -39,13 +41,15 @@ Feature: Create routing patterns
               "en": "Spain",
               "es": "España",
               "ca": "España",
-              "it": "Spagna"
+              "it": "Spagna",
+              "eu": "Spagna"
           },
           "description": {
               "en": "desc en",
               "es": "desc es",
               "ca": "desc ca",
-              "it": "desc it"
+              "it": "desc it",
+              "eu": "desc eu"
           }
       }
       """
@@ -66,13 +70,15 @@ Feature: Create routing patterns
               "en": "Spain",
               "es": "España",
               "ca": "España",
-              "it": "Spagna"
+              "it": "Spagna",
+              "eu": "Spagna"
           },
           "description": {
               "en": "desc en",
               "es": "desc es",
               "ca": "desc ca",
-              "it": "desc it"
+              "it": "desc it",
+              "eu": "desc eu"
           }
       }
       """

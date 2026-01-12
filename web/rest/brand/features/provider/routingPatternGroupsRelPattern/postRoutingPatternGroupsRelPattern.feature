@@ -29,13 +29,15 @@ Feature: Create routing pattern groups rel patterns
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           },
           "routingPatternGroup": {
@@ -64,13 +66,15 @@ Feature: Create routing pattern groups rel patterns
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           },
           "routingPatternGroup": {

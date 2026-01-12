@@ -21,13 +21,15 @@ Feature: Retrieve destination rate group
                   "en": "Fallback",
                   "es": "Fallback",
                   "ca": "Fallback",
-                  "it": "Fallback"
+                  "it": "Fallback",
+                  "eu": "Fallback"
               },
               "description": {
                   "en": "",
                   "es": "",
                   "ca": "",
-                  "it": ""
+                  "it": "",
+                  "eu": ""
               },
               "file": {
                   "fileSize": null,
@@ -43,13 +45,15 @@ Feature: Retrieve destination rate group
                   "en": "Standard",
                   "es": "Standard",
                   "ca": "Standard",
-                  "it": "Standard"
+                  "it": "Standard",
+                  "eu": "Standard"
               },
               "description": {
                   "en": "",
                   "es": "",
                   "ca": "",
-                  "it": ""
+                  "it": "",
+                  "eu": ""
               },
               "file": {
                   "fileSize": null,

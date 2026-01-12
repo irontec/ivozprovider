@@ -15,13 +15,15 @@ Feature: Create rating plan group
               "en": "New",
               "es": "Nuevo",
               "ca": "Nou",
-              "it": "Nouvo"
+              "it": "Nouvo",
+              "eu": "Berria"
           },
           "description": {
               "en": "New Rating plan",
               "es": "Nuevo Rating plan",
               "ca": "Nou Rating plan",
-              "it": "Nouvo Rating plan"
+              "it": "Nouvo Rating plan",
+              "eu": "Sailkapen plan berria"
           }
       }
       """
@@ -36,13 +38,15 @@ Feature: Create rating plan group
               "en": "New",
               "es": "Nuevo",
               "ca": "Nou",
-              "it": "Nouvo"
+              "it": "Nouvo",
+              "eu": "Berria"
           },
           "description": {
               "en": "New Rating plan",
               "es": "Nuevo Rating plan",
               "ca": "Nou Rating plan",
-              "it": "Nouvo Rating plan"
+              "it": "Nouvo Rating plan",
+              "eu": "Sailkapen plan berria"
           },
           "currency": null
       }
@@ -63,13 +67,15 @@ Feature: Create rating plan group
               "en": "Something more",
               "es": "Algo m\u00e1s",
               "ca": "Algo mes",
-              "it": "Più"
+              "it": "Più",
+              "eu": "Zerbait"
           },
           "description": {
               "en": "en",
               "es": "es",
               "es": "es",
-              "it": "it"
+              "it": "it",
+              "eu": "eu"
           }
       }
       """
