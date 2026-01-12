@@ -72,6 +72,11 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     private $nameIt = null;
 
     /**
+     * @var string|null
+     */
+    private $nameEu = null;
+
+    /**
      * @var BrandDto | null
      */
     private $brand = null;
@@ -113,6 +118,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
                 'es',
                 'ca',
                 'it',
+                'eu',
             ],
             'brandId' => 'brand',
             'countryId' => 'country'
@@ -137,6 +143,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
                 'it' => $this->getNameIt(),
+                'eu' => $this->getNameEu(),
             ],
             'brand' => $this->getBrand(),
             'country' => $this->getCountry(),
@@ -290,6 +297,18 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     public function getNameIt(): ?string
     {
         return $this->nameIt;
+    }
+
+    public function setNameEu(string $nameEu): static
+    {
+        $this->nameEu = $nameEu;
+
+        return $this;
+    }
+
+    public function getNameEu(): ?string
+    {
+        return $this->nameEu;
     }
 
     public function setBrand(?BrandDto $brand): static

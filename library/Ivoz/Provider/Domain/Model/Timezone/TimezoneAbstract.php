@@ -121,6 +121,8 @@ abstract class TimezoneAbstract
         Assertion::notNull($labelCa, 'labelCa value is null, but non null value was expected.');
         $labelIt = $dto->getLabelIt();
         Assertion::notNull($labelIt, 'labelIt value is null, but non null value was expected.');
+        $labelEu = $dto->getLabelEu();
+        Assertion::notNull($labelEu, 'labelEu value is null, but non null value was expected.');
         $tz = $dto->getTz();
         Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
 
@@ -128,7 +130,8 @@ abstract class TimezoneAbstract
             $labelEn,
             $labelEs,
             $labelCa,
-            $labelIt
+            $labelIt,
+            $labelEu
         );
 
         $self = new static(
@@ -163,6 +166,8 @@ abstract class TimezoneAbstract
         Assertion::notNull($labelCa, 'labelCa value is null, but non null value was expected.');
         $labelIt = $dto->getLabelIt();
         Assertion::notNull($labelIt, 'labelIt value is null, but non null value was expected.');
+        $labelEu = $dto->getLabelEu();
+        Assertion::notNull($labelEu, 'labelEu value is null, but non null value was expected.');
         $tz = $dto->getTz();
         Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
 
@@ -170,7 +175,8 @@ abstract class TimezoneAbstract
             $labelEn,
             $labelEs,
             $labelCa,
-            $labelIt
+            $labelIt,
+            $labelEu
         );
 
         $this
@@ -194,6 +200,7 @@ abstract class TimezoneAbstract
             ->setLabelEs(self::getLabel()->getEs())
             ->setLabelCa(self::getLabel()->getCa())
             ->setLabelIt(self::getLabel()->getIt())
+            ->setLabelEu(self::getLabel()->getEu())
             ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
@@ -209,6 +216,7 @@ abstract class TimezoneAbstract
             'labelEs' => self::getLabel()->getEs(),
             'labelCa' => self::getLabel()->getCa(),
             'labelIt' => self::getLabel()->getIt(),
+            'labelEu' => self::getLabel()->getEu(),
             'countryId' => self::getCountry()?->getId()
         ];
     }

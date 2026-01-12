@@ -146,12 +146,15 @@ abstract class TransformationRuleSetAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
 
         $name = new Name(
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $self = new static(
@@ -191,12 +194,15 @@ abstract class TransformationRuleSetAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
 
         $name = new Name(
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $this
@@ -229,6 +235,7 @@ abstract class TransformationRuleSetAbstract
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
             ->setNameIt(self::getName()->getIt())
+            ->setNameEu(self::getName()->getEu())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
@@ -249,6 +256,7 @@ abstract class TransformationRuleSetAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
+            'nameEu' => self::getName()->getEu(),
             'brandId' => self::getBrand()?->getId(),
             'countryId' => self::getCountry()?->getId()
         ];

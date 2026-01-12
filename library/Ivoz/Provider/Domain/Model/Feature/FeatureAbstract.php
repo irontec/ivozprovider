@@ -109,6 +109,8 @@ abstract class FeatureAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
 
@@ -116,7 +118,8 @@ abstract class FeatureAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $self = new static(
@@ -149,6 +152,8 @@ abstract class FeatureAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
 
@@ -156,7 +161,8 @@ abstract class FeatureAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $this
@@ -176,7 +182,8 @@ abstract class FeatureAbstract
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
-            ->setNameIt(self::getName()->getIt());
+            ->setNameIt(self::getName()->getIt())
+            ->setNameEu(self::getName()->getEu());
     }
 
     /**
@@ -189,7 +196,8 @@ abstract class FeatureAbstract
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
-            'nameIt' => self::getName()->getIt()
+            'nameIt' => self::getName()->getIt(),
+            'nameEu' => self::getName()->getEu()
         ];
     }
 

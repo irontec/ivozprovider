@@ -56,6 +56,11 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
+    private $nameEu = '';
+
+    /**
+     * @var string|null
+     */
     private $descriptionEn = '';
 
     /**
@@ -72,6 +77,11 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
      * @var string|null
      */
     private $descriptionIt = '';
+
+    /**
+     * @var string|null
+     */
+    private $descriptionEu = '';
 
     public function __construct(?int $id = null)
     {
@@ -97,12 +107,14 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
                 'es',
                 'ca',
                 'it',
+                'eu',
             ],
             'description' => [
                 'en',
                 'es',
                 'ca',
                 'it',
+                'eu',
             ]
         ];
     }
@@ -122,12 +134,14 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
                 'it' => $this->getNameIt(),
+                'eu' => $this->getNameEu(),
             ],
             'description' => [
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs(),
                 'ca' => $this->getDescriptionCa(),
                 'it' => $this->getDescriptionIt(),
+                'eu' => $this->getDescriptionEu(),
             ]
         ];
 
@@ -244,6 +258,18 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->nameIt;
     }
 
+    public function setNameEu(string $nameEu): static
+    {
+        $this->nameEu = $nameEu;
+
+        return $this;
+    }
+
+    public function getNameEu(): ?string
+    {
+        return $this->nameEu;
+    }
+
     public function setDescriptionEn(string $descriptionEn): static
     {
         $this->descriptionEn = $descriptionEn;
@@ -290,5 +316,17 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     public function getDescriptionIt(): ?string
     {
         return $this->descriptionIt;
+    }
+
+    public function setDescriptionEu(string $descriptionEu): static
+    {
+        $this->descriptionEu = $descriptionEu;
+
+        return $this;
+    }
+
+    public function getDescriptionEu(): ?string
+    {
+        return $this->descriptionEu;
     }
 }

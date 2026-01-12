@@ -140,7 +140,8 @@ abstract class PublicEntityAbstract
             $dto->getNameEn(),
             $dto->getNameEs(),
             $dto->getNameCa(),
-            $dto->getNameIt()
+            $dto->getNameIt(),
+            $dto->getNameEu()
         );
 
         $self = new static(
@@ -182,7 +183,8 @@ abstract class PublicEntityAbstract
             $dto->getNameEn(),
             $dto->getNameEs(),
             $dto->getNameCa(),
-            $dto->getNameIt()
+            $dto->getNameIt(),
+            $dto->getNameEu()
         );
 
         $this
@@ -210,7 +212,8 @@ abstract class PublicEntityAbstract
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
-            ->setNameIt(self::getName()->getIt());
+            ->setNameIt(self::getName()->getIt())
+            ->setNameEu(self::getName()->getEu());
     }
 
     /**
@@ -227,7 +230,8 @@ abstract class PublicEntityAbstract
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
-            'nameIt' => self::getName()->getIt()
+            'nameIt' => self::getName()->getIt(),
+            'nameEu' => self::getName()->getEu()
         ];
     }
 
