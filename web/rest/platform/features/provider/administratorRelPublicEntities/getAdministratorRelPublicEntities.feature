@@ -45,7 +45,8 @@ Feature: Manage administrator rel public entities
                       "en": "BillableCalls",
                       "es": "BillableCalls",
                       "ca": "BillableCalls",
-                      "it": "BillableCalls"
+                      "it": "BillableCalls",
+                      "eu": "BillableCalls"
                   }
               }
           },
@@ -80,7 +81,8 @@ Feature: Manage administrator rel public entities
                       "en": "BillableCalls",
                       "es": "BillableCalls",
                       "ca": "BillableCalls",
-                      "it": "BillableCalls"
+                      "it": "BillableCalls",
+                      "eu": "BillableCalls"
                   }
               }
           },
@@ -115,7 +117,8 @@ Feature: Manage administrator rel public entities
                       "en": "BillableCalls",
                       "es": "BillableCalls",
                       "ca": "BillableCalls",
-                      "it": "BillableCalls"
+                      "it": "BillableCalls",
+                      "eu": "BillableCalls"
                   }
               }
           }
@@ -162,7 +165,8 @@ Feature: Manage administrator rel public entities
                 "en": "BillableCalls",
                 "es": "BillableCalls",
                 "ca": "BillableCalls",
-                "it": "BillableCalls"
+                "it": "BillableCalls",
+                "eu": "BillableCalls"
             }
         }
       }

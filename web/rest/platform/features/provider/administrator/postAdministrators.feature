@@ -74,7 +74,8 @@ Feature: Create administrators
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "country": 68
           }
