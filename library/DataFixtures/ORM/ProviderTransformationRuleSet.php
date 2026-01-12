@@ -32,6 +32,7 @@ class ProviderTransformationRuleSet extends Fixture implements DependentFixtureI
                 'Marca 1 tansformacion para España',
                 'Marca 1 tansformacion para España',
                 'Brand 1 transformation for Spain',
+                'Brand 1 transformation for Spain',
             );
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
@@ -51,6 +52,7 @@ class ProviderTransformationRuleSet extends Fixture implements DependentFixtureI
                 'Marca 2 tansformacion para España',
                 'Marca 2 tansformacion para España',
                 'Brand 2 transformation for Spain',
+                'Brand 2 transformation for Spain',
             );
             $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
@@ -69,6 +71,7 @@ class ProviderTransformationRuleSet extends Fixture implements DependentFixtureI
                 'Generic transformation for Spain',
                 'Generic tansformacion para España',
                 'Generic tansformacion para España',
+                'Generic transformation for Spain',
                 'Generic transformation for Spain',
             );
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));

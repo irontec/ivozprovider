@@ -26,10 +26,12 @@ class RoutingPatternLifeCycleTest extends KernelTestCase
             ->setNameEs('es')
             ->setNameCa('ca')
             ->setNameIt('it')
+            ->setNameEu('eu')
             ->setDescriptionEn('en')
             ->setDescriptionEs('es')
             ->setDescriptionCa('ca')
             ->setDescriptionIt('it')
+            ->setDescriptionEu('eu')
             ->setBrandId(1);
 
         return $routingPatternDto;

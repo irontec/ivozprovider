@@ -17,7 +17,8 @@ class TransformationRuleSetSpec extends ObjectBehavior
             ->setNameEn('en')
             ->setNameEs('es')
             ->setNameCa('ca')
-            ->setNameIt('it');
+            ->setNameIt('it')
+            ->setNameEu('eu');
 
 
         $this->beConstructedThrough(

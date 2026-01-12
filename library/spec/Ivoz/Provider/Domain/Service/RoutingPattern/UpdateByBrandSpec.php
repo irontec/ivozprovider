@@ -93,7 +93,7 @@ class UpdateByBrandSpec extends ObjectBehavior
         $this->getterProphecy(
             $country,
             [
-                'getName' => new Name('', '', '', ''),
+                'getName' => new Name('', '', '', '', ''),
                 'getCountryCode' => 'SomeCode'
             ]
         );
