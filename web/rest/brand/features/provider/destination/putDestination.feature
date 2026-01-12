@@ -17,7 +17,8 @@ Feature: Update destination
               "en": "Bilbao Updated",
               "es": "Bilbao Actualizado",
               "ca": "Bilbao Actualizado",
-              "it": "Bilbao Updated"
+              "it": "Bilbao Updated",
+              "eu": "Bilbao Actualizado"
           }
       }
       """
@@ -33,7 +34,8 @@ Feature: Update destination
               "en": "Bilbao Updated",
               "es": "Bilbao Actualizado",
               "ca": "Bilbao Actualizado",
-              "it": "Bilbao Updated"
+              "it": "Bilbao Updated",
+              "eu": "Bilbao Actualizado"
           }
       }
       """

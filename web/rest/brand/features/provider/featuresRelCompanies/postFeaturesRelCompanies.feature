@@ -77,7 +77,8 @@ Feature: Create features rel companies
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           }
       }
@@ -144,7 +145,8 @@ Feature: Create features rel companies
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           }
       }

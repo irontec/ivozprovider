@@ -16,13 +16,15 @@ Feature: Update routing patterns
               "en": "englishName",
               "es": "nombreEspañol",
               "ca": "nombreCatala",
-              "it": "nomeItaliano"
+              "it": "nomeItaliano",
+              "eu": "nomeEuskera"
           },
           "description": {
               "en": "en",
               "es": "es",
               "ca": "ca",
-              "it": "it"
+              "it": "it",
+              "eu": "eu"
           }
       }
       """
@@ -38,13 +40,15 @@ Feature: Update routing patterns
               "en": "englishName",
               "es": "nombreEspañol",
               "ca": "nombreCatala",
-              "it": "nomeItaliano"
+              "it": "nomeItaliano",
+              "eu": "nomeEuskera"
           },
           "description": {
               "en": "en",
               "es": "es",
               "ca": "ca",
-              "it": "it"
+              "it": "it",
+              "eu": "eu"
           }
       }
       """

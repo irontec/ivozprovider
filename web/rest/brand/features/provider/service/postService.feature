@@ -18,13 +18,15 @@ Feature: Create services
               "en": "en",
               "es": "en",
               "ca": "ca",
-              "it": "it"
+              "it": "it",
+              "eu": "eu"
           },
           "description": {
               "en": "en",
               "es": "en",
               "ca": "ca",
-              "it": "it"
+              "it": "it",
+              "eu": "eu"
           }
       }
       """

@@ -21,7 +21,8 @@ Feature: Retrieve destination
                   "en": "Bilbao",
                   "es": "Bilbao",
                   "ca": "Bilbao",
-                  "it": "Bilbao"
+                  "it": "Bilbao",
+                  "eu": "Bilbao"
               }
           },
           {
@@ -31,7 +32,8 @@ Feature: Retrieve destination
                   "en": "Dest3",
                   "es": "Dest3",
                   "ca": "Dest3",
-                  "it": "Dest3"
+                  "it": "Dest3",
+                  "eu": "Dest3"
               }
           },
           {
@@ -41,7 +43,8 @@ Feature: Retrieve destination
                   "en": "Usansolocity",
                   "es": "Usansolocity",
                   "ca": "Usansolocity",
-                  "it": "Usansolocity"
+                  "it": "Usansolocity",
+                  "eu": "Usansolocity"
               }
           }
       ]

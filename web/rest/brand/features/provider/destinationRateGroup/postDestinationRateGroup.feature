@@ -18,13 +18,15 @@ Content-Disposition: form-data; name="destinationRateGroup"
         "en": "New DR",
         "es": "New DR",
         "ca": "New DR",
-        "it": "New DR"
+        "it": "New DR",
+        "eu": "New DR"
     },
     "description": {
         "en": "",
         "es": "",
         "ca": "",
-        "it": ""
+        "it": "",
+        "eu": ""
     },
     "currency": "1",
     "file": {
@@ -71,13 +73,15 @@ Content-Type: text/csv
               "en": "New DR",
               "es": "New DR",
               "ca": "New DR",
-              "it": "New DR"
+              "it": "New DR",
+              "eu": "New DR"
           },
           "description": {
               "en": "",
               "es": "",
               "ca": "",
-              "it": ""
+              "it": "",
+              "eu": ""
           },
           "file": {
               "fileSize": 84,
@@ -119,12 +123,14 @@ Content-Type: text/csv
               "en": "New DR",
               "es": "New DR",
               "ca": "New DR",
-              "it": "New DR"
+              "it": "New DR",
+              "eu": "New DR"
           },
           "description": {
               "en": "",
               "es": "",
               "ca": "",
+              "eu": "",
               "it": ""
           },
           "file": {
@@ -153,7 +159,8 @@ Content-Type: text/csv
                   "en": "Euro",
                   "es": "Euro",
                   "ca": "Euro",
-                  "it": "Euro"
+                  "it": "Euro",
+                  "eu": "Euro"
               }
           }
       }

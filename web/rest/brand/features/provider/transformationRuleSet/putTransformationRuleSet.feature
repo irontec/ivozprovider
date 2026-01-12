@@ -21,7 +21,8 @@ Feature: Update transformation rule sets
               "en": "updated name",
               "es": "nombre actualizado",
               "ca": "nombre actualizado",
-              "it": "nome aggiornato"
+              "it": "nome aggiornato",
+              "eu": "Brand 1 transformation for Spain"
           },
           "country": 68
       }
@@ -43,7 +44,8 @@ Feature: Update transformation rule sets
               "en": "updated name",
               "es": "nombre actualizado",
               "ca": "nombre actualizado",
-              "it": "nome aggiornato"
+              "it": "nome aggiornato",
+              "eu": "Brand 1 transformation for Spain"
           },
           "country": 68,
           "editable": true

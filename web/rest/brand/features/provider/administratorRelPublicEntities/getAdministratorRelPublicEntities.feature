@@ -44,7 +44,8 @@ Feature: Manage administrator rel public entities
                       "en": "_RatingPlanPrices",
                       "es": "_RatingPlanPrices",
                       "ca": "_RatingPlanPrices",
-                      "it": "_RatingPlanPrices"
+                      "it": "_RatingPlanPrices",
+                      "eu": "_RatingPlanPrices"
                   }
               }
           },
@@ -78,7 +79,8 @@ Feature: Manage administrator rel public entities
                       "en": "BillableCalls",
                       "es": "BillableCalls",
                       "ca": "BillableCalls",
-                      "it": "BillableCalls"
+                      "it": "BillableCalls",
+                      "eu": "BillableCalls"
                   }
               }
           },
@@ -112,7 +114,8 @@ Feature: Manage administrator rel public entities
                       "en": "Calendars",
                       "es": "Calendars",
                       "ca": "Calendars",
-                      "it": "Calendars"
+                      "it": "Calendars",
+                      "eu": "Calendars"
                   }
               }
           }
@@ -158,7 +161,8 @@ Feature: Manage administrator rel public entities
                   "en": "Calendars",
                   "es": "Calendars",
                   "ca": "Calendars",
-                  "it": "Calendars"
+                  "it": "Calendars",
+                  "eu": "Calendars"
               }
           }
       }
