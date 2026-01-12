@@ -10,7 +10,7 @@ class PublicEntityDto extends PublicEntityDtoAbstract
             return [
                 'iden' => 'iden',
                 'id' => 'id',
-                'name' => ['en','es','ca','it']
+                'name' => ['en','es','ca','it','eu']
             ];
         }
 
