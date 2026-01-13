@@ -6,7 +6,8 @@
       "en": "Australia Dólar",
       "es": "Australia Dólar",
       "ca": "Australia Dólar",
-      "it": "Australia Dólar"
+      "it": "Australia Dólar",
+      "eu": "Australia Dólar"
     }
   },
   "response": {
@@ -18,7 +19,8 @@
         "en": "Australia Dólar",
         "es": "Australia Dólar",
         "ca": "Australia Dólar",
-        "it": "Australia Dólar"
+        "it": "Australia Dólar",
+        "eu": "Australia Dólar"
       }
     },
     "headers": {
