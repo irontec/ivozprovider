@@ -5,13 +5,15 @@
             "en": "englishName",
             "es": "nombreEspañol",
             "ca": "nombreCatala",
-            "it": "nomeItaliano"
+            "it": "nomeItaliano",
+            "eu": "nomeEuskera"
         },
         "description": {
             "en": "en",
             "es": "es",
             "ca": "ca",
-            "it": "it"
+            "it": "it",
+            "eu": "eu"
         }
     },
     "response": {
@@ -22,13 +24,15 @@
                 "en": "englishName",
                 "es": "nombreEspañol",
                 "ca": "nombreCatala",
-                "it": "nomeItaliano"
+                "it": "nomeItaliano",
+                "eu": "nomeEuskera"
             },
             "description": {
                 "en": "en",
                 "es": "es",
                 "ca": "ca",
-                "it": "it"
+                "it": "it",
+                "eu": "eu"
             }
         },
         "headers": {

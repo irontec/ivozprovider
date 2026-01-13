@@ -4,13 +4,15 @@
       "en": "New",
       "es": "Nuevo",
       "ca": "Nou",
-      "it": "Nouvo"
+      "it": "Nouvo",
+      "eu": "Berria"
     },
     "description": {
       "en": "New Rating plan",
       "es": "Nuevo Rating plan",
       "ca": "Nou Rating plan",
-      "it": "Nouvo Rating plan"
+      "it": "Nouvo Rating plan",
+      "eu": "Sailkapen plan berria"
     }
   },
   "response": {
@@ -20,13 +22,15 @@
         "en": "New",
         "es": "Nuevo",
         "ca": "Nou",
-        "it": "Nouvo"
+        "it": "Nouvo",
+        "eu": "Berria"
       },
       "description": {
         "en": "New Rating plan",
         "es": "Nuevo Rating plan",
         "ca": "Nou Rating plan",
-        "it": "Nouvo Rating plan"
+        "it": "Nouvo Rating plan",
+        "eu": "Sailkapen plan berria"
       },
       "currency": null
     },

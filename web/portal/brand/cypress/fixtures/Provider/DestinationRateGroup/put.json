@@ -4,13 +4,15 @@
       "en": "Updated Standard",
       "es": "Standard Actualizado",
       "it": "Standard",
-      "ca": "Standard Actualizado"
+      "ca": "Standard Actualizado",
+      "eu": "Standard Actualizado"
     },
     "description": {
       "en": "New Description",
       "es": "New Description",
       "it": "New Description",
-      "ca": "New Description"
+      "ca": "New Description",
+      "eu": "New Description"
     },
     "currency": 2,
     "importerArguments": {
@@ -37,13 +39,15 @@
         "en": "Updated Standard",
         "es": "Standard Actualizado",
         "ca": "Standard Actualizado",
-        "it": "Standard"
+        "it": "Standard",
+        "eu": "Standard"
       },
       "description": {
         "en": "New Description",
         "es": "New Description",
         "ca": "New Description",
-        "it": "New Description"
+        "it": "New Description",
+        "eu": "New Description"
       },
       "file": {
         "fileSize": 84,

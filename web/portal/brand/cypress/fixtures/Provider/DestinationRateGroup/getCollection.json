@@ -7,13 +7,15 @@
         "en": "Fallback",
         "es": "Fallback",
         "ca": "Fallback",
-        "it": "Fallback"
+        "it": "Fallback",
+        "eu": "Fallback"
       },
       "description": {
         "en": "",
         "es": "",
         "ca": "",
-        "it": ""
+        "it": "",
+        "eu": ""
       },
       "file": {
         "fileSize": null,
@@ -29,13 +31,15 @@
         "en": "Standard",
         "es": "Standard",
         "ca": "Standard",
-        "it": "Standard"
+        "it": "Standard",
+        "eu": "Standard"
       },
       "description": {
         "en": "",
         "es": "",
         "ca": "",
-        "it": ""
+        "it": "",
+        "eu": ""
       },
       "file": {
         "fileSize": null,

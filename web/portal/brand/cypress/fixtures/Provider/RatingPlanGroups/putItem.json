@@ -4,13 +4,15 @@
       "en": "Updated",
       "es": "Updated",
       "ca": "Updated",
-      "it": "Aggiornato"
+      "it": "Aggiornato",
+      "eu": "Berria"
     },
     "description": {
       "en": "Updated",
       "es": "Updated",
       "ca": "Updated",
-      "it": "Updated"
+      "it": "Updated",
+      "eu": "Updated"
     },
     "currency": null
   },
@@ -21,13 +23,15 @@
           "en": "Updated",
           "es": "Updated",
           "ca": "Updated",
-          "it": "Aggiornato"
+          "it": "Aggiornato",
+          "eu": "Berria"
         },
         "description": {
           "en": "Updated",
           "es": "Updated",
           "ca": "Updated",
-          "it": "Updated"
+          "it": "Updated",
+          "eu": "Updated"
         },
         "currency": null
     },
