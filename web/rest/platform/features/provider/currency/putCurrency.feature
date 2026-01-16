@@ -17,7 +17,8 @@ Feature: Manage currencies
             "en": "Australia Dólar",
             "es": "Australia Dólar",
             "ca": "Australia Dólar",
-            "it": "Australia Dólar"
+            "it": "Australia Dólar",
+            "eu": "Pound"
         }
       }
       """
@@ -34,7 +35,8 @@ Feature: Manage currencies
             "en": "Australia Dólar",
             "es": "Australia Dólar",
             "ca": "Australia Dólar",
-            "it": "Australia Dólar"
+            "it": "Australia Dólar",
+            "eu": "Pound"
         }
       }
       """

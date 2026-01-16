@@ -130,7 +130,8 @@ Feature: Manage brands
                   "en": "es",
                   "es": "es",
                   "ca": "es",
-                  "it": "es"
+                  "it": "es",
+                  "eu": "es"
               }
           },
           "defaultTimezone": {
@@ -141,7 +142,8 @@ Feature: Manage brands
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "country": 68
           },
@@ -153,7 +155,8 @@ Feature: Manage brands
                   "en": "Euro",
                   "es": "Euro",
                   "ca": "Euro",
-                  "it": "Euro"
+                  "it": "Euro",
+                  "eu": "Euro"
               }
           },
           "voicemailNotificationTemplate": null,

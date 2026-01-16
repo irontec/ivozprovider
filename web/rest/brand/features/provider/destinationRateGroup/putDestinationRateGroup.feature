@@ -17,14 +17,16 @@ Content-Disposition: form-data; name="destinationRateGroup"
     "name": {
         "en": "Updated Standard",
         "es": "Standard Actualizado",
+        "ca": "Standard Actualizado",
         "it": "Standard",
-        "ca": "Standard Actualizado"
+        "eu": "Fallback"
     },
     "description": {
         "en": "New Description",
         "es": "Descripción nueva",
+        "ca": "Descripción nueva",
         "it": "",
-        "ca": "Descripción nueva"
+        "eu": ""
     },
     "currency": 2,
     "importerArguments": {
@@ -65,13 +67,15 @@ Content-Type: text/csv
               "en": "Updated Standard",
               "es": "Standard Actualizado",
               "ca": "Standard Actualizado",
-              "it": "Standard"
+              "it": "Standard",
+              "eu": "Fallback"
           },
           "description": {
               "en": "New Description",
               "es": "Descripción nueva",
               "ca": "Descripción nueva",
-              "it": ""
+              "it": "",
+              "eu": ""
           },
           "file": {
               "fileSize": 84,

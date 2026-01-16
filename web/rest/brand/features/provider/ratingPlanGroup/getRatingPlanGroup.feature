@@ -20,13 +20,15 @@ Feature: Retrieve rating plan group
                   "en": "Something",
                   "es": "Algo",
                   "ca": "Algo mes",
-                  "it": "Più"
+                  "it": "Più",
+                  "eu": "Zerbait"
               },
               "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "currency": 1
           },
@@ -36,13 +38,15 @@ Feature: Retrieve rating plan group
                   "en": "Something more",
                   "es": "Algo más",
                   "ca": "Algo mes",
-                  "it": "Più"
+                  "it": "Più",
+                  "eu": "Zerbait"
               },
               "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "currency": 1
           }
@@ -64,13 +68,15 @@ Feature: Retrieve rating plan group
               "en": "Something",
               "es": "Algo",
               "ca": "Algo mes",
-              "it": "Più"
+              "it": "Più",
+              "eu": "Zerbait"
           },
           "description": {
               "en": "en",
               "es": "es",
               "ca": "ca",
-              "it": "it"
+              "it": "it",
+              "eu": "eu"
           }
       }
       """

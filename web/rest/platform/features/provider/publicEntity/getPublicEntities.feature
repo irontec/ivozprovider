@@ -21,7 +21,8 @@ Feature: Retrieve public entities
                   "en": "_RatingPlanPrices",
                   "es": "_RatingPlanPrices",
                   "ca": "_RatingPlanPrices",
-                  "it": "_RatingPlanPrices"
+                  "it": "_RatingPlanPrices",
+                  "eu": "_RatingPlanPrices"
               }
           },
           {
@@ -31,7 +32,8 @@ Feature: Retrieve public entities
                   "en": "BillableCalls",
                   "es": "BillableCalls",
                   "ca": "BillableCalls",
-                  "it": "BillableCalls"
+                  "it": "BillableCalls",
+                  "eu": "BillableCalls"
               }
           },
           {
@@ -41,7 +43,8 @@ Feature: Retrieve public entities
                   "en": "Calendars",
                   "es": "Calendars",
                   "ca": "Calendars",
-                  "it": "Calendars"
+                  "it": "Calendars",
+                  "eu": "Calendars"
               }
           },
           {
@@ -51,7 +54,8 @@ Feature: Retrieve public entities
                   "en": "CalendarPeriods",
                   "es": "CalendarPeriods",
                   "ca": "CalendarPeriods",
-                  "it": "CalendarPeriods"
+                  "it": "CalendarPeriods",
+                  "eu": "CalendarPeriods"
               }
           },
           {
@@ -61,7 +65,8 @@ Feature: Retrieve public entities
                   "en": "CalendarPeriodsRelSchedules",
                   "es": "CalendarPeriodsRelSchedules",
                   "ca": "CalendarPeriodsRelSchedules",
-                  "it": "CalendarPeriodsRelSchedules"
+                  "it": "CalendarPeriodsRelSchedules",
+                  "eu": "CalendarPeriodsRelSchedules"
               }
           }
       ]
@@ -87,7 +92,8 @@ Feature: Retrieve public entities
               "en": "Destinations",
               "es": "Destinations",
               "ca": "Destinations",
-              "it": "Destinations"
+              "it": "Destinations",
+              "eu": "Destinations"
           }
       }
       """

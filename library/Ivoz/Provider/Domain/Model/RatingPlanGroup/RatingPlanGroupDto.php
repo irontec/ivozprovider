@@ -12,13 +12,13 @@ class RatingPlanGroupDto extends RatingPlanGroupDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
-                'name' => ['en','es','ca','it'],
+                'name' => ['en','es','ca','it','eu'],
                 'brandId' => 'brand',
                 'currencyId' => 'currency'
             ];
 
             if ($role === 'ROLE_BRAND_ADMIN') {
-                $response['description'] = ['en','es','ca','it'];
+                $response['description'] = ['en','es','ca','it','eu'];
             }
         } else {
             $response = parent::getPropertyMap(...func_get_args());

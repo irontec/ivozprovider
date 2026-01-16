@@ -29,7 +29,7 @@ class TransformationRuleSetDto extends TransformationRuleSetDtoAbstract
                 'areaCode' => 'areaCode',
                 'nationalLen' => 'nationalLen',
                 'id' => 'id',
-                'name' => ['en','es','ca','it'],
+                'name' => ['en','es','ca','it','eu'],
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

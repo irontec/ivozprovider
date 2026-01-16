@@ -50,10 +50,12 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
                 ->setNameEn($country->getName()->getEn())
                 ->setNameCa($country->getName()->getCa())
                 ->setNameIt($country->getName()->getIt())
+                ->setNameEu($country->getName()->getEu())
                 ->setDescriptionEs('')
                 ->setDescriptionEn('')
                 ->setDescriptionCa('')
                 ->setDescriptionIt('')
+                ->setDescriptionEu('')
                 ->setPrefix((string) $country->getCountryCode())
                 ->setBrandId($brand->getId());
 

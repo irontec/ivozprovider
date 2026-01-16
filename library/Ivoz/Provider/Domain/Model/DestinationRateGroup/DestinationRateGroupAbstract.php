@@ -150,6 +150,8 @@ abstract class DestinationRateGroupAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $descriptionEn = $dto->getDescriptionEn();
         Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
         $descriptionEs = $dto->getDescriptionEs();
@@ -158,6 +160,8 @@ abstract class DestinationRateGroupAbstract
         Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
         $descriptionIt = $dto->getDescriptionIt();
         Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
+        $descriptionEu = $dto->getDescriptionEu();
+        Assertion::notNull($descriptionEu, 'descriptionEu value is null, but non null value was expected.');
         $deductibleConnectionFee = $dto->getDeductibleConnectionFee();
         Assertion::notNull($deductibleConnectionFee, 'getDeductibleConnectionFee value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -167,14 +171,16 @@ abstract class DestinationRateGroupAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $description = new Description(
             $descriptionEn,
             $descriptionEs,
             $descriptionCa,
-            $descriptionIt
+            $descriptionIt,
+            $descriptionEu
         );
 
         $file = new File(
@@ -220,6 +226,8 @@ abstract class DestinationRateGroupAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $descriptionEn = $dto->getDescriptionEn();
         Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
         $descriptionEs = $dto->getDescriptionEs();
@@ -228,6 +236,8 @@ abstract class DestinationRateGroupAbstract
         Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
         $descriptionIt = $dto->getDescriptionIt();
         Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
+        $descriptionEu = $dto->getDescriptionEu();
+        Assertion::notNull($descriptionEu, 'descriptionEu value is null, but non null value was expected.');
         $deductibleConnectionFee = $dto->getDeductibleConnectionFee();
         Assertion::notNull($deductibleConnectionFee, 'getDeductibleConnectionFee value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -237,14 +247,16 @@ abstract class DestinationRateGroupAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $description = new Description(
             $descriptionEn,
             $descriptionEs,
             $descriptionCa,
-            $descriptionIt
+            $descriptionIt,
+            $descriptionEu
         );
 
         $file = new File(
@@ -280,10 +292,12 @@ abstract class DestinationRateGroupAbstract
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
             ->setNameIt(self::getName()->getIt())
+            ->setNameEu(self::getName()->getEu())
             ->setDescriptionEn(self::getDescription()->getEn())
             ->setDescriptionEs(self::getDescription()->getEs())
             ->setDescriptionCa(self::getDescription()->getCa())
             ->setDescriptionIt(self::getDescription()->getIt())
+            ->setDescriptionEu(self::getDescription()->getEu())
             ->setFileFileSize(self::getFile()->getFileSize())
             ->setFileMimeType(self::getFile()->getMimeType())
             ->setFileBaseName(self::getFile()->getBaseName())
@@ -305,10 +319,12 @@ abstract class DestinationRateGroupAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
+            'nameEu' => self::getName()->getEu(),
             'descriptionEn' => self::getDescription()->getEn(),
             'descriptionEs' => self::getDescription()->getEs(),
             'descriptionCa' => self::getDescription()->getCa(),
             'descriptionIt' => self::getDescription()->getIt(),
+            'descriptionEu' => self::getDescription()->getEu(),
             'fileFileSize' => self::getFile()->getFileSize(),
             'fileMimeType' => self::getFile()->getMimeType(),
             'fileBaseName' => self::getFile()->getBaseName(),

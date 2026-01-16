@@ -13,7 +13,7 @@ class DestinationDto extends DestinationDtoAbstract
             $response = [
                 'prefix' => 'prefix',
                 'id' => 'id',
-                'name' => ['en','es','ca','it'],
+                'name' => ['en','es','ca','it','eu'],
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

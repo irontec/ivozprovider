@@ -194,7 +194,8 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
                     'RatingPlanGroupEn',
                     'RatingPlanGroupEs',
                     'RatingPlanGroupCa',
-                    'RatingPlanGroupIt'
+                    'RatingPlanGroupIt',
+                    'RatingPlanGroupEu'
                 ),
             ]
         );
@@ -221,7 +222,8 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
                     'DestinationEn',
                     'DestinationEs',
                     'DestinationCa',
-                    'DestinationIt'
+                    'DestinationIt',
+                    'DestinationEu'
                 ),
             ]
         );

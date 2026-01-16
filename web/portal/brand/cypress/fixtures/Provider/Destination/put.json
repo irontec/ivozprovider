@@ -6,7 +6,8 @@
       "en": "Bilbao Updated",
       "es": "Bilbao Actualizado",
       "ca": "Bilbao Actualizado",
-      "it": "Bilbao Updated"
+      "it": "Bilbao Updated",
+      "eu": "Bilbao Updated"
     }
   },
   "response": {
@@ -17,7 +18,8 @@
         "en": "Bilbao Updated",
         "es": "Bilbao Actualizado",
         "ca": "Bilbao Actualizado",
-        "it": "Bilbao Updated"
+        "it": "Bilbao Updated",
+        "eu": "Bilbao Updated"
       }
     },
     "headers": {

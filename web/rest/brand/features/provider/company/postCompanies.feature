@@ -148,7 +148,8 @@ Feature: Create companies
                   "en": "es",
                   "es": "es",
                   "ca": "es",
-                  "it": "es"
+                  "it": "es",
+                  "eu": "es"
               }
           },
           "defaultTimezone": {
@@ -159,7 +160,8 @@ Feature: Create companies
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "country": 68
           },
@@ -171,13 +173,15 @@ Feature: Create companies
                   "en": "Spain",
                   "es": "España",
                   "ca": "España",
-                  "it": "Spagna"
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
                   "ca": "Europa",
-                  "it": "Europe"
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           },
           "currency": null,
@@ -193,7 +197,8 @@ Feature: Create companies
                   "en": "Brand 1 transformation for Spain",
                   "es": "Marca 1 tansformacion para España",
                   "ca": "Marca 1 tansformacion para España",
-                  "it": "Brand 1 transformation for Spain"
+                  "it": "Brand 1 transformation for Spain",
+                  "eu": "Brand 1 transformation for Spain"
               },
               "country": 68,
               "editable": true

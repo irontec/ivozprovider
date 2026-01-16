@@ -16,7 +16,8 @@ Feature: Create destination
               "en": "Germany",
               "es": "Alemania",
               "ca": "Alemania",
-              "it": "Germany"
+              "it": "Germany",
+              "eu": "Alemania"
           }
       }
       """
@@ -32,7 +33,8 @@ Feature: Create destination
               "en": "Germany",
               "es": "Alemania",
               "ca": "Alemania",
-              "it": "Germany"
+              "it": "Germany",
+              "eu": "Alemania"
           }
       }
       """
@@ -53,6 +55,7 @@ Feature: Create destination
               "en": "Usansolocity",
               "es": "Usansolocity",
               "ca": "Usansolocity",
+              "it": "Usansolocity",
               "it": "Usansolocity"
           }
       }

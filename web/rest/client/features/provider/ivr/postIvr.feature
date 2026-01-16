@@ -57,12 +57,12 @@ Feature: Create IVRs
               "id": 1,
               "encodedFile": {
                   "fileSize": 1,
-                  "mimeType": "audio\/x-wav; charset=binary",
+                  "mimeType": "audio/x-wav; charset=binary",
                   "baseName": "locution.wav"
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio\/mpeg; charset=binary",
+                  "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               }
           },
@@ -74,12 +74,12 @@ Feature: Create IVRs
               "id": 1,
               "encodedFile": {
                   "fileSize": 1,
-                  "mimeType": "audio\/x-wav; charset=binary",
+                  "mimeType": "audio/x-wav; charset=binary",
                   "baseName": "locution.wav"
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio\/mpeg; charset=binary",
+                  "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               }
           },
@@ -93,15 +93,17 @@ Feature: Create IVRs
               "id": 2,
               "name": {
                   "en": "United Arab Emirates",
-                  "es": "Emiratos \u00c1rabes Unidos",
-                  "ca": "Emiratos \u00c1rabes Unidos",
-                  "it": "United Arab Emirates"
+                  "es": "Emiratos Árabes Unidos",
+                  "ca": "Emiratos Árabes Unidos",
+                  "it": "United Arab Emirates",
+                  "eu": "United Arab Emirates"
               },
               "zone": {
                   "en": "Asia",
                   "es": "Asia",
                   "ca": "Asia",
-                  "it": "Asia"
+                  "it": "Asia",
+                  "eu": "Asia"
               }
           },
           "errorNumberCountry": {
@@ -110,15 +112,17 @@ Feature: Create IVRs
               "id": 3,
               "name": {
                   "en": "Afghanistan",
-                  "es": "Afganist\u00e1n",
-                  "ca": "Afganist\u00e1n",
-                  "it": "Afghanistan"
+                  "es": "Afganistán",
+                  "ca": "Afganistán",
+                  "it": "Afghanistan",
+                  "eu": "Afghanistan"
               },
               "zone": {
                   "en": "Asia",
                   "es": "Asia",
                   "ca": "Asia",
-                  "it": "Asia"
+                  "it": "Asia",
+                  "eu": "Asia"
               }
           },
           "excludedExtensionIds": [
