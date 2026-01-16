@@ -199,4 +199,19 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
 
         return parent::setStatusMsg($statusMsg);
     }
+
+    protected function setPdf(Pdf $pdf): static
+    {
+        $baseName = $pdf->getBaseName();
+        if ($baseName !== null) {
+            $baseName = str_replace(['/', '\\'], '-', $baseName);
+            $pdf = new Pdf(
+                $pdf->getFileSize(),
+                $pdf->getMimeType(),
+                $baseName
+            );
+        }
+
+        return parent::setPdf($pdf);
+    }
 }
