@@ -5,7 +5,8 @@
       "en": "Germany",
       "es": "Alemania",
       "ca": "Alemania",
-      "it": "Germany"
+      "it": "Germany",
+      "eu": "Euskera"
     }
   },
   "response": {
@@ -16,7 +17,8 @@
         "en": "Germany",
         "es": "Alemania",
         "ca": "Alemania",
-        "it": "Germany"
+        "it": "Germany",
+        "eu": "Euskera"
       }
     },
     "headers": {

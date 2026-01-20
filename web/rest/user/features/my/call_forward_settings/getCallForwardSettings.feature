@@ -116,13 +116,15 @@ Feature: Retrieve call forward settings
                 "en": "Spain",
                 "es": "España",
                 "ca": "España",
-                "it": "Spagna"
+                "it": "Spagna",
+                "eu": "Spagna"
             },
             "zone": {
                 "en": "Europe",
                 "es": "Europa",
                 "ca": "Europa",
-                "it": "Europe"
+                "it": "Europe",
+                "eu": "Europa"
             }
         }
       }

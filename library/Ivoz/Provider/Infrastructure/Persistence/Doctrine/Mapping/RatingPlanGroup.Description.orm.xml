@@ -21,5 +21,10 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="eu" type="string" column="description_eu" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </embeddable>
 </doctrine-mapping>

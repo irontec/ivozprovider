@@ -25,6 +25,7 @@ class TransformationRuleSetLifeCycleTest extends KernelTestCase
             ->setNameEs('es')
             ->setNameCa('ca')
             ->setNameIt('it')
+            ->setNameEu('eu')
             ->setCountryId(1);
 
         return $transformationRuleSetDto;

@@ -25,5 +25,11 @@
         <option name="default"/>
       </options>
     </field>
+    <field name="eu" type="string" column="timeZoneLabel_eu" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
   </embeddable>
 </doctrine-mapping>

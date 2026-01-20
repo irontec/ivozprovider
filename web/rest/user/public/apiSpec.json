@@ -280,18 +280,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "countryCode[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "countryCode[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "countryCode[neq]",
                         "in": "query",
                         "required": false,
@@ -308,6 +296,18 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "countryCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "countryCode[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "exists[countryCode]",
@@ -412,12 +412,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.es[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.es[start]",
                         "in": "query",
                         "required": false,
@@ -431,6 +425,48 @@
                     },
                     {
                         "name": "name.es[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -527,6 +563,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -1900,6 +1946,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -2249,6 +2301,12 @@
                     },
                     {
                         "name": "zone.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.eu",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6135,7 +6193,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -6154,6 +6213,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 100,
                     "description": "",
                     "type": "string"
@@ -6166,7 +6230,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -6191,6 +6256,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 55,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 55,
                     "description": "",
@@ -6607,7 +6679,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -6632,6 +6705,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 20,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 20,
                     "description": "",

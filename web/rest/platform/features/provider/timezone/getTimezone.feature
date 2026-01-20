@@ -154,7 +154,8 @@ Feature: Retrieve timezones
               "en": "en",
               "es": "es",
               "ca": "ca",
-              "it": "it"
+              "it": "it",
+              "eu": "eu"
           },
           "country": {
               "code": "ES",
@@ -164,13 +165,15 @@ Feature: Retrieve timezones
                   "en": "Spain",
                   "es": "España",
                   "ca": "España",
-                  "it": "Spagna"
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
                   "ca": "Europa",
-                  "it": "Europe"
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           }
       }

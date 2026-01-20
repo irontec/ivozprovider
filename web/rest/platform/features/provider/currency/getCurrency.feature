@@ -22,7 +22,8 @@ Feature: Manage currencies
                   "en": "Euro",
                   "es": "Euro",
                   "ca": "Euro",
-                  "it": "Euro"
+                  "it": "Euro",
+                  "eu": "Euro"
               }
           },
           {
@@ -33,7 +34,8 @@ Feature: Manage currencies
                   "en": "Pound",
                   "es": "Libra",
                   "ca": "Libra",
-                  "it": "Pound"
+                  "it": "Pound",
+                  "eu": "Pound"
               }
           },
           {
@@ -44,7 +46,8 @@ Feature: Manage currencies
                   "en": "Dollar",
                   "es": "Dóllar",
                   "ca": "Dollar",
-                  "it": "Dollar"
+                  "it": "Dollar",
+                  "eu": "Dollar"
               }
           }
       ]
@@ -67,7 +70,8 @@ Feature: Manage currencies
               "en": "Euro",
               "es": "Euro",
               "ca": "Euro",
-              "it": "Euro"
+              "it": "Euro",
+              "eu": "Euro"
           }
       }
       """

@@ -10,7 +10,8 @@
       "en": "updated name",
       "es": "nombre actualizado",
       "ca": "nombre actualizado",
-      "it": "nome aggiornato"
+      "it": "nome aggiornato",
+      "eu": "Brand 1 transformation for Spain"
     },
     "country": 1
   },
@@ -27,7 +28,8 @@
         "en": "updated name",
         "es": "nombre actualizado",
         "ca": "nombre actualizado",
-        "it": "nome aggiornato"
+        "it": "nome aggiornato",
+        "eu": "Brand 1 transformation for Spain"
       },
       "country": 1,
       "editable": true

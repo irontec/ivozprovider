@@ -8,7 +8,8 @@
                 "en": "Euro",
                 "es": "Euro",
                 "ca": "Euro",
-                "it": "Euro"
+                "it": "Euro",
+                "eu": "Euro"
             }
         },
         {
@@ -19,7 +20,8 @@
                 "en": "Pound",
                 "es": "Libra",
                 "ca": "Libra",
-                "it": "Pound"
+                "it": "Pound",
+                "eu": "Pound"
             }
         },
         {
@@ -30,7 +32,8 @@
                 "en": "Dollar",
                 "es": "Dóllar",
                 "ca": "Dollar",
-                "it": "Dollar"
+                "it": "Dollar",
+                "eu": "Dollar"
             }
         }
     ],

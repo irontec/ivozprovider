@@ -48,6 +48,11 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
      */
     private $nameIt = '';
 
+    /**
+     * @var string|null
+     */
+    private $nameEu = '';
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -71,6 +76,7 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
                 'es',
                 'ca',
                 'it',
+                'eu',
             ]
         ];
     }
@@ -89,6 +95,7 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
                 'it' => $this->getNameIt(),
+                'eu' => $this->getNameEu(),
             ]
         ];
 
@@ -191,5 +198,17 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
     public function getNameIt(): ?string
     {
         return $this->nameIt;
+    }
+
+    public function setNameEu(string $nameEu): static
+    {
+        $this->nameEu = $nameEu;
+
+        return $this;
+    }
+
+    public function getNameEu(): ?string
+    {
+        return $this->nameEu;
     }
 }

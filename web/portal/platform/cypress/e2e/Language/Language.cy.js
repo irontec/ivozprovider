@@ -32,4 +32,13 @@ describe('in Language', () => {
     cy.get(`li[data-value=it-IT]`).click();
     cy.get('.title').should('contain', 'Operator information');
   });
+
+  ///////////////////////
+  // Modify Euskera Language
+  ///////////////////////
+  it('can modify Euskera Language', () => {
+    cy.get('#mui-component-select-language').click();
+    cy.get(`li[data-value=eu-EU]`).click();
+    cy.get('.title').should('contain', 'Operadore informazioa');
+  });
 });

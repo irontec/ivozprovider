@@ -5618,18 +5618,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "countryCode[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "countryCode[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "countryCode[neq]",
                         "in": "query",
                         "required": false,
@@ -5646,6 +5634,18 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "countryCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "countryCode[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "exists[countryCode]",
@@ -5750,12 +5750,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.es[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.es[start]",
                         "in": "query",
                         "required": false,
@@ -5769,6 +5763,48 @@
                     },
                     {
                         "name": "name.es[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5865,6 +5901,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6011,6 +6057,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "iden[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "iden[start]",
                         "in": "query",
                         "required": false,
@@ -6024,12 +6076,6 @@
                     },
                     {
                         "name": "iden[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "iden[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6083,12 +6129,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.en[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.en[neq]",
                         "in": "query",
                         "required": false,
@@ -6107,6 +6147,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.en[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.es",
                         "in": "query",
                         "required": false,
@@ -6114,6 +6160,12 @@
                     },
                     {
                         "name": "name.es[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6137,7 +6189,37 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.es[neq]",
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6191,6 +6273,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "symbol[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "symbol[start]",
                         "in": "query",
                         "required": false,
@@ -6204,12 +6292,6 @@
                     },
                     {
                         "name": "symbol[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "symbol[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6260,6 +6342,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -6962,12 +7054,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.ca[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.ca[neq]",
                         "in": "query",
                         "required": false,
@@ -6981,6 +7067,12 @@
                     },
                     {
                         "name": "name.ca[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.ca[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -7058,6 +7150,42 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -7070,18 +7198,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.it[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.it[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.it[start]",
                         "in": "query",
                         "required": false,
@@ -7089,6 +7205,18 @@
                     },
                     {
                         "name": "name.it[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -7139,6 +7267,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8237,12 +8375,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.ca[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.ca[neq]",
                         "in": "query",
                         "required": false,
@@ -8256,6 +8388,12 @@
                     },
                     {
                         "name": "name.ca[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.ca[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8333,6 +8471,42 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -8345,18 +8519,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.it[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.it[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.it[start]",
                         "in": "query",
                         "required": false,
@@ -8364,6 +8526,18 @@
                     },
                     {
                         "name": "name.it[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8414,6 +8588,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10742,6 +10926,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "exists[name.eu]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[name.it]",
                         "in": "query",
                         "required": false,
@@ -10850,6 +11040,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.en[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.en[neq]",
                         "in": "query",
                         "required": false,
@@ -10863,12 +11059,6 @@
                     },
                     {
                         "name": "name.en[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.en[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10892,18 +11082,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.es[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.es[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.es[end]",
                         "in": "query",
                         "required": false,
@@ -10922,6 +11100,60 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.es[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -10929,12 +11161,6 @@
                     },
                     {
                         "name": "name.it[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10962,6 +11188,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "name.it[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "enum": [
@@ -11009,6 +11241,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11588,6 +11830,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "defaultCode[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "defaultCode[partial]",
                         "in": "query",
                         "required": false,
@@ -11606,12 +11854,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "defaultCode[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description.ca",
                         "in": "query",
                         "required": false,
@@ -11619,12 +11861,6 @@
                     },
                     {
                         "name": "description.ca[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description.ca[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11643,6 +11879,12 @@
                     },
                     {
                         "name": "description.ca[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.ca[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11696,12 +11938,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description.es[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description.es[start]",
                         "in": "query",
                         "required": false,
@@ -11715,6 +11951,48 @@
                     },
                     {
                         "name": "description.es[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11822,18 +12100,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.ca[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.ca[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.ca[end]",
                         "in": "query",
                         "required": false,
@@ -11846,6 +12112,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.ca[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.ca[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.en",
                         "in": "query",
                         "required": false,
@@ -11853,6 +12131,12 @@
                     },
                     {
                         "name": "name.en[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.en[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11876,12 +12160,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.en[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.es",
                         "in": "query",
                         "required": false,
@@ -11889,12 +12167,6 @@
                     },
                     {
                         "name": "name.es[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.es[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11918,6 +12190,48 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -11925,6 +12239,12 @@
                     },
                     {
                         "name": "name.it[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11943,12 +12263,6 @@
                     },
                     {
                         "name": "name.it[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11989,6 +12303,16 @@
                             "DESC"
                         ],
                         "name": "_order[description.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[description.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -12059,6 +12383,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16377,7 +16711,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -16396,6 +16731,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 100,
                     "description": "",
                     "type": "string"
@@ -16408,7 +16748,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -16433,6 +16774,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 55,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 55,
                     "description": "",
@@ -16528,7 +16876,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -16553,6 +16902,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 25,
                     "description": "",
@@ -16946,7 +17302,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -16971,6 +17328,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 50,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 50,
                     "description": "",
@@ -17305,7 +17669,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -17330,6 +17695,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 100,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 100,
                     "description": "",
@@ -18059,6 +18431,11 @@
                     "maxLength": 100,
                     "description": "",
                     "type": "string"
+                },
+                "eu": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
                 }
             }
         },
@@ -18338,7 +18715,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -18363,6 +18741,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 255,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 255,
                     "description": "",
@@ -18377,7 +18762,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -18402,6 +18788,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 50,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 50,
                     "description": "",
@@ -18862,7 +19255,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -18887,6 +19281,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 20,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 20,
                     "description": "",

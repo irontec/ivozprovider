@@ -73,15 +73,17 @@ Feature: Retrieve contacts
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "Espa\u00f1a",
-                  "ca": "Espa\u00f1a",
-                  "it": "Spagna"
+                  "es": "España",
+                  "ca": "España",
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
                   "ca": "Europa",
-                  "it": "Europe"
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           },
           "mobilePhoneCountry": {
@@ -90,15 +92,17 @@ Feature: Retrieve contacts
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "Espa\u00f1a",
-                  "ca": "Espa\u00f1a",
-                  "it": "Spagna"
+                  "es": "España",
+                  "ca": "España",
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
                   "ca": "Europa",
-                  "it": "Europe"
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           }
       }
