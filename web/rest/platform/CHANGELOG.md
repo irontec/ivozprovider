@@ -1,4 +1,41 @@
 # Changelog
+
+## 4.6.0
+* Endpoints:
+    - /countries:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /currencies:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /features:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /languages:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /public_entities:
+      - Added exists[name.eu], name.eu, name.eu[exact], name.eu[start],
+        name.eu[partial], name.eu[end], name.eu[neq], name.eu[exists] and
+        _order[name.eu] filter parameters.
+    - /services:
+      - Added description.eu, description.eu[exact], description.eu[neq],
+        description.eu[start], description.eu[partial], description.eu[end],
+        name.eu, name.eu[exact], name.eu[neq], name.eu[start], name.eu[partial],
+        name.eu[end], _order[description.eu] and _order[name.eu] filter
+        parameters.
+* Models:
+    - Country (name and zone):
+        - Added eu (Euskara) locale property.
+    - Currency:
+        - Added eu (Euskara) locale to name.
+    - Language:
+        - Added eu (Euskara) locale to name.
+    - PublicEntity:
+        - Added eu (Euskara) locale to name.
+    - Service:
+        - Added eu (Euskara) locale to name and description.
+
 ## 4.5.0
 * Models:
     - Dashboard:

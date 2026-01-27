@@ -1,4 +1,20 @@
 # Changelog
+
+## 4.6.0
+* Endpoints:
+    - /countries:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /faxes_in_outs:
+      - Added name.eu filter parameter.
+    - /my/call_forward_settings:
+      - Added zone.eu filter parameter.
+* Models:
+    - Country (name and zone):
+        - Added eu (Euskara) locale property.
+    - Timezone:
+        - Added eu (Euskara) locale to label.
+
 ## 4.5.0
 * Models:
     - Dashboard:

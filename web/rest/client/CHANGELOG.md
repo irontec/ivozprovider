@@ -1,4 +1,41 @@
 # Changelog
+
+## 4.6.0
+* Endpoints:
+    - /countries:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /hunt_group_members:
+      - Added name.eu and zone.eu filter parameters.
+    - /languages:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /rating_plan_groups:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /services:
+      - Added description.eu, description.eu[exact], description.eu[neq],
+        description.eu[start], description.eu[partial], description.eu[end],
+        name.eu, name.eu[exact], name.eu[neq], name.eu[start], name.eu[partial],
+        name.eu[end], _order[description.eu] and _order[name.eu] filter
+        parameters.
+    - /transformation_rule_sets:
+      - Added name.eu, name.eu[exact], name.eu[neq], name.eu[start],
+        name.eu[partial], name.eu[end] and _order[name.eu] filter parameters.
+* Models:
+    - Country (name and zone):
+        - Added eu (Euskara) locale property.
+    - Language:
+        - Added eu (Euskara) locale to name.
+    - RatingPlanGroup:
+        - Added eu (Euskara) locale to description and name.
+    - Service:
+        - Added eu (Euskara) locale to name and description.
+    - Timezone:
+        - Added eu (Euskara) locale to label.
+    - TransformationRuleSet:
+        - Added eu (Euskara) locale to name.
+
 ## 4.5.0
 * Endpoints:
     - /conditional_routes:
