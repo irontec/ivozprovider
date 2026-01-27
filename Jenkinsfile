@@ -38,10 +38,10 @@ pipeline {
         BASE_BRANCH = getBaseBranch()
         JIRA_TICKET = getJiraTicket()
         HASH_BACK = getCurrentHash("asterisk/agi doc library microservices schema web/rest")
-        HASH_FRONT_PLATFORM = getCurrentHash("web/portal/platform")
-        HASH_FRONT_BRAND = getCurrentHash("web/portal/brand")
-        HASH_FRONT_CLIENT = getCurrentHash("web/portal/client")
-        HASH_FRONT_USER = getCurrentHash("web/portal/user")
+        HASH_FRONT_PLATFORM = getCurrentHash("web/portal/platform web/portal/yarn.lock")
+        HASH_FRONT_BRAND = getCurrentHash("web/portal/brand web/portal/yarn.lock")
+        HASH_FRONT_CLIENT = getCurrentHash("web/portal/client web/portal/yarn.lock")
+        HASH_FRONT_USER = getCurrentHash("web/portal/user web/portal/yarn.lock")
         HASH_FILE = "${JENKINS_HOME}/jobs/${JOB_NAME}/../cached_pipelines.txt"
         MAX_HASHES = 400
     }

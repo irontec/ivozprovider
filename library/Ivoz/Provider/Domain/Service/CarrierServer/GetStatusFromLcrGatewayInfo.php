@@ -19,17 +19,14 @@ class GetStatusFromLcrGatewayInfo
         CarrierServerDto $carrierServerDto
     ): null|int {
 
-        if (is_null($carrierServerDto->getId())) {
+        $carrierServerId = $carrierServerDto->getId();
+        if (is_null($carrierServerId)) {
             return null;
         }
 
-        /** @var ?TrunksLcrGatewayInterface $kamTrunksLcrGateway */
         $kamTrunksLcrGateway = $this
             ->trunksLcrGatewayDoctrineRepository
-            ->find(
-                $carrierServerDto
-                    ->getId()
-            );
+            ->findByCarrierServerId($carrierServerId);
 
         if (is_null($kamTrunksLcrGateway)) {
             return null;

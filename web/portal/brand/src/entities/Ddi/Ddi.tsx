@@ -4,6 +4,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import DialpadIcon from '@mui/icons-material/Dialpad';
 
+import Actions from './Action';
 import { DdiProperties, DdiPropertyList } from './DdiProperties';
 import RouteType from './Field/RouteType';
 
@@ -223,6 +224,7 @@ const ddi: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'DDIs',
   },
+  customActions: Actions,
   selectOptions: async () => {
     const module = await import('./SelectOptions');
 

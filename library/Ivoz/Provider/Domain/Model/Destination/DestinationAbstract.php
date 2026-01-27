@@ -117,7 +117,8 @@ abstract class DestinationAbstract
             $dto->getNameEn(),
             $dto->getNameEs(),
             $dto->getNameCa(),
-            $dto->getNameIt()
+            $dto->getNameIt(),
+            $dto->getNameEu()
         );
 
         $self = new static(
@@ -152,7 +153,8 @@ abstract class DestinationAbstract
             $dto->getNameEn(),
             $dto->getNameEs(),
             $dto->getNameCa(),
-            $dto->getNameIt()
+            $dto->getNameIt(),
+            $dto->getNameEu()
         );
 
         $this
@@ -174,6 +176,7 @@ abstract class DestinationAbstract
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
             ->setNameIt(self::getName()->getIt())
+            ->setNameEu(self::getName()->getEu())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
@@ -188,6 +191,7 @@ abstract class DestinationAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
+            'nameEu' => self::getName()->getEu(),
             'brandId' => self::getBrand()->getId()
         ];
     }

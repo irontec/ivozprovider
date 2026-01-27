@@ -3,11 +3,11 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -29,6 +29,8 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getId(): ?int;
+
+    public function setCarrier(CarrierInterface $carrier): static;
 
     /**
      * @param int | null $id
@@ -56,8 +58,6 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
     public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): static;
 
     public function getOutgoingRouting(): ?OutgoingRoutingInterface;
-
-    public function setCarrier(CarrierInterface $carrier): static;
 
     public function getCarrier(): CarrierInterface;
 

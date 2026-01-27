@@ -16,7 +16,8 @@ Feature: Update features
               "en": "name",
               "es": "nombre",
               "ca": "nombre",
-              "it": "nome"
+              "it": "nome",
+              "eu": "nombre"
           }
       }
       """
@@ -32,7 +33,8 @@ Feature: Update features
               "en": "name",
               "es": "nombre",
               "ca": "nombre",
-              "it": "nome"
+              "it": "nome",
+              "eu": "nombre"
           }
       }
       """

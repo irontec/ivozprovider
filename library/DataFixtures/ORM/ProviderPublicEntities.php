@@ -37,6 +37,7 @@ class ProviderPublicEntities extends Fixture implements FixtureInterface
                     $data[0],
                     $data[0],
                     $data[0],
+                    $data[0],
                     $data[0]
                 );
 

@@ -21,7 +21,8 @@ Feature: Retrieve public entities
                   "en": "BillableCalls",
                   "es": "BillableCalls",
                   "ca": "BillableCalls",
-                  "it": "BillableCalls"
+                  "it": "BillableCalls",
+                  "eu": "BillableCalls"
               }
           },
           {
@@ -31,7 +32,8 @@ Feature: Retrieve public entities
                   "en": "CalendarPeriods",
                   "es": "CalendarPeriods",
                   "ca": "CalendarPeriods",
-                  "it": "CalendarPeriods"
+                  "it": "CalendarPeriods",
+                  "eu": "CalendarPeriods"
               }
           },
           {
@@ -41,7 +43,8 @@ Feature: Retrieve public entities
                   "en": "CalendarPeriodsRelSchedules",
                   "es": "CalendarPeriodsRelSchedules",
                   "ca": "CalendarPeriodsRelSchedules",
-                  "it": "CalendarPeriodsRelSchedules"
+                  "it": "CalendarPeriodsRelSchedules",
+                  "eu": "CalendarPeriodsRelSchedules"
               }
           },
           {
@@ -51,7 +54,8 @@ Feature: Retrieve public entities
                   "en": "Calendars",
                   "es": "Calendars",
                   "ca": "Calendars",
-                  "it": "Calendars"
+                  "it": "Calendars",
+                  "eu": "Calendars"
               }
           },
           {
@@ -61,7 +65,8 @@ Feature: Retrieve public entities
                   "en": "CallACL",
                   "es": "CallACL",
                   "ca": "CallACL",
-                  "it": "CallACL"
+                  "it": "CallACL",
+                  "eu": "CallACL"
               }
           }
       ]
@@ -87,7 +92,8 @@ Feature: Retrieve public entities
               "en": "CalendarPeriodsRelSchedules",
               "es": "CalendarPeriodsRelSchedules",
               "ca": "CalendarPeriodsRelSchedules",
-              "it": "CalendarPeriodsRelSchedules"
+              "it": "CalendarPeriodsRelSchedules",
+              "eu": "CalendarPeriodsRelSchedules"
           }
       }
       """

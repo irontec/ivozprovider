@@ -4,13 +4,12 @@ namespace DataFixtures\ORM;
 
 use DataFixtures\Stub\Provider\LocationStub;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\Location\Location;
-use Ivoz\Provider\Domain\Model\Location\EncodedFile;
-use Ivoz\Provider\Domain\Model\Location\OriginalFile;
 
-class ProviderLocation extends Fixture
+class ProviderLocation extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
@@ -42,5 +41,12 @@ class ProviderLocation extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            ProviderCompany::class,
+        );
     }
 }

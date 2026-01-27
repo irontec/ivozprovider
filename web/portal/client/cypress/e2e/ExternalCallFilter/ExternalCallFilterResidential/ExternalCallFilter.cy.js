@@ -37,12 +37,19 @@ describe('ExternalCallFilter', () => {
 
     cy.get('[aria-label=Add]').click();
 
-    const { name, blackListIds, outOfScheduleEnabled } =
-      newExternalCallFilter.request;
+    const {
+      name,
+      blackListIds,
+      outOfScheduleEnabled,
+      outOfScheduleNumberValue,
+      outOfScheduleNumberCountry,
+    } = newExternalCallFilter.request;
     cy.fillTheForm({
       name,
       blackListIds,
       outOfScheduleEnabled,
+      outOfScheduleNumberValue,
+      outOfScheduleNumberCountry,
     });
 
     cy.get('header').should('contain', 'External call filters');
@@ -71,12 +78,19 @@ describe('ExternalCallFilter', () => {
 
     cy.get('svg[data-testid="EditIcon"]').first().click();
 
-    const { name, blackListIds, outOfScheduleEnabled } =
-      editExternalCallFilter.request;
+    const {
+      name,
+      blackListIds,
+      outOfScheduleEnabled,
+      outOfScheduleNumberValue,
+      outOfScheduleNumberCountry,
+    } = editExternalCallFilter.request;
     cy.fillTheForm({
       name,
       blackListIds,
       outOfScheduleEnabled,
+      outOfScheduleNumberValue,
+      outOfScheduleNumberCountry,
     });
 
     cy.contains('External call filters');
@@ -97,7 +111,7 @@ describe('ExternalCallFilter', () => {
     cy.get('td button > svg[data-testid="DeleteIcon"]').first().click();
 
     cy.contains('Remove element');
-    cy.get('div.MuiDialog-container button')
+    cy.get('[role="dialog"]')
       .filter(':visible')
       .contains('Yes, delete it')
       .click();

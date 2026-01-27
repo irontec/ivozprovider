@@ -555,6 +555,34 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
       raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    post: ~
+    post_ddis_unlink:
+      method: 'POST'
+      path: '/ddis/unlink'
+      route_name: 'post_ddis_unlink'
+      pagination_enabled: false
+      swagger_context:
+        consumes:
+          - 'application/json'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: ddiIds
+            in: body
+            required: true
+            schema:
+              type: array
+              items:
+                type: integer
+            description: Array of DDI IDs to unlink
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
@@ -1242,7 +1270,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
-      company: ASC
+      priority: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:

@@ -17,7 +17,8 @@ Feature: Manage currencies
               "en": "Rénmínbì",
               "es": "Rénmínbì",
               "ca": "Rénmínbì",
-              "it": "Rénmínbì"
+              "it": "Rénmínbì",
+              "eu": "Rénmínbì"
           }
       }
       """
@@ -34,7 +35,8 @@ Feature: Manage currencies
               "en": "Rénmínbì",
               "es": "Rénmínbì",
               "ca": "Rénmínbì",
-              "it": "Rénmínbì"
+              "it": "Rénmínbì",
+              "eu": "Rénmínbì"
           }
       }
       """

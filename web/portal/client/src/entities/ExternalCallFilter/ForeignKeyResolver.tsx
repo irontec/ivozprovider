@@ -73,8 +73,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
 
     delete data[idx].outOfScheduleExtension;
     delete data[idx].outOfScheduleVoicemail;
-    delete data[idx].outOfScheduleNumberCountry;
-    delete data[idx].outOfScheduleNumberValue;
   }
 
   return data;

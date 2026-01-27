@@ -1,25 +1,44 @@
+Tue, 27 Jan 2026 10:42:32 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.6.0 released
+
+    * Portals:
+        - Added Basque language translations
+        - Added bulk action to unlink DDIs with confirmation modal
+        - Standarized modal design
+        - Fixed pagination issues
+        - Fixed issues in residential client ExternalFilters form
+
+    * Core:
+        - Fixed PDF generation for manually created invoices
+        - Added backend validations for company type associations in entities
+
+    * Misc:
+        - Added cgrates-balances helper script
+
+
 Mon, 14 Nov 2025 10:37:00 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.5.1 released
 
-    Portals:
+    * Portals:
         - Fixed AccountStatus display in Daily Usage screen (#3036)
 
-    Core
+    * Core:
         - Added dedicated endpoints for balances and dailyUsage for better performance (#3030)
         - Added empty lastname validation in User mass import (#3029)
         - Fixed a bug that allowed some entities to be assigned to wrong Company types (#3039)
 
-    Kamailio
+    * Kamailio:
         - Added support for R-URI domain and port without IP in DirectConnectivity endpoints (#3032)
 
-    Provisioning
+    * Provisioning
         - Fixed specificUrlPattern logic in terminal provisioning (#3034)
 
-    Schema:
+    * Schema:
         - Increased FixedCosts description field to 1024 characters (#3037)
 
-    Misc
+    * Misc:
         - Added shared library support in CI pipeline (#3031)
 
 
@@ -27,7 +46,7 @@ Thu, 09 Oct 2025 10:09:18 +0200 IvozProvider Team <vozip+ivozprovider@irontec.co
 
     * IvozProvider 4.5.0 released
 
-    Portal
+    * Portals:
         - Changed company selector to use new dynamicAutocomplete component (#3023)
         - Added disable diversion toggle in outgoing routes
         - Displayed new Product Name field in all web portals dashboards (#2990)
@@ -35,21 +54,21 @@ Thu, 09 Oct 2025 10:09:18 +0200 IvozProvider Team <vozip+ivozprovider@irontec.co
         - Added regex validation and capture group matching for transformation rules (#2999)
         - Updated routable options and added locution option in DDIs (#2991)
 
-    Kamailio
+    * Kamailio:
         - Avoided while loops in hints search and increased loop limits in kamusers and kamtrunks (#3002)
         - Fixed asterisk sorcery configuration to avoid memory leaks
         - Disabled Diversion logic in outgoing routes (#2981)
         - Enabled SDES-pad flag for SRTP calls
 
-    AGI / Microservices
+    * AGI / Microservices:
         - Updated Voicemail Sender to handle nullable voicemails (#3014)
         - Fixed premature deletion of recordings and updated ended recording checker (#3004)
         - Added support for friend blind transfers (#2982)
 
-    Provisioning
+    * Provisioning:
         - Remove leading spaces from provision templates
 
-    Misc
+    * Misc:
         - Improved error handling in RatingPlanGroup simulator
         - Updated version info rules in About dialog (#2978)
         - Minor refactors and consistency updates across components

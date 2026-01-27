@@ -28,6 +28,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
       aboutMe?.defaultCountryId ?? null;
   }
 
+  if (residential) {
+    initialValues.outOfScheduleTargetType = 'number';
+  }
+
   const groups: Array<FieldsetGroups | false | undefined> = [
     {
       legend: _('Basic Info'),

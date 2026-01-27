@@ -4,6 +4,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -29,5 +30,10 @@ class TrunksLcrGatewayDoctrineRepository extends ServiceEntityRepository impleme
     {
         return $this
             ->find(self::DUMMY_LCR_GATEWAY_ID);
+    }
+
+    public function findByCarrierServerId(int $carrierServerId): ?TrunksLcrGatewayInterface
+    {
+        return $this->findOneBy(['carrierServer' => $carrierServerId]);
     }
 }

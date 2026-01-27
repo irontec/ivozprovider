@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Provider\Domain\Model\Calendar\Calendar;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule;
@@ -308,5 +308,18 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     public function getOutOfScheduleRouteType(): ?string
     {
         return $this->getOutOfScheduleTargetType();
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        $isValidCompanyType =
+            $company->getType() === CompanyInterface::TYPE_VPBX ||
+            $company->getType() === CompanyInterface::TYPE_RESIDENTIAL;
+
+        if (!$isValidCompanyType) {
+            throw new \DomainException('ExternalCallFilter can only be associated with vpbx or residential companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

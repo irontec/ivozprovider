@@ -18,6 +18,15 @@ class CarrierDto extends CarrierDtoAbstract
     private $status = null;
 
     /**
+     * @var ?bool
+     * @AttributeDefinition(
+     *     type="bool",
+     *     description="Has servers"
+     * )
+     */
+    private $hasServers = null;
+
+    /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
@@ -38,7 +47,8 @@ class CarrierDto extends CarrierDtoAbstract
                     'transformationRuleSetId' => 'transformationRuleSet',
                     'balance' => 'balance',
                     'proxyTrunkId' => 'proxyTrunk',
-                    'status' => ['registered']
+                    'status' => ['registered'],
+                    'hasServers' => 'hasServers'
                 ];
             }
         } else {
@@ -72,20 +82,35 @@ class CarrierDto extends CarrierDtoAbstract
         return $this;
     }
 
+    public function setHasServers(bool $hasServers): static
+    {
+        $this->hasServers = $hasServers;
+
+        return $this;
+    }
+
+    public function getHasServers(): ?bool
+    {
+        return $this->hasServers;
+    }
+
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
 
-        if (is_null($this->status)) {
-            return $response;
+        if (!is_null($this->status)) {
+            $response['status'] = array_map(
+                function (bool $registrationStatus): bool {
+                    return $registrationStatus;
+                },
+                $this->status->toArray()
+            );
         }
 
-        $response['status'] = array_map(
-            function (bool $registrationStatus): bool {
-                return $registrationStatus;
-            },
-            $this->status->toArray()
-        );
+        if (!is_null($this->hasServers)) {
+            $response['hasServers'] = $this->hasServers;
+        }
+
         return $response;
     }
 }

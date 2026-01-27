@@ -1,4 +1,66 @@
 # Changelog
+
+## 4.6.0
+* Endpoints:
+    - /ddis/unlink:
+      - Added [POST] endpoint to bulk unlink DDI resources by array of DDI
+        IDs (body parameter `ddiIds`).
+    - /carriers:
+      - Added hasServers filter parameter (boolean).
+    - /companies:
+      - Added label.eu, name.eu and zone.eu filter parameters.
+    - /countries:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /currencies:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /destination_rate_groups:
+      - Added description.eu, description.eu[exact], description.eu[neq],
+        description.eu[start], description.eu[partial], description.eu[end],
+        name.eu, name.eu[exact], name.eu[neq], name.eu[start], name.eu[partial],
+        name.eu[end], status, status[exact], status[neq], _order[description.eu]
+        and _order[name.eu] filter parameters.
+    - /destination_rates:
+      - Added exists[name.eu], name.eu, name.eu[exact], name.eu[start],
+        name.eu[partial], name.eu[end], name.eu[exists], name.eu[neq] and
+        _order[name.eu] filter parameters.
+    - /fixed_costs:
+      - Added name.eu filter parameter.
+    - /fixed_costs_rel_invoice_schedulers:
+      - Added zone.eu filter parameter.
+    - /invoices:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /languages:
+      - Added name.eu, name.eu[exact], name.eu[start], name.eu[partial],
+        name.eu[end], name.eu[neq] and _order[name.eu] filter parameters.
+    - /notification_template_contents:
+      - Added name.es[end], name.es[exists], name.es[neq], name.eu,
+        name.eu[exact], name.eu[neq], name.eu[start], name.eu[partial],
+        name.eu[end] and name.eu[exists] filter parameters.
+    - /public_entities:
+      - Added exists[name.eu], name.eu, name.eu[exact], name.eu[start],
+        name.eu[partial], name.eu[end], name.eu[exists], name.eu[neq] and
+        _order[name.eu] filter parameters.
+* Models:
+    - Country (name and zone):
+        - Added eu (Euskara) locale property.
+    - Currency:
+        - Added eu (Euskara) locale to name.
+    - Destination:
+        - Added eu (Euskara) locale to name.
+    - DestinationRateGroup:
+        - Added eu (Euskara) locale to description and name.
+    - Language:
+        - Added eu (Euskara) locale to name.
+    - PublicEntity:
+        - Added eu (Euskara) locale to name.
+    - RatingPlanGroup:
+        - Added eu (Euskara) locale to description and name.
+    - Service:
+        - Added eu (Euskara) locale to name.
+
 ## 4.5.1
 * Models
     - FixedCost

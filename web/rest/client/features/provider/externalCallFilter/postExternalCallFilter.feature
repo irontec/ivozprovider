@@ -70,13 +70,15 @@ Feature: Create external call filters
                   "en": "United Kingdom",
                   "es": "Reino Unido",
                   "ca": "Reino Unido",
-                  "it": "United Kingdom"
+                  "it": "United Kingdom",
+                  "eu": "Erresuma Batua"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
                   "ca": "Europa",
-                  "it": "Europe"
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           },
           "outOfScheduleNumberCountry": {
@@ -87,13 +89,15 @@ Feature: Create external call filters
                   "en": "United Kingdom",
                   "es": "Reino Unido",
                   "ca": "Reino Unido",
-                  "it": "United Kingdom"
+                  "it": "United Kingdom",
+                  "eu": "Erresuma Batua"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
                   "ca": "Europa",
-                  "it": "Europe"
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           },
           "scheduleIds": [

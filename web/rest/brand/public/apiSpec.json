@@ -7139,6 +7139,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "hasServers",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "id[exact]",
                         "in": "query",
                         "required": false,
@@ -8969,6 +8975,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "billingMethod[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "billingMethod[start]",
                         "in": "query",
                         "required": false,
@@ -8982,12 +8994,6 @@
                     },
                     {
                         "name": "billingMethod[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "billingMethod[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9203,6 +9209,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "domainUsers[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "domainUsers[neq]",
                         "in": "query",
                         "required": false,
@@ -9219,18 +9237,6 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "exists[accessCredentialNotificationTemplate]",
@@ -9383,6 +9389,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "externallyextraopts[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "externallyextraopts[start]",
                         "in": "query",
                         "required": false,
@@ -9405,12 +9417,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "externallyextraopts[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "faxNotificationTemplate",
@@ -9497,12 +9503,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.countryName[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.countryName[neq]",
                         "in": "query",
                         "required": false,
@@ -9516,6 +9516,12 @@
                     },
                     {
                         "name": "invoicing.countryName[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9569,12 +9575,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalAddress[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalAddress[partial]",
                         "in": "query",
                         "required": false,
@@ -9593,6 +9593,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalCode",
                         "in": "query",
                         "required": false,
@@ -9600,6 +9606,12 @@
                     },
                     {
                         "name": "invoicing.postalCode[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9618,12 +9630,6 @@
                     },
                     {
                         "name": "invoicing.postalCode[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9726,6 +9732,12 @@
                     },
                     {
                         "name": "label.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "label.eu",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9857,12 +9869,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "maxDailyUsageEmail[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "maxDailyUsageEmail[start]",
                         "in": "query",
                         "required": false,
@@ -9885,6 +9891,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "maxDailyUsageNotificationTemplate",
@@ -10001,6 +10013,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -10055,6 +10073,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "onDemandRecordCode[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "onDemandRecordCode[end]",
                         "in": "query",
                         "required": false,
@@ -10068,18 +10098,6 @@
                     },
                     {
                         "name": "onDemandRecordCode[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "onDemandRecordCode[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "onDemandRecordCode[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10398,6 +10416,12 @@
                     },
                     {
                         "name": "zone.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.eu",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10883,6 +10907,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "billingMethod[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "billingMethod[start]",
                         "in": "query",
                         "required": false,
@@ -10896,12 +10926,6 @@
                     },
                     {
                         "name": "billingMethod[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "billingMethod[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11117,6 +11141,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "domainUsers[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "domainUsers[neq]",
                         "in": "query",
                         "required": false,
@@ -11133,18 +11169,6 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "exists[accessCredentialNotificationTemplate]",
@@ -11297,6 +11321,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "externallyextraopts[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "externallyextraopts[start]",
                         "in": "query",
                         "required": false,
@@ -11319,12 +11349,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "externallyextraopts[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "faxNotificationTemplate",
@@ -11411,12 +11435,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.countryName[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.countryName[neq]",
                         "in": "query",
                         "required": false,
@@ -11430,6 +11448,12 @@
                     },
                     {
                         "name": "invoicing.countryName[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.countryName[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11483,12 +11507,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalAddress[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalAddress[partial]",
                         "in": "query",
                         "required": false,
@@ -11507,6 +11525,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalCode",
                         "in": "query",
                         "required": false,
@@ -11514,6 +11538,12 @@
                     },
                     {
                         "name": "invoicing.postalCode[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11532,12 +11562,6 @@
                     },
                     {
                         "name": "invoicing.postalCode[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11640,6 +11664,12 @@
                     },
                     {
                         "name": "label.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "label.eu",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11771,12 +11801,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "maxDailyUsageEmail[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "maxDailyUsageEmail[start]",
                         "in": "query",
                         "required": false,
@@ -11799,6 +11823,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "maxDailyUsageNotificationTemplate",
@@ -11915,6 +11945,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -11969,6 +12005,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "onDemandRecordCode[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordCode[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "onDemandRecordCode[end]",
                         "in": "query",
                         "required": false,
@@ -11982,18 +12030,6 @@
                     },
                     {
                         "name": "onDemandRecordCode[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "onDemandRecordCode[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "onDemandRecordCode[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -12312,6 +12348,12 @@
                     },
                     {
                         "name": "zone.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.eu",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -13504,18 +13546,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "countryCode[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "countryCode[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "countryCode[neq]",
                         "in": "query",
                         "required": false,
@@ -13532,6 +13562,18 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "countryCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "countryCode[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "exists[countryCode]",
@@ -13636,12 +13678,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.es[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.es[start]",
                         "in": "query",
                         "required": false,
@@ -13655,6 +13691,48 @@
                     },
                     {
                         "name": "name.es[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -13751,6 +13829,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -13897,6 +13985,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "iden[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "iden[start]",
                         "in": "query",
                         "required": false,
@@ -13910,12 +14004,6 @@
                     },
                     {
                         "name": "iden[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "iden[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -13969,12 +14057,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.en[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.en[neq]",
                         "in": "query",
                         "required": false,
@@ -13993,6 +14075,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.en[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.es",
                         "in": "query",
                         "required": false,
@@ -14000,6 +14088,12 @@
                     },
                     {
                         "name": "name.es[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -14023,7 +14117,37 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.es[neq]",
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -14077,6 +14201,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "symbol[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "symbol[start]",
                         "in": "query",
                         "required": false,
@@ -14090,12 +14220,6 @@
                     },
                     {
                         "name": "symbol[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "symbol[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -14146,6 +14270,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -15800,6 +15934,52 @@
                 ]
             }
         },
+        "/ddis/unlink": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "parameters": [
+                    {
+                        "name": "ddiIds",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        "description": "Array of DDI IDs to unlink"
+                    }
+                ],
+                "operationId": "post_ddis_unlinkDdiCollection",
+                "summary": "Creates a Ddi resource.",
+                "responses": {
+                    "201": {
+                        "description": "Ddi resource created",
+                        "schema": {
+                            "$ref": "#/definitions/Ddi"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            }
+        },
         "/ddis/{id}": {
             "get": {
                 "produces": [
@@ -15980,6 +16160,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description.ca[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description.ca[start]",
                         "in": "query",
                         "required": false,
@@ -15998,12 +16184,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description.ca[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description.en",
                         "in": "query",
                         "required": false,
@@ -16011,6 +16191,12 @@
                     },
                     {
                         "name": "description.en[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.en[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16029,12 +16215,6 @@
                     },
                     {
                         "name": "description.en[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description.en[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16076,6 +16256,42 @@
                         "type": "string"
                     },
                     {
+                        "name": "description.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description.it",
                         "in": "query",
                         "required": false,
@@ -16083,12 +16299,6 @@
                     },
                     {
                         "name": "description.it[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description.it[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16107,6 +16317,12 @@
                     },
                     {
                         "name": "description.it[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.it[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16154,6 +16370,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "file.baseName[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "file.baseName[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "file.baseName[end]",
                         "in": "query",
                         "required": false,
@@ -16167,18 +16395,6 @@
                     },
                     {
                         "name": "file.baseName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "file.baseName[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "file.baseName[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16244,6 +16460,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "file.mimeType[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "file.mimeType[start]",
                         "in": "query",
                         "required": false,
@@ -16266,12 +16488,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "file.mimeType[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "id[exact]",
@@ -16298,6 +16514,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.ca[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.ca[start]",
                         "in": "query",
                         "required": false,
@@ -16316,12 +16538,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.ca[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.en",
                         "in": "query",
                         "required": false,
@@ -16329,6 +16545,12 @@
                     },
                     {
                         "name": "name.en[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.en[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16347,12 +16569,6 @@
                     },
                     {
                         "name": "name.en[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.en[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16394,6 +16610,42 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -16401,6 +16653,12 @@
                     },
                     {
                         "name": "name.it[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16424,12 +16682,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.it[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "status",
                         "in": "query",
                         "required": false,
@@ -16437,12 +16689,6 @@
                     },
                     {
                         "name": "status[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "status[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16472,6 +16718,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "status[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "enum": [
                             "ASC",
                             "DESC"
@@ -16497,6 +16749,16 @@
                             "DESC"
                         ],
                         "name": "_order[description.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[description.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -16587,6 +16849,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -17357,6 +17629,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "exists[name.eu]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[name.it]",
                         "in": "query",
                         "required": false,
@@ -17501,6 +17779,48 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -17508,6 +17828,12 @@
                     },
                     {
                         "name": "name.it[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -17537,12 +17863,6 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "name.it[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "prefix",
                         "in": "query",
                         "required": false,
@@ -17550,6 +17870,12 @@
                     },
                     {
                         "name": "prefix[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "prefix[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -17568,12 +17894,6 @@
                     },
                     {
                         "name": "prefix[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "prefix[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -17614,6 +17934,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -18702,12 +19032,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.ca[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.ca[neq]",
                         "in": "query",
                         "required": false,
@@ -18721,6 +19045,12 @@
                     },
                     {
                         "name": "name.ca[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.ca[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -18798,6 +19128,42 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -18810,18 +19176,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.it[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.it[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.it[start]",
                         "in": "query",
                         "required": false,
@@ -18829,6 +19183,18 @@
                     },
                     {
                         "name": "name.it[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -18879,6 +19245,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -19784,18 +20160,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "ddisCountryMatch[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "ddisCountryMatch[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "ddisCountryMatch[end]",
                         "in": "query",
                         "required": false,
@@ -19809,6 +20173,18 @@
                     },
                     {
                         "name": "ddisCountryMatch[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ddisCountryMatch[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ddisCountryMatch[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -19988,6 +20364,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -20091,6 +20473,12 @@
                     },
                     {
                         "name": "zone.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "zone.eu",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -24253,12 +24641,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.ca[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.ca[neq]",
                         "in": "query",
                         "required": false,
@@ -24272,6 +24654,12 @@
                     },
                     {
                         "name": "name.ca[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.ca[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -24349,6 +24737,42 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -24361,18 +24785,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.it[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.it[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.it[start]",
                         "in": "query",
                         "required": false,
@@ -24380,6 +24792,18 @@
                     },
                     {
                         "name": "name.it[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -24430,6 +24854,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -28788,6 +29222,12 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "exists[name.eu]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[name.it]",
                         "in": "query",
                         "required": false,
@@ -28896,6 +29336,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.en[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.en[neq]",
                         "in": "query",
                         "required": false,
@@ -28909,12 +29355,6 @@
                     },
                     {
                         "name": "name.en[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.en[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -28938,18 +29378,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.es[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.es[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.es[end]",
                         "in": "query",
                         "required": false,
@@ -28968,6 +29396,60 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.es[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -28975,12 +29457,6 @@
                     },
                     {
                         "name": "name.it[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29008,6 +29484,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "name.it[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "enum": [
@@ -29055,6 +29537,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29200,18 +29692,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description.ca[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description.ca[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description.ca[end]",
                         "in": "query",
                         "required": false,
@@ -29219,6 +29699,18 @@
                     },
                     {
                         "name": "description.ca[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.ca[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.ca[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29272,6 +29764,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description.es[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description.es[neq]",
                         "in": "query",
                         "required": false,
@@ -29290,7 +29788,37 @@
                         "type": "string"
                     },
                     {
-                        "name": "description.es[end]",
+                        "name": "description.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29303,6 +29831,12 @@
                     },
                     {
                         "name": "description.it[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.it[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29321,12 +29855,6 @@
                     },
                     {
                         "name": "description.it[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description.it[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29362,12 +29890,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.ca[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.ca[neq]",
                         "in": "query",
                         "required": false,
@@ -29386,6 +29908,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.ca[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.en",
                         "in": "query",
                         "required": false,
@@ -29393,6 +29921,12 @@
                     },
                     {
                         "name": "name.en[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.en[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29416,12 +29950,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.en[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.es",
                         "in": "query",
                         "required": false,
@@ -29429,12 +29957,6 @@
                     },
                     {
                         "name": "name.es[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.es[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29458,6 +29980,48 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -29470,18 +30034,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.it[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.it[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.it[start]",
                         "in": "query",
                         "required": false,
@@ -29489,6 +30041,18 @@
                     },
                     {
                         "name": "name.it[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29519,6 +30083,16 @@
                             "DESC"
                         ],
                         "name": "_order[description.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[description.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -29569,6 +30143,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33402,6 +33986,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description.it",
                         "in": "query",
                         "required": false,
@@ -33433,6 +34023,12 @@
                     },
                     {
                         "name": "name.es",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33727,6 +34323,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description.ca[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description.ca[start]",
                         "in": "query",
                         "required": false,
@@ -33751,12 +34353,6 @@
                         "type": "boolean"
                     },
                     {
-                        "name": "description.ca[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description.en",
                         "in": "query",
                         "required": false,
@@ -33764,6 +34360,18 @@
                     },
                     {
                         "name": "description.en[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.en[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.en[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33782,18 +34390,6 @@
                     },
                     {
                         "name": "description.en[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description.en[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description.en[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33836,6 +34432,48 @@
                     },
                     {
                         "name": "description.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "description.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33896,6 +34534,12 @@
                     },
                     {
                         "name": "exists[description.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[description.eu]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -34003,6 +34647,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.es[start]",
                         "in": "query",
                         "required": false,
@@ -34021,7 +34671,37 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.es[neq]",
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -34133,6 +34813,16 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[description.eu]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[description.it]",
                         "in": "query",
                         "required": false,
@@ -34174,6 +34864,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -34763,6 +35463,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "defaultCode[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "defaultCode[partial]",
                         "in": "query",
                         "required": false,
@@ -34781,12 +35487,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "defaultCode[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description.ca",
                         "in": "query",
                         "required": false,
@@ -34794,12 +35494,6 @@
                     },
                     {
                         "name": "description.ca[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description.ca[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -34818,6 +35512,12 @@
                     },
                     {
                         "name": "description.ca[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.ca[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -34871,12 +35571,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description.es[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description.es[start]",
                         "in": "query",
                         "required": false,
@@ -34890,6 +35584,48 @@
                     },
                     {
                         "name": "description.es[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description.eu[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -34997,18 +35733,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.ca[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.ca[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.ca[end]",
                         "in": "query",
                         "required": false,
@@ -35021,6 +35745,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.ca[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.ca[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.en",
                         "in": "query",
                         "required": false,
@@ -35028,6 +35764,12 @@
                     },
                     {
                         "name": "name.en[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.en[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35051,12 +35793,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.en[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.es",
                         "in": "query",
                         "required": false,
@@ -35064,12 +35800,6 @@
                     },
                     {
                         "name": "name.es[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.es[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35093,6 +35823,48 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.es[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.it",
                         "in": "query",
                         "required": false,
@@ -35100,6 +35872,12 @@
                     },
                     {
                         "name": "name.it[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35118,12 +35896,6 @@
                     },
                     {
                         "name": "name.it[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name.it[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35164,6 +35936,16 @@
                             "DESC"
                         ],
                         "name": "_order[description.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[description.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -35234,6 +36016,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -36717,6 +37509,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "areaCode[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "areaCode[neq]",
                         "in": "query",
                         "required": false,
@@ -36733,12 +37531,6 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "areaCode[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
                     },
                     {
                         "name": "country",
@@ -36771,6 +37563,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description[start]",
                         "in": "query",
                         "required": false,
@@ -36793,12 +37591,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "description[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "editable",
@@ -36903,6 +37695,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name.ca[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name.ca[start]",
                         "in": "query",
                         "required": false,
@@ -36921,12 +37719,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.ca[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.en",
                         "in": "query",
                         "required": false,
@@ -36934,6 +37726,12 @@
                     },
                     {
                         "name": "name.en[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.en[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -36957,12 +37755,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.en[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name.es",
                         "in": "query",
                         "required": false,
@@ -36970,6 +37762,18 @@
                     },
                     {
                         "name": "name.es[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.es[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -36987,13 +37791,37 @@
                         "type": "string"
                     },
                     {
-                        "name": "name.es[end]",
+                        "name": "name.eu",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "name.es[neq]",
+                        "name": "name.eu[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name.eu[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -37095,6 +37923,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "trunkPrefix[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "trunkPrefix[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "trunkPrefix[end]",
                         "in": "query",
                         "required": false,
@@ -37108,18 +37948,6 @@
                     },
                     {
                         "name": "trunkPrefix[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "trunkPrefix[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "trunkPrefix[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -37190,6 +38018,16 @@
                             "DESC"
                         ],
                         "name": "_order[name.es]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[name.eu]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -41771,6 +42609,10 @@
                 },
                 "status": {
                     "$ref": "#/definitions/CarrierStatus"
+                },
+                "hasServers": {
+                    "description": "Has servers",
+                    "type": "boolean"
                 }
             }
         },
@@ -43463,7 +44305,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -43482,6 +44325,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 100,
                     "description": "",
                     "type": "string"
@@ -43494,7 +44342,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -43519,6 +44368,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 55,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 55,
                     "description": "",
@@ -43614,7 +44470,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -43639,6 +44496,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 25,
                     "description": "",
@@ -44687,7 +45551,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -44706,6 +45571,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 255,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 255,
                     "description": "",
                     "type": "string"
@@ -44745,7 +45615,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -44764,6 +45635,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 55,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 55,
                     "description": "",
                     "type": "string"
@@ -44789,6 +45665,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 100,
                     "description": "",
                     "type": "string"
@@ -45121,7 +46002,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -45146,6 +46028,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 50,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 50,
                     "description": "",
@@ -46679,7 +47568,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -46704,6 +47594,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 100,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 100,
                     "description": "",
@@ -48160,6 +49057,11 @@
                     "maxLength": 100,
                     "description": "",
                     "type": "string"
+                },
+                "eu": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
                 }
             }
         },
@@ -48493,7 +49395,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -48512,6 +49415,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 255,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 255,
                     "description": "",
                     "type": "string"
@@ -48524,7 +49432,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -48543,6 +49452,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 55,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 55,
                     "description": "",
                     "type": "string"
@@ -49760,6 +50674,11 @@
                     "maxLength": 55,
                     "description": "",
                     "type": "string"
+                },
+                "eu": {
+                    "maxLength": 55,
+                    "description": "",
+                    "type": "string"
                 }
             }
         },
@@ -49769,7 +50688,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -49788,6 +50708,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 55,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 55,
                     "description": "",
                     "type": "string"
@@ -49989,7 +50914,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -50014,6 +50940,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 255,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 255,
                     "description": "",
@@ -50028,7 +50961,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -50053,6 +50987,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 50,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 50,
                     "description": "",
@@ -50465,7 +51406,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -50490,6 +51432,13 @@
                     "type": "string"
                 },
                 "it": {
+                    "default": "",
+                    "maxLength": 20,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
+                "eu": {
                     "default": "",
                     "maxLength": 20,
                     "description": "",
@@ -50832,7 +51781,8 @@
                 "en",
                 "es",
                 "ca",
-                "it"
+                "it",
+                "eu"
             ],
             "properties": {
                 "en": {
@@ -50851,6 +51801,11 @@
                     "type": "string"
                 },
                 "it": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
+                "eu": {
                     "maxLength": 100,
                     "description": "",
                     "type": "string"

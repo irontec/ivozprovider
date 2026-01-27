@@ -19,6 +19,7 @@ class FeatureDto extends FeatureDtoAbstract
                     'es',
                     'ca',
                     'it',
+                    'eu',
                 ],
             ];
         }

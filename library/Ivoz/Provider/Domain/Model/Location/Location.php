@@ -2,10 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Location;
 
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use phpDocumentor\Reflection\Types\Expression;
 
 /**
  * Location
@@ -39,5 +37,14 @@ class Location extends LocationAbstract implements LocationInterface
     {
         $user->setUseDefaultLocation(false);
         return $this->traitAddUser($user);
+    }
+
+    protected function setCompany(CompanyInterface $company): static
+    {
+        if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
+            throw new \DomainException('Location can only be associated with vpbx companies');
+        }
+
+        return parent::setCompany($company);
     }
 }

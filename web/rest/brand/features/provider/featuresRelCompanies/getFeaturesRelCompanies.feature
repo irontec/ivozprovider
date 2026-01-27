@@ -61,7 +61,8 @@ Feature: Retrieve features rel brand
                       "en": "en",
                       "es": "es",
                       "ca": "ca",
-                      "it": "it"
+                      "it": "it",
+                      "eu": "eu"
                   }
               }
           },
@@ -153,7 +154,8 @@ Feature: Retrieve features rel brand
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           }
       }

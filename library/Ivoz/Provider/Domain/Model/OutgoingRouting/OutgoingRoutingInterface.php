@@ -3,13 +3,13 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
@@ -49,6 +49,8 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getId(): ?int;
+
+    public function setCarrier(?CarrierInterface $carrier = null): static;
 
     /**
      * @todo awkward return type
@@ -122,8 +124,6 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getBrand(): BrandInterface;
 
     public function getCompany(): ?CompanyInterface;
-
-    public function setCarrier(?CarrierInterface $carrier = null): static;
 
     public function getCarrier(): ?CarrierInterface;
 

@@ -124,6 +124,8 @@ abstract class RoutingPatternAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $prefix = $dto->getPrefix();
         Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -133,14 +135,16 @@ abstract class RoutingPatternAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
             $dto->getDescriptionEs(),
             $dto->getDescriptionCa(),
-            $dto->getDescriptionIt()
+            $dto->getDescriptionIt(),
+            $dto->getDescriptionEu()
         );
 
         $self = new static(
@@ -175,6 +179,8 @@ abstract class RoutingPatternAbstract
         Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
         $nameIt = $dto->getNameIt();
         Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $nameEu = $dto->getNameEu();
+        Assertion::notNull($nameEu, 'nameEu value is null, but non null value was expected.');
         $prefix = $dto->getPrefix();
         Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -184,14 +190,16 @@ abstract class RoutingPatternAbstract
             $nameEn,
             $nameEs,
             $nameCa,
-            $nameIt
+            $nameIt,
+            $nameEu
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
             $dto->getDescriptionEs(),
             $dto->getDescriptionCa(),
-            $dto->getDescriptionIt()
+            $dto->getDescriptionIt(),
+            $dto->getDescriptionEu()
         );
 
         $this
@@ -214,10 +222,12 @@ abstract class RoutingPatternAbstract
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
             ->setNameIt(self::getName()->getIt())
+            ->setNameEu(self::getName()->getEu())
             ->setDescriptionEn(self::getDescription()->getEn())
             ->setDescriptionEs(self::getDescription()->getEs())
             ->setDescriptionCa(self::getDescription()->getCa())
             ->setDescriptionIt(self::getDescription()->getIt())
+            ->setDescriptionEu(self::getDescription()->getEu())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
@@ -232,10 +242,12 @@ abstract class RoutingPatternAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
+            'nameEu' => self::getName()->getEu(),
             'descriptionEn' => self::getDescription()->getEn(),
             'descriptionEs' => self::getDescription()->getEs(),
             'descriptionCa' => self::getDescription()->getCa(),
             'descriptionIt' => self::getDescription()->getIt(),
+            'descriptionEu' => self::getDescription()->getEu(),
             'brandId' => self::getBrand()->getId()
         ];
     }

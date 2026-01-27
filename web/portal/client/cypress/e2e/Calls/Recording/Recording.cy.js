@@ -23,7 +23,7 @@ describe('Recording', () => {
     cy.get('svg[data-testid="DeleteIcon"]').last().click();
 
     cy.contains('Remove element');
-    cy.get('div.MuiDialog-container button')
+    cy.get('[role="dialog"]')
       .filter(':visible')
       .contains('Yes, delete it')
       .click();

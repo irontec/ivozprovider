@@ -64,7 +64,7 @@ class UpdateByRoutingPatternAndCountrySpec extends ObjectBehavior
     ) {
         $this->getterProphecy(
             $country,
-            ['getZone' => new Zone('', '', '', '')]
+            ['getZone' => new Zone('', '', '', '', '')]
         );
 
         $entity
@@ -103,7 +103,7 @@ class UpdateByRoutingPatternAndCountrySpec extends ObjectBehavior
     ) {
         $this->getterProphecy(
             $country,
-            ['getZone' => new Zone('', '', '', '')]
+            ['getZone' => new Zone('', '', '', '', '')]
         );
 
         $entity

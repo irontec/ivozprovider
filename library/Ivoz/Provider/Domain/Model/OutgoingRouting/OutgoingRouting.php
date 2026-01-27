@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\ArrayCollection;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 
 class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRoutingInterface
@@ -33,6 +34,24 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     {
         Assertion::between($weight, 1, 20, 'weight provided "%s" is not between "%s" and "%s"');
         return parent::setWeight($weight);
+    }
+
+    public function setCarrier(?CarrierInterface $carrier = null): static
+    {
+        if ($this->getRoutingMode() === OutgoingRoutingInterface::ROUTINGMODE_BLOCK) {
+            return parent::setCarrier($carrier);
+        }
+
+        if (is_null($carrier)) {
+            return parent::setCarrier($carrier);
+        }
+
+        $servers = $carrier->getServers();
+        if (count($servers) === 0) {
+            throw new \DomainException('Carrier has no CarrierServers');
+        }
+
+        return parent::setCarrier($carrier);
     }
 
     protected function sanitizeValues(): void

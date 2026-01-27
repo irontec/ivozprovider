@@ -12,7 +12,8 @@ import {
   ExternalCallFilterProperties,
   ExternalCallFilterPropertyList,
 } from './ExternalCallFilterProperties';
-import OutOfScheduleEnabled from './Field/OutOfScheduleEnabled';
+import NumberWithCountryColumn from './Field/NumberWithCountryColumn';
+import UnconditionalListColumn from './Field/UnconditionalListColumn';
 
 const holidayFields = [
   'holidayNumberCountry',
@@ -112,7 +113,6 @@ const properties: ExternalCallFilterProperties = {
   },
   outOfScheduleEnabled: {
     label: _('Out of schedule enabled'),
-    component: OutOfScheduleEnabled,
     enum: {
       '0': _('No'),
       '1': _('Yes'),
@@ -125,6 +125,8 @@ const properties: ExternalCallFilterProperties = {
           'scheduleIds',
           'outOfScheduleTargetType',
           'outOfScheduleLocution',
+          'outOfScheduleNumberCountry',
+          'outOfScheduleNumberValue',
         ],
       },
       '1': {
@@ -207,6 +209,18 @@ const properties: ExternalCallFilterProperties = {
     label: _('Out of schedule target'),
     memoize: false,
   },
+  unconditional: {
+    label: _('Unconditional'),
+    component: UnconditionalListColumn,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+  },
+  numberWithCountry: {
+    label: _('Number'),
+    component: NumberWithCountryColumn,
+  },
 };
 
 const columns = (store: IvozStoreState) => {
@@ -221,9 +235,8 @@ const columns = (store: IvozStoreState) => {
   const residentialColumns = [
     'name',
     'blackListIds',
-    'outOfScheduleNumberCountry',
-    'outOfScheduleEnabled',
-    'outOfScheduleNumberValue',
+    'unconditional',
+    'numberWithCountry',
   ];
   const residential = store.clientSession.aboutMe.profile?.residential;
 

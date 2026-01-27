@@ -638,7 +638,8 @@ Feature: Retrieve billable calls
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           },
           {
@@ -648,7 +649,8 @@ Feature: Retrieve billable calls
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           }
       ]
