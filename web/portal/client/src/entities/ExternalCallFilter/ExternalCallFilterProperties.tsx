@@ -27,6 +27,8 @@ export type ExternalCallFilterPropertyList<T> = {
   blackListIds?: T;
   holidayTarget?: T;
   outOfScheduleTarget?: T;
+  unconditional?: T;
+  numberWithCountry?: T;
 };
 
 export type ExternalCallFilterProperties = ExternalCallFilterPropertyList<
