@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Arquitectura general de la plataforma &mdash; documentación de IvozProvider - tempest</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Índice"
+              href="../../genindex.html"/>
+        <link rel="search" title="Búsqueda" href="../../search.html"/>
+    <link rel="top" title="documentación de IvozProvider - tempest" href="../../index.html"/>
+        <link rel="next" title="Instalación inicial" href="../installation/index.html"/>
+        <link rel="prev" title="¿Quién debería usar IvozProvider?" href="../intro/use_cases.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> IvozProvider
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introducción a IvozProvider</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Arquitectura general de la plataforma</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-diagram">Diagrama general</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sip-signalling-flow">Flujo de señalización SIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rtp-audio-flow">Flujo de audio RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#https-traffic">Tráfico HTTPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-elements">Elementos adicionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auxiliary-elements">Elementos auxiliares</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instalación inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operation_roles/index.html">Roles de la plataforma</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/internal_calls/index.html">Realizando llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/external_incoming_calls/index.html">Recibiendo llamadas externas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/external_outgoing_calls/index.html">Realizando llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Administration portal</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../administration_portal/platform/index.html">Configuración de la Plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../administration_portal/brand/index.html">Configuración de Marca</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../administration_portal/client/index.html">Configuración del Cliente</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Specific portals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user_portal/index.html">Portal de Usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Security and Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security_and_maintenance/security/index.html">Seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_and_maintenance/maintenance/index.html">Solución de problemas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Rest API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api_rest/introduction.html">Introducción a la API de IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_rest/multilevel.html">API multinivel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_rest/web_client.html">Cliente web incorporado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_rest/integrations.html">Integraciones de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_rest/use_case.html">Caso de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_rest/acls.html">ACLs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">IvozProvider</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Arquitectura general de la plataforma</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/basic_concepts/architecture/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="platform-general-architecture">
+<span id="architecture"></span><h1>Arquitectura general de la plataforma<a class="headerlink" href="#platform-general-architecture" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="general-diagram">
+<h2>Diagrama general<a class="headerlink" href="#general-diagram" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El siguiente diagrama muestra la arquitectura global de la solución IvozProvider, con todos sus componentes:</p>
+<img alt="../../_images/flows1.png" src="../../_images/flows1.png" />
+<p>Este es un diagrama más conceptual:</p>
+<img alt="../../_images/conceptual1.png" src="../../_images/conceptual1.png" />
+</div>
+<div class="section" id="sip-signalling-flow">
+<span id="signallingflow"></span><h2>Flujo de señalización SIP<a class="headerlink" href="#sip-signalling-flow" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El primer diagrama muestra el tráfico de señalización SIP involucrado en el establecimiento, modificación y terminación de sesiones siguiendo el SIP <a class="reference external" href="https://tools.ietf.org/html/rfc3261">RFC 3261</a> y cualquier <a class="reference external" href="https://www.packetizer.com/ipmc/sip/standards.html">RFC relacionado</a>.</p>
+<p>Estas son las <strong>entidades SIP externas</strong> involucradas:</p>
+<ul class="simple">
+<li><p class="first">UACs: teléfonos fijos de usuarios, softphones, dispositivos compatibles con SIP.</p>
+</li>
+<li><p class="first">Operadores SIP/Proveedores DDI: operadores utilizados para interconectar IvozProvider con redes SIP externas (y, probablemente, con PSTN).</p>
+</li>
+</ul>
+<p>Todo el tráfico SIP (en cualquiera de los transportes soportados: TCP, UDP, TLS, WSS) que envían/reciben es hacia/desde estas dos <strong>entidades SIP internas</strong> de IvozProvider:</p>
+<ul class="simple">
+<li><p class="first">Proxy SIP de Usuarios (ejecutando <a class="reference external" href="https://www.kamailio.org">Kamailio</a>).</p>
+</li>
+<li><p class="first">Proxy SIP de Trunks (ejecutando <a class="reference external" href="https://www.kamailio.org">Kamailio</a>).</p>
+</li>
+</ul>
+<dl class="docutils">
+<dt>De hecho, los UACs de usuarios solo hablan con el <em>Proxy SIP de Usuarios</em> y los &#8216;Operadores SIP&#8217; y &#8216;Proveedores DDI&#8217;.</dt>
+<dd><p class="first last">Los Proveedores solo hablan con el <em>Proxy SIP de Trunks</em>.</p>
+</dd>
+</dl>
+<p>Dentro de IvozProvider, estos dos proxies pueden hablar con <em>Servidores de Aplicaciones</em> ejecutando <a class="reference external" href="http://www.asterisk.org/">Asterisk</a> para algunos tipos de clientes, pero <strong>no se permite que ningún elemento externo hable directamente con los Servidores de Aplicaciones</strong>.</p>
+</div>
+<div class="section" id="rtp-audio-flow">
+<span id="audioflow"></span><h2>Flujo de audio RTP<a class="headerlink" href="#rtp-audio-flow" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Las sesiones iniciadas por el protocolo de señalización SIP implican flujos de medios compartidos por las entidades involucradas.</p>
+<p>Estos flujos de medios utilizan <a class="reference external" href="https://tools.ietf.org/html/rfc3550">RTP</a> para enviar y recibir los medios en sí, generalmente utilizando UDP como protocolo de transporte.</p>
+<p><strong>Entidades externas</strong> involucradas en sesiones RTP se pueden dividir en:</p>
+<ul class="simple">
+<li><p class="first">Puntos finales de clientes.</p>
+</li>
+<li><p class="first">Operadores/Proveedores DDI.</p>
+</li>
+</ul>
+<p>Ambas entidades intercambian RTP con la misma entidad de IvozProvider: <em>media-relays</em>.</p>
+<p>IvozProvider implementa <em>media-relays</em> utilizando <a class="reference external" href="https://github.com/sipwise/rtpengine">RTPengine</a>.</p>
+<p>Similar al SIP, estos <em>media-relays</em> intercambian RTP cuando es necesario con <em>Servidores de Aplicaciones</em>, pero <strong>las entidades externas nunca hablan directamente con ellos</strong>.</p>
+</div>
+<div class="section" id="https-traffic">
+<h2>Tráfico HTTPS<a class="headerlink" href="#https-traffic" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>HTTPS es el tercer tipo de tráfico intercambiado entre IvozProvider y el <em>mundo exterior</em>.</p>
+<p>El tráfico HTTPS se utiliza para:</p>
+<ul>
+<li><p class="first"><strong>Provisionamiento de terminales</strong>: varios teléfonos fijos solicitan su configuración cuando se encienden y estos archivos de configuración se pueden servir a través de HTTPS.</p>
+</li>
+<li><p class="first"><strong>Portales web</strong>: IvozProvider tiene portales web de 4 niveles para todos los <a class="reference internal" href="../operation_roles/index.html#operation-roles"><span class="std std-ref">roles de la plataforma</span></a>.</p>
+<p>Ambos tipos de tráfico son manejados por la entidad <em>Portales web</em> de IvozProvider.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="additional-elements">
+<h2>Elementos adicionales<a class="headerlink" href="#additional-elements" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>IvozProvider tiene múltiples elementos que no están expuestos al <em>mundo exterior</em> pero desempeñan una tarea crucial.</p>
+<p>El perfil más notable es el <strong>perfil de base de datos</strong> que recopila toda la información de la plataforma y la comparte entre la mayoría del software empaquetado. IvozProvider utiliza el <a class="reference external" href="https://www.mysql.com/">motor de base de datos MySQL</a> para esta tarea.</p>
+<p>Otra tarea notable es el <strong>manejador de tareas asincrónicas</strong> encargado de codificar grabaciones, generar facturas, recargar servicios, importar datos, etc.</p>
+</div>
+<div class="section" id="auxiliary-elements">
+<h2>Elementos auxiliares<a class="headerlink" href="#auxiliary-elements" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El <strong>perfil Aux</strong> ejecuta software que, aunque no es vital para la realización de llamadas, hace la vida del mantenedor de IvozProvider mucho más fácil.</p>
+<p>De hecho, sin ellos, la depuración de problemas sería mucho más difícil y la calidad del servicio prestado se vería afectada.</p>
+<p>Aunque IvozProvider no incluye ninguna de las herramientas mencionadas aquí, las consideramos cruciales para tratar con entornos de producción.</p>
+<p>Aquí enumeramos las herramientas configuradas en todas las instalaciones de IvozProvider en producción mantenidas por <a class="reference external" href="https://www.irontec.com">Irontec</a>:</p>
+<ul class="simple">
+<li><p class="first"><strong>Captura SIP de Homer</strong>: Este increíble software nos permite capturar todo el tráfico SIP para su posterior análisis, para obtener estadísticas, medir la calidad de las llamadas, etc. Visita el <a class="reference external" href="http://sipcapture.org/">sitio web de SIP Capture</a> para más información.</p>
+</li>
+<li><p class="first"><strong>Visor de logs de Kibana</strong>: Mostrando logs recopilados por los restantes <a class="reference external" href="https://www.elastic.co/elk-stack">componentes de la pila ELK</a>.</p>
+</li>
+<li><p class="first"><strong>Visor de métricas de Chronograf</strong>: Mostrando métricas recopiladas por los restantes <a class="reference external" href="https://www.influxdata.com/time-series-platform/">componentes de la pila TICK</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../installation/index.html" class="btn btn-neutral float-right" title="Instalación inicial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../intro/use_cases.html" class="btn btn-neutral" title="¿Quién debería usar IvozProvider?" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2019, Irontec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: main
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../artemis/basic_concepts/architecture/index.html">artemis</a></dd>
+            <dd><a href="../../../halliday/basic_concepts/architecture/index.html">halliday</a></dd>
+            <dd><a href="index.html">main</a></dd>
+            <dd><a href="../../../oasis/index.html">oasis</a></dd>
+            <dd><a href="../../../tempest/basic_concepts/architecture/index.html">tempest</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'tempest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

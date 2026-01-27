@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Respuestas de Voz Interactivas (IVRs) &mdash; documentación de IvozProvider - tempest</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Índice"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Búsqueda" href="../../../../search.html"/>
+    <link rel="top" title="documentación de IvozProvider - tempest" href="../../../../index.html"/>
+        <link rel="up" title="Items enrutables" href="index.html"/>
+        <link rel="next" title="Grupos de búsqueda" href="hunt_groups.html"/>
+        <link rel="prev" title="Items enrutables" href="index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> IvozProvider
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/intro/index.html">Introducción a IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/architecture/index.html">Arquitectura general de la plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/installation/index.html">Instalación inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/operation_roles/index.html">Roles de la plataforma</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/internal_calls/index.html">Realizando llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/external_incoming_calls/index.html">Recibiendo llamadas externas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/external_outgoing_calls/index.html">Realizando llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Administration portal</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../platform/index.html">Configuración de la Plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../brand/index.html">Configuración de Marca</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Configuración del Cliente</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Clientes vPBX</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../users.html">Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../terminals.html">Terminales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html">Extensiones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddis.html">DDIs</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Items enrutables</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Respuestas de Voz Interactivas (IVRs)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hunt_groups.html">Grupos de búsqueda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="queues.html">Colas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="conditional_routes.html">Rutas condicionales</a></li>
+<li class="toctree-l4"><a class="reference internal" href="friends/index.html">Friends</a></li>
+<li class="toctree-l4"><a class="reference internal" href="friends/index.html#friend-call-forward">Desvío de llamadas de friends</a></li>
+<li class="toctree-l4"><a class="reference internal" href="conference_rooms.html">Salas de conferencias</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../routing_tools/index.html">Herramientas de encaminamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_configuration/index.html">Configuración de usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../multimedia/index.html">Multimedia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faxes.html">Faxes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services.html">Servicios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../voicemails.html">Buzones de voz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../addressbook.html">Agenda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rating_profiles.html">Perfiles de precio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calls/index.html">Llamadas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../residential/index.html">Clientes Residenciales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../retail/index.html">Clientes Retail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wholesale/index.html">Clientes Wholesale</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Specific portals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_portal/index.html">Portal de Usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Security and Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_and_maintenance/security/index.html">Seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_and_maintenance/maintenance/index.html">Solución de problemas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Rest API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/introduction.html">Introducción a la API de IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/multilevel.html">API multinivel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/web_client.html">Cliente web incorporado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/integrations.html">Integraciones de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/use_case.html">Caso de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/acls.html">ACLs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">IvozProvider</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Configuración del Cliente</a> &raquo;</li>
+      
+          <li><a href="../index.html">Clientes vPBX</a> &raquo;</li>
+      
+          <li><a href="index.html">Items enrutables</a> &raquo;</li>
+      
+    <li>Respuestas de Voz Interactivas (IVRs)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/administration_portal/client/vpbx/routing_endpoints/ivrs.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="interactive-voice-responses-ivrs">
+<h1>Respuestas de Voz Interactivas (IVRs)<a class="headerlink" href="#interactive-voice-responses-ivrs" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Los IVRs son la forma más común de hacer <strong>menús de audio</strong> donde el llamante debe elegir el destino de la llamada <strong>presionando códigos</strong> basados en las instrucciones de las locuciones que se reproducirán.</p>
+<div class="section" id="ivrs">
+<span id="id1"></span><h2>IVRs<a class="headerlink" href="#ivrs" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los IVRs admiten especificar acciones para los dígitos marcados, pero también pueden usarse para enrutar cualquier extensión de cliente existente.</p>
+<p>Los IVRs tienen los siguientes campos:</p>
+</div>
+<div class="section" id="basic-configuration">
+<h2>Configuración básica<a class="headerlink" href="#basic-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Nombre descriptivo del IVR que se utilizará en otras secciones.</p>
+</dd>
+<dt>Tiempo de espera</dt>
+<dd><p class="first last">Tiempo que tiene el llamante para ingresar los dígitos de la extensión de destino.</p>
+</dd>
+<dt>Máximo de dígitos</dt>
+<dd><p class="first last">Número máximo de dígitos permitidos en este IVR.</p>
+</dd>
+<dt>Locución de bienvenida</dt>
+<dd><p class="first last">Esta locución se reproducirá tan pronto como el llamante ingrese al IVR.</p>
+</dd>
+<dt>Locución de éxito</dt>
+<dd><p class="first last">En caso de que el número marcado coincida con una de las entradas del IVR o la extensión exista en el cliente (y permitir extensiones esté habilitado), se reproducirá esta locución (generalmente algo como &#8216;Conectando, por favor espere...&#8217;).</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="dialing-extensions">
+<h2>Marcando extensiones<a class="headerlink" href="#dialing-extensions" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Permitir marcar extensiones</dt>
+<dd><p class="first last">Cuando esta configuración está habilitada, el llamante puede presionar directamente la extensión que debe conocer previamente (o la locución de bienvenida sugiere) y el sistema se conectará automáticamente con esa extensión.</p>
+</dd>
+<dt>Extensiones excluidas</dt>
+<dd><p class="first last">Cuando Permitir extensiones está habilitado, puedes excluir algunas extensiones para que se marquen directamente agregándolas a la lista de exclusión.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="no-input-configuration">
+<h2>Configuración sin entrada<a class="headerlink" href="#no-input-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><p>Si el llamante no ingresa ningún dígito en el valor de tiempo de espera, se activará el proceso sin entrada, reproduciendo la locución configurada y redirigiendo a otro número, extensión o buzón de voz.</p>
+<dl class="docutils">
+<dt>Locución sin entrada</dt>
+<dd><p class="first last">Locución que se reproducirá.</p>
+</dd>
+<dt>Destino sin entrada</dt>
+<dd><p class="first last">Número, extensión o buzón de voz al que redirigir después de que se reproduzca la locución. Se requieren campos adicionales dependiendo del valor seleccionado.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="error-configuration">
+<h2>Configuración de error<a class="headerlink" href="#error-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><p>Si la extensión marcada no coincide con ninguna entrada del IVR, ninguna extensión de cliente (cuando permitir extensiones está habilitado), o coincide con una de las extensiones en la lista de extensiones excluidas, se activará el proceso de error, reproduciendo la locución configurada y redirigiendo la llamada a otro número, extensión o buzón de voz.</p>
+<dl class="docutils">
+<dt>Locución</dt>
+<dd><p class="first last">Locución que se reproducirá en caso de error.</p>
+</dd>
+<dt>Destino de error</dt>
+<dd><p class="first last">Número, extensión o buzón de voz al que redirigir después de que se reproduzca la locución. Se requieren campos adicionales dependiendo del valor seleccionado.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="ivr-entries">
+<h2>Entradas IVR<a class="headerlink" href="#ivr-entries" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">El uso más común de los IVR es combinarlos con una locución de bienvenida que diga algo como &#8216;Presione 1 para contactar a XXX, Presione 2 para contactar a YYY, ...&#8221;</p>
+</div>
+<p>El proceso de cada entrada del IVR se puede definir en el siguiente botón:</p>
+<p>En este ejemplo, el llamante puede marcar 1, 2 o 3 (el resto se considerará un error y activará el <strong>proceso de error</strong>):</p>
+<ul class="simple">
+<li><p class="first">1: Llamada a la extensión interna 200, creada en <a class="reference internal" href="hunt_groups.html#huntgroups"><span class="std std-ref">sección anterior</span></a> que enruta al grupo de búsqueda <em>Recepción</em>.</p>
+</li>
+<li><p class="first">2: Llamada a la extensión interna 101.</p>
+</li>
+<li><p class="first">3: Enrutar esta llamada al número externo 676 676 676.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Cada una de las entradas del IVR admite una locución que, si se establece, se reproducirá en lugar de la <strong>locución de éxito</strong> del IVR. De esta manera, puedes configurar una locución genérica (como &#8216;Conectando....&#8217;) o una personalizada para una entrada dada (como &#8216;Conectando con el departamento de recepción, por favor espere...&#8217;).</p>
+</div>
+<p class="rubric">Las entradas son expresiones regulares</p>
+</div>
+<div class="section" id="entry-information">
+<h2>Información de entrada<a class="headerlink" href="#entry-information" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Puedes especificar entradas IVR como Expresiones Regulares. Si la entrada es solo un valor numérico, se manejará como una secuencia de dígitos, de lo contrario se manejará como una expresión regular. Esto puede ser útil si tienes el mismo comportamiento para un grupo de números marcados.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Entrada</dt>
+<dd><p class="first last">Expresión regular.</p>
+</dd>
+<dt>Locución de éxito</dt>
+<dd><p class="first last">Locución que se reproducirá en caso de éxito.</p>
+</dd>
+<dt>Nombre para mostrar</dt>
+<dd><p class="first last">Este valor se mostrará en los terminales llamados</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="routing-configuration">
+<h2>Configuración de enrutamiento<a class="headerlink" href="#routing-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Tipo de destino</dt>
+<dd><p class="first last">Dependiendo del tipo elegido, se pueden requerir parámetros adicionales.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hunt_groups.html" class="btn btn-neutral float-right" title="Grupos de búsqueda" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Items enrutables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2019, Irontec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: tempest
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../../../artemis/administration_portal/client/vpbx/routing_endpoints/ivrs.html">artemis</a></dd>
+            <dd><a href="../../../../../halliday/administration_portal/client/vpbx/routing_endpoints/ivrs.html">halliday</a></dd>
+            <dd><a href="../../../../../main/administration_portal/client/vpbx/routing_endpoints/ivrs.html">main</a></dd>
+            <dd><a href="../../../../../oasis/index.html">oasis</a></dd>
+            <dd><a href="ivrs.html">tempest</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'tempest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

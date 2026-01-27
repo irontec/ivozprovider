@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Filtros de llamadas externas</title>
+    
+    <link rel="stylesheet" href="../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="calendars.xhtml" title="Calendarios"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="index.xhtml" title="Herramientas de encaminamiento"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.xhtml" >Clientes vPBX</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.xhtml" accesskey="U">Herramientas de encaminamiento</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="external-call-filters">
+<span id="external-filters"></span><span id="id1"></span><h1>Filtros de llamadas externas</h1>
+<p>Una de las tareas más comunes que realizará el administrador de un cliente es configurar horarios y calendarios para aplicarlos a los <a class="reference internal" href="../../../brand/views/ddis.xhtml#ddis"><span class="std std-ref">DDIs</span></a> existentes.</p>
+<p>Una vez que tengamos nuestros nuevos <a class="reference internal" href="schedules.xhtml#schedules"><span class="std std-ref">Horarios</span></a> y <a class="reference internal" href="calendars.xhtml#calendars"><span class="std std-ref">Calendarios</span></a> creados, es hora de aplicarlos en lo que llamamos <strong>Filtro de llamadas externas</strong>.</p>
+<p>El administrador del cliente puede configurarlos en la siguiente pantalla:</p>
+<div class="section" id="basic-info">
+<h2>Información básica</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Nombre descriptivo que hará referencia a este filtro en la configuración de DDIs.</p>
+</dd>
+<dt>Locución de bienvenida</dt>
+<dd><p class="first last">Esta locución se reproducirá si la llamada no va a ser desviada por filtros fuera de horario o festivos (en otras palabras, si se va a aplicar el enrutamiento normal del DDI).</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="filtering-info">
+<h2>Información de filtrado</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Lista blanca</dt>
+<dd><p class="first last">El origen externo se verificará contra las <a class="reference internal" href="match_lists.xhtml#match-lists"><span class="std std-ref">Listas de coincidencia</span></a> asociadas, si se encuentra una coincidencia, la llamada se enruta directamente al destino DDI, saltando el proceso de filtrado. Ten en cuenta que las listas negras se verifican antes que las listas blancas.</p>
+</dd>
+<dt>Lista negra</dt>
+<dd><p class="first last">El origen externo se verificará contra las <a class="reference internal" href="match_lists.xhtml#match-lists"><span class="std std-ref">Listas de coincidencia</span></a> asociadas, si se encuentra una coincidencia, la llamada será rechazada inmediatamente.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="holidays-configuration">
+<h2>Configuración de festivos</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Festivos habilitados</dt>
+<dd><p class="first last">Configura esto en no para ignorar completamente el filtrado de festivos.</p>
+</dd>
+<dt>Calendarios</dt>
+<dd><p class="first last">Uno o más <a class="reference internal" href="calendars.xhtml#calendars"><span class="std std-ref">Calendarios</span></a> pueden asociarse con el filtro. Se aplicará la combinación de todos los calendarios.</p>
+</dd>
+<dt>Locución de festivo</dt>
+<dd><p class="first last">La locución se reproducirá cuando el día esté marcado como festivo en cualquiera de los calendarios asociados con el filtro <strong>si la entrada del calendario no tiene locución</strong> para ese día.</p>
+</dd>
+<dt>Tipo de destino festivo</dt>
+<dd><p class="first last">Después de reproducir la locución anterior (si está configurada), la llamada puede ser desviada a un buzón de voz, número externo o extensión interna. Por ejemplo, el filtro de la imagen redirigirá las llamadas durante los festivos al número externo 676 676 676.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="out-of-schedule-configuration">
+<h2>Configuración fuera de horario</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Fuera de horario habilitado</dt>
+<dd><p class="first last">Configura esto en no para ignorar completamente el filtrado fuera de horario.</p>
+</dd>
+<dt>Horarios</dt>
+<dd><p class="first last">Se pueden aplicar uno o más <a class="reference internal" href="schedules.xhtml#schedules"><span class="std std-ref">Horarios</span></a>. Se aplicará la combinación de todos los intervalos de tiempo definidos en los horarios.</p>
+</dd>
+<dt>Locución fuera de horario</dt>
+<dd><p class="first last">La locución se reproducirá cuando, no siendo festivo, la hora actual no esté en ninguno de los intervalos de tiempo definidos en los horarios asignados al filtro.</p>
+</dd>
+<dt>Tipo de destino fuera de horario</dt>
+<dd><p class="first last">Como en el desvío de festivos, pero para fuera de horario. La imagen anterior no aplicará ningún desvío (y la llamada se colgará).</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition attention">
+<p class="first admonition-title">Atención</p>
+<p class="last">Los festivos se procesan <strong>antes</strong> de los eventos fuera de horario.</p>
+</div>
+<p>En la siguiente sección utilizaremos este nuevo filtro creado con <a class="reference internal" href="../../../brand/views/ddis.xhtml#ddis"><span class="std std-ref">DDIs</span></a> para que podamos configurar una locución de bienvenida para los días normales, y comportamientos especiales para los festivos y eventos fuera de horario.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

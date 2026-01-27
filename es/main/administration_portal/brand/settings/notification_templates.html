@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Plantillas de Notificación &mdash; documentación de IvozProvider - tempest</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Índice"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Búsqueda" href="../../../search.html"/>
+    <link rel="top" title="documentación de IvozProvider - tempest" href="../../../index.html"/>
+        <link rel="up" title="Configuraciones" href="index.html"/>
+        <link rel="next" title="Música en Espera Genérica" href="generic_music_on_hold.html"/>
+        <link rel="prev" title="Transformaciones numéricas" href="numeric_transformations.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> IvozProvider
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic_concepts/intro/index.html">Introducción a IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic_concepts/architecture/index.html">Arquitectura general de la plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic_concepts/installation/index.html">Instalación inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic_concepts/operation_roles/index.html">Roles de la plataforma</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/internal_calls/index.html">Realizando llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/external_incoming_calls/index.html">Recibiendo llamadas externas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/external_outgoing_calls/index.html">Realizando llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Administration portal</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../platform/index.html">Configuración de la Plataforma</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuración de Marca</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../clients/index.html">Clientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../providers/index.html">Proveedores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../routing/index.html">Enrutamiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../billing/index.html">Tarificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../invoicing/index.html">Facturación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calls/index.html">Llamadas</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Configuraciones</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="client_portals.html">Portales de Clientes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="special_numbers.html">Números Especiales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_transformations.html">Transformaciones numéricas</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Plantillas de Notificación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_music_on_hold.html">Música en Espera Genérica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_services.html">Servicios Genéricos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_match_lists.html">Listas de coincidencias genéricas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="corporations.html">Corporaciones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../views/index.html">Vistas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../client/index.html">Configuración del Cliente</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Specific portals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_portal/index.html">Portal de Usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Security and Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../security_and_maintenance/security/index.html">Seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../security_and_maintenance/maintenance/index.html">Solución de problemas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Rest API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/introduction.html">Introducción a la API de IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/multilevel.html">API multinivel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/web_client.html">Cliente web incorporado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/integrations.html">Integraciones de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/use_case.html">Caso de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/acls.html">ACLs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">IvozProvider</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Configuración de Marca</a> &raquo;</li>
+      
+          <li><a href="index.html">Configuraciones</a> &raquo;</li>
+      
+    <li>Plantillas de Notificación</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/administration_portal/brand/settings/notification_templates.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<span id="notification-templates"></span><span id="id2"></span><h1>Plantillas de Notificación<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Los administradores de la marca pueden configurar las notificaciones enviadas por IvozProvider:</p>
+<ul class="simple">
+<li><p class="first">Correo electrónico enviado cuando se recibe un nuevo buzón de voz</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando se recibe un nuevo fax</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando el saldo está por debajo del umbral configurado</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando se genera una factura automática</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando se generan CSVs de CDR programados</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando se alcanza el uso máximo diario</p>
+</li>
+<li><p class="first">Correo electrónico enviado con credenciales de acceso</p>
+</li>
+</ul>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Cuando no se configura una notificación personalizada, se usarán las predeterminadas</p>
+</div>
+<p>Las notificaciones se crean en dos pasos: Crear un tipo de notificación y agregar contenido a la notificación para cada idioma requerido.</p>
+<div class="section" id="creating-a-new-notification">
+<h2>Creando una nueva notificación<a class="headerlink" href="#creating-a-new-notification" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los administradores de la marca pueden crear nuevas plantillas de notificación en <strong>Configuración de la marca</strong> &gt; <strong>Plantillas de notificación</strong>:</p>
+<p>Los campos son casi autoexplicativos:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Usado para identificar esta plantilla de notificación</p>
+</dd>
+<dt>Tipo</dt>
+<dd><p class="first last">Determina el tipo de notificación. Cada tipo de notificación tiene sus propias variables de sustitución disponibles para reemplazar el contenido del asunto y el cuerpo.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="adding-notification-contents">
+<h2>Agregando contenido de notificación<a class="headerlink" href="#adding-notification-contents" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una vez que se ha creado la notificación, puedes agregar contenido en diferentes idiomas. IvozProvider usará automáticamente el idioma adecuado según el destino:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Para los buzones de voz, se usará el idioma del usuario</p>
+</li>
+<li><p class="first">Para los faxes, se usará el idioma del cliente.</p>
+</li>
+</ul>
+</div></blockquote>
+<p>Campos configurables de cada contenido:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Idioma</dt>
+<dd><p class="first last">Idioma del contenido.</p>
+</dd>
+<dt>Nombre del remitente</dt>
+<dd><p class="first last">El nombre del remitente utilizado al enviar correos electrónicos (p.e. Notificaciones de Buzón de Voz de IvozProvider)</p>
+</dd>
+<dt>Dirección del remitente</dt>
+<dd><p class="first last">La dirección del remitente utilizada al enviar correos electrónicos (p.e. <a class="reference external" href="mailto:no-reply&#37;&#52;&#48;ivozprovider&#46;com">no-reply<span>&#64;</span>ivozprovider<span>&#46;</span>com</a>)</p>
+</dd>
+<dt>Variables de sustitución</dt>
+<dd><p class="first last">Variables disponibles que se pueden usar en el asunto y el cuerpo que serán reemplazadas antes de enviar el correo electrónico. Cada tipo de notificación tiene sus propias variables.</p>
+</dd>
+<dt>Asunto</dt>
+<dd><p class="first last">Asunto del correo electrónico a enviar. Puedes incluir variables de sustitución aquí.</p>
+</dd>
+<dt>Tipo de cuerpo</dt>
+<dd><p class="first last">El cuerpo del correo puede ser tanto texto plano como html.</p>
+</dd>
+<dt>Cuerpo</dt>
+<dd><p class="first last">Cuerpo del correo electrónico a enviar. Puedes incluir variables de sustitución aquí.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">No es necesario crear todos los idiomas del contenido. Si la notificación personalizada no tiene algunos idiomas definidos, se usarán los contenidos predeterminados para ese tipo de notificación.</p>
+</div>
+</div>
+<div class="section" id="using-variables-in-notification-contents">
+<h2>Agregando contenido de notificación<a class="headerlink" href="#using-variables-in-notification-contents" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Puedes usar variables en el asunto y el cuerpo del correo electrónico. Cada tipo de notificación tiene su propio conjunto de variables que se pueden usar. Las variables se reemplazan con el valor correspondiente antes de enviar la notificación por correo electrónico.</p>
+<ul>
+<li><p class="first"><strong>Notificaciones de Buzón de Voz</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${VM_NAME}</span></code></td>
+<td><p class="first last">Nombre del usuario del buzón de voz</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${VM_DATE}</span></code></td>
+<td><p class="first last">Fecha de recepción</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${VM_DUR}</span></code></td>
+<td><p class="first last">Duración del buzón de voz</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${VM_CIDNAME}</span></code></td>
+<td><p class="first last">Nombre del llamante</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${VM_CIDNUM}</span></code></td>
+<td><p class="first last">Número del llamante</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${VM_MSGNUM}</span></code></td>
+<td><p class="first last">Número del buzón de voz</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de Fax</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${FAX_NAME}</span></code></td>
+<td><p class="first last">Nombre del fax virtual</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${FAX_PDFNAME}</span></code></td>
+<td><p class="first last">Nombre del archivo PDF del fax</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${FAX_PAGES}</span></code></td>
+<td><p class="first last">Número de páginas del PDF del fax</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${FAX_SRC}</span></code></td>
+<td><p class="first last">Número de origen</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${FAX_DST}</span></code></td>
+<td><p class="first last">Número DDI recibido</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${FAX_DATE}</span></code></td>
+<td><p class="first last">Fecha de recepción</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de Factura</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${INVOICE_COMPANY}</span></code></td>
+<td><p class="first last">Nombre de la empresa</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${INVOICE_DATE_IN}</span></code></td>
+<td><p class="first last">Fecha de inicio</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${INVOICE_DATE_OUT}</span></code></td>
+<td><p class="first last">Fecha de fin</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${INVOICE_AMOUNT}</span></code></td>
+<td><p class="first last">Monto total con impuestos</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${INVOICE_CURRENCY}</span></code></td>
+<td><p class="first last">Moneda</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de Saldo Bajo</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${BALANCE_NAME}</span></code></td>
+<td><p class="first last">Nombre de la empresa o del operador</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${BALANCE_AMOUNT}</span></code></td>
+<td><p class="first last">Monto actual del saldo</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de CSV de Llamadas</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${CALLCSV_COMPANY}</span></code></td>
+<td><p class="first last">Nombre de la empresa</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${CALLCSV_DATE_IN}</span></code></td>
+<td><p class="first last">Fecha de inicio</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${CALLCSV_DATE_OUT}</span></code></td>
+<td><p class="first last">Fecha de fin</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de Uso Máximo Diario</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${MAXDAILYUSAGE_COMPANY}</span></code></td>
+<td><p class="first last">Nombre de la empresa</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${MAXDAILYUSAGE_AMOUNT}</span></code></td>
+<td><p class="first last">Uso máximo diario de la empresa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="assigning-templates-to-clients">
+<h2>Asignando plantillas a clientes<a class="headerlink" href="#assigning-templates-to-clients" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una vez que la notificación ha sido configurada para los idiomas deseados, el administrador de la marca puede asignarla al cliente que la usará. Esto se puede hacer en la sección de configuración de notificaciones de cada cliente. Si el cliente no tiene una notificación configurada, se usarán las notificaciones de la marca para ese cliente. Si la marca no tiene una notificación configurada, se usarán las notificaciones predeterminadas.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generic_music_on_hold.html" class="btn btn-neutral float-right" title="Música en Espera Genérica" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numeric_transformations.html" class="btn btn-neutral" title="Transformaciones numéricas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2019, Irontec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: main
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../../artemis/administration_portal/brand/settings/notification_templates.html">artemis</a></dd>
+            <dd><a href="../../../../halliday/administration_portal/brand/settings/notification_templates.html">halliday</a></dd>
+            <dd><a href="notification_templates.html">main</a></dd>
+            <dd><a href="../../../../oasis/index.html">oasis</a></dd>
+            <dd><a href="../../../../tempest/administration_portal/brand/settings/notification_templates.html">tempest</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'tempest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

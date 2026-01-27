@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Programadores de facturas</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="invoice_number_sequences.xhtml" title="Secuencias de números de factura"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="invoices.xhtml" title="Facturas"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Configuración de Marca</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Facturación</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="invoice-schedulers">
+<span id="id1"></span><h1>Programadores de facturas</h1>
+<p>Esta sección permite programar la creación automática y periódica de facturas.</p>
+<p>Al agregar una nueva definición, se muestran estos campos:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Nombre de la factura programada</p>
+</dd>
+<dt>Cliente</dt>
+<dd><p class="first last">Qué llamadas de clientes deben ser incluidas</p>
+</dd>
+<dt>Correo electrónico</dt>
+<dd><p class="first last">Enviar facturas generadas por correo electrónico. Vacío si no se desea correo automático.</p>
+</dd>
+<dt>Frecuencia/Unidad</dt>
+<dd><p class="first last">Define la frecuencia (una vez al mes, cada 7 días, etc.) de la tarea programada</p>
+</dd>
+<dt>Secuencia de número de factura</dt>
+<dd><p class="first last">Las facturas programadas usarán el siguiente número de factura disponible en una secuencia predefinida</p>
+</dd>
+<dt>Descuento de llamadas</dt>
+<dd><p class="first last">Porcentaje para descontar llamadas, antes del cálculo de la tasa de impuestos. Sin efecto en conceptos fijos.</p>
+</dd>
+<dt>Tasa de impuestos</dt>
+<dd><p class="first last">Impuestos a añadir al costo final (por ejemplo, IVA)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Las facturas generadas debido a una programación se pueden ver de dos maneras:</p>
+<ul class="simple">
+<li><p class="first">En cada fila de la sección <em>Programadores de facturas</em>, opción <strong>Lista de Facturas</strong>.</p>
+</li>
+<li><p class="first">En la sección <em>Facturas</em>, indistinguibles de las facturas generadas manualmente.</p>
+</li>
+</ul>
+<div class="section" id="fixed-costs">
+<h2>Costos fijos</h2>
+<p>Al definir una factura programada, puede agregar costos fijos de manera estática o dinámica:</p>
+<ul class="simple">
+<li><p class="first">El tipo <strong>&#8216;estático&#8217;</strong> se usa para cantidades fijas.</p>
+</li>
+<li><p class="first">El tipo <strong>&#8216;Máximo de llamadas&#8217;</strong> establece la cantidad en el momento de la creación de la factura al valor de &#8220;Máximo de llamadas&#8221; del cliente en ese momento específico.</p>
+</li>
+<li><p class="first">El tipo <strong>&#8216;DDIs&#8217;</strong> establece la cantidad en el momento de la creación de la factura al número de DDIs que cumplen con los criterios (todos, nacionales, internacionales o pertenecientes a un país específico) en el cliente en ese momento específico.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Los valores no estáticos se recuperan de la configuración del cliente en la fecha especificada en &#8220;Próxima ejecución&#8221;. Regenerar la factura más tarde no modificará el valor asignado, pero puede adaptarlo manualmente al valor deseado editando el costo fijo en la sección de Facturas y regenerando la factura.</p>
+</div>
+</div>
+<div class="section" id="frequency-definition">
+<h2>Definición de frecuencia</h2>
+<p>Es interesante entender cómo los campos <em>Frecuencia</em> y <em>Unidad</em> definen la tarea periódica:</p>
+<ul class="simple">
+<li><p class="first">Las facturas se programan a las 08:00:00 por defecto los lunes, el 1er día del mes o el 1 de enero (dependiendo del valor de la Unidad).</p>
+</li>
+<li><p class="first">Una vez creado un nuevo horario, <strong>Próxima ejecución</strong> muestra cuándo ocurrirá la próxima generación de facturas.</p>
+</li>
+</ul>
+<p>El valor de <strong>Próxima ejecución</strong> puede ser manipulado, pero la factura generada siempre:</p>
+<ul class="simple">
+<li><p class="first">Descartar el día actual (2018/11/01 08:00:00 establecerá 2018/10/31 23:59:59 como <em>Fecha de salida</em>).</p>
+</li>
+<li><p class="first"><em>Fecha de entrada</em> será <em>fecha de salida</em> menos X semana(s), X mes(es) o X año(s) (X igual al valor de <em>Frecuencia</em>) + 1 segundo.</p>
+</li>
+</ul>
+<p class="rubric">Ejemplo 1: Unidad: semana - Frecuencia 2</p>
+<p>La próxima ejecución se establecerá para el próximo lunes a las 08:00 y las facturas incluirán llamadas de las últimas 2 semanas.</p>
+<p class="rubric">Ejemplo 1: Unidad: mes - Frecuencia 3</p>
+<p>La próxima ejecución se establecerá para el próximo 1er día del mes a las 08:00 y las facturas incluirán llamadas de los últimos 3 meses.</p>
+<p class="rubric">Ejemplo 1: Unidad: mes - Frecuencia 1 - Manipulación de próxima ejecución</p>
+<p>La próxima ejecución se establecerá para el próximo 1er día del mes a las 08:00 pero la manipulamos al 3er día del mes a las 10:00:00.</p>
+<p>La factura incluirá llamadas desde el 3er día del mes anterior a las 00:00:00 hasta el 2do día del mes actual a las 23:59:59.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last"><em>Última ejecución</em> muestra la fecha de la última ejecución y su resultado (éxito/error).</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Tanto <em>próxima ejecución</em> como <em>última ejecución</em> se muestran usando la zona horaria de la marca.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

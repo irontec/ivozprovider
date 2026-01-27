@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Llamadas externas</title>
+    
+    <link rel="stylesheet" href="../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="infrastructure/index.xhtml" title="Infraestructura"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="active_calls.xhtml" title="Llamadas activas"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.xhtml" accesskey="U">Configuración de la Plataforma</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<span id="external-calls"></span><span id="id2"></span><h1>Llamadas externas</h1>
+<p>La sección <strong>Llamadas externas</strong> enumera <strong>tanto las llamadas externas entrantes como las salientes</strong>.</p>
+<p>Esta sección se muestra en diferentes niveles:</p>
+<ul class="simple">
+<li><p class="first">Nivel principal (nivel principal)</p>
+</li>
+<li><p class="first">Nivel de marca (filtrado para marca emulada/registrada).</p>
+</li>
+<li><p class="first">Nivel de cliente (filtrado para cliente emulado/registrado).</p>
+</li>
+</ul>
+<p>Cada entrada muestra esta información:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Tiempo de inicio</dt>
+<dd><p class="first last">Fecha y hora del establecimiento de la llamada.</p>
+</dd>
+<dt>Marca</dt>
+<dd><p class="first last">Solo visible para <em>principal</em>, muestra la marca de cada llamada.</p>
+</dd>
+<dt>Cliente</dt>
+<dd><p class="first last">Visible para <em>principal</em> y <em>operador de marca</em>, muestra el cliente de cada llamada.</p>
+</dd>
+<dt>Llamante</dt>
+<dd><p class="first last">DDI presentado para la llamada saliente.</p>
+</dd>
+<dt>Llamado</dt>
+<dd><p class="first last">Número externo marcado.</p>
+</dd>
+<dt>Duración</dt>
+<dd><p class="first last">Muestra cuánto duró la llamada.</p>
+</dd>
+<dt>Precio</dt>
+<dd><p class="first last">El monto de dinero para el cliente. Visible para <em>principal</em> y <em>operador de marca</em> y <em>administrador del cliente</em> si <em>Mostrar detalles de facturación al cliente</em> está habilitado.</p>
+</dd>
+<dt>Coste</dt>
+<dd><p class="first last">Visible para <em>principal</em> y <em>operador de marca</em>, el monto de dinero para la marca (el dinero que el operador facturará por la llamada).</p>
+</dd>
+<dt>Plan de precios</dt>
+<dd><p class="first last">Plan de precios utilizado para establecer el precio de la llamada. Visible para <em>principal</em> y <em>operador de marca</em> y <em>administrador del cliente</em> si <em>Mostrar detalles de facturación al cliente</em> está habilitado.</p>
+</dd>
+<dt>Destino</dt>
+<dd><p class="first last">Destino que coincidió con la llamada para la facturación. Visible para <em>principal</em> y <em>operador de marca</em> y <em>administrador del cliente</em> si <em>Mostrar detalles de facturación al cliente</em> está habilitado.</p>
+</dd>
+<dt>Operador</dt>
+<dd><p class="first last">Visible para <em>principal</em> y <em>operador de marca</em>, muestra qué <a class="reference internal" href="../brand/providers/carriers.xhtml#carriers"><span class="std std-ref">Operador</span></a> se utilizó para cada llamada saliente.</p>
+</dd>
+<dt>Proveedor DDI</dt>
+<dd><p class="first last">Visible para <em>principal</em> y <em>operador de marca</em>, muestra qué <a class="reference internal" href="../brand/providers/ddi_providers.xhtml#ddi-providers"><span class="std std-ref">Proveedor DDI</span></a> se utilizó para cada llamada entrante.</p>
+</dd>
+<dt>Factura</dt>
+<dd><p class="first last">Visible para <em>principal</em> y <em>operador de marca</em>, muestra si una llamada ya está incluida en alguna <a class="reference internal" href="../brand/invoicing/invoices.xhtml#invoices"><span class="std std-ref">Factura</span></a>.</p>
+</dd>
+<dt>ID de llamada</dt>
+<dd><p class="first last">Muestra el ID de la llamada para la resolución de problemas y exportación CSV.</p>
+</dd>
+<dt>Tipo de Endpoint</dt>
+<dd><p class="first last">Valores posibles: RetailAccount, ResidentialDevice, User, Fax, Friend.</p>
+</dd>
+<dt>ID de Endpoint</dt>
+<dd><p class="first last">ID interno del endpoint específico (solo cuando <em>endpointType</em> no está vacío).</p>
+</dd>
+<dt>Nombre de Endpoint</dt>
+<dd><p class="first last">Extensión de usuario, nombre de amigo, nombre de fax, nombre de cuenta retail o nombre de dispositivo residencial (solo cuando <em>endpointId</em> no está vacío).</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Un proceso asíncrono analiza cada llamada externa y la añade a esta lista unos minutos después de colgar la llamada. Los campos relacionados con la facturación, como el coste y el precio, estarán vacíos para las llamadas entrantes externas.</p>
+</div>
+<div class="section" id="call-rerating">
+<h2>Recalificación de llamada</h2>
+<p>A nivel de <strong>marca</strong>, hay una operación adicional disponible para llamadas salientes: <strong>Recalificar llamada</strong>. Esta opción permite llamar al motor de calificación nuevamente para una llamada o un grupo de llamadas.</p>
+<p>Notas sobre este proceso de recalificación:</p>
+<ul class="simple">
+<li><p class="first">Si una llamada está en una factura, no se puede recalificar. La factura debe ser eliminada primero.</p>
+</li>
+<li><p class="first">La llamada será recalificada con el <em>Tiempo de inicio</em> de la llamada (no con los planes de calificación activos actuales, sino con los planes de calificación activos en el momento de la llamada).</p>
+</li>
+<li><p class="first">Tanto el <em>Precio</em> como el <em>Coste</em> serán recalculados. Esto puede implicar actualizar el <em>plan de precios</em> y el <em>destino</em> también.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Cuando una llamada es recalificada, el coste y el precio se vacían hasta la siguiente iteración de la tarea asíncrona.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

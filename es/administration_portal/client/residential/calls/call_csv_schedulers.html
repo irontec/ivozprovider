@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Programadores de CSV de llamadas &mdash; documentación de IvozProvider - tempest</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Índice"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Búsqueda" href="../../../../search.html"/>
+    <link rel="top" title="documentación de IvozProvider - tempest" href="../../../../index.html"/>
+        <link rel="up" title="Llamadas" href="index.html"/>
+        <link rel="next" title="Grabaciones de llamadas" href="call_recordings.html"/>
+        <link rel="prev" title="Llamadas externas" href="external_calls.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> IvozProvider
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/intro/index.html">Introducción a IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/architecture/index.html">Arquitectura general de la plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/installation/index.html">Instalación inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/operation_roles/index.html">Roles de la plataforma</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/internal_calls/index.html">Realizando llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/external_incoming_calls/index.html">Recibiendo llamadas externas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/external_outgoing_calls/index.html">Realizando llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Administration portal</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../platform/index.html">Configuración de la Plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../brand/index.html">Configuración de Marca</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Configuración del Cliente</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../vpbx/index.html">Clientes vPBX</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Clientes Residenciales</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../residential_devices.html">Dispositivos residenciales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../residential_voicemails.html">Buzones de Voz Residenciales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faxes.html">Faxes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddis.html">DDIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rating_profiles.html">Perfiles de calificación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_call_filters.html">Filtros de llamadas externas</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Llamadas</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="active_calls.html">Llamadas activas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="external_calls.html">Llamadas externas</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Programadores de CSV de llamadas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="call_recordings.html">Grabaciones de llamadas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../retail/index.html">Clientes Retail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wholesale/index.html">Clientes Wholesale</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Specific portals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_portal/index.html">Portal de Usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Security and Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_and_maintenance/security/index.html">Seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_and_maintenance/maintenance/index.html">Solución de problemas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Rest API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/introduction.html">Introducción a la API de IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/multilevel.html">API multinivel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/web_client.html">Cliente web incorporado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/integrations.html">Integraciones de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/use_case.html">Caso de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/acls.html">ACLs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">IvozProvider</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Configuración del Cliente</a> &raquo;</li>
+      
+          <li><a href="../index.html">Clientes Residenciales</a> &raquo;</li>
+      
+          <li><a href="index.html">Llamadas</a> &raquo;</li>
+      
+    <li>Programadores de CSV de llamadas</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/administration_portal/client/residential/calls/call_csv_schedulers.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="call-csv-schedulers">
+<h1>Programadores de CSV de llamadas<a class="headerlink" href="#call-csv-schedulers" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Esta sección permite programar informes CSV periódicos automáticos para los administradores de clientes residenciales.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Esta sección es casi idéntica a <a class="reference internal" href="../../../brand/invoicing/invoice_schedulers.html#invoice-schedulers"><span class="std std-ref">Programadores de facturas</span></a> excepto por los campos que no se aplican a los CSV (secuencia de número de factura, tasa de impuestos...)</p>
+</div>
+<p>Al agregar una nueva definición, se muestran estos campos:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Nombre del CSV de llamadas programado</p>
+</dd>
+<dt>Correo electrónico</dt>
+<dd><p class="first last">Enviar el CSV de llamadas generado por correo electrónico. Vacío si no se desea correo automático.</p>
+</dd>
+<dt>Frecuencia/Unidad</dt>
+<dd><p class="first last">Define la frecuencia (una vez al mes, cada 7 días, etc.) de la tarea programada</p>
+</dd>
+<dt>Dirección</dt>
+<dd><p class="first last">Define qué llamadas deben incluirse según su dirección (entrantes, salientes, ambas).</p>
+</dd>
+<dt>DDI</dt>
+<dd><p class="first last">Permite seleccionar un DDI específico del cliente.</p>
+</dd>
+<dt>Tipo de punto final</dt>
+<dd><p class="first last">Permite seleccionar un tipo de punto final específico entre: dispositivo residencial y fax.</p>
+</dd>
+<dt>Dispositivo residencial</dt>
+<dd><p class="first last">Solo para <em>Tipo de punto final: residencial</em>, permite seleccionar un dispositivo residencial específico.</p>
+</dd>
+<dt>Fax</dt>
+<dd><p class="first last">Solo para <em>Tipo de punto final: fax</em>, permite seleccionar un fax específico.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Una vez creado, se accede a algunos campos y subsecciones nuevos:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Próxima ejecución</dt>
+<dd><p class="first last">Muestra la fecha de la próxima ejecución</p>
+</dd>
+<dt>Última ejecución</dt>
+<dd><p class="first last">Muestra la última ejecución y su resultado.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Modificar el valor de <em>Próxima ejecución</em> permite forzar ejecuciones específicas. Por ejemplo, establecer <em>Próxima ejecución</em> en el primer día del mes actual creará nuevamente el informe CSV del mes pasado (para un programador mensual).</p>
+</div>
+<p>Se puede acceder a los CSV generados de cada programador en la subsección <strong>Lista de informes CSV de llamadas</strong>.</p>
+<div class="section" id="csv-fields">
+<h2>Campos CSV<a class="headerlink" href="#csv-fields" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Estos son los campos de los archivos CSV generados:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>callid</dt>
+<dd><p class="first last">Call-ID del diálogo SIP</p>
+</dd>
+<dt>startTime</dt>
+<dd><p class="first last">Hora y fecha del establecimiento de la llamada</p>
+</dd>
+<dt>duración</dt>
+<dd><p class="first last">Duración de la llamada en segundos</p>
+</dd>
+<dt>llamante</dt>
+<dd><p class="first last">Número del llamante en formato E.164 (con &#8216;+&#8217;)</p>
+</dd>
+<dt>llamado</dt>
+<dd><p class="first last">Número del llamado en formato E.164 (con &#8216;+&#8217;)</p>
+</dd>
+<dt>precio</dt>
+<dd><p class="first last">Precio calculado para la llamada dada (vacío si <em>Mostrar detalles de facturación al cliente</em> está deshabilitado)</p>
+</dd>
+<dt>dirección</dt>
+<dd><p class="first last">Valores posibles: entrante, saliente.</p>
+</dd>
+<dt>ddiId</dt>
+<dd><p class="first last">DDI del cliente al que se asignará la llamada (llamado para llamadas entrantes, llamante para llamadas salientes).</p>
+</dd>
+<dt>tipo de punto final</dt>
+<dd><p class="first last">Valores posibles: DispositivoResidencial, Fax.</p>
+</dd>
+<dt>ID de punto final</dt>
+<dd><p class="first last">ID interno del dispositivo residencial específico</p>
+</dd>
+<dt>Nombre del punto final</dt>
+<dd><p class="first last">Nombre del dispositivo residencial o nombre del fax</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="call_recordings.html" class="btn btn-neutral float-right" title="Grabaciones de llamadas" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="external_calls.html" class="btn btn-neutral" title="Llamadas externas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2019, Irontec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: tempest
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../../artemis/administration_portal/client/residential/calls/call_csv_schedulers.html">artemis</a></dd>
+            <dd><a href="../../../../halliday/administration_portal/client/residential/calls/call_csv_schedulers.html">halliday</a></dd>
+            <dd><a href="../../../../main/administration_portal/client/residential/calls/call_csv_schedulers.html">main</a></dd>
+            <dd><a href="../../../../oasis/index.html">oasis</a></dd>
+            <dd><a href="../../../../tempest/administration_portal/client/residential/calls/call_csv_schedulers.html">tempest</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'tempest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

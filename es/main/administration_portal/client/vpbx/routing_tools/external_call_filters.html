@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Filtros de llamadas externas &mdash; documentación de IvozProvider - tempest</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Índice"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Búsqueda" href="../../../../search.html"/>
+    <link rel="top" title="documentación de IvozProvider - tempest" href="../../../../index.html"/>
+        <link rel="up" title="Herramientas de encaminamiento" href="index.html"/>
+        <link rel="next" title="Calendarios" href="calendars.html"/>
+        <link rel="prev" title="Herramientas de encaminamiento" href="index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> IvozProvider
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/intro/index.html">Introducción a IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/architecture/index.html">Arquitectura general de la plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/installation/index.html">Instalación inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/operation_roles/index.html">Roles de la plataforma</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/internal_calls/index.html">Realizando llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/external_incoming_calls/index.html">Recibiendo llamadas externas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/external_outgoing_calls/index.html">Realizando llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Administration portal</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../platform/index.html">Configuración de la Plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../brand/index.html">Configuración de Marca</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Configuración del Cliente</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Clientes vPBX</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../users.html">Usuarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../terminals.html">Terminales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html">Extensiones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddis.html">DDIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../routing_endpoints/index.html">Items enrutables</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Herramientas de encaminamiento</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Filtros de llamadas externas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="calendars.html">Calendarios</a></li>
+<li class="toctree-l4"><a class="reference internal" href="schedules.html">Horarios</a></li>
+<li class="toctree-l4"><a class="reference internal" href="match_lists.html">Listas de coincidencia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="route_locks.html">Candados de ruta</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../user_configuration/index.html">Configuración de usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../multimedia/index.html">Multimedia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faxes.html">Faxes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services.html">Servicios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../voicemails.html">Buzones de voz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../addressbook.html">Agenda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rating_profiles.html">Perfiles de precio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calls/index.html">Llamadas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../residential/index.html">Clientes Residenciales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../retail/index.html">Clientes Retail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wholesale/index.html">Clientes Wholesale</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Specific portals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_portal/index.html">Portal de Usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Security and Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_and_maintenance/security/index.html">Seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_and_maintenance/maintenance/index.html">Solución de problemas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Rest API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/introduction.html">Introducción a la API de IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/multilevel.html">API multinivel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/web_client.html">Cliente web incorporado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/integrations.html">Integraciones de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/use_case.html">Caso de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/acls.html">ACLs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">IvozProvider</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Configuración del Cliente</a> &raquo;</li>
+      
+          <li><a href="../index.html">Clientes vPBX</a> &raquo;</li>
+      
+          <li><a href="index.html">Herramientas de encaminamiento</a> &raquo;</li>
+      
+    <li>Filtros de llamadas externas</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/administration_portal/client/vpbx/routing_tools/external_call_filters.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="external-call-filters">
+<span id="external-filters"></span><span id="id1"></span><h1>Filtros de llamadas externas<a class="headerlink" href="#external-call-filters" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Una de las tareas más comunes que realizará el administrador de un cliente es configurar horarios y calendarios para aplicarlos a los <a class="reference internal" href="../../../brand/views/ddis.html#ddis"><span class="std std-ref">DDIs</span></a> existentes.</p>
+<p>Una vez que tengamos nuestros nuevos <a class="reference internal" href="schedules.html#schedules"><span class="std std-ref">Horarios</span></a> y <a class="reference internal" href="calendars.html#calendars"><span class="std std-ref">Calendarios</span></a> creados, es hora de aplicarlos en lo que llamamos <strong>Filtro de llamadas externas</strong>.</p>
+<p>El administrador del cliente puede configurarlos en la siguiente pantalla:</p>
+<div class="section" id="basic-info">
+<h2>Información básica<a class="headerlink" href="#basic-info" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Nombre descriptivo que hará referencia a este filtro en la configuración de DDIs.</p>
+</dd>
+<dt>Locución de bienvenida</dt>
+<dd><p class="first last">Esta locución se reproducirá si la llamada no va a ser desviada por filtros fuera de horario o festivos (en otras palabras, si se va a aplicar el enrutamiento normal del DDI).</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="filtering-info">
+<h2>Información de filtrado<a class="headerlink" href="#filtering-info" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Lista blanca</dt>
+<dd><p class="first last">El origen externo se verificará contra las <a class="reference internal" href="match_lists.html#match-lists"><span class="std std-ref">Listas de coincidencia</span></a> asociadas, si se encuentra una coincidencia, la llamada se enruta directamente al destino DDI, saltando el proceso de filtrado. Ten en cuenta que las listas negras se verifican antes que las listas blancas.</p>
+</dd>
+<dt>Lista negra</dt>
+<dd><p class="first last">El origen externo se verificará contra las <a class="reference internal" href="match_lists.html#match-lists"><span class="std std-ref">Listas de coincidencia</span></a> asociadas, si se encuentra una coincidencia, la llamada será rechazada inmediatamente.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="holidays-configuration">
+<h2>Configuración de festivos<a class="headerlink" href="#holidays-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Festivos habilitados</dt>
+<dd><p class="first last">Configura esto en no para ignorar completamente el filtrado de festivos.</p>
+</dd>
+<dt>Calendarios</dt>
+<dd><p class="first last">Uno o más <a class="reference internal" href="calendars.html#calendars"><span class="std std-ref">Calendarios</span></a> pueden asociarse con el filtro. Se aplicará la combinación de todos los calendarios.</p>
+</dd>
+<dt>Locución de festivo</dt>
+<dd><p class="first last">La locución se reproducirá cuando el día esté marcado como festivo en cualquiera de los calendarios asociados con el filtro <strong>si la entrada del calendario no tiene locución</strong> para ese día.</p>
+</dd>
+<dt>Tipo de destino festivo</dt>
+<dd><p class="first last">Después de reproducir la locución anterior (si está configurada), la llamada puede ser desviada a un buzón de voz, número externo o extensión interna. Por ejemplo, el filtro de la imagen redirigirá las llamadas durante los festivos al número externo 676 676 676.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="out-of-schedule-configuration">
+<h2>Configuración fuera de horario<a class="headerlink" href="#out-of-schedule-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Fuera de horario habilitado</dt>
+<dd><p class="first last">Configura esto en no para ignorar completamente el filtrado fuera de horario.</p>
+</dd>
+<dt>Horarios</dt>
+<dd><p class="first last">Se pueden aplicar uno o más <a class="reference internal" href="schedules.html#schedules"><span class="std std-ref">Horarios</span></a>. Se aplicará la combinación de todos los intervalos de tiempo definidos en los horarios.</p>
+</dd>
+<dt>Locución fuera de horario</dt>
+<dd><p class="first last">La locución se reproducirá cuando, no siendo festivo, la hora actual no esté en ninguno de los intervalos de tiempo definidos en los horarios asignados al filtro.</p>
+</dd>
+<dt>Tipo de destino fuera de horario</dt>
+<dd><p class="first last">Como en el desvío de festivos, pero para fuera de horario. La imagen anterior no aplicará ningún desvío (y la llamada se colgará).</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition attention">
+<p class="first admonition-title">Atención</p>
+<p class="last">Los festivos se procesan <strong>antes</strong> de los eventos fuera de horario.</p>
+</div>
+<p>En la siguiente sección utilizaremos este nuevo filtro creado con <a class="reference internal" href="../../../brand/views/ddis.html#ddis"><span class="std std-ref">DDIs</span></a> para que podamos configurar una locución de bienvenida para los días normales, y comportamientos especiales para los festivos y eventos fuera de horario.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="calendars.html" class="btn btn-neutral float-right" title="Calendarios" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Herramientas de encaminamiento" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2019, Irontec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: main
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../../../artemis/administration_portal/client/vpbx/routing_tools/external_call_filters.html">artemis</a></dd>
+            <dd><a href="../../../../../halliday/administration_portal/client/vpbx/routing_tools/external_call_filters.html">halliday</a></dd>
+            <dd><a href="external_call_filters.html">main</a></dd>
+            <dd><a href="../../../../../oasis/index.html">oasis</a></dd>
+            <dd><a href="../../../../../tempest/administration_portal/client/vpbx/routing_tools/external_call_filters.html">tempest</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'tempest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

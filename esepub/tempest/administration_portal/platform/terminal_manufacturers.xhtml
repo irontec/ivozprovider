@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fabricantes de Terminales</title>
+    
+    <link rel="stylesheet" href="../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="services.xhtml" title="Servicios"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="antiflood_banned_ips.xhtml" title="IPs bloqueadas por Antiflood"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.xhtml" accesskey="U">Configuración de la Plataforma</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="terminal-manufacturers">
+<span id="provisioning"></span><h1>Fabricantes de Terminales</h1>
+<div class="section" id="overview">
+<h2>Descripción general</h2>
+<p>IvozProvider soporta la provisión de terminales vía HTTP/HTTPS que cumplen con los siguientes requisitos:</p>
+<ul>
+<li><p class="first">Asumiendo un terminal recién desempaquetado, recién conectado y conectado a la red:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Solicitar dirección IP vía DHCP.</p>
+</li>
+<li><p class="first">DHCP ha habilitado la opción 66 que apunta al portal de la plataforma</p>
+</li>
+<li><p class="first">El primer archivo de provisión solicitado es un archivo estático (diferente para cada modelo) con el prefijo de la URL del paso anterior.</p>
+</li>
+<li><p class="first">El archivo servido puede redefinir la URL para solicitudes adicionales</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Cualquier modelo de terminal que pueda adaptarse a esta forma de provisión puede añadirse en la sección <strong>Configuración de la Plataforma &gt; Fabricantes de Terminales</strong>.</p>
+<p class="rubric">Ejemplo Cisco SPA504G</p>
+<ul>
+<li><p class="first">Cisco SPA504G se enciende y solicita una dirección IP a DHCP</p>
+</li>
+<li><p class="first">Recibe “<a class="reference external" href="http://provision.example.com/provision">http://provision.example.com/provision</a>” como opción 66 de DHCP</p>
+</li>
+<li><p class="first">Solicitar configuración HTTP desde <a class="reference external" href="http://provision.example.com/provision/spa504g.cfg">http://provision.example.com/provision/spa504g.cfg</a></p>
+</li>
+<li><p class="first">Todos los 504G solicitan el mismo archivo (spa504.cfg), con el prefijo de la URL dada</p>
+</li>
+<li><p class="first">Este archivo solo contiene configuraciones básicas para el modelo y la URL para la siguiente solicitud (p.e. <a class="reference external" href="https://provision.example.com/provision/$MAC.cfg">https://provision.example.com/provision/$MAC.cfg</a>)</p>
+</li>
+<li><p class="first">De esta manera, cada terminal (MAC debe ser único) solicita un archivo específico (y diferente) después de que se haya servido el genérico.</p>
+</li>
+<li><p class="first">Este archivo contendrá la configuración específica para el terminal:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Usuario</p>
+</li>
+<li><p class="first">Contraseña</p>
+</li>
+<li><p class="first">Dominio SIP</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">El sistema de provisión de IvozProvider, en este momento, solo tiene un objetivo: proporcionar credenciales y configuraciones de idioma para los terminales.</p>
+</div>
+</div>
+<div class="section" id="configuration-of-supported-models">
+<h2>Configuración de modelos soportados</h2>
+<p>IvozProvider utiliza un sistema de plantillas que permite al operador global (God) definir nuevos modelos y configurar qué archivos se servirán.</p>
+<p>La sección de ayuda de <strong>Fabricantes de Terminales</strong> tiene ejemplos para algunos modelos que funcionan (en el momento de escribir esto) con el sistema de provisión de IvozProvider.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Estos modelos estarán disponibles después de la instalación inicial, pero debe editarlos y cargar la configuración predeterminada antes de poder usar el sistema de provisión (opción <strong>Restaurar plantilla por defecto</strong>).</p>
+</div>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">Los cambios en el firmware de los UAC pueden hacer que los ejemplos dados dejen de funcionar. Intentaremos mantener las plantillas actualizadas, pero no podemos garantizar este punto.</p>
+</div>
+<p>Analizando las plantillas sugeridas puede tener una idea básica de la flexibilidad del sistema para configurar cualquier modelo de terminal existente en el mercado y adaptarlos a cambios eventuales en los ejemplos dados.</p>
+</div>
+<div class="section" id="getting-technical">
+<h2>Aspectos técnicos</h2>
+<p>Imagine un entorno con esta configuración:</p>
+<ul class="simple">
+<li><p class="first">URLs de provisión:</p>
+<ul>
+<li><p class="first">Archivo genérico: <a class="reference external" href="http://PROV_IP/provision">http://PROV_IP/provision</a></p>
+</li>
+<li><p class="first">Archivo específico: <a class="reference external" href="https://PROV_IP:PROV_PORT/provision">https://PROV_IP:PROV_PORT/provision</a></p>
+</li>
+</ul>
+</li>
+<li>TerminalModels.genericUrlPattern: y000000000044.cfg</li>
+</ul>
+<p>¿Qué URLs solicitadas serán válidas?</p>
+<p>Para el archivo genérico, solo una: <a class="reference external" href="http://PROV_IP/provision/y000000000044.cfg">http://PROV_IP/provision/y000000000044.cfg</a></p>
+<p>Para el archivo específico, las solicitudes son correctas siempre que se cumplan estas reglas:</p>
+<ul class="simple">
+<li><p class="first">Todas las solicitudes HTTP son incorrectas.</p>
+</li>
+<li><p class="first">Las solicitudes HTTPS al 443 son incorrectas (se debe usar PROV_PORT).</p>
+</li>
+<li><p class="first">Los subrutas después de la URL de provisión se ignoran, tanto en la solicitud como en specificUrlPattern.</p>
+</li>
+<li><p class="first">En la solicitud de archivo específico, la extensión debe coincidir siempre que se use la extensión en specificUrlPattern.</p>
+</li>
+<li><p class="first">En la solicitud de archivo específico, el nombre del archivo debe coincidir exactamente una vez que se reemplace {mac}.</p>
+</li>
+<li><p class="first">La dirección MAC no distingue entre mayúsculas y minúsculas y puede contener dos puntos o no (&#8216;:&#8217;).</p>
+</li>
+</ul>
+<p>Analicemos los ejemplos a continuación para entender mejor estas reglas:</p>
+<p class="rubric">Ejemplo 1 - TerminalModels.specificUrlPattern: {mac}.cfg</p>
+<p>Solicitudes correctas:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">https://PROV_IP:PROV_PORT/provision/aabbccddeeff.cfg</span>
+<span class="go">https://PROV_IP:PROV_PORT/provision/aa:bb:cc:dd:ee:ff.cfg</span>
+<span class="go">https://PROV_IP:PROV_PORT/provision/aabbccdd:ee:ff.cfg</span>
+<span class="go">https://PROV_IP:PROV_PORT/provision/aabbccddeeff.cfg</span>
+<span class="go">https://PROV_IP:PROV_PORT/provision/AABBCCDDEEFF.cfg</span>
+<span class="go">https://PROV_IP:PROV_PORT/provision/subpath1/aabbccddeeff.cfg</span>
+<span class="go">https://PROV_IP:PROV_PORT/provision/subpath1/subpath2/aabbccddeeff.cfg</span>
+</pre></div>
+</div>
+<p>Solicitudes incorrectas:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">https://PROV_IP:PROV_PORT/provision/aabbccddeeff.boot</span>
+<span class="go">https://PROV_IP:PROV_PORT/provision/subpath1/subpath2/aabbccddeeff.boot</span>
+</pre></div>
+</div>
+<p>Este ejemplo es idéntico a &#8216;t23/{mac}.cfg&#8217;, ya que se ignoran las subrutas.</p>
+<p class="rubric">Ejemplo 2 - TerminalModels.specificUrlPattern: {mac}</p>
+<p>Todos los ejemplos anteriores son correctos, ya que se ignora la extensión si no se encuentra ninguna extensión en specificUrlPattern.</p>
+<p>Este ejemplo es idéntico a &#8216;t23/{mac}&#8217;, ya que se ignoran las subrutas.</p>
+<p class="rubric">Ejemplo 3 - TerminalModels.specificUrlPattern: yea-{mac}.cfg</p>
+<p>Todos los ejemplos anteriores son incorrectos, ya que no se encuentra &#8216;yea-&#8216; (la coincidencia de &#8216;yea&#8217; distingue entre mayúsculas y minúsculas).</p>
+<p>Solicitudes correctas:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">https://PROV_IP:PROV_PORT/provision/subpath1/yea-aabbccdd:ee:ff.cfg</span>
+</pre></div>
+</div>
+<p>Solicitudes incorrectas:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">https://PROV_IP:PROV_PORT/provision/subpath1/yea-aabbccdd:ee:ff.boot</span>
+<span class="go">https://PROV_IP:PROV_PORT/provision/subpath1/YEA-aabbccdd:ee:ff.cfg</span>
+</pre></div>
+</div>
+<p>Este ejemplo es idéntico a &#8216;t23/yea-{mac}.cfg&#8217;, ya que se ignoran las subrutas.</p>
+<p class="rubric">Ejemplo 4 - TerminalModels.specificUrlPattern: yea-{mac}</p>
+<p>Como no se da ninguna extensión:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">https://PROV_IP:PROV_PORT/provision/subpath1/yea-aabbccdd:ee:ff.cfg</span>
+<span class="go">https://PROV_IP:PROV_PORT/provision/subpath1/yea-aabbccdd:ee:ff.boot</span>
+</pre></div>
+</div>
+<p>Solicitudes incorrectas:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">https://PROV_IP:PROV_PORT/provision/subpath1/YEA-aabbccdd:ee:ff.cfg</span>
+</pre></div>
+</div>
+<p>Este ejemplo es idéntico a &#8216;t23/yea-{mac}&#8217;, ya que se ignoran las subrutas.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>
