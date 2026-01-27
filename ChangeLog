@@ -1,3 +1,22 @@
+Tue, 27 Jan 2026 10:42:32 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.6.0 released
+
+    * Portals:
+        - Added Basque language translations
+        - Added bulk action to unlink DDIs with confirmation modal
+        - Standarized modal design
+        - Fixed pagination issues
+        - Fixed issues in residential client ExternalFilters form
+
+    * Core:
+        - Fixed PDF generation for manually created invoices
+        - Added backend validations for company type associations in entities
+
+    * Misc:
+        - Added cgrates-balances helper script
+
+
 Mon, 14 Nov 2025 10:37:00 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.5.1 released
