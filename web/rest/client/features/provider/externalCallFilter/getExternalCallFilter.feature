@@ -59,16 +59,18 @@ Feature: Retrieve external call filters
           "holidayNumberCountry": null,
           "outOfScheduleNumberCountry": null,
           "scheduleIds": [
-            1
+              1
           ],
           "calendarIds": [
-            1
+              1
           ],
           "whiteListIds": [
-            1
+              1
           ],
           "blackListIds": [
-            1
-          ]
+              1
+          ],
+          "holidayEnabled": true,
+          "outOfScheduleEnabled": true
       }
       """

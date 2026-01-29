@@ -68,7 +68,8 @@ Feature: Retrieve transformation rule sets
               "en": "Brand 1 transformation for Spain",
               "es": "Marca 1 tansformacion para España",
               "ca": "Marca 1 tansformacion para España",
-              "it": "Brand 1 transformation for Spain"
+              "it": "Brand 1 transformation for Spain",
+              "eu": "Brand 1 transformation for Spain"
           },
           "country": {
               "code": "ES",
@@ -78,13 +79,15 @@ Feature: Retrieve transformation rule sets
                   "en": "Spain",
                   "es": "España",
                   "ca": "España",
-                  "it": "Spagna"
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
                   "ca": "Europa",
-                  "it": "Europe"
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           }
       }

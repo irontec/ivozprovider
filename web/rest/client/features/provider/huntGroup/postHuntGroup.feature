@@ -77,9 +77,12 @@ Feature: Create hunt groups
               "user": 1,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null,
+              "locution": null
           },
           "noAnswerVoicemail": null,
-          "noAnswerNumberCountry": null
+          "noAnswerNumberCountry": null,
+          "allowCallForwards": 0
       }
       """

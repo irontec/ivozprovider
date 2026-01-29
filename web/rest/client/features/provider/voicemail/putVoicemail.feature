@@ -56,8 +56,19 @@ Feature: Update voicemails
       And the JSON should be like:
       """
       {
+          "enabled": true,
+          "name": "Voicemail Generic 1",
+          "email": "generic@voicemail.com",
+          "sendMail": true,
+          "attachSound": false,
+          "id": 3,
           "user": null,
-          "residentialDevice": null
+          "residentialDevice": null,
+          "company": 1,
+          "locution": null,
+          "relUserIds": [
+              1
+          ]
       }
       """
 
@@ -79,7 +90,8 @@ Feature: Update voicemails
       """
       {
           "id": 4,
-          "user": 2
+          "user": 2,
+          "*": "~"
       }
       """
 
@@ -101,7 +113,8 @@ Feature: Update voicemails
       """
       {
           "id": 2,
-          "residentialDevice": 1
+          "residentialDevice": 1,
+          "*": "~"
       }
       """
 
