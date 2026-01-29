@@ -40,7 +40,7 @@ Feature: Retrieve active calls
      Then the response status code should be 422
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-      And the JSON should be like:
+      And the exception should match:
       """
       {
         "detail": "This company does not belong to your brand"
