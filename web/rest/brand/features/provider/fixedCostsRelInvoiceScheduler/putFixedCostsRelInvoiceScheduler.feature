@@ -25,7 +25,10 @@ Feature: Update fixed costs rel invoice schedulers
           "quantity": 2,
           "id": 1,
           "fixedCost": "~",
-          "invoiceScheduler": "~"
+          "invoiceScheduler": "~",
+          "type": "static",
+          "ddisCountryMatch": null,
+          "ddisCountry": null
       }
       """
 

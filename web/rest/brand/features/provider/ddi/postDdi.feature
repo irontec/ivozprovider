@@ -55,7 +55,8 @@ Feature: Create ddis
           "useDdiProviderRoutingTag": true,
           "id": 4,
           "company": {
-              "id": 1
+              "id": 1,
+              "*": "~"
           },
           "ddiProvider": {
               "description": "DDIProviderDescription",
@@ -67,7 +68,8 @@ Feature: Create ddis
               "routingTag": 2
           },
           "country": {
-              "id": 68
+              "id": 68,
+              "*": "~"
           },
           "routingTag": null
       }

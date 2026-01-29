@@ -18,11 +18,22 @@ Feature: Modify company balances
       And the JSON should be like:
       """
       {
+          "type": "vpbx",
           "name": "DemoCompany",
           "domainUsers": "127.0.0.1",
+          "maxCalls": 0,
+          "maxDailyUsage": 2,
+          "currentDayUsage": 1,
+          "maxDailyUsageEmail": "no-replay@domain.net",
+          "ipfilter": false,
+          "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
+          "onDemandRecordCode": "",
+          "externallyextraopts": "",
           "billingMethod": "prepaid",
           "balance": 11.2,
-          "id": 1
+          "id": 1,
+          "*": "~"
       }
       """
 
@@ -41,10 +52,22 @@ Feature: Modify company balances
       And the JSON should be like:
       """
       {
+          "type": "vpbx",
           "name": "DemoCompany",
           "domainUsers": "127.0.0.1",
+          "maxCalls": 0,
+          "maxDailyUsage": 2,
+          "currentDayUsage": 1,
+          "maxDailyUsageEmail": "no-replay@domain.net",
+          "ipfilter": false,
+          "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
+          "onDemandRecordCode": "",
+          "externallyextraopts": "",
           "billingMethod": "prepaid",
           "balance": 0.2,
-          "id": 1
+          "showInvoices": true,
+          "id": 1,
+          "*": "~"
       }
       """

@@ -62,13 +62,21 @@ Feature: Create carriers
                   "en": "Brand 1 transformation for Spain",
                   "es": "Marca 1 tansformacion para España",
                   "ca": "Marca 1 tansformacion para España",
-                  "it": "Brand 1 transformation for Spain"
+                  "it": "Brand 1 transformation for Spain",
+                  "eu": "Brand 1 transformation for Spain"
               },
               "country": 68,
               "editable": true
           },
           "mediaRelaySet": {
-            "id": 0
+              "id": 0,
+              "*": "~"
+          },
+          "balance": 0,
+          "currency": null,
+          "proxyTrunk": {
+              "id": 1,
+              "*": "~"
           }
       }
       """

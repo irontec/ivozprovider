@@ -82,12 +82,15 @@ Feature: Retrieve destination rate group
               "en": "Standard",
               "es": "Standard",
               "ca": "Standard",
-              "it": "Standard"
+              "it": "Standard",
+              "eu": "Standard"
           },
           "description": {
               "en": "",
               "es": "",
-              "ca": ""
+              "ca": "",
+              "it": "",
+              "eu": ""
           },
           "file": {
               "fileSize": null,
@@ -95,6 +98,7 @@ Feature: Retrieve destination rate group
               "baseName": null,
               "importerArguments": []
           },
-          "currency": null
+          "currency": null,
+          "deductibleConnectionFee": false
       }
       """
