@@ -127,7 +127,19 @@ This is file content
           "language": 1,
           "defaultTimezone": 145,
           "currency": 2,
-          "features": []
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
+          "features": [],
+          "proxyTrunks": [],
+          "applicationServerSets": [
+              0
+          ],
+          "mediaRelaySets": [
+              0
+          ]
       }
     """
 
