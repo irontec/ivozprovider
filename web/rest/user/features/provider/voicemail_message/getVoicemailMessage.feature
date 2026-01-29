@@ -41,28 +41,29 @@ Feature: Retrieve voicemail messages
       And the JSON should be like:
       """
       {
-        "calldate": "2022-03-31 14:08:43",
-        "folder": "INBOX",
-        "caller": "Alice <101>",
-        "duration": 4,
-        "id": 1,
-        "recordingFile": {
-            "fileSize": 65324,
-            "mimeType": "audio/x-wav; charset=binary",
-            "baseName": "Voicemail Recording - Alice Allison - 2022-03-31 12:08:43.wav"
-        },
-        "metadataFile": {
-            "fileSize": null,
-            "mimeType": null,
-            "baseName": null
-        },
-        "voicemail": {
-            "enabled": true,
-            "name": "Voicemail For User1",
-            "email": "alice@democompany.com",
-            "sendMail": true,
-            "attachSound": true,
-            "id": 1
-        }
+          "calldate": "2022-03-31 14:08:43",
+          "folder": "INBOX",
+          "caller": "Alice <101>",
+          "duration": 4,
+          "id": 1,
+          "recordingFile": {
+              "fileSize": 65324,
+              "mimeType": "audio/x-wav; charset=binary",
+              "baseName": "Voicemail Recording - Alice Allison - 2022-03-31 12:08:43.wav"
+          },
+          "metadataFile": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
+          },
+          "voicemail": {
+              "enabled": true,
+              "name": "Voicemail For User1",
+              "email": "alice@democompany.com",
+              "sendMail": true,
+              "attachSound": true,
+              "id": 1,
+              "generic": false
+          }
       }
       """
