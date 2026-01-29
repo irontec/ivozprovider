@@ -20,9 +20,10 @@ Feature: Update match lists
       And the JSON should be like:
       """
       {
-           "name": "updatedMatchlist",
-           "id": 1
-       }
+          "name": "updatedMatchlist",
+          "id": 1,
+          "generic": false
+      }
       """
 
   Scenario: Cannot update generic field

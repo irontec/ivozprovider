@@ -45,6 +45,9 @@ Feature: Retrieve faxes
           "email": null,
           "sendByEmail": false,
           "id": 1,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "relUserIds": [
+              1
+          ]
       }
       """

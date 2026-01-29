@@ -62,14 +62,19 @@ Feature: Retrieve calendar periods
                   "en": "Andorra",
                   "es": "Andorra",
                   "ca": "Andorra",
-                  "it": "Andorra"
+                  "it": "Andorra",
+                  "eu": "Andorra"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
                   "ca": "Europa",
-                  "it": "Europe"
+                  "it": "Europe",
+                  "eu": "Europa"
               }
-          }
+          },
+          "scheduleIds": [
+              1
+          ]
       }
       """

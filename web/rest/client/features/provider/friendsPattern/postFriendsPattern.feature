@@ -59,7 +59,14 @@ Feature: Create friends patterns
               "transformationRuleSet": null,
               "callAcl": null,
               "outgoingDdi": null,
-              "language": null
+              "language": null,
+              "fromUser": null,
+              "alwaysApplyTransformations": false,
+              "rtpEncryption": false,
+              "multiContact": true,
+              "ruriDomain": null,
+              "trustSDP": false,
+              "interCompany": null
           }
       }
       """

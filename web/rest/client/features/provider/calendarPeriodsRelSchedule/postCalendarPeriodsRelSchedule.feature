@@ -72,7 +72,8 @@ Feature: Create calendar periods rel schedules
               "locution": null,
               "extension": null,
               "voicemail": null,
-              "numberCountry": 1
+              "numberCountry": 1,
+              "scheduleIds": []
           },
           "schedule": {
               "name": "anotherSchedule",

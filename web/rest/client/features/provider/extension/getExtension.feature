@@ -151,6 +151,7 @@ Feature: Retrieve extensions
           "queue": null,
           "conditionalRoute": null,
           "numberCountry": null,
-          "voicemail": null
+          "voicemail": null,
+          "locution": null
       }
       """

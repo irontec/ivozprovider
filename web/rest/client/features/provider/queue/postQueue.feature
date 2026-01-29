@@ -152,12 +152,16 @@ Feature: Create queues
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           },
           "fullNumberCountry": {
@@ -167,13 +171,21 @@ Feature: Create queues
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe",
+                  "eu": "Europa"
               }
-          }
+          },
+          "displayName": "Display Name for newQueue",
+          "announcePosition": "yes",
+          "announceFrequency": 20,
+          "preventMissedCalls": 1
       }
       """

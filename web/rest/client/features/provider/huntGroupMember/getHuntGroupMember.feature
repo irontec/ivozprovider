@@ -17,6 +17,8 @@ Feature: Retrieve hunt groups rel users
           {
               "timeoutTime": 1,
               "priority": 2,
+              "routeType": "number",
+              "numberValue": "946002050",
               "id": 2,
               "huntGroup": {
                   "name": "testHuntGroup",
@@ -26,12 +28,35 @@ Feature: Retrieve hunt groups rel users
                   "noAnswerTargetType": null,
                   "noAnswerNumberValue": null,
                   "preventMissedCalls": 1,
+                  "allowCallForwards": 0,
                   "id": 1,
                   "noAnswerLocution": null,
                   "noAnswerExtension": null,
                   "noAnswerVoicemail": null,
                   "noAnswerNumberCountry": null
+              },
+              "user": null,
+              "numberCountry": {
+                  "id": 68,
+                  "*": "~"
               }
+          },
+          {
+              "timeoutTime": 1,
+              "priority": 1,
+              "routeType": "user",
+              "numberValue": null,
+              "id": 1,
+              "huntGroup": {
+                  "name": "testHuntGroup",
+                  "id": 1,
+                  "*": "~"
+              },
+              "user": {
+                  "id": 1,
+                  "*": "~"
+              },
+              "numberCountry": null
           }
       ]
       """
@@ -63,7 +88,8 @@ Feature: Retrieve hunt groups rel users
               "noAnswerLocution": null,
               "noAnswerExtension": null,
               "noAnswerVoicemail": null,
-              "noAnswerNumberCountry": null
+              "noAnswerNumberCountry": null,
+              "allowCallForwards": 0
           },
           "user": "~",
           "numberCountry": null
