@@ -14,7 +14,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -32,7 +33,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -50,7 +52,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -68,7 +71,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -86,12 +90,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -109,12 +115,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -132,12 +140,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -155,12 +165,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -178,12 +190,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -201,12 +215,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -224,7 +240,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -242,7 +259,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -260,12 +278,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -283,7 +303,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -301,7 +322,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -319,7 +341,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -337,7 +360,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -355,12 +379,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -378,12 +404,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -401,12 +429,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -424,12 +454,14 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
               "startTime": "2019-01-01 09:01:44",
-              "id": 105
+              "id": 105,
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
               "startTime": "2019-01-01 09:01:43",
-              "id": 104
+              "id": 104,
+              "*": "~"
           }
       ]
       """
@@ -446,11 +478,13 @@ Feature: Retrieve billable calls
       [
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
-              "startTime": "2019-01-01 09:01:44"
+              "startTime": "2019-01-01 09:01:44",
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
-              "startTime": "2019-01-01 09:01:43"
+              "startTime": "2019-01-01 09:01:43",
+              "*": "~"
           }
       ]
       """
@@ -467,11 +501,13 @@ Feature: Retrieve billable calls
       [
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
-              "startTime": "2019-01-01 09:01:44"
+              "startTime": "2019-01-01 09:01:44",
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
-              "startTime": "2019-01-01 09:01:43"
+              "startTime": "2019-01-01 09:01:43",
+              "*": "~"
           }
       ]
       """
@@ -488,11 +524,13 @@ Feature: Retrieve billable calls
       [
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
-              "startTime": "2019-01-01 09:01:44"
+              "startTime": "2019-01-01 09:01:44",
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
-              "startTime": "2019-01-01 09:01:43"
+              "startTime": "2019-01-01 09:01:43",
+              "*": "~"
           }
       ]
       """
@@ -509,11 +547,13 @@ Feature: Retrieve billable calls
       [
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7104",
-              "startTime": "2019-01-01 09:01:44"
+              "startTime": "2019-01-01 09:01:44",
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7103",
-              "startTime": "2019-01-01 09:01:43"
+              "startTime": "2019-01-01 09:01:43",
+              "*": "~"
           }
       ]
       """
@@ -531,7 +571,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -549,7 +590,8 @@ Feature: Retrieve billable calls
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
               "startTime": "2019-01-01 09:00:00",
-              "id": 1
+              "id": 1,
+              "*": "~"
           }
       ]
       """
@@ -566,11 +608,13 @@ Feature: Retrieve billable calls
       [
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7001",
-              "startTime": "2019-01-01 09:00:01"
+              "startTime": "2019-01-01 09:00:01",
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
-              "startTime": "2019-01-01 09:00:00"
+              "startTime": "2019-01-01 09:00:00",
+              "*": "~"
           }
       ]
       """
@@ -587,11 +631,13 @@ Feature: Retrieve billable calls
       [
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7001",
-              "startTime": "2019-01-01 09:00:01"
+              "startTime": "2019-01-01 09:00:01",
+              "*": "~"
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
-              "startTime": "2019-01-01 09:00:00"
+              "startTime": "2019-01-01 09:00:00",
+              "*": "~"
           }
       ]
       """
@@ -605,18 +651,33 @@ Feature: Retrieve billable calls
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
-       [
+      [
           {
               "username": "restrictedBrandAdmin",
-              "id": 6
+              "id": 6,
+              "email": "restrictedAdmin@irontec.com",
+              "active": true,
+              "restricted": true,
+              "name": "RestrictedAdmin",
+              "lastname": "Lastname"
           },
           {
               "username": "restrictedBrandOnlyAdmin",
-              "id": 14
+              "id": 14,
+              "email": "restrictedAdmin@irontec.com",
+              "active": true,
+              "restricted": true,
+              "name": "RestrictedAdmin",
+              "lastname": "Lastname"
           },
           {
               "username": "test_brand_admin",
-              "id": 2
+              "id": 2,
+              "email": "nightwatch@irontec.com",
+              "active": true,
+              "restricted": false,
+              "name": "night",
+              "lastname": "watch"
           }
       ]
       """

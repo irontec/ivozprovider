@@ -127,7 +127,8 @@ This is file content
           "language": 1,
           "defaultTimezone": 145,
           "currency": 2,
-          "features": []
+          "features": [],
+          "*": "~"
       }
     """
 
