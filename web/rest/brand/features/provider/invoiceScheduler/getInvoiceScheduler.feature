@@ -51,7 +51,8 @@ Feature: Retrieve invoice scheduler
           "brand": "~",
           "company": "~",
           "numberSequence": {
-            "id": 1
+              "id": 1,
+              "*": "~"
           }
       }
       """

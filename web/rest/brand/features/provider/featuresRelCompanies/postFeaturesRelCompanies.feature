@@ -93,7 +93,7 @@ Feature: Create features rel companies
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
-       {
+      {
           "id": 6,
           "company": {
               "type": "vpbx",
@@ -136,7 +136,11 @@ Feature: Create features rel companies
               "corporation": 1,
               "applicationServerSet": 1,
               "mediaRelaySet": 0,
-              "location": 1
+              "location": 1,
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           "feature": {
               "iden": "progress",

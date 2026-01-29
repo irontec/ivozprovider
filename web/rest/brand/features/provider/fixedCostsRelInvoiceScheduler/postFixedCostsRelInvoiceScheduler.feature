@@ -64,6 +64,9 @@ Feature: Create fixed costs rel invoice schedulers
               "brand": 1,
               "company": 1,
               "numberSequence": 1
-          }
+          },
+          "type": "static",
+          "ddisCountryMatch": null,
+          "ddisCountry": null
       }
       """

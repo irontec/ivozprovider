@@ -39,7 +39,7 @@ Feature: Retrieve call CSV report
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
-       {
+      {
           "sentTo": "",
           "inDate": "2019-05-31 02:00:00",
           "outDate": "2019-06-01 01:59:59",
@@ -61,7 +61,16 @@ Feature: Retrieve call CSV report
               "nextExecution": "2018-12-02 09:00:00",
               "id": 1,
               "company": null,
-              "callCsvNotificationTemplate": null
-          }
+              "callCsvNotificationTemplate": null,
+              "ddi": null,
+              "carrier": null,
+              "retailAccount": null,
+              "residentialDevice": null,
+              "user": null,
+              "fax": null,
+              "friend": null,
+              "ddiProvider": null
+          },
+          "brand": "~"
       }
       """

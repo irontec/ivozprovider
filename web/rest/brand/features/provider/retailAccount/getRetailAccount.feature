@@ -127,6 +127,8 @@ Feature: Retrieve retail accounts
                   "expires": "2031-01-01 00:59:59",
                   "userAgent": "Yealink SIP-T23G 44.80.0.130"
               }
-          ]
+          ],
+          "ruriDomain": null,
+          "proxyUser": null
       }
       """

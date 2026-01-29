@@ -77,6 +77,10 @@ Feature: Retrieve rating plan group
               "ca": "ca",
               "it": "it",
               "eu": "eu"
+          },
+          "currency": {
+              "iden": "EUR",
+              "*": "~"
           }
       }
       """

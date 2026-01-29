@@ -82,7 +82,10 @@ Feature: Retrieve ddis
               "description": "DDIProviderDescription",
               "name": "DDIProviderName",
               "id": 1,
-              "transformationRuleSet": 1
+              "transformationRuleSet": 1,
+              "proxyTrunk": 1,
+              "mediaRelaySet": 0,
+              "routingTag": 2
           },
           "country": {
               "code": "ES",
@@ -91,14 +94,19 @@ Feature: Retrieve ddis
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           },
-          "routingTag": null
+          "routingTag": null,
+          "type": "inout"
       }
       """

@@ -39,7 +39,10 @@ Feature: Retrieve ddi provider addresses
               "description": "DDIProviderDescription",
               "name": "DDIProviderName",
               "id": 1,
-              "transformationRuleSet": 1
+              "transformationRuleSet": 1,
+              "proxyTrunk": 1,
+              "mediaRelaySet": 0,
+              "routingTag": 2
           }
       }
       """

@@ -66,7 +66,8 @@ Feature: Retrieve destination
               "en": "Bilbao",
               "es": "Bilbao",
               "ca": "Bilbao",
-              "it": "Bilbao"
+              "it": "Bilbao",
+              "eu": "Bilbao"
           }
       }
       """

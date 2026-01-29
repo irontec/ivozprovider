@@ -54,7 +54,7 @@ Feature: Retrieve outgoing routings
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
-       {
+      {
           "type": "pattern",
           "priority": 1,
           "weight": 1,
@@ -71,12 +71,16 @@ Feature: Retrieve outgoing routings
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it",
+                  "eu": "eu"
               }
           },
           "routingPatternGroup": null,
@@ -86,6 +90,8 @@ Feature: Retrieve outgoing routings
               "id": 1
           },
           "clidCountry": null,
-          "carrierIds": []
+          "carrierIds": [],
+          "stopper": false,
+          "disableDiversion": false
       }
       """

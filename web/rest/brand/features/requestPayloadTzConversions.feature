@@ -56,7 +56,7 @@ Feature: Input timezone convertion
       And I send a "GET" request to "invoices/2"
       And the JSON should be like:
       """
-       {
+      {
           "number": "2",
           "inDate": "2019-01-01 00:00:00",
           "outDate": "2019-01-01 23:59:59",
@@ -74,6 +74,7 @@ Feature: Input timezone convertion
           "invoiceTemplate": "~",
           "company": "~",
           "numberSequence": null,
-          "scheduler": null
+          "scheduler": null,
+          "currency": "€"
       }
       """

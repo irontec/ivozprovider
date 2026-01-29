@@ -60,9 +60,16 @@ Feature: Retrieve invoice
               "mimeType": null,
               "baseName": null
           },
-          "invoiceTemplate": "~",
-          "company": "~",
           "numberSequence": null,
-          "currency": "€"
+          "currency": "€",
+          "scheduler": null,
+          "invoiceTemplate": {
+              "id": 1,
+              "*": "~"
+          },
+          "company": {
+              "id": 1,
+              "*": "~"
+          }
       }
       """

@@ -37,7 +37,9 @@ Feature: Update web portals
               "mimeType": null,
               "baseName": null
           },
-          "company": 1
+          "company": 1,
+          "color": "#000000",
+          "productName": "Client text"
       }
       """
 
