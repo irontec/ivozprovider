@@ -4,16 +4,33 @@ set -e
 
 export APP_ENV=test
 
-pushd /opt/irontec/ivozprovider/web/rest/client
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+pushd "${SCRIPT_DIR}"/../
 
-    if [ "$1" != "--skip-db" ]; then
-        # Prepare dataset
-        bin/prepare-test-db
-    fi
+SKIP_DB=false
+FIX_FEATURES=false
 
-    # Access control tests
-    SYMFONY_PHPUNIT_VERSION=9.5.3 vendor/bin/simple-phpunit
+for arg in "$@"; do
+    case $arg in
+        --skip-db)
+            SKIP_DB=true
+            ;;
+        --fix-features)
+            FIX_FEATURES=true
+            ;;
+    esac
+done
 
-    # Integration tests
+if [ "$SKIP_DB" = false ]; then
+    bin/prepare-test-db
+fi
+
+# Access control tests
+SYMFONY_PHPUNIT_VERSION=9.5.3 vendor/bin/simple-phpunit
+
+if [ "$FIX_FEATURES" = true ]; then
+    vendor/bin/behat -f fixer
+else
     vendor/bin/behat -f progress -o std -f junit -o results
+fi
 popd
