@@ -59,7 +59,7 @@ Feature: Retrieve voicemails
       And I send a "GET" request to "/voicemails/2"
      Then the response status code should be 404
       And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-      And the JSON should be like:
+      And the exception should match:
       """
       {
         "detail": "Not Found"
