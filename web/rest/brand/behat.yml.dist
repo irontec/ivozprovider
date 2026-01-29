@@ -24,3 +24,4 @@ default:
         default:
           symfony: ~
     Behatch\Extension: ~
+    Ivoz\Api\Behat\Extension\FixerFormatter\FixerFormatterExtension: ~
