@@ -20,7 +20,7 @@ Feature: Remove application servers
      Then the response status code should be 403
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-      And the JSON should be like:
+      And the exception should match:
       """
       {
          "detail":"Unable delete this element, due to is being used by unknown"

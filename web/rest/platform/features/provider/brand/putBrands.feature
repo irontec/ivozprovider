@@ -152,7 +152,7 @@ This is file content
     Then the response status code should be 403
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-    And the JSON should be like:
+    And the exception should match:
     """
     {
       "detail": "Application Server Sets cannot be empty"
@@ -172,7 +172,7 @@ This is file content
     """
     Then the response status code should be 403
     And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-    And the JSON should be like:
+    And the exception should match:
     """
     {
       "detail": "Media Relay Sets cannot be empty"
@@ -192,7 +192,7 @@ This is file content
     """
     Then the response status code should be 403
     And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-    And the JSON should be like:
+    And the exception should match:
     """
     {
       "detail": "A media relay set may not be unassociated while it is being used"
@@ -212,7 +212,7 @@ This is file content
     """
     Then the response status code should be 403
     And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-    And the JSON should be like:
+    And the exception should match:
     """
     {
       "detail": "A application server set may not be unassociated while it is being used"
