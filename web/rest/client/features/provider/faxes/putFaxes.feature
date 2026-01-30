@@ -53,7 +53,9 @@ Feature: Update faxes
       """
       {
           "relUserIds": [
-                2
-          ]
+              2
+          ],
+          "id": 1,
+          "*": "~"
       }
       """

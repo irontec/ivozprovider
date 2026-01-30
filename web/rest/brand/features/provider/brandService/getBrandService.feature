@@ -46,7 +46,7 @@ Feature: Retrieve brandService
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
-       {
+      {
           "code": "94",
           "id": 1,
           "service": {
@@ -57,12 +57,16 @@ Feature: Retrieve brandService
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it",
+                  "eu": "eu"
               }
           }
       }

@@ -47,6 +47,7 @@ Feature: Create balance notifications
           "lastSent": null,
           "id": 3,
           "company": "~",
-          "notificationTemplate": null
+          "notificationTemplate": null,
+          "carrier": null
       }
       """

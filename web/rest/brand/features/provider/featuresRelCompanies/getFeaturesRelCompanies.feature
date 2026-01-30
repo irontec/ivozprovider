@@ -52,7 +52,16 @@ Feature: Retrieve features rel brand
                   "faxNotificationTemplate": null,
                   "invoiceNotificationTemplate": null,
                   "callCsvNotificationTemplate": null,
-                  "maxDailyUsageNotificationTemplate": 2
+                  "maxDailyUsageNotificationTemplate": 2,
+                  "accessCredentialNotificationTemplate": 5,
+                  "corporation": 1,
+                  "applicationServerSet": 1,
+                  "mediaRelaySet": 0,
+                  "location": 1,
+                  "featureIds": [],
+                  "geoIpAllowedCountries": [],
+                  "routingTagIds": [],
+                  "codecIds": []
               },
               "feature": {
                   "iden": "queues",

@@ -65,7 +65,7 @@ Feature: Create rating plan group
           "id": 2,
           "name": {
               "en": "Something more",
-              "es": "Algo m\u00e1s",
+              "es": "Algo más",
               "ca": "Algo mes",
               "it": "Più",
               "eu": "Zerbait"
@@ -73,9 +73,21 @@ Feature: Create rating plan group
           "description": {
               "en": "en",
               "es": "es",
-              "es": "es",
               "it": "it",
-              "eu": "eu"
+              "eu": "eu",
+              "ca": "ca"
+          },
+          "currency": {
+              "iden": "EUR",
+              "symbol": "€",
+              "id": 1,
+              "name": {
+                  "en": "Euro",
+                  "es": "Euro",
+                  "ca": "Euro",
+                  "it": "Euro",
+                  "eu": "Euro"
+              }
           }
       }
       """

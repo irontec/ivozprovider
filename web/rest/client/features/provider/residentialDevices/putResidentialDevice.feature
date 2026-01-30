@@ -139,7 +139,22 @@ Feature: Update residential devices
           "directConnectivity": "yes",
           "ip": null,
           "port": null,
-          "ruriDomain": "test.example.com"
+          "ruriDomain": "test.example.com",
+          "name": "residentialDevice6",
+          "description": "",
+          "transport": "udp",
+          "password": "+rA778LidL",
+          "allow": "alaw",
+          "fromDomain": null,
+          "ddiIn": "yes",
+          "maxCalls": 1,
+          "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
+          "trustSDP": false,
+          "transformationRuleSet": null,
+          "outgoingDdi": null,
+          "language": null
       }
       """
 
@@ -163,11 +178,26 @@ Feature: Update residential devices
       And the JSON should be like:
       """
       {
-        "id": 6,
-        "directConnectivity": "yes",
-        "ip": "10.10.10.10",
-        "port": 1010,
-        "ruriDomain": null
+          "id": 6,
+          "directConnectivity": "yes",
+          "ip": "10.10.10.10",
+          "port": 1010,
+          "ruriDomain": null,
+          "name": "residentialDevice6",
+          "description": "",
+          "transport": "udp",
+          "password": "+rA778LidL",
+          "allow": "alaw",
+          "fromDomain": null,
+          "ddiIn": "yes",
+          "maxCalls": 1,
+          "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
+          "trustSDP": false,
+          "transformationRuleSet": null,
+          "outgoingDdi": null,
+          "language": null
       }
       """
 
@@ -188,7 +218,26 @@ Feature: Update residential devices
       And the JSON should be like:
       """
       {
-        "directConnectivity": "no"
+          "directConnectivity": "no",
+          "name": "residentialDevice",
+          "description": "",
+          "transport": "udp",
+          "ip": null,
+          "port": null,
+          "password": "+rA778LidL",
+          "allow": "alaw",
+          "fromDomain": null,
+          "ddiIn": "yes",
+          "maxCalls": 1,
+          "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
+          "ruriDomain": null,
+          "trustSDP": false,
+          "id": 1,
+          "transformationRuleSet": null,
+          "outgoingDdi": null,
+          "language": null
       }
       """
 
@@ -212,10 +261,25 @@ Feature: Update residential devices
       And the JSON should be like:
       """
       {
-        "id": 6,
-        "directConnectivity": "yes",
-        "ip": null,
-        "port": 5070,
-        "ruriDomain": "proxy.example.com"
+          "id": 6,
+          "directConnectivity": "yes",
+          "ip": null,
+          "port": 5070,
+          "ruriDomain": "proxy.example.com",
+          "name": "residentialDevice6",
+          "description": "",
+          "transport": "udp",
+          "password": "+rA778LidL",
+          "allow": "alaw",
+          "fromDomain": null,
+          "ddiIn": "yes",
+          "maxCalls": 1,
+          "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
+          "trustSDP": false,
+          "transformationRuleSet": null,
+          "outgoingDdi": null,
+          "language": null
       }
       """

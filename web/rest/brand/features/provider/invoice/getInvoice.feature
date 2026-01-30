@@ -63,6 +63,7 @@ Feature: Retrieve invoice
           "invoiceTemplate": "~",
           "company": "~",
           "numberSequence": null,
-          "currency": "€"
+          "currency": "€",
+          "scheduler": null
       }
       """

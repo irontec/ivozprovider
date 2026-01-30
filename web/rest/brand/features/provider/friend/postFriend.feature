@@ -69,7 +69,12 @@ Feature: Create friends
           "directConnectivity": "yes",
           "id": 4,
           "company": "~",
-          "interCompany": null
+          "interCompany": null,
+          "ruriDomain": null,
+          "proxyUser": {
+              "id": 1,
+              "*": "~"  
+          }
       }
       """
 

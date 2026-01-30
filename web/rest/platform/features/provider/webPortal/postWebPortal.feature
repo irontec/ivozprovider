@@ -59,7 +59,9 @@ Feature: Create web portals
               "mimeType": null,
               "baseName": null
           },
-          "brand": "~"
+          "brand": "~",
+          "productName": "Ivoz Provider",
+          "company": null
       }
     """
 

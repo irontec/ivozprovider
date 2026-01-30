@@ -62,9 +62,11 @@ Feature: Create hunt groups rel users
               "noAnswerLocution": null,
               "noAnswerExtension": null,
               "noAnswerVoicemail": null,
-              "noAnswerNumberCountry": null
+              "noAnswerNumberCountry": null,
+              "allowCallForwards": 0
           },
           "user": "~",
-          "numberCountry": null
+          "numberCountry": null,
+          "routeType": "user"
       }
       """

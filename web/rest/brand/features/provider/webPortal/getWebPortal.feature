@@ -75,6 +75,8 @@ Feature: Retrieve web portals
               "mimeType": "image/jpeg",
               "baseName": "client-logo.jpeg"
           },
-          "company": null
+          "company": null,
+          "color": "#000000",
+          "productName": "Client text"
       }
       """

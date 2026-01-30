@@ -72,7 +72,8 @@ Feature: Create conditional routes conditions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": null,
-              "voicemail": null
+              "voicemail": null,
+              "locution": null
           },
           "numberCountry": null,
           "matchListIds": [

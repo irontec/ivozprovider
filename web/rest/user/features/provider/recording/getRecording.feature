@@ -54,7 +54,12 @@ Feature: Retrieve recordings
               "name": "Alice",
               "lastname": "Allison",
               "email": "alice@democompany.com",
-              "id": 1
+              "id": 1,
+              "*": "~"
+          },
+          "usersCdr": {
+              "id": 2,
+              "*": "~"
           }
       }
       """

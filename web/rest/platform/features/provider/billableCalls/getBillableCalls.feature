@@ -84,7 +84,8 @@ Feature: Retrieve billable calls
           "company": "~",
           "carrier": "~",
           "invoice": "~",
-          "ddi": "~"
+          "ddi": "~",
+          "ddiProvider": "~"
       }
       """
 
