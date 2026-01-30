@@ -99,7 +99,7 @@ const GrantAll: ActionFunctionComponent = (
       onClick: handleUpdate,
       variant: 'solid' as const,
       autoFocus: true,
-      disabled: !error,
+      disabled: error,
     },
   ];
 
