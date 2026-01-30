@@ -1,0 +1,47 @@
+{
+  "body": [
+    {
+      "create": false,
+      "read": true,
+      "update": false,
+      "delete": false,
+      "id": 1,
+      "administrator": {
+        "username": "restrictedCompanyAdmin",
+        "pass": "*****",
+        "email": "test@irontec.com",
+        "active": true,
+        "restricted": true,
+        "name": "Admin Name",
+        "lastname": "Admin Lastname",
+        "canImpersonate": false,
+        "id": 7,
+        "company": 1,
+        "timezone": 145
+      },
+      "publicEntity": {
+        "iden": "_RatingPlanPrices",
+        "fqdn": "Model\\RatingPlanPrices",
+        "platform": false,
+        "brand": false,
+        "client": true,
+        "id": 1,
+        "name": {
+          "en": "_RatingPlanPrices",
+          "es": "_RatingPlanPrices",
+          "ca": "_RatingPlanPrices",
+          "it": "_RatingPlanPrices",
+          "eu": "_RatingPlanPrices"
+        }
+      }
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/administrator_rel_public_entities?_page=1",
+    "x-last-page": "/api/brand/administrator_rel_public_entities?_page=1",
+    "x-next-page": "/api/brand/administrator_rel_public_entities?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
