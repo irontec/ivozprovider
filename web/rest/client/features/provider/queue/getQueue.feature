@@ -36,7 +36,7 @@ Feature: Retrieve queues
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
-       {
+      {
           "name": "testQueue",
           "displayName": "testQueue DisplayName",
           "maxWaitTime": 20,
@@ -62,7 +62,7 @@ Feature: Retrieve queues
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio\/mpeg; charset=binary",
+                  "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               }
           },
@@ -77,7 +77,7 @@ Feature: Retrieve queues
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio\/mpeg; charset=binary",
+                  "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               }
           },
@@ -94,7 +94,7 @@ Feature: Retrieve queues
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio\/mpeg; charset=binary",
+                  "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               }
           },
@@ -107,12 +107,16 @@ Feature: Retrieve queues
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe",
+                  "eu": "Europa"
               }
           },
           "fullNumberCountry": {
@@ -122,13 +126,20 @@ Feature: Retrieve queues
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "es": "España"
+                  "ca": "España",
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "es": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe",
+                  "eu": "Europa"
               }
-          }
+          },
+          "announcePosition": "yes",
+          "announceFrequency": 10,
+          "preventMissedCalls": 1
       }
       """

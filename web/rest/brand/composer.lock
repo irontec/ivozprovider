@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b3a68c50a4bcad4e6ac30b2015bc59b7",
+    "content-hash": "657eb45f387b23aab4149eb48cfff704",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2154,11 +2154,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "5.0",
+            "version": "5.4",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "7cd74ad78edfdd51ae3628699b1fea7b4003c9eb"
+                "reference": "11ca8900aaa49051b7a87d18679eee3508f8e8fb"
             },
             "require": {
                 "api-platform/core": "2.6.*",
@@ -2208,6 +2208,14 @@
                 {
                     "name": "Mikel Madariaga",
                     "email": "mikel@irontec.com"
+                },
+                {
+                    "name": "Daniel García",
+                    "email": "dgarcia@irontec.com"
+                },
+                {
+                    "name": "Roger Batista",
+                    "email": "rbatista@irontec.com"
                 }
             ],
             "description": "Api library built on api-platform for ivozprovider",
@@ -2218,15 +2226,15 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "5.0",
+            "version": "5.1",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "ac66782408eef3c95f850ef2e5c5f86a3d0c4ee6"
+                "reference": "85f354475b5e4bb1da3fd34a68f6a52bcbd40235"
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.12",
-                "irontec/ivoz-api": "^5.0",
+                "irontec/ivoz-api": "^5.4",
                 "irontec/ivoz-core-bundle": "^5.0",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",
@@ -2390,11 +2398,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "3.2",
+            "version": "3.3",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "49c6b5906b2f1e7e789d18e457b315084e2a008b"
+                "reference": "7f8eea4b7b144ca129589f7543062b46555444a8"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -5359,7 +5367,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-ctype",
@@ -5786,7 +5794,7 @@
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-php73",
@@ -5900,7 +5908,7 @@
         },
         {
             "name": "symfony/polyfill-php81",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-php81",

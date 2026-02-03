@@ -62,7 +62,7 @@
     },
     "require": {
         "friendsofphp/proxy-manager-lts": "^1.0",
-        "irontec/ivoz-api-bundle": "^5.0",
+        "irontec/ivoz-api-bundle": "^5.1",
         "irontec/ivoz-provider-bundle": "^3.2",
         "irontec/replacements": "^1.0",
         "irontec/wkhtmltopdf-amd64": "0.12.6.1",

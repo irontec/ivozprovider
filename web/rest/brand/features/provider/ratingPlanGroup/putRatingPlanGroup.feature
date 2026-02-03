@@ -38,13 +38,15 @@ Feature: Update rating plan group
               "en": "Updated",
               "es": "Actualizado",
               "ca": "Actualizado",
-              "it": "Aggiornato"
+              "it": "Aggiornato",
+              "eu": "Zerbait"
           },
           "description": {
               "en": "",
               "es": "",
               "ca": "",
-              "it": ""
+              "it": "",
+              "eu": "eu"
           },
           "currency": null
       }

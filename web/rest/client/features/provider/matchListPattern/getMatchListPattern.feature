@@ -52,8 +52,12 @@ Feature: Retrieve match list patterns
           "id": 1,
           "matchList": {
               "name": "testMatchlist",
-              "id": 1
+              "id": 1,
+              "generic": false
           },
-          "numberCountry": "~"
+          "numberCountry": {
+              "id": 68,
+              "*": "~"
+          }
       }
       """

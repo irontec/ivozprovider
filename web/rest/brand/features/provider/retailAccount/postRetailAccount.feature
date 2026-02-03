@@ -74,9 +74,19 @@ Feature: Create retail accounts
           "directConnectivity": "yes",
           "ddiIn": "yes",
           "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
+          "ruriDomain": null,
           "id": 7,
           "company": "~",
           "transformationRuleSet": null,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "status": [],
+          "proxyUser": {
+              "name": "proxyusers",
+              "ip": "127.0.0.1",
+              "advertisedIp": "138.0.0.1",
+              "id": 1
+          }
       }
       """

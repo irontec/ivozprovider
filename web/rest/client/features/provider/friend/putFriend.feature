@@ -60,7 +60,8 @@ Feature: Update friends
           "callAcl": null,
           "outgoingDdi": null,
           "language": null,
-          "interCompany": null
+          "interCompany": null,
+          "trustSDP": false
       }
       """
 
@@ -100,11 +101,30 @@ Feature: Update friends
       And the JSON should be like:
       """
       {
-        "id": 1,
-        "directConnectivity": "yes",
-        "ip": null,
-        "port": null,
-        "ruriDomain": "test.example.com"
+          "id": 1,
+          "directConnectivity": "yes",
+          "ip": null,
+          "port": null,
+          "ruriDomain": "test.example.com",
+          "name": "testFriend",
+          "description": "",
+          "transport": "udp",
+          "password": "SDG3qd2j6+",
+          "priority": 1,
+          "allow": "alaw",
+          "fromUser": null,
+          "fromDomain": "",
+          "ddiIn": "yes",
+          "t38Passthrough": "no",
+          "alwaysApplyTransformations": false,
+          "rtpEncryption": false,
+          "multiContact": true,
+          "trustSDP": false,
+          "transformationRuleSet": null,
+          "callAcl": null,
+          "outgoingDdi": null,
+          "language": null,
+          "interCompany": null
       }
       """
 
@@ -128,11 +148,30 @@ Feature: Update friends
       And the JSON should be like:
       """
       {
-        "id": 1,
-        "directConnectivity": "yes",
-        "ip": "10.10.10.10",
-        "port": 1010,
-        "ruriDomain": null
+          "id": 1,
+          "directConnectivity": "yes",
+          "ip": "10.10.10.10",
+          "port": 1010,
+          "ruriDomain": null,
+          "name": "testFriend",
+          "description": "",
+          "transport": "udp",
+          "password": "SDG3qd2j6+",
+          "priority": 1,
+          "allow": "alaw",
+          "fromUser": null,
+          "fromDomain": "",
+          "ddiIn": "yes",
+          "t38Passthrough": "no",
+          "alwaysApplyTransformations": false,
+          "rtpEncryption": false,
+          "multiContact": true,
+          "trustSDP": false,
+          "transformationRuleSet": null,
+          "callAcl": null,
+          "outgoingDdi": null,
+          "language": null,
+          "interCompany": null
       }
       """
 
@@ -156,10 +195,29 @@ Feature: Update friends
       And the JSON should be like:
       """
       {
-        "id": 1,
-        "directConnectivity": "yes",
-        "ip": null,
-        "port": 5070,
-        "ruriDomain": "proxy.example.com"
+          "id": 1,
+          "directConnectivity": "yes",
+          "ip": null,
+          "port": 5070,
+          "ruriDomain": "proxy.example.com",
+          "name": "testFriend",
+          "description": "",
+          "transport": "udp",
+          "password": "SDG3qd2j6+",
+          "priority": 1,
+          "allow": "alaw",
+          "fromUser": null,
+          "fromDomain": "",
+          "ddiIn": "yes",
+          "t38Passthrough": "no",
+          "alwaysApplyTransformations": false,
+          "rtpEncryption": false,
+          "multiContact": true,
+          "trustSDP": false,
+          "transformationRuleSet": null,
+          "callAcl": null,
+          "outgoingDdi": null,
+          "language": null,
+          "interCompany": null
       }
       """

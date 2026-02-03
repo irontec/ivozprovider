@@ -77,7 +77,10 @@ Feature: Retrieve users
           "active": true,
           "maxCalls": 1,
           "externalIpCalls": "0",
+          "rejectCallMethod": "rfc",
+          "multiContact": true,
           "gsQRCode": false,
+          "useDefaultLocation": true,
           "id": 1,
           "callAcl": null,
           "bossAssistant": null,
@@ -94,7 +97,8 @@ Feature: Retrieve users
                   "en": "Brand 1 transformation for Spain",
                   "es": "Marca 1 tansformacion para España",
                   "ca": "Marca 1 tansformacion para España",
-                  "it": "Brand 1 transformation for Spain"
+                  "it": "Brand 1 transformation for Spain",
+                  "eu": "Brand 1 transformation for Spain"
               },
               "country": 68
           },
@@ -109,6 +113,7 @@ Feature: Retrieve users
               "mac": null,
               "lastProvisionDate": null,
               "t38Passthrough": "no",
+              "rtpEncryption": false,
               "id": 1,
               "terminalModel": 1
           },
@@ -119,17 +124,23 @@ Feature: Retrieve users
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it",
+                  "eu": "eu"
               },
               "country": 68
           },
           "outgoingDdi": "~",
           "outgoingDdiRule": null,
-          "voicemail": null,
-          "pickupGroupIds": [],
-          "useDefaultLocation": true,
           "location": {
-            "id": 1
-          }
+              "id": 1,
+              "*": "~"
+          },
+          "voicemail": null,
+          "contact": null,
+          "pickupGroupIds": [
+              1
+          ]
       }
       """

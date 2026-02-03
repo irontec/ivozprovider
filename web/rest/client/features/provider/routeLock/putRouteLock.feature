@@ -25,6 +25,9 @@ Feature: Update route locks
           "name": "Updated name",
           "description": "Updated description",
           "open": false,
-          "id": 1
+          "id": 1,
+          "closeExtension": "",
+          "openExtension": "",
+          "toggleExtension": ""
       }
       """

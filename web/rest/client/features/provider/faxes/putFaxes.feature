@@ -53,7 +53,12 @@ Feature: Update faxes
       """
       {
           "relUserIds": [
-                2
-          ]
+              2
+          ],
+          "id": 1,
+          "name": "Updated Fax",
+          "email": "something@irontec.com",
+          "sendByEmail": true,
+          "outgoingDdi": 1
       }
       """

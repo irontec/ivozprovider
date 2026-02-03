@@ -47,6 +47,7 @@ Feature: Retrieve rating profile
           "id": 1,
           "company": "~",
           "carrier": "~",
-          "ratingPlanGroup": "~"
+          "ratingPlanGroup": "~",
+          "routingTag":  "~"
       }
       """

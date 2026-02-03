@@ -56,7 +56,7 @@ Feature: Create destination
               "es": "Usansolocity",
               "ca": "Usansolocity",
               "it": "Usansolocity",
-              "it": "Usansolocity"
+              "eu": "Usansolocity"
           }
       }
       """

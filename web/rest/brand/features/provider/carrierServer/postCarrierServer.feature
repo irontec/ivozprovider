@@ -82,7 +82,12 @@ Feature: Create carrier servers
               "description": "CarrierDescription",
               "name": "CarrierName",
               "id": 1,
-              "transformationRuleSet": 1
+              "transformationRuleSet": 1,
+              "balance": 0,
+              "calculateCost": true,
+              "currency": null,
+              "proxyTrunk": 1,
+              "mediaRelaySet": 0
           }
       }
       """

@@ -79,6 +79,12 @@ This is updated file content
               "fileSize": 28,
               "mimeType": "text/plain; charset=us-ascii",
               "baseName": "uploadable"
-          }
+          },
+          "url": "https://brand-ivozprovider.irontec.com",
+          "urlType": "brand",
+          "productName": "Brand text",
+          "id": 2,
+          "brand": 1,
+          "company": null
       }
     """

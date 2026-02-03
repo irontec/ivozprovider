@@ -48,7 +48,8 @@ Feature: Update friends
           "id": 1,
           "company": 1,
           "interCompany": null,
-          "proxyUser": 1
+          "proxyUser": 1,
+          "ruriDomain": null
       }
       """
 
@@ -97,7 +98,9 @@ Feature: Update friends
           "directConnectivity": "intervpbx",
           "id": 1,
           "company": 1,
-          "interCompany": 1
+          "interCompany": 1,
+          "ruriDomain": null,
+          "proxyUser": null
       }
       """
 

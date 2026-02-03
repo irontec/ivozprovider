@@ -57,6 +57,8 @@ Feature: Create web portals
           "url": "https://post-example.com",
           "urlType": "user",
           "name": "Platform user Portal",
+          "color": "#000000",
+          "productName": "Ivoz Provider",
           "id": 7,
           "logo": {
               "fileSize": null,
@@ -64,7 +66,9 @@ Feature: Create web portals
               "baseName": null
           },
           "company": {
-            "id": 2
+              "id": 2,
+              "type": "vpbx",
+              "*": "~"
           }
       }
       """

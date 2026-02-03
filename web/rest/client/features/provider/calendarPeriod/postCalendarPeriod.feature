@@ -73,9 +73,12 @@ Feature: Create calendar periods
               "user": 1,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null,
+              "locution": null
           },
           "voicemail": null,
-          "numberCountry": null
+          "numberCountry": null,
+          "scheduleIds": []
       }
       """

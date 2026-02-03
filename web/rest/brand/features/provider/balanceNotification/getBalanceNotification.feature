@@ -50,6 +50,7 @@ Feature: Retrieve balance notifications
               "name": "Voicemail notification",
               "type": "voicemail",
               "id": 1
-          }
+          },
+          "carrier": null
       }
       """

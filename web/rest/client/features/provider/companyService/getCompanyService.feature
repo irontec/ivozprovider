@@ -52,12 +52,16 @@ Feature: Retrieve company services
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it",
+                  "eu": "eu"
               }
           }
       }
