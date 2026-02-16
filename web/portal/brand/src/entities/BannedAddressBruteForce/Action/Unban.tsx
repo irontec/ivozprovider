@@ -60,7 +60,7 @@ const Unban: ActionFunctionComponent = (props: ActionItemProps) => {
       onClick: handleSubmit,
       variant: 'solid' as const,
       autoFocus: true,
-      disabled: !error,
+      disabled: error,
     },
   ];
 
