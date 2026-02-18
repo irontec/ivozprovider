@@ -1,7 +1,7 @@
-import AppRouteContentWrapper from '@irontec/ivoz-ui/components/AppRouteContentWrapper';
 import parseRoutes, { RouteSpec } from '@irontec/ivoz-ui/router/parseRoutes';
 import RouteContent from '@irontec/ivoz-ui/router/RouteContent';
 import ParsedApiSpecInterface from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import AppRouteContentWrapper from 'components/AppRouteContentWrapper';
 import { useEffect, useMemo } from 'react';
 import { RouteObject, useRoutes } from 'react-router-dom';
 import { useStoreActions } from 'store';
