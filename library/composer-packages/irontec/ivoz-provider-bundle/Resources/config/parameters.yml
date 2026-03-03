@@ -27,3 +27,4 @@ parameters:
     redis_jobs_db: 2
     redis_timeout: 3600
     behat.feature_context.admin_repository: 'Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository'
+    behat.feature_context.files_path: '%kernel.project_dir%/features/files'
