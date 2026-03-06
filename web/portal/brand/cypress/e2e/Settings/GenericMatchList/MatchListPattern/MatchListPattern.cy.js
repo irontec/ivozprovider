@@ -14,7 +14,10 @@ describe('in Match List Patterns', () => {
 
     cy.get('header').should('contain', 'Match List Patterns');
 
-    cy.get('table').should('contain', MatchListPatternsCollection.body[0].name);
+    cy.get('table').should(
+      'contain',
+      MatchListPatternsCollection.body[0].matchPattern
+    );
   });
 
   ///////////////////////
