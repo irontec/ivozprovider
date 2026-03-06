@@ -19,6 +19,7 @@ class MatchListPatternDto extends MatchListPatternDtoAbstract
                 'numbervalue' => 'numbervalue',
                 'numberCountryId' => 'numberCountry',
                 'matchListId' => 'matchList',
+                'matchPattern' => 'matchPattern',
             ];
         }
 

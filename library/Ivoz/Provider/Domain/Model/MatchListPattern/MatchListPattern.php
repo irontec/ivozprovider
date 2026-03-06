@@ -47,6 +47,23 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
     {
         $this->sanitizeNullableFields();
         $this->sanitizeMatchListValue();
+        $this->sanitizeMatchPattern();
+    }
+
+    protected function sanitizeMatchPattern(): void
+    {
+        /** @var self::TYPE_NUMBER|self::TYPE_REGEXP $type */
+        $type = $this->getType();
+        $pattern = match ($type) {
+            self::TYPE_REGEXP => $this->getRegexp() ?? '',
+            self::TYPE_NUMBER => sprintf(
+                '%s %s',
+                $this->getNumberCountry()?->getCountryCode() ?? '',
+                $this->getNumbervalue() ?? '',
+            ),
+        };
+
+        $this->setMatchPattern($pattern);
     }
 
     protected function sanitizeMatchListValue(): void
