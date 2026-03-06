@@ -22,6 +22,12 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="matchPattern" type="string" column="matchPattern" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
     <many-to-one field="matchList" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchListInterface" inversed-by="patterns" fetch="LAZY">
       <join-columns>
         <join-column name="matchListId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
