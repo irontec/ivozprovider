@@ -25203,13 +25203,19 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[neq]",
+                        "name": "description[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "description[start]",
+                        "name": "description[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "description[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -25227,13 +25233,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[exists]",
+                        "name": "exists[description]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
                     },
                     {
-                        "name": "exists[description]",
+                        "name": "exists[matchPattern]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -25276,6 +25282,48 @@
                     },
                     {
                         "name": "matchList[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "matchPattern",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "matchPattern[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "matchPattern[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "matchPattern[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "matchPattern[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "matchPattern[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "matchPattern[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -25395,6 +25443,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "type[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "type[end]",
                         "in": "query",
                         "required": false,
@@ -25402,12 +25456,6 @@
                     },
                     {
                         "name": "type[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "type[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -25434,6 +25482,16 @@
                             "DESC"
                         ],
                         "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[matchPattern]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -47745,6 +47803,13 @@
                     "description": "",
                     "type": "string"
                 },
+                "matchPattern": {
+                    "default": "",
+                    "maxLength": 255,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
+                },
                 "id": {
                     "description": "",
                     "type": "integer",
@@ -47807,6 +47872,13 @@
                 "matchList": {
                     "description": "",
                     "type": "integer"
+                },
+                "matchPattern": {
+                    "default": "",
+                    "maxLength": 255,
+                    "description": "",
+                    "example": "",
+                    "type": "string"
                 }
             }
         },
@@ -47835,6 +47907,13 @@
                 "numbervalue": {
                     "maxLength": 25,
                     "description": "",
+                    "type": "string"
+                },
+                "matchPattern": {
+                    "default": "",
+                    "maxLength": 255,
+                    "description": "",
+                    "example": "",
                     "type": "string"
                 },
                 "id": {

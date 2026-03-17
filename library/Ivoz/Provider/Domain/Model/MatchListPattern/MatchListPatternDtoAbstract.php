@@ -36,6 +36,11 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     private $numbervalue = null;
 
     /**
+     * @var string|null
+     */
+    private $matchPattern = '';
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -69,6 +74,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
             'type' => 'type',
             'regexp' => 'regexp',
             'numbervalue' => 'numbervalue',
+            'matchPattern' => 'matchPattern',
             'id' => 'id',
             'matchListId' => 'matchList',
             'numberCountryId' => 'numberCountry'
@@ -85,6 +91,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
             'type' => $this->getType(),
             'regexp' => $this->getRegexp(),
             'numbervalue' => $this->getNumbervalue(),
+            'matchPattern' => $this->getMatchPattern(),
             'id' => $this->getId(),
             'matchList' => $this->getMatchList(),
             'numberCountry' => $this->getNumberCountry()
@@ -150,6 +157,18 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     public function getNumbervalue(): ?string
     {
         return $this->numbervalue;
+    }
+
+    public function setMatchPattern(?string $matchPattern): static
+    {
+        $this->matchPattern = $matchPattern;
+
+        return $this;
+    }
+
+    public function getMatchPattern(): ?string
+    {
+        return $this->matchPattern;
     }
 
     /**

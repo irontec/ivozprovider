@@ -15,6 +15,7 @@ Feature: Create match list patterns
           "type": "number",
           "regexp": null,
           "numbervalue": "946002051",
+          "matchPattern": "+44 946002051",
           "matchList": 2,
           "numberCountry": 77
       }
@@ -29,6 +30,7 @@ Feature: Create match list patterns
           "type": "number",
           "regexp": null,
           "numbervalue": "946002051",
+          "matchPattern": "+44 946002051",
           "id": 3,
           "matchList": 2,
           "numberCountry": 77
@@ -49,6 +51,7 @@ Feature: Create match list patterns
           "type": "number",
           "regexp": null,
           "numbervalue": "946002051",
+          "matchPattern": "+44 946002051",
           "id": 3,
           "matchList": {
               "name": "testMatchlist2",

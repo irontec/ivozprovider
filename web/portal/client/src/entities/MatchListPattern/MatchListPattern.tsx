@@ -4,8 +4,6 @@ import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpec
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 
-import matchValue from './Field/MatchValue';
-
 const properties: PartialPropertyList = {
   matchList: {
     label: _('Match List', { count: 1 }),
@@ -39,13 +37,12 @@ const properties: PartialPropertyList = {
   numbervalue: {
     label: _('Number'),
   },
-  matchValue: {
+  matchPattern: {
     label: _('Match Value'),
-    component: matchValue,
   },
 };
 
-const columns = ['type', 'matchValue', 'description'];
+const columns = ['type', 'matchPattern', 'description'];
 
 const MatchListPattern: EntityInterface = {
   ...defaultEntityBehavior,

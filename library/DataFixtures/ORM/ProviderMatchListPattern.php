@@ -26,6 +26,7 @@ class ProviderMatchListPattern extends Fixture implements DependentFixtureInterf
             $this->setDescription("test desc");
             $this->setType("number");
             $this->setNumbervalue("946002050");
+            $this->setMatchPattern("+34 946002050");
             $this->setMatchList($fixture->getReference('_reference_ProviderMatchList1'));
             $this->setNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item1);
@@ -39,6 +40,7 @@ class ProviderMatchListPattern extends Fixture implements DependentFixtureInterf
             $this->setDescription("brand test desc");
             $this->setType("number");
             $this->setNumbervalue("946002055");
+            $this->setMatchPattern("+34 946002055");
             $this->setMatchList($fixture->getReference('_reference_ProviderMatchList3'));
             $this->setNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item2);

@@ -46,6 +46,11 @@ abstract class MatchListPatternAbstract
     protected $numbervalue = null;
 
     /**
+     * @var ?string
+     */
+    protected $matchPattern = '';
+
+    /**
      * @var MatchListInterface
      * inversedBy patterns
      */
@@ -139,6 +144,7 @@ abstract class MatchListPatternAbstract
             ->setDescription($dto->getDescription())
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
+            ->setMatchPattern($dto->getMatchPattern())
             ->setMatchList($fkTransformer->transform($matchList))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
@@ -167,6 +173,7 @@ abstract class MatchListPatternAbstract
             ->setType($type)
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
+            ->setMatchPattern($dto->getMatchPattern())
             ->setMatchList($fkTransformer->transform($matchList))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
@@ -183,6 +190,7 @@ abstract class MatchListPatternAbstract
             ->setType(self::getType())
             ->setRegexp(self::getRegexp())
             ->setNumbervalue(self::getNumbervalue())
+            ->setMatchPattern(self::getMatchPattern())
             ->setMatchList(MatchList::entityToDto(self::getMatchList(), $depth))
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
@@ -197,6 +205,7 @@ abstract class MatchListPatternAbstract
             'type' => self::getType(),
             'regExp' => self::getRegexp(),
             'numberValue' => self::getNumbervalue(),
+            'matchPattern' => self::getMatchPattern(),
             'matchListId' => self::getMatchList()->getId(),
             'numberCountryId' => self::getNumberCountry()?->getId()
         ];
@@ -270,6 +279,22 @@ abstract class MatchListPatternAbstract
     public function getNumbervalue(): ?string
     {
         return $this->numbervalue;
+    }
+
+    protected function setMatchPattern(?string $matchPattern = null): static
+    {
+        if (!is_null($matchPattern)) {
+            Assertion::maxLength($matchPattern, 255, 'matchPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->matchPattern = $matchPattern;
+
+        return $this;
+    }
+
+    public function getMatchPattern(): ?string
+    {
+        return $this->matchPattern;
     }
 
     public function setMatchList(MatchListInterface $matchList): static

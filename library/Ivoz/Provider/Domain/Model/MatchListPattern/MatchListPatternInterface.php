@@ -68,6 +68,8 @@ interface MatchListPatternInterface extends LoggableEntityInterface
 
     public function getNumbervalue(): ?string;
 
+    public function getMatchPattern(): ?string;
+
     public function setMatchList(MatchListInterface $matchList): static;
 
     public function getMatchList(): MatchListInterface;

@@ -15,6 +15,7 @@ Feature: Update match list patterns
           "type": "number",
           "regexp": null,
           "numbervalue": "946002052",
+          "matchPattern": "+44 946002052",
           "matchList": 1,
           "numberCountry": 77
       }
@@ -29,6 +30,7 @@ Feature: Update match list patterns
            "type": "number",
            "regexp": null,
            "numbervalue": "946002052",
+           "matchPattern": "+44 946002052",
            "id": 1,
            "matchList": 1,
            "numberCountry": 77
