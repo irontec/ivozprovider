@@ -34,7 +34,8 @@ Feature: Manage brands
                   4,
                   5,
                   6,
-                  7
+                  7,
+                  10
               ],
               "proxyTrunks": [
                   1
@@ -171,7 +172,8 @@ Feature: Manage brands
               4,
               5,
               6,
-              7
+              7,
+              10
           ],
           "proxyTrunks": [
               1

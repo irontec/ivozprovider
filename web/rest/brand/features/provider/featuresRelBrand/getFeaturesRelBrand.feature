@@ -41,6 +41,10 @@ Feature: Retrieve features rel brand
           {
               "id": 7,
               "feature": 7
+          },
+          {
+              "id": 8,
+              "feature": 10
           }
       ]
       """

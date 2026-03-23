@@ -28,7 +28,7 @@ Feature: Create features
       """
       {
           "iden": "newFeature",
-          "id": 10,
+          "id": 11,
           "name": {
               "en": "name",
               "es": "nombre",
@@ -42,7 +42,7 @@ Feature: Create features
   Scenario: Retrieve created features
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "features/10"
+      And I send a "GET" request to "features/11"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -50,7 +50,7 @@ Feature: Create features
       """
       {
           "iden": "newFeature",
-          "id": 10,
+          "id": 11,
           "name": {
               "en": "name",
               "es": "nombre",
