@@ -92,6 +92,11 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.WebPortal,
               filterBy: 'company',
             },
+            {
+              entity: entities.Webhook,
+              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
+              filterBy: 'company',
+            },
           ],
         },
         {
@@ -125,6 +130,11 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.WebPortal,
               filterBy: 'company',
+            },
+            {
+              entity: entities.Webhook,
+              filterBy: 'company',
+              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
             },
           ],
         },
@@ -166,6 +176,11 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.WebPortal,
               filterBy: 'company',
             },
+            {
+              entity: entities.Webhook,
+              filterBy: 'company',
+              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
+            },
           ],
         },
         {
@@ -205,6 +220,11 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.WebPortal,
               filterBy: 'company',
+            },
+            {
+              entity: entities.Webhook,
+              filterBy: 'company',
+              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
             },
           ],
         },

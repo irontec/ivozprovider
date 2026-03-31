@@ -27,6 +27,7 @@ export interface AboutMe {
     | 'wholesale'
     | 'retail'
     | 'vpbx'
+    | 'webhooks'
   >;
   canImpersonate: boolean;
 }

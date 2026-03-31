@@ -7,6 +7,7 @@ export enum ClientFeatures {
   'billing' = 'billing',
   'invoices' = 'invoices',
   'operatorPanel' = 'operatorPanel',
+  'webhooks' = 'webhooks',
 }
 
 export enum ClientTypes {
