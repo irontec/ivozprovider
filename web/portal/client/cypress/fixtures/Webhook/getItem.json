@@ -1,0 +1,21 @@
+{
+  "body": {
+    "name": "Answer Webhook Company 1",
+    "description": null,
+    "uri": "https://webhook.company1.com/answer",
+    "eventStart": false,
+    "eventRing": false,
+    "eventAnswer": true,
+    "eventEnd": false,
+    "template": "{\"event\": \"answer\", \"callId\": \"{callId}\"}",
+    "id": 2,
+    "company": {
+      "type": "vpbx",
+      "name": "DemoCompany",
+      "id": 1,
+      "*": "~"
+    },
+    "ddi": null
+  },
+  "statusCode": 200
+}
