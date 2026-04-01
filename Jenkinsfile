@@ -31,7 +31,7 @@ pipeline {
 
         // Application configuration
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
-        SYMFONY_PHPUNIT_VERSION = "9.5.3"
+        SYMFONY_PHPUNIT_VERSION = "9.6.33"
 
         DOCKER_TAG = getDockerTag()
         BRANCH_NAME = getBranchName()
