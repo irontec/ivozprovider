@@ -71,6 +71,16 @@ class ProviderFeaturesRelCompany extends Fixture implements DependentFixtureInte
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
 
+        $item6 = $this->createEntityInstance(FeaturesRelCompany::class);
+        (function () use ($fixture) {
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setFeature($fixture->getReference('_reference_ProviderFeature10'));
+        })->call($item6);
+
+        $this->addReference('_reference_ProviderFeaturesRelCompany6', $item6);
+        $this->sanitizeEntityValues($item6);
+        $manager->persist($item6);
+
         $manager->flush();
     }
 

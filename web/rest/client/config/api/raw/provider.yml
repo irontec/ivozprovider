@@ -2407,6 +2407,32 @@ Ivoz\Provider\Domain\Model\SurvivalDevice\SurvivalDevice:
             eq: "user.getCompany().getId()"
   itemOperations: ~
   collectionOperations: ~
- 
+
+Ivoz\Provider\Domain\Model\Webhook\Webhook:
+  attributes:
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.companyHasFeature('webhooks')
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      name: ASC
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+        - brand:
+            eq: "user.getCompany().getBrand().getId()"
+      - or:
+        - inheritedOrNull:
+            ddi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required: []
+  
+
 
   

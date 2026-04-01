@@ -19,49 +19,8 @@ Feature: Retrieve features rel brand
               "company": {
                   "type": "vpbx",
                   "name": "DemoCompany",
-                  "domainUsers": "127.0.0.1",
-                  "maxCalls": 0,
-                  "maxDailyUsage": 2,
-                  "currentDayUsage": 1,
-                  "maxDailyUsageEmail": "no-replay@domain.net",
-                  "ipfilter": false,
-                  "onDemandRecord": 0,
-                  "allowRecordingRemoval": true,
-                  "onDemandRecordCode": "",
-                  "externallyextraopts": "",
-                  "billingMethod": "prepaid",
-                  "balance": 1.2,
-                  "showInvoices": true,
                   "id": 1,
-                  "invoicing": {
-                      "nif": "12345678A",
-                      "postalAddress": "Company Address",
-                      "postalCode": "54321",
-                      "town": "Company Town",
-                      "province": "Company Province",
-                      "countryName": "Company Country"
-                  },
-                  "language": 1,
-                  "defaultTimezone": 145,
-                  "country": 68,
-                  "currency": null,
-                  "transformationRuleSet": 1,
-                  "outgoingDdi": null,
-                  "outgoingDdiRule": null,
-                  "voicemailNotificationTemplate": 1,
-                  "faxNotificationTemplate": null,
-                  "invoiceNotificationTemplate": null,
-                  "callCsvNotificationTemplate": null,
-                  "maxDailyUsageNotificationTemplate": 2,
-                  "accessCredentialNotificationTemplate": 5,
-                  "corporation": 1,
-                  "applicationServerSet": 1,
-                  "mediaRelaySet": 0,
-                  "location": 1,
-                  "featureIds": [],
-                  "geoIpAllowedCountries": [],
-                  "routingTagIds": [],
-                  "codecIds": []
+                  "*": "~"
               },
               "feature": {
                   "iden": "queues",
@@ -77,23 +36,103 @@ Feature: Retrieve features rel brand
           },
           {
               "id": 2,
-              "company": "~",
-              "feature": "~"
+              "company": {
+                  "type": "vpbx",
+                  "name": "DemoCompany",
+                  "id": 1,
+                  "*": "~"
+              },
+              "feature": {
+                  "iden": "recordings",
+                  "id": 2,
+                  "name": {
+                      "en": "en",
+                      "es": "es",
+                      "ca": "ca",
+                      "it": "it",
+                      "eu": "eu"
+                  }
+              }
           },
           {
               "id": 3,
-              "company": "~",
-              "feature": "~"
+              "company": {
+                  "type": "vpbx",
+                  "name": "DemoCompany",
+                  "id": 1,
+                  "*": "~"
+              },
+              "feature": {
+                  "iden": "faxes",
+                  "id": 3,
+                  "name": {
+                      "en": "en",
+                      "es": "es",
+                      "ca": "ca",
+                      "it": "it",
+                      "eu": "eu"
+                  }
+              }
           },
           {
               "id": 4,
-              "company": "~",
-              "feature": "~"
+              "company": {
+                  "type": "vpbx",
+                  "name": "DemoCompany",
+                  "id": 1,
+                  "*": "~"
+              },
+              "feature": {
+                  "iden": "friends",
+                  "id": 4,
+                  "name": {
+                      "en": "en",
+                      "es": "es",
+                      "ca": "ca",
+                      "it": "it",
+                      "eu": "eu"
+                  }
+              }
           },
           {
               "id": 5,
-              "company": "~",
-              "feature": "~"
+              "company": {
+                  "type": "vpbx",
+                  "name": "DemoCompany",
+                  "id": 1,
+                  "*": "~"
+              },
+              "feature": {
+                  "iden": "conferences",
+                  "id": 5,
+                  "name": {
+                      "en": "en",
+                      "es": "es",
+                      "ca": "ca",
+                      "it": "it",
+                      "eu": "eu"
+                  }
+              }
+          },
+          {
+              "id": 6,
+              "company": {
+                  "type": "vpbx",
+                  "name": "DemoCompany",
+                  "id": 1,
+                  "*": "~"
+              },
+              "feature": {
+                  "iden": "webhooks",
+                  "id": 10,
+                  "name": {
+                      "en": "en",
+                      "es": "es",
+                      "ca": "ca",
+                      "it": "it",
+                      "eu": "eu"
+                  }
+              }
           }
       ]
       """

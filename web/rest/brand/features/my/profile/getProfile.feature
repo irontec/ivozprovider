@@ -21,7 +21,8 @@ Feature: Retrieve active calls
               "friends",
               "conferences",
               "billing",
-              "invoices"
+              "invoices",
+              "webhooks"
           ]
       }
       """
@@ -439,7 +440,8 @@ Feature: Retrieve active calls
               "friends",
               "conferences",
               "billing",
-              "invoices"
+              "invoices",
+              "webhooks"
           ]
       }
       """

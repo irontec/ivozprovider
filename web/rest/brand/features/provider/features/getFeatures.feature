@@ -112,6 +112,17 @@ Feature: Retrieve features
                   "it": "it",
                   "eu": "eu"
               }
+          },
+          {
+              "iden": "webhooks",
+              "id": 10,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it",
+                  "eu": "eu"
+              }
           }
       ]
       """

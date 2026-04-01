@@ -4510,6 +4510,22 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/Webhook/WebhookAbstract.php">
+    <MixedArgument occurrences="6">
+      <code>$fkTransformer-&gt;transform($brand)</code>
+      <code>$fkTransformer-&gt;transform($brand)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Webhook/WebhookTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
   <file src="Ivoz/Provider/Domain/Service/Administrator/AdminLoginChecker.php">
     <ParamNameMismatch occurrences="1">
       <code>$admin</code>

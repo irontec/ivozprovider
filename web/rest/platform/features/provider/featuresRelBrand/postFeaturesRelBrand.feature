@@ -21,7 +21,7 @@ Feature: Create features rel brands
       And the JSON should be equal to:
       """
       {
-          "id": 8,
+          "id": 9,
           "brand": 2,
           "feature": 1
       }
@@ -39,10 +39,10 @@ Feature: Create features rel brands
       {
           "id": 8,
           "brand": {
-              "name": "Irontec_e2e",
-              "domainUsers": "sip.irontec.com",
+              "name": "DemoBrand",
+              "domainUsers": "",
               "maxCalls": 0,
-              "id": 2,
+              "id": 1,
               "logo": {
                   "fileSize": null,
                   "mimeType": null,
@@ -59,7 +59,7 @@ Feature: Create features rel brands
               },
               "language": 1,
               "defaultTimezone": 145,
-              "currency": 2,
+              "currency": 1,
               "voicemailNotificationTemplate": null,
               "faxNotificationTemplate": null,
               "invoiceNotificationTemplate": null,
@@ -67,8 +67,8 @@ Feature: Create features rel brands
               "maxDailyUsageNotificationTemplate": null
           },
           "feature": {
-              "iden": "queues",
-              "id": 1,
+              "iden": "webhooks",
+              "id": 10,
               "name": {
                   "en": "en",
                   "es": "es",

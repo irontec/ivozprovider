@@ -1835,3 +1835,26 @@ Ivoz\Provider\Domain\Model\ApplicationServerSet\ApplicationServerSet:
     write_access_control:
       ROLE_BRAND_ADMIN:
         raw: 'FALSE'
+
+Ivoz\Provider\Domain\Model\Webhook\Webhook:
+  attributes:
+    access_control: >-
+      "ROLE_BRAND_ADMIN" in roles
+      && user.brandHasFeature("webhooks")
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    order:
+      company: ASC
+      name: ASC
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+      - or:
+        - company:
+            in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+        - company:
+            isNull: ~
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+    swagger_context:
+      required: []
