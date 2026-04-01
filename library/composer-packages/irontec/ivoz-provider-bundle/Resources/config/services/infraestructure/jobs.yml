@@ -14,6 +14,14 @@ services:
   Ivoz\Provider\Domain\Job\InvoicerJobInterface:
     alias: Ivoz\Provider\Infrastructure\Redis\Job\Invoicer
 
+  # Webhook dispatcher
+  Ivoz\Provider\Infrastructure\Redis\Job\Webhook:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Provider\Domain\Job\WebhookJobInterface:
+    alias: Ivoz\Provider\Infrastructure\Redis\Job\Webhook
+
   # Cgrates reload
   Ivoz\Cgr\Infrastructure\Redis\Job\Cgrates:
     arguments:
