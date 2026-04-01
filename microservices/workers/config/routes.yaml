@@ -33,3 +33,7 @@ asterisk-dialplan-reload:
 asterisk-hint-update:
   path: /asterisk-hint-update
   controller: Worker\AsteriskHintUpdater::send
+
+webhook-dispatcher:
+  path: /webhook-dispatcher
+  controller: Worker\Webhooks::dispatch

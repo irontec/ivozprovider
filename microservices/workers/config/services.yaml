@@ -67,3 +67,10 @@ services:
             $redisDb: '%redis_jobs_db%'
             $redisTimeout: '%redis_timeout%'
 
+    Worker\Webhooks:
+        public: true
+        arguments:
+            $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
+            $redisTimeout: '%redis_timeout%'
+
