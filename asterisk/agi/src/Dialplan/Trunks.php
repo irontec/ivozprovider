@@ -5,6 +5,7 @@ namespace Dialplan;
 use Agi\Action\DdiAction;
 use Agi\Agents\DdiAgent;
 use Agi\ChannelInfo;
+use Agi\Webhook\WebhookEventPublisher;
 use Agi\Wrapper;
 use Assert\Assertion;
 use Doctrine\ORM\EntityManagerInterface;
@@ -35,23 +36,31 @@ class Trunks extends RouteHandlerAbstract
     protected $ddiAction;
 
     /**
+     * @var WebhookEventPublisher
+     */
+    protected $webhookEventPublisher;
+
+    /**
      * Trunks constructor.
      *
      * @param Wrapper $agi
      * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      * @param DDIAction $ddiAction
+     * @param WebhookEventPublisher $webhookEventPublisher
      */
     public function __construct(
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EntityManagerInterface $em,
-        DDIAction $ddiAction
+        DDIAction $ddiAction,
+        WebhookEventPublisher $webhookEventPublisher
     ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->em = $em;
         $this->ddiAction = $ddiAction;
+        $this->webhookEventPublisher = $webhookEventPublisher;
     }
 
     /**
@@ -100,6 +109,13 @@ class Trunks extends RouteHandlerAbstract
 
         // Set DDI as the caller
         $this->channelInfo->setChannelCaller(new DdiAgent($this->agi, $ddi));
+
+        // Set DDI context for webhooks
+        $this->agi->setVariable("__DDIID", $ddi->getId());
+        $this->agi->setVariable("__DDIE164", $ddi->getDdiE164());
+
+        // Publish call start event to webhooks
+        $this->webhookEventPublisher->publish('start');
 
         // Process this DDI
         $this->ddiAction

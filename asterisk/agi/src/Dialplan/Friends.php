@@ -9,6 +9,7 @@ use Agi\Action\FriendCallAction;
 use Agi\Action\ServiceAction;
 use Agi\Agents\FriendAgent;
 use Agi\ChannelInfo;
+use Agi\Webhook\WebhookEventPublisher;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
 use Ivoz\Provider\Domain\Model\Feature\Feature;
@@ -52,14 +53,12 @@ class Friends extends RouteHandlerAbstract
     protected $externalNumberAction;
 
     /**
+     * @var WebhookEventPublisher
+     */
+    protected $webhookEventPublisher;
+
+    /**
      * Friends constructor.
-     *
-     * @param Wrapper $agi
-     * @param ChannelInfo $channelInfo
-     * @param EndpointResolver $endpointResolver
-     * @param ExtensionAction $extensionAction
-     * @param FriendCallAction $friendCallAction
-     * @param ExternalNumberAction $externalNumberAction
      */
     public function __construct(
         Wrapper $agi,
@@ -68,7 +67,8 @@ class Friends extends RouteHandlerAbstract
         ServiceAction $serviceAction,
         ExtensionAction $extensionAction,
         FriendCallAction $friendCallAction,
-        ExternalNumberAction $externalNumberAction
+        ExternalNumberAction $externalNumberAction,
+        WebhookEventPublisher $webhookEventPublisher
     ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
@@ -77,6 +77,7 @@ class Friends extends RouteHandlerAbstract
         $this->extensionAction = $extensionAction;
         $this->friendCallAction = $friendCallAction;
         $this->externalNumberAction = $externalNumberAction;
+        $this->webhookEventPublisher = $webhookEventPublisher;
     }
 
 
@@ -131,6 +132,9 @@ class Friends extends RouteHandlerAbstract
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $friend, $exten);
+
+        // Publish call start event to webhooks
+        $this->webhookEventPublisher->publish('start');
 
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {
