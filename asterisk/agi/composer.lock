@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "43ae880031cee89ac281394b2942daf8",
+    "content-hash": "9093a2596ed81507c11879ca2642a077",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2010,11 +2010,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "3.2",
+            "version": "3.4",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "49c6b5906b2f1e7e789d18e457b315084e2a008b"
+                "reference": "eb2d8f1ddf4672d21efb969f0b8ce8033de6ca19"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -4832,7 +4832,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-ctype",
@@ -5259,7 +5259,7 @@
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php73",
@@ -5373,7 +5373,7 @@
         },
         {
             "name": "symfony/polyfill-php81",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php81",
