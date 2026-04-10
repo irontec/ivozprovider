@@ -1,0 +1,45 @@
+{
+  "body": [
+    {
+      "name": "Answer Webhook Company 1",
+      "description": null,
+      "uri": "https://webhook.company1.com/answer",
+      "eventStart": false,
+      "eventRing": false,
+      "eventAnswer": true,
+      "eventEnd": false,
+      "template": "{\"event\": \"answer\", \"callId\": \"{callId}\"}",
+      "id": 2
+    },
+    {
+      "name": "DDI Specific Webhook",
+      "description": null,
+      "uri": "https://webhook.ddi.com/123456",
+      "eventStart": false,
+      "eventRing": true,
+      "eventAnswer": false,
+      "eventEnd": false,
+      "template": "{\"event\": \"ring\", \"ddi\": \"{ddiId}\"}",
+      "id": 5
+    },
+    {
+      "name": "Start Webhook Company 1",
+      "description": null,
+      "uri": "https://webhook.company1.com/start",
+      "eventStart": true,
+      "eventRing": false,
+      "eventAnswer": false,
+      "eventEnd": false,
+      "template": "{\"event\": \"start\", \"callId\": \"{callId}\"}",
+      "id": 1
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/client/webhooks?_page=1",
+    "x-last-page": "/api/client/webhooks?_page=1",
+    "x-next-page": "/api/client/webhooks?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

@@ -8,8 +8,10 @@ import EntityInterface, {
 } from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { useStoreState } from 'store';
 
 import Actions from './Action';
+import { ClientFeatures } from './ClientFeatures';
 import { CompanyProperties, CompanyPropertyList } from './CompanyProperties';
 import DeleteButtonWithWarning from './DeleteButtonWithWarning';
 import TypeIcon from './Field/TypeIcon';
@@ -401,6 +403,7 @@ const marshaller: MarshallerType = (values, properties) => {
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
   const { routeMapItem, row, entityService } = props;
+  const profile = useStoreState((state) => state.clientSession.aboutMe.profile);
 
   if (isEntityItem(routeMapItem) && routeMapItem.entity.iden === Company.iden) {
     const isDeletePath = routeMapItem.route === `${Company.path}/:id`;
@@ -409,6 +412,12 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
       return (
         <DeleteButtonWithWarning row={row} entityService={entityService} />
       );
+    }
+  }
+
+  if (isEntityItem(routeMapItem) && routeMapItem.entity.iden === 'Webhook') {
+    if (!profile?.features?.includes(ClientFeatures.webhooks)) {
+      return <a className='disabled'>{routeMapItem.entity.title}</a>;
     }
   }
 

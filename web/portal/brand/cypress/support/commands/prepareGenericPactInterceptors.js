@@ -66,6 +66,7 @@ import TimezonesCollection from '../../fixtures/Provider/Timezones/getCollection
 import TransformationRuleCollection from '../../fixtures/Provider/TransformationRule/getCollection.json';
 import TransformationRuleSetsCollection from '../../fixtures/Provider/TransformationRuleSets/getCollection.json';
 import UserCollection from '../../fixtures/Provider/Users/getCollection.json';
+import WebhookCollection from '../../fixtures/Provider/Webhook/getCollection.json';
 import WebPortalCollection from '../../fixtures/Provider/WebPortals/getCollection.json';
 
 Cypress.Commands.add(
@@ -217,6 +218,10 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/my/active_calls', {
       ...ActiveCallsItem,
     }).as('getMyActiveCalls');
+
+    cy.intercept('GET', '**/api/brand/webhooks?*', {
+      ...WebhookCollection,
+    }).as('getWebhooks');
 
     cy.intercept('GET', '**/api/brand/web_portals?*', {
       ...WebPortalCollection,

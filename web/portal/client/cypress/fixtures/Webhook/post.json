@@ -1,0 +1,32 @@
+{
+  "request": {
+    "name": "DDI Start Webhook",
+    "uri": "https://webhook.mycompany.com/start",
+    "eventStart": true,
+    "eventRing": false,
+    "eventAnswer": false,
+    "eventEnd": false,
+    "template": "tests"
+  },
+  "response": {
+    "body": {
+      "name": "DDI Start Webhook",
+      "description": null,
+      "uri": "https://webhook.mycompany.com/start",
+      "eventStart": true,
+      "eventRing": false,
+      "eventAnswer": false,
+      "eventEnd": false,
+      "template": "tests",
+      "id": 6,
+      "company": 1,
+      "ddi": 1
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

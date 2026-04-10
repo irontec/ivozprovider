@@ -1,0 +1,34 @@
+{
+  "request": {
+    "name": "Brand Level Webhook",
+    "uri": "https://webhook.brand.com/events",
+    "eventStart": true,
+    "eventRing": false,
+    "eventAnswer": false,
+    "eventEnd": true,
+    "template": "tests",
+    "company": null,
+    "ddi": null
+  },
+  "response": {
+    "body": {
+      "name": "Brand Level Webhook",
+      "description": null,
+      "uri": "https://webhook.brand.com/events",
+      "eventStart": true,
+      "eventRing": false,
+      "eventAnswer": false,
+      "eventEnd": true,
+      "template": "tests",
+      "id": 8,
+      "company": null,
+      "ddi": null
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}

@@ -69,6 +69,7 @@ import HuntGroupMemberByUserCollection from '../../fixtures/Users/getHuntGroupMe
 import UsersCdrsCollection from '../../fixtures/UsersCdrs/getCollection.json';
 import VoicemailCollection from '../../fixtures/Voicemail/getCollection.json';
 import VoicemailMessageCollection from '../../fixtures/VoicemailMessage/getCollection.json';
+import WebhookCollection from '../../fixtures/Webhook/getCollection.json';
 
 export const CLIENT_TYPE = {
   Retail: 'retail',
@@ -380,5 +381,9 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/client/survival_devices?*', {
       ...SurvivalDeviceCollection,
     }).as('getSurvivalDevices');
+
+    cy.intercept('GET', '**/api/client/webhooks?*', {
+      ...WebhookCollection,
+    }).as('getWebhooks');
   }
 );
