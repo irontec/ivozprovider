@@ -544,6 +544,7 @@
   "User_one": "Erabiltzailea",
   "User_other": "Erabiltzaileak",
   "Users": "Erabiltzaileak",
+  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.": "Baliozko JSON {{placeholder}} ordezkapenarekin. Eskuragarri: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.",
   "Voice Mail_one": "Erantzungailua",
   "Voice Mail_other": "Erantzungailuak",
   "Voicemail Message_one": "Erantzungailu mezua",

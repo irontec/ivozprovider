@@ -708,6 +708,7 @@
   "User_other": "Utenti",
   "Username": "Nome utente",
   "Users who do not have a specific location will be linked to this location.": "Un utente può essere collegato solo a una singola posizione",
+  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.": "JSON valido con sostituzione di {{placeholder}}. Disponibili: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.",
   "Version": "Versione",
   "Video": "Video",
   "Views": "Visualizza",

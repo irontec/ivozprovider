@@ -708,6 +708,7 @@
   "User_other": "Usuaris",
   "Username": "Nom d'usuari",
   "Users who do not have a specific location will be linked to this location.": "Un usuari només pot estar vinculat a una única ubicació",
+  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.": "JSON vàlid amb substitució de {{placeholder}}. Disponibles: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.",
   "Version": "Versió",
   "Video": "Vídeo",
   "Views": "Vistes",
