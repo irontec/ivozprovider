@@ -23,10 +23,10 @@
           "eventRing": false,
           "eventAnswer": false,
           "eventEnd": false,
+          "template": "tests",
           "name": "DDI Start Webhook",
           "description": "",
           "uri": "https://webhook.mycompany.com/start",
-          "template": "tests",
           "ddi": 1
         },
         "query": ""
@@ -73,10 +73,10 @@
           "eventRing": true,
           "eventAnswer": false,
           "eventEnd": false,
+          "template": "updated",
           "name": "Updated Company Start Webhook",
           "description": "",
           "uri": "https://webhook.updated.com/start",
-          "template": "updated",
           "ddi": null
         },
         "query": ""

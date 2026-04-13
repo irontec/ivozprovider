@@ -23,10 +23,10 @@
           "eventRing": false,
           "eventAnswer": false,
           "eventEnd": true,
+          "template": "tests",
           "name": "Brand Level Webhook",
           "description": "",
           "uri": "https://webhook.brand.com/events",
-          "template": "tests",
           "company": 1
         },
         "query": ""
@@ -73,10 +73,10 @@
           "eventRing": true,
           "eventAnswer": false,
           "eventEnd": false,
+          "template": "updated",
           "name": "Updated Start Webhook",
           "description": "",
           "uri": "https://webhook.updated.com/start",
-          "template": "updated",
           "company": 1
         },
         "query": ""
