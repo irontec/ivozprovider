@@ -18,6 +18,10 @@ class WebhookEventPublisher
 
     public function publish(string $event): void
     {
+        // Disabled: the realtime webhook dispatcher (subscribed to Kamailio
+        // pubsub) is now the single source of webhook events.
+        return;
+
         try {
             $brandId = (int) $this->agi->getVariable('BRANDID');
             if ($brandId === 0) {

@@ -37,3 +37,7 @@ asterisk-hint-update:
 webhook-dispatcher:
   path: /webhook-dispatcher
   controller: Worker\Webhooks::dispatch
+
+realtime-webhook-dispatcher:
+  path: /realtime-webhook-dispatcher
+  controller: Worker\RealtimeWebhooks::dispatch
