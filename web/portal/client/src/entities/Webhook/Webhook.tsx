@@ -36,6 +36,24 @@ const properties: WebhookProperties = {
   },
   template: {
     label: _('Template'),
+    format: 'textarea',
+    helpText: _(
+      'Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.'
+    ),
+    default:
+      '{\n' +
+      '    "event": {{event}},\n' +
+      '    "brandId": {{brandId}},\n' +
+      '    "companyId": {{companyId}},\n' +
+      '    "ddiId": {{ddiId}},\n' +
+      '    "ddiE164": {{ddiE164}},\n' +
+      '    "callId": {{callId}},\n' +
+      '    "uniqueId": {{uniqueId}},\n' +
+      '    "caller": {{caller}},\n' +
+      '    "callee": {{callee}},\n' +
+      '    "dialStatus": {{dialStatus}},\n' +
+      '    "timestamp": {{timestamp}}\n' +
+      '}',
   },
   company: {
     label: _('Client_one'),

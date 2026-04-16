@@ -608,6 +608,7 @@
   "User_one": "Usuari",
   "User_other": "Usuaris",
   "Users": "Usuaris",
+  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.": "JSON vàlid amb substitució de {{placeholder}}. Disponibles: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.",
   "Voice Mail_many": "Correu de veu",
   "Voice Mail_one": "Correu de veu",
   "Voice Mail_other": "Correu de veu",

@@ -544,6 +544,7 @@
   "User_one": "User",
   "User_other": "Users",
   "Users": "Users",
+  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.": "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.",
   "Voice Mail_one": "Voice Mail",
   "Voice Mail_other": "Voice Mail",
   "Voicemail Message_one": "Voicemail Message",

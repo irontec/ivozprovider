@@ -708,6 +708,7 @@
   "User_other": "Usuarios",
   "Username": "Nombre de usuario",
   "Users who do not have a specific location will be linked to this location.": "Los usuarios que no tengan una ubicación específica, estarán vinculados a esta ubicación",
+  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.": "JSON válido con sustitución {{placeholder}}. Disponibles: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.",
   "Version": "Versión",
   "Video": "Vídeo",
   "Views": "Vistas",

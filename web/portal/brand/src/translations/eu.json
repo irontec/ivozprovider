@@ -629,6 +629,7 @@
   "User_other": "Erabiltzaileak",
   "Username": "Erabiltzaile izena",
   "Users who do not have a specific location will be linked to this location.": "Kokapen zehatzik ez duten erabiltzaileak kokapen honetara lotuko dira.",
+  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.": "JSON baliozkoa {{placeholder}} ordezkatzearekin. Eskuragarri: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.",
   "Version": "Bertsioa",
   "Video": "Bideoa",
   "Views": "Ikuspegiak",

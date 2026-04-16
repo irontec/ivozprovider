@@ -608,6 +608,7 @@
   "User_one": "Utente",
   "User_other": "Utenti",
   "Users": "Utenti",
+  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.": "JSON valido con sostituzione di {{placeholder}}. Disponibili: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.",
   "Voice Mail_many": "Messaggi vocali (molti)",
   "Voice Mail_one": "Messaggio vocale (uno)",
   "Voice Mail_other": "Messaggi vocali (altro)",
