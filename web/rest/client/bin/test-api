@@ -26,7 +26,7 @@ if [ "$SKIP_DB" = false ]; then
 fi
 
 # Access control tests
-SYMFONY_PHPUNIT_VERSION=9.5.3 vendor/bin/simple-phpunit
+SYMFONY_PHPUNIT_VERSION=9.6.33 vendor/bin/simple-phpunit
 
 if [ "$FIX_FEATURES" = true ]; then
     vendor/bin/behat -f fixer
