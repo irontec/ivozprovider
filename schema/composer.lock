@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59de9b9786bbd3b31ad4841ccaa547b8",
+    "content-hash": "8eff523c62ecfb1ffd6f5636450300ea",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2064,11 +2064,11 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "6.0",
+            "version": "6.1.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-dev-tools",
-                "reference": "a6f5b0194f350bc4f534274c45de4e10f0b5b4a8"
+                "reference": "261d8f28224573f57366f492fa2388a856015dd9"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
@@ -2112,11 +2112,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "3.2",
+            "version": "3.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "49c6b5906b2f1e7e789d18e457b315084e2a008b"
+                "reference": "eb2d8f1ddf4672d21efb969f0b8ce8033de6ca19"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -4981,7 +4981,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-ctype",
@@ -5408,7 +5408,7 @@
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-php73",
@@ -5522,7 +5522,7 @@
         },
         {
             "name": "symfony/polyfill-php81",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-php81",

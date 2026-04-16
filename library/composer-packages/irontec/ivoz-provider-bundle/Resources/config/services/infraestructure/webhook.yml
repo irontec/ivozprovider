@@ -1,0 +1,16 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  webhook.http_client:
+    class: GuzzleHttp\Client
+    arguments:
+      - { timeout: 2, connect_timeout: 1, http_errors: false }
+
+  Ivoz\Provider\Infrastructure\Http\Webhook\GuzzleWebhookSender:
+    arguments:
+      $httpClient: '@webhook.http_client'
+
+  Ivoz\Provider\Domain\Service\Webhook\WebhookSender:
+    alias: Ivoz\Provider\Infrastructure\Http\Webhook\GuzzleWebhookSender

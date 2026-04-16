@@ -5598,6 +5598,11 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
+  <file src="Ivoz/Provider/Domain/Service/Webhook/WebhookLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Provider/Domain/Traits/RoutableTrait.php">
     <MixedArgument occurrences="3">
       <code>$routeType</code>

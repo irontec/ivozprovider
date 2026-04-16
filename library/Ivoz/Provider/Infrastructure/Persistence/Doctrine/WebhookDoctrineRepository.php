@@ -30,4 +30,30 @@ class WebhookDoctrineRepository extends DoctrineRepository implements WebhookRep
             $entityPersisterInterface
         );
     }
+
+    /**
+     * @return WebhookInterface[]
+     */
+    public function findMatchingWebhooks(int $brandId, ?int $companyId, ?int $ddiId): array
+    {
+        $qb = $this->createQueryBuilder('w')
+            ->where('w.brand = :brandId')
+            ->setParameter('brandId', $brandId);
+
+        if ($companyId !== null) {
+            $qb->andWhere('w.company IS NULL OR w.company = :companyId')
+                ->setParameter('companyId', $companyId);
+        } else {
+            $qb->andWhere('w.company IS NULL');
+        }
+
+        if ($ddiId !== null) {
+            $qb->andWhere('w.ddi IS NULL OR w.ddi = :ddiId')
+                ->setParameter('ddiId', $ddiId);
+        } else {
+            $qb->andWhere('w.ddi IS NULL');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

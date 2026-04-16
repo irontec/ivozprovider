@@ -9,4 +9,8 @@ use Ivoz\Core\Domain\Service\Repository\RepositoryInterface;
  */
 interface WebhookRepository extends RepositoryInterface
 {
+    /**
+     * @return WebhookInterface[]
+     */
+    public function findMatchingWebhooks(int $brandId, ?int $companyId, ?int $ddiId): array;
 }

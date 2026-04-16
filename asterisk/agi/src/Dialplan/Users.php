@@ -8,6 +8,7 @@ use Agi\Action\FriendCallAction;
 use Agi\Action\ServiceAction;
 use Agi\Agents\UserAgent;
 use Agi\ChannelInfo;
+use Agi\Webhook\WebhookEventPublisher;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
@@ -52,15 +53,12 @@ class Users extends RouteHandlerAbstract
     protected $externalNumberCallAction;
 
     /**
+     * @var WebhookEventPublisher
+     */
+    protected $webhookEventPublisher;
+
+    /**
      * Users constructor.
-     *
-     * @param Wrapper $agi
-     * @param ChannelInfo $channelInfo
-     * @param EndpointResolver $endpointResolver
-     * @param ServiceAction $serviceAction
-     * @param ExtensionAction $extensionAction
-     * @param FriendCallAction $friendCallAction
-     * @param ExternalNumberAction $externalNumberCallAction
      */
     public function __construct(
         Wrapper $agi,
@@ -69,7 +67,8 @@ class Users extends RouteHandlerAbstract
         ServiceAction $serviceAction,
         ExtensionAction $extensionAction,
         FriendCallAction $friendCallAction,
-        ExternalNumberAction $externalNumberCallAction
+        ExternalNumberAction $externalNumberCallAction,
+        WebhookEventPublisher $webhookEventPublisher
     ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
@@ -78,6 +77,7 @@ class Users extends RouteHandlerAbstract
         $this->extensionAction = $extensionAction;
         $this->friendCallAction = $friendCallAction;
         $this->externalNumberCallAction = $externalNumberCallAction;
+        $this->webhookEventPublisher = $webhookEventPublisher;
     }
 
     /**
@@ -176,6 +176,9 @@ class Users extends RouteHandlerAbstract
         if ($company->getOnDemandRecord()) {
             $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordDTMFs());
         }
+
+        // Publish call start event to webhooks
+        $this->webhookEventPublisher->publish('start');
 
         // Check User's permission to does this call
         $exten = $this->agi->getExtension();

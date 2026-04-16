@@ -6,6 +6,7 @@ use Agi\Action\ExternalNumberAction;
 use Agi\Action\ServiceAction;
 use Agi\Agents\ResidentialAgent;
 use Agi\ChannelInfo;
+use Agi\Webhook\WebhookEventPublisher;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
@@ -44,14 +45,12 @@ class Residentials extends RouteHandlerAbstract
     protected $serviceAction;
 
     /**
+     * @var WebhookEventPublisher
+     */
+    protected $webhookEventPublisher;
+
+    /**
      * Residentials constructor.
-     *
-     * @param Wrapper $agi
-     * @param ChannelInfo $channelInfo
-     * @param BrandServiceRepository $brandServiceRepository
-     * @param EndpointResolver $endpointResolver
-     * @param ExternalNumberAction $externalNumberAction
-     * @param ServiceAction $serviceAction
      */
     public function __construct(
         Wrapper $agi,
@@ -59,7 +58,8 @@ class Residentials extends RouteHandlerAbstract
         BrandServiceRepository $brandServiceRepository,
         EndpointResolver $endpointResolver,
         ExternalNumberAction $externalNumberAction,
-        ServiceAction $serviceAction
+        ServiceAction $serviceAction,
+        WebhookEventPublisher $webhookEventPublisher
     ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
@@ -67,6 +67,7 @@ class Residentials extends RouteHandlerAbstract
         $this->endpointResolver = $endpointResolver;
         $this->externalNumberAction = $externalNumberAction;
         $this->serviceAction = $serviceAction;
+        $this->webhookEventPublisher = $webhookEventPublisher;
     }
 
     /**
@@ -105,6 +106,9 @@ class Residentials extends RouteHandlerAbstract
         if ($this->agi->getRedirecting('count') == 0) {
             $this->channelInfo->setChannelOrigin($caller);
         }
+
+        // Publish call start event to webhooks
+        $this->webhookEventPublisher->publish('start');
 
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {

@@ -2,6 +2,7 @@
 
 namespace Agi\Action;
 
+use Agi\Webhook\WebhookEventPublisher;
 use Agi\Wrapper;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
@@ -35,20 +36,23 @@ class UserCallAction
     protected $allowCallForwards;
 
     /**
+     * @var WebhookEventPublisher
+     */
+    protected $webhookEventPublisher;
+
+    /**
      * UserCallAction constructor.
-     *
-     * @param Wrapper $agi
-     * @param RouterAction $routerAction
-     * @param UserStatusAction $userStatusAction
      */
     public function __construct(
         Wrapper $agi,
         RouterAction $routerAction,
-        UserStatusAction $userStatusAction
+        UserStatusAction $userStatusAction,
+        WebhookEventPublisher $webhookEventPublisher
     ) {
         $this->agi = $agi;
         $this->routerAction = $routerAction;
         $this->userStatusAction = $userStatusAction;
+        $this->webhookEventPublisher = $webhookEventPublisher;
         $this->allowCallForwards = true;
     }
 
@@ -162,6 +166,9 @@ class UserCallAction
         $this->agi->setVariable("__DIAL_ENDPOINT", $endpointName);
         $this->agi->setVariable("DIAL_TIMEOUT", $timeout);
         $this->agi->setVariable("DIAL_OPTS", $options);
+
+        // Publish ring event to webhooks (call is about to ring at the endpoint)
+        $this->webhookEventPublisher->publish('ring');
 
         // Redirect to the calling dialplan context
         if ($this->allowCallForwards) {

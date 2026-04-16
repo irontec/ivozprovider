@@ -2,6 +2,7 @@
 
 namespace Agi\Action;
 
+use Agi\Webhook\WebhookEventPublisher;
 use Agi\Wrapper;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
@@ -16,6 +17,7 @@ class UserStatusAction
     const NoAnswer              = 'NOANSWER';
     const Cancel                = 'CANCEL';
     const Forwarded             = 'FORWARDED';
+    const Answer                = 'ANSWER';
 
     /**
      * @var Wrapper
@@ -38,17 +40,21 @@ class UserStatusAction
     protected $callForwardAction;
 
     /**
+     * @var WebhookEventPublisher
+     */
+    protected $webhookEventPublisher;
+
+    /**
      * UserStatusAction constructor.
-     *
-     * @param Wrapper $agi
-     * @param CallForwardAction $callForwardAction
      */
     public function __construct(
         Wrapper $agi,
-        CallForwardAction $callForwardAction
+        CallForwardAction $callForwardAction,
+        WebhookEventPublisher $webhookEventPublisher
     ) {
         $this->agi = $agi;
         $this->callForwardAction = $callForwardAction;
+        $this->webhookEventPublisher = $webhookEventPublisher;
     }
 
     public function setUser($user)
@@ -70,9 +76,21 @@ class UserStatusAction
             return false;
         }
 
+        // Detect post-dial invocation: pre-dial callers (UserCallAction) always
+        // pre-set dialStatus, while the dialplan post-dial handler does not.
+        $isPostDial = empty($this->dialStatus);
+
         // If no dialstatus has been provided, try to get Dial output
-        if (empty($this->dialStatus)) {
+        if ($isPostDial) {
             $this->dialStatus = $this->agi->getVariable("DIALSTATUS");
+        }
+
+        // Publish answer/end webhook events on post-dial only.
+        if ($isPostDial) {
+            if ($this->dialStatus === self::Answer) {
+                $this->webhookEventPublisher->publish('answer');
+            }
+            $this->webhookEventPublisher->publish('end');
         }
 
         $forwarded = false;

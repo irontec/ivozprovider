@@ -6,6 +6,7 @@ use Agi\Action\ExternalNumberAction;
 use Agi\Action\RetailCallAction;
 use Agi\Agents\RetailAgent;
 use Agi\ChannelInfo;
+use Agi\Webhook\WebhookEventPublisher;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
 use RouteHandlerAbstract;
@@ -38,26 +39,27 @@ class Retails extends RouteHandlerAbstract
     protected $retailCallAction;
 
     /**
+     * @var WebhookEventPublisher
+     */
+    protected $webhookEventPublisher;
+
+    /**
      * Retails constructor.
-     *
-     * @param Wrapper $agi
-     * @param ChannelInfo $channelInfo
-     * @param EndpointResolver $endpointResolver
-     * @param ExternalNumberAction $externalNumberAction
-     * @param RetailCallAction $retailCallAction
      */
     public function __construct(
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EndpointResolver $endpointResolver,
         ExternalNumberAction $externalNumberAction,
-        RetailCallAction $retailCallAction
+        RetailCallAction $retailCallAction,
+        WebhookEventPublisher $webhookEventPublisher
     ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->endpointResolver = $endpointResolver;
         $this->externalNumberAction = $externalNumberAction;
         $this->retailCallAction = $retailCallAction;
+        $this->webhookEventPublisher = $webhookEventPublisher;
     }
 
     /**
@@ -106,6 +108,9 @@ class Retails extends RouteHandlerAbstract
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $retailAccount, $exten);
+
+        // Publish call start event to webhooks
+        $this->webhookEventPublisher->publish('start');
 
         $cfwDestination = $this->agi->getSIPHeader('X-Info-Cfw-Destination');
         if ($cfwDestination) {

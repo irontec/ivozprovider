@@ -48,6 +48,10 @@ services:
             $mailer: '@mailer'
             $localStoragePath: '%local_storage_path%/asterisk/spool/voicemail'
 
+    Agi\Webhook\WebhookEventPublisher:
+        lazy: true
+        arguments: ~
+
     Hints\Generator:
         arguments: ~
 
