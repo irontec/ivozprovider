@@ -788,10 +788,10 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@irontec/ivoz-ui@^1.7.19":
-  version "1.7.19"
-  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-1.7.19.tgz#de65be809d36d82c1eccb91789e8770ff36b9b4f"
-  integrity sha512-o+GUsFWWS0Y7ocAMeiNBwRZT3pF50wDVcEtpWMdXYreC55DQU6bjVhQcN8buhc8/yqJZx9QzTwIyS4H+68Hg9Q==
+"@irontec/ivoz-ui@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-1.8.0.tgz#80e3e425b6c5736becaaab5b987bdd7325a4172d"
+  integrity sha512-+gA4k95JohClwB287qNrB0Eypey4AokEPPfaqYYiudYe8eZiS04HP0rAegKWHkjiV1/UGjwOfioqat81xzIgvQ==
   dependencies:
     "@date-io/date-fns" "^2.10.8"
     "@types/react-color" "^3.0.12"
@@ -805,7 +805,6 @@
     i18next-browser-languagedetector "^7.2.0"
     i18next-sprintf-postprocessor "^0.2.2"
     query-string "^7.0.0"
-    react-audio-player "^0.17.0"
     react-color "^2.19.3"
     react-i18next "^13.0.0"
     sync-request "^6.1.0"
@@ -6181,7 +6180,7 @@ promise@^8.0.0:
   dependencies:
     asap "~2.0.6"
 
-prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -6332,13 +6331,6 @@ raw-body@2.5.2:
     http-errors "2.0.0"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
-
-react-audio-player@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/react-audio-player/-/react-audio-player-0.17.0.tgz#4be7b1952512801f36ba0865a9c98f7b108f991e"
-  integrity sha512-aCZgusPxA9HK7rLZcTdhTbBH9l6do9vn3NorgoDZRxRxJlOy9uZWzPaKjd7QdcuP2vXpxGA/61JMnnOEY7NXeA==
-  dependencies:
-    prop-types "^15.7.2"
 
 react-color@^2.19.3:
   version "2.19.3"
