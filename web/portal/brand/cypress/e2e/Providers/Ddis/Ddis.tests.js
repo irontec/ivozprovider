@@ -67,7 +67,9 @@ export const deleteDdi = () => {
 
   cy.contains('DDIs').click();
 
-  cy.get('td button svg[data-testid="DeleteIcon"]').first().click();
+  cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
+  cy.get('li.MuiMenuItem-root').contains('Delete').click();
+
   cy.contains('Remove element');
   cy.get('[role="dialog"]')
     .filter(':visible')
