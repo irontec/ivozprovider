@@ -1,19 +1,20 @@
-import DdiCollection from '../../../fixtures/Ddi/getCollection.json';
-import DdiItem from '../../../fixtures/Ddi/getItem.json';
-import WebhookCollection from '../../../fixtures/Webhook/getCollection.json';
-import WebhookItem from '../../../fixtures/Webhook/getItem.json';
-import newWebhook from '../../../fixtures/Webhook/post.json';
-import editWebhook from '../../../fixtures/Webhook/put.json';
+import DdiCollection from '../../../../fixtures/Provider/Ddis/getCollection.json';
+import DdiItem from '../../../../fixtures/Provider/Ddis/getItem.json';
+import WebhookCollection from '../../../../fixtures/Provider/Webhook/getCollection.json';
+import WebhookItem from '../../../../fixtures/Provider/Webhook/getItem.json';
+import newWebhook from '../../../../fixtures/Provider/Webhook/post.json';
+import editWebhook from '../../../../fixtures/Provider/Webhook/put.json';
 
-describe('Ddi Webhook', () => {
+describe('in Ddi Webhook', () => {
   beforeEach(() => {
-    cy.prepareGenericPactInterceptors('Ddi-Webhook');
+    cy.prepareGenericPactInterceptors('ddis-webhook');
     cy.before();
 
-    cy.intercept('GET', '**/api/client/ddis/1', {
+    cy.intercept('GET', '**/api/brand/ddis/1', {
       ...DdiItem,
     }).as('getDdi-1');
 
+    cy.get('svg[data-testid="PrecisionManufacturingIcon"]').first().click();
     cy.contains('DDIs').click();
     cy.get('header').should('contain', 'DDIs');
     cy.get('table').should('contain', DdiCollection.body[0].ddie164);
@@ -34,7 +35,7 @@ describe('Ddi Webhook', () => {
     cy.usePactIntercept(
       {
         method: 'POST',
-        url: '**/api/client/webhooks*',
+        url: '**/api/brand/webhooks*',
         response: newWebhook.response,
         matchingRules: newWebhook.matchingRules,
       },
@@ -59,16 +60,16 @@ describe('Ddi Webhook', () => {
     cy.usePactIntercept(
       {
         method: 'GET',
-        url: '**/api/client/webhooks/2',
+        url: '**/api/brand/webhooks/4',
         response: { ...WebhookItem },
       },
-      'getWebhook-2'
+      'getWebhook-4'
     );
 
     cy.usePactIntercept(
       {
         method: 'PUT',
-        url: `**/api/client/webhooks/${editWebhook.response.body.id}`,
+        url: `**/api/brand/webhooks/${editWebhook.response.body.id}`,
         response: editWebhook.response,
       },
       'editWebhook'
@@ -89,7 +90,7 @@ describe('Ddi Webhook', () => {
   // DELETE
   ///////////////////////
   it('delete Webhook', () => {
-    cy.intercept('DELETE', '**/api/client/webhooks/2', {
+    cy.intercept('DELETE', '**/api/brand/webhooks/4', {
       statusCode: 204,
     }).as('deleteWebhook');
 

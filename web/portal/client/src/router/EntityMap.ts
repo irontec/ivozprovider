@@ -77,13 +77,6 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.Ddi,
           filterBy: 'retailAccount',
-          children: [
-            {
-              entity: entities.Webhook,
-              filterBy: 'ddi',
-              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
-            },
-          ],
         },
       ],
     },
@@ -158,11 +151,6 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: entities.Recording,
           filterBy: 'ddi',
         },
-        {
-          entity: entities.Webhook,
-          filterBy: 'ddi',
-          isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
-        },
       ],
     },
     {
@@ -182,11 +170,6 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.Recording,
           filterBy: 'ddi',
-        },
-        {
-          entity: entities.Webhook,
-          filterBy: 'ddi',
-          isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
         },
       ],
     },
