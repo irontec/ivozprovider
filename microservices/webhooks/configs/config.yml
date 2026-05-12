@@ -1,0 +1,11 @@
+redis:
+  master: mymaster
+  sentinel_host: cache.ivozprovider.local
+  sentinel_port: 26379
+  db: 1
+
+database:
+  dsn: "root:changeme@tcp(data.ivozprovider.local:3306)/ivozprovider?parseTime=true"
+
+log:
+  level: 4
