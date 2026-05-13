@@ -74,19 +74,13 @@ func RunWorker(ctx context.Context, wg *sync.WaitGroup, webhook db.Webhook) {
 	}
 }
 
-func buildPatterns(webhook db.Webhook) []string {
+func buildPatterns(webhook db.Webhook) string {
 	if webhook.DdiID != nil {
-		prefix := fmt.Sprintf(":b%d:c%d:d%d:", webhook.BrandID, webhook.CompanyID, *webhook.DdiID)
-		return []string{
-			"users" + prefix + "*",
-			"trunks" + prefix + "*",
-		}
+		prefix := fmt.Sprintf(":b%d:c%d:ddi%d:", webhook.BrandID, webhook.CompanyID, *webhook.DdiID)
+		return "trunks" + prefix + "*"
 	}
 	prefix := fmt.Sprintf(":b%d:c%d:", webhook.BrandID, webhook.CompanyID)
-	return []string{
-		"users" + prefix + "*",
-		"trunks" + prefix + "*",
-	}
+	return "trunks" + prefix + "*"
 }
 
 func handleMessage(webhook db.Webhook, cfg webhookConfig, payload string) {
