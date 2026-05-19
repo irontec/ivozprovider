@@ -21,6 +21,7 @@ microservices/recordings
 microservices/router
 microservices/scheduler
 microservices/workers
+microservices/webhooks
 pkg
 portal
 portal/brand
