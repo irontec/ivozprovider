@@ -33,6 +33,12 @@
       </options>
     </field>
     <field name="template" type="text" column="template" nullable="false"/>
+    <field name="callDirection" type="string" column="callDirection" length="25" nullable="false">
+      <options>
+        <option name="default">both</option>
+        <option name="comment">[enum:inbound|outbound|both]</option>
+      </options>
+    </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="false"/>
