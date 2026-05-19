@@ -7,8 +7,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\Persistence\ObjectManager;
 use Ivoz\Provider\Domain\Model\Corporation\Corporation;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class ProviderCorporation extends Fixture
+class ProviderCorporation extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
@@ -37,5 +38,12 @@ class ProviderCorporation extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            ProviderBrand::class,
+        );
     }
 }

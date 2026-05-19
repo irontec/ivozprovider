@@ -47,6 +47,14 @@ services:
     arguments:
       $redisDb: '%redis_jobs_db%'
 
+  # Webhook dispatcher reload
+  Ivoz\Provider\Infrastructure\Redis\Job\WebhookReloadJob:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Provider\Domain\Job\WebhookReloadJobInterface:
+    alias: Ivoz\Provider\Infrastructure\Redis\Job\WebhookReloadJob
+
   # Asterisk ARI calls
   Ivoz\Ast\Infrastructure\Redis\Job\DialplanReloadJob:
     arguments:
