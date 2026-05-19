@@ -1,0 +1,13 @@
+[Unit]
+Description=Ivozprovider Webhook Dispatcher
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/irontec/ivozprovider/microservices/webhooks
+ExecStart=/opt/irontec/ivozprovider/microservices/webhooks/dispatcher
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
