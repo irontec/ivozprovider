@@ -65,6 +65,12 @@ class Webhook extends WebhookAbstract implements WebhookInterface
         return parent::setUri($uri);
     }
 
+    private const VALID_TEMPLATE_PLACEHOLDERS = [
+        'event', 'time', 'callId', 'company', 'companyId',
+        'ddiId', 'crId', 'dpId', 'direction',
+        'caller', 'callee', 'carrier', 'ddiProvider',
+    ];
+
     protected function sanitizeWebhookConfiguration(): void
     {
         $hasAnyEvent = $this->getEventStart() ||
@@ -74,6 +80,12 @@ class Webhook extends WebhookAbstract implements WebhookInterface
 
         if (!$hasAnyEvent) {
             throw new \DomainException('At least one event (Start, Ring, Answer, or End) must be enabled');
+        }
+
+        preg_match_all('/\{\{(\w+)\}\}/', $this->getTemplate(), $matches);
+        $invalid = array_diff($matches[1], self::VALID_TEMPLATE_PLACEHOLDERS);
+        if (!empty($invalid)) {
+            throw new \DomainException('Invalid template placeholders: ' . implode(', ', $invalid));
         }
     }
 }
