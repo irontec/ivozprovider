@@ -22,7 +22,7 @@ Feature: Create features rel companies
       And the JSON should be equal to:
       """
       {
-          "id": 7,
+          "id": 6,
           "company": {
               "type": "vpbx",
               "name": "DemoCompany",
@@ -149,8 +149,8 @@ Feature: Create features rel companies
               "codecIds": []
           },
           "feature": {
-              "iden": "webhooks",
-              "id": 10,
+              "iden": "progress",
+              "id": 8,
               "name": {
                   "en": "en",
                   "es": "es",

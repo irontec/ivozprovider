@@ -113,26 +113,6 @@ Feature: Retrieve features rel brand
                       "eu": "eu"
                   }
               }
-          },
-          {
-              "id": 6,
-              "company": {
-                  "type": "vpbx",
-                  "name": "DemoCompany",
-                  "id": 1,
-                  "*": "~"
-              },
-              "feature": {
-                  "iden": "webhooks",
-                  "id": 10,
-                  "name": {
-                      "en": "en",
-                      "es": "es",
-                      "ca": "ca",
-                      "it": "it",
-                      "eu": "eu"
-                  }
-              }
           }
       ]
       """
