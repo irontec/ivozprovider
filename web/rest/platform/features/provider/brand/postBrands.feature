@@ -92,6 +92,7 @@ Feature: Manage brands
               }
           },
           "voicemailNotificationTemplate": null,
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
@@ -177,6 +178,7 @@ Feature: Manage brands
               }
           },
           "voicemailNotificationTemplate": null,
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
@@ -298,6 +300,7 @@ This is file content
               }
           },
           "voicemailNotificationTemplate": null,
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,

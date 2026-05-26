@@ -203,8 +203,9 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setMaxCalls(0);
             $this->setIpfilter(true);
             $this->setBillingMethod("postpaid");
-            $this->setOnDemandRecord(0);
+            $this->setOnDemandRecord(1);
             $this->setOnDemandRecordCode("");
+            $this->setOnDemandRecordEmail('user');
             $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
@@ -213,6 +214,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));
+            $this->setOnDemandRecordNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate8'));
             $this->setCorporation($fixture->getReference('_reference_Corporation1'));
             $this->setApplicationServerSet($fixture->getReference('_reference_ProviderApplicationServerSet1'));
             $this->setMediaRelaySet($fixture->getReference('_reference_ProviderMediaRelaySet0'));

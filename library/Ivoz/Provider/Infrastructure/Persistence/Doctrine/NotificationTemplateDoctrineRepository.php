@@ -137,6 +137,35 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         return $response;
     }
 
+    public function findOnDemandRecordTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface
+    {
+        $language = $company->getLanguage();
+        $notificationTemplate = $company->getOnDemandRecordNotificationTemplate();
+        if ($notificationTemplate) {
+            if ($notificationTemplate->getContentsByLanguage($language)) {
+                return $notificationTemplate;
+            }
+        }
+
+        $notificationTemplate = $company
+            ->getBrand()
+            ->getOnDemandRecordNotificationTemplate();
+
+        if ($notificationTemplate) {
+            if ($notificationTemplate->getContentsByLanguage($language)) {
+                return $notificationTemplate;
+            }
+        }
+
+        /** @var NotificationTemplateInterface $response */
+        $response = $this->findOneBy([
+            'brand' => null,
+            'type' => NotificationTemplateInterface::TYPE_ONDEMANDRECORD,
+        ]);
+
+        return $response;
+    }
+
     public function findMaxDailyUsageTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface
     {
         $notificationTemplate = $company->getMaxDailyUsageNotificationTemplate();

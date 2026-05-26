@@ -131,6 +131,9 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
         fields: [
           !isRetail && 'onDemandRecord',
           'onDemandRecordCode',
+          isVpbx && 'onDemandRecordEmail',
+          isVpbx && 'onDemandRecordEmailAddress',
+          isVpbx && 'onDemandRecordNotificationTemplate',
           'allowRecordingRemoval',
         ],
       },

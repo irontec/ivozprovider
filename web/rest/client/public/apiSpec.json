@@ -45988,7 +45988,8 @@
                         "invoice",
                         "callCsv",
                         "maxDailyUsage",
-                        "accessCredentials"
+                        "accessCredentials",
+                        "onDemandRecord"
                     ],
                     "maxLength": 25,
                     "description": "",

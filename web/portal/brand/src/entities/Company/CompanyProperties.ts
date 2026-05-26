@@ -22,6 +22,9 @@ export type CompanyPropertyList<T> = {
   ipfilter?: T;
   onDemandRecord?: T;
   onDemandRecordCode?: T;
+  onDemandRecordEmail?: T;
+  onDemandRecordEmailAddress?: T;
+  onDemandRecordNotificationTemplate?: T;
   allowRecordingRemoval?: T;
   recordingsLimitMb?: T;
   recordingsDiskUsage?: T;

@@ -16,8 +16,10 @@
         "maxDailyUsage": 100,
         "maxDailyUsageEmail": "no-replay-updated@domain.net",
         "ipfilter": false,
-        "onDemandRecord": 0,
+        "onDemandRecord": 1,
         "onDemandRecordCode": "",
+        "onDemandRecordEmail": "other",
+        "onDemandRecordEmailAddress": "ondemand@test.com",
         "externallyextraopts": "",
         "recordingsLimitMB": null,
         "recordingsLimitEmail": "",
@@ -35,6 +37,7 @@
         "voicemailNotificationTemplate": 1,
         "faxNotificationTemplate": null,
         "accessCredentialNotificationTemplate": 1,
+        "onDemandRecordNotificationTemplate": 6,
         "featureIds": [
             3
         ],
@@ -52,9 +55,11 @@
             "currentDayUsage": 1,
             "maxDailyUsageEmail": "no-replay-updated@domain.net",
             "ipfilter": false,
-            "onDemandRecord": 0,
+            "onDemandRecord": 1,
             "allowRecordingRemoval": true,
             "onDemandRecordCode": "",
+            "onDemandRecordEmail": "other",
+            "onDemandRecordEmailAddress": "ondemand@test.com",
             "externallyextraopts": "",
             "billingMethod": "postpaid",
             "balance": 1.2,
@@ -81,6 +86,7 @@
             "callCsvNotificationTemplate": null,
             "maxDailyUsageNotificationTemplate": 2,
             "accessCredentialNotificationTemplate": 1,
+            "onDemandRecordNotificationTemplate": 6,
             "corporation": 1,
             "featureIds": [
                 3

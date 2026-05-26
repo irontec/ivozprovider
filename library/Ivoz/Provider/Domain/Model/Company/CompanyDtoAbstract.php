@@ -103,6 +103,16 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
+    private $onDemandRecordEmail = 'disabled';
+
+    /**
+     * @var string|null
+     */
+    private $onDemandRecordEmailAddress = null;
+
+    /**
+     * @var string|null
+     */
     private $externallyextraopts = null;
 
     /**
@@ -214,6 +224,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      * @var NotificationTemplateDto | null
      */
     private $voicemailNotificationTemplate = null;
+
+    /**
+     * @var NotificationTemplateDto | null
+     */
+    private $onDemandRecordNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
@@ -357,6 +372,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'onDemandRecord' => 'onDemandRecord',
             'allowRecordingRemoval' => 'allowRecordingRemoval',
             'onDemandRecordCode' => 'onDemandRecordCode',
+            'onDemandRecordEmail' => 'onDemandRecordEmail',
+            'onDemandRecordEmailAddress' => 'onDemandRecordEmailAddress',
             'externallyextraopts' => 'externallyextraopts',
             'recordingsLimitMB' => 'recordingsLimitMB',
             'recordingsLimitEmail' => 'recordingsLimitEmail',
@@ -382,6 +399,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'outgoingDdiId' => 'outgoingDdi',
             'outgoingDdiRuleId' => 'outgoingDdiRule',
             'voicemailNotificationTemplateId' => 'voicemailNotificationTemplate',
+            'onDemandRecordNotificationTemplateId' => 'onDemandRecordNotificationTemplate',
             'faxNotificationTemplateId' => 'faxNotificationTemplate',
             'invoiceNotificationTemplateId' => 'invoiceNotificationTemplate',
             'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate',
@@ -412,6 +430,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'onDemandRecord' => $this->getOnDemandRecord(),
             'allowRecordingRemoval' => $this->getAllowRecordingRemoval(),
             'onDemandRecordCode' => $this->getOnDemandRecordCode(),
+            'onDemandRecordEmail' => $this->getOnDemandRecordEmail(),
+            'onDemandRecordEmailAddress' => $this->getOnDemandRecordEmailAddress(),
             'externallyextraopts' => $this->getExternallyextraopts(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
             'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
@@ -437,6 +457,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'outgoingDdi' => $this->getOutgoingDdi(),
             'outgoingDdiRule' => $this->getOutgoingDdiRule(),
             'voicemailNotificationTemplate' => $this->getVoicemailNotificationTemplate(),
+            'onDemandRecordNotificationTemplate' => $this->getOnDemandRecordNotificationTemplate(),
             'faxNotificationTemplate' => $this->getFaxNotificationTemplate(),
             'invoiceNotificationTemplate' => $this->getInvoiceNotificationTemplate(),
             'callCsvNotificationTemplate' => $this->getCallCsvNotificationTemplate(),
@@ -618,6 +639,30 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getOnDemandRecordCode(): ?string
     {
         return $this->onDemandRecordCode;
+    }
+
+    public function setOnDemandRecordEmail(string $onDemandRecordEmail): static
+    {
+        $this->onDemandRecordEmail = $onDemandRecordEmail;
+
+        return $this;
+    }
+
+    public function getOnDemandRecordEmail(): ?string
+    {
+        return $this->onDemandRecordEmail;
+    }
+
+    public function setOnDemandRecordEmailAddress(?string $onDemandRecordEmailAddress): static
+    {
+        $this->onDemandRecordEmailAddress = $onDemandRecordEmailAddress;
+
+        return $this;
+    }
+
+    public function getOnDemandRecordEmailAddress(): ?string
+    {
+        return $this->onDemandRecordEmailAddress;
     }
 
     public function setExternallyextraopts(?string $externallyextraopts): static
@@ -1073,6 +1118,36 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getVoicemailNotificationTemplateId(): ?int
     {
         if ($dto = $this->getVoicemailNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setOnDemandRecordNotificationTemplate(?NotificationTemplateDto $onDemandRecordNotificationTemplate): static
+    {
+        $this->onDemandRecordNotificationTemplate = $onDemandRecordNotificationTemplate;
+
+        return $this;
+    }
+
+    public function getOnDemandRecordNotificationTemplate(): ?NotificationTemplateDto
+    {
+        return $this->onDemandRecordNotificationTemplate;
+    }
+
+    public function setOnDemandRecordNotificationTemplateId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new NotificationTemplateDto($id)
+            : null;
+
+        return $this->setOnDemandRecordNotificationTemplate($value);
+    }
+
+    public function getOnDemandRecordNotificationTemplateId(): ?int
+    {
+        if ($dto = $this->getOnDemandRecordNotificationTemplate()) {
             return $dto->getId();
         }
 

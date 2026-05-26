@@ -61,6 +61,7 @@ Feature: Create proxy trunks rel brands
               "defaultTimezone": 145,
               "currency": 2,
               "voicemailNotificationTemplate": null,
+              "onDemandRecordNotificationTemplate": null,
               "faxNotificationTemplate": null,
               "invoiceNotificationTemplate": null,
               "callCsvNotificationTemplate": null,

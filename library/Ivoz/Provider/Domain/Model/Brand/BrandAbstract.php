@@ -94,6 +94,11 @@ abstract class BrandAbstract
     /**
      * @var ?NotificationTemplateInterface
      */
+    protected $onDemandRecordNotificationTemplate = null;
+
+    /**
+     * @var ?NotificationTemplateInterface
+     */
     protected $faxNotificationTemplate = null;
 
     /**
@@ -242,6 +247,7 @@ abstract class BrandAbstract
             ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
             ->setCurrency($fkTransformer->transform($currency))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setOnDemandRecordNotificationTemplate($fkTransformer->transform($dto->getOnDemandRecordNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
@@ -314,6 +320,7 @@ abstract class BrandAbstract
             ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
             ->setCurrency($fkTransformer->transform($currency))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setOnDemandRecordNotificationTemplate($fkTransformer->transform($dto->getOnDemandRecordNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
@@ -348,6 +355,7 @@ abstract class BrandAbstract
             ->setDefaultTimezone(Timezone::entityToDto(self::getDefaultTimezone(), $depth))
             ->setCurrency(Currency::entityToDto(self::getCurrency(), $depth))
             ->setVoicemailNotificationTemplate(NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
+            ->setOnDemandRecordNotificationTemplate(NotificationTemplate::entityToDto(self::getOnDemandRecordNotificationTemplate(), $depth))
             ->setFaxNotificationTemplate(NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
             ->setInvoiceNotificationTemplate(NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
             ->setCallCsvNotificationTemplate(NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth))
@@ -380,6 +388,7 @@ abstract class BrandAbstract
             'defaultTimezoneId' => self::getDefaultTimezone()->getId(),
             'currencyId' => self::getCurrency()->getId(),
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate()?->getId(),
+            'onDemandRecordNotificationTemplateId' => self::getOnDemandRecordNotificationTemplate()?->getId(),
             'faxNotificationTemplateId' => self::getFaxNotificationTemplate()?->getId(),
             'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate()?->getId(),
             'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
@@ -549,6 +558,18 @@ abstract class BrandAbstract
     public function getVoicemailNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->voicemailNotificationTemplate;
+    }
+
+    protected function setOnDemandRecordNotificationTemplate(?NotificationTemplateInterface $onDemandRecordNotificationTemplate = null): static
+    {
+        $this->onDemandRecordNotificationTemplate = $onDemandRecordNotificationTemplate;
+
+        return $this;
+    }
+
+    public function getOnDemandRecordNotificationTemplate(): ?NotificationTemplateInterface
+    {
+        return $this->onDemandRecordNotificationTemplate;
     }
 
     protected function setFaxNotificationTemplate(?NotificationTemplateInterface $faxNotificationTemplate = null): static

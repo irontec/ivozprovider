@@ -8012,18 +8012,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "domainUsers[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "domainUsers[end]",
                         "in": "query",
                         "required": false,
@@ -8037,6 +8025,18 @@
                     },
                     {
                         "name": "domainUsers[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8132,6 +8132,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.countryName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.countryName[start]",
                         "in": "query",
                         "required": false,
@@ -8150,12 +8156,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.countryName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.nif",
                         "in": "query",
                         "required": false,
@@ -8163,12 +8163,6 @@
                     },
                     {
                         "name": "invoicing.nif[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.nif[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8192,6 +8186,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.nif[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalAddress",
                         "in": "query",
                         "required": false,
@@ -8199,6 +8199,12 @@
                     },
                     {
                         "name": "invoicing.postalAddress[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8217,12 +8223,6 @@
                     },
                     {
                         "name": "invoicing.postalAddress[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8276,12 +8276,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.province[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.province[neq]",
                         "in": "query",
                         "required": false,
@@ -8300,6 +8294,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.province[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.town",
                         "in": "query",
                         "required": false,
@@ -8307,12 +8307,6 @@
                     },
                     {
                         "name": "invoicing.town[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.town[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8331,6 +8325,12 @@
                     },
                     {
                         "name": "invoicing.town[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -8456,6 +8456,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[start]",
                         "in": "query",
                         "required": false,
@@ -8474,10 +8480,22 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[neq]",
+                        "name": "onDemandRecordNotificationTemplate",
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "outgoingDdi",
@@ -9209,18 +9227,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "domainUsers[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "domainUsers[neq]",
                         "in": "query",
                         "required": false,
@@ -9237,6 +9243,18 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "exists[accessCredentialNotificationTemplate]",
@@ -9341,6 +9359,18 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "exists[onDemandRecordEmailAddress]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[onDemandRecordNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[onDemandRecord]",
                         "in": "query",
                         "required": false,
@@ -9389,12 +9419,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "externallyextraopts[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "externallyextraopts[start]",
                         "in": "query",
                         "required": false,
@@ -9417,6 +9441,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "externallyextraopts[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "faxNotificationTemplate",
@@ -9503,12 +9533,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.countryName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.countryName[start]",
                         "in": "query",
                         "required": false,
@@ -9527,6 +9551,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.countryName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.nif",
                         "in": "query",
                         "required": false,
@@ -9534,12 +9564,6 @@
                     },
                     {
                         "name": "invoicing.nif[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.nif[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9563,6 +9587,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.nif[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalAddress",
                         "in": "query",
                         "required": false,
@@ -9570,18 +9600,6 @@
                     },
                     {
                         "name": "invoicing.postalAddress[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9599,6 +9617,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalAddress[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalCode",
                         "in": "query",
                         "required": false,
@@ -9606,12 +9636,6 @@
                     },
                     {
                         "name": "invoicing.postalCode[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9635,6 +9659,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.province",
                         "in": "query",
                         "required": false,
@@ -9642,6 +9672,12 @@
                     },
                     {
                         "name": "invoicing.province[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9665,12 +9701,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.province[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.town",
                         "in": "query",
                         "required": false,
@@ -9678,12 +9708,6 @@
                     },
                     {
                         "name": "invoicing.town[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9702,6 +9726,12 @@
                     },
                     {
                         "name": "invoicing.town[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -9875,12 +9905,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "maxDailyUsageEmail[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "maxDailyUsageEmail[end]",
                         "in": "query",
                         "required": false,
@@ -9894,6 +9918,12 @@
                     },
                     {
                         "name": "maxDailyUsageEmail[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10031,6 +10061,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -10044,12 +10080,6 @@
                     },
                     {
                         "name": "name[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10101,6 +10131,114 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate.type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "onDemandRecord[exists]",
@@ -10349,12 +10487,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "type[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "type[neq]",
                         "in": "query",
                         "required": false,
@@ -10368,6 +10500,12 @@
                     },
                     {
                         "name": "type[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -10618,6 +10756,26 @@
                             "DESC"
                         ],
                         "name": "_order[onDemandRecordCode]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[onDemandRecordEmailAddress]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[onDemandRecordEmail]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11141,18 +11299,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "domainUsers[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "domainUsers[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "domainUsers[neq]",
                         "in": "query",
                         "required": false,
@@ -11169,6 +11315,18 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domainUsers[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "exists[accessCredentialNotificationTemplate]",
@@ -11273,6 +11431,18 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "exists[onDemandRecordEmailAddress]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "exists[onDemandRecordNotificationTemplate]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "exists[onDemandRecord]",
                         "in": "query",
                         "required": false,
@@ -11321,12 +11491,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "externallyextraopts[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "externallyextraopts[start]",
                         "in": "query",
                         "required": false,
@@ -11349,6 +11513,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "externallyextraopts[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "faxNotificationTemplate",
@@ -11435,12 +11605,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.countryName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.countryName[start]",
                         "in": "query",
                         "required": false,
@@ -11459,6 +11623,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.countryName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.nif",
                         "in": "query",
                         "required": false,
@@ -11466,12 +11636,6 @@
                     },
                     {
                         "name": "invoicing.nif[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.nif[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11495,6 +11659,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.nif[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalAddress",
                         "in": "query",
                         "required": false,
@@ -11502,18 +11672,6 @@
                     },
                     {
                         "name": "invoicing.postalAddress[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalAddress[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11531,6 +11689,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalAddress[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalCode",
                         "in": "query",
                         "required": false,
@@ -11538,12 +11708,6 @@
                     },
                     {
                         "name": "invoicing.postalCode[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11567,6 +11731,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalCode[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.province",
                         "in": "query",
                         "required": false,
@@ -11574,6 +11744,12 @@
                     },
                     {
                         "name": "invoicing.province[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11597,12 +11773,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.province[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.town",
                         "in": "query",
                         "required": false,
@@ -11610,12 +11780,6 @@
                     },
                     {
                         "name": "invoicing.town[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11634,6 +11798,12 @@
                     },
                     {
                         "name": "invoicing.town[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11807,12 +11977,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "maxDailyUsageEmail[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "maxDailyUsageEmail[end]",
                         "in": "query",
                         "required": false,
@@ -11826,6 +11990,12 @@
                     },
                     {
                         "name": "maxDailyUsageEmail[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxDailyUsageEmail[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -11963,6 +12133,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -11976,12 +12152,6 @@
                     },
                     {
                         "name": "name[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -12033,6 +12203,114 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "onDemandRecordEmailAddress[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordEmail[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate.name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate.type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "onDemandRecord[exists]",
@@ -12281,12 +12559,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "type[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "type[neq]",
                         "in": "query",
                         "required": false,
@@ -12300,6 +12572,12 @@
                     },
                     {
                         "name": "type[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -12550,6 +12828,26 @@
                             "DESC"
                         ],
                         "name": "_order[onDemandRecordCode]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[onDemandRecordEmailAddress]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[onDemandRecordEmail]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -21758,6 +22056,24 @@
                         "type": "string"
                     },
                     {
+                        "name": "company.onDemandRecordEmail",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company.onDemandRecordEmailAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company.onDemandRecordNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.outgoingDdi",
                         "in": "query",
                         "required": false,
@@ -21884,12 +22200,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -21903,6 +22213,12 @@
                     },
                     {
                         "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -32159,6 +32475,24 @@
                         "type": "string"
                     },
                     {
+                        "name": "company.onDemandRecordEmail",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company.onDemandRecordEmailAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company.onDemandRecordNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.outgoingDdi",
                         "in": "query",
                         "required": false,
@@ -32213,12 +32547,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "directConnectivity[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "directConnectivity[start]",
                         "in": "query",
                         "required": false,
@@ -32232,6 +32560,12 @@
                     },
                     {
                         "name": "directConnectivity[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "directConnectivity[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -32321,6 +32655,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -32334,12 +32674,6 @@
                     },
                     {
                         "name": "name[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33167,6 +33501,24 @@
                         "type": "string"
                     },
                     {
+                        "name": "company.onDemandRecordEmail",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company.onDemandRecordEmailAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company.onDemandRecordNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.outgoingDdi",
                         "in": "query",
                         "required": false,
@@ -33221,12 +33573,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[neq]",
                         "in": "query",
                         "required": false,
@@ -33245,6 +33591,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "directConnectivity",
                         "in": "query",
                         "required": false,
@@ -33252,6 +33604,12 @@
                     },
                     {
                         "name": "directConnectivity[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "directConnectivity[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -33270,12 +33628,6 @@
                     },
                     {
                         "name": "directConnectivity[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "directConnectivity[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -37074,6 +37426,24 @@
                         "type": "string"
                     },
                     {
+                        "name": "company.onDemandRecordEmail",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company.onDemandRecordEmailAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company.onDemandRecordNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
                         "name": "company.outgoingDdi",
                         "in": "query",
                         "required": false,
@@ -37182,6 +37552,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -37195,12 +37571,6 @@
                     },
                     {
                         "name": "name[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -43639,6 +44009,7 @@
                 "maxCalls",
                 "maxDailyUsage",
                 "allowRecordingRemoval",
+                "onDemandRecordEmail",
                 "billingMethod",
                 "country",
                 "transformationRuleSet",
@@ -43718,6 +44089,23 @@
                     "description": "",
                     "type": "string"
                 },
+                "onDemandRecordEmail": {
+                    "default": "disabled",
+                    "enum": [
+                        "disabled",
+                        "user",
+                        "other"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "disabled",
+                    "type": "string"
+                },
+                "onDemandRecordEmailAddress": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
                 "externallyextraopts": {
                     "maxLength": 65535,
                     "description": "",
@@ -43786,6 +44174,10 @@
                     "type": "integer"
                 },
                 "voicemailNotificationTemplate": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "onDemandRecordNotificationTemplate": {
                     "description": "",
                     "type": "integer"
                 },
@@ -43867,6 +44259,7 @@
                 "maxCalls",
                 "maxDailyUsage",
                 "allowRecordingRemoval",
+                "onDemandRecordEmail",
                 "billingMethod",
                 "country",
                 "transformationRuleSet",
@@ -43946,6 +44339,23 @@
                     "description": "",
                     "type": "string"
                 },
+                "onDemandRecordEmail": {
+                    "default": "disabled",
+                    "enum": [
+                        "disabled",
+                        "user",
+                        "other"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "disabled",
+                    "type": "string"
+                },
+                "onDemandRecordEmailAddress": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
                 "externallyextraopts": {
                     "maxLength": 65535,
                     "description": "",
@@ -44007,6 +44417,9 @@
                     "$ref": "#/definitions/OutgoingDdiRule"
                 },
                 "voicemailNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "onDemandRecordNotificationTemplate": {
                     "$ref": "#/definitions/NotificationTemplate"
                 },
                 "faxNotificationTemplate": {
@@ -44209,6 +44622,7 @@
                 "maxCalls",
                 "maxDailyUsage",
                 "allowRecordingRemoval",
+                "onDemandRecordEmail",
                 "billingMethod",
                 "country",
                 "transformationRuleSet",
@@ -44288,6 +44702,23 @@
                     "description": "",
                     "type": "string"
                 },
+                "onDemandRecordEmail": {
+                    "default": "disabled",
+                    "enum": [
+                        "disabled",
+                        "user",
+                        "other"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "disabled",
+                    "type": "string"
+                },
+                "onDemandRecordEmailAddress": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
                 "externallyextraopts": {
                     "maxLength": 65535,
                     "description": "",
@@ -44349,6 +44780,9 @@
                     "$ref": "#/definitions/OutgoingDdiRule"
                 },
                 "voicemailNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "onDemandRecordNotificationTemplate": {
                     "$ref": "#/definitions/NotificationTemplate"
                 },
                 "faxNotificationTemplate": {
@@ -44420,6 +44854,7 @@
                 "maxCalls",
                 "maxDailyUsage",
                 "allowRecordingRemoval",
+                "onDemandRecordEmail",
                 "billingMethod",
                 "country",
                 "transformationRuleSet",
@@ -44499,6 +44934,23 @@
                     "description": "",
                     "type": "string"
                 },
+                "onDemandRecordEmail": {
+                    "default": "disabled",
+                    "enum": [
+                        "disabled",
+                        "user",
+                        "other"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "disabled",
+                    "type": "string"
+                },
+                "onDemandRecordEmailAddress": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
                 "externallyextraopts": {
                     "maxLength": 65535,
                     "description": "",
@@ -44560,6 +45012,9 @@
                     "$ref": "#/definitions/OutgoingDdiRule"
                 },
                 "voicemailNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "onDemandRecordNotificationTemplate": {
                     "$ref": "#/definitions/NotificationTemplate"
                 },
                 "faxNotificationTemplate": {
@@ -48708,7 +49163,8 @@
                         "invoice",
                         "callCsv",
                         "maxDailyUsage",
-                        "accessCredentials"
+                        "accessCredentials",
+                        "onDemandRecord"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -48747,7 +49203,8 @@
                         "invoice",
                         "callCsv",
                         "maxDailyUsage",
-                        "accessCredentials"
+                        "accessCredentials",
+                        "onDemandRecord"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -48776,7 +49233,8 @@
                         "invoice",
                         "callCsv",
                         "maxDailyUsage",
-                        "accessCredentials"
+                        "accessCredentials",
+                        "onDemandRecord"
                     ],
                     "maxLength": 25,
                     "description": "",

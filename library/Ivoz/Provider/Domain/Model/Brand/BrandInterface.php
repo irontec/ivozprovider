@@ -153,6 +153,8 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function getVoicemailNotificationTemplate(): ?NotificationTemplateInterface;
 
+    public function getOnDemandRecordNotificationTemplate(): ?NotificationTemplateInterface;
+
     public function getFaxNotificationTemplate(): ?NotificationTemplateInterface;
 
     public function getInvoiceNotificationTemplate(): ?NotificationTemplateInterface;

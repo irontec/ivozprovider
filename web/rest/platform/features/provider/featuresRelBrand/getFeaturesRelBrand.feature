@@ -91,6 +91,7 @@ Feature: Retrieve features rel brand
               "defaultTimezone": 145,
               "currency": 1,
               "voicemailNotificationTemplate": null,
+              "onDemandRecordNotificationTemplate": 7,
               "faxNotificationTemplate": null,
               "invoiceNotificationTemplate": null,
               "callCsvNotificationTemplate": null,

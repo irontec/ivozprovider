@@ -15,6 +15,16 @@ Feature: Retrieve notification templates
       """
       [
           {
+              "name": "Brand On Demand Recording Notification Template",
+              "type": "onDemandRecord",
+              "id": 7
+          },
+          {
+              "name": "Company On Demand Recording Notification Template",
+              "type": "onDemandRecord",
+              "id": 8
+          },
+          {
               "name": "Voicemail notification",
               "type": "voicemail",
               "id": 1

@@ -8,9 +8,11 @@
         "currentDayUsage": 1,
         "maxDailyUsageEmail": "no-replay@domain.net",
         "ipfilter": false,
-        "onDemandRecord": 0,
+        "onDemandRecord": 1,
         "allowRecordingRemoval": true,
         "onDemandRecordCode": "",
+        "onDemandRecordEmail": "other",
+        "onDemandRecordEmailAddress": "ondemand@test.com",
         "externallyextraopts": "",
         "billingMethod": "prepaid",
         "balance": 1.2,
@@ -100,6 +102,11 @@
             "name": "Access Credentials",
             "type": "accessCredentials",
             "id": 5
+        },
+        "onDemandRecordNotificationTemplate": {
+            "name": "On demand recording notification",
+            "type": "onDemandRecord",
+            "id": 6
         },
         "corporation": {
             "name": "Irontec Test Corporation",

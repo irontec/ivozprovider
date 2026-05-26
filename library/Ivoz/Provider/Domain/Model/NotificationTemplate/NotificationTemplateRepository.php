@@ -17,6 +17,8 @@ interface NotificationTemplateRepository extends ObjectRepository, Selectable
 
     public function findFaxTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface;
 
+    public function findOnDemandRecordTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface;
+
     public function findMaxDailyUsageTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface;
 
     public function findVoicemailTemplateByCompany(CompanyInterface $company, LanguageInterface $language): NotificationTemplateInterface;

@@ -109,14 +109,19 @@ const properties: CompanyProperties = {
     visualToggle: {
       '0': {
         show: [],
-        hide: ['onDemandRecordCode'],
+        hide: [
+          'onDemandRecordCode',
+          'onDemandRecordEmail',
+          'onDemandRecordEmailAddress',
+          'onDemandRecordNotificationTemplate',
+        ],
       },
       '1': {
-        show: [],
+        show: ['onDemandRecordEmail'],
         hide: ['onDemandRecordCode'],
       },
       '2': {
-        show: ['onDemandRecordCode'],
+        show: ['onDemandRecordCode', 'onDemandRecordEmail'],
         hide: [],
       },
     },
@@ -126,6 +131,44 @@ const properties: CompanyProperties = {
     maxLength: 3,
     prefix: <span className='asterisc'>*</span>,
     pattern: new RegExp('[0-9*]+'),
+  },
+  onDemandRecordEmail: {
+    label: _('Send on-demand recording by email'),
+    default: 'disabled',
+    enum: {
+      disabled: _('Disabled'),
+      user: _("Send to user's email"),
+      other: _('Send to another email'),
+    },
+    visualToggle: {
+      disabled: {
+        show: [],
+        hide: [
+          'onDemandRecordEmailAddress',
+          'onDemandRecordNotificationTemplate',
+        ],
+      },
+      user: {
+        show: ['onDemandRecordNotificationTemplate'],
+        hide: ['onDemandRecordEmailAddress'],
+      },
+      other: {
+        show: [
+          'onDemandRecordEmailAddress',
+          'onDemandRecordNotificationTemplate',
+        ],
+        hide: [],
+      },
+    },
+  },
+  onDemandRecordEmailAddress: {
+    label: _('Email'),
+    maxLength: 100,
+  },
+  onDemandRecordNotificationTemplate: {
+    label: _('On-demand recording Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
   },
   allowRecordingRemoval: {
     label: _('Allow Client to remove recordings'),
