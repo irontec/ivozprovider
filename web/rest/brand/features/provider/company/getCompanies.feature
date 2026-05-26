@@ -179,6 +179,8 @@ Feature: Retrieve companies
           "onDemandRecord": 0,
           "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
+          "onDemandRecordEmail": "disabled",
+          "onDemandRecordEmailAddress": null,
           "externallyextraopts": "",
           "billingMethod": "prepaid",
           "balance": 1.2,
@@ -261,6 +263,7 @@ Feature: Retrieve companies
               "type": "voicemail",
               "id": 1
           },
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,

@@ -104,11 +104,14 @@ const _testVpbxCompany = (props: TestCompanyProps) => {
         'callCsvNotificationTemplate',
         'maxDailyUsageNotificationTemplate',
         'accessCredentialNotificationTemplate',
+        'onDemandRecordNotificationTemplate',
         'externallyextraopts',
         'showInvoices',
         'invoicing',
         'onDemandRecord',
         'onDemandRecordCode',
+        'onDemandRecordEmail',
+        'onDemandRecordEmailAddress',
         'allowRecordingRemoval',
         'location',
       ]
@@ -123,8 +126,33 @@ const _testVpbxCompany = (props: TestCompanyProps) => {
 
   if (!hasRecordingFeature) {
     removeFields.push(
-      ...['onDemandRecord', 'onDemandRecordCode', 'allowRecordingRemoval']
+      ...[
+        'onDemandRecord',
+        'onDemandRecordCode',
+        'onDemandRecordEmail',
+        'onDemandRecordEmailAddress',
+        'onDemandRecordNotificationTemplate',
+        'allowRecordingRemoval',
+      ]
     );
+  }
+
+  if (company.onDemandRecord === 0) {
+    removeFields.push(
+      ...[
+        'onDemandRecordEmail',
+        'onDemandRecordEmailAddress',
+        'onDemandRecordNotificationTemplate',
+      ]
+    );
+  }
+
+  if (company.onDemandRecordEmail !== 'other') {
+    removeFields.push('onDemandRecordEmailAddress');
+  }
+
+  if (company.onDemandRecordEmail === 'disabled') {
+    removeFields.push('onDemandRecordNotificationTemplate');
   }
 
   if (!company.ipfilter) {

@@ -27,6 +27,8 @@ Feature: Modify company balances
           "maxDailyUsageEmail": "no-replay@domain.net",
           "ipfilter": false,
           "onDemandRecord": 0,
+          "onDemandRecordEmail": "disabled",
+          "onDemandRecordEmailAddress": null,
           "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
@@ -61,6 +63,7 @@ Feature: Modify company balances
               "type": "voicemail",
               "*": "~"
           },
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
@@ -128,6 +131,8 @@ Feature: Modify company balances
           "onDemandRecord": 0,
           "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
+          "onDemandRecordEmail": "disabled",
+          "onDemandRecordEmailAddress": null,
           "externallyextraopts": "",
           "billingMethod": "prepaid",
           "balance": 0.2,
@@ -161,6 +166,7 @@ Feature: Modify company balances
               "type": "voicemail",
               "*": "~"
           },
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
