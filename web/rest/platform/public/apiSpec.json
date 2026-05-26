@@ -3542,12 +3542,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "domainUsers[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "domainUsers[start]",
                         "in": "query",
                         "required": false,
@@ -3570,6 +3564,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "domainUsers[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "exists[domainUsers]",
@@ -3680,6 +3680,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoice.nif[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoice.nif[start]",
                         "in": "query",
                         "required": false,
@@ -3698,12 +3704,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoice.nif[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoice.postalAddress",
                         "in": "query",
                         "required": false,
@@ -3711,6 +3711,12 @@
                     },
                     {
                         "name": "invoice.postalAddress[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoice.postalAddress[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -3734,12 +3740,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoice.postalAddress[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoice.postalCode",
                         "in": "query",
                         "required": false,
@@ -3747,6 +3747,12 @@
                     },
                     {
                         "name": "invoice.postalCode[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoice.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -3765,12 +3771,6 @@
                     },
                     {
                         "name": "invoice.postalCode[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoice.postalCode[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -3824,6 +3824,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoice.registryData[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoice.registryData[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoice.registryData[end]",
                         "in": "query",
                         "required": false,
@@ -3842,18 +3854,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoice.registryData[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoice.registryData[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoice.town",
                         "in": "query",
                         "required": false,
@@ -3861,6 +3861,12 @@
                     },
                     {
                         "name": "invoice.town[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoice.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -3879,12 +3885,6 @@
                     },
                     {
                         "name": "invoice.town[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoice.town[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -3932,6 +3932,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "logo.baseName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "logo.baseName[start]",
                         "in": "query",
                         "required": false,
@@ -3954,12 +3960,6 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "logo.baseName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "logo.fileSize",
@@ -4104,6 +4104,24 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "voicemailNotificationTemplate",
@@ -5016,12 +5034,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.nif[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.nif[start]",
                         "in": "query",
                         "required": false,
@@ -5040,6 +5052,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.nif[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.postalAddress",
                         "in": "query",
                         "required": false,
@@ -5047,6 +5065,12 @@
                     },
                     {
                         "name": "invoicing.postalAddress[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.postalAddress[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5070,12 +5094,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "invoicing.postalAddress[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "invoicing.postalCode",
                         "in": "query",
                         "required": false,
@@ -5083,12 +5101,6 @@
                     },
                     {
                         "name": "invoicing.postalCode[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.postalCode[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5112,6 +5124,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "invoicing.postalCode[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "invoicing.province",
                         "in": "query",
                         "required": false,
@@ -5119,6 +5137,12 @@
                     },
                     {
                         "name": "invoicing.province[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoicing.province[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5137,12 +5161,6 @@
                     },
                     {
                         "name": "invoicing.province[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "invoicing.province[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -5286,6 +5304,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -5304,10 +5328,22 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
+                        "name": "onDemandRecordNotificationTemplate",
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onDemandRecordNotificationTemplate[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "outgoingDdi",
@@ -15912,6 +15948,10 @@
                     "description": "",
                     "type": "integer"
                 },
+                "onDemandRecordNotificationTemplate": {
+                    "description": "",
+                    "type": "integer"
+                },
                 "faxNotificationTemplate": {
                     "description": "",
                     "type": "integer"
@@ -16063,6 +16103,9 @@
                     "$ref": "#/definitions/Currency"
                 },
                 "voicemailNotificationTemplate": {
+                    "$ref": "#/definitions/NotificationTemplate"
+                },
+                "onDemandRecordNotificationTemplate": {
                     "$ref": "#/definitions/NotificationTemplate"
                 },
                 "faxNotificationTemplate": {
@@ -16349,6 +16392,7 @@
                 "maxCalls",
                 "maxDailyUsage",
                 "allowRecordingRemoval",
+                "onDemandRecordEmail",
                 "billingMethod",
                 "brand",
                 "country",
@@ -16440,6 +16484,23 @@
                     "description": "",
                     "type": "string"
                 },
+                "onDemandRecordEmail": {
+                    "default": "disabled",
+                    "enum": [
+                        "disabled",
+                        "user",
+                        "other"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "disabled",
+                    "type": "string"
+                },
+                "onDemandRecordEmailAddress": {
+                    "maxLength": 100,
+                    "description": "",
+                    "type": "string"
+                },
                 "externallyextraopts": {
                     "maxLength": 65535,
                     "description": "",
@@ -16513,6 +16574,10 @@
                     "type": "integer"
                 },
                 "voicemailNotificationTemplate": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "onDemandRecordNotificationTemplate": {
                     "description": "",
                     "type": "integer"
                 },
@@ -17806,7 +17871,8 @@
                         "invoice",
                         "callCsv",
                         "maxDailyUsage",
-                        "accessCredentials"
+                        "accessCredentials",
+                        "onDemandRecord"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -17849,7 +17915,8 @@
                         "invoice",
                         "callCsv",
                         "maxDailyUsage",
-                        "accessCredentials"
+                        "accessCredentials",
+                        "onDemandRecord"
                     ],
                     "maxLength": 25,
                     "description": "",
@@ -17878,7 +17945,8 @@
                         "invoice",
                         "callCsv",
                         "maxDailyUsage",
-                        "accessCredentials"
+                        "accessCredentials",
+                        "onDemandRecord"
                     ],
                     "maxLength": 25,
                     "description": "",
