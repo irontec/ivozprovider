@@ -66,6 +66,12 @@ abstract class WebhookAbstract
     protected $template;
 
     /**
+     * @var string
+     * comment: enum:inbound|outbound|both
+     */
+    protected $callDirection = 'both';
+
+    /**
      * @var BrandInterface
      */
     protected $brand;
@@ -90,7 +96,8 @@ abstract class WebhookAbstract
         bool $eventRing,
         bool $eventAnswer,
         bool $eventEnd,
-        string $template
+        string $template,
+        string $callDirection
     ) {
         $this->setName($name);
         $this->setUri($uri);
@@ -99,6 +106,7 @@ abstract class WebhookAbstract
         $this->setEventAnswer($eventAnswer);
         $this->setEventEnd($eventEnd);
         $this->setTemplate($template);
+        $this->setCallDirection($callDirection);
     }
 
     abstract public function getId(): null|string|int;
@@ -176,6 +184,8 @@ abstract class WebhookAbstract
         Assertion::notNull($eventEnd, 'getEventEnd value is null, but non null value was expected.');
         $template = $dto->getTemplate();
         Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
+        $callDirection = $dto->getCallDirection();
+        Assertion::notNull($callDirection, 'getCallDirection value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
@@ -186,7 +196,8 @@ abstract class WebhookAbstract
             $eventRing,
             $eventAnswer,
             $eventEnd,
-            $template
+            $template,
+            $callDirection
         );
 
         $self
@@ -224,6 +235,8 @@ abstract class WebhookAbstract
         Assertion::notNull($eventEnd, 'getEventEnd value is null, but non null value was expected.');
         $template = $dto->getTemplate();
         Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
+        $callDirection = $dto->getCallDirection();
+        Assertion::notNull($callDirection, 'getCallDirection value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
@@ -236,6 +249,7 @@ abstract class WebhookAbstract
             ->setEventAnswer($eventAnswer)
             ->setEventEnd($eventEnd)
             ->setTemplate($template)
+            ->setCallDirection($callDirection)
             ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDdi($fkTransformer->transform($dto->getDdi()));
@@ -257,6 +271,7 @@ abstract class WebhookAbstract
             ->setEventAnswer(self::getEventAnswer())
             ->setEventEnd(self::getEventEnd())
             ->setTemplate(self::getTemplate())
+            ->setCallDirection(self::getCallDirection())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setDdi(Ddi::entityToDto(self::getDdi(), $depth));
@@ -276,6 +291,7 @@ abstract class WebhookAbstract
             'eventAnswer' => self::getEventAnswer(),
             'eventEnd' => self::getEventEnd(),
             'template' => self::getTemplate(),
+            'callDirection' => self::getCallDirection(),
             'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany()?->getId(),
             'ddiId' => self::getDdi()?->getId()
@@ -382,6 +398,29 @@ abstract class WebhookAbstract
     public function getTemplate(): string
     {
         return $this->template;
+    }
+
+    protected function setCallDirection(string $callDirection): static
+    {
+        Assertion::maxLength($callDirection, 25, 'callDirection value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $callDirection,
+            [
+                WebhookInterface::CALLDIRECTION_INBOUND,
+                WebhookInterface::CALLDIRECTION_OUTBOUND,
+                WebhookInterface::CALLDIRECTION_BOTH,
+            ],
+            'callDirectionvalue "%s" is not an element of the valid values: %s'
+        );
+
+        $this->callDirection = $callDirection;
+
+        return $this;
+    }
+
+    public function getCallDirection(): string
+    {
+        return $this->callDirection;
     }
 
     protected function setBrand(BrandInterface $brand): static
