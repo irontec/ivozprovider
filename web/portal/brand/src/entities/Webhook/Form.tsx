@@ -12,7 +12,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Basic Information'),
-      fields: ['name', 'description', 'uri'],
+      fields: ['name', 'description', 'uri', 'callDirection'],
     },
     {
       legend: _('Events'),

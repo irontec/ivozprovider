@@ -13,6 +13,7 @@ export type WebhookPropertyList<T> = {
   eventAnswer?: T;
   eventEnd?: T;
   template?: T;
+  callDirection?: T;
   id?: T;
   brand?: T;
   company?: T;

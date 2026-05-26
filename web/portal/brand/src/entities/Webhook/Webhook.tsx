@@ -34,25 +34,36 @@ const properties: WebhookProperties = {
     label: _('End'),
     default: 0,
   },
+  callDirection: {
+    label: _('Direction'),
+    enum: {
+      inbound: _('Inbound'),
+      outbound: _('Outbound'),
+      both: _('Both'),
+    },
+    default: 'both',
+  },
   template: {
     label: _('Template'),
     format: 'textarea',
     helpText: _(
-      'Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.'
+      'Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{time}}, {{callId}}, {{companyId}}, {{company}}, {{ddiId}}, {{crId}}, {{dpId}}, {{direction}}, {{caller}}, {{callee}}, {{carrier}}, {{ddiProvider}}.'
     ),
     default:
       '{\n' +
       '    "event": {{event}},\n' +
-      '    "brandId": {{brandId}},\n' +
       '    "companyId": {{companyId}},\n' +
+      '    "company": {{company}},\n' +
       '    "ddiId": {{ddiId}},\n' +
-      '    "ddiE164": {{ddiE164}},\n' +
+      '    "crId": {{crId}},\n' +
+      '    "carrier": {{carrier}},\n' +
+      '    "dpId": {{dpId}},\n' +
+      '    "ddiProvider": {{ddiProvider}},\n' +
       '    "callId": {{callId}},\n' +
-      '    "uniqueId": {{uniqueId}},\n' +
+      '    "direction": {{direction}},\n' +
       '    "caller": {{caller}},\n' +
       '    "callee": {{callee}},\n' +
-      '    "dialStatus": {{dialStatus}},\n' +
-      '    "timestamp": {{timestamp}}\n' +
+      '    "time": {{time}}\n' +
       '}',
   },
   brand: {
@@ -76,7 +87,7 @@ const Webhook: EntityInterface = {
   properties,
   columns: [
     'name',
-    'uri',
+    'callDirection',
     'eventStart',
     'eventRing',
     'eventAnswer',
