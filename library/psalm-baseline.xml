@@ -1530,7 +1530,7 @@
     </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Brand/BrandAbstract.php">
-    <MixedArgument occurrences="18">
+    <MixedArgument occurrences="20">
       <code>$fkTransformer-&gt;transform($currency)</code>
       <code>$fkTransformer-&gt;transform($currency)</code>
       <code>$fkTransformer-&gt;transform($defaultTimezone)</code>
@@ -1545,6 +1545,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getInvoiceNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getOnDemandRecordNotificationTemplate())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getOnDemandRecordNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($language)</code>
@@ -1900,7 +1902,7 @@
     </UnnecessaryVarAnnotation>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyAbstract.php">
-    <MixedArgument occurrences="38">
+    <MixedArgument occurrences="40">
       <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
       <code>$fkTransformer-&gt;transform($applicationServerSet)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
@@ -1929,6 +1931,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getLocation())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getMaxDailyUsageNotificationTemplate())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getOnDemandRecordNotificationTemplate())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getOnDemandRecordNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdiRule())</code>
