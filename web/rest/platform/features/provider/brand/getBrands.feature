@@ -161,6 +161,12 @@ Feature: Manage brands
               }
           },
           "voicemailNotificationTemplate": null,
+          "onDemandRecordNotificationTemplate": {
+              "name": "Brand On Demand Recording Notification Template",
+              "type": "onDemandRecord",
+              "id": 7,
+              "brand": 1
+          },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,

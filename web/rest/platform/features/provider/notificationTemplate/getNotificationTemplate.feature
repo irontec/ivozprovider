@@ -25,6 +25,11 @@ Feature: Retrieve notification templates
               "id": 2
           },
           {
+              "name": "Generic On Demand Recording Notification Template",
+              "type": "onDemandRecord",
+              "id": 6
+          },
+          {
               "name": "Invoice notification",
               "type": "invoice",
               "id": 4
