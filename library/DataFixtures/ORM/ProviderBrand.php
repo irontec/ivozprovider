@@ -2,6 +2,7 @@
 
 namespace DataFixtures\ORM;
 
+use DataFixtures\Stub\Provider\BrandStub;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -15,6 +16,11 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
+    public function __construct(
+        private BrandStub $brandStub,
+    ) {
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -24,25 +30,11 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Brand::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $item1 = $this->createEntityInstance(Brand::class);
-        (function () use ($fixture) {
-            $this->setName("DemoBrand");
-            $this->setDomainUsers("");
-            $this->setRecordingsLimitEmail("");
-            $this->setRecordingsLimitMB(0);
-            $this->setMaxCalls(0);
-            $this->logo = new Logo(null, null, null);
-            $this->invoice = new Invoice('', '', '', '', '', '', '');
-            $this->setDomain($fixture->getReference('_reference_ProviderDomain6'));
-            $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
-            $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
-            $this->setCurrency($fixture->getReference('_reference_ProviderCurrency1'));
-            $this->relFeatures = new \Doctrine\Common\Collections\ArrayCollection([]);
-        })->call($item1);
-
-        $this->addReference('_reference_ProviderBrand1', $item1);
-        $this->sanitizeEntityValues($item1);
-        $manager->persist($item1);
+        $entities = $this->brandStub->getAll();
+        foreach ($entities as $entity) {
+            $this->addReference('_reference_ProviderBrand' . $entity->getId(), $entity);
+            $manager->persist($entity);
+        }
 
         $item2 = $this->createEntityInstance(Brand::class);
         (function () use ($fixture) {

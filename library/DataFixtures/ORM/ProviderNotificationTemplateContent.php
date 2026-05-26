@@ -67,6 +67,51 @@ class ProviderNotificationTemplateContent extends Fixture implements DependentFi
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
+        /** @var NotificationTemplateContentInterface $item4 */
+        $item4 = $this->createEntityInstance(NotificationTemplateContent::class);
+        (function () use ($fixture) {
+            $this->setFromName("IvozProvider Notification");
+            $this->setFromAddress("no-reply@ivozprovider.com");
+            $this->setSubject("On-demand recording");
+            $this->setBody("On-demand recording attached.");
+            $this->setNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate6'));
+            $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
+        })->call($item4);
+
+        $this->addReference('_reference_ProviderNotificationTemplateContent4', $item4);
+        $this->sanitizeEntityValues($item4);
+        $manager->persist($item4);
+
+        /** @var NotificationTemplateContentInterface $item5 */
+        $item5 = $this->createEntityInstance(NotificationTemplateContent::class);
+        (function () use ($fixture) {
+            $this->setFromName("IvozProvider Notification");
+            $this->setFromAddress("no-reply@ivozprovider.com");
+            $this->setSubject("Brand on-demand recording");
+            $this->setBody("Brand on-demand recording attached.");
+            $this->setNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate7'));
+            $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
+        })->call($item5);
+
+        $this->addReference('_reference_ProviderNotificationTemplateContent5', $item5);
+        $this->sanitizeEntityValues($item5);
+        $manager->persist($item5);
+
+        /** @var NotificationTemplateContentInterface $item6 */
+        $item6 = $this->createEntityInstance(NotificationTemplateContent::class);
+        (function () use ($fixture) {
+            $this->setFromName("IvozProvider Notification");
+            $this->setFromAddress("no-reply@ivozprovider.com");
+            $this->setSubject("Company on-demand recording");
+            $this->setBody("Company on-demand recording attached.");
+            $this->setNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate8'));
+            $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
+        })->call($item6);
+
+        $this->addReference('_reference_ProviderNotificationTemplateContent6', $item6);
+        $this->sanitizeEntityValues($item6);
+        $manager->persist($item6);
+
         $manager->flush();
     }
 
