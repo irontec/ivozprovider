@@ -21,6 +21,7 @@ class RecordingLifecycleServiceCollection implements LifecycleServiceCollectionI
         [
             \Ivoz\Provider\Domain\Service\BillableCall\UpdateByRecording::class => 200,
             \Ivoz\Provider\Domain\Service\UsersCdr\UpdateByRecording::class => 200,
+            \Ivoz\Provider\Domain\Service\Recording\SendOnDemandRecordingEmail::class => 300,
         ],
         "post_remove" =>
         [

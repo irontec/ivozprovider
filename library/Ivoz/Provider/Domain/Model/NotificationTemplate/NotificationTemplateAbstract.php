@@ -27,7 +27,7 @@ abstract class NotificationTemplateAbstract
 
     /**
      * @var string
-     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage|accessCredentials
+     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage|accessCredentials|onDemandRecord
      */
     protected $type;
 
@@ -200,6 +200,7 @@ abstract class NotificationTemplateAbstract
                 NotificationTemplateInterface::TYPE_CALLCSV,
                 NotificationTemplateInterface::TYPE_MAXDAILYUSAGE,
                 NotificationTemplateInterface::TYPE_ACCESSCREDENTIALS,
+                NotificationTemplateInterface::TYPE_ONDEMANDRECORD,
             ],
             'typevalue "%s" is not an element of the valid values: %s'
         );

@@ -55,6 +55,12 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public const DISTRIBUTEMETHOD_HASH = 'hash';
 
+    public const ONDEMANDRECORDEMAIL_DISABLED = 'disabled';
+
+    public const ONDEMANDRECORDEMAIL_USER = 'user';
+
+    public const ONDEMANDRECORDEMAIL_OTHER = 'other';
+
     public const BILLINGMETHOD_POSTPAID = 'postpaid';
 
     public const BILLINGMETHOD_PREPAID = 'prepaid';
@@ -250,6 +256,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getOnDemandRecordCode(): ?string;
 
+    public function getOnDemandRecordEmail(): string;
+
+    public function getOnDemandRecordEmailAddress(): ?string;
+
     public function getExternallyextraopts(): ?string;
 
     public function getRecordingsLimitMB(): ?int;
@@ -283,6 +293,8 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getOutgoingDdiRule(): ?OutgoingDdiRuleInterface;
 
     public function getVoicemailNotificationTemplate(): ?NotificationTemplateInterface;
+
+    public function getOnDemandRecordNotificationTemplate(): ?NotificationTemplateInterface;
 
     public function getFaxNotificationTemplate(): ?NotificationTemplateInterface;
 
