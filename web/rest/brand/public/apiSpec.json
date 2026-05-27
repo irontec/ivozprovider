@@ -41129,6 +41129,42 @@
                 },
                 "parameters": [
                     {
+                        "name": "callDirection",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callDirection[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callDirection[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callDirection[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callDirection[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callDirection[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "company",
                         "in": "query",
                         "required": false,
@@ -41177,6 +41213,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description[start]",
                         "in": "query",
                         "required": false,
@@ -41189,22 +41237,10 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[exists]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "description[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "eventAnswer",
@@ -41261,18 +41297,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[end]",
                         "in": "query",
                         "required": false,
@@ -41280,6 +41304,18 @@
                     },
                     {
                         "name": "name[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -41352,6 +41388,16 @@
                     },
                     {
                         "name": "uri[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[callDirection]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -53559,7 +53605,8 @@
                 "eventRing",
                 "eventAnswer",
                 "eventEnd",
-                "template"
+                "template",
+                "callDirection"
             ],
             "properties": {
                 "name": {
@@ -53602,6 +53649,18 @@
                 },
                 "template": {
                     "description": "",
+                    "type": "string"
+                },
+                "callDirection": {
+                    "default": "both",
+                    "enum": [
+                        "inbound",
+                        "outbound",
+                        "both"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "both",
                     "type": "string"
                 },
                 "id": {
@@ -53628,7 +53687,8 @@
                 "eventRing",
                 "eventAnswer",
                 "eventEnd",
-                "template"
+                "template",
+                "callDirection"
             ],
             "properties": {
                 "name": {
@@ -53666,6 +53726,18 @@
                 },
                 "template": {
                     "description": "",
+                    "type": "string"
+                },
+                "callDirection": {
+                    "default": "both",
+                    "enum": [
+                        "inbound",
+                        "outbound",
+                        "both"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "both",
                     "type": "string"
                 },
                 "description": {
@@ -53689,7 +53761,8 @@
                 "eventRing",
                 "eventAnswer",
                 "eventEnd",
-                "template"
+                "template",
+                "callDirection"
             ],
             "properties": {
                 "name": {
@@ -53732,6 +53805,18 @@
                 },
                 "template": {
                     "description": "",
+                    "type": "string"
+                },
+                "callDirection": {
+                    "default": "both",
+                    "enum": [
+                        "inbound",
+                        "outbound",
+                        "both"
+                    ],
+                    "maxLength": 25,
+                    "description": "",
+                    "example": "both",
                     "type": "string"
                 },
                 "id": {
