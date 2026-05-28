@@ -1,1 +1,2 @@
-microservices/realtime /opt/irontec/ivozprovider/microservices/
+microservices/realtime/server  /opt/irontec/ivozprovider/microservices/realtime/
+microservices/realtime/configs /opt/irontec/ivozprovider/microservices/realtime/
