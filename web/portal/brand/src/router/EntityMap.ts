@@ -304,7 +304,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.BillableCall,
-              filterBy: 'carrier',
+              filterBy: 'ddi',
             },
             {
               entity: entities.Webhook,
