@@ -1,4 +1,4 @@
-FROM node:bookworm
+FROM node:25-bookworm
 
 ################################################################################
 # Install package dependencies
