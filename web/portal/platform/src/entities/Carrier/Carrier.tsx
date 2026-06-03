@@ -26,6 +26,7 @@ const Carrier: EntityInterface = {
 
     return module.default;
   },
+  dynamicSelectOptions: true,
 };
 
 export default Carrier;
