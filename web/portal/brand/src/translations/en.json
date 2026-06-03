@@ -634,7 +634,7 @@
   "User_other": "Users",
   "Username": "Username",
   "Users who do not have a specific location will be linked to this location.": "A user can only be linked to a single location",
-  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.": "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{brandId}}, {{companyId}}, {{ddiId}}, {{ddiE164}}, {{callId}}, {{uniqueId}}, {{caller}}, {{callee}}, {{dialStatus}}, {{timestamp}}.",
+  "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{time}}, {{callId}}, {{companyId}}, {{company}}, {{ddiId}}, {{crId}}, {{dpId}}, {{direction}}, {{caller}}, {{callee}}, {{carrier}}, {{ddiProvider}}.": "Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{time}}, {{callId}}, {{companyId}}, {{company}}, {{ddiId}}, {{crId}}, {{dpId}}, {{direction}}, {{caller}}, {{callee}}, {{carrier}}, {{ddiProvider}}.",
   "Version": "Version",
   "Video": "Video",
   "Views": "Views",

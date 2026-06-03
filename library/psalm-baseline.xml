@@ -4902,6 +4902,11 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
+  <file src="Ivoz/Provider/Domain/Service/Ddi/DdiLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Provider/Domain/Service/DdiProvider/DdiProviderLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
@@ -5598,6 +5603,11 @@
     </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/VoicemailRelUser/VoicemailRelUserLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/Webhook/WebhookLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>

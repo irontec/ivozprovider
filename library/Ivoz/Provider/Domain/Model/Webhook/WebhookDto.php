@@ -15,6 +15,7 @@ class WebhookDto extends WebhookDtoAbstract
                 'eventAnswer' => 'eventAnswer',
                 'eventEnd' => 'eventEnd',
                 'template' => 'template',
+                'callDirection' => 'callDirection',
                 'description' => 'description',
                 'id' => 'id',
             ];

@@ -22,7 +22,13 @@ class CheckValidity extends AvoidEntityUpdatesAbstract implements FeaturesRelCom
     public function execute(FeaturesRelCompanyInterface $relCompany): void
     {
         $feature = $relCompany->getFeature();
-        $operatorPanelFeature = $feature->getIden() === Feature::OPERATOR_PANEL_IDEN;
+        $featureIden = $feature->getIden();
+
+        if ($featureIden === Feature::WEBHOOKS_IDEN) {
+            throw new \DomainException('Webhooks feature can only be assigned to brands');
+        }
+
+        $operatorPanelFeature = $featureIden === Feature::OPERATOR_PANEL_IDEN;
 
         $client = $relCompany->getCompany();
         $vpbxClient = $client?->getType() === CompanyInterface::TYPE_VPBX;

@@ -25,8 +25,7 @@ Feature: Retrieve active calls
               "recordings",
               "faxes",
               "friends",
-              "conferences",
-              "webhooks"
+              "conferences"
           ]
       }
       """
@@ -564,8 +563,7 @@ Feature: Retrieve active calls
               "recordings",
               "faxes",
               "friends",
-              "conferences",
-              "webhooks"
+              "conferences"
           ]
       }
       """

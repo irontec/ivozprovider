@@ -36,8 +36,7 @@ Feature: Retrieve companies
                   2,
                   3,
                   4,
-                  5,
-                  10
+                  5
               ],
               "geoIpAllowedCountries": [],
               "routingTagIds": [],
@@ -306,8 +305,7 @@ Feature: Retrieve companies
               2,
               3,
               4,
-              5,
-              10
+              5
           ],
           "geoIpAllowedCountries": [],
           "routingTagIds": [],

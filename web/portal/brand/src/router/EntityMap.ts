@@ -96,6 +96,9 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.Webhook,
               isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
               filterBy: 'company',
+              filterValues: {
+                'exists[ddi]': false,
+              },
             },
           ],
         },
@@ -135,6 +138,9 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.Webhook,
               filterBy: 'company',
               isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
+              filterValues: {
+                'exists[ddi]': false,
+              },
             },
           ],
         },
@@ -180,6 +186,9 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.Webhook,
               filterBy: 'company',
               isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
+              filterValues: {
+                'exists[ddi]': false,
+              },
             },
           ],
         },
@@ -225,6 +234,9 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.Webhook,
               filterBy: 'company',
               isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
+              filterValues: {
+                'exists[ddi]': false,
+              },
             },
           ],
         },

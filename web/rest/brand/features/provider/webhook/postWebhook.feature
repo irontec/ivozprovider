@@ -97,10 +97,11 @@ Feature: Create webhooks
           "eventRing": true,
           "eventAnswer": false,
           "eventEnd": false,
-           "template": "{\"event\": \"ring\", \"ddi\": \"{ddiId}\"}",
-           "id": 7,
-           "company": 1,
-           "ddi": 1
+          "template": "{\"event\": \"ring\", \"ddi\": \"{ddiId}\"}",
+          "id": 7,
+          "company": 1,
+          "ddi": 1,
+          "callDirection": "both"
       }
       """
 
@@ -176,10 +177,11 @@ Feature: Create webhooks
           "eventRing": false,
           "eventAnswer": false,
           "eventEnd": true,
-            "template": "{\"event\": \"{event}\", \"brand\": \"{brandId}\"}",
-            "id": 8,
-            "company": null,
-            "ddi": null
+          "template": "{\"event\": \"{event}\", \"brand\": \"{brandId}\"}",
+          "id": 8,
+          "company": null,
+          "ddi": null,
+          "callDirection": "both"
       }
       """
 

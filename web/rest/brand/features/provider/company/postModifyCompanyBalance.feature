@@ -96,8 +96,7 @@ Feature: Modify company balances
               2,
               3,
               4,
-              5,
-              10
+              5
           ],
           "geoIpAllowedCountries": [],
           "routingTagIds": [],
@@ -199,8 +198,7 @@ Feature: Modify company balances
               2,
               3,
               4,
-              5,
-              10
+              5
           ],
           "geoIpAllowedCountries": [],
           "routingTagIds": [],

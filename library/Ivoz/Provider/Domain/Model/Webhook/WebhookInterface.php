@@ -15,6 +15,12 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 */
 interface WebhookInterface extends LoggableEntityInterface
 {
+    public const CALLDIRECTION_INBOUND = 'inbound';
+
+    public const CALLDIRECTION_OUTBOUND = 'outbound';
+
+    public const CALLDIRECTION_BOTH = 'both';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
@@ -65,6 +71,8 @@ interface WebhookInterface extends LoggableEntityInterface
     public function getEventEnd(): bool;
 
     public function getTemplate(): string;
+
+    public function getCallDirection(): string;
 
     public function getBrand(): BrandInterface;
 

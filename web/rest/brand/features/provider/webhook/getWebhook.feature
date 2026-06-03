@@ -23,6 +23,7 @@ Feature: Retrieve webhooks
               "eventAnswer": false,
               "eventEnd": true,
               "template": "{\"event\": \"{event}\", \"brand\": \"{brandId}\"}",
+              "callDirection": "both",
               "id": 4
           },
           {
@@ -34,6 +35,7 @@ Feature: Retrieve webhooks
               "eventAnswer": true,
               "eventEnd": false,
               "template": "{\"event\": \"answer\", \"callId\": \"{callId}\"}",
+              "callDirection": "both",
               "id": 2
           },
           {
@@ -45,6 +47,7 @@ Feature: Retrieve webhooks
               "eventAnswer": false,
               "eventEnd": false,
               "template": "{\"event\": \"ring\", \"ddi\": \"{ddiId}\"}",
+              "callDirection": "both",
               "id": 5
           },
           {
@@ -56,6 +59,7 @@ Feature: Retrieve webhooks
               "eventAnswer": false,
               "eventEnd": false,
               "template": "{\"event\": \"start\", \"callId\": \"{callId}\"}",
+              "callDirection": "both",
               "id": 1
           },
           {
@@ -67,6 +71,7 @@ Feature: Retrieve webhooks
               "eventAnswer": true,
               "eventEnd": true,
               "template": "{\"event\": \"{event}\", \"callId\": \"{callId}\"}",
+              "callDirection": "both",
               "id": 3
           }
       ]
@@ -90,6 +95,7 @@ Feature: Retrieve webhooks
           "eventAnswer": false,
           "eventEnd": false,
           "template": "{\"event\": \"start\", \"callId\": \"{callId}\"}",
+          "callDirection": "both",
           "id": 1,
           "company": {
               "type": "vpbx",
@@ -163,6 +169,7 @@ Feature: Retrieve webhooks
           "eventAnswer": false,
           "eventEnd": false,
           "template": "{\"event\": \"ring\", \"ddi\": \"{ddiId}\"}",
+          "callDirection": "both",
           "id": 5,
           "company": {
               "type": "vpbx",
@@ -247,6 +254,7 @@ Feature: Retrieve webhooks
           "eventAnswer": true,
           "eventEnd": true,
           "template": "{\"event\": \"{event}\", \"callId\": \"{callId}\"}",
+          "callDirection": "both",
           "id": 3,
           "company": {
               "type": "vpbx",

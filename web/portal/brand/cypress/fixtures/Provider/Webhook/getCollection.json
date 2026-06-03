@@ -9,6 +9,7 @@
       "eventAnswer": false,
       "eventEnd": true,
       "template": "{\"event\": \"{event}\", \"brand\": \"{brandId}\"}",
+      "callDirection": "both",
       "id": 4
     },
     {
@@ -20,6 +21,7 @@
       "eventAnswer": true,
       "eventEnd": false,
       "template": "{\"event\": \"answer\", \"callId\": \"{callId}\"}",
+      "callDirection": "both",
       "id": 2
     },
     {
@@ -31,6 +33,7 @@
       "eventAnswer": false,
       "eventEnd": false,
       "template": "{\"event\": \"ring\", \"ddi\": \"{ddiId}\"}",
+      "callDirection": "both",
       "id": 5
     },
     {
@@ -42,6 +45,7 @@
       "eventAnswer": false,
       "eventEnd": false,
       "template": "{\"event\": \"start\", \"callId\": \"{callId}\"}",
+      "callDirection": "both",
       "id": 1
     },
     {
@@ -53,6 +57,7 @@
       "eventAnswer": true,
       "eventEnd": true,
       "template": "{\"event\": \"{event}\", \"callId\": \"{callId}\"}",
+      "callDirection": "both",
       "id": 3
     }
   ],

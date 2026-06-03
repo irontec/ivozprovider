@@ -57,6 +57,11 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
     private $template = null;
 
     /**
+     * @var string|null
+     */
+    private $callDirection = 'both';
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -99,6 +104,7 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
             'eventAnswer' => 'eventAnswer',
             'eventEnd' => 'eventEnd',
             'template' => 'template',
+            'callDirection' => 'callDirection',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -120,6 +126,7 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
             'eventAnswer' => $this->getEventAnswer(),
             'eventEnd' => $this->getEventEnd(),
             'template' => $this->getTemplate(),
+            'callDirection' => $this->getCallDirection(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
@@ -234,6 +241,18 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
     public function getTemplate(): ?string
     {
         return $this->template;
+    }
+
+    public function setCallDirection(string $callDirection): static
+    {
+        $this->callDirection = $callDirection;
+
+        return $this;
+    }
+
+    public function getCallDirection(): ?string
+    {
+        return $this->callDirection;
     }
 
     /**

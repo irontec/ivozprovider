@@ -36,7 +36,8 @@ Feature: Update webhooks
           "template": "{\"event\": \"updated\", \"callId\": \"{callId}\"}",
           "id": 1,
           "company": 1,
-          "ddi": null
+          "ddi": null,
+          "callDirection": "both"
       }
       """
 
