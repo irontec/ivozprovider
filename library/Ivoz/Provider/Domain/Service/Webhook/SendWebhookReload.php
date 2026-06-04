@@ -26,11 +26,13 @@ class SendWebhookReload implements WebhookLifecycleEventHandlerInterface
 
     public function execute(WebhookInterface $webhook): void
     {
-        $webhookId = $webhook->getId();
+        $webhookId = $webhook->getId() ?? $webhook->getInitialValue('id');
+        ;
+
         if (!$webhookId) {
             return;
         }
 
-        $this->webhookReloadJob->send($webhookId);
+        $this->webhookReloadJob->send((int)$webhookId);
     }
 }
