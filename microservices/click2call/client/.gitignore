@@ -1,0 +1,3 @@
+# Real config holds a terminal's SIP password: use config.ini.dist as a template
+config.ini
+__pycache__/
