@@ -107,6 +107,10 @@ msgid "Ports TCP 80, 443, 1443, 2443 and 3443"
 msgstr "Puertos TCP 80, 443, 1443, 2443 y 3443"
 
 #: ../../security_and_maintenance/security/firewall.rst:49
+msgid "Port 9090 (TCP) for the click2call service (HTTPS)"
+msgstr "Puerto 9090 (TCP) para el servicio click2call (HTTPS)"
+
+#: ../../security_and_maintenance/security/firewall.rst:49
 msgid ""
 "We recommend using any **geoIP blocking** mechanism to drop connections "
 "from countries without clients."
