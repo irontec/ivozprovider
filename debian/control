@@ -110,6 +110,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-provision (=${binary:Version}),
     ivozprovider-realtime (=${binary:Version}),
     ivozprovider-webhooks (=${binary:Version}),
+    ivozprovider-click2call (=${binary:Version}),
     ivozprovider-router (=${binary:Version}),
     apache2,
     ssl-cert,
@@ -315,6 +316,14 @@ Priority: optional
 Depends: ivozprovider-common-library (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Webhook dispatcher - Go microservice
+  .
+
+Package: ivozprovider-click2call
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version})
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Click2call originate service - Go microservice
   .
 
 Package: ivozprovider-doc
