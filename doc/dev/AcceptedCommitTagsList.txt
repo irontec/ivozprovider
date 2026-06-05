@@ -15,6 +15,7 @@ kamtrunks
 kamusers
 microservices
 microservices/balances
+microservices/click2call
 microservices/provision
 microservices/realtime
 microservices/recordings
