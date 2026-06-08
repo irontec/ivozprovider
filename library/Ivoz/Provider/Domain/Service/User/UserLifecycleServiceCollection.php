@@ -27,6 +27,10 @@ class UserLifecycleServiceCollection implements LifecycleServiceCollectionInterf
             \Ivoz\Ast\Domain\Service\QueueMember\UpdateByUser::class => 200,
             \Ivoz\Provider\Domain\Service\Contact\UpdateByUser::class => 200,
         ],
+        "pre_remove" =>
+        [
+            \Ivoz\Provider\Domain\Service\Webhook\RemoveByUser::class => 200,
+        ],
         "post_remove" =>
         [
             \Ivoz\Provider\Domain\Service\Extension\UpdateByUser::class => 10,

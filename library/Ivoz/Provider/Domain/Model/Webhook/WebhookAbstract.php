@@ -12,9 +12,11 @@ use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\User\User;
 
 /**
 * WebhookAbstract
@@ -61,6 +63,11 @@ abstract class WebhookAbstract
     protected $eventEnd = false;
 
     /**
+     * @var bool
+     */
+    protected $eventUpdateClid = false;
+
+    /**
      * @var string
      */
     protected $template;
@@ -83,8 +90,15 @@ abstract class WebhookAbstract
 
     /**
      * @var ?DdiInterface
+     * inversedBy webhooks
      */
     protected $ddi = null;
+
+    /**
+     * @var ?UserInterface
+     * inversedBy webhooks
+     */
+    protected $user = null;
 
     /**
      * Constructor
@@ -96,6 +110,7 @@ abstract class WebhookAbstract
         bool $eventRing,
         bool $eventAnswer,
         bool $eventEnd,
+        bool $eventUpdateClid,
         string $template,
         string $callDirection
     ) {
@@ -105,6 +120,7 @@ abstract class WebhookAbstract
         $this->setEventRing($eventRing);
         $this->setEventAnswer($eventAnswer);
         $this->setEventEnd($eventEnd);
+        $this->setEventUpdateClid($eventUpdateClid);
         $this->setTemplate($template);
         $this->setCallDirection($callDirection);
     }
@@ -182,6 +198,8 @@ abstract class WebhookAbstract
         Assertion::notNull($eventAnswer, 'getEventAnswer value is null, but non null value was expected.');
         $eventEnd = $dto->getEventEnd();
         Assertion::notNull($eventEnd, 'getEventEnd value is null, but non null value was expected.');
+        $eventUpdateClid = $dto->getEventUpdateClid();
+        Assertion::notNull($eventUpdateClid, 'getEventUpdateClid value is null, but non null value was expected.');
         $template = $dto->getTemplate();
         Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
         $callDirection = $dto->getCallDirection();
@@ -196,6 +214,7 @@ abstract class WebhookAbstract
             $eventRing,
             $eventAnswer,
             $eventEnd,
+            $eventUpdateClid,
             $template,
             $callDirection
         );
@@ -204,7 +223,8 @@ abstract class WebhookAbstract
             ->setDescription($dto->getDescription())
             ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setDdi($fkTransformer->transform($dto->getDdi()));
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
+            ->setUser($fkTransformer->transform($dto->getUser()));
 
         $self->initChangelog();
 
@@ -233,6 +253,8 @@ abstract class WebhookAbstract
         Assertion::notNull($eventAnswer, 'getEventAnswer value is null, but non null value was expected.');
         $eventEnd = $dto->getEventEnd();
         Assertion::notNull($eventEnd, 'getEventEnd value is null, but non null value was expected.');
+        $eventUpdateClid = $dto->getEventUpdateClid();
+        Assertion::notNull($eventUpdateClid, 'getEventUpdateClid value is null, but non null value was expected.');
         $template = $dto->getTemplate();
         Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
         $callDirection = $dto->getCallDirection();
@@ -248,11 +270,13 @@ abstract class WebhookAbstract
             ->setEventRing($eventRing)
             ->setEventAnswer($eventAnswer)
             ->setEventEnd($eventEnd)
+            ->setEventUpdateClid($eventUpdateClid)
             ->setTemplate($template)
             ->setCallDirection($callDirection)
             ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setDdi($fkTransformer->transform($dto->getDdi()));
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
+            ->setUser($fkTransformer->transform($dto->getUser()));
 
         return $this;
     }
@@ -270,11 +294,13 @@ abstract class WebhookAbstract
             ->setEventRing(self::getEventRing())
             ->setEventAnswer(self::getEventAnswer())
             ->setEventEnd(self::getEventEnd())
+            ->setEventUpdateClid(self::getEventUpdateClid())
             ->setTemplate(self::getTemplate())
             ->setCallDirection(self::getCallDirection())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
-            ->setDdi(Ddi::entityToDto(self::getDdi(), $depth));
+            ->setDdi(Ddi::entityToDto(self::getDdi(), $depth))
+            ->setUser(User::entityToDto(self::getUser(), $depth));
     }
 
     /**
@@ -290,11 +316,13 @@ abstract class WebhookAbstract
             'eventRing' => self::getEventRing(),
             'eventAnswer' => self::getEventAnswer(),
             'eventEnd' => self::getEventEnd(),
+            'eventUpdateClid' => self::getEventUpdateClid(),
             'template' => self::getTemplate(),
             'callDirection' => self::getCallDirection(),
             'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany()?->getId(),
-            'ddiId' => self::getDdi()?->getId()
+            'ddiId' => self::getDdi()?->getId(),
+            'userId' => self::getUser()?->getId()
         ];
     }
 
@@ -388,6 +416,18 @@ abstract class WebhookAbstract
         return $this->eventEnd;
     }
 
+    protected function setEventUpdateClid(bool $eventUpdateClid): static
+    {
+        $this->eventUpdateClid = $eventUpdateClid;
+
+        return $this;
+    }
+
+    public function getEventUpdateClid(): bool
+    {
+        return $this->eventUpdateClid;
+    }
+
     protected function setTemplate(string $template): static
     {
         $this->template = $template;
@@ -447,7 +487,7 @@ abstract class WebhookAbstract
         return $this->company;
     }
 
-    protected function setDdi(?DdiInterface $ddi = null): static
+    public function setDdi(?DdiInterface $ddi = null): static
     {
         $this->ddi = $ddi;
 
@@ -457,5 +497,17 @@ abstract class WebhookAbstract
     public function getDdi(): ?DdiInterface
     {
         return $this->ddi;
+    }
+
+    public function setUser(?UserInterface $user = null): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUser(): ?UserInterface
+    {
+        return $this->user;
     }
 }

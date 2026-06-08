@@ -22,6 +22,7 @@ use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
+use Ivoz\Provider\Domain\Model\Webhook\WebhookDto;
 
 /**
 * DdiDtoAbstract
@@ -171,6 +172,11 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
      */
     private $recordings = null;
 
+    /**
+     * @var WebhookDto[] | null
+     */
+    private $webhooks = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -249,7 +255,8 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'retailAccount' => $this->getRetailAccount(),
             'routingTag' => $this->getRoutingTag(),
             'locution' => $this->getLocution(),
-            'recordings' => $this->getRecordings()
+            'recordings' => $this->getRecordings(),
+            'webhooks' => $this->getWebhooks()
         ];
 
         if (!$hideSensitiveData) {
@@ -915,5 +922,23 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     public function getRecordings(): ?array
     {
         return $this->recordings;
+    }
+
+    /**
+     * @param WebhookDto[] | null $webhooks
+     */
+    public function setWebhooks(?array $webhooks): static
+    {
+        $this->webhooks = $webhooks;
+
+        return $this;
+    }
+
+    /**
+    * @return WebhookDto[] | null
+    */
+    public function getWebhooks(): ?array
+    {
+        return $this->webhooks;
     }
 }

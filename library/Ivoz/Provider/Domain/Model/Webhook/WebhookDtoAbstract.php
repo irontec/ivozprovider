@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 
 /**
 * WebhookDtoAbstract
@@ -52,6 +53,11 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
     private $eventEnd = false;
 
     /**
+     * @var bool|null
+     */
+    private $eventUpdateClid = false;
+
+    /**
      * @var string|null
      */
     private $template = null;
@@ -81,6 +87,11 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
      */
     private $ddi = null;
 
+    /**
+     * @var UserDto | null
+     */
+    private $user = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -103,12 +114,14 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
             'eventRing' => 'eventRing',
             'eventAnswer' => 'eventAnswer',
             'eventEnd' => 'eventEnd',
+            'eventUpdateClid' => 'eventUpdateClid',
             'template' => 'template',
             'callDirection' => 'callDirection',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
-            'ddiId' => 'ddi'
+            'ddiId' => 'ddi',
+            'userId' => 'user'
         ];
     }
 
@@ -125,12 +138,14 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
             'eventRing' => $this->getEventRing(),
             'eventAnswer' => $this->getEventAnswer(),
             'eventEnd' => $this->getEventEnd(),
+            'eventUpdateClid' => $this->getEventUpdateClid(),
             'template' => $this->getTemplate(),
             'callDirection' => $this->getCallDirection(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
-            'ddi' => $this->getDdi()
+            'ddi' => $this->getDdi(),
+            'user' => $this->getUser()
         ];
 
         if (!$hideSensitiveData) {
@@ -229,6 +244,18 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
     public function getEventEnd(): ?bool
     {
         return $this->eventEnd;
+    }
+
+    public function setEventUpdateClid(bool $eventUpdateClid): static
+    {
+        $this->eventUpdateClid = $eventUpdateClid;
+
+        return $this;
+    }
+
+    public function getEventUpdateClid(): ?bool
+    {
+        return $this->eventUpdateClid;
     }
 
     public function setTemplate(string $template): static
@@ -354,6 +381,36 @@ abstract class WebhookDtoAbstract implements DataTransferObjectInterface
     public function getDdiId(): ?int
     {
         if ($dto = $this->getDdi()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setUser(?UserDto $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUser(): ?UserDto
+    {
+        return $this->user;
+    }
+
+    public function setUserId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new UserDto($id)
+            : null;
+
+        return $this->setUser($value);
+    }
+
+    public function getUserId(): ?int
+    {
+        if ($dto = $this->getUser()) {
             return $dto->getId();
         }
 

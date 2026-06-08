@@ -9,6 +9,7 @@ use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
 * WebhookInterface
@@ -70,6 +71,8 @@ interface WebhookInterface extends LoggableEntityInterface
 
     public function getEventEnd(): bool;
 
+    public function getEventUpdateClid(): bool;
+
     public function getTemplate(): string;
 
     public function getCallDirection(): string;
@@ -78,5 +81,11 @@ interface WebhookInterface extends LoggableEntityInterface
 
     public function getCompany(): ?CompanyInterface;
 
+    public function setDdi(?DdiInterface $ddi = null): static;
+
     public function getDdi(): ?DdiInterface;
+
+    public function setUser(?UserInterface $user = null): static;
+
+    public function getUser(): ?UserInterface;
 }
