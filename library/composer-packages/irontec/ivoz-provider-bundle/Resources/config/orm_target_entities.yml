@@ -37,6 +37,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\BrandService\BrandService
       Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface:
         Ivoz\Provider\Domain\Model\WebPortal\WebPortal
+      Ivoz\Provider\Domain\Model\Webhook\WebhookInterface:
+        Ivoz\Provider\Domain\Model\Webhook\Webhook
       Ivoz\Provider\Domain\Model\Calendar\CalendarInterface:
         Ivoz\Provider\Domain\Model\Calendar\Calendar
       Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface:

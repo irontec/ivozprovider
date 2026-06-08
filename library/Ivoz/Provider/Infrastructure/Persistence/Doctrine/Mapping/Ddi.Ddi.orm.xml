@@ -7,6 +7,7 @@
           change-tracking-policy="DEFERRED_EXPLICIT"
   >
     <one-to-many field="recordings" target-entity="Ivoz\Provider\Domain\Model\Recording\RecordingInterface" mapped-by="ddi" fetch="LAZY"/>
+    <one-to-many field="webhooks" target-entity="Ivoz\Provider\Domain\Model\Webhook\WebhookInterface" mapped-by="ddi" fetch="LAZY"/>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
       <options>
