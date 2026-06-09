@@ -251,12 +251,16 @@ func (h *Handler) buildOriginate(req callRequest, creds *db.Credentials, iden st
 			"ORIGINATE_EXTEN": creds.Extension,
 			// __ prefix => inheritable: needed so click2dial-user-headers (run on
 			// the dialed PJSIP channel) can fill X-Info-BrandId/CompanyId.
-			"__BRANDID":     fmt.Sprintf("%d", creds.BrandID),
-			"__COMPANYID":   fmt.Sprintf("%d", creds.CompanyID),
-			"DIAL_TIMEOUT":  fmt.Sprintf("%d", dialTimeout),
-			"MAX_DURATION":  fmt.Sprintf("%d", maxDuration),
-			"DIAL_DEF_OPTS": "",
-			"DIAL_OPTS":     "",
+			"__BRANDID":   fmt.Sprintf("%d", creds.BrandID),
+			"__COMPANYID": fmt.Sprintf("%d", creds.CompanyID),
+			// __ inheritable: carried over to the click2dial-target (2nd) leg so
+			// add-headers-{users,trunks} can emit X-Info-Click2Dial-iden toward
+			// the proxy, correlating the generated call with this /call request.
+			"__CLICK2DIALIDEN": iden,
+			"DIAL_TIMEOUT":     fmt.Sprintf("%d", dialTimeout),
+			"MAX_DURATION":     fmt.Sprintf("%d", maxDuration),
+			"DIAL_DEF_OPTS":    "",
+			"DIAL_OPTS":        "",
 		},
 	}
 }

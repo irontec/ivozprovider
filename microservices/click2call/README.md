@@ -23,8 +23,9 @@ on click, calls this service.
 - `realm` (returned by `/challenge`) = the **domain** part of the AoR.
 - `destination`: destination number (`^[+*0-9]+$`).
 - `iden` (optional): caller-supplied id (`^[A-Za-z0-9_-]{1,32}$`); if omitted, the service
-  generates one (16-char base62) and returns it. It is used as the AMI `ChannelId` (for future
-  correlation).
+  generates one (16-char base62) and returns it. It is used as the AMI `ChannelId` and is
+  propagated on the 2nd leg (the call generated towards the destination when leg 1 answers) to
+  the proxy as the SIP header `X-Info-Click2Dial-iden`, for correlation.
 - `maxDuration` (ms, default 10800000), `dialTimeout` (s, default 30), `optimize` (bool, default false).
 
 ### Digest computation (client side)
@@ -71,7 +72,8 @@ If `server.tls_cert`/`tls_key` are empty it serves plain HTTP (to sit behind a T
    `sip:<ip>:<port>` it takes `<ip>`. The AMI is reached on `ami.port` (5038).
 3. **Originate** (AMI): `Local/<dst>@click2dial-user[/n]`, ctx `click2dial-target`,
    `ChannelId=<iden>`, variables `C2DENDPOINT`, `ORIGINATE_EXTEN`, `__BRANDID`/`__COMPANYID`
-   (inheritable, required for the X-Info-* headers), `DIAL_TIMEOUT`, `MAX_DURATION`…
+   (inheritable, required for the X-Info-* headers), `__CLICK2DIALIDEN=<iden>` (inheritable, so
+   the 2nd leg emits `X-Info-Click2Dial-iden`), `DIAL_TIMEOUT`, `MAX_DURATION`…
 
 ## Build / test
 
