@@ -17,6 +17,7 @@ export enum ClientFeatures {
   'faxes' = 'faxes',
   'friends' = 'friends',
   'conferences' = 'conferences',
+  'webhooks' = 'webhooks',
 }
 
 export interface AboutMe {

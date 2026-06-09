@@ -48,6 +48,12 @@ const getEntityMap = (): ExtendedRouteMap => {
           },
           filterBy: 'user',
         },
+        {
+          entity: entities.Webhook,
+          filterBy: 'user',
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientFeatures.webhooks),
+        },
         ...Object.values(entities.User.customActions),
       ],
     },
