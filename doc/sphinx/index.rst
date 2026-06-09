@@ -49,5 +49,6 @@ IvozProvider Official Documentation
     api_rest/multilevel
     api_rest/web_client
     api_rest/integrations
+    api_rest/click2call
     api_rest/use_case
     api_rest/acls
