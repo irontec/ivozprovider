@@ -34,6 +34,10 @@ const properties: WebhookProperties = {
     label: _('End'),
     default: 0,
   },
+  eventUpdateClid: {
+    label: _('Update CLID'),
+    default: 0,
+  },
   callDirection: {
     label: _('Direction'),
     enum: {
@@ -47,11 +51,12 @@ const properties: WebhookProperties = {
     label: _('Template'),
     format: 'textarea',
     helpText: _(
-      'Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{time}}, {{callId}}, {{companyId}}, {{company}}, {{ddiId}}, {{crId}}, {{dpId}}, {{direction}}, {{caller}}, {{callee}}, {{carrier}}, {{ddiProvider}}.'
+      'Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{time}}, {{callId}}, {{companyId}}, {{company}}, {{ddiId}}, {{crId}}, {{dpId}}, {{direction}}, {{caller}}, {{callee}}, {{carrier}}, {{ddiProvider}}, {{iden}}.'
     ),
     default:
       '{\n' +
       '    "event": {{event}},\n' +
+      '    "iden": {{iden}},\n' +
       '    "companyId": {{companyId}},\n' +
       '    "company": {{company}},\n' +
       '    "ddiId": {{ddiId}},\n' +
@@ -92,6 +97,7 @@ const Webhook: EntityInterface = {
     'eventRing',
     'eventAnswer',
     'eventEnd',
+    'eventUpdateClid',
     'description',
   ],
   acl: {

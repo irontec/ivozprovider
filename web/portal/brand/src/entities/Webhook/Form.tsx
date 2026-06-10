@@ -16,7 +16,13 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Events'),
-      fields: ['eventStart', 'eventRing', 'eventAnswer', 'eventEnd'],
+      fields: [
+        'eventStart',
+        'eventRing',
+        'eventAnswer',
+        'eventEnd',
+        'eventUpdateClid',
+      ],
     },
     {
       legend: '',

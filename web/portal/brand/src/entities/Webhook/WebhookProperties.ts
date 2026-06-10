@@ -12,6 +12,7 @@ export type WebhookPropertyList<T> = {
   eventRing?: T;
   eventAnswer?: T;
   eventEnd?: T;
+  eventUpdateClid?: T;
   template?: T;
   callDirection?: T;
   id?: T;
