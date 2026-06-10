@@ -6,6 +6,11 @@ import (
 )
 
 func renderTemplate(tmpl string, event EventData, webhook webhookConfig) string {
+	userIDStr := ""
+	if webhook.UserID != nil {
+		userIDStr = fmt.Sprintf("%d", *webhook.UserID)
+	}
+
 	r := strings.NewReplacer(
 		"{{event}}", orNull(translateEvent(event.Event)),
 		"{{time}}", fmt.Sprintf("%d", event.Time),
@@ -20,6 +25,10 @@ func renderTemplate(tmpl string, event EventData, webhook webhookConfig) string 
 		"{{callee}}", orNull(event.Callee),
 		"{{carrier}}", orNull(event.Carrier),
 		"{{ddiProvider}}", orNull(event.DdiProvider),
+		"{{owner}}", orNull(event.Owner),
+		"{{party}}", orNull(event.Party),
+		"{{userId}}", orNull(userIDStr),
+		"{{iden}}", orNull(event.Iden),
 	)
 
 	return r.Replace(tmpl)
@@ -42,6 +51,8 @@ func translateEvent(event string) string {
 		return "answer"
 	case "Terminated":
 		return "end"
+	case "UpdateCLID":
+		return "updateClid"
 	default:
 		return ""
 	}
