@@ -102,7 +102,8 @@ Feature: Create webhooks
           "company": 1,
           "ddi": 1,
           "callDirection": "both",
-          "user": null
+          "user": null,
+          "eventUpdateClid": false
       }
       """
 
@@ -183,7 +184,8 @@ Feature: Create webhooks
           "company": null,
           "ddi": null,
           "callDirection": "both",
-          "user": null
+          "user": null,
+          "eventUpdateClid": false
       }
       """
 
