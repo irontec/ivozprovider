@@ -101,7 +101,8 @@ Feature: Create webhooks
           "id": 7,
           "company": 1,
           "ddi": 1,
-          "callDirection": "both"
+          "callDirection": "both",
+          "user": null
       }
       """
 
@@ -181,7 +182,8 @@ Feature: Create webhooks
           "id": 8,
           "company": null,
           "ddi": null,
-          "callDirection": "both"
+          "callDirection": "both",
+          "user": null
       }
       """
 

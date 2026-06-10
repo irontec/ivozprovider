@@ -37,7 +37,8 @@ Feature: Update webhooks
           "id": 1,
           "company": 1,
           "ddi": null,
-          "callDirection": "both"
+          "callDirection": "both",
+          "user": null
       }
       """
 
