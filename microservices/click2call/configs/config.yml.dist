@@ -1,0 +1,42 @@
+# Configuration template for the click2call microservice.
+# Copy this file to config.yml and adjust the values. Do NOT commit config.yml
+# (it holds the digest secret and the DB password).
+server:
+  listen: "0.0.0.0:9090"
+  # If tls_cert and tls_key are empty, the service serves plain HTTP (to sit behind a TLS proxy).
+  tls_cert: ""
+  tls_key: ""
+  # CORS origins allowed for the browser extension. "*" = any.
+  allowed_origins:
+    - "*"
+
+digest:
+  # Server-side HMAC key used to sign/validate the nonces (internal; never sent
+  # to clients and unrelated to the SIP password). Use a long random value, e.g.:
+  #   openssl rand -hex 32
+  secret: "change-me-please"
+  # Nonce validity in seconds.
+  nonce_ttl: 30
+
+db:
+  host: "data.ivozprovider.local"
+  port: 3306
+  name: "ivozprovider"
+  user: "click2call"
+  password: "changeme"
+
+ami:
+  user: "ivozamiuser"
+  secret: "ivozamisecret"
+  port: 5038
+
+kamailio:
+  rpc_url: "http://users.ivozprovider.local:8000/RPC"
+
+call:
+  dial_timeout: 30
+  max_duration: 10800000
+  optimize: false
+
+log:
+  level: 4

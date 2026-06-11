@@ -1,0 +1,13 @@
+[Unit]
+Description=Ivozprovider Click2call originate service
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/irontec/ivozprovider/microservices/click2call
+ExecStart=/opt/irontec/ivozprovider/microservices/click2call/originate
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[client]
+# URL of the click2call service.
+base_url = https://jobs.ivozprovider.local:9090
+
+# Terminal AoR and SIP password (the password never leaves this machine).
+# username and realm are derived from the AoR, so they are not configured here.
+aor = sipusername@sipdomain
+password = your-sip-password
+
+# Verify the server's TLS certificate (false to accept self-signed certs, like curl -k).
+verify_tls = false
+
+# Per-call parameters (destination, iden, max-duration, dial-timeout, optimize)
+# are NOT configured here: they are CLI arguments of client.py. See: client.py --help

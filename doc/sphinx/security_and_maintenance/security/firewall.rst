@@ -46,5 +46,7 @@ These are the **ports IvozProvider needs to expose** to work properly:
 
 - Ports TCP 80, 443, 1443, 2443 and 3443
 
+- Port 9090 (TCP) for the click2call service (HTTPS)
+
 .. hint:: We recommend using any **geoIP blocking** mechanism to drop connections from
           countries without clients.
