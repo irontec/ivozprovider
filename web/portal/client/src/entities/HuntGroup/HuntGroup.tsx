@@ -42,7 +42,12 @@ const properties: HuntGroupProperties = {
       },
       roundRobin: {
         show: [],
-        hide: ['ringAllTimeout'],
+        hide: [
+          'ringAllTimeout',
+          'noAnswerLocution',
+          'noAnswerTargetType',
+          ...routableFields,
+        ],
       },
       random: {
         show: [],
