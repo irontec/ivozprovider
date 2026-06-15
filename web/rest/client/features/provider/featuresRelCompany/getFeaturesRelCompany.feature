@@ -83,6 +83,20 @@ Feature: Retrieve features rel companies
                       "eu": "eu"
                   }
               }
+          },
+          {
+              "id": 6,
+              "feature": {
+                  "iden": "webhooks",
+                  "id": 10,
+                  "name": {
+                      "en": "en",
+                      "es": "es",
+                      "ca": "ca",
+                      "it": "it",
+                      "eu": "eu"
+                  }
+              }
           }
       ]
       """

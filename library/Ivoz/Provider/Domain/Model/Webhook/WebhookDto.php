@@ -14,6 +14,7 @@ class WebhookDto extends WebhookDtoAbstract
                 'eventRing' => 'eventRing',
                 'eventAnswer' => 'eventAnswer',
                 'eventEnd' => 'eventEnd',
+                'eventUpdateClid' => 'eventUpdateClid',
                 'template' => 'template',
                 'callDirection' => 'callDirection',
                 'description' => 'description',

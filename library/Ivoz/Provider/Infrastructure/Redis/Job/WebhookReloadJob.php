@@ -30,7 +30,6 @@ class WebhookReloadJob implements WebhookReloadJobInterface
             $redisClient->close();
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());
-            throw $e;
         }
     }
 }

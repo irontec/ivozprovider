@@ -26,16 +26,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: '',
-      fields: [
-        {
-          name: 'template',
-          size: {
-            md: 12,
-            lg: 8,
-            xl: 6,
-          },
-        },
-      ],
+      fields: ['template'],
     },
   ];
 

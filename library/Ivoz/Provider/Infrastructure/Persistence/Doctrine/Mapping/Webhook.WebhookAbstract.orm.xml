@@ -32,6 +32,11 @@
         <option name="default">0</option>
       </options>
     </field>
+    <field name="eventUpdateClid" type="boolean" column="eventUpdateClid" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
     <field name="template" type="text" column="template" nullable="false"/>
     <field name="callDirection" type="string" column="callDirection" length="25" nullable="false">
       <options>
@@ -49,9 +54,14 @@
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
+    <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" inversed-by="webhooks" fetch="LAZY">
       <join-columns>
         <join-column name="ddiId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" inversed-by="webhooks" fetch="LAZY">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

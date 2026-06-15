@@ -14,11 +14,11 @@ export type WebhookPropertyList<T> = {
   eventEnd?: T;
   eventUpdateClid?: T;
   template?: T;
-  callDirection?: T;
   id?: T;
-  brand?: T;
   company?: T;
   ddi?: T;
+  user?: T;
+  callDirection?: T;
 };
 
 export type WebhookProperties = WebhookPropertyList<Partial<PropertySpec>>;

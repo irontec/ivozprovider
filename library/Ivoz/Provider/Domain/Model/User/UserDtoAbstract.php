@@ -23,6 +23,7 @@ use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
+use Ivoz\Provider\Domain\Model\Webhook\WebhookDto;
 
 /**
 * UserDtoAbstract
@@ -202,6 +203,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
      */
     private $recordings = null;
 
+    /**
+     * @var WebhookDto[] | null
+     */
+    private $webhooks = null;
+
     public function __construct(?int $id = null)
     {
         $this->setId($id);
@@ -287,7 +293,8 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'queueMembers' => $this->getQueueMembers(),
             'callForwardSettings' => $this->getCallForwardSettings(),
             'faxesRelUsers' => $this->getFaxesRelUsers(),
-            'recordings' => $this->getRecordings()
+            'recordings' => $this->getRecordings(),
+            'webhooks' => $this->getWebhooks()
         ];
 
         if (!$hideSensitiveData) {
@@ -1001,5 +1008,23 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getRecordings(): ?array
     {
         return $this->recordings;
+    }
+
+    /**
+     * @param WebhookDto[] | null $webhooks
+     */
+    public function setWebhooks(?array $webhooks): static
+    {
+        $this->webhooks = $webhooks;
+
+        return $this;
+    }
+
+    /**
+    * @return WebhookDto[] | null
+    */
+    public function getWebhooks(): ?array
+    {
+        return $this->webhooks;
     }
 }

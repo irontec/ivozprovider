@@ -15,11 +15,13 @@ type Webhook struct {
 	EventStart    bool
 	EventRing     bool
 	EventAnswer   bool
-	EventEnd      bool
-	Template      string
+	EventEnd         bool
+	EventUpdateClid  bool
+	Template         string
 	BrandID       int
 	CompanyID     int
 	DdiID         *int
+	UserID        *int
 	CallDirection string
 }
 
@@ -31,10 +33,17 @@ func LoadWebhooks() ([]Webhook, error) {
 	defer conn.Close()
 
 	rows, err := conn.Query(`
-		SELECT id, name, URI, eventStart, eventRing, eventAnswer, eventEnd,
-		       template, brandId, companyId, ddiId, callDirection
-		FROM Webhooks
-		WHERE companyId IS NOT NULL
+		SELECT w.id, w.name, w.URI, w.eventStart, w.eventRing, w.eventAnswer, w.eventEnd, w.eventUpdateClid,
+		       w.template, w.brandId, w.companyId, w.ddiId, w.userId, w.callDirection
+		FROM Webhooks w
+		INNER JOIN Features f ON f.iden = 'webhooks'
+		LEFT JOIN FeaturesRelCompanies frc ON frc.companyId = w.companyId AND frc.featureId = f.id
+		LEFT JOIN FeaturesRelBrands frb ON frb.brandId = w.brandId AND frb.featureId = f.id
+		WHERE w.companyId IS NOT NULL
+		AND (
+		  (w.userId IS NOT NULL AND frc.id IS NOT NULL)
+		  OR (w.userId IS NULL AND frb.id IS NOT NULL)
+		)
 	`)
 	if err != nil {
 		return nil, err
@@ -46,8 +55,8 @@ func LoadWebhooks() ([]Webhook, error) {
 		var w Webhook
 		err := rows.Scan(
 			&w.ID, &w.Name, &w.URI,
-			&w.EventStart, &w.EventRing, &w.EventAnswer, &w.EventEnd,
-			&w.Template, &w.BrandID, &w.CompanyID, &w.DdiID, &w.CallDirection,
+			&w.EventStart, &w.EventRing, &w.EventAnswer, &w.EventEnd, &w.EventUpdateClid,
+			&w.Template, &w.BrandID, &w.CompanyID, &w.DdiID, &w.UserID, &w.CallDirection,
 		)
 		if err != nil {
 			logger.Errorf("Failed to scan webhook row: %v", err)
@@ -72,14 +81,21 @@ func LoadWebhookByID(id int) (*Webhook, error) {
 
 	var w Webhook
 	err = conn.QueryRow(`
-		SELECT id, name, URI, eventStart, eventRing, eventAnswer, eventEnd,
-		       template, brandId, companyId, ddiId, callDirection
-		FROM Webhooks
-		WHERE id = ? AND companyId IS NOT NULL
+		SELECT w.id, w.name, w.URI, w.eventStart, w.eventRing, w.eventAnswer, w.eventEnd, w.eventUpdateClid,
+		       w.template, w.brandId, w.companyId, w.ddiId, w.userId, w.callDirection
+		FROM Webhooks w
+		INNER JOIN Features f ON f.iden = 'webhooks'
+		LEFT JOIN FeaturesRelCompanies frc ON frc.companyId = w.companyId AND frc.featureId = f.id
+		LEFT JOIN FeaturesRelBrands frb ON frb.brandId = w.brandId AND frb.featureId = f.id
+		WHERE w.id = ? AND w.companyId IS NOT NULL
+		AND (
+		  (w.userId IS NOT NULL AND frc.id IS NOT NULL)
+		  OR (w.userId IS NULL AND frb.id IS NOT NULL)
+		)
 	`, id).Scan(
 		&w.ID, &w.Name, &w.URI,
-		&w.EventStart, &w.EventRing, &w.EventAnswer, &w.EventEnd,
-		&w.Template, &w.BrandID, &w.CompanyID, &w.DdiID, &w.CallDirection,
+		&w.EventStart, &w.EventRing, &w.EventAnswer, &w.EventEnd, &w.EventUpdateClid,
+		&w.Template, &w.BrandID, &w.CompanyID, &w.DdiID, &w.UserID, &w.CallDirection,
 	)
 	if err == sql.ErrNoRows {
 		return nil, nil

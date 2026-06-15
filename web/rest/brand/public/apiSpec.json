@@ -41141,12 +41141,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "callDirection[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "callDirection[end]",
                         "in": "query",
                         "required": false,
@@ -41154,6 +41148,12 @@
                     },
                     {
                         "name": "callDirection[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callDirection[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -41213,18 +41213,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "description[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "description[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "description[start]",
                         "in": "query",
                         "required": false,
@@ -41237,10 +41225,22 @@
                         "type": "string"
                     },
                     {
+                        "name": "description[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "description[exists]",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "description[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "eventAnswer",
@@ -41262,6 +41262,12 @@
                     },
                     {
                         "name": "eventStart",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "eventUpdateClid",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -41297,12 +41303,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "name[end]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "name[neq]",
                         "in": "query",
                         "required": false,
@@ -41321,6 +41321,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "name[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "template",
                         "in": "query",
                         "required": false,
@@ -41328,6 +41334,12 @@
                     },
                     {
                         "name": "template[exact]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "template[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -41346,12 +41358,6 @@
                     },
                     {
                         "name": "template[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "template[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -41391,6 +41397,24 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user[]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "enum": [
@@ -41448,6 +41472,16 @@
                             "DESC"
                         ],
                         "name": "_order[eventStart]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[eventUpdateClid]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -53605,6 +53639,7 @@
                 "eventRing",
                 "eventAnswer",
                 "eventEnd",
+                "eventUpdateClid",
                 "template",
                 "callDirection"
             ],
@@ -53647,6 +53682,12 @@
                     "example": "0",
                     "type": "boolean"
                 },
+                "eventUpdateClid": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
+                },
                 "template": {
                     "description": "",
                     "type": "string"
@@ -53675,6 +53716,10 @@
                 "ddi": {
                     "description": "",
                     "type": "integer"
+                },
+                "user": {
+                    "description": "",
+                    "type": "integer"
                 }
             }
         },
@@ -53687,6 +53732,7 @@
                 "eventRing",
                 "eventAnswer",
                 "eventEnd",
+                "eventUpdateClid",
                 "template",
                 "callDirection"
             ],
@@ -53719,6 +53765,12 @@
                     "type": "boolean"
                 },
                 "eventEnd": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
+                },
+                "eventUpdateClid": {
                     "default": 0,
                     "description": "",
                     "example": "0",
@@ -53761,6 +53813,7 @@
                 "eventRing",
                 "eventAnswer",
                 "eventEnd",
+                "eventUpdateClid",
                 "template",
                 "callDirection"
             ],
@@ -53803,6 +53856,12 @@
                     "example": "0",
                     "type": "boolean"
                 },
+                "eventUpdateClid": {
+                    "default": 0,
+                    "description": "",
+                    "example": "0",
+                    "type": "boolean"
+                },
                 "template": {
                     "description": "",
                     "type": "string"
@@ -53829,6 +53888,9 @@
                 },
                 "ddi": {
                     "$ref": "#/definitions/Ddi"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
                 }
             }
         }

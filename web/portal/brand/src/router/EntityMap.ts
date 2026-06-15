@@ -94,7 +94,8 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
             {
               entity: entities.Webhook,
-              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
+              isAccessible: (aboutMe) =>
+                aboutMe.features.includes(ClientFeatures.webhooks),
               filterBy: 'company',
               filterValues: {
                 'exists[ddi]': false,

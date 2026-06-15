@@ -2,11 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Service\Webhook;
 
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Webhook\WebhookRepository;
-use Ivoz\Provider\Domain\Service\Ddi\DdiLifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 
-class RemoveByDdi implements DdiLifecycleEventHandlerInterface
+class RemoveByUser implements UserLifecycleEventHandlerInterface
 {
     public const PRE_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
@@ -25,9 +25,9 @@ class RemoveByDdi implements DdiLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(DdiInterface $ddi): void
+    public function execute(UserInterface $user): void
     {
-        $webhooks = $ddi->getWebhooks();
+        $webhooks = $user->getWebhooks();
 
         foreach ($webhooks as $webhook) {
             $this->webhookRepository->remove($webhook);

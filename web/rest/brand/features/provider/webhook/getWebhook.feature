@@ -22,6 +22,7 @@ Feature: Retrieve webhooks
               "eventRing": false,
               "eventAnswer": false,
               "eventEnd": true,
+              "eventUpdateClid": false,
               "template": "{\"event\": \"{event}\", \"brand\": \"{brandId}\"}",
               "callDirection": "both",
               "id": 4
@@ -34,6 +35,7 @@ Feature: Retrieve webhooks
               "eventRing": false,
               "eventAnswer": true,
               "eventEnd": false,
+              "eventUpdateClid": false,
               "template": "{\"event\": \"answer\", \"callId\": \"{callId}\"}",
               "callDirection": "both",
               "id": 2
@@ -46,6 +48,7 @@ Feature: Retrieve webhooks
               "eventRing": true,
               "eventAnswer": false,
               "eventEnd": false,
+              "eventUpdateClid": false,
               "template": "{\"event\": \"ring\", \"ddi\": \"{ddiId}\"}",
               "callDirection": "both",
               "id": 5
@@ -58,6 +61,7 @@ Feature: Retrieve webhooks
               "eventRing": false,
               "eventAnswer": false,
               "eventEnd": false,
+              "eventUpdateClid": false,
               "template": "{\"event\": \"start\", \"callId\": \"{callId}\"}",
               "callDirection": "both",
               "id": 1
@@ -70,6 +74,7 @@ Feature: Retrieve webhooks
               "eventRing": true,
               "eventAnswer": true,
               "eventEnd": true,
+              "eventUpdateClid": false,
               "template": "{\"event\": \"{event}\", \"callId\": \"{callId}\"}",
               "callDirection": "both",
               "id": 3
@@ -94,6 +99,7 @@ Feature: Retrieve webhooks
           "eventRing": false,
           "eventAnswer": false,
           "eventEnd": false,
+          "eventUpdateClid": false,
           "template": "{\"event\": \"start\", \"callId\": \"{callId}\"}",
           "callDirection": "both",
           "id": 1,
@@ -147,7 +153,8 @@ Feature: Retrieve webhooks
               "routingTagIds": [],
               "codecIds": []
           },
-          "ddi": null
+          "ddi": null,
+          "user": null
       }
       """
 
@@ -168,6 +175,7 @@ Feature: Retrieve webhooks
           "eventRing": true,
           "eventAnswer": false,
           "eventEnd": false,
+          "eventUpdateClid": false,
           "template": "{\"event\": \"ring\", \"ddi\": \"{ddiId}\"}",
           "callDirection": "both",
           "id": 5,
@@ -232,7 +240,8 @@ Feature: Retrieve webhooks
               "ddiProvider": 1,
               "country": 68,
               "routingTag": null
-          }
+          },
+          "user": null
       }
       """
 
@@ -253,6 +262,7 @@ Feature: Retrieve webhooks
           "eventRing": true,
           "eventAnswer": true,
           "eventEnd": true,
+          "eventUpdateClid": false,
           "template": "{\"event\": \"{event}\", \"callId\": \"{callId}\"}",
           "callDirection": "both",
           "id": 3,
@@ -306,6 +316,7 @@ Feature: Retrieve webhooks
               "routingTagIds": [],
               "codecIds": []
           },
-          "ddi": null
+          "ddi": null,
+          "user": null
       }
       """

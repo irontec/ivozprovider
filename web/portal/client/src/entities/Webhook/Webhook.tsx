@@ -18,6 +18,15 @@ const properties: WebhookProperties = {
   uri: {
     label: _('URL'),
   },
+  callDirection: {
+    label: _('Direction'),
+    enum: {
+      inbound: _('Inbound'),
+      outbound: _('Outbound'),
+      both: _('Both'),
+    },
+    default: 'both',
+  },
   eventStart: {
     label: _('Start'),
     default: 0,
@@ -38,47 +47,23 @@ const properties: WebhookProperties = {
     label: _('Update CLID'),
     default: 0,
   },
-  callDirection: {
-    label: _('Direction'),
-    enum: {
-      inbound: _('Inbound'),
-      outbound: _('Outbound'),
-      both: _('Both'),
-    },
-    default: 'both',
-  },
   template: {
     label: _('Template'),
     format: 'textarea',
     helpText: _(
-      'Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{time}}, {{callId}}, {{companyId}}, {{company}}, {{ddiId}}, {{crId}}, {{dpId}}, {{direction}}, {{caller}}, {{callee}}, {{carrier}}, {{ddiProvider}}, {{iden}}.'
+      'Valid JSON with {{placeholder}} substitution. Available: {{event}}, {{callId}}, {{direction}}, {{owner}}, {{party}}, {{userId}}, {{time}}, {{iden}}.'
     ),
     default:
       '{\n' +
       '    "event": {{event}},\n' +
       '    "iden": {{iden}},\n' +
-      '    "companyId": {{companyId}},\n' +
-      '    "company": {{company}},\n' +
-      '    "ddiId": {{ddiId}},\n' +
-      '    "crId": {{crId}},\n' +
-      '    "carrier": {{carrier}},\n' +
-      '    "dpId": {{dpId}},\n' +
-      '    "ddiProvider": {{ddiProvider}},\n' +
       '    "callId": {{callId}},\n' +
       '    "direction": {{direction}},\n' +
-      '    "caller": {{caller}},\n' +
-      '    "callee": {{callee}},\n' +
+      '    "owner": {{owner}},\n' +
+      '    "party": {{party}},\n' +
+      '    "userId": {{userId}},\n' +
       '    "time": {{time}}\n' +
       '}',
-  },
-  brand: {
-    label: _('Brand'),
-  },
-  company: {
-    label: _('Client'),
-  },
-  ddi: {
-    label: _('DDI_one'),
   },
 };
 
@@ -92,7 +77,7 @@ const Webhook: EntityInterface = {
   properties,
   columns: [
     'name',
-    'callDirection',
+    'uri',
     'eventStart',
     'eventRing',
     'eventAnswer',

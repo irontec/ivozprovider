@@ -26,6 +26,9 @@ type EventData struct {
 	Callee      string `json:"Callee,omitempty"`
 	Carrier     string `json:"Carrier,omitempty"`
 	DdiProvider string `json:"DdiProvider,omitempty"`
+	Owner       string `json:"Owner,omitempty"`
+	Party       string `json:"Party,omitempty"`
+	Iden        string `json:"Iden,omitempty"`
 	DdiID       string `json:"-"`
 	CrID        string `json:"-"`
 	DpID        string `json:"-"`
@@ -35,6 +38,7 @@ type webhookConfig struct {
 	BrandID   int
 	CompanyID int
 	DdiID     *int
+	UserID    *int
 }
 
 func RunWorker(ctx context.Context, wg *sync.WaitGroup, webhook db.Webhook, cache map[string]EventData) {
@@ -57,6 +61,7 @@ func RunWorker(ctx context.Context, wg *sync.WaitGroup, webhook db.Webhook, cach
 		BrandID:   webhook.BrandID,
 		CompanyID: webhook.CompanyID,
 		DdiID:     webhook.DdiID,
+		UserID:    webhook.UserID,
 	}
 
 	ch := pubsub.Channel()
@@ -76,6 +81,18 @@ func RunWorker(ctx context.Context, wg *sync.WaitGroup, webhook db.Webhook, cach
 }
 
 func buildPatterns(webhook db.Webhook) string {
+	if webhook.UserID != nil {
+		base := fmt.Sprintf("users:b*:c*:u%d", *webhook.UserID)
+		switch webhook.CallDirection {
+		case "inbound":
+			return base + ":inbound:*"
+		case "outbound":
+			return base + ":outbound:*"
+		default:
+			return base + ":*"
+		}
+	}
+
 	ddiSeg := "ddi*"
 	if webhook.DdiID != nil {
 		ddiSeg = fmt.Sprintf("ddi%d", *webhook.DdiID)
@@ -144,6 +161,15 @@ func mergeIntoCache(cache map[string]EventData, incoming EventData) EventData {
 	if incoming.DdiProvider != "" {
 		cached.DdiProvider = incoming.DdiProvider
 	}
+	if incoming.Owner != "" {
+		cached.Owner = incoming.Owner
+	}
+	if incoming.Party != "" {
+		cached.Party = incoming.Party
+	}
+	if incoming.Iden != "" {
+		cached.Iden = incoming.Iden
+	}
 	if incoming.DdiID != "" {
 		cached.DdiID = incoming.DdiID
 	}
@@ -197,6 +223,8 @@ func shouldDispatch(webhook db.Webhook, event string) bool {
 		return webhook.EventAnswer
 	case "Terminated":
 		return webhook.EventEnd
+	case "UpdateCLID":
+		return webhook.EventUpdateClid
 	default:
 		return false
 	}

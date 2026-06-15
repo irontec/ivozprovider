@@ -31,7 +31,8 @@ Feature: Retrieve status
               "recordings",
               "faxes",
               "friends",
-              "conferences"
+              "conferences",
+              "webhooks"
           ]
       }
       """

@@ -23,7 +23,6 @@ const FeatureSelectOptions: SelectOptionsType = ({
       const featuresToIgnore = [
         ClientFeatures.billing,
         ClientFeatures.invoices,
-        ClientFeatures.webhooks,
         ClientTypes.residential,
         ClientTypes.retail,
         ClientTypes.vpbx,
