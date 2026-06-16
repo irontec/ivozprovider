@@ -27,6 +27,7 @@ class MatchListPatternSpec extends ObjectBehavior
         $this->dto = $dto = new MatchListPatternDto();
         $dto
             ->setType('number')
+            ->setMatchPattern('')
             ->setMatchList($matchListDto);
 
         $transformer = new DtoToEntityFakeTransformer([

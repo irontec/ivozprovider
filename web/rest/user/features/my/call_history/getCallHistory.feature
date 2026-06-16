@@ -22,7 +22,8 @@ Feature: Retrieve call history
               "callee": "+34676896561",
               "owner": null,
               "disposition": "answered",
-              "id": 1
+              "id": 1,
+              "numRecordings": 0
           },
           {
               "startTime": "2018-11-22 17:54:49",
@@ -32,7 +33,8 @@ Feature: Retrieve call history
               "callee": "+34676896561",
               "owner": null,
               "disposition": "answered",
-              "id": 2
+              "id": 2,
+              "numRecordings": 1
           },
           {
               "startTime": "match:regexp(/\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}/)",
@@ -42,7 +44,8 @@ Feature: Retrieve call history
               "callee": "+34676896564",
               "owner": null,
               "disposition": "answered",
-              "id": 3
+              "id": 3,
+              "numRecordings": 0
           }
       ]
       """

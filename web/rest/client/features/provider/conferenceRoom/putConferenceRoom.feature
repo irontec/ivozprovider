@@ -28,6 +28,7 @@ Feature: Update conference rooms
           "pinProtected": false,
           "pinCode": null,
           "maxMembers": 1,
-          "id": 1
+          "id": 1,
+          "announceUserCount": "first"
       }
       """

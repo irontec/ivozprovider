@@ -1,0 +1,16 @@
+{
+  "body": {
+    "name": "Brand Level Webhook",
+    "description": null,
+    "uri": "https://webhook.brand.com/events",
+    "eventStart": true,
+    "eventRing": false,
+    "eventAnswer": false,
+    "eventEnd": true,
+    "template": "updated",
+    "id": 4,
+    "company": 1,
+    "ddi": null
+  },
+  "statusCode": 200
+}

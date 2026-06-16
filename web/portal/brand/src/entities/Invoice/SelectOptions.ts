@@ -3,6 +3,8 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
+import { InvoicePropertiesList } from './InvoiceProperties';
+
 const InvoiceSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
@@ -12,11 +14,15 @@ const InvoiceSelectOptions: SelectOptionsType = ({
 
   return defaultEntityBehavior.fetchFks(
     Invoice.path,
-    ['id'],
-    (data) => {
-      const options: DropdownChoices = {};
+    ['id', 'number'],
+    (data: InvoicePropertiesList) => {
+      const options: DropdownChoices = [];
+
       for (const item of data) {
-        options[item.id] = item.id;
+        options.push({
+          id: item.id as number,
+          label: Invoice.toStr(item),
+        });
       }
 
       callback(options);

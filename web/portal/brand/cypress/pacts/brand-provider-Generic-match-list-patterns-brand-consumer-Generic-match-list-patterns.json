@@ -37,6 +37,7 @@
           "type": "number",
           "regexp": null,
           "numbervalue": "946002059",
+          "matchPattern": "+34 946002059",
           "id": 3,
           "matchList": 3,
           "numberCountry": 1
@@ -79,6 +80,7 @@
           "type": "number",
           "regexp": null,
           "numbervalue": "956002059",
+          "matchPattern": "+34 956002059",
           "id": 2,
           "matchList": 3,
           "numberCountry": 1

@@ -26,6 +26,7 @@ const Invoice: EntityInterface = {
 
     return module.default;
   },
+  dynamicSelectOptions: true,
 };
 
 export default Invoice;

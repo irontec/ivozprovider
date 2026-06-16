@@ -24,6 +24,7 @@ class CompanyStub
             ->setIpfilter(false)
             ->setOnDemandRecord(0)
             ->setOnDemandRecordCode("")
+            ->setOnDemandRecordEmail('disabled')
             ->setExternallyextraopts("")
             ->setRecordingsLimitEmail("")
             ->setBillingMethod("prepaid")

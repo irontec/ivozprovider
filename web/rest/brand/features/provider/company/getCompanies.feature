@@ -36,7 +36,8 @@ Feature: Retrieve companies
                   2,
                   3,
                   4,
-                  5
+                  5,
+                  10
               ],
               "geoIpAllowedCountries": [],
               "routingTagIds": [],
@@ -178,6 +179,8 @@ Feature: Retrieve companies
           "onDemandRecord": 0,
           "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
+          "onDemandRecordEmail": "disabled",
+          "onDemandRecordEmailAddress": null,
           "externallyextraopts": "",
           "billingMethod": "prepaid",
           "balance": 1.2,
@@ -260,6 +263,7 @@ Feature: Retrieve companies
               "type": "voicemail",
               "id": 1
           },
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
@@ -302,7 +306,8 @@ Feature: Retrieve companies
               2,
               3,
               4,
-              5
+              5,
+              10
           ],
           "geoIpAllowedCountries": [],
           "routingTagIds": [],

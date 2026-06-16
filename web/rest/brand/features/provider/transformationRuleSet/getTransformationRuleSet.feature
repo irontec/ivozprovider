@@ -73,6 +73,10 @@ Feature: Retrieve transformation rule sets
               "it": "Brand 1 transformation for Spain",
               "eu": "Brand 1 transformation for Spain"
           },
-          "country": "~"
+          "editable": true,
+          "country": {
+              "countryCode": "+34",
+              "*": "~"
+          }
       }
       """

@@ -5,7 +5,7 @@ import defaultEntityBehavior, {
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-import { ClientTypes } from '../../Company/ClientFeatures';
+import { ClientFeatures, ClientTypes } from '../../Company/ClientFeatures';
 
 const FeatureSelectOptions: SelectOptionsType = ({
   callback,
@@ -21,8 +21,8 @@ const FeatureSelectOptions: SelectOptionsType = ({
       const options: PropertyFkChoices = [];
 
       const featuresToIgnore = [
-        'billing',
-        'invoices',
+        ClientFeatures.billing,
+        ClientFeatures.invoices,
         ClientTypes.residential,
         ClientTypes.retail,
         ClientTypes.vpbx,

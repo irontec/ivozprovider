@@ -57,6 +57,11 @@
         <join-column name="vmNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="onDemandRecordNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="onDemandRecordNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="faxNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
         <join-column name="faxNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>

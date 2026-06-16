@@ -1,4 +1,6 @@
 {
+  "ACCEPT": "Onartu",
+  "About": "Honi buruz",
   "Active call_one": "Dei aktiboa",
   "Active call_other": "Dei aktiboak",
   "Answered": "Erantzuna",
@@ -60,6 +62,8 @@
   "Is Boss": "Nagusia da",
   "Last Calls": "Azken deiak",
   "Last Name": "Abizena",
+  "Last update": "Azken eguneratzea",
+  "Logout": "Saioa itxi",
   "Main": "Nagusia",
   "Max Calls": "Gehienezko deiak",
   "Missed": "Galdua",
@@ -113,6 +117,7 @@
   "User information": "Erabiltzaile informazioa",
   "User not registered": "Erabiltzailea ez dago erregistratuta",
   "Users": "Erabiltzaileak",
+  "Version": "Bertsioa",
   "Voicemail Message_one": "Erantzungailu mezua",
   "Voicemail Message_other": "Erantzungailu mezuak",
   "Voicemail attach sound": "Erantzungailu soinu eranskina",

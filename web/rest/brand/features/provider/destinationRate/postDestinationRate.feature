@@ -51,6 +51,10 @@ Feature: Create destination rate
           "groupIntervalStart": "0s",
           "id": 2,
           "destinationRateGroup": "~",
-          "destination": "~"
+          "currencySymbol": "€",
+          "destination": {
+              "id": 2,
+              "*": "~"
+          }
       }
       """

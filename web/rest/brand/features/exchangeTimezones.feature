@@ -16,15 +16,27 @@ Feature: Authorization checking
       [
           {
               "createdOn": "2022-09-02 12:17:10",
-              "id": 1
+              "id": 1,
+              "amount": 10,
+              "balance": 10,
+              "company": 1,
+              "carrier": null
           },
           {
               "createdOn": "2022-09-02 12:17:11",
-              "id": 2
+              "id": 2,
+              "amount": 25,
+              "balance": 27,
+              "company": 1,
+              "carrier": null
           },
           {
               "createdOn": "2022-09-02 12:17:12",
-              "id": 3
+              "id": 3,
+              "amount": 500,
+              "balance": 567.23,
+              "company": null,
+              "carrier": 1
           }
       ]
       """
@@ -41,15 +53,27 @@ Feature: Authorization checking
       [
           {
               "createdOn": "2022-09-02 10:17:10",
-              "id": 1
+              "id": 1,
+              "amount": 10,
+              "balance": 10,
+              "company": 1,
+              "carrier": null
           },
           {
               "createdOn": "2022-09-02 10:17:11",
-              "id": 2
+              "id": 2,
+              "amount": 25,
+              "balance": 27,
+              "company": 1,
+              "carrier": null
           },
           {
               "createdOn": "2022-09-02 10:17:12",
-              "id": 3
+              "id": 3,
+              "amount": 500,
+              "balance": 567.23,
+              "company": null,
+              "carrier": 1
           }
       ]
       """

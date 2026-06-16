@@ -1,0 +1,27 @@
+{
+  "request": {
+    "name": "Updated Start Webhook",
+    "uri": "https://webhook.updated.com/start",
+    "eventStart": true,
+    "eventRing": true,
+    "eventAnswer": false,
+    "eventEnd": false,
+    "template": "updated"
+  },
+  "response": {
+    "body": {
+      "name": "Updated Start Webhook",
+      "description": null,
+      "uri": "https://webhook.updated.com/start",
+      "eventStart": true,
+      "eventRing": true,
+      "eventAnswer": false,
+      "eventEnd": false,
+      "template": "updated",
+      "id": 4,
+      "company": 1,
+      "ddi": null
+    },
+    "statusCode": 200
+  }
+}

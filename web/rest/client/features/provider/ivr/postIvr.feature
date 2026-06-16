@@ -194,12 +194,16 @@ Feature: Create IVRs
               "name": {
                   "en": "United Arab Emirates",
                   "es": "Emiratos Árabes Unidos",
-                  "ca": "Emiratos Árabes Unidos"
+                  "ca": "Emiratos Árabes Unidos",
+                  "it": "United Arab Emirates",
+                  "eu": "United Arab Emirates"
               },
               "zone": {
                   "en": "Asia",
                   "es": "Asia",
-                  "ca": "Asia"
+                  "ca": "Asia",
+                  "it": "Asia",
+                  "eu": "Asia"
               }
           },
           "errorNumberCountry": {
@@ -209,12 +213,16 @@ Feature: Create IVRs
               "name": {
                   "en": "Afghanistan",
                   "es": "Afganistán",
-                  "ca": "Afganistán"
+                  "ca": "Afganistán",
+                  "it": "Afghanistan",
+                  "eu": "Afghanistan"
               },
               "zone": {
                   "en": "Asia",
                   "es": "Asia",
-                  "ca": "Asia"
+                  "ca": "Asia",
+                  "it": "Asia",
+                  "eu": "Asia"
               }
           },
           "excludedExtensionIds": [

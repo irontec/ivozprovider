@@ -92,6 +92,15 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.WebPortal,
               filterBy: 'company',
             },
+            {
+              entity: entities.Webhook,
+              isAccessible: (aboutMe) =>
+                aboutMe.features.includes(ClientFeatures.webhooks),
+              filterBy: 'company',
+              filterValues: {
+                'exists[ddi]': false,
+              },
+            },
           ],
         },
         {
@@ -125,6 +134,14 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.WebPortal,
               filterBy: 'company',
+            },
+            {
+              entity: entities.Webhook,
+              filterBy: 'company',
+              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
+              filterValues: {
+                'exists[ddi]': false,
+              },
             },
           ],
         },
@@ -166,6 +183,14 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.WebPortal,
               filterBy: 'company',
             },
+            {
+              entity: entities.Webhook,
+              filterBy: 'company',
+              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
+              filterValues: {
+                'exists[ddi]': false,
+              },
+            },
           ],
         },
         {
@@ -205,6 +230,14 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.WebPortal,
               filterBy: 'company',
+            },
+            {
+              entity: entities.Webhook,
+              filterBy: 'company',
+              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
+              filterValues: {
+                'exists[ddi]': false,
+              },
             },
           ],
         },
@@ -262,6 +295,14 @@ const getEntityMap = (): ExtendedRouteMap => {
                 ...entities.Ddi,
               },
               filterBy: 'ddiProvider',
+              children: [
+                {
+                  entity: entities.Webhook,
+                  filterBy: 'ddi',
+                  isAccessible: (aboutMe) =>
+                    aboutMe.features.includes('webhooks'),
+                },
+              ],
             },
             {
               entity: entities.BillableCall,
@@ -276,7 +317,12 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.BillableCall,
-              filterBy: 'carrier',
+              filterBy: 'ddi',
+            },
+            {
+              entity: entities.Webhook,
+              filterBy: 'ddi',
+              isAccessible: (aboutMe) => aboutMe.features.includes('webhooks'),
             },
           ],
         },

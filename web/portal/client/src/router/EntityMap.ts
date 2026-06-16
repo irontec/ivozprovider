@@ -19,6 +19,7 @@ type aclOverrideType = (aboutMe: AboutMe) => EntityAclType;
 export type ExtendedRouteMapItem = RouteMapItem & {
   isAccessible?: isAccessibleType;
   aclOverride?: aclOverrideType;
+  children?: Array<ExtendedRouteMapItem>;
 };
 export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 
@@ -46,6 +47,12 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           },
           filterBy: 'user',
+        },
+        {
+          entity: entities.Webhook,
+          filterBy: 'user',
+          isAccessible: (aboutMe) =>
+            aboutMe.features.includes(ClientFeatures.webhooks),
         },
         ...Object.values(entities.User.customActions),
       ],

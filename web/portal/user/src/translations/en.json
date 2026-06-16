@@ -1,4 +1,6 @@
 {
+  "ACCEPT": "Accept",
+  "About": "About",
   "Active call_one": "Active Call",
   "Active call_other": "Active Calls",
   "Answered": "Answered",
@@ -60,6 +62,8 @@
   "Is Boss": "Is Boss",
   "Last Calls": "Last Calls",
   "Last Name": "Last Name",
+  "Last update": "Last update",
+  "Logout": "Logout",
   "Main": "Main",
   "Max Calls": "Max Calls",
   "Missed": "Missed",
@@ -113,6 +117,7 @@
   "User information": "User information",
   "User not registered": "User not registered",
   "Users": "Users",
+  "Version": "Version",
   "Voicemail Message_one": "Voicemail Message",
   "Voicemail Message_other": "Voicemail Messages",
   "Voicemail attach sound": "Voicemail attach sound",

@@ -48,6 +48,7 @@ const DdiProvider: EntityInterface = {
 
     return module.default;
   },
+  dynamicSelectOptions: true,
 };
 
 export default DdiProvider;

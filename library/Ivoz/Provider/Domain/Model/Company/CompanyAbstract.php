@@ -112,6 +112,17 @@ abstract class CompanyAbstract
     protected $onDemandRecordCode = null;
 
     /**
+     * @var string
+     * comment: enum:disabled|user|other
+     */
+    protected $onDemandRecordEmail = 'disabled';
+
+    /**
+     * @var ?string
+     */
+    protected $onDemandRecordEmailAddress = null;
+
+    /**
      * @var ?string
      * column: externallyExtraOpts
      */
@@ -202,6 +213,11 @@ abstract class CompanyAbstract
     /**
      * @var ?NotificationTemplateInterface
      */
+    protected $onDemandRecordNotificationTemplate = null;
+
+    /**
+     * @var ?NotificationTemplateInterface
+     */
     protected $faxNotificationTemplate = null;
 
     /**
@@ -254,6 +270,7 @@ abstract class CompanyAbstract
         int $maxCalls,
         int $maxDailyUsage,
         bool $allowRecordingRemoval,
+        string $onDemandRecordEmail,
         string $billingMethod,
         Invoicing $invoicing
     ) {
@@ -263,6 +280,7 @@ abstract class CompanyAbstract
         $this->setMaxCalls($maxCalls);
         $this->setMaxDailyUsage($maxDailyUsage);
         $this->setAllowRecordingRemoval($allowRecordingRemoval);
+        $this->setOnDemandRecordEmail($onDemandRecordEmail);
         $this->setBillingMethod($billingMethod);
         $this->invoicing = $invoicing;
     }
@@ -352,6 +370,8 @@ abstract class CompanyAbstract
         Assertion::notNull($maxDailyUsage, 'getMaxDailyUsage value is null, but non null value was expected.');
         $allowRecordingRemoval = $dto->getAllowRecordingRemoval();
         Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
+        $onDemandRecordEmail = $dto->getOnDemandRecordEmail();
+        Assertion::notNull($onDemandRecordEmail, 'getOnDemandRecordEmail value is null, but non null value was expected.');
         $billingMethod = $dto->getBillingMethod();
         Assertion::notNull($billingMethod, 'getBillingMethod value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -379,6 +399,7 @@ abstract class CompanyAbstract
             $maxCalls,
             $maxDailyUsage,
             $allowRecordingRemoval,
+            $onDemandRecordEmail,
             $billingMethod,
             $invoicing
         );
@@ -390,6 +411,7 @@ abstract class CompanyAbstract
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
             ->setOnDemandRecordCode($dto->getOnDemandRecordCode())
+            ->setOnDemandRecordEmailAddress($dto->getOnDemandRecordEmailAddress())
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
@@ -405,6 +427,7 @@ abstract class CompanyAbstract
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setOnDemandRecordNotificationTemplate($fkTransformer->transform($dto->getOnDemandRecordNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
@@ -454,6 +477,8 @@ abstract class CompanyAbstract
         Assertion::notNull($maxDailyUsage, 'getMaxDailyUsage value is null, but non null value was expected.');
         $allowRecordingRemoval = $dto->getAllowRecordingRemoval();
         Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
+        $onDemandRecordEmail = $dto->getOnDemandRecordEmail();
+        Assertion::notNull($onDemandRecordEmail, 'getOnDemandRecordEmail value is null, but non null value was expected.');
         $billingMethod = $dto->getBillingMethod();
         Assertion::notNull($billingMethod, 'getBillingMethod value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -487,6 +512,8 @@ abstract class CompanyAbstract
             ->setOnDemandRecord($dto->getOnDemandRecord())
             ->setAllowRecordingRemoval($allowRecordingRemoval)
             ->setOnDemandRecordCode($dto->getOnDemandRecordCode())
+            ->setOnDemandRecordEmail($onDemandRecordEmail)
+            ->setOnDemandRecordEmailAddress($dto->getOnDemandRecordEmailAddress())
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
@@ -504,6 +531,7 @@ abstract class CompanyAbstract
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setOnDemandRecordNotificationTemplate($fkTransformer->transform($dto->getOnDemandRecordNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
@@ -535,6 +563,8 @@ abstract class CompanyAbstract
             ->setOnDemandRecord(self::getOnDemandRecord())
             ->setAllowRecordingRemoval(self::getAllowRecordingRemoval())
             ->setOnDemandRecordCode(self::getOnDemandRecordCode())
+            ->setOnDemandRecordEmail(self::getOnDemandRecordEmail())
+            ->setOnDemandRecordEmailAddress(self::getOnDemandRecordEmailAddress())
             ->setExternallyextraopts(self::getExternallyextraopts())
             ->setRecordingsLimitMB(self::getRecordingsLimitMB())
             ->setRecordingsLimitEmail(self::getRecordingsLimitEmail())
@@ -557,6 +587,7 @@ abstract class CompanyAbstract
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
             ->setOutgoingDdiRule(OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
             ->setVoicemailNotificationTemplate(NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
+            ->setOnDemandRecordNotificationTemplate(NotificationTemplate::entityToDto(self::getOnDemandRecordNotificationTemplate(), $depth))
             ->setFaxNotificationTemplate(NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
             ->setInvoiceNotificationTemplate(NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
             ->setCallCsvNotificationTemplate(NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth))
@@ -586,6 +617,8 @@ abstract class CompanyAbstract
             'onDemandRecord' => self::getOnDemandRecord(),
             'allowRecordingRemoval' => self::getAllowRecordingRemoval(),
             'onDemandRecordCode' => self::getOnDemandRecordCode(),
+            'onDemandRecordEmail' => self::getOnDemandRecordEmail(),
+            'onDemandRecordEmailAddress' => self::getOnDemandRecordEmailAddress(),
             'externallyExtraOpts' => self::getExternallyextraopts(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
@@ -608,6 +641,7 @@ abstract class CompanyAbstract
             'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
             'outgoingDdiRuleId' => self::getOutgoingDdiRule()?->getId(),
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate()?->getId(),
+            'onDemandRecordNotificationTemplateId' => self::getOnDemandRecordNotificationTemplate()?->getId(),
             'faxNotificationTemplateId' => self::getFaxNotificationTemplate()?->getId(),
             'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate()?->getId(),
             'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
@@ -807,6 +841,45 @@ abstract class CompanyAbstract
     public function getOnDemandRecordCode(): ?string
     {
         return $this->onDemandRecordCode;
+    }
+
+    protected function setOnDemandRecordEmail(string $onDemandRecordEmail): static
+    {
+        Assertion::maxLength($onDemandRecordEmail, 25, 'onDemandRecordEmail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $onDemandRecordEmail,
+            [
+                CompanyInterface::ONDEMANDRECORDEMAIL_DISABLED,
+                CompanyInterface::ONDEMANDRECORDEMAIL_USER,
+                CompanyInterface::ONDEMANDRECORDEMAIL_OTHER,
+            ],
+            'onDemandRecordEmailvalue "%s" is not an element of the valid values: %s'
+        );
+
+        $this->onDemandRecordEmail = $onDemandRecordEmail;
+
+        return $this;
+    }
+
+    public function getOnDemandRecordEmail(): string
+    {
+        return $this->onDemandRecordEmail;
+    }
+
+    protected function setOnDemandRecordEmailAddress(?string $onDemandRecordEmailAddress = null): static
+    {
+        if (!is_null($onDemandRecordEmailAddress)) {
+            Assertion::maxLength($onDemandRecordEmailAddress, 100, 'onDemandRecordEmailAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->onDemandRecordEmailAddress = $onDemandRecordEmailAddress;
+
+        return $this;
+    }
+
+    public function getOnDemandRecordEmailAddress(): ?string
+    {
+        return $this->onDemandRecordEmailAddress;
     }
 
     protected function setExternallyextraopts(?string $externallyextraopts = null): static
@@ -1039,6 +1112,18 @@ abstract class CompanyAbstract
     public function getVoicemailNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->voicemailNotificationTemplate;
+    }
+
+    protected function setOnDemandRecordNotificationTemplate(?NotificationTemplateInterface $onDemandRecordNotificationTemplate = null): static
+    {
+        $this->onDemandRecordNotificationTemplate = $onDemandRecordNotificationTemplate;
+
+        return $this;
+    }
+
+    public function getOnDemandRecordNotificationTemplate(): ?NotificationTemplateInterface
+    {
+        return $this->onDemandRecordNotificationTemplate;
     }
 
     protected function setFaxNotificationTemplate(?NotificationTemplateInterface $faxNotificationTemplate = null): static

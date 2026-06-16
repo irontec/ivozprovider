@@ -103,6 +103,7 @@ Feature: Retrieve voicemails
               "rejectCallMethod": "rfc",
               "multiContact": true,
               "gsQRCode": false,
+              "useDefaultLocation": true,
               "id": 1,
               "callAcl": null,
               "bossAssistant": null,
@@ -150,6 +151,7 @@ Feature: Retrieve voicemails
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               }
-          }
+          },
+          "relUserIds": []
       }
       """

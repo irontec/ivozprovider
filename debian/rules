@@ -38,6 +38,10 @@ build_microservices: build_library
 	cd microservices/provision; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 	cd microservices/realtime; go mod download && go mod verify
 	cd microservices/realtime; go build -v -o server irontec.com/realtime/cmd/server
+	cd microservices/webhooks; go mod download && go mod verify
+	cd microservices/webhooks; go build -v -o dispatcher irontec.com/webhooks/cmd/dispatcher
+	cd microservices/click2call; go mod download && go mod verify
+	cd microservices/click2call; go build -v -o originate irontec.com/click2call/cmd/originate
 	cd microservices/router; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
 build_schema: build_library
@@ -60,6 +64,8 @@ override_dh_systemd_enable:
 	dh_systemd_enable -p ivozprovider-balances        --name=ivozprovider-balances                  --no-enable
 	dh_systemd_enable -p ivozprovider-balances        --name=ivozprovider-counters                  --no-enable
 	dh_systemd_enable -p ivozprovider-realtime        --name=ivozprovider-realtime                  --no-enable
+	dh_systemd_enable -p ivozprovider-webhooks        --name=ivozprovider-webhooks                  --no-enable
+	dh_systemd_enable -p ivozprovider-click2call      --name=ivozprovider-click2call                --no-enable
 	dh_systemd_enable -p ivozprovider-scheduler       --name=ivozprovider-scheduler                 --no-enable
 	dh_systemd_enable -p ivozprovider-scheduler       --name=ivozprovider-cdrs                      --no-enable
 	dh_systemd_enable -p ivozprovider-scheduler       --name=ivozprovider-scheduler-historic-calls  --no-enable
@@ -74,6 +80,8 @@ override_dh_systemd_start:
 	dh_systemd_start  -p ivozprovider-balances         --name=ivozprovider-balances                  --no-restart-after-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-balances         --name=ivozprovider-counters                  --no-restart-after-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-realtime         --name=ivozprovider-realtime                  --no-restart-after-upgrade --no-start
+	dh_systemd_start  -p ivozprovider-webhooks         --name=ivozprovider-webhooks                  --no-restart-after-upgrade --no-start
+	dh_systemd_start  -p ivozprovider-click2call       --name=ivozprovider-click2call                --no-restart-after-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-scheduler        --name=ivozprovider-scheduler                 --no-restart-after-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-scheduler        --name=ivozprovider-cdrs                      --no-restart-after-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-scheduler        --name=ivozprovider-scheduler-historic-calls  --no-restart-after-upgrade --no-start

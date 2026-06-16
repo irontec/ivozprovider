@@ -1,4 +1,6 @@
 {
+  "ACCEPT": "Acceptar",
+  "About": "Sobre",
   "Active call_many": "Trucades actives",
   "Active call_one": "Trucada activa",
   "Active call_other": "Trucades actives",
@@ -69,6 +71,8 @@
   "Is Boss": "Es Cap",
   "Last Calls": "Últimes trucades",
   "Last Name": "Cognom",
+  "Last update": "Última actualització",
+  "Logout": "Tancar sessió",
   "Main": "Principal",
   "Max Calls": "Trucades màximes",
   "Missed": "Perduda",
@@ -127,6 +131,7 @@
   "User information": "Informació dels usuaris",
   "User not registered": "Usuari no registrat",
   "Users": "Usuaris",
+  "Version": "Versió",
   "Voicemail Message_many": "Missatges de bústia de veu",
   "Voicemail Message_one": "Missatge de bústia de veu",
   "Voicemail Message_other": "Missatges de bústia de veu",

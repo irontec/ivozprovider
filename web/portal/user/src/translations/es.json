@@ -1,4 +1,6 @@
 {
+  "ACCEPT": "Aceptar",
+  "About": "Acerca de",
   "Active call_many": "Llamadas activas",
   "Active call_one": "Llamada activa",
   "Active call_other": "Llamada activa",
@@ -69,6 +71,8 @@
   "Is Boss": "Es Jefe",
   "Last Calls": "Últimas Llamadas",
   "Last Name": "Apellido",
+  "Last update": "Última actualización",
+  "Logout": "Cerrar sesión",
   "Main": "Principal",
   "Max Calls": "Límite llamadas",
   "Missed": "Perdida",
@@ -127,6 +131,7 @@
   "User information": "Información de Usuario",
   "User not registered": "Usuario no registrado",
   "Users": "Usuarios",
+  "Version": "Versión",
   "Voicemail Message_many": "Mensajes de Buzón de voz",
   "Voicemail Message_one": "Mensaje de Buzón de voz",
   "Voicemail Message_other": "Mensajes de Buzón de voz",

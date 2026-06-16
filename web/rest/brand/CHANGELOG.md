@@ -1,5 +1,51 @@
 # Changelog
 
+## 4.7.0
+* Endpoints:
+    - /webhooks:
+      - Added [GET] endpoint to list webhook resources.
+      - Added [POST] endpoint to create webhook resources.
+    - /webhooks/{id}:
+      - Added [GET], [PUT] and [DELETE] endpoints to retrieve, update and
+        delete a webhook resource.
+    - /companies:
+      - Added onDemandRecordNotificationTemplate,
+        onDemandRecordNotificationTemplate[] and
+        onDemandRecordNotificationTemplate[exists] filter parameters.
+    - /companies/balances and /companies/dailyUsage:
+      - Added onDemandRecordEmail, onDemandRecordEmail[exact],
+        onDemandRecordEmail[start], onDemandRecordEmail[partial],
+        onDemandRecordEmail[end], onDemandRecordEmail[neq],
+        onDemandRecordEmailAddress, onDemandRecordEmailAddress[exact],
+        onDemandRecordEmailAddress[start], onDemandRecordEmailAddress[partial],
+        onDemandRecordEmailAddress[end], onDemandRecordEmailAddress[neq],
+        onDemandRecordEmailAddress[exists], onDemandRecordNotificationTemplate,
+        onDemandRecordNotificationTemplate.name,
+        onDemandRecordNotificationTemplate.type,
+        onDemandRecordNotificationTemplate[exists],
+        exists[onDemandRecordEmailAddress],
+        exists[onDemandRecordNotificationTemplate], _order[onDemandRecordEmail]
+        and _order[onDemandRecordEmailAddress] filter parameters.
+    - /friends/status, /residential_devices/status, /retail_accounts/status and
+      /terminals/status:
+      - Added company.onDemandRecordEmail, company.onDemandRecordEmailAddress
+        and company.onDemandRecordNotificationTemplate filter parameters.
+    - /match_list_patterns:
+      - Added matchPattern, matchPattern[exact], matchPattern[start],
+        matchPattern[partial], matchPattern[end], matchPattern[neq],
+        matchPattern[exists], exists[matchPattern] and _order[matchPattern]
+        filter parameters.
+* Models:
+    - Webhook:
+      - Added model with name, description, uri, template, callDirection,
+        eventStart, eventRing, eventAnswer, eventEnd, eventUpdateClid, company,
+        ddi and user properties.
+    - Company:
+      - Added onDemandRecordEmail, onDemandRecordEmailAddress and
+        onDemandRecordNotificationTemplate properties.
+    - MatchListPattern:
+      - Added matchPattern property.
+
 ## 4.6.0
 * Endpoints:
     - /ddis/unlink:

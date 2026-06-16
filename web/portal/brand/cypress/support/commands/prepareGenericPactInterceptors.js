@@ -6,6 +6,7 @@ import DashboardItem from '../../fixtures/My/Dashboard/getDashboard.json';
 import ProfileItem from '../../fixtures/My/Profile/getProfile.json';
 import ThemeItem from '../../fixtures/My/Theme/getTheme.json';
 import AdministratorCollection from '../../fixtures/Provider/Administrator/getCollection.json';
+import AdministratorRelPublicEntitiesCollection from '../../fixtures/Provider/AdministratorRelPublicEntities/getCollection.json';
 import ApplicationServerSetsCollection from '../../fixtures/Provider/ApplicationServerSets/getCollection.json';
 import BannedAddressesCollection from '../../fixtures/Provider/BannedAddress/getCollection.json';
 import BillableCallsCollection from '../../fixtures/Provider/BillableCalls/getCollection.json';
@@ -65,6 +66,7 @@ import TimezonesCollection from '../../fixtures/Provider/Timezones/getCollection
 import TransformationRuleCollection from '../../fixtures/Provider/TransformationRule/getCollection.json';
 import TransformationRuleSetsCollection from '../../fixtures/Provider/TransformationRuleSets/getCollection.json';
 import UserCollection from '../../fixtures/Provider/Users/getCollection.json';
+import WebhookCollection from '../../fixtures/Provider/Webhook/getCollection.json';
 import WebPortalCollection from '../../fixtures/Provider/WebPortals/getCollection.json';
 
 Cypress.Commands.add(
@@ -217,6 +219,10 @@ Cypress.Commands.add(
       ...ActiveCallsItem,
     }).as('getMyActiveCalls');
 
+    cy.intercept('GET', '**/api/brand/webhooks?*', {
+      ...WebhookCollection,
+    }).as('getWebhooks');
+
     cy.intercept('GET', '**/api/brand/web_portals?*', {
       ...WebPortalCollection,
     }).as('getWebPortals');
@@ -228,6 +234,10 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/brand/application_server_sets?*', {
       ...ApplicationServerSetsCollection,
     }).as('getApplicationServerSets');
+
+    cy.intercept('GET', '**/api/brand/administrator_rel_public_entities?*', {
+      ...AdministratorRelPublicEntitiesCollection,
+    }).as('getAdministratorRelPublicEntities');
 
     cy.intercept('GET', '**/api/brand/media_relay_sets?*', {
       ...MediaRelaySetsColection,

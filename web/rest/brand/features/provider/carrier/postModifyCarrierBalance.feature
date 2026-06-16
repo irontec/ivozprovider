@@ -35,7 +35,8 @@ Feature: Modify carrier balances
                   "en": "Brand 1 transformation for Spain",
                   "es": "Marca 1 tansformacion para España",
                   "ca": "Marca 1 tansformacion para España",
-                  "it": "Brand 1 transformation for Spain"
+                  "it": "Brand 1 transformation for Spain",
+                  "eu": "Brand 1 transformation for Spain"
               },
               "country": 68,
               "editable": true
@@ -44,7 +45,12 @@ Feature: Modify carrier balances
           "proxyTrunk": {
               "name": "ExtraIP",
               "ip": "127.0.0.3",
-              "id": 2
+              "id": 2,
+              "advertisedIp": "138.0.0.3"
+          },
+          "mediaRelaySet": {
+              "id": 0,
+              "*": "~"
           }
       }
       """
@@ -80,7 +86,8 @@ Feature: Modify carrier balances
                   "en": "Brand 1 transformation for Spain",
                   "es": "Marca 1 tansformacion para España",
                   "ca": "Marca 1 tansformacion para España",
-                  "it": "Brand 1 transformation for Spain"
+                  "it": "Brand 1 transformation for Spain",
+                  "eu": "Brand 1 transformation for Spain"
               },
               "country": 68,
               "editable": true
@@ -89,7 +96,12 @@ Feature: Modify carrier balances
           "proxyTrunk": {
               "name": "proxytrunks",
               "ip": "127.0.0.1",
-              "id": 1
+              "id": 1,
+              "advertisedIp": "138.0.0.1"
+          },
+          "mediaRelaySet": {
+              "id": 0,
+              "*": "~"
           }
       }
       """

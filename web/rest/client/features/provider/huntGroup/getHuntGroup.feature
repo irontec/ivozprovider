@@ -44,6 +44,7 @@ Feature: Retrieve hunt groups
           "noAnswerLocution": null,
           "noAnswerExtension": null,
           "noAnswerVoicemail": null,
-          "noAnswerNumberCountry": null
+          "noAnswerNumberCountry": null,
+          "allowCallForwards": 0
       }
       """

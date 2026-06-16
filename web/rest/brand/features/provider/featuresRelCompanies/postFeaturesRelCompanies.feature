@@ -22,7 +22,7 @@ Feature: Create features rel companies
       And the JSON should be equal to:
       """
       {
-          "id": 6,
+          "id": 7,
           "company": {
               "type": "vpbx",
               "name": "DemoCompany",
@@ -35,6 +35,8 @@ Feature: Create features rel companies
               "onDemandRecord": 0,
               "allowRecordingRemoval": true,
               "onDemandRecordCode": "",
+              "onDemandRecordEmail": "disabled",
+              "onDemandRecordEmailAddress": null,
               "externallyextraopts": "",
               "billingMethod": "prepaid",
               "balance": 1.2,
@@ -56,6 +58,7 @@ Feature: Create features rel companies
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailNotificationTemplate": 1,
+              "onDemandRecordNotificationTemplate": null,
               "faxNotificationTemplate": null,
               "invoiceNotificationTemplate": null,
               "callCsvNotificationTemplate": null,
@@ -93,7 +96,7 @@ Feature: Create features rel companies
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
       """
-       {
+      {
           "id": 6,
           "company": {
               "type": "vpbx",
@@ -105,6 +108,8 @@ Feature: Create features rel companies
               "maxDailyUsageEmail": "no-replay@domain.net",
               "ipfilter": false,
               "onDemandRecord": 0,
+              "onDemandRecordEmail": "disabled",
+              "onDemandRecordEmailAddress": null,
               "allowRecordingRemoval": true,
               "onDemandRecordCode": "",
               "externallyextraopts": "",
@@ -128,6 +133,7 @@ Feature: Create features rel companies
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailNotificationTemplate": 1,
+              "onDemandRecordNotificationTemplate": null,
               "faxNotificationTemplate": null,
               "invoiceNotificationTemplate": null,
               "callCsvNotificationTemplate": null,
@@ -136,11 +142,15 @@ Feature: Create features rel companies
               "corporation": 1,
               "applicationServerSet": 1,
               "mediaRelaySet": 0,
-              "location": 1
+              "location": 1,
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           "feature": {
-              "iden": "progress",
-              "id": 8,
+              "iden": "webhooks",
+              "id": 10,
               "name": {
                   "en": "en",
                   "es": "es",

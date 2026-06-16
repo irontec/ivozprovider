@@ -69,6 +69,7 @@ Feature: Create terminals
               "name": "Generic SIP Model",
               "description": "Generic SIP Model",
               "id": 1
-          }
+          },
+          "status": []
       }
       """

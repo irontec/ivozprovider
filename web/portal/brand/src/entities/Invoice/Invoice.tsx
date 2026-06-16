@@ -160,6 +160,7 @@ const Invoice: EntityInterface = {
   },
   marshaller,
   unmarshaller,
+  dynamicSelectOptions: true,
 };
 
 export default Invoice;

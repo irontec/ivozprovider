@@ -27,6 +27,7 @@ use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Ivoz\Provider\Domain\Model\Webhook\WebhookInterface;
 
 /**
 * UserInterface
@@ -325,6 +326,20 @@ interface UserInterface extends LoggableEntityInterface
      * @return array<array-key, RecordingInterface>
      */
     public function getRecordings(?Criteria $criteria = null): array;
+
+    public function addWebhook(WebhookInterface $webhook): UserInterface;
+
+    public function removeWebhook(WebhookInterface $webhook): UserInterface;
+
+    /**
+     * @param Collection<array-key, WebhookInterface> $webhooks
+     */
+    public function replaceWebhooks(Collection $webhooks): UserInterface;
+
+    /**
+     * @return array<array-key, WebhookInterface>
+     */
+    public function getWebhooks(?Criteria $criteria = null): array;
 
     /**
      * @see UserInterface::getRoles()

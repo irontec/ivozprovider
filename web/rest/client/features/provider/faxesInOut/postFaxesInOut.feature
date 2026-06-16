@@ -45,7 +45,8 @@ This is file content
               "baseName": "uploadable"
           },
           "fax": 1,
-          "dstCountry": 1
+          "dstCountry": 1,
+          "calldate": "match:regexp(/\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}/)"
       }
     """
 
@@ -77,7 +78,8 @@ This is file content
               "id": 1,
               "outgoingDdi": null
           },
-          "dstCountry": "~"
+          "dstCountry": "~",
+          "calldate": "match:regexp(/\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}/)"
       }
     """
 

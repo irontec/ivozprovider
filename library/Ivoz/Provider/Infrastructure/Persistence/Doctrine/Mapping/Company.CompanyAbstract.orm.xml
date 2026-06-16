@@ -72,6 +72,18 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="onDemandRecordEmail" type="string" column="onDemandRecordEmail" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:disabled|user|other]</option>
+        <option name="default">disabled</option>
+      </options>
+    </field>
+    <field name="onDemandRecordEmailAddress" type="string" column="onDemandRecordEmailAddress" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="externallyextraopts" type="text" column="externallyExtraOpts" length="65535" nullable="true">
       <options>
         <option name="fixed"/>
@@ -152,6 +164,11 @@
     <many-to-one field="voicemailNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
         <join-column name="vmNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="onDemandRecordNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="onDemandRecordNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="faxNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">

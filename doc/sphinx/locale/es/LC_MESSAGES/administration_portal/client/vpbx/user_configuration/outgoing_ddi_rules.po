@@ -158,5 +158,5 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:65
 msgid "Prefix **must** have this format: from 1 to 3 digits ended by * symbol."
-msgstr "El prefijo **debe** tener este formato: de 1 a 3 dígitos terminados con el símbolo \*."
+msgstr "El prefijo **debe** tener este formato: de 1 a 3 dígitos terminados con el símbolo *."
 

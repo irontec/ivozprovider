@@ -4,6 +4,7 @@
     "type": "number",
     "regexp": null,
     "numbervalue": "946002055",
+    "matchPattern": "+34 946002055",
     "id": 2,
     "matchList": {
       "name": "testBrandMatchlist",

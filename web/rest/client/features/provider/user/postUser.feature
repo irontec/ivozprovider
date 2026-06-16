@@ -98,7 +98,18 @@ Feature: Create users
           "voicemail": null,
           "pickupGroupIds": [
               1
-          ]
+          ],
+          "rejectCallMethod": "rfc",
+          "multiContact": true,
+          "useDefaultLocation": true,
+          "location": {
+              "name": "testLocation",
+              "description": "Test Location description",
+              "id": 1,
+              "survivalDevice": 1,
+              "userIds": []
+          },
+          "contact": null
       }
       """
 
@@ -159,7 +170,8 @@ Feature: Create users
               "lastProvisionDate": null,
               "t38Passthrough": "no",
               "id": 3,
-              "terminalModel": 1
+              "terminalModel": 1,
+              "rtpEncryption": false
           },
           "extension": null,
           "timezone": {
@@ -168,7 +180,10 @@ Feature: Create users
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it",
+                  "eu": "eu"
               },
               "country": 68
           },
@@ -176,7 +191,15 @@ Feature: Create users
           "outgoingDdiRule": null,
           "voicemail": null,
           "pickupGroupIds": [
-            1
-          ]
+              1
+          ],
+          "rejectCallMethod": "rfc",
+          "multiContact": true,
+          "useDefaultLocation": true,
+          "location": {
+              "id": 1,
+              "*": "~"
+          },
+          "contact": null
       }
       """

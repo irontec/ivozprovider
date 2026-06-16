@@ -24,8 +24,19 @@ Feature: Update fixed costs rel invoice schedulers
       {
           "quantity": 2,
           "id": 1,
-          "fixedCost": "~",
-          "invoiceScheduler": "~"
+          "type": "static",
+          "ddisCountryMatch": null,
+          "ddisCountry": null,
+          "invoiceScheduler": {
+              "name": "SchedulerName",
+              "id": 1,
+              "*": "~"
+          },
+          "fixedCost": {
+              "name": "Monitoring",
+              "id": 1,
+              "*": "~"
+          }
       }
       """
 

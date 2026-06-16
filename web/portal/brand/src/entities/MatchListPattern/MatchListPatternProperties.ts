@@ -12,7 +12,7 @@ export type MatchListPatternPropertyList<T> = {
   id?: T;
   matchList?: T;
   numberCountry?: T;
-  matchValue?: T;
+  matchPattern?: T;
 };
 
 export type MatchListPatternProperties = MatchListPatternPropertyList<

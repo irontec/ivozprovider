@@ -18,6 +18,7 @@ use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\FaxesRelUser\FaxesRelUserInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Ivoz\Provider\Domain\Model\Webhook\WebhookInterface;
 
 /**
 * @codeCoverageIgnore
@@ -79,6 +80,12 @@ trait UserTrait
     protected $recordings;
 
     /**
+     * @var Collection<array-key, WebhookInterface> & Selectable<array-key, WebhookInterface>
+     * WebhookInterface mappedBy user
+     */
+    protected $webhooks;
+
+    /**
      * Constructor
      */
     protected function __construct()
@@ -90,6 +97,7 @@ trait UserTrait
         $this->callForwardSettings = new ArrayCollection();
         $this->faxesRelUsers = new ArrayCollection();
         $this->recordings = new ArrayCollection();
+        $this->webhooks = new ArrayCollection();
     }
 
     abstract protected function sanitizeValues(): void;
@@ -179,6 +187,16 @@ trait UserTrait
                 $recordings
             );
             $self->replaceRecordings($replacement);
+        }
+
+        $webhooks = $dto->getWebhooks();
+        if (!is_null($webhooks)) {
+
+            /** @var Collection<array-key, WebhookInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $webhooks
+            );
+            $self->replaceWebhooks($replacement);
         }
 
         $self->sanitizeValues();
@@ -273,6 +291,16 @@ trait UserTrait
                 $recordings
             );
             $this->replaceRecordings($replacement);
+        }
+
+        $webhooks = $dto->getWebhooks();
+        if (!is_null($webhooks)) {
+
+            /** @var Collection<array-key, WebhookInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $webhooks
+            );
+            $this->replaceWebhooks($replacement);
         }
         $this->sanitizeValues();
 
@@ -835,5 +863,89 @@ trait UserTrait
         }
 
         return $recordings->toArray();
+    }
+
+    public function addWebhook(WebhookInterface $webhook): UserInterface
+    {
+        $this->webhooks->add($webhook);
+
+        return $this;
+    }
+
+    public function removeWebhook(WebhookInterface $webhook): UserInterface
+    {
+        $this->webhooks->removeElement($webhook);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, WebhookInterface> $webhooks
+     */
+    public function replaceWebhooks(Collection $webhooks): UserInterface
+    {
+        foreach ($webhooks as $entity) {
+            $entity->setUser($this);
+        }
+
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
+        foreach ($this->webhooks as $key => $entity) {
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($webhooks as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($webhooks[$newKey]);
+                    $match = true;
+                    break;
+                }
+            }
+
+            if (!$match) {
+                $this->webhooks->remove($key);
+            }
+        }
+
+        foreach ($webhooks as $entity) {
+            $this->addWebhook($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array<array-key, WebhookInterface>
+     */
+    public function getWebhooks(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->webhooks->matching($criteria)->toArray();
+        }
+
+        return $this->webhooks->toArray();
     }
 }

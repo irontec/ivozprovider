@@ -134,12 +134,6 @@ const SimulateCall: ActionFunctionComponent = (
     });
   };
 
-  const boxStyles = {
-    display: 'flex',
-    alignItems: 'center',
-    alignContent: 'center',
-  };
-
   const customButtons = [
     {
       label: cost ? _('Close') : _('Cancel'),

@@ -73,6 +73,8 @@ Feature: Retrieve web portals
               "mimeType": "image/jpeg",
               "baseName": "logo.jpeg"
           },
-          "brand": null
+          "brand": null,
+          "productName": "Platform text",
+          "company": null
       }
       """

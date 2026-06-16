@@ -82,7 +82,8 @@ Feature: Create invoice
               "template": "Template",
               "templateHeader": "Template header",
               "templateFooter": "Template footer",
-              "id": 1
+              "id": 1,
+              "global": false
           },
           "company": "~",
           "numberSequence": null,

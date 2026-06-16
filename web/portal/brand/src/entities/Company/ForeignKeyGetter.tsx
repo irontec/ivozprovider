@@ -13,6 +13,7 @@ import {
   FaxSelectOptions,
   InvoiceSelectOptions,
   MaxDailyUsageSelectOptions,
+  OnDemandRecordSelectOptions,
   VoicemailSelectOptions,
 } from '../NotificationTemplate/SelectOptions';
 import Residential from '../Residential/Residential';
@@ -40,6 +41,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
       'callCsvNotificationTemplate',
       'maxDailyUsageNotificationTemplate',
       'accessCredentialNotificationTemplate',
+      'onDemandRecordNotificationTemplate',
       'corporation',
       'featureIds',
     ],
@@ -162,6 +164,15 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
     },
     cancelToken,
   });
+
+  if (isVpbx) {
+    promises[promises.length] = OnDemandRecordSelectOptions({
+      callback: (options) => {
+        response.onDemandRecordNotificationTemplate = options;
+      },
+      cancelToken,
+    });
+  }
 
   await Promise.all(promises);
 

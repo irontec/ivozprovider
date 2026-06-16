@@ -82,10 +82,20 @@ Feature: Create residential devices
           "ddiIn": "yes",
           "maxCalls": 1,
           "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
+          "ruriDomain": null,
           "id": 7,
           "company": "~",
           "transformationRuleSet": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "status": [],
+          "proxyUser": {
+              "name": "proxyusers",
+              "ip": "127.0.0.1",
+              "advertisedIp": "138.0.0.1",
+              "id": 1
+          }
       }
       """

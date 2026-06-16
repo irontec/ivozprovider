@@ -33,6 +33,8 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
 
     public const TYPE_ACCESSCREDENTIALS = 'accessCredentials';
 
+    public const TYPE_ONDEMANDRECORD = 'onDemandRecord';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>

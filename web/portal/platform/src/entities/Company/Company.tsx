@@ -26,6 +26,7 @@ const Company: EntityInterface = {
 
     return module.default;
   },
+  dynamicSelectOptions: true,
 };
 
 export default Company;

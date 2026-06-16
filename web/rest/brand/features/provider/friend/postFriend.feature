@@ -68,8 +68,16 @@ Feature: Create friends
           "priority": 3,
           "directConnectivity": "yes",
           "id": 4,
-          "company": "~",
-          "interCompany": null
+          "interCompany": null,
+          "ruriDomain": null,
+          "proxyUser": {
+              "id": 1,
+              "*": "~"
+          },
+          "company": {
+              "type": "vpbx",
+              "*": "~"
+          }
       }
       """
 

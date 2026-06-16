@@ -20,4 +20,16 @@ describe('in Brute force attacks', () => {
   it('delete disabled', () => {
     cy.get('[data-testid="DeleteIcon"]').should('not.be.enabled');
   });
+
+  it('unban successfully', () => {
+    cy.intercept('DELETE', '**/api/brand/banned_addresses/antibruteforce/*', {
+      statusCode: 204,
+    }).as('deleteBan');
+
+    cy.get('[data-testid="EmojiFlagsIcon"]').first().click();
+    cy.get('button').contains('Accept').click();
+    cy.wait('@deleteBan');
+
+    cy.get('header').should('contain', 'Brute-force attacks');
+  });
 });

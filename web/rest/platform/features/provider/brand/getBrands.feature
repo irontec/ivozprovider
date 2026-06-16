@@ -34,7 +34,8 @@ Feature: Manage brands
                   4,
                   5,
                   6,
-                  7
+                  7,
+                  10
               ],
               "proxyTrunks": [
                   1
@@ -160,6 +161,12 @@ Feature: Manage brands
               }
           },
           "voicemailNotificationTemplate": null,
+          "onDemandRecordNotificationTemplate": {
+              "name": "Brand On Demand Recording Notification Template",
+              "type": "onDemandRecord",
+              "id": 7,
+              "brand": 1
+          },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
@@ -171,7 +178,8 @@ Feature: Manage brands
               4,
               5,
               6,
-              7
+              7,
+              10
           ],
           "proxyTrunks": [
               1

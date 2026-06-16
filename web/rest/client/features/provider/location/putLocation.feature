@@ -22,7 +22,13 @@ Feature: Update locations
       {
           "name": "updatesLocation",
           "description": "Test Location description",
-          "id": 1
+          "id": 1,
+          "survivalDevice": 1,
+          "userIds": [
+              1,
+              2,
+              3
+          ]
       }
       """
 
@@ -67,9 +73,12 @@ Feature: Update locations
       And the JSON should be like:
       """
       {
-        "useDefaultLocation": false,
-        "location": {
-           "id": 2
-        }
+          "useDefaultLocation": false,
+          "id": 1,
+          "location": {
+              "id": 2,
+              "*": "~"
+          },
+          "*": "~"
       }
       """

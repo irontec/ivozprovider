@@ -87,6 +87,16 @@ class ProviderFeaturesRelBrand extends Fixture implements DependentFixtureInterf
         $this->sanitizeEntityValues($item7);
         $manager->persist($item7);
 
+        $item8 = $this->createEntityInstance(FeaturesRelBrand::class);
+        (function () use ($fixture) {
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setFeature($fixture->getReference('_reference_ProviderFeature10'));
+        })->call($item8);
+
+        $this->addReference('_reference_ProviderFeaturesRelBrandFeaturesRelBrand8', $item8);
+        $this->sanitizeEntityValues($item8);
+        $manager->persist($item8);
+
         $manager->flush();
     }
 

@@ -83,13 +83,15 @@ Feature: Create outgoing routings
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               },
               "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
-                  "it": "it"
+                  "it": "it",
+                  "eu": "eu"
               }
           },
           "routingPatternGroup": null,
@@ -97,6 +99,7 @@ Feature: Create outgoing routings
           "clidCountry": null,
           "carrierIds": [
               1
-          ]
+          ],
+          "disableDiversion": false
       }
       """

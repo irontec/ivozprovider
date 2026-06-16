@@ -4,7 +4,6 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
-import MatchValue from './Field/MatchValue';
 import {
   MatchListPatternProperties,
   MatchListPatternPropertyList,
@@ -49,9 +48,8 @@ const properties: MatchListPatternProperties = {
   numberCountry: {
     label: _('Country', { count: 1 }),
   },
-  matchValue: {
+  matchPattern: {
     label: _('Match value'),
-    component: MatchValue,
   },
 };
 
@@ -63,7 +61,7 @@ const MatchListPattern: EntityInterface = {
   path: '/match_list_patterns',
   toStr: (row: MatchListPatternPropertyList<EntityValues>) => `${row.id}`,
   properties,
-  columns: ['type', 'matchValue', 'description'],
+  columns: ['type', 'matchPattern', 'description'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'MatchListPatterns',

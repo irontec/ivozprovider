@@ -24,6 +24,7 @@ const properties: NotificationTemplateProperties = {
       callCsv: _('Call CSV'),
       maxDailyUsage: _('Max Daily Usage'),
       accessCredentials: _('Access Credentials'),
+      onDemandRecord: _('On-demand recording'),
     },
   },
   id: {

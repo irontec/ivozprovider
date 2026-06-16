@@ -15,12 +15,14 @@ kamtrunks
 kamusers
 microservices
 microservices/balances
+microservices/click2call
 microservices/provision
 microservices/realtime
 microservices/recordings
 microservices/router
 microservices/scheduler
 microservices/workers
+microservices/webhooks
 pkg
 portal
 portal/brand

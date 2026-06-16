@@ -1,0 +1,72 @@
+{
+  "body": [
+    {
+      "name": "Brand Level Webhook",
+      "description": null,
+      "uri": "https://webhook.brand.com/events",
+      "eventStart": true,
+      "eventRing": false,
+      "eventAnswer": false,
+      "eventEnd": true,
+      "template": "{\"event\": \"{event}\", \"brand\": \"{brandId}\"}",
+      "callDirection": "both",
+      "id": 4
+    },
+    {
+      "name": "Answer Webhook Company 1",
+      "description": null,
+      "uri": "https://webhook.company1.com/answer",
+      "eventStart": false,
+      "eventRing": false,
+      "eventAnswer": true,
+      "eventEnd": false,
+      "template": "{\"event\": \"answer\", \"callId\": \"{callId}\"}",
+      "callDirection": "both",
+      "id": 2
+    },
+    {
+      "name": "DDI Specific Webhook",
+      "description": null,
+      "uri": "https://webhook.ddi.com/123456",
+      "eventStart": false,
+      "eventRing": true,
+      "eventAnswer": false,
+      "eventEnd": false,
+      "template": "{\"event\": \"ring\", \"ddi\": \"{ddiId}\"}",
+      "callDirection": "both",
+      "id": 5
+    },
+    {
+      "name": "Start Webhook Company 1",
+      "description": null,
+      "uri": "https://webhook.company1.com/start",
+      "eventStart": true,
+      "eventRing": false,
+      "eventAnswer": false,
+      "eventEnd": false,
+      "template": "{\"event\": \"start\", \"callId\": \"{callId}\"}",
+      "callDirection": "both",
+      "id": 1
+    },
+    {
+      "name": "All Events Webhook Company 2",
+      "description": null,
+      "uri": "https://webhook.company2.com/all",
+      "eventStart": true,
+      "eventRing": true,
+      "eventAnswer": true,
+      "eventEnd": true,
+      "template": "{\"event\": \"{event}\", \"callId\": \"{callId}\"}",
+      "callDirection": "both",
+      "id": 3
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/brand/webhooks?_page=1",
+    "x-last-page": "/api/brand/webhooks?_page=1",
+    "x-next-page": "/api/brand/webhooks?_page=1",
+    "x-total-items": "2",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}

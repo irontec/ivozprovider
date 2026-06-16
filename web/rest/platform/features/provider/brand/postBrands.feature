@@ -92,6 +92,7 @@ Feature: Manage brands
               }
           },
           "voicemailNotificationTemplate": null,
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
@@ -177,6 +178,7 @@ Feature: Manage brands
               }
           },
           "voicemailNotificationTemplate": null,
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
@@ -298,6 +300,7 @@ This is file content
               }
           },
           "voicemailNotificationTemplate": null,
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
@@ -354,7 +357,7 @@ Scenario: Create a brand without applicationServerSets
   Then the response status code should be 403
   And the response should be in JSON
   And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-  And the JSON should be like:
+  And the exception should match:
   """
   {
     "detail": "Application Server Sets cannot be empty"
@@ -391,7 +394,7 @@ Scenario: Create a brand without applicationServerSets
     Then the response status code should be 403
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-    And the JSON should be like:
+    And the exception should match:
     """
     {
       "detail": "Media Relay Sets cannot be empty"

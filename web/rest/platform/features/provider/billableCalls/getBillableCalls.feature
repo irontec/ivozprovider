@@ -80,11 +80,41 @@ Feature: Retrieve billable calls
           "endpointName": null,
           "direction": "outbound",
           "id": 1,
-          "brand": "~",
-          "company": "~",
-          "carrier": "~",
-          "invoice": "~",
-          "ddi": "~"
+          "brand": {
+              "name": "DemoBrand",
+              "id": 1,
+              "*": "~"
+          },
+          "company": {
+              "type": "retail",
+              "name": "Retail Company",
+              "*": "~"
+          },
+          "carrier": {
+              "description": "Another carrier description",
+              "name": "AnotherCarrierName",
+              "balance": 0,
+              "calculateCost": false,
+              "id": 2,
+              "brand": 1,
+              "currency": null,
+              "proxyTrunk": 2,
+              "mediaRelaySet": 0
+          },
+          "invoice": {
+              "number": "1",
+              "id": 1
+          },
+          "ddi": {
+              "ddi": "123",
+              "id": 1,
+              "*": "~"
+          },
+          "ddiProvider": {
+              "name": "DDIProviderName",
+              "id": 1,
+              "*": "~"
+          }
       }
       """
 

@@ -6,7 +6,9 @@ import { useEffect } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 
 import RatingProfile from '../RatingProfile/RatingProfile';
+import Webhook from '../Webhook/Webhook';
 import WebPortal from '../WebPortal/WebPortal';
+import { ClientFeatures } from './ClientFeatures';
 
 const List = (props: ListContentProps): JSX.Element => {
   const rows = useStoreState((store) => store.list.rows);
@@ -20,11 +22,18 @@ const List = (props: ListContentProps): JSX.Element => {
   const filteredEntities = props.childEntities.filter((item) => {
     const isBillingFeature =
       isEntityItem(item) && item.entity.iden === RatingProfile.iden;
-    if (!isBillingFeature) {
-      return true;
+    if (isBillingFeature) {
+      return aboutMe?.features.includes(ClientFeatures.billing);
     }
 
-    return aboutMe?.features.includes('billing');
+    const isWebhooksFeature =
+      isEntityItem(item) && item.entity.iden === Webhook.iden;
+
+    if (isWebhooksFeature) {
+      return aboutMe?.features.includes(ClientFeatures.webhooks);
+    }
+
+    return true;
   });
 
   useEffect(() => {

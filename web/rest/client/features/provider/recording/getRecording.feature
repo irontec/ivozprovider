@@ -71,6 +71,8 @@ Feature: Retrieve recordings
               "baseName": "7602fd7f-4153-4475-9100-d89ff70cdf76.0.mp3"
           },
           "ddi": null,
-          "user": null
+          "user": null,
+          "usersCdr": null,
+          "billableCall": null
       }
       """

@@ -1,13 +1,13 @@
 import Avatar from '@irontec/ivoz-ui/components/layout/Header/Avatar';
 import { AvatarProps } from '@irontec/ivoz-ui/components/layout/Header/Avatar/Avatar';
 
-import CustomMenuItems from '../MenuItems/MenuItems';
+import TerminalStatus from '../MenuItems/MenuItems';
 import useTerminalStatus from '../useTerminalStatus';
 import StyledBadge from './StyledBadge';
 
 const CustomAvatar = (props: AvatarProps): JSX.Element => {
   const status = useTerminalStatus();
-  const { className, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <div className={className}>
@@ -18,7 +18,8 @@ const CustomAvatar = (props: AvatarProps): JSX.Element => {
         color={status.registered ? 'success' : 'error'}
       >
         <Avatar {...rest}>
-          <CustomMenuItems status={status} />
+          {status.gsQRCode && <TerminalStatus status={status} />}
+          {children}
         </Avatar>
       </StyledBadge>
     </div>

@@ -111,6 +111,15 @@ class ProviderFeature extends Fixture
         $this->sanitizeEntityValues($item9);
         $manager->persist($item9);
 
+        $item10 = $this->createEntityInstance(Feature::class);
+        (function () use ($fixture) {
+            $this->setIden("webhooks");
+            $this->name = new Name('en', 'es', 'ca', 'it', 'eu');
+        })->call($item10);
+
+        $this->addReference('_reference_ProviderFeature10', $item10);
+        $this->sanitizeEntityValues($item10);
+        $manager->persist($item10);
 
         $manager->flush();
     }

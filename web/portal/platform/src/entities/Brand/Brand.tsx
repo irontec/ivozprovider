@@ -144,6 +144,7 @@ const Brand: EntityInterface = {
     return module.default;
   },
   defaultOrderBy: '',
+  dynamicSelectOptions: true,
 };
 
 export default Brand;

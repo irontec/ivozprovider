@@ -13,7 +13,8 @@
       "recordings",
       "faxes",
       "friends",
-      "conferences"
+      "conferences",
+      "webhooks"
     ]
   },
   "headers": {

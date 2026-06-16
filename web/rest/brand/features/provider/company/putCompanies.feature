@@ -73,6 +73,8 @@ Feature: Update company
           "onDemandRecord": 0,
           "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
+          "onDemandRecordEmail": "disabled",
+          "onDemandRecordEmailAddress": null,
           "externallyextraopts": "",
           "billingMethod": "postpaid",
           "balance": 1.2,
@@ -94,6 +96,7 @@ Feature: Update company
           "outgoingDdi": null,
           "outgoingDdiRule": null,
           "voicemailNotificationTemplate": 1,
+          "onDemandRecordNotificationTemplate": null,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
@@ -128,7 +131,7 @@ Feature: Update company
      Then the response status code should be 403
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-      And the JSON should be like:
+      And the exception should match:
       """
       {
         "detail": "Rejected request during security check"
@@ -149,7 +152,7 @@ Feature: Update company
      Then the response status code should be 403
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-      And the JSON should be like:
+      And the exception should match:
       """
       {
         "detail": "Rejected request during security check"
@@ -170,7 +173,7 @@ Feature: Update company
      Then the response status code should be 400
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-      And the JSON should be like:
+      And the exception should match:
       """
       {
         "detail": "getApplicationServerSet value is null, but non null value was expected."
@@ -191,7 +194,7 @@ Feature: Update company
      Then the response status code should be 400
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
-      And the JSON should be like:
+      And the exception should match:
       """
       {
         "detail": "getMediaRelaySet value is null, but non null value was expected."

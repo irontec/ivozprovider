@@ -75,10 +75,19 @@ class Company extends CompanyAbstract implements CompanyInterface
 
         if (!$this->getOnDemandRecord()) {
             $this->setOnDemandRecord(0);
+            $this->setOnDemandRecordEmail(self::ONDEMANDRECORDEMAIL_DISABLED);
         }
 
         if (!$this->getOnDemandRecordCode()) {
             $this->setOnDemandRecordCode('');
+        }
+
+        if ($this->getOnDemandRecordEmail() !== self::ONDEMANDRECORDEMAIL_OTHER) {
+            $this->setOnDemandRecordEmailAddress(null);
+        }
+
+        if ($this->getOnDemandRecordEmail() === self::ONDEMANDRECORDEMAIL_DISABLED) {
+            $this->setOnDemandRecordNotificationTemplate(null);
         }
 
         $setBrandDomain = in_array(
@@ -148,6 +157,22 @@ class Company extends CompanyAbstract implements CompanyInterface
             Assertion::regex($onDemandRecordCode, '/^[0-9]+$/');
         }
         return parent::setOnDemandRecordCode($onDemandRecordCode);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setOnDemandRecordEmailAddress(?string $onDemandRecordEmailAddress = null): static
+    {
+        if ($onDemandRecordEmailAddress === '') {
+            $onDemandRecordEmailAddress = null;
+        }
+
+        if ($onDemandRecordEmailAddress !== null) {
+            Assertion::email($onDemandRecordEmailAddress);
+        }
+
+        return parent::setOnDemandRecordEmailAddress($onDemandRecordEmailAddress);
     }
 
     /**

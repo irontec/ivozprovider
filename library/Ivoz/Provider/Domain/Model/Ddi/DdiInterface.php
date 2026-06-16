@@ -27,6 +27,7 @@ use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Webhook\WebhookInterface;
 
 /**
 * DdiInterface
@@ -190,6 +191,20 @@ interface DdiInterface extends LoggableEntityInterface
      * @return array<array-key, RecordingInterface>
      */
     public function getRecordings(?Criteria $criteria = null): array;
+
+    public function addWebhook(WebhookInterface $webhook): DdiInterface;
+
+    public function removeWebhook(WebhookInterface $webhook): DdiInterface;
+
+    /**
+     * @param Collection<array-key, WebhookInterface> $webhooks
+     */
+    public function replaceWebhooks(Collection $webhooks): DdiInterface;
+
+    /**
+     * @return array<array-key, WebhookInterface>
+     */
+    public function getWebhooks(?Criteria $criteria = null): array;
 
     /**
      * @param string $prefix

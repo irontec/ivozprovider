@@ -76,13 +76,22 @@ Feature: Create call forward setting
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna",
+                  "eu": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe",
+                  "eu": "Europa"
               }
-          }
+          },
+          "friend": null,
+          "residentialDevice": null,
+          "retailAccount": null,
+          "cfwToRetailAccount": null,
+          "ddi": null
       }
       """

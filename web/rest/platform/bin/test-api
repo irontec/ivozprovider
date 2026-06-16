@@ -4,13 +4,30 @@ set -e
 
 export APP_ENV=test
 
-pushd /opt/irontec/ivozprovider/web/rest/platform
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+pushd "${SCRIPT_DIR}"/../
 
-    if [ "$1" != "--skip-db" ]; then
-        # Prepare dataset
-        bin/prepare-test-db
-    fi
+SKIP_DB=false
+FIX_FEATURES=false
 
-    # Run tests
+for arg in "$@"; do
+    case $arg in
+        --skip-db)
+            SKIP_DB=true
+            ;;
+        --fix-features)
+            FIX_FEATURES=true
+            ;;
+    esac
+done
+
+if [ "$SKIP_DB" = false ]; then
+    bin/prepare-test-db
+fi
+
+if [ "$FIX_FEATURES" = true ]; then
+    vendor/bin/behat -f fixer
+else
     vendor/bin/behat -f progress -o std -f junit -o results
+fi
 popd

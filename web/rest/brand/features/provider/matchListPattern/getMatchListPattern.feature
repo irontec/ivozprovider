@@ -19,6 +19,7 @@ Feature: Retrieve match list patterns
               "type": "number",
               "regexp": null,
               "numbervalue": "946002055",
+              "matchPattern": "+34 946002055",
               "id": 2,
               "matchList": 3,
               "numberCountry": 68
@@ -40,6 +41,7 @@ Feature: Retrieve match list patterns
           "type": "number",
           "regexp": null,
           "numbervalue": "946002055",
+          "matchPattern": "+34 946002055",
           "id": 2,
           "matchList": {
               "name": "testBrandMatchlist",

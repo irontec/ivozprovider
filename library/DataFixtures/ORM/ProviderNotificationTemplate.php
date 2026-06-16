@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 
@@ -85,6 +86,47 @@ class ProviderNotificationTemplate extends Fixture implements DependentFixtureIn
         $this->addReference('_reference_ProviderNotificationTemplate5', $item5);
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
+
+        /** @var NotificationTemplateInterface $item6 */
+        $item6 = $this->createEntityInstance(NotificationTemplate::class);
+        (function () use ($fixture) {
+            $this->setName("Generic On Demand Recording Notification Template");
+            $this->setType(
+                NotificationTemplateInterface::TYPE_ONDEMANDRECORD
+            );
+        })->call($item6);
+
+        $this->addReference('_reference_ProviderNotificationTemplate6', $item6);
+        $this->sanitizeEntityValues($item6);
+        $manager->persist($item6);
+
+        /** @var NotificationTemplateInterface $item7 */
+        $item7 = $this->createEntityInstance(NotificationTemplate::class);
+        (function () use ($fixture) {
+            $this->setName("Brand On Demand Recording Notification Template");
+            $this->setType(
+                NotificationTemplateInterface::TYPE_ONDEMANDRECORD
+            );
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+        })->call($item7);
+
+        $this->addReference('_reference_ProviderNotificationTemplate7', $item7);
+        $this->sanitizeEntityValues($item7);
+        $manager->persist($item7);
+
+        /** @var NotificationTemplateInterface $item8 */
+        $item8 = $this->createEntityInstance(NotificationTemplate::class);
+        (function () use ($fixture) {
+            $this->setName("Company On Demand Recording Notification Template");
+            $this->setType(
+                NotificationTemplateInterface::TYPE_ONDEMANDRECORD
+            );
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+        })->call($item8);
+
+        $this->addReference('_reference_ProviderNotificationTemplate8', $item8);
+        $this->sanitizeEntityValues($item8);
+        $manager->persist($item8);
 
         $manager->flush();
     }

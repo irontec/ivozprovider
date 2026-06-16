@@ -137,6 +137,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @var NotificationTemplateDto | null
      */
+    private $onDemandRecordNotificationTemplate = null;
+
+    /**
+     * @var NotificationTemplateDto | null
+     */
     private $faxNotificationTemplate = null;
 
     /**
@@ -249,6 +254,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'defaultTimezoneId' => 'defaultTimezone',
             'currencyId' => 'currency',
             'voicemailNotificationTemplateId' => 'voicemailNotificationTemplate',
+            'onDemandRecordNotificationTemplateId' => 'onDemandRecordNotificationTemplate',
             'faxNotificationTemplateId' => 'faxNotificationTemplate',
             'invoiceNotificationTemplateId' => 'invoiceNotificationTemplate',
             'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate',
@@ -287,6 +293,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'defaultTimezone' => $this->getDefaultTimezone(),
             'currency' => $this->getCurrency(),
             'voicemailNotificationTemplate' => $this->getVoicemailNotificationTemplate(),
+            'onDemandRecordNotificationTemplate' => $this->getOnDemandRecordNotificationTemplate(),
             'faxNotificationTemplate' => $this->getFaxNotificationTemplate(),
             'invoiceNotificationTemplate' => $this->getInvoiceNotificationTemplate(),
             'callCsvNotificationTemplate' => $this->getCallCsvNotificationTemplate(),
@@ -657,6 +664,36 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getVoicemailNotificationTemplateId(): ?int
     {
         if ($dto = $this->getVoicemailNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setOnDemandRecordNotificationTemplate(?NotificationTemplateDto $onDemandRecordNotificationTemplate): static
+    {
+        $this->onDemandRecordNotificationTemplate = $onDemandRecordNotificationTemplate;
+
+        return $this;
+    }
+
+    public function getOnDemandRecordNotificationTemplate(): ?NotificationTemplateDto
+    {
+        return $this->onDemandRecordNotificationTemplate;
+    }
+
+    public function setOnDemandRecordNotificationTemplateId(?int $id): static
+    {
+        $value = !is_null($id)
+            ? new NotificationTemplateDto($id)
+            : null;
+
+        return $this->setOnDemandRecordNotificationTemplate($value);
+    }
+
+    public function getOnDemandRecordNotificationTemplateId(): ?int
+    {
+        if ($dto = $this->getOnDemandRecordNotificationTemplate()) {
             return $dto->getId();
         }
 

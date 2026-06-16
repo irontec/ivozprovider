@@ -15,7 +15,8 @@
             "conferences",
             "invoices",
             "wholesale",
-            "retail"
+            "retail",
+            "webhooks"
         ]
     },
     "headers": {
