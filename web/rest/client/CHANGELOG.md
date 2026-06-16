@@ -1,5 +1,26 @@
 # Changelog
 
+## 4.7.0
+* Endpoints:
+    - /webhooks:
+      - Added [GET] endpoint to list webhook resources.
+      - Added [POST] endpoint to create webhook resources.
+    - /webhooks/{id}:
+      - Added [GET], [PUT] and [DELETE] endpoints to retrieve, update and
+        delete a webhook resource.
+    - /match_list_patterns:
+      - Added matchPattern, matchPattern[exact], matchPattern[start],
+        matchPattern[partial], matchPattern[end], matchPattern[neq],
+        matchPattern[exists], exists[matchPattern] and _order[matchPattern]
+        filter parameters.
+* Models:
+    - Webhook:
+      - Added model with name, description, uri, template, callDirection,
+        eventStart, eventRing, eventAnswer, eventEnd, eventUpdateClid, company,
+        ddi and user properties.
+    - MatchListPattern:
+      - Added matchPattern property.
+
 ## 4.6.0
 * Endpoints:
     - /countries:
