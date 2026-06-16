@@ -1,3 +1,35 @@
+Tue, 16 Jun 2026 10:00:00 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.7.0 released
+
+    * Portals:
+        - Added webhook management to brand and client portals
+        - Added per-DDI webhook configuration to brand portal
+        - Improved webhook template field with textarea format and default value
+        - Added on-demand recording email and notification template configuration
+        - Added persistent matchPattern column to match list patterns
+        - Fixed filter pagination issues
+        - Fixed brand invoice select options showing id instead of number
+        - Fixed user portal custom header
+        - Fixed modal action button logic and max width
+
+    * Core:
+        - Added webhooks (entity, access control and dispatcher microservice)
+        - Added DDI and user webhook events (call start, ring, answer, end and
+          updateClid)
+        - Added click2call originate microservice
+        - Added on-demand recording email support
+        - Added ddiId to realtime trunk Redis keys and direction to realtime
+          user keys
+        - Reset rtpengine session before gateway failover
+        - Fixed balance movements foreign key error
+        - Removed PDF basename sanitization
+
+    * Misc:
+        - Updated ivoz-api to 5.6 and ivoz-ui to 1.8.2
+        - Several dependency updates
+
+
 Tue, 27 Jan 2026 10:42:32 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.6.0 released
