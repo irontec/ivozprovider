@@ -1,5 +1,22 @@
 # Changelog
 
+## 4.7.0
+* Endpoints:
+    - /brands:
+      - Added onDemandRecordNotificationTemplate,
+        onDemandRecordNotificationTemplate[] and
+        onDemandRecordNotificationTemplate[exists] filter parameters.
+    - /companies:
+      - Added onDemandRecordNotificationTemplate,
+        onDemandRecordNotificationTemplate[] and
+        onDemandRecordNotificationTemplate[exists] filter parameters.
+* Models:
+    - Brand:
+      - Added onDemandRecordNotificationTemplate property.
+    - Company:
+      - Added onDemandRecordEmail, onDemandRecordEmailAddress and
+        onDemandRecordNotificationTemplate properties.
+
 ## 4.6.0
 * Endpoints:
     - /countries:
