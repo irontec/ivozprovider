@@ -26,6 +26,12 @@ export type BrandPropertyList<T> = {
   impersonationUrl?: T;
   applicationServerSets?: T;
   mediaRelaySets?: T;
+  voicemailNotificationTemplate?: T;
+  onDemandRecordNotificationTemplate?: T;
+  faxNotificationTemplate?: T;
+  invoiceNotificationTemplate?: T;
+  callCsvNotificationTemplate?: T;
+  maxDailyUsageNotificationTemplate?: T;
 };
 
 export type BrandProperties = BrandPropertyList<Partial<PropertySpec>>;

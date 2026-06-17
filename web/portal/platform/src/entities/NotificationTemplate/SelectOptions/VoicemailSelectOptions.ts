@@ -2,15 +2,25 @@ import { DropdownChoices, fetchAllPages } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const VoicemailSelectOptions: SelectOptionsType = ({
-  callback,
-  cancelToken,
-}): Promise<unknown> => {
+type NotificationTemplateSelectOptionsProps = {
+  brandId?: number;
+};
+
+const VoicemailSelectOptions: SelectOptionsType<
+  NotificationTemplateSelectOptionsProps
+> = ({ callback, cancelToken }, customProps): Promise<unknown> => {
   const entities = store.getState().entities.entities;
   const NotificationTemplate = entities.NotificationTemplate;
+  const brandId = customProps?.brandId;
+
+  if (!brandId) {
+    callback([]);
+
+    return Promise.resolve();
+  }
 
   return fetchAllPages({
-    endpoint: `${NotificationTemplate.path}?type=voicemail`,
+    endpoint: `${NotificationTemplate.path}?type=voicemail&brand=${brandId}`,
     params: {
       _properties: ['id', 'name'],
     },
