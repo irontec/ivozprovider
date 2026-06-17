@@ -71,6 +71,17 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'invoice.registryData',
       ],
     },
+    edit && {
+      legend: _('Notification options'),
+      fields: [
+        'voicemailNotificationTemplate',
+        'onDemandRecordNotificationTemplate',
+        'faxNotificationTemplate',
+        'invoiceNotificationTemplate',
+        'callCsvNotificationTemplate',
+        'maxDailyUsageNotificationTemplate',
+      ],
+    },
   ];
 
   return (
