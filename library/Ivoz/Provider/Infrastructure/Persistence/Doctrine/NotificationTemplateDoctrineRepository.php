@@ -97,6 +97,17 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
             return $invoiceNotificationTemplate;
         }
 
+        $invoiceNotificationTemplate = $company
+            ->getBrand()
+            ->getInvoiceNotificationTemplate();
+
+        if (
+            $invoiceNotificationTemplate
+            && $invoiceNotificationTemplate->getContentsByLanguage($language)
+        ) {
+            return $invoiceNotificationTemplate;
+        }
+
         /** @var NotificationTemplateInterface $response */
         $response = $this->findOneBy([
             'brand' => null,
