@@ -6,7 +6,7 @@ type NotificationTemplateSelectOptionsProps = {
   brandId?: number;
 };
 
-const FaxSelectOptions: SelectOptionsType<
+const OnDemandRecordSelectOptions: SelectOptionsType<
   NotificationTemplateSelectOptionsProps
 > = ({ callback, cancelToken }, customProps): Promise<unknown> => {
   const entities = store.getState().entities.entities;
@@ -20,7 +20,7 @@ const FaxSelectOptions: SelectOptionsType<
   }
 
   return fetchAllPages({
-    endpoint: `${NotificationTemplate.path}?type=fax&brand=${brandId}`,
+    endpoint: `${NotificationTemplate.path}?type=onDemandRecord&brand=${brandId}`,
     params: {
       _properties: ['id', 'name'],
     },
@@ -39,4 +39,4 @@ const FaxSelectOptions: SelectOptionsType<
   });
 };
 
-export default FaxSelectOptions;
+export default OnDemandRecordSelectOptions;
