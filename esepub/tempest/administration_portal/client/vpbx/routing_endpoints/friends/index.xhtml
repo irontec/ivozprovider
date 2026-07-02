@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Friends</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="remote_friends.xhtml" title="Friends remotos"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="../conditional_routes.xhtml" title="Rutas condicionales"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../index.xhtml" >Clientes vPBX</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../index.xhtml" accesskey="U">Items enrutables</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="friends">
+<span id="id1"></span><h1>Friends</h1>
+<p>La sección <strong>Friends</strong> en la <strong>Configuración del cliente</strong> permite la interconexión de IvozProvider con otros sistemas PBX SIP a través de un SIP <em>trunk</em>. El caso de uso más típico es cuando un cliente tiene múltiples sistemas PBX que quieren integrarse en un solo flujo.</p>
+<p>Desde la versión 2.10, <strong>Friends</strong> también permite a un cliente vPBX llamar a extensiones de otro cliente vPBX en la misma marca.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Es importante entender la diferencia entre <strong>Carrier</strong> definido por el <strong>operador de la marca</strong> para conectarse con la red pública y <strong>Friends</strong>, definido por los <strong>administradores del cliente</strong> para conectar el sistema con otros PBXs.</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last"><strong>Friends</strong> son tan similares a <strong>Usuarios</strong> que ambos hablan SIP con el <a class="reference internal" href="../../../../platform/infrastructure/proxy_users.xhtml#proxyusers"><span class="std std-ref">Proxies de Usuarios</span></a>.</p>
+</div>
+<div class="section" id="types-of-friends">
+<h2>Tipos de Friends</h2>
+<p>Hay 2 tipos principales de Friends:</p>
+<ul class="simple">
+<li><p class="first"><strong>Friends remotos</strong>: SIP trunks a sistemas PBX SIP externos.</p>
+</li>
+<li><p class="first"><strong>Friends internos</strong>: conexión entre extensiones de dos clientes vPBX en la misma marca.</p>
+</li>
+</ul>
+<div class="section" id="what-kind-of-calls-can-be-routed-through-an-internal-friend">
+<h3>¿Qué tipo de llamadas se pueden enrutar a través de un <em>friend interno</em>?</h3>
+<p>IvozProvider enrutar una llamada recibida por un <a class="reference internal" href="../../users.xhtml#users"><span class="std std-ref">usuario</span></a> o un <a class="reference internal" href="#friends"><span class="std std-ref">friend</span></a> siguiendo esta lógica:</p>
+<ol class="arabic simple">
+<li><p class="first">¿El destino coincide con una extensión existente de IvozProvider?</p>
+</li>
+<li><p class="first">Si no: ¿El destino coincide con alguna expresión regular de <em>friend</em> (para friends remotos) o extensiones (para los internos)? Ordenado por prioridad (el menor tiene precedencia).</p>
+</li>
+<li><p class="first">Si no: Esta es una llamada externa.</p>
+</li>
+</ol>
+<p>Las siguientes secciones explican ambos tipos de friends:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="remote_friends.xhtml">Friends remotos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internal_friends.xhtml">Friends internos</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="friend-call-forward">
+<h1>Desvío de llamadas de friends</h1>
+<p>El desvío de llamadas del friend se puede configurar con el botón <strong>Lista de configuraciones de desvío de llamadas</strong>.</p>
+<p>Estos son los campos y valores disponibles:</p>
+<dl class="glossary docutils">
+<dt id="term-call-type">Tipo de llamada</dt>
+<dd><p class="first last">Determina si el desvío debe aplicarse a llamadas externas, internas o cualquier tipo de llamada.</p>
+</dd>
+<dt id="term-forward-type">Tipo de desvío</dt>
+<dd><dl class="first last docutils">
+<dt>Cuándo debe aplicarse este desvío:</dt>
+<dd><ul class="first last simple">
+<li><p class="first">Incondicional: siempre</p>
+</li>
+<li><p class="first">Sin respuesta: cuando la llamada no se responde en X segundos</p>
+</li>
+<li><p class="first">Ocupado: Cuando el friend rechaza una llamada entrante.</p>
+</li>
+<li><p class="first">No registrado: cuando el friend no está registrado en IvozProvider.</p>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt id="term-target-type">Tipo de destino</dt>
+<dd><dl class="first last docutils">
+<dt>Qué ruta usará la llamada desviada.</dt>
+<dd><ul class="first last simple">
+<li><p class="first">Correo de voz</p>
+</li>
+<li><p class="first">Número (externo)</p>
+</li>
+<li><p class="first">Extensión (interna)</p>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Si queremos desviar a otro proceso, podemos crear una extensión enrutada a ese objeto y usar el tipo de destino <em>Extensión</em>.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

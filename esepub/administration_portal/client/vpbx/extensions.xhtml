@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Extensiones</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="ddis.xhtml" title="DDIs"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="terminals.xhtml" title="Terminales"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Clientes vPBX</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="extensions">
+<span id="id1"></span><h1>Extensiones</h1>
+<p><strong>Una extensión es</strong>, por definición, <strong>un número interno con una lógica asignada</strong>. Las llamadas de usuarios internos a los números listados en esta sección no atraviesan las lógicas de permisos de llamada: <strong>todos los usuarios/friends pueden llamar a cualquier número listado aquí</strong>.</p>
+<p class="rubric">Crear una nueva extensión</p>
+<dl class="docutils">
+<dt>Número</dt>
+<dd><p class="first last">El número que debe marcar el usuario interno que activará la lógica configurada. Debe tener una longitud mínima de 2 y debe ser un número.</p>
+</dd>
+<dt>Ruta</dt>
+<dd><p class="first last">Esta selección nos permitirá elegir la lógica que usará esta extensión cuando sea marcada por un usuario interno. Dependiendo de la ruta seleccionada, se mostrará una selección o entrada adicional para seleccionar el grupo de salto, sala de conferencias, usuario, etc.</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Si una extensión tiene un número que entra en conflicto con un número externo, este número externo será enmascarado y, en la práctica, estará indisponible para todo el cliente.</p>
+</div>
+<div class="section" id="route-options">
+<h2>Opciones de ruta</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>No asignado</dt>
+<dd><p class="first last">Las llamadas a esta extensión serán colgadas.</p>
+</dd>
+<dt>Usuario</dt>
+<dd><p class="first last">Se llamará al <a class="reference internal" href="users.xhtml#users"><span class="std std-ref">usuario</span></a> seleccionado.</p>
+</dd>
+<dt>IVR</dt>
+<dd><p class="first last">Se llamará a la lógica del <a class="reference internal" href="routing_endpoints/ivrs.xhtml#ivrs"><span class="std std-ref">IVR</span></a> seleccionado.</p>
+</dd>
+<dt>Grupo de salto</dt>
+<dd><p class="first last">Se llamará al <a class="reference internal" href="routing_endpoints/hunt_groups.xhtml#huntgroups"><span class="std std-ref">grupo de salto</span></a> seleccionado.</p>
+</dd>
+<dt>Número</dt>
+<dd><p class="first last">Llamar a esta extensión generará una llamada externa saliente al número introducido.</p>
+</dd>
+<dt>Friend</dt>
+<dd><p class="first last">Las llamadas a esta extensión evaluarán la lógica de <a class="reference internal" href="routing_endpoints/friends/index.xhtml#friends"><span class="std std-ref">friends</span></a>.</p>
+</dd>
+<dt>Cola</dt>
+<dd><p class="first last">La llamada será entregada a la <a class="reference internal" href="routing_endpoints/queues.xhtml#queues"><span class="std std-ref">cola</span></a> seleccionada.</p>
+</dd>
+<dt>Ruta condicional</dt>
+<dd><p class="first last">La llamada será entregada a la <a class="reference internal" href="routing_endpoints/conditional_routes.xhtml#id1"><span class="std std-ref">ruta condicional</span></a> seleccionada.</p>
+</dd>
+<dt>Buzón de voz</dt>
+<dd><p class="first last">Las llamadas serán entregadas al <a class="reference internal" href="voicemails.xhtml#voicemails"><span class="std std-ref">buzón de voz</span></a> seleccionado.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Cualquier usuario interno puede generar una llamada externa saliente a través de una <strong>Extensión enrutada a Número</strong> incluso si sus <em>Permisos de llamada</em> no permiten llamar a ese destino directamente.</p>
+</div>
+</div>
+<div class="section" id="import-aliases">
+<h2>Importar alias</h2>
+<p><em>Extensiones a números</em> son útiles para llamar fácilmente a los números más marcados. Como cada cliente suele tener una lista con números frecuentes, el botón <strong>Importar alias</strong> permite importarlos a través de un archivo CSV.</p>
+<p class="rubric">Archivo de importación de ejemplo</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Extension,CountryPrefix,Number,CountryCode
+200,+34,944048184,ES
+201,+34,944048185,ES
+202,+34,944048186
+203,+1,944048187
+204,+1,944048188,US
+</pre></div>
+</div>
+<p>Los números se importarán de forma sincrónica siguiendo estas reglas:</p>
+<ul class="simple">
+<li><p class="first">Si la extensión dada ya existe y apunta a un número: el número se actualiza.</p>
+</li>
+<li><p class="first">Si la extensión dada ya existe y no apunta a un número: error.</p>
+</li>
+<li><p class="first">Si el prefijo del país dado no existe: error.</p>
+</li>
+<li><p class="first">Si el código del país dado no existe: error.</p>
+</li>
+<li><p class="first">Si la combinación de prefijo y código de país dada no existe: error.</p>
+</li>
+<li><p class="first">El código de país es opcional: si el prefijo del país dado se usa en múltiples países y no se da el código de país, se selecciona el primer país.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

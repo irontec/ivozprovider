@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Click2Call &mdash; documentación de IvozProvider - tempest</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/banner.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Índice"
+              href="../genindex.html"/>
+        <link rel="search" title="Búsqueda" href="../search.html"/>
+    <link rel="top" title="documentación de IvozProvider - tempest" href="../index.html"/>
+        <link rel="next" title="Caso de Uso" href="use_case.html"/>
+        <link rel="prev" title="Integraciones de terceros" href="integrations.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> IvozProvider
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/intro/index.html">Introducción a IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/architecture/index.html">Arquitectura general de la plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/installation/index.html">Instalación inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/operation_roles/index.html">Roles de la plataforma</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/internal_calls/index.html">Realizando llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/external_incoming_calls/index.html">Recibiendo llamadas externas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/external_outgoing_calls/index.html">Realizando llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Administration portal</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../administration_portal/platform/index.html">Configuración de la Plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administration_portal/brand/index.html">Configuración de Marca</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administration_portal/client/index.html">Configuración del Cliente</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Specific portals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_portal/index.html">Portal de Usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Security and Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security_and_maintenance/security/index.html">Seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_and_maintenance/maintenance/index.html">Solución de problemas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Rest API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introducción a la API de IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multilevel.html">API multinivel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_client.html">Cliente web incorporado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.html">Integraciones de terceros</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Click2Call</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#digest-computation">Cálculo del digest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-codes">Códigos de error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-case">Caso de uso</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="use_case.html">Caso de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acls.html">ACLs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">IvozProvider</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Click2Call</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_rest/click2call.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="click2call">
+<span id="id1"></span><h1>Click2Call<a class="headerlink" href="#click2call" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>El microservicio <strong>Click2Call</strong> expone una pequeña API HTTP/JSON que origina llamadas <em>click-to-call</em> sin necesidad de un JWT del portal. Está pensado para ser consumido por una <strong>extensión de navegador</strong> que detecta números de teléfono en las páginas web y, al hacer clic, solicita al servicio que realice la llamada.</p>
+<p>A diferencia de las APIs REST basadas en roles, este servicio <strong>no</strong> utiliza autenticación JWT: el llamante demuestra la propiedad de un terminal con las <strong>propias credenciales SIP del terminal mediante HTTP Digest</strong>, de modo que la contraseña nunca viaja por la red.</p>
+<p>Si tiene éxito, el servicio lanza, a través de AMI, un <code class="docutils literal"><span class="pre">Originate</span></code> que reutiliza el dialplan <code class="docutils literal"><span class="pre">click2dial</span></code> ya existente:</p>
+<ol class="arabic simple">
+<li><p class="first"><strong>Pata 1</strong>: suena el propio terminal del usuario.</p>
+</li>
+<li><p class="first"><strong>Pata 2</strong>: cuando el usuario contesta, se genera la llamada hacia el <code class="docutils literal"><span class="pre">destination</span></code> solicitado.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Este servicio se distribuye como el paquete <code class="docutils literal"><span class="pre">ivozprovider-click2call</span></code> y escucha en su propio puerto (tras un proxy TLS en producción). Es independiente de las APIs REST <code class="docutils literal"><span class="pre">/api/platform</span></code>, <code class="docutils literal"><span class="pre">/api/brand</span></code> y <code class="docutils literal"><span class="pre">/api/provider</span></code>.</p>
+</div>
+<div class="section" id="endpoints">
+<h2>Endpoints<a class="headerlink" href="#endpoints" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El flujo siempre tiene dos pasos: primero solicitar un desafío (challenge) y después realizar la llamada firmando el destino con dicho desafío.</p>
+<p class="rubric">1) POST /challenge</p>
+<p>Solicita un <code class="docutils literal"><span class="pre">nonce</span></code> de un solo uso para un Address of Record (AoR).</p>
+<p>Cuerpo de la petición:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;aor&quot;</span><span class="p">:</span> <span class="s2">&quot;username@domain&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Respuesta (<code class="docutils literal"><span class="pre">200</span></code>):</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;server-issued nonce&gt;&quot;</span><span class="p">,</span> <span class="nt">&quot;realm&quot;</span><span class="p">:</span> <span class="s2">&quot;domain&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p class="first"><code class="docutils literal"><span class="pre">aor</span></code>: el <code class="docutils literal"><span class="pre">username&#64;domain</span></code> del terminal.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">realm</span></code> (devuelto): la parte de <strong>dominio</strong> del AoR, a utilizar en el digest.</p>
+</li>
+</ul>
+<p>El <code class="docutils literal"><span class="pre">nonce</span></code> está firmado con HMAC, tiene una caducidad configurable (<code class="docutils literal"><span class="pre">nonce_ttl</span></code>) y es de un solo uso, por lo que no hay reenvío (replay). En este paso no se accede a la base de datos.</p>
+<p class="rubric">2) POST /call</p>
+<p>Realiza la llamada. El destino debe firmarse con un digest calculado a partir de la contraseña del terminal y del <code class="docutils literal"><span class="pre">nonce</span></code> obtenido anteriormente.</p>
+<p>Cuerpo de la petición:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;aor&quot;</span><span class="p">:</span> <span class="s2">&quot;username@domain&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;nonce from /challenge&gt;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;digest response&gt;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;+34900000000&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;iden&quot;</span><span class="p">:</span> <span class="s2">&quot;optional-call-id&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;maxDuration&quot;</span><span class="p">:</span> <span class="mi">10800000</span><span class="p">,</span>
+  <span class="nt">&quot;dialTimeout&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nt">&quot;optimize&quot;</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Respuesta (<code class="docutils literal"><span class="pre">200</span></code>):</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;iden&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;call iden&gt;&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p class="first"><code class="docutils literal"><span class="pre">destination</span></code>: número de destino (<code class="docutils literal"><span class="pre">^[+*0-9]+$</span></code>).</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">iden</span></code> (opcional): identificador proporcionado por el llamante (<code class="docutils literal"><span class="pre">^[A-Za-z0-9_-]{1,32}$</span></code>); si se omite, el servicio genera uno (base62 de 16 caracteres) y lo devuelve en la respuesta.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">maxDuration</span></code> (ms, por defecto <code class="docutils literal"><span class="pre">10800000</span></code>), <code class="docutils literal"><span class="pre">dialTimeout</span></code> (s, por defecto <code class="docutils literal"><span class="pre">30</span></code>), <code class="docutils literal"><span class="pre">optimize</span></code> (booleano, por defecto <code class="docutils literal"><span class="pre">false</span></code>).</p>
+</li>
+</ul>
+<p>El <code class="docutils literal"><span class="pre">iden</span></code> devuelto identifica la llamada generada: se usa como <code class="docutils literal"><span class="pre">ChannelId</span></code> de AMI y se propaga en la <strong>pata 2</strong> (la llamada hacia el destino) hacia el proxy como la cabecera SIP <code class="docutils literal"><span class="pre">X-Info-Click2Dial-iden</span></code>. El proxy lo almacena como el <code class="docutils literal"><span class="pre">IDEN</span></code> de la llamada para esa pata, de modo que puede correlacionarse con la petición <code class="docutils literal"><span class="pre">/call</span></code> originaria desde los CDRs y los datos en tiempo real.</p>
+</div>
+<div class="section" id="digest-computation">
+<h2>Cálculo del digest<a class="headerlink" href="#digest-computation" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El digest se calcula en el lado del cliente, basado en MD5, y solo viaja <code class="docutils literal"><span class="pre">response</span></code> (la contraseña nunca sale del cliente):</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>HA1      = MD5(username : realm : password)
+HA2      = MD5(destination)
+response = MD5(HA1 : nonce : HA2)
+</pre></div>
+</div>
+<p>El servidor lo recalcula y lo compara en tiempo constante.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En el navegador <code class="docutils literal"><span class="pre">crypto.subtle</span></code> <strong>no</strong> proporciona MD5; utiliza una librería como <code class="docutils literal"><span class="pre">blueimp-md5</span></code> / <code class="docutils literal"><span class="pre">crypto-js</span></code>. El CORS se resuelve declarando el origen del servicio en los <code class="docutils literal"><span class="pre">host_permissions</span></code> de la extensión; el servicio devuelve los orígenes permitidos a partir de su configuración.</p>
+</div>
+</div>
+<div class="section" id="error-codes">
+<h2>Códigos de error<a class="headerlink" href="#error-codes" title="Enlazar permanentemente con este título">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><p class="first last">Código</p>
+</th>
+<th class="head"><p class="first last">Motivo</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">400</span></code></td>
+<td><p class="first last">JSON / AoR / destino / iden no válidos</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">401</span></code></td>
+<td><p class="first last">nonce no válido, caducado o reutilizado</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">403</span></code></td>
+<td><p class="first last">AoR no elegible (sin terminal+endpoint+usuario+extensión) o digest incorrecto</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">502</span></code></td>
+<td><p class="first last">no se pudo resolver el Application Server (Kamailio) ni originar la llamada (AMI)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Por seguridad, no se revela el motivo exacto entre &#8220;el AoR no existe&#8221; y &#8220;contraseña incorrecta&#8221;: ambos devuelven <code class="docutils literal"><span class="pre">403</span></code>.</p>
+</div>
+<div class="section" id="use-case">
+<h2>Caso de uso<a class="headerlink" href="#use-case" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Un intercambio típico desde la extensión de navegador:</p>
+<ol class="arabic simple">
+<li><p class="first"><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/challenge</span></code> con el <code class="docutils literal"><span class="pre">aor</span></code> del terminal con sesión iniciada → obtener <code class="docutils literal"><span class="pre">nonce</span></code> y <code class="docutils literal"><span class="pre">realm</span></code>.</p>
+</li>
+<li><p class="first">Calcular <code class="docutils literal"><span class="pre">response</span></code> a partir de <code class="docutils literal"><span class="pre">username</span></code>, <code class="docutils literal"><span class="pre">realm</span></code>, <code class="docutils literal"><span class="pre">password</span></code>, <code class="docutils literal"><span class="pre">nonce</span></code> y el <code class="docutils literal"><span class="pre">destination</span></code> sobre el que se ha hecho clic.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/call</span></code> con <code class="docutils literal"><span class="pre">aor</span></code>, <code class="docutils literal"><span class="pre">nonce</span></code>, <code class="docutils literal"><span class="pre">response</span></code> y <code class="docutils literal"><span class="pre">destination</span></code> → suena el terminal del usuario y, al contestar, se marca el destino. Conserva el <code class="docutils literal"><span class="pre">iden</span></code> devuelto para correlacionar la llamada más adelante.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="use_case.html" class="btn btn-neutral float-right" title="Caso de Uso" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="integrations.html" class="btn btn-neutral" title="Integraciones de terceros" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2019, Irontec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: main
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../artemis/index.html">artemis</a></dd>
+            <dd><a href="../../halliday/index.html">halliday</a></dd>
+            <dd><a href="click2call.html">main</a></dd>
+            <dd><a href="../../oasis/index.html">oasis</a></dd>
+            <dd><a href="../../tempest/api_rest/click2call.html">tempest</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'tempest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

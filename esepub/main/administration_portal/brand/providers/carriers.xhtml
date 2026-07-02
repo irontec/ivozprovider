@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Carriers</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="ddi_providers.xhtml" title="Proveedores DDI"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="index.xhtml" title="Proveedores"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Configuración de Marca</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Proveedores</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="carriers">
+<span id="id1"></span><h1>Carriers</h1>
+<p>Los carriers se utilizan para realizar llamadas salientes externas.</p>
+<p>Estos son los campos que definen un carrier:</p>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p>Algunos campos descritos a continuación pueden no ser visibles dependiendo de las funcionalidades habilitadas.</p>
+<dl class="last docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Usado para referenciar este Carrier.</p>
+</dd>
+<dt>Descripción</dt>
+<dd><p class="first last">Campo opcional con cualquier información adicional requerida.</p>
+</dd>
+<dt>Transformación Numérica</dt>
+<dd><p class="first last">Transformación que se aplicará al origen y destino de los números salientes que usan este Carrier (ver <a class="reference internal" href="../settings/numeric_transformations.xhtml#numeric-transformations"><span class="std std-ref">Transformaciones numéricas</span></a>).</p>
+</dd>
+<dt>Calcular costo</dt>
+<dd><p class="first last">Si se establece, IvozProvider calculará el costo de la llamada utilizando el perfil de calificación activo del carrier.</p>
+</dd>
+<dt>Moneda</dt>
+<dd><p class="first last">La moneda elegida se utilizará en el cálculo de costos, movimientos de saldo y operaciones de dinero restantes de este carrier.</p>
+</dd>
+<dt>Socket local</dt>
+<dd><p class="first last">La dirección seleccionada se usará como dirección de origen para la señalización con este carrier. El operador de la marca puede elegir entre las direcciones asignadas por el operador principal a través de <a class="reference internal" href="../../platform/brands.xhtml#brands"><span class="std std-ref">Marcas</span></a>. Lea <a class="reference internal" href="../../platform/infrastructure/proxy_trunks.xhtml#proxy-trunks"><span class="std std-ref">Proxies de Salida</span></a> para más detalles.</p>
+</dd>
+<dt>Conjunto de retransmisión de medios</dt>
+<dd><p class="first last">Los retransmisores de medios se pueden agrupar en conjuntos para reservar capacidades o con un propósito geográfico. El conjunto seleccionado se usará en llamadas a través de este carrier específico. Este campo solo lo ve el administrador global (también conocido como Dios).</p>
+</dd>
+<dt>Estado</dt>
+<dd><p class="first last">Los servidores de carrier que no responden se desactivan hasta que respondan a la solicitud de ping OPTIONS. Este icono es verde si todos los servidores de carrier de un carrier dado están activos, rojo si todos están inactivos y amarillo si solo algunos de ellos están inactivos.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Si desea que los medios del lado del carrier sean manejados por el mismo conjunto de retransmisión de medios que el lado del cliente, seleccione &#8220;Predeterminado del cliente&#8221;.</p>
+</div>
+<div class="section" id="cost-calculation">
+<span id="id2"></span><h2>Cálculo de costos</h2>
+<p>Si <em>Calcular costo</em> está habilitado, <em>Planes de calificación</em> se pueden vincular a los carriers para el cálculo de costos (ver <a class="reference internal" href="../billing/rating_plans.xhtml#assigning-rating-plans-to-carriers"><span class="std std-ref">Asignación de planes de tarifas a operadores</span></a>) y un saldo está adjunto a cada carrier. Cada vez que se use un carrier para realizar una llamada, este saldo se reducirá utilizando el perfil de calificación activo del carrier.</p>
+<p>Además:</p>
+<ul class="simple">
+<li><p class="first">El saldo del carrier se puede aumentar/disminuir con <em>Operaciones de saldo</em>.</p>
+</li>
+<li><p class="first">Estas operaciones se enumeran en <em>Lista de movimientos de saldo</em>.</p>
+</li>
+<li><p class="first"><em>Notificaciones de saldo</em> se pueden configurar para ser notificadas cuando el saldo alcance un umbral dado.</p>
+</li>
+</ul>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Contrario a los saldos de los clientes, <strong>los saldos (negativos/cero) de los carriers no deshabilitarán el carrier</strong>.</p>
+</div>
+</div>
+<div class="section" id="carrier-servers">
+<h2>Servidores de carrier</h2>
+<p>Un <strong>Servidor de carrier</strong> es un servidor SIP asociado a un proveedor de IP. Los servidores de carrier se utilizan para realizar llamadas salientes utilizando <a class="reference internal" href="../routing/outgoing_routings.xhtml#outgoing-routings"><span class="std std-ref">Enrutamientos Salientes</span></a>.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Proxy SIP</dt>
+<dd><p class="first last">Dirección IP (o registro DNS) del servidor de carrier. También puede especificar un puerto si es diferente de 5060.</p>
+</dd>
+<dt>Proxy de salida</dt>
+<dd><p class="first last">Generalmente esto se deja vacío. Se puede llenar con la dirección IP del dominio del <strong>Proxy SIP</strong> (para evitar la resolución DNS, pero manteniendo el dominio en los mensajes SIP). Funciona como un proxy web: en lugar de enviar los mensajes SIP al <strong>Proxy SIP</strong> de destino, se enviarán a la IP:PUERTO de este campo.</p>
+</dd>
+<dt>Esquema URI</dt>
+<dd><p class="first last">Los esquemas compatibles son sip y sips. Use &#8216;sip&#8217; en caso de duda.</p>
+</dd>
+<dt>Transporte</dt>
+<dd><p class="first last">Protocolos de transporte compatibles. Use &#8216;udp&#8217; en caso de duda.</p>
+</dd>
+<dt>Requiere autenticación</dt>
+<dd><p class="first last">Algunos carriers validan nuestra plataforma por IP, otros requieren cada sesión que queremos establecer. Para este último caso, esta sección permite configurar usuario y contraseña para esta autenticación.</p>
+</dd>
+<dt>Encabezado de origen de llamada</dt>
+<dd><p class="first last">Algunos proveedores obtienen el origen del encabezado SIP From. Otros usan el encabezado From para la contabilidad y necesitan encabezados adicionales para identificar el origen. En caso de duda, deje <strong>PAI</strong> marcado.</p>
+</dd>
+<dt>Personalización del encabezado From</dt>
+<dd><p class="first last">Para aquellos proveedores que muestran el origen en otros encabezados (PAI/RPID), es posible que soliciten que el usuario From tenga el código de cuenta que se está utilizando y del dominio su dominio SIP. En caso de duda, deje vacío.</p>
+</dd>
+<dt>Estado</dt>
+<dd><p class="first last">Los servidores de carrier que no responden se desactivan hasta que respondan a una solicitud de ping OPTIONS. Este icono muestra si el servidor de carrier está activo o inactivo (y se le envía un ping a través de un mensaje OPTIONS hasta que vuelva).</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Hay muchos campos para establecer <em>peering</em> con múltiples tipos de carriers, pero generalmente con el nombre y el Proxy SIP será suficiente (para aquellos que validan nuestra plataforma por IP) y Autenticación (para aquellos que no lo hacen).</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">En caso de definir múltiples servidores de carrier para un solo carrier, IvozProvider equilibrará y conmutará por error utilizando todos ellos. Al igual que con los servidores de aplicaciones, deshabilitará aquellos que no respondan a nuestras solicitudes.</p>
+</div>
+</div>
+<div class="section" id="list-of-external-calls">
+<h2>Lista de llamadas externas</h2>
+<p>Puede ver las llamadas externas realizadas a través de un carrier dado utilizando esta opción. Verá los mismos campos que en <a class="reference internal" href="../../platform/external_calls.xhtml#external-calls"><span class="std std-ref">Llamadas externas</span></a> pero filtrados para el carrier elegido.</p>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">Es obligatorio tener <strong>una URL de marca válida</strong> para utilizar la función <em>Exportar a CSV</em> en esta subsección.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

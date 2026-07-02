@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Webhooks</title>
+    
+    <link rel="stylesheet" href="../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../../residential/index.xhtml" title="Clientes Residenciales"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="call_recordings.xhtml" title="Grabaciones de llamadas"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.xhtml" >Clientes vPBX</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.xhtml" accesskey="U">Llamadas</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="webhooks">
+<span id="vpbx-webhooks"></span><h1>Webhooks</h1>
+<p>Los webhooks permiten a IvozProvider notificar eventos de llamada a servicios HTTP externos en tiempo real. Cada vez que se produce un evento suscrito en una llamada coincidente, IvozProvider envía una petición HTTP <code class="docutils literal"><span class="pre">POST</span></code> al endpoint configurado con un payload JSON personalizable.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Los webhooks se pueden habilitar por marca a través de Funciones.</p>
+</div>
+<div class="section" id="configurable-fields">
+<h2>Campos configurables</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Se utiliza para identificar este webhook.</p>
+</dd>
+<dt>Descripción</dt>
+<dd><p class="first last">Texto libre opcional que describe el propósito del webhook.</p>
+</dd>
+<dt>URL</dt>
+<dd><p class="first last">Endpoint que recibirá la petición HTTP <code class="docutils literal"><span class="pre">POST</span></code> cada vez que se dispare un evento suscrito.</p>
+</dd>
+<dt>Dirección</dt>
+<dd><p class="first">Restringe el webhook a las llamadas de una dirección determinada:</p>
+<ul class="last simple">
+<li><p class="first"><strong>Entrante</strong>: solo llamadas entrantes.</p>
+</li>
+<li><p class="first"><strong>Saliente</strong>: solo llamadas salientes.</p>
+</li>
+<li><p class="first"><strong>Ambos</strong>: llamadas entrantes y salientes (por defecto).</p>
+</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="events">
+<h2>Eventos</h2>
+<p>Cada webhook se suscribe a uno o más eventos de llamada. Se envía una petición <code class="docutils literal"><span class="pre">POST</span></code> cada vez que se produce un evento suscrito en una llamada coincidente:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Inicio</dt>
+<dd><p class="first last">Se envía cuando se inicia una nueva llamada.</p>
+</dd>
+<dt>Sonando</dt>
+<dd><p class="first last">Se envía cuando el destino empieza a sonar.</p>
+</dd>
+<dt>Respuesta</dt>
+<dd><p class="first last">Se envía cuando se responde la llamada.</p>
+</dd>
+<dt>Fin</dt>
+<dd><p class="first last">Se envía cuando finaliza la llamada.</p>
+</dd>
+<dt>Actualizar CLID</dt>
+<dd><p class="first last">Se envía cuando la identificación de línea del llamante (CLID) se actualiza durante la llamada.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="template">
+<h2>Plantilla</h2>
+<p>El cuerpo de la petición <code class="docutils literal"><span class="pre">POST</span></code> se define mediante el campo <strong>Plantilla</strong>: un documento JSON válido donde las marcas <code class="docutils literal"><span class="pre">{{placeholder}}</span></code> se sustituyen por los valores reales de la llamada antes de enviar la petición.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Al crear un nuevo webhook se proporciona una plantilla por defecto. Puedes adaptarla libremente siempre que el resultado sea un JSON válido.</p>
+</div>
+</div>
+<div class="section" id="available-placeholders">
+<h2>Placeholders disponibles</h2>
+<p>Estos son los placeholders que se pueden usar en la plantilla a nivel de cliente:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">{{event}}</span></code></td>
+<td><p class="first last">Evento que ha disparado la petición (start, ring, answer, end, updateClid).</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">{{callId}}</span></code></td>
+<td><p class="first last">Call-ID del diálogo SIP.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">{{direction}}</span></code></td>
+<td><p class="first last">Dirección de la llamada (entrante/saliente).</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">{{owner}}</span></code></td>
+<td><p class="first last">Endpoint interno (usuario, friend, ...) implicado en la llamada.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">{{party}}</span></code></td>
+<td><p class="first last">Participante restante de la llamada.</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">{{userId}}</span></code></td>
+<td><p class="first last">ID interno del usuario al que pertenece el webhook.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">{{time}}</span></code></td>
+<td><p class="first last">Marca de tiempo del evento.</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">{{iden}}</span></code></td>
+<td><p class="first last">Identificador del webhook.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="assignment-level">
+<h2>Nivel de asignación</h2>
+<p>En el portal de cliente, los webhooks se configuran por usuario (sección <strong>Webhooks</strong> de cada usuario) y se aplican solo a las llamadas en las que participa ese usuario.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

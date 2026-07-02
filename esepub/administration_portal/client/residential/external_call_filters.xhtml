@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Filtros de llamadas externas</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="calls/index.xhtml" title="Llamadas"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="rating_profiles.xhtml" title="Perfiles de calificación"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Clientes Residenciales</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="external-call-filters">
+<span id="residential-filters"></span><h1>Filtros de llamadas externas</h1>
+<p>Los filtros externos residenciales se pueden asignar a DDIs para reenviar temporalmente las llamadas a un número externo o para evitar llamadas de fuentes indeseables.</p>
+<div class="section" id="filters-configuration">
+<h2>Configuración de filtros</h2>
+<p>Estos son los ajustes configurables de los <em>filtros externos residenciales</em>:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Nombre del filtro.</p>
+</dd>
+<dt>Lista negra</dt>
+<dd><p class="first last">El origen externo se verificará contra las <a class="reference internal" href="../vpbx/routing_tools/match_lists.xhtml#match-lists"><span class="std std-ref">Listas de coincidencia</span></a> asociadas, si se encuentra una coincidencia, la llamada será rechazada inmediatamente.</p>
+</dd>
+<dt>Reenvío de llamadas incondicional</dt>
+<dd><p class="first last">Las llamadas a DDIs que usen este filtro se reenviarán al número externo indicado.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">La lista negra tiene prioridad sobre el reenvío de llamadas incondicional. Las llamadas de números que coincidan con la lista de coincidencias asociada no serán reenviadas, serán rechazadas.</p>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Atención</p>
+<p class="last">Las llamadas reenviadas por un filtro mantendrán la identificación del llamante original, añadiendo la información de reenvío en un encabezado SIP <em>Diversion</em>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>
