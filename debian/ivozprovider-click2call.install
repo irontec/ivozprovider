@@ -1,2 +1,4 @@
-microservices/click2call/originate  /opt/irontec/ivozprovider/microservices/click2call/
-microservices/click2call/configs /opt/irontec/ivozprovider/microservices/click2call/
+#!/usr/bin/dh-exec
+
+microservices/click2call/originate /opt/irontec/ivozprovider/microservices/click2call/
+microservices/click2call/configs/config.yml.dist => /opt/irontec/ivozprovider/microservices/click2call/configs/config.yml
