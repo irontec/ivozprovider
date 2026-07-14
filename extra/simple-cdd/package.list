@@ -46,6 +46,7 @@ ivozprovider-rtpengine
 ivozprovider-rtpengine-dbgsym
 ivozprovider-scheduler
 ivozprovider-schema
+ivozprovider-webhooks
 ivozprovider-web-portals
 ivozprovider-web-rest
 libbcg729-0
