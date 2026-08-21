@@ -1372,6 +1372,7 @@ Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     order:
+      weight: DESC
       destinationRateGroup: ASC
     read_access_control:
       inherited:
