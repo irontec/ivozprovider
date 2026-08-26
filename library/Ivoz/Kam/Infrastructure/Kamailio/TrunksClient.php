@@ -14,6 +14,18 @@ class TrunksClient implements TrunksClientInterface
     const REDIS_RT_CALLS_DB = 1;
     const REDIS_SCAN_COUNT = 1000;
 
+    /**
+     * Realtime call keys are published by kamtrunks with this layout:
+     *
+     *   trunks:b<brandId>:c<companyId>:ddi<ddiId>:cr<carrierId>:<callId>   (outbound)
+     *   trunks:b<brandId>:c<companyId>:ddi<ddiId>:dp<ddiProviderId>:<callId> (inbound)
+     *
+     * Every segment must be matched explicitly, so any change on the key
+     * layout is caught here instead of silently returning no matches.
+     */
+    const INBOUND_KEY_PATTERN = 'trunks:b%s:c%s:ddi*:dp*:*';
+    const OUTBOUND_KEY_PATTERN = 'trunks:b%s:c%s:ddi*:cr*:*';
+
     public function __construct(
         RpcClient $rpcClient,
         private TrunksRpcJob $rpcJob,
@@ -164,14 +176,14 @@ class TrunksClient implements TrunksClientInterface
     public function getCompanyActiveCalls(int $brandId, int $companyId): array
     {
         $inboundFilterPattern = sprintf(
-            'trunks:b%d:c%d:dp*',
+            self::INBOUND_KEY_PATTERN,
             $brandId,
             $companyId
         );
         $inbound = $this->getRedisActiveCalls($inboundFilterPattern);
 
         $outboundFilterPattern = sprintf(
-            'trunks:b%d:c%d:cr*',
+            self::OUTBOUND_KEY_PATTERN,
             $brandId,
             $companyId
         );
@@ -190,14 +202,16 @@ class TrunksClient implements TrunksClientInterface
     public function getBrandActiveCalls(int $brandId): array
     {
         $inboundFilterPattern = sprintf(
-            'trunks:b%d:*:dp*',
-            $brandId
+            self::INBOUND_KEY_PATTERN,
+            $brandId,
+            '*'
         );
         $inbound = $this->getRedisActiveCalls($inboundFilterPattern);
 
         $outboundFilterPattern = sprintf(
-            'trunks:b%d:*:cr*',
-            $brandId
+            self::OUTBOUND_KEY_PATTERN,
+            $brandId,
+            '*'
         );
         $outbound = $this->getRedisActiveCalls($outboundFilterPattern);
 
@@ -212,8 +226,19 @@ class TrunksClient implements TrunksClientInterface
      */
     public function getPlatformActiveCalls(): array
     {
-        $inbound = $this->getRedisActiveCalls('trunks:*:dp*');
-        $outbound = $this->getRedisActiveCalls('trunks:*:cr*');
+        $inboundFilterPattern = sprintf(
+            self::INBOUND_KEY_PATTERN,
+            '*',
+            '*'
+        );
+        $inbound = $this->getRedisActiveCalls($inboundFilterPattern);
+
+        $outboundFilterPattern = sprintf(
+            self::OUTBOUND_KEY_PATTERN,
+            '*',
+            '*'
+        );
+        $outbound = $this->getRedisActiveCalls($outboundFilterPattern);
 
         return [
             $inbound,
