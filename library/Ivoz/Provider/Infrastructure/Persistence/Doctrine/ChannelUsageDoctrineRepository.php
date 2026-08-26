@@ -3,9 +3,10 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NativeQuery;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\ChannelUsage\ChannelUsage;
+use Ivoz\Provider\Domain\Model\ChannelUsage\ChannelUsageInterface;
 use Ivoz\Provider\Domain\Model\ChannelUsage\ChannelUsageRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -23,63 +24,78 @@ class ChannelUsageDoctrineRepository extends ServiceEntityRepository implements 
         parent::__construct($registry, ChannelUsage::class);
     }
 
-    public function upsertBatch(array $rows): int
-    {
-        if (empty($rows)) {
-            return 0;
-        }
+    public function findOneByCompanyAndTimestamp(
+        int $companyId,
+        \DateTimeInterface $timestamp
+    ): ?ChannelUsageInterface {
+        $qb = $this
+            ->createQueryBuilder('self');
 
-        $placeholders = [];
-        $values = [];
-        foreach ($rows as $row) {
-            $placeholders[] = '(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-            $values[] = $row['brandId'];
-            $values[] = $row['companyId'];
-            $values[] = $row['timestamp']->format('Y-m-d H:i:s');
-            $values[] = $row['peak'];
-            $values[] = round($row['avgUsage'], 2);
-            $values[] = $row['closingUsage'];
-            $values[] = $row['maxCallsCompany'];
-            $values[] = $row['maxCallsBrand'];
-            $values[] = $row['blockedByCompanyLimit'];
-            $values[] = $row['blockedByBrandLimit'];
-        }
+        $criteria = CriteriaHelper::fromArray([
+            ['company', 'eq', $companyId],
+            ['timestamp', 'eq', $timestamp->format('Y-m-d H:i:s')]
+        ]);
 
-        $sql = sprintf(
-            'INSERT INTO ChannelUsages'
-            . ' (brandId, companyId, timestamp, peak, avgUsage, closingUsage,'
-            . ' maxCallsCompany, maxCallsBrand, blockedByCompanyLimit, blockedByBrandLimit)'
-            . ' VALUES %s'
-            . ' ON DUPLICATE KEY UPDATE'
-            . ' peak = VALUES(peak),'
-            . ' avgUsage = VALUES(avgUsage),'
-            . ' closingUsage = VALUES(closingUsage),'
-            . ' maxCallsCompany = VALUES(maxCallsCompany),'
-            . ' maxCallsBrand = VALUES(maxCallsBrand),'
-            . ' blockedByCompanyLimit = VALUES(blockedByCompanyLimit),'
-            . ' blockedByBrandLimit = VALUES(blockedByBrandLimit)',
-            implode(', ', $placeholders)
-        );
+        $qb
+            ->addCriteria($criteria)
+            ->setMaxResults(1);
 
-        $query = (new NativeQuery($this->_em))->setSQL($sql);
-        foreach ($values as $idx => $value) {
-            $query->setParameter($idx + 1, $value);
-        }
+        /** @var ChannelUsageInterface | null $response */
+        $response = $qb
+            ->getQuery()
+            ->getOneOrNullResult();
 
-        return $this->queryRunner->execute(ChannelUsage::class, $query);
+        return $response;
     }
 
     public function purgeOlderThan(\DateTimeInterface $cutoff, int $limit): int
     {
-        $sql = sprintf(
-            'DELETE FROM ChannelUsages WHERE timestamp < ? LIMIT %d',
-            $limit
+        $ids = $this->findIdsOlderThan($cutoff, $limit);
+
+        if (empty($ids)) {
+            return 0;
+        }
+
+        $qb = $this
+            ->createQueryBuilder('self');
+
+        $qb
+            ->delete(
+                $this->getEntityName(),
+                'self'
+            )
+            ->where('self.id in (:ids)')
+            ->setParameter(':ids', $ids);
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
         );
+    }
 
-        $query = (new NativeQuery($this->_em))
-            ->setSQL($sql)
-            ->setParameter(1, $cutoff->format('Y-m-d H:i:s'));
+    /**
+     * @return int[]
+     */
+    private function findIdsOlderThan(\DateTimeInterface $cutoff, int $limit): array
+    {
+        $qb = $this
+            ->createQueryBuilder('self');
 
-        return $this->queryRunner->execute(ChannelUsage::class, $query);
+        $criteria = CriteriaHelper::fromArray([
+            ['timestamp', 'lt', $cutoff->format('Y-m-d H:i:s')]
+        ]);
+
+        $qb
+            ->select('self.id')
+            ->addCriteria($criteria)
+            ->setMaxResults($limit);
+
+        return array_map(
+            'intval',
+            array_column(
+                $qb->getQuery()->getScalarResult(),
+                'id'
+            )
+        );
     }
 }

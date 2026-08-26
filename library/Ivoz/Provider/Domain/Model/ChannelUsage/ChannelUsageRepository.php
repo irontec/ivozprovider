@@ -11,22 +11,10 @@ use Doctrine\Persistence\ObjectRepository;
  */
 interface ChannelUsageRepository extends ObjectRepository, Selectable
 {
-    /**
-     * @param array<array{
-     *   brandId: int,
-     *   companyId: int,
-     *   timestamp: \DateTimeInterface,
-     *   peak: int,
-     *   avgUsage: float,
-     *   closingUsage: int,
-     *   maxCallsCompany: int,
-     *   maxCallsBrand: int,
-     *   blockedByCompanyLimit: int,
-     *   blockedByBrandLimit: int
-     * }> $rows
-     * @return int affected rows
-     */
-    public function upsertBatch(array $rows): int;
+    public function findOneByCompanyAndTimestamp(
+        int $companyId,
+        \DateTimeInterface $timestamp
+    ): ?ChannelUsageInterface;
 
     public function purgeOlderThan(\DateTimeInterface $cutoff, int $limit): int;
 }
