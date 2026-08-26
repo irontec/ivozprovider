@@ -1,0 +1,7 @@
+[Unit]
+Description=Ivozprovider Channel Usage collector
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/opt/irontec/ivozprovider/microservices/scheduler/bin/run-channel-usage
