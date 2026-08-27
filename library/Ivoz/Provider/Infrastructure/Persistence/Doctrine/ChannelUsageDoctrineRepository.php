@@ -48,6 +48,38 @@ class ChannelUsageDoctrineRepository extends ServiceEntityRepository implements 
         return $response;
     }
 
+    /**
+     * @param array<int, int> $companyIds
+     * @return array<int, ChannelUsageInterface>
+     */
+    public function findByCompaniesAndTimestampRange(
+        array $companyIds,
+        \DateTimeInterface $from,
+        \DateTimeInterface $to
+    ): array {
+        if (empty($companyIds)) {
+            return [];
+        }
+
+        $qb = $this
+            ->createQueryBuilder('self');
+
+        $criteria = CriteriaHelper::fromArray([
+            ['company', 'in', $companyIds],
+            ['timestamp', 'gte', $from->format('Y-m-d H:i:s')],
+            ['timestamp', 'lte', $to->format('Y-m-d H:i:s')]
+        ]);
+
+        $qb->addCriteria($criteria);
+
+        /** @var array<int, ChannelUsageInterface> $response */
+        $response = $qb
+            ->getQuery()
+            ->getResult();
+
+        return $response;
+    }
+
     public function purgeOlderThan(\DateTimeInterface $cutoff, int $limit): int
     {
         $ids = $this->findIdsOlderThan($cutoff, $limit);

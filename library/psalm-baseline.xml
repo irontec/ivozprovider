@@ -4813,41 +4813,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/ChannelUsage/CollectChannelUsage.php">
-    <MixedArgument occurrences="6">
-      <code>$avgUsage</code>
-      <code>$blockedBrand</code>
-      <code>$blockedCompany</code>
-      <code>$currentBucketTs</code>
-      <code>$currentOcc</code>
-      <code>$peak</code>
-    </MixedArgument>
-    <MixedArrayAssignment occurrences="1">
-      <code>$rows[]</code>
-    </MixedArrayAssignment>
-    <MixedOperand occurrences="11">
-      <code>$blockedBrand</code>
-      <code>$blockedCompany</code>
-      <code>$currentOcc</code>
-      <code>$currentOcc</code>
-      <code>$currentOcc</code>
-      <code>$currentOcc</code>
-      <code>$integral</code>
-      <code>$integral</code>
-      <code>$integral</code>
-      <code>$prevTs</code>
-      <code>$prevTs</code>
-    </MixedOperand>
-    <UnnecessaryVarAnnotation occurrences="1">
-      <code>int</code>
-    </UnnecessaryVarAnnotation>
-    <UnusedVariable occurrences="4">
-      <code>$blockedBrand</code>
-      <code>$blockedCompany</code>
-      <code>$integral</code>
-      <code>$prevTs</code>
-    </UnusedVariable>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/Company/AbstractBalanceOperation.php">
     <MixedArgument occurrences="1">
       <code>$balance</code>

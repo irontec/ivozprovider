@@ -16,5 +16,20 @@ interface ChannelUsageRepository extends ObjectRepository, Selectable
         \DateTimeInterface $timestamp
     ): ?ChannelUsageInterface;
 
+    /**
+     * Existing buckets for a set of companies within a timestamp window.
+     *
+     * Lets a collector resolve a whole batch of buckets with a single query instead of one
+     * lookup per row.
+     *
+     * @param array<int, int> $companyIds
+     * @return array<int, ChannelUsageInterface>
+     */
+    public function findByCompaniesAndTimestampRange(
+        array $companyIds,
+        \DateTimeInterface $from,
+        \DateTimeInterface $to
+    ): array;
+
     public function purgeOlderThan(\DateTimeInterface $cutoff, int $limit): int;
 }
