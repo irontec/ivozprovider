@@ -26,6 +26,13 @@ class TrunksClient implements TrunksClientInterface
     const INBOUND_KEY_PATTERN = 'trunks:b%s:c%s:ddi*:dp*:*';
     const OUTBOUND_KEY_PATTERN = 'trunks:b%s:c%s:ddi*:cr*:*';
 
+    /**
+     * Companion to the patterns above: extracts the owning brand and company from a matched
+     * key. Every segment is spelled out here too, for the same reason, and it lives next to
+     * them so a layout change is a single edit.
+     */
+    const KEY_OWNER_REGEXP = '/^trunks:b(\d+):c(\d+):ddi[^:]*:(?:cr|dp)[^:]*:/';
+
     public function __construct(
         RpcClient $rpcClient,
         private TrunksRpcJob $rpcJob,
@@ -244,6 +251,94 @@ class TrunksClient implements TrunksClientInterface
             $inbound,
             $outbound
         ];
+    }
+
+    /**
+     * @return array<int, array{brandId: int, occ: int}>
+     */
+    public function getActiveCallsGroupedByCompany(): array
+    {
+        $grouped = [];
+
+        foreach ([self::INBOUND_KEY_PATTERN, self::OUTBOUND_KEY_PATTERN] as $keyPattern) {
+            $filterPattern = sprintf(
+                $keyPattern,
+                '*',
+                '*'
+            );
+
+            $this->groupRedisActiveCallsByCompany($filterPattern, $grouped);
+        }
+
+        return $grouped;
+    }
+
+    /**
+     * @param array<int, array{brandId: int, occ: int}> $grouped
+     */
+    private function groupRedisActiveCallsByCompany(string $filterPattern, array &$grouped): void
+    {
+        try {
+            $redisClient = $this->redisMasterFactory->create(
+                self::REDIS_RT_CALLS_DB
+            );
+
+            /** @var int|null $redisScanIterator */
+            $redisScanIterator = null;
+
+            while (true) {
+                $keys = $redisClient->scan(
+                    $redisScanIterator,
+                    $filterPattern,
+                    self::REDIS_SCAN_COUNT
+                );
+
+                if (!is_array($keys)) {
+                    break;
+                }
+
+                foreach ($keys as $key) {
+                    $owner = [];
+                    if (!preg_match(self::KEY_OWNER_REGEXP, (string) $key, $owner)) {
+                        continue;
+                    }
+
+                    $brandId = (int) $owner[1];
+                    $companyId = (int) $owner[2];
+
+                    if (!isset($grouped[$companyId])) {
+                        $grouped[$companyId] = [
+                            'brandId' => $brandId,
+                            'occ' => 0
+                        ];
+                    }
+
+                    $grouped[$companyId]['occ']++;
+                }
+
+                if ($redisScanIterator === 0) {
+                    break;
+                }
+            }
+
+            $redisClient->close();
+        } catch (\Exception $e) {
+            $classMethod = substr(
+                __METHOD__,
+                (int) strrpos(__METHOD__, '\\') + 1
+            );
+
+            $this
+                ->logger
+                ->error(
+                    sprintf(
+                        '%s(%s): %s',
+                        $classMethod,
+                        $filterPattern,
+                        $e->getMessage()
+                    )
+                );
+        }
     }
 
     /**
