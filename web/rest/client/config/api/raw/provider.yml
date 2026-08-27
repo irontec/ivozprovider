@@ -285,6 +285,26 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
         - inheritedOrNull:
             voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
 
+Ivoz\Provider\Domain\Model\ChannelUsage\ChannelUsage:
+  itemOperations: []
+  collectionOperations:
+    get: ~
+  attributes:
+    pagination_client_enabled: true
+    order:
+      timestamp: DESC
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
+
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations:
     get: ~
