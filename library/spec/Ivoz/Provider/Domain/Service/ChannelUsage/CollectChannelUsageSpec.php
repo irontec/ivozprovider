@@ -3,12 +3,14 @@
 namespace spec\Ivoz\Provider\Domain\Service\ChannelUsage;
 
 use Ivoz\Core\Domain\Service\EntityTools;
+use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Job\ChannelUsageEventQueueInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandRepository;
 use Ivoz\Provider\Domain\Model\ChannelUsage\ChannelUsageRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Service\ChannelUsage\ChannelUsageBucketCalculator;
 use Ivoz\Provider\Domain\Service\ChannelUsage\ChannelUsageEventParser;
+use Ivoz\Provider\Domain\Service\ChannelUsage\ChannelUsageRowBuilder;
 use Ivoz\Provider\Domain\Service\ChannelUsage\ChannelUsageWriter;
 use Ivoz\Provider\Domain\Service\ChannelUsage\CollectChannelUsage;
 use PhpSpec\ObjectBehavior;
@@ -18,14 +20,13 @@ use Psr\Log\LoggerInterface;
 class CollectChannelUsageSpec extends ObjectBehavior
 {
     protected $eventQueue;
-    protected $companyRepository;
-    protected $brandRepository;
+    protected $trunksClient;
     protected $channelUsageRepository;
     protected $entityTools;
-    protected $logger;
 
     public function let(
         ChannelUsageEventQueueInterface $eventQueue,
+        TrunksClientInterface $trunksClient,
         CompanyRepository $companyRepository,
         BrandRepository $brandRepository,
         ChannelUsageRepository $channelUsageRepository,
@@ -33,39 +34,41 @@ class CollectChannelUsageSpec extends ObjectBehavior
         LoggerInterface $logger
     ) {
         $this->eventQueue = $eventQueue;
-        $this->companyRepository = $companyRepository;
-        $this->brandRepository = $brandRepository;
+        $this->trunksClient = $trunksClient;
         $this->channelUsageRepository = $channelUsageRepository;
         $this->entityTools = $entityTools;
-        $this->logger = $logger;
 
-        // The parser, the calculator and the writer are built for real: the first two are
-        // pure, and the writer is what puts the doubled repository and entityTools to work,
-        // so doubling them would only obscure the behaviour under test.
+        $calculator = new ChannelUsageBucketCalculator();
+
+        // Everything pure is built for real; only the edges (queue, kamailio, db) are doubled.
         $this->beConstructedWith(
             $eventQueue,
+            $trunksClient,
             new ChannelUsageEventParser($logger->getWrappedObject()),
-            new ChannelUsageBucketCalculator(),
-            $companyRepository,
-            $brandRepository,
+            $calculator,
+            new ChannelUsageRowBuilder(
+                $calculator,
+                $companyRepository->getWrappedObject(),
+                $brandRepository->getWrappedObject(),
+                $logger->getWrappedObject()
+            ),
             new ChannelUsageWriter(
                 $channelUsageRepository->getWrappedObject(),
                 $entityTools->getWrappedObject()
-            ),
-            $logger
+            )
         );
 
         // Permissive baseline: a double turns strict as soon as one call is expected, so
         // every collaborator method the service may touch needs a promise up front.
-        $this->companyRepository->findBy(Argument::any())->willReturn([]);
-        $this->brandRepository->findBy(Argument::any())->willReturn([]);
+        $companyRepository->findBy(Argument::any())->willReturn([]);
+        $brandRepository->findBy(Argument::any())->willReturn([]);
         $this
             ->channelUsageRepository
             ->findByCompaniesAndTimestampRange(Argument::cetera())
             ->willReturn([]);
 
         $this->eventQueue->readPending(Argument::any())->willReturn([]);
-        $this->eventQueue->getActiveChannelsByCompany()->willReturn([]);
+        $this->trunksClient->getActiveCallsGroupedByCompany()->willReturn([]);
 
         // These return void, so they get an empty promise rather than willReturn(): a bare
         // method prophecy is never registered, and the double would reject the call.
@@ -79,12 +82,25 @@ class CollectChannelUsageSpec extends ObjectBehavior
         $this->entityTools->dispatchQueuedOperations()->will($noop);
         $this->entityTools->clearExcept(Argument::cetera())->will($noop);
 
-        $this->logger->warning(Argument::any())->will($noop);
+        $logger->warning(Argument::any())->will($noop);
     }
 
     function it_is_initializable()
     {
         $this->shouldHaveType(CollectChannelUsage::class);
+    }
+
+    function it_takes_the_occupancy_anchor_from_the_trunks_client()
+    {
+        // The realtime key layout belongs to TrunksClient: this service must not go looking
+        // for it in redis itself.
+        $this
+            ->trunksClient
+            ->getActiveCallsGroupedByCompany()
+            ->shouldBeCalled()
+            ->willReturn([]);
+
+        $this->execute();
     }
 
     function it_reads_a_bounded_slice_of_the_queue()
@@ -96,8 +112,6 @@ class CollectChannelUsageSpec extends ObjectBehavior
             ->readPending(CollectChannelUsage::MAX_ENTRIES_PER_RUN)
             ->shouldBeCalled()
             ->willReturn([]);
-
-        $this->eventQueue->getActiveChannelsByCompany()->willReturn([]);
 
         $this->execute();
     }
@@ -114,9 +128,6 @@ class CollectChannelUsageSpec extends ObjectBehavior
                 'this is not an event',
                 'H:200:1:2',
             ]);
-
-        $this->eventQueue->getActiveChannelsByCompany()->willReturn([]);
-        $this->logger->warning(Argument::any())->shouldBeCalled();
 
         $this
             ->eventQueue
@@ -136,8 +147,6 @@ class CollectChannelUsageSpec extends ObjectBehavior
             ->eventQueue
             ->readPending(Argument::any())
             ->willReturn(['A:' . $openBucketTs . ':1:2:1']);
-
-        $this->eventQueue->getActiveChannelsByCompany()->willReturn([]);
 
         $this->eventQueue->discardProcessed(Argument::any())->shouldNotBeCalled();
         $this->eventQueue->requeue(Argument::any())->shouldNotBeCalled();
@@ -159,8 +168,6 @@ class CollectChannelUsageSpec extends ObjectBehavior
                 $stillOpen,
             ]);
 
-        $this->eventQueue->getActiveChannelsByCompany()->willReturn([]);
-
         $this->eventQueue->discardProcessed(3)->shouldBeCalled();
         $this
             ->eventQueue
@@ -180,8 +187,6 @@ class CollectChannelUsageSpec extends ObjectBehavior
                 'A:100:1:2:1',
                 'H:200:1:2',
             ]);
-
-        $this->eventQueue->getActiveChannelsByCompany()->willReturn([]);
 
         $this
             ->entityTools
@@ -205,8 +210,6 @@ class CollectChannelUsageSpec extends ObjectBehavior
                 'H:200:1:2',
             ]);
 
-        $this->eventQueue->getActiveChannelsByCompany()->willReturn([]);
-
         $this
             ->entityTools
             ->persistDto(Argument::any(), null, false)
@@ -227,8 +230,6 @@ class CollectChannelUsageSpec extends ObjectBehavior
                 'A:400:1:3:1',
                 'H:500:1:3',
             ]);
-
-        $this->eventQueue->getActiveChannelsByCompany()->willReturn([]);
 
         $this
             ->channelUsageRepository

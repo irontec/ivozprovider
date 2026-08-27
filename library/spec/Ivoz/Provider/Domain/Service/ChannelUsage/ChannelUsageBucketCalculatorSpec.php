@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\ChannelUsage;
 
+use Ivoz\Provider\Domain\Model\ChannelUsage\ChannelUsageEvent;
 use Ivoz\Provider\Domain\Service\ChannelUsage\ChannelUsageBucketCalculator;
 use PhpSpec\ObjectBehavior;
 
@@ -189,43 +190,18 @@ class ChannelUsageBucketCalculatorSpec extends ObjectBehavior
         ];
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     private function admitted($ts, $occ)
     {
-        return $this->event('A', $ts, $occ, '');
+        return ChannelUsageEvent::fromWire('A:' . $ts . ':1:2:' . $occ);
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     private function hangup($ts)
     {
-        return $this->event('H', $ts, null, '');
+        return ChannelUsageEvent::fromWire('H:' . $ts . ':1:2');
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     private function blocked($ts, $reason)
     {
-        return $this->event('B', $ts, null, $reason);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function event($type, $ts, $occ, $reason)
-    {
-        return [
-            'type' => $type,
-            'ts' => $ts,
-            'brandId' => 1,
-            'companyId' => 2,
-            'occ' => $occ,
-            'reason' => $reason,
-            'raw' => $type . ':' . $ts . ':1:2'
-        ];
+        return ChannelUsageEvent::fromWire('B:' . $ts . ':1:2:' . $reason);
     }
 }
