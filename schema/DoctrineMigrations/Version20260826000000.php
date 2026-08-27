@@ -30,6 +30,7 @@ final class Version20260826000000 extends LoggableMigration
             blockedByBrandLimit SMALLINT UNSIGNED DEFAULT 0 NOT NULL,
             UNIQUE INDEX chUsage_company_ts (companyId, timestamp),
             INDEX channelUsage_brandId_idx (brandId),
+            INDEX channelUsage_timestamp_idx (timestamp),
             PRIMARY KEY(id)
         ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE ChannelUsages ADD CONSTRAINT FK_ChannelUsages_brandId

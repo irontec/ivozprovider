@@ -6,6 +6,7 @@
         </unique-constraints>
         <indexes>
             <index name="channelUsage_brandId_idx" columns="brandId"/>
+            <index name="channelUsage_timestamp_idx" columns="timestamp"/>
         </indexes>
         <field name="timestamp" type="datetime" column="timestamp" nullable="false"/>
         <field name="peak" type="smallint" column="peak" nullable="false">
