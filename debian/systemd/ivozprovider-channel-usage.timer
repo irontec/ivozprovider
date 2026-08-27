@@ -3,7 +3,9 @@ Description=Ivozprovider Channel Usage collector
 
 [Timer]
 OnBootSec=3min
-OnUnitActiveSec=5min
+# Fixed 5-minute wall-clock schedule, aligned with the collector's 300s buckets.
+# OnUnitActiveSec would drift, since it counts from the end of the previous run.
+OnCalendar=*:0/5
 
 [Install]
 WantedBy=timers.target
