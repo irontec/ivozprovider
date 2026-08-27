@@ -46,10 +46,28 @@ final class Version20260826000000 extends LoggableMigration
                             'Channel usage', 'Uso de canales', 'Uso de canales', 'Channel usage', 'Uso de canales'
                         )"
         );
+
+        // Restricted client admins that already exist do not go through CreateAcls, which
+        // only seeds permissions when the restricted flag itself changes. Without a row they
+        // would be stuck: the ACL resource exposes no POST, so nobody could ever grant them
+        // this entity from the portal.
+        //
+        // The row is therefore created deny-all, exactly as Version20220408095037 did for
+        // Locations/Voicemails/VoicemailMessages: the entity becomes grantable without
+        // silently widening anyone's access. Admins made restricted from now on keep getting
+        // read access automatically, since CreateAcls seeds every client = 1 entity.
+        $this->addSql(
+            'INSERT IGNORE INTO AdministratorRelPublicEntities (administratorId, publicEntityId, `create`, `read`, `update`, `delete`) '
+            . 'SELECT A.id, P.id, 0, 0, 0, 0 FROM Administrators A INNER JOIN PublicEntities P '
+            . 'WHERE A.restricted = 1 AND A.brandId IS NOT NULL AND A.companyId IS NOT NULL AND P.iden = "ChannelUsages"'
+        );
     }
 
     public function down(Schema $schema): void
     {
+        // AdministratorRelPublicEntities.publicEntityId is ON DELETE CASCADE, so dropping the
+        // public entity takes its permission rows with it. Do not add an explicit delete here:
+        // it would also remove rows created later by CreateAcls.
         $this->addSql('DELETE FROM PublicEntities WHERE iden = "ChannelUsages"');
         $this->addSql('ALTER TABLE ChannelUsages DROP FOREIGN KEY FK_ChannelUsages_brandId');
         $this->addSql('ALTER TABLE ChannelUsages DROP FOREIGN KEY FK_ChannelUsages_companyId');
