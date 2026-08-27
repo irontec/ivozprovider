@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Service\ChannelUsage;
 
 use Ivoz\Provider\Domain\Model\ChannelUsage\ChannelUsageBucketAccumulator;
+use Ivoz\Provider\Domain\Model\ChannelUsage\ChannelUsageEvent;
 
 /**
  * Turns a company's channel usage event stream into per-bucket metrics.
  *
  * Deliberately free of Redis, repositories and the clock: it is pure arithmetic over
- * arrays, which is what makes the interesting part of channel usage collection specable.
+ * events, which is what makes the interesting part of channel usage collection specable.
  *
- * @phpstan-type ChannelUsageEvent array{type: string, ts: int, brandId: int, companyId: int, occ: int|null, reason: string, raw: string}
  * @phpstan-type ChannelUsageBucket array{bucketTs: int, bucketEnd: int, peak: int, avgUsage: float, closingUsage: int, blockedByCompanyLimit: int, blockedByBrandLimit: int}
  */
 class ChannelUsageBucketCalculator
@@ -42,12 +42,12 @@ class ChannelUsageBucketCalculator
         $occupancy = $startOccupancy;
 
         foreach (array_reverse($events) as $event) {
-            if ($event['type'] === ChannelUsageEventParser::TYPE_ADMITTED) {
+            if ($event->isAdmission()) {
                 $occupancy = max(0, $occupancy - 1);
-            } elseif ($event['type'] === ChannelUsageEventParser::TYPE_HANGUP) {
+            } elseif ($event->isHangup()) {
                 $occupancy++;
             }
-            // 'B' events are rejections: they never changed occupancy
+            // Blocks are rejections: they never changed occupancy
         }
 
         return $occupancy;
@@ -69,7 +69,7 @@ class ChannelUsageBucketCalculator
         $events = $this->sortByTimestamp($events);
 
         $accumulator = new ChannelUsageBucketAccumulator(
-            $this->bucketStart($events[0]['ts']),
+            $this->bucketStart($events[0]->getTimestamp()),
             self::BUCKET_SIZE,
             $openingOccupancy
         );
@@ -77,7 +77,7 @@ class ChannelUsageBucketCalculator
         $buckets = [];
 
         foreach ($events as $event) {
-            $eventBucket = $this->bucketStart($event['ts']);
+            $eventBucket = $this->bucketStart($event->getTimestamp());
 
             while ($accumulator->getBucketTs() < $eventBucket) {
                 $accumulator->seal();
@@ -85,14 +85,14 @@ class ChannelUsageBucketCalculator
                 $accumulator = $accumulator->next();
             }
 
-            $accumulator->accrueUntil($event['ts']);
+            $accumulator->accrueUntil($event->getTimestamp());
 
-            if ($event['type'] === ChannelUsageEventParser::TYPE_ADMITTED) {
-                $accumulator->admit($event['occ']);
-            } elseif ($event['type'] === ChannelUsageEventParser::TYPE_HANGUP) {
+            if ($event->isAdmission()) {
+                $accumulator->admit($event->getOccupancy());
+            } elseif ($event->isHangup()) {
                 $accumulator->hangup();
-            } elseif ($event['type'] === ChannelUsageEventParser::TYPE_BLOCKED) {
-                $accumulator->block($event['reason']);
+            } elseif ($event->isBlock()) {
+                $accumulator->block($event->isBlockedByBrand());
             }
         }
 
@@ -144,7 +144,8 @@ class ChannelUsageBucketCalculator
     {
         usort(
             $events,
-            fn (array $a, array $b): int => $a['ts'] <=> $b['ts']
+            fn (ChannelUsageEvent $a, ChannelUsageEvent $b): int
+                => $a->getTimestamp() <=> $b->getTimestamp()
         );
 
         return $events;

@@ -102,11 +102,11 @@ final class ChannelUsageBucketAccumulator
     }
 
     /**
-     * A 'B' event: a call was rejected by a max-channel limit. Does not alter occupancy.
+     * A call was rejected by a max-channel limit. Does not alter occupancy.
      */
-    public function block(string $reason): void
+    public function block(bool $byBrandLimit): void
     {
-        if ($reason === 'brand') {
+        if ($byBrandLimit) {
             $this->blockedByBrandLimit++;
 
             return;

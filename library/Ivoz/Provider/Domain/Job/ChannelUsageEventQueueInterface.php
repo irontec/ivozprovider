@@ -34,11 +34,4 @@ interface ChannelUsageEventQueueInterface
      * @param array<int, string> $rawEntries
      */
     public function requeue(array $rawEntries): void;
-
-    /**
-     * Current active channels per company, derived from the realtime call keyspace.
-     *
-     * @return array<int, array{brandId: int, occ: int}> companyId => brand and occupancy
-     */
-    public function getActiveChannelsByCompany(): array;
 }

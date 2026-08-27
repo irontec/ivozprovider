@@ -4,23 +4,16 @@ namespace Ivoz\Provider\Infrastructure\Redis\Job;
 
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Ivoz\Provider\Domain\Job\ChannelUsageEventQueueInterface;
-use Psr\Log\LoggerInterface;
 
 class ChannelUsageEventQueue implements ChannelUsageEventQueueInterface
 {
-    public const REDIS_DB = 1;
-    public const REDIS_SCAN_COUNT = 1000;
-    public const TRUNKS_KEY_PATTERN = 'trunks:*';
-
     /**
-     * trunks:b<brandId>:c<companyId>:ddi<ddiId>:cr<carrierId>:<callId>
-     * trunks:b<brandId>:c<companyId>:ddi<ddiId>:dp<ddiProviderId>:<callId>
+     * The db kamtrunks pushes to, per its ndb_redis server config.
      */
-    private const TRUNKS_KEY_REGEXP = '/^trunks:b(\d+):c(\d+):/';
+    public const REDIS_DB = 1;
 
     public function __construct(
-        private RedisMasterFactory $redisMasterFactory,
-        private LoggerInterface $logger
+        private RedisMasterFactory $redisMasterFactory
     ) {
     }
 
@@ -88,65 +81,6 @@ class ChannelUsageEventQueue implements ChannelUsageEventQueueInterface
                     $rawEntry
                 );
             }
-        } finally {
-            $redis->close();
-        }
-    }
-
-    /**
-     * @return array<int, array{brandId: int, occ: int}>
-     */
-    public function getActiveChannelsByCompany(): array
-    {
-        $activeChannels = [];
-        $redis = $this->redisMasterFactory->create(self::REDIS_DB);
-
-        try {
-            /** @var int|null $scanIterator */
-            $scanIterator = null;
-
-            while (true) {
-                $keys = $redis->scan(
-                    $scanIterator,
-                    self::TRUNKS_KEY_PATTERN,
-                    self::REDIS_SCAN_COUNT
-                );
-
-                if (!is_array($keys)) {
-                    break;
-                }
-
-                foreach ($keys as $key) {
-                    $matches = [];
-                    if (!preg_match(self::TRUNKS_KEY_REGEXP, (string) $key, $matches)) {
-                        continue;
-                    }
-
-                    $brandId = (int) $matches[1];
-                    $companyId = (int) $matches[2];
-
-                    if (!isset($activeChannels[$companyId])) {
-                        $activeChannels[$companyId] = [
-                            'brandId' => $brandId,
-                            'occ' => 0
-                        ];
-                    }
-
-                    $activeChannels[$companyId]['occ']++;
-                }
-
-                if ($scanIterator === 0) {
-                    break;
-                }
-            }
-
-            return $activeChannels;
-        } catch (\Exception $e) {
-            $this->logger->error(
-                'ChannelUsage: unable to scan the realtime keyspace: ' . $e->getMessage()
-            );
-
-            return [];
         } finally {
             $redis->close();
         }
