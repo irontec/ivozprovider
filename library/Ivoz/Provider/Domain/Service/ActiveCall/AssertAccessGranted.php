@@ -21,7 +21,7 @@ class AssertAccessGranted
 
     /**
      * @param array{username?: string, roles: array<int, string>} $tokenPayload
-     * @param array<'trunks'|'users', array<'b'|'c'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>> $registerCriteria
+     * @param array<'trunks'|'users', array<'b'|'c'|'ddiPositionKeeper'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>> $registerCriteria
      */
     public function execute(
         array $tokenPayload,
@@ -62,7 +62,7 @@ class AssertAccessGranted
 
     /**
      * @param ?string $username
-     * @param array<'trunks'|'users', array<'b'|'c'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>> $registerCriteria
+     * @param array<'trunks'|'users', array<'b'|'c'|'ddiPositionKeeper'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>> $registerCriteria
      */
     private function assertBrandAdminAccessGranted(
         ?string $username,
@@ -146,7 +146,7 @@ class AssertAccessGranted
 
     /**
      * @param ?string $username
-     * @param array<'trunks'|'users', array<'b'|'c'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>> $registerCriteria
+     * @param array<'trunks'|'users', array<'b'|'c'|'ddiPositionKeeper'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>> $registerCriteria
      */
     private function assertClientAdminAccessGranted(
         ?string $username,

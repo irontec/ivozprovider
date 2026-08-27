@@ -139,11 +139,11 @@ class RegistrationChannelResolver
     /**
      * @param array<'b'|'c'|'cr'|'dp'|'direction', int|string|null>|null $filters
      * @param array<'trunks'|'users', array<'b'|'c', int>> $defaultCriteria
-     * @return array<'trunks', array<'b'|'c'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>>
+     * @return array<'trunks', array<'b'|'c'|'ddiPositionKeeper'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>>
      */
     private function getTrunksCriteria(?array $filters, array $defaultCriteria): array
     {
-        /** @var array<'trunks', array<'b'|'c'|'dp'|'cr', int|string|null>> $criteria */
+        /** @var array<'trunks', array<'b'|'c'|'ddiPositionKeeper'|'dp'|'cr', int|string|null>> $criteria */
         $criteria = array_merge($defaultCriteria);
 
         /** @var 'inbound' | 'outbound' | null $direction */
@@ -153,6 +153,9 @@ class RegistrationChannelResolver
 
         $criteria['trunks']['b'] = $filters['b'] ?? '*';
         $criteria['trunks']['c'] = $filters['c'] ?? '*';
+
+        // kamtrunks publishes the ddi between the company and the carrier/ddiProvider
+        $criteria['trunks']['ddiPositionKeeper'] = '*';
 
         if ($direction === 'inbound' || $dp) {
             $criteria['trunks']['dp'] = $dp
@@ -170,7 +173,7 @@ class RegistrationChannelResolver
     }
 
     /**
-     * @param array<'trunks' |'users', array<'b'|'c'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>> $registerCriteria
+     * @param array<'trunks' |'users', array<'b'|'c'|'ddiPositionKeeper'|'dp'|'cr'|'crOrDpPositionKeeper', int|string|null>> $registerCriteria
      */
     private function toString(
         array $registerCriteria
