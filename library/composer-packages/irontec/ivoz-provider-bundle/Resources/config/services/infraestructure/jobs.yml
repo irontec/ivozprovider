@@ -55,6 +55,14 @@ services:
   Ivoz\Provider\Domain\Job\WebhookReloadJobInterface:
     alias: Ivoz\Provider\Infrastructure\Redis\Job\WebhookReloadJob
 
+  # Channel usage event queue
+  # Note: no $redisDb argument on purpose. This queue lives in the realtime calls db
+  # (see TrunksClient::REDIS_RT_CALLS_DB), not in the jobs db.
+  Ivoz\Provider\Infrastructure\Redis\Job\ChannelUsageEventQueue: ~
+
+  Ivoz\Provider\Domain\Job\ChannelUsageEventQueueInterface:
+    alias: Ivoz\Provider\Infrastructure\Redis\Job\ChannelUsageEventQueue
+
   # Asterisk ARI calls
   Ivoz\Ast\Infrastructure\Redis\Job\DialplanReloadJob:
     arguments:

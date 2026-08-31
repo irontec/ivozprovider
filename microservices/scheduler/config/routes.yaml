@@ -21,3 +21,7 @@ call-csv-to-email:
 voicemail-messages:
   path: /voicemail-messages
   controller: VoicemailMessageController:indexAction
+
+channel-usage:
+  path: /channel-usage
+  controller: ChannelUsageController:indexAction
