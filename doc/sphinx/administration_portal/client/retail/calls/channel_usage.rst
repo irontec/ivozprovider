@@ -1,0 +1,1 @@
+.. include:: ../../vpbx/calls/channel_usage.rst
