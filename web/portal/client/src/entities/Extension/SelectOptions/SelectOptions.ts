@@ -1,4 +1,4 @@
-import { DropdownChoices } from '@irontec/ivoz-ui';
+import { DropdownArrayChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
@@ -14,9 +14,9 @@ const ExtensionSelectOptions: SelectOptionsType = ({
     Extension.path,
     ['id', 'number'],
     (data) => {
-      const options: DropdownChoices = {};
+      const options: DropdownArrayChoices = [];
       for (const item of data) {
-        options[item.id] = item.number;
+        options.push({ id: String(item.id), label: item.number });
       }
 
       callback(options);
