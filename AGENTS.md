@@ -107,7 +107,7 @@ Everything implemented or changed ships with its corresponding tests in the same
 - API resources and behaviour: Behat features per REST app (`web/rest/<app>/features`)
 - Portals: Cypress e2e with Pact intercepts (`web/portal/<app>/cypress`)
 - phpspec conventions: build doubles with `spec\HelperTrait` (`getTestDouble`, `getterProphecy`, `fluentSetterProphecy`, `hydrate`) and `spec\DtoToEntityFakeTransformer`; assert interactions with collaborators, not DB state. ORM tests use `Tests\DbIntegrationTestHelperTrait` and a single `test_runner()`.
-- Jenkins runs all of these through the pipeline in `Jenkinsfile`, calling the same `test-*` scripts. Backend stages run for commits tagged `agi:` / `core:` / `doc:` / `schema:` / `microservices/…` / `rest/…`; the frontend stages per portal for `portal…` / `rest/…`.
+- Jenkins runs all of these through the pipeline in `Jenkinsfile`, calling the same `test-*` scripts. Backend stages run for commits tagged `agi:` / `core:` / `doc:` / `schema:` / `microservices/…` / `rest/…` / `tests:`; the frontend stages per portal for `portal…` / `rest/…`, and `tests:` runs all four of them.
 - A new kind of test or check must be wired into `Jenkinsfile` (its own stage, or added to an existing one) and, if it needs a wrapper, into `library/bin/test-*`, `schema/bin/test-*` or the app's `bin/`. Anything not in the `Jenkinsfile` never runs in CI.
 
 ## Commands
@@ -140,7 +140,7 @@ Rules: `doc/dev/en/commits.md`, `.github/PULL_REQUEST_TEMPLATE.md`.
 - Branch from `main`: `PROVIDER-<ticket>-<kebab-slug>`. Jenkins links the PR to Jira from the branch name. Update with `git pull --rebase`.
 - Commit subject: `<tag>: <what changed>`, English, one line, ≤ 60 characters. Examples: `rest/brand: order rating plan destination rates by weight`, `portal/platform: updated translations`, `schema: index ChannelUsages by timestamp for purges`.
 - `<tag>` from `doc/dev/AcceptedCommitTagsList.txt` (per component, e.g. `core`, `rest/platform`, `portal/client`). Enforced by `library/bin/test-commit-tags`.
-- Split commits per component: schema + library + portal = `schema:` + `core:` + `portal/<app>:`. Tags gate CI: `agi:`/`core:`/`doc:`/`schema:`/`microservices/…`/`rest/…` → backend; `portal…`/`rest/…` → frontend per app (`portal/<app>:`, `rest/<app>:`); `schema:` → schema stage; `pkg:` → packaging. A wrong tag silently skips tests.
+- Split commits per component: schema + library + portal = `schema:` + `core:` + `portal/<app>:`. Tags gate CI: `agi:`/`core:`/`doc:`/`schema:`/`microservices/…`/`rest/…`/`tests:` → backend; `portal…`/`rest/…` → frontend per app (`portal/<app>:`, `rest/<app>:`), with `tests:` running all four; `schema:` → schema stage; `pkg:` → packaging. A wrong tag silently skips tests.
 - Regenerated entities go in their own commit.
 - No `Co-Authored-By` trailers — commits are authored by the developer alone, no tool trailers.
 - PR against `main`, one per ticket, fill the template (type of change, checklist, `Fixes #<issue>`). Title in English, without the ticket (Jenkins prefixes `[PROVIDER-<ticket>]`). Code must be GPLv3-compatible.
