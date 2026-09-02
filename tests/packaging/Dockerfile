@@ -37,6 +37,9 @@ RUN apt-get update && apt-get install -y \
     php8.0-gearman
 
 
+# Avoid HTTP/2 failures on git clones (bullseye git + github return 401 on POST)
+RUN git config --system http.version HTTP/1.1
+
 # Create jenkins user (configurable)
 ARG UNAME=jenkins
 ARG UID=108
