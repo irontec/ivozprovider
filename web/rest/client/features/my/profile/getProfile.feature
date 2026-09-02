@@ -557,6 +557,13 @@ Feature: Retrieve active calls
                   "read": true,
                   "update": false,
                   "delete": false
+              },
+              {
+                  "iden": "ChannelUsages",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               }
           ],
           "features": [

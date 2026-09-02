@@ -8,7 +8,7 @@ Feature: Manage administrator rel public entities
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/administrator_rel_public_entities/245" with body:
+      And I send a "PUT" request to "/administrator_rel_public_entities/247" with body:
       """
       {
           "create": true,
@@ -29,7 +29,7 @@ Feature: Manage administrator rel public entities
           "read": false,
           "update": true,
           "delete": false,
-          "id": 245,
+          "id": 247,
           "administrator": 5,
           "publicEntity": 2
       }

@@ -1,0 +1,56 @@
+{
+  "body": [
+    {
+      "timestamp": "2019-01-01 09:00:00",
+      "peak": 3,
+      "avgUsage": 1.5,
+      "maxCallsCompany": 30,
+      "blockedByCompanyLimit": 0,
+      "id": 1
+    },
+    {
+      "timestamp": "2019-01-01 09:05:00",
+      "peak": 12,
+      "avgUsage": 8.25,
+      "maxCallsCompany": 30,
+      "blockedByCompanyLimit": 0,
+      "id": 2
+    },
+    {
+      "timestamp": "2019-01-01 09:10:00",
+      "peak": 30,
+      "avgUsage": 24.5,
+      "maxCallsCompany": 30,
+      "blockedByCompanyLimit": 4,
+      "id": 3
+    },
+    {
+      "timestamp": "2019-01-01 09:15:00",
+      "peak": 30,
+      "avgUsage": 27.75,
+      "maxCallsCompany": 30,
+      "blockedByCompanyLimit": 2,
+      "id": 4
+    },
+    {
+      "timestamp": "2019-01-01 09:20:00",
+      "peak": 21,
+      "avgUsage": 14.25,
+      "maxCallsCompany": 50,
+      "blockedByCompanyLimit": 0,
+      "id": 5
+    },
+    {
+      "timestamp": "2019-01-01 09:25:00",
+      "peak": 9,
+      "avgUsage": 4.75,
+      "maxCallsCompany": 50,
+      "blockedByCompanyLimit": 0,
+      "id": 6
+    }
+  ],
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

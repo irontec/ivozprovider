@@ -11,3 +11,4 @@ These are the call-list sections for wholesale clients:
     active_calls
     external_calls
     call_csv_schedulers
+    channel_usage

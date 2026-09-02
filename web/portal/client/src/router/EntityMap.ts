@@ -496,6 +496,9 @@ const getEntityMap = (): ExtendedRouteMap => {
             !aboutMe.wholesale &&
             aboutMe.features.includes(ClientFeatures.recordings),
         },
+        {
+          entity: entities.ChannelUsage,
+        },
       ],
     },
   ];
