@@ -5,6 +5,7 @@ import CallAclCollection from '../../fixtures/CallAcl/getCollection.json';
 import CallAclRelMatchListCollection from '../../fixtures/CallAclRelMatchList/getCollection.json';
 import CallCsvSchedulerCollection from '../../fixtures/CallCsvScheduler/getCollection.json';
 import CallForwardSettingCollection from '../../fixtures/CallForwardSetting/getCollection.json';
+import ChannelUsageCollection from '../../fixtures/ChannelUsage/getCollection.json';
 import CompanyCollection from '../../fixtures/Company/getCollection.json';
 import CompanyServiceCollection from '../../fixtures/CompanyService/getCollection.json';
 import ConditionalRouteCollection from '../../fixtures/ConditionalRoute/getCollection.json';
@@ -352,6 +353,10 @@ Cypress.Commands.add(
     cy.intercept('GET', '**/api/client/users_cdrs?*', {
       ...UsersCdrsCollection,
     }).as('getUsersCdrs');
+
+    cy.intercept('GET', '**/api/client/channel_usages?*', {
+      ...ChannelUsageCollection,
+    }).as('getChannelUsages');
 
     cy.intercept('GET', '**/api/client/outgoing_ddi_rules_patterns?*', {
       ...OutgoingDdiRulePatternCollection,
