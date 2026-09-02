@@ -143,6 +143,7 @@ pipeline {
                         expression { hasCommitTag("schema:") }
                         expression { hasCommitTag("microservices/") }
                         expression { hasCommitTag("rest/") }
+                        expression { hasCommitTag("tests:") }
                         branch "main"
                         branch "tempest"
                     }
@@ -435,6 +436,7 @@ pipeline {
                         expression { hasLabel("ci-force-tests") }
                         expression { hasCommitTag("portal") }
                         expression { hasCommitTag("rest/") }
+                        expression { hasCommitTag("tests:") }
                         branch "main"
                         branch "tempest"
                     }
@@ -465,6 +467,7 @@ pipeline {
                                         expression { hasCommitTag("portal:") }
                                         expression { hasCommitTag("portal/platform:") }
                                         expression { hasCommitTag("rest/platform:") }
+                                        expression { hasCommitTag("tests:") }
                                         branch "main"
                                         branch "tempest"
                                     }
@@ -518,6 +521,7 @@ pipeline {
                                         expression { hasCommitTag("portal:") }
                                         expression { hasCommitTag("portal/brand:") }
                                         expression { hasCommitTag("rest/brand:") }
+                                        expression { hasCommitTag("tests:") }
                                         branch "main"
                                         branch "tempest"
                                     }
@@ -571,6 +575,7 @@ pipeline {
                                         expression { hasCommitTag("portal:") }
                                         expression { hasCommitTag("portal/client:") }
                                         expression { hasCommitTag("rest/client:") }
+                                        expression { hasCommitTag("tests:") }
                                         branch "main"
                                         branch "tempest"
                                     }
@@ -624,6 +629,7 @@ pipeline {
                                         expression { hasCommitTag("portal:") }
                                         expression { hasCommitTag("portal/user:") }
                                         expression { hasCommitTag("rest/user:") }
+                                        expression { hasCommitTag("tests:") }
                                         branch "main"
                                         branch "tempest"
                                     }
