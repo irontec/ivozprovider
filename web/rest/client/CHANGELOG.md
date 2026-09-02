@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.8.0
+* Endpoints:
+    - /channel_usages:
+      - Added [GET] endpoint to list channel usage resources.
+* Models:
+    - ChannelUsage:
+      - Added model with timestamp, peak, avgUsage, maxCallsCompany,
+        blockedByCompanyLimit and id properties.
+
 ## 4.7.0
 * Endpoints:
     - /webhooks:
