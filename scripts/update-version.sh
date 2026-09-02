@@ -49,8 +49,19 @@ sed -i "s/\(server_header=\"Server: Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR\
 sed -i "s/\(user_agent_header=\"User-Agent: Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR\"/" kamailio/trunks/config/kamailio.cfg
 sed -i "s/\(user_agent_header=\"User-Agent: Irontec IvozProvider\) .*/\1 v$MAJOR.$MINOR\"/" kamailio/users/config/kamailio.cfg
 
+# Update README badge and ISO link of the maintained release branch
+# Both are no-ops on patch releases, where MAJOR.MINOR does not change
+sed -i "s|badge/latest-[0-9.]\+-blue|badge/latest-$MAJOR.$MINOR-blue|" README.md
+sed -i "s#| tempest | [0-9.]\+ #| tempest | $VERSION #" README.md
+sed -i "s|ivozprovider-[0-9.~]\+-tempest-amd64.iso|ivozprovider-$MAJOR.$MINOR~$VERSION-tempest-amd64.iso|" README.md
+
 # Update portals versions
-for PORTAL in platform brand client user;do pushd web/portal/$PORTAL; npm version $VERSION; popd; done
+# --no-git-tag-version keeps npm from committing and tagging on its own
+for PORTAL in platform brand client user;do
+    pushd web/portal/$PORTAL
+    npm version --no-git-tag-version $VERSION
+    popd
+done
 
 # Done!
 echo "All versions bumped to $VERSION"
