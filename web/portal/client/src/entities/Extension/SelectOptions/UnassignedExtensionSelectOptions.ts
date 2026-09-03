@@ -1,4 +1,4 @@
-import { DropdownChoices, fetchAllPages } from '@irontec/ivoz-ui';
+import { DropdownArrayChoices, fetchAllPages } from '@irontec/ivoz-ui';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 import Extension from '../Extension';
@@ -31,9 +31,9 @@ const UnassignedExtensionSelectOptions: SelectOptionsType<CustomPropsType> = (
     endpoint: `${Extension.path}/unassigned`,
     params,
     setter: async (data) => {
-      const options: DropdownChoices = {};
+      const options: DropdownArrayChoices = [];
       for (const item of data as ExtensionPropertyList<string>[]) {
-        options[item.id as string] = item.number as string;
+        options.push({ id: String(item.id), label: item.number as string });
       }
       callback(options);
     },
