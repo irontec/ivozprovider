@@ -363,7 +363,7 @@ Feature: Retrieve active calls
                   "delete": false
               },
               {
-                  "iden": "NotificationTemplatesContents",
+                  "iden": "NotificationTemplateContents",
                   "create": false,
                   "read": true,
                   "update": false,
