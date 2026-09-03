@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Uso de canales &mdash; documentación de IvozProvider - tempest</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Índice"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Búsqueda" href="../../../../search.html"/>
+    <link rel="top" title="documentación de IvozProvider - tempest" href="../../../../index.html"/>
+        <link rel="up" title="Llamadas" href="index.html"/>
+        <link rel="next" title="Portal de Usuario" href="../../../../user_portal/index.html"/>
+        <link rel="prev" title="Programadores de CSV de llamadas" href="call_csv_schedulers.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> IvozProvider
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.8
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/intro/index.html">Introducción a IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/architecture/index.html">Arquitectura general de la plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/installation/index.html">Instalación inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../basic_concepts/operation_roles/index.html">Roles de la plataforma</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/internal_calls/index.html">Realizando llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/external_incoming_calls/index.html">Recibiendo llamadas externas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/external_outgoing_calls/index.html">Realizando llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Administration portal</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../platform/index.html">Configuración de la Plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../brand/index.html">Configuración de Marca</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Configuración del Cliente</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../vpbx/index.html">Clientes vPBX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../residential/index.html">Clientes Residenciales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../retail/index.html">Clientes Retail</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Clientes Wholesale</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../rating_profiles.html">Perfiles de precio</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Llamadas</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="active_calls.html">Llamadas activas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="external_calls.html">Llamadas externas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="call_csv_schedulers.html">Programadores de CSV de llamadas</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Uso de canales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Specific portals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_portal/index.html">Portal de Usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Security and Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_and_maintenance/security/index.html">Seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_and_maintenance/maintenance/index.html">Solución de problemas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Rest API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/introduction.html">Introducción a la API de IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/multilevel.html">API multinivel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/web_client.html">Cliente web incorporado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/integrations.html">Integraciones de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/click2call.html">Click2Call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/use_case.html">Caso de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_rest/acls.html">ACLs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">IvozProvider</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Configuración del Cliente</a> &raquo;</li>
+      
+          <li><a href="../index.html">Clientes Wholesale</a> &raquo;</li>
+      
+          <li><a href="index.html">Llamadas</a> &raquo;</li>
+      
+    <li>Uso de canales</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/administration_portal/client/wholesale/calls/channel_usage.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="channel-usage">
+<h1>Uso de canales<a class="headerlink" href="#channel-usage" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Esta sección muestra el <strong>histórico de uso de canales</strong> del cliente, construido a partir de muestras de 5 minutos y conservado durante los últimos <strong>30 días</strong>.</p>
+<p>El tramo temporal se puede seleccionar con los botones predefinidos (<em>Últimas 24 horas</em>, <em>Últimos 7 días</em>, <em>Últimos 30 días</em>) o eligiendo un rango personalizado dentro de la ventana de retención. Arrastrar sobre la gráfica también hace zoom al intervalo seleccionado: el tramo pasa a <em>Personalizado</em> con los límites arrastrados, que luego se pueden afinar en los selectores de fecha.</p>
+<p>Las tarjetas superiores resumen el tramo seleccionado: el uso más alto, el uso medio y el número de llamadas bloqueadas.</p>
+<p>La gráfica muestra:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Uso máximo</dt>
+<dd><p class="first last">Número máximo de canales simultáneos en uso durante cada intervalo.</p>
+</dd>
+<dt>Uso medio</dt>
+<dd><p class="first last">Número medio de canales en uso durante cada intervalo.</p>
+</dd>
+<dt>Límite de canales</dt>
+<dd><p class="first last">Número máximo de llamadas concurrentes permitidas al cliente, dibujado como línea discontinua de referencia. Si el límite cambió durante el tramo, la línea hace un escalón en ese momento.</p>
+</dd>
+<dt>Llamadas bloqueadas</dt>
+<dd><p class="first last">Llamadas rechazadas por superar el límite de canales del cliente.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Hay dos vistas disponibles:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Combinada</dt>
+<dd><p class="first last">Todo en una única gráfica. Al pasar el ratón se muestran los valores de todas las series en ese momento. Al pulsar una entrada de la leyenda se muestra solo esa serie, manteniendo el límite de canales como referencia (pulsándola de nuevo se restauran todas); Ctrl/Cmd + clic activa o desactiva series una a una, el límite de canales incluido.</p>
+</dd>
+<dt>Separadas</dt>
+<dd><p class="first last">Un panel por serie (uso máximo con el límite de canales como referencia, uso medio y llamadas bloqueadas) que comparten el mismo eje temporal: al pasar el ratón por un panel se marca el mismo instante en todos, mostrando cada valor.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Los tramos largos agrupan varias muestras por punto para mantener la gráfica legible: el uso máximo muestra el valor más alto del grupo, el uso medio la media y las llamadas bloqueadas la suma. Las horas se muestran en la zona horaria del administrador conectado.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../../user_portal/index.html" class="btn btn-neutral float-right" title="Portal de Usuario" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="call_csv_schedulers.html" class="btn btn-neutral" title="Programadores de CSV de llamadas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2019, Irontec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: tempest
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../../artemis/index.html">artemis</a></dd>
+            <dd><a href="../../../../halliday/index.html">halliday</a></dd>
+            <dd><a href="../../../../main/administration_portal/client/wholesale/calls/channel_usage.html">main</a></dd>
+            <dd><a href="../../../../oasis/index.html">oasis</a></dd>
+            <dd><a href="../../../../tempest/administration_portal/client/wholesale/calls/channel_usage.html">tempest</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'tempest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

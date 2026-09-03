@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Números Especiales Globales</title>
+    
+    <link rel="stylesheet" href="../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="sip_domains.xhtml" title="Dominios SIP"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="default_invoice_templates.xhtml" title="Plantillas de Factura por Defecto"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.xhtml" accesskey="U">Configuración de la Plataforma</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="global-special-numbers">
+<span id="id1"></span><h1>Números Especiales Globales</h1>
+<p>Esta sección permite añadir números externos que serán manejados de una manera diferente por IvozProvider cuando un cliente llame a esos destinos (<strong>solo para llamadas externas salientes</strong>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Los números enumerados aquí se aplicarán en cada marca. El operador de marca también puede añadir números utilizando <a class="reference internal" href="../brand/settings/special_numbers.xhtml#special-numbers"><span class="std std-ref">Números Especiales</span></a>.</p>
+</div>
+<div class="section" id="disable-cdr">
+<h2>Deshabilitar CDR</h2>
+<p>Actualmente solo hay un tratamiento especial: <strong>Deshabilitar CDR</strong>. Configurar esto en <em>Sí</em> para un número:</p>
+<ul>
+<li><p class="first">Evitar que las llamadas externas salientes se enumeren en las siguientes secciones:</p>
+<ul class="simple">
+<li><p class="first"><em>Llamadas Activas</em></p>
+</li>
+<li><p class="first"><em>Llamadas Externas</em></p>
+</li>
+<li><p class="first"><em>Registro de Llamadas</em> (tanto en el portal del cliente como en el portal del usuario)</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Como consecuencia, las llamadas no se incluirán en ningún:</p>
+<ul class="simple">
+<li><p class="first"><a class="reference internal" href="../brand/invoicing/invoices.xhtml#invoices"><span class="std std-ref">Facturas</span></a></p>
+</li>
+<li><p class="first">CSV definido por <a class="reference internal" href="../brand/calls/call_csv_schedulers.xhtml#call-csv-schedulers"><span class="std std-ref">Programadores de CSV de llamadas</span></a></p>
+</li>
+<li><p class="first">Respuesta de la API de los endpoints relacionados</p>
+</li>
+</ul>
+</li>
+<li><p class="first">No llame a CGRateS para estas llamadas: la llamada será permitida sin importar si el plan de precios activo lo permite.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Como consecuencia, no se disminuirá el precio/coste de la cuenta del operador/cliente.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Evitar grabar estas llamadas. Como consecuencia, la sección <em>Grabaciones</em> no las enumerará.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Añadir un número causará este manejo especial <strong>solo para futuras llamadas externas salientes</strong>. No se realizan cambios en llamadas anteriores.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

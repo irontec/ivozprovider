@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sin plan de tarifas, no hay llamada</title>
+    
+    <link rel="stylesheet" href="../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="finish.xhtml" title="¡Configuración de salida completa!"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="outgoing_ddi.xhtml" title="Configuración de DDI saliente"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.xhtml" accesskey="U">Realizando llamadas externas</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <p>En este punto, estamos deseando hacer nuestra primera llamada saliente con nuestro nuevo IvozProvider, puede que incluso hayamos intentado llamar con la configuración actual pero...</p>
+<div class="section" id="no-rating-plan-no-call">
+<span id="noplan-nocall"></span><h1>Sin plan de tarifas, no hay llamada</h1>
+<p>Tal como advertimos <a class="reference internal" href="../../basic_concepts/operation_roles/index.xhtml#brand-responsibilities"><span class="std std-ref">cuando describimos las responsabilidades del operador de marca</span></a>, el operador de marca es <strong>responsable de hacer toda la configuración necesaria para que IvozProvider pueda facturar todas las llamadas externas</strong>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last"><strong>Facturar una llamada</strong> es la acción de <strong>asignar un precio</strong> a una llamada que implica un costo.</p>
+</div>
+<p><strong>IvozProvider verifica en vivo que una llamada pueda ser facturada cuando se establece</strong> para evitar realizar llamadas que impliquen un costo pero que no serán facturadas porque el Operador de Marca, debido a un error, no ha asignado un precio.</p>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">Si una llamada no puede ser facturada, IvozProvider no permitirá su establecimiento.</p>
+</div>
+<div class="section" id="creating-a-rating-plan">
+<h2>Creando un plan de tarifas</h2>
+<p>La sección <strong>Configuración de Marca &gt; Facturación &gt; Destino</strong> está vacía por defecto, a diferencia de la sección de patrones de enrutamiento, que tiene los 254 países del mundo. La razón es que una tarifa de destino generalmente implicará muchos patrones por país (redes GSM, números especiales, números móviles, líneas fijas, etc.).</p>
+<p>En la mayoría de los casos, los datos de esta sección se importarán desde un CSV proporcionado por su proveedor de VoIP, pero para nuestra prueba lo crearemos manualmente:</p>
+<ul class="simple">
+<li><p class="first">Cree un <strong>destino</strong> con &#8216;+34&#8217; para España.</p>
+</li>
+<li><p class="first">Cree una <strong>tarifa de destino</strong> e inserte un precio para el destino España.</p>
+</li>
+<li><p class="first">Cree un <strong>plan de tarifas</strong> que incluya esa tarifa de destino.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="assign-rating-plan-to-client">
+<h2>Asignar plan de tarifas al cliente</h2>
+<p>El último paso es <strong>asignar ese plan de tarifas</strong> a <em>democompany</em> siguiendo la indicación <a class="reference internal" href="../../administration_portal/brand/billing/rating_plans.xhtml#assigning-rating-plans-to-clients"><span class="std std-ref">aquí</span></a>.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

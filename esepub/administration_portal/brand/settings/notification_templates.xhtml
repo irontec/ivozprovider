@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plantillas de Notificación</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="generic_music_on_hold.xhtml" title="Música en Espera Genérica"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="numeric_transformations.xhtml" title="Transformaciones numéricas"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Configuración de Marca</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Configuraciones</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<span id="notification-templates"></span><span id="id2"></span><h1>Plantillas de Notificación</h1>
+<p>Los administradores de la marca pueden configurar las notificaciones enviadas por IvozProvider:</p>
+<ul class="simple">
+<li><p class="first">Correo electrónico enviado cuando se recibe un nuevo buzón de voz</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando se recibe un nuevo fax</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando el saldo está por debajo del umbral configurado</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando se genera una factura automática</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando se generan CSVs de CDR programados</p>
+</li>
+<li><p class="first">Correo electrónico enviado cuando se alcanza el uso máximo diario</p>
+</li>
+<li><p class="first">Correo electrónico enviado con credenciales de acceso</p>
+</li>
+</ul>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Cuando no se configura una notificación personalizada, se usarán las predeterminadas</p>
+</div>
+<p>Las notificaciones se crean en dos pasos: Crear un tipo de notificación y agregar contenido a la notificación para cada idioma requerido.</p>
+<div class="section" id="creating-a-new-notification">
+<h2>Creando una nueva notificación</h2>
+<p>Los administradores de la marca pueden crear nuevas plantillas de notificación en <strong>Configuración de la marca</strong> &gt; <strong>Plantillas de notificación</strong>:</p>
+<p>Los campos son casi autoexplicativos:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Usado para identificar esta plantilla de notificación</p>
+</dd>
+<dt>Tipo</dt>
+<dd><p class="first last">Determina el tipo de notificación. Cada tipo de notificación tiene sus propias variables de sustitución disponibles para reemplazar el contenido del asunto y el cuerpo.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="adding-notification-contents">
+<h2>Agregando contenido de notificación</h2>
+<p>Una vez que se ha creado la notificación, puedes agregar contenido en diferentes idiomas. IvozProvider usará automáticamente el idioma adecuado según el destino:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first">Para los buzones de voz, se usará el idioma del usuario</p>
+</li>
+<li><p class="first">Para los faxes, se usará el idioma del cliente.</p>
+</li>
+</ul>
+</div></blockquote>
+<p>Campos configurables de cada contenido:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Idioma</dt>
+<dd><p class="first last">Idioma del contenido.</p>
+</dd>
+<dt>Nombre del remitente</dt>
+<dd><p class="first last">El nombre del remitente utilizado al enviar correos electrónicos (p.e. Notificaciones de Buzón de Voz de IvozProvider)</p>
+</dd>
+<dt>Dirección del remitente</dt>
+<dd><p class="first last">La dirección del remitente utilizada al enviar correos electrónicos (p.e. <a class="reference external" href="mailto:no-reply&#37;&#52;&#48;ivozprovider&#46;com">no-reply<span>&#64;</span>ivozprovider<span>&#46;</span>com</a>)</p>
+</dd>
+<dt>Variables de sustitución</dt>
+<dd><p class="first last">Variables disponibles que se pueden usar en el asunto y el cuerpo que serán reemplazadas antes de enviar el correo electrónico. Cada tipo de notificación tiene sus propias variables.</p>
+</dd>
+<dt>Asunto</dt>
+<dd><p class="first last">Asunto del correo electrónico a enviar. Puedes incluir variables de sustitución aquí.</p>
+</dd>
+<dt>Tipo de cuerpo</dt>
+<dd><p class="first last">El cuerpo del correo puede ser tanto texto plano como html.</p>
+</dd>
+<dt>Cuerpo</dt>
+<dd><p class="first last">Cuerpo del correo electrónico a enviar. Puedes incluir variables de sustitución aquí.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">No es necesario crear todos los idiomas del contenido. Si la notificación personalizada no tiene algunos idiomas definidos, se usarán los contenidos predeterminados para ese tipo de notificación.</p>
+</div>
+</div>
+<div class="section" id="using-variables-in-notification-contents">
+<h2>Agregando contenido de notificación</h2>
+<p>Puedes usar variables en el asunto y el cuerpo del correo electrónico. Cada tipo de notificación tiene su propio conjunto de variables que se pueden usar. Las variables se reemplazan con el valor correspondiente antes de enviar la notificación por correo electrónico.</p>
+<ul>
+<li><p class="first"><strong>Notificaciones de Buzón de Voz</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${VM_NAME}</span></code></td>
+<td><p class="first last">Nombre del usuario del buzón de voz</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${VM_DATE}</span></code></td>
+<td><p class="first last">Fecha de recepción</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${VM_DUR}</span></code></td>
+<td><p class="first last">Duración del buzón de voz</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${VM_CIDNAME}</span></code></td>
+<td><p class="first last">Nombre del llamante</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${VM_CIDNUM}</span></code></td>
+<td><p class="first last">Número del llamante</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${VM_MSGNUM}</span></code></td>
+<td><p class="first last">Número del buzón de voz</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de Fax</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${FAX_NAME}</span></code></td>
+<td><p class="first last">Nombre del fax virtual</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${FAX_PDFNAME}</span></code></td>
+<td><p class="first last">Nombre del archivo PDF del fax</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${FAX_PAGES}</span></code></td>
+<td><p class="first last">Número de páginas del PDF del fax</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${FAX_SRC}</span></code></td>
+<td><p class="first last">Número de origen</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${FAX_DST}</span></code></td>
+<td><p class="first last">Número DDI recibido</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${FAX_DATE}</span></code></td>
+<td><p class="first last">Fecha de recepción</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de Factura</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${INVOICE_COMPANY}</span></code></td>
+<td><p class="first last">Nombre de la empresa</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${INVOICE_DATE_IN}</span></code></td>
+<td><p class="first last">Fecha de inicio</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${INVOICE_DATE_OUT}</span></code></td>
+<td><p class="first last">Fecha de fin</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${INVOICE_AMOUNT}</span></code></td>
+<td><p class="first last">Monto total con impuestos</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${INVOICE_CURRENCY}</span></code></td>
+<td><p class="first last">Moneda</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de Saldo Bajo</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${BALANCE_NAME}</span></code></td>
+<td><p class="first last">Nombre de la empresa o del operador</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${BALANCE_AMOUNT}</span></code></td>
+<td><p class="first last">Monto actual del saldo</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de CSV de Llamadas</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${CALLCSV_COMPANY}</span></code></td>
+<td><p class="first last">Nombre de la empresa</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${CALLCSV_DATE_IN}</span></code></td>
+<td><p class="first last">Fecha de inicio</p>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${CALLCSV_DATE_OUT}</span></code></td>
+<td><p class="first last">Fecha de fin</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Notificaciones de Uso Máximo Diario</strong></p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">${MAXDAILYUSAGE_COMPANY}</span></code></td>
+<td><p class="first last">Nombre de la empresa</p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">${MAXDAILYUSAGE_AMOUNT}</span></code></td>
+<td><p class="first last">Uso máximo diario de la empresa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="assigning-templates-to-clients">
+<h2>Asignando plantillas a clientes</h2>
+<p>Una vez que la notificación ha sido configurada para los idiomas deseados, el administrador de la marca puede asignarla al cliente que la usará. Esto se puede hacer en la sección de configuración de notificaciones de cada cliente. Si el cliente no tiene una notificación configurada, se usarán las notificaciones de la marca para ese cliente. Si la marca no tiene una notificación configurada, se usarán las notificaciones predeterminadas.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Respuestas de Voz Interactivas (IVRs)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="hunt_groups.xhtml" title="Grupos de búsqueda"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="index.xhtml" title="Items enrutables"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.xhtml" >Clientes vPBX</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.xhtml" accesskey="U">Items enrutables</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="interactive-voice-responses-ivrs">
+<h1>Respuestas de Voz Interactivas (IVRs)</h1>
+<p>Los IVRs son la forma más común de hacer <strong>menús de audio</strong> donde el llamante debe elegir el destino de la llamada <strong>presionando códigos</strong> basados en las instrucciones de las locuciones que se reproducirán.</p>
+<div class="section" id="ivrs">
+<span id="id1"></span><h2>IVRs</h2>
+<p>Los IVRs admiten especificar acciones para los dígitos marcados, pero también pueden usarse para enrutar cualquier extensión de cliente existente.</p>
+<p>Los IVRs tienen los siguientes campos:</p>
+</div>
+<div class="section" id="basic-configuration">
+<h2>Configuración básica</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Nombre descriptivo del IVR que se utilizará en otras secciones.</p>
+</dd>
+<dt>Tiempo de espera</dt>
+<dd><p class="first last">Tiempo que tiene el llamante para ingresar los dígitos de la extensión de destino.</p>
+</dd>
+<dt>Máximo de dígitos</dt>
+<dd><p class="first last">Número máximo de dígitos permitidos en este IVR.</p>
+</dd>
+<dt>Locución de bienvenida</dt>
+<dd><p class="first last">Esta locución se reproducirá tan pronto como el llamante ingrese al IVR.</p>
+</dd>
+<dt>Locución de éxito</dt>
+<dd><p class="first last">En caso de que el número marcado coincida con una de las entradas del IVR o la extensión exista en el cliente (y permitir extensiones esté habilitado), se reproducirá esta locución (generalmente algo como &#8216;Conectando, por favor espere...&#8217;).</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="dialing-extensions">
+<h2>Marcando extensiones</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Permitir marcar extensiones</dt>
+<dd><p class="first last">Cuando esta configuración está habilitada, el llamante puede presionar directamente la extensión que debe conocer previamente (o la locución de bienvenida sugiere) y el sistema se conectará automáticamente con esa extensión.</p>
+</dd>
+<dt>Extensiones excluidas</dt>
+<dd><p class="first last">Cuando Permitir extensiones está habilitado, puedes excluir algunas extensiones para que se marquen directamente agregándolas a la lista de exclusión.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="no-input-configuration">
+<h2>Configuración sin entrada</h2>
+<blockquote>
+<div><p>Si el llamante no ingresa ningún dígito en el valor de tiempo de espera, se activará el proceso sin entrada, reproduciendo la locución configurada y redirigiendo a otro número, extensión o buzón de voz.</p>
+<dl class="docutils">
+<dt>Locución sin entrada</dt>
+<dd><p class="first last">Locución que se reproducirá.</p>
+</dd>
+<dt>Destino sin entrada</dt>
+<dd><p class="first last">Número, extensión o buzón de voz al que redirigir después de que se reproduzca la locución. Se requieren campos adicionales dependiendo del valor seleccionado.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="error-configuration">
+<h2>Configuración de error</h2>
+<blockquote>
+<div><p>Si la extensión marcada no coincide con ninguna entrada del IVR, ninguna extensión de cliente (cuando permitir extensiones está habilitado), o coincide con una de las extensiones en la lista de extensiones excluidas, se activará el proceso de error, reproduciendo la locución configurada y redirigiendo la llamada a otro número, extensión o buzón de voz.</p>
+<dl class="docutils">
+<dt>Locución</dt>
+<dd><p class="first last">Locución que se reproducirá en caso de error.</p>
+</dd>
+<dt>Destino de error</dt>
+<dd><p class="first last">Número, extensión o buzón de voz al que redirigir después de que se reproduzca la locución. Se requieren campos adicionales dependiendo del valor seleccionado.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="ivr-entries">
+<h2>Entradas IVR</h2>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">El uso más común de los IVR es combinarlos con una locución de bienvenida que diga algo como &#8216;Presione 1 para contactar a XXX, Presione 2 para contactar a YYY, ...&#8221;</p>
+</div>
+<p>El proceso de cada entrada del IVR se puede definir en el siguiente botón:</p>
+<p>En este ejemplo, el llamante puede marcar 1, 2 o 3 (el resto se considerará un error y activará el <strong>proceso de error</strong>):</p>
+<ul class="simple">
+<li><p class="first">1: Llamada a la extensión interna 200, creada en <a class="reference internal" href="hunt_groups.xhtml#huntgroups"><span class="std std-ref">sección anterior</span></a> que enruta al grupo de búsqueda <em>Recepción</em>.</p>
+</li>
+<li><p class="first">2: Llamada a la extensión interna 101.</p>
+</li>
+<li><p class="first">3: Enrutar esta llamada al número externo 676 676 676.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Cada una de las entradas del IVR admite una locución que, si se establece, se reproducirá en lugar de la <strong>locución de éxito</strong> del IVR. De esta manera, puedes configurar una locución genérica (como &#8216;Conectando....&#8217;) o una personalizada para una entrada dada (como &#8216;Conectando con el departamento de recepción, por favor espere...&#8217;).</p>
+</div>
+<p class="rubric">Las entradas son expresiones regulares</p>
+</div>
+<div class="section" id="entry-information">
+<h2>Información de entrada</h2>
+<p>Puedes especificar entradas IVR como Expresiones Regulares. Si la entrada es solo un valor numérico, se manejará como una secuencia de dígitos, de lo contrario se manejará como una expresión regular. Esto puede ser útil si tienes el mismo comportamiento para un grupo de números marcados.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Entrada</dt>
+<dd><p class="first last">Expresión regular.</p>
+</dd>
+<dt>Locución de éxito</dt>
+<dd><p class="first last">Locución que se reproducirá en caso de éxito.</p>
+</dd>
+<dt>Nombre para mostrar</dt>
+<dd><p class="first last">Este valor se mostrará en los terminales llamados</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="routing-configuration">
+<h2>Configuración de enrutamiento</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Tipo de destino</dt>
+<dd><p class="first last">Dependiendo del tipo elegido, se pueden requerir parámetros adicionales.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

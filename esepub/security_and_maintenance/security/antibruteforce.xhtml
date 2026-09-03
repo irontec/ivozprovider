@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ataques anti fuerza bruta</title>
+    
+    <link rel="stylesheet" href="../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../maintenance/index.xhtml" title="Solución de problemas"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="current_day_max_usage.xhtml" title="Uso máximo del día actual"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.xhtml" accesskey="U">Seguridad</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="anti-brute-force-attacks">
+<span id="id1"></span><h1>Ataques anti fuerza bruta</h1>
+<p>IvozProvider incluye un simple ataque anti fuerza bruta en KamUsers que prohíbe fuentes después de fallos continuos de autenticación SIP desde la misma dirección IP.</p>
+<p>Funciona así:</p>
+<ul class="simple">
+<li><p class="first">En fallos de SIP (solo en casos de usuario inválido o contraseña inválida), se incrementa un contador:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Clave: <a class="reference external" href="mailto:fromUsername&#37;&#52;&#48;fromDomain">fromUsername<span>&#64;</span>fromDomain</a>::source_ip</dt>
+<dd><ul class="first last">
+<li><p class="first">por ejemplo, <a class="reference external" href="mailto:terminal&#37;&#52;&#48;vpbx&#46;domain&#46;net">terminal<span>&#64;</span>vpbx<span>&#46;</span>domain<span>&#46;</span>net</a>::1.2.3.4</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p class="first">El contador se incrementa en cada fallo.</p>
+</li>
+<li><p class="first">Cuando el contador alcanza 100, esa fuente específica (usuario + dominio + ip) es prohibida durante 12 horas.</p>
+</li>
+</ul>
+<p>Después de 12 horas, la fuente es aceptada nuevamente y:</p>
+<ul class="simple">
+<li><p class="first">El contador comienza a contar nuevamente desde 80.</p>
+</li>
+<li><p class="first">Si alcanza 100 nuevamente, se prohíbe por otras 12 horas.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Vea <a class="reference internal" href="../../administration_portal/brand/views/bruteforce_attacks.xhtml#brute-force-attacks"><span class="std std-ref">Ataques de fuerza bruta</span></a> para fuentes actualmente bloqueadas.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>
