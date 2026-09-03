@@ -104,6 +104,9 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.NotificationTemplate,
+          filterValues: {
+            'brand[exists]': false,
+          },
           children: [
             {
               entity: entities.NotificationTemplateContent,

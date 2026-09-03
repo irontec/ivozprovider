@@ -20,9 +20,19 @@ Feature: Retrieve notification templates
               "id": 5
           },
           {
+              "name": "Brand On Demand Recording Notification Template",
+              "type": "onDemandRecord",
+              "id": 7
+          },
+          {
               "name": "CallCsv notification",
               "type": "callCsv",
               "id": 2
+          },
+          {
+              "name": "Company On Demand Recording Notification Template",
+              "type": "onDemandRecord",
+              "id": 8
           },
           {
               "name": "Generic On Demand Recording Notification Template",
@@ -38,6 +48,11 @@ Feature: Retrieve notification templates
               "name": "Max daily usage notification",
               "type": "maxDailyUsage",
               "id": 3
+          },
+          {
+              "name": "Voicemail notification",
+              "type": "voicemail",
+              "id": 1
           }
       ]
       """

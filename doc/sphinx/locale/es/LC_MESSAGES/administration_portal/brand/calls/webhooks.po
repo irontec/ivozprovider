@@ -1,0 +1,328 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2019, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:3
+msgid "Webhooks"
+msgstr "Webhooks"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:6
+msgid ""
+"Webhooks let IvozProvider notify external HTTP services about call events "
+"in real time. Whenever a subscribed event happens on a matching call, "
+"IvozProvider sends an HTTP ``POST`` request to the configured endpoint "
+"with a customizable JSON payload."
+msgstr ""
+"Los webhooks permiten a IvozProvider notificar eventos de llamada a "
+"servicios HTTP externos en tiempo real. Cada vez que se produce un evento "
+"suscrito en una llamada coincidente, IvozProvider envía una petición HTTP "
+"``POST`` al endpoint configurado con un payload JSON personalizable."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:10
+msgid "Webhooks can be enabled per Brand basis via Features."
+msgstr "Los webhooks se pueden habilitar por marca a través de Funciones."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:13
+msgid "Configurable fields"
+msgstr "Campos configurables"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:16
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:17
+msgid "Used to identify this webhook."
+msgstr "Se utiliza para identificar este webhook."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:19
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:20
+msgid "Optional free text describing the webhook purpose."
+msgstr "Texto libre opcional que describe el propósito del webhook."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:22
+msgid "URL"
+msgstr "URL"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:23
+msgid ""
+"Endpoint that will receive the HTTP ``POST`` request every time a "
+"subscribed event is triggered."
+msgstr ""
+"Endpoint que recibirá la petición HTTP ``POST`` cada vez que se dispare un "
+"evento suscrito."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:25
+msgid "Direction"
+msgstr "Dirección"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:26
+msgid "Restricts the webhook to calls of a given direction:"
+msgstr "Restringe el webhook a las llamadas de una dirección determinada:"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:28
+msgid "**Inbound**: only incoming calls."
+msgstr "**Entrante**: solo llamadas entrantes."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:30
+msgid "**Outbound**: only outgoing calls."
+msgstr "**Saliente**: solo llamadas salientes."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:32
+msgid "**Both**: incoming and outgoing calls (default)."
+msgstr "**Ambos**: llamadas entrantes y salientes (por defecto)."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:35
+msgid "Events"
+msgstr "Eventos"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:38
+msgid ""
+"Each webhook subscribes to one or more call events. A ``POST`` request is "
+"sent every time a subscribed event happens on a matching call:"
+msgstr ""
+"Cada webhook se suscribe a uno o más eventos de llamada. Se envía una "
+"petición ``POST`` cada vez que se produce un evento suscrito en una llamada "
+"coincidente:"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:41
+msgid "Start"
+msgstr "Inicio"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:42
+msgid "Sent when a new call starts."
+msgstr "Se envía cuando se inicia una nueva llamada."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:44
+msgid "Ringing"
+msgstr "Sonando"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:45
+msgid "Sent when the destination starts ringing."
+msgstr "Se envía cuando el destino empieza a sonar."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:47
+msgid "Answer"
+msgstr "Respuesta"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:48
+msgid "Sent when the call is answered."
+msgstr "Se envía cuando se responde la llamada."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:50
+msgid "End"
+msgstr "Fin"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:51
+msgid "Sent when the call ends."
+msgstr "Se envía cuando finaliza la llamada."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:53
+msgid "Update CLID"
+msgstr "Actualizar CLID"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:54
+msgid ""
+"Sent when the caller line identification (CLID) is updated during the "
+"call."
+msgstr ""
+"Se envía cuando la identificación de línea del llamante (CLID) se actualiza "
+"durante la llamada."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:57
+msgid "Template"
+msgstr "Plantilla"
+
+#: ../../administration_portal/shared/webhooks.rst.inc:60
+msgid ""
+"The body of the ``POST`` request is defined by the **Template** field: a "
+"valid JSON document where ``{{placeholder}}`` marks are replaced with the "
+"actual call values before the request is sent."
+msgstr ""
+"El cuerpo de la petición ``POST`` se define mediante el campo **Plantilla**: "
+"un documento JSON válido donde las marcas ``{{placeholder}}`` se sustituyen "
+"por los valores reales de la llamada antes de enviar la petición."
+
+#: ../../administration_portal/shared/webhooks.rst.inc:63
+msgid ""
+"A default template is provided when creating a new webhook. You can adapt "
+"it freely as long as the result is valid JSON."
+msgstr ""
+"Al crear un nuevo webhook se proporciona una plantilla por defecto. Puedes "
+"adaptarla libremente siempre que el resultado sea un JSON válido."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:6
+msgid "Available placeholders"
+msgstr "Placeholders disponibles"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:9
+msgid "These are the placeholders that can be used in the template at brand level:"
+msgstr ""
+"Estos son los placeholders que se pueden usar en la plantilla a nivel de "
+"marca:"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:15
+msgid "``{{event}}``"
+msgstr "``{{event}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:16
+msgid "Event that triggered the request (start, ring, answer, end, updateClid)."
+msgstr "Evento que ha disparado la petición (start, ring, answer, end, updateClid)."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:17
+msgid "``{{time}}``"
+msgstr "``{{time}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:18
+msgid "Event timestamp."
+msgstr "Marca de tiempo del evento."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:19
+msgid "``{{callId}}``"
+msgstr "``{{callId}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:20
+msgid "Call-ID of the SIP dialog."
+msgstr "Call-ID del diálogo SIP."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:21
+msgid "``{{companyId}}``"
+msgstr "``{{companyId}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:22
+msgid "Internal ID of the client involved in the call."
+msgstr "ID interno del cliente implicado en la llamada."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:23
+msgid "``{{company}}``"
+msgstr "``{{company}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:24
+msgid "Name of the client involved in the call."
+msgstr "Nombre del cliente implicado en la llamada."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:25
+msgid "``{{ddiId}}``"
+msgstr "``{{ddiId}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:26
+msgid "Internal ID of the involved DDI."
+msgstr "ID interno del DDI implicado."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:27
+msgid "``{{crId}}``"
+msgstr "``{{crId}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:28
+msgid "Internal ID of the carrier used (outbound calls)."
+msgstr "ID interno del carrier utilizado (llamadas salientes)."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:29
+msgid "``{{dpId}}``"
+msgstr "``{{dpId}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:30
+msgid "Internal ID of the DDI provider used (inbound calls)."
+msgstr "ID interno del proveedor de DDI utilizado (llamadas entrantes)."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:31
+msgid "``{{direction}}``"
+msgstr "``{{direction}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:32
+msgid "Call direction (inbound/outbound)."
+msgstr "Dirección de la llamada (entrante/saliente)."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:33
+msgid "``{{caller}}``"
+msgstr "``{{caller}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:34
+msgid "Caller number in E.164."
+msgstr "Número del llamante en E.164."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:35
+msgid "``{{callee}}``"
+msgstr "``{{callee}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:36
+msgid "Callee number in E.164."
+msgstr "Número del llamado en E.164."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:37
+msgid "``{{carrier}}``"
+msgstr "``{{carrier}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:38
+msgid "Name of the carrier used (outbound calls)."
+msgstr "Nombre del carrier utilizado (llamadas salientes)."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:39
+msgid "``{{ddiProvider}}``"
+msgstr "``{{ddiProvider}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:40
+msgid "Name of the DDI provider used (inbound calls)."
+msgstr "Nombre del proveedor de DDI utilizado (llamadas entrantes)."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:41
+msgid "``{{iden}}``"
+msgstr "``{{iden}}``"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:42
+msgid "Webhook identifier."
+msgstr "Identificador del webhook."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:45
+msgid "Assignment levels"
+msgstr "Niveles de asignación"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:48
+msgid "Brand operators can define webhooks at two different levels:"
+msgstr "Los operadores de marca pueden definir webhooks en dos niveles diferentes:"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:50
+msgid "Client level"
+msgstr "Nivel de cliente"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:51
+msgid ""
+"Configured in each client configuration (**Webhooks** section). Applies to "
+"every call of that client, regardless of the DDI involved."
+msgstr ""
+"Se configura en la configuración de cada cliente (sección **Webhooks**). Se "
+"aplica a todas las llamadas de ese cliente, independientemente del DDI "
+"implicado."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:54
+msgid "DDI level"
+msgstr "Nivel de DDI"
+
+#: ../../administration_portal/brand/calls/webhooks.rst:55
+msgid "Configured in a specific DDI. Applies only to calls of that DDI."
+msgstr "Se configura en un DDI concreto. Se aplica solo a las llamadas de ese DDI."
+
+#: ../../administration_portal/brand/calls/webhooks.rst:57
+msgid ""
+"The available placeholders and events are the same at both levels; only "
+"the scope of matching calls changes."
+msgstr ""
+"Los placeholders y eventos disponibles son los mismos en ambos niveles; solo "
+"cambia el alcance de las llamadas coincidentes."

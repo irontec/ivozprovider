@@ -65,7 +65,24 @@ fi
 sed -i 's/UNRELEASED/stable/g' debian/changelog
 
 # Add a new entry for new version
-dch --controlmaint --distribution UNRELEASED --newversion $MAIN~$PKGVERSION "Version bump to $VERSION"
+if command -v dch > /dev/null; then
+    dch --controlmaint --distribution UNRELEASED --newversion $MAIN~$PKGVERSION "Version bump to $VERSION"
+else
+    # dch is part of devscripts, not always installed: write the same entry
+    MAINTAINER=$(grep -m1 -oP '^Maintainer: \K.*' debian/control)
+    ENTRY=$(mktemp)
+    {
+        echo "$PROJECT ($MAIN~$PKGVERSION) UNRELEASED; urgency=medium"
+        echo
+        echo "  * Version bump to $VERSION"
+        echo
+        echo " -- $MAINTAINER  $(LC_ALL=C date -R)"
+        echo
+        cat debian/changelog
+    } > $ENTRY
+    cat $ENTRY > debian/changelog
+    rm -f $ENTRY
+fi
 
 echo "Debian package version bumped to $VERSION"
 exit 0

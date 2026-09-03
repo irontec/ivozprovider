@@ -13,6 +13,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",
     "@mui/styles": "^5.12.0",
+    "@mui/x-charts": "^6.19.8",
     "@mui/x-date-pickers": "^6.2.0",
     "@vitejs/plugin-react": "^3.0.0",
     "axios": "1.13.5",

@@ -1,3 +1,33 @@
+Wed, 02 Sep 2026 10:00:00 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 4.8.0 released
+
+    * Portals:
+        - Added channel usage section to client portal (#3135)
+        - Added notification template assignment to brand form in platform
+          portal (#3122)
+        - Fixed Recording menu item rendering as an icon when the recordings
+          feature is disabled in client portal
+
+    * Core:
+        - Added per-company channel usage historics, collected every five
+          minutes with peak, average and closing usage and blocked call
+          counts (#3134)
+        - Added read-only channel usage resource to the client API (#3135)
+        - Added notification template assignment for brands to the platform
+          API (#3122)
+        - Ordered rating plan destination rates by weight in the brand API
+        - Fixed active calls filtering by DDI in the client endpoint and in
+          the platform and brand realtime filters (#3133)
+
+    * Kamailio:
+        - Improved media relay set selection in both proxies, honouring the
+          DDI provider and company sets in unassigned and bounced calls
+          (#3131)
+        - Forced immediate RTP session removal after early media
+        - Removed realtime updateClid on 200 responses
+
+
 Tue, 16 Jun 2026 10:00:00 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 4.7.0 released

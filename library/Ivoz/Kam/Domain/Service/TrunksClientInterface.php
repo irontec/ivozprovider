@@ -46,6 +46,16 @@ interface TrunksClientInterface
      */
     public function getPlatformActiveCalls(): array;
 
+    /**
+     * Active calls of the whole platform, broken down by company.
+     *
+     * Same keyspace as getPlatformActiveCalls(), but resolved per owner in a single pass, so
+     * callers that need a per-company snapshot do not have to walk it once per company.
+     *
+     * @return array<int, array{brandId: int, occ: int}> companyId => owning brand and call count
+     */
+    public function getActiveCallsGroupedByCompany(): array;
+
     public function isCgrEnabled(): bool;
 
     public function reloadDialplan(): void;

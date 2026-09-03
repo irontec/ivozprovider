@@ -155,7 +155,7 @@ class ProviderPublicEntities extends Fixture implements FixtureInterface
             ["InvoiceNumberSequences","Ivoz\\Provider\\Domain\\Model\\InvoiceNumberSequence\\InvoiceNumberSequence","0","1","0"],
             ["InvoiceSchedulers","Ivoz\\Provider\\Domain\\Model\\InvoiceScheduler\\InvoiceScheduler","0","1","0"],
             ["InvoiceTemplates","Ivoz\\Provider\\Domain\\Model\\InvoiceTemplate\\InvoiceTemplate","1","1","0"],
-            ["NotificationTemplatesContents","Ivoz\\Provider\\Domain\\Model\\NotificationTemplateContent\\NotificationTemplateContent","0","1","0"],
+            ["NotificationTemplateContents","Ivoz\\Provider\\Domain\\Model\\NotificationTemplateContent\\NotificationTemplateContent","0","1","0"],
             ["OutgoingRouting","Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting","0","1","0"],
             ["RatingPlans","Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan","0","1","0"],
             ["RoutingPatternGroups","Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup","0","1","0"],
@@ -171,6 +171,7 @@ class ProviderPublicEntities extends Fixture implements FixtureInterface
             ["ProxyTrunks","Ivoz\\Provider\\Domain\\Model\\ProxyTrunk\\ProxyTrunk","1","0","0"],
             ["ProxyUsers","Ivoz\\Provider\\Domain\\Model\\ProxyUser\\ProxyUser","1","0","0"],
             ["TerminalManufacturers","Ivoz\\Provider\\Domain\\Model\\TerminalManufacturer\\TerminalManufacturer","1","0","0"],
+            ["ChannelUsages","Ivoz\\Provider\\Domain\\Model\\ChannelUsage\\ChannelUsage","0","0","1"],
         ];
 
         return $dataset;

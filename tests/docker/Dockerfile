@@ -60,6 +60,9 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/* \
     && localepurge
 
+# Avoid HTTP/2 failures on git clones (bookworm git + github return 401 on POST)
+RUN git config --system http.version HTTP/1.1
+
 # Install node tools for testing
 RUN npm install -g swagger-cli
 

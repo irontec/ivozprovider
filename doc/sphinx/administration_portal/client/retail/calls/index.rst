@@ -12,3 +12,4 @@ These are the call-list sections for retail clients:
     external_calls
     call_csv_schedulers
     call_recordings
+    channel_usage

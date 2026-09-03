@@ -11,3 +11,4 @@ This group shows call lists and allows brand operator a few operations on them:
     active_calls
     external_calls
     call_csv_schedulers
+    webhooks

@@ -44,6 +44,12 @@ RUN apt-get update && \
     && apt-get clean
 
 ################################################################################
+# git configuration
+################################################################################
+# Avoid HTTP/2 failures on git clones (bookworm git + github return 401 on POST)
+RUN git config --system http.version HTTP/1.1
+
+################################################################################
 # Apache server configuration
 ################################################################################
 ADD docker/backend/060-ivozprovider-api.conf \

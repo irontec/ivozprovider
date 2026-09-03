@@ -6,6 +6,7 @@ ivozprovider-asterisk-dbg
 ivozprovider-asterisk-sounds
 ivozprovider-async-workers
 ivozprovider-balances
+ivozprovider-click2call
 ivozprovider-cgrates
 ivozprovider-cgrates-config
 ivozprovider-cgrates-tools
@@ -46,6 +47,7 @@ ivozprovider-rtpengine
 ivozprovider-rtpengine-dbgsym
 ivozprovider-scheduler
 ivozprovider-schema
+ivozprovider-webhooks
 ivozprovider-web-portals
 ivozprovider-web-rest
 libbcg729-0

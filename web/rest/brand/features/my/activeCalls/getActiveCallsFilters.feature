@@ -25,7 +25,7 @@ Feature: Retrieve active calls filters
       And the JSON should be equal to:
       """
       {
-          "criteria": "trunks:b1:c1:dp1:*"
+          "criteria": "trunks:b1:c1:*:dp1:*"
       }
       """
 
@@ -39,7 +39,7 @@ Feature: Retrieve active calls filters
       And the JSON should be equal to:
       """
       {
-          "criteria": "trunks:b1:*:cr2:*"
+          "criteria": "trunks:b1:*:*:cr2:*"
       }
       """
 
@@ -81,7 +81,7 @@ Feature: Retrieve active calls filters
       And the JSON should be equal to:
       """
       {
-          "criteria": "trunks:b1:*:cr2:*"
+          "criteria": "trunks:b1:*:*:cr2:*"
       }
       """
 
@@ -95,7 +95,7 @@ Feature: Retrieve active calls filters
       And the JSON should be equal to:
       """
       {
-          "criteria": "trunks:b1:*:dp*:*"
+          "criteria": "trunks:b1:*:*:dp*:*"
       }
       """
 
@@ -109,7 +109,7 @@ Feature: Retrieve active calls filters
       And the JSON should be equal to:
       """
       {
-          "criteria": "trunks:b1:*:cr*:*"
+          "criteria": "trunks:b1:*:*:cr*:*"
       }
       """
 
@@ -123,6 +123,6 @@ Feature: Retrieve active calls filters
       And the JSON should be equal to:
       """
       {
-          "criteria": "trunks:b1:*:*:*"
+          "criteria": "trunks:b1:*:*:*:*"
       }
       """

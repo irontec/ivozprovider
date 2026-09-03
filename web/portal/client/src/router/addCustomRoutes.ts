@@ -1,6 +1,7 @@
 import { Create, RouteSpec } from '@irontec/ivoz-ui';
 
 import ActiveCallsComponent from '../components/ActiveCalls';
+import ChannelUsageComponent from '../components/ChannelUsage';
 import HolidayDateRange from '../entities/HolidayDateRange/HolidayDateRange';
 
 const addCustomRoutes = (routes: Array<RouteSpec>): Array<RouteSpec> => {
@@ -10,6 +11,14 @@ const addCustomRoutes = (routes: Array<RouteSpec>): Array<RouteSpec> => {
 
   if (activeCallsRoute) {
     activeCallsRoute.component = ActiveCallsComponent;
+  }
+
+  const channelUsageRoute = routes.find(
+    (route) => route.key === 'ChannelUsage-list'
+  );
+
+  if (channelUsageRoute) {
+    channelUsageRoute.component = ChannelUsageComponent;
   }
 
   routes.push({

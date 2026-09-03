@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#DEBHELPER#
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+#######################################################################################################################
+#######################################################################################################################
+function setup_mysql_password()
+{
+    # Setup mysql password
+    db_get ivozprovider/mysql_password || true
+    sed -r -i "s/password:[[:space:]]*\"changeme\"/password: \"$RET\"/g" \
+        /opt/irontec/ivozprovider/microservices/click2call/configs/config.yml
+}
+
+#######################################################################################################################
+#######################################################################################################################
+function setup_digest_secret()
+{
+    local secret
+    secret=$(openssl rand -hex 32)
+    sed -i "s/secret:[[:space:]]*\"change-me-please\"/secret: \"$secret\"/" \
+        /opt/irontec/ivozprovider/microservices/click2call/configs/config.yml
+}
+
+#######################################################################################################################
+#######################################################################################################################
+setup_mysql_password
+setup_digest_secret
+
+:

@@ -13,3 +13,5 @@ These are the call-list sections for vPBX clients:
     external_calls
     call_csv_schedulers
     call_recordings
+    webhooks
+    channel_usage

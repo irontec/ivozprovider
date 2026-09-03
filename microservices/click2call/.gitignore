@@ -1,4 +1,2 @@
-# Real config with the digest secret and the DB password: use config.yml.dist as a template
-configs/config.yml
 # Compiled binary (anchored to the microservice root so it doesn't match cmd/originate/)
 /originate

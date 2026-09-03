@@ -87,7 +87,8 @@ class ExtensionDoctrineRepository extends ServiceEntityRepository implements Ext
         $qb
             ->where($expression->eq('self.company', ':companyId'))
             ->andWhere($finalCondition)
-            ->setParameter('companyId', $companyId);
+            ->setParameter('companyId', $companyId)
+            ->orderBy('self.number', 'ASC');
 
         if ($userId !== null) {
             $qb

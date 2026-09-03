@@ -1874,6 +1874,20 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/ChannelUsage/ChannelUsageAbstract.php">
+    <MixedArgument occurrences="4">
+      <code>$fkTransformer-&gt;transform($brand)</code>
+      <code>$fkTransformer-&gt;transform($brand)</code>
+      <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($company)</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/ChannelUsage/ChannelUsageTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/Codec/CodecAbstract.php">
     <UnsafeInstantiation occurrences="1"/>
   </file>

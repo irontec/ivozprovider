@@ -72,6 +72,7 @@ func (tc *TrunksCall) callSetup() map[string]interface{} {
 		"Brand":     "brand1",
 		"CompanyId": 1,
 		"Company":   "company1",
+		"DdiId":     1,
 	}
 
 	outbound := rand.Intn(3) > 1
@@ -82,9 +83,10 @@ func (tc *TrunksCall) callSetup() map[string]interface{} {
 
 		tc.SetChannel(
 			fmt.Sprintf(
-				"trunks:b%d:c%d:cr%d:%s",
+				"trunks:b%d:c%d:ddi%d:cr%d:%s",
 				payload["BrandId"].(int),
 				payload["CompanyId"].(int),
+				payload["DdiId"].(int),
 				payload["CarrierId"].(int),
 				payload["Call-ID"].(string),
 			),
@@ -96,9 +98,10 @@ func (tc *TrunksCall) callSetup() map[string]interface{} {
 
 		tc.SetChannel(
 			fmt.Sprintf(
-				"trunks:b%d:c%d:dp%d:%s",
+				"trunks:b%d:c%d:ddi%d:dp%d:%s",
 				payload["BrandId"].(int),
 				payload["CompanyId"].(int),
+				payload["DdiId"].(int),
 				payload["DdiProviderId"].(int),
 				payload["Call-ID"].(string),
 			),
@@ -108,6 +111,7 @@ func (tc *TrunksCall) callSetup() map[string]interface{} {
 	payload["Channel"] = tc.GetChannel()
 	delete(payload, "BrandId")
 	delete(payload, "CompanyId")
+	delete(payload, "DdiId")
 	delete(payload, "CarrierId")
 	delete(payload, "DdiProviderId")
 

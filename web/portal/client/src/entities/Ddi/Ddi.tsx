@@ -1,5 +1,6 @@
 import { isEntityItem } from '@irontec/ivoz-ui';
 import ChildEntityLink from '@irontec/ivoz-ui/components/List/Content/Shared/ChildEntityLink';
+import { MoreMenuItem } from '@irontec/ivoz-ui/components/List/Content/Shared/MoreChildEntityLinks';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -30,7 +31,7 @@ const allRoutableFields = [
 ];
 
 export const ChildDecorator: ChildDecoratorType = (props) => {
-  const { routeMapItem, entityService, row } = props;
+  const { routeMapItem, variant, row } = props;
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
@@ -43,6 +44,14 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
     );
 
     if (!hasRecordingsFeature) {
+      if (variant === 'text') {
+        return (
+          <MoreMenuItem className='disabled'>
+            {routeMapItem.entity.title}
+          </MoreMenuItem>
+        );
+      }
+
       return (
         <ChildEntityLink
           row={row}

@@ -75,6 +75,36 @@ const properties: BrandProperties = {
     label: _('Media Relay Set', { count: 20 }),
     $ref: '#/definitions/MediaRelaySet',
   },
+  voicemailNotificationTemplate: {
+    label: _('Voicemail Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  onDemandRecordNotificationTemplate: {
+    label: _('On-demand recording Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  faxNotificationTemplate: {
+    label: _('Fax Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  invoiceNotificationTemplate: {
+    label: _('Invoice Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  callCsvNotificationTemplate: {
+    label: _('Call CSV Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  maxDailyUsageNotificationTemplate: {
+    label: _('Max daily Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
 };
 
 const Brand: EntityInterface = {
