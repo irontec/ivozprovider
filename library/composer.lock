@@ -2477,16 +2477,16 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "5.6",
+            "version": "5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api.git",
-                "reference": "70946f9e80bb5f8ee3b03ddb82dce0f9d59344f6"
+                "reference": "f0d6dff3b09ba01f575bf67d06c1c8ec0ccdc5c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/70946f9e80bb5f8ee3b03ddb82dce0f9d59344f6",
-                "reference": "70946f9e80bb5f8ee3b03ddb82dce0f9d59344f6",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/f0d6dff3b09ba01f575bf67d06c1c8ec0ccdc5c2",
+                "reference": "f0d6dff3b09ba01f575bf67d06c1c8ec0ccdc5c2",
                 "shasum": ""
             },
             "require": {
@@ -2551,9 +2551,9 @@
             "description": "Api library built on api-platform for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api/issues",
-                "source": "https://github.com/irontec/ivoz-api/tree/5.6"
+                "source": "https://github.com/irontec/ivoz-api/tree/5.8"
             },
-            "time": "2026-06-15T15:22:44+00:00"
+            "time": "2026-09-14T06:48:16+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
