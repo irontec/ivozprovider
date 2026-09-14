@@ -187,6 +187,16 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[administrator]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[create]",
                         "in": "query",
                         "required": false,
@@ -2231,12 +2241,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "callee[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "callee[neq]",
                         "in": "query",
                         "required": false,
@@ -2255,6 +2259,12 @@
                         "type": "string"
                     },
                     {
+                        "name": "callee[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
                         "name": "caller",
                         "in": "query",
                         "required": false,
@@ -2265,6 +2275,12 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "caller[exists]",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
                     },
                     {
                         "name": "caller[neq]",
@@ -2291,12 +2307,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "caller[exists]",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    },
-                    {
                         "name": "callid",
                         "in": "query",
                         "required": false,
@@ -2304,12 +2314,6 @@
                     },
                     {
                         "name": "callid[exact]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "callid[neq]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -2337,6 +2341,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "callid[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "carrier",
@@ -2597,12 +2607,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "endpointName[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "endpointName[start]",
                         "in": "query",
                         "required": false,
@@ -2625,6 +2629,12 @@
                         "in": "query",
                         "required": false,
                         "type": "boolean"
+                    },
+                    {
+                        "name": "endpointName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "endpointType",
@@ -2883,6 +2893,16 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[brand]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[callee]",
                         "in": "query",
                         "required": false,
@@ -2913,7 +2933,27 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[carrier]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[cost]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[ddiProvider]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -3264,6 +3304,16 @@
                             "DESC"
                         ],
                         "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[service]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -7587,6 +7637,26 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[brand]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[feature]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[id]",
                         "in": "query",
                         "required": false,
@@ -9481,6 +9551,16 @@
                         "type": "string"
                     },
                     {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[language]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "_itemsPerPage",
                         "in": "query",
                         "required": false,
@@ -10304,7 +10384,27 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[brand]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[id]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[proxyTrunk]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -12698,6 +12798,16 @@
                             "ASC",
                             "DESC"
                         ],
+                        "name": "_order[country]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
                         "name": "_order[disableCDR]",
                         "in": "query",
                         "required": false,
@@ -14330,18 +14440,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "logo.baseName[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "logo.baseName[partial]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "logo.baseName[end]",
                         "in": "query",
                         "required": false,
@@ -14355,6 +14453,18 @@
                     },
                     {
                         "name": "logo.baseName[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "logo.baseName[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "logo.baseName[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -14420,6 +14530,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "logo.mimeType[start]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "logo.mimeType[partial]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "logo.mimeType[end]",
                         "in": "query",
                         "required": false,
@@ -14433,18 +14555,6 @@
                     },
                     {
                         "name": "logo.mimeType[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "logo.mimeType[start]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "logo.mimeType[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -14510,25 +14620,25 @@
                         "type": "string"
                     },
                     {
-                        "name": "urlType[neq]",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "urlType[start]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "urlType[partial]",
+                        "name": "urlType[end]",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "urlType[end]",
+                        "name": "urlType[neq]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "urlType[partial]",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -14559,6 +14669,16 @@
                     },
                     {
                         "name": "url[end]",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ],
+                        "name": "_order[brand]",
                         "in": "query",
                         "required": false,
                         "type": "string"
