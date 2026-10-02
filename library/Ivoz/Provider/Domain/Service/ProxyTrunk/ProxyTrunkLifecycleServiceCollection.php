@@ -21,6 +21,10 @@ class ProxyTrunkLifecycleServiceCollection implements LifecycleServiceCollection
         [
             \Ivoz\Kam\Domain\Service\TrunksUacreg\UpdateByProxyTrunk::class => 200,
         ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Domain\Service\ProxyTrunk\SendTrunksUacRegReloadRequest::class => 200,
+        ],
         "pre_remove" =>
         [
             \Ivoz\Provider\Domain\Service\ProxyTrunk\DeleteProtection::class => 200,
