@@ -4376,11 +4376,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
 
 		-
-			message: "#^Call to an undefined method Ivoz\\\\Core\\\\Domain\\\\DataTransferObjectInterface\\:\\:getLogoPath\\(\\)\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
-
-		-
 			message: "#^Cannot call method getTz\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\|null\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php

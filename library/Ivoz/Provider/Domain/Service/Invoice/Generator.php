@@ -6,6 +6,7 @@ use Handlebars\Handlebars;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
@@ -72,6 +73,7 @@ class Generator
         $callData = $this->_getCallData($invoice);
 
         $brand = $invoice->getBrand();
+        /** @var BrandDto $brandDto */
         $brandDto = $this->entityTools->entityToDto($brand);
         $brandLogo = $this->brandLogoDataUri->execute(
             $brandDto->getLogoPath(),

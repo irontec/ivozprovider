@@ -5176,8 +5176,7 @@
     <MissingReturnType occurrences="1">
       <code>getTotals</code>
     </MissingReturnType>
-    <MixedArgument occurrences="2">
-      <code>$brandLogoPath</code>
+    <MixedArgument occurrences="1">
       <code>$callData['targetPattern']['name']</code>
     </MixedArgument>
     <PossiblyInvalidOperand occurrences="1">
@@ -5193,9 +5192,6 @@
       <code>$templateModel-&gt;getTemplateFooter()</code>
       <code>$templateModel-&gt;getTemplateHeader()</code>
     </PossiblyNullArgument>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>getLogoPath</code>
-    </UndefinedInterfaceMethod>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Invoice/InvoiceLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
