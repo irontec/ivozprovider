@@ -17,6 +17,16 @@ function setup_mysql_password()
 
 #######################################################################################################################
 #######################################################################################################################
+function setup_redis_sentinel_host()
+{
+    # Fix sentinel host shipped in previous versions
+    sed -i "s/sentinel_host:[[:space:]]*cache\.irontec\.local/sentinel_host: cache.ivozprovider.local/" \
+        /opt/irontec/ivozprovider/microservices/webhooks/configs/config.yml
+}
+
+#######################################################################################################################
+#######################################################################################################################
 setup_mysql_password
+setup_redis_sentinel_host
 
 :
