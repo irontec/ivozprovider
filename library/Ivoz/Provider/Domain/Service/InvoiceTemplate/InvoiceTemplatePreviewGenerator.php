@@ -10,7 +10,8 @@ use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateRepository;
 class InvoiceTemplatePreviewGenerator
 {
     public function __construct(
-        private InvoiceTemplateRepository $invoiceTemplateRepository
+        private InvoiceTemplateRepository $invoiceTemplateRepository,
+        private GetInvoicePdfOptions $getInvoicePdfOptions
     ) {
     }
 
@@ -44,10 +45,9 @@ class InvoiceTemplatePreviewGenerator
         [$header, $body, $footer] = $this->getHtml($invoiceTemplate);
 
         $snappy = new Pdf('/opt/irontec/ivozprovider/library/vendor/bin/wkhtmltopdf-amd64');
-        $snappy->setOption('header-html', $header);
-        $snappy->setOption('header-spacing', 3);
-        $snappy->setOption('footer-html', $footer);
-        $snappy->setOption('footer-spacing', 3);
+        $snappy->setOptions(
+            $this->getInvoicePdfOptions->execute($header, $footer)
+        );
         $content = $snappy->getOutputFromHtml($body);
         $snappy->removeTemporaryFiles();
 

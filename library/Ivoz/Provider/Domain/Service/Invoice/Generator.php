@@ -6,11 +6,13 @@ use Handlebars\Handlebars;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
+use Ivoz\Provider\Domain\Service\InvoiceTemplate\GetInvoicePdfOptions;
 use Knp\Snappy\Pdf;
 use Monolog\Logger;
 
@@ -35,6 +37,8 @@ class Generator
         private BillableCallRepository $billableCallRepository,
         private EntityTools $entityTools,
         private Logger $logger,
+        private BrandLogoDataUri $brandLogoDataUri,
+        private GetInvoicePdfOptions $getInvoicePdfOptions,
         private string $vendorDir
     ) {
     }
@@ -69,11 +73,12 @@ class Generator
         $callData = $this->_getCallData($invoice);
 
         $brand = $invoice->getBrand();
+        /** @var BrandDto $brandDto */
         $brandDto = $this->entityTools->entityToDto($brand);
-        $brandLogoPath = $brandDto->getLogoPath();
-        if (!file_exists($brandLogoPath)) {
-            $brandLogoPath = 'images/palmera90.png';
-        }
+        $brandLogo = $this->brandLogoDataUri->execute(
+            $brandDto->getLogoPath(),
+            $brandDto->getLogoMimeType()
+        );
 
         $company = $invoice->getCompany();
         $companyDto = $this->entityTools->entityToDto($company);
@@ -100,7 +105,7 @@ class Generator
         $invoiceArray['inDate'] = $inDate->format(self::DATE_FORMAT);
         $invoiceArray['outDate'] = $outDate->format(self::DATE_FORMAT);
         $brandArray = $brandDto->toArray();
-        $brandArray['logoPath'] = $brandLogoPath;
+        $brandArray['logoPath'] = $brandLogo;
 
         $companyArray = $companyDto->toArray();
         $companyArray = [
@@ -135,12 +140,9 @@ class Generator
 
         $snappy = new Pdf($this->vendorDir . 'bin/wkhtmltopdf-amd64');
         $snappy->setTimeout(60 * 10);
-        $snappy->setOption('header-html', $header);
-        $snappy->setOption('header-spacing', 3);
-        $snappy->setOption('footer-html', $footer);
-        $snappy->setOption('footer-spacing', 3);
-        $snappy->setOption('load-error-handling', 'ignore');
-        $snappy->setOption('enable-local-file-access', true);
+        $snappy->setOptions(
+            $this->getInvoicePdfOptions->execute($header, $footer)
+        );
 
         $content = $snappy->getOutputFromHtml($body);
         $snappy->removeTemporaryFiles();
