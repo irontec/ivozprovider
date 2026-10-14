@@ -1,6 +1,6 @@
 redis:
   master: mymaster
-  sentinel_host: cache.irontec.local
+  sentinel_host: cache.ivozprovider.local
   sentinel_port: 26379
   db: 1
 
