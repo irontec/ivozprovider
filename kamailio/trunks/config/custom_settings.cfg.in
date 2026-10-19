@@ -9,3 +9,7 @@
 # authentication challenges won't be tracked for later in-dialog requests
 #!define TRACK_CSEQ_UPDATES 1
 
+# Number of EvAPI worker processes (default 1). Outbound calls wait for the
+# CGRateS authorization reply, and its processing (DB, Redis, rtpengine offer)
+# runs in these workers: raise it (e.g. 4) on high outbound call rates
+#!define EVAPI_WORKERS 1
