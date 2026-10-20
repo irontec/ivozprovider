@@ -13,3 +13,10 @@
 # CGRateS authorization reply, and its processing (DB, Redis, rtpengine offer)
 # runs in these workers: raise it (e.g. 4) on high outbound call rates
 #!define EVAPI_WORKERS 1
+
+# EvAPI module wait_idle (default 500000 us) and wait_increase (default 3).
+# The EvAPI worker polls its queue every step x wait_idle when idle, with step
+# growing up to wait_increase: CGRateS replies may wait up to 1.5 s by default.
+# Set them to 5000 and 1 to poll every 5 ms (slightly higher idle CPU usage)
+#!define EVAPI_WAIT_IDLE 500000
+#!define EVAPI_WAIT_INCREASE 3
