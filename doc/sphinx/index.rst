@@ -37,6 +37,11 @@ IvozProvider Official Documentation
     user_portal/index
 
 .. toctree::
+    :caption: Provider Guides
+
+    provider_guides/index
+
+.. toctree::
     :caption: Security and Maintenance
 
     security_and_maintenance/security/index
