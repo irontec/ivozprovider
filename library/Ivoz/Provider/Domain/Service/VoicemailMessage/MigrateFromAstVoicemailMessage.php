@@ -7,6 +7,7 @@ use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository as AstVoicemailRepositor
 use Ivoz\Ast\Domain\Service\VoicemailMessage\SetParsed;
 use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Psr\Log\LoggerInterface;
 
 class MigrateFromAstVoicemailMessage
 {
@@ -14,7 +15,8 @@ class MigrateFromAstVoicemailMessage
         private CreateFromAstVoicemail $createFromAstVoicemail,
         private AstVoicemailRepository $astVoicemailRepository,
         private EntityTools $entityTools,
-        private SetParsed $setParsed
+        private SetParsed $setParsed,
+        private LoggerInterface $logger
     ) {
     }
 
@@ -22,7 +24,9 @@ class MigrateFromAstVoicemailMessage
     {
         $mailboxUser = $astVoicemailMessage->getMailboxuser();
         $mailboxContext = $astVoicemailMessage->getMailboxcontext();
-        if (!$mailboxUser || !$mailboxContext) {
+        $hasMailbox = $mailboxUser && $mailboxContext;
+        if (!$hasMailbox) {
+            $this->skip($astVoicemailMessage);
             return;
         }
 
@@ -32,6 +36,7 @@ class MigrateFromAstVoicemailMessage
         );
 
         if (!$astVoicemail) {
+            $this->skip($astVoicemailMessage);
             return;
         }
 
@@ -48,6 +53,20 @@ class MigrateFromAstVoicemailMessage
         $this->entityTools->persist(
             $voicemailMessage,
         );
+
+        $this->setParsed->execute(
+            $astVoicemailMessage,
+        );
+    }
+
+    private function skip(AstVoicemailMessageInterface $astVoicemailMessage): void
+    {
+        $this->logger->warning(sprintf(
+            'Voicemail message #%d skipped: mailbox "%s@%s" not found',
+            (int) $astVoicemailMessage->getId(),
+            $astVoicemailMessage->getMailboxuser(),
+            $astVoicemailMessage->getMailboxcontext(),
+        ));
 
         $this->setParsed->execute(
             $astVoicemailMessage,
