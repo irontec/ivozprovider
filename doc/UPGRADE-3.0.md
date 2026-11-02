@@ -13,7 +13,7 @@ release.**
 
 ## Prerequisites
 
-Upgrade your installation to your latest available version (currently 2.21.0). This will ensure
+Upgrade your installation to your latest available version (currently 2.23.0). This will ensure
 all database migrations are applied and the schema is up-to-date. This is required because Halliday
 migrations assume that schema status.
 
@@ -40,8 +40,14 @@ cd /opt/irontec/ivozprovider/schema
 bin/console doctrine:database:drop --force
 bin/console doctrine:database:create
 mysql -u root -p ivozprovider < /path/to/ivozprovider-artemis.sql
+bin/console doctrine:migrations:execute --up 'Application\Migrations\Version00000000000000' -n
 bin/console doctrine:migrations:migrate -n
 ```
+
+The first Halliday migration (`Version00000000000000`) renames the artemis migration versions
+already stored in the database. It must be executed alone before the rest: otherwise Doctrine
+computes the migration plan before the rename, runs again migrations already applied in artemis
+and fails with a duplicate entry error in `migration_versions`, leaving the database half migrated.
 
 This will take from minutes to hours depending on the CDR tables size. If no error
 arises, then migrations will be executed properly.
