@@ -136,11 +136,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Ast/Infrastructure/Persistence/Doctrine/VoicemailMessageDoctrineRepository.php">
-    <MixedArgument occurrences="1">
-      <code>$results</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionAbstract.php">
     <MixedArgument occurrences="4">
       <code>$fkTransformer-&gt;transform($dto-&gt;getCarrier())</code>

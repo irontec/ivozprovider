@@ -7,13 +7,12 @@ use Generator;
 interface VoicemailMessageRepository
 {
     /**
-     * This method expects results to be marked as parsed as soon as they're used:
-     * a.k.a it does not apply any query offset, just a limit
+     * Walks unparsed messages by ascending id, so it always ends even if
+     * some results are never marked as parsed
      *
      * @param int $batchSize
-     * @param string[] $order
      * @return Generator<VoicemailMessage[]>
      * @see VoicemailMessageDoctrineRepository::getUnparsedMessagesGeneratorWithoutOffset
      */
-    public function getUnparsedMessagesGeneratorWithoutOffset(int $batchSize, array $order = null): Generator;
+    public function getUnparsedMessagesGeneratorWithoutOffset(int $batchSize): Generator;
 }
