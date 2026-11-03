@@ -5,7 +5,6 @@ namespace Ivoz\Ast\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessage;
-use Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageInterface;
 use Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageRepository;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
@@ -27,13 +26,9 @@ class VoicemailMessageDoctrineRepository extends ServiceEntityRepository impleme
     }
 
     /**
-     * This method expects results to be marked as parsed as soon as they're used:
-     * a.k.a it does not apply any query offset, just a limit
-     *
      * @inheritdoc
-     * @see VoicemailMessageDoctrineRepository::getUnparsedMessagesGeneratorWithoutOffset
      */
-    public function getUnparsedMessagesGeneratorWithoutOffset(int $batchSize, array $order = null): Generator
+    public function getUnparsedMessagesGeneratorWithoutOffset(int $batchSize): Generator
     {
         $qb = $this->createQueryBuilder('self');
         $qb->addCriteria(CriteriaHelper::fromArray([
@@ -42,17 +37,22 @@ class VoicemailMessageDoctrineRepository extends ServiceEntityRepository impleme
                 ['parsed', 'isNull'],
             ],
         ]));
+        $qb->andWhere('self.id > :lastId');
+        $qb->orderBy('self.id', 'ASC');
         $qb->setMaxResults($batchSize);
 
-        if ($order) {
-            $qb->orderBy(...$order);
-        }
-
+        $lastId = 0;
         $continue =  true;
         while ($continue) {
+            $qb->setParameter('lastId', $lastId);
             $query = $qb->getQuery();
+            /** @var VoicemailMessage[] $results */
             $results = $query->getResult();
             $continue = count($results) === $batchSize;
+
+            if ($continue) {
+                $lastId = $results[$batchSize - 1]->getId();
+            }
 
             yield $results;
         }
