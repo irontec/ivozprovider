@@ -9,20 +9,20 @@ import (
 )
 
 type Webhook struct {
-	ID            int
-	Name          string
-	URI           string
-	EventStart    bool
-	EventRing     bool
-	EventAnswer   bool
-	EventEnd         bool
-	EventUpdateClid  bool
-	Template         string
-	BrandID       int
-	CompanyID     int
-	DdiID         *int
-	UserID        *int
-	CallDirection string
+	ID              int
+	Name            string
+	URI             string
+	EventStart      bool
+	EventRing       bool
+	EventAnswer     bool
+	EventEnd        bool
+	EventUpdateClid bool
+	Template        string
+	BrandID         int
+	CompanyID       int
+	DdiID           *int
+	UserID          *int
+	CallDirection   string
 }
 
 func LoadWebhooks() ([]Webhook, error) {
