@@ -4,8 +4,11 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
+	"net/url"
+	"regexp"
 	"strings"
 	"sync"
 
@@ -210,7 +213,7 @@ func handleMessage(webhook db.Webhook, cfg webhookConfig, channel, payload strin
 	}
 
 	body := renderTemplate(webhook.Template, event, cfg)
-	go postHTTP(webhook.ID, webhook.URI, body)
+	go postHTTP(http.DefaultClient, webhook, body)
 }
 
 func shouldDispatch(webhook db.Webhook, event string) bool {
@@ -230,17 +233,43 @@ func shouldDispatch(webhook db.Webhook, event string) bool {
 	}
 }
 
-func postHTTP(webhookID int, uri, body string) {
-	resp, err := http.Post(uri, "application/json", bytes.NewBufferString(body))
+func postHTTP(client *http.Client, webhook db.Webhook, body string) {
+	request := fmt.Sprintf("[webhook:%d] %s POST to %s", webhook.ID, webhook.Name, endpoint(webhook.URI))
+
+	resp, err := client.Post(webhook.URI, "application/json", bytes.NewBufferString(body))
 	if err != nil {
-		logger.Errorf("[webhook:%d] POST to %s failed: %v", webhookID, uri, err)
+		logger.Errorf("%s failed: %s", request, cause(err))
 		return
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode >= 400 {
-		logger.Warnf("[webhook:%d] POST to %s returned %d", webhookID, uri, resp.StatusCode)
+		logger.Warnf("%s returned %d", request, resp.StatusCode)
 	} else {
-		logger.Debugf("[webhook:%d] POST to %s -> %d", webhookID, uri, resp.StatusCode)
+		logger.Debugf("%s -> %d", request, resp.StatusCode)
 	}
+}
+
+// endpoint reduces a webhook URI to scheme and host, the only parts that are
+// safe to log: path, query, fragment and userinfo often carry tokens.
+func endpoint(uri string) string {
+	u, err := url.Parse(uri)
+	if err != nil || u.Host == "" {
+		return "<invalid URI>"
+	}
+	return u.Scheme + "://" + u.Host
+}
+
+// quoted matches the %q-quoted values net/http and net/url copy from the
+// request into their errors: a Location header, a malformed host or port.
+var quoted = regexp.MustCompile(`"(?:[^"\\]|\\.)*"`)
+
+// cause describes a failed POST without the request URL, which *url.Error
+// prepends, nor any piece of a URI quoted inside the underlying error.
+func cause(err error) string {
+	var urlErr *url.Error
+	if errors.As(err, &urlErr) {
+		err = urlErr.Err
+	}
+	return quoted.ReplaceAllString(err.Error(), `"<redacted>"`)
 }
