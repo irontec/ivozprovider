@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 4.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-09 12:51+0200\n"
+"POT-Creation-Date: 2026-11-09 14:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,20 +69,21 @@ msgstr ""
 #: ../../api_rest/click2call.rst:25
 msgid ""
 "This service is shipped as the ``ivozprovider-click2call`` package and "
-"listens on its own port (behind a TLS proxy in production). It is "
-"independent from the ``/api/platform``, ``/api/brand`` and "
-"``/api/provider`` REST APIs."
+"serves HTTPS directly on its own port (9090 by default, see "
+":doc:`../security_and_maintenance/security/firewall`). It is independent "
+"from the ``/api/platform``, ``/api/brand`` and ``/api/provider`` REST "
+"APIs."
 msgstr ""
-"Este servicio se distribuye como el paquete ``ivozprovider-click2call`` y "
-"escucha en su propio puerto (tras un proxy TLS en producción). Es "
-"independiente de las APIs REST ``/api/platform``, ``/api/brand`` y "
-"``/api/provider``."
+"Este servicio se distribuye como el paquete ``ivozprovider-click2call`` y"
+" sirve HTTPS directamente en su propio puerto (9090 por defecto, ver "
+":doc:`../security_and_maintenance/security/firewall`). Es independiente "
+"de las APIs REST ``/api/platform``, ``/api/brand`` y ``/api/provider``."
 
-#: ../../api_rest/click2call.rst:31
+#: ../../api_rest/click2call.rst:32
 msgid "Endpoints"
 msgstr "Endpoints"
 
-#: ../../api_rest/click2call.rst:33
+#: ../../api_rest/click2call.rst:34
 msgid ""
 "The flow always has two steps: first request a challenge, then place the "
 "call signing the destination with the challenge."
@@ -91,30 +92,30 @@ msgstr ""
 "(challenge) y después realizar la llamada firmando el destino con dicho "
 "desafío."
 
-#: ../../api_rest/click2call.rst:37
+#: ../../api_rest/click2call.rst:38
 msgid "1) POST /challenge"
 msgstr "1) POST /challenge"
 
-#: ../../api_rest/click2call.rst:38
+#: ../../api_rest/click2call.rst:39
 msgid "Requests a single-use ``nonce`` for an Address of Record (AoR)."
 msgstr ""
 "Solicita un ``nonce`` de un solo uso para un Address of Record (AoR)."
 
-#: ../../api_rest/click2call.rst:40
-#: ../../api_rest/click2call.rst:63
+#: ../../api_rest/click2call.rst:41
+#: ../../api_rest/click2call.rst:64
 msgid "Request body:"
 msgstr "Cuerpo de la petición:"
 
-#: ../../api_rest/click2call.rst:46
-#: ../../api_rest/click2call.rst:78
+#: ../../api_rest/click2call.rst:47
+#: ../../api_rest/click2call.rst:79
 msgid "Response (``200``):"
 msgstr "Respuesta (``200``):"
 
-#: ../../api_rest/click2call.rst:52
+#: ../../api_rest/click2call.rst:53
 msgid "``aor``: the terminal's ``username@domain``."
 msgstr "``aor``: el ``username@domain`` del terminal."
 
-#: ../../api_rest/click2call.rst:53
+#: ../../api_rest/click2call.rst:54
 msgid ""
 "``realm`` (returned): the **domain** part of the AoR, to be used in the "
 "digest."
@@ -122,7 +123,7 @@ msgstr ""
 "``realm`` (devuelto): la parte de **dominio** del AoR, a utilizar en el "
 "digest."
 
-#: ../../api_rest/click2call.rst:55
+#: ../../api_rest/click2call.rst:56
 msgid ""
 "The ``nonce`` is HMAC-signed, has a configurable freshness (``nonce_ttl``)"
 " and is single-use, so there is no replay. No database access happens at "
@@ -132,11 +133,11 @@ msgstr ""
 "(``nonce_ttl``) y es de un solo uso, por lo que no hay reenvío (replay). "
 "En este paso no se accede a la base de datos."
 
-#: ../../api_rest/click2call.rst:59
+#: ../../api_rest/click2call.rst:60
 msgid "2) POST /call"
 msgstr "2) POST /call"
 
-#: ../../api_rest/click2call.rst:60
+#: ../../api_rest/click2call.rst:61
 msgid ""
 "Places the call. The destination must be signed with a digest computed "
 "from the terminal password and the ``nonce`` obtained above."
@@ -145,11 +146,11 @@ msgstr ""
 "partir de la contraseña del terminal y del ``nonce`` obtenido "
 "anteriormente."
 
-#: ../../api_rest/click2call.rst:84
+#: ../../api_rest/click2call.rst:85
 msgid "``destination``: destination number (``^[+*0-9]+$``)."
 msgstr "``destination``: número de destino (``^[+*0-9]+$``)."
 
-#: ../../api_rest/click2call.rst:85
+#: ../../api_rest/click2call.rst:86
 msgid ""
 "``iden`` (optional): caller-supplied id (``^[A-Za-z0-9_-]{1,32}$``); if "
 "omitted, the service generates one (16-char base62) and returns it in the "
@@ -159,7 +160,7 @@ msgstr ""
 "(``^[A-Za-z0-9_-]{1,32}$``); si se omite, el servicio genera uno (base62 "
 "de 16 caracteres) y lo devuelve en la respuesta."
 
-#: ../../api_rest/click2call.rst:87
+#: ../../api_rest/click2call.rst:88
 msgid ""
 "``maxDuration`` (ms, default ``10800000``), ``dialTimeout`` (s, default "
 "``30``), ``optimize`` (bool, default ``false``)."
@@ -167,27 +168,53 @@ msgstr ""
 "``maxDuration`` (ms, por defecto ``10800000``), ``dialTimeout`` (s, por "
 "defecto ``30``), ``optimize`` (booleano, por defecto ``false``)."
 
-#: ../../api_rest/click2call.rst:90
+#: ../../api_rest/click2call.rst:91
 msgid ""
-"The returned ``iden`` identifies the generated call: it is used as the AMI"
-" ``ChannelId`` and is propagated on **leg 2** (the call towards the "
+"The returned ``iden`` identifies the generated call: it is used as the "
+"AMI ``ChannelId`` and is propagated on **leg 2** (the call towards the "
 "destination) to the proxy as the SIP header ``X-Info-Click2Dial-iden``. "
-"The proxy stores it as the call ``IDEN`` for the leg, so it can be "
-"correlated with the originating ``/call`` request from CDRs and realtime "
-"data."
+"The proxy publishes it as ``IDEN`` in the realtime events of leg 2, so "
+"the call can be correlated with the originating ``/call`` request. It is "
+"**not** stored in the CDRs."
 msgstr ""
 "El ``iden`` devuelto identifica la llamada generada: se usa como "
 "``ChannelId`` de AMI y se propaga en la **pata 2** (la llamada hacia el "
 "destino) hacia el proxy como la cabecera SIP ``X-Info-Click2Dial-iden``. "
-"El proxy lo almacena como el ``IDEN`` de la llamada para esa pata, de modo "
-"que puede correlacionarse con la petición ``/call`` originaria desde los "
-"CDRs y los datos en tiempo real."
+"El proxy lo publica como ``IDEN`` en los eventos de tiempo real de la "
+"pata 2, de modo que la llamada puede correlacionarse con la petición "
+"``/call`` que la originó. **No** se guarda en los CDRs."
 
-#: ../../api_rest/click2call.rst:98
+#: ../../api_rest/click2call.rst:97
+msgid ""
+"A ``200`` means that Asterisk has **queued** the ``Originate`` (the "
+"action is asynchronous), not that the call has been established. The call"
+" can still fail afterwards (the terminal does not answer, the destination"
+" fails...) and there is no way to query its state: use the ``iden`` to "
+"follow it in the realtime data."
+msgstr ""
+"Un ``200`` significa que Asterisk ha **encolado** el ``Originate`` (la "
+"acción es asíncrona), no que la llamada se haya establecido. La llamada "
+"todavía puede fallar después (el terminal no contesta, falla el "
+"destino...) y no hay forma de consultar su estado: usa el ``iden`` para "
+"seguirla en los datos de tiempo real."
+
+#: ../../api_rest/click2call.rst:104
+msgid ""
+"Leg 1 is sent to the user's terminal with the header ``Call-Info: "
+"<...>;answer-after=0``. Terminals that honour it **answer "
+"automatically**, so the call towards the destination starts without the "
+"user touching the phone."
+msgstr ""
+"La pata 1 se envía al terminal del usuario con la cabecera ``Call-Info: "
+"<...>;answer-after=0``. Los terminales que la respetan **descuelgan "
+"automáticamente**, así que la llamada hacia el destino empieza sin que el"
+" usuario toque el teléfono."
+
+#: ../../api_rest/click2call.rst:111
 msgid "Digest computation"
 msgstr "Cálculo del digest"
 
-#: ../../api_rest/click2call.rst:100
+#: ../../api_rest/click2call.rst:113
 msgid ""
 "The digest is computed on the client side, MD5-based, and only "
 "``response`` travels (the password never leaves the client):"
@@ -195,11 +222,11 @@ msgstr ""
 "El digest se calcula en el lado del cliente, basado en MD5, y solo viaja "
 "``response`` (la contraseña nunca sale del cliente):"
 
-#: ../../api_rest/click2call.rst:109
+#: ../../api_rest/click2call.rst:122
 msgid "The server recomputes and compares in constant time."
 msgstr "El servidor lo recalcula y lo compara en tiempo constante."
 
-#: ../../api_rest/click2call.rst:113
+#: ../../api_rest/click2call.rst:126
 msgid ""
 "In the browser ``crypto.subtle`` does **not** provide MD5; use a library "
 "such as ``blueimp-md5`` / ``crypto-js``. CORS is solved by declaring the "
@@ -212,71 +239,185 @@ msgstr ""
 "extensión; el servicio devuelve los orígenes permitidos a partir de su "
 "configuración."
 
-#: ../../api_rest/click2call.rst:120
+#: ../../api_rest/click2call.rst:133
 msgid "Error codes"
 msgstr "Códigos de error"
 
-#: ../../api_rest/click2call.rst:123
+#: ../../api_rest/click2call.rst:136
 msgid "Code"
 msgstr "Código"
 
-#: ../../api_rest/click2call.rst:123
+#: ../../api_rest/click2call.rst:136
 msgid "Reason"
 msgstr "Motivo"
 
-#: ../../api_rest/click2call.rst:125
+#: ../../api_rest/click2call.rst:138
 msgid "``400``"
 msgstr "``400``"
 
-#: ../../api_rest/click2call.rst:125
+#: ../../api_rest/click2call.rst:138
 msgid "invalid JSON / AoR / destination / iden"
 msgstr "JSON / AoR / destino / iden no válidos"
 
-#: ../../api_rest/click2call.rst:126
+#: ../../api_rest/click2call.rst:139
 msgid "``401``"
 msgstr "``401``"
 
-#: ../../api_rest/click2call.rst:126
+#: ../../api_rest/click2call.rst:139
 msgid "invalid, expired or reused nonce"
 msgstr "nonce no válido, caducado o reutilizado"
 
-#: ../../api_rest/click2call.rst:127
+#: ../../api_rest/click2call.rst:140
 msgid "``403``"
 msgstr "``403``"
 
-#: ../../api_rest/click2call.rst:127
+#: ../../api_rest/click2call.rst:140
 msgid "AoR not eligible (no terminal+endpoint+user+extension) or wrong digest"
 msgstr ""
 "AoR no elegible (sin terminal+endpoint+usuario+extensión) o digest "
 "incorrecto"
 
-#: ../../api_rest/click2call.rst:128
+#: ../../api_rest/click2call.rst:141
 msgid "``502``"
 msgstr "``502``"
 
-#: ../../api_rest/click2call.rst:128
+#: ../../api_rest/click2call.rst:141
 msgid "could not resolve the Application Server (Kamailio) or originate (AMI)"
 msgstr ""
 "no se pudo resolver el Application Server (Kamailio) ni originar la "
 "llamada (AMI)"
 
-#: ../../api_rest/click2call.rst:131
+#: ../../api_rest/click2call.rst:144
 msgid ""
 "For security, the exact reason is not leaked between \"the AoR does not "
-"exist\" and \"wrong password\": both return ``403``."
+"exist\" and \"wrong password\": both return ``403``. Only the service log"
+" tells them apart."
 msgstr ""
-"Por seguridad, no se revela el motivo exacto entre \"el AoR no existe\" y "
-"\"contraseña incorrecta\": ambos devuelven ``403``."
+"Por seguridad, no se revela el motivo exacto entre \"el AoR no existe\" y"
+" \"contraseña incorrecta\": ambos devuelven ``403``. Solo el log del "
+"servicio los distingue."
 
-#: ../../api_rest/click2call.rst:136
+#: ../../api_rest/click2call.rst:147
+msgid ""
+"There is no rate limit in the service: the calls it places are subject to"
+" the platform's simultaneous call limits."
+msgstr ""
+"El servicio no limita el número de peticiones: las llamadas que origina "
+"están sujetas a los límites de llamadas simultáneas de la plataforma."
+
+#: ../../api_rest/click2call.rst:152
+msgid "Authentication failures"
+msgstr "Fallos de autenticación"
+
+#: ../../api_rest/click2call.rst:154
+msgid ""
+"Every ``401`` and ``403`` of ``/call`` writes one ``warning`` line to the"
+" service log (``journalctl -u ivozprovider-click2call``), with the fixed "
+"message ``click2call auth failed`` and these fields:"
+msgstr ""
+"Cada ``401`` y ``403`` de ``/call`` escribe una línea ``warning`` en el "
+"log del servicio (``journalctl -u ivozprovider-click2call``), con el "
+"mensaje fijo ``click2call auth failed`` y estos campos:"
+
+#: ../../api_rest/click2call.rst:158
+msgid "``status``: ``401`` or ``403``."
+msgstr "``status``: ``401`` o ``403``."
+
+#: ../../api_rest/click2call.rst:159
+msgid ""
+"``reason``: ``invalid_nonce`` (``401``: invalid, expired, reused or "
+"issued for another AoR), ``not_eligible`` (``403``: the AoR is not "
+"eligible) or ``bad_response`` (``403``: wrong digest)."
+msgstr ""
+"``reason``: ``invalid_nonce`` (``401``: nonce inválido, caducado, "
+"reutilizado o emitido para otro AoR), ``not_eligible`` (``403``: el AoR "
+"no es elegible) o ``bad_response`` (``403``: digest incorrecto)."
+
+#: ../../api_rest/click2call.rst:162
+msgid "``aor``: the requested AoR."
+msgstr "``aor``: el AoR solicitado."
+
+#: ../../api_rest/click2call.rst:163
+msgid "``dst``: the requested destination."
+msgstr "``dst``: el destino solicitado."
+
+#: ../../api_rest/click2call.rst:164
+msgid "``ip``: the IP address of the TCP connection."
+msgstr "``ip``: la dirección IP de la conexión TCP."
+
+#: ../../api_rest/click2call.rst:170
+msgid ""
+"The format is stable, so it can be used for alerts or fail2ban. The "
+"``response``, the ``nonce``, the terminal password and the ``iden`` are "
+"never logged. ``X-Forwarded-For`` and similar headers are ignored, "
+"because a client could forge them: the logged IP is always the one of the"
+" connection."
+msgstr ""
+"El formato es estable, así que puede usarse para alertas o fail2ban. "
+"Nunca se registran el ``response``, el ``nonce``, la contraseña del "
+"terminal ni el ``iden``. Se ignoran ``X-Forwarded-For`` y cabeceras "
+"similares, porque un cliente podría falsificarlas: la IP registrada es "
+"siempre la de la conexión."
+
+#: ../../api_rest/click2call.rst:177
+msgid "Configuration"
+msgstr "Configuración"
+
+#: ../../api_rest/click2call.rst:179
+msgid ""
+"The configuration file is "
+"``/opt/irontec/ivozprovider/microservices/click2call/configs/config.yml``,"
+" a conffile of the ``ivozprovider-click2call`` package. On install, the "
+"package sets the database password and generates a random "
+"``digest.secret``."
+msgstr ""
+"El fichero de configuración es "
+"``/opt/irontec/ivozprovider/microservices/click2call/configs/config.yml``,"
+" un conffile del paquete ``ivozprovider-click2call``. Al instalarse, el "
+"paquete fija la contraseña de la base de datos y genera un "
+"``digest.secret`` aleatorio."
+
+#: ../../api_rest/click2call.rst:184
+msgid ""
+"**TLS**: the service uses the portals certificate (``/etc/ssl/certs"
+"/ivozprovider-portals.pem`` and ``/etc/ssl/private/ivozprovider-"
+"portals.key``). If ``tls_cert`` and ``tls_key`` are empty it serves plain"
+" HTTP, which is only meant for testing: behind a proxy, the "
+"authentication failure log would show the IP address of the proxy."
+msgstr ""
+"**TLS**: el servicio usa el certificado de portals (``/etc/ssl/certs"
+"/ivozprovider-portals.pem`` y ``/etc/ssl/private/ivozprovider-"
+"portals.key``). Si ``tls_cert`` y ``tls_key`` están vacíos sirve HTTP sin"
+" cifrar, solo pensado para pruebas: detrás de un proxy, el log de fallos "
+"de autenticación mostraría la dirección IP del proxy."
+
+#: ../../api_rest/click2call.rst:190
+msgid ""
+"**Single instance**: used nonces are kept in memory, so only one instance"
+" of the service may be active. In a cluster, pacemaker runs it on the "
+"active portals node. On a failover, the nonces issued in the last "
+"``nonce_ttl`` seconds (30 by default) stop being valid and the client has"
+" to request a new one. All nodes must share the same ``digest.secret``: "
+"as each install generates a random one, set the same value on every "
+"portals node."
+msgstr ""
+"**Una sola instancia**: los nonces usados se guardan en memoria, así que "
+"solo puede haber una instancia activa del servicio. En un clúster, "
+"pacemaker lo ejecuta en el nodo portals activo. En un cambio de nodo, los"
+" nonces emitidos en los últimos ``nonce_ttl`` segundos (30 por defecto) "
+"dejan de valer y el cliente tiene que pedir uno nuevo. Todos los nodos "
+"deben compartir el mismo ``digest.secret``: como cada instalación genera "
+"uno aleatorio, hay que poner el mismo valor en todos los nodos portals."
+
+#: ../../api_rest/click2call.rst:199
 msgid "Use case"
 msgstr "Caso de uso"
 
-#: ../../api_rest/click2call.rst:138
+#: ../../api_rest/click2call.rst:201
 msgid "A typical exchange from the browser extension:"
 msgstr "Un intercambio típico desde la extensión de navegador:"
 
-#: ../../api_rest/click2call.rst:140
+#: ../../api_rest/click2call.rst:203
 msgid ""
 "``POST /challenge`` with the logged-in terminal's ``aor`` → obtain "
 "``nonce`` and ``realm``."
@@ -284,7 +425,7 @@ msgstr ""
 "``POST /challenge`` con el ``aor`` del terminal con sesión iniciada → "
 "obtener ``nonce`` y ``realm``."
 
-#: ../../api_rest/click2call.rst:143
+#: ../../api_rest/click2call.rst:206
 msgid ""
 "Compute ``response`` from ``username``, ``realm``, ``password``, ``nonce``"
 " and the clicked ``destination``."
@@ -292,7 +433,7 @@ msgstr ""
 "Calcular ``response`` a partir de ``username``, ``realm``, ``password``, "
 "``nonce`` y el ``destination`` sobre el que se ha hecho clic."
 
-#: ../../api_rest/click2call.rst:146
+#: ../../api_rest/click2call.rst:209
 msgid ""
 "``POST /call`` with ``aor``, ``nonce``, ``response`` and ``destination`` →"
 " the user's terminal rings and, on answer, the destination is dialed. "
