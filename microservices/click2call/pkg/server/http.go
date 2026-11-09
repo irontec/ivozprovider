@@ -9,6 +9,7 @@ import (
 	"crypto/rand"
 	"encoding/json"
 	"fmt"
+	"net"
 	"net/http"
 	"regexp"
 	"strings"
@@ -33,12 +34,30 @@ var (
 	idenAlphabet  = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 )
 
+// credentialsStore resolves an AoR into the data needed to authenticate and
+// place the call (implemented by *db.DB).
+type credentialsStore interface {
+	GetCredentials(domain, username string) (*db.Credentials, error)
+}
+
+// asResolver returns the ApplicationServer host for a company (implemented by
+// *kamailio.Client).
+type asResolver interface {
+	ResolveAS(companyID int) (string, error)
+}
+
+// originator sends the Originate to an ApplicationServer (implemented by
+// *ami.Client).
+type originator interface {
+	Originate(host string, p ami.OriginateParams) error
+}
+
 // Handler holds the service dependencies shared by the HTTP handlers.
 type Handler struct {
 	digest         *digest.Manager
-	db             *db.DB
-	kam            *kamailio.Client
-	ami            *ami.Client
+	db             credentialsStore
+	kam            asResolver
+	ami            originator
 	allowedOrigins []string
 
 	defaultDialTimeout int
@@ -176,6 +195,7 @@ func (h *Handler) call(w http.ResponseWriter, r *http.Request) {
 
 	// 1) Nonce (signature + freshness + single-use). Consumed on success.
 	if err := h.digest.ValidateNonce(req.AoR, req.Nonce); err != nil {
+		logAuthFailure(r, req, http.StatusUnauthorized, "invalid_nonce")
 		writeError(w, http.StatusUnauthorized, "invalid nonce")
 		return
 	}
@@ -183,6 +203,7 @@ func (h *Handler) call(w http.ResponseWriter, r *http.Request) {
 	// 2) Credentials for the AoR (also the eligibility gate).
 	creds, err := h.db.GetCredentials(domain, username)
 	if err == db.ErrNotEligible {
+		logAuthFailure(r, req, http.StatusForbidden, "not_eligible")
 		writeError(w, http.StatusForbidden, "forbidden")
 		return
 	}
@@ -194,6 +215,7 @@ func (h *Handler) call(w http.ResponseWriter, r *http.Request) {
 
 	// 3) Digest verification (realm = domain), constant-time.
 	if !digest.Verify(req.Response, username, domain, creds.Password, req.Nonce, req.Destination) {
+		logAuthFailure(r, req, http.StatusForbidden, "bad_response")
 		writeError(w, http.StatusForbidden, "forbidden")
 		return
 	}
@@ -213,8 +235,8 @@ func (h *Handler) call(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	logger.Infof("click2call originated: aor=%s dst=%s as=%s iden=%s",
-		req.AoR, req.Destination, asHost, iden)
+	logger.WithField("ip", clientIP(r)).Infof("click2call originated: aor=%s dst=%s as=%s",
+		req.AoR, req.Destination, asHost)
 	writeJSON(w, http.StatusOK, callResponse{Iden: iden})
 }
 
@@ -268,6 +290,35 @@ func (h *Handler) buildOriginate(req callRequest, creds *db.Credentials, iden st
 // -------------------------------------------------------------------------- //
 //  Helpers                                                                    //
 // -------------------------------------------------------------------------- //
+
+// logAuthFailure writes one warning line per rejected /call authentication, in a
+// stable logfmt shape meant for alerting or fail2ban, e.g.:
+//
+//	level=warning msg="click2call auth failed" aor=101@example.com dst=600123123 ip=203.0.113.7 reason=bad_response status=403
+//
+// It never logs the response, the nonce, the terminal password or the iden.
+// aor and dst are already validated (no spaces or newlines), so they cannot
+// inject log lines.
+func logAuthFailure(r *http.Request, req callRequest, status int, reason string) {
+	logger.WithFields(logger.Fields{
+		"status": status,
+		"reason": reason,
+		"aor":    req.AoR,
+		"dst":    req.Destination,
+		"ip":     clientIP(r),
+	}).Warn("click2call auth failed")
+}
+
+// clientIP returns the IP of the TCP peer, without the port. The service serves
+// HTTPS directly, so forwarding headers (X-Forwarded-For...) are deliberately
+// ignored: a client could forge them.
+func clientIP(r *http.Request) string {
+	host, _, err := net.SplitHostPort(r.RemoteAddr)
+	if err != nil {
+		return r.RemoteAddr
+	}
+	return host
+}
 
 // splitAoR splits "username@domain" and rejects empty/invalid parts.
 func splitAoR(aor string) (username, domain string, ok bool) {
