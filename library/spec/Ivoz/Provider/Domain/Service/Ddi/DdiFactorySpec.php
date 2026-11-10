@@ -97,7 +97,8 @@ class DdiFactorySpec extends ObjectBehavior
         $ddi = $this->getInstance(
             Ddi::class,
             [
-                'company' => $inputArgs[0]
+                'company' => $inputArgs[0],
+                'brand' => $inputArgs[0]->getBrand(),
             ]
         );
 
@@ -113,6 +114,45 @@ class DdiFactorySpec extends ObjectBehavior
         $this->fromMassProvisioningCsv(
             ...$inputArgs
         );
+    }
+
+    function it_rejects_ddis_of_another_brand()
+    {
+        $this->prepareExecution();
+
+        $otherBrand = $this->getInstance(
+            Brand::class,
+            ['id' => 3]
+        );
+        $ddi = $this->getInstance(
+            Ddi::class,
+            ['brand' => $otherBrand]
+        );
+
+        $this
+            ->ddiRepository
+            ->findOneByDdiAndCountry(
+                Argument::type('string'),
+                Argument::type('int')
+            )
+            ->willReturn($ddi);
+
+        $this
+            ->entityTools
+            ->dtoToEntity(
+                Argument::any(),
+                Argument::any()
+            )
+            ->shouldNotBeCalled();
+
+        $this
+            ->shouldThrow(
+                new \DomainException('DDI 946002050 belongs to another brand')
+            )
+            ->during(
+                'fromMassProvisioningCsv',
+                $this->getArguments()
+            );
     }
 
     function it_creates_ddi_if_necessary()
