@@ -350,6 +350,22 @@ pipeline {
                                 failure { notifyFailureGithub() }
                             }
                         }
+                        stage ('microservice-webhooks') {
+                            agent {
+                                docker {
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    reuseNode true
+                                }
+                            }
+                            steps {
+                                sh '/opt/irontec/ivozprovider/microservices/webhooks/bin/test-webhooks.sh'
+                            }
+                            post {
+                                success { notifySuccessGithub() }
+                                failure { notifyFailureGithub() }
+                            }
+                        }
 
                         stage ('microservice-click2call') {
                             agent {
