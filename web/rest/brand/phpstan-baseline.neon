@@ -21,11 +21,6 @@ parameters:
 			path: src/Controller/Provider/PostUsersMassImportAction.php
 
 		-
-			message: "#^Parameter \\#2 \\$csv of method Ivoz\\\\Provider\\\\Application\\\\Service\\\\User\\\\SyncFromCsv\\:\\:execute\\(\\) expects string, string\\|false given\\.$#"
-			count: 1
-			path: src/Controller/Provider/PostUsersMassImportAction.php
-
-		-
 			message: "#^Method Controller\\\\Provider\\\\PutBillableCallRatingAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Controller/Provider/PutBillableCallRatingAction.php

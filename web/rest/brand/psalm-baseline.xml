@@ -49,14 +49,6 @@
       <code>decode</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="src/Controller/Provider/PostUsersMassImportAction.php">
-    <InvalidScalarArgument occurrences="1">
-      <code>$rowsFailed</code>
-    </InvalidScalarArgument>
-    <MixedArgument occurrences="1">
-      <code>$request-&gt;files-&gt;get('csv')</code>
-    </MixedArgument>
-  </file>
   <file src="src/Controller/Provider/PutBillableCallRatingAction.php">
     <MixedArgument occurrences="1">
       <code>$callid</code>
