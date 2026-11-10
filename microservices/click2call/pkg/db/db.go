@@ -1,6 +1,6 @@
 // Package db resolves a SIP terminal AoR (username@domain) into the data needed
 // to authenticate the digest and place the call, reading directly from the
-// IvozProvider MySQL database with a least-privilege account.
+// IvozProvider MySQL database.
 package db
 
 import (

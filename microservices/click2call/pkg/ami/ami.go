@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"net"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -41,7 +42,7 @@ type OriginateParams struct {
 // sends the Originate action. The action is async, so Asterisk answers with
 // "Originate successfully queued" once the request is accepted.
 func (c *Client) Originate(host string, p OriginateParams) error {
-	addr := fmt.Sprintf("%s:%d", host, c.port)
+	addr := net.JoinHostPort(host, strconv.Itoa(c.port))
 
 	conn, err := net.DialTimeout("tcp", addr, 10*time.Second)
 	if err != nil {

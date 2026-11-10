@@ -22,9 +22,10 @@ On success the service fires, over AMI, an ``Originate`` that reuses the existin
 
 .. note::
 
-   This service is shipped as the ``ivozprovider-click2call`` package and listens
-   on its own port (behind a TLS proxy in production). It is independent from the
-   ``/api/platform``, ``/api/brand`` and ``/api/provider`` REST APIs.
+   This service is shipped as the ``ivozprovider-click2call`` package and serves
+   HTTPS directly on its own port (9090 by default, see
+   :doc:`../security_and_maintenance/security/firewall`). It is independent from
+   the ``/api/platform``, ``/api/brand`` and ``/api/provider`` REST APIs.
 
 *********
 Endpoints
@@ -89,9 +90,21 @@ Response (``200``):
 
 The returned ``iden`` identifies the generated call: it is used as the AMI
 ``ChannelId`` and is propagated on **leg 2** (the call towards the destination) to
-the proxy as the SIP header ``X-Info-Click2Dial-iden``. The proxy stores it as the
-call ``IDEN`` for the leg, so it can be correlated with the originating ``/call``
-request from CDRs and realtime data.
+the proxy as the SIP header ``X-Info-Click2Dial-iden``. The proxy publishes it as
+``IDEN`` in the realtime events of leg 2, so the call can be correlated with the
+originating ``/call`` request. It is **not** stored in the CDRs.
+
+A ``200`` means that Asterisk has **queued** the ``Originate`` (the action is
+asynchronous), not that the call has been established. The call can still fail
+afterwards (the terminal does not answer, the destination fails...) and there is no
+way to query its state: use the ``iden`` to follow it in the realtime data.
+
+.. warning::
+
+   Leg 1 is sent to the user's terminal with the header
+   ``Call-Info: <...>;answer-after=0``. Terminals that honour it **answer
+   automatically**, so the call towards the destination starts without the user
+   touching the phone.
 
 ******************
 Digest computation
@@ -129,7 +142,57 @@ Code        Reason
 ==========  ==========================================================================
 
 For security, the exact reason is not leaked between "the AoR does not exist" and
-"wrong password": both return ``403``.
+"wrong password": both return ``403``. Only the service log tells them apart.
+
+There is no rate limit in the service: the calls it places are subject to the
+platform's simultaneous call limits.
+
+***********************
+Authentication failures
+***********************
+
+Every ``401`` and ``403`` of ``/call`` writes one ``warning`` line to the service
+log (``journalctl -u ivozprovider-click2call``), with the fixed message
+``click2call auth failed`` and these fields:
+
+- ``status``: ``401`` or ``403``.
+- ``reason``: ``invalid_nonce`` (``401``: invalid, expired, reused or issued for
+  another AoR), ``not_eligible`` (``403``: the AoR is not eligible) or
+  ``bad_response`` (``403``: wrong digest).
+- ``aor``: the requested AoR.
+- ``dst``: the requested destination.
+- ``ip``: the IP address of the TCP connection.
+
+.. code-block:: text
+
+    level=warning msg="click2call auth failed" aor=101@example.com dst=600123123 ip=203.0.113.7 reason=bad_response status=403
+
+The format is stable, so it can be used for alerts or fail2ban. The ``response``,
+the ``nonce``, the terminal password and the ``iden`` are never logged.
+``X-Forwarded-For`` and similar headers are ignored, because a client could forge
+them: the logged IP is always the one of the connection.
+
+*************
+Configuration
+*************
+
+The configuration file is
+``/opt/irontec/ivozprovider/microservices/click2call/configs/config.yml``, a
+conffile of the ``ivozprovider-click2call`` package. On install, the package sets
+the database password and generates a random ``digest.secret``.
+
+- **TLS**: the service uses the portals certificate
+  (``/etc/ssl/certs/ivozprovider-portals.pem`` and
+  ``/etc/ssl/private/ivozprovider-portals.key``). If ``tls_cert`` and ``tls_key``
+  are empty it serves plain HTTP, which is only meant for testing: behind a proxy,
+  the authentication failure log would show the IP address of the proxy.
+
+- **Single instance**: used nonces are kept in memory, so only one instance of the
+  service may be active. In a cluster, pacemaker runs it on the active portals node.
+  On a failover, the nonces issued in the last ``nonce_ttl`` seconds (30 by
+  default) stop being valid and the client has to request a new one. All nodes
+  must share the same ``digest.secret``: as each install generates a random one,
+  set the same value on every portals node.
 
 ********
 Use case

@@ -351,6 +351,24 @@ pipeline {
                             }
                         }
 
+                        stage ('microservice-click2call') {
+                            agent {
+                                docker {
+                                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_TAG}"
+                                    args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                                    reuseNode true
+                                }
+                            }
+                            steps {
+                                sh '/opt/irontec/ivozprovider/microservices/click2call/tests/test-build.sh'
+                                sh '/opt/irontec/ivozprovider/microservices/click2call/tests/test-codestyle.sh'
+                            }
+                            post {
+                                success { notifySuccessGithub() }
+                                failure { notifyFailureGithub() }
+                            }
+                        }
+
                         stage('orm') {
                             agent {
                                 docker {
