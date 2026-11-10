@@ -10,86 +10,53 @@ use Ivoz\Api\Core\Annotation\AttributeDefinition;
 class UsersMassImport
 {
     /**
-     * @var boolean
-     * @AttributeDefinition(type="bool")
+     * @var integer
+     * @AttributeDefinition(type="int")
      */
-    protected $success;
-
-    /**
-     * @var string
-     * @AttributeDefinition(type="string")
-     */
-    protected $errorMsg;
+    protected $created;
 
     /**
      * @var integer
      * @AttributeDefinition(type="int")
      */
-    protected $failed;
+    protected $updated;
 
+    /**
+     * @var UsersMassImportError[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     class="Model\UsersMassImportError"
+     * )
+     */
+    protected $errors;
+
+    /**
+     * @param UsersMassImportError[] $errors
+     */
     public function __construct(
-        bool $success,
-        string $errorMsg,
-        int $imported
+        int $created,
+        int $updated,
+        array $errors
     ) {
-        $this->setSuccess($success);
-        $this->setErrorMsg($errorMsg);
-        $this->setFailed(
-            $imported
-        );
+        $this->created = $created;
+        $this->updated = $updated;
+        $this->errors = $errors;
     }
 
     /**
-     * @return bool
+     * @return array{created: int, updated: int, errors: list<array{line: int, message: string}>}
      */
-    public function isSuccess(): bool
+    public function toArray(): array
     {
-        return $this->success;
-    }
-
-    /**
-     * @param bool $success
-     * @return UsersMassImport
-     */
-    public function setSuccess(bool $success): UsersMassImport
-    {
-        $this->success = $success;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getErrorMsg(): string
-    {
-        return $this->errorMsg;
-    }
-
-    /**
-     * @param string $errorMsg
-     * @return UsersMassImport
-     */
-    public function setErrorMsg(string $errorMsg): UsersMassImport
-    {
-        $this->errorMsg = $errorMsg;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getFailed(): int
-    {
-        return $this->failed;
-    }
-
-    /**
-     * @param int $failed
-     * @return UsersMassImport
-     */
-    public function setFailed(int $failed): UsersMassImport
-    {
-        $this->failed = $failed;
-        return $this;
+        return [
+            'created' => $this->created,
+            'updated' => $this->updated,
+            'errors' => array_values(
+                array_map(
+                    fn (UsersMassImportError $error): array => $error->toArray(),
+                    $this->errors
+                )
+            ),
+        ];
     }
 }

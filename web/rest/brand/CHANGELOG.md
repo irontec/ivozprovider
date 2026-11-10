@@ -1,5 +1,22 @@
 # Changelog
 
+## 4.9.0
+* Endpoints:
+    - /users/mass_import:
+      - Only accepts [POST] requests and enforces the administrator ACLs.
+      - Valid rows are imported and the rest are reported; the response is now
+        created, updated and errors (line and message, line 0 for file errors).
+      - Accepts CSV files saved with Excel: semicolons, BOM, Windows-1252
+        encoding, blank rows and an optional header.
+      - Empty columns of an existing user are left untouched. Rows that
+        reference a user, terminal, extension or DDI of another client fail.
+* Models:
+    - UsersMassImport
+        - Added created, updated and errors properties
+        - Removed success, errorMsg and failed properties
+    - UsersMassImportError
+        - Added model
+
 ## 4.7.0
 * Endpoints:
     - /webhooks:
