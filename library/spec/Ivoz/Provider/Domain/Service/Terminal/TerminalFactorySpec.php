@@ -100,12 +100,18 @@ class TerminalFactorySpec extends ObjectBehavior
             ->willReturn($this->terminal);
 
         $this
+            ->terminalRepository
+            ->findOneByMac(
+                Argument::any()
+            )
+            ->willReturn(null);
+
+        $this
             ->fromMassProvisioningCsv(
                 ...$this->inputArgs
             )
             ->shouldReturn($this->terminal);
     }
-
 
     function it_searches_for_existing_terminal_by_mac()
     {
@@ -156,6 +162,151 @@ class TerminalFactorySpec extends ObjectBehavior
             ->shouldReturn($this->terminal);
     }
 
+    function it_keeps_the_current_mac_and_model_when_columns_are_empty()
+    {
+        $this->prepareExecution();
+
+        $this
+            ->terminalRepository
+            ->findOneByCompanyAndName(
+                Argument::any(),
+                Argument::any()
+            )
+            ->willReturn($this->terminal);
+
+        $this
+            ->entityTools
+            ->entityToDto($this->terminal)
+            ->willReturn(
+                (new TerminalDto())
+                    ->setMac('aabbccddeeff')
+                    ->setTerminalModelId(3)
+            );
+
+        $this
+            ->terminalModelRepository
+            ->findOneByIden(Argument::any())
+            ->shouldNotBeCalled();
+
+        $this
+            ->entityTools
+            ->dtoToEntity(
+                Argument::that(function ($dto) {
+                    return $dto instanceof TerminalDto
+                        && $dto->getMac() === 'aabbccddeeff'
+                        && $dto->getTerminalModelId() === 3;
+                }),
+                $this->terminal
+            )
+            ->shouldBeCalled()
+            ->willReturn($this->terminal);
+
+        $this->fromMassProvisioningCsv(
+            1,
+            'terminal',
+            'Password*ABC123abc',
+            '',
+            ''
+        );
+    }
+
+    function it_rejects_macs_that_belong_to_another_terminal()
+    {
+        $this->prepareExecution();
+
+        $this
+            ->terminalRepository
+            ->findOneByCompanyAndName(
+                Argument::any(),
+                Argument::any()
+            )
+            ->willReturn($this->terminal);
+        $this
+            ->terminal
+            ->getId()
+            ->willReturn(1);
+
+        $macOwner = $this->getTestDouble(
+            Terminal::class
+        );
+        $this->getterProphecy(
+            $macOwner,
+            [
+                'getId' => 2,
+                'getCompany' => $this->company,
+                'getName' => 'otherTerminal',
+            ],
+            false
+        );
+
+        $this
+            ->terminalRepository
+            ->findOneByMac('aa:bb:cc:dd:ee:ff')
+            ->willReturn($macOwner);
+
+        $this
+            ->entityTools
+            ->dtoToEntity(Argument::cetera())
+            ->shouldNotBeCalled();
+
+        $this
+            ->shouldThrow(
+                new \DomainException('MAC aa:bb:cc:dd:ee:ff already belongs to terminal otherTerminal')
+            )
+            ->during(
+                'fromMassProvisioningCsv',
+                $this->inputArgs
+            );
+    }
+
+    function it_rejects_macs_of_another_company_terminal()
+    {
+        $this->prepareExecution();
+
+        $this
+            ->terminalRepository
+            ->findOneByCompanyAndName(
+                Argument::any(),
+                Argument::any()
+            )
+            ->willReturn(null);
+
+        $otherCompany = $this->getInstance(
+            Company::class,
+            ['id' => 2]
+        );
+        $macOwner = $this->getTestDouble(
+            Terminal::class
+        );
+        $this->getterProphecy(
+            $macOwner,
+            [
+                'getId' => 7,
+                'getCompany' => $otherCompany,
+            ],
+            false
+        );
+
+        $this
+            ->terminalRepository
+            ->findOneByMac('aa:bb:cc:dd:ee:ff')
+            ->willReturn($macOwner);
+
+        $this
+            ->entityTools
+            ->dtoToEntity(Argument::cetera())
+            ->shouldNotBeCalled();
+
+        $this
+            ->shouldThrow(
+                new \DomainException('Mac already exists in another company\'s terminal')
+            )
+            ->during(
+                'fromMassProvisioningCsv',
+                $this->inputArgs
+            );
+    }
+
     protected function prepareExecution()
     {
         $this->terminalModel = $this->getTestDouble(
@@ -183,7 +334,6 @@ class TerminalFactorySpec extends ObjectBehavior
             ->terminal
             ->getCompany()
             ->willReturn($this->company);
-
 
         $this
             ->entityTools
