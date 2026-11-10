@@ -1,6 +1,9 @@
+import ProfileItem from '../../../fixtures/My/Profile/getProfile.json';
 import CompaniesCollection from '../../../fixtures/Provider/Companies/getCollection.json';
+import { assertNoUsersImportAction } from '../utils/UsersImportAction';
 import {
   deleteCompany,
+  importUsers,
   postCompany,
   postWebPortal,
   putCompany,
@@ -49,4 +52,46 @@ describe('in Companies', () => {
   // POST
   ///////////////////////
   it('post Web Portal', postWebPortal);
+
+  ///////////////////////
+  // Users mass import
+  ///////////////////////
+  it('import users from a CSV file', importUsers);
+});
+
+describe('in Companies as a restricted admin without import privileges', () => {
+  beforeEach(() => {
+    cy.prepareGenericPactInterceptors('vpbx');
+    cy.intercept('GET', '**/api/brand/my/profile*', {
+      statusCode: 200,
+      body: {
+        ...ProfileItem.body,
+        restricted: true,
+        acls: [
+          {
+            iden: 'Companies',
+            create: true,
+            read: true,
+            update: true,
+            delete: true,
+          },
+          {
+            iden: '_UsersMassImport',
+            create: false,
+            read: true,
+            update: false,
+            delete: false,
+          },
+        ],
+      },
+    });
+    cy.before();
+
+    cy.get('svg[data-testid="BusinessIcon"]').first().click();
+    cy.contains('Virtual PBXs').click();
+
+    cy.get('table').should('contain', CompaniesCollection.body[0].id);
+  });
+
+  it('hides the users import action', assertNoUsersImportAction);
 });
