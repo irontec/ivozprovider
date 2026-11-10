@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"POT-Creation-Date: 2026-11-04 19:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -169,6 +169,7 @@ msgstr ""
 "reactivan las cuentas."
 
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:53
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:141
 msgid "Email"
 msgstr "Correo electrónico"
 
@@ -269,7 +270,10 @@ msgid ""
 "and disabling on-demand call recording. If enabled, you can choose how to"
 " invoke and service code if needed."
 msgstr ""
-"Se muestra solo si la función *Grabación* está habilitada para el cliente, permite habilitar y deshabilitar la grabación de llamadas bajo demanda. Si está habilitado, puedes elegir cómo invocar y el código de servicio si es necesario."
+"Se muestra solo si la función *Grabación* está habilitada para el "
+"cliente, permite habilitar y deshabilitar la grabación de llamadas bajo "
+"demanda. Si está habilitado, puedes elegir cómo invocar y el código de "
+"servicio si es necesario."
 
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:84
 msgid "Allow Client to remove recordings"
@@ -280,7 +284,9 @@ msgid ""
 "Shown only if *Recording* feature is enabled for client, shows/hides "
 "recording removal button on client *Call Recordings* section."
 msgstr ""
-"Se muestra solo si la función *Grabación* está habilitada para el cliente, muestra/oculta el botón de eliminación de grabaciones en la sección *Grabaciones de Llamadas* del cliente."
+"Se muestra solo si la función *Grabación* está habilitada para el "
+"cliente, muestra/oculta el botón de eliminación de grabaciones en la "
+"sección *Grabaciones de Llamadas* del cliente."
 
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:88
 msgid ""
@@ -289,14 +295,19 @@ msgid ""
 "will listen a locution explaining what occurred (\"you have no "
 "permissions to place this call\", \"the call cannot be billed\", etc.)"
 msgstr ""
-"La mayoría de las características son autoexplicativas, pero **notificación de voz** merece una explicación: si las habilitas, cuando una llamada falla, el usuario escuchará una locución explicando lo ocurrido (\"no tienes permisos para realizar esta llamada\", \"la llamada no se puede facturar\", etc.)"
+"La mayoría de las características son autoexplicativas, pero "
+"**notificación de voz** merece una explicación: si las habilitas, cuando "
+"una llamada falla, el usuario escuchará una locución explicando lo "
+"ocurrido (\"no tienes permisos para realizar esta llamada\", \"la llamada"
+" no se puede facturar\", etc.)"
 
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:93
 msgid ""
 "Both **Distribute method** and **Application Server** are only visible "
 "for God Administrator."
 msgstr ""
-"Tanto **Método de Distribución** como **Servidor de Aplicaciones** son visibles solo para el Administrador Principal."
+"Tanto **Método de Distribución** como **Servidor de Aplicaciones** son "
+"visibles solo para el Administrador Principal."
 
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:96
 msgid ""
@@ -305,7 +316,11 @@ msgid ""
 "ones**, as 'Round-robin' imposes some limitations to client features (no "
 "queues, no conferences)."
 msgstr ""
-"El método de distribución 'Round-robin' está reservado para clientes grandes cuyas llamadas no pueden ser manejadas en un solo AS. **Usa 'Basado en hash' para los restantes**, ya que 'Round-robin' impone algunas limitaciones a las características del cliente (sin colas, sin conferencias)."
+"El método de distribución 'Round-robin' está reservado para clientes "
+"grandes cuyas llamadas no pueden ser manejadas en un solo AS. **Usa "
+"'Basado en hash' para los restantes**, ya que 'Round-robin' impone "
+"algunas limitaciones a las características del cliente (sin colas, sin "
+"conferencias)."
 
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:102
 msgid "Additional subsections"
@@ -359,4 +374,356 @@ msgstr ""
 "No se permitirá ninguna llamada saliente para este cliente a menos que "
 "haya un perfil de tarifas activo que pueda facturar la llamada "
 "específica."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:121
+msgid "Users mass import"
+msgstr "Importación masiva de usuarios"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:123
+msgid ""
+"The **Import** action of each Virtual PBX row creates or updates its "
+"users from a CSV file, together with their terminals, extensions and "
+"outgoing DDIs. The dialog shows the expected format, offers a "
+"downloadable template and reports the result of every line. It is only "
+"shown to administrators allowed to import users."
+msgstr ""
+"La acción **Importar** de cada fila de PBX Virtual crea o actualiza sus "
+"usuarios a partir de un fichero CSV, junto con sus terminales, "
+"extensiones y DDIs de salida. El diálogo muestra el formato esperado, "
+"ofrece una plantilla descargable e informa del resultado de cada línea. "
+"Solo se muestra a los administradores con permiso para importar usuarios."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:128
+msgid ""
+"The same operation is available through the brand API, see :ref:`users "
+"mass import api`."
+msgstr ""
+"La misma operación está disponible a través de la API de marca, consulte "
+":ref:`users mass import api`."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:131
+msgid "CSV format"
+msgstr "Formato del CSV"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:133
+msgid ""
+"One user per row and eleven columns, in this order *(Fields marked with *"
+" are required)*:"
+msgstr ""
+"Un usuario por fila y once columnas, en este orden *(los campos marcados "
+"con * son obligatorios)*:"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:136
+msgid "Name*"
+msgstr "Nombre*"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:136
+msgid ""
+"First name of the user. Together with the lastname it identifies the user"
+" within the client: a row with an existing name and lastname updates that"
+" user."
+msgstr ""
+"Nombre del usuario. Junto con los apellidos identifica al usuario dentro "
+"del cliente: una fila con un nombre y apellidos existentes actualiza ese "
+"usuario."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:138
+msgid "Lastname*"
+msgstr "Apellidos*"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:139
+msgid "Last name of the user."
+msgstr "Apellidos del usuario."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:141
+msgid ""
+"Email of the user. It must be unique in the whole platform, so an address"
+" that belongs to a user of another client fails the row. When no user of "
+"the client has the given name and lastname, the row updates the user of "
+"the client that owns the email."
+msgstr ""
+"Email del usuario. Debe ser único en toda la plataforma, por lo que una "
+"dirección que pertenezca a un usuario de otro cliente hace fallar la "
+"fila. Cuando ningún usuario del cliente tiene el nombre y apellidos "
+"indicados, la fila actualiza al usuario del cliente que posee ese email."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:144
+msgid "Terminal name"
+msgstr "Nombre del terminal"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:144
+msgid ""
+"Name of the terminal (letters, digits, ``_`` and ``*``). It is created if"
+" it does not exist and assigned to the user."
+msgstr ""
+"Nombre del terminal (letras, dígitos, ``_`` y ``*``). Se crea si no "
+"existe y se asigna al usuario."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:148
+msgid "Terminal password"
+msgstr "Contraseña del terminal"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:147
+msgid ""
+"SIP password of the terminal: at least 10 characters with 3 uppercase, 3 "
+"lowercase, 3 digits and one of ``+ * _ -``. Leave it empty to keep the "
+"current password of an existing terminal or to generate a random one for "
+"a new terminal."
+msgstr ""
+"Contraseña SIP del terminal: al menos 10 caracteres con 3 mayúsculas, 3 "
+"minúsculas, 3 dígitos y uno de ``+ * _ -``. Déjela vacía para conservar "
+"la contraseña actual de un terminal existente o para generar una "
+"aleatoria en un terminal nuevo."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:151
+msgid "Terminal model"
+msgstr "Modelo del terminal"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:151
+msgid ""
+"Identifier of an existing terminal model, as shown in *Terminal models* "
+"(for example ``YealinkT21P_E2``)."
+msgstr ""
+"Identificador de un modelo de terminal existente, tal como aparece en "
+"*Modelos de terminal* (por ejemplo ``YealinkT21P_E2``)."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:153
+msgid "MAC"
+msgstr "MAC"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:154
+msgid "MAC address of the terminal, 12 hexadecimal characters without separators."
+msgstr "Dirección MAC del terminal, 12 caracteres hexadecimales sin separadores."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:155
+msgid "Extension"
+msgstr "Extensión"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:156
+msgid "Extension number assigned to the user. It is created if it does not exist."
+msgstr "Número de extensión asignado al usuario. Se crea si no existe."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:158
+msgid "DDI country"
+msgstr "País del DDI"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:158
+msgid ""
+"ISO code of the DDI country (for example ``ES``). The client country is "
+"used when empty."
+msgstr ""
+"Código ISO del país del DDI (por ejemplo ``ES``). Si está vacío se usa el"
+" país del cliente."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:161
+msgid "DDI number"
+msgstr "Número del DDI"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:161
+msgid ""
+"Number of the outgoing DDI, digits only and without country prefix. It is"
+" created and routed to the user if it does not exist."
+msgstr ""
+"Número del DDI de salida, solo dígitos y sin prefijo de país. Se crea y "
+"se enruta al usuario si no existe."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:164
+msgid "DDI provider"
+msgstr "Proveedor del DDI"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:164
+msgid "Name of a DDI provider of the brand."
+msgstr "Nombre de un proveedor de DDI de la marca."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:166
+msgid ""
+"Columns can be separated by commas or semicolons and the file may be "
+"encoded in UTF-8, with or without BOM, or in Windows-1252. Blank rows are"
+" ignored and a first row with the column names "
+"(``name,lastname,email,...``) is skipped, so the template can be filled "
+"in directly."
+msgstr ""
+"Las columnas pueden separarse con comas o con puntos y coma, y el fichero"
+" puede estar codificado en UTF-8, con o sin BOM, o en Windows-1252. Las "
+"filas vacías se ignoran y una primera fila con los nombres de las "
+"columnas (``name,lastname,email,...``) se omite, de modo que la plantilla"
+" puede rellenarse directamente."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:172
+msgid "Example CSV file"
+msgstr "Ejemplo de fichero CSV"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:179
+msgid ""
+"The first row creates the user with its terminal, extension and outgoing "
+"DDI. The second one lets the platform generate the terminal password and "
+"creates no DDI. The third one creates a user without terminal or "
+"extension."
+msgstr ""
+"La primera fila crea el usuario con su terminal, extensión y DDI de "
+"salida. La segunda deja que la plataforma genere la contraseña del "
+"terminal y no crea DDI. La tercera crea un usuario sin terminal ni "
+"extensión."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:184
+msgid "Re-importing a file"
+msgstr "Reimportar un fichero"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:186
+msgid ""
+"Rows are matched against the existing users of the client by name and "
+"lastname, or by email when none has that name and lastname, so the same "
+"file can be imported again:"
+msgstr ""
+"Las filas se comparan con los usuarios existentes del cliente por nombre "
+"y apellidos, o por email cuando ninguno tiene ese nombre y apellidos, de "
+"modo que el mismo fichero puede importarse de nuevo:"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:189
+msgid "Importing the same file twice changes nothing and creates no duplicates."
+msgstr "Importar el mismo fichero dos veces no cambia nada ni crea duplicados."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:190
+msgid "Changing a value and importing again updates only that value."
+msgstr "Cambiar un valor e importar de nuevo actualiza solo ese valor."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:193
+msgid ""
+"Changing the name or lastname of a user while keeping its email renames "
+"that user."
+msgstr ""
+"Cambiar el nombre o los apellidos de un usuario manteniendo su email "
+"renombra a ese usuario."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:191
+msgid ""
+"Empty columns of an existing user are left untouched: they never remove "
+"its terminal, extension, DDI or email."
+msgstr ""
+"Las columnas vacías de un usuario existente no se tocan: nunca eliminan "
+"su terminal, extensión, DDI o email."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:193
+msgid ""
+"Terminals are matched by name, or by MAC when the name is new, so a "
+"terminal can be renamed by keeping its MAC."
+msgstr ""
+"Los terminales se identifican por nombre, o por MAC cuando el nombre es "
+"nuevo, de modo que un terminal puede renombrarse conservando su MAC."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:195
+msgid ""
+"An existing DDI of the client can be the outgoing DDI of several users; "
+"its inbound routing is not changed."
+msgstr ""
+"Un DDI existente del cliente puede ser el DDI de salida de varios usuarios; "
+"su enrutamiento entrante no se modifica."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:198
+msgid ""
+"New users are created inactive: they can use their terminal, but cannot "
+"log into the user portal until an administrator sets their password."
+msgstr ""
+"Los usuarios nuevos se crean inactivos: pueden usar su terminal, pero no "
+"pueden entrar en el portal de usuario hasta que un administrador les "
+"asigne una contraseña."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:202
+msgid "Errors"
+msgstr "Errores"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:204
+msgid ""
+"Valid rows are imported and the rest are reported with their line number "
+"and the reason. Fix the reported lines and import the file again; the "
+"rows already imported are simply updated."
+msgstr ""
+"Las filas válidas se importan y el resto se informan con su número de "
+"línea y el motivo. Corrija las líneas indicadas e importe el fichero de "
+"nuevo; las filas ya importadas simplemente se actualizan."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:208
+msgid "A row fails, among other reasons, when:"
+msgstr "Una fila falla, entre otros motivos, cuando:"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:210
+msgid "its name or lastname is empty, or a value has an invalid format;"
+msgstr "su nombre o apellidos están vacíos, o un valor tiene un formato no válido;"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:211
+msgid ""
+"its email belongs to a user of another client, or to another user when the "
+"row already matches a user by name and lastname; its terminal or extension "
+"already belongs to another user, its MAC belongs to another terminal, its "
+"extension is routed to a queue or any other element, or its DDI belongs to "
+"another client;"
+msgstr ""
+"su email pertenece a un usuario de otro cliente, o a otro usuario cuando la "
+"fila ya coincide con un usuario por nombre y apellidos; su terminal o "
+"extensión ya pertenece a otro usuario, su MAC pertenece a otro terminal, su "
+"extensión está enrutada a una cola o a cualquier otro elemento, o su DDI "
+"pertenece a otro cliente;"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:213
+msgid "its terminal model, country or DDI provider does not exist."
+msgstr "su modelo de terminal, país o proveedor de DDI no existe."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:215
+msgid ""
+"Some errors affect the whole file and nothing is imported: an empty file,"
+" a row with a wrong number of columns or the same user, email, terminal, "
+"MAC, extension or DDI repeated in several rows. They are reported as line"
+" 0."
+msgstr ""
+"Algunos errores afectan a todo el fichero y no se importa nada: un "
+"fichero vacío, una fila con un número de columnas incorrecto o el mismo "
+"usuario, email, terminal, MAC, extensión o DDI repetido en varias filas. "
+"Se informan como línea 0."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:219
+msgid ""
+"If the import stops because of an unexpected error, the remaining rows "
+"are reported as *not processed*: import the file again once the problem "
+"is solved."
+msgstr ""
+"Si la importación se detiene por un error inesperado, las filas restantes"
+" se informan como *no procesadas*: importe el fichero de nuevo cuando el "
+"problema esté resuelto."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:223
+msgid "Saving the file from Excel"
+msgstr "Guardar el fichero desde Excel"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:225
+msgid ""
+"Use *Save as* and choose **CSV UTF-8 (comma delimited)**; the *CSV (comma"
+" delimited)* format also works. Depending on the regional settings Excel "
+"separates the columns with semicolons, which are accepted as well. Keep "
+"the MAC, extension and DDI columns as text, otherwise Excel may drop "
+"leading zeros or rewrite long numbers in scientific notation."
+msgstr ""
+"Use *Guardar como* y elija **CSV UTF-8 (delimitado por comas)**; el "
+"formato *CSV (delimitado por comas)* también funciona. Según la "
+"configuración regional, Excel separa las columnas con punto y coma, que "
+"también se acepta. Mantenga las columnas de MAC, extensión y DDI como "
+"texto; de lo contrario Excel puede eliminar los ceros iniciales o "
+"reescribir los números largos en notación científica."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:234
+msgid "Using the API"
+msgstr "Uso de la API"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:236
+msgid ""
+"The import is exposed as ``POST /users/mass_import`` in the brand API. It"
+" expects a ``multipart/form-data`` request with the ``company`` "
+"identifier and the ``csv`` file:"
+msgstr ""
+"La importación se expone como ``POST /users/mass_import`` en la API de "
+"marca. Espera una petición ``multipart/form-data`` con el identificador "
+"``company`` y el fichero ``csv``:"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:246
+msgid "The response summarises the import and lists every failed line:"
+msgstr "La respuesta resume la importación y enumera cada línea fallida:"
 
