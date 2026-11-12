@@ -7,7 +7,8 @@ namespace Ivoz\Provider\Domain\Service\User;
 class CsvStaticValidator
 {
     /**
-     * @throws \Exception
+     * @param array<int, string[]> $rows
+     * @throws \DomainException
      *
      * @return void
      */
@@ -64,6 +65,40 @@ class CsvStaticValidator
 
                 throw new \DomainException($errorMsg);
             }
+        }
+
+        $this->assertUniqueDdis($rows);
+    }
+
+    /**
+     * @param array<int, string[]> $rows
+     * @throws \DomainException
+     */
+    private function assertUniqueDdis(array $rows): void
+    {
+        $ddis = [];
+        foreach ($rows as $fields) {
+            [$country, $number] = [$fields[8], $fields[9]];
+            if ($number === '') {
+                continue;
+            }
+
+            $ddis[] = $country . ' ' . $number;
+        }
+
+        $uniqueDdis = array_unique($ddis);
+        if (count($uniqueDdis) < count($ddis)) {
+            $duplicated = array_map(
+                fn (string $ddi): string => trim($ddi),
+                array_diff_assoc($ddis, $uniqueDdis)
+            );
+
+            throw new \DomainException(
+                sprintf(
+                    'Duplicated ddi number found: %s',
+                    implode(',  ', $duplicated)
+                )
+            );
         }
     }
 }

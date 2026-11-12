@@ -222,3 +222,36 @@ Model\ExtensionsMassImport:
             required: true
             description: "*extension, *country prefix, *number, country code"
           
+Model\ContactsMassImport:
+  collectionOperations: []
+  itemOperations:
+    post_contacts_mass_import:
+      access_control: >-
+        "ROLE_COMPANY_ADMIN" in roles
+        && user.isVpbxAdmin()
+        && user.hasAccessPrivileges("Ivoz\\Provider\\Domain\\Model\\Contact\\Contact", "POST")
+        && user.hasAccessPrivileges("Ivoz\\Provider\\Domain\\Model\\Contact\\Contact", "PUT")
+      method: 'POST'
+      path: '/contacts/mass_import'
+      route_name: 'post_contacts_mass_import'
+      swagger_context:
+        consumes:
+          - 'multipart/form-data'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: csv
+            in: formData
+            type: file
+            required: true
+            description: >-
+              CSV file creating or updating one address book contact per row. The header row is required and
+              names the columns: id, name, lastname, email, workPhoneCountry, workPhone, mobilePhoneCountry,
+              mobilePhone, otherPhone. Comma or semicolon separated, UTF-8 (with or without BOM). Rows without
+              id create a contact (name is required) and rows with id update it. An empty column clears the
+              field and a column missing from the header is left untouched. Contacts linked to a user only
+              update their phones and phone countries. Valid rows are imported and failed rows are reported
+              with their line number and reason.
+
