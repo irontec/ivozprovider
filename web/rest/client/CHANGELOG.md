@@ -1,5 +1,17 @@
 # Changelog
 
+## 4.9.0
+* Endpoints:
+    - /contacts/mass_import:
+      - Added [POST] endpoint to create and update address book contacts from
+        a CSV file with header. Valid rows are imported and the rest are
+        reported with their line (line 0 for file errors).
+* Models:
+    - ContactsMassImport
+        - Added model with created, updated and errors properties
+    - ContactsMassImportError
+        - Added model with line and message properties
+
 ## 4.8.0
 * Endpoints:
     - /channel_usages:
