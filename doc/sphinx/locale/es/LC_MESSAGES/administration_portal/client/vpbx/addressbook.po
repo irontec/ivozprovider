@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-09 11:13+0000\n"
+"POT-Creation-Date: 2026-11-12 12:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,18 +23,21 @@ msgstr "Agenda"
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:5
 msgid ""
-"Virtual PBX clients have access to a simple Address book to store "
-"contacts, that can be used for third party integrations."
+"Virtual PBX clients have access to a simple Address book to store contacts, "
+"that can be used for third party integrations."
 msgstr ""
-"Los clientes de PBX virtual tienen acceso a una agenda simple para almacenar contactos, que se puede usar para integraciones de terceros."
+"Los clientes de PBX virtual tienen acceso a una agenda simple para almacenar"
+" contactos, que se puede usar para integraciones de terceros."
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:8
 msgid ""
-"Contacts for vPBX users are automatically created and managed by the "
-"system, but client administrators can add other external numbers to "
-"existing contacts."
+"Contacts for vPBX users are automatically created and managed by the system,"
+" but client administrators can add other external numbers to existing "
+"contacts."
 msgstr ""
-"Los contactos para los usuarios de vPBX son creados y gestionados automáticamente por el sistema, pero los administradores del cliente pueden agregar otros números externos a los contactos existentes."
+"Los contactos para los usuarios de vPBX son creados y gestionados "
+"automáticamente por el sistema, pero los administradores del cliente pueden "
+"agregar otros números externos a los contactos existentes."
 
 #: ../../administration_portal/client/vpbx/addressbook.rst:13
 msgid "Personal data"
@@ -92,3 +95,182 @@ msgstr "Otro Teléfono"
 msgid "Free format number of the contact (Internal Extension, Fax, etc)"
 msgstr "Número en formato libre del contacto (Extensión interna, Fax, etc)"
 
+#: ../../administration_portal/client/vpbx/addressbook.rst:43
+msgid "CSV Import Format"
+msgstr "Formato de importación CSV"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:45
+msgid ""
+"Contacts can be created and updated in bulk with the *Import contacts* "
+"option of the Address Book list menu. The dialog describes the format, "
+"offers a downloadable CSV template and shows the result of every line. It is"
+" only shown to administrators with permission to create and update contacts."
+msgstr ""
+"Los contactos se pueden crear y actualizar de forma masiva con la opción "
+"*Importar contactos* del menú del listado de la Agenda. El diálogo describe "
+"el formato, ofrece una plantilla CSV descargable y muestra el resultado de "
+"cada línea. Solo se muestra a los administradores con permiso para crear y "
+"actualizar contactos."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:49
+msgid ""
+"The file must be encoded in UTF-8 and its first row must be a header naming "
+"the columns. Columns can be separated by commas (,) or semicolons (;), and "
+"the BOM added by Excel when saving as *CSV UTF-8* is accepted."
+msgstr ""
+"El fichero debe estar codificado en UTF-8 y su primera fila debe ser una "
+"cabecera con el nombre de las columnas. Las columnas se pueden separar con "
+"comas (,) o punto y coma (;), y se acepta el BOM que añade Excel al guardar "
+"como *CSV UTF-8*."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:56
+msgid "Column"
+msgstr "Columna"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:57
+msgid "Required"
+msgstr "Obligatoria"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:58
+msgid "Notes"
+msgstr "Notas"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:59
+msgid "``id``"
+msgstr "``id``"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:60
+#: ../../administration_portal/client/vpbx/addressbook.rst:66
+#: ../../administration_portal/client/vpbx/addressbook.rst:69
+#: ../../administration_portal/client/vpbx/addressbook.rst:72
+#: ../../administration_portal/client/vpbx/addressbook.rst:76
+#: ../../administration_portal/client/vpbx/addressbook.rst:79
+msgid "No"
+msgstr "No"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:61
+msgid ""
+"With a value, the contact with that id is updated. Empty or missing, a new "
+"contact is created."
+msgstr ""
+"Con valor, se actualiza el contacto con ese id. Vacía o ausente, se crea un "
+"contacto nuevo."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:62
+msgid "``name``"
+msgstr "``name``"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:63
+msgid "To create"
+msgstr "Al crear"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:64
+msgid "Cannot be left empty. Up to 100 characters."
+msgstr "No puede quedar vacío. Máximo 100 caracteres."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:65
+msgid "``lastname``"
+msgstr "``lastname``"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:67
+msgid "Up to 100 characters."
+msgstr "Máximo 100 caracteres."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:68
+msgid "``email``"
+msgstr "``email``"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:70
+msgid "Valid email address. Up to 100 characters."
+msgstr "Dirección de email válida. Máximo 100 caracteres."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:71
+msgid "``workPhoneCountry``, ``mobilePhoneCountry``"
+msgstr "``workPhoneCountry``, ``mobilePhoneCountry``"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:73
+msgid ""
+"ISO country code (for example ``ES``). When there is a phone and no country,"
+" the client country is used."
+msgstr ""
+"Código ISO del país (por ejemplo ``ES``). Si hay teléfono y no hay país, se "
+"usa el país del cliente."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:75
+msgid "``workPhone``, ``mobilePhone``"
+msgstr "``workPhone``, ``mobilePhone``"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:77
+msgid "Number without international prefix. Up to 20 characters."
+msgstr "Número sin prefijo internacional. Máximo 20 caracteres."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:78
+msgid "``otherPhone``"
+msgstr "``otherPhone``"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:80
+msgid "Free text. Up to 25 characters."
+msgstr "Texto libre. Máximo 25 caracteres."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:83
+msgid "Example CSV file"
+msgstr "Fichero CSV de ejemplo"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:91
+msgid "The import follows these rules:"
+msgstr "La importación sigue estas reglas:"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:93
+msgid ""
+"A row without id always creates a new contact, even if an identical one "
+"already exists."
+msgstr ""
+"Una fila sin id siempre crea un contacto nuevo, aunque ya exista uno "
+"idéntico."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:94
+msgid ""
+"A row with id updates that contact. If the id does not exist or belongs to "
+"another client, the row fails."
+msgstr ""
+"Una fila con id actualiza ese contacto. Si el id no existe o pertenece a "
+"otro cliente, la fila falla."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:95
+msgid ""
+"A column present in the header but empty in a row deletes the value of that "
+"field."
+msgstr ""
+"Una columna presente en la cabecera pero vacía en una fila borra el valor de"
+" ese campo."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:96
+msgid "A column missing from the header is not modified when updating."
+msgstr "Una columna que no está en la cabecera no se modifica al actualizar."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:97
+msgid ""
+"Contacts linked to a user only update their phones and phone countries: "
+"name, lastname, email and other phone are ignored, as they are kept in sync "
+"with the user."
+msgstr ""
+"Los contactos vinculados a un usuario solo actualizan sus teléfonos y sus "
+"países: el nombre, los apellidos, el email y el otro teléfono se ignoran, ya"
+" que se mantienen sincronizados con el usuario."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:99
+msgid ""
+"Valid rows are saved and failed rows are reported with their line number in "
+"the file and the reason."
+msgstr ""
+"Las filas válidas se guardan y las erróneas se informan con su número de "
+"línea en el fichero y el motivo."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:101
+msgid ""
+"Import again only the failed lines once fixed. Importing the whole file "
+"again would duplicate the contacts created from rows without id."
+msgstr ""
+"Una vez corregidas, importa de nuevo solo las líneas fallidas. Importar otra"
+" vez el fichero completo duplicaría los contactos creados desde filas sin "
+"id."
