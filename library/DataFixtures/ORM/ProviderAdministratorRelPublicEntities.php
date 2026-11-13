@@ -44,6 +44,14 @@ class ProviderAdministratorRelPublicEntities extends Fixture implements Dependen
                 . 'SELECT A.id, P.id, 0, 1, 0, 0 FROM Administrators A INNER JOIN PublicEntities P '
                 . 'WHERE A.brandId IS NULL AND A.companyId IS NULL AND A.restricted = 1 AND P.platform = 1'
             );
+
+        $manager
+            ->getConnection()
+            ->exec(
+                'UPDATE AdministratorRelPublicEntities SET `create` = 1 '
+                . 'WHERE administratorId = (SELECT id FROM Administrators WHERE username = "restrictedBrandOnlyAdmin") '
+                . 'AND publicEntityId = (SELECT id FROM PublicEntities WHERE iden = "_UsersMassImport")'
+            );
     }
 
     public function getDependencies()

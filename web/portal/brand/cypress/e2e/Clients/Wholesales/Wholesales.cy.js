@@ -1,5 +1,6 @@
 import CompaniesCollection from '../../../fixtures/Provider/Companies/getCollection.json';
 import { postWebPortal } from '../Residential/Residentials.tests';
+import { assertNoUsersImportAction } from '../utils/UsersImportAction';
 import { deleteCompany, postCompany, putCompany } from './Wholesales.tests';
 
 describe('in Wholesales Companies', () => {
@@ -25,4 +26,6 @@ describe('in Wholesales Companies', () => {
   it('delete Wholesale Companies', deleteCompany);
 
   it('post Web Portal', postWebPortal);
+
+  it('has no users import action', assertNoUsersImportAction);
 });

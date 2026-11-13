@@ -19,7 +19,7 @@ class TerminalFactory
     }
 
     /**
-     * @throws \Exception
+     * @throws \DomainException
      */
     public function fromMassProvisioningCsv(
         int $companyId,
@@ -48,17 +48,32 @@ class TerminalFactory
             $name
         );
 
-        if (is_null($terminal) && $mac) {
-            $terminal = $this->terminalRepository->findOneByMac(
-                $mac
-            );
+        $macOwner = $mac
+            ? $this->terminalRepository->findOneByMac($mac)
+            : null;
 
-            if ($terminal && $terminal->getCompany()->getId() !== $companyId) {
-                throw new \DomainException(
-                    'Mac already exists in another company\'s terminal'
-                );
-            }
+        $isOtherCompanyTerminal = $macOwner
+            && $macOwner->getCompany()->getId() !== $companyId;
+        if ($isOtherCompanyTerminal) {
+            throw new \DomainException(
+                'Mac already exists in another company\'s terminal'
+            );
         }
+
+        $isOtherTerminalMac = $terminal
+            && $macOwner
+            && $macOwner->getId() !== $terminal->getId();
+        if ($isOtherTerminalMac) {
+            throw new \DomainException(
+                sprintf(
+                    'MAC %s already belongs to terminal %s',
+                    $mac,
+                    $macOwner->getName()
+                )
+            );
+        }
+
+        $terminal = $terminal ?? $macOwner;
 
         /** @var TerminalDto $terminalDto */
         $terminalDto = $terminal instanceof TerminalInterface
@@ -75,11 +90,15 @@ class TerminalFactory
         $terminalDto
             ->setName($name)
             ->setPassword($password)
-            ->setMac($mac)
-            ->setTerminalModelId(
-                $terminalModelId
-            )
             ->setCompanyId($companyId);
+
+        if ($mac) {
+            $terminalDto->setMac($mac);
+        }
+
+        if ($terminalModelId) {
+            $terminalDto->setTerminalModelId($terminalModelId);
+        }
 
         /** @var TerminalInterface $terminal */
         $terminal = $this

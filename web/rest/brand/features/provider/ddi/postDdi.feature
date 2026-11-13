@@ -30,7 +30,7 @@ Feature: Create ddis
           "description": "Description for 321",
           "type": "inout",
           "useDdiProviderRoutingTag": true,
-          "id": 6,
+          "id": 7,
           "company": 1,
           "ddiProvider": 1,
           "country": 68,

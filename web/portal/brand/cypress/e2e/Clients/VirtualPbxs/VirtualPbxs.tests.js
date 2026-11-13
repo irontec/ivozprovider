@@ -1,6 +1,7 @@
 import CompaniesItem from '../../../fixtures/Provider/Companies/VirtualPbxs/getItem.json';
 import newCompanies from '../../../fixtures/Provider/Companies/VirtualPbxs/post.json';
 import editCompanies from '../../../fixtures/Provider/Companies/VirtualPbxs/put.json';
+import usersMassImport from '../../../fixtures/Provider/Users/massImport.json';
 import webPortals from '../../../fixtures/Provider/WebPortals/getCollection.json';
 import { MODE, testPbx } from '../utils/PbxsValidator';
 
@@ -111,4 +112,56 @@ export const checkImpersonationURL = () => {
     .eq(1)
     .should('have.attr', 'href')
     .should('match', new RegExp(`${impersonationURLs[0]}.*`));
+};
+
+export const importUsers = () => {
+  cy.intercept(
+    { method: 'POST', url: '**/api/brand/users/mass_import', middleware: true },
+    (req) => {
+      req.on('response', (res) => {
+        res.setDelay(1500);
+      });
+    }
+  );
+
+  cy.intercept('POST', '**/api/brand/users/mass_import', {
+    statusCode: usersMassImport.response.statusCode,
+    body: usersMassImport.response.body,
+  }).as('usersMassImport');
+
+  cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
+  cy.get('ul[role="menu"]')
+    .children()
+    .then(($items) => {
+      const labels = [...$items]
+        .map((item) => item.textContent.trim())
+        .filter(Boolean);
+      expect(labels.slice(-2)).to.deep.eq(['Import users', 'Delete']);
+    });
+  cy.get('li.MuiMenuItem-root').contains('Import users').click();
+  cy.contains('Download template');
+
+  cy.get('input[type="file"]').selectFile(
+    {
+      contents: Cypress.Buffer.from(
+        'Alice,Allison,alice@democompany.com,alice,Z7+KJn8m3k,,,101,,,\n' +
+          'Bob,Bobson,bob@democompany.com,,,,,,,,\n'
+      ),
+      fileName: 'users.csv',
+      mimeType: 'text/csv',
+    },
+    { force: true }
+  );
+
+  cy.contains('button', 'Send').click();
+  cy.contains('button', 'Cancel').should('be.disabled');
+
+  cy.wait('@usersMassImport').its('response.statusCode').should('eq', 201);
+
+  cy.contains('Created: 1');
+  cy.contains('Updated: 0');
+  cy.contains('Failed: 1');
+  cy.contains(
+    'Line 2: Email bob@democompany.com belongs to a user of another client'
+  );
 };

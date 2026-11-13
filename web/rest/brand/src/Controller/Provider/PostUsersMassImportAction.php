@@ -3,26 +3,28 @@
 namespace Controller\Provider;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Provider\Application\Service\User\SyncFromCsv;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Model\UsersMassImport;
+use Model\UsersMassImportError;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class PostUsersMassImportAction
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private DenormalizerInterface $denormalizer,
         private CompanyRepository $companyRepository,
         private SyncFromCsv $syncFromCsv
     ) {
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): JsonResponse
     {
         $token = $this->tokenStorage->getToken();
 
@@ -38,50 +40,71 @@ class PostUsersMassImportAction
             throw new ResourceClassNotFoundException('User brand not found');
         }
 
-        $companyId = $request->request->get('company');
+        $companyId = (int) $request->request->get('company');
         $company = $this->companyRepository->find($companyId);
         if (!$company) {
-            throw new ResourceClassNotFoundException('Company not found');
+            throw new NotFoundHttpException('Company not found');
         }
 
         if ($company->getBrand() !== $brand) {
             throw new \DomainException(
                 'Forbidden company',
-                403
+                Response::HTTP_FORBIDDEN
             );
         }
 
-        $csv = file_get_contents(
-            $request->files->get('csv')
+        if (!$company->isVpbx()) {
+            throw new \DomainException(
+                'Users can only be imported into vPBX companies',
+                Response::HTTP_BAD_REQUEST
+            );
+        }
+
+        $csvFile = $request->files->get('csv');
+        if (!$csvFile instanceof UploadedFile) {
+            throw new \DomainException(
+                'CSV file is required',
+                Response::HTTP_BAD_REQUEST
+            );
+        }
+
+        $uploadFailed = $csvFile->getError() !== UPLOAD_ERR_OK;
+        if ($uploadFailed) {
+            throw new \DomainException(
+                $csvFile->getErrorMessage(),
+                Response::HTTP_BAD_REQUEST
+            );
+        }
+
+        $csv = (string) file_get_contents(
+            $csvFile->getPathname()
         );
 
-        $errorMsg = '';
-        $rowsFailed = 0;
-        try {
-            $this->syncFromCsv->execute(
-                $company,
-                $csv
-            );
-        } catch (\Exception $e) {
-            $errorMsg = $e->getMessage();
-            $rowsFailed = $e->getCode();
-        }
+        $result = $this->syncFromCsv->execute(
+            $company,
+            $csv
+        );
 
-        $success = $rowsFailed === 0;
+        $errors = array_map(
+            fn (array $error): UsersMassImportError => new UsersMassImportError(
+                $error['line'],
+                $error['message']
+            ),
+            $result->getErrors()
+        );
+
         $response = new UsersMassImport(
-            $success,
-            $errorMsg,
-            $rowsFailed
+            $result->getCreatedCount(),
+            $result->getUpdatedCount(),
+            $errors
         );
 
-        return $this->denormalizer->denormalize(
-            [],
-            UsersMassImport::class,
-            $request->getRequestFormat(),
-            [
-                'object_to_populate' => $response,
-                'operation_normalization_context' => DataTransferObjectInterface::CONTEXT_SIMPLE
-            ]
+        $jsonResponse = new JsonResponse(
+            $response->toArray(),
+            Response::HTTP_CREATED
         );
+        $jsonResponse->headers->set('Content-Type', 'application/json; charset=utf-8');
+
+        return $jsonResponse;
     }
 }

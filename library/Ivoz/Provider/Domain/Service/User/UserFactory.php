@@ -16,13 +16,13 @@ class UserFactory
     }
 
     /**
-     * @throws \Exception
+     * @throws \DomainException
      */
     public function fromMassProvisioningCsv(
         int $companyId,
         string $name,
         string $lastName,
-        string $email = null
+        ?string $email = null
     ): UserInterface {
 
         $user = $this
@@ -33,12 +33,13 @@ class UserFactory
                 $lastName
             );
 
-        if (!$user && $email) {
-            $user = $this
-                ->userRepository
-                ->findOneByEmail(
-                    $email
-                );
+        $emailOwner = $email
+            ? $this->userRepository->findOneByEmail($email)
+            : null;
+
+        $isEmailTaken = $email && $emailOwner;
+        if ($isEmailTaken) {
+            $user = $this->matchEmailOwner($emailOwner, $user, $companyId, $email);
         }
 
         /** @var UserDto $userDto */
@@ -52,8 +53,11 @@ class UserFactory
             ->setCompanyId($companyId)
             ->setName($name)
             ->setLastname($lastName)
-            ->setEmail($email)
             ->setActive($active);
+
+        if ($email) {
+            $userDto->setEmail($email);
+        }
 
         /** @var UserInterface $user */
         $user = $this
@@ -64,5 +68,35 @@ class UserFactory
             );
 
         return $user;
+    }
+
+    /**
+     * @throws \DomainException
+     */
+    private function matchEmailOwner(
+        UserInterface $emailOwner,
+        ?UserInterface $user,
+        int $companyId,
+        string $email
+    ): UserInterface {
+        $belongsToAnotherClient = $emailOwner->getCompany()->getId() !== $companyId;
+        if ($belongsToAnotherClient) {
+            throw new \DomainException(
+                sprintf('Email %s belongs to a user of another client', $email)
+            );
+        }
+
+        if (!$user) {
+            return $emailOwner;
+        }
+
+        $isOwnEmail = $emailOwner->getId() === $user->getId();
+        if ($isOwnEmail) {
+            return $user;
+        }
+
+        throw new \DomainException(
+            sprintf('Email %s is already used by another user', $email)
+        );
     }
 }

@@ -69,6 +69,13 @@ class DdiFactory
                 (int) $country->getId()
             );
 
+        $isOtherBrandDdi = $ddi && $ddi->getBrand()->getId() !== $company->getBrand()->getId();
+        if ($isOtherBrandDdi) {
+            throw new \DomainException(
+                sprintf('DDI %s belongs to another brand', $ddiNumber)
+            );
+        }
+
         if ($ddi && $ddi->getCompany() !== null) {
             if ($ddi->getCompany()->getId() !== $company->getId()) {
                 throw new \DomainException(
