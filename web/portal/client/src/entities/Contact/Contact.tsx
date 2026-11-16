@@ -10,6 +10,7 @@ import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
+import CustomActions from './Action';
 import { ContactProperties } from './ContactProperties';
 
 const properties: ContactProperties = {
@@ -93,6 +94,7 @@ const Contact: EntityInterface = {
   properties,
   columns,
   ChildDecorator,
+  customActions: CustomActions,
   Form: async () => {
     const module = await import('./Form');
 
