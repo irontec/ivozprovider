@@ -99,6 +99,12 @@ services:
         arguments:
             $decoratedNormalizer: '@billable_call_normalizer.csv.inner'
 
+    Service\ContactCsvNormalizer:
+        decorates: 'Ivoz\Api\Csv\Serializer\Normalizer\EntityNormalizer'
+        decoration_priority: 2
+        arguments:
+            $decoratedNormalizer: '@Service\ContactCsvNormalizer.inner'
+
 ###############################################
 ## TEST
 ###############################################
