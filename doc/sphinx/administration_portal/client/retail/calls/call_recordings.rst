@@ -1,1 +1,1 @@
-.. include:: ../../../shared/external_calls.rst.inc
+.. include:: ../../shared/call_recordings.rst.inc

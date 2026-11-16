@@ -17,235 +17,268 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: ../../administration_portal/shared/external_calls.rst.inc:3
-msgid "External calls"
-msgstr "Llamadas externas"
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:4
+msgid "Call recordings"
+msgstr "Grabaciones de llamadas"
 
-#: ../../administration_portal/shared/external_calls.rst.inc:5
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:6
 msgid ""
-"**External calls** section lists **both inbound and outbound external "
-"calls**."
-msgstr "La sección de **Llamadas externas** lista **tanto las llamadas externas entrantes como salientes**."
+"Beware that local legislation may enforce to announce that the call is "
+"being recorded (sometimes to both parties). You should include a "
+"recording disclaimer in your welcome locutions for DDIs with automatic "
+"recording enabled."
+msgstr ""
+"Tenga en cuenta que la legislación local puede exigir anunciar que la llamada "
+"está siendo grabada (a veces a ambas partes). Debe incluir un aviso de grabación "
+"en sus locuciones de bienvenida para los DDIs con grabación automática habilitada."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:7
-msgid "This section is shown at different levels:"
-msgstr "Esta sección se muestra en diferentes niveles:"
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:11
+msgid "IvozProvider supports two different ways of recording calls:"
+msgstr "IvozProvider admite dos formas diferentes de grabar llamadas:"
 
-#: ../../administration_portal/shared/external_calls.rst.inc:9
-msgid "Main level (god level)"
-msgstr "Nivel principal (nivel dios)"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:11
-msgid "Brand level (filtered for emulated/logged brand)."
-msgstr "Nivel de marca (filtrado para la marca emulada/registrada)."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:13
-msgid "Client level (filtered for emulated/logged client)."
-msgstr "Nivel de cliente (filtrado para el cliente emulado/registrado)."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:15
-msgid "Each entry shows this information:"
-msgstr "Cada entrada muestra esta información:"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:18
-msgid "Start time"
-msgstr "Hora de inicio"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:18
-msgid "Date and time of the call establishment."
-msgstr "Fecha y hora del establecimiento de la llamada."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:21
-msgid "Brand"
-msgstr "Marca"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:21
-msgid "Only visible for *god*, shows the brand of each call."
-msgstr "Visible solo para *dios*, muestra la marca de cada llamada."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:24
-msgid "Client"
-msgstr "Cliente"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:24
-msgid "Visible for *god* and *brand operator*, shows the client of each call."
-msgstr "Visible para *dios* y *operador de marca*, muestra el cliente de cada llamada."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:27
-msgid "Caller"
-msgstr "Llamante"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:27
-msgid "DDI presented for the outgoing call."
-msgstr "DDI presentado para la llamada saliente."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:30
-msgid "Callee"
-msgstr "Llamado"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:30
-msgid "External number dialed."
-msgstr "Número externo marcado."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:33
-msgid "Duration"
-msgstr "Duración"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:33
-msgid "Shows how long the call lasted."
-msgstr "Muestra cuánto duró la llamada."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:37
-msgid "Price"
-msgstr "Precio"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:36
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:13
 msgid ""
-"The money amount for the client. Visible for *god* and *brand operator* "
-"and *Client administrator* if *Display billing details to client* is "
-"enabled."
-msgstr "El monto de dinero para el cliente. Visible para *dios* y *operador de marca* y *administrador del cliente* si *Mostrar detalles de facturación al cliente* está habilitado."
+"**Automatic recordings** for the incoming/outgoing calls that use a "
+":ref:`External DDI <ddis>`."
+msgstr ""
+"**Grabaciones automáticas** para las llamadas entrantes/salientes que usan un "
+":ref:`DDI externo <ddis>`."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:40
-msgid "Cost"
-msgstr "Costo"
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:16
+msgid "**On demand recordings** requested by a user during a call."
+msgstr "**Grabaciones bajo demanda** solicitadas por un usuario durante una llamada."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:40
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:20
+msgid "Automatic DDI recordings"
+msgstr "Grabaciones automáticas de DDI"
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:22
 msgid ""
-"Visible for *god* and *brand operator*, the money amount for the brand "
-"(the money that the carrier will bill for the call)."
-msgstr "Visible para *dios* y *operador de marca*, el monto de dinero para la marca (el dinero que el operador facturará por la llamada)."
+"In this type of recording, **the whole conversation will be recorded**: "
+"from the start until it finishes."
+msgstr ""
+"En este tipo de grabación, **se grabará toda la conversación**: "
+"desde el inicio hasta que termine."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:44
-msgid "Rating Plan"
-msgstr "Plan de tarifas"
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:25
+msgid "Two different scenarios:"
+msgstr "Dos escenarios diferentes:"
 
-#: ../../administration_portal/shared/external_calls.rst.inc:43
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:27
 msgid ""
-"Rating plan used to set price for the call. Visible for *god* and *brand "
-"operator* and *Client administrator* if *Display billing details to "
-"client* is enabled."
-msgstr "Plan de tarifas utilizado para establecer el precio de la llamada. Visible para *dios* y *operador de marca* y *administrador del cliente* si *Mostrar detalles de facturación al cliente* está habilitado."
+"**Incoming calls to a DDI**: The call will continue until the external "
+"dialer hangups (no matter whom is talking to)."
+msgstr ""
+"**Llamadas entrantes a un DDI**: La llamada continuará hasta que el marcador externo "
+"cuelgue (sin importar con quién esté hablando)."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:48
-msgid "Destination"
-msgstr "Destino"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:47
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:30
 msgid ""
-"Destination that matched the call for billing. Visible for *god* and "
-"*brand operator* and *Client administrator* if *Display billing details "
-"to client* is enabled."
-msgstr "Destino que coincidió con la llamada para la facturación. Visible para *dios* y *operador de marca* y *administrador del cliente* si *Mostrar detalles de facturación al cliente* está habilitado."
+"**Outgoing calls using a DDI** as :ref:`Outgoing DDI <ddis>`: the "
+"recording will continue as long as the external destination keeps in the "
+"conversation."
+msgstr ""
+"**Llamadas salientes usando un DDI** como :ref:`DDI saliente <ddis>`: la "
+"grabación continuará mientras el destino externo permanezca en la "
+"conversación."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:51
-msgid "Carrier"
-msgstr "Operador"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:51
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:34
 msgid ""
-"Visible for *god* and *brand operator*, shows which :ref:`Carrier "
-"<carriers>` was used for each outbound call."
-msgstr "Visible para *dios* y *operador de marca*, muestra qué :ref:`Operador <carriers>` se utilizó para cada llamada saliente."
+"Take into account that the call will be recorded while the external "
+"entity is present, even it the call is being transferred between multiple"
+" users of the platform."
+msgstr ""
+"Tenga en cuenta que la llamada se grabará mientras la entidad externa esté presente, "
+"incluso si la llamada se transfiere entre varios usuarios de la plataforma."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:54
-msgid "DDI Provider"
-msgstr "Proveedor DDI"
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:39
+msgid "Record all the calls of a DDI"
+msgstr "Grabar todas las llamadas de un DDI"
 
-#: ../../administration_portal/shared/external_calls.rst.inc:54
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:40
 msgid ""
-"Visible for *god* and *brand operator*, shows which :ref:`DDI Provider "
-"<DDI Providers>` was used for each inbound call."
-msgstr "Visible para *dios* y *operador de marca*, muestra qué :ref:`Proveedor DDI <DDI Providers>` se utilizó para cada llamada entrante."
+"To enable this feature, edit the DDI and configure the field under the "
+"section recording data:"
+msgstr ""
+"Para habilitar esta función, edite el DDI y configure el campo en la "
+"sección de datos de grabación:"
 
-#: ../../administration_portal/shared/external_calls.rst.inc:57
-msgid "Invoice"
-msgstr "Factura"
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:44
+msgid "There are 4 available options:"
+msgstr "Hay 4 opciones disponibles:"
 
-#: ../../administration_portal/shared/external_calls.rst.inc:57
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:46
+msgid "Disable recordings"
+msgstr "Deshabilitar grabaciones"
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:47
+msgid "Enable incoming recordings"
+msgstr "Habilitar grabaciones entrantes"
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:48
+msgid "Enable outgoing recordings"
+msgstr "Habilitar grabaciones salientes"
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:49
+msgid "Enable all call recordings"
+msgstr "Habilitar todas las grabaciones de llamadas"
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:53
+msgid "On demand recordings"
+msgstr "Grabaciones bajo demanda"
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:55
 msgid ""
-"Visible for *god* and *brand operator*, shows if a call is already "
-"included in any :ref:`Invoice <invoices>`."
-msgstr "Visible para *dios* y *operador de marca*, muestra si una llamada ya está incluida en alguna :ref:`Factura <invoices>`."
+"The *on-demand* recordings must be enabled by the *brand administrator* "
+"for the clients that request it. This can be done in the client edit "
+"screen:"
+msgstr ""
+"Las grabaciones *bajo demanda* deben ser habilitadas por el *administrador de la marca* "
+"para los clientes que lo soliciten. Esto se puede hacer en la pantalla de edición del cliente:"
 
-#: ../../administration_portal/shared/external_calls.rst.inc:60
-msgid "Call ID"
-msgstr "ID de llamada"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:60
-msgid "Shows the call ID of the call for troubleshooting and CSV export."
-msgstr "Muestra el ID de la llamada para la resolución de problemas y exportación CSV."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:63
-msgid "Endpoint Type"
-msgstr "Tipo de punto final"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:63
-msgid "Possible values: RetailAccount, ResidentialDevice, User, Fax, Friend."
-msgstr "Valores posibles: RetailAccount, ResidentialDevice, User, Fax, Friend."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:66
-msgid "Endpoint Id"
-msgstr "ID de punto final"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:66
-msgid "Internal ID of specific endpoint (only when *endpointType* is non-empty)."
-msgstr "ID interno de un punto final específico (solo cuando *endpointType* no está vacío)."
-
-#: ../../administration_portal/shared/external_calls.rst.inc:69
-msgid "Endpoint Name"
-msgstr "Nombre del punto final"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:69
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:59
 msgid ""
-"User extension, friend name, fax name, retail account name or residential"
-" device name (only when *endpointId* is non-empty)."
-msgstr "Extensión de usuario, nombre de friend, nombre de fax, nombre de cuenta retail o nombre de dispositivo residencial (solo cuando *endpointId* no está vacío)."
+"Contrary to the :ref:`Services <services>` mentioned in the previous "
+"section, the on demand record are activated within a conversation."
+msgstr ""
+"A diferencia de los :ref:`Servicios <services>` mencionados en la sección anterior, "
+"la grabación bajo demanda se activa dentro de una conversación."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:71
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:62
 msgid ""
-"An asynchronous process parses each external call and adds it to this "
-"list a few minutes after call hangup. Billing related fields, such as "
-"cost and price, will be empty for external incoming calls."
-msgstr "Un proceso asincrónico analiza cada llamada externa y la agrega a esta lista unos minutos después de colgar la llamada. Los campos relacionados con la facturación, como el costo y el precio, estarán vacíos para las llamadas entrantes externas."
+"Contrary to automatic ones, on demand recording can be stopped using the "
+"same process that started them."
+msgstr ""
+"A diferencia de las automáticas, la grabación bajo demanda se puede detener "
+"utilizando el mismo proceso que las inició."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:74
-msgid "Call rerating"
-msgstr "Recalificación de llamadas"
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:66
+msgid "Activated using the *Record* key"
+msgstr "Activado usando la tecla *Grabar*"
 
-#: ../../administration_portal/shared/external_calls.rst.inc:76
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:68
 msgid ""
-"At **brand level**, there is an additional available operation for "
-"outbound calls: **Rerate call**. This option allows calling rating engine"
-" again for a call or a bunch of calls."
-msgstr "En el **nivel de marca**, hay una operación adicional disponible para llamadas salientes: **Recalificar llamada**. Esta opción permite llamar al motor de calificación nuevamente para una llamada o un grupo de llamadas."
+"Some terminals (for example, *Yealink*) support sending a `SIP INFO "
+"<https://tools.ietf.org/html/rfc6086>`_ message during the conversation "
+"with a special *Record* header (see `reference "
+"<http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf>`_)."
+" This is not a standard for the protocol, but being Yealink one of the "
+"supported manufacturers of the solution, we include this kind of on-"
+"demand recording."
+msgstr ""
+"Algunos terminales (por ejemplo, *Yealink*) admiten el envío de un mensaje `SIP INFO "
+"<https://tools.ietf.org/html/rfc6086>`_ durante la conversación con un encabezado especial *Grabar* "
+"(ver `referencia "
+"<http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf>`_)."
+" Esto no es un estándar para el protocolo, pero siendo Yealink uno de los "
+"fabricantes compatibles con la solución, incluimos este tipo de grabación bajo demanda."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:78
-msgid "Notes about this rerating process:"
-msgstr "Notas sobre este proceso de recalificación:"
-
-#: ../../administration_portal/shared/external_calls.rst.inc:80
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:74
 msgid ""
-"If a call is in an invoice, it cannot be rerated. Invoice must be deleted"
-" first."
-msgstr "Si una llamada está en una factura, no se puede recalificar. La factura debe eliminarse primero."
+"For this recording requests, the configured code doesn't matter but the "
+"client still must have on demand records enabled."
+msgstr ""
+"Para estas solicitudes de grabación, el código configurado no importa pero el "
+"cliente aún debe tener habilitadas las grabaciones bajo demanda."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:82
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:77
 msgid ""
-"Call will be rerated with the *Start time* of the call (no with current "
-"active rating plans, but with active rating plans on the moment of the "
-"call)."
-msgstr "La llamada se recalificará con la *Hora de inicio* de la llamada (no con los planes de tarifas activos actuales, sino con los planes de tarifas activos en el momento de la llamada)."
+"To start or stop this kind of recordings, just press the Record key in "
+"the terminal and the system will handle the sent message."
+msgstr ""
+"Para iniciar o detener este tipo de grabaciones, simplemente presione la tecla Grabar en "
+"el terminal y el sistema manejará el mensaje enviado."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:85
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:81
+msgid "Activated using *DTMF* codes"
+msgstr "Activado usando códigos *DTMF*"
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:83
 msgid ""
-"Both *Price* and *Cost* will be recalculated. This may imply updating "
-"*rating plan* and *destination* too."
-msgstr "Tanto el *Precio* como el *Costo* se recalcularán. Esto puede implicar actualizar también el *plan de tarifas* y el *destino*."
+"The more traditional approach for this feature is to press a combination "
+"of keys during the call. Some notification will be played and the "
+"recording will start or stop. This combination is sent to the system "
+"using `DTMF tones "
+"<https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_ using the same"
+" audio stream that the conversation (as mentioned in `RFC 4733 "
+"<https://tools.ietf.org/html/rfc4733>`_)."
+msgstr ""
+"El enfoque más tradicional para esta función es presionar una combinación "
+"de teclas durante la llamada. Se reproducirá una notificación y la "
+"grabación comenzará o se detendrá. Esta combinación se envía al sistema "
+"utilizando `tonos DTMF "
+"<https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_ utilizando el mismo"
+" flujo de audio que la conversación (como se menciona en `RFC 4733 "
+"<https://tools.ietf.org/html/rfc4733>`_)."
 
-#: ../../administration_portal/shared/external_calls.rst.inc:87
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:90
 msgid ""
-"When a call is rerated, cost and price are emptied until the next "
-"iteration of the asynchronous task."
-msgstr "Cuando se recalifica una llamada, el costo y el precio se vacían hasta la siguiente iteración de la tarea asincrónica."
+"IvozProvider supports this kind of on demand record activation but with "
+"an important downside. In order to capture this codes, the pbx must "
+"process each audio packet to detect the code, avoiding the direct flow of"
+" media between the final endpoints."
+msgstr ""
+"IvozProvider admite este tipo de activación de grabación bajo demanda pero con "
+"una desventaja importante. Para capturar estos códigos, la pbx debe "
+"procesar cada paquete de audio para detectar el código, evitando el flujo directo de"
+" medios entre los puntos finales."
 
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:95
+msgid ""
+"Enabling this record mode highly affects the performance of the platform."
+" Use at your own risk."
+msgstr ""
+"Habilitar este modo de grabación afecta en gran medida el rendimiento de la plataforma."
+" Úselo bajo su propio riesgo."
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:100
+msgid "Recordings list"
+msgstr "Lista de grabaciones"
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:102
+msgid ""
+"The *client administrator* can access to all the recordings in the "
+"section **Client configuration** > **Calls** > **Call recordings**:"
+msgstr ""
+"El *administrador del cliente* puede acceder a todas las grabaciones en la "
+"sección **Configuración del cliente** > **Llamadas** > **Grabaciones de llamadas**:"
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:105
+msgid "Recordings can be heard from the *web* or downloaded in MP3 format."
+msgstr "Las grabaciones se pueden escuchar desde la *web* o descargar en formato MP3."
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:107
+msgid ""
+"If the recording has been started on demand, it will also include the "
+"user that requested it."
+msgstr ""
+"Si la grabación se ha iniciado bajo demanda, también incluirá al "
+"usuario que la solicitó."
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:110
+msgid ""
+"Recording removal button is shown only if **Allow Client to remove "
+"recordings** is enabled for the client in *Client configuration*."
+msgstr ""
+"El botón de eliminación de grabaciones se muestra solo si **Permitir al cliente eliminar "
+"grabaciones** está habilitado para el cliente en *Configuración del cliente*."
+
+#: ../../administration_portal/client/shared/call_recordings.rst.inc:110
+msgid ""
+"The *Export to CSV* option of the list menu downloads the recordings list as "
+"a CSV file with the columns of the API collection: ``callid``, ``calldate``, "
+"``type``, ``duration``, ``caller``, ``callee``, ``recorder`` and ``id`` (the "
+"identifier of the recording in the API). It exports every recording that "
+"matches the active filters, not only the current page, and when the list is "
+"opened from a DDI or a call it only includes the recordings of that element. "
+"The audio files are not exported: use the *Download* option to get them as a "
+"ZIP."
+msgstr ""
+"La opción *Exportar a CSV* del menú del listado descarga el listado de "
+"grabaciones como fichero CSV con las columnas de la colección de la API: "
+"``callid``, ``calldate``, ``type``, ``duration``, ``caller``, ``callee``, "
+"``recorder`` e ``id`` (el identificador de la grabación en la API). Exporta "
+"todas las grabaciones que cumplen los filtros activos, no solo la página "
+"actual, y cuando el listado se abre desde un DDI o una llamada solo incluye "
+"las grabaciones de ese elemento. Los audios no se exportan: usa la opción "
+"*Descargar* para obtenerlos en un ZIP."
