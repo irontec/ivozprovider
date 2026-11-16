@@ -194,6 +194,8 @@ class KamRpc
             }
 
             $data = end($response);
+            $redisMaster->lRem($channel, $data, 0);
+
             return \json_decode($data, true);
         } catch (\RedisException $e) {
             $this->logger->error('KamRpc timeout: ' . $e->getMessage());
