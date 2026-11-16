@@ -52,7 +52,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             type: ClientTypes.vpbx,
           },
           children: [
-            ...Object.values(entities.VirtualPbx.customActions),
+            ...Object.values(entities.Company.customActions),
             {
               entity: entities.UsersAddress,
               filterBy: 'company',
@@ -101,6 +101,7 @@ const getEntityMap = (): ExtendedRouteMap => {
                 'exists[ddi]': false,
               },
             },
+            entities.VirtualPbx.customActions.ImportUsers,
           ],
         },
         {

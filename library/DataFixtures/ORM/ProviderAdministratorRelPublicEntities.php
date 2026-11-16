@@ -12,6 +12,8 @@ class ProviderAdministratorRelPublicEntities extends Fixture implements Dependen
 {
     use \DataFixtures\FixtureHelperTrait;
 
+    private const USERS_MASS_IMPORT_PUBLIC_ENTITY_ID = 109;
+
     /**
      * {@inheritDoc}
      */
@@ -43,6 +45,18 @@ class ProviderAdministratorRelPublicEntities extends Fixture implements Dependen
                 'INSERT INTO AdministratorRelPublicEntities (administratorId, publicEntityId, `create`, `read`, `update`, `delete`) '
                 . 'SELECT A.id, P.id, 0, 1, 0, 0 FROM Administrators A INNER JOIN PublicEntities P '
                 . 'WHERE A.brandId IS NULL AND A.companyId IS NULL AND A.restricted = 1 AND P.platform = 1'
+            );
+
+        $restrictedBrandOnlyAdminId = $fixture
+            ->getReference('_reference_ProviderAdministrator14')
+            ->getId();
+
+        $manager
+            ->getConnection()
+            ->exec(
+                'UPDATE AdministratorRelPublicEntities SET `create` = 1 '
+                . 'WHERE administratorId = ' . $restrictedBrandOnlyAdminId
+                . ' AND publicEntityId = ' . self::USERS_MASS_IMPORT_PUBLIC_ENTITY_ID
             );
     }
 

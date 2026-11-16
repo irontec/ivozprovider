@@ -172,6 +172,7 @@ class ProviderPublicEntities extends Fixture implements FixtureInterface
             ["ProxyUsers","Ivoz\\Provider\\Domain\\Model\\ProxyUser\\ProxyUser","1","0","0"],
             ["TerminalManufacturers","Ivoz\\Provider\\Domain\\Model\\TerminalManufacturer\\TerminalManufacturer","1","0","0"],
             ["ChannelUsages","Ivoz\\Provider\\Domain\\Model\\ChannelUsage\\ChannelUsage","0","0","1"],
+            ["_UsersMassImport","Model\\UsersMassImport","0","1","0"],
         ];
 
         return $dataset;

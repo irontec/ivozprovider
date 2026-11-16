@@ -431,6 +431,13 @@ Feature: Retrieve active calls
                   "read": true,
                   "update": false,
                   "delete": false
+              },
+              {
+                  "iden": "_UsersMassImport",
+                  "create": false,
+                  "read": true,
+                  "update": false,
+                  "delete": false
               }
           ],
           "features": [

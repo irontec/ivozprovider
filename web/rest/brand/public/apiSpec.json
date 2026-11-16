@@ -41115,10 +41115,10 @@
                         "in": "formData",
                         "type": "file",
                         "required": true,
-                        "description": "*name, *lastname, email, terminal name,terminal password, terminal model, mac, extension, ddi country, ddi number, ddi provider"
+                        "description": "CSV file creating or updating one vPBX user per row, with its terminal, extension and outgoing DDI. Columns (* required): *name, *lastname, email, terminal name, terminal password, terminal model, mac, extension, ddi country, ddi number, ddi provider. Comma or semicolon separated, UTF-8 or Windows-1252, optional header row. Users are matched by name and lastname within the company; empty columns of an existing user are left untouched; an empty terminal password keeps the current one or generates a random one. Valid rows are imported and failed rows are reported with their line number and reason."
                     }
                 ],
-                "operationId": "post_users_mass_importUsersMassImportCollection",
+                "operationId": "post_users_mass_importUsersMassImportItem",
                 "summary": "Creates a UsersMassImport resource.",
                 "responses": {
                     "201": {
@@ -54473,17 +54473,33 @@
         "UsersMassImport": {
             "type": "object",
             "properties": {
-                "success": {
-                    "description": "",
-                    "type": "boolean"
-                },
-                "errorMsg": {
-                    "description": "",
-                    "type": "string"
-                },
-                "failed": {
+                "created": {
                     "description": "",
                     "type": "integer"
+                },
+                "updated": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "errors": {
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UsersMassImportError"
+                    }
+                }
+            }
+        },
+        "UsersMassImportError": {
+            "type": "object",
+            "properties": {
+                "line": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "",
+                    "type": "string"
                 }
             }
         },

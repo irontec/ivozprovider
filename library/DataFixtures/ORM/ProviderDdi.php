@@ -112,6 +112,22 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
 
+        /** @var DdiInterface $item6 */
+        $item6 = $this->createEntityInstance(Ddi::class);
+        (function () use ($fixture) {
+            $this->setDdi("127");
+            $this->setDdie164("+34127");
+            $this->setDescription("Unassigned DDI of another brand");
+            $this->setDisplayName("");
+            $this->setFriendValue("");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
+        })->call($item6);
+
+        $this->addReference('_reference_ProviderDdi6', $item6);
+        $this->sanitizeEntityValues($item6);
+        $manager->persist($item6);
+
         $manager->flush();
     }
 

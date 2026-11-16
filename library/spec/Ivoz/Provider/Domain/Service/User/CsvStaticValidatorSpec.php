@@ -104,6 +104,40 @@ class CsvStaticValidatorSpec extends ObjectBehavior
             ->during('execute', [$input]);
     }
 
+    function it_checks_unique_ddis()
+    {
+        $input = array_map(
+            'str_getcsv',
+            [
+                'Name,Lastname,name@irontec.com,terminalName,Z7+KJn8m3k,YealinkT21P_E2,a00000000052,2002,ES,946002050,as002',
+                'John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,2003,ES,946002050,as002'
+            ]
+        );
+
+        $exception = new \DomainException(
+            'Duplicated ddi number found: ES 946002050'
+        );
+
+        $this
+            ->shouldThrow($exception)
+            ->during('execute', [$input]);
+    }
+
+    function it_allows_the_same_ddi_number_in_different_countries()
+    {
+        $input = array_map(
+            'str_getcsv',
+            [
+                'Name,Lastname,name@irontec.com,terminalName,Z7+KJn8m3k,YealinkT21P_E2,a00000000052,2002,ES,600000000,as002',
+                'John,Doe,jon@irontec.com,terminalName2,Z7+KJn8m3k,YealinkT21P_E2,a00000000053,2003,FR,600000000,as002'
+            ]
+        );
+
+        $this
+            ->shouldNotThrow()
+            ->during('execute', [$input]);
+    }
+
     function it_checks_unique_macs()
     {
         $input = array_map(

@@ -1,4 +1,5 @@
 import CompaniesCollection from '../../../fixtures/Provider/Companies/getCollection.json';
+import { assertNoUsersImportAction } from '../utils/UsersImportAction';
 import {
   deleteCompany,
   postCompany,
@@ -42,4 +43,6 @@ describe('in Residential Companies', () => {
   // POST
   ///////////////////////
   it('post Web Portal', postWebPortal);
+
+  it('has no users import action', assertNoUsersImportAction);
 });

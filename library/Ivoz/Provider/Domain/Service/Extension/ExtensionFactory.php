@@ -7,7 +7,6 @@ use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ExtensionFactory
@@ -25,7 +24,6 @@ class ExtensionFactory
     public function fromMassProvisioningCsv(
         int $companyId,
         string $extensionNumber,
-        ?UserInterface $user = null,
         ?string $countryCode = null,
         ?string $number = null,
         ?string $code = null
@@ -51,24 +49,12 @@ class ExtensionFactory
             );
 
         if ($countryCode) {
-            $country = $this->countryRepository
-                ->findOneByCountryCode($countryCode, $code);
-
-            if (!$country) {
-                throw new NotFoundHttpException('Country not found');
-            }
-
-            $extensionDto
-                ->setNumberCountryId(
-                    $country->getId()
-                )
-                ->setRouteType(ExtensionInterface::ROUTETYPE_NUMBER);
+            $this->routeToNumber($extensionDto, $countryCode, $code);
         }
 
         if ($number) {
             $extensionDto->setNumberValue($number);
         }
-
 
         /** @var ExtensionInterface $extension */
         $extension = $this->entityTools->dtoToEntity(
@@ -76,9 +62,28 @@ class ExtensionFactory
             $extension
         );
 
-        $extension
-            ->setUser($user);
-
         return $extension;
+    }
+
+    /**
+     * @throws NotFoundHttpException
+     */
+    private function routeToNumber(
+        ExtensionDto $extensionDto,
+        string $countryCode,
+        ?string $code
+    ): void {
+        $country = $this->countryRepository
+            ->findOneByCountryCode($countryCode, $code);
+
+        if (!$country) {
+            throw new NotFoundHttpException('Country not found');
+        }
+
+        $extensionDto
+            ->setNumberCountryId(
+                $country->getId()
+            )
+            ->setRouteType(ExtensionInterface::ROUTETYPE_NUMBER);
     }
 }

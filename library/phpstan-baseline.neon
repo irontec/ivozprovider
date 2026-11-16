@@ -1186,21 +1186,6 @@ parameters:
 			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersLocationDoctrineRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$array of function array_shift expects array, array\\|string given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Application/Service/User/SyncFromCsv.php
-
-		-
-			message: "#^Parameter \\#1 \\$array of function array_splice expects array, array\\|string given\\.$#"
-			count: 2
-			path: Ivoz/Provider/Application/Service/User/SyncFromCsv.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function trim expects string, array\\|string given\\.$#"
-			count: 2
-			path: Ivoz/Provider/Application/Service/User/SyncFromCsv.php
-
-		-
 			message: "#^Cannot call method getLUuid\\(\\) on Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Assembler/DdiProviderRegistration/DdiProviderRegistrationDtoAssembler.php
@@ -4824,11 +4809,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TransformationRuleSet\\\\TransformationRuleSetLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/TransformationRuleSet/TransformationRuleSetLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\User\\\\CsvStaticValidator\\:\\:execute\\(\\) has parameter \\$rows with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/User/CsvStaticValidator.php
 
 		-
 			message: "#^Call to method getErrorCode\\(\\) on an unknown class Doctrine\\\\DBAL\\\\Driver\\\\PDOException\\.$#"

@@ -119,8 +119,8 @@ Model\Dashboard\Dashboard:
   collectionOperations: []
 
 Model\UsersMassImport:
-  itemOperations: []
-  collectionOperations:
+  collectionOperations: []
+  itemOperations:
     post_users_mass_import:
       access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
       method: 'POST'
@@ -143,7 +143,14 @@ Model\UsersMassImport:
             in: formData
             type: file
             required: true
-            description: "*name, *lastname, email, terminal name,terminal password, terminal model, mac, extension, ddi country, ddi number, ddi provider"
+            description: >-
+              CSV file creating or updating one vPBX user per row, with its terminal, extension and outgoing DDI.
+              Columns (* required): *name, *lastname, email, terminal name, terminal password, terminal model,
+              mac, extension, ddi country, ddi number, ddi provider. Comma or semicolon separated, UTF-8 or
+              Windows-1252, optional header row. Users are matched by name and lastname within the company;
+              empty columns of an existing user are left untouched; an empty terminal password keeps the
+              current one or generates a random one. Valid rows are imported and failed rows are reported
+              with their line number and reason.
 
 Model\RegistrationSummary:
   itemOperations:

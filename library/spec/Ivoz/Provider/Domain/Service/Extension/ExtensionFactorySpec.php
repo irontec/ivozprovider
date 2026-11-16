@@ -103,12 +103,55 @@ class ExtensionFactorySpec extends ObjectBehavior
             );
     }
 
+    function it_never_touches_the_extension_user()
+    {
+        $this->prepareExecution();
+
+        $extension = $this->getInstance(
+            Extension::class,
+            [
+                'number' => '202',
+                'user' => $this->getInstance(User::class, ['id' => 9]),
+            ]
+        );
+
+        $this
+            ->extensionRepository
+            ->findCompanyExtension(
+                Argument::any(),
+                Argument::any()
+            )
+            ->willReturn($extension);
+
+        $this
+            ->entityTools
+            ->entityToDto($extension)
+            ->willReturn(
+                (new ExtensionDto())->setUserId(9)
+            );
+
+        $this
+            ->entityTools
+            ->dtoToEntity(
+                Argument::that(function ($dto) {
+                    return $dto instanceof ExtensionDto
+                        && $dto->getUserId() === 9;
+                }),
+                $extension
+            )
+            ->shouldBeCalled()
+            ->willReturn($extension);
+
+        $this
+            ->fromMassProvisioningCsv(1, '202')
+            ->shouldReturn($extension);
+    }
+
     private function getInputArgs(): array
     {
         return [
             1,
-            202,
-            $this->getInstance(User::class),
+            '202',
             null,
             null,
             null
