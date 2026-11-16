@@ -1,5 +1,6 @@
 import RecordingCollection from '../../../fixtures/Recording/getCollection.json';
 import RecordingItem from '../../../fixtures/Recording/getItem.json';
+import UsersCdrsCollection from '../../../fixtures/UsersCdrs/getCollection.json';
 
 describe('Recording', () => {
   beforeEach(() => {
@@ -60,6 +61,36 @@ describe('Recording', () => {
 
     cy.readFile(`${downloadDir}/${fileName}`).should('exist');
 
+    cy.contains('Caller');
+  });
+
+  it('Export to CSV only the recordings of the call', () => {
+    cy.intercept('GET', '**/api/client/recordings?*_pagination=false*', {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'text/csv; charset=utf-8',
+      },
+      body: 'callid,calldate,type,duration,caller,callee,recorder,id\n',
+    }).as('getRecordingsCsv');
+
+    cy.intercept('GET', '**/api/client/users_cdrs/1', {
+      statusCode: 200,
+      body: UsersCdrsCollection.body[0],
+    }).as('getUsersCdr-1');
+
+    cy.contains('Call registries').click();
+    cy.get('table svg[data-testid="SettingsVoiceIcon"]').first().click();
+    cy.get('header').should('contain', 'Recordings');
+    cy.wait('@getRecording');
+    cy.get('table').should('contain', RecordingCollection.body[0].caller);
+
+    cy.get('svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.get('li.MuiMenuItem-root').contains('Export to CSV').click();
+
+    cy.wait('@getRecordingsCsv').then(({ request }) => {
+      expect(request.headers.accept).to.eq('text/csv');
+      expect(decodeURIComponent(request.url)).to.include('usersCdr[]=1');
+    });
     cy.contains('Caller');
   });
 });
