@@ -29347,7 +29347,8 @@
             "get": {
                 "produces": [
                     "application/json",
-                    "application/ld+json"
+                    "application/ld+json",
+                    "text/csv"
                 ],
                 "tags": [
                     "Provider"
@@ -29878,6 +29879,13 @@
                         "required": false,
                         "description": "The collection page number",
                         "type": "integer"
+                    },
+                    {
+                        "name": "_pagination",
+                        "in": "query",
+                        "required": false,
+                        "description": "Enable or disable pagination",
+                        "type": "boolean"
                     },
                     {
                         "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: _properties[]={propertyName}&_properties[]={anotherPropertyName}&_properties[{nestedPropertyParent}][]={nestedProperty}",

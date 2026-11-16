@@ -1814,7 +1814,13 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
         id: '\d+'
     delete: ~
   collectionOperations:
-    get: ~
+    get:
+      pagination_client_enabled: true
+      swagger_context:
+        produces:
+          - 'application/json'
+          - 'application/ld+json'
+          - 'text/csv'
     get_multiple_recorderded_files:
       method: 'GET'
       path: '/recordings/recorded_files_zip'
