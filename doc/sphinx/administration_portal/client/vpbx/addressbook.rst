@@ -101,3 +101,29 @@ The import follows these rules:
 
 .. warning:: Import again only the failed lines once fixed. Importing the whole file again would duplicate
              the contacts created from rows without id.
+
+**********
+CSV Export
+**********
+
+The *Export contacts* option of the Address Book list menu downloads a CSV file with every contact that
+matches the active filters, not only the ones shown in the current page. It is only shown to administrators
+with permission to read contacts.
+
+The file is meant to be edited and imported again, so it has exactly the columns of the import format, in the
+same order, and every row has its ``id``. Countries are exported as ISO codes and phones without
+international prefix, as they are stored. Contacts linked to a user are included like the rest.
+
+It is encoded in UTF-8 with BOM and uses semicolons (;) as separator, so it opens directly in Excel keeping
+accents and columns.
+
+.. rubric:: Export, edit and import again
+
+#. Export the contacts, filtering the list first if only some of them need changes.
+#. Edit the values in the exported file keeping the ``id`` column: that is what makes the import update each
+   contact instead of creating a new one.
+#. Import the file with the *Import contacts* option. The contacts that were not changed are updated with
+   their own values, so they stay as they were.
+
+.. note:: A phone stored without country is exported with an empty country column. When the file is imported
+          again, that phone takes the client country, as any phone without country does.
