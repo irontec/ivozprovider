@@ -77,5 +77,10 @@ interface UserRepository extends RepositoryInterface
     /**
      * @return UserInterface[]
      */
+    public function findByCompany(int $companyId): array;
+
+    /**
+     * @return UserInterface[]
+     */
     public function findByCompanyUsingDefaultLocation(int $companyId): array;
 }

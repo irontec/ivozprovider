@@ -6,7 +6,7 @@ namespace Ivoz\Provider\Domain\Service\User;
 
 class CsvRowsParser
 {
-    private const UTF8_BOM = "\xEF\xBB\xBF";
+    public const UTF8_BOM = "\xEF\xBB\xBF";
     private const DELIMITERS = [',', ';'];
     private const HEADER_START = ['name', 'lastname', 'email'];
 
@@ -24,7 +24,7 @@ class CsvRowsParser
         $rows = [];
         foreach ($lines as $index => $line) {
             $fields = array_map(
-                fn (?string $field): string => trim((string) $field),
+                fn (?string $field): string => $this->unescapeFormula(trim((string) $field)),
                 str_getcsv($line, $delimiter)
             );
 
@@ -42,6 +42,18 @@ class CsvRowsParser
         }
 
         return $rows;
+    }
+
+    private function unescapeFormula(string $field): string
+    {
+        $isGuardedFormula = strlen($field) > 1
+            && $field[0] === "'"
+            && in_array($field[1], CsvRowsWriter::FORMULA_PREFIXES, true);
+        if ($isGuardedFormula) {
+            return substr($field, 1);
+        }
+
+        return $field;
     }
 
     private function toUtf8(string $csv): string
