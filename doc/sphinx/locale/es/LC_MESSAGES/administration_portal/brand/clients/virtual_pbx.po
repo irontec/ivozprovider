@@ -727,3 +727,183 @@ msgstr ""
 msgid "The response summarises the import and lists every failed line:"
 msgstr "La respuesta resume la importación y enumera cada línea fallida:"
 
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:272
+msgid "Users mass export"
+msgstr "Exportación masiva de usuarios"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:274
+msgid ""
+"The **Export users** action of each Virtual PBX row downloads a CSV file "
+"with the users of the client in the format of the :ref:`users mass "
+"import`, so it can be edited in a spreadsheet and imported again into the "
+"same Virtual PBX, or used to create the users in another one. It is only "
+"shown to administrators allowed to see the users import."
+msgstr ""
+"La acción **Exportar usuarios** de cada fila de PBX virtual descarga un "
+"fichero CSV con los usuarios del cliente en el formato de la "
+":ref:`users mass import`, para poder editarlo en una hoja de cálculo e "
+"importarlo de nuevo en la misma PBX virtual, o usarlo para dar de alta los "
+"usuarios en otra. Solo se muestra a los administradores que pueden ver la "
+"importación de usuarios."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:280
+msgid ""
+"The same operation is available through the brand API, see :ref:`users "
+"mass export api`."
+msgstr ""
+"La misma operación está disponible a través de la API de marca, ver "
+":ref:`users mass export api`."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:283
+msgid "What is exported"
+msgstr "Qué se exporta"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:285
+msgid ""
+"One row per user of the client, ordered by name and lastname, with the "
+"eleven columns of the import and a first row with their names. The "
+"terminal columns describe the terminal assigned to the user and the "
+"extension column its extension. The DDI columns are only filled when the "
+"user has its own outgoing DDI: users that call out with the default DDI of"
+" the client have them empty."
+msgstr ""
+"Una fila por usuario del cliente, ordenadas por nombre y apellidos, con "
+"las once columnas de la importación y una primera fila con sus nombres. "
+"Las columnas de terminal describen el terminal asignado al usuario y la "
+"columna de extensión su extensión. Las columnas de DDI solo se rellenan "
+"cuando el usuario tiene su propio DDI de salida: los usuarios que llaman "
+"con el DDI por defecto del cliente las tienen vacías."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:291
+msgid ""
+"The **terminal password column is always empty**: SIP passwords are never "
+"written to a file that may be shared. Importing the file keeps the current"
+" password of the existing terminals and generates a random one for the new"
+" ones."
+msgstr ""
+"La **columna de contraseña de terminal siempre va vacía**: las contraseñas"
+" SIP nunca se escriben en un fichero que puede circular. Al importar el "
+"fichero se conserva la contraseña actual de los terminales existentes y se"
+" genera una aleatoria para los nuevos."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:295
+msgid ""
+"The file is not a copy of the client, it only contains what the import "
+"accepts. It does not include:"
+msgstr ""
+"El fichero no es una copia del cliente, solo contiene lo que admite la "
+"importación. No incluye:"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:298
+msgid ""
+"the configuration of the users: access privileges, language, voicemail, "
+"portal password, etc.;"
+msgstr ""
+"la configuración de los usuarios: permisos de acceso, idioma, buzón de "
+"voz, contraseña del portal, etc.;"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:300
+msgid ""
+"anything that does not belong to a user: IVRs, hunt groups, queues, "
+"extensions routed to other elements and terminals without user;"
+msgstr ""
+"lo que no pertenece a un usuario: IVRs, grupos de salto, colas, "
+"extensiones enrutadas a otros elementos y terminales sin usuario;"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:302
+msgid ""
+"other DDIs than the outgoing DDI of each user, nor their inbound routing."
+msgstr ""
+"otros DDIs distintos del DDI de salida de cada usuario, ni sus rutas de "
+"entrada."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:305
+msgid "File format"
+msgstr "Formato del fichero"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:307
+msgid ""
+"Columns are separated by semicolons and the file is encoded in UTF-8 with "
+"BOM, so Excel opens it correctly with a double click and the import "
+"accepts it as it is. Values with separators or quotes are quoted, and "
+"values starting with ``=``, ``+``, ``-`` or ``@`` are prefixed with a "
+"single quote so that spreadsheets do not run them as formulas; the import "
+"removes that quote."
+msgstr ""
+"Las columnas se separan con punto y coma y el fichero se codifica en UTF-8"
+" con BOM, de modo que Excel lo abre correctamente con un doble clic y la "
+"importación lo admite tal cual. Los valores con separadores o comillas van"
+" entrecomillados, y los valores que empiezan por ``=``, ``+``, ``-`` o "
+"``@`` llevan delante una comilla simple para que las hojas de cálculo no "
+"los ejecuten como fórmulas; la importación elimina esa comilla."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:313
+msgid ""
+"The export is refused when two users of the client share the same name and"
+" lastname, because the import could not tell them apart: rename one of "
+"them and export again."
+msgstr ""
+"La exportación se rechaza cuando dos usuarios del cliente comparten nombre"
+" y apellidos, porque la importación no podría distinguirlos: renombre uno "
+"de ellos y exporte de nuevo."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:318
+msgid "Importing into another Virtual PBX"
+msgstr "Importar en otra PBX virtual"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:320
+msgid ""
+"The file can create the users of another Virtual PBX, on this platform or "
+"on a different one, with these limitations:"
+msgstr ""
+"El fichero puede dar de alta los usuarios de otra PBX virtual, en esta "
+"plataforma o en otra distinta, con estas limitaciones:"
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:323
+msgid ""
+"Emails are unique in the whole platform: while the original client keeps "
+"its users, rows with their emails fail. Clear or change the email column."
+msgstr ""
+"Los emails son únicos en toda la plataforma: mientras el cliente de origen"
+" conserve sus usuarios, las filas con sus emails fallan. Vacíe o cambie la"
+" columna de email."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:325
+msgid ""
+"A MAC or a DDI cannot belong to two clients: rows with the MAC of a "
+"terminal or the DDI that are still assigned to the original client fail. "
+"Release them in the original client or clear those columns."
+msgstr ""
+"Una MAC o un DDI no pueden pertenecer a dos clientes: las filas con la MAC"
+" de un terminal o el DDI que siguen asignados al cliente de origen fallan."
+" Libérelos en el cliente de origen o vacíe esas columnas."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:328
+msgid ""
+"Terminal models are matched by identifier and DDI providers by name within"
+" the brand, so they must exist in the destination with the same values."
+msgstr ""
+"Los modelos de terminal se buscan por identificador y los proveedores de "
+"DDI por nombre dentro de la marca, así que deben existir en el destino con"
+" los mismos valores."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:330
+msgid "Terminals get a new random password, since passwords are not exported."
+msgstr ""
+"Los terminales reciben una contraseña aleatoria nueva, ya que las "
+"contraseñas no se exportan."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:331
+msgid "New users are created inactive, like any imported user."
+msgstr "Los usuarios nuevos se crean inactivos, como cualquier usuario importado."
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:338
+msgid ""
+"The export is exposed as ``GET /users/mass_export`` in the brand API, with"
+" the ``company`` identifier as query parameter. The response is the CSV "
+"file:"
+msgstr ""
+"La exportación se expone como ``GET /users/mass_export`` en la API de "
+"marca, con el identificador ``company`` como parámetro de consulta. La "
+"respuesta es el fichero CSV:"
