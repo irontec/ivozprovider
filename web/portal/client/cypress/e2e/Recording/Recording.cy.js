@@ -1,3 +1,4 @@
+import DdiItem from '../../fixtures/Ddi/getItem.json';
 import RecordingCollection from '../../fixtures/Recording/getCollection.json';
 import RecordingItem from '../../fixtures/Recording/getItem.json';
 
@@ -5,6 +6,9 @@ describe('Recording', () => {
   beforeEach(() => {
     cy.prepareGenericPactInterceptors('DDIs');
     cy.prepareGenericPactInterceptors('Recording');
+    cy.intercept('GET', '**/api/client/ddis/1', {
+      ...DdiItem,
+    }).as('getDdi-1');
     cy.before();
 
     cy.contains('DDIs').click();
@@ -63,6 +67,25 @@ describe('Recording', () => {
 
     cy.readFile(`${downloadDir}/${fileName}`).should('exist');
 
+    cy.contains('Caller');
+  });
+
+  it('Export to CSV only the recordings of the DDI', () => {
+    cy.intercept('GET', '**/api/client/recordings?*_pagination=false*', {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'text/csv; charset=utf-8',
+      },
+      body: 'callid,calldate,type,duration,caller,callee,recorder,id\n',
+    }).as('getRecordingsCsv');
+
+    cy.get('svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.get('li.MuiMenuItem-root').contains('Export to CSV').click();
+
+    cy.wait('@getRecordingsCsv').then(({ request }) => {
+      expect(request.headers.accept).to.eq('text/csv');
+      expect(decodeURIComponent(request.url)).to.include('ddi[]=1');
+    });
     cy.contains('Caller');
   });
 });

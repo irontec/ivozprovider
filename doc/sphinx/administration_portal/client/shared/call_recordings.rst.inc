@@ -107,5 +107,12 @@ The *client administrator* can access to all the recordings in the section
     - If the recording has been started on demand, it will also include the user
       that requested it.
 
+    - The *Export to CSV* option of the list menu downloads the recordings list as a CSV file with the
+      columns of the API collection: ``callid``, ``calldate``, ``type``, ``duration``, ``caller``,
+      ``callee``, ``recorder`` and ``id`` (the identifier of the recording in the API).
+      It exports every recording that matches the active filters, not only the current page, and
+      when the list is opened from a DDI or a call it only includes the recordings of that element.
+      The audio files are not exported: use the *Download* option to get them as a ZIP.
+
 .. tip:: Recording removal button is shown only if **Allow Client to remove recordings** is enabled
          for the client in *Client configuration*.

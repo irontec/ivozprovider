@@ -76,3 +76,34 @@ Feature: Retrieve recordings
           "billableCall": null
       }
       """
+
+  Scenario: Retrieve unpaginated recordings csv list
+    Given I add Company Authorization header
+     When I add "Accept" header equal to "text/csv"
+      And I send a "GET" request to "recordings?_pagination=false"
+     Then the response status code should be 200
+      And the header "Content-Type" should be equal to "text/csv; charset=utf-8"
+      And the streamed response should be equal to:
+      """
+      callid,calldate,type,duration,caller,callee,recorder,id
+      7602fd7f-4153-4475-9100-d89ff70cdf76,"2017-01-05 01:15:15",ondemand,3,34946002020,34946002021,,1
+      fb504426-4e3c-11ef-af02-fc5cee56dc74,"2017-01-05 01:15:15",ondemand,5,34946002020,34946002021,,2
+      032f4836-4e3d-11ef-951b-fc5cee56dc74,"2017-01-05 01:15:15",ddi,2,34946002020,34946002021,,3
+      """
+
+  Scenario: The recordings csv list applies the collection filters
+    Given I add Company Authorization header
+     When I add "Accept" header equal to "text/csv"
+      And I send a "GET" request to "recordings?ddi[]=1&_pagination=false"
+     Then the response status code should be 200
+      And the streamed response should be equal to:
+      """
+      callid,calldate,type,duration,caller,callee,recorder,id
+      032f4836-4e3d-11ef-951b-fc5cee56dc74,"2017-01-05 01:15:15",ddi,2,34946002020,34946002021,,3
+      """
+
+  Scenario: A client without the recordings feature cannot export them
+    Given I add Retail Company Authorization header
+     When I add "Accept" header equal to "text/csv"
+      And I send a "GET" request to "recordings?_pagination=false"
+     Then the response status code should be 403

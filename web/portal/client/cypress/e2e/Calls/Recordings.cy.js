@@ -43,4 +43,25 @@ describe('Recording', () => {
     cy.get('svg[data-testid="PanoramaIcon"]').first().click();
     cy.contains('Caller');
   });
+
+  it('Export to CSV', () => {
+    cy.intercept('GET', '**/api/client/recordings?_pagination=false', {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'text/csv; charset=utf-8',
+      },
+      body:
+        'callid,calldate,type,duration,caller,callee,recorder,id\n' +
+        '7602fd7f-4153-4475-9100-d89ff70cdf76,"2017-01-05 01:15:15",ondemand,3,34946002020,34946002021,,1\n',
+    }).as('getRecordingsCsv');
+
+    cy.get('svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.get('li.MuiMenuItem-root').contains('Export to CSV').click();
+
+    cy.wait('@getRecordingsCsv').then(({ request, response }) => {
+      expect(request.headers.accept).to.eq('text/csv');
+      expect(response.statusCode).to.eq(200);
+    });
+    cy.get('header').should('contain', 'Recordings');
+  });
 });
