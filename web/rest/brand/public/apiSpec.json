@@ -16802,6 +16802,68 @@
                 ]
             }
         },
+        "/ddis/mass_import": {
+            "post": {
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Provider"
+                ],
+                "parameters": [
+                    {
+                        "name": "csv",
+                        "in": "formData",
+                        "type": "file",
+                        "required": true,
+                        "description": "CSV file with one DDI number per row, without country prefix and without header row. Empty rows and the spaces around the number are ignored, UTF-8 BOM is accepted. New DDIs are created as inout, without route, for the given country, company and DDI provider. Existing DDIs of the brand without company or without DDI provider get the given ones; DDIs assigned to another company or DDI provider, outbound only DDIs when a DDI provider is given and DDIs of other brands are skipped without changes. Rows repeated in the file are skipped and invalid rows are reported with their line number and reason."
+                    },
+                    {
+                        "name": "country",
+                        "in": "formData",
+                        "type": "integer",
+                        "required": true,
+                        "description": "Country Id of every DDI in the file"
+                    },
+                    {
+                        "name": "company",
+                        "in": "formData",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Company Id. Empty creates the DDIs unassigned and fills nothing in the existing ones"
+                    },
+                    {
+                        "name": "ddiProvider",
+                        "in": "formData",
+                        "type": "integer",
+                        "required": false,
+                        "description": "DDI provider Id. Empty creates the DDIs without DDI provider and fills nothing in the existing ones"
+                    }
+                ],
+                "operationId": "post_ddis_mass_importDdisMassImportItem",
+                "summary": "Creates a DdisMassImport resource.",
+                "responses": {
+                    "201": {
+                        "description": "DdisMassImport resource created",
+                        "schema": {
+                            "$ref": "#/definitions/DdisMassImport"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            }
+        },
         "/ddis/unlink": {
             "post": {
                 "consumes": [
@@ -47395,6 +47457,61 @@
                 "expires": {
                     "description": "",
                     "type": "integer"
+                }
+            }
+        },
+        "DdisMassImport": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "updated": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "skipped": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "failed": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "updatedLines": {
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "skippedRows": {
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DdisMassImportRow"
+                    }
+                },
+                "errors": {
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DdisMassImportRow"
+                    }
+                }
+            }
+        },
+        "DdisMassImportRow": {
+            "type": "object",
+            "properties": {
+                "line": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "",
+                    "type": "string"
                 }
             }
         },
