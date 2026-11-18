@@ -275,3 +275,82 @@ msgstr ""
 "Una vez corregidas, importa de nuevo solo las líneas fallidas. Importar otra"
 " vez el fichero completo duplicaría los contactos creados desde filas sin "
 "id."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:106
+msgid "CSV Export"
+msgstr "Exportación CSV"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:109
+msgid ""
+"The *Export contacts* option of the Address Book list menu downloads a CSV "
+"file with every contact that matches the active filters, not only the ones "
+"shown in the current page. It is only shown to administrators with "
+"permission to read contacts."
+msgstr ""
+"La opción *Exportar contactos* del menú del listado de la Agenda descarga un "
+"fichero CSV con todos los contactos que cumplen los filtros activos, no solo "
+"los que se muestran en la página actual. Solo se muestra a los "
+"administradores con permiso para leer contactos."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:113
+msgid ""
+"The file is meant to be edited and imported again, so it has exactly the "
+"columns of the import format, in the same order, and every row has its "
+"``id``. Countries are exported as ISO codes and phones without international "
+"prefix, as they are stored. Contacts linked to a user are included like the "
+"rest."
+msgstr ""
+"El fichero está pensado para editarlo y volverlo a importar, así que tiene "
+"exactamente las columnas del formato de importación, en el mismo orden, y "
+"cada fila lleva su ``id``. Los países se exportan como códigos ISO y los "
+"teléfonos sin prefijo internacional, tal como están guardados. Los contactos "
+"vinculados a un usuario se incluyen como el resto."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:117
+msgid ""
+"It is encoded in UTF-8 with BOM and uses semicolons (;) as separator, so it "
+"opens directly in Excel keeping accents and columns."
+msgstr ""
+"Está codificado en UTF-8 con BOM y usa punto y coma (;) como separador, de "
+"modo que se abre directamente en Excel conservando los acentos y las "
+"columnas."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:120
+msgid "Export, edit and import again"
+msgstr "Exportar, editar y volver a importar"
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:122
+msgid ""
+"Export the contacts, filtering the list first if only some of them need "
+"changes."
+msgstr ""
+"Exporta los contactos, filtrando antes el listado si solo algunos necesitan "
+"cambios."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:123
+msgid ""
+"Edit the values in the exported file keeping the ``id`` column: that is what "
+"makes the import update each contact instead of creating a new one."
+msgstr ""
+"Edita los valores en el fichero exportado conservando la columna ``id``: es "
+"lo que hace que la importación actualice cada contacto en lugar de crear uno "
+"nuevo."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:125
+msgid ""
+"Import the file with the *Import contacts* option. The contacts that were "
+"not changed are updated with their own values, so they stay as they were."
+msgstr ""
+"Importa el fichero con la opción *Importar contactos*. Los contactos que no "
+"se han cambiado se actualizan con sus propios valores, así que quedan como "
+"estaban."
+
+#: ../../administration_portal/client/vpbx/addressbook.rst:128
+msgid ""
+"A phone stored without country is exported with an empty country column. "
+"When the file is imported again, that phone takes the client country, as any "
+"phone without country does."
+msgstr ""
+"Un teléfono guardado sin país se exporta con la columna de país vacía. Al "
+"importar de nuevo el fichero, ese teléfono toma el país del cliente, como "
+"cualquier teléfono sin país."

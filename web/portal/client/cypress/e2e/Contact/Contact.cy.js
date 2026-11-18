@@ -185,6 +185,30 @@ describe('Contact', () => {
     });
     cy.get('header').should('contain', 'Address Book');
   });
+
+  ///////////////////////
+  // Export
+  ///////////////////////
+  it('export Contacts', () => {
+    cy.intercept('GET', '**/api/client/contacts?_pagination=false', {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'text/csv; charset=utf-8',
+      },
+      body:
+        'id;name;lastname;email;workPhoneCountry;workPhone;mobilePhoneCountry;mobilePhone;otherPhone\n' +
+        '1;Test Contact name;Test Contact Lastname;testcontact@email.com;ES;456123;ES;111222;4001\n',
+    }).as('getContactsCsv');
+
+    cy.get('button svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.get('li.MuiMenuItem-root').contains('Export contacts').click();
+
+    cy.wait('@getContactsCsv').then(({ request, response }) => {
+      expect(request.headers.accept).to.eq('text/csv');
+      expect(response.statusCode).to.eq(200);
+    });
+    cy.get('header').should('contain', 'Address Book');
+  });
 });
 
 describe('Contact as a restricted admin without write privileges', () => {
@@ -216,5 +240,10 @@ describe('Contact as a restricted admin without write privileges', () => {
     cy.get('header').should('contain', 'Address Book');
     cy.contains('Import contacts').should('not.exist');
     cy.get('svg[data-testid="UploadFileIcon"]').should('not.exist');
+  });
+
+  it('keeps the export action', () => {
+    cy.get('button svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.get('li.MuiMenuItem-root').contains('Export contacts');
   });
 });

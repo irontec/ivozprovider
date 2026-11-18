@@ -605,6 +605,18 @@ Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
       - company
 
 Ivoz\Provider\Domain\Model\Contact\Contact:
+  # csv normalizer: Service\ContactCsvNormalizer
+  collectionOperations:
+    get:
+      normalization_context:
+        csv_delimiter: ';'
+        output_utf8_bom: true
+      swagger_context:
+        produces:
+          - 'application/json'
+          - 'application/ld+json'
+          - 'text/csv'
+    post: ~
   properties:
     workPhoneE164:
       attributes:
@@ -619,6 +631,7 @@ Ivoz\Provider\Domain\Model\Contact\Contact:
         swagger_context:
           readOnly: true
   attributes:
+    pagination_client_enabled: true
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
