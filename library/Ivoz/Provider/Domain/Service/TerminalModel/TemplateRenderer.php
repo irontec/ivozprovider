@@ -59,17 +59,79 @@ class TemplateRenderer
             $templateWrapper
         );
 
-        $command = sprintf(
-            'php -d disable_functions=%s %s %s',
-            implode(',', self::FORBIDDEN_FUNCTIONS),
+        $errorFilePath = $this->createTmpFile('');
+
+        try {
+            $content = $this->runTemplate(
+                $tmpFilePath,
+                $errorFilePath,
+                $serializedArgs
+            );
+        } finally {
+            unlink($tmpFilePath);
+            unlink($errorFilePath);
+        }
+
+        return $content;
+    }
+
+    /**
+     * Serialized args go through stdin: as a command line argument they
+     * can exceed the kernel limit for a single argument (E2BIG).
+     * Child stderr goes to a file so that it can't fill a pipe and block.
+     */
+    private function runTemplate(
+        string $tmpFilePath,
+        string $errorFilePath,
+        string $serializedArgs
+    ): string {
+        $command = [
+            'php',
+            '-d',
+            'disable_functions=' . implode(',', self::FORBIDDEN_FUNCTIONS),
+            '-d',
+            'display_errors=stderr',
+            '-d',
+            'log_errors=0',
             $tmpFilePath,
-            $serializedArgs
+        ];
+
+        $process = proc_open(
+            $command,
+            [
+                0 => ['pipe', 'r'],
+                1 => ['pipe', 'w'],
+                2 => ['file', $errorFilePath, 'w'],
+            ],
+            $pipes
         );
 
-        $content = shell_exec($command);
-        unlink($tmpFilePath);
-        if (!$content) {
-            throw new \RuntimeException('Unable to evaluate template');
+        if (!is_resource($process)) {
+            throw new \RuntimeException(
+                'Unable to evaluate template: unable to start php'
+            );
+        }
+
+        fwrite($pipes[0], $serializedArgs);
+        fclose($pipes[0]);
+
+        $content = (string) stream_get_contents($pipes[1]);
+        fclose($pipes[1]);
+
+        $exitCode = proc_close($process);
+
+        if ($exitCode !== 0 || $content === '') {
+            $errors = trim(
+                (string) file_get_contents($errorFilePath, false, null, 0, 2000)
+            );
+
+            throw new \RuntimeException(
+                sprintf(
+                    'Unable to evaluate template (exit code %d): %s',
+                    $exitCode,
+                    $errors
+                )
+            );
         }
 
         return $content;
@@ -103,7 +165,7 @@ class TemplateRenderer
                 }
             }
 
-            $wrapper = new TemplateWrapper($argv[count($argv) - 1]);
+            $wrapper = new TemplateWrapper(stream_get_contents(STDIN));
             $wrapper->run();
         ?>';
 
