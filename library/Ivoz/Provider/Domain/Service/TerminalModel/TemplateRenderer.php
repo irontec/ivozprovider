@@ -112,7 +112,9 @@ class TemplateRenderer
             );
         }
 
-        fwrite($pipes[0], $serializedArgs);
+        // The child may die before reading stdin (template syntax error):
+        // ignore the broken pipe and report its exit code and stderr instead
+        @fwrite($pipes[0], $serializedArgs);
         fclose($pipes[0]);
 
         $content = (string) stream_get_contents($pipes[1]);
@@ -121,8 +123,12 @@ class TemplateRenderer
         $exitCode = proc_close($process);
 
         if ($exitCode !== 0 || $content === '') {
+            // Fatal errors come last: keep the tail
             $errors = trim(
-                (string) file_get_contents($errorFilePath, false, null, 0, 2000)
+                substr(
+                    (string) file_get_contents($errorFilePath),
+                    -2000
+                )
             );
 
             throw new \RuntimeException(

@@ -72,4 +72,35 @@ class TemplateRendererSpec extends ObjectBehavior
             throw new \Exception('Missing child error in: ' . $message);
         }
     }
+
+    function it_reports_template_syntax_errors_even_if_args_are_not_read()
+    {
+        file_put_contents(
+            $this->templatePath,
+            '<?php if ( ?>'
+        );
+
+        $terminalModelDto = (new TerminalModelDto())
+            ->setGenericTemplate(str_repeat('a', 200000));
+
+        $this->beConstructedWith(
+            $this->templatePath,
+            ['terminalModel' => $terminalModelDto]
+        );
+
+        $message = '';
+        try {
+            $this->getWrappedObject()->execute();
+        } catch (\RuntimeException $e) {
+            $message = $e->getMessage();
+        }
+
+        if (!str_contains($message, 'Unable to evaluate template (exit code 255)')) {
+            throw new \Exception('Missing exit code in: ' . $message);
+        }
+
+        if (!str_contains($message, 'Parse error')) {
+            throw new \Exception('Missing parse error in: ' . $message);
+        }
+    }
 }
