@@ -6,6 +6,7 @@
       <index name="provider_usersCdr_companyId_startTime" columns="companyId,startTime"/>
       <index name="provider_usersCdr_userId" columns="userId"/>
       <index name="provider_usersCdr_friendId" columns="friendId"/>
+      <index name="provider_usersCdr_callid_direction" columns="callid,direction"/>
     </indexes>
     <field name="startTime" type="datetime" column="startTime">
       <options>
