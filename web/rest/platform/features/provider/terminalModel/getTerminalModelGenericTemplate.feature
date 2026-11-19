@@ -32,3 +32,14 @@ Feature: Test terminal generic template
 
       security.trust_certificates = 0
       """
+
+  @createSchema
+  Scenario: Test a failing terminal generic template
+    Given I add Authorization header
+      And "/tmp/storage_path/Provision_template/2/generic.phtml" exists with the content of "/opt/irontec/ivozprovider/web/rest/platform/features/provider/terminalModel/brokenTemplate.phtml"
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "terminal_models/2/test_generic_template"
+     Then the response status code should be 400
+      And the response should be in JSON
+      And the JSON node "detail" should contain "Unable to evaluate template (exit code 255)"
+      And the JSON node "detail" should contain "Call to undefined function undefinedProvisionFunction()"
