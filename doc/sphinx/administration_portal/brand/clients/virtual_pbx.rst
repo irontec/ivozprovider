@@ -265,3 +265,81 @@ The response summarises the import and lists every failed line:
             }
         ]
     }
+
+.. _users mass export:
+
+Users mass export
+-----------------
+
+The **Export users** action of each Virtual PBX row downloads a CSV file with the
+users of the client in the format of the :ref:`users mass import`, so it can be
+edited in a spreadsheet and imported again into the same Virtual PBX, or used to
+create the users in another one. It is only shown to administrators allowed to
+see the users import.
+
+The same operation is available through the brand API, see :ref:`users mass export api`.
+
+What is exported
+~~~~~~~~~~~~~~~~
+
+One row per user of the client, ordered by name and lastname, with the eleven
+columns of the import and a first row with their names. The terminal columns
+describe the terminal assigned to the user and the extension column its
+extension. The DDI columns are only filled when the user has its own outgoing
+DDI: users that call out with the default DDI of the client have them empty.
+
+The **terminal password column is always empty**: SIP passwords are never written
+to a file that may be shared. Importing the file keeps the current password of
+the existing terminals and generates a random one for the new ones.
+
+The file is not a copy of the client, it only contains what the import accepts.
+It does not include:
+
+- the configuration of the users: access privileges, language, voicemail,
+  portal password, etc.;
+- anything that does not belong to a user: IVRs, hunt groups, queues, extensions
+  routed to other elements and terminals without user;
+- other DDIs than the outgoing DDI of each user, nor their inbound routing.
+
+File format
+~~~~~~~~~~~
+
+Columns are separated by semicolons and the file is encoded in UTF-8 with BOM, so
+Excel opens it correctly with a double click and the import accepts it as it is.
+Values with separators or quotes are quoted, and values starting with ``=``, ``+``,
+``-`` or ``@`` are prefixed with a single quote so that spreadsheets do not run
+them as formulas; the import removes that quote.
+
+The export is refused when two users of the client share the same name and
+lastname, because the import could not tell them apart: rename one of them and
+export again.
+
+Importing into another Virtual PBX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The file can create the users of another Virtual PBX, on this platform or on a
+different one, with these limitations:
+
+- Emails are unique in the whole platform: while the original client keeps its
+  users, rows with their emails fail. Clear or change the email column.
+- A MAC or a DDI cannot belong to two clients: rows with the MAC of a terminal or
+  the DDI that are still assigned to the original client fail. Release them in the
+  original client or clear those columns.
+- Terminal models are matched by identifier and DDI providers by name within the
+  brand, so they must exist in the destination with the same values.
+- Terminals get a new random password, since passwords are not exported.
+- New users are created inactive, like any imported user.
+
+.. _users mass export api:
+
+Using the API
+~~~~~~~~~~~~~
+
+The export is exposed as ``GET /users/mass_export`` in the brand API, with the
+``company`` identifier as query parameter. The response is the CSV file:
+
+.. code-block:: console
+
+    curl -o DemoCompany-users.csv \
+        -H "Authorization: Bearer ${TOKEN}" \
+        "https://brand.example.com/api/brand/users/mass_export?company=1"

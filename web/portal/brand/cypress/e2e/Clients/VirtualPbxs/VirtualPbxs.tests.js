@@ -136,7 +136,11 @@ export const importUsers = () => {
       const labels = [...$items]
         .map((item) => item.textContent.trim())
         .filter(Boolean);
-      expect(labels.slice(-2)).to.deep.eq(['Import users', 'Delete']);
+      expect(labels.slice(-3)).to.deep.eq([
+        'Import users',
+        'Export users',
+        'Delete',
+      ]);
     });
   cy.get('li.MuiMenuItem-root').contains('Import users').click();
   cy.contains('Download template');
@@ -164,4 +168,64 @@ export const importUsers = () => {
   cy.contains(
     'Line 2: Email bob@democompany.com belongs to a user of another client'
   );
+};
+
+export const exportUsers = () => {
+  cy.intercept(
+    { method: 'GET', url: '**/api/brand/users/mass_export*', middleware: true },
+    (req) => {
+      req.on('response', (res) => {
+        res.setDelay(1500);
+      });
+    }
+  );
+
+  cy.intercept('GET', '**/api/brand/users/mass_export?company=1', {
+    statusCode: 200,
+    headers: {
+      'Content-Type': 'text/csv; charset=utf-8',
+    },
+    body:
+      'name;lastname;email;"terminal name";"terminal password";"terminal model";mac;extension;"ddi country";"ddi number";"ddi provider"\n' +
+      'Alice;Allison;alice@democompany.com;alice;;Generic;;;ES;121;DDIProviderName\n',
+  }).as('usersMassExport');
+
+  cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
+  cy.get('li.MuiMenuItem-root').contains('Export users').click();
+  cy.contains('Terminal passwords are not exported');
+
+  cy.contains('button', 'Export').click();
+  cy.contains('button', 'Export').should('be.disabled');
+  cy.contains('Exporting, please wait');
+
+  cy.wait('@usersMassExport').then(({ request, response }) => {
+    expect(request.headers.accept).to.eq('text/csv');
+    expect(response.statusCode).to.eq(200);
+  });
+
+  cy.contains('Exporting, please wait').should('not.exist');
+  cy.get('header').should('contain', 'Virtual PBXs');
+};
+
+export const exportUsersRefused = () => {
+  cy.intercept('GET', '**/api/brand/users/mass_export?company=1', {
+    statusCode: 400,
+    headers: {
+      'Content-Type': 'application/problem+json; charset=utf-8',
+    },
+    body: {
+      type: 'https://tools.ietf.org/html/rfc2616#section-10',
+      title: 'An error occurred',
+      detail: 'Duplicated full name found: Alice Allison',
+    },
+  }).as('usersMassExport');
+
+  cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
+  cy.get('li.MuiMenuItem-root').contains('Export users').click();
+  cy.contains('button', 'Export').click();
+
+  cy.wait('@usersMassExport').its('response.statusCode').should('eq', 400);
+
+  cy.contains('Exporting, please wait').should('not.exist');
+  cy.contains('button', 'Export').should('be.enabled');
 };
