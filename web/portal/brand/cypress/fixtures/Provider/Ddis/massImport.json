@@ -1,0 +1,35 @@
+{
+  "request": {
+    "company": 1,
+    "country": 3,
+    "ddiProvider": 1
+  },
+  "response": {
+    "statusCode": 201,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body": {
+      "created": 2,
+      "updated": 1,
+      "skipped": 1,
+      "failed": 1,
+      "updatedLines": [
+        3
+      ],
+      "skippedRows": [
+        {
+          "line": 4,
+          "message": "DDI already assigned to another client"
+        }
+      ],
+      "errors": [
+        {
+          "line": 5,
+          "message": "Value \"+34abc\" does not match expression."
+        }
+      ]
+    }
+  },
+  "matchingRules": {}
+}

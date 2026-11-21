@@ -12,8 +12,9 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
@@ -23,10 +24,10 @@ msgstr "DDIs"
 
 #: ../../administration_portal/brand/views/ddis.rst:7
 msgid ""
-"This section lists **all configured DDIs** in all the clients of the "
-"brand."
-msgstr "Esta sección enumera **todos los DDIs configurados** en todos los clientes de la "
-"marca."
+"This section lists **all configured DDIs** in all the clients of the brand."
+msgstr ""
+"Esta sección enumera **todos los DDIs configurados** en todos los clientes "
+"de la marca."
 
 #: ../../administration_portal/brand/views/ddis.rst:9
 msgid "It makes easy to answer to these questions:"
@@ -48,3 +49,251 @@ msgstr "¿Cuántos DDIs del país X tiene el cliente Y?"
 msgid "Etc."
 msgstr "Etc."
 
+#: ../../administration_portal/brand/views/ddis.rst:21
+msgid "CSV Import"
+msgstr "Importación CSV"
+
+#: ../../administration_portal/brand/views/ddis.rst:23
+msgid ""
+"The *Import DDIs* option of the list menu creates DDIs in bulk from a CSV "
+"file and completes the existing ones. The dialog asks for:"
+msgstr ""
+"La opción *Importar DDIs* del menú del listado crea DDIs de forma masiva "
+"desde un fichero CSV y completa los existentes. El diálogo pide:"
+
+#: ../../administration_portal/brand/views/ddis.rst:26
+msgid "**CSV file**: required, with the format described below."
+msgstr "**Fichero CSV**: obligatorio, con el formato descrito más abajo."
+
+#: ../../administration_portal/brand/views/ddis.rst:28
+msgid "**Client**: optional. Empty creates the DDIs unassigned to any client."
+msgstr ""
+"**Cliente**: opcional. Vacío crea los DDIs sin asignar a ningún cliente."
+
+#: ../../administration_portal/brand/views/ddis.rst:30
+msgid ""
+"**Country**: required, with or without client. Selecting a client preselects "
+"its country, but it can be changed: a Spanish client can import DDIs of "
+"another country."
+msgstr ""
+"**País**: obligatorio, haya cliente o no. Al seleccionar un cliente se "
+"preselecciona su país, pero se puede cambiar: un cliente de España puede "
+"importar DDIs de otro país."
+
+#: ../../administration_portal/brand/views/ddis.rst:33
+msgid ""
+"**DDI provider**: optional, one of the DDI providers of the brand. Empty "
+"creates the DDIs without DDI provider."
+msgstr ""
+"**Proveedor de DDI**: opcional, uno de los proveedores de DDI de la marca. "
+"Vacío crea los DDIs sin proveedor de DDI."
+
+#: ../../administration_portal/brand/views/ddis.rst:36
+msgid ""
+"The client, the country and the DDI provider apply to every row of the file. "
+"To import DDIs of several countries or DDI providers, use one file per "
+"combination."
+msgstr ""
+"El cliente, el país y el proveedor de DDI se aplican a todas las filas del "
+"fichero. Para importar DDIs de varios países o proveedores de DDI, use un "
+"fichero por combinación."
+
+#: ../../administration_portal/brand/views/ddis.rst:39
+msgid ""
+"The file has a single column without header row: the DDI number without "
+"country prefix. Empty rows and the spaces around the number are ignored, and "
+"files saved by Excel (UTF-8 BOM, Windows line endings) are accepted::"
+msgstr ""
+"El fichero tiene una sola columna sin fila de cabecera: el número del DDI "
+"sin prefijo de país. Las filas vacías y los espacios alrededor del número se "
+"ignoran, y se aceptan los ficheros guardados desde Excel (BOM UTF-8, finales "
+"de línea de Windows)::"
+
+#: ../../administration_portal/brand/views/ddis.rst:47
+msgid ""
+"A DDI exists when its number and country match. The import follows these "
+"rules:"
+msgstr ""
+"Un DDI existe cuando coinciden su número y su país. La importación sigue "
+"estas reglas:"
+
+#: ../../administration_portal/brand/views/ddis.rst:49
+msgid ""
+"A **new DDI** is created with the selected client, country and DDI provider. "
+"The other fields keep their default value: type *inout*, without description "
+"nor route. It counts as *created*."
+msgstr ""
+"Un **DDI nuevo** se crea con el cliente, el país y el proveedor de DDI "
+"seleccionados. El resto de campos mantienen su valor por defecto: tipo "
+"*inout*, sin descripción ni ruta. Cuenta como *creado*."
+
+#: ../../administration_portal/brand/views/ddis.rst:52
+msgid ""
+"A DDI that **exists in another brand** is skipped without changes and counts "
+"as *skipped*. The result only says that the DDI already exists, not who owns "
+"it."
+msgstr ""
+"Un DDI que **existe en otra marca** se omite sin cambios y cuenta como "
+"*omitido*. El resultado solo indica que el DDI ya existe, no a quién "
+"pertenece."
+
+#: ../../administration_portal/brand/views/ddis.rst:55
+msgid ""
+"A DDI that **exists in this brand** can only receive the selected client and "
+"DDI provider, and only when it has none. Nothing else changes, and a DDI is "
+"never moved from one client or DDI provider to another:"
+msgstr ""
+"Un DDI que **existe en esta marca** solo puede recibir el cliente y el "
+"proveedor de DDI seleccionados, y solo si no los tiene. No cambia nada más, "
+"y un DDI nunca se mueve de un cliente o de un proveedor de DDI a otro:"
+
+#: ../../administration_portal/brand/views/ddis.rst:59
+msgid ""
+"If it belongs to another client, or to another DDI provider, nothing is "
+"changed, not even the other field. It counts as *skipped* with a generic "
+"reason that does not tell which one."
+msgstr ""
+"Si pertenece a otro cliente, o a otro proveedor de DDI, no se cambia nada, "
+"tampoco el otro campo. Cuenta como *omitido* con un motivo genérico que no "
+"indica cuál."
+
+#: ../../administration_portal/brand/views/ddis.rst:62
+msgid ""
+"If it is an outbound only DDI and a DDI provider was selected, it is skipped "
+"too: outbound only DDIs cannot have a DDI provider."
+msgstr ""
+"Si es un DDI de solo salida y se ha seleccionado un proveedor de DDI, "
+"también se omite: los DDIs de solo salida no pueden tener proveedor de DDI."
+
+#: ../../administration_portal/brand/views/ddis.rst:65
+msgid ""
+"Otherwise, the selected fields it has empty are filled and it counts as "
+"*updated*. A field that was not selected, or that already has the selected "
+"value, is left as it is."
+msgstr ""
+"En otro caso, se rellenan los campos seleccionados que tenga vacíos y "
+"cuenta como *actualizado*. Un campo que no se ha seleccionado, o que ya "
+"tiene el valor seleccionado, se deja como está."
+
+#: ../../administration_portal/brand/views/ddis.rst:68
+msgid "If there is nothing to fill, it counts as *skipped*."
+msgstr "Si no hay nada que rellenar, cuenta como *omitido*."
+
+#: ../../administration_portal/brand/views/ddis.rst:70
+msgid ""
+"A number **repeated** in the file is processed once; its other rows are "
+"skipped."
+msgstr ""
+"Un número **repetido** en el fichero se procesa una vez; el resto de sus "
+"filas se omiten."
+
+#: ../../administration_portal/brand/views/ddis.rst:72
+msgid ""
+"A row that is **not a valid number**, for example with a country prefix like "
+"``+34``, is reported as *failed* with its line number and does not stop the "
+"import of the other rows."
+msgstr ""
+"Una fila que **no es un número válido**, por ejemplo con un prefijo de país "
+"como ``+34``, se informa como *fallada* con su número de línea y no impide "
+"importar el resto de filas."
+
+#: ../../administration_portal/brand/views/ddis.rst:75
+msgid ""
+"With client A and DDI provider P selected in the dialog, an existing DDI of "
+"the brand ends up as follows:"
+msgstr ""
+"Con el cliente A y el proveedor de DDI P seleccionados en el diálogo, un "
+"DDI existente de la marca queda así:"
+
+#: ../../administration_portal/brand/views/ddis.rst:79
+msgid "Existing DDI"
+msgstr "DDI existente"
+
+#: ../../administration_portal/brand/views/ddis.rst:79
+msgid "Result"
+msgstr "Resultado"
+
+#: ../../administration_portal/brand/views/ddis.rst:81
+msgid "Without client nor provider"
+msgstr "Sin cliente ni proveedor"
+
+#: ../../administration_portal/brand/views/ddis.rst:81
+msgid "Updated: client A and DDI provider P"
+msgstr "Actualizado: cliente A y proveedor de DDI P"
+
+#: ../../administration_portal/brand/views/ddis.rst:82
+msgid "Client A, without provider"
+msgstr "Cliente A, sin proveedor"
+
+#: ../../administration_portal/brand/views/ddis.rst:82
+msgid "Updated: DDI provider P"
+msgstr "Actualizado: proveedor de DDI P"
+
+#: ../../administration_portal/brand/views/ddis.rst:83
+msgid "Without client, provider P"
+msgstr "Sin cliente, proveedor P"
+
+#: ../../administration_portal/brand/views/ddis.rst:83
+msgid "Updated: client A"
+msgstr "Actualizado: cliente A"
+
+#: ../../administration_portal/brand/views/ddis.rst:84
+msgid "Client A, provider P"
+msgstr "Cliente A, proveedor P"
+
+#: ../../administration_portal/brand/views/ddis.rst:84
+msgid "Skipped: nothing to fill"
+msgstr "Omitido: nada que rellenar"
+
+#: ../../administration_portal/brand/views/ddis.rst:85
+msgid "Client B, without provider"
+msgstr "Cliente B, sin proveedor"
+
+#: ../../administration_portal/brand/views/ddis.rst:85
+msgid "Skipped: belongs to another client, nothing is assigned"
+msgstr "Omitido: pertenece a otro cliente, no se asigna nada"
+
+#: ../../administration_portal/brand/views/ddis.rst:86
+msgid "Without client, provider Q"
+msgstr "Sin cliente, proveedor Q"
+
+#: ../../administration_portal/brand/views/ddis.rst:86
+msgid "Skipped: belongs to another DDI provider, nothing is assigned"
+msgstr "Omitido: pertenece a otro proveedor de DDI, no se asigna nada"
+
+#: ../../administration_portal/brand/views/ddis.rst:87
+msgid "Outbound only"
+msgstr "Solo salida"
+
+#: ../../administration_portal/brand/views/ddis.rst:87
+msgid "Skipped: outbound only DDIs cannot have a DDI provider"
+msgstr "Omitido: los DDIs de solo salida no pueden tener proveedor de DDI"
+
+#: ../../administration_portal/brand/views/ddis.rst:88
+msgid "Of another brand"
+msgstr "De otra marca"
+
+#: ../../administration_portal/brand/views/ddis.rst:88
+msgid "Skipped: already exists"
+msgstr "Omitido: ya existe"
+
+#: ../../administration_portal/brand/views/ddis.rst:91
+msgid ""
+"At the end, the dialog shows how many DDIs were created, updated, skipped "
+"and failed, the lines that were updated, and the line and reason of every "
+"skipped or failed row. Importing the same file again is safe: the second "
+"time nothing is created nor updated."
+msgstr ""
+"Al terminar, el diálogo muestra cuántos DDIs se han creado, actualizado, "
+"omitido y fallado, las líneas actualizadas, y la línea y el motivo de cada "
+"fila omitida o fallada. Reimportar el mismo fichero es seguro: la segunda "
+"vez no se crea ni se actualiza nada."
+
+#: ../../administration_portal/brand/views/ddis.rst:95
+msgid ""
+"Imported DDIs have no route, and no DDI provider unless one is selected. "
+"Edit them afterwards to assign the destination of their incoming calls."
+msgstr ""
+"Los DDIs importados no tienen ruta, ni proveedor de DDI salvo que se "
+"seleccione uno. Edítelos después para asignar el destino de sus llamadas "
+"entrantes."

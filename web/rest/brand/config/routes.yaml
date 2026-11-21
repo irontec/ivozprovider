@@ -78,6 +78,15 @@ post_users_mass_import:
     _api_item_operation_name: 'post_users_mass_import'
     _api_receive: false
 
+post_ddis_mass_import:
+  path: '/ddis/mass_import'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\PostDdisMassImportAction
+    _api_resource_class: 'Model\DdisMassImport'
+    _api_item_operation_name: 'post_ddis_mass_import'
+    _api_receive: false
+
 put_billable_call_rate_by_callid:
   path: '/billable_calls/{callid}/rate'
   methods: ['PUT']

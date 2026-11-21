@@ -294,6 +294,9 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: {
                 ...entities.Ddi,
+                customActions: {
+                  UnlinkDdi: entities.Ddi.customActions.UnlinkDdi,
+                },
               },
               filterBy: 'ddiProvider',
               children: [
