@@ -16,6 +16,11 @@ class JwtRefreshToken extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $isRefreshTokenBundleInstalled = class_exists(RefreshToken::class);
+        if (!$isRefreshTokenBundleInstalled) {
+            return;
+        }
+
         $tokens = [
             'alice-refresh-token' => 'alice@democompany.com',
             'bob-refresh-token' => 'bob@democompany.com',
