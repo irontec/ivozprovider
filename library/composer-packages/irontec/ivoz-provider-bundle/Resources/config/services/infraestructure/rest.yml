@@ -29,6 +29,8 @@ services:
     tags:
       - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
 
+  Ivoz\Provider\Infrastructure\Api\Security\User\UserEnabledChecker: ~
+
 when@test:
   services:
     _defaults:

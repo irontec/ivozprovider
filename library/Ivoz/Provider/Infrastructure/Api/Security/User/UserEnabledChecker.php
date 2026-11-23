@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\User;
+namespace Ivoz\Provider\Infrastructure\Api\Security\User;
 
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAccountStatusException;
