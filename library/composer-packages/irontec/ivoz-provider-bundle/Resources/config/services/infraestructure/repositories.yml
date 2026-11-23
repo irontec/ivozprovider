@@ -23,3 +23,8 @@ services:
   Ivoz\Core\Infrastructure\Persistence\Doctrine\:
     resource: '/opt/irontec/ivozprovider/library/vendor/irontec/ivoz-core/Infrastructure/Persistence/Doctrine/*Repository.php'
     tags: [{ name: 'domain.repository'}]
+
+  Ivoz\Provider\Infrastructure\Persistence\Dbal\RefreshTokenDbalRevoker: ~
+
+  Ivoz\Provider\Domain\Service\User\RefreshTokenRevokerInterface:
+    alias: Ivoz\Provider\Infrastructure\Persistence\Dbal\RefreshTokenDbalRevoker
