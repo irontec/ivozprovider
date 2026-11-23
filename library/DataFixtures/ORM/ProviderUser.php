@@ -97,6 +97,29 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
+        $item4 = $this->createEntityInstance(User::class);
+        (function () use ($fixture) {
+            $this->setName("Dana");
+            $this->setLastname("Disabled");
+            $this->setEmail("dana@democompany.com");
+            $this->setPass("changeme");
+            $this->setDoNotDisturb(false);
+            $this->setIsBoss(false);
+            $this->setMaxCalls(1);
+            $this->setGsQRCode(false);
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
+            $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+            $this->setUseDefaultLocation(false);
+        })->call($item4);
+
+        $this->addReference('_reference_ProviderUser4', $item4);
+        $this->sanitizeEntityValues($item4);
+        (function () {
+            $this->setActive(false);
+        })->call($item4);
+        $manager->persist($item4);
+
         $manager->flush();
     }
 

@@ -71,6 +71,15 @@ Feature: Retrieve users detailed list
                 }
             },
             {
+                "name": "Dana",
+                "lastname": "Disabled",
+                "email": "dana@democompany.com",
+                "id": 4,
+                "terminal": null,
+                "extension": null,
+                "location": null
+            },
+            {
                 "name": "Joe",
                 "lastname": "Doe",
                 "email": "joe@democompany.com",

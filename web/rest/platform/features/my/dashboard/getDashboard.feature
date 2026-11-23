@@ -42,7 +42,7 @@ Feature: Retrieve dashboard
           ],
           "brandNumber": 3,
           "clientNumber": 7,
-          "userNumber": 3,
+          "userNumber": 4,
           "productName": "Platform text"
       }
       """
