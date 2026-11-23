@@ -18,7 +18,31 @@ class RevokeRefreshTokensTest extends KernelTestCase
     /**
      * @test
      */
-    public function disabling_a_user_revokes_only_its_refresh_tokens()
+    public function test_runner()
+    {
+        $this->it_keeps_refresh_tokens_when_other_fields_change();
+        $this->it_keeps_refresh_tokens_when_user_gets_enabled();
+        $this->it_revokes_refresh_tokens_when_user_gets_disabled();
+        $this->it_revokes_refresh_tokens_when_password_changes();
+        $this->it_revokes_previous_email_refresh_tokens_when_email_changes();
+        $this->it_revokes_refresh_tokens_when_user_is_removed();
+    }
+
+    private function it_keeps_refresh_tokens_when_other_fields_change()
+    {
+        $this->updateUser(self::ALICE_EMAIL, fn (UserDto $dto) => $dto->setName('Alicia'));
+
+        $this->assertSame(1, $this->countRefreshTokens(self::ALICE_EMAIL));
+    }
+
+    private function it_keeps_refresh_tokens_when_user_gets_enabled()
+    {
+        $this->updateUser(self::DANA_EMAIL, fn (UserDto $dto) => $dto->setActive(true));
+
+        $this->assertSame(1, $this->countRefreshTokens(self::DANA_EMAIL));
+    }
+
+    private function it_revokes_refresh_tokens_when_user_gets_disabled()
     {
         $this->updateUser(self::ALICE_EMAIL, fn (UserDto $dto) => $dto->setActive(false));
 
@@ -26,58 +50,33 @@ class RevokeRefreshTokensTest extends KernelTestCase
         $this->assertSame(1, $this->countRefreshTokens(self::BOB_EMAIL));
     }
 
-    /**
-     * @test
-     */
-    public function changing_the_password_revokes_only_its_refresh_tokens()
+    private function it_revokes_refresh_tokens_when_password_changes()
     {
-        $this->updateUser(self::ALICE_EMAIL, fn (UserDto $dto) => $dto->setPass('N3wPassw0rd'));
+        $this->updateUser(self::DANA_EMAIL, fn (UserDto $dto) => $dto->setPass('N3wPassw0rd'));
 
-        $this->assertSame(0, $this->countRefreshTokens(self::ALICE_EMAIL));
+        $this->assertSame(0, $this->countRefreshTokens(self::DANA_EMAIL));
         $this->assertSame(1, $this->countRefreshTokens(self::BOB_EMAIL));
     }
 
-    /**
-     * @test
-     */
-    public function changing_the_email_revokes_previous_email_refresh_tokens()
+    private function it_revokes_previous_email_refresh_tokens_when_email_changes()
     {
+        $this->addRefreshToken('alice-second-refresh-token', self::ALICE_EMAIL);
+
         $this->updateUser(self::ALICE_EMAIL, fn (UserDto $dto) => $dto->setEmail('alice.new@democompany.com'));
 
         $this->assertSame(0, $this->countRefreshTokens(self::ALICE_EMAIL));
         $this->assertSame(1, $this->countRefreshTokens(self::BOB_EMAIL));
     }
 
-    /**
-     * @test
-     */
-    public function enabling_a_user_keeps_refresh_tokens()
+    private function it_revokes_refresh_tokens_when_user_is_removed()
     {
-        $this->updateUser(self::DANA_EMAIL, fn (UserDto $dto) => $dto->setActive(true));
+        $this->addRefreshToken('dana-second-refresh-token', self::DANA_EMAIL);
 
-        $this->assertSame(1, $this->countRefreshTokens(self::DANA_EMAIL));
-    }
-
-    /**
-     * @test
-     */
-    public function changing_other_fields_keeps_refresh_tokens()
-    {
-        $this->updateUser(self::ALICE_EMAIL, fn (UserDto $dto) => $dto->setName('Alicia'));
-
-        $this->assertSame(1, $this->countRefreshTokens(self::ALICE_EMAIL));
-    }
-
-    /**
-     * @test
-     */
-    public function removing_a_user_revokes_only_its_refresh_tokens()
-    {
         $this->entityTools->remove(
-            $this->findUser(self::ALICE_EMAIL)
+            $this->findUser(self::DANA_EMAIL)
         );
 
-        $this->assertSame(0, $this->countRefreshTokens(self::ALICE_EMAIL));
+        $this->assertSame(0, $this->countRefreshTokens(self::DANA_EMAIL));
         $this->assertSame(1, $this->countRefreshTokens(self::BOB_EMAIL));
     }
 
@@ -96,6 +95,15 @@ class RevokeRefreshTokensTest extends KernelTestCase
     {
         return $this->em->getRepository(User::class)->findOneBy([
             'email' => $email
+        ]);
+    }
+
+    private function addRefreshToken(string $refreshToken, string $username): void
+    {
+        $this->em->getConnection()->insert('refresh_tokens', [
+            'refresh_token' => $refreshToken,
+            'username' => $username,
+            'valid' => '2099-01-01 00:00:00',
         ]);
     }
 
