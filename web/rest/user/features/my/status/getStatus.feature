@@ -36,3 +36,10 @@ Feature: Retrieve status
           ]
       }
       """
+
+  @createSchema @userApiContext
+  Scenario: A disabled user cannot retrieve its status
+    Given I add User Authorization header for "dana@democompany.com"
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "my/status"
+     Then the response status code should be 401
