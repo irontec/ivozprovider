@@ -82,6 +82,16 @@ class CsvRowsParserSpec extends ObjectBehavior
             ]);
     }
 
+    function it_removes_the_quote_that_escapes_formulas_in_exported_files()
+    {
+        $this
+            ->parse("'=Name,'-Lastname,'+mail@irontec.com,'@term,,,,,,,\n'Brien,O'Neil,,,,,,,,,")
+            ->shouldReturn([
+                0 => ['=Name', '-Lastname', '+mail@irontec.com', '@term', '', '', '', '', '', '', ''],
+                1 => ["'Brien", "O'Neil", '', '', '', '', '', '', '', '', ''],
+            ]);
+    }
+
     function it_rejects_empty_files()
     {
         $this

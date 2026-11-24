@@ -1,6 +1,7 @@
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 
+import ExportUsers from '../Company/Action/ExportUsers';
 import ImportUsers from '../Company/Action/ImportUsers';
 import Company from '../Company/Company';
 
@@ -15,6 +16,9 @@ const VirtualPbx = {
     ...Company.customActions,
     ImportUsers: {
       action: ImportUsers,
+    },
+    ExportUsers: {
+      action: ExportUsers,
     },
   },
 };

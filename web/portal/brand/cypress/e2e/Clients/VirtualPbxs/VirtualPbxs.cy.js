@@ -3,6 +3,8 @@ import CompaniesCollection from '../../../fixtures/Provider/Companies/getCollect
 import { assertNoUsersImportAction } from '../utils/UsersImportAction';
 import {
   deleteCompany,
+  exportUsers,
+  exportUsersRefused,
   importUsers,
   postCompany,
   postWebPortal,
@@ -57,6 +59,15 @@ describe('in Companies', () => {
   // Users mass import
   ///////////////////////
   it('import users from a CSV file', importUsers);
+
+  ///////////////////////
+  // Users mass export
+  ///////////////////////
+  it('export users to a CSV file', exportUsers);
+  it(
+    'lets the admin retry when the users export is refused',
+    exportUsersRefused
+  );
 });
 
 describe('in Companies as a restricted admin without import privileges', () => {
@@ -94,4 +105,9 @@ describe('in Companies as a restricted admin without import privileges', () => {
   });
 
   it('hides the users import action', assertNoUsersImportAction);
+
+  it('keeps the users export action for admins allowed to read the import', () => {
+    cy.get('td button svg[data-testid="MoreHorizIcon"]').first().click();
+    cy.get('li.MuiMenuItem-root').contains('Export users');
+  });
 });

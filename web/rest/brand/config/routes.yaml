@@ -78,6 +78,14 @@ post_users_mass_import:
     _api_item_operation_name: 'post_users_mass_import'
     _api_receive: false
 
+get_users_mass_export:
+  path: '/users/mass_export'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\GetUsersMassExportAction
+    _api_resource_class: 'Model\UsersMassImport'
+    _api_item_operation_name: 'get_users_mass_export'
+    _api_receive: false
 put_billable_call_rate_by_callid:
   path: '/billable_calls/{callid}/rate'
   methods: ['PUT']

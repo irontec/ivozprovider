@@ -6,6 +6,20 @@ namespace Ivoz\Provider\Domain\Service\User;
 
 class CsvStaticValidator
 {
+    public const COLUMNS = [
+        'name',
+        'lastname',
+        'email',
+        'terminal name',
+        'terminal password',
+        'terminal model',
+        'mac',
+        'extension',
+        'ddi country',
+        'ddi number',
+        'ddi provider',
+    ];
+
     /**
      * @param array<int, string[]> $rows
      * @throws \DomainException
@@ -15,9 +29,10 @@ class CsvStaticValidator
     public function execute(array $rows)
     {
         foreach ($rows as $k => $fields) {
-            if (count($fields) !== 11) {
+            if (count($fields) !== count(self::COLUMNS)) {
                 $errorMsg = sprintf(
-                    '11 column were expected but %d found at line %d',
+                    '%d column were expected but %d found at line %d',
+                    count(self::COLUMNS),
                     count($fields),
                     $k + 1
                 );

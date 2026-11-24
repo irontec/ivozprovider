@@ -282,6 +282,20 @@ class UserDoctrineRepository extends DoctrineRepository implements UserRepositor
     /**
      * @return UserInterface[]
      */
+    public function findByCompany(int $companyId): array
+    {
+        /** @var UserInterface[] $users */
+        $users = $this->findBy(
+            ['company' => $companyId],
+            ['name' => 'ASC', 'lastname' => 'ASC']
+        );
+
+        return $users;
+    }
+
+    /**
+     * @return UserInterface[]
+     */
     public function findByCompanyUsingDefaultLocation(int $companyId): array
     {
         return $this->findBy([

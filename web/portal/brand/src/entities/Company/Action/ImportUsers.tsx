@@ -14,7 +14,7 @@ import { useStoreActions, useStoreState } from 'store';
 import FileUpload from '../../../components/FileUpload';
 
 const MASS_IMPORT_PATH = '/users/mass_import';
-const MASS_IMPORT_ACL = '_UsersMassImport';
+export const MASS_IMPORT_ACL = '_UsersMassImport';
 
 const TEMPLATE_HEADER =
   'name,lastname,email,terminal name,terminal password,terminal model,mac,extension,ddi country,ddi number,ddi provider';

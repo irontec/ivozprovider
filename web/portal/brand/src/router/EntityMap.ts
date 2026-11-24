@@ -102,6 +102,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               },
             },
             entities.VirtualPbx.customActions.ImportUsers,
+            entities.VirtualPbx.customActions.ExportUsers,
           ],
         },
         {

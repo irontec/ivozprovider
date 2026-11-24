@@ -151,6 +151,31 @@ Model\UsersMassImport:
               empty columns of an existing user are left untouched; an empty terminal password keeps the
               current one or generates a random one. Valid rows are imported and failed rows are reported
               with their line number and reason.
+    get_users_mass_export:
+      access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+      method: 'GET'
+      path: '/users/mass_export'
+      route_name: 'get_users_mass_export'
+      swagger_context:
+        produces:
+          - 'text/csv'
+        tags:
+          - Provider
+        parameters:
+          - name: company
+            in: query
+            type: integer
+            required: true
+            description: 'Company Id of a vPBX client'
+        responses:
+          200:
+            description: >-
+              CSV file accepted by the users mass import, with its header row and one row per user of the
+              client: name, lastname, email, terminal name, terminal password, terminal model, mac,
+              extension, ddi country, ddi number, ddi provider. UTF-8 with BOM and semicolon separated.
+              Terminal passwords are never exported, so importing the file keeps the current ones.
+          400:
+            description: "The client is not a vPBX or its users could not be imported again (duplicated names)"
 
 Model\RegistrationSummary:
   itemOperations:
