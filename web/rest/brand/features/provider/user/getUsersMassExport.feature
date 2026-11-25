@@ -40,6 +40,7 @@ Feature: Users mass export
       ﻿name;lastname;email;"terminal name";"terminal password";"terminal model";mac;extension;"ddi country";"ddi number";"ddi provider"
       Alice;Allison;alice@democompany.com;alice;;Generic;;;ES;121;DDIProviderName
       Bob;Bobson;bob@democompany.com;bob;;Generic;;;;;
+      Dana;Disabled;dana@democompany.com;;;;;;;;
       Joe;Doe;joe@democompany.com;testTerminal4;;YealinkT21P_E2;0011223344bb;102;;;
       """
 
@@ -133,7 +134,7 @@ Content-Type: text/csv
               "lastname": "-Dash",
               "email": "dash@import.test",
               "active": false,
-              "id": 5,
+              "id": 6,
               "company": 2,
               "terminal": null,
               "extension": 9,
@@ -146,7 +147,7 @@ Content-Type: text/csv
               "lastname": "O'Brien; Jr",
               "email": "pepe@import.test",
               "active": false,
-              "id": 4,
+              "id": 5,
               "company": 2,
               "terminal": 5,
               "extension": 8,
@@ -200,7 +201,7 @@ Content-Type: text/csv
               "lastname": "-Dash",
               "email": "dash@import.test",
               "active": false,
-              "id": 5,
+              "id": 6,
               "company": 2,
               "terminal": null,
               "extension": 9,
@@ -213,7 +214,7 @@ Content-Type: text/csv
               "lastname": "O'Brien; Jr",
               "email": "pepe.edited@import.test",
               "active": false,
-              "id": 4,
+              "id": 5,
               "company": 2,
               "terminal": 5,
               "extension": 8,

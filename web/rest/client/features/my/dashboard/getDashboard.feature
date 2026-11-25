@@ -21,6 +21,12 @@ Feature: Retrieve dashboard
           "latestBillableCalls": [],
           "latestUsers": [
               {
+                  "name": "Dana",
+                  "lastName": "Disabled",
+                  "extension": "",
+                  "outgoingDdi": ""
+              },
+              {
                   "name": "Joe",
                   "lastName": "Doe",
                   "extension": "102",
@@ -41,7 +47,7 @@ Feature: Retrieve dashboard
           ],
           "latestResidentialDevices": [],
           "latestRetailAccounts": [],
-          "userNum": 3,
+          "userNum": 4,
           "extensionNum": 7,
           "ddiNum": 3,
           "residentialDeviceNum": null,

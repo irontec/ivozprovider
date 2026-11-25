@@ -5,16 +5,24 @@ namespace Service\Behat;
 use Ivoz\Api\Behat\Context\FeatureContext as BaseFeatureContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\MinkExtension\Context\RawMinkContext;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ObjectRepository;
+use Ivoz\Provider\Domain\Model\User\User;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 class FeatureContext extends BaseFeatureContext
 {
     private string $storagePath;
 
+    private ObjectRepository $userRepository;
+
     public function __construct(
         KernelInterface $kernel
     ) {
         $container = $kernel->getContainer();
+        /** @var ManagerRegistry $doctrine */
+        $doctrine = $container->get('doctrine');
+        $this->userRepository = $doctrine->getRepository(User::class);
         /** @var string $storagePath */
         $storagePath = $container->getParameter('local_storage_path');
         $this->storagePath = $storagePath;
@@ -66,6 +74,28 @@ class FeatureContext extends BaseFeatureContext
     public function setUserAuthorizationHeader()
     {
         return $this->setAuthorizationHeader('alice@democompany.com', 'user_login');
+    }
+
+    /**
+     * @Given I add User Authorization header for :email
+     */
+    public function setUserAuthorizationHeaderFor(string $email): void
+    {
+        /** @var User $user */
+        $user = $this->userRepository->findOneBy([
+            'email' => $email
+        ]);
+        $token = $this->jwtTokenManager->create($user);
+
+        $this->request->setHttpHeader('Authorization', 'Bearer ' . $token);
+    }
+
+    /**
+     * @Given I exchange User Authorization header for :email
+     */
+    public function setUserAuthorizationHeaderByExchangeFor(string $email): void
+    {
+        $this->exchangeAuthorizationHeader('test_company_admin', $email);
     }
 
     /**

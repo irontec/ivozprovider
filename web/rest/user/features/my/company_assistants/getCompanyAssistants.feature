@@ -13,5 +13,15 @@ Feature: Retrieve company assistants
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
       """
-      []
+      [
+          {
+              "name": "Dana",
+              "lastname": "Disabled",
+              "email": "dana@democompany.com",
+              "active": false,
+              "id": 4,
+              "extension": null,
+              "status": []
+          }
+      ]
       """

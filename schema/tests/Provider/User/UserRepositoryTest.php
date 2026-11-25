@@ -194,7 +194,7 @@ class UserRepositoryTest extends KernelTestCase
         $count = $repository->count([]);
 
         $this->assertEquals(
-            3,
+            4,
             $count
         );
     }

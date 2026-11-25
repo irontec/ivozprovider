@@ -70,6 +70,7 @@ security:
             pattern:   ^/.+
             stateless: true
             provider: any
+            user_checker: Ivoz\Provider\Infrastructure\Api\Security\User\UserEnabledChecker
             guard:
                 authenticators:
                     - Ivoz\Provider\Infrastructure\Api\Jwt\AdminTokenAuthenticator

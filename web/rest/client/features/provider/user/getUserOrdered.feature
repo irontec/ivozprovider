@@ -10,10 +10,11 @@ Feature: Order users
       And I send a "GET" request to "users?_order[terminal]=ASC"
      Then the response status code should be 200
       And the response should be in JSON
-      And the JSON node "root" should have 3 elements
+      And the JSON node "root" should have 4 elements
       And the JSON node "root[0].id" should be equal to "1"
       And the JSON node "root[1].id" should be equal to "2"
       And the JSON node "root[2].id" should be equal to "3"
+      And the JSON node "root[3].id" should be equal to "4"
 
   Scenario: Order the users json list by terminal in reverse order
     Given I add Company Authorization header
@@ -21,10 +22,11 @@ Feature: Order users
       And I send a "GET" request to "users?_order[terminal]=DESC"
      Then the response status code should be 200
       And the response should be in JSON
-      And the JSON node "root" should have 3 elements
+      And the JSON node "root" should have 4 elements
       And the JSON node "root[0].id" should be equal to "3"
       And the JSON node "root[1].id" should be equal to "2"
       And the JSON node "root[2].id" should be equal to "1"
+      And the JSON node "root[3].id" should be equal to "4"
 
   Scenario: Users without extension are kept at the end of the list
     Given I add Company Authorization header
@@ -32,7 +34,7 @@ Feature: Order users
       And I send a "GET" request to "users?_order[extension]=ASC"
      Then the response status code should be 200
       And the response should be in JSON
-      And the JSON node "root" should have 3 elements
+      And the JSON node "root" should have 4 elements
       And the JSON node "root[0].id" should be equal to "3"
 
   Scenario: Users without extension are kept at the end of the reversed list
@@ -41,7 +43,7 @@ Feature: Order users
       And I send a "GET" request to "users?_order[extension]=DESC"
      Then the response status code should be 200
       And the response should be in JSON
-      And the JSON node "root" should have 3 elements
+      And the JSON node "root" should have 4 elements
       And the JSON node "root[0].id" should be equal to "3"
 
   Scenario: Order the users json list by a scalar field
@@ -50,7 +52,8 @@ Feature: Order users
       And I send a "GET" request to "users?_order[lastname]=DESC"
      Then the response status code should be 200
       And the response should be in JSON
-      And the JSON node "root" should have 3 elements
+      And the JSON node "root" should have 4 elements
       And the JSON node "root[0].id" should be equal to "3"
-      And the JSON node "root[1].id" should be equal to "2"
-      And the JSON node "root[2].id" should be equal to "1"
+      And the JSON node "root[1].id" should be equal to "4"
+      And the JSON node "root[2].id" should be equal to "2"
+      And the JSON node "root[3].id" should be equal to "1"
