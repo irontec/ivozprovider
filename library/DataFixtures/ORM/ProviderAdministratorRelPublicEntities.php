@@ -12,6 +12,7 @@ class ProviderAdministratorRelPublicEntities extends Fixture implements Dependen
 {
     use \DataFixtures\FixtureHelperTrait;
 
+    private const DDI_PUBLIC_ENTITY_ID = 21;
     private const USERS_MASS_IMPORT_PUBLIC_ENTITY_ID = 109;
 
     /**
@@ -57,6 +58,14 @@ class ProviderAdministratorRelPublicEntities extends Fixture implements Dependen
                 'UPDATE AdministratorRelPublicEntities SET `create` = 1 '
                 . 'WHERE administratorId = ' . $restrictedBrandOnlyAdminId
                 . ' AND publicEntityId = ' . self::USERS_MASS_IMPORT_PUBLIC_ENTITY_ID
+            );
+
+        $manager
+            ->getConnection()
+            ->exec(
+                'UPDATE AdministratorRelPublicEntities SET `create` = 1 '
+                . 'WHERE administratorId = ' . $restrictedBrandOnlyAdminId
+                . ' AND publicEntityId = ' . self::DDI_PUBLIC_ENTITY_ID
             );
     }
 
