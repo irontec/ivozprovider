@@ -172,18 +172,18 @@ msgid "Typescript (Angular1.x, Angular2.x, Fetch, jQuery, Node)"
 msgstr "Typescript (Angular1.x, Angular2.x, Fetch, jQuery, Node)"
 
 #: ../../api_rest/integrations.rst:43
-msgid "You'll find API specs in the URLs below:"
-msgstr "Encontrarás las especificaciones de la API en las siguientes URLs:"
+msgid "Each IvozProvider installation serves its API specs in the URLs below:"
+msgstr "Cada instalación de IvozProvider sirve las especificaciones de sus API en las siguientes URLs:"
 
 #: ../../api_rest/integrations.rst:45
-msgid "`Platform API spec </api/platform/docs.json>`_"
-msgstr "`Especificación de la API de la Plataforma </api/platform/docs.json>`_"
+msgid "Platform API spec: ``https://your-domain/api/platform/docs.json``"
+msgstr "Especificación de la API de la Plataforma: ``https://your-domain/api/platform/docs.json``"
 
 #: ../../api_rest/integrations.rst:46
-msgid "`Brand API spec </api/brand/docs.json>`_"
-msgstr "`Especificación de la API de la Marca </api/brand/docs.json>`_"
+msgid "Brand API spec: ``https://brand-domain/api/brand/docs.json``"
+msgstr "Especificación de la API de la Marca: ``https://brand-domain/api/brand/docs.json``"
 
 #: ../../api_rest/integrations.rst:47
-msgid "`Client API spec </api/client/docs.json>`_"
-msgstr "`Especificación de la API del Cliente </api/client/docs.json>`_"
+msgid "Client API spec: ``https://client-domain/api/client/docs.json``"
+msgstr "Especificación de la API del Cliente: ``https://client-domain/api/client/docs.json``"
 

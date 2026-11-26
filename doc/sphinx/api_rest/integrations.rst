@@ -40,8 +40,8 @@ According to their github page the following language/framework code auto-genera
     - Swift (2.x, 3.x, 4.x)
     - Typescript (Angular1.x, Angular2.x, Fetch, jQuery, Node)
 
-You'll find API specs in the URLs below:
+Each IvozProvider installation serves its API specs in the URLs below:
 
-    - `Platform API spec </api/platform/docs.json>`_
-    - `Brand API spec </api/brand/docs.json>`_
-    - `Client API spec </api/client/docs.json>`_
+    - Platform API spec: ``https://your-domain/api/platform/docs.json``
+    - Brand API spec: ``https://brand-domain/api/brand/docs.json``
+    - Client API spec: ``https://client-domain/api/client/docs.json``
