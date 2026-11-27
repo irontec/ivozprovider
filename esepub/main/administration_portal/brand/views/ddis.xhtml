@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DDIs</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="retail_accounts.xhtml" title="Cuentas minoristas"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="index.xhtml" title="Vistas"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Configuración de Marca</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Vistas</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ddis">
+<span id="id1"></span><h1>DDIs</h1>
+<p>Esta sección enumera <strong>todos los DDIs configurados</strong> en todos los clientes de la marca.</p>
+<p>Facilita responder a estas preguntas:</p>
+<ul class="simple">
+<li><p class="first">¿Este DDI es de uno de mis clientes? Si es así, ¿de quién?</p>
+</li>
+<li><p class="first">¿Qué proveedor de DDI lo proporciona?</p>
+</li>
+<li><p class="first">¿Cuántos DDIs del país X tiene el cliente Y?</p>
+</li>
+<li>Etc.</li>
+</ul>
+</div>
+<div class="section" id="csv-import">
+<h1>Importación CSV</h1>
+<p>La opción <em>Importar DDIs</em> del menú del listado crea DDIs de forma masiva desde un fichero CSV y completa los existentes. El diálogo pide:</p>
+<ul class="simple">
+<li><p class="first"><strong>Fichero CSV</strong>: obligatorio, con el formato descrito más abajo.</p>
+</li>
+<li><p class="first"><strong>Cliente</strong>: opcional. Vacío crea los DDIs sin asignar a ningún cliente.</p>
+</li>
+<li><p class="first"><strong>País</strong>: obligatorio, haya cliente o no. Al seleccionar un cliente se preselecciona su país, pero se puede cambiar: un cliente de España puede importar DDIs de otro país.</p>
+</li>
+<li><p class="first"><strong>Proveedor de DDI</strong>: opcional, uno de los proveedores de DDI de la marca. Vacío crea los DDIs sin proveedor de DDI.</p>
+</li>
+</ul>
+<p>El cliente, el país y el proveedor de DDI se aplican a todas las filas del fichero. Para importar DDIs de varios países o proveedores de DDI, use un fichero por combinación.</p>
+<p>El fichero tiene una sola columna sin fila de cabecera: el número del DDI sin prefijo de país. Las filas vacías y los espacios alrededor del número se ignoran, y se aceptan los ficheros guardados desde Excel (BOM UTF-8, finales de línea de Windows):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">944048182</span>
+<span class="mi">944048183</span>
+<span class="mi">944048184</span>
+</pre></div>
+</div>
+<p>Un DDI existe cuando coinciden su número y su país. La importación sigue estas reglas:</p>
+<ul class="simple">
+<li><p class="first">Un <strong>DDI nuevo</strong> se crea con el cliente, el país y el proveedor de DDI seleccionados. El resto de campos mantienen su valor por defecto: tipo <em>inout</em>, sin descripción ni ruta. Cuenta como <em>creado</em>.</p>
+</li>
+<li><p class="first">Un DDI que <strong>existe en otra marca</strong> se omite sin cambios y cuenta como <em>omitido</em>. El resultado solo indica que el DDI ya existe, no a quién pertenece.</p>
+</li>
+<li><p class="first">Un DDI que <strong>existe en esta marca</strong> solo puede recibir el cliente y el proveedor de DDI seleccionados, y solo si no los tiene. No cambia nada más, y un DDI nunca se mueve de un cliente o de un proveedor de DDI a otro:</p>
+<ul>
+<li><p class="first">Si pertenece a otro cliente, o a otro proveedor de DDI, no se cambia nada, tampoco el otro campo. Cuenta como <em>omitido</em> con un motivo genérico que no indica cuál.</p>
+</li>
+<li><p class="first">Si es un DDI de solo salida y se ha seleccionado un proveedor de DDI, también se omite: los DDIs de solo salida no pueden tener proveedor de DDI.</p>
+</li>
+<li><p class="first">En otro caso, se rellenan los campos seleccionados que tenga vacíos y cuenta como <em>actualizado</em>. Un campo que no se ha seleccionado, o que ya tiene el valor seleccionado, se deja como está.</p>
+</li>
+<li><p class="first">Si no hay nada que rellenar, cuenta como <em>omitido</em>.</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Un número <strong>repetido</strong> en el fichero se procesa una vez; el resto de sus filas se omiten.</p>
+</li>
+<li><p class="first">Una fila que <strong>no es un número válido</strong>, por ejemplo con un prefijo de país como <code class="docutils literal"><span class="pre">+34</span></code>, se informa como <em>fallada</em> con su número de línea y no impide importar el resto de filas.</p>
+</li>
+</ul>
+<p>Con el cliente A y el proveedor de DDI P seleccionados en el diálogo, un DDI existente de la marca queda así:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><p class="first last">DDI existente</p>
+</th>
+<th class="head"><p class="first last">Resultado</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first last">Sin cliente ni proveedor</p>
+</td>
+<td><p class="first last">Actualizado: cliente A y proveedor de DDI P</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">Cliente A, sin proveedor</p>
+</td>
+<td><p class="first last">Actualizado: proveedor de DDI P</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">Sin cliente, proveedor P</p>
+</td>
+<td><p class="first last">Actualizado: cliente A</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">Cliente A, proveedor P</p>
+</td>
+<td><p class="first last">Omitido: nada que rellenar</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">Cliente B, sin proveedor</p>
+</td>
+<td><p class="first last">Omitido: pertenece a otro cliente, no se asigna nada</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">Sin cliente, proveedor Q</p>
+</td>
+<td><p class="first last">Omitido: pertenece a otro proveedor de DDI, no se asigna nada</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">Solo salida</p>
+</td>
+<td><p class="first last">Omitido: los DDIs de solo salida no pueden tener proveedor de DDI</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">De otra marca</p>
+</td>
+<td><p class="first last">Omitido: ya existe</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Al terminar, el diálogo muestra cuántos DDIs se han creado, actualizado, omitido y fallado, las líneas actualizadas, y la línea y el motivo de cada fila omitida o fallada. Reimportar el mismo fichero es seguro: la segunda vez no se crea ni se actualiza nada.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Los DDIs importados no tienen ruta, ni proveedor de DDI salvo que se seleccione uno. Edítelos después para asignar el destino de sus llamadas entrantes.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

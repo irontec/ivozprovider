@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Terminales</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="extensions.xhtml" title="Extensiones"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="users.xhtml" title="Usuarios"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Configuración del Cliente</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Clientes vPBX</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="terminals">
+<span id="id1"></span><h1>Terminales</h1>
+<p>La sección <strong>Configuración del cliente</strong> &gt; <strong>Terminales</strong> permite crear nuevas credenciales SIP que pueden ser utilizadas por múltiples dispositivos SIP para realizar y recibir llamadas desde IvozProvider.</p>
+<p>La mejor manera de entender esta sección es creando un nuevo elemento y viendo los campos que deben ser completados.</p>
+<div class="section" id="login-information">
+<h2>Información de inicio de sesión</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Nombre de usuario que utilizará el terminal durante la fase de autenticación SIP con IvozProvider.</p>
+</dd>
+<dt>Contraseña</dt>
+<dd><p class="first last">Contraseña que utilizará el terminal para responder al desafío de autenticación SIP. Puede usar el generador automático de contraseñas para cumplir con los requisitos de contraseña segura.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="connection-configuration">
+<h2>Configuración de conexión</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Codecs permitidos/rechazados</dt>
+<dd><p class="first last">Determina qué codecs de audio y video se utilizarán con el terminal.</p>
+</dd>
+<dt>Modo actualización</dt>
+<dd><p class="first last">Elija el método SIP que el terminal prefiere para recibir la información de actualización de la sesión: INVITE o UPDATE. La pista de ayuda puede usarse como guía para configurar diferentes fabricantes de terminales. Use <em>INVITE</em> en caso de duda.</p>
+</dd>
+<dt>Habilitar pasarela T.38</dt>
+<dd><p class="first last">Si se establece en &#8216;sí&#8217;, este punto final SIP debe ser un <strong>fax capaz de T.38 emisor/receptor</strong>. IvozProvider actuará como una pasarela T.38, conectando llamadas de fax de un operador compatible con T.38 y un dispositivo compatible con T.38.</p>
+</dd>
+<dt>Cifrar RTP</dt>
+<dd><p class="first last">Si se establece en &#8216;sí&#8217;, la llamada no se establecerá a menos que sea posible cifrar su audio. Si se establece en &#8216;no&#8217;, el audio no se cifrará.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="provisioning">
+<h2>Provisioning</h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>Modelo de Terminales</dt>
+<dd><p class="first last">Determina el tipo de aprovisionamiento que recibirá este terminal. La sección <a class="reference internal" href="../../platform/terminal_manufacturers.xhtml#provisioning"><span class="std std-ref">provisionamiento de terminales</span></a> explicará en profundidad los diferentes modelos para el aprovisionamiento automático. Si su dispositivo no requiere aprovisionamiento, simplemente seleccione <em>Genérico</em>.</p>
+</dd>
+<dt>MAC</dt>
+<dd><p class="first last">Campo opcional que solo es necesario si planea usar el <a class="reference internal" href="../../platform/terminal_manufacturers.xhtml#provisioning"><span class="std std-ref">provisionamiento de terminales</span></a> de IvozProvider. Esta es la <a class="reference external" href="https://wikipedia.org/wiki/MAC_Address">dirección física</a><span class="link-target"> [https://wikipedia.org/wiki/MAC_Address]</span> del adaptador de red del dispositivo SIP.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Para <strong>la mayoría de los dispositivos</strong> que no requieren aprovisionamiento, solo completar <strong>nombre de usuario</strong> y <strong>contraseña</strong> será suficiente.</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p class="last">Una vez que se haya creado el terminal, la mayoría de los dispositivos solo requerirán el nombre, la contraseña y el <a class="reference internal" href="../../../getting_started/internal_calls/brand_portal.xhtml#domain-per-client"><span class="std std-ref">dominio SIP del cliente</span></a> para realizar llamadas.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

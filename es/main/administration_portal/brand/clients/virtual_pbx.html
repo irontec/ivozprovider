@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PBX Virtual &mdash; documentación de IvozProvider - tempest</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Índice"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Búsqueda" href="../../../search.html"/>
+    <link rel="top" title="documentación de IvozProvider - tempest" href="../../../index.html"/>
+        <link rel="up" title="Clientes" href="index.html"/>
+        <link rel="next" title="Residencial" href="residential.html"/>
+        <link rel="prev" title="Clientes" href="index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> IvozProvider
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.8
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic_concepts/intro/index.html">Introducción a IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic_concepts/architecture/index.html">Arquitectura general de la plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic_concepts/installation/index.html">Instalación inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic_concepts/operation_roles/index.html">Roles de la plataforma</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/internal_calls/index.html">Realizando llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/external_incoming_calls/index.html">Recibiendo llamadas externas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/external_outgoing_calls/index.html">Realizando llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Administration portal</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../platform/index.html">Configuración de la Plataforma</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuración de Marca</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Clientes</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">PBX Virtual</a></li>
+<li class="toctree-l3"><a class="reference internal" href="residential.html">Residencial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="retail.html">Retail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wholesale.html">Wholesale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="operators.html">Operadores de Clientes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../providers/index.html">Proveedores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../routing/index.html">Enrutamiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../billing/index.html">Tarificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../invoicing/index.html">Facturación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calls/index.html">Llamadas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings/index.html">Configuraciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../views/index.html">Vistas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../client/index.html">Configuración del Cliente</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Specific portals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_portal/index.html">Portal de Usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Security and Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../security_and_maintenance/security/index.html">Seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../security_and_maintenance/maintenance/index.html">Solución de problemas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Rest API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/introduction.html">Introducción a la API de IvozProvider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/multilevel.html">API multinivel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/web_client.html">Cliente web incorporado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/integrations.html">Integraciones de terceros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/click2call.html">Click2Call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/use_case.html">Caso de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_rest/acls.html">ACLs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">IvozProvider</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Configuración de Marca</a> &raquo;</li>
+      
+          <li><a href="index.html">Clientes</a> &raquo;</li>
+      
+    <li>PBX Virtual</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/administration_portal/brand/clients/virtual_pbx.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="virtual-pbx">
+<span id="id1"></span><h1>PBX Virtual<a class="headerlink" href="#virtual-pbx" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Los clientes de PBX Virtual están diseñados para proporcionar servicio a clientes con múltiples terminales que requieren flujos de llamadas con muchas características.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Consejo</p>
+<p>Algunos campos descritos a continuación pueden no ser visibles dependiendo de las funcionalidades habilitadas.</p>
+<dl class="last docutils">
+<dt>Nombre</dt>
+<dd><p class="first last">Establece el nombre para este cliente.</p>
+</dd>
+<dt>Dominio SIP</dt>
+<dd><p class="first last">DNS para este cliente. Ver sección <a class="reference internal" href="../../../getting_started/internal_calls/brand_portal.html#client-sip-domain"><span class="std std-ref">Dominio SIP del Cliente</span></a>.</p>
+</dd>
+<dt>Características</dt>
+<dd><p class="first last">Permite la configuración de características disponibles para este cliente. Las secciones relacionadas se ocultan en consecuencia y el cliente no puede usarlas.</p>
+</dd>
+<dt>Método de facturación</dt>
+<dd><p class="first last">Cuando la función de facturación está habilitada, determina cuándo se valorarán las llamadas. &#8216;ninguno&#8217; desactiva la facturación. Ver sección <a class="reference internal" href="../billing/index.html#billing"><span class="std std-ref">Tarificación</span></a>.</p>
+</dd>
+<dt>Corporación</dt>
+<dd><p class="first last">Seleccione a qué corporación pertenece este cliente. Permite usar <a class="reference internal" href="../../client/vpbx/routing_endpoints/friends/internal_friends.html#internal-friends"><span class="std std-ref">Amigos Inter VPBX</span></a> para marcar otras extensiones de clientes.</p>
+</dd>
+<dt>Configuración Geográfica</dt>
+<dd><p class="first last">Configuración general del cliente para idioma y zonas horarias. La mayoría de las configuraciones en la sección se pueden configurar por usuario si es necesario.</p>
+</dd>
+<dt>Moneda</dt>
+<dd><p class="first last">La moneda elegida se usará en el cálculo de precios, facturas, movimientos de saldo y operaciones de dinero restante de este cliente.</p>
+</dd>
+<dt>Máximo de llamadas</dt>
+<dd><p class="first last">Limita tanto las llamadas externas entrantes como salientes (0 para ilimitado).</p>
+</dd>
+<dt>Filtrar por dirección IP</dt>
+<dd><p class="first last">Si se establece, la plataforma solo permitirá llamadas provenientes de IP/rangos o países permitidos.</p>
+</dd>
+<dt>Países permitidos por GeoIP</dt>
+<dd><p class="first last">Si <em>Filtrar por dirección IP</em> está habilitado, se permitirá el tráfico de los países seleccionados.</p>
+</dd>
+<dt>Uso máximo diario</dt>
+<dd><p class="first last">Limita las llamadas externas salientes cuando se alcanza este límite dentro de un día. A medianoche se restablecen los contadores y se reactivan las cuentas.</p>
+</dd>
+<dt>Correo electrónico</dt>
+<dd><p class="first last">Se enviará un correo electrónico de notificación a la dirección dada cuando se alcance el uso máximo diario configurado. Dejar vacío para evitar la notificación.</p>
+</dd>
+<dt>Datos de la factura</dt>
+<dd><p class="first last">Datos incluidos en las facturas creadas por esta marca. Esta sección también permite mostrar/ocultar detalles de facturación en el portal del cliente, como Facturas, Perfiles de Tarifas y Precio de llamadas externas.</p>
+</dd>
+<dt>Notificaciones</dt>
+<dd><p class="first last">Configurar las <a class="reference internal" href="../settings/notification_templates.html#id1"><span class="std std-ref">Plantillas de Notificación</span></a> por correo electrónico para usar con este cliente.</p>
+</dd>
+<dt>DDI saliente</dt>
+<dd><p class="first last">Selecciona un DDI para las llamadas salientes de este cliente, si no se anula en un nivel inferior.</p>
+</dd>
+<dt>Conjunto de retransmisión de medios</dt>
+<dd><p class="first last">Como se mencionó anteriormente, la retransmisión de medios se puede agrupar en conjuntos para reservar capacidades o con un propósito geográfico. Esta sección te permite asignarlos a los clientes.</p>
+</dd>
+<dt>Método de Distribución</dt>
+<dd><p class="first last">&#8216;Basado en hash&#8217; distribuye las llamadas haciendo hash de un parámetro que es único por cliente, &#8216;Round robin&#8217; distribuye las llamadas equitativamente entre los AS y &#8216;estático&#8217; se usa para fines de depuración.</p>
+</dd>
+<dt>Servidor de Aplicaciones</dt>
+<dd><p class="first last">Si se usa el <em>método de distribución</em> &#8216;estático&#8217;, selecciona un servidor de aplicaciones aquí.</p>
+</dd>
+<dt>Grabación de llamadas bajo demanda</dt>
+<dd><p class="first last">Se muestra solo si la función <em>Grabación</em> está habilitada para el cliente, permite habilitar y deshabilitar la grabación de llamadas bajo demanda. Si está habilitado, puedes elegir cómo invocar y el código de servicio si es necesario.</p>
+</dd>
+<dt>Permitir al Cliente eliminar grabaciones</dt>
+<dd><p class="first last">Se muestra solo si la función <em>Grabación</em> está habilitada para el cliente, muestra/oculta el botón de eliminación de grabaciones en la sección <em>Grabaciones de Llamadas</em> del cliente.</p>
+</dd>
+</dl>
+</div>
+<p>La mayoría de las características son autoexplicativas, pero <strong>notificación de voz</strong> merece una explicación: si las habilitas, cuando una llamada falla, el usuario escuchará una locución explicando lo ocurrido (&#8220;no tienes permisos para realizar esta llamada&#8221;, &#8220;la llamada no se puede facturar&#8221;, etc.)</p>
+<p>Tanto <strong>Método de Distribución</strong> como <strong>Servidor de Aplicaciones</strong> son visibles solo para el Administrador Principal.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">El método de distribución &#8216;Round-robin&#8217; está reservado para clientes grandes cuyas llamadas no pueden ser manejadas en un solo AS. <strong>Usa &#8216;Basado en hash&#8217; para los restantes</strong>, ya que &#8216;Round-robin&#8217; impone algunas limitaciones a las características del cliente (sin colas, sin conferencias).</p>
+</div>
+<div class="section" id="additional-subsections">
+<h2>Subsecciones adicionales<a class="headerlink" href="#additional-subsections" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Cada entrada en esta tabla tiene estas opciones adicionales:</p>
+<ul class="simple">
+<li><p class="first"><strong>Lista de fuentes autorizadas</strong>: si <em>Filtrar por dirección IP</em> está habilitado, esta subsección permite agregar direcciones o rangos de red.</p>
+</li>
+</ul>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">No se permitirá ninguna llamada saliente si <em>Filtrar por dirección IP</em> está habilitado y la lista correspondiente está vacía.</p>
+</div>
+<ul class="simple">
+<li><p class="first"><strong>Lista de administradores de clientes</strong>: esta subsección permite gestionar las credenciales del portal para este cliente específico. Lea <a class="reference internal" href="../../../api_rest/acls.html#acls"><span class="std std-ref">ACLs</span></a> para una mayor explicación sobre administradores de clientes restringidos.</p>
+</li>
+<li><p class="first"><strong>Lista de perfiles de tarifas</strong>: esta subsección permite gestionar los perfiles de tarifas que se utilizarán para facturar sus llamadas salientes.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">No se permitirá ninguna llamada saliente para este cliente a menos que haya un perfil de tarifas activo que pueda facturar la llamada específica.</p>
+</div>
+</div>
+<div class="section" id="users-mass-import">
+<span id="id2"></span><h2>Importación masiva de usuarios<a class="headerlink" href="#users-mass-import" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La acción <strong>Importar usuarios</strong> de cada fila de PBX Virtual crea o actualiza sus usuarios a partir de un fichero CSV, junto con sus terminales, extensiones y DDIs de salida. El diálogo muestra el formato esperado, ofrece una plantilla descargable e informa del resultado de cada línea. Solo se muestra a los administradores con permiso para importar usuarios.</p>
+<p>La misma operación está disponible a través de la API de marca, consulte <a class="reference internal" href="#users-mass-import-api"><span class="std std-ref">Uso de la API</span></a>.</p>
+<div class="section" id="csv-format">
+<h3>Formato del CSV<a class="headerlink" href="#csv-format" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Un usuario por fila y once columnas, en este orden <em>(los campos marcados con * son obligatorios)</em>:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Nombre*</dt>
+<dd><p class="first last">Nombre del usuario. Junto con los apellidos identifica al usuario dentro del cliente: una fila con un nombre y apellidos existentes actualiza ese usuario.</p>
+</dd>
+<dt>Apellidos*</dt>
+<dd><p class="first last">Apellidos del usuario.</p>
+</dd>
+<dt>Correo electrónico</dt>
+<dd><p class="first last">Email del usuario. Debe ser único en toda la plataforma, por lo que una dirección que pertenezca a un usuario de otro cliente hace fallar la fila. Cuando ningún usuario del cliente tiene el nombre y apellidos indicados, la fila actualiza al usuario del cliente que posee ese email.</p>
+</dd>
+<dt>Nombre del terminal</dt>
+<dd><p class="first last">Nombre del terminal (letras, dígitos, <code class="docutils literal"><span class="pre">_</span></code> y <code class="docutils literal"><span class="pre">*</span></code>). Se crea si no existe y se asigna al usuario.</p>
+</dd>
+<dt>Contraseña del terminal</dt>
+<dd><p class="first last">Contraseña SIP del terminal: al menos 10 caracteres con 3 mayúsculas, 3 minúsculas, 3 dígitos y uno de <code class="docutils literal"><span class="pre">+</span> <span class="pre">*</span> <span class="pre">_</span> <span class="pre">-</span></code>. Déjela vacía para conservar la contraseña actual de un terminal existente o para generar una aleatoria en un terminal nuevo.</p>
+</dd>
+<dt>Modelo del terminal</dt>
+<dd><p class="first last">Identificador de un modelo de terminal existente, tal como aparece en <em>Modelos de terminal</em> (por ejemplo <code class="docutils literal"><span class="pre">YealinkT21P_E2</span></code>).</p>
+</dd>
+<dt>MAC</dt>
+<dd><p class="first last">Dirección MAC del terminal, 12 caracteres hexadecimales sin separadores.</p>
+</dd>
+<dt>Extensión</dt>
+<dd><p class="first last">Número de extensión asignado al usuario. Se crea si no existe.</p>
+</dd>
+<dt>País del DDI</dt>
+<dd><p class="first last">Código ISO del país del DDI (por ejemplo <code class="docutils literal"><span class="pre">ES</span></code>). Si está vacío se usa el país del cliente.</p>
+</dd>
+<dt>Número del DDI</dt>
+<dd><p class="first last">Número del DDI de salida, solo dígitos y sin prefijo de país. Se crea y se enruta al usuario si no existe.</p>
+</dd>
+<dt>Proveedor del DDI</dt>
+<dd><p class="first last">Nombre de un proveedor de DDI de la marca.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Las columnas pueden separarse con comas o con puntos y coma, y el fichero puede estar codificado en UTF-8, con o sin BOM, o en Windows-1252. Las filas vacías se ignoran y una primera fila con los nombres de las columnas (<code class="docutils literal"><span class="pre">name,lastname,email,...</span></code>) se omite, de modo que la plantilla puede rellenarse directamente.</p>
+<p class="rubric">Ejemplo de fichero CSV</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Alice,Allison,alice@example.com,alice_t21,Zx9*abc123DEF,YealinkT21P_E2,001565aabbcc,301,ES,944000301,
+Bob,Bobson,bob@example.com,bob_t21,,YealinkT21P_E2,,302,,,
+Carol,Smith,carol@example.com,,,,,,,,
+</pre></div>
+</div>
+<p>La primera fila crea el usuario con su terminal, extensión y DDI de salida. La segunda deja que la plataforma genere la contraseña del terminal y no crea DDI. La tercera crea un usuario sin terminal ni extensión.</p>
+</div>
+<div class="section" id="re-importing-a-file">
+<h3>Reimportar un fichero<a class="headerlink" href="#re-importing-a-file" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Las filas se comparan con los usuarios existentes del cliente por nombre y apellidos, o por email cuando ninguno tiene ese nombre y apellidos, de modo que el mismo fichero puede importarse de nuevo:</p>
+<ul class="simple">
+<li><p class="first">Importar el mismo fichero dos veces no cambia nada ni crea duplicados.</p>
+</li>
+<li><p class="first">Cambiar un valor e importar de nuevo actualiza solo ese valor.</p>
+</li>
+<li><p class="first">Cambiar el nombre o los apellidos de un usuario manteniendo su email renombra a ese usuario.</p>
+</li>
+<li><p class="first">Las columnas vacías de un usuario existente no se tocan: nunca eliminan su terminal, extensión, DDI o email.</p>
+</li>
+<li><p class="first">Los terminales se identifican por nombre, o por MAC cuando el nombre es nuevo, de modo que un terminal puede renombrarse conservando su MAC.</p>
+</li>
+<li><p class="first">Un DDI existente del cliente puede ser el DDI de salida de varios usuarios; su enrutamiento entrante no se modifica.</p>
+</li>
+</ul>
+<p>Los usuarios nuevos se crean inactivos: pueden usar su terminal, pero no pueden entrar en el portal de usuario hasta que un administrador les asigne una contraseña.</p>
+</div>
+<div class="section" id="errors">
+<h3>Errores<a class="headerlink" href="#errors" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Las filas válidas se importan y el resto se informan con su número de línea y el motivo. Corrija las líneas indicadas e importe el fichero de nuevo; las filas ya importadas simplemente se actualizan.</p>
+<p>Una fila falla, entre otros motivos, cuando:</p>
+<ul class="simple">
+<li><p class="first">su nombre o apellidos están vacíos, o un valor tiene un formato no válido;</p>
+</li>
+<li><p class="first">su email pertenece a un usuario de otro cliente, o a otro usuario cuando la fila ya coincide con un usuario por nombre y apellidos; su terminal o extensión ya pertenece a otro usuario, su MAC pertenece a otro terminal, su extensión está enrutada a una cola o a cualquier otro elemento, o su DDI pertenece a otro cliente o a otra marca;</p>
+</li>
+<li><p class="first">su modelo de terminal, país o proveedor de DDI no existe.</p>
+</li>
+</ul>
+<p>Algunos errores afectan a todo el fichero y no se importa nada: un fichero vacío, una fila con un número de columnas incorrecto o el mismo usuario, email, terminal, MAC, extensión o DDI repetido en varias filas. Se informan como línea 0.</p>
+<p>Si la importación se detiene por un error inesperado, las filas restantes se informan como <em>no procesadas</em>: importe el fichero de nuevo cuando el problema esté resuelto.</p>
+</div>
+<div class="section" id="saving-the-file-from-excel">
+<h3>Guardar el fichero desde Excel<a class="headerlink" href="#saving-the-file-from-excel" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Use <em>Guardar como</em> y elija <strong>CSV UTF-8 (delimitado por comas)</strong>; el formato <em>CSV (delimitado por comas)</em> también funciona. Según la configuración regional, Excel separa las columnas con punto y coma, que también se acepta. Mantenga las columnas de MAC, extensión y DDI como texto; de lo contrario Excel puede eliminar los ceros iniciales o reescribir los números largos en notación científica.</p>
+</div>
+<div class="section" id="using-the-api">
+<span id="users-mass-import-api"></span><h3>Uso de la API<a class="headerlink" href="#using-the-api" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La importación se expone como <code class="docutils literal"><span class="pre">POST</span> <span class="pre">/users/mass_import</span></code> en la API de marca. Espera una petición <code class="docutils literal"><span class="pre">multipart/form-data</span></code> con el identificador <code class="docutils literal"><span class="pre">company</span></code> y el fichero <code class="docutils literal"><span class="pre">csv</span></code>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">curl -X POST https://brand.example.com/api/brand/users/mass_import \</span>
+<span class="go">    -H &quot;Authorization: Bearer ${TOKEN}&quot; \</span>
+<span class="go">    -F company=1 \</span>
+<span class="go">    -F csv=@users.csv</span>
+</pre></div>
+</div>
+<p>La respuesta resume la importación y enumera cada línea fallida:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;updated&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;line&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Email bob@example.com belongs to a user of another client&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="users-mass-export">
+<span id="id3"></span><h2>Exportación masiva de usuarios<a class="headerlink" href="#users-mass-export" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La acción <strong>Exportar usuarios</strong> de cada fila de PBX virtual descarga un fichero CSV con los usuarios del cliente en el formato de la <a class="reference internal" href="#users-mass-import"><span class="std std-ref">Importación masiva de usuarios</span></a>, para poder editarlo en una hoja de cálculo e importarlo de nuevo en la misma PBX virtual, o usarlo para dar de alta los usuarios en otra. Solo se muestra a los administradores que pueden ver la importación de usuarios.</p>
+<p>La misma operación está disponible a través de la API de marca, ver <a class="reference internal" href="#users-mass-export-api"><span class="std std-ref">Uso de la API</span></a>.</p>
+<div class="section" id="what-is-exported">
+<h3>Qué se exporta<a class="headerlink" href="#what-is-exported" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una fila por usuario del cliente, ordenadas por nombre y apellidos, con las once columnas de la importación y una primera fila con sus nombres. Las columnas de terminal describen el terminal asignado al usuario y la columna de extensión su extensión. Las columnas de DDI solo se rellenan cuando el usuario tiene su propio DDI de salida: los usuarios que llaman con el DDI por defecto del cliente las tienen vacías.</p>
+<p>La <strong>columna de contraseña de terminal siempre va vacía</strong>: las contraseñas SIP nunca se escriben en un fichero que puede circular. Al importar el fichero se conserva la contraseña actual de los terminales existentes y se genera una aleatoria para los nuevos.</p>
+<p>El fichero no es una copia del cliente, solo contiene lo que admite la importación. No incluye:</p>
+<ul class="simple">
+<li><p class="first">la configuración de los usuarios: permisos de acceso, idioma, buzón de voz, contraseña del portal, etc.;</p>
+</li>
+<li><p class="first">lo que no pertenece a un usuario: IVRs, grupos de salto, colas, extensiones enrutadas a otros elementos y terminales sin usuario;</p>
+</li>
+<li><p class="first">otros DDIs distintos del DDI de salida de cada usuario, ni sus rutas de entrada.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="file-format">
+<h3>Formato del fichero<a class="headerlink" href="#file-format" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Las columnas se separan con punto y coma y el fichero se codifica en UTF-8 con BOM, de modo que Excel lo abre correctamente con un doble clic y la importación lo admite tal cual. Los valores con separadores o comillas van entrecomillados, y los valores que empiezan por <code class="docutils literal"><span class="pre">=</span></code>, <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code> o <code class="docutils literal"><span class="pre">&#64;</span></code> llevan delante una comilla simple para que las hojas de cálculo no los ejecuten como fórmulas; la importación elimina esa comilla.</p>
+<p>La exportación se rechaza cuando dos usuarios del cliente comparten nombre y apellidos, porque la importación no podría distinguirlos: renombre uno de ellos y exporte de nuevo.</p>
+</div>
+<div class="section" id="importing-into-another-virtual-pbx">
+<h3>Importar en otra PBX virtual<a class="headerlink" href="#importing-into-another-virtual-pbx" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El fichero puede dar de alta los usuarios de otra PBX virtual, en esta plataforma o en otra distinta, con estas limitaciones:</p>
+<ul class="simple">
+<li><p class="first">Los emails son únicos en toda la plataforma: mientras el cliente de origen conserve sus usuarios, las filas con sus emails fallan. Vacíe o cambie la columna de email.</p>
+</li>
+<li><p class="first">Una MAC o un DDI no pueden pertenecer a dos clientes: las filas con la MAC de un terminal o el DDI que siguen asignados al cliente de origen fallan. Libérelos en el cliente de origen o vacíe esas columnas.</p>
+</li>
+<li><p class="first">Los modelos de terminal se buscan por identificador y los proveedores de DDI por nombre dentro de la marca, así que deben existir en el destino con los mismos valores.</p>
+</li>
+<li><p class="first">Los terminales reciben una contraseña aleatoria nueva, ya que las contraseñas no se exportan.</p>
+</li>
+<li><p class="first">Los usuarios nuevos se crean inactivos, como cualquier usuario importado.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="users-mass-export-api">
+<span id="id4"></span><h3>Uso de la API<a class="headerlink" href="#users-mass-export-api" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La exportación se expone como <code class="docutils literal"><span class="pre">GET</span> <span class="pre">/users/mass_export</span></code> en la API de marca, con el identificador <code class="docutils literal"><span class="pre">company</span></code> como parámetro de consulta. La respuesta es el fichero CSV:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">curl -o DemoCompany-users.csv \</span>
+<span class="go">    -H &quot;Authorization: Bearer ${TOKEN}&quot; \</span>
+<span class="go">    &quot;https://brand.example.com/api/brand/users/mass_export?company=1&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="residential.html" class="btn btn-neutral float-right" title="Residencial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Clientes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2019, Irontec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: main
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../../artemis/administration_portal/brand/clients/virtual_pbx.html">artemis</a></dd>
+            <dd><a href="../../../../halliday/administration_portal/brand/clients/virtual_pbx.html">halliday</a></dd>
+            <dd><a href="virtual_pbx.html">main</a></dd>
+            <dd><a href="../../../../oasis/index.html">oasis</a></dd>
+            <dd><a href="../../../../tempest/administration_portal/brand/clients/virtual_pbx.html">tempest</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'tempest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

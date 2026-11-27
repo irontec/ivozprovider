@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Virtual PBX</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="residential.xhtml" title="Residential"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.xhtml" title="Clients"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">IvozProvider tempest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Brand Configuration</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Clients</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="virtual-pbx">
+<span id="id1"></span><h1>Virtual PBX</h1>
+<p>Virtual PBX clients are designed to provide service to clients with multiple terminals
+that require feature-full call flows.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Some fields described below may not be visible depending on enabled features.</p>
+<dl class="last docutils">
+<dt>Name</dt>
+<dd>Sets the name for this client.</dd>
+<dt>SIP domain</dt>
+<dd>DNS for this client. See <a class="reference internal" href="../../../getting_started/internal_calls/brand_portal.xhtml#client-sip-domain"><span class="std std-ref">Client SIP Domain</span></a> section.</dd>
+<dt>Features</dt>
+<dd>Allow configuration of available features for this client.
+Related sections are hidden consequently and the client cannot use them.</dd>
+<dt>Billing method</dt>
+<dd>When billing feature is enabled determines when calls will be priced. &#8216;none&#8217; disables billing.
+See <a class="reference internal" href="../billing/index.xhtml#billing"><span class="std std-ref">Billing</span></a> section.</dd>
+<dt>Corporation</dt>
+<dd>Select which corporation this client belongs to. Enables using <a class="reference internal" href="../../client/vpbx/routing_endpoints/friends/internal_friends.xhtml#internal-friends"><span class="std std-ref">Inter VPBX friends</span></a> to
+dial other client extensions.</dd>
+<dt>Geographic Configuration</dt>
+<dd>General client configuration for language and timezones. Most of the settings in the section can be
+configured per user if required.</dd>
+<dt>Currency</dt>
+<dd>Chosen currency will be used in price calculation, invoices, balance movements and
+remaining money operations of this client.</dd>
+<dt>Max calls</dt>
+<dd>Limits both incoming and outgoing external calls (0 for unlimited).</dd>
+<dt>Filter by IP address</dt>
+<dd>If set, the platform will only allow calls coming from allowed IP/ranges or countries.</dd>
+<dt>GeoIP allowed countries</dt>
+<dd>If <em>Filter by IP address</em> is enabled, traffic from selected countries will be allowed.</dd>
+<dt>Max daily usage</dt>
+<dd>Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and
+accounts are re-enabled.</dd>
+<dt>Email</dt>
+<dd>A notification email will be sent to given address when configured max daily usage is reached. Leave empty to
+avoid notification.</dd>
+<dt>Invoice data</dt>
+<dd>Data included in invoices created by this brand. This section also allows showing/hiding billing details to
+client&#8217;s portal, such as Invoices, Rating Profiles and Price of external calls.</dd>
+<dt>Notifications</dt>
+<dd>Configure the email <a class="reference internal" href="../settings/notification_templates.xhtml#id1"><span class="std std-ref">Notification Templates</span></a> to use for this client.</dd>
+<dt>Outgoing DDI</dt>
+<dd>Selects a DDI for outgoing calls of this client, if it is no overridden in
+a lower level.</dd>
+<dt>Media relay set</dt>
+<dd>As mentioned above, media-relay can be grouped in sets to reserve capacities
+or on a geographical purpose. This section lets you assign them to clients.</dd>
+<dt>Distribute Method</dt>
+<dd>&#8216;Hash based&#8217; distributes calls hashing a parameter that is unique per
+client, &#8216;Round robin&#8217; distributes calls equally between AS-es and
+&#8216;static&#8217; is used for debugging purposes.</dd>
+<dt>Application Server</dt>
+<dd>If &#8216;static&#8217; <em>distribute method</em> is used, select an application server here.</dd>
+<dt>On-demand call recording</dt>
+<dd>Shown only if <em>Recording</em> feature is enabled for client, allows enabling and
+disabling on-demand call recording. If enabled, you can choose how to invoke
+and service code if needed.</dd>
+<dt>Allow Client to remove recordings</dt>
+<dd>Shown only if <em>Recording</em> feature is enabled for client, shows/hides recording
+removal button on client <em>Call Recordings</em> section.</dd>
+</dl>
+</div>
+<p>Most of the features are self-explanatory, but <strong>voice notification</strong> deserves
+an explanation: if you enable them, when a call fails, the user will listen a
+locution explaining what occurred (&#8220;you have no permissions to place this call&#8221;,
+&#8220;the call cannot be billed&#8221;, etc.)</p>
+<p>Both <strong>Distribute method</strong> and <strong>Application Server</strong> are only visible for God
+Administrator.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">&#8216;Round-robin&#8217; distribute method is reserved for huge clients
+whose calls cannot be handled in a single AS. <strong>Use &#8216;Hash based&#8217;
+for remaining ones</strong>, as &#8216;Round-robin&#8217; imposes some limitations
+to client features (no queues, no conferences).</p>
+</div>
+<div class="section" id="additional-subsections">
+<h2>Additional subsections</h2>
+<p>Each entry in this table has these additional options:</p>
+<ul class="simple">
+<li><strong>List of authorized sources</strong>: if <em>Filter by IP address</em> is enabled, this subsection allows adding addresses or network ranges.</li>
+</ul>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">No outgoing call will be allowed if <em>Filter by IP address</em> is enabled and the corresponding list is empty.</p>
+</div>
+<ul class="simple">
+<li><strong>List of client admins</strong>: this subsection allows managing portal credentials for this specific client. Read <a class="reference internal" href="../../../api_rest/acls.xhtml#acls"><span class="std std-ref">ACLs</span></a>
+for further explanation about restricted client administrators.</li>
+<li><strong>List of Rating profiles</strong>: this subsection allows managing the rating profiles that will be used to bill its outgoing calls.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No outgoing call will be allowed for this client unless an active rating profiles that can
+bill the specific call.</p>
+</div>
+</div>
+<div class="section" id="users-mass-import">
+<span id="id2"></span><h2>Users mass import</h2>
+<p>The <strong>Import users</strong> action of each Virtual PBX row creates or updates its users from a
+CSV file, together with their terminals, extensions and outgoing DDIs. The dialog
+shows the expected format, offers a downloadable template and reports the result
+of every line. It is only shown to administrators allowed to import users.</p>
+<p>The same operation is available through the brand API, see <a class="reference internal" href="#users-mass-import-api"><span class="std std-ref">Using the API</span></a>.</p>
+<div class="section" id="csv-format">
+<h3>CSV format</h3>
+<p>One user per row and eleven columns, in this order <em>(Fields marked with * are required)</em>:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Name*</dt>
+<dd>First name of the user. Together with the lastname it identifies the user
+within the client: a row with an existing name and lastname updates that user.</dd>
+<dt>Lastname*</dt>
+<dd>Last name of the user.</dd>
+<dt>Email</dt>
+<dd>Email of the user. It must be unique in the whole platform, so an address
+that belongs to a user of another client fails the row. When no user of the
+client has the given name and lastname, the row updates the user of the
+client that owns the email.</dd>
+<dt>Terminal name</dt>
+<dd>Name of the terminal (letters, digits, <code class="docutils literal"><span class="pre">_</span></code> and <code class="docutils literal"><span class="pre">*</span></code>). It is created if it
+does not exist and assigned to the user.</dd>
+<dt>Terminal password</dt>
+<dd>SIP password of the terminal: at least 10 characters with 3 uppercase, 3
+lowercase, 3 digits and one of <code class="docutils literal"><span class="pre">+</span> <span class="pre">*</span> <span class="pre">_</span> <span class="pre">-</span></code>. Leave it empty to keep the current
+password of an existing terminal or to generate a random one for a new terminal.</dd>
+<dt>Terminal model</dt>
+<dd>Identifier of an existing terminal model, as shown in <em>Terminal models</em>
+(for example <code class="docutils literal"><span class="pre">YealinkT21P_E2</span></code>).</dd>
+<dt>MAC</dt>
+<dd>MAC address of the terminal, 12 hexadecimal characters without separators.</dd>
+<dt>Extension</dt>
+<dd>Extension number assigned to the user. It is created if it does not exist.</dd>
+<dt>DDI country</dt>
+<dd>ISO code of the DDI country (for example <code class="docutils literal"><span class="pre">ES</span></code>). The client country is used
+when empty.</dd>
+<dt>DDI number</dt>
+<dd>Number of the outgoing DDI, digits only and without country prefix. It is
+created and routed to the user if it does not exist.</dd>
+<dt>DDI provider</dt>
+<dd>Name of a DDI provider of the brand.</dd>
+</dl>
+</div></blockquote>
+<p>Columns can be separated by commas or semicolons and the file may be encoded in
+UTF-8, with or without BOM, or in Windows-1252. Blank rows are ignored and a first
+row with the column names (<code class="docutils literal"><span class="pre">name,lastname,email,...</span></code>) is skipped, so the template
+can be filled in directly.</p>
+<p class="rubric">Example CSV file</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Alice,Allison,alice@example.com,alice_t21,Zx9*abc123DEF,YealinkT21P_E2,001565aabbcc,301,ES,944000301,
+Bob,Bobson,bob@example.com,bob_t21,,YealinkT21P_E2,,302,,,
+Carol,Smith,carol@example.com,,,,,,,,
+</pre></div>
+</div>
+<p>The first row creates the user with its terminal, extension and outgoing DDI. The
+second one lets the platform generate the terminal password and creates no DDI.
+The third one creates a user without terminal or extension.</p>
+</div>
+<div class="section" id="re-importing-a-file">
+<h3>Re-importing a file</h3>
+<p>Rows are matched against the existing users of the client by name and lastname,
+or by email when none has that name and lastname, so the same file can be
+imported again:</p>
+<ul class="simple">
+<li>Importing the same file twice changes nothing and creates no duplicates.</li>
+<li>Changing a value and importing again updates only that value.</li>
+<li>Changing the name or lastname of a user while keeping its email renames that
+user.</li>
+<li>Empty columns of an existing user are left untouched: they never remove its
+terminal, extension, DDI or email.</li>
+<li>Terminals are matched by name, or by MAC when the name is new, so a terminal
+can be renamed by keeping its MAC.</li>
+<li>An existing DDI of the client can be the outgoing DDI of several users; its
+inbound routing is not changed.</li>
+</ul>
+<p>New users are created inactive: they can use their terminal, but cannot log into
+the user portal until an administrator sets their password.</p>
+</div>
+<div class="section" id="errors">
+<h3>Errors</h3>
+<p>Valid rows are imported and the rest are reported with their line number and the
+reason. Fix the reported lines and import the file again; the rows already imported
+are simply updated.</p>
+<p>A row fails, among other reasons, when:</p>
+<ul class="simple">
+<li>its name or lastname is empty, or a value has an invalid format;</li>
+<li>its email belongs to a user of another client, or to another user when the
+row already matches a user by name and lastname; its terminal or extension
+already belongs to another user, its MAC belongs to another terminal, its
+extension is routed to a queue or any other element, or its DDI belongs to
+another client or another brand;</li>
+<li>its terminal model, country or DDI provider does not exist.</li>
+</ul>
+<p>Some errors affect the whole file and nothing is imported: an empty file, a row
+with a wrong number of columns or the same user, email, terminal, MAC, extension
+or DDI repeated in several rows. They are reported as line 0.</p>
+<p>If the import stops because of an unexpected error, the remaining rows are
+reported as <em>not processed</em>: import the file again once the problem is solved.</p>
+</div>
+<div class="section" id="saving-the-file-from-excel">
+<h3>Saving the file from Excel</h3>
+<p>Use <em>Save as</em> and choose <strong>CSV UTF-8 (comma delimited)</strong>; the <em>CSV (comma delimited)</em>
+format also works. Depending on the regional settings Excel separates the columns
+with semicolons, which are accepted as well. Keep the MAC, extension and DDI
+columns as text, otherwise Excel may drop leading zeros or rewrite long numbers
+in scientific notation.</p>
+</div>
+<div class="section" id="using-the-api">
+<span id="users-mass-import-api"></span><h3>Using the API</h3>
+<p>The import is exposed as <code class="docutils literal"><span class="pre">POST</span> <span class="pre">/users/mass_import</span></code> in the brand API. It expects a
+<code class="docutils literal"><span class="pre">multipart/form-data</span></code> request with the <code class="docutils literal"><span class="pre">company</span></code> identifier and the <code class="docutils literal"><span class="pre">csv</span></code> file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">curl -X POST https://brand.example.com/api/brand/users/mass_import \</span>
+<span class="go">    -H &quot;Authorization: Bearer ${TOKEN}&quot; \</span>
+<span class="go">    -F company=1 \</span>
+<span class="go">    -F csv=@users.csv</span>
+</pre></div>
+</div>
+<p>The response summarises the import and lists every failed line:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;updated&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;line&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Email bob@example.com belongs to a user of another client&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="users-mass-export">
+<span id="id3"></span><h2>Users mass export</h2>
+<p>The <strong>Export users</strong> action of each Virtual PBX row downloads a CSV file with the
+users of the client in the format of the <a class="reference internal" href="#users-mass-import"><span class="std std-ref">Users mass import</span></a>, so it can be
+edited in a spreadsheet and imported again into the same Virtual PBX, or used to
+create the users in another one. It is only shown to administrators allowed to
+see the users import.</p>
+<p>The same operation is available through the brand API, see <a class="reference internal" href="#users-mass-export-api"><span class="std std-ref">Using the API</span></a>.</p>
+<div class="section" id="what-is-exported">
+<h3>What is exported</h3>
+<p>One row per user of the client, ordered by name and lastname, with the eleven
+columns of the import and a first row with their names. The terminal columns
+describe the terminal assigned to the user and the extension column its
+extension. The DDI columns are only filled when the user has its own outgoing
+DDI: users that call out with the default DDI of the client have them empty.</p>
+<p>The <strong>terminal password column is always empty</strong>: SIP passwords are never written
+to a file that may be shared. Importing the file keeps the current password of
+the existing terminals and generates a random one for the new ones.</p>
+<p>The file is not a copy of the client, it only contains what the import accepts.
+It does not include:</p>
+<ul class="simple">
+<li>the configuration of the users: access privileges, language, voicemail,
+portal password, etc.;</li>
+<li>anything that does not belong to a user: IVRs, hunt groups, queues, extensions
+routed to other elements and terminals without user;</li>
+<li>other DDIs than the outgoing DDI of each user, nor their inbound routing.</li>
+</ul>
+</div>
+<div class="section" id="file-format">
+<h3>File format</h3>
+<p>Columns are separated by semicolons and the file is encoded in UTF-8 with BOM, so
+Excel opens it correctly with a double click and the import accepts it as it is.
+Values with separators or quotes are quoted, and values starting with <code class="docutils literal"><span class="pre">=</span></code>, <code class="docutils literal"><span class="pre">+</span></code>,
+<code class="docutils literal"><span class="pre">-</span></code> or <code class="docutils literal"><span class="pre">&#64;</span></code> are prefixed with a single quote so that spreadsheets do not run
+them as formulas; the import removes that quote.</p>
+<p>The export is refused when two users of the client share the same name and
+lastname, because the import could not tell them apart: rename one of them and
+export again.</p>
+</div>
+<div class="section" id="importing-into-another-virtual-pbx">
+<h3>Importing into another Virtual PBX</h3>
+<p>The file can create the users of another Virtual PBX, on this platform or on a
+different one, with these limitations:</p>
+<ul class="simple">
+<li>Emails are unique in the whole platform: while the original client keeps its
+users, rows with their emails fail. Clear or change the email column.</li>
+<li>A MAC or a DDI cannot belong to two clients: rows with the MAC of a terminal or
+the DDI that are still assigned to the original client fail. Release them in the
+original client or clear those columns.</li>
+<li>Terminal models are matched by identifier and DDI providers by name within the
+brand, so they must exist in the destination with the same values.</li>
+<li>Terminals get a new random password, since passwords are not exported.</li>
+<li>New users are created inactive, like any imported user.</li>
+</ul>
+</div>
+<div class="section" id="users-mass-export-api">
+<span id="id4"></span><h3>Using the API</h3>
+<p>The export is exposed as <code class="docutils literal"><span class="pre">GET</span> <span class="pre">/users/mass_export</span></code> in the brand API, with the
+<code class="docutils literal"><span class="pre">company</span></code> identifier as query parameter. The response is the CSV file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">curl -o DemoCompany-users.csv \</span>
+<span class="go">    -H &quot;Authorization: Bearer ${TOKEN}&quot; \</span>
+<span class="go">    &quot;https://brand.example.com/api/brand/users/mass_export?company=1&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Click2Call</title>
+    
+    <link rel="stylesheet" href="../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.xhtml" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="use_case.xhtml" title="Use Case"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="integrations.xhtml" title="Third party integrations"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.xhtml">IvozProvider tempest documentation</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="click2call">
+<span id="id1"></span><h1>Click2Call</h1>
+<p>The <strong>Click2Call</strong> microservice exposes a small HTTP/JSON API that originates
+<em>click-to-call</em> calls without requiring a portal JWT. It is meant to be consumed
+by a <strong>browser extension</strong> that detects phone numbers on web pages and, on click,
+asks the service to place the call.</p>
+<p>Unlike the role-based REST APIs, this service does <strong>not</strong> use JWT authentication:
+the caller proves ownership of a terminal with the <strong>terminal&#8217;s own SIP
+credentials via HTTP Digest</strong>, so the password never travels over the wire.</p>
+<p>On success the service fires, over AMI, an <code class="docutils literal"><span class="pre">Originate</span></code> that reuses the existing
+<code class="docutils literal"><span class="pre">click2dial</span></code> dialplan:</p>
+<ol class="arabic simple">
+<li><strong>Leg 1</strong>: the user&#8217;s own terminal rings.</li>
+<li><strong>Leg 2</strong>: when the user answers, the call towards the requested <code class="docutils literal"><span class="pre">destination</span></code>
+is generated.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This service is shipped as the <code class="docutils literal"><span class="pre">ivozprovider-click2call</span></code> package and listens
+on its own port (behind a TLS proxy in production). It is independent from the
+<code class="docutils literal"><span class="pre">/api/platform</span></code>, <code class="docutils literal"><span class="pre">/api/brand</span></code> and <code class="docutils literal"><span class="pre">/api/provider</span></code> REST APIs.</p>
+</div>
+<div class="section" id="endpoints">
+<h2>Endpoints</h2>
+<p>The flow always has two steps: first request a challenge, then place the call
+signing the destination with the challenge.</p>
+<p class="rubric">1) POST /challenge</p>
+<p>Requests a single-use <code class="docutils literal"><span class="pre">nonce</span></code> for an Address of Record (AoR).</p>
+<p>Request body:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;aor&quot;</span><span class="p">:</span> <span class="s2">&quot;username@domain&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Response (<code class="docutils literal"><span class="pre">200</span></code>):</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;server-issued nonce&gt;&quot;</span><span class="p">,</span> <span class="nt">&quot;realm&quot;</span><span class="p">:</span> <span class="s2">&quot;domain&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">aor</span></code>: the terminal&#8217;s <code class="docutils literal"><span class="pre">username&#64;domain</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">realm</span></code> (returned): the <strong>domain</strong> part of the AoR, to be used in the digest.</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">nonce</span></code> is HMAC-signed, has a configurable freshness (<code class="docutils literal"><span class="pre">nonce_ttl</span></code>) and is
+single-use, so there is no replay. No database access happens at this step.</p>
+<p class="rubric">2) POST /call</p>
+<p>Places the call. The destination must be signed with a digest computed from the
+terminal password and the <code class="docutils literal"><span class="pre">nonce</span></code> obtained above.</p>
+<p>Request body:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;aor&quot;</span><span class="p">:</span> <span class="s2">&quot;username@domain&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;nonce from /challenge&gt;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;digest response&gt;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;+34900000000&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;iden&quot;</span><span class="p">:</span> <span class="s2">&quot;optional-call-id&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;maxDuration&quot;</span><span class="p">:</span> <span class="mi">10800000</span><span class="p">,</span>
+  <span class="nt">&quot;dialTimeout&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nt">&quot;optimize&quot;</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Response (<code class="docutils literal"><span class="pre">200</span></code>):</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;iden&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;call iden&gt;&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">destination</span></code>: destination number (<code class="docutils literal"><span class="pre">^[+*0-9]+$</span></code>).</li>
+<li><code class="docutils literal"><span class="pre">iden</span></code> (optional): caller-supplied id (<code class="docutils literal"><span class="pre">^[A-Za-z0-9_-]{1,32}$</span></code>); if omitted,
+the service generates one (16-char base62) and returns it in the response.</li>
+<li><code class="docutils literal"><span class="pre">maxDuration</span></code> (ms, default <code class="docutils literal"><span class="pre">10800000</span></code>), <code class="docutils literal"><span class="pre">dialTimeout</span></code> (s, default <code class="docutils literal"><span class="pre">30</span></code>),
+<code class="docutils literal"><span class="pre">optimize</span></code> (bool, default <code class="docutils literal"><span class="pre">false</span></code>).</li>
+</ul>
+<p>The returned <code class="docutils literal"><span class="pre">iden</span></code> identifies the generated call: it is used as the AMI
+<code class="docutils literal"><span class="pre">ChannelId</span></code> and is propagated on <strong>leg 2</strong> (the call towards the destination) to
+the proxy as the SIP header <code class="docutils literal"><span class="pre">X-Info-Click2Dial-iden</span></code>. The proxy stores it as the
+call <code class="docutils literal"><span class="pre">IDEN</span></code> for the leg, so it can be correlated with the originating <code class="docutils literal"><span class="pre">/call</span></code>
+request from CDRs and realtime data.</p>
+</div>
+<div class="section" id="digest-computation">
+<h2>Digest computation</h2>
+<p>The digest is computed on the client side, MD5-based, and only <code class="docutils literal"><span class="pre">response</span></code>
+travels (the password never leaves the client):</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>HA1      = MD5(username : realm : password)
+HA2      = MD5(destination)
+response = MD5(HA1 : nonce : HA2)
+</pre></div>
+</div>
+<p>The server recomputes and compares in constant time.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the browser <code class="docutils literal"><span class="pre">crypto.subtle</span></code> does <strong>not</strong> provide MD5; use a library such as
+<code class="docutils literal"><span class="pre">blueimp-md5</span></code> / <code class="docutils literal"><span class="pre">crypto-js</span></code>. CORS is solved by declaring the service origin in
+the extension&#8217;s <code class="docutils literal"><span class="pre">host_permissions</span></code>; the service echoes allowed origins from its
+configuration.</p>
+</div>
+</div>
+<div class="section" id="error-codes">
+<h2>Error codes</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Reason</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">400</span></code></td>
+<td>invalid JSON / AoR / destination / iden</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">401</span></code></td>
+<td>invalid, expired or reused nonce</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">403</span></code></td>
+<td>AoR not eligible (no terminal+endpoint+user+extension) or wrong digest</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">502</span></code></td>
+<td>could not resolve the Application Server (Kamailio) or originate (AMI)</td>
+</tr>
+</tbody>
+</table>
+<p>For security, the exact reason is not leaked between &#8220;the AoR does not exist&#8221; and
+&#8220;wrong password&#8221;: both return <code class="docutils literal"><span class="pre">403</span></code>.</p>
+</div>
+<div class="section" id="use-case">
+<h2>Use case</h2>
+<p>A typical exchange from the browser extension:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/challenge</span></code> with the logged-in terminal&#8217;s <code class="docutils literal"><span class="pre">aor</span></code> → obtain <code class="docutils literal"><span class="pre">nonce</span></code> and
+<code class="docutils literal"><span class="pre">realm</span></code>.</li>
+<li>Compute <code class="docutils literal"><span class="pre">response</span></code> from <code class="docutils literal"><span class="pre">username</span></code>, <code class="docutils literal"><span class="pre">realm</span></code>, <code class="docutils literal"><span class="pre">password</span></code>, <code class="docutils literal"><span class="pre">nonce</span></code> and the
+clicked <code class="docutils literal"><span class="pre">destination</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/call</span></code> with <code class="docutils literal"><span class="pre">aor</span></code>, <code class="docutils literal"><span class="pre">nonce</span></code>, <code class="docutils literal"><span class="pre">response</span></code> and <code class="docutils literal"><span class="pre">destination</span></code> → the
+user&#8217;s terminal rings and, on answer, the destination is dialed. Keep the
+returned <code class="docutils literal"><span class="pre">iden</span></code> to correlate the call later.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

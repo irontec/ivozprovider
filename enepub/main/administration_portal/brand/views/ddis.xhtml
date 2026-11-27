@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DDIs</title>
+    
+    <link rel="stylesheet" href="../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.xhtml" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="retail_accounts.xhtml" title="Retail accounts"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.xhtml" title="Views"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.xhtml">IvozProvider tempest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.xhtml" >Brand Configuration</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.xhtml" accesskey="U">Views</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ddis">
+<span id="id1"></span><h1>DDIs</h1>
+<p>This section lists <strong>all configured DDIs</strong> in all the clients of the brand.</p>
+<p>It makes easy to answer to these questions:</p>
+<ul class="simple">
+<li>Is this DDI of one of my clients? If so, whose?</li>
+<li>Who DDI Provider provides it?</li>
+<li>How many DDIs of country X does client Y have?</li>
+<li>Etc.</li>
+</ul>
+</div>
+<div class="section" id="csv-import">
+<h1>CSV Import</h1>
+<p>The <em>Import DDIs</em> option of the list menu creates DDIs in bulk from a CSV file and completes
+the existing ones. The dialog asks for:</p>
+<ul class="simple">
+<li><strong>CSV file</strong>: required, with the format described below.</li>
+<li><strong>Client</strong>: optional. Empty creates the DDIs unassigned to any client.</li>
+<li><strong>Country</strong>: required, with or without client. Selecting a client preselects its country, but
+it can be changed: a Spanish client can import DDIs of another country.</li>
+<li><strong>DDI provider</strong>: optional, one of the DDI providers of the brand. Empty creates the DDIs without
+DDI provider.</li>
+</ul>
+<p>The client, the country and the DDI provider apply to every row of the file. To import DDIs of
+several countries or DDI providers, use one file per combination.</p>
+<p>The file has a single column without header row: the DDI number without country prefix. Empty
+rows and the spaces around the number are ignored, and files saved by Excel (UTF-8 BOM, Windows
+line endings) are accepted:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">944048182</span>
+<span class="mi">944048183</span>
+<span class="mi">944048184</span>
+</pre></div>
+</div>
+<p>A DDI exists when its number and country match. The import follows these rules:</p>
+<ul class="simple">
+<li>A <strong>new DDI</strong> is created with the selected client, country and DDI provider. The other fields
+keep their default value: type <em>inout</em>, without description nor route. It counts as <em>created</em>.</li>
+<li>A DDI that <strong>exists in another brand</strong> is skipped without changes and counts as <em>skipped</em>. The
+result only says that the DDI already exists, not who owns it.</li>
+<li>A DDI that <strong>exists in this brand</strong> can only receive the selected client and DDI provider, and
+only when it has none. Nothing else changes, and a DDI is never moved from one client or DDI
+provider to another:<ul>
+<li>If it belongs to another client, or to another DDI provider, nothing is changed, not even the
+other field. It counts as <em>skipped</em> with a generic reason that does not tell which one.</li>
+<li>If it is an outbound only DDI and a DDI provider was selected, it is skipped too: outbound
+only DDIs cannot have a DDI provider.</li>
+<li>Otherwise, the selected fields it has empty are filled and it counts as <em>updated</em>. A field
+that was not selected, or that already has the selected value, is left as it is.</li>
+<li>If there is nothing to fill, it counts as <em>skipped</em>.</li>
+</ul>
+</li>
+<li>A number <strong>repeated</strong> in the file is processed once; its other rows are skipped.</li>
+<li>A row that is <strong>not a valid number</strong>, for example with a country prefix like <code class="docutils literal"><span class="pre">+34</span></code>, is
+reported as <em>failed</em> with its line number and does not stop the import of the other rows.</li>
+</ul>
+<p>With client A and DDI provider P selected in the dialog, an existing DDI of the brand ends up as
+follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Existing DDI</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Without client nor provider</td>
+<td>Updated: client A and DDI provider P</td>
+</tr>
+<tr class="row-odd"><td>Client A, without provider</td>
+<td>Updated: DDI provider P</td>
+</tr>
+<tr class="row-even"><td>Without client, provider P</td>
+<td>Updated: client A</td>
+</tr>
+<tr class="row-odd"><td>Client A, provider P</td>
+<td>Skipped: nothing to fill</td>
+</tr>
+<tr class="row-even"><td>Client B, without provider</td>
+<td>Skipped: belongs to another client, nothing is assigned</td>
+</tr>
+<tr class="row-odd"><td>Without client, provider Q</td>
+<td>Skipped: belongs to another DDI provider, nothing is assigned</td>
+</tr>
+<tr class="row-even"><td>Outbound only</td>
+<td>Skipped: outbound only DDIs cannot have a DDI provider</td>
+</tr>
+<tr class="row-odd"><td>Of another brand</td>
+<td>Skipped: already exists</td>
+</tr>
+</tbody>
+</table>
+<p>At the end, the dialog shows how many DDIs were created, updated, skipped and failed, the lines
+that were updated, and the line and reason of every skipped or failed row. Importing the same
+file again is safe: the second time nothing is created nor updated.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Imported DDIs have no route, and no DDI provider unless one is selected. Edit them
+afterwards to assign the destination of their incoming calls.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

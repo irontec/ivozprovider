@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Channel usage</title>
+    
+    <link rel="stylesheet" href="../../../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.xhtml" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../residential/index.xhtml" title="Residential Clients"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="webhooks.xhtml" title="Webhooks"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.xhtml">IvozProvider tempest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.xhtml" >Client Configuration</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.xhtml" >vPBX Clients</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.xhtml" accesskey="U">Calls</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="channel-usage">
+<h1>Channel usage</h1>
+<p>This section shows <strong>historical channel usage</strong> of the client, built from 5-minute samples and kept for the last
+<strong>30 days</strong>.</p>
+<p>The time range can be selected using the preset buttons (<em>Last 24 hours</em>, <em>Last 7 days</em>, <em>Last 30 days</em>) or choosing
+a custom range within the retention window. Dragging over the graph also zooms into the selected interval: the range
+switches to <em>Custom</em> with the dragged limits, which can then be fine-tuned in the date pickers.</p>
+<p>The cards on top summarise the selected range: the highest usage, the average usage and the number of blocked calls.</p>
+<p>The graph shows:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Max usage</dt>
+<dd>Highest number of simultaneous channels in use during each interval.</dd>
+<dt>Average usage</dt>
+<dd>Average number of channels in use during each interval.</dd>
+<dt>Channel limit</dt>
+<dd>Maximum number of concurrent calls allowed for the client, drawn as a dashed reference line. If the limit
+changed during the range, the line steps at that moment.</dd>
+<dt>Blocked calls</dt>
+<dd>Calls rejected for exceeding the client channel limit.</dd>
+</dl>
+</div></blockquote>
+<p>Two views are available:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Combined</dt>
+<dd>Everything in one graph. Hovering shows the values of every series at that moment. Clicking a legend entry
+shows only that series, keeping the channel limit as reference (click it again to restore all); Ctrl/Cmd +
+click toggles series one by one, the channel limit included.</dd>
+<dt>Split</dt>
+<dd>One panel per series (max usage with the channel limit as reference, average usage and blocked calls) sharing
+the same time axis: hovering a panel marks the same moment in all of them, showing each value.</dd>
+</dl>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Long ranges group several samples per point to keep the graph readable: max usage shows the highest value
+of the group, average usage the mean and blocked calls the sum. Times are shown in the timezone of the
+logged administrator.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

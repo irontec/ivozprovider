@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Uso máximo del día actual</title>
+    
+    <link rel="stylesheet" href="../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/banner.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.xhtml" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="antibruteforce.xhtml" title="Ataques anti fuerza bruta"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="concurrent_call_limit.xhtml" title="Límite de llamadas concurrentes"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.xhtml">documentación de IvozProvider - tempest</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.xhtml" accesskey="U">Seguridad</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="current-day-max-usage">
+<span id="id1"></span><h1>Uso máximo del día actual</h1>
+<p>CGRateS calcula el precio de cada llamada saliente externa realizada a través de un Carrier no calificado externamente (ver <a class="reference internal" href="../../administration_portal/brand/billing/index.xhtml#billing"><span class="std std-ref">Tarificación</span></a>).</p>
+<p>La cantidad total de dinero gastada en un día puede ser limitada usando esta función, evitando el fraude de peaje de llamadas (o al menos reduciendo los daños).</p>
+<p>Tenga en cuenta que <strong>dependiendo del método de facturación, el uso máximo del día actual se actualizará durante una llamada o solo al colgar la llamada</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="first"><strong>Postpago</strong>: cuando se cuelga una llamada, se actualiza el contador. Si se supera el umbral, todas las llamadas de ese cliente serán colgadas.</p>
+</li>
+<li><p class="first"><strong>Pseudo-prepago</strong>: igual que el postpago, ya que el crédito no se actualiza durante una llamada.</p>
+</li>
+<li><p class="first"><strong>Prepago</strong>: el crédito se actualiza durante una llamada, por lo que tan pronto como se alcance el uso máximo diario, todas las llamadas del cliente serán colgadas.</p>
+</li>
+</ul>
+</div></blockquote>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Establezca un límite razonable para cada cliente para que el uso anormal de dinero sea bloqueado automáticamente.</p>
+</div>
+<p>Más información en <a class="reference internal" href="../../administration_portal/brand/billing/current_day_usages.xhtml#current-day-usages"><span class="std std-ref">Usos del día actual</span></a>.</p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2019, Irontec.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>
