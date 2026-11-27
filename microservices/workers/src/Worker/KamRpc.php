@@ -20,6 +20,8 @@ class KamRpc
 {
     use RegisterCommandTrait;
 
+    private const ONGOING_RELOAD_ERROR = 'ongoing reload';
+
     /** @todo retryInterval should be a constant */
     private $retryInterval = 180;
 
@@ -47,11 +49,25 @@ class KamRpc
                 RpcJobInterface::CHANNEL
             );
 
-            $this->sendRpcRequest(
+            $error = $this->sendRpcRequest(
                 $job['rpcEntity'],
                 $job['rpcPort'],
                 $job['rpcMethod']
             );
+
+            $isRejectedByOngoingReload = $error !== null
+                && stripos($error, self::ONGOING_RELOAD_ERROR) !== false;
+
+            if ($isRejectedByOngoingReload) {
+                $this->logger->info(
+                    "[KAM-RPC] Request rejected by an ongoing reload: re-enqueued."
+                );
+
+                $this->reEnqueueJob(
+                    RpcJobInterface::CHANNEL,
+                    $job
+                );
+            }
         } catch (\Exception $e) {
             $this->logger->error(
                 $e->getMessage()
@@ -72,13 +88,13 @@ class KamRpc
                 RpcJobInterface::CHANNEL_RETRY_ON_ERROR
             );
 
-            $success = $this->sendRpcRequest(
+            $error = $this->sendRpcRequest(
                 $job['rpcEntity'],
                 $job['rpcPort'],
                 $job['rpcMethod']
             );
 
-            if (!$success) {
+            if ($error !== null) {
                 $this->logger->info(sprintf(
                     "[KAM-RPC] Delayed %s job request failed: Retrying in %d seconds.",
                     $job['rpcMethod'],
@@ -112,19 +128,18 @@ class KamRpc
      * @param int $port RPC Port
      * @param string$method RPC Method
      *
-     * @return bool
+     * @return string|null
      */
-    private function sendRpcRequest($entity, $port, $method)
+    private function sendRpcRequest($entity, $port, $method): ?string
     {
         try {
 
             /** @var ProxyTrunkRepository|ProxyUserRepository $repository */
             $repository = $this->em->getRepository($entity);
         } catch (\Exception $e) {
-            $this->logger->error(
-                sprintf("Unable to find repository for %s", $entity)
-            );
-            return false;
+            $error = sprintf("Unable to find repository for %s", $entity);
+            $this->logger->error($error);
+            return $error;
         }
 
         /** @var ProxyTrunk|ProxyUser $server */
@@ -168,9 +183,9 @@ class KamRpc
                 $port,
                 $e->getMessage()
             ));
-            return false;
+            return $e->getMessage();
         }
-        return true;
+        return null;
     }
 
 
@@ -194,6 +209,8 @@ class KamRpc
             }
 
             $data = end($response);
+            $redisMaster->lRem($channel, $data, 0);
+
             return \json_decode($data, true);
         } catch (\RedisException $e) {
             $this->logger->error('KamRpc timeout: ' . $e->getMessage());
